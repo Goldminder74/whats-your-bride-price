@@ -1,0 +1,14 @@
+{
+  "name": "What’s Your Bride Price?",
+  "short_name": "WYBP?",
+  "description": "A playful pan-African culture challenge with five regional editions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070908",
+  "theme_color": "#d84824",
+  "orientation": "portrait-primary",
+  "categories": ["games", "education", "entertainment"],
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
