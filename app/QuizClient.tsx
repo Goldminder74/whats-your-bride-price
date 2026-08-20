@@ -1,123 +1,288 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
+import { questionsByRegion, RegionId, regions, resultTiers } from "./quizData";
 
-type Option = { label: string; points: number };
-type Question = { category: string; question: string; options: Option[]; fact: string };
+type Screen = "intro" | "setup" | "quiz" | "result";
 
-const questions: Question[] = [
-  { category: "Food", question: "Which tiny grain is traditionally used to make Ethiopian injera?", options: [{ label: "Teff", points: 10 }, { label: "Millet", points: 3 }, { label: "Fonio", points: 3 }, { label: "Rice", points: 0 }], fact: "Teff flour gives injera its distinctive flavour and texture." },
-  { category: "Food", question: "UNESCO recognises couscous traditions shared by which group of countries?", options: [{ label: "Algeria, Mauritania, Morocco and Tunisia", points: 10 }, { label: "Egypt, Sudan, Eritrea and Ethiopia", points: 2 }, { label: "Ghana, Togo, Benin and Nigeria", points: 0 }, { label: "Kenya, Uganda, Rwanda and Burundi", points: 0 }], fact: "The shared knowledge around making and eating couscous was inscribed by UNESCO in 2020." },
-  { category: "Food", question: "Nsima, a staple with deep cultural importance in Malawi, is usually made from what?", options: [{ label: "Maize flour", points: 10 }, { label: "Cassava leaves", points: 2 }, { label: "Plantain", points: 0 }, { label: "Sorghum beer", points: 0 }], fact: "Nsima is a thick maize-flour porridge eaten with relishes and shared in families and communities." },
-  { category: "Philosophy", question: "What idea is at the heart of Ubuntu?", options: [{ label: "A person becomes fully human through other people", points: 10 }, { label: "Wisdom belongs only to elders", points: 2 }, { label: "Silence is always stronger than speech", points: 1 }, { label: "Success must be pursued alone", points: 0 }], fact: "Ubuntu is associated with connectedness, shared humanity, compassion and mutual responsibility." },
-  { category: "Language", question: "The Swahili saying ‘Haraka haraka haina baraka’ gives which advice?", options: [{ label: "Hurry, hurry has no blessing", points: 10 }, { label: "A guest brings good fortune", points: 2 }, { label: "Rain never forgets the sea", points: 1 }, { label: "Music makes the road shorter", points: 0 }], fact: "The proverb warns that rushing can spoil a task. Care and patience matter." },
-  { category: "Storytelling", question: "In parts of West Africa, what is a griot best known for?", options: [{ label: "Preserving history through story, genealogy, praise and music", points: 10 }, { label: "Carving royal stools", points: 2 }, { label: "Leading only harvest dances", points: 1 }, { label: "Trading salt across the Sahara", points: 0 }], fact: "Griots are oral historians, genealogists, musicians and keepers of memory in several West African societies." },
-  { category: "Music & Dance", question: "Moutya, danced to a heated goatskin drum, is a living tradition of which islands?", options: [{ label: "Seychelles", points: 10 }, { label: "Cape Verde", points: 3 }, { label: "São Tomé and Príncipe", points: 2 }, { label: "Comoros", points: 1 }], fact: "Moutya is a Seychellois Creole dance tradition with roots in resistance, dignity and social expression." },
-  { category: "Music & Dance", question: "Gule Wamkulu, the ‘Great Dance’, is practised by which people?", options: [{ label: "The Chewa of Malawi, Mozambique and Zambia", points: 10 }, { label: "The Tuareg of the central Sahara", points: 2 }, { label: "The Akan of Ghana and Côte d’Ivoire", points: 2 }, { label: "The Oromo of Ethiopia and Kenya", points: 1 }], fact: "The Chewa perform Gule Wamkulu at occasions including initiations, weddings and funerals." },
-  { category: "Music & Dance", question: "South Africa’s gumboot dance grew from communication and rhythm among whom?", options: [{ label: "Mine workers", points: 10 }, { label: "Royal praise singers", points: 2 }, { label: "Coastal fishermen", points: 1 }, { label: "Desert caravan guides", points: 0 }], fact: "Workers in South African mines developed percussive movement using boots, bodies and chains." },
-  { category: "Cloth & Symbols", question: "Kente cloth is especially associated with which cultural traditions?", options: [{ label: "Akan and Ewe traditions in Ghana", points: 10 }, { label: "Maasai traditions in Kenya", points: 2 }, { label: "San traditions in Botswana", points: 1 }, { label: "Nubian traditions in Sudan", points: 1 }], fact: "Kente is woven in strips, with colours and patterns carrying names, histories and meanings." },
-  { category: "Cloth & Symbols", question: "Adinkra are best described as what?", options: [{ label: "Visual symbols expressing concepts, values and proverbs", points: 10 }, { label: "Beads used only for counting age", points: 2 }, { label: "A family of stringed instruments", points: 1 }, { label: "A ceremonial bread", points: 0 }], fact: "Adinkra symbols communicate ideas about life, leadership, character, history and philosophy." },
-  { category: "Customs", question: "At a Nigerian celebration, what does ‘aso ebi’ usually refer to?", options: [{ label: "Co-ordinated fabric or dress worn by a family or social group", points: 10 }, { label: "The first dance after a meal", points: 2 }, { label: "A gift reserved for the eldest guest", points: 1 }, { label: "A spice mix for party rice", points: 0 }], fact: "Aso ebi literally evokes family cloth and visibly expresses solidarity and belonging at events." },
-  { category: "Customs", question: "In several Southern African societies, lobola traditionally describes what?", options: [{ label: "A negotiated marriage gift between families, historically often involving cattle", points: 10 }, { label: "A naming ceremony held at sunrise", points: 2 }, { label: "A harvest song contest", points: 1 }, { label: "A bride’s private savings", points: 0 }], fact: "Practices differ by community. Lobola concerns family relationships and customary marriage, not a price tag on a person." },
-  { category: "History", question: "The name ‘Great Zimbabwe’ is most closely connected to which idea?", options: [{ label: "Great houses or houses of stone", points: 10 }, { label: "Land of a thousand lakes", points: 2 }, { label: "Home of the golden drum", points: 1 }, { label: "Meeting place of four rivers", points: 0 }], fact: "The monumental dry-stone city gave modern Zimbabwe its name." },
-  { category: "History", question: "Cowrie shells once travelled widely across Africa and often signalled what?", options: [{ label: "Wealth, exchange, status or spiritual meaning", points: 10 }, { label: "A ban on sea travel", points: 1 }, { label: "Membership of one single ethnic group", points: 0 }, { label: "A written alphabet", points: 0 }], fact: "Cowries have served as currency, adornment and meaningful symbols in many different African contexts." },
-];
+const canvasColours: Record<RegionId, { ink: string; ground: string; accent: string; second: string }> = {
+  west: { ink: "#102f45", ground: "#f4dfbd", accent: "#c6542d", second: "#d79b2f" },
+  east: { ink: "#3b241b", ground: "#f5e5ca", accent: "#b74731", second: "#16878a" },
+  central: { ink: "#142d22", ground: "#ead4ad", accent: "#9b512c", second: "#2f7259" },
+  north: { ink: "#173f7a", ground: "#f5dfb4", accent: "#c9693b", second: "#d49a28" },
+  southern: { ink: "#14224b", ground: "#f4dcad", accent: "#eb5f46", second: "#008e9c" },
+};
 
-const tiers = [
-  { min: 0, title: "Culture Curious", cowries: "1,200", emoji: "🌱", line: "Your learning journey has excellent vibes and plenty of room for snacks." },
-  { min: 35, title: "Story Starter", cowries: "5,000", emoji: "📖", line: "You know enough to join the conversation and ask the questions that unlock the good stories." },
-  { min: 60, title: "Rhythm Finder", cowries: "12,000", emoji: "🥁", line: "The beat found you. You spot cultural clues and you are rarely the last person onto the dance floor." },
-  { min: 85, title: "Heritage Connector", cowries: "25,000", emoji: "✨", line: "You connect food, philosophy, cloth, history and celebration with serious flair." },
-  { min: 110, title: "Cultural Princess", cowries: "50,000", emoji: "👑", line: "Your cultural radar is sharp, your stories are rich and the aunties have started taking notes." },
-  { min: 135, title: "Living Library", cowries: "100,000", emoji: "🏆", line: "Negotiations paused. Everyone is listening because your heritage knowledge entered the room first." },
-];
+function getTier(score: number) {
+  return [...resultTiers].reverse().find((tier) => score >= tier.min) ?? resultTiers[0];
+}
 
-function getTier(score: number) { return [...tiers].reverse().find((tier) => score >= tier.min) ?? tiers[0]; }
+function loadCanvasImage(source: string) {
+  return new Promise<HTMLImageElement>((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve(image);
+    image.onerror = reject;
+    image.src = source;
+  });
+}
 
 export default function QuizClient() {
-  const [screen, setScreen] = useState<"intro" | "quiz" | "result">("intro");
+  const [screen, setScreen] = useState<Screen>("intro");
+  const [regionId, setRegionId] = useState<RegionId | null>(null);
+  const [playerName, setPlayerName] = useState("");
+  const [photo, setPhoto] = useState<string | null>(null);
+  const [photoError, setPhotoError] = useState("");
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
   const [showFact, setShowFact] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const score = useMemo(() => answers.reduce((sum, value) => sum + value, 0), [answers]);
-  const result = getTier(score);
-  const percentage = Math.round((score / 150) * 100);
-  const question = questions[index];
-  const displayedOptions = question.options.map((_, optionIndex) => question.options[(optionIndex + index) % question.options.length]);
+  const [shareStatus, setShareStatus] = useState("");
+  const [nominee, setNominee] = useState("");
+  const [nominatedBy, setNominatedBy] = useState("");
+  const fileInput = useRef<HTMLInputElement>(null);
 
-  function choose(optionIndex: number) { if (!showFact) { setSelected(optionIndex); setShowFact(true); } }
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const requestedRegion = params.get("region") as RegionId | null;
+    if (requestedRegion && regions.some((region) => region.id === requestedRegion)) setRegionId(requestedRegion);
+    if (params.get("nominated") === "1") setNominatedBy(params.get("from") || "a friend");
+  }, []);
+
+  const region = regions.find((item) => item.id === regionId) ?? null;
+  const questions = regionId ? questionsByRegion[regionId] : [];
+  const question = questions[index];
+  const displayedOptions = question ? question.options.map((_, optionIndex) => question.options[(optionIndex + index) % question.options.length]) : [];
+  const score = useMemo(() => answers.reduce((sum, value) => sum + value, 0), [answers]);
+  const percentage = Math.round((score / 120) * 100);
+  const result = getTier(score);
+  const themeClass = regionId ? `theme-${regionId}` : "theme-pan";
+
+  function handlePhoto(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    setPhotoError("");
+    if (!file.type.startsWith("image/")) { setPhotoError("Please choose an image file."); return; }
+    if (file.size > 8 * 1024 * 1024) { setPhotoError("Please choose a photo smaller than 8 MB."); return; }
+    const reader = new FileReader();
+    reader.onload = () => setPhoto(String(reader.result));
+    reader.onerror = () => setPhotoError("That photo could not be read. Please try another one.");
+    reader.readAsDataURL(file);
+  }
+
+  function beginQuiz() {
+    if (!regionId) return;
+    setIndex(0); setAnswers([]); setSelected(null); setShowFact(false); setShareStatus(""); setScreen("quiz");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function choose(optionIndex: number) {
+    if (!showFact) { setSelected(optionIndex); setShowFact(true); }
+  }
+
   function next() {
-    if (selected === null) return;
+    if (selected === null || !question) return;
     const updated = [...answers, displayedOptions[selected].points];
     setAnswers(updated);
-    if (index === questions.length - 1) { setScreen("result"); return; }
+    if (index === questions.length - 1) { setScreen("result"); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
     setIndex(index + 1); setSelected(null); setShowFact(false);
   }
-  function restart() { setScreen("intro"); setIndex(0); setAnswers([]); setSelected(null); setShowFact(false); setCopied(false); }
-  async function shareResult() {
-    const text = `I got ${result.title} on “What’s Your Bride Price?” with ${percentage}% culture connection and ${result.cowries} golden cowries. Can you beat me?`;
-    try {
-      if (navigator.share) await navigator.share({ title: "What's Your Bride Price?", text, url: window.location.href });
-      else { await navigator.clipboard.writeText(`${text} ${window.location.href}`); setCopied(true); }
-    } catch { /* Closing the share sheet needs no warning. */ }
+
+  function backToRegions() {
+    setScreen("setup"); setIndex(0); setAnswers([]); setSelected(null); setShowFact(false); setShareStatus("");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
-  function shareToFacebook() {
-    const target = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
-    window.open(target, "facebook-share", "width=720,height=620,noreferrer");
+
+  function home() {
+    setScreen("intro"); setIndex(0); setAnswers([]); setSelected(null); setShowFact(false); setShareStatus("");
+  }
+
+  async function makeResultCard() {
+    if (!region || !regionId) throw new Error("Choose a region first");
+    const colours = canvasColours[regionId];
+    const canvas = document.createElement("canvas");
+    canvas.width = 1080; canvas.height = 1350;
+    const context = canvas.getContext("2d");
+    if (!context) throw new Error("Card drawing is unavailable");
+
+    context.fillStyle = colours.ground; context.fillRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = colours.ink; context.fillRect(0, 0, canvas.width, 118);
+    context.fillStyle = colours.accent; context.beginPath(); context.arc(92, 92, 210, 0, Math.PI * 2); context.fill();
+    context.fillStyle = colours.second; context.beginPath(); context.arc(1015, 1280, 280, 0, Math.PI * 2); context.fill();
+    context.strokeStyle = colours.ink; context.lineWidth = 8;
+    for (let step = 0; step < 5; step += 1) context.strokeRect(38 + step * 19, 175 + step * 19, 1004 - step * 38, 1120 - step * 38);
+
+    context.textAlign = "center";
+    context.fillStyle = "#ffffff"; context.font = "800 30px Arial"; context.fillText("WHAT'S YOUR BRIDE PRICE?", 540, 75);
+    context.fillStyle = colours.ink; context.font = "800 26px Arial"; context.fillText(`${region.name.toUpperCase()} EDITION`, 540, 250);
+
+    if (photo) {
+      const portrait = await loadCanvasImage(photo);
+      context.save(); context.beginPath(); context.arc(540, 450, 145, 0, Math.PI * 2); context.clip();
+      const scale = Math.max(290 / portrait.width, 290 / portrait.height);
+      const width = portrait.width * scale; const height = portrait.height * scale;
+      context.drawImage(portrait, 540 - width / 2, 450 - height / 2, width, height); context.restore();
+      context.strokeStyle = colours.accent; context.lineWidth = 15; context.beginPath(); context.arc(540, 450, 152, 0, Math.PI * 2); context.stroke();
+    } else {
+      context.fillStyle = colours.accent; context.beginPath(); context.arc(540, 450, 145, 0, Math.PI * 2); context.fill();
+      context.fillStyle = "#ffffff"; context.font = "800 108px Georgia"; context.fillText(result.emoji, 540, 490);
+    }
+
+    context.fillStyle = colours.ink; context.font = "700 25px Arial"; context.fillText(playerName.trim() || "CULTURE CHALLENGER", 540, 650);
+    context.font = "800 72px Georgia"; context.fillText(result.title, 540, 745);
+    context.fillStyle = colours.accent; context.font = "800 126px Georgia"; context.fillText(`${percentage}%`, 540, 900);
+    context.fillStyle = colours.ink; context.font = "700 24px Arial"; context.fillText("CULTURE CONNECTION", 540, 948);
+    context.fillStyle = colours.second; context.fillRect(280, 1000, 520, 145);
+    context.fillStyle = "#ffffff"; context.font = "800 54px Georgia"; context.fillText(result.cowries, 540, 1068);
+    context.font = "800 22px Arial"; context.fillText("THEORETICAL GOLDEN COWRIES", 540, 1110);
+    context.fillStyle = colours.ink; context.font = "600 20px Arial"; context.fillText("Human worth is priceless. Bragging rights only.", 540, 1225);
+
+    const blob = await new Promise<Blob>((resolve, reject) => canvas.toBlob((value) => value ? resolve(value) : reject(new Error("Card creation failed")), "image/png"));
+    return new File([blob], "my-african-culture-quiz-result.png", { type: "image/png" });
+  }
+
+  function resultText() {
+    return `${playerName.trim() || "I"} scored ${percentage}% and earned ${result.title} in the ${region?.name} edition of “What's Your Bride Price?” Can you beat that?`;
+  }
+
+  async function shareResult() {
+    setShareStatus("");
+    try {
+      const card = await makeResultCard();
+      const data = { title: "What's Your Bride Price?", text: resultText(), url: window.location.origin, files: [card] };
+      if (navigator.share && navigator.canShare?.({ files: [card] })) await navigator.share(data);
+      else if (navigator.share) await navigator.share({ title: data.title, text: data.text, url: data.url });
+      else { await navigator.clipboard.writeText(`${data.text} ${data.url}`); setShareStatus("Result copied. Your personalised card is ready to download too."); }
+    } catch (error) {
+      if ((error as Error).name !== "AbortError") setShareStatus("Sharing did not open. Try downloading the card instead.");
+    }
+  }
+
+  async function downloadResult() {
+    try {
+      const card = await makeResultCard();
+      const link = document.createElement("a"); link.href = URL.createObjectURL(card); link.download = card.name; link.click();
+      setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+      setShareStatus("Your personalised result card has downloaded.");
+    } catch { setShareStatus("The result card could not be created on this device."); }
+  }
+
+  function challengeLink() {
+    const params = new URLSearchParams({ nominated: "1", region: regionId || "west" });
+    if (playerName.trim()) params.set("from", playerName.trim());
+    return `${window.location.origin}?${params.toString()}`;
+  }
+
+  function nominationText() {
+    const person = nominee.trim() || "My friend";
+    const sender = playerName.trim() || "A culture challenger";
+    return `${person}, ${sender} has nominated you to take the ${region?.name} edition of “What's Your Bride Price?” Think you can beat ${percentage}%?`;
+  }
+
+  async function nominatePlayer() {
+    const text = nominationText(); const url = challengeLink();
+    try {
+      if (navigator.share) await navigator.share({ title: "You have been nominated!", text, url });
+      else { await navigator.clipboard.writeText(`${text} ${url}`); setShareStatus("Nomination link copied. Send it to your challenger."); }
+    } catch (error) { if ((error as Error).name !== "AbortError") setShareStatus("The nomination could not be shared. Try WhatsApp instead."); }
+  }
+
+  function nominateOnWhatsApp() {
+    window.open(`https://wa.me/?text=${encodeURIComponent(`${nominationText()} ${challengeLink()}`)}`, "_blank", "noreferrer");
   }
 
   if (screen === "intro") return (
-    <main className="shell">
-      <div className="pattern" aria-hidden="true" />
-      <section className="hero card">
-        <div className="eyebrow"><span>15 questions</span><span>6 themes</span><span>100% good vibes</span></div>
-        <div className="hero-mark" aria-hidden="true">✦</div>
-        <p className="kicker">The African culture challenge</p>
-        <h1>What’s Your<br /><em>Bride Price?</em></h1>
-        <p className="lede">Food, rhythm, proverbs, customs and history. Put your cultural connection to the test and collect your theoretical golden cowries.</p>
-        <button className="primary" onClick={() => setScreen("quiz")}>Start the quiz <span>→</span></button>
-        <p className="kind-note"><strong>For laughs, not valuation.</strong> No woman has a price. The cowries are imaginary, every culture is diverse, and curiosity always earns respect.</p>
-      </section>
-      <section className="mini-grid" aria-label="How it works">
-        <article><b>01</b><span>Pick your best answer</span></article><article><b>02</b><span>Learn one quick fact</span></article><article><b>03</b><span>Share your result</span></article>
-      </section>
-      <footer>Made for laughter, learning and lively group chats.</footer>
-    </main>
-  );
-
-  if (screen === "quiz") return (
-    <main className="shell quiz-shell">
-      <div className="pattern" aria-hidden="true" />
-      <section className="quiz-top"><button className="wordmark" onClick={restart}>W Y B P ?</button><span>{index + 1} of {questions.length}</span></section>
-      <div className="progress" aria-label={`Question ${index + 1} of ${questions.length}`}><span style={{ width: `${((index + 1) / questions.length) * 100}%` }} /></div>
-      <section className="question-card card">
-        <p className="category">{question.category}</p><h2>{question.question}</h2>
-        <div className="options">
-          {displayedOptions.map((option, optionIndex) => {
-            const chosen = selected === optionIndex; const correct = option.points === 10;
-            const state = showFact ? (correct ? "correct" : chosen ? "wrong" : "muted") : "";
-            return <button key={option.label} className={`option ${chosen ? "selected" : ""} ${state}`} onClick={() => choose(optionIndex)}><span className="letter">{String.fromCharCode(65 + optionIndex)}</span><span>{option.label}</span>{showFact && correct && <span className="tick">✓</span>}</button>;
-          })}
+    <main className={`experience ${themeClass}`}>
+      <div className="grain" aria-hidden="true" /><div className="floating-beads" aria-hidden="true"><i /><i /><i /><i /><i /></div>
+      <header className="masthead"><button className="brand" onClick={home}><span>W</span> What’s Your Bride Price?</button><span className="edition-tag">5 regional editions</span></header>
+      <section className="landing-grid stage-enter">
+        <div className="landing-copy">
+          {nominatedBy && <p className="nomination-banner">✦ You were nominated by {nominatedBy}</p>}
+          <p className="overline">A joyful African culture challenge</p>
+          <h1>How deep do your <em>roots</em> run?</h1>
+          <p className="intro-lede">Choose a region, add your portrait and collect a personalised culture title worth entirely imaginary golden cowries.</p>
+          <div className="intro-actions"><button className="cta" onClick={() => setScreen("setup")}>Choose your region <span>↗</span></button><span>12 questions · about 3 minutes</span></div>
+          <p className="respect-note"><b>For laughter and learning.</b> No woman has a monetary value. Every edition celebrates knowledge and curiosity without treating a region as one single culture.</p>
         </div>
-        {showFact && <div className="fact" role="status"><span>Quick culture drop</span><p>{question.fact}</p><button className="primary compact" onClick={next}>{index === questions.length - 1 ? "Reveal my result" : "Next question"} <span>→</span></button></div>}
+        <div className="culture-collage" aria-label="Regional culture editions">
+          {regions.map((item, itemIndex) => <button key={item.id} style={{ backgroundImage: `url(${item.art})`, "--turn": `${(itemIndex - 2) * 2.2}deg`, "--lift": `${Math.abs(itemIndex - 2) * 7}px` } as React.CSSProperties} onClick={() => { setRegionId(item.id); setScreen("setup"); }}><span>{item.shortName}</span></button>)}
+          <div className="collage-seal"><small>Pick your</small><strong>Region</strong><b>✦</b></div>
+        </div>
+      </section>
+      <section className="feature-ribbon"><article><b>01</b><span>Upload your portrait</span></article><article><b>02</b><span>Play a regional edition</span></article><article><b>03</b><span>Share and nominate</span></article></section>
+      <footer>Culture is living, local and wonderfully diverse.</footer>
+    </main>
+  );
+
+  if (screen === "setup") return (
+    <main className={`experience ${themeClass}`}>
+      <div className="grain" aria-hidden="true" /><div className="floating-beads" aria-hidden="true"><i /><i /><i /><i /><i /></div>
+      <header className="masthead"><button className="brand" onClick={home}><span>W</span> What’s Your Bride Price?</button><button className="text-button" onClick={home}>Back home</button></header>
+      <section className="setup-heading stage-enter"><p className="overline">Create your culture passport</p><h1>Make it yours.</h1><p>Your portrait never leaves this device. It is used only to personalise the result card you choose to share or download.</p></section>
+      <section className="setup-grid">
+        <div className="identity-panel panel stage-enter delay-one">
+          <div className="step-label"><span>01</span><div><b>Your portrait</b><small>Optional, but much more fun</small></div></div>
+          <button className={`photo-drop ${photo ? "has-photo" : ""}`} onClick={() => fileInput.current?.click()} aria-label="Choose a portrait photo">
+            {photo ? <img src={photo} alt="Your uploaded portrait" /> : <><span className="photo-icon">＋</span><b>Add your best photo</b><small>JPG, PNG or WebP · up to 8 MB</small></>}
+            {photo && <span className="photo-change">Change photo</span>}
+          </button>
+          <input ref={fileInput} type="file" accept="image/*" onChange={handlePhoto} hidden />
+          {photoError && <p className="form-error">{photoError}</p>}
+          <label className="name-field"><span>First name or nickname</span><input value={playerName} onChange={(event) => setPlayerName(event.target.value.slice(0, 30))} placeholder="For your result card" /></label>
+        </div>
+        <div className="region-panel panel stage-enter delay-two">
+          <div className="step-label"><span>02</span><div><b>Choose a region</b><small>Each has its own questions and visual world</small></div></div>
+          <div className="region-list">
+            {regions.map((item) => <button key={item.id} className={`region-choice ${regionId === item.id ? "active" : ""}`} onClick={() => setRegionId(item.id)} style={{ backgroundImage: `linear-gradient(90deg, rgba(15,12,16,.92), rgba(15,12,16,.34)), url(${item.art})` }}><span className="region-radio">{regionId === item.id ? "✓" : ""}</span><span><b>{item.name}</b><small>{item.invitation}</small></span></button>)}
+          </div>
+        </div>
+      </section>
+      {region && <section className="region-preview stage-enter"><img src={region.art} alt="" /><div><p className="overline">Your selected edition</p><h2>{region.name}</h2><p>{region.flavour}</p><button className="cta" onClick={beginQuiz}>Enter the {region.shortName} edition <span>→</span></button></div></section>}
+      <p className="regional-note">Regional labels are broad navigation aids. Traditions cross borders, and every community contains its own histories and variations.</p>
+    </main>
+  );
+
+  if (screen === "quiz" && region && question) return (
+    <main className={`experience quiz-experience ${themeClass}`}>
+      <div className="region-backdrop" style={{ backgroundImage: `url(${region.art})` }} aria-hidden="true" /><div className="grain" aria-hidden="true" />
+      <header className="quiz-header"><button className="brand inverse" onClick={home}><span>W</span> WYBP?</button><div className="player-chip">{photo ? <img src={photo} alt="" /> : <span>{playerName.trim().charAt(0) || "✦"}</span>}<b>{playerName.trim() || "Culture Challenger"}</b></div><button className="region-chip" onClick={backToRegions}>{region.name} <span>⌄</span></button></header>
+      <div className="quiz-progress"><span style={{ width: `${((index + 1) / questions.length) * 100}%` }} /><small>{String(index + 1).padStart(2, "0")} / {questions.length}</small></div>
+      <section key={index} className="question-layout stage-question">
+        <aside className="question-aside"><p>{question.category}</p><strong>{String(index + 1).padStart(2, "0")}</strong><span>{region.name}<br />culture edition</span><div className="mini-motif" /></aside>
+        <article className="question-panel">
+          <h1>{question.question}</h1>
+          <div className="option-grid">
+            {displayedOptions.map((option, optionIndex) => {
+              const chosen = selected === optionIndex; const correct = option.points === 10;
+              const state = showFact ? (correct ? "correct" : chosen ? "wrong" : "muted") : "";
+              return <button key={option.label} className={`answer ${chosen ? "chosen" : ""} ${state}`} onClick={() => choose(optionIndex)}><span>{String.fromCharCode(65 + optionIndex)}</span><b>{option.label}</b>{showFact && correct && <i>✓</i>}</button>;
+            })}
+          </div>
+          {showFact && <div className="culture-drop"><div className="burst" aria-hidden="true"><i /><i /><i /><i /><i /></div><p><b>Culture drop</b>{question.fact}</p><button className="cta compact" onClick={next}>{index === questions.length - 1 ? "Reveal my result" : "Next question"}<span>→</span></button></div>}
+        </article>
       </section>
     </main>
   );
 
+  if (!region) return null;
   return (
-    <main className="shell result-shell">
-      <div className="pattern" aria-hidden="true" />
-      <section className="result-card card">
-        <p className="kicker">The family council has spoken</p><div className="result-emoji" aria-hidden="true">{result.emoji}</div><p className="result-label">Your culture connection is</p><h1>{result.title}</h1>
-        <div className="score-ring" style={{ "--score": `${percentage * 3.6}deg` } as React.CSSProperties}><div><strong>{percentage}%</strong><span>culture connection</span></div></div>
-        <p className="result-line">{result.line}</p><div className="cowries"><small>Your entirely theoretical bride price</small><strong>{result.cowries}</strong><span>golden cowries</span></div>
-        <p className="disclaimer">Bragging rights only. Human worth is priceless and customary practices vary widely.</p>
-        <div className="result-actions"><button className="primary" onClick={shareResult}>{copied ? "Copied to clipboard" : "Share my result"} <span>↗</span></button><button className="secondary facebook" onClick={shareToFacebook}>Share to Facebook</button><button className="secondary" onClick={restart}>Play again</button></div>
+    <main className={`experience result-experience ${themeClass}`}>
+      <div className="region-backdrop result-bg" style={{ backgroundImage: `url(${region.art})` }} aria-hidden="true" /><div className="grain" aria-hidden="true" /><div className="floating-beads" aria-hidden="true"><i /><i /><i /><i /><i /></div>
+      <header className="masthead inverse-head"><button className="brand" onClick={home}><span>W</span> What’s Your Bride Price?</button><span className="edition-tag">{region.name} edition</span></header>
+      <section className="reveal stage-reveal">
+        <div className="portrait-reveal"><div className="portrait-rays" />{photo ? <img src={photo} alt={`${playerName || "Player"}'s portrait`} /> : <span>{result.emoji}</span>}<i className="crown">♛</i></div>
+        <div className="result-copy"><p className="overline">The family council has spoken</p><small>{playerName.trim() ? `${playerName}, your` : "Your"} {region.name} culture connection is</small><h1>{result.title}</h1><p>{result.line}</p><div className="result-numbers"><div><strong>{percentage}%</strong><span>culture connection</span></div><div><strong>{result.cowries}</strong><span>theoretical golden cowries</span></div></div><p className="priceless">Human worth is priceless. The cowries are bragging rights, not a valuation.</p></div>
       </section>
-      <section className="learn-more"><h2>Keep the conversation going</h2><p>Africa is a continent of thousands of communities and living traditions. This is a joyful sampler, not a test of anyone’s identity.</p><details><summary>Sources and cultural note</summary><p>Core references include UNESCO’s Intangible Cultural Heritage pages for Ubuntu, couscous, Moutya, Gule Wamkulu and living heritage. Terms and practices can differ by language, country, family and community.</p><div className="source-links"><a href="https://ich.unesco.org/en/lists" target="_blank" rel="noreferrer">UNESCO living heritage lists</a><a href="https://courier.unesco.org/en/articles/i-am-because-you-are" target="_blank" rel="noreferrer">UNESCO on Ubuntu</a></div></details></section>
-      <footer>What’s Your Bride Price? Culture Quiz · For entertainment and learning.</footer>
+      <section className="action-deck panel">
+        <div><p className="overline">Make the group chat noisy</p><h2>Share your portrait card.</h2></div>
+        <div className="action-buttons"><button className="cta" onClick={shareResult}>Share result <span>↗</span></button><button className="outline-button" onClick={downloadResult}>Download card</button></div>
+        {shareStatus && <p className="share-status" role="status">{shareStatus}</p>}
+      </section>
+      <section className="nomination-deck">
+        <div className="nomination-copy"><span className="nomination-medal">N</span><p className="overline">Pass the challenge</p><h2>Nominate your next player.</h2><p>Call out a friend by name and send them straight into the same regional edition.</p></div>
+        <div className="nomination-form"><label><span>Who are you nominating?</span><input value={nominee} onChange={(event) => setNominee(event.target.value.slice(0, 40))} placeholder="Friend's first name" /></label><div><button className="cta" onClick={nominatePlayer}>Send nomination <span>→</span></button><button className="whatsapp-button" onClick={nominateOnWhatsApp}>WhatsApp</button></div></div>
+      </section>
+      <section className="result-footer-actions"><button className="text-button" onClick={beginQuiz}>Replay this edition</button><button className="text-button" onClick={backToRegions}>Choose another region</button></section>
+      <footer>Every score opens another story.</footer>
     </main>
   );
 }
