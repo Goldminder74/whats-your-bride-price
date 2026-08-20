@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://whats-your-bride-price.ayo43077.chatgpt.site"),
   title: "What's Your Bride Price? African Culture Quiz",
   description: "15 joyful questions. One playful golden-cowrie result. Test your connection to African food, music, language, customs, art and history.",
   openGraph: {
