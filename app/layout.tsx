@@ -8,11 +8,13 @@ export const metadata: Metadata = {
     title: "What's Your Bride Price? African Culture Quiz",
     description: "How strong is your African culture connection? Take the 15-question challenge and share your golden-cowrie result.",
     type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "What's Your Bride Price? The African Culture Quiz" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "What's Your Bride Price? African Culture Quiz",
     description: "15 joyful questions. One highly shareable culture result.",
+    images: ["/og.png"],
   },
 };
 

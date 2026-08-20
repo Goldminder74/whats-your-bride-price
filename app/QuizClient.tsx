@@ -45,11 +45,12 @@ export default function QuizClient() {
   const result = getTier(score);
   const percentage = Math.round((score / 150) * 100);
   const question = questions[index];
+  const displayedOptions = question.options.map((_, optionIndex) => question.options[(optionIndex + index) % question.options.length]);
 
   function choose(optionIndex: number) { if (!showFact) { setSelected(optionIndex); setShowFact(true); } }
   function next() {
     if (selected === null) return;
-    const updated = [...answers, question.options[selected].points];
+    const updated = [...answers, displayedOptions[selected].points];
     setAnswers(updated);
     if (index === questions.length - 1) { setScreen("result"); return; }
     setIndex(index + 1); setSelected(null); setShowFact(false);
@@ -61,6 +62,10 @@ export default function QuizClient() {
       if (navigator.share) await navigator.share({ title: "What's Your Bride Price?", text, url: window.location.href });
       else { await navigator.clipboard.writeText(`${text} ${window.location.href}`); setCopied(true); }
     } catch { /* Closing the share sheet needs no warning. */ }
+  }
+  function shareToFacebook() {
+    const target = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+    window.open(target, "facebook-share", "width=720,height=620,noreferrer");
   }
 
   if (screen === "intro") return (
@@ -90,7 +95,7 @@ export default function QuizClient() {
       <section className="question-card card">
         <p className="category">{question.category}</p><h2>{question.question}</h2>
         <div className="options">
-          {question.options.map((option, optionIndex) => {
+          {displayedOptions.map((option, optionIndex) => {
             const chosen = selected === optionIndex; const correct = option.points === 10;
             const state = showFact ? (correct ? "correct" : chosen ? "wrong" : "muted") : "";
             return <button key={option.label} className={`option ${chosen ? "selected" : ""} ${state}`} onClick={() => choose(optionIndex)}><span className="letter">{String.fromCharCode(65 + optionIndex)}</span><span>{option.label}</span>{showFact && correct && <span className="tick">✓</span>}</button>;
@@ -109,7 +114,7 @@ export default function QuizClient() {
         <div className="score-ring" style={{ "--score": `${percentage * 3.6}deg` } as React.CSSProperties}><div><strong>{percentage}%</strong><span>culture connection</span></div></div>
         <p className="result-line">{result.line}</p><div className="cowries"><small>Your entirely theoretical bride price</small><strong>{result.cowries}</strong><span>golden cowries</span></div>
         <p className="disclaimer">Bragging rights only. Human worth is priceless and customary practices vary widely.</p>
-        <div className="result-actions"><button className="primary" onClick={shareResult}>{copied ? "Copied to clipboard" : "Share my result"} <span>↗</span></button><button className="secondary" onClick={restart}>Play again</button></div>
+        <div className="result-actions"><button className="primary" onClick={shareResult}>{copied ? "Copied to clipboard" : "Share my result"} <span>↗</span></button><button className="secondary facebook" onClick={shareToFacebook}>Share to Facebook</button><button className="secondary" onClick={restart}>Play again</button></div>
       </section>
       <section className="learn-more"><h2>Keep the conversation going</h2><p>Africa is a continent of thousands of communities and living traditions. This is a joyful sampler, not a test of anyone’s identity.</p><details><summary>Sources and cultural note</summary><p>Core references include UNESCO’s Intangible Cultural Heritage pages for Ubuntu, couscous, Moutya, Gule Wamkulu and living heritage. Terms and practices can differ by language, country, family and community.</p><div className="source-links"><a href="https://ich.unesco.org/en/lists" target="_blank" rel="noreferrer">UNESCO living heritage lists</a><a href="https://courier.unesco.org/en/articles/i-am-because-you-are" target="_blank" rel="noreferrer">UNESCO on Ubuntu</a></div></details></section>
       <footer>What’s Your Bride Price? Culture Quiz · For entertainment and learning.</footer>

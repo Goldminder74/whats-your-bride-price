@@ -22,6 +22,7 @@ button { font:inherit; }
 .primary:active { transform:translate(3px,3px); box-shadow:2px 2px 0 var(--ink); }
 .primary span { margin-left:14px; }
 .secondary { background:transparent; color:var(--ink); }
+.facebook { color:#214c9b; border-color:#214c9b; background:#f3f7ff; }
 .kind-note { max-width:560px; margin:28px auto 0; font-size:12px; line-height:1.55; color:var(--muted); }
 .kind-note strong { color:var(--ink); }
 .mini-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:26px 0; }
