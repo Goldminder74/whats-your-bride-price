@@ -12,11 +12,11 @@ export type Region = {
 };
 
 export const regions: Region[] = [
-  { id: "west", name: "West Africa", shortName: "West", invitation: "Rhythm, cloth, cuisine and living memory", flavour: "From griot traditions and indigo cloth to highlife, fonio and family celebration.", art: "/regions/west-africa.png" },
-  { id: "east", name: "East Africa", shortName: "East", invitation: "Coast, highlands, language and ceremony", flavour: "From Swahili sayings and barkcloth to teff, Moutya and Oromo governance.", art: "/regions/east-africa.png" },
-  { id: "central", name: "Central Africa", shortName: "Central", invitation: "Forest, raffia, sound and style", flavour: "From Kuba cloth and soukous to makossa, mvet epics and cassava-leaf dishes.", art: "/regions/central-africa.png" },
-  { id: "north", name: "North Africa", shortName: "North", invitation: "Mosaic, desert, medina and melody", flavour: "From zellige and Amazigh heritage to couscous, raï, Gnawa and desert traditions.", art: "/regions/north-africa.png" },
-  { id: "southern", name: "Southern Africa", shortName: "Southern", invitation: "Stone, philosophy, beadwork and beat", flavour: "From Ubuntu and Great Zimbabwe to mbira, gumboot rhythm and mural colour.", art: "/regions/southern-africa.png" },
+  { id: "west", name: "West Africa", shortName: "West", invitation: "Rhythm, cloth, cuisine and living memory", flavour: "From griot traditions and indigo cloth to highlife, fonio and family celebration.", art: "/regions/west-africa.webp" },
+  { id: "east", name: "East Africa", shortName: "East", invitation: "Coast, highlands, language and ceremony", flavour: "From Swahili sayings and barkcloth to teff, Moutya and Oromo governance.", art: "/regions/east-africa.webp" },
+  { id: "central", name: "Central Africa", shortName: "Central", invitation: "Forest, raffia, sound and style", flavour: "From Kuba cloth and soukous to makossa, mvet epics and cassava-leaf dishes.", art: "/regions/central-africa.webp" },
+  { id: "north", name: "North Africa", shortName: "North", invitation: "Mosaic, desert, medina and melody", flavour: "From zellige and Amazigh heritage to couscous, raï, Gnawa and desert traditions.", art: "/regions/north-africa.webp" },
+  { id: "southern", name: "Southern Africa", shortName: "Southern", invitation: "Stone, philosophy, beadwork and beat", flavour: "From Ubuntu and Great Zimbabwe to mbira, gumboot rhythm and mural colour.", art: "/regions/southern-africa.webp" },
 ];
 
 export const questionsByRegion: Record<RegionId, QuizQuestion[]> = {

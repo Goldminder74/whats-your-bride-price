@@ -204,7 +204,7 @@ export default function QuizClient() {
           <p className="respect-note"><b>For laughter and learning.</b> No woman has a monetary value. Every edition celebrates knowledge and curiosity without treating a region as one single culture.</p>
         </div>
         <div className="culture-collage" aria-label="Regional culture editions">
-          {regions.map((item, itemIndex) => <button key={item.id} style={{ backgroundImage: `url(${item.art})`, "--turn": `${(itemIndex - 2) * 2.2}deg`, "--lift": `${Math.abs(itemIndex - 2) * 7}px` } as React.CSSProperties} onClick={() => { setRegionId(item.id); setScreen("setup"); }}><span>{item.shortName}</span></button>)}
+          {regions.map((item, itemIndex) => <button key={item.id} style={{ backgroundImage: `url(${item.art})`, "--turn": `${(itemIndex - 2) * 2.2}deg`, "--x": `${(itemIndex - 2) * 72}px`, "--lift": `${Math.abs(itemIndex - 2) * 7}px` } as React.CSSProperties} onClick={() => { setRegionId(item.id); setScreen("setup"); }}><span>{item.shortName}</span></button>)}
           <div className="collage-seal"><small>Pick your</small><strong>Region</strong><b>✦</b></div>
         </div>
       </section>
