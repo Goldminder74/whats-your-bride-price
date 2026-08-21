@@ -25,6 +25,8 @@ test("server-renders the finished pan-African game", async () => {
   assert.match(html, /knowledge quest/i);
   assert.match(html, /DO YOU KNOW YOUR ROOTS/i);
   assert.match(html, /THE MORE YOU SCORE THE HIGHER YOUR BRIDE PRICE/i);
+  assert.match(html, /CHOOSE YOUR[\s\S]*AFRICAN[\s\S]*REGION/i);
+  assert.match(html, /Enter Region/i);
   assert.match(html, /Every edition is its own world/i);
   assert.doesNotMatch(html, /cinematic/i);
   assert.doesNotMatch(html, /\u2014/);
@@ -57,6 +59,8 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
   assert.match(source, /> 8/);
   assert.match(source, /ALL AFRICA.*ACCESS UNLOCKED/s);
   assert.match(source, /Bride Price Royalty/);
+  assert.match(source, /Enter Region/);
+  assert.doesNotMatch(source, /Enter(?: this)? world/i);
   assert.doesNotMatch(source, /wildly addictive|JOY WITH|cinematic/i);
   assert.doesNotMatch(`${source}${data}`, /\u2014/);
   assert.match(source, /\?edition=\$\{regionKey\}/);

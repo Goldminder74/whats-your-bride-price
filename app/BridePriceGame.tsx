@@ -418,7 +418,7 @@ export default function BridePriceGame() {
                 <img src={`/regions/${key === "south" ? "southern" : key}-africa.webp`} alt={`${regions[key].name} illustrated game world`} />
                 <span><small>World 0{artIndex + 1}</small>{regions[key].name}</span>
               </button>)}
-              <div className="orbit-copy"><span>CHOOSE</span><b>YOUR</b><em>WORLD</em></div>
+              <div className="orbit-copy"><span>CHOOSE YOUR</span><b>AFRICAN</b><em>REGION</em></div>
             </div>
             <div className="game-marquee"><span>⚡ AVATAR LAB</span><span>✦ IMAGE ROUNDS</span><span>◉ CULTURE GEMS</span><span>♬ REACTIVE SOUND</span><span>↗ SHAREABLE REVEALS</span></div>
           </section>
@@ -436,7 +436,7 @@ export default function BridePriceGame() {
                   <div className="card-pattern" aria-hidden="true" /><div className="card-number">0{cardIndex + 1}</div>
                   <div className="card-mark" aria-hidden="true">{item.mark}</div>
                   <div className="card-copy"><p>{item.place}</p><h3>{item.name}</h3>
-                    <button type="button" onClick={() => chooseRegion(key)} aria-label={`Play the ${item.name} edition`}>Enter this world <span>→</span></button>
+                    <button type="button" onClick={() => chooseRegion(key)} aria-label={`Play the ${item.name} edition`}>Enter Region <span>→</span></button>
                   </div>
                 </article>;
               })}
@@ -482,7 +482,7 @@ export default function BridePriceGame() {
             <input ref={fileRef} type="file" accept="image/*" onChange={onPhoto} hidden />
             <label htmlFor="player-name">What should we call you?</label>
             <input id="player-name" value={name} onChange={(e) => setName(e.target.value.slice(0, 30))} placeholder="Your name (optional)" />
-            <button className="big-action" onClick={beginQuiz}>Enter world 0{regionOrder.indexOf(regionKey) + 1} <span>▶</span></button>
+            <button className="big-action" onClick={beginQuiz}>Enter Region 0{regionOrder.indexOf(regionKey) + 1} <span>▶</span></button>
           </div>
         </section>
       )}
