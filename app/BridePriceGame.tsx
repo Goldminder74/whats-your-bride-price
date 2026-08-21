@@ -18,10 +18,10 @@ const legacyRegions: Record<RegionKey, {
     drops: [
       "Timbuktu’s earthen architecture is a living record of scholarship, faith and Sahelian ingenuity.",
       "Across West Africa, oral historians and musicians have carried family and community memory across generations.",
-      "Cloth, colour and dress can communicate occasion, belonging and personal expression — never a single fixed identity.",
+      "Cloth, colour and dress can communicate occasion, belonging and personal expression, never a single fixed identity.",
     ],
     questions: [
-      q("The family party starts at 2. When do you arrive?", "At 1:55, gift in hand", "At 2:30 — respectfully relaxed", "When the music gets serious", "I’m helping the host set up"),
+      q("The family party starts at 2. When do you arrive?", "At 1:55, gift in hand", "At 2:30, respectfully relaxed", "When the music gets serious", "I’m helping the host set up"),
       q("A jollof debate erupts at the table. You…", "Observe the diplomacy", "Defend your favourite with evidence", "Suggest a blind taste test", "Declare every pot a winner"),
       q("The drummer changes rhythm and the circle opens. Your move?", "Cheer from a safe distance", "Offer one excellent two-step", "Enter like I rehearsed for this", "Pull everyone in with me"),
       q("Your market-day superpower is…", "A beautifully organised list", "Spotting the finest details", "Warm conversation and good bargains", "Returning with gifts nobody requested"),
@@ -83,7 +83,7 @@ const legacyRegions: Record<RegionKey, {
     name: "North Africa", short: "North", place: "Desert, delta & Mediterranean", mark: "☼", hello: "You’re entering a world of luminous courtyards, ancient cities & legendary welcome.", palette: ["#d7a856", "#1c7180", "#61341f"],
     drops: [
       "Timbuktu’s celebrated mosques and manuscripts reflect centuries of exchange across Saharan routes.",
-      "North Africa holds Amazigh, Arab, Nubian, Saharan, Mediterranean and many other identities — no single story contains it.",
+      "North Africa holds Amazigh, Arab, Nubian, Saharan, Mediterranean and many other identities. No single story contains it.",
       "Courtyard architecture often turns shade, water, tile and geometry into practical beauty.",
     ],
     questions: [
@@ -147,7 +147,7 @@ const stampNames: Record<RegionKey, string[]> = {
 const tierTitles = ["Roots Rookie", "Culture Climber", "Motherland Scholar", "Bride Price Royalty"];
 const tierCopy = [
   "Your curiosity has officially entered the chat. The roots are there; they simply want a longer conversation. Study the reveals, try again and prepare a glorious comeback.",
-  "You know enough to keep the table interested—and enough to know the continent has more to teach you. A little revision could turn this promising score into serious bride-price energy.",
+  "You know enough to keep the table interested, and enough to know the continent has more to teach you. A little revision could turn this promising score into serious bride-price energy.",
   "Strong knowledge, sharp instincts and only a few facts between you and regional mastery. The aunties are nodding; one focused replay could earn this passport seal.",
   "Nine or more correct! Regional mastery confirmed. The family council has raised the bride price, polished the certificate and warned the groom to arrive financially prepared.",
 ];
@@ -406,7 +406,7 @@ export default function BridePriceGame() {
               <div className="live-pill"><i /> The Motherland is calling</div>
               <p className="cinema-kicker">A pan-African knowledge quest</p>
               <h1 className="challenge-headline"><span>DO YOU KNOW YOUR ROOTS?</span><em>THE MORE YOU SCORE THE HIGHER YOUR BRIDE PRICE</em><strong>LET’S PLAY!</strong></h1>
-              <p>Pick a region you know best because Africa is one giant continent. Decode proverbs. Spot the dish. Trace an empire. Leave with high scores—and a certificate proving the high bride price you deserve—the groom must pay!</p>
+              <p>Pick a region you know best because Africa is one giant continent. Decode proverbs. Spot the dish. Trace an empire. Leave with high scores, and a certificate proving the high bride price you deserve. The groom must pay!</p>
               <div className="cinema-actions">
                 <button className="play-now" onClick={() => setScreen("setup")}><span>▶</span> Start the challenge</button>
                 <button className="trailer-button" onClick={() => setMenuOpen(true)}><span>ⓘ</span> What is this?</button>
@@ -424,9 +424,9 @@ export default function BridePriceGame() {
           </section>
           <section className="edition-section" id="editions">
             <div className="section-heading">
-              <p>01 — Pick your path</p>
+              <p>01 | Pick your path</p>
               <h2>FIVE REGIONS.<br /><i>ENDLESS</i> BRAGGING RIGHTS.</h2>
-              <span>Every edition is its own world — with 12 questions inspired by the region’s rhythms, rituals and everyday magic.</span>
+              <span>Every edition is its own world, with 12 questions inspired by the region’s rhythms, rituals and everyday magic.</span>
             </div>
             <div className="region-grid">
               {regionOrder.map((key, cardIndex) => {
@@ -443,7 +443,7 @@ export default function BridePriceGame() {
             </div>
           </section>
           <section className="how-section">
-            <p className="eyebrow">02 — How it works</p>
+            <p className="eyebrow">02 | How it works</p>
             <div className="how-intro"><h2>YOUR STORY.<br /><i>YOUR</i> SPOTLIGHT.</h2><p>Three joyful minutes to a portrait worth sharing.</p></div>
             <div className="steps">
               <div><b>01</b><span>Pick a region</span><p>Choose the edition you know, love or want to explore.</p></div>
@@ -452,7 +452,7 @@ export default function BridePriceGame() {
             </div>
           </section>
           <section className="values-strip">
-            <p>This game celebrates culture — it never measures human worth.</p>
+            <p>This game celebrates culture. It never measures human worth.</p>
             <div><span>12</span> questions <i>•</i> <span>3</span> minutes <i>•</i> <span>1</span> unforgettable reveal</div>
           </section>
         </>
@@ -543,7 +543,7 @@ export default function BridePriceGame() {
           <div className="confetti" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <i key={i} style={{ "--i": i } as React.CSSProperties} />)}</div>
           {allAfricaJustUnlocked && <div className="all-africa-coronation" role="dialog" aria-modal="true" aria-label="All Africa access unlocked">
             <div className="coronation-fire" aria-hidden="true">{Array.from({ length: 45 }, (_, i) => <i key={i} style={{ "--i": i } as React.CSSProperties} />)}</div>
-            <div className="coronation-card"><span>✦ ◆ ◈ ✺ ☼</span><p>THE ULTIMATE PASSPORT</p><h2>ALL AFRICA<br /><i>ACCESS UNLOCKED</i></h2><b>Five regions mastered. Five scores of 9 or higher. One continent explored.</b><small>{name || "Champion"}, your Motherland Passport is complete. The council has declared your knowledge—and your bride price—legendary.</small><button onClick={() => setAllAfricaJustUnlocked(false)}>Claim the crown ✦</button></div>
+            <div className="coronation-card"><span>✦ ◆ ◈ ✺ ☼</span><p>THE ULTIMATE PASSPORT</p><h2>ALL AFRICA<br /><i>ACCESS UNLOCKED</i></h2><b>Five regions mastered. Five scores of 9 or higher. One continent explored.</b><small>{name || "Champion"}, your Motherland Passport is complete. The council has declared your knowledge and your bride price legendary.</small><button onClick={() => setAllAfricaJustUnlocked(false)}>Claim the crown ✦</button></div>
           </div>}
           <p className="result-kicker">{region.name} edition • official bride price knowledge certificate</p>
           <div className="result-layout">
@@ -579,7 +579,7 @@ export default function BridePriceGame() {
           <div className="about-sheet"><button className="modal-close" onClick={() => setMenuOpen(false)}>×</button>
             <p className="eyebrow">About this experience</p><h2>THE STAKES ARE HIGH<br /><i>PROVE YOUR HIGH VALUE</i></h2>
             <p>Five fast-moving editions turn Africa’s languages, histories, proverbs, foodways, music and visual cultures into a knowledge quest built for curiosity.</p>
-            <div className="guardrails"><div><b>Africa is plural</b><span>Each answer opens a door, never claims to contain a whole people or place.</span></div><div><b>Your portrait is private</b><span>Photos are processed in your browser and are never uploaded or stored.</span></div><div><b>Learn as you play</b><span>Every answer unlocks a clear explanation—correct guess or not.</span></div><div><b>An original score</b><span>The reactive audio is an abstract game soundtrack, not a traditional recording.</span></div></div>
+            <div className="guardrails"><div><b>Africa is plural</b><span>Each answer opens a door, never claims to contain a whole people or place.</span></div><div><b>Your portrait is private</b><span>Photos are processed in your browser and are never uploaded or stored.</span></div><div><b>Learn as you play</b><span>Every answer unlocks a clear explanation, correct guess or not.</span></div><div><b>An original score</b><span>The reactive audio is an abstract game soundtrack, not a traditional recording.</span></div></div>
             <p className="source-label">Follow the knowledge trail</p>
             <div className="source-links">
               {sourceCollections.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>)}

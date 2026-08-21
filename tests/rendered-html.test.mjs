@@ -27,6 +27,7 @@ test("server-renders the finished pan-African game", async () => {
   assert.match(html, /THE MORE YOU SCORE THE HIGHER YOUR BRIDE PRICE/i);
   assert.match(html, /Every edition is its own world/i);
   assert.doesNotMatch(html, /cinematic/i);
+  assert.doesNotMatch(html, /\u2014/);
   assert.match(html, /West Africa/);
   assert.match(html, /Southern Africa/);
   assert.match(html, /This game celebrates culture/i);
@@ -57,5 +58,6 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
   assert.match(source, /ALL AFRICA.*ACCESS UNLOCKED/s);
   assert.match(source, /Bride Price Royalty/);
   assert.doesNotMatch(source, /wildly addictive|JOY WITH|cinematic/i);
+  assert.doesNotMatch(`${source}${data}`, /\u2014/);
   assert.match(source, /\?edition=\$\{regionKey\}/);
 });
