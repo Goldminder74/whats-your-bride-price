@@ -23,6 +23,10 @@ test("server-renders the finished pan-African game", async () => {
   assert.match(html, /AVATAR LAB/i);
   assert.match(html, /IMAGE ROUNDS/i);
   assert.match(html, /knowledge quest/i);
+  assert.match(html, /DO YOU KNOW YOUR ROOTS/i);
+  assert.match(html, /THE MORE YOU SCORE THE HIGHER YOUR BRIDE PRICE/i);
+  assert.match(html, /Every edition is its own world/i);
+  assert.doesNotMatch(html, /cinematic/i);
   assert.match(html, /West Africa/);
   assert.match(html, /Southern Africa/);
   assert.match(html, /This game celebrates culture/i);
@@ -46,6 +50,12 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
   assert.match(data, /General History of Africa/);
   assert.match(data, /British Museum/);
   assert.match(data, /Met Museum/);
-  assert.doesNotMatch(source, /wildly addictive|JOY WITH/);
+  assert.match(source, /THE STAKES ARE HIGH/);
+  assert.match(source, /PROVE YOUR HIGH VALUE/);
+  assert.match(source, /wybp-region-scores/);
+  assert.match(source, /> 8/);
+  assert.match(source, /ALL AFRICA.*ACCESS UNLOCKED/s);
+  assert.match(source, /Bride Price Royalty/);
+  assert.doesNotMatch(source, /wildly addictive|JOY WITH|cinematic/i);
   assert.match(source, /\?edition=\$\{regionKey\}/);
 });

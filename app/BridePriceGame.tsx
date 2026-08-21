@@ -114,7 +114,7 @@ const legacyRegions: Record<RegionKey, {
       q("A friend says, “I am because we are.” You feel…", "Grounded", "Thoughtful", "Ready to contribute", "Determined to gather everyone"),
       q("You’re choosing beadwork. What catches your eye?", "Fine precision", "Meaningful pattern", "Unexpected colour", "A piece with maximum presence"),
       q("A road opens through a vast landscape. You…", "Enjoy the quiet miles", "Plan every beautiful stop", "Make the ultimate playlist", "Convoy with all my friends"),
-      q("The weather gives four seasons in one day. You…", "Packed layers, obviously", "Adapt the plan calmly", "Laugh and continue", "Call it cinematic"),
+      q("The weather gives four seasons in one day. You…", "Packed layers, obviously", "Adapt the plan calmly", "Laugh and continue", "Call it unforgettable"),
       q("Your group needs a decision. You…", "Summarise the facts", "Make sure quieter voices speak", "Offer the brave option", "Build enthusiasm around a shared plan"),
       q("A cousin brings up lobola at dinner. You…", "Listen with respect", "Ask how traditions are changing", "Keep the talk warm and nuanced", "Ask one more thoughtful question"),
       q("The choir finds a perfect harmony. Your role?", "Absorb the goosebumps", "Hold one reliable note", "Add the joyful high part", "Conduct from the audience"),
@@ -144,19 +144,21 @@ const stampNames: Record<RegionKey, string[]> = {
   north: ["Medina Eye", "Desert Star", "Tea Poet", "Courtyard Light"],
   south: ["Ubuntu Heart", "Amapiano Step", "Bold Horizon", "Community Fire"],
 };
-const tierTitles = ["Soft-Life Strategist", "Group-Chat Oracle", "Motherland Main Character", "The Aunties’ Final Boss"];
+const tierTitles = ["Roots Rookie", "Culture Climber", "Motherland Scholar", "Bride Price Royalty"];
 const tierCopy = [
-  "Calm face, elite instincts. You move softly, choose beautifully and somehow still get the best seat.",
-  "You read the room, save the function and always have the voice note everybody forwards.",
-  "You bring stories to life and turn ordinary moments into shared memory. The camera finds you by itself.",
-  "You didn’t pass the vibe check. You ARE the vibe check. The family council has adjourned.",
+  "Your curiosity has officially entered the chat. The roots are there; they simply want a longer conversation. Study the reveals, try again and prepare a glorious comeback.",
+  "You know enough to keep the table interested—and enough to know the continent has more to teach you. A little revision could turn this promising score into serious bride-price energy.",
+  "Strong knowledge, sharp instincts and only a few facts between you and regional mastery. The aunties are nodding; one focused replay could earn this passport seal.",
+  "Nine or more correct! Regional mastery confirmed. The family council has raised the bride price, polished the certificate and warned the groom to arrive financially prepared.",
 ];
 const gifts = [
-  ["8 legendary cowries", "a year of soft landings", "the last perfect plantain"],
-  ["14 legendary cowries", "admin rights to the group chat", "three trunks of main-character fabric"],
-  ["21 legendary cowries", "a caravan of good stories", "front-row status at every function"],
-  ["30 legendary cowries", "the aunties’ standing ovation", "permanent main-character immunity"],
+  ["Bride price: 5 cowries", "a curiosity crown", "a comeback invitation"],
+  ["Bride price: 15 cowries", "a promising family report", "one trunk of celebration fabric"],
+  ["Bride price: 30 cowries", "the aunties’ approving nod", "front-row status at the function"],
+  ["Bride price: 50 cowries", "a five-auntie standing ovation", "the groom’s emergency budget meeting"],
 ];
+const resultCalls = ["YOUR JOURNEY", "THE ROOTS ARE", "SO CLOSE TO", "THE COUNCIL IS"];
+const resultCallEmphasis = ["BEGINS.", "CALLING.", "MASTERY.", "IMPRESSED."];
 const kindLabels = { single: "ONE ANSWER", multi: "SELECT THREE", complete: "COMPLETE THE SENTENCE", image: "IMAGE CHALLENGE" } as const;
 
 export default function BridePriceGame() {
@@ -173,7 +175,8 @@ export default function BridePriceGame() {
   const [dropOpen, setDropOpen] = useState(false);
   const [sound, setSound] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [completedRegions, setCompletedRegions] = useState<RegionKey[]>([]);
+  const [bestScores, setBestScores] = useState<Partial<Record<RegionKey, number>>>({});
+  const [allAfricaJustUnlocked, setAllAfricaJustUnlocked] = useState(false);
   const [revealAura, setRevealAura] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
   const audioRef = useRef<AudioContext | null>(null);
@@ -186,6 +189,9 @@ export default function BridePriceGame() {
   let streak = 0;
   for (let i = answers.length - 1; i >= 0 && answers[i] === 1; i -= 1) streak += 1;
   const stamps = Math.floor(answers.length / 3);
+  const displayScores = screen === "result" ? { ...bestScores, [regionKey]: Math.max(bestScores[regionKey] || 0, correctCount) } : bestScores;
+  const masteredRegions = regionOrder.filter((key) => (displayScores[key] || 0) > 8);
+  const allAfricaUnlocked = masteredRegions.length === regionOrder.length;
 
   useEffect(() => {
     const edition = new URLSearchParams(window.location.search).get("edition") as RegionKey | null;
@@ -194,16 +200,19 @@ export default function BridePriceGame() {
       setScreen("setup");
     }
     try {
-      const saved = JSON.parse(localStorage.getItem("wybp-passport") || "[]") as RegionKey[];
-      setCompletedRegions(saved.filter((key) => regions[key]));
+      const saved = JSON.parse(localStorage.getItem("wybp-region-scores") || "{}") as Partial<Record<RegionKey, number>>;
+      setBestScores(Object.fromEntries(Object.entries(saved).filter(([key, value]) => regions[key as RegionKey] && typeof value === "number")) as Partial<Record<RegionKey, number>>);
     } catch { /* device progress is optional */ }
   }, []);
 
   useEffect(() => {
     if (screen !== "result") return;
-    const next = Array.from(new Set([...completedRegions, regionKey])) as RegionKey[];
-    setCompletedRegions(next);
-    try { localStorage.setItem("wybp-passport", JSON.stringify(next)); } catch {}
+    const beforeMastered = regionOrder.filter((key) => (bestScores[key] || 0) > 8).length;
+    const next = { ...bestScores, [regionKey]: Math.max(bestScores[regionKey] || 0, correctCount) };
+    const afterMastered = regionOrder.filter((key) => (next[key] || 0) > 8).length;
+    setBestScores(next);
+    if (beforeMastered < 5 && afterMastered === 5) setAllAfricaJustUnlocked(true);
+    try { localStorage.setItem("wybp-region-scores", JSON.stringify(next)); } catch {}
     setRevealAura(0);
     const target = aura + 500;
     let frame = 0;
@@ -305,7 +314,7 @@ export default function BridePriceGame() {
   };
 
   const restart = () => {
-    setScreen("home"); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null);
+    setScreen("home"); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null); setAllAfricaJustUnlocked(false);
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
 
@@ -383,7 +392,7 @@ export default function BridePriceGame() {
         </button>
         <div className="nav-links">
           {screen === "home" && <a href="#editions">The editions</a>}
-          {screen === "home" && <span className="passport-mini">Passport <b>{completedRegions.length}/5</b></span>}
+          {screen === "home" && <span className="passport-mini">Mastery seals <b>{masteredRegions.length}/5</b></span>}
           <button className="text-nav" onClick={() => setMenuOpen(true)}>About the game</button>
           <button className="sound-button" onClick={() => setSound(!sound)} aria-label={sound ? "Turn sound off" : "Turn sound on"}><span>{sound ? "♪" : "×"}</span> Sound {sound ? "on" : "off"}</button>
         </div>
@@ -395,9 +404,9 @@ export default function BridePriceGame() {
             <div className="cinema-glow" aria-hidden="true" />
             <div className="cinema-copy">
               <div className="live-pill"><i /> The Motherland is calling</div>
-              <p className="cinema-kicker">A cinematic pan-African knowledge quest</p>
-              <h1>YOUR ROOTS.<br />YOUR RULES.<br /><em>YOUR REVEAL.</em></h1>
-              <p>Pick a world. Decode proverbs. Spot the dish. Trace an empire. Leave with facts—and a portrait—the group chat cannot ignore.</p>
+              <p className="cinema-kicker">A pan-African knowledge quest</p>
+              <h1 className="challenge-headline"><span>DO YOU KNOW YOUR ROOTS?</span><em>THE MORE YOU SCORE THE HIGHER YOUR BRIDE PRICE</em><strong>LET’S PLAY!</strong></h1>
+              <p>Pick a region you know best because Africa is one giant continent. Decode proverbs. Spot the dish. Trace an empire. Leave with high scores—and a certificate proving the high bride price you deserve—the groom must pay!</p>
               <div className="cinema-actions">
                 <button className="play-now" onClick={() => setScreen("setup")}><span>▶</span> Start the challenge</button>
                 <button className="trailer-button" onClick={() => setMenuOpen(true)}><span>ⓘ</span> What is this?</button>
@@ -501,7 +510,7 @@ export default function BridePriceGame() {
                 const slot = (question.visualStart || 0) + optionIndex;
                 const classes = [selected.includes(optionIndex) ? "selected" : "", feedbackOpen && question.correct.includes(optionIndex) ? "correct" : "", feedbackOpen && selected.includes(optionIndex) && !question.correct.includes(optionIndex) ? "wrong" : ""].filter(Boolean).join(" ");
                 return <button key={option} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen}>
-                  {question.kind === "image" && <span className="answer-image" style={{ backgroundImage: `url(/quiz-art/${regionKey}-atlas.webp)`, backgroundPosition: `${[0, 33.333, 66.667, 100][slot % 4]}% ${slot < 4 ? 0 : 100}%` }} aria-hidden="true" />}
+                  {question.kind === "image" && <img className="answer-image" src={`/quiz-art/${regionKey}-${slot}.webp`} alt={option} />}
                   <span className="answer-letter">{String.fromCharCode(65 + optionIndex)}</span><b>{option}</b><i>{question.kind === "multi" ? selected.includes(optionIndex) ? "✓" : "+" : "↗"}</i>
                 </button>
               })}
@@ -532,7 +541,11 @@ export default function BridePriceGame() {
       {screen === "result" && (
         <section className="result-stage">
           <div className="confetti" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <i key={i} style={{ "--i": i } as React.CSSProperties} />)}</div>
-          <p className="result-kicker">{region.name} edition • official ceremonial scorecard</p>
+          {allAfricaJustUnlocked && <div className="all-africa-coronation" role="dialog" aria-modal="true" aria-label="All Africa access unlocked">
+            <div className="coronation-fire" aria-hidden="true">{Array.from({ length: 45 }, (_, i) => <i key={i} style={{ "--i": i } as React.CSSProperties} />)}</div>
+            <div className="coronation-card"><span>✦ ◆ ◈ ✺ ☼</span><p>THE ULTIMATE PASSPORT</p><h2>ALL AFRICA<br /><i>ACCESS UNLOCKED</i></h2><b>Five regions mastered. Five scores of 9 or higher. One continent explored.</b><small>{name || "Champion"}, your Motherland Passport is complete. The council has declared your knowledge—and your bride price—legendary.</small><button onClick={() => setAllAfricaJustUnlocked(false)}>Claim the crown ✦</button></div>
+          </div>}
+          <p className="result-kicker">{region.name} edition • official bride price knowledge certificate</p>
           <div className="result-layout">
             <div className="result-card">
               <img className="result-world-art" src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" />
@@ -547,14 +560,14 @@ export default function BridePriceGame() {
               </div>
             </div>
             <div className="result-copy">
-              <p className="eyebrow">The grand reveal</p><h2>THE VERDICT<br />IS <i>IN.</i></h2>
+              <p className="eyebrow">Your score: {correctCount}/12</p><h2>{resultCalls[tier]}<br /><i>{resultCallEmphasis[tier]}</i></h2>
               <p className="result-description">{tierCopy[tier]}</p>
               <div className="result-aura"><span>Final aura</span><b>{revealAura.toLocaleString()}</b><i>+500 reveal bonus</i></div>
               <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
               <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>
               <button className="nominate-action" onClick={nominate}><span>＋</span><b>Nominate a friend</b><small>Sends them straight to the {region.short} edition</small><i>→</i></button>
               <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`I nominate you for the ${region.name} edition of What’s Your Bride Price? ${nominationUrl}`)}`} target="_blank" rel="noreferrer">Send nomination on WhatsApp ↗</a>
-              <div className="passport-progress"><span>Motherland passport</span><div>{regionOrder.map((key) => <i key={key} className={completedRegions.includes(key) ? "earned" : ""}>{regions[key].mark}</i>)}</div><b>{completedRegions.length}/5 worlds explored</b></div>
+              <div className={`passport-progress ${allAfricaUnlocked ? "all-access" : ""}`}><span>{allAfricaUnlocked ? "ALL-AFRICA ACCESS UNLOCKED" : "Motherland passport locked"}</span><div>{regionOrder.map((key) => <i key={key} className={(displayScores[key] || 0) > 8 ? "earned" : ""} title={`${regions[key].name}: ${displayScores[key] || 0}/12`}><span>{regions[key].mark}</span><b>{displayScores[key] || 0}/12</b></i>)}</div><b>{allAfricaUnlocked ? "Five masteries complete • Ultimate passport earned" : `${masteredRegions.length}/5 mastery seals • score 9+ in every region to unlock`}</b></div>
               <button className="play-again" onClick={restart}>Play another edition</button>
             </div>
           </div>
@@ -564,7 +577,7 @@ export default function BridePriceGame() {
       {menuOpen && (
         <div className="about-modal" role="dialog" aria-modal="true" aria-label="About this game">
           <div className="about-sheet"><button className="modal-close" onClick={() => setMenuOpen(false)}>×</button>
-            <p className="eyebrow">About this experience</p><h2>PLAY THE MAP.<br /><i>LEAVE BRILLIANT.</i></h2>
+            <p className="eyebrow">About this experience</p><h2>THE STAKES ARE HIGH<br /><i>PROVE YOUR HIGH VALUE</i></h2>
             <p>Five fast-moving editions turn Africa’s languages, histories, proverbs, foodways, music and visual cultures into a knowledge quest built for curiosity.</p>
             <div className="guardrails"><div><b>Africa is plural</b><span>Each answer opens a door, never claims to contain a whole people or place.</span></div><div><b>Your portrait is private</b><span>Photos are processed in your browser and are never uploaded or stored.</span></div><div><b>Learn as you play</b><span>Every answer unlocks a clear explanation—correct guess or not.</span></div><div><b>An original score</b><span>The reactive audio is an abstract game soundtrack, not a traditional recording.</span></div></div>
             <p className="source-label">Follow the knowledge trail</p>
