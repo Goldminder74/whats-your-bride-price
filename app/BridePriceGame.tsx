@@ -1,6 +1,7 @@
 "use client";
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
+import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections } from "./gameData";
 
 type RegionKey = "west" | "east" | "central" | "north" | "south";
 type Screen = "home" | "setup" | "quiz" | "result";
@@ -8,7 +9,7 @@ type Question = { prompt: string; options: string[] };
 
 const q = (prompt: string, ...options: string[]): Question => ({ prompt, options });
 
-const regions: Record<RegionKey, {
+const legacyRegions: Record<RegionKey, {
   name: string; short: string; place: string; mark: string; hello: string;
   palette: string[]; drops: string[]; questions: Question[];
 }> = {
@@ -115,7 +116,7 @@ const regions: Record<RegionKey, {
       q("A road opens through a vast landscape. You…", "Enjoy the quiet miles", "Plan every beautiful stop", "Make the ultimate playlist", "Convoy with all my friends"),
       q("The weather gives four seasons in one day. You…", "Packed layers, obviously", "Adapt the plan calmly", "Laugh and continue", "Call it cinematic"),
       q("Your group needs a decision. You…", "Summarise the facts", "Make sure quieter voices speak", "Offer the brave option", "Build enthusiasm around a shared plan"),
-      q("A cousin brings up lobola at dinner. You…", "Listen with respect", "Ask how traditions are changing", "Keep the talk warm and nuanced", "Remind everyone people are priceless"),
+      q("A cousin brings up lobola at dinner. You…", "Listen with respect", "Ask how traditions are changing", "Keep the talk warm and nuanced", "Ask one more thoughtful question"),
       q("The choir finds a perfect harmony. Your role?", "Absorb the goosebumps", "Hold one reliable note", "Add the joyful high part", "Conduct from the audience"),
       q("Your hospitality signature is…", "Everything thoughtfully ready", "The guest’s favourite thing", "Relaxed, generous energy", "Nobody leaves without leftovers"),
       q("A new creative idea feels risky. You…", "Test it quietly", "Find skilled collaborators", "Give it a bold first try", "Launch it and build the movement"),
@@ -124,8 +125,8 @@ const regions: Record<RegionKey, {
   },
 };
 
-const regionOrder: RegionKey[] = ["west", "east", "central", "north", "south"];
-const avatarChoices = [
+const legacyRegionOrder: RegionKey[] = ["west", "east", "central", "north", "south"];
+const legacyAvatarChoices = [
   { name: "Amara", src: "/avatars/amara.webp", vibe: "The Radiant One" },
   { name: "Zuri", src: "/avatars/zuri.webp", vibe: "The Wild Card" },
   { name: "Nia", src: "/avatars/nia.webp", vibe: "The Story Charmer" },
@@ -133,7 +134,9 @@ const avatarChoices = [
   { name: "Imara", src: "/avatars/imara.webp", vibe: "The Power Move" },
   { name: "Aya", src: "/avatars/aya.webp", vibe: "The Golden Hour" },
 ];
-const imageRounds = [2, 6, 10];
+const regions = educationalRegions;
+const regionOrder = educationalRegionOrder;
+const avatarChoices = educationalAvatarChoices;
 const stampNames: Record<RegionKey, string[]> = {
   west: ["Story Keeper", "Rhythm Caller", "Table Diplomat", "Golden Host"],
   east: ["Horizon Seeker", "Coffee Circle", "Coast Connector", "Open Sky"],
@@ -154,6 +157,7 @@ const gifts = [
   ["21 legendary cowries", "a caravan of good stories", "front-row status at every function"],
   ["30 legendary cowries", "the aunties’ standing ovation", "permanent main-character immunity"],
 ];
+const kindLabels = { single: "ONE ANSWER", multi: "SELECT THREE", complete: "COMPLETE THE SENTENCE", image: "IMAGE CHALLENGE" } as const;
 
 export default function BridePriceGame() {
   const [screen, setScreen] = useState<Screen>("home");
@@ -163,7 +167,9 @@ export default function BridePriceGame() {
   const [avatar, setAvatar] = useState(avatarChoices[0].src);
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
-  const [selected, setSelected] = useState<number | null>(null);
+  const [selected, setSelected] = useState<number[]>([]);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [lastCorrect, setLastCorrect] = useState(false);
   const [dropOpen, setDropOpen] = useState(false);
   const [sound, setSound] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -172,11 +178,13 @@ export default function BridePriceGame() {
   const fileRef = useRef<HTMLInputElement>(null);
   const audioRef = useRef<AudioContext | null>(null);
   const region = regions[regionKey];
+  const question = region.questions[index];
   const portrait = photo || avatar;
-  const score = answers.reduce((sum, answer) => sum + answer + 1, 0);
-  const tier = Math.min(3, Math.floor(Math.max(0, score - 12) / 10));
-  const aura = answers.reduce((sum, answer) => sum + 80 + answer * 15, 0);
-  const streak = answers.length;
+  const correctCount = answers.reduce((sum, answer) => sum + answer, 0);
+  const tier = Math.min(3, Math.floor(correctCount / 3));
+  const aura = answers.reduce((sum, answer) => sum + (answer ? 150 : 45), 0);
+  let streak = 0;
+  for (let i = answers.length - 1; i >= 0 && answers[i] === 1; i -= 1) streak += 1;
   const stamps = Math.floor(answers.length / 3);
 
   useEffect(() => {
@@ -264,28 +272,40 @@ export default function BridePriceGame() {
   };
 
   const beginQuiz = () => {
-    setIndex(0); setAnswers([]); setSelected(null); setScreen("quiz");
+    setIndex(0); setAnswers([]); setSelected([]); setFeedbackOpen(false); setScreen("quiz");
     playTone(520, true); window.scrollTo(0, 0);
   };
 
-  const answer = (answerIndex: number) => {
-    if (selected !== null) return;
-    setSelected(answerIndex); playTone(420 + answerIndex * 70, (index + 1) % 3 === 0);
-    window.setTimeout(() => {
-      const nextAnswers = [...answers, answerIndex];
-      setAnswers(nextAnswers);
-      if (index === 11) {
-        setScreen("result"); setDropOpen(false); playTone(720, true);
-      } else {
-        setIndex((current) => current + 1);
-        setSelected(null);
-        if ((index + 1) % 3 === 0) setDropOpen(true);
-      }
-    }, 430);
+  const submitAnswer = (choice: number[]) => {
+    if (feedbackOpen) return;
+    const expected = region.questions[index].correct;
+    const isCorrect = choice.length === expected.length && [...choice].sort().every((value, i) => value === [...expected].sort()[i]);
+    setSelected(choice); setLastCorrect(isCorrect); setAnswers((current) => [...current, isCorrect ? 1 : 0]); setFeedbackOpen(true);
+    playTone(isCorrect ? 680 : 260, isCorrect);
+  };
+
+  const chooseAnswer = (answerIndex: number) => {
+    if (feedbackOpen) return;
+    const question = region.questions[index];
+    if (question.kind === "multi") {
+      setSelected((current) => current.includes(answerIndex) ? current.filter((value) => value !== answerIndex) : current.length < 3 ? [...current, answerIndex] : current);
+      playTone(390 + answerIndex * 35);
+    } else {
+      submitAnswer([answerIndex]);
+    }
+  };
+
+  const nextQuestion = () => {
+    if (index === 11) {
+      setScreen("result"); setDropOpen(false); playTone(720, true);
+    } else {
+      setIndex((current) => current + 1); setSelected([]); setFeedbackOpen(false);
+      if ((index + 1) % 3 === 0) setDropOpen(true);
+    }
   };
 
   const restart = () => {
-    setScreen("home"); setAnswers([]); setIndex(0); setSelected(null); setPhoto(null);
+    setScreen("home"); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null);
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
 
@@ -309,6 +329,9 @@ export default function BridePriceGame() {
     const ctx = canvas.getContext("2d"); if (!ctx) return null;
     const [base, accent, dark] = region.palette;
     ctx.fillStyle = base; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    const worldArt = new Image(); worldArt.src = `/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`; await worldArt.decode();
+    ctx.save(); ctx.globalAlpha = .48; ctx.drawImage(worldArt, 0, 0, worldArt.width, worldArt.height, 0, 0, 1080, 1350); ctx.restore();
+    const veil = ctx.createLinearGradient(0, 0, 0, 1350); veil.addColorStop(0, `${dark}99`); veil.addColorStop(.52, `${dark}dd`); veil.addColorStop(1, dark); ctx.fillStyle = veil; ctx.fillRect(0, 0, 1080, 1350);
     ctx.globalAlpha = .22; ctx.strokeStyle = accent; ctx.lineWidth = 12;
     for (let x = -400; x < 1400; x += 90) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 680, 1350); ctx.stroke(); }
     ctx.globalAlpha = 1; ctx.fillStyle = dark; ctx.fillRect(55, 55, 970, 1240);
@@ -329,7 +352,7 @@ export default function BridePriceGame() {
     ctx.fillStyle = "#f3e7cc"; ctx.font = "36px Georgia";
     ctx.fillText(gifts[tier][0].toUpperCase(), 540, 845);
     ctx.font = "italic 29px Georgia"; ctx.fillText(`+${gifts[tier][1]} + ${gifts[tier][2]}`, 540, 907);
-    ctx.fillStyle = accent; ctx.font = "700 25px Arial"; ctx.fillText("PURELY PLAYFUL • PEOPLE ARE PRICELESS", 540, 1010);
+    ctx.fillStyle = accent; ctx.font = "700 25px Arial"; ctx.fillText(`KNOWLEDGE SCORE ${correctCount}/12 • ${region.name.toUpperCase()}`, 540, 1010);
     ctx.fillStyle = "#f3e7cc"; ctx.font = "900 58px Impact, Arial Black"; ctx.fillText("WHAT’S YOUR BRIDE PRICE?", 540, 1130);
     ctx.font = "24px Arial"; ctx.fillText("Play your region. Share your result. Nominate a friend.", 540, 1190);
     return new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
@@ -344,7 +367,7 @@ export default function BridePriceGame() {
   const shareResult = async () => {
     const blob = await resultBlob();
     const file = blob ? new File([blob], "my-bride-price-result.png", { type: "image/png" }) : null;
-    const shareData: ShareData = { title: "My playful bride price result", text: `I’m ${tierTitles[tier]} in the ${region.name} edition. People are priceless — but the bragging rights are real!`, url: nominationUrl };
+    const shareData: ShareData = { title: "My Bride Price culture-game result", text: `I scored ${correctCount}/12 and unlocked ${tierTitles[tier]} in the ${region.name} edition. Can you beat me?`, url: nominationUrl };
     if (file && navigator.canShare?.({ files: [file] })) shareData.files = [file];
     if (navigator.share) { try { await navigator.share(shareData); } catch {} }
     else await downloadResult();
@@ -372,14 +395,14 @@ export default function BridePriceGame() {
             <div className="cinema-glow" aria-hidden="true" />
             <div className="cinema-copy">
               <div className="live-pill"><i /> The Motherland is calling</div>
-              <p className="cinema-kicker">A wildly addictive pan-African culture game</p>
+              <p className="cinema-kicker">A cinematic pan-African knowledge quest</p>
               <h1>YOUR ROOTS.<br />YOUR RULES.<br /><em>YOUR REVEAL.</em></h1>
-              <p>Pick a world. Outsmart the aunties. Collect culture gems. Unlock a portrait the group chat cannot ignore.</p>
+              <p>Pick a world. Decode proverbs. Spot the dish. Trace an empire. Leave with facts—and a portrait—the group chat cannot ignore.</p>
               <div className="cinema-actions">
                 <button className="play-now" onClick={() => setScreen("setup")}><span>▶</span> Start the challenge</button>
                 <button className="trailer-button" onClick={() => setMenuOpen(true)}><span>ⓘ</span> What is this?</button>
               </div>
-              <div className="hero-stats"><span><b>5</b> worlds</span><span><b>60</b> moments</span><span><b>12</b> culture gems</span></div>
+              <div className="hero-stats"><span><b>5</b> worlds</span><span><b>60</b> challenges</span><span><b>12</b> avatar heroes</span></div>
             </div>
             <div className="cinema-visual" aria-label="Five regional game worlds">
               {regionOrder.map((key, artIndex) => <button key={key} className={`world-poster world-${artIndex + 1}`} onClick={() => chooseRegion(key)}>
@@ -415,8 +438,8 @@ export default function BridePriceGame() {
             <div className="how-intro"><h2>YOUR STORY.<br /><i>YOUR</i> SPOTLIGHT.</h2><p>Three joyful minutes to a portrait worth sharing.</p></div>
             <div className="steps">
               <div><b>01</b><span>Pick a region</span><p>Choose the edition you know, love or want to explore.</p></div>
-              <div><b>02</b><span>Trust your instinct</span><p>Twelve quick questions. There are no wrong answers.</p></div>
-              <div><b>03</b><span>Claim the reveal</span><p>Download your portrait and nominate the next player.</p></div>
+              <div><b>02</b><span>Crack the culture</span><p>Images, proverbs, languages, history and select-three challenges.</p></div>
+              <div><b>03</b><span>Learn + reveal</span><p>Get the story behind every answer, then claim your regional portrait.</p></div>
             </div>
           </section>
           <section className="values-strip">
@@ -471,29 +494,33 @@ export default function BridePriceGame() {
           </div>
           <div className="progress-track"><span style={{ width: `${((index + 1) / 12) * 100}%` }} /></div>
           <div className="question-wrap" key={index}>
-            <p className="eyebrow">{imageRounds.includes(index) ? "◉ Image round — follow the feeling" : "⚡ Quick-fire — trust your first instinct"}</p>
-            {imageRounds.includes(index) && <div className="visual-round">
-              <img style={{ objectPosition: index === 2 ? "center 25%" : index === 6 ? "center 52%" : "center 78%" }} src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt={`Artist-imagined ${region.name} game world`} />
-              <div><span>World 0{regionOrder.indexOf(regionKey) + 1}</span><b>Look closely. What would you do?</b><small>Original game art • a celebration, never a definition</small></div>
-              <i aria-hidden="true">{region.mark}</i>
-            </div>}
-            <h2 className={imageRounds.includes(index) ? "image-question" : ""}>{region.questions[index].prompt}</h2>
-            <div className="answer-grid">
-              {region.questions[index].options.map((option, optionIndex) =>
-                <button key={option} className={selected === optionIndex ? "selected" : ""} onClick={() => answer(optionIndex)}>
-                  <span>{String.fromCharCode(65 + optionIndex)}</span><b>{option}</b><i>↗</i>
+            <div className="question-meta"><p className="eyebrow">{kindLabels[question.kind]}</p><span>{question.topic}</span></div>
+            <h2 className={question.kind === "image" ? "image-question" : question.kind === "complete" ? "sentence-question" : ""}>{question.prompt}</h2>
+            <div className={`answer-grid kind-${question.kind}`}>
+              {question.options.map((option, optionIndex) => {
+                const slot = (question.visualStart || 0) + optionIndex;
+                const classes = [selected.includes(optionIndex) ? "selected" : "", feedbackOpen && question.correct.includes(optionIndex) ? "correct" : "", feedbackOpen && selected.includes(optionIndex) && !question.correct.includes(optionIndex) ? "wrong" : ""].filter(Boolean).join(" ");
+                return <button key={option} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen}>
+                  {question.kind === "image" && <span className="answer-image" style={{ backgroundImage: `url(/quiz-art/${regionKey}-atlas.webp)`, backgroundPosition: `${[0, 33.333, 66.667, 100][slot % 4]}% ${slot < 4 ? 0 : 100}%` }} aria-hidden="true" />}
+                  <span className="answer-letter">{String.fromCharCode(65 + optionIndex)}</span><b>{option}</b><i>{question.kind === "multi" ? selected.includes(optionIndex) ? "✓" : "+" : "↗"}</i>
                 </button>
-              )}
+              })}
             </div>
+            {question.kind === "multi" && !feedbackOpen && <button className="lock-answer" disabled={selected.length !== 3} onClick={() => submitAnswer(selected)}>Lock in {selected.length}/3 answers <span>→</span></button>}
+            {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
+              <div><span>{lastCorrect ? "✦ CORRECT" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? "Culture gem energy!" : "Good guess. Bank this fact."}</b></div>
+              <p>{question.explanation}</p>
+              <button onClick={nextQuestion}>{index === 11 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
+            </div>}
           </div>
-          <div className="quiz-footer"><span>{region.mark}</span><p>Every answer builds your aura. Every third round unlocks a culture gem.</p></div>
+          <div className="quiz-footer"><span>{region.mark}</span><p>Right or wrong, every reveal teaches you something worth carrying forward.</p></div>
           {dropOpen && (
             <div className="culture-drop" role="dialog" aria-modal="true" aria-label="Culture drop">
               <div className="drop-card"><button onClick={() => setDropOpen(false)} aria-label="Close">×</button>
                 <div className="drop-art"><img src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" /><span>{region.mark}</span></div>
                 <div className="gem-unlocked"><i>◆</i><span>Culture gem unlocked</span><b>{stampNames[regionKey][Math.max(0, stamps - 1)]}</b></div>
                 <p>One beautiful thing to know</p>
-                <h3>{region.drops[Math.floor(index / 3) % region.drops.length]}</h3>
+                <h3>{region.drops[Math.max(0, Math.ceil(index / 3) - 1) % region.drops.length]}</h3>
                 <small>One glimpse, never the whole story. Every region contains many peoples, languages and experiences.</small>
                 <button className="drop-next" onClick={() => { setDropOpen(false); playTone(610, true); }}>Claim gem + keep playing →</button>
               </div>
@@ -508,6 +535,7 @@ export default function BridePriceGame() {
           <p className="result-kicker">{region.name} edition • official ceremonial scorecard</p>
           <div className="result-layout">
             <div className="result-card">
+              <img className="result-world-art" src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" />
               <div className="result-frame">
                 <div className="result-region">{region.mark} {region.short.toUpperCase()} AFRICA {region.mark}</div>
                 <div className="result-portrait with-image"><img src={portrait} alt="" /></div>
@@ -515,14 +543,14 @@ export default function BridePriceGame() {
                 <h1>{tierTitles[tier]}</h1>
                 <div className="result-gift"><b>{gifts[tier][0]}</b><span>+ {gifts[tier][1]}<br />+ {gifts[tier][2]}</span></div>
                 <div className="result-gems">{stampNames[regionKey].map((stamp) => <i key={stamp} title={stamp}>◆</i>)}</div>
-                <small>Purely playful • People are priceless</small>
+                <small>Knowledge score {correctCount}/12 • {region.short} Africa</small>
               </div>
             </div>
             <div className="result-copy">
               <p className="eyebrow">The grand reveal</p><h2>THE VERDICT<br />IS <i>IN.</i></h2>
               <p className="result-description">{tierCopy[tier]}</p>
               <div className="result-aura"><span>Final aura</span><b>{revealAura.toLocaleString()}</b><i>+500 reveal bonus</i></div>
-              <div className="worth-note"><span>♡</span><p><b>A note on worth</b>This result is a cultural conversation starter, not a valuation. Your dignity cannot be counted, traded or scored.</p></div>
+              <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
               <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>
               <button className="nominate-action" onClick={nominate}><span>＋</span><b>Nominate a friend</b><small>Sends them straight to the {region.short} edition</small><i>→</i></button>
               <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`I nominate you for the ${region.name} edition of What’s Your Bride Price? ${nominationUrl}`)}`} target="_blank" rel="noreferrer">Send nomination on WhatsApp ↗</a>
@@ -536,15 +564,12 @@ export default function BridePriceGame() {
       {menuOpen && (
         <div className="about-modal" role="dialog" aria-modal="true" aria-label="About this game">
           <div className="about-sheet"><button className="modal-close" onClick={() => setMenuOpen(false)}>×</button>
-            <p className="eyebrow">About this experience</p><h2>JOY WITH<br /><i>CONTEXT.</i></h2>
-            <p>“Bride price” practices are diverse, evolving and understood differently across communities. This game uses the phrase with humour while refusing the idea that any person can be reduced to a price.</p>
-            <div className="guardrails"><div><b>People are priceless</b><span>Scores are fictional, celebratory and never claims about real customs or human value.</span></div><div><b>Africa is plural</b><span>Five playful editions cannot represent thousands of cultures. They are invitations to curiosity, not definitions.</span></div><div><b>Your portrait is private</b><span>Photos are processed in your browser and are never uploaded or stored by this app.</span></div><div><b>An original score</b><span>The reactive audio is an abstract game soundtrack—not a claim to reproduce any traditional music.</span></div></div>
-            <p className="source-label">Cultural starting points</p>
+            <p className="eyebrow">About this experience</p><h2>PLAY THE MAP.<br /><i>LEAVE BRILLIANT.</i></h2>
+            <p>Five fast-moving editions turn Africa’s languages, histories, proverbs, foodways, music and visual cultures into a knowledge quest built for curiosity.</p>
+            <div className="guardrails"><div><b>Africa is plural</b><span>Each answer opens a door, never claims to contain a whole people or place.</span></div><div><b>Your portrait is private</b><span>Photos are processed in your browser and are never uploaded or stored.</span></div><div><b>Learn as you play</b><span>Every answer unlocks a clear explanation—correct guess or not.</span></div><div><b>An original score</b><span>The reactive audio is an abstract game soundtrack, not a traditional recording.</span></div></div>
+            <p className="source-label">Follow the knowledge trail</p>
             <div className="source-links">
-              <a href="https://ich.unesco.org/en/RL/gada-system-an-indigenous-democratic-socio-political-system-of-the-oromo-01164" target="_blank" rel="noreferrer">Oromo Gada system ↗</a>
-              <a href="https://ich.unesco.org/en/RL/barkcloth-making-in-uganda-00139" target="_blank" rel="noreferrer">Ugandan barkcloth ↗</a>
-              <a href="https://ich.unesco.org/en/RL/moutya-01690" target="_blank" rel="noreferrer">Seychellois Moutya ↗</a>
-              <a href="https://whc.unesco.org/en/list/119/" target="_blank" rel="noreferrer">Timbuktu ↗</a>
+              {sourceCollections.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>)}
             </div>
           </div>
         </div>

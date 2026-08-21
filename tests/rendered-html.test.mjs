@@ -22,25 +22,30 @@ test("server-renders the finished pan-African game", async () => {
   assert.match(html, /YOUR ROOTS/i);
   assert.match(html, /AVATAR LAB/i);
   assert.match(html, /IMAGE ROUNDS/i);
+  assert.match(html, /knowledge quest/i);
   assert.match(html, /West Africa/);
   assert.match(html, /Southern Africa/);
   assert.match(html, /This game celebrates culture/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
 
-test("ships all five editions, sixty questions, privacy copy and source links", async () => {
+test("ships sixty educational questions, varied play modes, privacy copy and broad sources", async () => {
   const source = await readFile(new URL("../app/BridePriceGame.tsx", import.meta.url), "utf8");
-  assert.equal((source.match(/^\s{6}q\(/gm) ?? []).length, 60);
+  const data = await readFile(new URL("../app/gameData.ts", import.meta.url), "utf8");
+  assert.equal((data.match(/^\s{6}q\(/gm) ?? []).length, 60);
   for (const key of ["west", "east", "central", "north", "south"]) {
-    assert.match(source, new RegExp(`\\b${key}: \\{`));
+    assert.match(data, new RegExp(`\\b${key}: \\{`));
   }
   assert.match(source, /Private\. Never leaves your device\./);
   assert.match(source, /avatarChoices/);
-  assert.match(source, /imageRounds/);
+  assert.match(data, /"image"/);
+  assert.match(data, /"multi"/);
+  assert.match(data, /"complete"/);
+  assert.match(source, /NOW YOU KNOW/);
   assert.match(source, /Motherland passport/);
-  assert.match(source, /gada-system-an-indigenous-democratic/);
-  assert.match(source, /barkcloth-making-in-uganda/);
-  assert.match(source, /moutya-01690/);
-  assert.match(source, /whc\.unesco\.org\/en\/list\/119/);
+  assert.match(data, /General History of Africa/);
+  assert.match(data, /British Museum/);
+  assert.match(data, /Met Museum/);
+  assert.doesNotMatch(source, /wildly addictive|JOY WITH/);
   assert.match(source, /\?edition=\$\{regionKey\}/);
 });
