@@ -62,6 +62,17 @@ test("generates canonical links while preserving approved paths and query parame
     createPublicAppUrl("/manifest.webmanifest", { edition: "west", nominated: "1" }),
     `${canonicalOrigin}/manifest.webmanifest?edition=west&nominated=1`,
   );
+  assert.equal(
+    createPublicAppUrl("/", {
+      edition: "east",
+      nominated: "1",
+      challenge: "East_2026-A",
+      source: "whatsapp",
+      utm_campaign: "roots_2026",
+      ref: "Auntie-7",
+    }),
+    `${canonicalOrigin}/?edition=east&nominated=1&challenge=East_2026-A&source=whatsapp&utm_campaign=roots_2026&ref=Auntie-7`,
+  );
 });
 
 test("rejects hostile paths and unapproved query parameters", () => {
@@ -75,6 +86,14 @@ test("rejects hostile paths and unapproved query parameters", () => {
   assert.throws(
     () => createPublicAppUrl("/", { edition: "//evil.example" }),
     /query parameter edition is not approved/,
+  );
+  assert.throws(
+    () => createPublicAppUrl("/", { challenge: "javascript:alert(1)" }),
+    /query parameter challenge is not approved/,
+  );
+  assert.throws(
+    () => createPublicAppUrl("/", { ref: "https://evil.example" }),
+    /query parameter ref is not approved/,
   );
 });
 

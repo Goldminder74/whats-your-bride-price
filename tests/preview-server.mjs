@@ -78,7 +78,12 @@ const server = createServer(async (incoming, outgoing) => {
 });
 
 function stop() {
+  server.closeIdleConnections?.();
   server.close(() => process.exit(0));
+  setTimeout(() => {
+    server.closeAllConnections?.();
+    process.exit(0);
+  }, 250).unref();
 }
 process.on("SIGINT", stop);
 process.on("SIGTERM", stop);

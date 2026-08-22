@@ -17,7 +17,6 @@ export default defineConfig({
   },
   webServer: {
     command: "node tests/preview-server.mjs",
-    gracefulShutdown: { signal: "SIGINT", timeout: 500 },
     url: "http://127.0.0.1:3100",
     reuseExistingServer: false,
     timeout: 120_000,

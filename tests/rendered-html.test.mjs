@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
+import { resolve } from "node:path";
 import test from "node:test";
 
 async function render() {
@@ -51,6 +52,15 @@ test("server-renders the finished pan-African game", async () => {
   assert.match(html, /Southern Africa/);
   assert.match(html, /This game celebrates culture/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
+  assert.doesNotMatch(html, /data-fast-entry-shell|data-entry-diagnostics/i);
+});
+
+test("default production client output excludes review diagnostics", async () => {
+  const clientRoot = new URL("../dist/client/", import.meta.url);
+  const entries = await readdir(clientRoot, { recursive: true, withFileTypes: true });
+  const scripts = entries.filter((entry) => entry.isFile() && entry.name.endsWith(".js"));
+  const sources = await Promise.all(scripts.map((entry) => readFile(resolve(entry.parentPath, entry.name), "utf8")));
+  assert.doesNotMatch(sources.join("\n"), /Entry diagnostics|data-entry-diagnostics/);
 });
 
 test("ships sixty educational questions, varied play modes, privacy copy and broad sources", async () => {

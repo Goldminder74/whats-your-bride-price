@@ -4,13 +4,17 @@
 /* eslint-disable react-hooks/set-state-in-effect -- URL hydration and result commits are deliberate lifecycle transitions */
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
-import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections } from "./gameData";
+import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type RegionKey } from "./gameData";
+import { entryContextToQuery, parseEntryContext, type EntryContext } from "./entryContext";
+import { entryDiagnosticsEnabled, readEntryDiagnostics, type EntryDiagnosticsSnapshot } from "./entryDiagnostics";
+import { emitEntryEvent } from "./entryEvents";
 import { reportAppError } from "./errors";
+import { activeFeatureFlags } from "./featureFlags";
 import { answersMatch, calculateResultTier, defaultSoundEnabled, getCelebrationPieceCount } from "./gameLogic";
 import { createPublicAppUrl, resolveBrowserPublicAppOrigin } from "./publicAppOrigin";
+import { copyShareText } from "./shareSupport";
 
-type RegionKey = "west" | "east" | "central" | "north" | "south";
-type Screen = "home" | "setup" | "quiz" | "reveal" | "result";
+type Screen = "entry" | "home" | "setup" | "quiz" | "reveal" | "result";
 type Question = { prompt: string; options: string[] };
 
 const q = (prompt: string, ...options: string[]): Question => ({ prompt, options });
@@ -228,10 +232,16 @@ function scheduleDrumHit(
   skin.start(at);
 }
 
-export default function BridePriceGame() {
+type BridePriceGameProps = {
+  initialEntryContext?: EntryContext;
+};
+
+export default function BridePriceGame({ initialEntryContext }: BridePriceGameProps) {
+  const fastEntryEnabled = activeFeatureFlags.fast_entry;
   const [hydrated, setHydrated] = useState(false);
-  const [screen, setScreen] = useState<Screen>("home");
-  const [regionKey, setRegionKey] = useState<RegionKey>("west");
+  const [entryContext, setEntryContext] = useState<EntryContext>(() => initialEntryContext || parseEntryContext(""));
+  const [screen, setScreen] = useState<Screen>(() => fastEntryEnabled ? "entry" : "home");
+  const [regionKey, setRegionKey] = useState<RegionKey>(() => initialEntryContext?.edition || "west");
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState<string | null>(null);
   const [avatar, setAvatar] = useState(avatarChoices[0].src);
@@ -246,7 +256,13 @@ export default function BridePriceGame() {
   const [bestScores, setBestScores] = useState<Partial<Record<RegionKey, number>>>({});
   const [allAfricaJustUnlocked, setAllAfricaJustUnlocked] = useState(false);
   const [revealAura, setRevealAura] = useState(0);
+  const [entryMediaAttempt, setEntryMediaAttempt] = useState(0);
+  const [entryMediaFailed, setEntryMediaFailed] = useState(false);
+  const [entryTimings, setEntryTimings] = useState({ navigationMs: 0, shellVisibleMs: 0, interactiveMs: 0 });
+  const [entryDiagnostics, setEntryDiagnostics] = useState<EntryDiagnosticsSnapshot | null>(null);
+  const [shareNotice, setShareNotice] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
+  const entryArtRef = useRef<HTMLImageElement>(null);
   const audioRef = useRef<AudioContext | null>(null);
   const revealTimerRef = useRef<number | null>(null);
   const region = regions[regionKey];
@@ -265,16 +281,101 @@ export default function BridePriceGame() {
 
   useEffect(() => {
     setHydrated(true);
-    const edition = new URLSearchParams(window.location.search).get("edition") as RegionKey | null;
-    if (edition && regions[edition]) {
-      setRegionKey(edition);
-      setScreen("setup");
+    if (fastEntryEnabled) {
+      const parsedEntryContext = parseEntryContext(window.location.search, document.referrer);
+      setEntryContext(parsedEntryContext);
+      if (parsedEntryContext.edition) setRegionKey(parsedEntryContext.edition);
+      setScreen((current) => current === "home" ? "entry" : current);
+      window.history.replaceState({ wybpScreen: "entry" }, "", window.location.href);
+      emitEntryEvent({
+        name: "entry_view",
+        source: parsedEntryContext.source,
+        edition: parsedEntryContext.edition,
+        nominated: parsedEntryContext.nominated === "1",
+        hasChallenge: Boolean(parsedEntryContext.challenge),
+        hasInvalidContext: parsedEntryContext.invalidFields.length > 0,
+        elapsedMs: performance.now(),
+      });
+      if (parsedEntryContext.invalidFields.length > 0) emitEntryEvent({
+        name: "entry_context_invalid",
+        source: parsedEntryContext.source,
+        edition: parsedEntryContext.edition,
+        nominated: parsedEntryContext.nominated === "1",
+        hasChallenge: Boolean(parsedEntryContext.challenge),
+        hasInvalidContext: true,
+        elapsedMs: performance.now(),
+      });
+    } else {
+      const edition = new URLSearchParams(window.location.search).get("edition") as RegionKey | null;
+      if (edition && regions[edition]) {
+        setRegionKey(edition);
+        setScreen("setup");
+      }
     }
     try {
       const saved = JSON.parse(localStorage.getItem("wybp-region-scores") || "{}") as Partial<Record<RegionKey, number>>;
       setBestScores(Object.fromEntries(Object.entries(saved).filter(([key, value]) => regions[key as RegionKey] && typeof value === "number")) as Partial<Record<RegionKey, number>>);
     } catch { /* device progress is optional */ }
-  }, []);
+  }, [fastEntryEnabled]);
+
+  useEffect(() => {
+    if (!fastEntryEnabled || screen !== "entry") return;
+    const shellVisibleMs = performance.now();
+    const navigation = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
+    setEntryTimings((current) => ({ ...current, navigationMs: navigation?.responseStart || 0, shellVisibleMs }));
+    emitEntryEvent({
+      name: "entry_shell_visible",
+      source: entryContext.source,
+      edition: entryContext.edition,
+      nominated: entryContext.nominated === "1",
+      hasChallenge: Boolean(entryContext.challenge),
+      hasInvalidContext: entryContext.invalidFields.length > 0,
+      elapsedMs: shellVisibleMs,
+    });
+    const frame = window.requestAnimationFrame(() => {
+      const interactiveMs = performance.now();
+      setEntryTimings((current) => ({ ...current, interactiveMs }));
+      emitEntryEvent({
+        name: "entry_interactive",
+        source: entryContext.source,
+        edition: entryContext.edition,
+        nominated: entryContext.nominated === "1",
+        hasChallenge: Boolean(entryContext.challenge),
+        hasInvalidContext: entryContext.invalidFields.length > 0,
+        elapsedMs: interactiveMs,
+      });
+      if (entryDiagnosticsEnabled) setEntryDiagnostics(readEntryDiagnostics());
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [entryContext, fastEntryEnabled, screen]);
+
+  useEffect(() => {
+    setEntryMediaAttempt(0);
+    setEntryMediaFailed(false);
+  }, [regionKey]);
+
+  useEffect(() => {
+    if (!fastEntryEnabled || screen !== "entry" || !entryContext.edition) return;
+    const verifyMedia = window.setTimeout(() => {
+      const image = entryArtRef.current;
+      if (image?.complete && image.naturalWidth === 0) setEntryMediaFailed(true);
+    }, 0);
+    return () => window.clearTimeout(verifyMedia);
+  }, [entryContext.edition, entryMediaAttempt, fastEntryEnabled, screen]);
+
+  useEffect(() => {
+    if (!fastEntryEnabled) return;
+    const restoreEntryScreen = (event: PopStateEvent) => {
+      const parsedEntryContext = parseEntryContext(window.location.search, document.referrer);
+      setEntryContext(parsedEntryContext);
+      if (parsedEntryContext.edition) setRegionKey(parsedEntryContext.edition);
+      const state = event.state as { wybpScreen?: string } | null;
+      setScreen(state?.wybpScreen === "setup" && parsedEntryContext.edition ? "setup" : "entry");
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("popstate", restoreEntryScreen);
+    return () => window.removeEventListener("popstate", restoreEntryScreen);
+  }, [fastEntryEnabled]);
 
   useEffect(() => () => {
     if (revealTimerRef.current !== null) window.clearTimeout(revealTimerRef.current);
@@ -374,7 +475,14 @@ export default function BridePriceGame() {
     setScreen("setup");
     setAnswers([]);
     setIndex(0);
-    window.history.replaceState({}, "", `?edition=${key}`);
+    if (fastEntryEnabled) {
+      const nextContext = parseEntryContext(entryContextToQuery(entryContext, { edition: key }));
+      setEntryContext(nextContext);
+      const query = entryContextToQuery(nextContext).toString();
+      window.history.pushState({ wybpScreen: "setup" }, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
+    } else {
+      window.history.replaceState({}, "", `?edition=${key}`);
+    }
     playTone(350 + regionOrder.indexOf(key) * 60, true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -433,20 +541,43 @@ export default function BridePriceGame() {
       window.clearTimeout(revealTimerRef.current);
       revealTimerRef.current = null;
     }
-    setScreen("home"); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null); setAllAfricaJustUnlocked(false);
+    setScreen(fastEntryEnabled ? "entry" : "home"); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null); setAllAfricaJustUnlocked(false);
+    if (fastEntryEnabled) setEntryContext(parseEntryContext(""));
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
 
-  const nominationUrl = useMemo(() => {
+  const leaveSetup = () => {
+    if (!fastEntryEnabled) {
+      setScreen("home");
+      return;
+    }
+    const state = window.history.state as { wybpScreen?: string } | null;
+    if (state?.wybpScreen === "setup") window.history.back();
+    else setScreen("entry");
+  };
+
+  const nominationUrls = useMemo(() => {
     if (typeof window === "undefined") return "";
-    return createPublicAppUrl(
-      window.location.pathname,
-      { edition: regionKey, nominated: "1" },
-      resolveBrowserPublicAppOrigin(window.location.origin),
-    );
-  }, [regionKey]);
+    const sharedContext = {
+      edition: regionKey,
+      nominated: "1" as const,
+      challenge: entryContext.challenge,
+      utm_source: entryContext.utm_source,
+      utm_medium: entryContext.utm_medium,
+      utm_campaign: entryContext.utm_campaign,
+      ref: entryContext.ref,
+    };
+    const origin = resolveBrowserPublicAppOrigin(window.location.origin);
+    return {
+      native: createPublicAppUrl(window.location.pathname, { ...sharedContext, source: "native" }, origin),
+      whatsapp: createPublicAppUrl(window.location.pathname, { ...sharedContext, source: "whatsapp" }, origin),
+    };
+  }, [entryContext.challenge, entryContext.ref, entryContext.utm_campaign, entryContext.utm_medium, entryContext.utm_source, regionKey]);
+  const nominationUrl = typeof nominationUrls === "string" ? "" : nominationUrls.native;
+  const whatsappNominationUrl = typeof nominationUrls === "string" ? "" : nominationUrls.whatsapp;
 
   const nominate = async () => {
+    setShareNotice("");
     const text = `${name || "I"} just played the ${region.name} edition of What’s Your Bride Price? I nominate you next. Your turn!`;
     if (navigator.share) {
       try { await navigator.share({ title: "You’ve been nominated!", text, url: nominationUrl }); return; } catch (error) {
@@ -454,8 +585,14 @@ export default function BridePriceGame() {
         return;
       }
     }
-    await navigator.clipboard?.writeText(`${text} ${nominationUrl}`);
-    alert("Nomination link copied!");
+    try {
+      const copyResult = await copyShareText(navigator.clipboard, `${text} ${nominationUrl}`);
+      if (copyResult !== "copied") throw new Error("Clipboard API unavailable");
+      setShareNotice("Nomination link copied. Paste it into any conversation.");
+    } catch (error) {
+      reportAppError("share_failed", error, { action: "nomination_copy" });
+      setShareNotice("Copying is unavailable here. Use the WhatsApp link or your browser’s share menu.");
+    }
   };
 
   const resultBlob = async (): Promise<Blob | null> => {
@@ -538,6 +675,63 @@ export default function BridePriceGame() {
         </div>
       </header>
 
+      {screen === "entry" && (
+        <section className="fast-entry-shell" data-fast-entry-shell data-entry-source={entryContext.source}>
+          <div className="fast-entry-copy">
+            <p className="fast-entry-kicker">The Motherland is calling</p>
+            {entryContext.edition ? (
+              <>
+                <span className="fast-entry-mark" aria-hidden="true">{region.mark}</span>
+                <p className="eyebrow">{region.place}</p>
+                <h1>{entryContext.nominated ? "YOU’VE BEEN NOMINATED." : "YOUR REGION IS READY."}<br /><i>{region.name}</i></h1>
+                <p>{entryContext.nominated ? "A friend has called you into the culture challenge. Bring your best roots knowledge." : region.hello}</p>
+                {entryContext.challenge && <p className="fast-entry-context">Challenge link recognised. Your score will be earned in the game.</p>}
+                <button className="big-action fast-entry-action" onClick={() => chooseRegion(entryContext.edition!)}>Enter {region.name} <span>▶</span></button>
+              </>
+            ) : (
+              <>
+                <span className="fast-entry-mark" aria-hidden="true">W</span>
+                <p className="eyebrow">Five regions. Sixty culture questions.</p>
+                <h1>CHOOSE YOUR<br /><i>AFRICAN REGION.</i></h1>
+                <p>Go straight to the edition you know best, or choose one you want to discover.</p>
+                <div className="fast-region-grid" aria-label="Choose your African region">
+                  {regionOrder.map((key) => <button key={key} onClick={() => chooseRegion(key)}><span aria-hidden="true">{regions[key].mark}</span>{regions[key].name}</button>)}
+                </div>
+              </>
+            )}
+            {entryContext.invalidFields.length > 0 && <p className="entry-context-notice" role="status">Some link details were not recognised, so they were safely ignored.</p>}
+          </div>
+          {entryContext.edition && <div className={`fast-entry-art ${entryMediaFailed ? "media-failed" : ""}`}>
+            {!entryMediaFailed && <img ref={entryArtRef} src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp${entryMediaAttempt ? `?retry=${entryMediaAttempt}` : ""}`} alt={`${region.name} illustrated game world`} width="1200" height="800" fetchPriority="high" onLoad={() => setEntryMediaFailed(false)} onError={() => {
+              setEntryMediaFailed(true);
+            }} />}
+            {entryMediaFailed && <div className="entry-media-fallback" role="status"><span aria-hidden="true">{region.mark}</span><p>The artwork is taking longer than expected. The game is still ready.</p><button onClick={() => {
+              setEntryMediaFailed(false);
+              setEntryMediaAttempt((attempt) => attempt + 1);
+              emitEntryEvent({ name: "entry_retry", source: entryContext.source, edition: regionKey, nominated: entryContext.nominated === "1", hasChallenge: Boolean(entryContext.challenge), hasInvalidContext: entryContext.invalidFields.length > 0, elapsedMs: performance.now() });
+            }}>Retry artwork</button></div>}
+          </div>}
+        </section>
+      )}
+
+      {entryDiagnosticsEnabled && entryDiagnostics && fastEntryEnabled && (
+        <aside className="entry-diagnostics" data-entry-diagnostics aria-label="Entry diagnostics">
+          <b>Entry diagnostics</b>
+          <span>Source: {entryContext.source}</span>
+          <span>Edition: {entryContext.edition || "not selected"}</span>
+          <span>Nominated: {entryContext.nominated === "1" ? "yes" : "no"}</span>
+          <span>Challenge: {entryContext.challenge ? "valid shape" : "none"}</span>
+          <span>Invalid fields: {entryContext.invalidFields.length}</span>
+          <span>Reduced motion: {entryDiagnostics.reducedMotion ? "yes" : "no"}</span>
+          <span>Web Share: {entryDiagnostics.webShare ? "available" : "unavailable"}</span>
+          <span>Storage: {entryDiagnostics.storage}</span>
+          <span>Connection: {entryDiagnostics.connection}</span>
+          <span>Navigation: {Math.round(entryTimings.navigationMs)} ms</span>
+          <span>Shell: {Math.round(entryTimings.shellVisibleMs)} ms</span>
+          <span>Interactive: {Math.round(entryTimings.interactiveMs)} ms</span>
+        </aside>
+      )}
+
       {screen === "home" && (
         <>
           <section className="cinema-hero" id="top">
@@ -600,8 +794,8 @@ export default function BridePriceGame() {
 
       {screen === "setup" && (
         <section className="setup-stage">
-          <div className="regional-backdrop"><img src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" /><span>{region.mark}</span></div>
-          <button className="back-link" onClick={() => setScreen("home")}>← All editions</button>
+          <div className="regional-backdrop"><img src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" width="1200" height="800" fetchPriority="high" /><span>{region.mark}</span></div>
+          <button className="back-link" onClick={leaveSetup}>← All editions</button>
           <div className="setup-copy">
             <p className="eyebrow">{region.place}</p>
             <h1>{region.name}<br /><i>Edition</i></h1>
@@ -616,7 +810,7 @@ export default function BridePriceGame() {
               <i>READY</i>
             </div>
             <div className="avatar-grid" aria-label="Choose an African avatar">
-              {avatarChoices.map((item) => <button key={item.name} className={!photo && avatar === item.src ? "active" : ""} aria-pressed={!photo && avatar === item.src} onClick={() => { setAvatar(item.src); setPhoto(null); playTone(470, true); }} aria-label={`Choose ${item.name}, ${item.vibe}`}><img src={item.src} alt="" /><span>{item.name}</span></button>)}
+              {avatarChoices.map((item) => <button key={item.name} className={!photo && avatar === item.src ? "active" : ""} aria-pressed={!photo && avatar === item.src} onClick={() => { setAvatar(item.src); setPhoto(null); playTone(470, true); }} aria-label={`Choose ${item.name}, ${item.vibe}`}><img src={item.src} alt="" width="256" height="256" loading={fastEntryEnabled ? "lazy" : undefined} decoding="async" /><span>{item.name}</span></button>)}
             </div>
             <button className="upload-own" onClick={() => fileRef.current?.click()}><span>＋</span><b>Or upload your own icon</b><small>Private. Never leaves your device.</small></button>
             <input ref={fileRef} type="file" accept="image/*" onChange={onPhoto} hidden />
@@ -726,7 +920,8 @@ export default function BridePriceGame() {
               <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
               <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>
               <button className="nominate-action" onClick={nominate}><span>＋</span><b>Nominate a friend</b><small>Sends them straight to the {region.short} edition</small><i>→</i></button>
-              <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`I nominate you for the ${region.name} edition of What’s Your Bride Price? ${nominationUrl}`)}`} target="_blank" rel="noreferrer">Send nomination on WhatsApp ↗</a>
+              {shareNotice && <p className="share-notice" role="status">{shareNotice}</p>}
+              <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`I nominate you for the ${region.name} edition of What’s Your Bride Price? ${whatsappNominationUrl}`)}`}>Send nomination on WhatsApp ↗</a>
               <div className={`passport-progress ${allAfricaUnlocked ? "all-access" : ""}`}><span>{allAfricaUnlocked ? "ALL-AFRICA ACCESS UNLOCKED" : "Motherland passport locked"}</span><div>{regionOrder.map((key) => <i key={key} className={(displayScores[key] || 0) > 8 ? "earned" : ""} title={`${regions[key].name}: ${displayScores[key] || 0}/12`}><span>{regions[key].mark}</span><b>{displayScores[key] || 0}/12</b></i>)}</div><b>{allAfricaUnlocked ? "Five masteries complete • Ultimate passport earned" : `${masteredRegions.length}/5 mastery seals • score 9+ in every region to unlock`}</b></div>
               <button className="play-again" onClick={restart}>Play another edition</button>
             </div>

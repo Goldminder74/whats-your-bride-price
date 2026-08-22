@@ -67,7 +67,7 @@ test("manifest preserves install behaviour and declares standard and maskable ic
   const manifest = JSON.parse(source);
   assert.equal(manifest.start_url, "/");
   assert.equal(manifest.display, "standalone");
-  assert.equal(manifest.orientation, "portrait-primary");
+  assert.equal(manifest.orientation, undefined, "installation must support portrait without locking device rotation");
   assert.deepEqual(manifest.icons, [
     { src: "/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
     { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },

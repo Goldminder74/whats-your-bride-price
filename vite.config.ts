@@ -44,6 +44,14 @@ const localBindingConfig = {
 export default defineConfig(async ({ mode }) => {
   const featureFlags = resolveFeatureFlags(process.env);
   assertSitesCompatibleFeatureFlags(featureFlags);
+  const diagnosticsRequested = process.env.WYBP_REVIEW_DIAGNOSTICS === "true";
+  const diagnosticsApproved = process.env.WYBP_REVIEW_BUILD === "true";
+  if (mode === "production" && diagnosticsRequested && !diagnosticsApproved) {
+    throw new Error(
+      "Review diagnostics require explicit approval. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_DIAGNOSTICS=true for a local review build. Production builds exclude the panel by default.",
+    );
+  }
+  const reviewDiagnostics = mode !== "production" || (diagnosticsRequested && diagnosticsApproved);
   const publicAppEnvironment: PublicAppEnvironment =
     mode === "production" ? "production" : mode === "test" ? "test" : "development";
   const publicAppOrigin = resolvePublicAppOrigin(
@@ -65,6 +73,7 @@ export default defineConfig(async ({ mode }) => {
       __WYBP_FEATURE_FLAGS__: JSON.stringify(featureFlags),
       __WYBP_PUBLIC_APP_ORIGIN__: JSON.stringify(publicAppOrigin),
       __WYBP_RUNTIME_ENV__: JSON.stringify(publicAppEnvironment),
+      __WYBP_REVIEW_DIAGNOSTICS__: JSON.stringify(reviewDiagnostics),
     },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }

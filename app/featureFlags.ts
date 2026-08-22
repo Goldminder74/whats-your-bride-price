@@ -56,3 +56,14 @@ export function assertSitesCompatibleFeatureFlags(flags: FeatureFlags): void {
     );
   }
 }
+
+declare const __WYBP_FEATURE_FLAGS__: FeatureFlags | undefined;
+
+export const activeFeatureFlags: FeatureFlags = Object.freeze({
+  ...defaultFeatureFlags,
+  ...(typeof __WYBP_FEATURE_FLAGS__ === "object" ? __WYBP_FEATURE_FLAGS__ : {}),
+});
+
+export function isFeatureEnabled(flag: FeatureFlagName): boolean {
+  return activeFeatureFlags[flag];
+}

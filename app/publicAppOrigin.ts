@@ -5,10 +5,7 @@ const regionKeys = new Set(["west", "east", "central", "north", "south"]);
 
 export type PublicAppEnvironment = "production" | "development" | "test";
 export type PublicAppOrigin = string & { readonly __publicAppOrigin: unique symbol };
-export type ApprovedPublicQuery = Readonly<{
-  edition?: "west" | "east" | "central" | "north" | "south";
-  nominated?: "1";
-}>;
+export type ApprovedPublicQuery = PermittedEntryQuery;
 
 declare const __WYBP_PUBLIC_APP_ORIGIN__: string | undefined;
 declare const __WYBP_RUNTIME_ENV__: PublicAppEnvironment | undefined;
@@ -115,17 +112,26 @@ function validatePublicPathname(pathname: string): void {
 }
 
 function appendApprovedQuery(url: URL, query: ApprovedPublicQuery): void {
+  const approvedKeys = new Set([
+    "edition", "nominated", "challenge", "source", "utm_source", "utm_medium", "utm_campaign", "ref",
+  ]);
+  const candidate = new URLSearchParams();
   for (const [key, value] of Object.entries(query)) {
     if (value === undefined) continue;
-    if (key === "edition" && regionKeys.has(value)) {
-      url.searchParams.set(key, value);
-      continue;
+    if (!approvedKeys.has(key) || typeof value !== "string") throw configurationError(`query parameter ${key} is not approved.`);
+    if (key === "edition" && !regionKeys.has(value)) throw configurationError(`query parameter ${key} is not approved.`);
+    if (key === "nominated" && value !== "1") throw configurationError(`query parameter ${key} is not approved.`);
+    if (key === "source" && !controlledSources.includes(value as (typeof controlledSources)[number])) {
+      throw configurationError(`query parameter ${key} is not approved.`);
     }
-    if (key === "nominated" && value === "1") {
-      url.searchParams.set(key, value);
-      continue;
-    }
-    throw configurationError(`query parameter ${key} is not approved.`);
+    candidate.set(key, value);
+  }
+  const parsed = parseEntryContext(candidate);
+  if (parsed.invalidFields.length > 0) {
+    throw configurationError(`query parameter ${parsed.invalidFields[0]} is not approved.`);
+  }
+  for (const [key, value] of candidate) {
+    url.searchParams.set(key, value);
   }
 }
 
@@ -142,3 +148,4 @@ export function createPublicAppUrl(
   appendApprovedQuery(url, query);
   return url.toString();
 }
+import { controlledSources, parseEntryContext, type PermittedEntryQuery } from "./entryContext.ts";
