@@ -19,9 +19,13 @@ test("server-renders the finished pan-African game", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
   assert.match(html, /<title>What’s Your Bride Price\?/i);
-  assert.match(html, /favicon-cowrie-32\.png/i);
-  assert.match(html, /favicon-cowrie-64\.png/i);
-  assert.match(html, /favicon-cowrie-180\.png/i);
+  assert.match(html, /<link[^>]+rel="icon"[^>]+href="\/favicon\.ico"[^>]+sizes="16x16 32x32 48x48"[^>]+type="image\/x-icon"/i);
+  assert.match(html, /<link[^>]+rel="icon"[^>]+href="\/favicon\.svg"[^>]+sizes="any"[^>]+type="image\/svg\+xml"/i);
+  assert.match(html, /<link[^>]+rel="icon"[^>]+href="\/icon-192\.png"[^>]+sizes="192x192"[^>]+type="image\/png"/i);
+  assert.match(html, /<link[^>]+rel="apple-touch-icon"[^>]+href="\/apple-touch-icon\.png"[^>]+sizes="180x180"[^>]+type="image\/png"/i);
+  assert.match(html, /<link[^>]+rel="shortcut icon"[^>]+href="\/favicon\.ico"/i);
+  assert.doesNotMatch(html, /\[object Object\]/i);
+  assert.doesNotMatch(html, /favicon-cowrie-|favicon[^"']*chatgpt|favicon[^"']*ayo43077/i);
   assert.match(
     html,
     /<link[^>]+rel="canonical"[^>]+href="https:\/\/brideprice\.classesforculture\.com\/?"/i,

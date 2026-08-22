@@ -89,6 +89,38 @@ test("homepage loads the complete regional entry surface", async ({ page }) => {
   await expect(page.getByRole("button", { name: "Turn sound off" })).toContainText("Sound on");
 });
 
+test("browser and install icon paths resolve with the declared MIME types", async ({ page, request }) => {
+  await page.goto("/");
+  const iconLinks = await page.locator('link[rel*="icon"]').evaluateAll((links) =>
+    links.map((link) => ({
+      href: link.getAttribute("href"),
+      type: link.getAttribute("type"),
+    })),
+  );
+  expect(iconLinks).toEqual(expect.arrayContaining([
+    expect.objectContaining({ href: "/favicon.ico", type: "image/x-icon" }),
+    expect.objectContaining({ href: "/favicon.svg", type: "image/svg+xml" }),
+    expect.objectContaining({ href: "/apple-touch-icon.png", type: "image/png" }),
+  ]));
+
+  const manifestResponse = await request.get("/manifest.webmanifest");
+  expect(manifestResponse.ok()).toBe(true);
+  expect(manifestResponse.headers()["content-type"]).toContain("application/manifest+json");
+  const manifest = await manifestResponse.json();
+  for (const icon of manifest.icons) {
+    const response = await request.get(icon.src);
+    expect(response.ok(), `${icon.src} should resolve`).toBe(true);
+    expect(response.headers()["content-type"]).toContain(icon.type);
+  }
+
+  for (const icon of iconLinks) {
+    if (!icon.href || !icon.type) continue;
+    const response = await request.get(icon.href);
+    expect(response.ok(), `${icon.href} should resolve`).toBe(true);
+    expect(response.headers()["content-type"]).toContain(icon.type);
+  }
+});
+
 test("every existing regional edition can be started", async ({ page }) => {
   for (const regionKey of regionKeys) {
     await page.goto("/");
