@@ -1,7 +1,12 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element -- the game intentionally draws same-origin and device-local images to canvas */
+/* eslint-disable react-hooks/set-state-in-effect -- URL hydration and result commits are deliberate lifecycle transitions */
+
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections } from "./gameData";
+import { reportAppError } from "./errors";
+import { answersMatch, calculateResultTier } from "./gameLogic";
 
 type RegionKey = "west" | "east" | "central" | "north" | "south";
 type Screen = "home" | "setup" | "quiz" | "result";
@@ -9,6 +14,7 @@ type Question = { prompt: string; options: string[] };
 
 const q = (prompt: string, ...options: string[]): Question => ({ prompt, options });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const legacyRegions: Record<RegionKey, {
   name: string; short: string; place: string; mark: string; hello: string;
   palette: string[]; drops: string[]; questions: Question[];
@@ -125,7 +131,9 @@ const legacyRegions: Record<RegionKey, {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const legacyRegionOrder: RegionKey[] = ["west", "east", "central", "north", "south"];
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const legacyAvatarChoices = [
   { name: "Amara", src: "/avatars/amara.webp", vibe: "The Radiant One" },
   { name: "Zuri", src: "/avatars/zuri.webp", vibe: "The Wild Card" },
@@ -160,8 +168,14 @@ const gifts = [
 const resultCalls = ["YOUR JOURNEY", "THE ROOTS ARE", "SO CLOSE TO", "THE COUNCIL IS"];
 const resultCallEmphasis = ["BEGINS.", "CALLING.", "MASTERY.", "IMPRESSED."];
 const kindLabels = { single: "ONE ANSWER", multi: "SELECT THREE", complete: "COMPLETE THE SENTENCE", image: "IMAGE CHALLENGE" } as const;
+function fillPercussionNoise(channel: Float32Array<ArrayBufferLike>): void {
+  for (let i = 0; i < channel.length; i += 1) {
+    channel[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / channel.length, 4);
+  }
+}
 
 export default function BridePriceGame() {
+  const [hydrated, setHydrated] = useState(false);
   const [screen, setScreen] = useState<Screen>("home");
   const [regionKey, setRegionKey] = useState<RegionKey>("west");
   const [name, setName] = useState("");
@@ -184,7 +198,7 @@ export default function BridePriceGame() {
   const question = region.questions[index];
   const portrait = photo || avatar;
   const correctCount = answers.reduce((sum, answer) => sum + answer, 0);
-  const tier = Math.min(3, Math.floor(correctCount / 3));
+  const tier = calculateResultTier(correctCount);
   const aura = answers.reduce((sum, answer) => sum + (answer ? 150 : 45), 0);
   let streak = 0;
   for (let i = answers.length - 1; i >= 0 && answers[i] === 1; i -= 1) streak += 1;
@@ -194,6 +208,7 @@ export default function BridePriceGame() {
   const allAfricaUnlocked = masteredRegions.length === regionOrder.length;
 
   useEffect(() => {
+    setHydrated(true);
     const edition = new URLSearchParams(window.location.search).get("edition") as RegionKey | null;
     if (edition && regions[edition]) {
       setRegionKey(edition);
@@ -212,7 +227,7 @@ export default function BridePriceGame() {
     const afterMastered = regionOrder.filter((key) => (next[key] || 0) > 8).length;
     setBestScores(next);
     if (beforeMastered < 5 && afterMastered === 5) setAllAfricaJustUnlocked(true);
-    try { localStorage.setItem("wybp-region-scores", JSON.stringify(next)); } catch {}
+    try { localStorage.setItem("wybp-region-scores", JSON.stringify(next)); } catch { /* device progress is optional */ }
     setRevealAura(0);
     const target = aura + 500;
     let frame = 0;
@@ -253,7 +268,7 @@ export default function BridePriceGame() {
       if (flourish) {
         const buffer = context.createBuffer(1, context.sampleRate * .12, context.sampleRate);
         const channel = buffer.getChannelData(0);
-        for (let i = 0; i < channel.length; i += 1) channel[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / channel.length, 4);
+        fillPercussionNoise(channel);
         const noise = context.createBufferSource(); const noiseGain = context.createGain();
         noise.buffer = buffer; noiseGain.gain.value = .04; noise.connect(noiseGain).connect(context.destination); noise.start();
       }
@@ -277,6 +292,7 @@ export default function BridePriceGame() {
     if (!file.type.startsWith("image/")) return;
     const reader = new FileReader();
     reader.onload = () => setPhoto(String(reader.result));
+    reader.onerror = () => reportAppError("photo_read_failed", reader.error || new Error("FileReader failed"));
     reader.readAsDataURL(file);
   };
 
@@ -288,7 +304,7 @@ export default function BridePriceGame() {
   const submitAnswer = (choice: number[]) => {
     if (feedbackOpen) return;
     const expected = region.questions[index].correct;
-    const isCorrect = choice.length === expected.length && [...choice].sort().every((value, i) => value === [...expected].sort()[i]);
+    const isCorrect = answersMatch(choice, expected);
     setSelected(choice); setLastCorrect(isCorrect); setAnswers((current) => [...current, isCorrect ? 1 : 0]); setFeedbackOpen(true);
     playTone(isCorrect ? 680 : 260, isCorrect);
   };
@@ -321,12 +337,15 @@ export default function BridePriceGame() {
   const nominationUrl = useMemo(() => {
     if (typeof window === "undefined") return "";
     return `${window.location.origin}${window.location.pathname}?edition=${regionKey}&nominated=1`;
-  }, [regionKey, screen]);
+  }, [regionKey]);
 
   const nominate = async () => {
     const text = `${name || "I"} just played the ${region.name} edition of What’s Your Bride Price? I nominate you next. Your turn!`;
     if (navigator.share) {
-      try { await navigator.share({ title: "You’ve been nominated!", text, url: nominationUrl }); return; } catch { return; }
+      try { await navigator.share({ title: "You’ve been nominated!", text, url: nominationUrl }); return; } catch (error) {
+        if (!(error instanceof DOMException && error.name === "AbortError")) reportAppError("share_failed", error, { action: "nomination" });
+        return;
+      }
     }
     await navigator.clipboard?.writeText(`${text} ${nominationUrl}`);
     alert("Nomination link copied!");
@@ -368,22 +387,36 @@ export default function BridePriceGame() {
   };
 
   const downloadResult = async () => {
-    const blob = await resultBlob(); if (!blob) return;
-    const url = URL.createObjectURL(blob); const anchor = document.createElement("a");
-    anchor.href = url; anchor.download = `bride-price-${regionKey}-result.png`; anchor.click(); URL.revokeObjectURL(url);
+    try {
+      const blob = await resultBlob(); if (!blob) return;
+      const url = URL.createObjectURL(blob); const anchor = document.createElement("a");
+      anchor.href = url; anchor.download = `bride-price-${regionKey}-result.png`; anchor.click(); URL.revokeObjectURL(url);
+    } catch (error) {
+      reportAppError("result_export_failed", error, { action: "download", region: regionKey });
+      alert("We could not prepare the portrait this time. Please try again.");
+    }
   };
 
   const shareResult = async () => {
-    const blob = await resultBlob();
-    const file = blob ? new File([blob], "my-bride-price-result.png", { type: "image/png" }) : null;
-    const shareData: ShareData = { title: "My Bride Price culture-game result", text: `I scored ${correctCount}/12 and unlocked ${tierTitles[tier]} in the ${region.name} edition. Can you beat me?`, url: nominationUrl };
-    if (file && navigator.canShare?.({ files: [file] })) shareData.files = [file];
-    if (navigator.share) { try { await navigator.share(shareData); } catch {} }
-    else await downloadResult();
+    try {
+      const blob = await resultBlob();
+      const file = blob ? new File([blob], "my-bride-price-result.png", { type: "image/png" }) : null;
+      const shareData: ShareData = { title: "My Bride Price culture-game result", text: `I scored ${correctCount}/12 and unlocked ${tierTitles[tier]} in the ${region.name} edition. Can you beat me?`, url: nominationUrl };
+      if (file && navigator.canShare?.({ files: [file] })) shareData.files = [file];
+      if (navigator.share) {
+        try { await navigator.share(shareData); } catch (error) {
+          if (!(error instanceof DOMException && error.name === "AbortError")) reportAppError("share_failed", error, { action: "result" });
+        }
+      }
+      else await downloadResult();
+    } catch (error) {
+      reportAppError("result_export_failed", error, { action: "share", region: regionKey });
+      alert("We could not prepare the portrait this time. Please try again.");
+    }
   };
 
   return (
-    <main className={`game-shell theme-${regionKey} screen-${screen}`}>
+    <main className={`game-shell theme-${regionKey} screen-${screen}`} data-hydrated={hydrated}>
       <div className="grain" aria-hidden="true" />
       <header className="topbar">
         <button className="wordmark wordmark-button" onClick={restart} aria-label="Return home">
@@ -431,14 +464,14 @@ export default function BridePriceGame() {
             <div className="region-grid">
               {regionOrder.map((key, cardIndex) => {
                 const item = regions[key];
-                return <article className={`region-card ${key}`} key={key} onClick={() => chooseRegion(key)}>
+                return <div className={`region-card ${key}`} key={key} role="button" tabIndex={0} data-region={key} onClick={() => chooseRegion(key)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); chooseRegion(key); } }} aria-label={`Play the ${item.name} edition`}>
                   <img className="region-art" src={`/regions/${key === "south" ? "southern" : key}-africa.webp`} alt="" />
                   <div className="card-pattern" aria-hidden="true" /><div className="card-number">0{cardIndex + 1}</div>
                   <div className="card-mark" aria-hidden="true">{item.mark}</div>
                   <div className="card-copy"><p>{item.place}</p><h3>{item.name}</h3>
-                    <button type="button" onClick={() => chooseRegion(key)} aria-label={`Play the ${item.name} edition`}>Enter Region <span>→</span></button>
+                    <span className="region-enter">Enter Region <span>→</span></span>
                   </div>
-                </article>;
+                </div>;
               })}
             </div>
           </section>
@@ -476,7 +509,7 @@ export default function BridePriceGame() {
               <i>READY</i>
             </div>
             <div className="avatar-grid" aria-label="Choose an African avatar">
-              {avatarChoices.map((item) => <button key={item.name} className={!photo && avatar === item.src ? "active" : ""} onClick={() => { setAvatar(item.src); setPhoto(null); playTone(470, true); }} aria-label={`Choose ${item.name}, ${item.vibe}`}><img src={item.src} alt="" /><span>{item.name}</span></button>)}
+              {avatarChoices.map((item) => <button key={item.name} className={!photo && avatar === item.src ? "active" : ""} aria-pressed={!photo && avatar === item.src} onClick={() => { setAvatar(item.src); setPhoto(null); playTone(470, true); }} aria-label={`Choose ${item.name}, ${item.vibe}`}><img src={item.src} alt="" /><span>{item.name}</span></button>)}
             </div>
             <button className="upload-own" onClick={() => fileRef.current?.click()}><span>＋</span><b>Or upload your own icon</b><small>Private. Never leaves your device.</small></button>
             <input ref={fileRef} type="file" accept="image/*" onChange={onPhoto} hidden />
@@ -501,7 +534,7 @@ export default function BridePriceGame() {
               <b className="hud-round">{String(index + 1).padStart(2, "0")} / 12</b>
             </div>
           </div>
-          <div className="progress-track"><span style={{ width: `${((index + 1) / 12) * 100}%` }} /></div>
+          <div className="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin={1} aria-valuemax={12} aria-valuenow={index + 1}><span style={{ width: `${((index + 1) / 12) * 100}%` }} /></div>
           <div className="question-wrap" key={index}>
             <div className="question-meta"><p className="eyebrow">{kindLabels[question.kind]}</p><span>{question.topic}</span></div>
             <h2 className={question.kind === "image" ? "image-question" : question.kind === "complete" ? "sentence-question" : ""}>{question.prompt}</h2>

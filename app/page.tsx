@@ -1,4 +1,4 @@
-import BridePriceGame from "./BridePriceGame.tsx";
+import BridePriceGame from "./BridePriceGame";
 
 export const metadata = {
   title: "What’s Your Bride Price? | The Pan-African Party Game",

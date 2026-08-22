@@ -9,8 +9,13 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "vinext start",
+    "preview:review": "npm run build && node tests/preview-server.mjs",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
+    "test:unit": "node --experimental-strip-types --test tests/unit/gameLogic.test.mjs tests/unit/featureFlags.test.mjs",
+    "test:e2e": "npm run build && playwright test",
+    "test:all": "npm run lint && npm run typecheck && npm run test:unit && npm test && npm run test:e2e",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "typecheck": "tsc --noEmit --incremental false",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
@@ -20,9 +25,11 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.37.1",
+    "@cloudflare/workers-types": "^4.20260702.1",
     "@eslint/js": "9.39.4",
     "@next/eslint-plugin-next": "16.2.6",
     "@openai/sites-vite-plugin": "0.1.0",
+    "@playwright/test": "^1.62.1",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
