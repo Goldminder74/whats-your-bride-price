@@ -6,6 +6,10 @@ import {
   assertSitesCompatibleFeatureFlags,
   resolveFeatureFlags,
 } from "./app/featureFlags";
+import {
+  resolvePublicAppOrigin,
+  type PublicAppEnvironment,
+} from "./app/publicAppOrigin";
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
@@ -37,9 +41,15 @@ const localBindingConfig = {
     : [],
 };
 
-export default defineConfig(async () => {
+export default defineConfig(async ({ mode }) => {
   const featureFlags = resolveFeatureFlags(process.env);
   assertSitesCompatibleFeatureFlags(featureFlags);
+  const publicAppEnvironment: PublicAppEnvironment =
+    mode === "production" ? "production" : mode === "test" ? "test" : "development";
+  const publicAppOrigin = resolvePublicAppOrigin(
+    process.env.PUBLIC_APP_ORIGIN,
+    publicAppEnvironment,
+  );
 
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
@@ -53,6 +63,8 @@ export default defineConfig(async () => {
   return {
     define: {
       __WYBP_FEATURE_FLAGS__: JSON.stringify(featureFlags),
+      __WYBP_PUBLIC_APP_ORIGIN__: JSON.stringify(publicAppOrigin),
+      __WYBP_RUNTIME_ENV__: JSON.stringify(publicAppEnvironment),
     },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }

@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { createPublicAppUrl, PUBLIC_APP_ORIGIN } from "./publicAppOrigin";
+
+const canonicalHomeUrl = createPublicAppUrl();
+const socialImageUrl = createPublicAppUrl("/og-v2.png");
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://whats-your-bride-price.ayo43077.chatgpt.site"),
+  metadataBase: new URL(PUBLIC_APP_ORIGIN),
   title: "What’s Your Bride Price? | The Pan-African Party Game",
   description:
     "Five regions. Sixty questions. One unforgettable, entirely playful reveal.",
+  alternates: {
+    canonical: canonicalHomeUrl,
+  },
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
@@ -15,13 +22,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "What’s Your Bride Price?",
     description: "Choose your African edition and discover your ceremonial main-character energy.",
-    images: ["/og-v2.png"],
+    url: canonicalHomeUrl,
+    images: [socialImageUrl],
   },
   twitter: {
     card: "summary_large_image",
     title: "What’s Your Bride Price?",
     description: "Five regions. Sixty questions. One unforgettable reveal.",
-    images: ["/og-v2.png"],
+    images: [socialImageUrl],
   },
   icons: {
     icon: [

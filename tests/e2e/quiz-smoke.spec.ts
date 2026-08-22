@@ -153,6 +153,7 @@ test("a perfect quiz preserves scoring, result, download, sharing and nomination
     url: expect.stringContaining("?edition=west&nominated=1"),
     fileCount: 1,
   });
+  expect(new URL(shares?.[0]?.url || "").origin).toBe("http://127.0.0.1:3100");
 
   await page.getByRole("button", { name: /Nominate a friend/ }).click();
   await expect.poll(() => page.evaluate(() => window.__wybpShares?.length)).toBe(2);

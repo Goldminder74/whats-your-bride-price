@@ -22,6 +22,16 @@ test("server-renders the finished pan-African game", async () => {
   assert.match(html, /favicon-cowrie-32\.png/i);
   assert.match(html, /favicon-cowrie-64\.png/i);
   assert.match(html, /favicon-cowrie-180\.png/i);
+  assert.match(
+    html,
+    /<link[^>]+rel="canonical"[^>]+href="https:\/\/brideprice\.classesforculture\.com\/?"/i,
+  );
+  assert.match(
+    html,
+    /<meta[^>]+property="og:url"[^>]+content="https:\/\/brideprice\.classesforculture\.com\/?"/i,
+  );
+  assert.match(html, /https:\/\/brideprice\.classesforculture\.com\/og-v2\.png/i);
+  assert.doesNotMatch(html, /whats-your-bride-price\.ayo43077\.chatgpt\.site/i);
   assert.match(html, /YOUR ROOTS/i);
   assert.match(html, /AVATAR LAB/i);
   assert.match(html, /IMAGE ROUNDS/i);
@@ -66,5 +76,7 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
   assert.doesNotMatch(source, /Enter(?: this)? world/i);
   assert.doesNotMatch(source, /wildly addictive|JOY WITH|cinematic/i);
   assert.doesNotMatch(`${source}${data}`, /\u2014/);
-  assert.match(source, /\?edition=\$\{regionKey\}/);
+  assert.match(source, /createPublicAppUrl/);
+  assert.match(source, /edition:\s*regionKey/);
+  assert.match(source, /nominated:\s*"1"/);
 });

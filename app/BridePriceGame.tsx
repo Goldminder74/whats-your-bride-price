@@ -7,6 +7,7 @@ import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections } from "./gameData";
 import { reportAppError } from "./errors";
 import { answersMatch, calculateResultTier, defaultSoundEnabled, getCelebrationPieceCount } from "./gameLogic";
+import { createPublicAppUrl, resolveBrowserPublicAppOrigin } from "./publicAppOrigin";
 
 type RegionKey = "west" | "east" | "central" | "north" | "south";
 type Screen = "home" | "setup" | "quiz" | "reveal" | "result";
@@ -438,7 +439,11 @@ export default function BridePriceGame() {
 
   const nominationUrl = useMemo(() => {
     if (typeof window === "undefined") return "";
-    return `${window.location.origin}${window.location.pathname}?edition=${regionKey}&nominated=1`;
+    return createPublicAppUrl(
+      window.location.pathname,
+      { edition: regionKey, nominated: "1" },
+      resolveBrowserPublicAppOrigin(window.location.origin),
+    );
   }, [regionKey]);
 
   const nominate = async () => {
