@@ -1,4 +1,5 @@
 import BridePriceGame from "./BridePriceGame";
+import { resolveReviewChallengeFixture } from "./challengeEntry";
 import { entryContextFromRecord } from "./entryContext";
 import { activeFeatureFlags } from "./featureFlags";
 
@@ -18,5 +19,10 @@ export default async function Home({ searchParams }: HomeProps) {
   const initialEntryContext = activeFeatureFlags.fast_entry
     ? entryContextFromRecord(resolvedSearchParams)
     : undefined;
-  return <BridePriceGame initialEntryContext={initialEntryContext} />;
+  const fixtureValue = resolvedSearchParams.fixture;
+  const fixtureId = typeof fixtureValue === "string" ? fixtureValue : undefined;
+  const trustedChallenge = activeFeatureFlags.fast_entry && activeFeatureFlags.challenges
+    ? resolveReviewChallengeFixture(fixtureId)
+    : undefined;
+  return <BridePriceGame initialEntryContext={initialEntryContext} trustedChallenge={trustedChallenge} />;
 }

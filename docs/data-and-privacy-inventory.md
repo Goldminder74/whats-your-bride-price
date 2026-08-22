@@ -5,9 +5,20 @@ Scope: current repository behaviour only. Hosting-provider operational logs and 
 
 ## Current privacy posture
 
-The app is currently a mostly device-local experience. It has no active application database, object storage, analytics collector, account system or application write API. The original uploaded photo is not transmitted by application code. The only persistent application record is a browser-local map of best regional scores.
+The app is currently a mostly device-local experience. It has no active application database, object storage, analytics collector, account system or application write API. The original uploaded photo is not transmitted by application code. Ordinary production behaviour persists only the browser-local map of best regional scores; the feature-flagged Prompt 5 preview also keeps a short-lived, tab-gated quiz recovery record described below.
 
-The main current privacy gaps are missing file hardening, indefinite localStorage retention, no clear-local-data control, no explicit privacy/storage notice route, no deletion mechanism for future durable data, and overly broad wording that does not explain user-initiated result sharing.
+The main current privacy gaps are incomplete file-signature/metadata hardening, indefinite mastery-score retention, no single clear-all-local-data control, no explicit privacy route, no deletion mechanism for future durable data, and wording that does not fully explain user-initiated result sharing.
+
+## Prompt 5 fast-entry preview boundary
+
+Prompt 5 adds a local, feature-flagged fast journey while `fast_entry` remains false in ordinary production builds. The preview implementation does not bind D1 or R2, call an analytics collector, add a service worker or transmit a player photo. It introduces two strictly functional recovery keys:
+
+- `localStorage["wybp-active-quiz-v1"]` contains schema version 1, a random tab instance ID, edition, stable avatar ID, next question position, selected option indexes for answered questions, an update timestamp, allowlisted attribution and an optional trusted challenge code. It expires after 24 hours and rejects malformed, oversized, future, stale or incompatible data.
+- `sessionStorage["wybp-active-quiz-instance-v1"]` contains only the matching random instance ID. Recovery is allowed only when this tab-scoped value matches the local record, preventing a new tab or another browser session from silently adopting a previous player's in-progress identity.
+
+Names, photos, filenames, free text, answer text, correct-answer text, raw URLs, secrets and HTML are prohibited from the recovery record. `Start again` removes both recovery keys. Storage errors are caught and never block the quiz. The fast avatar step explains this behaviour in the interface with: “If this tab refreshes, your edition, avatar and quiz answers can be restored for up to 24 hours. Photos and names are never saved.”
+
+Trusted challenge readiness is an input boundary, not a public query-string trust mechanism. The client accepts only a complete validated `TrustedChallengeEntry` passed by the server layer. Raw inviter names and claimed scores in a URL are ignored. The only current personalised record is a controlled local review fixture gated by both `WYBP_REVIEW_BUILD=true` and `WYBP_REVIEW_CHALLENGE_FIXTURES=true`, with the `challenges` feature flag enabled. Ordinary production builds cannot resolve it. Rendering a challenge does not create an acceptance record; the player must explicitly accept before reaching the avatar step.
 
 ## Current data inventory
 
@@ -15,10 +26,10 @@ The main current privacy gaps are missing file hardening, indefinite localStorag
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Selected region | `west`, `east`, `central`, `north`, `south` | Player choice or `edition` query | Browser | React state; also URL query | Until navigation/restart; URL may persist in history/share | Yes, in URL and share link | Low sensitivity; can be an inferred interest, not a verified identity |
 | Display name/pseudonym | Up to 30 JavaScript string units | Player input | Browser | React state only | Until refresh/page close | Yes, if player shares result or nomination | User-generated personal data; React escapes DOM output, but no trim/normalisation policy |
-| Selected avatar | Static asset URL | Player choice | Browser | React state only | Until refresh/page close | Yes, avatar pixels can be included in result share | Low sensitivity, but should become a stable ID before durable storage |
-| Original uploaded image | Browser data URL containing original bytes | Player file picker | Browser only | React memory | Until avatar selection, restart, refresh or page close | Not by app automatically | Potentially sensitive personal image. MIME string only is checked; no size/signature/dimension/EXIF validation |
+| Selected avatar | Stable allowlisted avatar ID resolved to a static asset URL | Player choice | Browser | React state; Prompt 5 recovery record when `fast_entry` is enabled | Current attempt; recovery expires after 24 hours | Yes, avatar pixels can be included in result share | Low sensitivity; IDs are stable and reject uploaded-photo or unknown values |
+| Original uploaded image | Same-origin browser `blob:` object URL referencing the selected local file | Player file picker | Browser only | React memory and browser object-URL registry | Until explicit removal, avatar replacement, restart, replacement by another photo or page close | Not by app automatically | JPEG, PNG or WebP only; 8 MB, 6000-pixel-side and 24-megapixel caps; decode must succeed. No signature inspection or explicit EXIF stripping yet |
 | Rendered portrait pixels | Cropped visible pixels drawn into result canvas | Original photo or avatar | Browser only | Canvas memory, then PNG Blob | Until operation completes/GC | Yes, only through explicit share or download | New PNG normally omits original EXIF, but this is not tested or guaranteed by explicit code |
-| Quiz answers | Array of binary correctness values and current option selection | Player actions | Browser | React state only | Until restart/refresh/page close | Not directly | Behavioural/game data; raw selected option indexes are transient and not persisted |
+| Quiz answers | Binary correctness values in memory; selected option indexes in Prompt 5 recovery | Player actions | Browser | React state; versioned local recovery only when `fast_entry` is enabled | Attempt lifecycle; recovery expires after 24 hours and is tab-gated | Not directly | Behavioural/game data. Recovery recomputes scores from the unchanged question bank rather than trusting a stored score |
 | Score | Integer `0..12` | Client calculation | Browser | Derived React value | Until restart/refresh/page close | Yes, in shared text/result PNG | Not server-verified; must not be trusted for future competitions or entitlements |
 | Result tier | Four named tiers | Client calculation | Browser | Derived value | Until restart/refresh/page close | Yes, in shared text/result PNG | Entertainment result |
 | Aura/streak/gem state | Numeric game feedback | Client calculation | Browser | React state | Current attempt only | Aura appears in UI, not current share text | Functional game state, not a durable retention streak |
@@ -40,8 +51,10 @@ The main current privacy gaps are missing file hardening, indefinite localStorag
 | Store | Key | Purpose | Expiry | Clear mechanism | Authority |
 | --- | --- | --- | --- | --- | --- |
 | `localStorage` | `wybp-region-scores` | Preserve each region's best score and five-seal mastery progress | None | Browser/site-data controls only | Device-local convenience, not authoritative |
+| `localStorage` | `wybp-active-quiz-v1` | Prompt 5 accidental-refresh recovery for minimal quiz state | 24 hours from last valid write | Visible `Start again`, automatic rejection/clear, or browser controls | Device-local convenience, not authoritative |
+| `sessionStorage` | `wybp-active-quiz-instance-v1` | Require the same tab session before local recovery can be used | Tab session | Visible `Start again` or tab close | Tab-scoped anti-merge guard |
 
-No `sessionStorage`, IndexedDB, Cache Storage, service worker, application cookie or browser database use was detected.
+No IndexedDB, Cache Storage, service worker, application cookie or browser database use was detected.
 
 ### Server and platform storage
 
@@ -61,12 +74,13 @@ The worker type declares `DB`, but the quiz never calls the database helper. The
 ## Photo data-flow analysis
 
 ```text
-User file picker
+Explicit user file-picker action
   -> browser supplies File object
-  -> code checks only file.type starts with "image/"
-  -> FileReader converts full original file to data URL
-  -> data URL stored in React memory
-  -> displayed locally in img elements
+  -> code allowlists JPEG, PNG or WebP and rejects files over 8 MB
+  -> browser creates a local object URL
+  -> image must decode within 6000 pixels per side and 24 megapixels
+  -> object URL stored in React memory and displayed locally
+  -> replacement, removal, restart and unmount revoke the object URL
   -> optional canvas drawing for result
      -> new PNG Blob
         -> explicit download, or
@@ -77,16 +91,12 @@ No application network call exists in this flow. The original photo is not writt
 
 ### Photo risks and required controls before expansion
 
-1. Enforce a conservative file-size limit before reading.
-2. Validate file signatures and decoded MIME, not only `file.type`.
-3. Enforce maximum pixel dimensions and decode timeout before canvas work.
-4. Re-encode locally to a bounded format/size and explicitly remove metadata.
-5. Add a visible Remove my photo action.
-6. Handle decode, canvas and memory failures with a user-safe fallback.
-7. Avoid retaining full original data URLs longer than necessary.
-8. Test forged types, SVG/polyglot inputs, decompression bombs, huge dimensions, EXIF orientation and low-memory mobile behaviour.
-9. Keep private photos out of public result/OG/challenge/party records by default.
-10. If a future user expressly chooses a server upload, require a separate notice, R2 storage, safe content type, ownership metadata, retention, deletion and access control. Do not infer that choice from selecting a local file.
+1. Validate file signatures and decoded MIME, not only `file.type`.
+2. Add a decode timeout and test hostile/decompression-bomb files beyond the current size and dimension caps.
+3. Re-encode locally to a bounded format/size and explicitly remove metadata.
+4. Test forged types, polyglot inputs, EXIF orientation and low-memory mobile behaviour.
+5. Keep private photos out of public result/OG/challenge/party records by default.
+6. If a future user expressly chooses a server upload, require a separate notice, R2 storage, safe content type, ownership metadata, retention, deletion and access control. Do not infer that choice from selecting a local file.
 
 ## Sharing and external recipients
 
@@ -105,9 +115,12 @@ No Meta Pixel, TikTok Pixel, Google Analytics, social SDK or third-party adverti
 
 | Parameter | Accepted values | Handling | Persistence/attribution |
 | --- | --- | --- | --- |
-| `edition` | One of five internal region keys | Validated against the region record after hydration; selects setup | Remains in current URL until restart or replacement |
-| `nominated` | Generated as `1` | Not read | No attribution or landing behaviour |
-| `utm_source`, `utm_medium`, `utm_campaign`, `ref`, `challenge`, `source` | Not implemented | Ignored and may be discarded when `chooseRegion()` replaces the query | None |
+| `edition` | One of five internal region keys | Parsed on the server for `fast_entry`; direct links server-render the compact regional avatar step | Preserved through the active journey and approved share URLs |
+| `nominated` | `1` only | Preserved as safe legacy context and local event context; does not claim a verified inviter | Preserved through allowed navigation/share construction |
+| `source` | Eight controlled source values | Allowlisted, normalised and otherwise reduced to `unknown` | Safe attribution only |
+| `utm_source`, `utm_medium`, `utm_campaign`, `ref` | Bounded token formats | Preserved through allowed navigation and minimal recovery attribution | No arbitrary URL or free text accepted |
+| `challenge` | Opaque token shape only | Shape validation is not trust. Without a separately resolved `TrustedChallengeEntry`, the app removes challenge claims and shows the generic selector | Optional trusted challenge code may enter recovery only after server-side validation |
+| `fixture` | Exact controlled review ID only | Read only by the server page when both review-build and challenge-fixture gates are enabled | Excluded from ordinary production behaviour; not copied into general entry context |
 
 Current query input is not inserted as arbitrary HTML. Invalid editions are ignored.
 

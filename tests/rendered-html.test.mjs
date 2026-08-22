@@ -61,6 +61,7 @@ test("default production client output excludes review diagnostics", async () =>
   const scripts = entries.filter((entry) => entry.isFile() && entry.name.endsWith(".js"));
   const sources = await Promise.all(scripts.map((entry) => readFile(resolve(entry.parentPath, entry.name), "utf8")));
   assert.doesNotMatch(sources.join("\n"), /Entry diagnostics|data-entry-diagnostics/);
+  assert.doesNotMatch(sources.join("\n"), /Ayo scored|ReviewWest_2026/);
 });
 
 test("ships sixty educational questions, varied play modes, privacy copy and broad sources", async () => {
@@ -71,6 +72,7 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
     assert.match(data, new RegExp(`\\b${key}: \\{`));
   }
   assert.match(source, /Private\. Never leaves your device\./);
+  assert.match(source, /A playful culture score, never a measure of human worth\./);
   assert.match(source, /avatarChoices/);
   assert.match(data, /"image"/);
   assert.match(data, /"multi"/);
@@ -93,4 +95,7 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
   assert.match(source, /createPublicAppUrl/);
   assert.match(source, /edition:\s*regionKey/);
   assert.match(source, /nominated:\s*"1"/);
+  const recovery = await readFile(new URL("../app/quizRecovery.ts", import.meta.url), "utf8");
+  assert.match(recovery, /wybp-active-quiz-v1/);
+  assert.doesNotMatch(recovery, /playerName|photoUrl|uploadedPhoto|filename/);
 });

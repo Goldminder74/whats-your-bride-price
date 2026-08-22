@@ -46,12 +46,19 @@ export default defineConfig(async ({ mode }) => {
   assertSitesCompatibleFeatureFlags(featureFlags);
   const diagnosticsRequested = process.env.WYBP_REVIEW_DIAGNOSTICS === "true";
   const diagnosticsApproved = process.env.WYBP_REVIEW_BUILD === "true";
+  const challengeFixturesRequested = process.env.WYBP_REVIEW_CHALLENGE_FIXTURES === "true";
   if (mode === "production" && diagnosticsRequested && !diagnosticsApproved) {
     throw new Error(
       "Review diagnostics require explicit approval. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_DIAGNOSTICS=true for a local review build. Production builds exclude the panel by default.",
     );
   }
+  if (mode === "production" && challengeFixturesRequested && !diagnosticsApproved) {
+    throw new Error(
+      "Challenge fixtures require an explicitly authorised local review build. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_CHALLENGE_FIXTURES=true. Ordinary production builds exclude challenge fixtures.",
+    );
+  }
   const reviewDiagnostics = mode !== "production" || (diagnosticsRequested && diagnosticsApproved);
+  const reviewChallengeFixtures = challengeFixturesRequested && diagnosticsApproved;
   const publicAppEnvironment: PublicAppEnvironment =
     mode === "production" ? "production" : mode === "test" ? "test" : "development";
   const publicAppOrigin = resolvePublicAppOrigin(
@@ -74,6 +81,7 @@ export default defineConfig(async ({ mode }) => {
       __WYBP_PUBLIC_APP_ORIGIN__: JSON.stringify(publicAppOrigin),
       __WYBP_RUNTIME_ENV__: JSON.stringify(publicAppEnvironment),
       __WYBP_REVIEW_DIAGNOSTICS__: JSON.stringify(reviewDiagnostics),
+      __WYBP_REVIEW_CHALLENGE_FIXTURES__: JSON.stringify(reviewChallengeFixtures),
     },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }

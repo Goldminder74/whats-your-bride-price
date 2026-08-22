@@ -62,9 +62,9 @@ async function completePerfectWestQuiz(page: Page) {
       await page.getByRole("button", { name: /Lock in 3\/3 answers/ }).click();
     }
 
-    await expect(page.getByRole("status")).toContainText("CORRECT");
+    await expect(page.locator(".answer-reveal")).toContainText("CORRECT");
     await page
-      .getByRole("status")
+      .locator(".answer-reveal")
       .getByRole("button", { name: questionIndex === 11 ? /Reveal my result/ : /Next challenge/ })
       .click();
 
@@ -157,7 +157,7 @@ test("a selected photo stays in the browser and causes no application upload", a
     ),
   });
 
-  await expect(page.locator(".avatar-hero img")).toHaveAttribute("src", /^data:image\/png;base64,/);
+  await expect(page.locator(".avatar-hero img")).toHaveAttribute("src", /^blob:/);
   expect(writeRequests).toEqual([]);
 });
 
