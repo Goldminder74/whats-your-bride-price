@@ -6,10 +6,10 @@
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections } from "./gameData";
 import { reportAppError } from "./errors";
-import { answersMatch, calculateResultTier } from "./gameLogic";
+import { answersMatch, calculateResultTier, defaultSoundEnabled, getCelebrationPieceCount } from "./gameLogic";
 
 type RegionKey = "west" | "east" | "central" | "north" | "south";
-type Screen = "home" | "setup" | "quiz" | "result";
+type Screen = "home" | "setup" | "quiz" | "reveal" | "result";
 type Question = { prompt: string; options: string[] };
 
 const q = (prompt: string, ...options: string[]): Question => ({ prompt, options });
@@ -168,10 +168,63 @@ const gifts = [
 const resultCalls = ["YOUR JOURNEY", "THE ROOTS ARE", "SO CLOSE TO", "THE COUNCIL IS"];
 const resultCallEmphasis = ["BEGINS.", "CALLING.", "MASTERY.", "IMPRESSED."];
 const kindLabels = { single: "ONE ANSWER", multi: "SELECT THREE", complete: "COMPLETE THE SENTENCE", image: "IMAGE CHALLENGE" } as const;
+const regionalIntervals: Record<RegionKey, number[]> = {
+  west: [1, 1.25, 1.5],
+  east: [1, 1.2, 1.6],
+  central: [1, 1.333, 1.666],
+  north: [1, 1.125, 1.5],
+  south: [1, 1.25, 1.75],
+};
+const regionalRollAccents: Record<RegionKey, number[]> = {
+  west: [1, .58, .82, .66, 1, .72],
+  east: [1, .62, .74, 1, .58, .86],
+  central: [1, .72, .54, .92, .66, 1],
+  north: [1, .55, .78, .62, .9, .7],
+  south: [1, .7, 1, .58, .82, .68],
+};
+const revealLines = [
+  "A bright beginning is taking shape.",
+  "The rhythm is building.",
+  "Regional mastery is almost in reach.",
+  "The whole celebration is waking up.",
+];
 function fillPercussionNoise(channel: Float32Array<ArrayBufferLike>): void {
   for (let i = 0; i < channel.length; i += 1) {
     channel[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / channel.length, 4);
   }
+}
+
+function scheduleDrumHit(
+  context: AudioContext,
+  at: number,
+  pitch: number,
+  intensity: number,
+): void {
+  const body = context.createOscillator();
+  const bodyGain = context.createGain();
+  body.type = "sine";
+  body.frequency.setValueAtTime(pitch * 1.9, at);
+  body.frequency.exponentialRampToValueAtTime(pitch, at + .13);
+  bodyGain.gain.setValueAtTime(.0001, at);
+  bodyGain.gain.exponentialRampToValueAtTime(.075 * intensity, at + .008);
+  bodyGain.gain.exponentialRampToValueAtTime(.001, at + .24);
+  body.connect(bodyGain).connect(context.destination);
+  body.start(at);
+  body.stop(at + .26);
+
+  const skinBuffer = context.createBuffer(1, Math.round(context.sampleRate * .055), context.sampleRate);
+  fillPercussionNoise(skinBuffer.getChannelData(0));
+  const skin = context.createBufferSource();
+  const skinGain = context.createGain();
+  const skinFilter = context.createBiquadFilter();
+  skin.buffer = skinBuffer;
+  skinFilter.type = "bandpass";
+  skinFilter.frequency.value = 720 + pitch * 2;
+  skinFilter.Q.value = 1.2;
+  skinGain.gain.setValueAtTime(.028 * intensity, at);
+  skinGain.gain.exponentialRampToValueAtTime(.001, at + .07);
+  skin.connect(skinFilter).connect(skinGain).connect(context.destination);
+  skin.start(at);
 }
 
 export default function BridePriceGame() {
@@ -187,13 +240,14 @@ export default function BridePriceGame() {
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [lastCorrect, setLastCorrect] = useState(false);
   const [dropOpen, setDropOpen] = useState(false);
-  const [sound, setSound] = useState(true);
+  const [sound, setSound] = useState(defaultSoundEnabled);
   const [menuOpen, setMenuOpen] = useState(false);
   const [bestScores, setBestScores] = useState<Partial<Record<RegionKey, number>>>({});
   const [allAfricaJustUnlocked, setAllAfricaJustUnlocked] = useState(false);
   const [revealAura, setRevealAura] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
   const audioRef = useRef<AudioContext | null>(null);
+  const revealTimerRef = useRef<number | null>(null);
   const region = regions[regionKey];
   const question = region.questions[index];
   const portrait = photo || avatar;
@@ -206,6 +260,7 @@ export default function BridePriceGame() {
   const displayScores = screen === "result" ? { ...bestScores, [regionKey]: Math.max(bestScores[regionKey] || 0, correctCount) } : bestScores;
   const masteredRegions = regionOrder.filter((key) => (displayScores[key] || 0) > 8);
   const allAfricaUnlocked = masteredRegions.length === regionOrder.length;
+  const celebrationPieceCount = getCelebrationPieceCount(tier);
 
   useEffect(() => {
     setHydrated(true);
@@ -218,6 +273,10 @@ export default function BridePriceGame() {
       const saved = JSON.parse(localStorage.getItem("wybp-region-scores") || "{}") as Partial<Record<RegionKey, number>>;
       setBestScores(Object.fromEntries(Object.entries(saved).filter(([key, value]) => regions[key as RegionKey] && typeof value === "number")) as Partial<Record<RegionKey, number>>);
     } catch { /* device progress is optional */ }
+  }, []);
+
+  useEffect(() => () => {
+    if (revealTimerRef.current !== null) window.clearTimeout(revealTimerRef.current);
   }, []);
 
   useEffect(() => {
@@ -248,10 +307,6 @@ export default function BridePriceGame() {
       const context = audioRef.current || new AudioContextClass();
       audioRef.current = context;
       if (context.state === "suspended") void context.resume();
-      const regionalIntervals: Record<RegionKey, number[]> = {
-        west: [1, 1.25, 1.5], east: [1, 1.2, 1.6], central: [1, 1.333, 1.666],
-        north: [1, 1.125, 1.5], south: [1, 1.25, 1.75],
-      };
       const notes = flourish ? regionalIntervals[regionKey] : [1];
       notes.forEach((interval, noteIndex) => {
         const oscillator = context.createOscillator();
@@ -274,6 +329,43 @@ export default function BridePriceGame() {
       }
       navigator.vibrate?.(flourish ? [18, 35, 22] : 12);
     } catch { /* sound is an optional flourish */ }
+  };
+
+  const playResultDrumRoll = (scoreTier: number): number => {
+    const silentDurations = [1000, 1250, 1550, 1950];
+    if (!sound) return silentDurations[scoreTier];
+    try {
+      const AudioContextClass = window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+      if (!AudioContextClass) return silentDurations[scoreTier];
+      const context = audioRef.current || new AudioContextClass();
+      audioRef.current = context;
+      if (context.state === "suspended") void context.resume();
+
+      const hitCounts = [6, 9, 13, 19];
+      const accents = regionalRollAccents[regionKey];
+      const start = context.currentTime + .05;
+      let cursor = start;
+      for (let hit = 0; hit < hitCounts[scoreTier]; hit += 1) {
+        const progress = hit / Math.max(1, hitCounts[scoreTier] - 1);
+        const intensity = (.62 + scoreTier * .07) * accents[hit % accents.length];
+        const pitch = 78 + (hit % 3) * 18 + scoreTier * 5;
+        scheduleDrumHit(context, cursor, pitch, intensity);
+        cursor += .22 - progress * (.08 + scoreTier * .015);
+      }
+
+      const finale = cursor + .08;
+      regionalIntervals[regionKey].slice(0, scoreTier + 1).forEach((interval, noteIndex) => {
+        scheduleDrumHit(context, finale + noteIndex * .075, 92 * interval, .9 + scoreTier * .06);
+      });
+      if (scoreTier === 3) {
+        [0, .11, .22, .36].forEach((offset, index) => scheduleDrumHit(context, finale + offset, 116 + index * 14, 1));
+      }
+      navigator.vibrate?.(scoreTier === 3 ? [35, 35, 45, 35, 70] : [24, 35, 38]);
+      return Math.ceil((finale - context.currentTime + .72 + scoreTier * .08) * 1000);
+    } catch (error) {
+      reportAppError("audio_failed", error, { action: "result_reveal", region: regionKey });
+      return silentDurations[scoreTier];
+    }
   };
 
   const chooseRegion = (key: RegionKey) => {
@@ -322,7 +414,13 @@ export default function BridePriceGame() {
 
   const nextQuestion = () => {
     if (index === 11) {
-      setScreen("result"); setDropOpen(false); playTone(720, true);
+      setScreen("reveal");
+      setDropOpen(false);
+      const revealDuration = playResultDrumRoll(tier);
+      revealTimerRef.current = window.setTimeout(() => {
+        revealTimerRef.current = null;
+        setScreen("result");
+      }, revealDuration);
     } else {
       setIndex((current) => current + 1); setSelected([]); setFeedbackOpen(false);
       if ((index + 1) % 3 === 0) setDropOpen(true);
@@ -330,6 +428,10 @@ export default function BridePriceGame() {
   };
 
   const restart = () => {
+    if (revealTimerRef.current !== null) {
+      window.clearTimeout(revealTimerRef.current);
+      revealTimerRef.current = null;
+    }
     setScreen("home"); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null); setAllAfricaJustUnlocked(false);
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
@@ -571,9 +673,29 @@ export default function BridePriceGame() {
         </section>
       )}
 
+      {screen === "reveal" && (
+        <section className={`score-reveal-stage reveal-tier-${tier}`} aria-live="assertive" aria-label="Your score is being revealed">
+          <img className="score-reveal-world" src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" />
+          <div className="score-reveal-veil" aria-hidden="true" />
+          <div className="reveal-bead-orbit" aria-hidden="true">
+            {Array.from({ length: 12 + tier * 4 }, (_, beadIndex) => <i key={beadIndex} style={{ "--angle": `${(360 / (12 + tier * 4)) * beadIndex}deg` } as React.CSSProperties}>{beadIndex % 4 === 0 ? "◆" : "●"}</i>)}
+          </div>
+          <div className="reveal-drum">
+            <span aria-hidden="true">{region.mark}</span>
+            <img src={portrait} alt="Your player portrait" />
+          </div>
+          <p>{region.name} score ceremony</p>
+          <h1>HOLD YOUR<br /><i>BREATH.</i></h1>
+          <div className="drum-roll-meter" aria-hidden="true">{Array.from({ length: 7 + tier * 2 }, (_, pulse) => <i key={pulse} style={{ "--height": `${10 + (pulse % 5) * 6}px`, "--delay": `${pulse * -.04}s` } as React.CSSProperties} />)}</div>
+          <b>{revealLines[tier]}</b>
+          <small>Knowledge. Rhythm. Reveal.</small>
+        </section>
+      )}
+
       {screen === "result" && (
-        <section className="result-stage">
-          <div className="confetti" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <i key={i} style={{ "--i": i } as React.CSSProperties} />)}</div>
+        <section className={`result-stage celebration-tier-${tier}`}>
+          <div className={`confetti confetti-tier-${tier}`} aria-hidden="true">{Array.from({ length: celebrationPieceCount }, (_, i) => <i key={i} style={{ "--i": i, "--x": `${(i * 43) % 100}%`, "--rotation": `${i * 27}deg`, "--duration": `${2.5 + (i % 5) * .3}s`, "--delay": `${(i % 7) * .08}s` } as React.CSSProperties}>{i % 9 === 0 ? "◌" : i % 5 === 0 ? region.mark : ""}</i>)}</div>
+          {tier >= 2 && <div className="celebration-halo" aria-hidden="true">{Array.from({ length: 16 + tier * 4 }, (_, i) => <i key={i} style={{ "--angle": `${i * 15}deg`, "--delay": `${(i % 5) * .07}s` } as React.CSSProperties} />)}</div>}
           {allAfricaJustUnlocked && <div className="all-africa-coronation" role="dialog" aria-modal="true" aria-label="All Africa access unlocked">
             <div className="coronation-fire" aria-hidden="true">{Array.from({ length: 45 }, (_, i) => <i key={i} style={{ "--i": i } as React.CSSProperties} />)}</div>
             <div className="coronation-card"><span>✦ ◆ ◈ ✺ ☼</span><p>THE ULTIMATE PASSPORT</p><h2>ALL AFRICA<br /><i>ACCESS UNLOCKED</i></h2><b>Five regions mastered. Five scores of 9 or higher. One continent explored.</b><small>{name || "Champion"}, your Motherland Passport is complete. The council has declared your knowledge and your bride price legendary.</small><button onClick={() => setAllAfricaJustUnlocked(false)}>Claim the crown ✦</button></div>

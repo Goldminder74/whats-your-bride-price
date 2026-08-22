@@ -68,6 +68,11 @@ async function completePerfectWestQuiz(page: Page) {
       .getByRole("button", { name: questionIndex === 11 ? /Reveal my result/ : /Next challenge/ })
       .click();
 
+    if (questionIndex === 11) {
+      await expect(page.locator(".score-reveal-stage")).toBeVisible();
+      await expect(page.locator(".drum-roll-meter i")).toHaveCount(13);
+    }
+
     if (questionIndex < 11 && (questionIndex + 1) % 3 === 0) {
       await expect(page.getByRole("dialog", { name: "Culture drop" })).toBeVisible();
       await page.getByRole("button", { name: /Claim gem/ }).click();
@@ -81,6 +86,7 @@ test("homepage loads the complete regional entry surface", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("DO YOU KNOW YOUR ROOTS?");
   await expect(page.locator(".region-card")).toHaveCount(5);
+  await expect(page.getByRole("button", { name: "Turn sound off" })).toContainText("Sound on");
 });
 
 test("every existing regional edition can be started", async ({ page }) => {
@@ -130,6 +136,8 @@ test("a perfect quiz preserves scoring, result, download, sharing and nomination
   await expect(page.locator(".result-copy .eyebrow")).toHaveText("Your score: 12/12");
   await expect(page.locator(".result-card h1")).toHaveText("Bride Price Royalty");
   await expect(page.locator(".result-card small")).toContainText("Knowledge score 12/12");
+  await expect(page.locator(".confetti i")).toHaveCount(58);
+  await expect(page.locator(".celebration-halo")).toBeVisible();
 
   const downloadPromise = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download" }).click();

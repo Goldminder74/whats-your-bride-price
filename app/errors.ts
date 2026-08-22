@@ -1,4 +1,5 @@
 export type AppErrorCode =
+  | "audio_failed"
   | "route_render_failed"
   | "photo_read_failed"
   | "result_export_failed"
