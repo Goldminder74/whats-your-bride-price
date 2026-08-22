@@ -19,6 +19,9 @@ test("server-renders the finished pan-African game", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
   assert.match(html, /<title>What’s Your Bride Price\?/i);
+  assert.match(html, /favicon-cowrie-32\.png/i);
+  assert.match(html, /favicon-cowrie-64\.png/i);
+  assert.match(html, /favicon-cowrie-180\.png/i);
   assert.match(html, /YOUR ROOTS/i);
   assert.match(html, /AVATAR LAB/i);
   assert.match(html, /IMAGE ROUNDS/i);

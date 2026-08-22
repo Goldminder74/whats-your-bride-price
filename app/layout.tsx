@@ -24,8 +24,12 @@ export const metadata: Metadata = {
     images: ["/og-v2.png"],
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: [
+      { url: "/favicon-cowrie-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-cowrie-64.png", sizes: "64x64", type: "image/png" },
+    ],
+    shortcut: "/favicon-cowrie-32.png",
+    apple: [{ url: "/favicon-cowrie-180.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
