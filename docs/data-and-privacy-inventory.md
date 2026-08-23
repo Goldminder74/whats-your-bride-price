@@ -9,6 +9,16 @@ The app is a device-local anonymous experience. It has no active application dat
 
 Prompt 8 adds binary signature checks, bounded pixel re-encoding, metadata-marker tests, Unicode-safe name validation, a clear-local-data action and an inactive deletion-service contract. Residual risks are browser/codec behaviour on low-memory devices, provider logs outside the repository, no standalone privacy route, and no live deletion mechanism because durable storage remains inactive.
 
+## Preview D1 gate record, 23 August 2026
+
+The approved preview-only request named `wybp-preview` with logical binding `DB` for development and preview testing of results, challenges and referrals. Provisioning stopped before any mutation because the available Sites interface could not enumerate account-wide D1 resources or express and prove same-project preview isolation from the public live deployment.
+
+The live deployment overview returned no D1 bindings and no tables. Repository configuration remains `d1: null` and `r2: null`. No database, bucket, binding, preview application, migration ledger, seed, table, row, media object or application personal record was created or accessed. Migrations applied: none. Seed applied: none. Preview table and row counts: not applicable because the resource does not exist.
+
+Activation requires the six operator-provided isolation proofs in `docs/storage-binding-readiness.md`, followed by the approved empty-target, checksum, migration, idempotency, deterministic-seed, projection and fail-closed checks. Production data must remain inaccessible throughout.
+
+Prompt 9 remains blocked. The recommended next option is a separately created, owner-only staging Site with its own isolated D1 database. It must not share a binding, deployment or data path with the live public Site, which must remain untouched and unbound.
+
 ## Prompt 5 fast-entry preview boundary
 
 Prompt 5 adds a local, feature-flagged fast journey while `fast_entry` remains false in ordinary production builds. The preview implementation does not bind D1 or R2, call an analytics collector, add a service worker or transmit a player photo. It introduces two strictly functional recovery keys:

@@ -2,11 +2,32 @@
 
 ## Observed state
 
-The actual target is ChatGPT Sites project `appgprj_6a866f946500819192961ffd6b073a98`, currently live at `https://brideprice.classesforculture.com`. Repository configuration in `.openai/hosting.json` contains `"d1": null` and `"r2": null`. Vite therefore injects no local D1 or R2 binding, and the project has no active preview URL.
+The actual target is the existing public ChatGPT Sites project currently live at `https://brideprice.classesforculture.com`. Its opaque platform identifier remains only in `.openai/hosting.json` and is intentionally omitted from documentation. Repository configuration contains `"d1": null` and `"r2": null`. Vite therefore injects no local D1 or R2 binding, and the project has no active preview URL.
 
 A read-only Sites database overview on 23 August 2026 returned no live D1 binding and no tables. The available inspection interface does not expose an equivalent R2 bucket overview. R2 is therefore confirmed absent from repository, build and runtime code configuration, with no source evidence of a live bucket, but it was not independently enumerated in the hosting control plane. No remote storage, access, version or deployment setting was changed.
 
 The data model, migration and tests are inactive local infrastructure. The application has no durable write endpoint and the unbound repository throws instead of using browser storage for authoritative records.
+
+## Preview D1 activation gate, 23 August 2026
+
+The owner approved a preview-only resource request for database name `wybp-preview`, application binding `DB`, and development/preview testing of results, challenges and referrals. The gate stopped before provisioning.
+
+Read-only checks confirmed that the current live Sites deployment has no D1 bindings or tables, the repository still declares `d1: null` and `r2: null`, and the Sites project has no current preview URL. The available Sites control-plane interface can inspect a D1 database already bound to the live deployment, but it does not expose account-wide D1 resource inventory, D1 resource creation, or an environment-scoped preview-only binding operation. Same-project preview isolation therefore could not be proven: the interface cannot prove that the proposed resource name is unused or guarantee that a new `DB` binding would be isolated from production.
+
+No database or bucket was created, no binding was changed, no migration or seed was run, and no repository hosting configuration was changed. Production remains unbound.
+
+The required manual platform action is for an authorised Sites control-plane operator to:
+
+1. provide a read-only account-level D1 inventory proving that `wybp-preview` is unused;
+2. identify or create a distinct preview environment that does not modify the current live deployment;
+3. create exactly one empty D1 database named `wybp-preview`;
+4. bind it as `DB` to that preview environment only;
+5. confirm the live deployment still has no D1 binding and that creating the resource required no production deployment; and
+6. provide an approved preview-only migration connection or execution surface that identifies the target unambiguously without exposing credentials in source or documentation.
+
+Only after all six items are evidenced may the approved migrations and deterministic development seed be applied. If Sites cannot provide that isolation, D1 activation remains blocked. Because no resource was created in this gate attempt, no cleanup is currently required. For any future preview resource, rollback must first remove the preview-only binding, verify production remains unbound, and delete the preview database only under separate explicit deletion approval.
+
+Prompt 9 remains blocked. The recommended next option is a separately created, owner-only staging Site with its own isolated D1 database and no connection to the live public Site. The live public Site must remain untouched, unbound and undeployed throughout that staging exercise.
 
 ## Proposed owner decision
 

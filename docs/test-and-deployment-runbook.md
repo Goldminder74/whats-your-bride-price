@@ -2,7 +2,7 @@
 
 Audit date: 22 August 2026
 Intended public origin: `https://brideprice.classesforculture.com`
-Current Sites project ID: `appgprj_6a866f946500819192961ffd6b073a98`
+Current Sites project: existing live production Site. Its opaque platform identifier remains only in `.openai/hosting.json` and is intentionally omitted from this document.
 
 This runbook records the current baseline and a safe future workflow. No preview, production deployment, DNS change, access-policy change or database migration was performed for this audit.
 
@@ -264,6 +264,25 @@ Current D1 and R2 bindings are null. Before adding storage:
 6. Back up/export before any production migration.
 7. Obtain explicit production-migration approval.
 8. Never add payment/order/card tables while hosted on Sites.
+
+### Preview D1 activation attempt, 23 August 2026
+
+Approved proposal: one empty D1 database named `wybp-preview`, bound as `DB` to an isolated preview environment only. The attempt stopped before provisioning because the available Sites interface could inspect only live bound databases and exposed no account-wide D1 inventory, D1 creation operation, or preview-only binding operation. The Sites project also had no current preview URL. Resource-name uniqueness and same-project preview isolation from production therefore could not be proven.
+
+No configuration, resource, binding, migration, seed, preview version or deployment was changed. The live database overview remained empty, production remained unbound, and R2 remained inactive.
+
+Manual gate before retry:
+
+1. An authorised Sites operator supplies an account-level inventory proving `wybp-preview` is unused.
+2. The operator identifies a distinct preview environment with no effect on the current live deployment.
+3. The operator creates exactly one empty `wybp-preview` database and binds it as `DB` to preview only.
+4. The operator confirms the live deployment still has no D1 binding and no production deployment was required.
+5. The operator supplies an approved preview-only migration surface that identifies the database unambiguously without disclosing credentials.
+6. The repository gate then runs migration dry-run and checksums, applies only migrations `0000_loving_stepford_cuckoos` and `0001_same_vertigo`, verifies repeat application, applies and repeats the deterministic development seed with checksum `91ed04fcc134fa53d14a8694eedb04ca7fafb0cbf45c11b07b0d2eff17f8da6a`, and runs the complete schema, projection, fail-closed, test and build checks.
+
+Rollback after any later approved creation is to remove the preview-only binding first, verify production remains unbound, then delete the preview database only with separate explicit deletion approval. No cleanup action is required for this stopped attempt because no resource exists.
+
+Prompt 9 remains blocked. The recommended next option is to create a separate owner-only staging Site with its own isolated D1 database, apply the preview gate there, and keep the live public Site entirely untouched, unbound and undeployed.
 
 ## Production smoke test for a future approved release
 
