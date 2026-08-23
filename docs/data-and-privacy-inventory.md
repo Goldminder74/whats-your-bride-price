@@ -19,6 +19,12 @@ Activation requires the six operator-provided isolation proofs in `docs/storage-
 
 Prompt 9 remains blocked. The recommended next option is a separately created, owner-only staging Site with its own isolated D1 database. It must not share a binding, deployment or data path with the live public Site, which must remain untouched and unbound.
 
+### Isolation resolution, 23 August 2026
+
+The separate restricted Site now exists as **What’s Your Bride Price Staging** at `https://whats-your-bride-price-staging.ayo43077.chatgpt.site/`. Sign-in protects custom restricted access, the owner is the only permitted viewer, and workspace administrators retain normal oversight. Its isolated D1 database is bound as `DB` and is empty with zero tables. R2 is null, no custom domain is connected, no production data was imported, and no migrations, seeds or public writes have occurred.
+
+The live Site at `https://brideprice.classesforculture.com` remains separate, unbound and unchanged. The historical same-Site blocker remains part of the audit record. Prompt 9 remains paused until official staging source association and a non-deployed staging build have both been validated. Migration and seed approval remain separate future gates.
+
 ## Prompt 5 fast-entry preview boundary
 
 Prompt 5 adds a local, feature-flagged fast journey while `fast_entry` remains false in ordinary production builds. The preview implementation does not bind D1 or R2, call an analytics collector, add a service worker or transmit a player photo. It introduces two strictly functional recovery keys:

@@ -284,6 +284,12 @@ Rollback after any later approved creation is to remove the preview-only binding
 
 Prompt 9 remains blocked. The recommended next option is to create a separate owner-only staging Site with its own isolated D1 database, apply the preview gate there, and keep the live public Site entirely untouched, unbound and undeployed.
 
+#### Isolation resolution, 23 August 2026
+
+The separate environment now exists as **What’s Your Bride Price Staging** at `https://whats-your-bride-price-staging.ayo43077.chatgpt.site/`. It has custom restricted access protected by sign-in, permits the owner only, and retains normal workspace-administrator oversight. Its isolated empty D1 database is bound as `DB` and has zero tables. R2 is null and no custom domain is attached.
+
+The live Site at `https://brideprice.classesforculture.com` remains separate, unbound and unchanged. No migration, seed, production-data import, public write, analytics SDK, payment, commerce or advertising capability has been activated. Prompt 9 remains paused until the staging branch is officially associated with this restricted Site and a review build is validated and saved without deployment. Migrations and seeds require the next explicit approval gate.
+
 ## Production smoke test for a future approved release
 
 Run from a signed-out mobile browser where public access is intended:

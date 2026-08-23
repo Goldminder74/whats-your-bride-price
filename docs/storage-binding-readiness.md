@@ -29,6 +29,12 @@ Only after all six items are evidenced may the approved migrations and determini
 
 Prompt 9 remains blocked. The recommended next option is a separately created, owner-only staging Site with its own isolated D1 database and no connection to the live public Site. The live public Site must remain untouched, unbound and undeployed throughout that staging exercise.
 
+### Isolation resolution, 23 August 2026
+
+The recommended separate environment now exists as **What’s Your Bride Price Staging** at `https://whats-your-bride-price-staging.ayo43077.chatgpt.site/`. It uses custom restricted access protected by sign-in, permits the owner only, and remains subject to normal workspace-administrator oversight. It has an isolated empty D1 database bound to the application as `DB`, with zero tables. R2 is null and no custom domain is attached.
+
+This resolution does not alter the historical reason the same-Site preview attempt was blocked. The live Site at `https://brideprice.classesforculture.com` remains separate, unbound and unchanged. No production data was imported, and no migration, seed or public write was run. Migrations and the deterministic development seed still require the next explicit approval. Prompt 9 remains paused until the staging source association and saved-build validation complete successfully without deploying the saved version.
+
 ## Proposed owner decision
 
 If durable work is later approved, the proposed logical bindings are:
