@@ -42,7 +42,7 @@ test("server-renders the finished pan-African game", async () => {
   assert.match(html, /IMAGE ROUNDS/i);
   assert.match(html, /knowledge quest/i);
   assert.match(html, /DO YOU KNOW YOUR ROOTS/i);
-  assert.match(html, /THE MORE YOU SCORE THE HIGHER YOUR BRIDE PRICE/i);
+  assert.match(html, /THE MORE YOU KNOW, THE BRIGHTER YOUR SCORE/i);
   assert.match(html, /CHOOSE YOUR[\s\S]*AFRICAN[\s\S]*REGION/i);
   assert.match(html, /Enter Region/i);
   assert.match(html, /Every edition is its own world/i);
@@ -50,7 +50,7 @@ test("server-renders the finished pan-African game", async () => {
   assert.doesNotMatch(html, /\u2014/);
   assert.match(html, /West Africa/);
   assert.match(html, /Southern Africa/);
-  assert.match(html, /This game celebrates culture/i);
+  assert.match(html, /A playful culture score, never a measure of human worth\./i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
   assert.doesNotMatch(html, /data-fast-entry-shell|data-entry-diagnostics/i);
 });
@@ -61,18 +61,19 @@ test("default production client output excludes review diagnostics", async () =>
   const scripts = entries.filter((entry) => entry.isFile() && entry.name.endsWith(".js"));
   const sources = await Promise.all(scripts.map((entry) => readFile(resolve(entry.parentPath, entry.name), "utf8")));
   assert.doesNotMatch(sources.join("\n"), /Entry diagnostics|data-entry-diagnostics/);
-  assert.doesNotMatch(sources.join("\n"), /Ayo scored|ReviewWest_2026/);
+  assert.doesNotMatch(sources.join("\n"), /Ayo scored|ReviewWest_2026|safeguard-low-result|safeguard-high-result|safeguard-reduced-result|safeguard-question/);
 });
 
 test("ships sixty educational questions, varied play modes, privacy copy and broad sources", async () => {
   const source = await readFile(new URL("../app/BridePriceGame.tsx", import.meta.url), "utf8");
   const data = await readFile(new URL("../app/gameData.ts", import.meta.url), "utf8");
+  const safeguards = await readFile(new URL("../app/productSafeguards.ts", import.meta.url), "utf8");
   assert.equal((data.match(/^\s{6}q\(/gm) ?? []).length, 60);
   for (const key of ["west", "east", "central", "north", "south"]) {
     assert.match(data, new RegExp(`\\b${key}: \\{`));
   }
   assert.match(source, /Private\. Never leaves your device\./);
-  assert.match(source, /A playful culture score, never a measure of human worth\./);
+  assert.match(safeguards, /A playful culture score, never a measure of human worth\./);
   assert.match(source, /avatarChoices/);
   assert.match(data, /"image"/);
   assert.match(data, /"multi"/);
@@ -83,13 +84,14 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
   assert.match(data, /British Museum/);
   assert.match(data, /Met Museum/);
   assert.match(source, /THE STAKES ARE HIGH/);
-  assert.match(source, /PROVE YOUR HIGH VALUE/);
+  assert.match(source, /PROVE YOUR CULTURE KNOWLEDGE/);
   assert.match(source, /wybp-region-scores/);
   assert.match(source, /> 8/);
   assert.match(source, /ALL AFRICA.*ACCESS UNLOCKED/s);
-  assert.match(source, /Bride Price Royalty/);
+  assert.match(safeguards, /Bride Price Royalty/);
   assert.match(source, /Enter Region/);
   assert.doesNotMatch(source, /Enter(?: this)? world/i);
+  assert.doesNotMatch(`${source}${safeguards}`, /higher your bride price|bride price you deserve|groom must pay|prove your high value|financially prepared/i);
   assert.doesNotMatch(source, /wildly addictive|JOY WITH|cinematic/i);
   assert.doesNotMatch(`${source}${data}`, /\u2014/);
   assert.match(source, /createPublicAppUrl/);

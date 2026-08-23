@@ -16,6 +16,12 @@ export type TrustedChallengeEntry = Readonly<{
   validity: "valid" | "expired" | "revoked" | "unavailable";
 }>;
 
+export type SafeguardReviewFixture = Readonly<{
+  screen: "quiz" | "result";
+  score: 0 | 12;
+  reducedMotion: boolean;
+}>;
+
 const codePattern = /^[A-Za-z0-9][A-Za-z0-9_-]{5,63}$/;
 const safeDisplayNamePattern = /^[\p{L}\p{M}\p{N} .,'’-]+$/u;
 const regionSet = new Set<string>(regionOrder);
@@ -68,4 +74,13 @@ export function resolveReviewChallengeFixture(fixtureId: string | undefined): Tr
     avatarId: "adjoa",
     validity: "valid",
   }) || undefined;
+}
+
+export function resolveSafeguardReviewFixture(fixtureId: string | undefined): SafeguardReviewFixture | undefined {
+  if (!reviewChallengeFixturesEnabled) return undefined;
+  if (fixtureId === "safeguard-question") return Object.freeze({ screen: "quiz", score: 0, reducedMotion: false });
+  if (fixtureId === "safeguard-low-result") return Object.freeze({ screen: "result", score: 0, reducedMotion: false });
+  if (fixtureId === "safeguard-high-result") return Object.freeze({ screen: "result", score: 12, reducedMotion: false });
+  if (fixtureId === "safeguard-reduced-result") return Object.freeze({ screen: "result", score: 12, reducedMotion: true });
+  return undefined;
 }

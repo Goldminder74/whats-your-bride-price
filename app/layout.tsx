@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { PRODUCT_SAFEGUARD } from "./productSafeguards";
 import { createPublicAppUrl, PUBLIC_APP_ORIGIN } from "./publicAppOrigin";
 
 const canonicalHomeUrl = createPublicAppUrl();
@@ -8,8 +9,7 @@ const socialImageUrl = createPublicAppUrl("/og-v2.png");
 export const metadata: Metadata = {
   metadataBase: new URL(PUBLIC_APP_ORIGIN),
   title: "What’s Your Bride Price? | The Pan-African Party Game",
-  description:
-    "Five regions. Sixty questions. One unforgettable, entirely playful reveal.",
+  description: `Five regions. Sixty questions. One unforgettable reveal. ${PRODUCT_SAFEGUARD}`,
   alternates: {
     canonical: canonicalHomeUrl,
   },
@@ -21,14 +21,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "What’s Your Bride Price?",
-    description: "Choose your African edition and discover your ceremonial main-character energy.",
+    description: `Choose your African edition and test your culture knowledge. ${PRODUCT_SAFEGUARD}`,
     url: canonicalHomeUrl,
     images: [socialImageUrl],
   },
   twitter: {
     card: "summary_large_image",
     title: "What’s Your Bride Price?",
-    description: "Five regions. Sixty questions. One unforgettable reveal.",
+    description: `Five regions. Sixty questions. One unforgettable reveal. ${PRODUCT_SAFEGUARD}`,
     images: [socialImageUrl],
   },
   icons: {

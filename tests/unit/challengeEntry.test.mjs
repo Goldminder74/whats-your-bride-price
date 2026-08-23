@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   resolveReviewChallengeFixture,
+  resolveSafeguardReviewFixture,
   reviewChallengeFixturesEnabled,
   validateTrustedChallengeEntry,
 } from "../../app/challengeEntry.ts";
@@ -29,4 +30,5 @@ test("ordinary builds cannot resolve controlled review fixtures", () => {
   assert.equal(reviewChallengeFixturesEnabled, false);
   assert.equal(resolveReviewChallengeFixture("trusted-west"), undefined);
   assert.equal(resolveReviewChallengeFixture("anything-else"), undefined);
+  assert.equal(resolveSafeguardReviewFixture("safeguard-high-result"), undefined);
 });

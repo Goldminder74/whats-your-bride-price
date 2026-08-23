@@ -19,7 +19,9 @@ test("generic entry offers all regions without loading regional or avatar art", 
   await expect(page.getByRole("heading", { level: 1 })).toContainText(/CHOOSE YOUR\s*AFRICAN REGION/);
   await expect(page.getByText("A playful culture score, never a measure of human worth.")).toBeVisible();
   for (const name of ["West Africa", "East Africa", "Central Africa", "North Africa", "Southern Africa"]) {
-    await expect(page.getByRole("button", { name })).toBeVisible();
+    const regionButton = page.getByRole("button", { name });
+    await expect(regionButton).toBeVisible();
+    await expect(regionButton).toHaveAttribute("aria-describedby", "generic-entry-safeguard");
   }
   expect(artRequests).toEqual([]);
 });
@@ -47,6 +49,9 @@ test("direct West server-renders the compact avatar choice with no generic flash
   const startedAt = Date.now();
   await page.goto(directWest);
   await expect(page.locator("[data-fast-avatar]")).toBeVisible();
+  await expect(page.locator("#avatar-entry-safeguard")).toHaveText("A playful culture score, never a measure of human worth.");
+  await expect(page.getByRole("button", { name: "Continue without a photo" })).toHaveAttribute("aria-describedby", "avatar-entry-safeguard");
+  await expect(page.getByRole("button", { name: /Choose a private photo/ })).toHaveAttribute("aria-describedby", "avatar-entry-safeguard");
   expect(regionalRequests).toEqual(new Set(["/regions/west-africa.webp"]));
   expect(Date.now() - startedAt).toBeLessThan(10_000);
   await expect(page.getByRole("button", { name: /Choose Amara.*selected/ })).toHaveAttribute("aria-pressed", "true");
@@ -129,6 +134,8 @@ test("trusted review challenge needs one accept action and raw challenge claims 
   await expect(page.locator("[data-trusted-challenge]")).toBeVisible();
   await expect(page.getByText("Ayo scored")).toBeVisible();
   await expect(page.getByText("10/12")).toBeVisible();
+  await expect(page.locator("#trusted-challenge-safeguard")).toHaveText("A playful culture score, never a measure of human worth.");
+  await expect(page.getByRole("button", { name: "Accept the challenge" })).toHaveAttribute("aria-describedby", "trusted-challenge-safeguard");
   expect(await page.evaluate(() => localStorage.getItem("wybp-active-quiz-v1"))).toBeNull();
   await page.getByRole("button", { name: "Accept the challenge" }).click();
   await expect(page.locator("[data-fast-avatar]")).toBeVisible();
@@ -140,11 +147,28 @@ test("trusted review challenge needs one accept action and raw challenge claims 
   await expect(page.locator("body")).not.toContainText("12/12");
 });
 
+test("safeguard visual fixtures require the authorised review build", async ({ page, request }) => {
+  for (const [fixture, expected] of [
+    ["safeguard-question", "How scoring works"],
+    ["safeguard-low-result", "Roots Rookie"],
+    ["safeguard-high-result", "Bride Price Royalty"],
+    ["safeguard-reduced-result", "Bride Price Royalty"],
+  ] as const) {
+    const response = await request.get(`/?safeguard_fixture=${fixture}`);
+    expect(await response.text()).toContain(expected);
+  }
+  await page.goto("/?safeguard_fixture=safeguard-reduced-result");
+  await expect(page.locator("main.review-reduced-motion")).toBeVisible();
+  await expect(page.locator(".result-card-safeguard")).toHaveText("A playful culture score, never a measure of human worth.");
+  await expect(page.locator(".confetti")).toBeHidden();
+});
+
 test("invalid and hostile query context fails to the generic selector without reflection", async ({ page }) => {
   const hostile = encodeURIComponent("javascript:alert(1)");
   await page.goto(`/?edition=moon&challenge=${hostile}&ref=${encodeURIComponent("//evil.example")}&source=hostile`);
   await expect(page.getByRole("heading", { level: 1 })).toContainText(/CHOOSE YOUR\s*AFRICAN REGION/);
   await expect(page.getByRole("status").first()).toContainText("safely ignored");
+  await expect(page.locator("#generic-entry-safeguard")).toBeVisible();
   await expect(page.locator("body")).not.toContainText("javascript:alert(1)");
   await expect(page.locator("[data-fast-entry-shell]")).toHaveAttribute("data-entry-source", "unknown");
 });
@@ -266,6 +290,7 @@ test("question focus, exact progress, duplicate-start guard and local hooks work
   await page.getByRole("button", { name: /Choose Zuri/ }).click();
   await page.getByRole("button", { name: "Continue without a photo" }).dblclick();
   await expect(page.getByText("Question 1 of 12").last()).toBeVisible();
+  await expect(page.getByText("How scoring works")).toBeVisible();
   expect(await page.evaluate(() => document.activeElement?.textContent)).toContain("However long the night");
   const names = await page.evaluate(() => (window as Window & { __wybpEntryEvents?: Array<{ name: string }> }).__wybpEntryEvents?.map((event) => event.name));
   expect(names).toEqual(expect.arrayContaining(["entry_view", "entry_shell_visible", "entry_interactive", "avatar_selected", "photo_skipped", "quiz_started"]));
