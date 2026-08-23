@@ -1,5 +1,20 @@
 {
   "version": "7",
   "dialect": "sqlite",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1787509255888,
+      "tag": "0000_loving_stepford_cuckoos",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1787509811482,
+      "tag": "0001_same_vertigo",
+      "breakpoints": true
+    }
+  ]
 }

@@ -12,9 +12,12 @@
     "preview:review": "npm run build && node tests/preview-server.mjs",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "test:unit": "node --experimental-strip-types --test tests/unit/gameLogic.test.mjs tests/unit/featureFlags.test.mjs tests/unit/publicAppOrigin.test.mjs tests/unit/iconAssets.test.mjs tests/unit/entryContext.test.mjs tests/unit/entryCompatibility.test.mjs tests/unit/shareSupport.test.mjs tests/unit/challengeEntry.test.mjs tests/unit/quizRecovery.test.mjs tests/unit/productSafeguards.test.mjs",
+    "test:data": "node --experimental-strip-types --test tests/data/data-foundation.test.mjs",
+    "data:migrate:dry-run": "node scripts/data-migrations.mjs --dry-run",
+    "data:migrate:isolated": "node scripts/data-migrations.mjs --isolated",
     "test:e2e": "npm run build && playwright test tests/e2e/quiz-smoke.spec.ts",
     "test:e2e:fast-entry": "node tests/run-fast-entry-e2e.mjs",
-    "test:all": "npm run lint && npm run typecheck && npm run test:unit && npm test && npm run test:e2e && npm run test:e2e:fast-entry",
+    "test:all": "npm run lint && npm run typecheck && npm run test:unit && npm run test:data && npm test && npm run test:e2e && npm run test:e2e:fast-entry",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "typecheck": "tsc --noEmit --incremental false",
     "db:generate": "drizzle-kit generate"
