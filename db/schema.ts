@@ -168,6 +168,8 @@ export const challenges = sqliteTable("challenges", {
   id: text("id").primaryKey(),
   publicCode: text("public_code").notNull(),
   inviterResultId: text("inviter_result_id").references(() => results.id, { onDelete: "set null" }),
+  creationIdempotencyKeyHash: text("creation_idempotency_key_hash"),
+  revocationTokenHash: text("revocation_token_hash"),
   editionId: text("edition_id").notNull().references(() => quizEditions.id, { onDelete: "restrict" }),
   verifiedScoreToBeat: integer("verified_score_to_beat").notNull(),
   total: integer("total").notNull(),
@@ -186,6 +188,12 @@ export const challenges = sqliteTable("challenges", {
   updatedAt: integer("updated_at").notNull(),
 }, (table) => [
   uniqueIndex("challenges_public_code_uq").on(table.publicCode),
+  uniqueIndex("challenges_creation_idempotency_hash_uq")
+    .on(table.creationIdempotencyKeyHash)
+    .where(sql`${table.creationIdempotencyKeyHash} is not null`),
+  uniqueIndex("challenges_revocation_token_hash_uq")
+    .on(table.revocationTokenHash)
+    .where(sql`${table.revocationTokenHash} is not null`),
   index("challenges_lookup_idx").on(table.publicCode, table.state, table.expiresAt),
   index("challenges_inviter_idx").on(table.inviterResultId, table.createdAt),
   check("challenges_score_ck", sql`${table.total} between 1 and 100 and ${table.verifiedScoreToBeat} between 0 and ${table.total}`),

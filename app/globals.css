@@ -165,5 +165,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,[role="button"]:focus-v
 @media(max-width:480px){.safeguard-decision{font-size:10px!important;margin:10px 0!important;padding:9px 10px!important}.fast-entry-copy>.safeguard-decision{margin-top:10px!important}.compact-safeguard{margin-top:8px!important}.scoring-details{margin-top:8px}.result-frame>.result-card-safeguard{font-size:8px!important}.reveal-safeguard{margin-top:10px!important}.about-scoring{padding:18px}.about-sheet{padding-bottom:max(45px,env(safe-area-inset-bottom))}}
 .review-reduced-motion *{animation:none!important;transition:none!important;scroll-behavior:auto!important}.review-reduced-motion .confetti,.review-reduced-motion .celebration-halo{display:none!important}
 
+/* Prompt 9 challenge creation states */
+.result-actions{grid-template-columns:1.35fr .9fr .72fr}.result-actions button:disabled{opacity:.7;cursor:wait}.challenge-action-note{margin:8px 0 0;font:11px/1.45 "Avenir Next",sans-serif;color:#6c513b}
+@media(max-width:700px){.result-actions{grid-template-columns:1fr}}
+
 /* Friendly route failure state */
 .error-stage{min-height:100svh;display:grid;place-items:center;padding:24px;background:#21130b;color:#f4e7cc}.error-stage section{width:min(620px,100%);padding:42px;border:1px solid #efa928;background:#351b10;box-shadow:14px 16px 0 #100906}.error-stage section>p:first-child{color:#efa928;font-size:9px;font-weight:900;letter-spacing:.2em}.error-stage h1{font:italic clamp(38px,7vw,70px)/.95 Georgia,serif}.error-stage section>p{line-height:1.6}.error-stage section>div{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}.error-stage button,.error-stage a{border:1px solid #efa928;padding:14px 18px;background:#efa928;color:#21130b;font-size:9px;font-weight:900;letter-spacing:.12em;text-decoration:none;text-transform:uppercase;cursor:pointer}.error-stage a{background:transparent;color:#f4e7cc}

@@ -92,9 +92,10 @@ function insertResult(database, attempt, overrides = {}) {
 
 test("migration plan is ordered and checksummed", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 2);
+  assert.equal(plan.length, 3);
   assert.equal(plan[0].id, "0000_loving_stepford_cuckoos");
   assert.equal(plan[1].id, "0001_same_vertigo");
+  assert.equal(plan[2].id, "0002_little_inertia");
   assert.match(plan[0].checksum, /^[0-9a-f]{64}$/);
 });
 
@@ -103,11 +104,11 @@ test("empty database migration, schema tracking, dry-run and repeated execution 
   try {
     const plan = await loadMigrationPlan();
     const dryRun = applyMigrationPlan(database, plan, { dryRun: true, now });
-    assert.deepEqual(dryRun.pending, ["0000_loving_stepford_cuckoos", "0001_same_vertigo"]);
+    assert.deepEqual(dryRun.pending, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia"]);
     assert.equal(database.prepare("SELECT count(*) AS count FROM sqlite_master WHERE type='table' AND name='results'").get().count, 0);
-    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0000_loving_stepford_cuckoos", "0001_same_vertigo"]);
+    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia"]);
     assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, []);
-    assert.equal(database.prepare("SELECT count(*) AS count FROM schema_migrations").get().count, 2);
+    assert.equal(database.prepare("SELECT count(*) AS count FROM schema_migrations").get().count, 3);
   } finally {
     database.close();
   }
@@ -131,7 +132,7 @@ test("upgrade from schema version 0000 to 0001 preserves existing question data"
       'published','approved',?, ?, ?, ?
     )`).run("d".repeat(64), now, now, now);
     assert.equal(database.prepare("SELECT count(*) AS count FROM pragma_table_info('questions') WHERE name='visual_start'").get().count, 0);
-    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0001_same_vertigo"]);
+    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0001_same_vertigo", "0002_little_inertia"]);
     const upgraded = database.prepare("SELECT question_text, visual_start FROM questions WHERE stable_id='west_q01'").get();
     assert.deepEqual({ ...upgraded }, { question_text: "Synthetic question", visual_start: null });
   } finally {
@@ -413,7 +414,7 @@ test("party capacity is constrained and an atomic join contract is present", asy
     }
     assert.equal(database.prepare("SELECT count(*) AS count FROM party_players WHERE party_id='party_synthetic_0002'").get().count, 20);
     assert.match(ATOMICITY_CONTRACT.join_party_with_capacity, /one D1 batch/);
-    assert.equal(Object.keys(ATOMICITY_CONTRACT).length, 6);
+    assert.equal(Object.keys(ATOMICITY_CONTRACT).length, 7);
   } finally {
     database.close();
   }

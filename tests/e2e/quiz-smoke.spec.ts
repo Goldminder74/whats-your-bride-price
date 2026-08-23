@@ -206,14 +206,24 @@ test("a perfect quiz preserves scoring, result, download, sharing and nomination
   expect(shares?.[0]?.text).toContain("A playful culture score, never a measure of human worth.");
   expect(new URL(shares?.[0]?.url || "").origin).toBe("http://127.0.0.1:3100");
 
-  await page.getByRole("button", { name: /Nominate a friend/ }).click();
+  await page.getByRole("button", { name: /Challenge friends/ }).click();
   await expect.poll(() => page.evaluate(() => window.__wybpShares?.length)).toBe(2);
   shares = await page.evaluate(() => window.__wybpShares);
   expect(shares?.[1]).toMatchObject({
     title: "You’ve been nominated!",
     url: expect.stringContaining("?edition=west&nominated=1"),
   });
-  expect(shares?.[1]?.text).toContain("A playful culture score, never a measure of human worth.");
+  expect(shares?.[1]?.url).not.toContain("/challenge/");
+  await expect(page.locator(".challenge-action-note")).toContainText("generic regional nomination");
+
+  await page.getByRole("button", { name: /Nominate a friend/ }).click();
+  await expect.poll(() => page.evaluate(() => window.__wybpShares?.length)).toBe(3);
+  shares = await page.evaluate(() => window.__wybpShares);
+  expect(shares?.[2]).toMatchObject({
+    title: "You’ve been nominated!",
+    url: expect.stringContaining("?edition=west&nominated=1"),
+  });
+  expect(shares?.[2]?.text).toContain("A playful culture score, never a measure of human worth.");
 
   const whatsappHref = await page.getByRole("link", { name: /Send nomination on WhatsApp/ }).getAttribute("href");
   expect(whatsappHref).toContain("https://wa.me/?text=");

@@ -2,6 +2,7 @@ const PRODUCTION_HOSTNAME = "brideprice.classesforculture.com";
 const DEFAULT_PRODUCTION_ORIGIN = `https://${PRODUCTION_HOSTNAME}`;
 const localHostnames = new Set(["localhost", "127.0.0.1", "[::1]"]);
 const regionKeys = new Set(["west", "east", "central", "north", "south"]);
+const publicChallengeCodePattern = /^[0-9a-f]{48}$/;
 
 export type PublicAppEnvironment = "production" | "development" | "test";
 export type PublicAppOrigin = string & { readonly __publicAppOrigin: unique symbol };
@@ -147,5 +148,15 @@ export function createPublicAppUrl(
   }
   appendApprovedQuery(url, query);
   return url.toString();
+}
+
+export function createChallengeUrl(
+  challengeCode: string,
+  origin: PublicAppOrigin = PUBLIC_APP_ORIGIN,
+): string {
+  if (!publicChallengeCodePattern.test(challengeCode)) {
+    throw configurationError("challenge codes must be lowercase 192-bit hexadecimal values.");
+  }
+  return createPublicAppUrl(`/challenge/${challengeCode}`, {}, origin);
 }
 import { controlledSources, parseEntryContext, type PermittedEntryQuery } from "./entryContext.ts";

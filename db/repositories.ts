@@ -23,6 +23,7 @@ export interface AtomicD1Database {
 
 export type AtomicOperation =
   | "complete_quiz_and_create_result"
+  | "create_challenge"
   | "accept_challenge"
   | "complete_challenge_and_compare"
   | "update_streak"
@@ -44,6 +45,7 @@ export interface DurableRepository {
 
 export const ATOMICITY_CONTRACT: Readonly<Record<AtomicOperation, string>> = Object.freeze({
   complete_quiz_and_create_result: "Validate the authoritative answer rows, mark one attempt completed and insert exactly one immutable result in one D1 batch.",
+  create_challenge: "Load one completed authoritative result, then rely on unique creation-idempotency, public-code and revocation-verifier indexes so concurrent requests create at most one challenge.",
   accept_challenge: "Consume at most one challenge use and insert one idempotent challenge-attempt record in one D1 batch.",
   complete_challenge_and_compare: "Verify matching scoring versions, complete the recipient attempt and persist the comparison outcome in one D1 batch.",
   update_streak: "Read the current deterministic streak state and apply one compare-and-set update guarded by version in one D1 batch.",

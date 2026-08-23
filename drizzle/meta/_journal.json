@@ -15,6 +15,13 @@
       "when": 1787509811482,
       "tag": "0001_same_vertigo",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1787526910924,
+      "tag": "0002_little_inertia",
+      "breakpoints": true
     }
   ]
 }

@@ -282,13 +282,19 @@ Manual gate before retry:
 
 Rollback after any later approved creation is to remove the preview-only binding first, verify production remains unbound, then delete the preview database only with separate explicit deletion approval. No cleanup action is required for this stopped attempt because no resource exists.
 
-Prompt 9 remains blocked. The recommended next option is to create a separate owner-only staging Site with its own isolated D1 database, apply the preview gate there, and keep the live public Site entirely untouched, unbound and undeployed.
+At this historical checkpoint Prompt 9 remained blocked. The recommended next option was to create a separate owner-only staging Site with its own isolated D1 database, apply the preview gate there, and keep the live public Site entirely untouched, unbound and undeployed.
 
 #### Isolation resolution, 23 August 2026
 
 The separate environment now exists as **What’s Your Bride Price Staging** at `https://whats-your-bride-price-staging.ayo43077.chatgpt.site/`. It has custom restricted access protected by sign-in, permits the owner only, and retains normal workspace-administrator oversight. Its isolated empty D1 database is bound as `DB` and has zero tables. R2 is null and no custom domain is attached.
 
-The live Site at `https://brideprice.classesforculture.com` remains separate, unbound and unchanged. No migration, seed, production-data import, public write, analytics SDK, payment, commerce or advertising capability has been activated. Prompt 9 remains paused until the staging branch is officially associated with this restricted Site and a review build is validated and saved without deployment. Migrations and seeds require the next explicit approval gate.
+The live Site at `https://brideprice.classesforculture.com` remains separate, unbound and unchanged. No migration, seed, production-data import, public write, analytics SDK, payment, commerce or advertising capability has been activated. At this checkpoint Prompt 9 was paused pending official association of the staging branch and validation of a saved review build without deployment. Migrations and seeds require a separate explicit approval gate.
+
+#### Prompt 9 local challenge gate, 24 August 2026
+
+The owner approved one additive local migration after `0001`: `0002_little_inertia.sql`. It remains unapplied to every hosted database. Its focused verification must cover empty-database migration, upgrade from `0000` plus `0001`, repeat execution, historical-row preservation, nullable historical verifier fields, duplicate non-null verifier rejection and application-layer malformed-hash rejection.
+
+Before any separately approved hosted activation, rerun the focused migration and challenge-service suites, `npm run test:all`, `npm run build` and `git diff --check`. Confirm that authoritative completed results supply edition and score, challenge codes contain 192 random bits, idempotency cannot cross result or subject boundaries, raw revocation tokens are returned once and never stored, historical rows without verifiers cannot be revoked, the rate-limit boundary fails closed, public projections remain minimal, private photos stay device-local, and the `challenges` flag remains false by default. Ordinary builds and tests must not contact hosted storage or run migrations or seeds.
 
 ## Production smoke test for a future approved release
 

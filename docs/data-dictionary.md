@@ -118,15 +118,17 @@ Projection: `PublicResultData` contains only slug, edition, score, total, tier, 
 
 Purpose: safe invitation based on a verified result.
 
-Fields: `id`, `public_code`, optional `inviter_result_id`, `edition_id`, `verified_score_to_beat`, `total`, `scoring_version`, optional `safe_inviter_avatar_id`, optional `reviewed_inviter_name`, `state`, optional `use_limit`, `use_count`, `expires_at`, `revoked_at`, `anonymized_at`, `deleted_at`, `version`, `created_at`, `updated_at`.
+Fields: `id`, `public_code`, optional `inviter_result_id`, `edition_id`, `verified_score_to_beat`, `total`, `scoring_version`, optional `safe_inviter_avatar_id`, optional `reviewed_inviter_name`, nullable `creation_idempotency_key_hash`, nullable `revocation_token_hash`, `state`, optional `use_limit`, `use_count`, `expires_at`, `revoked_at`, `anonymized_at`, `deleted_at`, `version`, `created_at`, `updated_at`.
 
 Relationships: belongs to edition and optional inviter result; parent of challenge attempts; optional event and media linkage.
 
-Indexes: `challenges_public_code_uq`; `challenges_lookup_idx`; `challenges_inviter_idx`.
+Indexes: `challenges_public_code_uq`; `challenges_creation_idempotency_hash_uq` (unique, partial where non-null); `challenges_revocation_token_hash_uq` (unique, partial where non-null); `challenges_lookup_idx`; `challenges_inviter_idx`.
 
 Projection: `TrustedChallengeEntryData` contains only public code, edition, verified score and total, compatible scoring version, safe avatar, reviewed inviter name and expiry. A crawler read never creates acceptance.
 
 `challenges_public_code_format` rejects guessable short codes and malformed codes before insertion.
+
+New challenge creation requires both verifier fields to be exactly 64 lowercase hexadecimal characters at the application boundary. Only domain-separated SHA-256 hashes are stored. The database columns remain nullable solely for compatibility with historical rows, and a historical row without a revocation verifier cannot be revoked by token.
 
 ### `challenge_attempts`
 

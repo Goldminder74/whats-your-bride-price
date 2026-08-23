@@ -92,6 +92,9 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
   assert.match(source, /ALL AFRICA.*ACCESS UNLOCKED/s);
   assert.match(safeguards, /Bride Price Royalty/);
   assert.match(source, /Enter Region/);
+  assert.match(source, /Challenge friends/);
+  assert.match(source, /generic regional nomination while verified challenges are unavailable/);
+  assert.match(source, /createChallengeIdempotencyKey/);
   assert.doesNotMatch(source, /Enter(?: this)? world/i);
   assert.doesNotMatch(`${source}${safeguards}`, /higher your bride price|bride price you deserve|groom must pay|prove your high value|financially prepared/i);
   assert.doesNotMatch(source, /wildly addictive|JOY WITH|cinematic/i);
