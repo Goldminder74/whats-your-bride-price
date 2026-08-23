@@ -96,7 +96,9 @@ These contexts are enumerated with a reason in `tests/copy-safety-audit.mjs`. A 
 
 ## Privacy, cultural review and audience copy
 
-The About panel now states that player photos are processed in the browser and are never uploaded, transmitted or stored, and that names and photos are excluded from quiz recovery. This matches the implementation audited in `docs/data-and-privacy-inventory.md`.
+The About panel and both avatar/setup compositions now distinguish the original photo from the sanitised in-memory copy. They state that photo choice is optional, processing occurs on-device, the original is never uploaded, source metadata is not copied into the re-encoded JPEG, removal clears the in-memory copy, and photo choice does not affect scoring. The fast entry also states that anonymous play needs no account and that limited, non-authoritative recovery expires after 24 hours without names or photos. The result explains that a private photo can enter only a portrait the player deliberately downloads or hands to the operating-system share sheet; public links and previews use approved avatar and regional artwork.
+
+The About panel records that D1, R2 and public deletion controls are inactive. `Clear local quiz data` removes recovery, regional mastery scores and the current tab's anonymous functional session. This is operational privacy copy, not a claim that a live durable deletion endpoint exists.
 
 It also explains that a short quiz necessarily simplifies diverse subjects, points to reviewed sources, and directs users to report cultural inaccuracies or insensitive wording through the Classes for Culture contact channel. No public reporting address or dedicated reporting form exists in this repository, so the contact wording is intentionally provider-neutral until the owner approves a specific destination.
 
@@ -134,5 +136,6 @@ The following judgement calls should receive product-owner approval before produ
 - The title and top-tier name remain intentionally provocative. Their framing depends on the safeguard staying present and readable.
 - Browser and platform share sheets control the final crop and text truncation. The app supplies safe text, but deployment-stage real-device checks remain necessary.
 - The adult-audience statement is informational and is not age assurance; jurisdiction-specific legal review remains outside this task.
+- Browser image decoders and JPEG encoders vary across devices. The privacy claim is limited to application behaviour and tested metadata exclusion; it does not make a legal guarantee about operating-system or hosting-provider logs.
 
 No deployment, publication, DNS change, production-data change or production-access change is part of this audit.

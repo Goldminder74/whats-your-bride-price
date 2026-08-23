@@ -1,4 +1,5 @@
-import { avatarChoices, regionOrder, regions, type RegionKey } from "./gameData.ts";
+import { isApprovedAvatarId } from "./avatarRegistry.ts";
+import { regionOrder, regions, type RegionKey } from "./gameData.ts";
 import type { ControlledSource, PermittedEntryQuery } from "./entryContext.ts";
 
 export const quizRecoveryStorageKey = "wybp-active-quiz-v1";
@@ -32,7 +33,6 @@ export type QuizRecoveryState = Readonly<{
 
 const instancePattern = /^[A-Za-z0-9-]{16,80}$/;
 const challengePattern = /^[A-Za-z0-9][A-Za-z0-9_-]{5,63}$/;
-const avatarIds = new Set(avatarChoices.map((avatar) => avatar.id));
 const regionKeys = new Set<string>(regionOrder);
 const sources = new Set<ControlledSource>(["whatsapp", "facebook", "instagram", "tiktok", "copy", "native", "direct", "unknown"]);
 const safeToken = /^[A-Za-z0-9][A-Za-z0-9._~-]*$/;
@@ -90,7 +90,7 @@ export function parseQuizRecovery(
     typeof candidate.edition !== "string" ||
     !regionKeys.has(candidate.edition) ||
     typeof candidate.avatarId !== "string" ||
-    !avatarIds.has(candidate.avatarId) ||
+    !isApprovedAvatarId(candidate.avatarId) ||
     !Number.isInteger(candidate.questionPosition) ||
     (candidate.questionPosition as number) < 0 ||
     (candidate.questionPosition as number) > 12 ||
@@ -136,11 +136,16 @@ export function parseQuizRecovery(
   });
 }
 
-export function createQuizInstanceId(): string {
-  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") return crypto.randomUUID();
-  const bytes = new Uint8Array(16);
-  crypto.getRandomValues(bytes);
-  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+export function createQuizInstanceId(cryptoApi: Pick<Crypto, "getRandomValues" | "randomUUID"> | null | undefined = globalThis.crypto): string | null {
+  if (!cryptoApi?.getRandomValues) return null;
+  try {
+    if (typeof cryptoApi.randomUUID === "function") return cryptoApi.randomUUID();
+    const bytes = new Uint8Array(16);
+    cryptoApi.getRandomValues(bytes);
+    return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+  } catch {
+    return null;
+  }
 }
 
 export function writeQuizRecovery(

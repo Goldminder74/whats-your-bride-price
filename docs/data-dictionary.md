@@ -21,6 +21,21 @@ Storage state: inactive. Repository configuration has no D1 or R2 binding. This 
 
 Where applicable, `created_at` and `updated_at` record UTC lifecycle times, `expires_at` schedules retention or public availability, `revoked_at` ends public authority without erasing the audit record, `anonymized_at` records removal of identity linkage, and `deleted_at` marks deletion or tombstoning. State checks constrain each table to its documented lifecycle.
 
+## Prompt 8 local identity and media contracts
+
+These contracts do not add tables or activate storage.
+
+| Contract | Fields or representation | Lifetime and authority | Prohibited destinations |
+| --- | --- | --- | --- |
+| Anonymous functional session | Version `1`, 128-bit lowercase hexadecimal raw ID, `createdAt`, `expiresAt` | Tab-scoped `sessionStorage`, 24 hours maximum, non-authoritative; rotated after expiry and user-clearable | URLs, metadata, share or nomination links, diagnostics, logs, events, recovery, D1 and R2. Any later durable subject must use an approved server-side pseudonymous or salted-hash representation |
+| Reviewed display name | Optional NFC string, trimmed and internal whitespace collapsed, at most 30 grapheme clusters | In-memory for the current page only | Recovery, analytics, URLs, filenames, media keys and unreviewed public projection. Controls, null, unsafe invisible or bidi formatting and angle brackets are invalid |
+| Approved avatar ID | One of the 12 stable IDs in `app/avatarRegistry.ts` | Safe local and public presentation identifier; invalid or retired IDs resolve to the default allowlisted avatar | Presentation markup and arbitrary remote URLs |
+| Original photo | Function-local `File` and byte buffer | Only during validation and decode; never authoritative | All persistence, URLs, events, logs, metadata, public projections, D1 and R2 |
+| Sanitised private photo | Browser-created JPEG, maximum 1600 px side, quality 0.90, maximum 3 MB, in-memory Blob and object URL | At most 30 minutes and cleared earlier on removal, replacement, avatar choice, restart, failure, cancellation or unmount | Recovery, analytics, query or share URLs, Open Graph, dynamic public metadata, challenge preview, server response, D1, R2 and media keys |
+| Deletion credential verifier | Version, internal target record ID, record-bound SHA-256 token hash, issue and expiry time, rotation | Proposed D1-private service state; bearer issued once, verifier expires after 30 days | Raw bearer-token storage, public projections, analytics, logs and URLs |
+
+The current schema has `results.deletion_token_hash`, lifecycle states, anonymisation, revocation and deletion timestamps, and operation idempotency hashes needed for later repository integration. `db/deletionReadiness.ts` supplies the tested cryptographic service contract only. No migration or endpoint is activated by Prompt 8.
+
 ## Tables
 
 ### `quiz_editions`

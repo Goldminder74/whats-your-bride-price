@@ -1,4 +1,6 @@
-import { avatarChoices, regionOrder, type RegionKey } from "./gameData.ts";
+import { isApprovedAvatarId } from "./avatarRegistry.ts";
+import { validateDisplayName } from "./displayNames.ts";
+import { regionOrder, type RegionKey } from "./gameData.ts";
 
 declare const __WYBP_REVIEW_CHALLENGE_FIXTURES__: boolean | undefined;
 
@@ -23,23 +25,20 @@ export type SafeguardReviewFixture = Readonly<{
 }>;
 
 const codePattern = /^[A-Za-z0-9][A-Za-z0-9_-]{5,63}$/;
-const safeDisplayNamePattern = /^[\p{L}\p{M}\p{N} .,'’-]+$/u;
 const regionSet = new Set<string>(regionOrder);
-const avatarIdSet = new Set(avatarChoices.map((avatar) => avatar.id));
 const validitySet = new Set(["valid", "expired", "revoked", "unavailable"]);
 
 export function validateTrustedChallengeEntry(value: unknown): TrustedChallengeEntry | null {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   const candidate = value as Record<string, unknown>;
-  const inviter = typeof candidate.inviterDisplayName === "string"
-    ? candidate.inviterDisplayName.trim()
-    : "";
+  const inviterResult = typeof candidate.inviterDisplayName === "string"
+    ? validateDisplayName(candidate.inviterDisplayName)
+    : null;
+  const inviter = inviterResult?.valid ? inviterResult.value : null;
   if (
     typeof candidate.code !== "string" ||
     !codePattern.test(candidate.code) ||
     !inviter ||
-    inviter.length > 40 ||
-    !safeDisplayNamePattern.test(inviter) ||
     typeof candidate.edition !== "string" ||
     !regionSet.has(candidate.edition) ||
     !Number.isInteger(candidate.verifiedScore) ||
@@ -47,7 +46,7 @@ export function validateTrustedChallengeEntry(value: unknown): TrustedChallengeE
     (candidate.verifiedScore as number) > 12 ||
     candidate.total !== 12 ||
     typeof candidate.avatarId !== "string" ||
-    !avatarIdSet.has(candidate.avatarId) ||
+    !isApprovedAvatarId(candidate.avatarId) ||
     typeof candidate.validity !== "string" ||
     !validitySet.has(candidate.validity)
   ) return null;

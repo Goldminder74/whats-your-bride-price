@@ -11,7 +11,7 @@
     "start": "vinext start",
     "preview:review": "npm run build && node tests/preview-server.mjs",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
-    "test:unit": "node --experimental-strip-types --test tests/unit/gameLogic.test.mjs tests/unit/featureFlags.test.mjs tests/unit/publicAppOrigin.test.mjs tests/unit/iconAssets.test.mjs tests/unit/entryContext.test.mjs tests/unit/entryCompatibility.test.mjs tests/unit/shareSupport.test.mjs tests/unit/challengeEntry.test.mjs tests/unit/quizRecovery.test.mjs tests/unit/productSafeguards.test.mjs",
+    "test:unit": "node --experimental-strip-types --test tests/unit/gameLogic.test.mjs tests/unit/featureFlags.test.mjs tests/unit/publicAppOrigin.test.mjs tests/unit/iconAssets.test.mjs tests/unit/entryContext.test.mjs tests/unit/entryCompatibility.test.mjs tests/unit/shareSupport.test.mjs tests/unit/challengeEntry.test.mjs tests/unit/quizRecovery.test.mjs tests/unit/productSafeguards.test.mjs tests/unit/anonymousSession.test.mjs tests/unit/displayNames.test.mjs tests/unit/avatarRegistry.test.mjs tests/unit/privatePhoto.test.mjs tests/unit/deletionReadiness.test.mjs",
     "test:data": "node --experimental-strip-types --test tests/data/data-foundation.test.mjs",
     "data:migrate:dry-run": "node scripts/data-migrations.mjs --dry-run",
     "data:migrate:isolated": "node scripts/data-migrations.mjs --isolated",

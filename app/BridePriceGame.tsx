@@ -4,8 +4,11 @@
 /* eslint-disable react-hooks/set-state-in-effect -- URL hydration and result commits are deliberate lifecycle transitions */
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
+import { clearAnonymousSession, getOrCreateAnonymousSession } from "./anonymousSession";
+import { approvedAvatarRegistry, isApprovedAvatarId, resolveApprovedAvatar } from "./avatarRegistry";
 import type { SafeguardReviewFixture, TrustedChallengeEntry } from "./challengeEntry";
-import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type RegionKey } from "./gameData";
+import { publicDisplayNameFallback, validateDisplayName } from "./displayNames";
+import { regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type RegionKey } from "./gameData";
 import { entryContextToQuery, parseEntryContext, type EntryContext } from "./entryContext";
 import { entryDiagnosticsEnabled, readEntryDiagnostics, type EntryDiagnosticsSnapshot } from "./entryDiagnostics";
 import { emitEntryEvent } from "./entryEvents";
@@ -23,6 +26,7 @@ import {
   SCORING_PRINCIPLES,
 } from "./productSafeguards";
 import { copyShareText } from "./shareSupport";
+import { privatePhotoFriendlyMessage, privatePhotoLimits, sanitizePrivatePhoto } from "./privatePhoto";
 import {
   clearQuizRecovery,
   createQuizInstanceId,
@@ -169,7 +173,7 @@ const legacyAvatarChoices = [
 ];
 const regions = educationalRegions;
 const regionOrder = educationalRegionOrder;
-const avatarChoices = educationalAvatarChoices;
+const avatarChoices = approvedAvatarRegistry;
 const stampNames: Record<RegionKey, string[]> = {
   west: ["Story Keeper", "Rhythm Caller", "Table Diplomat", "Golden Host"],
   east: ["Horizon Seeker", "Coffee Circle", "Coast Connector", "Open Sky"],
@@ -264,6 +268,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState<string | null>(null);
   const [photoNotice, setPhotoNotice] = useState("");
+  const [photoNoticeKind, setPhotoNoticeKind] = useState<"neutral" | "success" | "error">("neutral");
+  const [photoProcessing, setPhotoProcessing] = useState(false);
+  const [localDataNotice, setLocalDataNotice] = useState("");
   const [avatarId, setAvatarId] = useState(trustedChallenge?.avatarId || avatarChoices[0].id);
   const [showAllAvatars, setShowAllAvatars] = useState(false);
   const [index, setIndex] = useState(0);
@@ -293,15 +300,20 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const audioRef = useRef<AudioContext | null>(null);
   const revealTimerRef = useRef<number | null>(null);
   const photoObjectUrlRef = useRef<string | null>(null);
+  const photoBlobRef = useRef<Blob | null>(null);
+  const photoAbortRef = useRef<AbortController | null>(null);
+  const photoExpiryTimerRef = useRef<number | null>(null);
   const photoSelectionRef = useRef(0);
   const questionHeadingRef = useRef<HTMLHeadingElement>(null);
   const startLockRef = useRef(false);
   const region = regions[regionKey];
   const question = region.questions[index];
-  const avatarChoice = avatarChoices.find((item) => item.id === avatarId) || avatarChoices[0];
+  const avatarChoice = resolveApprovedAvatar(avatarId);
   const avatar = avatarChoice.src;
-  const privatePlayerName = name.trim() || "Guest";
-  const portraitDisplayName = privatePlayerName === "Guest" ? "A Most Excellent Human" : privatePlayerName;
+  const displayNameValidation = useMemo(() => validateDisplayName(name), [name]);
+  const privatePlayerName = displayNameValidation.valid ? displayNameValidation.value || "" : "";
+  const portraitDisplayName = privatePlayerName || publicDisplayNameFallback;
+  const displayNameError = displayNameValidation.valid ? "" : displayNameValidation.message;
   const portrait = photo || avatar;
   const correctCount = answers.reduce((sum, answer) => sum + answer, 0);
   const tier = calculateResultTier(correctCount);
@@ -389,6 +401,15 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       setBestScores(Object.fromEntries(Object.entries(saved).filter(([key, value]) => regions[key as RegionKey] && typeof value === "number")) as Partial<Record<RegionKey, number>>);
     } catch { /* device progress is optional */ }
   }, [fastEntryEnabled, safeguardReviewFixture, trustedChallenge]);
+
+  useEffect(() => {
+    const session = getOrCreateAnonymousSession(window.sessionStorage);
+    if (!session.available) return;
+    const timer = window.setTimeout(() => {
+      void getOrCreateAnonymousSession(window.sessionStorage);
+    }, Math.max(1, session.expiresAt - Date.now() + 1));
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (!fastEntryEnabled || !["entry", "challenge", "fast_setup"].includes(screen)) return;
@@ -494,7 +515,14 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
 
   useEffect(() => () => {
     if (revealTimerRef.current !== null) window.clearTimeout(revealTimerRef.current);
+    photoSelectionRef.current += 1;
+    photoAbortRef.current?.abort();
+    photoAbortRef.current = null;
+    if (photoExpiryTimerRef.current !== null) window.clearTimeout(photoExpiryTimerRef.current);
+    photoExpiryTimerRef.current = null;
     if (photoObjectUrlRef.current) URL.revokeObjectURL(photoObjectUrlRef.current);
+    photoObjectUrlRef.current = null;
+    photoBlobRef.current = null;
   }, []);
 
   useEffect(() => {
@@ -586,17 +614,24 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     }
   };
 
-  const clearPhoto = () => {
+  const clearPhoto = (notice = "", noticeKind: "neutral" | "error" = "neutral") => {
     photoSelectionRef.current += 1;
+    photoAbortRef.current?.abort();
+    photoAbortRef.current = null;
+    if (photoExpiryTimerRef.current !== null) window.clearTimeout(photoExpiryTimerRef.current);
+    photoExpiryTimerRef.current = null;
     if (photoObjectUrlRef.current) URL.revokeObjectURL(photoObjectUrlRef.current);
     photoObjectUrlRef.current = null;
+    photoBlobRef.current = null;
     setPhoto(null);
-    setPhotoNotice("");
+    setPhotoProcessing(false);
+    setPhotoNotice(notice);
+    setPhotoNoticeKind(noticeKind);
     if (fileRef.current) fileRef.current.value = "";
   };
 
   const selectAvatar = (id: string) => {
-    if (!avatarChoices.some((item) => item.id === id)) return;
+    if (!isApprovedAvatarId(id)) return;
     clearPhoto();
     setAvatarId(id);
     if (fastEntryEnabled) emitEntryEvent({
@@ -666,40 +701,47 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     const input = event.currentTarget;
     const file = event.target.files?.[0];
     if (!file) return;
-    const selection = photoSelectionRef.current + 1;
-    photoSelectionRef.current = selection;
-    setPhotoNotice("");
-    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size > 8 * 1024 * 1024) {
-      setPhotoNotice("Choose a JPEG, PNG or WebP image smaller than 8 MB.");
-      input.value = "";
-      return;
-    }
-    const candidateUrl = URL.createObjectURL(file);
+    clearPhoto();
+    const selection = photoSelectionRef.current;
+    const controller = new AbortController();
+    photoAbortRef.current = controller;
+    setPhotoProcessing(true);
+    setPhotoNoticeKind("neutral");
+    setPhotoNotice("Processing your photo privately on this device…");
     try {
-      const image = new Image();
-      image.src = candidateUrl;
-      await image.decode();
-      if (!image.naturalWidth || !image.naturalHeight || image.naturalWidth > 6000 || image.naturalHeight > 6000 || image.naturalWidth * image.naturalHeight > 24_000_000) {
-        throw new Error("Image dimensions are unsupported");
-      }
-      if (selection !== photoSelectionRef.current) {
-        URL.revokeObjectURL(candidateUrl);
-        return;
-      }
-      if (photoObjectUrlRef.current) URL.revokeObjectURL(photoObjectUrlRef.current);
-      photoObjectUrlRef.current = candidateUrl;
-      setPhoto(candidateUrl);
-      setPhotoNotice("Photo ready on this device. It is not uploaded or saved.");
+      const sanitized = await sanitizePrivatePhoto(file, { signal: controller.signal });
+      if (selection !== photoSelectionRef.current || controller.signal.aborted) return;
+      const sanitizedUrl = URL.createObjectURL(sanitized.blob);
+      photoBlobRef.current = sanitized.blob;
+      photoObjectUrlRef.current = sanitizedUrl;
+      setPhoto(sanitizedUrl);
+      setPhotoNoticeKind("success");
+      setPhotoNotice("Sanitised photo ready. The original was not uploaded, and metadata was removed from this on-device copy.");
+      photoExpiryTimerRef.current = window.setTimeout(() => {
+        clearPhoto("Your private photo expired from memory. Your avatar is ready instead.");
+      }, privatePhotoLimits.lifetimeMs);
     } catch (error) {
-      URL.revokeObjectURL(candidateUrl);
-      setPhotoNotice("That image could not be opened safely. Your avatar is still ready.");
-      reportAppError("photo_read_failed", error, { action: "private_photo_decode" });
-      input.value = "";
+      if (selection === photoSelectionRef.current) {
+        setPhotoNoticeKind("error");
+        setPhotoNotice(privatePhotoFriendlyMessage(error));
+        if (!(error instanceof DOMException && error.name === "AbortError")) reportAppError("photo_read_failed", error, { action: "private_photo_sanitize" });
+      }
+    } finally {
+      if (selection === photoSelectionRef.current) {
+        setPhotoProcessing(false);
+        photoAbortRef.current = null;
+        input.value = "";
+      }
     }
   };
 
   const beginQuiz = () => {
     if (startLockRef.current) return;
+    if (!displayNameValidation.valid) {
+      document.querySelector<HTMLInputElement>("[data-display-name]")?.focus();
+      return;
+    }
+    if (displayNameValidation.value !== null && name !== displayNameValidation.value) setName(displayNameValidation.value);
     startLockRef.current = true;
     setStartLocked(true);
     if (fastEntryEnabled && answerChoices.length > 0 && quizInstanceId) {
@@ -787,6 +829,17 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
 
+  const clearLocalQuizData = () => {
+    clearPhoto();
+    clearQuizRecovery(window.localStorage, window.sessionStorage);
+    clearAnonymousSession(window.sessionStorage);
+    try { window.localStorage.removeItem("wybp-region-scores"); } catch { /* local continuity is optional */ }
+    setBestScores({});
+    setQuizInstanceId(null);
+    setRecoveryNotice("");
+    setLocalDataNotice("Local quiz recovery, mastery scores and this tab’s anonymous session have been cleared.");
+  };
+
   const leaveSetup = () => {
     if (!fastEntryEnabled) {
       setScreen("home");
@@ -831,7 +884,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
 
   const nominate = async () => {
     setShareNotice("");
-    const text = `${name || "I"} just played the ${region.name} edition of What’s Your Bride Price? I nominate you next. ${SAFE_RESULT_SHARE_SUFFIX}`;
+    const text = `${privatePlayerName || "I"} just played the ${region.name} edition of What’s Your Bride Price? I nominate you next. ${SAFE_RESULT_SHARE_SUFFIX}`;
     if (navigator.share) {
       try { await navigator.share({ title: "You’ve been nominated!", text, url: nominationUrl }); return; } catch (error) {
         if (!(error instanceof DOMException && error.name === "AbortError")) reportAppError("share_failed", error, { action: "nomination" });
@@ -999,7 +1052,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           <div className="fast-avatar-copy">
             <p className="eyebrow">{region.place}</p>
             <h1>CHOOSE YOUR<br /><i>PLAYER.</i></h1>
-            <p>{region.name} is ready. Use the selected avatar, choose another, or add a private photo.</p>
+            <p>{region.name} is ready. Play anonymously with no account. Use an avatar, or optionally add a private photo processed only on this device.</p>
             <div className="setup-meta"><span>12 questions</span><span>About 3 minutes</span></div>
           </div>
           <div className="compact-player-card">
@@ -1010,7 +1063,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             </div>
             <p className="compact-duration">12 questions <span>•</span> About 3 minutes</p>
             <p className="entry-safeguard safeguard-decision compact-safeguard" id="avatar-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
-            <button className="big-action fast-quiz-start" aria-describedby="avatar-entry-safeguard" disabled={startLocked} onClick={beginQuiz}>{answerChoices.length > 0 ? `Continue at Question ${Math.min(answerChoices.length + 1, 12)}` : photo ? "Start Question 1" : "Continue without a photo"} <span>▶</span></button>
+            <button className="big-action fast-quiz-start" aria-describedby="avatar-entry-safeguard" disabled={startLocked || photoProcessing} onClick={beginQuiz}>{photoProcessing ? "Processing photo…" : answerChoices.length > 0 ? `Continue at Question ${Math.min(answerChoices.length + 1, 12)}` : photo ? "Start Question 1" : "Continue without a photo"} <span>▶</span></button>
             <div className="compact-avatar-grid" aria-label="Choose an African avatar">
               {avatarChoices.slice(0, showAllAvatars ? avatarChoices.length : 6).map((item, avatarIndex) => {
                 const active = !photo && avatarId === item.id;
@@ -1022,15 +1075,16 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             </div>
             <button className="show-avatar-action" onClick={() => setShowAllAvatars((current) => !current)}>{showAllAvatars ? "Show fewer avatars" : "See all 12 avatars"}</button>
             <div className="private-photo-actions">
-              <button aria-describedby="avatar-entry-safeguard" onClick={() => {
+              <button aria-describedby="avatar-entry-safeguard" disabled={photoProcessing} onClick={() => {
                 emitEntryEvent({ name: "photo_picker_opened", source: entryContext.source, edition: regionKey, nominated: entryContext.nominated === "1", hasChallenge: Boolean(trustedChallenge), hasInvalidContext: false });
                 fileRef.current?.click();
-              }}>＋ Choose a private photo</button>
-              {photo && <button onClick={clearPhoto}>Remove photo</button>}
+              }}>＋ {photo ? "Choose a different private photo" : "Choose a private photo"}</button>
+              {(photo || photoProcessing) && <button onClick={() => clearPhoto("Photo removed. Your avatar is ready instead.")}>Remove my photo</button>}
             </div>
             <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" onChange={onPhoto} hidden />
-            {photoNotice && <p className="photo-status" role="status">{photoNotice}</p>}
-            <p className="recovery-explainer">If this tab refreshes, your edition, avatar and quiz answers can be restored for up to 24 hours. Photos and names are never saved.</p>
+            <p className="private-photo-explainer" id="private-photo-explainer">Optional. JPEG, PNG or WebP up to 8 MB. We re-encode the pixels on this device, remove source metadata and never upload the original. Your photo never affects scoring.</p>
+            {photoNotice && <p className={`photo-status is-${photoProcessing ? "processing" : photoNoticeKind}`} data-photo-state={photoProcessing ? "processing" : photoNoticeKind} role="status" aria-live="polite">{photoNotice}</p>}
+            <p className="recovery-explainer">No account is required. This tab can restore only your edition, avatar and answer choices for up to 24 hours. Names and photos are never saved.</p>
             <button className="start-again-control" onClick={restart}>Start again</button>
           </div>
         </section>
@@ -1136,11 +1190,15 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               {avatarChoices.map((item) => <button key={item.id} className={!photo && avatarId === item.id ? "active" : ""} aria-pressed={!photo && avatarId === item.id} onClick={() => selectAvatar(item.id)} aria-label={`Choose ${item.name}, ${item.vibe}`}><img src={item.src} alt="" width="256" height="256" loading={fastEntryEnabled ? "lazy" : undefined} decoding="async" /><span>{item.name}</span></button>)}
             </div>
             <p className="entry-safeguard safeguard-decision setup-safeguard" id="setup-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
-            <button className="upload-own" aria-describedby="setup-entry-safeguard" onClick={() => fileRef.current?.click()}><span>＋</span><b>Or upload your own icon</b><small>Private. Never leaves your device.</small></button>
+            <button className="upload-own" aria-describedby="setup-entry-safeguard" disabled={photoProcessing} onClick={() => fileRef.current?.click()}><span>＋</span><b>{photo ? "Choose a different private photo" : "Optional: choose your own photo"}</b><small>Processed on this device. The original is never uploaded.</small></button>
+            {(photo || photoProcessing) && <button className="remove-photo-action" onClick={() => clearPhoto("Photo removed. Your avatar is ready instead.")}>Remove my photo</button>}
             <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" onChange={onPhoto} hidden />
+            <p className="private-photo-explainer" id="setup-photo-explainer">We accept JPEG, PNG or WebP up to 8 MB, re-encode the pixels on this device and remove source metadata. Photo choice never affects scoring.</p>
+            {photoNotice && <p className={`photo-status is-${photoProcessing ? "processing" : photoNoticeKind}`} data-photo-state={photoProcessing ? "processing" : photoNoticeKind} role="status" aria-live="polite">{photoNotice}</p>}
             <label htmlFor="player-name">What should we call you?</label>
-            <input id="player-name" value={name} onChange={(e) => setName(e.target.value.slice(0, 30))} placeholder="Your name (optional)" />
-            <button className="big-action" aria-describedby="setup-entry-safeguard" onClick={beginQuiz}>Enter Region 0{regionOrder.indexOf(regionKey) + 1} <span>▶</span></button>
+            <input id="player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={displayNameError ? "setup-name-error" : undefined} placeholder="Name or pseudonym (optional)" />
+            {displayNameError && <p className="display-name-error" id="setup-name-error" role="alert">{displayNameError}</p>}
+            <button className="big-action" aria-describedby="setup-entry-safeguard" disabled={photoProcessing} onClick={beginQuiz}>{photoProcessing ? "Processing photo…" : `Enter Region 0${regionOrder.indexOf(regionKey) + 1}`} <span>▶</span></button>
           </div>
         </section>
       )}
@@ -1150,7 +1208,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           <div className="quiz-pattern" aria-hidden="true" />
           <div className="quiz-header">
             <button onClick={changeAvatarDuringQuiz}>← Change avatar</button>
-            <div className="quiz-player"><img src={portrait} alt="" /><span>{name || avatarChoice.name}</span></div>
+            <div className="quiz-player"><img src={portrait} alt="" /><span>{privatePlayerName || avatarChoice.name}</span></div>
             <div className="game-hud">
               <span className="hud-edition">{region.name}</span>
               <span className="hud-aura"><i>✦</i><b>{aura}</b> aura</span>
@@ -1161,7 +1219,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           </div>
           {fastEntryEnabled && <div className="quiz-player-tools">
             <label htmlFor="quiz-player-name">Display name <span>(optional)</span></label>
-            <input id="quiz-player-name" value={name} onChange={(event) => setName(event.target.value.slice(0, 30))} placeholder="Add name" />
+            <input id="quiz-player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={displayNameError ? "quiz-name-error" : undefined} placeholder="Add a name or pseudonym" />
+            {displayNameError && <p className="display-name-error" id="quiz-name-error" role="alert">{displayNameError}</p>}
             <button onClick={restart}>Start again</button>
           </div>}
           {recoveryNotice && <p className="quiz-recovery-notice" role="status">{recoveryNotice}</p>}
@@ -1235,7 +1294,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           {tier >= 2 && <div className="celebration-halo" aria-hidden="true">{Array.from({ length: 16 + tier * 4 }, (_, i) => <i key={i} style={{ "--angle": `${i * 15}deg`, "--delay": `${(i % 5) * .07}s` } as React.CSSProperties} />)}</div>}
           {allAfricaJustUnlocked && <div className="all-africa-coronation" role="dialog" aria-modal="true" aria-label="All Africa access unlocked">
             <div className="coronation-fire" aria-hidden="true">{Array.from({ length: 45 }, (_, i) => <i key={i} style={{ "--i": i } as React.CSSProperties} />)}</div>
-            <div className="coronation-card"><span>✦ ◆ ◈ ✺ ☼</span><p>THE ULTIMATE PASSPORT</p><h2>ALL AFRICA<br /><i>ACCESS UNLOCKED</i></h2><b>Five regions mastered. Five scores of 9 or higher. One continent explored.</b><small>{name || "Champion"}, your Motherland Passport is complete. The council has declared your knowledge journey legendary.</small><small className="coronation-safeguard">{PRODUCT_SAFEGUARD}</small><button onClick={() => setAllAfricaJustUnlocked(false)}>Claim the crown ✦</button></div>
+            <div className="coronation-card"><span>✦ ◆ ◈ ✺ ☼</span><p>THE ULTIMATE PASSPORT</p><h2>ALL AFRICA<br /><i>ACCESS UNLOCKED</i></h2><b>Five regions mastered. Five scores of 9 or higher. One continent explored.</b><small>{privatePlayerName || "Champion"}, your Motherland Passport is complete. The council has declared your knowledge journey legendary.</small><small className="coronation-safeguard">{PRODUCT_SAFEGUARD}</small><button onClick={() => setAllAfricaJustUnlocked(false)}>Claim the crown ✦</button></div>
           </div>}
           <p className="result-kicker">{region.name} edition • playful cultural knowledge scorecard</p>
           <div className="result-layout">
@@ -1257,7 +1316,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               <p className="result-description">{tierCopy[tier]}</p>
               <div className="result-aura"><span>Final aura</span><b>{revealAura.toLocaleString()}</b><i>+500 reveal bonus</i></div>
               <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
-              {fastEntryEnabled && <div className="result-name-editor"><label htmlFor="result-player-name">Name on your portrait <span>(optional)</span></label><input id="result-player-name" value={name} onChange={(event) => setName(event.target.value.slice(0, 30))} placeholder="A Most Excellent Human" /></div>}
+              {fastEntryEnabled && <div className="result-name-editor"><label htmlFor="result-player-name">Name or pseudonym on your portrait <span>(optional)</span></label><input id="result-player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={displayNameError ? "result-name-error" : undefined} placeholder={publicDisplayNameFallback} />{displayNameError && <p className="display-name-error" id="result-name-error" role="alert">{displayNameError}</p>}</div>}
+              {photo && <p className="private-media-boundary">Your private photo can appear only in the portrait you deliberately download or send through your device’s share sheet. Public links and previews use approved avatar and regional artwork.</p>}
               <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>
               <button className="nominate-action" onClick={nominate}><span>＋</span><b>Nominate a friend</b><small>Sends them straight to the {region.short} edition</small><i>→</i></button>
               {shareNotice && <p className="share-notice" role="status">{shareNotice}</p>}
@@ -1274,9 +1334,12 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           <div className="about-sheet"><button className="modal-close" onClick={() => setMenuOpen(false)}>×</button>
             <p className="eyebrow">About this experience</p><h2>THE STAKES ARE HIGH<br /><i>PROVE YOUR CULTURE KNOWLEDGE</i></h2>
             <p className="about-safeguard">{PRODUCT_SAFEGUARD}</p>
-            <p>This is a fictional entertainment and learning experience. Five fast-moving editions turn selected African languages, histories, proverbs, foodways, music and visual cultures into a knowledge quest built for curiosity. It does not value people or assess anyone’s suitability for marriage or relationships.</p>
+            <p>This is a fictional entertainment and learning experience. Five fast-moving editions turn selected African languages, histories, proverbs, foodways, music and visual cultures into a knowledge quest built for curiosity. It does not value people or assess anyone’s suitability for marriage or relationships. Anonymous play needs no account.</p>
             <section className="about-scoring" aria-labelledby="about-scoring-title"><h3 id="about-scoring-title">How scoring works</h3>{SCORING_PRINCIPLES.map((principle) => <p key={principle}>{principle}</p>)}</section>
-            <div className="guardrails"><div><b>Africa is plural</b><span>Each short question simplifies a diverse subject and opens a door. It never claims to contain a whole people, place or universal rule.</span></div><div><b>Your portrait is private</b><span>Photos are processed in your browser and are never uploaded, transmitted or stored. Names and photos are excluded from quiz recovery.</span></div><div><b>Learn as you play</b><span>Every answer unlocks a reviewed cultural explanation, correct guess or not.</span></div><div><b>An original score</b><span>The reactive audio is an abstract game soundtrack, not a traditional recording.</span></div></div>
+            <div className="guardrails"><div><b>Africa is plural</b><span>Each short question simplifies a diverse subject and opens a door. It never claims to contain a whole people, place or universal rule.</span></div><div><b>Your portrait is private</b><span>Photos are optional. The original is never uploaded. Its decoded pixels are resized and re-encoded on this device so source metadata is not copied. Remove my photo clears the in-memory copy. Names and photos are excluded from recovery, and neither changes scoring.</span></div><div><b>Limited recovery</b><span>This tab can restore edition, approved avatar and answer choices for up to 24 hours. It is non-authoritative and contains no name, photo or result score.</span></div><div><b>Learn as you play</b><span>Every answer unlocks a reviewed cultural explanation, correct guess or not.</span></div><div><b>An original score</b><span>The reactive audio is an abstract game soundtrack, not a traditional recording.</span></div></div>
+            <p className="durable-storage-note"><b>Durable controls</b> Durable storage and public deletion controls are not active in this build. No D1 database or R2 media bucket is connected.</p>
+            <button className="clear-local-data" onClick={clearLocalQuizData}>Clear local quiz data</button>
+            {localDataNotice && <p className="local-data-notice" role="status">{localDataNotice}</p>}
             <p className="cultural-review-note"><b>Cultural review and reporting</b> Questions and explanations are based on the sources below, but any short quiz can miss nuance. Report cultural inaccuracies or insensitive wording through the Classes for Culture contact channel so the material can be reviewed.</p>
             <p className="audience-note"><b>Audience</b> Designed for adults and people who meet the applicable age of digital consent. It is not directed to children under 13. The game does not collect age or request proof of age.</p>
             <p className="source-label">Follow the knowledge trail</p>

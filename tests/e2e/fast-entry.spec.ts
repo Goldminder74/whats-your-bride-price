@@ -1,6 +1,31 @@
 import { expect, test } from "@playwright/test";
 
 const directWest = "/?edition=west&source=whatsapp&utm_medium=social&utm_campaign=roots_2026&ref=Auntie-7";
+const tinyPng = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=", "base64");
+
+function crc32(buffer: Buffer): number {
+  let crc = 0xffffffff;
+  for (const byte of buffer) {
+    crc ^= byte;
+    for (let bit = 0; bit < 8; bit += 1) crc = (crc >>> 1) ^ (0xedb88320 & -(crc & 1));
+  }
+  return (crc ^ 0xffffffff) >>> 0;
+}
+
+function pngTextChunk(marker: string): Buffer {
+  const type = Buffer.from("tEXt");
+  const data = Buffer.from(`Comment\0${marker}`);
+  const chunk = Buffer.alloc(12 + data.length);
+  chunk.writeUInt32BE(data.length, 0);
+  type.copy(chunk, 4);
+  data.copy(chunk, 8);
+  chunk.writeUInt32BE(crc32(Buffer.concat([type, data])), 8 + data.length);
+  return chunk;
+}
+
+function pngWithControlledMetadata(marker = "EXIF_TEST_MARKER GPS_TEST_MARKER GPSLatitude"): Buffer {
+  return Buffer.concat([tinyPng.subarray(0, -12), pngTextChunk(marker), tinyPng.subarray(-12)]);
+}
 
 test.describe.configure({ mode: "serial" });
 
@@ -198,6 +223,12 @@ test("name begins after entry, remains editable and is never persisted", async (
   expect(new URL(page.url()).search).not.toContain("Adaeze");
   await name.fill("Ada");
   await expect(page.locator(".quiz-player")).toContainText("Ada");
+  await name.fill("  Ọláìyá    نُور  ");
+  await name.blur();
+  await expect(name).toHaveValue("Ọláìyá نُور");
+  await name.fill("<script>alert(1)</script>");
+  await expect(page.getByRole("alert")).toContainText("Please remove hidden formatting");
+  await expect(name).toHaveAttribute("aria-invalid", "true");
 });
 
 test("private photo picker is explicit, removable and produces no external request", async ({ page }) => {
@@ -226,10 +257,22 @@ test("private photo picker is explicit, removable and produces no external reque
   await fileChooser.setFiles({
     name: "private.png",
     mimeType: "image/png",
-    buffer: Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=", "base64"),
+    buffer: pngWithControlledMetadata(),
   });
-  await expect(page.getByRole("status")).toContainText("not uploaded or saved");
+  await expect(page.getByRole("status")).toContainText("metadata was removed");
+  await expect(page.getByRole("status")).toHaveAttribute("data-photo-state", "success");
   await expect(page.locator(".compact-avatar-hero img")).toHaveAttribute("src", /^blob:/);
+  const sanitised = await page.locator(".compact-avatar-hero img").evaluate(async (image) => {
+    const response = await fetch((image as HTMLImageElement).src);
+    const blob = await response.blob();
+    const bytes = new Uint8Array(await blob.arrayBuffer());
+    return { type: blob.type, size: blob.size, text: new TextDecoder("latin1").decode(bytes) };
+  });
+  expect(sanitised.type).toBe("image/jpeg");
+  expect(sanitised.size).toBeLessThanOrEqual(3 * 1024 * 1024);
+  expect(sanitised.text).not.toContain("EXIF_TEST_MARKER");
+  expect(sanitised.text).not.toContain("GPS_TEST_MARKER");
+  expect(sanitised.text).not.toContain("GPSLatitude");
   await page.getByRole("button", { name: "Start Question 1" }).click();
   await page.getByRole("button", { name: /dawn/i }).click();
   await expect.poll(() => page.evaluate(() => localStorage.getItem("wybp-active-quiz-v1"))).not.toBeNull();
@@ -238,10 +281,50 @@ test("private photo picker is explicit, removable and produces no external reque
   expect(recovery).not.toContain("private.png");
   expect(recovery).not.toMatch(/photo|filename/i);
   await page.getByRole("button", { name: /Change avatar/ }).click();
-  await page.getByRole("button", { name: "Remove photo" }).click();
+  await page.getByRole("button", { name: "Remove my photo" }).click();
   await expect(page.locator(".compact-avatar-hero img")).toHaveAttribute("src", "/avatars/amara.webp");
+  await expect(page.getByRole("status")).toContainText("Photo removed");
+  await expect(page.getByRole("status")).toHaveAttribute("data-photo-state", "neutral");
   expect(await page.evaluate(() => (window as Window & { __revokedPhotoUrls?: string[] }).__revokedPhotoUrls?.length)).toBeGreaterThan(0);
   expect(externalRequests).toEqual([]);
+});
+
+test("forged, unsupported and oversized photos fail safely and never block play", async ({ page }) => {
+  await page.goto(directWest);
+  const input = page.locator('input[type="file"]');
+  await input.setInputFiles({ name: "forged.png", mimeType: "image/png", buffer: Buffer.from("<svg><script>alert(1)</script></svg>") });
+  await expect(page.getByRole("status")).toContainText("genuine JPEG, PNG or WebP");
+  await expect(page.getByRole("status")).toHaveAttribute("data-photo-state", "error");
+  await expect(page.locator(".compact-avatar-hero img")).toHaveAttribute("src", "/avatars/amara.webp");
+
+  await input.setInputFiles({ name: "oversized.png", mimeType: "image/png", buffer: Buffer.alloc(8 * 1024 * 1024 + 1) });
+  await expect(page.getByRole("status")).toContainText("over 8 MB");
+  await expect(page.getByRole("status")).toHaveAttribute("data-photo-state", "error");
+  await page.getByRole("button", { name: "Continue without a photo" }).click();
+  await expect(page.getByRole("heading", { level: 2 })).toContainText("However long the night");
+});
+
+test("a superseded photo cannot replace the latest sanitised selection", async ({ page }) => {
+  await page.addInitScript(() => {
+    const original = window.createImageBitmap.bind(window);
+    let call = 0;
+    Object.defineProperty(window, "createImageBitmap", {
+      configurable: true,
+      value: async (image: ImageBitmapSource, options?: ImageBitmapOptions) => {
+        call += 1;
+        if (call === 1) await new Promise((resolve) => window.setTimeout(resolve, 120));
+        return original(image, options);
+      },
+    });
+  });
+  await page.goto(directWest);
+  const input = page.locator('input[type="file"]');
+  await input.setInputFiles({ name: "first.png", mimeType: "image/png", buffer: tinyPng });
+  await input.setInputFiles({ name: "second.png", mimeType: "image/png", buffer: pngWithControlledMetadata("SECOND_SOURCE_MARKER") });
+  await expect(page.getByRole("status")).toContainText("Sanitised photo ready");
+  await page.waitForTimeout(180);
+  await expect(page.getByRole("status")).toContainText("Sanitised photo ready");
+  await expect(page.locator(".compact-avatar-hero img")).toHaveAttribute("src", /^blob:/);
 });
 
 test("quiz refresh recovery is versioned, tab-scoped and Start again clears it", async ({ page }) => {

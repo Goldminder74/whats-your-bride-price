@@ -1,4 +1,6 @@
-import { avatarChoices, regionOrder, type RegionKey } from "../app/gameData.ts";
+import { isApprovedAvatarId } from "../app/avatarRegistry.ts";
+import { validateDisplayName } from "../app/displayNames.ts";
+import { regionOrder, type RegionKey } from "../app/gameData.ts";
 import { featureFlagNames, type FeatureFlagName } from "../app/featureFlags.ts";
 import { PRODUCT_SAFEGUARD } from "../app/productSafeguards.ts";
 
@@ -57,7 +59,7 @@ export function assertEdition(value: string): RegionKey {
 
 export function assertSafeAvatar(value: string | null): string | null {
   if (value === null) return null;
-  if (!avatarChoices.some((avatar) => avatar.id === value)) fail("invalid_avatar", "safeAvatarId is not in the approved avatar registry");
+  if (!isApprovedAvatarId(value)) fail("invalid_avatar", "safeAvatarId is not in the approved avatar registry");
   return value;
 }
 
@@ -371,15 +373,9 @@ export function validateDeletionOrAnonymisationOperation(
 }
 
 export function validateReviewedDisplayName(value: string): string {
-  const normalized = value.normalize("NFC").trim();
-  if (
-    normalized.length < 1
-    || [...normalized].length > 30
-    || [...normalized].some((character) => character.codePointAt(0)! < 32 || character.codePointAt(0) === 127)
-  ) {
-    fail("invalid_display_name", "reviewed display name is outside the approved bounds");
-  }
-  return normalized;
+  const result = validateDisplayName(value);
+  if (!result.valid || !result.value) fail("invalid_display_name", "reviewed display name is outside the approved bounds");
+  return result.value;
 }
 
 export function createOpaquePublicCode(randomValues = crypto.getRandomValues.bind(crypto)): string {

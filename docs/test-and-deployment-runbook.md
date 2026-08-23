@@ -318,6 +318,16 @@ While the quiz is hosted on ChatGPT Sites:
 
 Payment implementation is **BLOCKED** until the production quiz is demonstrably running on a separately approved commerce-capable host and the migration/commerce gates have passed.
 
+## Dependency-security deployment gate
+
+Audit date: 23 August 2026.
+
+The read-only production dependency audit reported 0 vulnerabilities. The complete development tree reported 20 findings: 1 low, 4 moderate and 15 high. Direct development-package findings were reported for `@cloudflare/vite-plugin`, `drizzle-kit`, `react-server-dom-webpack`, `vinext`, `vite` and `wrangler`. Important transitive findings included `@babel/core`, `@esbuild-kit/core-utils`, `@esbuild-kit/esm-loader`, `brace-expansion`, `esbuild`, `fast-uri`, `image-size`, `js-yaml`, `miniflare`, `nanoid`, `postcss`, `sharp`, `undici` and `ws`.
+
+These findings primarily concern development and build tooling. Reduced apparent runtime reachability is not proof that a vulnerability is harmless, and this record does not claim that every finding is exploitable. No automatic audit fix, forced upgrade or dependency upgrade was run.
+
+Before the next production deployment, the direct and transitive findings require either a compatible upgrade assessment or explicit documented risk acceptance. Any approved upgrade must rerun lint, TypeScript checking, unit tests, data-foundation tests, rendered-HTML tests, all end-to-end suites, the production build, migration dry-run and isolated migration checks, and the authorised preview checks. Automatic forced upgrades remain prohibited.
+
 ## Current audit handoff
 
 - Production changed: no.

@@ -72,7 +72,9 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
   for (const key of ["west", "east", "central", "north", "south"]) {
     assert.match(data, new RegExp(`\\b${key}: \\{`));
   }
-  assert.match(source, /Private\. Never leaves your device\./);
+  assert.match(source, /The original is never uploaded/);
+  assert.match(source, /metadata was removed/);
+  assert.match(source, /No account is required/);
   assert.match(safeguards, /A playful culture score, never a measure of human worth\./);
   assert.match(source, /avatarChoices/);
   assert.match(data, /"image"/);
@@ -99,5 +101,17 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
   assert.match(source, /nominated:\s*"1"/);
   const recovery = await readFile(new URL("../app/quizRecovery.ts", import.meta.url), "utf8");
   assert.match(recovery, /wybp-active-quiz-v1/);
-  assert.doesNotMatch(recovery, /playerName|photoUrl|uploadedPhoto|filename/);
+  assert.doesNotMatch(recovery, /playerName|displayName|photoUrl|uploadedPhoto|imageBlob|objectUrl|filename|anonymousSession/);
+  const anonymousSession = await readFile(new URL("../app/anonymousSession.ts", import.meta.url), "utf8");
+  assert.match(anonymousSession, /getRandomValues/);
+  assert.doesNotMatch(anonymousSession, /Math\.random|localStorage|URLSearchParams|console\./);
+  const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
+  assert.doesNotMatch(layout, /anonymousSession|privatePhoto|blob:/);
+  const events = await readFile(new URL("../app/entryEvents.ts", import.meta.url), "utf8");
+  assert.doesNotMatch(events, /photoBytes|photoBlob|objectUrl|filename|displayName|anonymousSessionId/);
+  const publicOrigin = await readFile(new URL("../app/publicAppOrigin.ts", import.meta.url), "utf8");
+  assert.doesNotMatch(publicOrigin, /displayName|anonymousSession|photo|blob:|filename/);
+  const contracts = await readFile(new URL("../db/dataContracts.ts", import.meta.url), "utf8");
+  const publicProjection = contracts.slice(contracts.indexOf("export interface PublicResultData"), contracts.indexOf("export interface PrivateAttemptData"));
+  assert.doesNotMatch(publicProjection, /photo|blob|filename|anonymousSubjectHash|deletionToken/i);
 });

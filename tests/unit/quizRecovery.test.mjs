@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   clearQuizRecovery,
+  createQuizInstanceId,
   parseQuizRecovery,
   questionImageAssets,
   quizRecoveryLifetimeMs,
@@ -40,6 +41,9 @@ test("versioned recovery accepts only minimal, compatible quiz fields", () => {
   assert.deepEqual(recoveryAnswerResults(parsed), [1, 1]);
   assert.equal("name" in parsed, false);
   assert.equal("photo" in parsed, false);
+  for (const prohibited of ["displayName", "anonymousSessionId", "imageBlob", "objectUrl", "filename", "score", "freeText", "secret"]) {
+    assert.equal(prohibited in parsed, false);
+  }
 });
 
 test("recovery rejects stale, corrupt, oversized, incompatible and cross-tab state", () => {
@@ -74,4 +78,8 @@ test("only explicitly requested image-question assets are eligible for prefetch"
     "/quiz-art/west-2.webp",
     "/quiz-art/west-3.webp",
   ]);
+});
+
+test("keeps the quiz playable by disabling recovery when secure randomness is unavailable", () => {
+  assert.equal(createQuizInstanceId(null), null);
 });

@@ -99,7 +99,9 @@ test("About explains scoring, privacy, cultural review and intended audience", a
   await expect(about).toContainText("A playful culture score, never a measure of human worth.");
   await expect(about).toContainText("How scoring works");
   await expect(about).toContainText("does not assess suitability for marriage or relationships");
-  await expect(about).toContainText("never uploaded, transmitted or stored");
+  await expect(about).toContainText("The original is never uploaded");
+  await expect(about).toContainText("source metadata is not copied");
+  await expect(about).toContainText("public deletion controls are not active");
   await expect(about).toContainText("Cultural review and reporting");
   await expect(about).toContainText("not directed to children under 13");
 });
@@ -167,7 +169,7 @@ test("a selected photo stays in the browser and causes no application upload", a
     name: "private-player.png",
     mimeType: "image/png",
     buffer: Buffer.from(
-      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9Z5p8AAAAASUVORK5CYII=",
+      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
       "base64",
     ),
   });

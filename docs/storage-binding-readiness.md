@@ -34,6 +34,25 @@ These are proposals, not active bindings. An owner must approve the names, provi
 
 Only generated, expressly approved result media may later use R2. Metadata lives in `media_assets`; object bytes use `generated/{edition}/{YYYY}/{MM}/{sha256}-v{generation}.{extension}`. Object keys cannot contain names, emails, original filenames, raw sessions, queries or secrets. Private uploaded photos stay on-device and do not become public media by default.
 
+Prompt 8 makes that boundary executable: original and sanitised private-photo bytes never enter a repository contract, Worker request, public projection or media key. Public media may resolve only an allowlisted stable avatar ID plus approved regional and result fields. A local photo may be composed only after the player deliberately selects Download or the operating-system file share.
+
+## Deletion and anonymisation activation gate
+
+`db/deletionReadiness.ts` is an inactive, synthetic service contract. It uses a one-time 256-bit bearer token, stores only a record-bound SHA-256 verifier, expires credentials after 30 days, supports rotation, uses constant-time comparison and returns non-enumerating outcomes. `deletionEndpointActive` is deliberately `false`; the Worker has no deletion route.
+
+Before any endpoint can be activated, all of the following need separate approval and preview evidence:
+
+1. an approved and isolated D1 binding with a concrete repository implementation;
+2. bearer-token verification or authenticated subject/owner authorization, with raw tokens never persisted or logged;
+3. rate limiting and abuse controls that do not create an advertising identifier;
+4. CSRF analysis for any cookie-authenticated control, plus origin and method enforcement as applicable;
+5. atomic revocation of public projections and later R2 media where relevant;
+6. idempotent deletion/anonymisation, target binding, expiry and credential-rotation tests;
+7. sanitized audit outcomes with no token, display name, photo, filename or unrelated-record existence disclosure;
+8. approved retention rules identifying integrity, security and non-identifying aggregate records that may remain;
+9. isolated preview integration, rollback and export tests; and
+10. separate production migration, endpoint and deployment approval.
+
 ## D1 atomicity
 
 Cloudflare D1 `batch()` is the planned atomic write primitive. Prepared statements in a batch execute sequentially and the full batch aborts or rolls back if one fails. The repository contract reserves this for the six multi-row integrity operations documented in `db/repositories.ts`. No claim is made that those writes are active while D1 remains unbound.
