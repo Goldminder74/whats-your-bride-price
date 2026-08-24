@@ -12,6 +12,13 @@ import {
   resolveChallengeActionMode,
   type ChallengeCreationClient,
 } from "./challengeCreation";
+import ChallengeComparison from "./ChallengeComparison";
+import {
+  buildChallengeAnswerSubmission,
+  type ChallengeCompletionClient,
+} from "./challengeCompletion";
+import { emitChallengeEvent } from "./challengeEvents";
+import type { ChallengeComparisonProjection } from "../db/challengeCompletion";
 import { publicDisplayNameFallback, validateDisplayName } from "./displayNames";
 import { regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type RegionKey } from "./gameData";
 import { entryContextToQuery, parseEntryContext, type EntryContext } from "./entryContext";
@@ -256,6 +263,7 @@ type BridePriceGameProps = {
   trustedChallenge?: TrustedChallengeEntry;
   safeguardReviewFixture?: SafeguardReviewFixture;
   challengeCreationClient?: ChallengeCreationClient;
+  challengeCompletionClient?: ChallengeCompletionClient;
   acceptedChallenge?: boolean;
   acceptedChallengeQuizInstanceId?: string;
 };
@@ -266,7 +274,7 @@ function fastInitialScreen(entry: EntryContext | undefined, challenge: TrustedCh
   return entry?.edition ? "fast_setup" : "entry";
 }
 
-export default function BridePriceGame({ initialEntryContext, trustedChallenge: resolvedTrustedChallenge, safeguardReviewFixture, challengeCreationClient, acceptedChallenge = false, acceptedChallengeQuizInstanceId }: BridePriceGameProps) {
+export default function BridePriceGame({ initialEntryContext, trustedChallenge: resolvedTrustedChallenge, safeguardReviewFixture, challengeCreationClient, challengeCompletionClient, acceptedChallenge = false, acceptedChallengeQuizInstanceId }: BridePriceGameProps) {
   const trustedChallenge = resolvedTrustedChallenge?.validity === "valid" ? resolvedTrustedChallenge : undefined;
   const fastEntryEnabled = activeFeatureFlags.fast_entry;
   const [hydrated, setHydrated] = useState(false);
@@ -299,6 +307,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const [entryDiagnostics, setEntryDiagnostics] = useState<EntryDiagnosticsSnapshot | null>(null);
   const [shareNotice, setShareNotice] = useState("");
   const [challengeCreationState, setChallengeCreationState] = useState<"idle" | "creating" | "success" | "error">("idle");
+  const [comparison, setComparison] = useState<ChallengeComparisonProjection | null>(null);
+  const [completionState, setCompletionState] = useState<"idle" | "loading" | "error">("idle");
   const [createdChallengeUrl, setCreatedChallengeUrl] = useState("");
   const [failedQuestionImages, setFailedQuestionImages] = useState<Set<string>>(() => new Set());
   const [quizInstanceId, setQuizInstanceId] = useState<string | null>(acceptedChallengeQuizInstanceId || null);
@@ -319,6 +329,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const challengeIdempotencyKeyRef = useRef<string | null>(null);
   const challengeCreationPromiseRef = useRef<ReturnType<ChallengeCreationClient["create"]> | null>(null);
   const challengeRevocationTokenRef = useRef<string | null>(null);
+  const challengeCompletionPromiseRef = useRef<ReturnType<ChallengeCompletionClient["complete"]> | null>(null);
+  const challengeCompleteEventRef = useRef(false);
   const region = regions[regionKey];
   const question = region.questions[index];
   const avatarChoice = resolveApprovedAvatar(avatarId);
@@ -328,7 +340,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const portraitDisplayName = privatePlayerName || publicDisplayNameFallback;
   const displayNameError = displayNameValidation.valid ? "" : displayNameValidation.message;
   const portrait = photo || avatar;
-  const correctCount = answers.reduce((sum, answer) => sum + answer, 0);
+  const browserCorrectCount = answers.reduce((sum, answer) => sum + answer, 0);
+  const correctCount = comparison?.recipientScore ?? browserCorrectCount;
   const tier = calculateResultTier(correctCount);
   const aura = answers.reduce((sum, answer) => sum + (answer ? 150 : 45), 0);
   let streak = 0;
@@ -363,15 +376,18 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             && recovery.edition === trustedChallenge.edition
             ? recovery
             : null;
-          if (matchingRecovery && matchingRecovery.questionPosition > 0 && matchingRecovery.questionPosition < 12) {
+          if (matchingRecovery && matchingRecovery.questionPosition > 0 && matchingRecovery.questionPosition <= 12) {
             setAvatarId(matchingRecovery.avatarId);
             setAnswerChoices(matchingRecovery.answerChoices.map((choice) => [...choice]));
             setAnswers(recoveryAnswerResults(matchingRecovery));
             setIndex(Math.min(matchingRecovery.questionPosition, 11));
             setQuizInstanceId(matchingRecovery.instanceId);
-            setRecoveryNotice("Your accepted challenge was restored in this tab.");
-            setScreen("quiz");
-            window.history.replaceState({ wybpScreen: "quiz", wybpChallengeAccepted: true }, "", window.location.href);
+            const restoredScreen: Screen = matchingRecovery.questionPosition === 12 ? "result" : "quiz";
+            setRecoveryNotice(matchingRecovery.questionPosition === 12
+              ? "Your completed challenge result was restored for official confirmation."
+              : "Your accepted challenge was restored in this tab.");
+            setScreen(restoredScreen);
+            window.history.replaceState({ wybpScreen: restoredScreen, wybpChallengeAccepted: true }, "", window.location.href);
           } else {
             setScreen("fast_setup");
             window.history.replaceState({ wybpScreen: "fast_setup", wybpChallengeAccepted: true }, "", window.location.href);
@@ -564,7 +580,36 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   }, []);
 
   useEffect(() => {
+    if (
+      screen !== "result"
+      || !acceptedChallenge
+      || !challengeCompletionClient?.storageAvailable
+      || !trustedChallenge
+      || answerChoices.length !== 12
+      || comparison
+      || completionState !== "idle"
+    ) return;
+    const submission = buildChallengeAnswerSubmission(regionKey, answerChoices);
+    if (submission.length !== 12) { setCompletionState("error"); return; }
+    setCompletionState("loading");
+    challengeCompletionPromiseRef.current ||= challengeCompletionClient.complete(submission);
+    challengeCompletionPromiseRef.current.then((confirmed) => {
+      setComparison(confirmed);
+      setCompletionState("idle");
+      if (!challengeCompleteEventRef.current) {
+        challengeCompleteEventRef.current = true;
+        emitChallengeEvent({ name: "challenge_complete", edition: confirmed.edition, state: "completed" });
+      }
+    }).catch((error) => {
+      challengeCompletionPromiseRef.current = null;
+      setCompletionState("error");
+      reportAppError("challenge_completion_failed", error, { action: "challenge_completion", region: regionKey });
+    });
+  }, [acceptedChallenge, answerChoices, challengeCompletionClient, comparison, completionState, regionKey, screen, trustedChallenge]);
+
+  useEffect(() => {
     if (screen !== "result") return;
+    if (acceptedChallenge && !comparison) return;
     const beforeMastered = regionOrder.filter((key) => (bestScores[key] || 0) > 8).length;
     const next = { ...bestScores, [regionKey]: Math.max(bestScores[regionKey] || 0, correctCount) };
     const afterMastered = regionOrder.filter((key) => (next[key] || 0) > 8).length;
@@ -581,7 +626,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     }, 28);
     return () => window.clearInterval(timer);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [screen]);
+  }, [comparison, screen]);
 
   const playTone = (frequency = 420, flourish = false) => {
     if (!sound) return;
@@ -865,6 +910,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     setScreen(fastEntryEnabled ? "entry" : "home"); setAnswers([]); setAnswerChoices([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setAllAfricaJustUnlocked(false);
     setQuizInstanceId(null); setRecoveryNotice(""); setName(""); setAvatarId(avatarChoices[0].id); setShowAllAvatars(false); setStartLocked(false); startLockRef.current = false;
     setChallengeCreationState("idle"); setCreatedChallengeUrl(""); setShareNotice(""); challengeIdempotencyKeyRef.current = null; challengeCreationPromiseRef.current = null; challengeRevocationTokenRef.current = null;
+    setComparison(null); setCompletionState("idle"); challengeCompletionPromiseRef.current = null; challengeCompleteEventRef.current = false;
     if (fastEntryEnabled) { setEntryContext(parseEntryContext("")); setUnverifiedChallenge(false); }
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
@@ -1410,17 +1456,20 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
               {fastEntryEnabled && <div className="result-name-editor"><label htmlFor="result-player-name">Name or pseudonym on your portrait <span>(optional)</span></label><input id="result-player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={displayNameError ? "result-name-error" : undefined} placeholder={publicDisplayNameFallback} />{displayNameError && <p className="display-name-error" id="result-name-error" role="alert">{displayNameError}</p>}</div>}
               {photo && <p className="private-media-boundary">Your private photo can appear only in the portrait you deliberately download or send through your device’s share sheet. Public links and previews use approved avatar and regional artwork.</p>}
+              {acceptedChallenge && completionState === "loading" && <div className="comparison-loading" role="status" aria-live="polite"><b>Confirming your official challenge score</b><span>Your answers are being checked against the approved answer keys.</span></div>}
+              {acceptedChallenge && completionState === "error" && <div className="comparison-failure" role="status"><b>Your culture result is safe.</b><span>We could not confirm the head-to-head comparison yet. Retry, or continue with a normal regional quiz.</span><div><button type="button" onClick={() => setCompletionState("idle")}>Retry comparison</button><button type="button" onClick={restart}>Play another region</button></div></div>}
+              {acceptedChallenge && comparison && <ChallengeComparison comparison={comparison} onRechallenge={challengeFriends} onPlayAnotherRegion={restart} rechallengeBusy={challengeCreationState === "creating"} />}
               <div className="result-actions">
-                <button className="big-action" onClick={challengeFriends} disabled={challengeCreationState === "creating"} aria-busy={challengeCreationState === "creating"}>{challengeCreationState === "creating" ? "Creating challenge…" : challengeCreationState === "error" ? "Retry challenge" : createdChallengeUrl ? "Share challenge again" : "Challenge friends"} <span>↗</span></button>
+                {!acceptedChallenge && <button className="big-action" onClick={challengeFriends} disabled={challengeCreationState === "creating"} aria-busy={challengeCreationState === "creating"}>{challengeCreationState === "creating" ? "Creating challenge…" : challengeCreationState === "error" ? "Retry challenge" : createdChallengeUrl ? "Share challenge again" : "Challenge friends"} <span>↗</span></button>}
                 <button className="outline-action" onClick={shareResult}>Share my portrait</button>
                 <button className="outline-action" onClick={downloadResult}>↓ Download</button>
               </div>
-              <p className="challenge-action-note">{challengeActionMode === "personalised" ? "Creates one private, verified score challenge link. Repeated taps reuse it." : "Sends a generic regional nomination while verified challenges are unavailable."}</p>
-              <button className="nominate-action" onClick={nominate}><span>＋</span><b>Nominate a friend</b><small>Sends them straight to the {region.short} edition</small><i>→</i></button>
+              {!acceptedChallenge && <p className="challenge-action-note">{challengeActionMode === "personalised" ? "Creates one private, verified score challenge link. Repeated taps reuse it." : "Sends a generic regional nomination while verified challenges are unavailable."}</p>}
+              {!acceptedChallenge && <button className="nominate-action" onClick={nominate}><span>＋</span><b>Nominate a friend</b><small>Sends them straight to the {region.short} edition</small><i>→</i></button>}
               {shareNotice && <p className="share-notice" role="status">{shareNotice}</p>}
-              <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`I nominate you for the ${region.name} edition of What’s Your Bride Price? ${SAFE_RESULT_SHARE_SUFFIX} ${whatsappNominationUrl}`)}`}>Send nomination on WhatsApp ↗</a>
+              {!acceptedChallenge && <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`I nominate you for the ${region.name} edition of What’s Your Bride Price? ${SAFE_RESULT_SHARE_SUFFIX} ${whatsappNominationUrl}`)}`}>Send nomination on WhatsApp ↗</a>}
               <div className={`passport-progress ${allAfricaUnlocked ? "all-access" : ""}`}><span>{allAfricaUnlocked ? "ALL-AFRICA ACCESS UNLOCKED" : "Motherland passport locked"}</span><div>{regionOrder.map((key) => <i key={key} className={(displayScores[key] || 0) > 8 ? "earned" : ""} title={`${regions[key].name}: ${displayScores[key] || 0}/12`}><span>{regions[key].mark}</span><b>{displayScores[key] || 0}/12</b></i>)}</div><b>{allAfricaUnlocked ? "Five masteries complete • Ultimate passport earned" : `${masteredRegions.length}/5 mastery seals • score 9+ in every region to unlock`}</b></div>
-              <button className="play-again" onClick={restart}>Play another edition</button>
+              {!acceptedChallenge && <button className="play-again" onClick={restart}>Play another edition</button>}
             </div>
           </div>
         </section>

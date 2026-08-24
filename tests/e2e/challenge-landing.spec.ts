@@ -28,6 +28,32 @@ async function installChallengeEventRecorder(page: Page) {
   });
 }
 
+async function completeChallengeQuiz(page: Page, correctCount: number) {
+  await page.goto(validPath);
+  await page.getByRole("button", { name: "Accept challenge" }).click();
+  await page.getByRole("button", { name: "Continue without a photo" }).click();
+  for (const [questionIndex, question] of regions.west.questions.entries()) {
+    const buttons = page.locator(".answer-grid > button");
+    let choice = question.correct;
+    if (questionIndex >= correctCount) {
+      if (question.kind === "multi") {
+        choice = [0, 1, 2];
+        if ([...choice].sort().join() === [...question.correct].sort().join()) choice = [0, 1, 3];
+      } else {
+        choice = [(question.correct[0] + 1) % question.options.length];
+      }
+    }
+    for (const option of choice) await buttons.nth(option).click();
+    if (question.kind === "multi") await page.getByRole("button", { name: /Lock in 3\/3 answers/ }).click();
+    await page.locator(".answer-reveal").getByRole("button", { name: questionIndex === 11 ? /Reveal my result/ : /Next challenge/ }).click({ force: true });
+    if (questionIndex < 11 && (questionIndex + 1) % 3 === 0) {
+      await page.getByRole("button", { name: /Claim gem/ }).click();
+    }
+  }
+  await expect(page.locator(".result-stage")).toBeVisible();
+  await expect(page.locator(".challenge-comparison")).toBeVisible();
+}
+
 test.describe.configure({ mode: "serial" });
 
 test.afterAll(async ({ request }) => {
@@ -74,7 +100,9 @@ test("active challenge is personalised in raw HTML, accessible and starts the ri
     trustedChallengeCode: codes.valid,
     attribution: { nominated: true },
   });
-  expect(JSON.stringify(recovery)).not.toMatch(/Nia|10|photo|token|session|idempotency/i);
+  expect(recovery).not.toHaveProperty("score");
+  expect(recovery).not.toHaveProperty("inviterScore");
+  expect(JSON.stringify(recovery)).not.toMatch(/Nia|photo|token|session|idempotency/i);
   const events = await page.evaluate(() => window.__wybpChallengeEvents || []);
   expect(events.map((event) => event.name)).toEqual(["challenge_view", "challenge_accept"]);
   expect(JSON.stringify(events)).not.toMatch(/Nia|score|url|referrer|session|token|user-agent/i);
@@ -132,7 +160,7 @@ test("temporary and offline acceptance failures are retryable without a generic 
   await expect(page.locator("[data-fast-avatar]")).toBeVisible();
 });
 
-test("completed local state is minimal and does not invent comparison results", async ({ browser }) => {
+test("direct completed recovery without an accepted server attempt does not invent comparison results", async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   await context.addInitScript(({ code, answers }) => {
     const instanceId = "completed-instance-0001";
@@ -151,13 +179,65 @@ test("completed local state is minimal and does not invent comparison results", 
   }, { code: codes.valid, answers: regions.west.questions.map((question) => question.correct) });
   const page = await context.newPage();
   await page.goto(validPath);
-  await expect(page.locator("[data-challenge-completed]")).toBeVisible();
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("completed this challenge on this device");
-  await expect(page.locator("body")).toContainText("No comparison is shown yet");
+  await expect(page.locator(".result-stage")).toBeVisible();
+  await expect(page.locator(".comparison-failure")).toBeVisible();
+  await expect(page.locator("body")).toContainText("could not confirm the head-to-head comparison");
   await expect(page.locator("body")).not.toContainText(/beat Nia|tied Nia|family rank|winner/i);
   const storage = await page.evaluate(() => localStorage.getItem("wybp-active-quiz-v1") || "");
   expect(storage).not.toMatch(/Nia|score|photo|token|sessionId/i);
   await context.close();
+});
+
+test("beat, tie and loss show authoritative, encouraging and accessible comparisons", async ({ browser }) => {
+  test.setTimeout(120_000);
+  for (const scenario of [
+    { score: 11, outcome: "beat", title: "Challenge won", difference: "1 point ahead" },
+    { score: 10, outcome: "tied", title: "Perfect tie", difference: "Scores level" },
+    { score: 8, outcome: "did_not_beat", title: "Knowledge celebrated", difference: "2 points apart" },
+  ]) {
+    const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+    const page = await context.newPage();
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await installChallengeEventRecorder(page);
+    await completeChallengeQuiz(page, scenario.score);
+    const comparison = page.locator(".challenge-comparison");
+    await expect(comparison).toHaveAttribute("data-comparison-outcome", scenario.outcome);
+    await expect(comparison.getByRole("heading", { level: 3 })).toHaveText(scenario.title);
+    await expect(comparison).toContainText(`Nia${10}Inviter score`);
+    await expect(comparison).toContainText(`You${scenario.score}Your score`);
+    await expect(comparison).toContainText(scenario.difference);
+    await expect(comparison).toContainText("A playful culture score, never a measure of human worth.");
+    await expect(page.getByRole("button", { name: /Challenge three more people/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Play another region" })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
+    const events = await page.evaluate(() => window.__wybpChallengeEvents || []);
+    expect(events.filter((event) => event.name === "challenge_complete")).toHaveLength(1);
+    expect(events.filter((event) => event.name === "comparison_view")).toHaveLength(1);
+    expect(events.filter((event) => event.name === "comparison_outcome")).toHaveLength(1);
+    expect(events.find((event) => event.name === "comparison_outcome")?.outcome).toBe(scenario.outcome);
+    expect(JSON.stringify(events)).not.toMatch(/Nia|score|code|url|session|token|photo|user-agent/i);
+    await context.close();
+  }
+});
+
+test("comparison actions rechallenge through the generic fallback and return to region selection", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.__wybpChallengeEvents = [];
+    window.addEventListener("wybp:challenge-event", (event) => window.__wybpChallengeEvents?.push({ ...(event as CustomEvent).detail }));
+    Object.defineProperty(navigator, "share", { configurable: true, value: async () => undefined });
+  });
+  await completeChallengeQuiz(page, 11);
+  const primary = page.getByRole("button", { name: /Challenge three more people/ });
+  await primary.focus();
+  await expect(primary).toBeFocused();
+  const box = await primary.boundingBox();
+  expect(box?.height || 0).toBeGreaterThanOrEqual(44);
+  await primary.press("Enter");
+  await expect.poll(() => page.evaluate(() => (window.__wybpChallengeEvents || []).filter((event) => event.name === "rechallenge_start").length)).toBe(1);
+  await primary.click();
+  await expect.poll(() => page.evaluate(() => (window.__wybpChallengeEvents || []).filter((event) => event.name === "rechallenge_start").length)).toBe(1);
+  await page.getByRole("button", { name: "Play another region" }).click();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(/CHOOSE YOUR\s*AFRICAN REGION/);
 });
 
 test("320px, Android and iPhone in-app-browser layouts keep regional identity and actions usable", async ({ browser }) => {

@@ -384,11 +384,14 @@ export class D1ChallengeAcceptanceRepository implements ChallengeAcceptanceRepos
           record.expiresAt,
         ),
         this.database.prepare(`INSERT INTO challenge_attempts (
-          id, challenge_id, recipient_attempt_id, idempotency_key_hash, scoring_version,
-          outcome, state, accepted_at, completed_at, expires_at, version, created_at, updated_at
+          id, challenge_id, recipient_attempt_id, recipient_subject_hash,
+          idempotency_key_hash, scoring_version, outcome, state, accepted_at,
+          completed_at, expires_at, version, created_at, updated_at
         )
-        SELECT ?1, ?2, ?3, ?4, ?5, 'pending', 'accepted', ?6, NULL, ?7, 1, ?6, ?6
-        WHERE changes() = 1`).bind(
+        SELECT ?1, ?2, qa.id, qa.anonymous_subject_hash, ?4, ?5,
+          'pending', 'accepted', ?6, NULL, ?7, 1, ?6, ?6
+        FROM quiz_attempts qa
+        WHERE qa.id = ?3 AND qa.anonymous_subject_hash IS NOT NULL AND changes() = 1`).bind(
           record.challengeAttemptId,
           record.challengeId,
           record.quizAttemptId,

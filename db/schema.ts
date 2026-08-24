@@ -205,6 +205,9 @@ export const challengeAttempts = sqliteTable("challenge_attempts", {
   id: text("id").primaryKey(),
   challengeId: text("challenge_id").notNull().references(() => challenges.id, { onDelete: "cascade" }),
   recipientAttemptId: text("recipient_attempt_id").notNull().references(() => quizAttempts.id, { onDelete: "restrict" }),
+  recipientSubjectHash: text("recipient_subject_hash"),
+  officialResultId: text("official_result_id").references(() => results.id, { onDelete: "set null" }),
+  isOfficialComparison: integer("is_official_comparison", { mode: "boolean" }).notNull().default(false),
   idempotencyKeyHash: text("idempotency_key_hash").notNull(),
   scoringVersion: text("scoring_version").notNull(),
   outcome: text("outcome").notNull().default("pending"),
@@ -220,9 +223,16 @@ export const challengeAttempts = sqliteTable("challenge_attempts", {
 }, (table) => [
   uniqueIndex("challenge_attempts_challenge_attempt_uq").on(table.challengeId, table.recipientAttemptId),
   uniqueIndex("challenge_attempts_idempotency_uq").on(table.idempotencyKeyHash),
+  uniqueIndex("challenge_attempts_official_recipient_uq")
+    .on(table.challengeId, table.recipientSubjectHash)
+    .where(sql`${table.isOfficialComparison} = 1 and ${table.recipientSubjectHash} is not null`),
+  uniqueIndex("challenge_attempts_official_result_uq")
+    .on(table.officialResultId)
+    .where(sql`${table.officialResultId} is not null`),
   index("challenge_attempts_challenge_idx").on(table.challengeId, table.state),
   check("challenge_attempts_outcome_ck", sql`${table.outcome} in ('pending','beat','tied','not_beat','incompatible','unavailable')`),
   check("challenge_attempts_state_ck", sql`${table.state} in ('accepted','completed','expired','anonymized','deleted')`),
+  check("challenge_attempts_official_marker_ck", sql`${table.isOfficialComparison} in (0,1)`),
 ]);
 
 export const referralEvents = sqliteTable("referral_events", {

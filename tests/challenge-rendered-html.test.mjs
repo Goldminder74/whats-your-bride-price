@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { regions } from "../app/gameData.ts";
 
 const codes = Object.freeze({
   valid: "1".repeat(48),
@@ -94,6 +95,70 @@ test("GET, crawler, prefetch, HEAD and metadata-like requests cannot invoke the 
   }
   assert.equal((await request(`/challenge/${codes.valid}`, { method: "HEAD" })).status, 200);
   assert.equal((await request(`/challenge/${codes.valid}/accept`, { method: "GET" })).status, 405);
+  assert.equal((await request(`/challenge/${codes.valid}/complete`, { method: "GET" })).status, 405);
+});
+
+test("authoritative completion accepts answer identifiers, ignores browser scores and returns one safe official comparison", async () => {
+  const acceptanceBody = JSON.stringify({
+    idempotencyKey: "rendered-comparison-acceptance-0001",
+    anonymousSubjectHash: "d".repeat(64),
+  });
+  const accepted = await request(`/challenge/${codes.valid}/accept`, {
+    method: "POST",
+    headers: { origin: "http://localhost", "sec-fetch-site": "same-origin", "content-type": "application/json" },
+    body: acceptanceBody,
+  });
+  assert.equal(accepted.status, 200);
+  const answers = regions.west.questions.map((question, index) => ({
+    questionStableId: `west_q${String(index + 1).padStart(2, "0")}`,
+    selectedOptionIds: question.correct.map((option) => `o${option + 1}`),
+  }));
+  const payload = JSON.stringify({
+    idempotencyKey: "rendered-completion-key-0001",
+    anonymousSubjectHash: "d".repeat(64),
+    answers,
+  });
+  const complete = () => request(`/challenge/${codes.valid}/complete`, {
+    method: "POST",
+    headers: { origin: "http://localhost", "sec-fetch-site": "same-origin", "content-type": "application/json" },
+    body: payload,
+  });
+  const first = await complete();
+  assert.equal(first.status, 200);
+  const response = await first.json();
+  assert.equal(response.completed, true);
+  assert.deepEqual(response.comparison, {
+    edition: "west",
+    editionLabel: "West Africa",
+    inviterDisplayName: "Nia",
+    inviterScore: 10,
+    recipientScore: 12,
+    maximumScore: 12,
+    difference: 2,
+    outcome: "beat",
+    explanation: "You beat the score to protect the family reputation.",
+    masterySealAwarded: true,
+    official: true,
+    safeguard: "A playful culture score, never a measure of human worth.",
+  });
+  assert.equal((await complete()).status, 200);
+  assert.doesNotMatch(JSON.stringify(response), /subject|idempotency|hash|attempt|resultId|session|photo|token/i);
+
+  const forged = await request(`/challenge/${codes.valid}/complete`, {
+    method: "POST",
+    headers: { origin: "http://localhost", "sec-fetch-site": "same-origin", "content-type": "application/json" },
+    body: JSON.stringify({
+      idempotencyKey: "rendered-completion-key-0002",
+      anonymousSubjectHash: "d".repeat(64),
+      answers,
+      score: 0,
+      edition: "south",
+      scoringVersion: "forged",
+      isOfficialComparison: true,
+    }),
+  });
+  assert.equal(forged.status, 400);
+  assert.doesNotMatch(JSON.stringify(await forged.json()), /score|edition|version|database|stack/i);
 });
 
 test("same-origin POST accepts once, reuses safely and rejects tampering without private fields", async () => {

@@ -13,3 +13,16 @@ Prompt 10 provides three dependency-free browser-local event hooks. They dispatc
 The hook payload allowlist is `name`, optional `edition`, coarse `state` and `elapsedMs`. It must never contain a name, score, challenge code, full URL, query, referrer, IP address, user-agent string, session ID, subject hash, internal ID, idempotency value, revocation token or private photo. Later analytics work must preserve bot classification and consent rules and must not count server or crawler fetches as human starts.
 
 Challenge acceptance itself is not an analytics event. It is a strictly functional private record created only by the explicit POST boundary. The hook cannot authorise or substitute for that write.
+
+## Prompt 11 completion and comparison hooks
+
+These hooks remain browser-local `CustomEvent` and performance-mark signals. They do not transmit, persist or queue data.
+
+| Event | Exact meaning | Deduplication and exclusions |
+| --- | --- | --- |
+| `challenge_complete` | The protected completion POST succeeded after authoritative answer-ID scoring and returned the official safe comparison projection. | Once per mounted completed quiz. It is not emitted for browser score calculation, failed submission, retry, GET, render or crawler access. |
+| `comparison_view` | The validated comparison component mounted and became available to the player after the score reveal. | Once per component lifecycle. It does not mean the player read or shared it. |
+| `comparison_outcome` | The validated comparison component displayed one controlled outcome: `beat`, `tied`, `did_not_beat` or `unavailable`. | Once per component lifecycle. The payload contains the enum only, plus approved edition and coarse completed state. |
+| `rechallenge_start` | The player explicitly activated `Challenge three more people`. | Once per mounted comparison, even if the share handoff is retried. It does not claim that a personalised challenge was created or delivered. |
+
+No completion hook may contain names, scores, score differences, maximum scores, full URLs, challenge codes, internal IDs, anonymous subject values, idempotency hashes, session values, IP addresses, user-agent strings, photos or private tokens. No analytics SDK or remote event endpoint is introduced by Prompt 11.

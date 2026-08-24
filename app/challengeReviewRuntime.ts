@@ -20,7 +20,17 @@ import {
   type ChallengeResultRecord,
   type StoredChallengeRecord,
 } from "../db/challengeService.ts";
-import { SCORING_VERSION } from "../db/seeds/development.ts";
+import {
+  CHALLENGE_DIFFICULTY_POLICY,
+  CHALLENGE_SCORING_WEIGHT_POLICY,
+  ChallengeCompletionService,
+  type ChallengeComparisonProjection,
+  type ChallengeCompletionAuthority,
+  type ChallengeCompletionInsertOutcome,
+  type ChallengeCompletionRepository,
+  type NewChallengeCompletion,
+} from "../db/challengeCompletion.ts";
+import { QUESTION_SET_VERSION, SCORING_VERSION } from "../db/seeds/development.ts";
 
 const INVITER_SUBJECT_HASH = "a".repeat(64);
 
@@ -67,9 +77,19 @@ class ReviewChallengeRepository implements ChallengeRepository {
   }
 }
 
+class ReviewCompletionStore {
+  readonly accepted: NewChallengeAcceptance[] = [];
+  readonly official = new Map<string, ChallengeComparisonProjection>();
+}
+
 class ReviewChallengeAcceptanceRepository implements ChallengeAcceptanceRepository {
   readonly storageAvailable = true;
   private readonly acceptances = new Map<string, StoredChallengeAcceptance>();
+  private readonly completionStore: ReviewCompletionStore;
+
+  constructor(completionStore: ReviewCompletionStore) {
+    this.completionStore = completionStore;
+  }
 
   async getActiveChallenge(publicCode: string, now: number): Promise<ChallengeForAcceptance | null> {
     const fixture = resolveReviewChallengeFixtureByCode(publicCode);
@@ -107,13 +127,77 @@ class ReviewChallengeAcceptanceRepository implements ChallengeAcceptanceReposito
       expiresAt: record.expiresAt,
     });
     this.acceptances.set(record.acceptanceIdempotencyHash, stored);
+    this.completionStore.accepted.push(record);
     return Object.freeze({ kind: "created", record: stored });
+  }
+}
+
+class ReviewChallengeCompletionRepository implements ChallengeCompletionRepository {
+  readonly storageAvailable = true;
+  private readonly store: ReviewCompletionStore;
+
+  constructor(store: ReviewCompletionStore) { this.store = store; }
+
+  async getOfficialCompletion(publicCode: string, subjectHash: string): Promise<ChallengeComparisonProjection | null> {
+    return this.store.official.get(`${publicCode}:${subjectHash}`) || null;
+  }
+
+  async getAcceptedAuthority(publicCode: string, subjectHash: string, now: number): Promise<ChallengeCompletionAuthority | null> {
+    const accepted = [...this.store.accepted].reverse().find((record) =>
+      record.challengePublicCode === publicCode && record.anonymousSubjectHash === subjectHash,
+    );
+    const fixture = resolveReviewChallengeFixtureByCode(publicCode);
+    if (!accepted || !fixture || !["valid", "unicode"].includes(fixture.scenario)) return null;
+    const region = regions[fixture.entry.edition];
+    return Object.freeze({
+      challengeId: accepted.challengeId,
+      publicCode,
+      challengeAttemptId: accepted.challengeAttemptId,
+      recipientAttemptId: accepted.quizAttemptId,
+      recipientSubjectHash: accepted.anonymousSubjectHash,
+      editionId: accepted.editionId,
+      edition: fixture.entry.edition,
+      editionLabel: region.name,
+      scoringVersion: SCORING_VERSION,
+      questionSetVersion: QUESTION_SET_VERSION,
+      questions: Object.freeze(region.questions.map((question, index) => Object.freeze({
+        id: `question_${fixture.entry.edition}_q${String(index + 1).padStart(2, "0")}_v1`,
+        stableId: `${fixture.entry.edition}_q${String(index + 1).padStart(2, "0")}`,
+        version: 1,
+        optionIds: Object.freeze(question.options.map((_, optionIndex) => `o${optionIndex + 1}`)),
+        correctOptionIds: Object.freeze(question.correct.map((optionIndex) => `o${optionIndex + 1}`)),
+        scoringWeight: 1,
+        difficulty: null,
+      }))),
+      inviterDisplayName: fixture.entry.inviterDisplayName,
+      inviterScore: fixture.entry.verifiedScore,
+      inviterCompatibility: Object.freeze({
+        edition: fixture.entry.edition,
+        scoringVersion: SCORING_VERSION,
+        total: fixture.entry.total,
+        questionSetVersion: QUESTION_SET_VERSION,
+        scoringWeightPolicy: CHALLENGE_SCORING_WEIGHT_POLICY,
+        difficultyPolicy: CHALLENGE_DIFFICULTY_POLICY,
+        state: "active",
+        expiresAt: now + 86_400_000,
+      }),
+      expiresAt: now + 86_400_000,
+    });
+  }
+
+  async completeAtomically(record: NewChallengeCompletion): Promise<ChallengeCompletionInsertOutcome> {
+    const key = `${record.authority.publicCode}:${record.authority.recipientSubjectHash}`;
+    const existing = this.store.official.get(key);
+    if (record.official && existing) return Object.freeze({ kind: "official-conflict", comparison: existing });
+    if (record.official) this.store.official.set(key, record.comparison);
+    return Object.freeze({ kind: "created", comparison: this.store.official.get(key) || record.comparison });
   }
 }
 
 type ReviewChallengeRuntime = Readonly<{
   challengeService: ChallengeService;
   acceptanceService: ChallengeAcceptanceService;
+  completionService: ChallengeCompletionService;
 }>;
 
 let runtime: ReviewChallengeRuntime | null = null;
@@ -121,14 +205,18 @@ let runtime: ReviewChallengeRuntime | null = null;
 export function getReviewChallengeRuntime(): ReviewChallengeRuntime | null {
   if (!reviewChallengeFixturesEnabled) return null;
   if (!runtime) {
+    const completionStore = new ReviewCompletionStore();
     runtime = Object.freeze({
       challengeService: new ChallengeService(
         new ReviewChallengeRepository(),
         new InMemoryChallengeRateLimiter(20),
       ),
       acceptanceService: new ChallengeAcceptanceService(
-        new ReviewChallengeAcceptanceRepository(),
+        new ReviewChallengeAcceptanceRepository(completionStore),
         new InMemoryChallengeRateLimiter(20),
+      ),
+      completionService: new ChallengeCompletionService(
+        new ReviewChallengeCompletionRepository(completionStore),
       ),
     });
   }

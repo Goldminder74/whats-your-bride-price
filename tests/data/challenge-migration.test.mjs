@@ -38,10 +38,11 @@ function insertChallenge(database, overrides = {}) {
 
 test("0002 is the sole additive challenge-security migration with the approved checksum", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 3);
+  assert.equal(plan.length, 4);
   assert.equal(plan[2].id, "0002_little_inertia");
   assert.equal(plan[2].checksum, "16750df69b0f23cc2f6c2b2e8c55689fd6a2473d7a0c4665a8b2ee4f7e1f64a7");
   assert.equal(plan[2].statements.length, 4);
+  assert.equal(plan[3].id, "0003_clever_joshua_kane");
   assert.match(plan[2].statements[0], /^ALTER TABLE `challenges` ADD `creation_idempotency_key_hash` text;$/);
   assert.match(plan[2].statements[1], /^ALTER TABLE `challenges` ADD `revocation_token_hash` text;$/);
   assert.match(plan[2].statements[2], /CREATE UNIQUE INDEX `challenges_creation_idempotency_hash_uq`[\s\S]+WHERE[\s\S]+is not null/);
@@ -52,6 +53,7 @@ test("0002 is the sole additive challenge-security migration with the approved c
     "0000_loving_stepford_cuckoos.sql": "3de5ecdbeb6f60cea664f10dcd5f95144d63bf343b9dd9c22d68c764cc1cdf6a",
     "0001_same_vertigo.sql": "8f311c1b0da59394e03811270a67e9b593ca39cef2dd9b964a51d8668675a816",
     "0002_little_inertia.sql": "16750df69b0f23cc2f6c2b2e8c55689fd6a2473d7a0c4665a8b2ee4f7e1f64a7",
+    "0003_clever_joshua_kane.sql": "3eb81a835dcff39f8bc796483b2ca7de1a8f1c29dd218e5c43779f7edcc31fdb",
   });
   for (const [name, expected] of Object.entries(checksums)) {
     const bytes = await readFile(new URL(`../../drizzle/${name}`, import.meta.url));
@@ -83,7 +85,7 @@ test("upgrade from 0000 and 0001 preserves historical challenge rows and nullabl
     ) VALUES ('challenge_historical_0001', ?, NULL, 'edition_west_v1', 7, 12,
       'binary-exact-set-v1', 'active', 0, ?, 1, ?, ?)`).run(code("b"), now + 1000, now, now);
 
-    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0002_little_inertia"]);
+    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0002_little_inertia", "0003_clever_joshua_kane"]);
     assert.deepEqual({ ...database.prepare(`SELECT id, creation_idempotency_key_hash, revocation_token_hash
       FROM challenges WHERE id='challenge_historical_0001'`).get() }, {
       id: "challenge_historical_0001",

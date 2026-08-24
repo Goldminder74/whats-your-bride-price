@@ -12,6 +12,8 @@ import { emitChallengeEvent } from "../../challengeEvents";
 import type { TrustedChallengeEntry } from "../../challengeEntry";
 import type { ChallengeLandingState } from "../../challengeLandingServer";
 import { createChallengeIdempotencyKey } from "../../challengeCreation";
+import type { ChallengeCompletionClient } from "../../challengeCompletion";
+import type { ChallengeAnswerSubmission } from "../../../db/challengeCompletion";
 import { entryContextToQuery, parseEntryContext, type EntryContext } from "../../entryContext";
 import { regions } from "../../gameData";
 import { PRODUCT_SAFEGUARD } from "../../productSafeguards";
@@ -21,10 +23,12 @@ import {
   safeRecoveryAttribution,
   writeQuizRecovery,
 } from "../../quizRecovery";
+import { isSafeChallengeComparisonProjection } from "../../../db/challengeCompletion";
 
 type AcceptedState = Readonly<{
   context: EntryContext;
   quizInstanceId: string;
+  anonymousSubjectHash: string;
 }>;
 
 type ChallengeLandingClientProps = Readonly<{
@@ -86,16 +90,17 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
 
   useEffect(() => {
     if (!trustedChallenge) return;
-    const frame = window.requestAnimationFrame(() => {
+    const frame = window.requestAnimationFrame(async () => {
       const recovery = readQuizRecovery(window.localStorage, window.sessionStorage);
       if (!recovery || recovery.trustedChallengeCode !== code || recovery.edition !== trustedChallenge.edition) return;
-      if (recovery.questionPosition === 12) {
-        setCompletedOnDevice(true);
-        return;
-      }
+      const session = getOrCreateAnonymousSession(window.sessionStorage);
+      if (!session.available) { setCompletedOnDevice(recovery.questionPosition === 12); return; }
+      const anonymousSubjectHash = await deriveAnonymousSubjectHash(session.sessionId);
+      if (!anonymousSubjectHash) { setCompletedOnDevice(recovery.questionPosition === 12); return; }
       setAccepted({
         context: acceptedEntryContext(code, trustedChallenge.edition),
         quizInstanceId: recovery.instanceId,
+        anonymousSubjectHash,
       });
     });
     return () => window.cancelAnimationFrame(frame);
@@ -163,7 +168,7 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
         window.location.pathname,
       );
       window.history.pushState({ wybpChallengeAccepted: true }, "", window.location.pathname);
-      setAccepted({ context, quizInstanceId });
+      setAccepted({ context, quizInstanceId, anonymousSubjectHash });
       setAcceptanceState("idle");
       setStatusMessage("");
     } catch {
@@ -179,6 +184,30 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
     return acceptancePromiseRef.current;
   };
 
+  const completionClient = useMemo<ChallengeCompletionClient | undefined>(() => {
+    if (!accepted || !trustedChallenge) return undefined;
+    return Object.freeze({
+      storageAvailable: true,
+      async complete(answers: readonly ChallengeAnswerSubmission[]) {
+        const response = await fetch(`/challenge/${code}/complete`, {
+          method: "POST",
+          credentials: "same-origin",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            anonymousSubjectHash: accepted.anonymousSubjectHash,
+            idempotencyKey: accepted.quizInstanceId,
+            answers,
+          }),
+        });
+        const body = await response.json().catch(() => null) as Record<string, unknown> | null;
+        if (!response.ok || body?.completed !== true || !isSafeChallengeComparisonProjection(body.comparison)) {
+          throw new Error("challenge_completion_failed");
+        }
+        return body.comparison;
+      },
+    });
+  }, [accepted, code, trustedChallenge]);
+
   if (accepted && trustedChallenge) {
     return (
       <BridePriceGame
@@ -186,6 +215,7 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
         trustedChallenge={trustedChallenge}
         acceptedChallenge
         acceptedChallengeQuizInstanceId={accepted.quizInstanceId}
+        challengeCompletionClient={completionClient}
       />
     );
   }

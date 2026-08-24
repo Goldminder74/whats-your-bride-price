@@ -138,7 +138,9 @@ Fields: `id`, `challenge_id`, `recipient_attempt_id`, `idempotency_key_hash`, `s
 
 Relationships: belongs to a challenge and private recipient attempt.
 
-Indexes: `challenge_attempts_challenge_attempt_uq`; `challenge_attempts_idempotency_uq`; `challenge_attempts_challenge_idx`.
+Prompt 11 comparison fields: `recipient_subject_hash`, copied server-side from the authoritative recipient quiz attempt and validated as a 64-character lowercase SHA-256 value; nullable `official_result_id`, a private foreign key to the first official recipient result with `ON DELETE SET NULL`; and `is_official_comparison`, an internal integer boolean that is not null, defaults to `0` and is constrained to `0` or `1`. Historical and replay rows receive marker `0`. The winning transaction sets marker `1` with the matching result. Triggers prevent clearing the marker, changing its authoritative subject or replacing its result, while result deletion may clear only `official_result_id`. A deleted result therefore leaves its official slot permanently claimed and comparison becomes `unavailable`.
+
+Indexes: `challenge_attempts_challenge_attempt_uq`; `challenge_attempts_idempotency_uq`; `challenge_attempts_official_recipient_uq`; `challenge_attempts_official_result_uq`; `challenge_attempts_challenge_idx`. The recipient index applies where `is_official_comparison = 1` and `recipient_subject_hash IS NOT NULL`, preserving the first-comparison claim even after result deletion. The separate result index applies where `official_result_id IS NOT NULL` and prevents one result from becoming official for multiple challenge attempts.
 
 Projection: private comparison state only. A later result page may expose an outcome label through a separate safe composition.
 
