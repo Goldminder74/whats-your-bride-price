@@ -67,6 +67,7 @@ export default defineConfig(async ({ mode }) => {
         { scenario: "removed", code: "4".repeat(48), inviterDisplayName: "Safiya", edition: "north", verifiedScore: 7, total: 12, avatarId: "samira", validity: "unavailable" },
         { scenario: "temporary", code: "5".repeat(48), inviterDisplayName: "Thandi", edition: "south", verifiedScore: 11, total: 12, avatarId: "mbali", validity: "unavailable" },
         { scenario: "unicode", code: "6".repeat(48), inviterDisplayName: "Ọlá", edition: "west", verifiedScore: 11, total: 12, avatarId: "adjoa", validity: "valid" },
+        { scenario: "nomination", code: "7".repeat(48), inviterDisplayName: "Ọlá", edition: "west", verifiedScore: 12, total: 12, avatarId: "adjoa", validity: "valid" },
       ]
     : null;
   const publicAppEnvironment: PublicAppEnvironment =

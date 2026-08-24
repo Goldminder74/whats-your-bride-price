@@ -2,7 +2,7 @@ import type { PrivateChallengeCreationResponse } from "../db/challengeService.ts
 
 export interface ChallengeCreationClient {
   readonly storageAvailable: boolean;
-  create(idempotencyKey: string): Promise<PrivateChallengeCreationResponse>;
+  create(idempotencyKey: string, displayName: string): Promise<PrivateChallengeCreationResponse>;
 }
 
 export type ChallengeActionMode = "personalised" | "generic-nomination";

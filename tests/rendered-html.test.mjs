@@ -75,8 +75,8 @@ test("default production client output excludes review diagnostics", async () =>
   const serverScripts = serverEntries.filter((entry) => entry.isFile() && entry.name.endsWith(".js"));
   const serverSources = await Promise.all(serverScripts.map((entry) => readFile(resolve(entry.parentPath, entry.name), "utf8")));
   const ordinaryOutput = `${clientOutput}\n${serverSources.join("\n")}`;
-  assert.doesNotMatch(ordinaryOutput, /Ayo scored|ReviewWest_2026|safeguard-low-result|safeguard-high-result|safeguard-reduced-result|safeguard-question/);
-  assert.doesNotMatch(ordinaryOutput, /inviterDisplayName:[`'"](?:Nia|Mirembe|Thandi|Safiya|Ọlá)|111111111111111111111111111111111111111111111111|666666666666666666666666666666666666666666666666/);
+  assert.doesNotMatch(ordinaryOutput, /Ayo scored|ReviewWest_2026|safeguard-low-result|safeguard-high-result|safeguard-reduced-result|safeguard-question|nomination-result/);
+  assert.doesNotMatch(ordinaryOutput, /inviterDisplayName:[`'"](?:Nia|Mirembe|Thandi|Safiya|Ọlá)|111111111111111111111111111111111111111111111111|666666666666666666666666666666666666666666666666|777777777777777777777777777777777777777777777777/);
 });
 
 test("ships sixty educational questions, varied play modes, privacy copy and broad sources", async () => {
@@ -107,16 +107,17 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
   assert.match(source, /ALL AFRICA.*ACCESS UNLOCKED/s);
   assert.match(safeguards, /Bride Price Royalty/);
   assert.match(source, /Enter Region/);
-  assert.match(source, /Challenge friends/);
-  assert.match(source, /generic regional nomination while verified challenges are unavailable/);
-  assert.match(source, /createChallengeIdempotencyKey/);
+  assert.match(source, /Nominate three people/);
+  assert.match(source, /three honest regional-invitation slots while verified challenges are unavailable/);
+  const nomination = await readFile(new URL("../app/NominateThreePanel.tsx", import.meta.url), "utf8");
+  assert.match(nomination, /createChallengeIdempotencyKey/);
   assert.doesNotMatch(source, /Enter(?: this)? world/i);
   assert.doesNotMatch(`${source}${safeguards}`, /higher your bride price|bride price you deserve|groom must pay|prove your high value|financially prepared/i);
   assert.doesNotMatch(source, /wildly addictive|JOY WITH|cinematic/i);
   assert.doesNotMatch(`${source}${data}`, /\u2014/);
-  assert.match(source, /createPublicAppUrl/);
+  assert.match(nomination, /genericNominationUrl/);
   assert.match(source, /edition:\s*regionKey/);
-  assert.match(source, /nominated:\s*"1"/);
+  assert.doesNotMatch(nomination, /nominated:\s*"1"/);
   const recovery = await readFile(new URL("../app/quizRecovery.ts", import.meta.url), "utf8");
   assert.match(recovery, /wybp-active-quiz-v1/);
   assert.doesNotMatch(recovery, /playerName|displayName|photoUrl|uploadedPhoto|imageBlob|objectUrl|filename|anonymousSession/);

@@ -200,35 +200,27 @@ test("a perfect quiz preserves scoring, result, download, sharing and nomination
   let shares = await page.evaluate(() => window.__wybpShares);
   expect(shares?.[0]).toMatchObject({
     title: "My Bride Price culture-game result",
-    url: expect.stringContaining("?edition=west&nominated=1"),
+    url: expect.stringContaining("?edition=west"),
     fileCount: 1,
   });
   expect(shares?.[0]?.text).toContain("A playful culture score, never a measure of human worth.");
+  expect(shares?.[0]?.url).not.toContain("nominated=1");
   expect(new URL(shares?.[0]?.url || "").origin).toBe("http://127.0.0.1:3100");
 
-  await page.getByRole("button", { name: /Challenge friends/ }).click();
+  await page.getByRole("button", { name: /Nominate three people/ }).click();
+  await expect(page.locator("[data-nominate-three]")).toBeVisible();
+  await expect(page.locator("[data-nominate-three]")).toHaveAttribute("data-mode", "generic");
+  await page.locator('[data-slot="1"]').getByRole("button", { name: "Share menu" }).click();
   await expect.poll(() => page.evaluate(() => window.__wybpShares?.length)).toBe(2);
   shares = await page.evaluate(() => window.__wybpShares);
   expect(shares?.[1]).toMatchObject({
-    title: "You’ve been nominated!",
-    url: expect.stringContaining("?edition=west&nominated=1"),
+    title: "You’ve been invited to play!",
+    url: expect.stringContaining("?edition=west"),
   });
   expect(shares?.[1]?.url).not.toContain("/challenge/");
-  await expect(page.locator(".challenge-action-note")).toContainText("generic regional nomination");
-
-  await page.getByRole("button", { name: /Nominate a friend/ }).click();
-  await expect.poll(() => page.evaluate(() => window.__wybpShares?.length)).toBe(3);
-  shares = await page.evaluate(() => window.__wybpShares);
-  expect(shares?.[2]).toMatchObject({
-    title: "You’ve been nominated!",
-    url: expect.stringContaining("?edition=west&nominated=1"),
-  });
-  expect(shares?.[2]?.text).toContain("A playful culture score, never a measure of human worth.");
-
-  const whatsappHref = await page.getByRole("link", { name: /Send nomination on WhatsApp/ }).getAttribute("href");
-  expect(whatsappHref).toContain("https://wa.me/?text=");
-  expect(decodeURIComponent(whatsappHref || "")).toContain("?edition=west&nominated=1");
-  expect(decodeURIComponent(whatsappHref || "")).toContain("A playful culture score, never a measure of human worth.");
+  expect(shares?.[1]?.url).not.toContain("nominated=1");
+  expect(shares?.[1]?.text).toContain("A playful culture score, never a measure of human worth.");
+  await expect(page.locator(".challenge-action-note")).toContainText("regional-invitation slots");
 });
 
 test("a direct west edition link opens setup", async ({ page }) => {

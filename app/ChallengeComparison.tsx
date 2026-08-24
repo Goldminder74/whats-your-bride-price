@@ -8,7 +8,6 @@ type ChallengeComparisonProps = Readonly<{
   comparison: ChallengeComparisonProjection;
   onRechallenge: () => void;
   onPlayAnotherRegion: () => void;
-  rechallengeBusy?: boolean;
 }>;
 
 const outcomeLabels = Object.freeze({
@@ -22,7 +21,6 @@ export default function ChallengeComparison({
   comparison,
   onRechallenge,
   onPlayAnotherRegion,
-  rechallengeBusy = false,
 }: ChallengeComparisonProps) {
   const emittedRef = useRef(false);
   const rechallengeRef = useRef(false);
@@ -72,8 +70,8 @@ export default function ChallengeComparison({
       {comparison.masterySealAwarded && <p className="comparison-mastery"><span aria-hidden="true">✦</span> Regional mastery seal earned through the normal 9+ rule.</p>}
       <p className="comparison-safeguard">{comparison.safeguard}</p>
       <div className="comparison-actions">
-        <button type="button" className="big-action" onClick={rechallenge} disabled={rechallengeBusy}>
-          {rechallengeBusy ? "Creating challenge…" : "Challenge three more people"} <span aria-hidden="true">↗</span>
+        <button type="button" className="big-action" onClick={rechallenge}>
+          Nominate three people <span aria-hidden="true">↗</span>
         </button>
         <button type="button" className="outline-action" onClick={onPlayAnotherRegion}>Play another region</button>
       </div>

@@ -152,6 +152,26 @@ test("creates from authoritative completed result and ignores any browser score 
   assert.equal("photo" in response.challenge, false);
 });
 
+test("validated challenger aliases are applied only to the challenge projection", async () => {
+  const repository = new MemoryRepository();
+  const challengeService = service(repository);
+  const created = await challengeService.create({ ...createInput, displayName: "  Ọlá  " });
+  assert.equal(created.challenge.displayName, "Ọlá");
+  assert.equal((await challengeService.getPublic(created.challenge.challengeCode)).displayName, "Ọlá");
+  assert.equal(repository.results.get(resultReferenceA).reviewedDisplayName, "Ayo");
+
+  const reused = await challengeService.create({ ...createInput, displayName: "Amina" });
+  assert.equal(reused.challenge.challengeCode, created.challenge.challengeCode);
+  assert.equal(reused.challenge.displayName, "Ọlá");
+  assert.equal(repository.challenges.size, 1);
+});
+
+test("challenger aliases reject markup, hidden controls and oversized values", async () => {
+  for (const displayName of ["<img src=x>", "A\u0000B", "a".repeat(31)]) {
+    await rejectsCode(service().create({ ...createInput, displayName }), "invalid_display_name");
+  }
+});
+
 test("refuses missing, incomplete, expired, revoked, malformed and wrong-subject results", async () => {
   const cases = [
     [[], "result_unavailable"],

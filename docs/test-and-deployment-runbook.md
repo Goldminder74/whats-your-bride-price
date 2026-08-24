@@ -298,6 +298,16 @@ On 24 August 2026, the owner approved one further additive local migration after
 
 Before any separately approved hosted activation, rerun the focused migration and challenge-service suites, `npm run test:all`, `npm run build` and `git diff --check`. Confirm that authoritative completed results supply edition and score, challenge codes contain 192 random bits, idempotency cannot cross result or subject boundaries, raw revocation tokens are returned once and never stored, historical rows without verifiers cannot be revoked, the rate-limit boundary fails closed, public projections remain minimal, private photos stay device-local, and the `challenges` flag remains false by default. Ordinary builds and tests must not contact hosted storage or run migrations or seeds.
 
+### Prompt 12 nomination release gate
+
+Run `npm run test:nominate-three` before the complete suite. Confirm exactly three numbered slots; one identical canonical challenge code across WhatsApp, native share and clipboard; centrally validated Unicode alias handling; one idempotent creation; tab-local safe snapshot restoration after refresh and Back; cancelled, failed and blocked handoffs not completing slots; one `share_handoff` maximum per slot; continued sharing after the third handoff; and no message-delivery wording.
+
+The authorised mobile review must demonstrate three successful handoffs in under 30 seconds at a representative iPhone-sized viewport, plus overflow and 44-pixel control checks at 320 pixels, Android and iPhone dimensions. Recheck reduced motion, keyboard focus, live status messages, manual copy fallback, and the permanent safeguard.
+
+Ordinary production output must exclude trusted nomination fixture names, scores, codes and outcomes. Query parameters must not enable challenges or review fixtures. Verify new generated links contain no `nominated=1`, while old valid links remain neutral and direct and invalid or missing editions fall back to regional selection. Confirm no Contacts API, social SDK, analytics transmission, private-photo field, recipient detail, raw session value, idempotency value or revocation token enters events, URLs, storage snapshots or share copy.
+
+Prompt 12 adds no migration. Before any future deployment, verify migrations `0000` through `0003`, `.openai/hosting.json`, production D1/R2 bindings, the staging branch and the preserved abandoned-work stash are unchanged. Hosted challenge creation remains disabled until a separate storage activation decision.
+
 ## Production smoke test for a future approved release
 
 Run from a signed-out mobile browser where public access is intended:

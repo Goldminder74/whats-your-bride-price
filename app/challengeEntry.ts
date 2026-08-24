@@ -23,6 +23,7 @@ export type SafeguardReviewFixture = Readonly<{
   screen: "quiz" | "result";
   score: 0 | 12;
   reducedMotion: boolean;
+  nomination: boolean;
 }>;
 
 const codePattern = /^[0-9a-f]{48}$/;
@@ -68,14 +69,14 @@ export function resolveReviewChallengeFixture(fixtureId: string | undefined): Tr
   return reviewChallengeFixtures.find((fixture) => fixture.scenario === "valid")?.entry;
 }
 
-export type ReviewChallengeScenario = "valid" | "expired" | "revoked" | "removed" | "temporary" | "unicode";
+export type ReviewChallengeScenario = "valid" | "expired" | "revoked" | "removed" | "temporary" | "unicode" | "nomination";
 export type ReviewChallengeFixture = Readonly<{
   scenario: ReviewChallengeScenario;
   entry: TrustedChallengeEntry;
 }>;
 
 const reviewScenarios = new Set<ReviewChallengeScenario>([
-  "valid", "expired", "revoked", "removed", "temporary", "unicode",
+  "valid", "expired", "revoked", "removed", "temporary", "unicode", "nomination",
 ]);
 
 function parseReviewChallengeFixtures(value: unknown): readonly ReviewChallengeFixture[] {
@@ -109,9 +110,15 @@ export function resolveReviewChallengeFixtureByCode(code: string): ReviewChallen
 
 export function resolveSafeguardReviewFixture(fixtureId: string | undefined): SafeguardReviewFixture | undefined {
   if (!reviewChallengeFixturesEnabled) return undefined;
-  if (fixtureId === "safeguard-question") return Object.freeze({ screen: "quiz", score: 0, reducedMotion: false });
-  if (fixtureId === "safeguard-low-result") return Object.freeze({ screen: "result", score: 0, reducedMotion: false });
-  if (fixtureId === "safeguard-high-result") return Object.freeze({ screen: "result", score: 12, reducedMotion: false });
-  if (fixtureId === "safeguard-reduced-result") return Object.freeze({ screen: "result", score: 12, reducedMotion: true });
+  if (fixtureId === "safeguard-question") return Object.freeze({ screen: "quiz", score: 0, reducedMotion: false, nomination: false });
+  if (fixtureId === "safeguard-low-result") return Object.freeze({ screen: "result", score: 0, reducedMotion: false, nomination: false });
+  if (fixtureId === "safeguard-high-result") return Object.freeze({ screen: "result", score: 12, reducedMotion: false, nomination: false });
+  if (fixtureId === "safeguard-reduced-result") return Object.freeze({ screen: "result", score: 12, reducedMotion: true, nomination: false });
+  if (fixtureId === "nomination-result") return Object.freeze({ screen: "result", score: 12, reducedMotion: false, nomination: true });
   return undefined;
+}
+
+export function resolveReviewNominationFixture(): TrustedChallengeEntry | undefined {
+  if (!reviewChallengeFixturesEnabled) return undefined;
+  return reviewChallengeFixtures.find((fixture) => fixture.scenario === "nomination")?.entry;
 }

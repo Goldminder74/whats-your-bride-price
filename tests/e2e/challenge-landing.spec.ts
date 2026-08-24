@@ -207,7 +207,7 @@ test("beat, tie and loss show authoritative, encouraging and accessible comparis
     await expect(comparison).toContainText(`You${scenario.score}Your score`);
     await expect(comparison).toContainText(scenario.difference);
     await expect(comparison).toContainText("A playful culture score, never a measure of human worth.");
-    await expect(page.getByRole("button", { name: /Challenge three more people/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Nominate three people/ })).toBeVisible();
     await expect(page.getByRole("button", { name: "Play another region" })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
     const events = await page.evaluate(() => window.__wybpChallengeEvents || []);
@@ -227,7 +227,7 @@ test("comparison actions rechallenge through the generic fallback and return to 
     Object.defineProperty(navigator, "share", { configurable: true, value: async () => undefined });
   });
   await completeChallengeQuiz(page, 11);
-  const primary = page.getByRole("button", { name: /Challenge three more people/ });
+  const primary = page.getByRole("button", { name: /Nominate three people/ });
   await primary.focus();
   await expect(primary).toBeFocused();
   const box = await primary.boundingBox();

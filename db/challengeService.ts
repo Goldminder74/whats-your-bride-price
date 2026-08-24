@@ -315,6 +315,7 @@ export class ChallengeService {
     resultReference: string;
     idempotencyKey: string;
     anonymousSubjectHash: string;
+    displayName?: unknown;
   }>): Promise<PrivateChallengeCreationResponse> {
     if (!this.repository.storageAvailable) return fail("storage_unavailable");
     const now = this.options.now?.() ?? Date.now();
@@ -327,6 +328,13 @@ export class ChallengeService {
       subjectHash,
       now,
     );
+    const requestedName = input.displayName === undefined
+      ? validateDisplayName(result.reviewedDisplayName || "")
+      : typeof input.displayName === "string"
+        ? validateDisplayName(input.displayName)
+        : null;
+    if (!requestedName?.valid) return fail("invalid_display_name", "Choose a valid name or pseudonym before sharing.");
+    const reviewedInviterName = requestedName.value;
     const idempotencyHash = await sha256Hex(`wybp-challenge-create-v1\u0000${idempotencyKey}`);
     const existing = await this.repository.getChallengeByIdempotencyHash(idempotencyHash);
     if (existing) {
@@ -362,7 +370,7 @@ export class ChallengeService {
         total: result.total,
         scoringVersion: result.scoringVersion,
         safeInviterAvatarId: result.safeAvatarId,
-        reviewedInviterName: result.reviewedDisplayName,
+        reviewedInviterName,
         expiresAt: Math.min(now + CHALLENGE_RETENTION_MS, result.resultExpiresAt ?? Number.MAX_SAFE_INTEGER),
         createdAt: now,
       });

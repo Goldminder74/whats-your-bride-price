@@ -8,11 +8,11 @@ import { clearAnonymousSession, getOrCreateAnonymousSession } from "./anonymousS
 import { approvedAvatarRegistry, defaultAvatarId, isApprovedAvatarId, resolveApprovedAvatar } from "./avatarRegistry";
 import type { SafeguardReviewFixture, TrustedChallengeEntry } from "./challengeEntry";
 import {
-  createChallengeIdempotencyKey,
   resolveChallengeActionMode,
   type ChallengeCreationClient,
 } from "./challengeCreation";
 import ChallengeComparison from "./ChallengeComparison";
+import NominateThreePanel from "./NominateThreePanel";
 import {
   buildChallengeAnswerSubmission,
   type ChallengeCompletionClient,
@@ -27,7 +27,9 @@ import { emitEntryEvent } from "./entryEvents";
 import { reportAppError } from "./errors";
 import { activeFeatureFlags } from "./featureFlags";
 import { answersMatch, calculateResultTier, defaultSoundEnabled, getCelebrationPieceCount } from "./gameLogic";
-import { createPublicAppUrl, resolveBrowserPublicAppOrigin } from "./publicAppOrigin";
+import { resolveBrowserPublicAppOrigin } from "./publicAppOrigin";
+import { genericNominationUrl } from "./nominationExperience";
+import { createReviewNominationClient } from "./nominationReviewClient";
 import {
   PRODUCT_SAFEGUARD,
   RESULT_MEDIA_SAFEGUARD,
@@ -37,7 +39,6 @@ import {
   SAFE_RESULT_SHARE_SUFFIX,
   SCORING_PRINCIPLES,
 } from "./productSafeguards";
-import { copyShareText } from "./shareSupport";
 import { privatePhotoFriendlyMessage, privatePhotoLimits, sanitizePrivatePhoto } from "./privatePhoto";
 import {
   clearQuizRecovery,
@@ -271,6 +272,7 @@ type BridePriceGameProps = {
 function fastInitialScreen(entry: EntryContext | undefined, challenge: TrustedChallengeEntry | undefined, acceptedChallenge = false): Screen {
   if (challenge) return acceptedChallenge ? "fast_setup" : "challenge";
   if (entry?.challenge) return "entry";
+  if (entry?.nominated === "1") return "entry";
   return entry?.edition ? "fast_setup" : "entry";
 }
 
@@ -305,11 +307,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const [entryMediaFailed, setEntryMediaFailed] = useState(false);
   const [entryTimings, setEntryTimings] = useState({ navigationMs: 0, shellVisibleMs: 0, interactiveMs: 0 });
   const [entryDiagnostics, setEntryDiagnostics] = useState<EntryDiagnosticsSnapshot | null>(null);
-  const [shareNotice, setShareNotice] = useState("");
-  const [challengeCreationState, setChallengeCreationState] = useState<"idle" | "creating" | "success" | "error">("idle");
+  const [nominationOpen, setNominationOpen] = useState(false);
   const [comparison, setComparison] = useState<ChallengeComparisonProjection | null>(null);
   const [completionState, setCompletionState] = useState<"idle" | "loading" | "error">("idle");
-  const [createdChallengeUrl, setCreatedChallengeUrl] = useState("");
   const [failedQuestionImages, setFailedQuestionImages] = useState<Set<string>>(() => new Set());
   const [quizInstanceId, setQuizInstanceId] = useState<string | null>(acceptedChallengeQuizInstanceId || null);
   const [recoveryNotice, setRecoveryNotice] = useState("");
@@ -326,9 +326,6 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const photoSelectionRef = useRef(0);
   const questionHeadingRef = useRef<HTMLHeadingElement>(null);
   const startLockRef = useRef(false);
-  const challengeIdempotencyKeyRef = useRef<string | null>(null);
-  const challengeCreationPromiseRef = useRef<ReturnType<ChallengeCreationClient["create"]> | null>(null);
-  const challengeRevocationTokenRef = useRef<string | null>(null);
   const challengeCompletionPromiseRef = useRef<ReturnType<ChallengeCompletionClient["complete"]> | null>(null);
   const challengeCompleteEventRef = useRef(false);
   const region = regions[regionKey];
@@ -351,7 +348,10 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const masteredRegions = regionOrder.filter((key) => (displayScores[key] || 0) > 8);
   const allAfricaUnlocked = masteredRegions.length === regionOrder.length;
   const celebrationPieceCount = getCelebrationPieceCount(tier);
-  const challengeActionMode = resolveChallengeActionMode(activeFeatureFlags.challenges, challengeCreationClient);
+  const reviewChallengeCreationClient = safeguardReviewFixture?.nomination ? createReviewNominationClient() : undefined;
+  const effectiveChallengeCreationClient = challengeCreationClient || reviewChallengeCreationClient;
+  const challengeActionMode = resolveChallengeActionMode(activeFeatureFlags.challenges, effectiveChallengeCreationClient);
+  const nominationScopeId = quizInstanceId || (safeguardReviewFixture?.nomination ? "review-nomination-scope" : "result-not-ready");
 
   useEffect(() => {
     setHydrated(true);
@@ -420,7 +420,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           });
         } else {
           if (safeEntryContext.edition) setRegionKey(safeEntryContext.edition);
-          const initialScreen: Screen = safeEntryContext.edition ? "fast_setup" : "entry";
+          const initialScreen: Screen = safeEntryContext.edition && safeEntryContext.nominated !== "1" ? "fast_setup" : "entry";
           setScreen(initialScreen);
           window.history.replaceState({ wybpScreen: initialScreen }, "", window.location.href);
         }
@@ -832,7 +832,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       if (answerChoices.length === 0) { setAnswers([]); setAnswerChoices([]); }
     } else {
       setIndex(0); setAnswers([]); setAnswerChoices([]);
-      if (fastEntryEnabled) setQuizInstanceId(createQuizInstanceId());
+      setQuizInstanceId(createQuizInstanceId());
     }
     setSelected([]); setFeedbackOpen(false); setScreen("quiz");
     if (fastEntryEnabled) {
@@ -909,7 +909,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     clearPhoto();
     setScreen(fastEntryEnabled ? "entry" : "home"); setAnswers([]); setAnswerChoices([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setAllAfricaJustUnlocked(false);
     setQuizInstanceId(null); setRecoveryNotice(""); setName(""); setAvatarId(avatarChoices[0].id); setShowAllAvatars(false); setStartLocked(false); startLockRef.current = false;
-    setChallengeCreationState("idle"); setCreatedChallengeUrl(""); setShareNotice(""); challengeIdempotencyKeyRef.current = null; challengeCreationPromiseRef.current = null; challengeRevocationTokenRef.current = null;
+    setNominationOpen(false);
     setComparison(null); setCompletionState("idle"); challengeCompletionPromiseRef.current = null; challengeCompleteEventRef.current = false;
     if (fastEntryEnabled) { setEntryContext(parseEntryContext("")); setUnverifiedChallenge(false); }
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
@@ -948,95 +948,14 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     window.scrollTo(0, 0);
   };
 
-  const nominationUrls = useMemo(() => {
+  const resultShareUrl = useMemo(() => {
     if (typeof window === "undefined") return "";
-    const sharedContext = {
-      edition: regionKey,
-      nominated: "1" as const,
-      challenge: entryContext.challenge,
-      utm_source: entryContext.utm_source,
-      utm_medium: entryContext.utm_medium,
-      utm_campaign: entryContext.utm_campaign,
-      ref: entryContext.ref,
-    };
-    const origin = resolveBrowserPublicAppOrigin(window.location.origin);
-    return {
-      native: createPublicAppUrl(window.location.pathname, { ...sharedContext, source: "native" }, origin),
-      whatsapp: createPublicAppUrl(window.location.pathname, { ...sharedContext, source: "whatsapp" }, origin),
-    };
-  }, [entryContext.challenge, entryContext.ref, entryContext.utm_campaign, entryContext.utm_medium, entryContext.utm_source, regionKey]);
-  const nominationUrl = typeof nominationUrls === "string" ? "" : nominationUrls.native;
-  const whatsappNominationUrl = typeof nominationUrls === "string" ? "" : nominationUrls.whatsapp;
+    return genericNominationUrl(regionKey, resolveBrowserPublicAppOrigin(window.location.origin));
+  }, [regionKey]);
 
-  const nominate = async () => {
-    setShareNotice("");
-    const text = `${privatePlayerName || "I"} just played the ${region.name} edition of What’s Your Bride Price? I nominate you next. ${SAFE_RESULT_SHARE_SUFFIX}`;
-    if (navigator.share) {
-      try { await navigator.share({ title: "You’ve been nominated!", text, url: nominationUrl }); return; } catch (error) {
-        if (!(error instanceof DOMException && error.name === "AbortError")) reportAppError("share_failed", error, { action: "nomination" });
-        return;
-      }
-    }
-    try {
-      const copyResult = await copyShareText(navigator.clipboard, `${text} ${nominationUrl}`);
-      if (copyResult !== "copied") throw new Error("Clipboard API unavailable");
-      setShareNotice("Nomination link copied. Paste it into any conversation.");
-    } catch (error) {
-      reportAppError("share_failed", error, { action: "nomination_copy" });
-      setShareNotice("Copying is unavailable here. Use the WhatsApp link or your browser’s share menu.");
-    }
-  };
-
-  const shareChallenge = async (url: string, displayName: string, editionLabel: string, scoreToBeat: number, maximumScore: number) => {
-    const text = `${displayName} scored ${scoreToBeat}/${maximumScore} in the ${editionLabel} edition. Can you beat it? ${SAFE_RESULT_SHARE_SUFFIX}`;
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: "You’ve been challenged!", text, url });
-        setShareNotice("Challenge ready to share again whenever you like.");
-      } catch (error) {
-        if (!(error instanceof DOMException && error.name === "AbortError")) {
-          reportAppError("share_failed", error, { action: "challenge_share" });
-          setShareNotice("Your challenge is ready, but sharing did not open. Try Challenge friends again to copy it.");
-        }
-      }
-      return;
-    }
-    const copyResult = await copyShareText(navigator.clipboard, `${text} ${url}`);
-    setShareNotice(copyResult === "copied"
-      ? "Challenge link copied. Paste it into any conversation."
-      : "Your challenge is ready, but copying is unavailable in this browser.");
-  };
-
-  const challengeFriends = async () => {
-    if (challengeActionMode === "generic-nomination" || !challengeCreationClient) {
-      await nominate();
-      return;
-    }
-    if (challengeCreationState === "creating") return;
-    setShareNotice("");
-    setChallengeCreationState("creating");
-    try {
-      challengeIdempotencyKeyRef.current ||= createChallengeIdempotencyKey();
-      challengeCreationPromiseRef.current ||= challengeCreationClient.create(challengeIdempotencyKeyRef.current);
-      const response = await challengeCreationPromiseRef.current;
-      challengeRevocationTokenRef.current = response.revocationToken;
-      setCreatedChallengeUrl(response.challengeUrl);
-      setChallengeCreationState("success");
-      await shareChallenge(
-        response.challengeUrl,
-        response.challenge.displayName,
-        response.challenge.editionLabel,
-        response.challenge.scoreToBeat,
-        response.challenge.maximumScore,
-      );
-    } catch (error) {
-      challengeCreationPromiseRef.current = null;
-      setChallengeCreationState("error");
-      setShareNotice(error instanceof Error && "userMessage" in error && typeof error.userMessage === "string"
-        ? error.userMessage
-        : "We could not create that challenge. Please try again.");
-      reportAppError("share_failed", error, { action: "challenge_creation" });
-    }
+  const openNominations = () => {
+    setNominationOpen(true);
+    window.requestAnimationFrame(() => document.getElementById("nominate-three-title")?.focus());
   };
 
   const resultBlob = async (): Promise<Blob | null> => {
@@ -1070,7 +989,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     ctx.font = "italic 29px Georgia"; ctx.fillText(`+${gifts[tier][1]} + ${gifts[tier][2]}`, 540, 907);
     ctx.fillStyle = accent; ctx.font = "700 25px Arial"; ctx.fillText(`KNOWLEDGE SCORE ${correctCount}/12 • ${region.name.toUpperCase()}`, 540, 1010);
     ctx.fillStyle = "#f3e7cc"; ctx.font = "900 58px Impact, Arial Black"; ctx.fillText("WHAT’S YOUR BRIDE PRICE?", 540, 1130);
-    ctx.font = "24px Arial"; ctx.fillText("Play your region. Share your result. Nominate a friend.", 540, 1185);
+    ctx.font = "24px Arial"; ctx.fillText("Play your region. Share your result. Nominate three people.", 540, 1185);
     ctx.fillStyle = accent; ctx.font = "700 22px Arial";
     ctx.fillText(RESULT_MEDIA_SAFEGUARD.text, 540, RESULT_MEDIA_SAFEGUARD.baselineY);
     return new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
@@ -1091,7 +1010,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     try {
       const blob = await resultBlob();
       const file = blob ? new File([blob], "my-bride-price-result.png", { type: "image/png" }) : null;
-      const shareData: ShareData = { title: "My Bride Price culture-game result", text: `I scored ${correctCount}/12 and unlocked ${tierTitles[tier]} in the ${region.name} edition. ${SAFE_RESULT_SHARE_SUFFIX}`, url: nominationUrl };
+      const shareData: ShareData = { title: "My Bride Price culture-game result", text: `I scored ${correctCount}/12 and unlocked ${tierTitles[tier]} in the ${region.name} edition. ${SAFE_RESULT_SHARE_SUFFIX}`, url: resultShareUrl };
       if (file && navigator.canShare?.({ files: [file] })) shareData.files = [file];
       if (navigator.share) {
         try { await navigator.share(shareData); } catch (error) {
@@ -1130,17 +1049,17 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
                 <span className="fast-entry-mark" aria-hidden="true">{region.mark}</span>
                 <p className="eyebrow">{region.place}</p>
                 <h1>{entryContext.nominated ? "YOU’VE BEEN NOMINATED." : "YOUR REGION IS READY."}<br /><i>{region.name}</i></h1>
-                <p>{entryContext.nominated ? "A friend has called you into the culture challenge. Bring your best roots knowledge." : region.hello}</p>
+                <p>{entryContext.nominated ? `You have been nominated for the ${region.name} Edition. This legacy invitation carries no inviter name or score.` : region.hello}</p>
                 {entryContext.challenge && <p className="fast-entry-context">Challenge link recognised. Your score will be earned in the game.</p>}
                 <p className="entry-safeguard safeguard-decision" id="direct-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
-                <button className="big-action fast-entry-action" aria-describedby="direct-entry-safeguard" onClick={() => chooseRegion(entryContext.edition!)}>Enter {region.name} <span>▶</span></button>
+                <button className="big-action fast-entry-action" aria-describedby="direct-entry-safeguard" onClick={() => chooseRegion(entryContext.edition!)}>{entryContext.nominated ? `Start ${region.name} edition` : `Enter ${region.name}`} <span>▶</span></button>
               </>
             ) : (
               <>
                 <span className="fast-entry-mark" aria-hidden="true">W</span>
                 <p className="eyebrow">Five regions. Sixty culture questions.</p>
                 <h1>CHOOSE YOUR<br /><i>AFRICAN REGION.</i></h1>
-                <p>Go straight to the edition you know best, or choose one you want to discover.</p>
+                <p>{entryContext.nominated ? "You were nominated to play. Choose a regional edition to begin; no inviter identity or score is attached." : "Go straight to the edition you know best, or choose one you want to discover."}</p>
                 <p className="entry-safeguard safeguard-decision" id="generic-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
                 <div className="fast-region-grid" aria-label="Choose your African region">
                   {regionOrder.map((key) => <button key={key} className={`region-choice-${key}`} data-entry-choice aria-describedby="generic-entry-safeguard" onClick={() => chooseRegion(key)}><span aria-hidden="true">{regions[key].mark}</span>{regions[key].name}</button>)}
@@ -1458,16 +1377,22 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               {photo && <p className="private-media-boundary">Your private photo can appear only in the portrait you deliberately download or send through your device’s share sheet. Public links and previews use approved avatar and regional artwork.</p>}
               {acceptedChallenge && completionState === "loading" && <div className="comparison-loading" role="status" aria-live="polite"><b>Confirming your official challenge score</b><span>Your answers are being checked against the approved answer keys.</span></div>}
               {acceptedChallenge && completionState === "error" && <div className="comparison-failure" role="status"><b>Your culture result is safe.</b><span>We could not confirm the head-to-head comparison yet. Retry, or continue with a normal regional quiz.</span><div><button type="button" onClick={() => setCompletionState("idle")}>Retry comparison</button><button type="button" onClick={restart}>Play another region</button></div></div>}
-              {acceptedChallenge && comparison && <ChallengeComparison comparison={comparison} onRechallenge={challengeFriends} onPlayAnotherRegion={restart} rechallengeBusy={challengeCreationState === "creating"} />}
+              {acceptedChallenge && comparison && <ChallengeComparison comparison={comparison} onRechallenge={openNominations} onPlayAnotherRegion={restart} />}
+              {nominationOpen && <NominateThreePanel
+                surface={acceptedChallenge && comparison ? "comparison" : "result"}
+                edition={regionKey}
+                defaultDisplayName={portraitDisplayName}
+                scopeId={nominationScopeId}
+                actionMode={challengeActionMode}
+                challengeCreationClient={effectiveChallengeCreationClient}
+                onClose={() => setNominationOpen(false)}
+              />}
               <div className="result-actions">
-                {!acceptedChallenge && <button className="big-action" onClick={challengeFriends} disabled={challengeCreationState === "creating"} aria-busy={challengeCreationState === "creating"}>{challengeCreationState === "creating" ? "Creating challenge…" : challengeCreationState === "error" ? "Retry challenge" : createdChallengeUrl ? "Share challenge again" : "Challenge friends"} <span>↗</span></button>}
+                {!acceptedChallenge && <button className="big-action" onClick={openNominations}>Nominate three people <span>↗</span></button>}
                 <button className="outline-action" onClick={shareResult}>Share my portrait</button>
                 <button className="outline-action" onClick={downloadResult}>↓ Download</button>
               </div>
-              {!acceptedChallenge && <p className="challenge-action-note">{challengeActionMode === "personalised" ? "Creates one private, verified score challenge link. Repeated taps reuse it." : "Sends a generic regional nomination while verified challenges are unavailable."}</p>}
-              {!acceptedChallenge && <button className="nominate-action" onClick={nominate}><span>＋</span><b>Nominate a friend</b><small>Sends them straight to the {region.short} edition</small><i>→</i></button>}
-              {shareNotice && <p className="share-notice" role="status">{shareNotice}</p>}
-              {!acceptedChallenge && <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`I nominate you for the ${region.name} edition of What’s Your Bride Price? ${SAFE_RESULT_SHARE_SUFFIX} ${whatsappNominationUrl}`)}`}>Send nomination on WhatsApp ↗</a>}
+              {!acceptedChallenge && <p className="challenge-action-note">{challengeActionMode === "personalised" ? "Prepares one private, verified score challenge for all three sharing slots." : "Opens three honest regional-invitation slots while verified challenges are unavailable."}</p>}
               <div className={`passport-progress ${allAfricaUnlocked ? "all-access" : ""}`}><span>{allAfricaUnlocked ? "ALL-AFRICA ACCESS UNLOCKED" : "Motherland passport locked"}</span><div>{regionOrder.map((key) => <i key={key} className={(displayScores[key] || 0) > 8 ? "earned" : ""} title={`${regions[key].name}: ${displayScores[key] || 0}/12`}><span>{regions[key].mark}</span><b>{displayScores[key] || 0}/12</b></i>)}</div><b>{allAfricaUnlocked ? "Five masteries complete • Ultimate passport earned" : `${masteredRegions.length}/5 mastery seals • score 9+ in every region to unlock`}</b></div>
               {!acceptedChallenge && <button className="play-again" onClick={restart}>Play another edition</button>}
             </div>

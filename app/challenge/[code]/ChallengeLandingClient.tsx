@@ -9,6 +9,7 @@ import {
 } from "../../anonymousSession";
 import { defaultAvatarId, resolveApprovedAvatar } from "../../avatarRegistry";
 import { emitChallengeEvent } from "../../challengeEvents";
+import { emitNominationEvent } from "../../nominationEvents";
 import type { TrustedChallengeEntry } from "../../challengeEntry";
 import type { ChallengeLandingState } from "../../challengeLandingServer";
 import { createChallengeIdempotencyKey } from "../../challengeCreation";
@@ -78,6 +79,7 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
     if (state.kind === "active" && !emittedViewRef.current) {
       emittedViewRef.current = true;
       emitChallengeEvent({ name: "challenge_view", edition: state.challenge.edition, state: "active" });
+      emitNominationEvent({ name: "referred_visit", surface: "challenge_landing", edition: state.challenge.edition });
     }
     if (state.kind !== "active" && !emittedInvalidRef.current) {
       emittedInvalidRef.current = true;
