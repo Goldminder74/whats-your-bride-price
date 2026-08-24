@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import BridePriceGame from "../../BridePriceGame";
+import ShareCentre from "../../ShareCentre";
 import {
   deriveAnonymousSubjectHash,
   getOrCreateAnonymousSession,
@@ -18,6 +19,10 @@ import type { ChallengeAnswerSubmission } from "../../../db/challengeCompletion"
 import { entryContextToQuery, parseEntryContext, type EntryContext } from "../../entryContext";
 import { regions } from "../../gameData";
 import { PRODUCT_SAFEGUARD } from "../../productSafeguards";
+import { resolveBrowserPublicAppOrigin } from "../../publicAppOrigin";
+import { validateSafeNominationChallenge } from "../../nominationExperience";
+import { prepareShareMedia, shareMediaCardFromProjection } from "../../shareMedia";
+import { shareProjectionFromChallenge, type SafeShareProjection } from "../../shareProjection";
 import {
   createQuizInstanceId,
   readQuizRecovery,
@@ -56,11 +61,14 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
   const [accepted, setAccepted] = useState<AcceptedState | null>(null);
   const [completedOnDevice, setCompletedOnDevice] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
+  const [shareCentreOpen, setShareCentreOpen] = useState(false);
+  const [shareProjection, setShareProjection] = useState<SafeShareProjection | null>(null);
   const idempotencyKeyRef = useRef<string | null>(null);
   const acceptancePromiseRef = useRef<Promise<void> | null>(null);
   const emittedViewRef = useRef(false);
   const emittedInvalidRef = useRef(false);
   const emittedAcceptRef = useRef(false);
+  const shareTriggerRef = useRef<HTMLElement | null>(null);
 
   const trustedChallenge = useMemo<TrustedChallengeEntry | null>(() => {
     if (state.kind !== "active") return null;
@@ -273,7 +281,28 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
   const inviterAvatar = resolveApprovedAvatar(challenge.avatarId);
   const artworkName = challenge.edition === "south" ? "southern" : challenge.edition;
 
+  const openShareCentre = (trigger: HTMLElement) => {
+    const origin = resolveBrowserPublicAppOrigin(window.location.origin);
+    const safeChallenge = validateSafeNominationChallenge(
+      challenge,
+      new URL(`/challenge/${challenge.challengeCode}`, `${origin}/`).toString(),
+      origin,
+    );
+    const projection = safeChallenge ? shareProjectionFromChallenge("challenge_landing", safeChallenge, origin) : null;
+    if (!projection) return;
+    shareTriggerRef.current = trigger;
+    setShareProjection(projection);
+    setShareCentreOpen(true);
+  };
+
+  const prepareLandingShareMedia = () => {
+    if (!shareProjection) return Promise.reject(new Error("share_projection_unavailable"));
+    const card = shareMediaCardFromProjection(shareProjection);
+    return card ? prepareShareMedia(card) : Promise.reject(new Error("share_media_card_unavailable"));
+  };
+
   return (
+    <>
     <main className={`challenge-route-shell challenge-region-${challenge.edition}`} data-challenge-active>
       <section className="challenge-route-copy" aria-labelledby="challenge-route-title">
         <div className="challenge-route-emblem" aria-hidden="true">{region.mark}</div>
@@ -300,6 +329,7 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
           <span aria-hidden="true">▶</span>
         </button>
         {statusMessage && <p className="challenge-route-status" role="status" aria-live="polite">{statusMessage}</p>}
+        <button type="button" className="challenge-share-centre-action" onClick={(event) => openShareCentre(event.currentTarget)}>Open Share Centre <span aria-hidden="true">↗</span></button>
         <Link className="challenge-secondary-link" href={normalQuizHref()}>Choose a normal quiz instead</Link>
       </section>
       <div className="challenge-route-art" aria-label={`${challenge.editionLabel} regional game artwork`}>
@@ -309,5 +339,12 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
         <span aria-hidden="true">{region.mark}</span>
       </div>
     </main>
+    {shareCentreOpen && shareProjection && <ShareCentre
+      projection={shareProjection}
+      prepareMedia={prepareLandingShareMedia}
+      onClose={() => setShareCentreOpen(false)}
+      returnFocusRef={shareTriggerRef}
+    />}
+    </>
   );
 }

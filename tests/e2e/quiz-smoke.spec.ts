@@ -192,14 +192,16 @@ test("a perfect quiz preserves scoring, result, download, sharing and nomination
   const downloadPromise = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download" }).click();
   const download = await downloadPromise;
-  expect(download.suggestedFilename()).toBe("bride-price-west-result.png");
+  expect(download.suggestedFilename()).toBe("bride-price-west-story.png");
   expect(await download.path()).toBeTruthy();
 
-  await page.getByRole("button", { name: /Share my portrait/ }).click();
+  await page.getByRole("button", { name: "Open Share Centre" }).click();
+  await expect(page.locator("[data-share-centre]")).toHaveAttribute("data-media-ready", "true");
+  await page.locator("[data-share-centre]").getByRole("button", { name: /Native share/ }).click();
   await expect.poll(() => page.evaluate(() => window.__wybpShares?.length)).toBe(1);
   let shares = await page.evaluate(() => window.__wybpShares);
   expect(shares?.[0]).toMatchObject({
-    title: "My Bride Price culture-game result",
+    title: "Play the culture challenge!",
     url: expect.stringContaining("?edition=west"),
     fileCount: 1,
   });
@@ -207,6 +209,7 @@ test("a perfect quiz preserves scoring, result, download, sharing and nomination
   expect(shares?.[0]?.url).not.toContain("nominated=1");
   expect(new URL(shares?.[0]?.url || "").origin).toBe("http://127.0.0.1:3100");
 
+  await page.getByRole("button", { name: "Close Share Centre" }).click();
   await page.getByRole("button", { name: /Nominate three people/ }).click();
   await expect(page.locator("[data-nominate-three]")).toBeVisible();
   await expect(page.locator("[data-nominate-three]")).toHaveAttribute("data-mode", "generic");

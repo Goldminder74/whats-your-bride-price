@@ -40,3 +40,22 @@ Prompt 12 dispatches `wybp:nomination-event` and adds a `wybp:{event_name}` perf
 No nomination event may contain inviter or recipient names, score, maximum score, outcome, raw challenge code, full URL, query, referrer, IP address, user-agent string, session ID, subject hash, internal ID, raw or hashed idempotency value, revocation token, private photo, contact data or share-sheet contents. Events named `message_sent`, `share_confirmed` and `delivery_confirmed` do not exist. A cancelled native share may emit `share_intent` but never `share_handoff`.
 
 The three-slot UI keeps a separate controlled state for each slot: `ready`, `opening`, `handed_off`, `cancelled` or `failed`. A successful handoff claims a slot once. Further sharing remains available but cannot increase the three-slot count.
+
+## Prompt 13 Share Centre hooks
+
+Prompt 13 dispatches `wybp:share-centre-event` and adds the same local `wybp:{event_name}` performance mark. These signals remain browser-local and are not analytics writes. Their allowlist is exactly `name`, controlled `surface`, controlled `channel`, approved edition key and non-identifying `elapsedMs`.
+
+| Event | Exact meaning |
+| --- | --- |
+| `share_action_selected` | The player activated one explicit Share Centre action. It does not mean media was ready or a handoff occurred. |
+| `share_media_prepared` | One local static PNG completed canvas encoding for this open Share Centre. It does not mean the file left the device. |
+| `share_sheet_invoked` | The browser accepted a request to open its native share sheet. It does not identify the selected destination or claim completion. |
+| `share_external_handoff` | A non-blocked approved external composer opened, or a native share promise resolved. It means handoff only. |
+| `share_copy_succeeded` | Clipboard writing resolved for a deliberate action or blocked-popup fallback. It does not mean the link was pasted or visited. |
+| `share_download_started` | A local portrait download was initiated. It does not mean the file was saved, opened or posted. |
+| `share_cancelled` | Native Web Share rejected with its recognised cancellation outcome. No handoff is counted. |
+| `share_failed` | A selected route could not complete its defined local boundary. It is not a message-delivery failure. |
+
+Controlled surfaces are `result`, `comparison` and `challenge_landing`. Controlled channels are `whatsapp`, `facebook`, `instagram`, `tiktok`, `copy`, `native` and `download`. The prewarmed `share_media_prepared` signal has no channel because no platform action has been selected yet. Runtime construction copies only those fields, so names, scores, URLs, challenge codes, query strings, referrers, session identifiers, photos, file bytes, recipient details, tokens and platform contents cannot enter the event.
+
+Prompt 12 and Prompt 13 signals are intentionally separate. A numbered nomination-slot action emits only `wybp:nomination-event`; a Share Centre action emits only `wybp:share-centre-event`. Reusing the same canonical challenge snapshot does not emit a second nomination intent or handoff. `referred_visit` remains the Prompt 12 landing hydration hook. A future analytics layer must not sum the two taxonomies as if they were distinct messages or people.

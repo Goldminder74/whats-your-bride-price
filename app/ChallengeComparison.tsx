@@ -7,6 +7,7 @@ import { emitChallengeEvent } from "./challengeEvents";
 type ChallengeComparisonProps = Readonly<{
   comparison: ChallengeComparisonProjection;
   onRechallenge: () => void;
+  onShare: (trigger: HTMLElement) => void;
   onPlayAnotherRegion: () => void;
 }>;
 
@@ -20,6 +21,7 @@ const outcomeLabels = Object.freeze({
 export default function ChallengeComparison({
   comparison,
   onRechallenge,
+  onShare,
   onPlayAnotherRegion,
 }: ChallengeComparisonProps) {
   const emittedRef = useRef(false);
@@ -73,6 +75,7 @@ export default function ChallengeComparison({
         <button type="button" className="big-action" onClick={rechallenge}>
           Nominate three people <span aria-hidden="true">↗</span>
         </button>
+        <button type="button" className="outline-action" onClick={(event) => onShare(event.currentTarget)}>Open Share Centre</button>
         <button type="button" className="outline-action" onClick={onPlayAnotherRegion}>Play another region</button>
       </div>
     </section>

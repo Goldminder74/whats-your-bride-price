@@ -251,6 +251,12 @@ Generic fallback links contain only the selected edition and never generate `nom
 
 No Contacts API, address-book read, recipient field, public analytics write, social SDK or remote event endpoint is introduced. WhatsApp, native Web Share and clipboard are invoked only after deliberate player actions. `share_handoff` means a local platform or clipboard handoff, never message delivery.
 
+Prompt 13 adds a reusable Share Centre without adding durable data. Its typed safe projection contains only a controlled surface, approved edition and label, validated canonical URL, and, only for an existing personalised challenge, the reviewed display name, authoritative score, approved avatar and score-derived result title. A generic projection has null name, score, title and avatar fields and resolves only to the approved regional entry URL.
+
+The Share Centre may retain one prepared PNG blob and File object in component memory while its dialog is open. Result media may include the current player’s already sanitised device-local portrait only when the player expressly selected it. Challenge-landing media uses an approved static avatar. The blob is never written to recovery, session snapshots, D1, R2, logs, metadata, URLs, events or a server request. Downloads use a short-lived object URL that is revoked. The fixed filename includes only the approved edition key.
+
+Prompt 12 and Prompt 13 reuse one safe nomination snapshot and canonical code. No new challenge identity, storage table or migration is required. Share Centre events contain only controlled event, surface, channel, edition and timing fields and transmit nothing. The detailed platform and media boundaries are in `docs/share-centre-platform-contract.md`.
+
 The browser-local `challenge_view`, `challenge_accept` and `challenge_invalid` hooks transmit nothing. Their allowlisted semantics and prohibited fields are recorded in `docs/challenge-entry-instrumentation.md` so later analytics cannot relabel a server render, crawler fetch, page hydration or failed acceptance as a completed human start.
 
 This work does not activate a D1 or R2 binding, public write endpoint, hosted migration, seed or deployment. The `challenges` feature flag remains disabled by default, and the existing generic nomination flow remains the fail-closed fallback when the feature or durable storage is unavailable.

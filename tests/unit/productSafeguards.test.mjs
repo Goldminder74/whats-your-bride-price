@@ -12,6 +12,7 @@ import {
   SCORING_PRINCIPLES,
 } from "../../app/productSafeguards.ts";
 import { APPROVED_BRIDE_PRICE_CONTEXTS, auditCopySources } from "../copy-safety-audit.mjs";
+import { SHARE_MEDIA_HEIGHT, SHARE_MEDIA_SAFE_INSET, SHARE_MEDIA_WIDTH } from "../../app/shareMedia.ts";
 
 const APP_COPY_FILES = [
   "app/BridePriceGame.tsx",
@@ -31,7 +32,8 @@ test("uses the permanent safeguard verbatim across entry, result, media and shar
   }
   assert.match(source, /className="result-safeguard reveal-safeguard">\{PRODUCT_SAFEGUARD\}/);
   assert.match(source, /className="result-card-safeguard">\{PRODUCT_SAFEGUARD\}/);
-  assert.match(source, /ctx\.fillText\(RESULT_MEDIA_SAFEGUARD\.text/);
+  const mediaSource = await readFile(new URL("../../app/shareMedia.ts", import.meta.url), "utf8");
+  assert.match(mediaSource, /fillText\(PRODUCT_SAFEGUARD/);
 });
 
 test("documents all seven scoring principles and keeps every result tier non-shaming", () => {
@@ -58,4 +60,7 @@ test("export safeguard stays inside the portrait safe area", () => {
   assert.equal(RESULT_MEDIA_SAFEGUARD.canvasWidth, 1080);
   assert.ok(RESULT_MEDIA_SAFEGUARD.baselineY > 0);
   assert.ok(RESULT_MEDIA_SAFEGUARD.baselineY <= 1350 - RESULT_MEDIA_SAFEGUARD.horizontalSafeInset);
+  assert.equal(SHARE_MEDIA_WIDTH, 1080);
+  assert.equal(SHARE_MEDIA_HEIGHT, 1920);
+  assert.ok(SHARE_MEDIA_SAFE_INSET >= RESULT_MEDIA_SAFEGUARD.horizontalSafeInset);
 });

@@ -308,6 +308,16 @@ Ordinary production output must exclude trusted nomination fixture names, scores
 
 Prompt 12 adds no migration. Before any future deployment, verify migrations `0000` through `0003`, `.openai/hosting.json`, production D1/R2 bindings, the staging branch and the preserved abandoned-work stash are unchanged. Hosted challenge creation remains disabled until a separate storage activation decision.
 
+### Prompt 13 Share Centre release gate
+
+Run `npm run test:share-centre` before the complete suite. The focused gate validates safe personalised and generic projections, fixed platform copy, canonical URL encoding exactly once, Facebook URL-only sharing, local event allowlists, 1080 by 1920 PNG output, all seven actions, native cancellation, blocked or unsupported fallbacks, 320-pixel layout, reduced motion, focus return, result-to-nomination challenge reuse, valid landing read-only behaviour and honest comparison fallback.
+
+Manually verify on current real devices and in-app browsers for WhatsApp, Facebook, Instagram and TikTok before a future approved release. Platform share composers and native sheets cannot be proven by mocked browser tests alone. Confirm popups use `noopener,noreferrer`, popup blocking does not lose the safe link, Instagram and TikTok show exactly two download instructions where file sharing is unavailable, and no UI claims posting, sending or delivery.
+
+Confirm the current static Open Graph image is unchanged. It does not contain the safeguard and remains a temporary fallback pending Prompt 14. Prompt 13’s local 9:16 PNG is not a dynamic preview, permanent result URL, video or R2 object. Confirm no private portrait, name, score, challenge code, token, session value, recipient detail or file byte enters an event or unapproved network request.
+
+Prompt 13 adds no dependency, schema, migration, D1/R2 binding or hosted operation. Before any deployment, rerun `npm run test:all`, `npm run build` and `git diff --check`, then repeat the existing protected-file, fixture-isolation, storage and security gates.
+
 ## Production smoke test for a future approved release
 
 Run from a signed-out mobile browser where public access is intended:

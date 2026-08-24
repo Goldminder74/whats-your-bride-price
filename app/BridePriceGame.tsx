@@ -8,11 +8,13 @@ import { clearAnonymousSession, getOrCreateAnonymousSession } from "./anonymousS
 import { approvedAvatarRegistry, defaultAvatarId, isApprovedAvatarId, resolveApprovedAvatar } from "./avatarRegistry";
 import type { SafeguardReviewFixture, TrustedChallengeEntry } from "./challengeEntry";
 import {
+  createChallengeIdempotencyKey,
   resolveChallengeActionMode,
   type ChallengeCreationClient,
 } from "./challengeCreation";
 import ChallengeComparison from "./ChallengeComparison";
 import NominateThreePanel from "./NominateThreePanel";
+import ShareCentre from "./ShareCentre";
 import {
   buildChallengeAnswerSubmission,
   type ChallengeCompletionClient,
@@ -28,17 +30,22 @@ import { reportAppError } from "./errors";
 import { activeFeatureFlags } from "./featureFlags";
 import { answersMatch, calculateResultTier, defaultSoundEnabled, getCelebrationPieceCount } from "./gameLogic";
 import { resolveBrowserPublicAppOrigin } from "./publicAppOrigin";
-import { genericNominationUrl } from "./nominationExperience";
+import {
+  nominationSnapshotVersion,
+  readNominationSnapshot,
+  validateSafeNominationChallenge,
+  writeNominationSnapshot,
+} from "./nominationExperience";
 import { createReviewNominationClient } from "./nominationReviewClient";
 import {
   PRODUCT_SAFEGUARD,
-  RESULT_MEDIA_SAFEGUARD,
   RESULT_TIER_COPY,
   RESULT_TIER_GIFTS,
   RESULT_TIER_TITLES,
-  SAFE_RESULT_SHARE_SUFFIX,
   SCORING_PRINCIPLES,
 } from "./productSafeguards";
+import { downloadPreparedShareMedia, prepareShareMedia, type ShareMediaCard } from "./shareMedia";
+import { genericShareProjection, shareProjectionFromChallenge, type SafeShareProjection } from "./shareProjection";
 import { privatePhotoFriendlyMessage, privatePhotoLimits, sanitizePrivatePhoto } from "./privatePhoto";
 import {
   clearQuizRecovery,
@@ -308,6 +315,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const [entryTimings, setEntryTimings] = useState({ navigationMs: 0, shellVisibleMs: 0, interactiveMs: 0 });
   const [entryDiagnostics, setEntryDiagnostics] = useState<EntryDiagnosticsSnapshot | null>(null);
   const [nominationOpen, setNominationOpen] = useState(false);
+  const [shareCentreOpen, setShareCentreOpen] = useState(false);
+  const [shareCentreBusy, setShareCentreBusy] = useState(false);
+  const [shareProjection, setShareProjection] = useState<SafeShareProjection | null>(null);
   const [comparison, setComparison] = useState<ChallengeComparisonProjection | null>(null);
   const [completionState, setCompletionState] = useState<"idle" | "loading" | "error">("idle");
   const [failedQuestionImages, setFailedQuestionImages] = useState<Set<string>>(() => new Set());
@@ -328,6 +338,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const startLockRef = useRef(false);
   const challengeCompletionPromiseRef = useRef<ReturnType<ChallengeCompletionClient["complete"]> | null>(null);
   const challengeCompleteEventRef = useRef(false);
+  const shareCreationKeyRef = useRef<string | null>(null);
+  const shareCreationPromiseRef = useRef<ReturnType<ChallengeCreationClient["create"]> | null>(null);
+  const shareTriggerRef = useRef<HTMLElement | null>(null);
   const region = regions[regionKey];
   const question = region.questions[index];
   const avatarChoice = resolveApprovedAvatar(avatarId);
@@ -948,79 +961,76 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     window.scrollTo(0, 0);
   };
 
-  const resultShareUrl = useMemo(() => {
-    if (typeof window === "undefined") return "";
-    return genericNominationUrl(regionKey, resolveBrowserPublicAppOrigin(window.location.origin));
-  }, [regionKey]);
-
   const openNominations = () => {
+    setShareCentreOpen(false);
     setNominationOpen(true);
     window.requestAnimationFrame(() => document.getElementById("nominate-three-title")?.focus());
   };
 
-  const resultBlob = async (): Promise<Blob | null> => {
-    const canvas = document.createElement("canvas");
-    canvas.width = 1080; canvas.height = 1350;
-    const ctx = canvas.getContext("2d"); if (!ctx) return null;
-    const [base, accent, dark] = region.palette;
-    ctx.fillStyle = base; ctx.fillRect(0, 0, canvas.width, canvas.height);
-    const worldArt = new Image(); worldArt.src = `/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`; await worldArt.decode();
-    ctx.save(); ctx.globalAlpha = .48; ctx.drawImage(worldArt, 0, 0, worldArt.width, worldArt.height, 0, 0, 1080, 1350); ctx.restore();
-    const veil = ctx.createLinearGradient(0, 0, 0, 1350); veil.addColorStop(0, `${dark}99`); veil.addColorStop(.52, `${dark}dd`); veil.addColorStop(1, dark); ctx.fillStyle = veil; ctx.fillRect(0, 0, 1080, 1350);
-    ctx.globalAlpha = .22; ctx.strokeStyle = accent; ctx.lineWidth = 12;
-    for (let x = -400; x < 1400; x += 90) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 680, 1350); ctx.stroke(); }
-    ctx.globalAlpha = 1; ctx.fillStyle = dark; ctx.fillRect(55, 55, 970, 1240);
-    ctx.strokeStyle = accent; ctx.lineWidth = 3; ctx.strokeRect(78, 78, 924, 1194);
-    ctx.textAlign = "center"; ctx.fillStyle = accent; ctx.font = "700 28px Arial";
-    ctx.fillText(`${region.name.toUpperCase()} EDITION • CEREMONIAL SCORECARD`, 540, 145);
-    if (portrait) {
-      const image = new Image(); image.src = portrait; await image.decode();
-      ctx.save(); ctx.beginPath(); ctx.arc(540, 370, 165, 0, Math.PI * 2); ctx.clip();
-      const side = Math.min(image.width, image.height);
-      ctx.drawImage(image, (image.width - side) / 2, (image.height - side) / 2, side, side, 375, 205, 330, 330); ctx.restore();
-      ctx.strokeStyle = accent; ctx.lineWidth = 12; ctx.beginPath(); ctx.arc(540, 370, 172, 0, Math.PI * 2); ctx.stroke();
-    } else {
-      ctx.fillStyle = accent; ctx.font = "110px Georgia"; ctx.fillText(region.mark, 540, 410);
-    }
-    ctx.fillStyle = "#f3e7cc"; ctx.font = "italic 46px Georgia"; ctx.fillText(portraitDisplayName, 540, 625);
-    ctx.fillStyle = accent; ctx.font = "900 84px Impact, Arial Black"; ctx.fillText(tierTitles[tier].toUpperCase(), 540, 735);
-    ctx.fillStyle = "#f3e7cc"; ctx.font = "36px Georgia";
-    ctx.fillText(gifts[tier][0].toUpperCase(), 540, 845);
-    ctx.font = "italic 29px Georgia"; ctx.fillText(`+${gifts[tier][1]} + ${gifts[tier][2]}`, 540, 907);
-    ctx.fillStyle = accent; ctx.font = "700 25px Arial"; ctx.fillText(`KNOWLEDGE SCORE ${correctCount}/12 • ${region.name.toUpperCase()}`, 540, 1010);
-    ctx.fillStyle = "#f3e7cc"; ctx.font = "900 58px Impact, Arial Black"; ctx.fillText("WHAT’S YOUR BRIDE PRICE?", 540, 1130);
-    ctx.font = "24px Arial"; ctx.fillText("Play your region. Share your result. Nominate three people.", 540, 1185);
-    ctx.fillStyle = accent; ctx.font = "700 22px Arial";
-    ctx.fillText(RESULT_MEDIA_SAFEGUARD.text, 540, RESULT_MEDIA_SAFEGUARD.baselineY);
-    return new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
-  };
+  const localResultMediaCard = (): ShareMediaCard => Object.freeze({
+    edition: regionKey,
+    displayName: shareProjection?.personalised && shareProjection.displayName ? shareProjection.displayName : portraitDisplayName,
+    score: shareProjection?.personalised && shareProjection.score !== null ? shareProjection.score : correctCount,
+    maximumScore: region.questions.length,
+    resultTitle: shareProjection?.personalised && shareProjection.resultTitle ? shareProjection.resultTitle : tierTitles[tier],
+    avatarId: shareProjection?.personalised && shareProjection.avatarId ? shareProjection.avatarId : avatarId,
+    portraitUrl: photo,
+  });
+
+  const prepareResultMedia = () => prepareShareMedia(localResultMediaCard());
 
   const downloadResult = async () => {
     try {
-      const blob = await resultBlob(); if (!blob) return;
-      const url = URL.createObjectURL(blob); const anchor = document.createElement("a");
-      anchor.href = url; anchor.download = `bride-price-${regionKey}-result.png`; anchor.click(); URL.revokeObjectURL(url);
+      downloadPreparedShareMedia(await prepareResultMedia());
     } catch (error) {
       reportAppError("result_export_failed", error, { action: "download", region: regionKey });
       alert("We could not prepare the portrait this time. Please try again.");
     }
   };
 
-  const shareResult = async () => {
+  const openShareCentre = async (trigger?: HTMLElement) => {
+    if (shareCentreBusy) return;
+    if (trigger) shareTriggerRef.current = trigger;
+    setShareCentreBusy(true);
+    setNominationOpen(false);
     try {
-      const blob = await resultBlob();
-      const file = blob ? new File([blob], "my-bride-price-result.png", { type: "image/png" }) : null;
-      const shareData: ShareData = { title: "My Bride Price culture-game result", text: `I scored ${correctCount}/12 and unlocked ${tierTitles[tier]} in the ${region.name} edition. ${SAFE_RESULT_SHARE_SUFFIX}`, url: resultShareUrl };
-      if (file && navigator.canShare?.({ files: [file] })) shareData.files = [file];
-      if (navigator.share) {
-        try { await navigator.share(shareData); } catch (error) {
-          if (!(error instanceof DOMException && error.name === "AbortError")) reportAppError("share_failed", error, { action: "result" });
-        }
+      const origin = resolveBrowserPublicAppOrigin(window.location.origin);
+      let safeProjection: SafeShareProjection | null = null;
+      const restored = readNominationSnapshot(window.sessionStorage, nominationScopeId, window.location.origin);
+      if (restored) {
+        safeProjection = shareProjectionFromChallenge(
+          acceptedChallenge && comparison ? "comparison" : "result",
+          restored.challenge,
+          origin,
+        );
       }
-      else await downloadResult();
-    } catch (error) {
-      reportAppError("result_export_failed", error, { action: "share", region: regionKey });
-      alert("We could not prepare the portrait this time. Please try again.");
+      if (!safeProjection && challengeActionMode === "personalised" && effectiveChallengeCreationClient?.storageAvailable) {
+        shareCreationKeyRef.current ||= createChallengeIdempotencyKey();
+        shareCreationPromiseRef.current ||= effectiveChallengeCreationClient.create(shareCreationKeyRef.current, portraitDisplayName);
+        try {
+          const response = await shareCreationPromiseRef.current;
+          const challenge = validateSafeNominationChallenge(response.challenge, response.challengeUrl, origin);
+          if (challenge) {
+            writeNominationSnapshot(window.sessionStorage, Object.freeze({
+              version: nominationSnapshotVersion,
+              scope: nominationScopeId,
+              challenge,
+              completedSlots: Object.freeze([]),
+              savedAt: Date.now(),
+            }));
+            safeProjection = shareProjectionFromChallenge(
+              acceptedChallenge && comparison ? "comparison" : "result",
+              challenge,
+              origin,
+            );
+          }
+        }
+        catch { shareCreationPromiseRef.current = null; }
+      }
+      setShareProjection(safeProjection || genericShareProjection(acceptedChallenge && comparison ? "comparison" : "result", regionKey, origin));
+      setShareCentreOpen(true);
+    } finally {
+      setShareCentreBusy(false);
     }
   };
 
@@ -1377,7 +1387,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               {photo && <p className="private-media-boundary">Your private photo can appear only in the portrait you deliberately download or send through your device’s share sheet. Public links and previews use approved avatar and regional artwork.</p>}
               {acceptedChallenge && completionState === "loading" && <div className="comparison-loading" role="status" aria-live="polite"><b>Confirming your official challenge score</b><span>Your answers are being checked against the approved answer keys.</span></div>}
               {acceptedChallenge && completionState === "error" && <div className="comparison-failure" role="status"><b>Your culture result is safe.</b><span>We could not confirm the head-to-head comparison yet. Retry, or continue with a normal regional quiz.</span><div><button type="button" onClick={() => setCompletionState("idle")}>Retry comparison</button><button type="button" onClick={restart}>Play another region</button></div></div>}
-              {acceptedChallenge && comparison && <ChallengeComparison comparison={comparison} onRechallenge={openNominations} onPlayAnotherRegion={restart} />}
+              {acceptedChallenge && comparison && <ChallengeComparison comparison={comparison} onRechallenge={openNominations} onShare={(trigger) => void openShareCentre(trigger)} onPlayAnotherRegion={restart} />}
               {nominationOpen && <NominateThreePanel
                 surface={acceptedChallenge && comparison ? "comparison" : "result"}
                 edition={regionKey}
@@ -1389,7 +1399,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               />}
               <div className="result-actions">
                 {!acceptedChallenge && <button className="big-action" onClick={openNominations}>Nominate three people <span>↗</span></button>}
-                <button className="outline-action" onClick={shareResult}>Share my portrait</button>
+                <button className="outline-action" onClick={(event) => void openShareCentre(event.currentTarget)} disabled={shareCentreBusy}>{shareCentreBusy ? "Preparing Share Centre…" : "Open Share Centre"}</button>
                 <button className="outline-action" onClick={downloadResult}>↓ Download</button>
               </div>
               {!acceptedChallenge && <p className="challenge-action-note">{challengeActionMode === "personalised" ? "Prepares one private, verified score challenge for all three sharing slots." : "Opens three honest regional-invitation slots while verified challenges are unavailable."}</p>}
@@ -1399,6 +1409,13 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           </div>
         </section>
       )}
+
+      {shareCentreOpen && shareProjection && <ShareCentre
+        projection={shareProjection}
+        prepareMedia={prepareResultMedia}
+        onClose={() => setShareCentreOpen(false)}
+        returnFocusRef={shareTriggerRef}
+      />}
 
       {menuOpen && (
         <div className="about-modal" role="dialog" aria-modal="true" aria-label="About this game">
