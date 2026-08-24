@@ -3,6 +3,7 @@ const DEFAULT_PRODUCTION_ORIGIN = `https://${PRODUCTION_HOSTNAME}`;
 const localHostnames = new Set(["localhost", "127.0.0.1", "[::1]"]);
 const regionKeys = new Set(["west", "east", "central", "north", "south"]);
 const publicChallengeCodePattern = /^[0-9a-f]{48}$/;
+const publicResultSlugPattern = /^[0-9a-f]{48}$/;
 
 export type PublicAppEnvironment = "production" | "development" | "test";
 export type PublicAppOrigin = string & { readonly __publicAppOrigin: unique symbol };
@@ -158,5 +159,26 @@ export function createChallengeUrl(
     throw configurationError("challenge codes must be lowercase 192-bit hexadecimal values.");
   }
   return createPublicAppUrl(`/challenge/${challengeCode}`, {}, origin);
+}
+
+export function createResultUrl(
+  resultSlug: string,
+  origin: PublicAppOrigin = PUBLIC_APP_ORIGIN,
+): string {
+  if (!publicResultSlugPattern.test(resultSlug)) {
+    throw configurationError("result slugs must be lowercase 192-bit hexadecimal values.");
+  }
+  return createPublicAppUrl(`/result/${resultSlug}`, {}, origin);
+}
+
+export function createResultPreviewUrl(
+  resultSlug: string,
+  contentHash: string,
+  origin: PublicAppOrigin = PUBLIC_APP_ORIGIN,
+): string {
+  if (!publicResultSlugPattern.test(resultSlug) || !/^[0-9a-f]{64}$/.test(contentHash)) {
+    throw configurationError("result preview paths require approved opaque identifiers.");
+  }
+  return createPublicAppUrl(`/result/${resultSlug}/preview/${contentHash}.png`, {}, origin);
 }
 import { controlledSources, parseEntryContext, type PermittedEntryQuery } from "./entryContext.ts";

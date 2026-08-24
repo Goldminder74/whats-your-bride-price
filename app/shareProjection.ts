@@ -1,10 +1,11 @@
-import { isApprovedAvatarId } from "./avatarRegistry.ts";
+import { defaultAvatarId, isApprovedAvatarId } from "./avatarRegistry.ts";
 import { validateDisplayName } from "./displayNames.ts";
 import { regions, type RegionKey } from "./gameData.ts";
 import type { SafeNominationChallenge } from "./nominationExperience.ts";
-import { createChallengeUrl, createPublicAppUrl, type PublicAppOrigin } from "./publicAppOrigin.ts";
+import { createChallengeUrl, createPublicAppUrl, createResultUrl, type PublicAppOrigin } from "./publicAppOrigin.ts";
 import { RESULT_TIER_TITLES } from "./productSafeguards.ts";
 import { calculateResultTier } from "./gameLogic.ts";
+import type { PublicResultData } from "../db/dataContracts.ts";
 
 export const shareSurfaces = ["result", "comparison", "challenge_landing"] as const;
 export type ShareSurface = (typeof shareSurfaces)[number];
@@ -80,6 +81,37 @@ export function genericShareProjection(
   });
 }
 
+export function shareProjectionFromPublicResult(
+  result: PublicResultData,
+  resultUrl: string,
+  origin: PublicAppOrigin,
+): SafeShareProjection | null {
+  const region = regions[result.edition];
+  if (
+    !region
+    || result.displayName !== "A challenger"
+    || result.total !== region.questions.length
+    || !Number.isInteger(result.score)
+    || result.score < 0
+    || result.score > result.total
+    || result.resultSlug.length !== 48
+    || resultUrl !== createResultUrl(result.resultSlug, origin)
+    || (result.safeAvatarId !== null && !isApprovedAvatarId(result.safeAvatarId))
+  ) return null;
+  return Object.freeze({
+    surface: "result",
+    edition: result.edition,
+    editionLabel: region.name,
+    canonicalUrl: resultUrl,
+    personalised: true,
+    displayName: "A challenger",
+    score: result.score,
+    maximumScore: result.total,
+    resultTitle: RESULT_TIER_TITLES[calculateResultTier(result.score)],
+    avatarId: result.safeAvatarId || defaultAvatarId,
+  });
+}
+
 export function isSafeShareProjection(value: unknown, origin: PublicAppOrigin): value is SafeShareProjection {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
   const candidate = value as Record<string, unknown>;
@@ -96,14 +128,14 @@ export function isSafeShareProjection(value: unknown, origin: PublicAppOrigin): 
   if (candidate.personalised !== true || typeof candidate.canonicalUrl !== "string" || typeof candidate.displayName !== "string") return false;
   let match: RegExpMatchArray | null;
   try {
-    match = new URL(candidate.canonicalUrl as string).pathname.match(/^\/challenge\/([0-9a-f]{48})$/);
+    match = new URL(candidate.canonicalUrl as string).pathname.match(/^\/(challenge|result)\/([0-9a-f]{48})$/);
   } catch {
     return false;
   }
   const name = validateDisplayName(candidate.displayName);
   return Boolean(
     match
-    && candidate.canonicalUrl === createChallengeUrl(match[1], origin)
+    && candidate.canonicalUrl === (match[1] === "challenge" ? createChallengeUrl(match[2], origin) : createResultUrl(match[2], origin))
     && name.valid
     && name.value === candidate.displayName
     && Number.isInteger(candidate.score)

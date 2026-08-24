@@ -11,9 +11,12 @@ export type ShareCopy = Readonly<{
 }>;
 
 export function buildShareCopy(projection: SafeShareProjection): ShareCopy {
-  const title = projection.personalised ? "You’ve been challenged!" : "Play the culture challenge!";
-  const sentence = projection.personalised
-    ? `${projection.displayName} challenged you to beat ${projection.score}/${projection.maximumScore} in the ${projection.editionLabel} Edition. Can you protect the family reputation?`
+  const permanentResult = projection.personalised && new URL(projection.canonicalUrl).pathname.startsWith("/result/");
+  const title = permanentResult ? "A culture score just landed!" : projection.personalised ? "You’ve been challenged!" : "Play the culture challenge!";
+  const sentence = permanentResult
+    ? `${projection.displayName} scored ${projection.score}/${projection.maximumScore} in the ${projection.editionLabel} Edition and earned ${projection.resultTitle}. Can you beat this culture score?`
+    : projection.personalised
+      ? `${projection.displayName} challenged you to beat ${projection.score}/${projection.maximumScore} in the ${projection.editionLabel} Edition. Can you protect the family reputation?`
     : `You have been invited to play the ${projection.editionLabel} Edition of What’s Your Bride Price? Bring your culture knowledge.`;
   const completeText = `${sentence}\n${PRODUCT_SAFEGUARD}\n${projection.canonicalUrl}`;
   if (completeText.length > shareCopyMaximumLength) throw new Error("share_copy_too_long");

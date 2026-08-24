@@ -113,15 +113,16 @@ function insertSecondChallenge(database) {
 
 test("Prompt 11 migration applies to empty and upgraded databases and is repeatable", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 4);
+  assert.ok(plan.length >= 4);
   assert.equal(plan[3].id, "0003_clever_joshua_kane");
+  const comparisonPlan = plan.slice(0, 4);
   for (const previousCount of [0, 1, 2, 3]) {
     const database = createIsolatedDatabase();
     try {
-      if (previousCount > 0) applyMigrationPlan(database, plan.slice(0, previousCount), { now });
-      const applied = applyMigrationPlan(database, plan, { now }).applied;
-      assert.deepEqual(applied, plan.slice(previousCount).map((migration) => migration.id));
-      assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, []);
+      if (previousCount > 0) applyMigrationPlan(database, comparisonPlan.slice(0, previousCount), { now });
+      const applied = applyMigrationPlan(database, comparisonPlan, { now }).applied;
+      assert.deepEqual(applied, comparisonPlan.slice(previousCount).map((migration) => migration.id));
+      assert.deepEqual(applyMigrationPlan(database, comparisonPlan, { now }).applied, []);
       const columns = database.prepare("SELECT name FROM pragma_table_info('challenge_attempts')").all().map((row) => row.name);
       assert.ok(columns.includes("recipient_subject_hash"));
       assert.ok(columns.includes("official_result_id"));

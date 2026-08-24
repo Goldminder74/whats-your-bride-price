@@ -8,6 +8,7 @@ const reportRoot = process.env.WYBP_PLAYWRIGHT_REPORT_DIR || join(tmpdir(), "wyb
 
 export default defineConfig({
   testDir: "./tests/e2e",
+  globalTeardown: "./tests/playwright-global-teardown.mjs",
   fullyParallel: false,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 1 : 0,

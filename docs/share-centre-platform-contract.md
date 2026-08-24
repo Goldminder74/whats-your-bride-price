@@ -2,11 +2,13 @@
 
 Date: 24 August 2026
 
-Prompt 13 adds one reusable, client-side Share Centre to normal results, official comparison results and valid personalised challenge landings. It does not add a social SDK, OAuth flow, contact picker, recipient field, upload endpoint, analytics transport, dynamic Open Graph image, permanent result route or video export.
+Prompt 13 adds one reusable, client-side Share Centre to normal results, official comparison results and valid personalised challenge landings. Prompt 14 adds an explicitly published permanent result route and dynamic Open Graph image behind `dynamic_results`. Neither prompt adds a social SDK, OAuth flow, contact picker, recipient field, analytics transport or video export.
 
 ## Canonical link policy
 
 Personalised sharing accepts only the existing validated public challenge projection and exact canonical `/challenge/{48 lowercase hexadecimal characters}` URL on the approved public origin. The player name, verified score, edition, approved avatar and derived result title come from that projection. Prompt 12 nomination and Prompt 13 sharing use the same tab-local safe snapshot and idempotent creation boundary, so both surfaces reuse one code rather than creating competing challenges.
+
+An explicitly published result uses `/result/{48 lowercase hexadecimal characters}`. Facebook, WhatsApp, Copy link and Native share use that same URL. Publication is never triggered by opening the Share Centre, page rendering, metadata, media preparation or crawler traffic. The player sees the approved disclosure and must select Make result public. Keeping it private preserves the existing challenge or neutral regional fallback. Unpublishing immediately returns the Share Centre to its fallback and makes the origin page and generated media unavailable.
 
 When challenges, durable storage or safe creation are unavailable, the Share Centre fails closed to `/?edition={approved edition}`. The neutral copy contains no invented inviter identity, score, challenge code or `nominated=1` claim.
 
@@ -15,7 +17,7 @@ When challenges, durable storage or safe creation are unavailable, the Share Cen
 | Action | Current implementation | Honest limitation and fallback |
 | --- | --- | --- |
 | WhatsApp | Opens the approved HTTPS `wa.me` composer with fixed copy, safeguard and one canonical URL. The new context uses `noopener,noreferrer`. | A popup blocker can prevent opening. The game then copies only the safe canonical link when clipboard access is available, or displays it for manual copying. Opening is a handoff, not delivery. |
-| Facebook | Opens the HTTPS Facebook sharer with only the canonical URL. The new context uses `noopener,noreferrer`. | Facebook controls its composer and preview. The current static Open Graph image does not contain the safeguard and remains a temporary fallback pending Prompt 14. A blocked composer uses the same safe-link fallback. |
+| Facebook | Opens the HTTPS Facebook sharer with only the canonical URL. An eligible public result resolves to its deterministic 1200 by 630 regional preview. | Facebook controls its composer and cache. Challenge, unavailable and temporary generation states retain `/og-v2.png`; that fallback still lacks the safeguard. A blocked composer uses the same safe-link fallback. |
 | Instagram Story | Prepares a local 1080 by 1920 PNG. If file sharing is supported, it opens the operating-system share sheet with that file. | Browsers cannot reliably target or verify Instagram. If file sharing is unavailable, the image downloads and the UI gives exactly two steps: open Instagram and create a Story; select the downloaded image. |
 | TikTok | Prepares the same local 9:16 PNG and uses the operating-system file share sheet when supported. | Browsers cannot reliably target or verify TikTok. If file sharing is unavailable, the image downloads and the UI gives exactly two steps: open TikTok and start a post or Story; select the downloaded image. |
 | Copy link | Copies only the validated canonical URL. | If clipboard permission is unavailable, a read-only selectable field is shown. |
@@ -34,7 +36,7 @@ No Instagram, TikTok or Facebook deep link is used. No platform login token is r
 - Privacy: rendering uses canvas on the device. The resulting blob is kept in memory until a deliberate share or download. Object URLs are revoked after download. No media bytes are sent to D1, R2, the application server or a third-party service.
 - Safe area: key content remains within a 96-pixel horizontal inset and central story composition.
 
-This local story portrait is not an Open Graph preview. Prompt 14 may later create safe server-resolved previews from public challenge fields and approved static artwork only. It must not reuse a private photo or treat this in-memory file as a durable public asset.
+This local story portrait is not an Open Graph preview. Prompt 14’s separate 1200 by 630 server preview uses only the neutral identity, authoritative public result fields, approved avatar identifier, regional palette/motif, quiz branding and permanent safeguard. It has a 1,000,000-byte hard ceiling and a preferred target below 500,000 bytes. It never reuses a private photo or treats the local 9:16 file as a durable public asset. Prompt 15 video remains unimplemented.
 
 ## Copy controls
 

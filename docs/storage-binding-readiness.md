@@ -41,6 +41,8 @@ Migration `0002_little_inertia.sql` is an additive local source artefact only. I
 
 Migration `0003_clever_joshua_kane.sql` is the separately approved Prompt 11 local source artefact. It adds nullable `recipient_subject_hash` and `official_result_id`, plus the non-null integer boolean `is_official_comparison` defaulted to `0`, to `challenge_attempts`. `challenge_attempts_official_recipient_uq` now claims `(challenge_id, recipient_subject_hash)` wherever the durable marker is `1`; `challenge_attempts_official_result_uq` remains partial on non-null `official_result_id`. Integrity triggers require an authoritative subject and matching result for the first claim, make the marker and subject immutable, prevent result replacement and allow only the foreign-key-compatible transition to a null result. Its SHA-256 checksum is `3eb81a835dcff39f8bc796483b2ca7de1a8f1c29dd218e5c43779f7edcc31fdb`. Isolated tests cover empty and upgraded databases, repeat execution, historical marker `0`, replay marker `0`, concurrency, immutable claims, result deletion, replacement rejection and neutral unavailable comparison. It has not been applied to staging or production. D1 and R2 remain inactive.
 
+Migration `0004_yellow_bill_hollister.sql` is the separately approved Prompt 14 local source artefact. It adds only `results.visibility` as `TEXT NOT NULL DEFAULT 'private'` with `CHECK (visibility in ('private','public'))`. Its SHA-256 checksum is `c649185f96cdce28aca0522330649b4688c9f1da93ea6eab0c08842b163b65bc`. Empty, upgraded and repeated isolated migration runs prove historical active results remain intact and private. It has not been applied to staging or production.
+
 ## Proposed owner decision
 
 If durable work is later approved, the proposed logical bindings are:
@@ -66,6 +68,8 @@ These are proposals, not active bindings. An owner must approve the names, provi
 ## R2 contract
 
 Only generated, expressly approved result media may later use R2. Metadata lives in `media_assets`; object bytes use `generated/{edition}/{YYYY}/{MM}/{sha256}-v{generation}.{extension}`. Object keys cannot contain names, emails, original filenames, raw sessions, queries or secrets. Private uploaded photos stay on-device and do not become public media by default.
+
+Prompt 14 implements an inactive R2 adapter, D1 metadata repository and isolated in-memory review adapter. `dynamic_results` fails the build when enabled without both durable bindings unless both authorised review-build controls are present. Neither binding is activated in `.openai/hosting.json`; no bucket, hosted object, D1 row or hosted migration was created. Publication prepares media during the explicit owner mutation, while public page, metadata and crawler GETs only read an existing ready asset. The mutation accepts the existing raw anonymous-session credential only in its same-origin POST body, derives the domain-separated subject hash on the server and compares it in constant time with the unexpired authoritative attempt. A copied stored hash cannot authorise the mutation.
 
 Prompt 8 makes that boundary executable: original and sanitised private-photo bytes never enter a repository contract, Worker request, public projection or media key. Public media may resolve only an allowlisted stable avatar ID plus approved regional and result fields. A local photo may be composed only after the player deliberately selects Download or the operating-system file share.
 

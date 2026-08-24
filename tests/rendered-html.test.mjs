@@ -23,6 +23,15 @@ test("ordinary production cannot activate challenge fixtures through a query par
   assert.doesNotMatch(html, /Nia|Score to beat|data-challenge-active/i);
 });
 
+test("ordinary production cannot activate dynamic results or fixtures through a query parameter", async () => {
+  const slug = "8".repeat(48);
+  const response = await render(`/result/${slug}?dynamic_results=1&fixture=west-public`);
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /This result is no longer available\./i);
+  assert.doesNotMatch(html, /data-public-result|12\/12|West Africa mastery/i);
+});
+
 test("server-renders the finished pan-African game", async () => {
   const response = await render();
   assert.equal(response.status, 200);
@@ -77,6 +86,7 @@ test("default production client output excludes review diagnostics", async () =>
   const ordinaryOutput = `${clientOutput}\n${serverSources.join("\n")}`;
   assert.doesNotMatch(ordinaryOutput, /Ayo scored|ReviewWest_2026|safeguard-low-result|safeguard-high-result|safeguard-reduced-result|safeguard-question|nomination-result/);
   assert.doesNotMatch(ordinaryOutput, /inviterDisplayName:[`'"](?:Nia|Mirembe|Thandi|Safiya|Ọlá)|111111111111111111111111111111111111111111111111|666666666666666666666666666666666666666666666666|777777777777777777777777777777777777777777777777/);
+  assert.doesNotMatch(ordinaryOutput, /review_result_[0-9a-f]|Review-only private name|888888888888888888888888888888888888888888888888|999999999999999999999999999999999999999999999999|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/);
 });
 
 test("ships sixty educational questions, varied play modes, privacy copy and broad sources", async () => {

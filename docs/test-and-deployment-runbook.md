@@ -318,6 +318,27 @@ Confirm the current static Open Graph image is unchanged. It does not contain th
 
 Prompt 13 adds no dependency, schema, migration, D1/R2 binding or hosted operation. Before any deployment, rerun `npm run test:all`, `npm run build` and `git diff --check`, then repeat the existing protected-file, fixture-isolation, storage and security gates.
 
+### Prompt 14 permanent-result release gate
+
+Run `npm run test:dynamic-results` before the complete suite. Verify migration `0004_yellow_bill_hollister.sql` checksum `c649185f96cdce28aca0522330649b4688c9f1da93ea6eab0c08842b163b65bc`, historical-private defaulting, explicit owner publication and unpublication, same-origin enforcement, fail-closed rate limiting, neutral unavailable states, raw server HTML, canonical metadata, crawler read-only behaviour, deterministic 1200 by 630 PNG output, the 1,000,000-byte hard ceiling and preferred sub-500,000-byte target, object-key safety, ETag/conditional delivery, Share Centre confirmation and fallback preservation.
+
+Publication requests must contain `anonymousSessionCredential` only in the JSON POST body. Confirm the server uses `deriveAnonymousSubjectHash` and `constantTimeEqual` against the authoritative stored attempt subject hash, and that missing, malformed, copied stored hashes, mismatched credentials and credentials replayed after the attempt expiry all receive a neutral failure. An identical authorised retry within the still-valid ownership window remains idempotent. Never expose the credential in URLs, queries, public projections, metadata, events or logs.
+
+`dynamic_results` must remain false in ordinary production until separately approved D1 and R2 bindings are available. A production build with the flag enabled and missing durable storage must fail. Authorised review fixtures require both `WYBP_REVIEW_BUILD=true` and `WYBP_REVIEW_RESULT_FIXTURES=true`; no query parameter can activate them. Confirm ordinary output contains no fixture slug, score, subject hash or preview record.
+
+The static `/og-v2.png` remains a temporary fallback for unavailable states and generation/storage failure. It is not the normal image for an eligible public result, and it still does not contain the permanent safeguard. Prompt 14 generated result previews do contain the safeguard. Do not claim otherwise or replace the fallback without a separately approved visual-asset review.
+
+#### Facebook Sharing Debugger procedure after an approved deployment
+
+1. Publish one approved, non-private result through the real owner-authorised action. Never use private, synthetic or review-fixture data.
+2. Open Facebook Sharing Debugger at `https://developers.facebook.com/tools/debug/` and enter that exact canonical `/result/{opaque slug}` URL.
+3. Select **Debug**, then request **Scrape Again** so Facebook fetches the current server-rendered metadata and preview.
+4. Confirm the canonical URL, title, description, 1200 by 630 image, image MIME type and reported warnings or errors. Confirm the generated image shows the correct region, score/title, branding and permanent safeguard.
+5. Repeat the fresh scrape after any material metadata, image-generation or canonical-origin change. Record the checked production URL and time without copying private tokens or internal identifiers.
+6. If the result is unpublished, verify the application origin returns the neutral unavailable state. Treat third-party cache expiry as external behaviour and never republish private data merely to refresh a cache.
+
+Do not attempt live Sharing Debugger validation before an explicitly approved public deployment.
+
 ## Production smoke test for a future approved release
 
 Run from a signed-out mobile browser where public access is intended:

@@ -145,6 +145,7 @@ export const results = sqliteTable("results", {
   safeAvatarId: text("safe_avatar_id"),
   reviewedDisplayName: text("reviewed_display_name"),
   safeguardVersion: text("safeguard_version").notNull(),
+  visibility: text("visibility").notNull().default("private"),
   state: text("state").notNull().default("active"),
   expiresAt: integer("expires_at"),
   revokedAt: integer("revoked_at"),
@@ -160,6 +161,7 @@ export const results = sqliteTable("results", {
   index("results_edition_created_idx").on(table.editionId, table.createdAt),
   check("results_score_ck", sql`${table.total} between 1 and 100 and ${table.score} between 0 and ${table.total}`),
   check("results_tier_ck", sql`${table.tier} between 0 and 3`),
+  check("results_visibility_ck", sql`${table.visibility} in ('private','public')`),
   check("results_state_ck", sql`${table.state} in ('active','expired','revoked','anonymized','deleted')`),
   check("results_snapshot_json_ck", sql`json_valid(${table.scoringSnapshotJson}) and json_type(${table.scoringSnapshotJson}) = 'object'`),
 ]);

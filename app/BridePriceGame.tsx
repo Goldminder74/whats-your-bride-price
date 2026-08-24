@@ -46,6 +46,7 @@ import {
 } from "./productSafeguards";
 import { downloadPreparedShareMedia, prepareShareMedia, type ShareMediaCard } from "./shareMedia";
 import { genericShareProjection, shareProjectionFromChallenge, type SafeShareProjection } from "./shareProjection";
+import { createReviewResultPublicationClient, type ResultPublicationClient } from "./resultPublicationClient";
 import { privatePhotoFriendlyMessage, privatePhotoLimits, sanitizePrivatePhoto } from "./privatePhoto";
 import {
   clearQuizRecovery,
@@ -272,6 +273,7 @@ type BridePriceGameProps = {
   safeguardReviewFixture?: SafeguardReviewFixture;
   challengeCreationClient?: ChallengeCreationClient;
   challengeCompletionClient?: ChallengeCompletionClient;
+  resultPublicationClient?: ResultPublicationClient;
   acceptedChallenge?: boolean;
   acceptedChallengeQuizInstanceId?: string;
 };
@@ -283,7 +285,7 @@ function fastInitialScreen(entry: EntryContext | undefined, challenge: TrustedCh
   return entry?.edition ? "fast_setup" : "entry";
 }
 
-export default function BridePriceGame({ initialEntryContext, trustedChallenge: resolvedTrustedChallenge, safeguardReviewFixture, challengeCreationClient, challengeCompletionClient, acceptedChallenge = false, acceptedChallengeQuizInstanceId }: BridePriceGameProps) {
+export default function BridePriceGame({ initialEntryContext, trustedChallenge: resolvedTrustedChallenge, safeguardReviewFixture, challengeCreationClient, challengeCompletionClient, resultPublicationClient, acceptedChallenge = false, acceptedChallengeQuizInstanceId }: BridePriceGameProps) {
   const trustedChallenge = resolvedTrustedChallenge?.validity === "valid" ? resolvedTrustedChallenge : undefined;
   const fastEntryEnabled = activeFeatureFlags.fast_entry;
   const [hydrated, setHydrated] = useState(false);
@@ -318,6 +320,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const [shareCentreOpen, setShareCentreOpen] = useState(false);
   const [shareCentreBusy, setShareCentreBusy] = useState(false);
   const [shareProjection, setShareProjection] = useState<SafeShareProjection | null>(null);
+  const [shareResultPublicationClient, setShareResultPublicationClient] = useState<ResultPublicationClient | undefined>();
   const [comparison, setComparison] = useState<ChallengeComparisonProjection | null>(null);
   const [completionState, setCompletionState] = useState<"idle" | "loading" | "error">("idle");
   const [failedQuestionImages, setFailedQuestionImages] = useState<Set<string>>(() => new Set());
@@ -923,6 +926,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     setScreen(fastEntryEnabled ? "entry" : "home"); setAnswers([]); setAnswerChoices([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setAllAfricaJustUnlocked(false);
     setQuizInstanceId(null); setRecoveryNotice(""); setName(""); setAvatarId(avatarChoices[0].id); setShowAllAvatars(false); setStartLocked(false); startLockRef.current = false;
     setNominationOpen(false);
+    setShareResultPublicationClient(undefined);
     setComparison(null); setCompletionState("idle"); challengeCompletionPromiseRef.current = null; challengeCompleteEventRef.current = false;
     if (fastEntryEnabled) { setEntryContext(parseEntryContext("")); setUnverifiedChallenge(false); }
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
@@ -1027,7 +1031,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
         }
         catch { shareCreationPromiseRef.current = null; }
       }
-      setShareProjection(safeProjection || genericShareProjection(acceptedChallenge && comparison ? "comparison" : "result", regionKey, origin));
+      const finalProjection = safeProjection || genericShareProjection(acceptedChallenge && comparison ? "comparison" : "result", regionKey, origin);
+      setShareProjection(finalProjection);
+      setShareResultPublicationClient(acceptedChallenge ? undefined : resultPublicationClient || createReviewResultPublicationClient(origin));
       setShareCentreOpen(true);
     } finally {
       setShareCentreBusy(false);
@@ -1415,6 +1421,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
         prepareMedia={prepareResultMedia}
         onClose={() => setShareCentreOpen(false)}
         returnFocusRef={shareTriggerRef}
+        resultPublicationClient={shareResultPublicationClient}
       />}
 
       {menuOpen && (

@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 import hostingConfig from "./.openai/hosting.json";
 import {
   assertSitesCompatibleFeatureFlags,
+  assertDynamicResultsStorage,
   resolveFeatureFlags,
 } from "./app/featureFlags";
 import {
@@ -47,6 +48,7 @@ export default defineConfig(async ({ mode }) => {
   const diagnosticsRequested = process.env.WYBP_REVIEW_DIAGNOSTICS === "true";
   const diagnosticsApproved = process.env.WYBP_REVIEW_BUILD === "true";
   const challengeFixturesRequested = process.env.WYBP_REVIEW_CHALLENGE_FIXTURES === "true";
+  const resultFixturesRequested = process.env.WYBP_REVIEW_RESULT_FIXTURES === "true";
   if (mode === "production" && diagnosticsRequested && !diagnosticsApproved) {
     throw new Error(
       "Review diagnostics require explicit approval. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_DIAGNOSTICS=true for a local review build. Production builds exclude the panel by default.",
@@ -57,8 +59,19 @@ export default defineConfig(async ({ mode }) => {
       "Challenge fixtures require an explicitly authorised local review build. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_CHALLENGE_FIXTURES=true. Ordinary production builds exclude challenge fixtures.",
     );
   }
+  if (mode === "production" && resultFixturesRequested && !diagnosticsApproved) {
+    throw new Error(
+      "Result fixtures require an explicitly authorised local review build. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_RESULT_FIXTURES=true. Ordinary production builds exclude result fixtures.",
+    );
+  }
   const reviewDiagnostics = mode !== "production" || (diagnosticsRequested && diagnosticsApproved);
   const reviewChallengeFixtures = challengeFixturesRequested && diagnosticsApproved;
+  const reviewResultFixtures = resultFixturesRequested && diagnosticsApproved;
+  assertDynamicResultsStorage(featureFlags, {
+    d1Configured: Boolean(d1),
+    r2Configured: Boolean(r2),
+    authorisedReviewFixtures: reviewResultFixtures,
+  });
   const reviewChallengeData = reviewChallengeFixtures
     ? [
         { scenario: "valid", code: "1".repeat(48), inviterDisplayName: "Nia", edition: "west", verifiedScore: 10, total: 12, avatarId: "adjoa", validity: "valid" },
@@ -70,8 +83,22 @@ export default defineConfig(async ({ mode }) => {
         { scenario: "nomination", code: "7".repeat(48), inviterDisplayName: "Ọlá", edition: "west", verifiedScore: 12, total: 12, avatarId: "adjoa", validity: "valid" },
       ]
     : null;
+  const reviewResultData = reviewResultFixtures
+    ? [
+        { slug: "8".repeat(48), edition: "west", score: 12, tier: 3, avatarId: "adjoa", visibility: "public", state: "active" },
+        { slug: "9".repeat(48), edition: "east", score: 8, tier: 2, avatarId: "wanjiku", visibility: "public", state: "active" },
+        { slug: "a".repeat(48), edition: "north", score: 4, tier: 1, avatarId: "samira", visibility: "public", state: "active" },
+        { slug: "b".repeat(48), edition: "central", score: 10, tier: 3, avatarId: "efe", visibility: "private", state: "active" },
+        { slug: "c".repeat(48), edition: "south", score: 7, tier: 2, avatarId: "mbali", visibility: "public", state: "expired" },
+        { slug: "d".repeat(48), edition: "west", score: 9, tier: 3, avatarId: "adjoa", visibility: "public", state: "revoked" },
+        { slug: "e".repeat(48), edition: "east", score: 6, tier: 2, avatarId: "zuri", visibility: "public", state: "deleted" },
+      ]
+    : null;
+  const reviewResultClient = reviewResultFixtures
+    ? { resultSlug: "b".repeat(48), anonymousSessionCredential: "01".repeat(16) }
+    : null;
   const publicAppEnvironment: PublicAppEnvironment =
-    mode === "production" ? "production" : mode === "test" ? "test" : "development";
+    reviewResultFixtures ? "test" : mode === "production" ? "production" : mode === "test" ? "test" : "development";
   const publicAppOrigin = resolvePublicAppOrigin(
     process.env.PUBLIC_APP_ORIGIN,
     publicAppEnvironment,
@@ -94,6 +121,9 @@ export default defineConfig(async ({ mode }) => {
       __WYBP_REVIEW_DIAGNOSTICS__: JSON.stringify(reviewDiagnostics),
       __WYBP_REVIEW_CHALLENGE_FIXTURES__: JSON.stringify(reviewChallengeFixtures),
       __WYBP_REVIEW_CHALLENGE_DATA__: JSON.stringify(reviewChallengeData),
+      __WYBP_REVIEW_RESULT_FIXTURES__: JSON.stringify(reviewResultFixtures),
+      __WYBP_REVIEW_RESULT_DATA__: JSON.stringify(reviewResultData),
+      __WYBP_REVIEW_RESULT_CLIENT__: JSON.stringify(reviewResultClient),
     },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }

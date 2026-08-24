@@ -20,6 +20,7 @@ export const analyticsEventNames = [
 export type AnalyticsEventName = (typeof analyticsEventNames)[number];
 export type BotClassification = "human" | "bot" | "crawler" | "unknown";
 export type ResultState = "active" | "expired" | "revoked" | "anonymized" | "deleted";
+export type ResultVisibility = "private" | "public";
 export type ChallengeState = "active" | "expired" | "revoked" | "unavailable" | "anonymized" | "deleted";
 
 export class DataValidationError extends Error {
@@ -126,6 +127,7 @@ export interface ResultRecord {
   safeAvatarId: string | null;
   reviewedDisplayName: string | null;
   safeguardVersion: string;
+  visibility: ResultVisibility;
   state: ResultState;
   createdAt: number;
   expiresAt: number | null;
@@ -145,12 +147,16 @@ export interface PublicResultData {
   safeguard: typeof PRODUCT_SAFEGUARD;
   createdAt: number;
   expiresAt: number | null;
-  displayName?: string;
+  displayName: "A challenger";
 }
 
 export function toPublicResult(record: ResultRecord, now = Date.now()): PublicResultData | null {
   assertPublicCode(record.publicSlug, "resultSlug");
-  if (record.state !== "active" || (record.expiresAt !== null && record.expiresAt <= now)) return null;
+  if (
+    record.visibility !== "public"
+    || record.state !== "active"
+    || (record.expiresAt !== null && record.expiresAt <= now)
+  ) return null;
   assertScore(record.score, record.total);
   const result: PublicResultData = {
     resultSlug: record.publicSlug,
@@ -163,8 +169,8 @@ export function toPublicResult(record: ResultRecord, now = Date.now()): PublicRe
     safeguard: PRODUCT_SAFEGUARD,
     createdAt: assertUtcTimestamp(record.createdAt, "createdAt"),
     expiresAt: record.expiresAt,
+    displayName: "A challenger",
   };
-  if (record.reviewedDisplayName) result.displayName = validateReviewedDisplayName(record.reviewedDisplayName);
   return Object.freeze(result);
 }
 

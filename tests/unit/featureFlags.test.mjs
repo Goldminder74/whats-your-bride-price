@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   assertSitesCompatibleFeatureFlags,
+  assertDynamicResultsStorage,
   defaultFeatureFlags,
   featureFlagNames,
   resolveFeatureFlags,
@@ -12,6 +13,14 @@ test("every roadmap feature flag defaults to false", () => {
   assert.deepEqual(Object.keys(defaultFeatureFlags), [...featureFlagNames]);
   for (const flag of featureFlagNames) assert.equal(defaultFeatureFlags[flag], false);
   assert.deepEqual(resolveFeatureFlags({}), defaultFeatureFlags);
+});
+
+test("dynamic results fail closed without both durable stores or authorised review fixtures", () => {
+  const flags = resolveFeatureFlags({ WYBP_FEATURE_DYNAMIC_RESULTS: "true" });
+  assert.throws(() => assertDynamicResultsStorage(flags, { d1Configured: false, r2Configured: false, authorisedReviewFixtures: false }), /require durable result and generated-media storage/i);
+  assert.doesNotThrow(() => assertDynamicResultsStorage(flags, { d1Configured: true, r2Configured: true, authorisedReviewFixtures: false }));
+  assert.doesNotThrow(() => assertDynamicResultsStorage(flags, { d1Configured: false, r2Configured: false, authorisedReviewFixtures: true }));
+  assert.doesNotThrow(() => assertDynamicResultsStorage(defaultFeatureFlags, { d1Configured: false, r2Configured: false, authorisedReviewFixtures: false }));
 });
 
 test("feature flags are parsed from explicit build environment values", () => {

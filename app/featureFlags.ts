@@ -57,6 +57,17 @@ export function assertSitesCompatibleFeatureFlags(flags: FeatureFlags): void {
   }
 }
 
+export function assertDynamicResultsStorage(
+  flags: FeatureFlags,
+  readiness: Readonly<{ d1Configured: boolean; r2Configured: boolean; authorisedReviewFixtures: boolean }>,
+): void {
+  if (flags.dynamic_results && !(readiness.d1Configured && readiness.r2Configured) && !readiness.authorisedReviewFixtures) {
+    throw new Error(
+      "Dynamic results require durable result and generated-media storage. Configure approved D1 and R2 bindings, or use the explicitly authorised local result-fixture review build. The feature fails closed while storage is unavailable.",
+    );
+  }
+}
+
 declare const __WYBP_FEATURE_FLAGS__: FeatureFlags | undefined;
 
 export const activeFeatureFlags: FeatureFlags = Object.freeze({

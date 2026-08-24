@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   createPublicAppUrl,
+  createResultPreviewUrl,
+  createResultUrl,
   PUBLIC_APP_ORIGIN,
   resolveBrowserPublicAppOrigin,
   resolvePublicAppOrigin,
@@ -13,6 +15,17 @@ const canonicalOrigin = "https://brideprice.classesforculture.com";
 test("accepts and exposes the valid production origin", () => {
   assert.equal(validatePublicAppOrigin(canonicalOrigin, "production"), canonicalOrigin);
   assert.equal(PUBLIC_APP_ORIGIN, canonicalOrigin);
+});
+
+test("generates stable production and approved local result URLs without query data", () => {
+  const slug = "a".repeat(48); const hash = "b".repeat(64);
+  assert.equal(createResultUrl(slug), `${canonicalOrigin}/result/${slug}`);
+  assert.equal(createResultPreviewUrl(slug, hash), `${canonicalOrigin}/result/${slug}/preview/${hash}.png`);
+  const local = validatePublicAppOrigin("http://localhost:3100", "test");
+  assert.equal(createResultUrl(slug, local), `http://localhost:3100/result/${slug}`);
+  assert.equal(createResultPreviewUrl(slug, hash, local), `http://localhost:3100/result/${slug}/preview/${hash}.png`);
+  for (const hostile of ["../private", "%2e%2e", "A".repeat(48), "a".repeat(49), "a".repeat(47) + "/"]) assert.throws(() => createResultUrl(hostile));
+  assert.throws(() => createResultPreviewUrl(slug, "https://evil.example/image.png"));
 });
 
 test("rejects malformed and protocol-relative origin values", () => {

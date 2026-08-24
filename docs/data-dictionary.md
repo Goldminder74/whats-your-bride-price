@@ -102,7 +102,7 @@ Projection: private only. Answer text and free text are not stored.
 
 Purpose: immutable official scoring snapshot and optional safe public result.
 
-Fields: `id`, `public_slug`, `attempt_id`, `edition_id`, `score`, `total`, `tier`, `scoring_version`, `question_set_version`, `scoring_snapshot_json`, optional `safe_avatar_id`, optional `reviewed_display_name`, `safeguard_version`, `state`, `expires_at`, `revoked_at`, `anonymized_at`, `deleted_at`, `version`, `created_at`, `updated_at`.
+Fields: `id`, `public_slug`, `attempt_id`, `edition_id`, `score`, `total`, `tier`, `scoring_version`, `question_set_version`, `scoring_snapshot_json`, optional `safe_avatar_id`, optional `reviewed_display_name`, `safeguard_version`, `visibility`, `state`, `expires_at`, `revoked_at`, `anonymized_at`, `deleted_at`, `version`, `created_at`, `updated_at`.
 
 Relationships: one result per attempt; parent of challenges, mastery seals, media and optional party-player completion.
 
@@ -112,7 +112,11 @@ Integrity: `results_scoring_immutable` aborts any update to the attempt, edition
 
 `results_public_slug_format` rejects short, uppercase or non-hexadecimal public slugs before insertion.
 
-Projection: `PublicResultData` contains only slug, edition, score, total, tier, safe avatar, scoring version, safeguard, creation and optional expiry, plus a reviewed display name only when present. Expired, revoked, anonymized and deleted states return no public projection.
+Visibility: `private` or `public`; non-null and defaulted to `private`. Migration `0004` therefore keeps all historical rows private. Visibility is independent of lifecycle state.
+
+Publication authority: the client supplies the existing raw 32-character anonymous-session credential only in a same-origin POST body. The server domain-separates and hashes that credential, then compares it in constant time with the authoritative `quiz_attempts.anonymous_subject_hash` and requires the completed attempt ownership window to be unexpired. The stored 64-character hash is not accepted as a bearer credential and raw credentials are never stored in this table.
+
+Projection: `PublicResultData` contains only slug, edition, score, total, tier, safe avatar, scoring version, safeguard, creation and optional expiry, and the fixed neutral identity `A challenger`. It requires `visibility = public`, `state = active` and an unexpired record. Private, expired, revoked, anonymized and deleted records return the same null projection.
 
 ### `challenges`
 

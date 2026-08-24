@@ -92,11 +92,12 @@ function insertResult(database, attempt, overrides = {}) {
 
 test("migration plan is ordered and checksummed", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 4);
+  assert.equal(plan.length, 5);
   assert.equal(plan[0].id, "0000_loving_stepford_cuckoos");
   assert.equal(plan[1].id, "0001_same_vertigo");
   assert.equal(plan[2].id, "0002_little_inertia");
   assert.equal(plan[3].id, "0003_clever_joshua_kane");
+  assert.equal(plan[4].id, "0004_yellow_bill_hollister");
   assert.match(plan[0].checksum, /^[0-9a-f]{64}$/);
 });
 
@@ -105,11 +106,11 @@ test("empty database migration, schema tracking, dry-run and repeated execution 
   try {
     const plan = await loadMigrationPlan();
     const dryRun = applyMigrationPlan(database, plan, { dryRun: true, now });
-    assert.deepEqual(dryRun.pending, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane"]);
+    assert.deepEqual(dryRun.pending, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister"]);
     assert.equal(database.prepare("SELECT count(*) AS count FROM sqlite_master WHERE type='table' AND name='results'").get().count, 0);
-    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane"]);
+    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister"]);
     assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, []);
-    assert.equal(database.prepare("SELECT count(*) AS count FROM schema_migrations").get().count, 4);
+    assert.equal(database.prepare("SELECT count(*) AS count FROM schema_migrations").get().count, 5);
   } finally {
     database.close();
   }
@@ -133,7 +134,7 @@ test("upgrade from schema version 0000 to 0001 preserves existing question data"
       'published','approved',?, ?, ?, ?
     )`).run("d".repeat(64), now, now, now);
     assert.equal(database.prepare("SELECT count(*) AS count FROM pragma_table_info('questions') WHERE name='visual_start'").get().count, 0);
-    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane"]);
+    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister"]);
     const upgraded = database.prepare("SELECT question_text, visual_start FROM questions WHERE stable_id='west_q01'").get();
     assert.deepEqual({ ...upgraded }, { question_text: "Synthetic question", visual_start: null });
   } finally {
@@ -252,6 +253,7 @@ test("public result projection omits private fields and hides expired, revoked a
     safeAvatarId: "amara",
     reviewedDisplayName: null,
     safeguardVersion: "culture-score-v1",
+    visibility: "public",
     state: "active",
     createdAt: now,
     expiresAt: now + 1000,
@@ -261,9 +263,11 @@ test("public result projection omits private fields and hides expired, revoked a
   };
   const projection = toPublicResult(record, now);
   assert.deepEqual(Object.keys(projection).sort(), [
-    "createdAt", "edition", "expiresAt", "resultSlug", "safeAvatarId", "safeguard",
+    "createdAt", "displayName", "edition", "expiresAt", "resultSlug", "safeAvatarId", "safeguard",
     "score", "scoringVersion", "tier", "total",
   ]);
+  assert.equal(projection.displayName, "A challenger");
+  assert.equal(toPublicResult({ ...record, visibility: "private" }, now), null);
   assert.equal(toPublicResult({ ...record, state: "revoked" }, now), null);
   assert.equal(toPublicResult({ ...record, state: "anonymized" }, now), null);
   assert.equal(toPublicResult({ ...record, expiresAt: now }, now), null);

@@ -10,12 +10,15 @@ import { buildShareCopy, facebookShareDestination, whatsappShareDestination } fr
 import { downloadPreparedShareMedia, type PreparedShareMedia } from "./shareMedia";
 import type { SafeShareProjection } from "./shareProjection";
 import { PRODUCT_SAFEGUARD } from "./productSafeguards";
+import { RESULT_PUBLICATION_DISCLOSURE } from "../db/resultPublication";
+import type { ResultPublicationClient } from "./resultPublicationClient";
 
 type ShareCentreProps = Readonly<{
   projection: SafeShareProjection;
   prepareMedia: () => Promise<PreparedShareMedia>;
   onClose: () => void;
   returnFocusRef?: RefObject<HTMLElement | null>;
+  resultPublicationClient?: ResultPublicationClient;
 }>;
 
 type ShareStatus = Readonly<{
@@ -34,8 +37,10 @@ function canShareFiles(media: PreparedShareMedia): boolean {
   return typeof navigator.canShare === "function" && navigator.canShare({ files: [media.file] });
 }
 
-export default function ShareCentre({ projection, prepareMedia, onClose, returnFocusRef }: ShareCentreProps) {
-  const copy = useMemo(() => buildShareCopy(projection), [projection]);
+export default function ShareCentre({ projection, prepareMedia, onClose, returnFocusRef, resultPublicationClient }: ShareCentreProps) {
+  const [activeProjection, setActiveProjection] = useState(projection);
+  const [publicationVisibility, setPublicationVisibility] = useState(resultPublicationClient?.currentVisibility || "private");
+  const copy = useMemo(() => buildShareCopy(activeProjection), [activeProjection]);
   const [status, setStatus] = useState<ShareStatus>(idleStatus);
   const [busy, setBusy] = useState(false);
   const [mediaReady, setMediaReady] = useState(false);
@@ -49,9 +54,9 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
   const record = (name: Parameters<typeof emitShareCentreEvent>[0]["name"], channel?: ShareCentreChannel, startedAt?: number) => {
     emitShareCentreEvent({
       name,
-      surface: projection.surface,
+      surface: activeProjection.surface,
       channel,
-      edition: projection.edition,
+      edition: activeProjection.edition,
       ...(startedAt === undefined ? {} : { elapsedMs: performance.now() - startedAt }),
     });
   };
@@ -101,12 +106,12 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
 
   const clipboardFallback = async (channel: ShareCentreChannel, failedMessage: string) => {
     try {
-      await navigator.clipboard.writeText(projection.canonicalUrl);
+      await navigator.clipboard.writeText(activeProjection.canonicalUrl);
       record("share_copy_succeeded", channel);
       setStatus({ kind: "success", message: `${failedMessage} The safe link was copied instead.` });
     } catch {
       record("share_failed", channel);
-      setStatus({ kind: "failed", message: `${failedMessage} Select and copy the safe link below.`, manualText: projection.canonicalUrl });
+      setStatus({ kind: "failed", message: `${failedMessage} Select and copy the safe link below.`, manualText: activeProjection.canonicalUrl });
     }
   };
 
@@ -187,7 +192,7 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
       await clipboardFallback("native", "The device share sheet is unavailable.");
       return;
     }
-    const data: ShareData = { title: copy.title, text: `${copy.sentence}\n${PRODUCT_SAFEGUARD}`, url: projection.canonicalUrl };
+    const data: ShareData = { title: copy.title, text: `${copy.sentence}\n${PRODUCT_SAFEGUARD}`, url: activeProjection.canonicalUrl };
     try {
       const media = preparedMediaRef.current;
       if (media && canShareFiles(media)) data.files = [media.file];
@@ -209,12 +214,12 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
   const copyLink = () => begin("copy", async () => {
     const startedAt = performance.now();
     try {
-      await navigator.clipboard.writeText(projection.canonicalUrl);
+      await navigator.clipboard.writeText(activeProjection.canonicalUrl);
       record("share_copy_succeeded", "copy", startedAt);
       setStatus({ kind: "success", message: "Safe link copied. Paste it where you choose; delivery is not claimed." });
     } catch {
       record("share_failed", "copy", startedAt);
-      setStatus({ kind: "failed", message: "Clipboard access is unavailable. Select and copy the safe link below.", manualText: projection.canonicalUrl });
+      setStatus({ kind: "failed", message: "Clipboard access is unavailable. Select and copy the safe link below.", manualText: activeProjection.canonicalUrl });
     }
   });
 
@@ -232,9 +237,37 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
     }
   });
 
+  const publishResult = async () => {
+    if (!resultPublicationClient || busy) return;
+    setBusy(true);
+    setStatus({ kind: "working", message: "Creating the public result page and safe preview…" });
+    try {
+      const publicProjection = await resultPublicationClient.publish();
+      setActiveProjection(publicProjection);
+      setPublicationVisibility("public");
+      setStatus({ kind: "success", message: "Your permanent result link is ready. Nothing has been posted or delivered." });
+    } catch {
+      setStatus({ kind: "failed", message: "The result could not be made public. Your current invitation fallback remains available." });
+    } finally { setBusy(false); }
+  };
+
+  const unpublishResult = async () => {
+    if (!resultPublicationClient || busy) return;
+    setBusy(true);
+    setStatus({ kind: "working", message: "Returning this result to private…" });
+    try {
+      await resultPublicationClient.unpublish();
+      setActiveProjection(projection);
+      setPublicationVisibility("private");
+      setStatus({ kind: "success", message: "The permanent result and its generated preview are no longer publicly available. Your invitation fallback remains ready." });
+    } catch {
+      setStatus({ kind: "failed", message: "The privacy setting could not be changed right now. Please try again." });
+    } finally { setBusy(false); }
+  };
+
   return (
     <div className="share-centre-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-      <div className="share-centre" role="dialog" aria-modal="true" aria-labelledby="share-centre-title" aria-describedby="share-centre-description" ref={dialogRef} data-share-centre data-share-surface={projection.surface} data-share-mode={projection.personalised ? "personalised" : "generic"} data-media-ready={mediaReady}>
+      <div className="share-centre" role="dialog" aria-modal="true" aria-labelledby="share-centre-title" aria-describedby="share-centre-description" ref={dialogRef} data-share-centre data-share-surface={activeProjection.surface} data-share-mode={activeProjection.personalised ? "personalised" : "generic"} data-media-ready={mediaReady}>
         <header className="share-centre-heading">
           <div><p className="share-centre-kicker">Pass the culture spark on</p><h2 id="share-centre-title">Share Centre</h2></div>
           <button type="button" className="share-centre-close" onClick={onClose} aria-label="Close Share Centre" ref={closeRef}>×</button>
@@ -242,12 +275,16 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
         <p id="share-centre-description" className="share-centre-description">Choose a platform, copy your safe link, or save a polished story portrait.</p>
         <p className="share-centre-safeguard">{PRODUCT_SAFEGUARD}</p>
         <div className="share-centre-link-mode">
-          <b>{projection.personalised ? "Verified personalised challenge" : "Regional invitation fallback"}</b>
-          <span>{projection.personalised ? "Your approved name, verified score and regional edition match the challenge landing page." : "Durable challenges are unavailable, so this link carries no invented inviter identity or score."}</span>
+          <b>{activeProjection.canonicalUrl.includes("/result/") ? "Permanent public result" : activeProjection.personalised ? "Verified personalised challenge" : "Regional invitation fallback"}</b>
+          <span>{activeProjection.canonicalUrl.includes("/result/") ? "This public page uses the neutral identity A challenger, your authoritative score, approved avatar and regional edition." : activeProjection.personalised ? "Your approved name, verified score and regional edition match the challenge landing page." : "Durable challenges are unavailable, so this link carries no invented inviter identity or score."}</span>
         </div>
+        {resultPublicationClient && <section className="result-publication-choice" data-result-publication data-publication-visibility={publicationVisibility} aria-labelledby="result-publication-title">
+          <h3 id="result-publication-title">{publicationVisibility === "public" ? "Permanent result is public" : "Make this result public?"}</h3>
+          {publicationVisibility === "private" ? <><p>Only continue if you want a permanent page and social preview. It may show:</p><ul>{RESULT_PUBLICATION_DISCLOSURE.map((item) => <li key={item}>{item}</li>)}</ul><p>Your entered name and private uploaded photo are excluded.</p><div><button type="button" onClick={publishResult} disabled={busy}>Make result public</button><button type="button" onClick={() => setStatus({ kind: "cancelled", message: "Result kept private. The existing invitation fallback remains available." })} disabled={busy}>Keep private</button></div></> : <><p>The permanent link now powers Facebook, WhatsApp, Copy link and Native share. You can reverse this choice.</p><button type="button" onClick={unpublishResult} disabled={busy}>Unpublish result</button></>}
+        </section>}
         <div className="share-centre-grid" aria-label="Sharing options">
           <button type="button" onClick={() => openExternal("whatsapp", whatsappShareDestination(copy))} disabled={busy}><span aria-hidden="true">◉</span><b>WhatsApp</b><small>Full challenge copy</small></button>
-          <button type="button" onClick={() => openExternal("facebook", facebookShareDestination(projection))} disabled={busy}><span aria-hidden="true">f</span><b>Facebook</b><small>Open share composer</small></button>
+          <button type="button" onClick={() => openExternal("facebook", facebookShareDestination(activeProjection))} disabled={busy}><span aria-hidden="true">f</span><b>Facebook</b><small>Open share composer</small></button>
           <button type="button" onClick={() => shareToVisualPlatform("instagram")} disabled={busy || !mediaReady}><span aria-hidden="true">◎</span><b>Instagram Story</b><small>{mediaReady ? "Story portrait handoff" : "Preparing portrait…"}</small></button>
           <button type="button" onClick={() => shareToVisualPlatform("tiktok")} disabled={busy || !mediaReady}><span aria-hidden="true">♪</span><b>TikTok</b><small>{mediaReady ? "Story portrait handoff" : "Preparing portrait…"}</small></button>
           <button type="button" onClick={copyLink} disabled={busy}><span aria-hidden="true">⧉</span><b>Copy link</b><small>Canonical safe URL</small></button>
@@ -261,7 +298,7 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
         </div>
         <details className="share-centre-limitations">
           <summary>How platform sharing works</summary>
-          <p>WhatsApp opens with the full safe copy. Facebook receives the canonical link and currently uses the site’s static preview image. Instagram and TikTok do not offer reliable browser targeting, so the device share sheet or a private image download is used. No app login, contact list, delivery receipt or selected recipient is visible to this game.</p>
+          <p>WhatsApp opens with the full safe copy. Facebook receives the canonical link; public result links use their generated regional preview, while challenge and fallback links retain the approved site preview. Instagram and TikTok keep using the existing local 9:16 image until the separately approved video work. No app login, contact list, delivery receipt or selected recipient is visible to this game.</p>
         </details>
         <p className="share-centre-privacy">Private photos are re-encoded locally and appear only in media you deliberately download or hand to your device share sheet. They never enter public links or preview metadata.</p>
       </div>
