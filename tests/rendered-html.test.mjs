@@ -3,16 +3,25 @@ import { readFile, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import test from "node:test";
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
   return worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    new Request(`http://localhost${pathname}`, { headers: { accept: "text/html" } }),
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
     { waitUntil() {}, passThroughOnException() {} },
   );
 }
+
+test("ordinary production cannot activate challenge fixtures through a query parameter", async () => {
+  const code = "1".repeat(48);
+  const response = await render(`/challenge/${code}?challenges=1&fixture=trusted-west`);
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /This challenge is no longer available\./i);
+  assert.doesNotMatch(html, /Nia|Score to beat|data-challenge-active/i);
+});
 
 test("server-renders the finished pan-African game", async () => {
   const response = await render();
@@ -61,7 +70,13 @@ test("default production client output excludes review diagnostics", async () =>
   const scripts = entries.filter((entry) => entry.isFile() && entry.name.endsWith(".js"));
   const sources = await Promise.all(scripts.map((entry) => readFile(resolve(entry.parentPath, entry.name), "utf8")));
   assert.doesNotMatch(sources.join("\n"), /Entry diagnostics|data-entry-diagnostics/);
-  assert.doesNotMatch(sources.join("\n"), /Ayo scored|ReviewWest_2026|safeguard-low-result|safeguard-high-result|safeguard-reduced-result|safeguard-question/);
+  const clientOutput = sources.join("\n");
+  const serverEntries = await readdir(new URL("../dist/server/", import.meta.url), { recursive: true, withFileTypes: true });
+  const serverScripts = serverEntries.filter((entry) => entry.isFile() && entry.name.endsWith(".js"));
+  const serverSources = await Promise.all(serverScripts.map((entry) => readFile(resolve(entry.parentPath, entry.name), "utf8")));
+  const ordinaryOutput = `${clientOutput}\n${serverSources.join("\n")}`;
+  assert.doesNotMatch(ordinaryOutput, /Ayo scored|ReviewWest_2026|safeguard-low-result|safeguard-high-result|safeguard-reduced-result|safeguard-question/);
+  assert.doesNotMatch(ordinaryOutput, /inviterDisplayName:[`'"](?:Nia|Mirembe|Thandi|Safiya|Ọlá)|111111111111111111111111111111111111111111111111|666666666666666666666666666666666666666666666666/);
 });
 
 test("ships sixty educational questions, varied play modes, privacy copy and broad sources", async () => {

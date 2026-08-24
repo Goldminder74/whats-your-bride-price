@@ -5,7 +5,7 @@
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { clearAnonymousSession, getOrCreateAnonymousSession } from "./anonymousSession";
-import { approvedAvatarRegistry, isApprovedAvatarId, resolveApprovedAvatar } from "./avatarRegistry";
+import { approvedAvatarRegistry, defaultAvatarId, isApprovedAvatarId, resolveApprovedAvatar } from "./avatarRegistry";
 import type { SafeguardReviewFixture, TrustedChallengeEntry } from "./challengeEntry";
 import {
   createChallengeIdempotencyKey,
@@ -256,20 +256,22 @@ type BridePriceGameProps = {
   trustedChallenge?: TrustedChallengeEntry;
   safeguardReviewFixture?: SafeguardReviewFixture;
   challengeCreationClient?: ChallengeCreationClient;
+  acceptedChallenge?: boolean;
+  acceptedChallengeQuizInstanceId?: string;
 };
 
-function fastInitialScreen(entry: EntryContext | undefined, challenge: TrustedChallengeEntry | undefined): Screen {
-  if (challenge) return "challenge";
+function fastInitialScreen(entry: EntryContext | undefined, challenge: TrustedChallengeEntry | undefined, acceptedChallenge = false): Screen {
+  if (challenge) return acceptedChallenge ? "fast_setup" : "challenge";
   if (entry?.challenge) return "entry";
   return entry?.edition ? "fast_setup" : "entry";
 }
 
-export default function BridePriceGame({ initialEntryContext, trustedChallenge: resolvedTrustedChallenge, safeguardReviewFixture, challengeCreationClient }: BridePriceGameProps) {
+export default function BridePriceGame({ initialEntryContext, trustedChallenge: resolvedTrustedChallenge, safeguardReviewFixture, challengeCreationClient, acceptedChallenge = false, acceptedChallengeQuizInstanceId }: BridePriceGameProps) {
   const trustedChallenge = resolvedTrustedChallenge?.validity === "valid" ? resolvedTrustedChallenge : undefined;
   const fastEntryEnabled = activeFeatureFlags.fast_entry;
   const [hydrated, setHydrated] = useState(false);
   const [entryContext, setEntryContext] = useState<EntryContext>(() => initialEntryContext || parseEntryContext(""));
-  const [screen, setScreen] = useState<Screen>(() => safeguardReviewFixture?.screen || (fastEntryEnabled ? fastInitialScreen(initialEntryContext, trustedChallenge) : "home"));
+  const [screen, setScreen] = useState<Screen>(() => safeguardReviewFixture?.screen || (fastEntryEnabled ? fastInitialScreen(initialEntryContext, trustedChallenge, acceptedChallenge) : "home"));
   const [regionKey, setRegionKey] = useState<RegionKey>(() => trustedChallenge?.edition || initialEntryContext?.edition || "west");
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState<string | null>(null);
@@ -277,7 +279,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const [photoNoticeKind, setPhotoNoticeKind] = useState<"neutral" | "success" | "error">("neutral");
   const [photoProcessing, setPhotoProcessing] = useState(false);
   const [localDataNotice, setLocalDataNotice] = useState("");
-  const [avatarId, setAvatarId] = useState(trustedChallenge?.avatarId || avatarChoices[0].id);
+  const [avatarId, setAvatarId] = useState(acceptedChallenge ? defaultAvatarId : trustedChallenge?.avatarId || avatarChoices[0].id);
   const [showAllAvatars, setShowAllAvatars] = useState(false);
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<number[]>(() => safeguardReviewFixture?.screen === "result" ? Array(12).fill(safeguardReviewFixture.score === 12 ? 1 : 0) : []);
@@ -299,7 +301,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const [challengeCreationState, setChallengeCreationState] = useState<"idle" | "creating" | "success" | "error">("idle");
   const [createdChallengeUrl, setCreatedChallengeUrl] = useState("");
   const [failedQuestionImages, setFailedQuestionImages] = useState<Set<string>>(() => new Set());
-  const [quizInstanceId, setQuizInstanceId] = useState<string | null>(null);
+  const [quizInstanceId, setQuizInstanceId] = useState<string | null>(acceptedChallengeQuizInstanceId || null);
   const [recoveryNotice, setRecoveryNotice] = useState("");
   const [startLocked, setStartLocked] = useState(false);
   const [unverifiedChallenge, setUnverifiedChallenge] = useState(Boolean(initialEntryContext?.challenge && !trustedChallenge));
@@ -348,12 +350,36 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
         ? parseEntryContext(entryContextToQuery(parsedEntryContext, { edition: undefined, nominated: undefined, challenge: undefined }))
         : parsedEntryContext;
       setUnverifiedChallenge(challengeIsUnverified);
-      setEntryContext(safeEntryContext);
+      const effectiveEntryContext = acceptedChallenge && initialEntryContext
+        ? initialEntryContext
+        : safeEntryContext;
+      setEntryContext(effectiveEntryContext);
       if (trustedChallenge) {
         setRegionKey(trustedChallenge.edition);
-        setAvatarId(trustedChallenge.avatarId);
-        setScreen("challenge");
-        window.history.replaceState({ wybpScreen: "challenge" }, "", window.location.href);
+        setAvatarId(acceptedChallenge ? defaultAvatarId : trustedChallenge.avatarId);
+        if (acceptedChallenge) {
+          const recovery = readQuizRecovery(window.localStorage, window.sessionStorage);
+          const matchingRecovery = recovery?.trustedChallengeCode === trustedChallenge.code
+            && recovery.edition === trustedChallenge.edition
+            ? recovery
+            : null;
+          if (matchingRecovery && matchingRecovery.questionPosition > 0 && matchingRecovery.questionPosition < 12) {
+            setAvatarId(matchingRecovery.avatarId);
+            setAnswerChoices(matchingRecovery.answerChoices.map((choice) => [...choice]));
+            setAnswers(recoveryAnswerResults(matchingRecovery));
+            setIndex(Math.min(matchingRecovery.questionPosition, 11));
+            setQuizInstanceId(matchingRecovery.instanceId);
+            setRecoveryNotice("Your accepted challenge was restored in this tab.");
+            setScreen("quiz");
+            window.history.replaceState({ wybpScreen: "quiz", wybpChallengeAccepted: true }, "", window.location.href);
+          } else {
+            setScreen("fast_setup");
+            window.history.replaceState({ wybpScreen: "fast_setup", wybpChallengeAccepted: true }, "", window.location.href);
+          }
+        } else {
+          setScreen("challenge");
+          window.history.replaceState({ wybpScreen: "challenge" }, "", window.location.href);
+        }
       } else {
         const recovery = readQuizRecovery(window.localStorage, window.sessionStorage);
         if (recovery && parsedEntryContext.edition === recovery.edition && !challengeIsUnverified) {
@@ -412,7 +438,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       const saved = JSON.parse(localStorage.getItem("wybp-region-scores") || "{}") as Partial<Record<RegionKey, number>>;
       setBestScores(Object.fromEntries(Object.entries(saved).filter(([key, value]) => regions[key as RegionKey] && typeof value === "number")) as Partial<Record<RegionKey, number>>);
     } catch { /* device progress is optional */ }
-  }, [fastEntryEnabled, safeguardReviewFixture, trustedChallenge]);
+  }, [acceptedChallenge, fastEntryEnabled, initialEntryContext, safeguardReviewFixture, trustedChallenge]);
 
   useEffect(() => {
     const session = getOrCreateAnonymousSession(window.sessionStorage);
@@ -512,7 +538,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   }, [answerChoices, avatarId, entryContext, fastEntryEnabled, quizInstanceId, regionKey, screen, trustedChallenge?.code]);
 
   useEffect(() => {
-    if (!fastEntryEnabled) return;
+    if (!fastEntryEnabled || acceptedChallenge) return;
     const restoreEntryScreen = (event: PopStateEvent) => {
       const parsedEntryContext = parseEntryContext(window.location.search, document.referrer);
       setEntryContext(parsedEntryContext);
@@ -523,7 +549,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     };
     window.addEventListener("popstate", restoreEntryScreen);
     return () => window.removeEventListener("popstate", restoreEntryScreen);
-  }, [fastEntryEnabled]);
+  }, [acceptedChallenge, fastEntryEnabled]);
 
   useEffect(() => () => {
     if (revealTimerRef.current !== null) window.clearTimeout(revealTimerRef.current);
@@ -756,8 +782,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     if (displayNameValidation.value !== null && name !== displayNameValidation.value) setName(displayNameValidation.value);
     startLockRef.current = true;
     setStartLocked(true);
-    if (fastEntryEnabled && answerChoices.length > 0 && quizInstanceId) {
+    if (fastEntryEnabled && quizInstanceId) {
       setIndex(Math.min(answerChoices.length, 11));
+      if (answerChoices.length === 0) { setAnswers([]); setAnswerChoices([]); }
     } else {
       setIndex(0); setAnswers([]); setAnswerChoices([]);
       if (fastEntryEnabled) setQuizInstanceId(createQuizInstanceId());

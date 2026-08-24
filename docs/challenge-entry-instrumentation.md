@@ -1,0 +1,15 @@
+# Challenge entry instrumentation contract
+
+Date: 24 August 2026
+
+Prompt 10 provides three dependency-free browser-local event hooks. They dispatch `wybp:challenge-event` as a `CustomEvent` and add a performance mark named `wybp:{event_name}`. They do not transmit, persist or queue data. No analytics SDK, pixel, cookie or remote endpoint is present.
+
+| Event | Exact meaning | Must not be interpreted as |
+| --- | --- | --- |
+| `challenge_view` | A challenge landing component with an active safe public projection hydrated in a browser and became eligible for human interaction. Emitted at most once per page lifecycle. | A link delivery, link click, unique person, quiz start, challenge acceptance, crawler view or completed play. Server rendering, metadata generation and raw GET requests do not emit it. |
+| `challenge_accept` | The recipient explicitly activated `Accept challenge` and the protected POST returned a successful, authoritative, idempotent acceptance. Emitted once before the accepted quiz UI opens. | A challenge page view, attempted tap, failed/offline request, quiz completion, comparison outcome or invitation sent. |
+| `challenge_invalid` | A neutral unavailable or temporary-failure landing hydrated in a browser. The coarse `state` is only `unavailable` or `temporary_failure`. | Proof that a record existed, a reason such as expired/revoked/deleted, a human visit, or a failed acceptance. |
+
+The hook payload allowlist is `name`, optional `edition`, coarse `state` and `elapsedMs`. It must never contain a name, score, challenge code, full URL, query, referrer, IP address, user-agent string, session ID, subject hash, internal ID, idempotency value, revocation token or private photo. Later analytics work must preserve bot classification and consent rules and must not count server or crawler fetches as human starts.
+
+Challenge acceptance itself is not an analytics event. It is a strictly functional private record created only by the explicit POST boundary. The hook cannot authorise or substitute for that write.

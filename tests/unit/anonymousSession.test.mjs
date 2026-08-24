@@ -5,6 +5,7 @@ import {
   anonymousSessionLifetimeMs,
   anonymousSessionStorageKey,
   clearAnonymousSession,
+  deriveAnonymousSubjectHash,
   getOrCreateAnonymousSession,
 } from "../../app/anonymousSession.ts";
 
@@ -57,4 +58,13 @@ test("fails safely without secure randomness and clears local identity", () => {
   assert.equal(created.available, true);
   assert.equal(clearAnonymousSession(storage), true);
   assert.equal(storage.getItem(anonymousSessionStorageKey), null);
+});
+
+test("derives a domain-separated anonymous subject hash without exposing the session identifier", async () => {
+  const sessionId = "01".repeat(16);
+  const hash = await deriveAnonymousSubjectHash(sessionId);
+  assert.match(hash, /^[0-9a-f]{64}$/);
+  assert.notEqual(hash, sessionId);
+  assert.equal(await deriveAnonymousSubjectHash("uppercase-ID"), null);
+  assert.equal(await deriveAnonymousSubjectHash("0".repeat(31)), null);
 });

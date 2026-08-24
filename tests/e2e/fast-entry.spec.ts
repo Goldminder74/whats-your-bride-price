@@ -152,12 +152,12 @@ test("trusted review challenge needs one accept action and raw challenge claims 
   const response = await request.get("/?fixture=trusted-west&source=whatsapp");
   const html = await response.text();
   expect(html).toContain("data-trusted-challenge");
-  expect(html).toContain("Ayo");
+  expect(html).toContain("Nia");
   expect(html).toContain("10");
 
   await page.goto("/?fixture=trusted-west&source=whatsapp");
   await expect(page.locator("[data-trusted-challenge]")).toBeVisible();
-  await expect(page.getByText("Ayo scored")).toBeVisible();
+  await expect(page.getByText("Nia scored")).toBeVisible();
   await expect(page.getByText("10/12")).toBeVisible();
   await expect(page.locator("#trusted-challenge-safeguard")).toHaveText("A playful culture score, never a measure of human worth.");
   await expect(page.getByRole("button", { name: "Accept the challenge" })).toHaveAttribute("aria-describedby", "trusted-challenge-safeguard");

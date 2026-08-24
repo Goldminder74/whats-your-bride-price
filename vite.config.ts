@@ -59,6 +59,16 @@ export default defineConfig(async ({ mode }) => {
   }
   const reviewDiagnostics = mode !== "production" || (diagnosticsRequested && diagnosticsApproved);
   const reviewChallengeFixtures = challengeFixturesRequested && diagnosticsApproved;
+  const reviewChallengeData = reviewChallengeFixtures
+    ? [
+        { scenario: "valid", code: "1".repeat(48), inviterDisplayName: "Nia", edition: "west", verifiedScore: 10, total: 12, avatarId: "adjoa", validity: "valid" },
+        { scenario: "expired", code: "2".repeat(48), inviterDisplayName: "Mirembe", edition: "east", verifiedScore: 8, total: 12, avatarId: "zuri", validity: "expired" },
+        { scenario: "revoked", code: "3".repeat(48), inviterDisplayName: "Amara", edition: "central", verifiedScore: 9, total: 12, avatarId: "amara", validity: "revoked" },
+        { scenario: "removed", code: "4".repeat(48), inviterDisplayName: "Safiya", edition: "north", verifiedScore: 7, total: 12, avatarId: "samira", validity: "unavailable" },
+        { scenario: "temporary", code: "5".repeat(48), inviterDisplayName: "Thandi", edition: "south", verifiedScore: 11, total: 12, avatarId: "mbali", validity: "unavailable" },
+        { scenario: "unicode", code: "6".repeat(48), inviterDisplayName: "Ọlá", edition: "west", verifiedScore: 11, total: 12, avatarId: "adjoa", validity: "valid" },
+      ]
+    : null;
   const publicAppEnvironment: PublicAppEnvironment =
     mode === "production" ? "production" : mode === "test" ? "test" : "development";
   const publicAppOrigin = resolvePublicAppOrigin(
@@ -82,6 +92,7 @@ export default defineConfig(async ({ mode }) => {
       __WYBP_RUNTIME_ENV__: JSON.stringify(publicAppEnvironment),
       __WYBP_REVIEW_DIAGNOSTICS__: JSON.stringify(reviewDiagnostics),
       __WYBP_REVIEW_CHALLENGE_FIXTURES__: JSON.stringify(reviewChallengeFixtures),
+      __WYBP_REVIEW_CHALLENGE_DATA__: JSON.stringify(reviewChallengeData),
     },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }

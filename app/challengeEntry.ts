@@ -3,6 +3,7 @@ import { validateDisplayName } from "./displayNames.ts";
 import { regionOrder, type RegionKey } from "./gameData.ts";
 
 declare const __WYBP_REVIEW_CHALLENGE_FIXTURES__: boolean | undefined;
+declare const __WYBP_REVIEW_CHALLENGE_DATA__: unknown;
 
 export const reviewChallengeFixturesEnabled =
   typeof __WYBP_REVIEW_CHALLENGE_FIXTURES__ === "boolean" &&
@@ -24,7 +25,7 @@ export type SafeguardReviewFixture = Readonly<{
   reducedMotion: boolean;
 }>;
 
-const codePattern = /^[A-Za-z0-9][A-Za-z0-9_-]{5,63}$/;
+const codePattern = /^[0-9a-f]{48}$/;
 const regionSet = new Set<string>(regionOrder);
 const validitySet = new Set(["valid", "expired", "revoked", "unavailable"]);
 
@@ -64,15 +65,46 @@ export function validateTrustedChallengeEntry(value: unknown): TrustedChallengeE
 
 export function resolveReviewChallengeFixture(fixtureId: string | undefined): TrustedChallengeEntry | undefined {
   if (!reviewChallengeFixturesEnabled || fixtureId !== "trusted-west") return undefined;
-  return validateTrustedChallengeEntry({
-    code: "ReviewWest_2026",
-    inviterDisplayName: "Ayo",
-    edition: "west",
-    verifiedScore: 10,
-    total: 12,
-    avatarId: "adjoa",
-    validity: "valid",
-  }) || undefined;
+  return reviewChallengeFixtures.find((fixture) => fixture.scenario === "valid")?.entry;
+}
+
+export type ReviewChallengeScenario = "valid" | "expired" | "revoked" | "removed" | "temporary" | "unicode";
+export type ReviewChallengeFixture = Readonly<{
+  scenario: ReviewChallengeScenario;
+  entry: TrustedChallengeEntry;
+}>;
+
+const reviewScenarios = new Set<ReviewChallengeScenario>([
+  "valid", "expired", "revoked", "removed", "temporary", "unicode",
+]);
+
+function parseReviewChallengeFixtures(value: unknown): readonly ReviewChallengeFixture[] {
+  if (!reviewChallengeFixturesEnabled || !Array.isArray(value)) return Object.freeze([]);
+  const fixtures: ReviewChallengeFixture[] = [];
+  for (const candidate of value) {
+    if (!candidate || typeof candidate !== "object" || Array.isArray(candidate)) continue;
+    const record = candidate as Record<string, unknown>;
+    const entry = validateTrustedChallengeEntry(record);
+    if (
+      !entry
+      || typeof record.scenario !== "string"
+      || !reviewScenarios.has(record.scenario as ReviewChallengeScenario)
+    ) continue;
+    fixtures.push(Object.freeze({
+      scenario: record.scenario as ReviewChallengeScenario,
+      entry,
+    }));
+  }
+  return Object.freeze(fixtures);
+}
+
+export const reviewChallengeFixtures = parseReviewChallengeFixtures(
+  typeof __WYBP_REVIEW_CHALLENGE_DATA__ === "undefined" ? null : __WYBP_REVIEW_CHALLENGE_DATA__,
+);
+
+export function resolveReviewChallengeFixtureByCode(code: string): ReviewChallengeFixture | undefined {
+  if (!codePattern.test(code)) return undefined;
+  return reviewChallengeFixtures.find((fixture) => fixture.entry.code === code);
 }
 
 export function resolveSafeguardReviewFixture(fixtureId: string | undefined): SafeguardReviewFixture | undefined {

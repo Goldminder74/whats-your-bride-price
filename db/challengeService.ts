@@ -23,6 +23,7 @@ export type PublicChallengeStatus = "active" | "expired" | "revoked";
 export type PublicChallengeProjection = Readonly<{
   challengeCode: string;
   displayName: string;
+  avatarId: string;
   edition: RegionKey;
   editionLabel: string;
   scoreToBeat: number;
@@ -61,6 +62,8 @@ export type StoredChallengeRecord = Readonly<{
   id: string;
   publicCode: string;
   inviterResultId: string | null;
+  inviterResultState: string | null;
+  inviterResultExpiresAt: number | null;
   anonymousSubjectHash: string | null;
   creationIdempotencyKeyHash: string | null;
   revocationTokenHash: string | null;
@@ -69,6 +72,7 @@ export type StoredChallengeRecord = Readonly<{
   verifiedScoreToBeat: number;
   total: number;
   scoringVersion: string;
+  safeInviterAvatarId: string | null;
   reviewedInviterName: string | null;
   state: string;
   createdAt: number;
@@ -226,7 +230,12 @@ export function toPublicChallengeProjection(
   record: StoredChallengeRecord,
   now = Date.now(),
 ): PublicChallengeProjection | null {
-  if (!PUBLIC_CODE_PATTERN.test(record.publicCode)) return null;
+  if (
+    !PUBLIC_CODE_PATTERN.test(record.publicCode)
+    || !record.inviterResultId
+    || record.inviterResultState !== "active"
+    || (record.inviterResultExpiresAt !== null && record.inviterResultExpiresAt <= now)
+  ) return null;
   const status = challengeStatus(record, now);
   if (!status || !(record.editionKey in regions)) return null;
   const edition = record.editionKey as RegionKey;
@@ -240,6 +249,7 @@ export function toPublicChallengeProjection(
     || record.verifiedScoreToBeat < 0 || record.verifiedScoreToBeat > record.total
     || !Number.isSafeInteger(record.createdAt) || !Number.isSafeInteger(record.expiresAt)
     || record.createdAt < 0 || record.expiresAt <= record.createdAt) return null;
+  if (!isApprovedAvatarId(record.safeInviterAvatarId)) return null;
   let displayName = publicDisplayNameFallback;
   if (record.reviewedInviterName) {
     const validation = validateDisplayName(record.reviewedInviterName);
@@ -249,6 +259,7 @@ export function toPublicChallengeProjection(
   return Object.freeze({
     challengeCode: record.publicCode,
     displayName,
+    avatarId: record.safeInviterAvatarId,
     edition,
     editionLabel: record.editionLabel,
     scoreToBeat: record.verifiedScoreToBeat,
@@ -435,6 +446,8 @@ type ChallengeRow = {
   id: string;
   public_code: string;
   inviter_result_id: string | null;
+  inviter_result_state: string | null;
+  inviter_result_expires_at: number | null;
   anonymous_subject_hash: string | null;
   creation_idempotency_key_hash: string | null;
   revocation_token_hash: string | null;
@@ -443,6 +456,7 @@ type ChallengeRow = {
   verified_score_to_beat: number;
   total: number;
   scoring_version: string;
+  safe_inviter_avatar_id: string | null;
   reviewed_inviter_name: string | null;
   state: string;
   created_at: number;
@@ -451,10 +465,12 @@ type ChallengeRow = {
 };
 
 const CHALLENGE_SELECT = `SELECT
-  c.id, c.public_code, c.inviter_result_id, qa.anonymous_subject_hash,
+  c.id, c.public_code, c.inviter_result_id, r.state AS inviter_result_state,
+  r.expires_at AS inviter_result_expires_at, qa.anonymous_subject_hash,
   c.creation_idempotency_key_hash, c.revocation_token_hash,
   qe.edition_key, qe.name AS edition_label, c.verified_score_to_beat, c.total,
-  c.scoring_version, c.reviewed_inviter_name, c.state, c.created_at, c.expires_at, c.revoked_at
+  c.scoring_version, c.safe_inviter_avatar_id, c.reviewed_inviter_name,
+  c.state, c.created_at, c.expires_at, c.revoked_at
 FROM challenges c
 JOIN quiz_editions qe ON qe.id = c.edition_id
 LEFT JOIN results r ON r.id = c.inviter_result_id
@@ -465,6 +481,8 @@ function storedChallenge(row: ChallengeRow): StoredChallengeRecord {
     id: row.id,
     publicCode: row.public_code,
     inviterResultId: row.inviter_result_id,
+    inviterResultState: row.inviter_result_state,
+    inviterResultExpiresAt: row.inviter_result_expires_at,
     anonymousSubjectHash: row.anonymous_subject_hash,
     creationIdempotencyKeyHash: row.creation_idempotency_key_hash,
     revocationTokenHash: row.revocation_token_hash,
@@ -473,6 +491,7 @@ function storedChallenge(row: ChallengeRow): StoredChallengeRecord {
     verifiedScoreToBeat: row.verified_score_to_beat,
     total: row.total,
     scoringVersion: row.scoring_version,
+    safeInviterAvatarId: row.safe_inviter_avatar_id,
     reviewedInviterName: row.reviewed_inviter_name,
     state: row.state,
     createdAt: row.created_at,

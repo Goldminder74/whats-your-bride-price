@@ -56,10 +56,17 @@ const server = createServer(async (incoming, outgoing) => {
       return;
     }
     const directAsset = await findAsset(requestUrl.pathname);
+    const requestBody = !["GET", "HEAD"].includes(incoming.method || "GET")
+      ? Buffer.concat(await Array.fromAsync(incoming))
+      : undefined;
     const response = directAsset
       ? await assetResponse(new Request(requestUrl))
       : await worker.fetch(
-          new Request(requestUrl, { method: incoming.method, headers: incoming.headers }),
+          new Request(requestUrl, {
+            method: incoming.method,
+            headers: incoming.headers,
+            body: requestBody?.length ? requestBody : undefined,
+          }),
           { ASSETS: { fetch: assetResponse } },
           { waitUntil() {}, passThroughOnException() {} },
         );

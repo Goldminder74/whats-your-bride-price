@@ -20,6 +20,23 @@ export type AnonymousSessionResult = Readonly<
 
 const sessionIdPattern = /^[0-9a-f]{32}$/;
 
+function bytesToHex(bytes: Uint8Array): string {
+  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+export async function deriveAnonymousSubjectHash(sessionId: string): Promise<string | null> {
+  if (!sessionIdPattern.test(sessionId) || !globalThis.crypto?.subtle) return null;
+  try {
+    const digest = await crypto.subtle.digest(
+      "SHA-256",
+      new TextEncoder().encode(`wybp-anonymous-subject-v1\u0000${sessionId}`),
+    );
+    return bytesToHex(new Uint8Array(digest));
+  } catch {
+    return null;
+  }
+}
+
 function parseStoredSession(raw: string | null, now: number): StoredAnonymousSession | null {
   if (!raw || raw.length > 256) return null;
   let value: unknown;

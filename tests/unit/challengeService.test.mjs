@@ -77,6 +77,8 @@ class MemoryRepository {
       id: record.id,
       publicCode: record.publicCode,
       inviterResultId: record.inviterResultId,
+      inviterResultState: authoritativeResult?.resultState || null,
+      inviterResultExpiresAt: authoritativeResult?.resultExpiresAt || null,
       anonymousSubjectHash: authoritativeResult?.anonymousSubjectHash || null,
       creationIdempotencyKeyHash: record.creationIdempotencyKeyHash,
       revocationTokenHash: record.revocationTokenHash,
@@ -85,6 +87,7 @@ class MemoryRepository {
       verifiedScoreToBeat: record.verifiedScoreToBeat,
       total: record.total,
       scoringVersion: record.scoringVersion,
+      safeInviterAvatarId: record.safeInviterAvatarId,
       reviewedInviterName: record.reviewedInviterName,
       state: "active",
       createdAt: record.createdAt,
@@ -237,15 +240,17 @@ test("public projection is minimal, validated, injection-safe and reports expiry
   const created = await challengeService.create(createInput);
   const projection = await challengeService.getPublic(created.challenge.challengeCode);
   assert.deepEqual(Object.keys(projection).sort(), [
-    "challengeCode", "createdAt", "displayName", "edition", "editionLabel",
+    "avatarId", "challengeCode", "createdAt", "displayName", "edition", "editionLabel",
     "expiresAt", "maximumScore", "scoreToBeat", "status",
   ]);
   const serialized = JSON.stringify(projection);
-  assert.doesNotMatch(serialized, /result_synthetic|anonymous|idempotency|revocation|photo|avatar|session|email|user-agent/i);
+  assert.doesNotMatch(serialized, /result_synthetic|anonymous|idempotency|revocation|photo|session|email|user-agent/i);
 
   const stored = repository.challenges.get(created.challenge.challengeCode);
   assert.equal(toPublicChallengeProjection({ ...stored, expiresAt: now + 1 }, now + 1).status, "expired");
   assert.equal(toPublicChallengeProjection({ ...stored, state: "revoked" }, now).status, "revoked");
+  assert.equal(toPublicChallengeProjection({ ...stored, inviterResultState: "deleted" }, now), null);
+  assert.equal(toPublicChallengeProjection({ ...stored, inviterResultExpiresAt: now }, now), null);
   assert.equal(toPublicChallengeProjection({ ...stored, reviewedInviterName: "<script>alert(1)</script>" }, now), null);
   assert.equal(toPublicChallengeProjection({ ...stored, reviewedInviterName: null }, now).displayName, "A Most Excellent Player");
   assert.equal(await challengeService.getPublic("bad"), null);

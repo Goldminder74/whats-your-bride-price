@@ -8,7 +8,7 @@ import {
 } from "../../app/challengeEntry.ts";
 
 const valid = {
-  code: "Trusted_2026",
+  code: "1".repeat(48),
   inviterDisplayName: "Ayo N.",
   edition: "west",
   verifiedScore: 10,
@@ -20,6 +20,9 @@ const valid = {
 test("trusted challenge values require a complete, validated server-side shape", () => {
   assert.deepEqual(validateTrustedChallengeEntry(valid), valid);
   assert.equal(validateTrustedChallengeEntry({ ...valid, verifiedScore: 13 }), null);
+  assert.equal(validateTrustedChallengeEntry({ ...valid, code: "A".repeat(48) }), null);
+  assert.equal(validateTrustedChallengeEntry({ ...valid, code: `${"1".repeat(48)}extra` }), null);
+  assert.equal(validateTrustedChallengeEntry({ ...valid, code: "../etc/passwd" }), null);
   assert.equal(validateTrustedChallengeEntry({ ...valid, inviterDisplayName: "<b>Ayo</b>" }), null);
   assert.equal(validateTrustedChallengeEntry({ ...valid, avatarId: "uploaded-photo" }), null);
   assert.deepEqual(validateTrustedChallengeEntry({ ...valid, validity: "unavailable" }), { ...valid, validity: "unavailable" });
