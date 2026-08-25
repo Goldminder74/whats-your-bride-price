@@ -69,14 +69,14 @@ export function resolveReviewChallengeFixture(fixtureId: string | undefined): Tr
   return reviewChallengeFixtures.find((fixture) => fixture.scenario === "valid")?.entry;
 }
 
-export type ReviewChallengeScenario = "valid" | "expired" | "revoked" | "removed" | "temporary" | "unicode" | "nomination";
+export type ReviewChallengeScenario = "valid" | "expired" | "revoked" | "removed" | "temporary" | "unicode" | "nomination" | "story_east" | "story_north";
 export type ReviewChallengeFixture = Readonly<{
   scenario: ReviewChallengeScenario;
   entry: TrustedChallengeEntry;
 }>;
 
 const reviewScenarios = new Set<ReviewChallengeScenario>([
-  "valid", "expired", "revoked", "removed", "temporary", "unicode", "nomination",
+  "valid", "expired", "revoked", "removed", "temporary", "unicode", "nomination", "story_east", "story_north",
 ]);
 
 function parseReviewChallengeFixtures(value: unknown): readonly ReviewChallengeFixture[] {

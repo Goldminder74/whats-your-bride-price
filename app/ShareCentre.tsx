@@ -12,6 +12,10 @@ import type { SafeShareProjection } from "./shareProjection";
 import { PRODUCT_SAFEGUARD } from "./productSafeguards";
 import { RESULT_PUBLICATION_DISCLOSURE } from "../db/resultPublication";
 import type { ResultPublicationClient } from "./resultPublicationClient";
+import StoryVideoPanel from "./StoryVideoPanel";
+import { activeFeatureFlags } from "./featureFlags";
+import { PUBLIC_APP_ORIGIN } from "./publicAppOrigin";
+import { storyVideoProjectionFromShare } from "./storyVideoProjection";
 
 type ShareCentreProps = Readonly<{
   projection: SafeShareProjection;
@@ -19,6 +23,7 @@ type ShareCentreProps = Readonly<{
   onClose: () => void;
   returnFocusRef?: RefObject<HTMLElement | null>;
   resultPublicationClient?: ResultPublicationClient;
+  soundEnabled?: boolean;
 }>;
 
 type ShareStatus = Readonly<{
@@ -37,19 +42,23 @@ function canShareFiles(media: PreparedShareMedia): boolean {
   return typeof navigator.canShare === "function" && navigator.canShare({ files: [media.file] });
 }
 
-export default function ShareCentre({ projection, prepareMedia, onClose, returnFocusRef, resultPublicationClient }: ShareCentreProps) {
+export default function ShareCentre({ projection, prepareMedia, onClose, returnFocusRef, resultPublicationClient, soundEnabled = true }: ShareCentreProps) {
   const [activeProjection, setActiveProjection] = useState(projection);
   const [publicationVisibility, setPublicationVisibility] = useState(resultPublicationClient?.currentVisibility || "private");
   const copy = useMemo(() => buildShareCopy(activeProjection), [activeProjection]);
   const [status, setStatus] = useState<ShareStatus>(idleStatus);
   const [busy, setBusy] = useState(false);
   const [mediaReady, setMediaReady] = useState(false);
+  const [storyVideoOpen, setStoryVideoOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const mediaPromiseRef = useRef<Promise<PreparedShareMedia> | null>(null);
   const preparedMediaRef = useRef<PreparedShareMedia | null>(null);
   const mediaPreparedEventRef = useRef(false);
   const actionLockRef = useRef(false);
+  const storyProjection = useMemo(() => activeFeatureFlags.story_video
+    ? storyVideoProjectionFromShare(activeProjection, PUBLIC_APP_ORIGIN)
+    : null, [activeProjection]);
 
   const record = (name: Parameters<typeof emitShareCentreEvent>[0]["name"], channel?: ShareCentreChannel, startedAt?: number) => {
     emitShareCentreEvent({
@@ -237,6 +246,11 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
     }
   });
 
+  const useStaticStory = async () => {
+    const media = preparedMediaRef.current || await getMedia();
+    downloadPreparedShareMedia(media);
+  };
+
   const publishResult = async () => {
     if (!resultPublicationClient || busy) return;
     setBusy(true);
@@ -267,7 +281,7 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
 
   return (
     <div className="share-centre-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-      <div className="share-centre" role="dialog" aria-modal="true" aria-labelledby="share-centre-title" aria-describedby="share-centre-description" ref={dialogRef} data-share-centre data-share-surface={activeProjection.surface} data-share-mode={activeProjection.personalised ? "personalised" : "generic"} data-media-ready={mediaReady}>
+      <div className="share-centre" role="dialog" aria-modal="true" aria-labelledby="share-centre-title" aria-describedby="share-centre-description" ref={dialogRef} data-share-centre data-share-edition={activeProjection.edition} data-share-surface={activeProjection.surface} data-share-mode={activeProjection.personalised ? "personalised" : "generic"} data-media-ready={mediaReady}>
         <header className="share-centre-heading">
           <div><p className="share-centre-kicker">Pass the culture spark on</p><h2 id="share-centre-title">Share Centre</h2></div>
           <button type="button" className="share-centre-close" onClick={onClose} aria-label="Close Share Centre" ref={closeRef}>×</button>
@@ -290,7 +304,9 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
           <button type="button" onClick={copyLink} disabled={busy}><span aria-hidden="true">⧉</span><b>Copy link</b><small>Canonical safe URL</small></button>
           <button type="button" onClick={nativeShare} disabled={busy}><span aria-hidden="true">↗</span><b>Native share</b><small>Your device share menu</small></button>
           <button type="button" onClick={download} disabled={busy || !mediaReady}><span aria-hidden="true">↓</span><b>Download portrait</b><small>{mediaReady ? "1080 × 1920 PNG" : "Preparing portrait…"}</small></button>
+          {storyProjection && <button type="button" className="story-video-launch" onClick={() => setStoryVideoOpen(true)} disabled={busy}><span aria-hidden="true">▶</span><b>Create Story video</b><small>Five-second 9:16 reveal</small></button>}
         </div>
+        {storyVideoOpen && storyProjection && <StoryVideoPanel projection={storyProjection} surface={activeProjection.surface} soundEnabled={soundEnabled} onUseStatic={useStaticStory} />}
         <div className={`share-centre-status is-${status.kind}`} role="status" aria-live="polite" aria-atomic="true">
           <p>{status.message}</p>
           {status.instructions && <ol aria-label="Manual platform steps">{status.instructions.map((instruction) => <li key={instruction}>{instruction}</li>)}</ol>}
@@ -298,9 +314,9 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
         </div>
         <details className="share-centre-limitations">
           <summary>How platform sharing works</summary>
-          <p>WhatsApp opens with the full safe copy. Facebook receives the canonical link; public result links use their generated regional preview, while challenge and fallback links retain the approved site preview. Instagram and TikTok keep using the existing local 9:16 image until the separately approved video work. No app login, contact list, delivery receipt or selected recipient is visible to this game.</p>
+          <p>WhatsApp opens with the full safe copy. Facebook receives the canonical link; public result links use their generated regional preview, while challenge and fallback links retain the approved site preview. When Story video is enabled, supported browsers can create a local five-second file for the device share sheet. Instagram, TikTok and Facebook cannot be targeted or verified by this browser. No app login, contact list, delivery receipt or selected recipient is visible to this game.</p>
         </details>
-        <p className="share-centre-privacy">Private photos are re-encoded locally and appear only in media you deliberately download or hand to your device share sheet. They never enter public links or preview metadata.</p>
+        <p className="share-centre-privacy">Private photos are re-encoded locally and appear only in the existing portrait you deliberately download or hand to your device share sheet. Story video always uses an approved avatar instead. Photos never enter public links, preview metadata or generated video.</p>
       </div>
     </div>
   );

@@ -36,7 +36,19 @@ No Instagram, TikTok or Facebook deep link is used. No platform login token is r
 - Privacy: rendering uses canvas on the device. The resulting blob is kept in memory until a deliberate share or download. Object URLs are revoked after download. No media bytes are sent to D1, R2, the application server or a third-party service.
 - Safe area: key content remains within a 96-pixel horizontal inset and central story composition.
 
-This local story portrait is not an Open Graph preview. Prompt 14’s separate 1200 by 630 server preview uses only the neutral identity, authoritative public result fields, approved avatar identifier, regional palette/motif, quiz branding and permanent safeguard. It has a 1,000,000-byte hard ceiling and a preferred target below 500,000 bytes. It never reuses a private photo or treats the local 9:16 file as a durable public asset. Prompt 15 video remains unimplemented.
+This local story portrait is not an Open Graph preview. Prompt 14’s separate 1200 by 630 server preview uses only the neutral identity, authoritative public result fields, approved avatar identifier, regional palette/motif, quiz branding and permanent safeguard. It has a 1,000,000-byte hard ceiling and a preferred target below 500,000 bytes. It never reuses a private photo or treats the local 9:16 file as a durable public asset.
+
+## Five-second Story video contract
+
+Prompt 15 adds a feature-gated, browser-local 1080 by 1920 animated result. The exact timeline is five seconds at a requested 30 frames per second: regional reveal, avatar and score, result-title reveal, then a readable final hold. High scores receive the strongest approved celebratory accents. Every final frame includes the permanent safeguard and product branding.
+
+- The encoder selects only a MIME type positively reported by `MediaRecorder.isTypeSupported`, preferring H.264 MP4 and then VP9 or VP8 WebM. The extension and MIME type always match.
+- Output has an 8,000,000-byte hard ceiling. Unsupported, failed, cancelled and oversized paths retain the existing static 9:16 Story result.
+- Optional sound is a short abstract drum flourish synthesised after the player selects Generate. It contains no speech, does not request microphone access and is omitted when audio capture is unavailable or sound is muted.
+- The video uses only the approved regional image, palette, approved avatar, authoritative score, derived result title, mastery state, product branding and permanent safeguard. Entered names and private photographs are excluded.
+- A prepared Blob, File and short-lived object URL exist only in browser memory. Nothing is uploaded or persisted. Download object URLs and preview object URLs are revoked.
+- Native or platform-labelled actions first require `navigator.canShare({ files })`. Otherwise the correctly named file downloads and the interface gives honest manual instructions. No route claims a target app, post, message or delivery.
+- `story_video` is false in ordinary production and has no query-parameter override. Authorised visual fixtures require both existing review-build controls and are excluded from ordinary output.
 
 ## Copy controls
 

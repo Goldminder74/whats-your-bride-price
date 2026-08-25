@@ -1422,6 +1422,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
         onClose={() => setShareCentreOpen(false)}
         returnFocusRef={shareTriggerRef}
         resultPublicationClient={shareResultPublicationClient}
+        soundEnabled={sound}
       />}
 
       {menuOpen && (

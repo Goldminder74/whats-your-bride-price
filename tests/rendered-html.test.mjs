@@ -84,9 +84,9 @@ test("default production client output excludes review diagnostics", async () =>
   const serverScripts = serverEntries.filter((entry) => entry.isFile() && entry.name.endsWith(".js"));
   const serverSources = await Promise.all(serverScripts.map((entry) => readFile(resolve(entry.parentPath, entry.name), "utf8")));
   const ordinaryOutput = `${clientOutput}\n${serverSources.join("\n")}`;
-  assert.doesNotMatch(ordinaryOutput, /Ayo scored|ReviewWest_2026|safeguard-low-result|safeguard-high-result|safeguard-reduced-result|safeguard-question|nomination-result/);
+  assert.doesNotMatch(ordinaryOutput, /Ayo scored|ReviewWest_2026|safeguard-low-result|safeguard-high-result|safeguard-reduced-result|safeguard-question|nomination-result|story_east|story_north/);
   assert.doesNotMatch(ordinaryOutput, /inviterDisplayName:[`'"](?:Nia|Mirembe|Thandi|Safiya|Ọlá)|111111111111111111111111111111111111111111111111|666666666666666666666666666666666666666666666666|777777777777777777777777777777777777777777777777/);
-  assert.doesNotMatch(ordinaryOutput, /review_result_[0-9a-f]|Review-only private name|888888888888888888888888888888888888888888888888|999999999999999999999999999999999999999999999999|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/);
+  assert.doesNotMatch(ordinaryOutput, /review_result_[0-9a-f]|Review-only private name|888888888888888888888888888888888888888888888888|999999999999999999999999999999999999999999999999|8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f|9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/);
 });
 
 test("ships sixty educational questions, varied play modes, privacy copy and broad sources", async () => {

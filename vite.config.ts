@@ -81,6 +81,8 @@ export default defineConfig(async ({ mode }) => {
         { scenario: "temporary", code: "5".repeat(48), inviterDisplayName: "Thandi", edition: "south", verifiedScore: 11, total: 12, avatarId: "mbali", validity: "unavailable" },
         { scenario: "unicode", code: "6".repeat(48), inviterDisplayName: "Ọlá", edition: "west", verifiedScore: 11, total: 12, avatarId: "adjoa", validity: "valid" },
         { scenario: "nomination", code: "7".repeat(48), inviterDisplayName: "Ọlá", edition: "west", verifiedScore: 12, total: 12, avatarId: "adjoa", validity: "valid" },
+        { scenario: "story_east", code: "8f".repeat(24), inviterDisplayName: "A challenger", edition: "east", verifiedScore: 8, total: 12, avatarId: "wanjiku", validity: "valid" },
+        { scenario: "story_north", code: "9f".repeat(24), inviterDisplayName: "A challenger", edition: "north", verifiedScore: 4, total: 12, avatarId: "samira", validity: "valid" },
       ]
     : null;
   const reviewResultData = reviewResultFixtures
@@ -98,7 +100,7 @@ export default defineConfig(async ({ mode }) => {
     ? { resultSlug: "b".repeat(48), anonymousSessionCredential: "01".repeat(16) }
     : null;
   const publicAppEnvironment: PublicAppEnvironment =
-    reviewResultFixtures ? "test" : mode === "production" ? "production" : mode === "test" ? "test" : "development";
+    reviewResultFixtures || reviewChallengeFixtures ? "test" : mode === "production" ? "production" : mode === "test" ? "test" : "development";
   const publicAppOrigin = resolvePublicAppOrigin(
     process.env.PUBLIC_APP_ORIGIN,
     publicAppEnvironment,

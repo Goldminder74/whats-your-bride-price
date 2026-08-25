@@ -339,6 +339,14 @@ The static `/og-v2.png` remains a temporary fallback for unavailable states and 
 
 Do not attempt live Sharing Debugger validation before an explicitly approved public deployment.
 
+### Prompt 15 Story-video release gate
+
+Run `npm run test:story-video` before the complete suite. Verify exact 1080 by 1920 output, a five-second timeline, MIME/extension agreement, the 8,000,000-byte ceiling, approved regional and avatar inputs, the permanent safeguard, score-tier treatment, generated-audio opt-out, reduced-motion static presentation, unsupported-browser fallback, cancellation cleanup, revoked object URLs and honest file-share fallbacks. Confirm all event payloads remain local and contain only allowlisted event, edition, surface, state, channel, elapsed-time and byte-size fields.
+
+Review at least one high, middle and learning score across distinct regions at 390 by 844, plus a ready share state, reduced-motion state, unsupported-recording fallback, 320-pixel viewport, Android-sized viewport, iPhone-sized viewport and 200 percent zoom. Store review screenshots and downloaded media outside Git. Confirm ordinary builds contain no trusted fixture codes or results and that `story_video` remains false without a trusted build-time flag. Real-device Instagram, TikTok, Facebook Story, WhatsApp and native-share behaviour remains a deployment-stage verification because mocked browser tests cannot prove platform destination or delivery.
+
+Prompt 15 requires no dependency, schema, migration, D1/R2 binding, hosted media service or service worker. Ordinary builds and tests must not contact hosted storage or run migrations or seeds. Before any separately approved deployment, rerun `npm run test:all`, `npm run build` and `git diff --check`, then repeat protected-file, fixture-isolation, privacy and security gates.
+
 ## Production smoke test for a future approved release
 
 Run from a signed-out mobile browser where public access is intended:

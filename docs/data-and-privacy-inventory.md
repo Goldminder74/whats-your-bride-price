@@ -296,6 +296,12 @@ Publication and unpublication require the authoritative completed result, an une
 
 Dynamic preview input contains only the public result projection, approved avatar identifier, approved edition palette/motif and the permanent safeguard. Entered names, private uploaded photos, session values, answers, internal IDs, tokens and arbitrary URLs are excluded. The dependency-free 1200 by 630 PNG renderer makes no network request, uses deterministic Worker-compatible deflate compression, enforces a 1,000,000-byte hard ceiling and targets less than 500,000 bytes. Generated object keys contain only edition, UTC year/month, SHA-256 content hash and generation version.
 
+## Prompt 15 device-local Story video boundary
+
+The optional `story_video` flow creates a five-second 1080 by 1920 MP4 or WebM entirely in the browser from an allowlisted result projection, approved regional artwork and one approved avatar. It never uses the entered display name or a private uploaded photograph. Canvas capture, browser-generated abstract drum audio, encoding, preview, download and native file-share handoff remain device-local. The implementation makes no upload, D1, R2, analytics, platform-SDK or other network request.
+
+The in-memory projection contains only edition, score, maximum score, score-derived result title, approved avatar ID and asset path, approved regional artwork and palette, mastery state, permanent safeguard and an optional validated permanent public-result URL. Challenge codes, session credentials or hashes, idempotency or revocation values, answers, internal IDs and arbitrary URLs are rejected or absent. Object URLs are revoked after downloads and when the panel unmounts. Generated media is capped at 8,000,000 bytes and is not persisted by the application. `story_video` remains false by default and cannot be activated through a public query parameter.
+
 ## Prompt 8 read-only dependency audit
 
 The 2026-08-23 read-only audits changed neither dependencies nor the lockfile. `npm audit --omit=dev --json` reported no production dependency vulnerabilities. The complete `npm audit --json` reported 20 development-tree package findings: 1 low, 4 moderate, 15 high and 0 critical.
