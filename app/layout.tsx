@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./analyticsConsent.css";
 import { PRODUCT_SAFEGUARD } from "./productSafeguards";
 import { createPublicAppUrl, PUBLIC_APP_ORIGIN } from "./publicAppOrigin";
+import AnalyticsConsent from "./AnalyticsConsent";
 
 const canonicalHomeUrl = createPublicAppUrl();
 const socialImageUrl = createPublicAppUrl("/og-v2.png");
@@ -49,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>{children}<AnalyticsConsent /></body>
     </html>
   );
 }

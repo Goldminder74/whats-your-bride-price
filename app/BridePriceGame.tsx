@@ -20,6 +20,7 @@ import {
   type ChallengeCompletionClient,
 } from "./challengeCompletion";
 import { emitChallengeEvent } from "./challengeEvents";
+import { emitAnalyticsLocalEvent } from "./analyticsLocal";
 import type { ChallengeComparisonProjection } from "../db/challengeCompletion";
 import { publicDisplayNameFallback, validateDisplayName } from "./displayNames";
 import { regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type RegionKey } from "./gameData";
@@ -341,6 +342,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const startLockRef = useRef(false);
   const challengeCompletionPromiseRef = useRef<ReturnType<ChallengeCompletionClient["complete"]> | null>(null);
   const challengeCompleteEventRef = useRef(false);
+  const resultViewEventRef = useRef(false);
   const shareCreationKeyRef = useRef<string | null>(null);
   const shareCreationPromiseRef = useRef<ReturnType<ChallengeCreationClient["create"]> | null>(null);
   const shareTriggerRef = useRef<HTMLElement | null>(null);
@@ -625,6 +627,19 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
 
   useEffect(() => {
     if (screen !== "result") return;
+    if (!resultViewEventRef.current) {
+      resultViewEventRef.current = true;
+      emitAnalyticsLocalEvent({
+        name: "result_view",
+        properties: {
+          edition: regionKey,
+          surface: "result",
+          source: trustedChallenge ? "challenge" : entryContext.nominated === "1" ? "nomination" : "direct",
+          scoreBand: tier === 0 ? "learning" : tier === 1 ? "growing" : tier === 2 ? "strong" : "mastery",
+          maximumScoreVersion: "12-v1",
+        },
+      });
+    }
     if (acceptedChallenge && !comparison) return;
     const beforeMastered = regionOrder.filter((key) => (bestScores[key] || 0) > 8).length;
     const next = { ...bestScores, [regionKey]: Math.max(bestScores[regionKey] || 0, correctCount) };
@@ -851,6 +866,16 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       setQuizInstanceId(createQuizInstanceId());
     }
     setSelected([]); setFeedbackOpen(false); setScreen("quiz");
+    resultViewEventRef.current = false;
+    const analyticsSource = trustedChallenge ? "challenge" : entryContext.nominated === "1" ? "nomination" : "direct";
+    emitAnalyticsLocalEvent({ name: "quiz_start", properties: { edition: regionKey, surface: "quiz", source: analyticsSource } });
+    emitAnalyticsLocalEvent({ name: "first_question_start", properties: { edition: regionKey, surface: "quiz", source: analyticsSource } });
+    if (trustedChallenge) emitAnalyticsLocalEvent({
+      name: "referred_quiz_start",
+      properties: { edition: regionKey, surface: "quiz", source: "challenge", campaign: "challenge", referred: true },
+      referralChallengeCode: trustedChallenge.code,
+      dedupeKey: "referred_quiz_start",
+    });
     if (fastEntryEnabled) {
       if (!photo) emitEntryEvent({
         name: "photo_skipped",
@@ -893,6 +918,16 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
 
   const nextQuestion = () => {
     if (index === 11) {
+      emitAnalyticsLocalEvent({
+        name: "quiz_complete",
+        properties: {
+          edition: regionKey,
+          surface: "quiz",
+          source: trustedChallenge ? "challenge" : entryContext.nominated === "1" ? "nomination" : "direct",
+          scoreBand: tier === 0 ? "learning" : tier === 1 ? "growing" : tier === 2 ? "strong" : "mastery",
+          maximumScoreVersion: "12-v1",
+        },
+      });
       setScreen("reveal");
       setDropOpen(false);
       const revealDuration = playResultDrumRoll(tier);
@@ -928,6 +963,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     setNominationOpen(false);
     setShareResultPublicationClient(undefined);
     setComparison(null); setCompletionState("idle"); challengeCompletionPromiseRef.current = null; challengeCompleteEventRef.current = false;
+    resultViewEventRef.current = false;
     if (fastEntryEnabled) { setEntryContext(parseEntryContext("")); setUnverifiedChallenge(false); }
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
@@ -1015,6 +1051,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           const response = await shareCreationPromiseRef.current;
           const challenge = validateSafeNominationChallenge(response.challenge, response.challengeUrl, origin);
           if (challenge) {
+            emitAnalyticsLocalEvent({ name: "challenge_create", properties: { edition: regionKey, surface: acceptedChallenge && comparison ? "comparison" : "result" } });
             writeNominationSnapshot(window.sessionStorage, Object.freeze({
               version: nominationSnapshotVersion,
               scope: nominationScopeId,
@@ -1035,6 +1072,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       setShareProjection(finalProjection);
       setShareResultPublicationClient(acceptedChallenge ? undefined : resultPublicationClient || createReviewResultPublicationClient(origin));
       setShareCentreOpen(true);
+      emitAnalyticsLocalEvent({ name: "share_centre_open", properties: { edition: regionKey, surface: "share_centre" } });
     } finally {
       setShareCentreBusy(false);
     }

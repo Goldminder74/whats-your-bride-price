@@ -1,11 +1,13 @@
 # Data and privacy inventory
 
-Audit date: 23 August 2026
+Audit date: 26 August 2026
 Scope: current repository behaviour only. Hosting-provider operational logs and access-policy data are outside the source repository and were not inspected.
 
 ## Current privacy posture
 
-The app is a device-local anonymous experience. It has no active application database, object storage, analytics collector, account system or application write API. A selected original photo and the sanitised copy are never transmitted by application code. Ordinary production persists only the browser-local map of best regional scores. The feature-flagged fast-entry build also keeps a short-lived, tab-gated quiz recovery record and a separate tab-scoped anonymous functional session described below.
+The app is a device-local anonymous experience in ordinary production. It has no active application database, object storage, analytics collector or account system because D1 and R2 remain unbound and every feature flag remains false by default. Prompt 16 adds an inactive, build-time-gated first-party analytics route and consent interface. They fail closed without approved D1 storage and rate limiting; query parameters cannot activate them. A selected original photo and the sanitised copy are never transmitted by application code.
+
+Prompt 16 analytics is optional and technically consent-controlled. Before acceptance, the app reads only the minimum analytics-consent preference record; it creates no analytics identifier, queue, cookie or network request and collects no referral analytics. Rejection remains browser-local. Acceptance creates a separate 128-bit tab-scoped analytics credential for at most 24 hours, sends only allowlisted first-party events, and stores only a domain-separated SHA-256 hash server-side. Withdrawal immediately clears the memory queue and browser credential, then deletes the session's raw event rows. Owner and appropriate legal review are still required before any production activation.
 
 Prompt 8 adds binary signature checks, bounded pixel re-encoding, metadata-marker tests, Unicode-safe name validation, a clear-local-data action and an inactive deletion-service contract. Residual risks are browser/codec behaviour on low-memory devices, provider logs outside the repository, no standalone privacy route, and no live deletion mechanism because durable storage remains inactive.
 
@@ -72,8 +74,11 @@ Trusted challenge readiness is an input boundary, not a public query-string trus
 | `localStorage` | `wybp-active-quiz-v1` | Prompt 5 accidental-refresh recovery for minimal quiz state | 24 hours from last valid write | Visible `Start again`, automatic rejection/clear, or browser controls | Device-local convenience, not authoritative |
 | `sessionStorage` | `wybp-active-quiz-instance-v1` | Require the same tab session before local recovery can be used | Tab session | Visible `Start again`, `Clear local quiz data` or tab close | Tab-scoped anti-merge guard, not an identity |
 | `sessionStorage` | `wybp-anonymous-session-v1` | Privacy-minimised continuity handle reserved for later approved functional durable operations | 24 hours or tab close; rotates after expiry | `Clear local quiz data` or tab close | Private tab-scoped identifier; not authoritative and not transmitted |
+| `localStorage` | `wybp-analytics-consent-v1` | Minimum versioned record of accept/reject choice and notice version | 180 days; invalid, expired or notice-mismatched values are removed | Manage preferences, replacement choice or browser controls | Strictly necessary preference memory only; no marketing consent or analytics identifier |
+| `sessionStorage` | `wybp-analytics-session-v1` | Raw cryptographically random analytics credential created only after acceptance | 24 hours or tab close | Reject/withdraw, expiry or tab close | Separate from game ownership; sent only in same-origin POST bodies and never stored server-side |
+| `sessionStorage` | `wybp-analytics-seen-v1` | At most 40 semantic event keys for refresh/Back deduplication | Analytics tab session | Reject/withdraw, session clear or tab close | Created only after acceptance; contains no code, hash, URL or internal identifier |
 
-No IndexedDB, Cache Storage, service worker, application cookie or browser database use was detected.
+No IndexedDB, Cache Storage, service worker, application cookie or browser database use was detected. Analytics uses no cookie, persistent event queue, advertising identifier or fingerprint.
 
 ### Server and platform storage
 
@@ -82,10 +87,10 @@ No IndexedDB, Cache Storage, service worker, application cookie or browser datab
 | Sites D1 | Not bound: `.openai/hosting.json` has `"d1": null` |
 | Sites R2 | Not bound: `.openai/hosting.json` has `"r2": null` |
 | Drizzle schema | 19 storage-ready tables, inactive and unbound |
-| Drizzle migrations | Source-controlled D1-compatible migrations plus local synthetic verification only |
-| Active API routes | None |
+| Drizzle migrations | `0000` through approved local-only `0005_special_gamma_corps.sql`; `0005` has checksum `a13ac6180fa745732266fc922f89d2cd1e10f5f9c88d90e4f310ff833b09701d` and has not been applied to hosted storage |
+| Active API routes | Analytics POST source exists but is unreachable in ordinary production because `first_party_analytics=false`; all storage-dependent routes fail closed while bindings are null |
 | External database/blob provider | None detected |
-| Analytics/event collector | None detected |
+| Analytics/event collector | Inactive first-party route only; no third-party SDK, pixel, script or hosted collector is active |
 | App-owned authentication/session store | None |
 
 The worker type proposes `DB` and `MEDIA`, but `.openai/hosting.json` keeps both bindings null and the worker exposes no application data or deletion route. The unbound repository fails closed and has no browser-storage authority fallback.
@@ -154,7 +159,7 @@ Current query input is not inserted as arbitrary HTML. Invalid editions are igno
 - MIME, extension, signature, structure, size and dimension validation before local decode.
 - Clean-canvas JPEG re-encoding with controlled metadata-marker exclusion tests.
 - No automatic photo upload or public-photo projection.
-- No analytics or third-party tracking.
+- No third-party analytics or tracking. The optional first-party implementation is off by default and transmits nothing without valid consent.
 - No contact-list request or recipient-data collection.
 - External informational links use `noreferrer`.
 - Public assets are same-origin.
@@ -166,7 +171,7 @@ Current query input is not inserted as arbitrary HTML. Invalid editions are igno
 
 - A standalone privacy notice route and owner-approved jurisdictional wording.
 - Minimum-audience statement.
-- First-party analytics opt-out model before analytics is introduced.
+- Production owner/legal approval, approved D1 binding, migration application, independent rate limiting, retention scheduling and deletion planning before first-party analytics activation.
 - Durable-record retention and deletion/anonymisation model before D1 is introduced.
 - Activation of the deletion-token contract after D1, rate limits, audit controls and preview integration are approved.
 - Rate limiting and abuse logging without fingerprinting.
@@ -298,7 +303,13 @@ Dynamic preview input contains only the public result projection, approved avata
 
 ## Prompt 15 device-local Story video boundary
 
-The optional `story_video` flow creates a five-second 1080 by 1920 MP4 or WebM entirely in the browser from an allowlisted result projection, approved regional artwork and one approved avatar. It never uses the entered display name or a private uploaded photograph. Canvas capture, browser-generated abstract drum audio, encoding, preview, download and native file-share handoff remain device-local. The implementation makes no upload, D1, R2, analytics, platform-SDK or other network request.
+The optional `story_video` flow creates a five-second 1080 by 1920 MP4 or WebM entirely in the browser from an allowlisted result projection, approved regional artwork and one approved avatar. It never uses the entered display name or a private uploaded photograph. Canvas capture, browser-generated abstract drum audio, encoding, preview, download and native file-share handoff remain device-local. With Prompt 16 separately enabled and accepted, established local Story-video hooks can produce allowlisted metadata-only analytics events; media bytes, filenames, URLs, names, photographs and internal identifiers never enter them.
+
+## Prompt 16 first-party analytics boundary
+
+The complete event dictionary, routing map, payload allowlist, consent notice, retention schedule and funnel formulas are normative in `docs/analytics-event-dictionary.md` and `docs/analytics-consent-contract.md`. Raw version-1 events expire no later than 30 days after occurrence. The owner-only bounded retention operation is repository-level, has no browser route and never runs during a build or ordinary request. Reports contain aggregate counts only and are labelled `consented_measured_traffic`; consent means reported traffic can undercount total use.
+
+The route is same-origin POST-only, HTTPS outside local review, strict JSON, limited to 16,384 bytes and 10 events, Fetch-Metadata checked, credential-hash and consent checked, centrally validated and idempotent. It returns neutral acknowledgements without records or exception text. Production intentionally uses an unavailable rate-limit boundary, so activation fails closed until an independently approved limiter exists.
 
 The in-memory projection contains only edition, score, maximum score, score-derived result title, approved avatar ID and asset path, approved regional artwork and palette, mastery state, permanent safeguard and an optional validated permanent public-result URL. Challenge codes, session credentials or hashes, idempotency or revocation values, answers, internal IDs and arbitrary URLs are rejected or absent. Object URLs are revoked after downloads and when the panel unmounts. Generated media is capped at 8,000,000 bytes and is not persisted by the application. `story_video` remains false by default and cannot be activated through a public query parameter.
 

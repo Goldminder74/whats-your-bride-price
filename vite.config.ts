@@ -3,6 +3,7 @@ import vinext from "vinext";
 import { defineConfig } from "vite";
 import hostingConfig from "./.openai/hosting.json";
 import {
+  assertFirstPartyAnalyticsStorage,
   assertSitesCompatibleFeatureFlags,
   assertDynamicResultsStorage,
   resolveFeatureFlags,
@@ -49,6 +50,7 @@ export default defineConfig(async ({ mode }) => {
   const diagnosticsApproved = process.env.WYBP_REVIEW_BUILD === "true";
   const challengeFixturesRequested = process.env.WYBP_REVIEW_CHALLENGE_FIXTURES === "true";
   const resultFixturesRequested = process.env.WYBP_REVIEW_RESULT_FIXTURES === "true";
+  const analyticsFixturesRequested = process.env.WYBP_REVIEW_ANALYTICS_FIXTURES === "true";
   if (mode === "production" && diagnosticsRequested && !diagnosticsApproved) {
     throw new Error(
       "Review diagnostics require explicit approval. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_DIAGNOSTICS=true for a local review build. Production builds exclude the panel by default.",
@@ -64,13 +66,23 @@ export default defineConfig(async ({ mode }) => {
       "Result fixtures require an explicitly authorised local review build. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_RESULT_FIXTURES=true. Ordinary production builds exclude result fixtures.",
     );
   }
+  if (mode === "production" && analyticsFixturesRequested && !diagnosticsApproved) {
+    throw new Error(
+      "Analytics fixtures require an explicitly authorised local review build. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_ANALYTICS_FIXTURES=true. Ordinary production builds exclude analytics fixtures.",
+    );
+  }
   const reviewDiagnostics = mode !== "production" || (diagnosticsRequested && diagnosticsApproved);
   const reviewChallengeFixtures = challengeFixturesRequested && diagnosticsApproved;
   const reviewResultFixtures = resultFixturesRequested && diagnosticsApproved;
+  const reviewAnalyticsFixtures = analyticsFixturesRequested && diagnosticsApproved;
   assertDynamicResultsStorage(featureFlags, {
     d1Configured: Boolean(d1),
     r2Configured: Boolean(r2),
     authorisedReviewFixtures: reviewResultFixtures,
+  });
+  assertFirstPartyAnalyticsStorage(featureFlags, {
+    d1Configured: Boolean(d1),
+    authorisedReviewFixtures: reviewAnalyticsFixtures,
   });
   const reviewChallengeData = reviewChallengeFixtures
     ? [
@@ -100,7 +112,7 @@ export default defineConfig(async ({ mode }) => {
     ? { resultSlug: "b".repeat(48), anonymousSessionCredential: "01".repeat(16) }
     : null;
   const publicAppEnvironment: PublicAppEnvironment =
-    reviewResultFixtures || reviewChallengeFixtures ? "test" : mode === "production" ? "production" : mode === "test" ? "test" : "development";
+    reviewResultFixtures || reviewChallengeFixtures || reviewAnalyticsFixtures ? "test" : mode === "production" ? "production" : mode === "test" ? "test" : "development";
   const publicAppOrigin = resolvePublicAppOrigin(
     process.env.PUBLIC_APP_ORIGIN,
     publicAppEnvironment,
@@ -126,6 +138,7 @@ export default defineConfig(async ({ mode }) => {
       __WYBP_REVIEW_RESULT_FIXTURES__: JSON.stringify(reviewResultFixtures),
       __WYBP_REVIEW_RESULT_DATA__: JSON.stringify(reviewResultData),
       __WYBP_REVIEW_RESULT_CLIENT__: JSON.stringify(reviewResultClient),
+      __WYBP_REVIEW_ANALYTICS_FIXTURES__: JSON.stringify(reviewAnalyticsFixtures),
     },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }

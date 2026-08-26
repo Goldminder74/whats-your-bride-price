@@ -68,6 +68,17 @@ export function assertDynamicResultsStorage(
   }
 }
 
+export function assertFirstPartyAnalyticsStorage(
+  flags: FeatureFlags,
+  readiness: Readonly<{ d1Configured: boolean; authorisedReviewFixtures: boolean }>,
+): void {
+  if (flags.first_party_analytics && !readiness.d1Configured && !readiness.authorisedReviewFixtures) {
+    throw new Error(
+      "First-party analytics requires an approved D1 binding or an explicitly authorised local analytics-fixture review build. It fails closed while storage is unavailable.",
+    );
+  }
+}
+
 declare const __WYBP_FEATURE_FLAGS__: FeatureFlags | undefined;
 
 export const activeFeatureFlags: FeatureFlags = Object.freeze({

@@ -347,6 +347,14 @@ Review at least one high, middle and learning score across distinct regions at 3
 
 Prompt 15 requires no dependency, schema, migration, D1/R2 binding, hosted media service or service worker. Ordinary builds and tests must not contact hosted storage or run migrations or seeds. Before any separately approved deployment, rerun `npm run test:all`, `npm run build` and `git diff --check`, then repeat protected-file, fixture-isolation, privacy and security gates.
 
+### Prompt 16 analytics release gate
+
+Run `npm run test:analytics` before the complete suite. It verifies migration `0005` on empty and upgraded databases, replay/checksum/failure rollback, exact legacy preservation, strict events/properties, reserved-commerce rejection, consent preference/session separation, rate/D1 fail-closed behavior, idempotent routing, referral-code discard, 30-day retention, withdrawal, funnel calculations, query-parameter isolation, POST-only source, third-party exclusion and the consent UI in browsers.
+
+The browser review must cover initial choice, rejection with the quiz continuing, acceptance, preference management, withdrawal, Global Privacy Control, 320-pixel/Android/iPhone layouts, 200 percent zoom, keyboard focus and reduced motion. Accept and Reject must remain equal, at least 44 pixels, readable and free of horizontal overflow. Temporary screenshots, reports, traces, profiles and databases must remain under the operating-system temp directory and outside Git.
+
+Production activation is blocked until the owner and appropriate legal reviewer approve the notice and withdrawal model; D1 is explicitly bound; `0005` is separately approved and applied; independent fail-closed rate limiting exists; an owner/scheduled retention operation is assigned; and deletion/aggregate handling is approved. Do not use review fixtures as production storage or a production rate limiter. No deployment, migration or seed is implied by passing this gate.
+
 ## Production smoke test for a future approved release
 
 Run from a signed-out mobile browser where public access is intended:

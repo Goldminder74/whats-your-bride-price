@@ -44,7 +44,8 @@ test("Share Centre source has no SDK, contact, upload, tracking or dynamic-previ
     "../app/shareCentreEvents.ts",
   ];
   const source = (await Promise.all(files.map((file) => readFile(new URL(file, import.meta.url), "utf8")))).join("\n");
-  assert.doesNotMatch(source, /ContactsManager|navigator\.contacts|sendBeacon|XMLHttpRequest|analytics|facebook sdk|instagram sdk|tiktok sdk/i);
+  assert.doesNotMatch(source, /ContactsManager|navigator\.contacts|sendBeacon|XMLHttpRequest|facebook sdk|instagram sdk|tiktok sdk/i);
+  assert.match(source, /emitAnalyticsLocalEvent/);
   assert.doesNotMatch(source, /fetch\s*\(|FormData|R2|MEDIA\.put|serviceWorker/i);
   assert.doesNotMatch(source, /message_sent|share_confirmed|delivery_confirmed|posted_successfully/i);
   assert.doesNotMatch(source, /opengraph|og-v2|metadataBase|generateMetadata/i);

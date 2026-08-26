@@ -93,3 +93,9 @@ Before any endpoint can be activated, all of the following need separate approva
 ## D1 atomicity
 
 Cloudflare D1 `batch()` is the planned atomic write primitive. Prepared statements in a batch execute sequentially and the full batch aborts or rolls back if one fails. The repository contract reserves this for the six multi-row integrity operations documented in `db/repositories.ts`. No claim is made that those writes are active while D1 remains unbound.
+
+## Prompt 16 local analytics migration status, 26 August 2026
+
+The owner approved exactly one additional local migration: `drizzle/0005_special_gamma_corps.sql`, SHA-256 `a13ac6180fa745732266fc922f89d2cd1e10f5f9c88d90e4f310ff833b09701d`. It transactionally rebuilds only `analytics_events`, `referral_events`, `share_events` and `consent_preferences`; preserves legacy rows at schema version 0; verifies copy counts and foreign keys; adds nullable client UUID/session-hash fields, version-1 constraints, indexes and cross-table replay triggers; and rolls back completely on failure. It has not been applied to staging or production.
+
+Analytics remains unavailable while `.openai/hosting.json` has `d1: null`. A future binding decision must be followed by separate explicit migration approval and verification, an approved independent rate limiter, retention scheduling and deletion planning. R2 is not required for analytics and remains null. Review fixtures are local-only and cannot establish hosted readiness.

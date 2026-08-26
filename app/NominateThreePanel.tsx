@@ -31,6 +31,7 @@ import {
 import { PRODUCT_SAFEGUARD } from "./productSafeguards.ts";
 import { resolveBrowserPublicAppOrigin } from "./publicAppOrigin.ts";
 import { copyShareText, hasWebShare } from "./shareSupport.ts";
+import { emitAnalyticsLocalEvent } from "./analyticsLocal.ts";
 
 type SlotView = Readonly<{
   state: NominationSlotState;
@@ -83,6 +84,7 @@ export default function NominateThreePanel({
   const personalised = actionMode === "personalised" && challengeCreationClient?.storageAvailable === true;
 
   useEffect(() => {
+    emitAnalyticsLocalEvent({ name: "nomination_open", properties: { edition, surface } });
     setNativeShareAvailable(hasWebShare(navigator));
     if (!personalised) {
       setPreparationState("ready");
@@ -105,7 +107,7 @@ export default function NominateThreePanel({
         : readySlot(),
     ])) as Record<NominationSlotNumber, SlotView>);
     setCelebrating(completed.size === 3);
-  }, [personalised, scopeId]);
+  }, [edition, personalised, scopeId, surface]);
 
   const updateSlot = (slot: NominationSlotNumber, next: SlotView) => {
     setSlots((current) => ({ ...current, [slot]: Object.freeze(next) }));
@@ -137,6 +139,7 @@ export default function NominateThreePanel({
       const origin = resolveBrowserPublicAppOrigin(window.location.origin);
       const safeChallenge = validateSafeNominationChallenge(response.challenge, response.challengeUrl, origin);
       if (!safeChallenge) throw new Error("unsafe_challenge_projection");
+      emitAnalyticsLocalEvent({ name: "challenge_create", properties: { edition, surface } });
       setChallenge(safeChallenge);
       setChallengerName(safeChallenge.projection.displayName);
       setPreparationState("ready");

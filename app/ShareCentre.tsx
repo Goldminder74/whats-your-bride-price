@@ -16,6 +16,7 @@ import StoryVideoPanel from "./StoryVideoPanel";
 import { activeFeatureFlags } from "./featureFlags";
 import { PUBLIC_APP_ORIGIN } from "./publicAppOrigin";
 import { storyVideoProjectionFromShare } from "./storyVideoProjection";
+import { emitAnalyticsLocalEvent } from "./analyticsLocal";
 
 type ShareCentreProps = Readonly<{
   projection: SafeShareProjection;
@@ -257,6 +258,7 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
     setStatus({ kind: "working", message: "Creating the public result page and safe preview…" });
     try {
       const publicProjection = await resultPublicationClient.publish();
+      emitAnalyticsLocalEvent({ name: "result_publish", properties: { edition: publicProjection.edition, surface: "share_centre" } });
       setActiveProjection(publicProjection);
       setPublicationVisibility("public");
       setStatus({ kind: "success", message: "Your permanent result link is ready. Nothing has been posted or delivered." });
@@ -271,6 +273,7 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
     setStatus({ kind: "working", message: "Returning this result to private…" });
     try {
       await resultPublicationClient.unpublish();
+      emitAnalyticsLocalEvent({ name: "result_unpublish", properties: { edition: projection.edition, surface: "share_centre" } });
       setActiveProjection(projection);
       setPublicationVisibility("private");
       setStatus({ kind: "success", message: "The permanent result and its generated preview are no longer publicly available. Your invitation fallback remains ready." });

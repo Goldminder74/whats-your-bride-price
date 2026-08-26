@@ -2,7 +2,7 @@
 
 Date: 24 August 2026
 
-Prompt 13 adds one reusable, client-side Share Centre to normal results, official comparison results and valid personalised challenge landings. Prompt 14 adds an explicitly published permanent result route and dynamic Open Graph image behind `dynamic_results`. Neither prompt adds a social SDK, OAuth flow, contact picker, recipient field, analytics transport or video export.
+Prompt 13 adds one reusable, client-side Share Centre to normal results, official comparison results and valid personalised challenge landings. Prompt 14 adds an explicitly published permanent result route and dynamic Open Graph image behind `dynamic_results`. Prompt 15 adds browser-local video export. Prompt 16 can adapt the established local hooks into consented, allowlisted first-party metadata events, but adds no social SDK, OAuth flow, contact picker, recipient field, media upload or third-party analytics transport.
 
 ## Canonical link policy
 

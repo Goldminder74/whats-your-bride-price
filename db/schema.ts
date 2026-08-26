@@ -239,7 +239,10 @@ export const challengeAttempts = sqliteTable("challenge_attempts", {
 
 export const referralEvents = sqliteTable("referral_events", {
   id: text("id").primaryKey(),
-  referralCode: text("referral_code").notNull(),
+  clientEventUuid: text("client_event_uuid"),
+  eventSchemaVersion: integer("event_schema_version").notNull().default(0),
+  analyticsSessionHash: text("analytics_session_hash"),
+  referralCode: text("referral_code"),
   challengeId: text("challenge_id").references(() => challenges.id, { onDelete: "set null" }),
   attemptId: text("attempt_id").references(() => quizAttempts.id, { onDelete: "set null" }),
   eventType: text("event_type").notNull(),
@@ -253,13 +256,23 @@ export const referralEvents = sqliteTable("referral_events", {
   createdAt: integer("created_at").notNull(),
   updatedAt: integer("updated_at").notNull(),
 }, (table) => [
-  index("referral_events_code_time_idx").on(table.referralCode, table.occurredAt),
+  uniqueIndex("referral_events_client_uuid_uq").on(table.clientEventUuid)
+    .where(sql`${table.clientEventUuid} is not null`),
+  index("referral_events_challenge_type_time_idx").on(table.challengeId, table.eventType, table.occurredAt),
+  index("referral_events_session_time_idx").on(table.analyticsSessionHash, table.occurredAt),
   index("referral_events_retention_idx").on(table.expiresAt, table.deletedAt),
-  check("referral_events_type_ck", sql`${table.eventType} in ('link_created','referred_visit_received','challenge_accepted','quiz_started','quiz_completed')`),
+  check("referral_events_uuid_ck", sql`${table.clientEventUuid} is null or (length(${table.clientEventUuid}) = 36 and ${table.clientEventUuid} = lower(${table.clientEventUuid}) and substr(${table.clientEventUuid},9,1) = '-' and substr(${table.clientEventUuid},14,1) = '-' and substr(${table.clientEventUuid},15,1) = '4' and substr(${table.clientEventUuid},19,1) = '-' and substr(${table.clientEventUuid},20,1) in ('8','9','a','b') and substr(${table.clientEventUuid},24,1) = '-' and ${table.clientEventUuid} not glob '*[^0-9a-f-]*')`),
+  check("referral_events_session_hash_ck", sql`${table.analyticsSessionHash} is null or (length(${table.analyticsSessionHash}) = 64 and ${table.analyticsSessionHash} = lower(${table.analyticsSessionHash}) and ${table.analyticsSessionHash} not glob '*[^0-9a-f]*')`),
+  check("referral_events_version_ck", sql`${table.eventSchemaVersion} in (0,1)`),
+  check("referral_events_contract_ck", sql`(${table.eventSchemaVersion} = 0 and ${table.eventType} in ('link_created','referred_visit_received','challenge_accepted','quiz_started','quiz_completed') and ${table.referralCode} is not null) or (${table.eventSchemaVersion} = 1 and ${table.eventType} in ('referred_visit','referred_quiz_start') and ${table.clientEventUuid} is not null and ${table.analyticsSessionHash} is not null and ${table.referralCode} is null and ${table.challengeId} is not null and ${table.source} in ('challenge','nomination'))`),
+  check("referral_events_retention_ck", sql`${table.eventSchemaVersion} = 0 or (${table.occurredAt} >= 0 and ${table.expiresAt} > ${table.occurredAt} and ${table.expiresAt} - ${table.occurredAt} <= 2592000000)`),
 ]);
 
 export const shareEvents = sqliteTable("share_events", {
   id: text("id").primaryKey(),
+  clientEventUuid: text("client_event_uuid"),
+  eventSchemaVersion: integer("event_schema_version").notNull().default(0),
+  analyticsSessionHash: text("analytics_session_hash"),
   resultId: text("result_id").references(() => results.id, { onDelete: "set null" }),
   challengeId: text("challenge_id").references(() => challenges.id, { onDelete: "set null" }),
   eventType: text("event_type").notNull(),
@@ -273,10 +286,16 @@ export const shareEvents = sqliteTable("share_events", {
   createdAt: integer("created_at").notNull(),
   updatedAt: integer("updated_at").notNull(),
 }, (table) => [
-  index("share_events_result_time_idx").on(table.resultId, table.occurredAt),
+  uniqueIndex("share_events_client_uuid_uq").on(table.clientEventUuid)
+    .where(sql`${table.clientEventUuid} is not null`),
+  index("share_events_type_channel_time_idx").on(table.eventType, table.channel, table.occurredAt),
+  index("share_events_session_time_idx").on(table.analyticsSessionHash, table.occurredAt),
   index("share_events_retention_idx").on(table.expiresAt, table.deletedAt),
-  check("share_events_type_ck", sql`${table.eventType} in ('share_interface_selected','share_handoff_attempted','link_copied')`),
-  check("share_events_channel_ck", sql`${table.channel} in ('native','whatsapp','facebook','instagram','tiktok','clipboard','download','other')`),
+  check("share_events_uuid_ck", sql`${table.clientEventUuid} is null or (length(${table.clientEventUuid}) = 36 and ${table.clientEventUuid} = lower(${table.clientEventUuid}) and substr(${table.clientEventUuid},9,1) = '-' and substr(${table.clientEventUuid},14,1) = '-' and substr(${table.clientEventUuid},15,1) = '4' and substr(${table.clientEventUuid},19,1) = '-' and substr(${table.clientEventUuid},20,1) in ('8','9','a','b') and substr(${table.clientEventUuid},24,1) = '-' and ${table.clientEventUuid} not glob '*[^0-9a-f-]*')`),
+  check("share_events_session_hash_ck", sql`${table.analyticsSessionHash} is null or (length(${table.analyticsSessionHash}) = 64 and ${table.analyticsSessionHash} = lower(${table.analyticsSessionHash}) and ${table.analyticsSessionHash} not glob '*[^0-9a-f]*')`),
+  check("share_events_version_ck", sql`${table.eventSchemaVersion} in (0,1)`),
+  check("share_events_contract_ck", sql`(${table.eventSchemaVersion} = 0 and ${table.eventType} in ('share_interface_selected','share_handoff_attempted','link_copied') and ${table.channel} in ('native','whatsapp','facebook','instagram','tiktok','clipboard','download','other')) or (${table.eventSchemaVersion} = 1 and ${table.eventType} in ('share_intent','share_handoff','nomination_share_intent','nomination_share_handoff','story_video_share_intent','story_video_share_handoff','story_video_download','story_static_fallback') and ${table.channel} in ('whatsapp','facebook','facebook_story','instagram','tiktok','native','copy','download','static') and ${table.clientEventUuid} is not null and ${table.analyticsSessionHash} is not null)`),
+  check("share_events_retention_ck", sql`${table.eventSchemaVersion} = 0 or (${table.occurredAt} >= 0 and ${table.expiresAt} > ${table.occurredAt} and ${table.expiresAt} - ${table.occurredAt} <= 2592000000)`),
 ]);
 
 export const dailyChallenges = sqliteTable("daily_challenges", {
@@ -421,7 +440,8 @@ export const mediaAssets = sqliteTable("media_assets", {
 
 export const consentPreferences = sqliteTable("consent_preferences", {
   id: text("id").primaryKey(),
-  anonymousSubjectHash: text("anonymous_subject_hash").notNull(),
+  anonymousSubjectHash: text("anonymous_subject_hash"),
+  analyticsSessionHash: text("analytics_session_hash"),
   noticeVersion: text("notice_version").notNull(),
   categoryVersion: text("category_version").notNull(),
   strictlyFunctional: integer("strictly_functional", { mode: "boolean" }).notNull().default(true),
@@ -437,12 +457,19 @@ export const consentPreferences = sqliteTable("consent_preferences", {
   updatedAt: integer("updated_at").notNull(),
 }, (table) => [
   uniqueIndex("consent_preferences_subject_notice_uq").on(table.anonymousSubjectHash, table.noticeVersion),
+  uniqueIndex("consent_preferences_session_notice_uq").on(table.analyticsSessionHash, table.noticeVersion)
+    .where(sql`${table.analyticsSessionHash} is not null`),
   index("consent_preferences_expiry_idx").on(table.expiresAt, table.deletedAt),
   check("consent_preferences_functional_ck", sql`${table.strictlyFunctional} = 1`),
+  check("consent_preferences_session_hash_ck", sql`${table.analyticsSessionHash} is null or (length(${table.analyticsSessionHash}) = 64 and ${table.analyticsSessionHash} = lower(${table.analyticsSessionHash}) and ${table.analyticsSessionHash} not glob '*[^0-9a-f]*')`),
+  check("consent_preferences_analytics_marketing_ck", sql`${table.analyticsSessionHash} is null or ${table.marketing} = 0`),
 ]);
 
 export const analyticsEvents = sqliteTable("analytics_events", {
   id: text("id").primaryKey(),
+  clientEventUuid: text("client_event_uuid"),
+  eventSchemaVersion: integer("event_schema_version").notNull().default(0),
+  analyticsSessionHash: text("analytics_session_hash"),
   eventName: text("event_name").notNull(),
   propertiesJson: text("properties_json").notNull().default("{}"),
   anonymousSubjectHash: text("anonymous_subject_hash"),
@@ -456,11 +483,18 @@ export const analyticsEvents = sqliteTable("analytics_events", {
   createdAt: integer("created_at").notNull(),
   updatedAt: integer("updated_at").notNull(),
 }, (table) => [
+  uniqueIndex("analytics_events_client_uuid_uq").on(table.clientEventUuid)
+    .where(sql`${table.clientEventUuid} is not null`),
+  index("analytics_events_session_time_idx").on(table.analyticsSessionHash, table.occurredAt),
   index("analytics_events_name_time_idx").on(table.eventName, table.occurredAt),
   index("analytics_events_retention_idx").on(table.expiresAt, table.deletedAt),
-  check("analytics_events_name_ck", sql`${table.eventName} in ('entry_viewed','region_selected','avatar_selected','quiz_started','question_answered','quiz_completed','result_viewed','share_interface_selected','share_handoff_attempted','link_copied','referred_visit_received','challenge_accepted')`),
+  check("analytics_events_uuid_ck", sql`${table.clientEventUuid} is null or (length(${table.clientEventUuid}) = 36 and ${table.clientEventUuid} = lower(${table.clientEventUuid}) and substr(${table.clientEventUuid},9,1) = '-' and substr(${table.clientEventUuid},14,1) = '-' and substr(${table.clientEventUuid},15,1) = '4' and substr(${table.clientEventUuid},19,1) = '-' and substr(${table.clientEventUuid},20,1) in ('8','9','a','b') and substr(${table.clientEventUuid},24,1) = '-' and ${table.clientEventUuid} not glob '*[^0-9a-f-]*')`),
+  check("analytics_events_session_hash_ck", sql`${table.analyticsSessionHash} is null or (length(${table.analyticsSessionHash}) = 64 and ${table.analyticsSessionHash} = lower(${table.analyticsSessionHash}) and ${table.analyticsSessionHash} not glob '*[^0-9a-f]*')`),
+  check("analytics_events_version_ck", sql`${table.eventSchemaVersion} in (0,1)`),
+  check("analytics_events_name_ck", sql`(${table.eventSchemaVersion} = 0 and ${table.eventName} in ('entry_viewed','region_selected','avatar_selected','quiz_started','question_answered','quiz_completed','result_viewed','share_interface_selected','share_handoff_attempted','link_copied','referred_visit_received','challenge_accepted')) or (${table.eventSchemaVersion} = 1 and ${table.eventName} in ('app_visit','edition_select','quiz_start','first_question_start','quiz_complete','result_view','result_publish','result_unpublish','challenge_create','challenge_view','challenge_accept','challenge_complete','comparison_view','comparison_outcome','nomination_open','nomination_share_intent','nomination_share_handoff','referred_visit','referred_quiz_start','share_centre_open','share_intent','share_handoff','story_video_open','story_video_render_start','story_video_render_complete','story_video_render_failed','story_video_share_intent','story_video_share_handoff','story_video_download','story_static_fallback','consent_accept','consent_reject','consent_withdraw','offer_view','checkout_start','checkout_complete','purchase_complete','payment_failed','refund_complete') and ${table.clientEventUuid} is not null and ${table.analyticsSessionHash} is not null)`),
   check("analytics_events_bot_ck", sql`${table.botClassification} in ('human','bot','crawler','unknown')`),
   check("analytics_events_json_ck", sql`json_valid(${table.propertiesJson}) and json_type(${table.propertiesJson}) = 'object' and length(${table.propertiesJson}) <= 2048`),
+  check("analytics_events_retention_ck", sql`${table.eventSchemaVersion} = 0 or (${table.occurredAt} >= 0 and ${table.expiresAt} > ${table.occurredAt} and ${table.expiresAt} - ${table.occurredAt} <= 2592000000)`),
 ]);
 
 export const featureFlagOverrides = sqliteTable("feature_flag_overrides", {
