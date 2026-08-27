@@ -5,7 +5,7 @@ Scope: current repository behaviour only. Hosting-provider operational logs and 
 
 ## Current privacy posture
 
-The app is a device-local anonymous experience in ordinary production. It has no active application database, object storage, analytics collector or account system because D1 and R2 remain unbound and every feature flag remains false by default. Prompt 16 adds an inactive, build-time-gated first-party analytics route and consent interface. They fail closed without approved D1 storage and rate limiting; query parameters cannot activate them. A selected original photo and the sanitised copy are never transmitted by application code.
+The app is a device-local anonymous experience in ordinary production. It has no active application database, object storage, analytics collector, commerce system or account system because D1 and R2 remain unbound and every feature flag remains false by default. Prompt 16 adds an inactive, build-time-gated first-party analytics route and consent interface. Prompt 17 adds an inactive commerce and entitlement implementation for a future commerce-capable host. Both fail closed without approved D1 storage and rate limiting; query parameters cannot activate them. A selected original photo and the sanitised copy are never transmitted by application code.
 
 Prompt 16 analytics is optional and technically consent-controlled. Before acceptance, the app reads only the minimum analytics-consent preference record; it creates no analytics identifier, queue, cookie or network request and collects no referral analytics. Rejection remains browser-local. Acceptance creates a separate 128-bit tab-scoped analytics credential for at most 24 hours, sends only allowlisted first-party events, and stores only a domain-separated SHA-256 hash server-side. Withdrawal immediately clears the memory queue and browser credential, then deletes the session's raw event rows. Owner and appropriate legal review are still required before any production activation.
 
@@ -77,6 +77,7 @@ Trusted challenge readiness is an input boundary, not a public query-string trus
 | `localStorage` | `wybp-analytics-consent-v1` | Minimum versioned record of accept/reject choice and notice version | 180 days; invalid, expired or notice-mismatched values are removed | Manage preferences, replacement choice or browser controls | Strictly necessary preference memory only; no marketing consent or analytics identifier |
 | `sessionStorage` | `wybp-analytics-session-v1` | Raw cryptographically random analytics credential created only after acceptance | 24 hours or tab close | Reject/withdraw, expiry or tab close | Separate from game ownership; sent only in same-origin POST bodies and never stored server-side |
 | `sessionStorage` | `wybp-analytics-seen-v1` | At most 40 semantic event keys for refresh/Back deduplication | Analytics tab session | Reject/withdraw, session clear or tab close | Created only after acceptance; contains no code, hash, URL or internal identifier |
+| `sessionStorage` | `wybp-pending-royal-reveal-v1` | Opaque pending-order reference used by the bounded return-page status check | Current tab; cleared on terminal outcome | Terminal payment state, explicit return to free result or tab close | Non-authoritative navigation continuity only; contains no Stripe ID, result, owner or credential |
 
 No IndexedDB, Cache Storage, service worker, application cookie or browser database use was detected. Analytics uses no cookie, persistent event queue, advertising identifier or fingerprint.
 
@@ -86,9 +87,9 @@ No IndexedDB, Cache Storage, service worker, application cookie or browser datab
 | --- | --- |
 | Sites D1 | Not bound: `.openai/hosting.json` has `"d1": null` |
 | Sites R2 | Not bound: `.openai/hosting.json` has `"r2": null` |
-| Drizzle schema | 19 storage-ready tables, inactive and unbound |
-| Drizzle migrations | `0000` through approved local-only `0005_special_gamma_corps.sql`; `0005` has checksum `a13ac6180fa745732266fc922f89d2cd1e10f5f9c88d90e4f310ff833b09701d` and has not been applied to hosted storage |
-| Active API routes | Analytics POST source exists but is unreachable in ordinary production because `first_party_analytics=false`; all storage-dependent routes fail closed while bindings are null |
+| Drizzle schema | 22 storage-ready tables, including exactly three inactive commerce tables; all are unbound |
+| Drizzle migrations | `0000` through local-only `0006_regular_paibok.sql`; `0005` remains byte-identical and neither `0005` nor `0006` has been applied to hosted storage |
+| Active API routes | Analytics and commerce route source exists but is unreachable in ordinary production because both flags are false; all storage-dependent routes fail closed while bindings are null |
 | External database/blob provider | None detected |
 | Analytics/event collector | Inactive first-party route only; no third-party SDK, pixel, script or hosted collector is active |
 | App-owned authentication/session store | None |
@@ -310,6 +311,16 @@ The optional `story_video` flow creates a five-second 1080 by 1920 MP4 or WebM e
 The complete event dictionary, routing map, payload allowlist, consent notice, retention schedule and funnel formulas are normative in `docs/analytics-event-dictionary.md` and `docs/analytics-consent-contract.md`. Raw version-1 events expire no later than 30 days after occurrence. The owner-only bounded retention operation is repository-level, has no browser route and never runs during a build or ordinary request. Reports contain aggregate counts only and are labelled `consented_measured_traffic`; consent means reported traffic can undercount total use.
 
 The route is same-origin POST-only, HTTPS outside local review, strict JSON, limited to 16,384 bytes and 10 events, Fetch-Metadata checked, credential-hash and consent checked, centrally validated and idempotent. It returns neutral acknowledgements without records or exception text. Production intentionally uses an unavailable rate-limit boundary, so activation fails closed until an independently approved limiter exists.
+
+## Prompt 17 Royal Reveal commerce boundary
+
+Royal Reveal is fixed at `royal_reveal_v1`, one-off GBP 199 (£1.99), with no subscription. Commerce and its review fixtures are build-gated, false by default and query-inert. The order endpoint requires an active completed result, raw tab-scoped owner credential in a protected same-origin body, constant-time server-derived ownership verification, explicit immediate-delivery consent, strict input limits, idempotency, approved rate limiting and D1. A copied stored owner hash cannot authorise anything.
+
+The purchase context is created only by the server-authoritative result-completion boundary. The browser submits stable question/option identifiers, an allowlisted avatar, the raw tab credential and an idempotency value; edition, score, total, tier, title, result slug and payment identifiers are forbidden. D1 supplies and binds the single active edition, published question versions and answer keys. One atomic batch stores the completed owner-bound attempt, twelve answers and immutable private result, and only its opaque slug returns. The result uses the existing 90-day completed-result window, which exceeds the 30-minute pending-order lifecycle; this adds no table or migration.
+
+The only added stores are `commerce_orders`, `commerce_entitlements` and `stripe_webhook_events`. They hold controlled state, result/owner/product relationships, minimal verified Stripe identifiers, timestamps, retention/deletion readiness and payload digests. They prohibit full webhook payloads, customer profiles, cards, bank accounts, invoices, subscriptions, advertising data, names, email, phone, billing addresses and receipts. Premium media remains on-device and private photos remain excluded.
+
+A public Payment Link receives only an opaque `client_reference_id`. The return page cannot grant access. Only raw-body-signature-verified, exact-product/currency/amount webhook processing can create or revoke a result-specific entitlement. Full refunds and disputes revoke; partial refunds enter manual review. Analytics is optional and separate: commerce works after rejection, and reserved commerce events can be ingested only when analytics consent, analytics and commerce are all active.
 
 The in-memory projection contains only edition, score, maximum score, score-derived result title, approved avatar ID and asset path, approved regional artwork and palette, mastery state, permanent safeguard and an optional validated permanent public-result URL. Challenge codes, session credentials or hashes, idempotency or revocation values, answers, internal IDs and arbitrary URLs are rejected or absent. Object URLs are revoked after downloads and when the panel unmounts. Generated media is capped at 8,000,000 bytes and is not persisted by the application. `story_video` remains false by default and cannot be activated through a public query parameter.
 

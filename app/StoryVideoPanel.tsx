@@ -31,11 +31,15 @@ export default function StoryVideoPanel({
   surface,
   soundEnabled,
   onUseStatic,
+  entitlement,
+  forceUnsupported = false,
 }: Readonly<{
   projection: StoryVideoProjection;
   surface: ShareSurface;
   soundEnabled: boolean;
   onUseStatic: () => Promise<void>;
+  entitlement?: unknown;
+  forceUnsupported?: boolean;
 }>) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const assetsRef = useRef<StoryVideoAssets | null>(null);
@@ -49,7 +53,7 @@ export default function StoryVideoPanel({
   const [videoPlayable, setVideoPlayable] = useState(false);
   const [assetsReady, setAssetsReady] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
-  const supportedMime = useMemo(() => selectStoryVideoMime(typeof MediaRecorder === "function" ? MediaRecorder.isTypeSupported.bind(MediaRecorder) : undefined), []);
+  const supportedMime = useMemo(() => forceUnsupported ? null : selectStoryVideoMime(typeof MediaRecorder === "function" ? MediaRecorder.isTypeSupported.bind(MediaRecorder) : undefined), [forceUnsupported]);
 
   const emit = (name: Parameters<typeof emitStoryVideoEvent>[0]["name"], state: StoryVideoState, channel?: StoryVideoChannel, elapsedMs?: number, byteSize?: number) => emitStoryVideoEvent({ name, edition: projection.edition, surface, state, ...(channel ? { channel } : {}), ...(elapsedMs === undefined ? {} : { elapsedMs }), ...(byteSize === undefined ? {} : { byteSize }) });
 
@@ -92,7 +96,7 @@ export default function StoryVideoPanel({
     setVideo(null); setVideoUrl(null); setVideoPoster(null); setVideoPlayable(false); setProgress(0); setStatus({ state: "rendering", message: phaseLabels.regional_reveal });
     const startedAt = performance.now(); emit("story_video_render_start", "rendering");
     try {
-      const prepared = await recordStoryVideo({ canvas, context, projection, assets, soundEnabled, signal: controller.signal, onProgress: (next, phase) => { setProgress(next); setStatus({ state: "rendering", message: phaseLabels[phase] }); } });
+      const prepared = await recordStoryVideo({ canvas, context, projection, assets, soundEnabled, entitlement, signal: controller.signal, onProgress: (next, phase) => { setProgress(next); setStatus({ state: "rendering", message: phaseLabels[phase] }); } });
       if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
       const url = URL.createObjectURL(prepared.blob); objectUrlRef.current = url; setVideo(prepared); setVideoUrl(url);
       try { setVideoPoster(canvas.toDataURL(STORY_STATIC_MIME)); } catch { setVideoPoster(null); }

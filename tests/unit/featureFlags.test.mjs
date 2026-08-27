@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  assertCommerceReadiness,
   assertSitesCompatibleFeatureFlags,
   assertDynamicResultsStorage,
   defaultFeatureFlags,
@@ -41,4 +42,7 @@ test("ChatGPT Sites rejects commerce", () => {
     () => assertSitesCompatibleFeatureFlags(flags),
     /Commerce cannot be enabled while this application targets ChatGPT Sites/,
   );
+  assert.doesNotThrow(() => assertSitesCompatibleFeatureFlags(flags, { authorisedReviewFixtures: true }));
+  assert.throws(() => assertCommerceReadiness(flags, { d1Configured: false, completeConfiguration: false, approvedRateLimiter: false, authorisedReviewFixtures: false }), /fails closed/i);
+  assert.doesNotThrow(() => assertCommerceReadiness(flags, { d1Configured: false, completeConfiguration: false, approvedRateLimiter: false, authorisedReviewFixtures: true }));
 });

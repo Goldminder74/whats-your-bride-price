@@ -1,3 +1,5 @@
+import { activeFeatureFlags } from "./featureFlags.ts";
+import { requireRoyalRevealProjection } from "./royalRevealProjection.ts";
 import { isStoryVideoProjection, type StoryVideoProjection } from "./storyVideoProjection.ts";
 
 export const STORY_VIDEO_WIDTH = 1080;
@@ -228,7 +230,9 @@ export async function recordStoryVideo(input: Readonly<{
   soundEnabled: boolean;
   signal?: AbortSignal;
   onProgress?: (progress: number, phase: StoryVideoPhase) => void;
+  entitlement?: unknown;
 }>): Promise<PreparedStoryVideo> {
+  if (activeFeatureFlags.commerce) requireRoyalRevealProjection(input.entitlement);
   if (!isStoryVideoProjection(input.projection) || input.canvas.width !== STORY_VIDEO_WIDTH || input.canvas.height !== STORY_VIDEO_HEIGHT) throw new StoryVideoError("invalid_projection");
   const capture = input.canvas.captureStream?.bind(input.canvas);
   const mime = selectStoryVideoMime(typeof MediaRecorder === "function" ? MediaRecorder.isTypeSupported.bind(MediaRecorder) : undefined);

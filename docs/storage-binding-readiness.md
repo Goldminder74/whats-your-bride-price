@@ -63,7 +63,13 @@ These are proposals, not active bindings. An owner must approve the names, provi
 7. Add authenticated, rate-limited server endpoints only in later prompts. Client-submitted scores are never authoritative.
 8. Export preview data before rehearsing compensating migrations.
 9. Obtain separate production migration and deployment approval.
-10. Keep commerce disabled. No payment entity belongs in this Sites model.
+10. Keep commerce disabled on Sites. Prompt 17's local commerce model requires a separately approved commerce-capable host, production D1 and rate limiter; it cannot activate against the current null bindings.
+
+## Prompt 17 local commerce migration status, 26 August 2026
+
+Exactly one additional local migration exists: `drizzle/0006_regular_paibok.sql`. It additively creates only `commerce_orders`, `commerce_entitlements` and `stripe_webhook_events`, with explicit foreign keys, controlled checks, replay/idempotency uniqueness, bounded retention/deletion fields and necessary lookup indexes. Migrations `0000` through `0005` remain byte-identical. Empty, upgrade and repeated-ledger tests run against isolated temporary SQLite files only.
+
+Migration `0006` has not been applied to staging or production. `.openai/hosting.json` remains unchanged with D1 and R2 null. Activation requires the twenty manual gates in `docs/stripe-payment-link-setup.md`, including separate production D1 approval, explicit migration application, independent rate limiting, test-mode payment/refund/dispute evidence and a later live-mode approval.
 
 ## R2 contract
 

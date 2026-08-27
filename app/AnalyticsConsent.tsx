@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/set-state-in-effect -- consent preference hydration intentionally synchronises browser storage into UI state */
 
 import { useEffect, useRef, useState } from "react";
-import { ANALYTICS_EVENT_SCHEMA_VERSION, type ActiveAnalyticsEventName } from "../db/analyticsContracts.ts";
+import { ANALYTICS_EVENT_SCHEMA_VERSION, type AnalyticsEventName } from "../db/analyticsContracts.ts";
 import { ANALYTICS_NOTICE_VERSION, type AnalyticsClientEvent, type AnalyticsProperties } from "../db/analytics.ts";
 import { installAnalyticsAdapters } from "./analyticsAdapter.ts";
 import {
@@ -16,7 +16,7 @@ import { activeFeatureFlags } from "./featureFlags.ts";
 type Choice = "unknown" | "accepted" | "rejected";
 
 function uuidV4(): string { return crypto.randomUUID().toLowerCase(); }
-function event(name: ActiveAnalyticsEventName, properties: AnalyticsProperties = {}, referralChallengeCode?: string): AnalyticsClientEvent {
+function event(name: AnalyticsEventName, properties: AnalyticsProperties = {}, referralChallengeCode?: string): AnalyticsClientEvent {
   return Object.freeze({ name, eventSchemaVersion: ANALYTICS_EVENT_SCHEMA_VERSION, consentNoticeVersion: ANALYTICS_NOTICE_VERSION, clientEventUuid: uuidV4(), occurredAt: Date.now(), properties, ...(referralChallengeCode ? { referralChallengeCode } : {}) });
 }
 

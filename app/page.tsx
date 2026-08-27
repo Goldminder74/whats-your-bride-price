@@ -3,6 +3,7 @@ import { resolveReviewChallengeFixture, resolveSafeguardReviewFixture } from "./
 import { entryContextFromRecord } from "./entryContext";
 import { activeFeatureFlags } from "./featureFlags";
 import { PRODUCT_SAFEGUARD } from "./productSafeguards";
+import { resolveRoyalRevealReviewScenario } from "./royalRevealReview.ts";
 
 export const metadata = {
   title: "What’s Your Bride Price? | The Pan-African Party Game",
@@ -24,11 +25,15 @@ export default async function Home({ searchParams }: HomeProps) {
   const fixtureId = typeof fixtureValue === "string" ? fixtureValue : undefined;
   const safeguardFixtureValue = resolvedSearchParams.safeguard_fixture;
   const safeguardFixtureId = typeof safeguardFixtureValue === "string" ? safeguardFixtureValue : undefined;
+  const commerceFixtureValue = resolvedSearchParams.commerce_fixture;
+  const royalRevealReviewScenario = resolveRoyalRevealReviewScenario(typeof commerceFixtureValue === "string" ? commerceFixtureValue : undefined);
   const trustedChallenge = activeFeatureFlags.fast_entry && activeFeatureFlags.challenges
     ? resolveReviewChallengeFixture(fixtureId)
     : undefined;
-  const safeguardReviewFixture = activeFeatureFlags.fast_entry
+  const safeguardReviewFixture = royalRevealReviewScenario
+    ? Object.freeze({ screen: "result" as const, score: 12 as const, reducedMotion: false, nomination: false })
+    : activeFeatureFlags.fast_entry
     ? resolveSafeguardReviewFixture(safeguardFixtureId)
     : undefined;
-  return <BridePriceGame initialEntryContext={initialEntryContext} trustedChallenge={trustedChallenge} safeguardReviewFixture={safeguardReviewFixture} />;
+  return <BridePriceGame initialEntryContext={initialEntryContext} trustedChallenge={trustedChallenge} safeguardReviewFixture={safeguardReviewFixture} royalRevealReviewScenario={royalRevealReviewScenario} />;
 }

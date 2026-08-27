@@ -125,14 +125,17 @@ export class AnalyticsValidationError extends Error {
   }
 }
 
-export function validateIngestibleEventName(value: unknown): ActiveAnalyticsEventName {
+export function validateIngestibleEventName(value: unknown, commerceEnabled = false): AnalyticsEventName {
   if (typeof value !== "string") throw new AnalyticsValidationError("event_name_invalid");
-  if (reservedNames.has(value)) throw new AnalyticsValidationError("commerce_event_reserved_not_active");
+  if (reservedNames.has(value)) {
+    if (!commerceEnabled) throw new AnalyticsValidationError("commerce_event_reserved_not_active");
+    return value as ReservedCommerceEventName;
+  }
   if (!activeNames.has(value)) throw new AnalyticsValidationError("event_name_not_active");
   if (value === "consent_reject") throw new AnalyticsValidationError("consent_reject_is_local_only");
   return value as ActiveAnalyticsEventName;
 }
 
-export function eventDestination(name: ActiveAnalyticsEventName): AnalyticsEventDestination {
-  return ANALYTICS_EVENT_ROUTING[name];
+export function eventDestination(name: AnalyticsEventName): AnalyticsEventDestination {
+  return reservedNames.has(name) ? "analytics_events" : ANALYTICS_EVENT_ROUTING[name as ActiveAnalyticsEventName];
 }

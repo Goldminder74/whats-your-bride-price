@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { check, index, integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
+import { check, foreignKey, index, integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
 
 export const quizEditions = sqliteTable("quiz_editions", {
   id: text("id").primaryKey(),
@@ -438,6 +438,114 @@ export const mediaAssets = sqliteTable("media_assets", {
   check("media_assets_state_ck", sql`${table.state} in ('pending','ready','expired','revoked','deleted')`),
 ]);
 
+export const commerceOrders = sqliteTable("commerce_orders", {
+  id: text("id").primaryKey(),
+  publicOrderReference: text("public_order_reference").notNull(),
+  productKey: text("product_key").notNull(),
+  resultId: text("result_id").notNull().references(() => results.id, { onDelete: "restrict" }),
+  anonymousOwnerHash: text("anonymous_owner_hash").notNull(),
+  currency: text("currency").notNull(),
+  amountMinor: integer("amount_minor").notNull(),
+  state: text("state").notNull().default("pending"),
+  clientReferenceId: text("client_reference_id").notNull(),
+  stripePaymentLinkId: text("stripe_payment_link_id").notNull(),
+  stripeCheckoutSessionId: text("stripe_checkout_session_id"),
+  stripePaymentIntentId: text("stripe_payment_intent_id"),
+  consentNoticeVersion: text("consent_notice_version").notNull(),
+  immediateDeliveryConsentAt: integer("immediate_delivery_consent_at").notNull(),
+  paidAt: integer("paid_at"),
+  fulfilledAt: integer("fulfilled_at"),
+  refundedAt: integer("refunded_at"),
+  disputedAt: integer("disputed_at"),
+  expiredAt: integer("expired_at"),
+  deletedAt: integer("deleted_at"),
+  pendingExpiresAt: integer("pending_expires_at").notNull(),
+  retentionExpiresAt: integer("retention_expires_at").notNull(),
+  idempotencyHash: text("idempotency_hash").notNull(),
+  version: integer("version").notNull().default(1),
+  createdAt: integer("created_at").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+}, (table) => [
+  uniqueIndex("commerce_orders_public_reference_uq").on(table.publicOrderReference),
+  uniqueIndex("commerce_orders_client_reference_uq").on(table.clientReferenceId),
+  uniqueIndex("commerce_orders_idempotency_hash_uq").on(table.idempotencyHash),
+  uniqueIndex("commerce_orders_checkout_session_uq").on(table.stripeCheckoutSessionId).where(sql`${table.stripeCheckoutSessionId} is not null`),
+  uniqueIndex("commerce_orders_payment_intent_uq").on(table.stripePaymentIntentId).where(sql`${table.stripePaymentIntentId} is not null`),
+  uniqueIndex("commerce_orders_entitlement_authority_uq").on(table.id, table.resultId, table.anonymousOwnerHash, table.productKey),
+  index("commerce_orders_result_owner_state_idx").on(table.resultId, table.anonymousOwnerHash, table.state),
+  index("commerce_orders_pending_expiry_idx").on(table.state, table.pendingExpiresAt),
+  index("commerce_orders_retention_idx").on(table.retentionExpiresAt, table.deletedAt),
+  check("commerce_orders_public_reference_ck", sql`length(${table.publicOrderReference}) = 35 and substr(${table.publicOrderReference},1,3) = 'rr_' and substr(${table.publicOrderReference},4) not glob '*[^0-9a-f]*'`),
+  check("commerce_orders_product_price_ck", sql`${table.productKey} = 'royal_reveal_v1' and ${table.currency} = 'GBP' and ${table.amountMinor} = 199`),
+  check("commerce_orders_owner_hash_ck", sql`length(${table.anonymousOwnerHash}) = 64 and ${table.anonymousOwnerHash} = lower(${table.anonymousOwnerHash}) and ${table.anonymousOwnerHash} not glob '*[^0-9a-f]*'`),
+  check("commerce_orders_idempotency_hash_ck", sql`length(${table.idempotencyHash}) = 64 and ${table.idempotencyHash} = lower(${table.idempotencyHash}) and ${table.idempotencyHash} not glob '*[^0-9a-f]*'`),
+  check("commerce_orders_client_reference_ck", sql`${table.clientReferenceId} = ${table.publicOrderReference}`),
+  check("commerce_orders_payment_link_ck", sql`length(${table.stripePaymentLinkId}) between 8 and 255 and ${table.stripePaymentLinkId} glob 'plink_*' and ${table.stripePaymentLinkId} not glob '*[^0-9A-Za-z_]*'`),
+  check("commerce_orders_checkout_session_ck", sql`${table.stripeCheckoutSessionId} is null or (length(${table.stripeCheckoutSessionId}) between 8 and 255 and ${table.stripeCheckoutSessionId} glob 'cs_*' and ${table.stripeCheckoutSessionId} not glob '*[^0-9A-Za-z_]*')`),
+  check("commerce_orders_payment_intent_ck", sql`${table.stripePaymentIntentId} is null or (length(${table.stripePaymentIntentId}) between 6 and 255 and ${table.stripePaymentIntentId} glob 'pi_*' and ${table.stripePaymentIntentId} not glob '*[^0-9A-Za-z_]*')`),
+  check("commerce_orders_state_ck", sql`${table.state} in ('pending','processing','paid','fulfilled','failed','refunded','disputed','expired','deleted','review_required')`),
+  check("commerce_orders_consent_ck", sql`length(${table.consentNoticeVersion}) between 3 and 100 and ${table.immediateDeliveryConsentAt} >= ${table.createdAt}`),
+  check("commerce_orders_time_ck", sql`${table.createdAt} > 0 and ${table.updatedAt} >= ${table.createdAt} and ${table.pendingExpiresAt} > ${table.createdAt} and ${table.retentionExpiresAt} > ${table.pendingExpiresAt}`),
+]);
+
+export const commerceEntitlements = sqliteTable("commerce_entitlements", {
+  id: text("id").primaryKey(),
+  orderId: text("order_id").notNull(),
+  resultId: text("result_id").notNull().references(() => results.id, { onDelete: "restrict" }),
+  anonymousOwnerHash: text("anonymous_owner_hash").notNull(),
+  productKey: text("product_key").notNull(),
+  state: text("state").notNull().default("active"),
+  grantedAt: integer("granted_at").notNull(),
+  revokedAt: integer("revoked_at"),
+  expiresAt: integer("expires_at"),
+  retentionExpiresAt: integer("retention_expires_at").notNull(),
+  deletedAt: integer("deleted_at"),
+  version: integer("version").notNull().default(1),
+  createdAt: integer("created_at").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+}, (table) => [
+  foreignKey({
+    name: "commerce_entitlements_order_authority_fk",
+    columns: [table.orderId, table.resultId, table.anonymousOwnerHash, table.productKey],
+    foreignColumns: [commerceOrders.id, commerceOrders.resultId, commerceOrders.anonymousOwnerHash, commerceOrders.productKey],
+  }).onDelete("restrict"),
+  uniqueIndex("commerce_entitlements_order_uq").on(table.orderId),
+  uniqueIndex("commerce_entitlements_active_result_owner_uq").on(table.resultId, table.anonymousOwnerHash, table.productKey).where(sql`${table.state} = 'active'`),
+  index("commerce_entitlements_lookup_idx").on(table.resultId, table.anonymousOwnerHash, table.productKey, table.state),
+  index("commerce_entitlements_retention_idx").on(table.retentionExpiresAt, table.deletedAt),
+  check("commerce_entitlements_product_ck", sql`${table.productKey} = 'royal_reveal_v1'`),
+  check("commerce_entitlements_owner_hash_ck", sql`length(${table.anonymousOwnerHash}) = 64 and ${table.anonymousOwnerHash} = lower(${table.anonymousOwnerHash}) and ${table.anonymousOwnerHash} not glob '*[^0-9a-f]*'`),
+  check("commerce_entitlements_state_ck", sql`${table.state} in ('active','revoked','expired','deleted')`),
+  check("commerce_entitlements_time_ck", sql`${table.grantedAt} > 0 and ${table.createdAt} > 0 and ${table.updatedAt} >= ${table.createdAt} and (${table.expiresAt} is null or ${table.expiresAt} > ${table.grantedAt}) and ${table.retentionExpiresAt} > ${table.grantedAt}`),
+]);
+
+export const stripeWebhookEvents = sqliteTable("stripe_webhook_events", {
+  id: text("id").primaryKey(),
+  stripeEventId: text("stripe_event_id").notNull(),
+  eventType: text("event_type").notNull(),
+  livemode: integer("livemode", { mode: "boolean" }).notNull(),
+  payloadSha256: text("payload_sha256").notNull(),
+  receivedAt: integer("received_at").notNull(),
+  processedAt: integer("processed_at"),
+  processingResult: text("processing_result").notNull().default("received"),
+  orderId: text("order_id").references(() => commerceOrders.id, { onDelete: "set null" }),
+  expiresAt: integer("expires_at").notNull(),
+  deletedAt: integer("deleted_at"),
+  version: integer("version").notNull().default(1),
+  createdAt: integer("created_at").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+}, (table) => [
+  uniqueIndex("stripe_webhook_events_event_id_uq").on(table.stripeEventId),
+  index("stripe_webhook_events_order_idx").on(table.orderId, table.receivedAt),
+  index("stripe_webhook_events_retention_idx").on(table.expiresAt, table.deletedAt),
+  check("stripe_webhook_events_id_ck", sql`length(${table.stripeEventId}) between 8 and 255 and ${table.stripeEventId} glob 'evt_*' and ${table.stripeEventId} not glob '*[^0-9A-Za-z_]*'`),
+  check("stripe_webhook_events_type_ck", sql`${table.eventType} in ('checkout.session.completed','checkout.session.async_payment_succeeded','checkout.session.async_payment_failed','charge.refunded','charge.dispute.created')`),
+  check("stripe_webhook_events_livemode_ck", sql`${table.livemode} in (0,1)`),
+  check("stripe_webhook_events_payload_hash_ck", sql`length(${table.payloadSha256}) = 64 and ${table.payloadSha256} = lower(${table.payloadSha256}) and ${table.payloadSha256} not glob '*[^0-9a-f]*'`),
+  check("stripe_webhook_events_result_ck", sql`${table.processingResult} in ('received','processed','ignored','failed','review_required')`),
+  check("stripe_webhook_events_time_ck", sql`${table.receivedAt} > 0 and (${table.processedAt} is null or ${table.processedAt} >= ${table.receivedAt}) and ${table.expiresAt} > ${table.receivedAt}`),
+]);
+
 export const consentPreferences = sqliteTable("consent_preferences", {
   id: text("id").primaryKey(),
   anonymousSubjectHash: text("anonymous_subject_hash"),
@@ -522,5 +630,6 @@ export const durableTableNames = [
   "quiz_editions", "questions", "question_sources", "quiz_attempts", "answers", "results",
   "challenges", "challenge_attempts", "referral_events", "share_events", "daily_challenges",
   "streaks", "mastery_seals", "parties", "party_players", "media_assets",
+  "commerce_orders", "commerce_entitlements", "stripe_webhook_events",
   "consent_preferences", "analytics_events", "feature_flag_overrides",
 ] as const;

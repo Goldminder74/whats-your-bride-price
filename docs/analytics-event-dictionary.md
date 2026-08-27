@@ -16,7 +16,9 @@ The central map in `db/analyticsContracts.ts` assigns each event to exactly one 
 | `referral_events` | `referred_visit`, `referred_quiz_start` |
 | `share_events` | `share_intent`, `share_handoff`, `nomination_share_intent`, `nomination_share_handoff`, `story_video_share_intent`, `story_video_share_handoff`, `story_video_download`, `story_static_fallback` |
 
-`consent_reject` is local-only and current ingestion rejects it because rejection must not create an identifier or request. Consent actions are also rejected from ordinary event batches. Withdrawal uses the dedicated removal action and is not consent for another event. The schema reserves `offer_view`, `checkout_start`, `checkout_complete`, `purchase_complete`, `payment_failed` and `refund_complete`, but active validation rejects all six until commerce is separately implemented and approved.
+`consent_reject` is local-only and ingestion rejects it because rejection must not create an identifier or request. Consent actions are also rejected from ordinary event batches. Withdrawal uses the dedicated removal action and is not consent for another event. The commerce names `offer_view`, `checkout_start`, `checkout_complete`, `purchase_complete`, `payment_failed` and `refund_complete` are accepted only by the analytics service when both consent-controlled analytics and commerce are enabled. The ordinary validator still rejects them.
+
+`offer_view` means the paid offer became visible. `checkout_start` requires deliberate navigation after authoritative pending-order creation. `checkout_complete`, `purchase_complete`, `payment_failed` and `refund_complete` require authoritative webhook-derived status; redirects never emit them. These events contain no Stripe ID, order reference, credential, name, email, exact instrument or payload. Commerce continues to work after analytics rejection.
 
 ## Exact permitted payload fields
 

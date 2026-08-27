@@ -355,6 +355,14 @@ The browser review must cover initial choice, rejection with the quiz continuing
 
 Production activation is blocked until the owner and appropriate legal reviewer approve the notice and withdrawal model; D1 is explicitly bound; `0005` is separately approved and applied; independent fail-closed rate limiting exists; an owner/scheduled retention operation is assigned; and deletion/aggregate handling is approved. Do not use review fixtures as production storage or a production rate limiter. No deployment, migration or seed is implied by passing this gate.
 
+### Prompt 17 Royal Reveal release gate
+
+Run `npm run test:commerce`, then `npm run test:all`, `npm run build` and `git diff --check`. The focused suite must prove server-authoritative result completion from published D1 answer keys, forbidden browser score/result claims, atomic attempt/answer/result persistence, exact owner/result binding, a durable opaque result slug, exact GBP 199 one-off configuration, query and redirect isolation, stored-hash rejection, consent, idempotency, validated Payment Link construction, raw-body signatures, replay/concurrency, payment/refund/dispute states, premium-function gating, media dimensions, Story fallback, analytics separation and migration `0006` safety on empty/upgraded/repeated databases. Tests and review must use synthetic events only and make no Stripe or hosted-storage request.
+
+The browser gate covers offer, unchecked consent, validation error, processing, succeeded, failed, refunded/revoked, all three portraits, certificate, video-ready and unsupported fallback states. Review 320-pixel, Android and iPhone viewports, 200 percent zoom and reduced motion. Controls must be keyboard reachable, visibly focused and at least 44 pixels where actionable; status changes use accessible announcements, errors use text, free actions remain reachable, consent is never preselected, safeguards remain legible and no horizontal overflow occurs. Evidence belongs only in the operating-system temp directory.
+
+Live activation remains blocked until every one of the twenty ordered gates in `docs/stripe-payment-link-setup.md` is complete. This includes legal wording and URLs, business/support identity, tax and confirmation decisions, production D1 plus `0006`, independent rate limiting, webhook registration/secret, test-mode payment/refund/dispute evidence and a separate live-mode approval.
+
 ## Production smoke test for a future approved release
 
 Run from a signed-out mobile browser where public access is intended:
@@ -395,18 +403,18 @@ Run from a signed-out mobile browser where public access is intended:
 - Restore only that exact approved record if the rollback gate is met.
 - Never change nameservers or unrelated root-domain records.
 
-## Commerce prohibition
+## Sites commerce prohibition and Prompt 17 boundary
 
-While the quiz is hosted on ChatGPT Sites:
+While the quiz is hosted on ChatGPT Sites, live commerce remains prohibited:
 
 - no Stripe integration;
 - no checkout or payment-link redirect;
 - no transaction-enabling button;
-- no payment/order/card table;
+- no active payment/order/entitlement storage;
 - no browser flag or localStorage entitlement;
 - no live paid product.
 
-Payment implementation is **BLOCKED** until the production quiz is demonstrably running on a separately approved commerce-capable host and the migration/commerce gates have passed.
+Prompt 17 implements only disabled local source, migration and review fixtures. Activation remains **BLOCKED** until the production quiz is demonstrably running on a separately approved commerce-capable host and every migration, configuration, legal, test and commerce gate has passed.
 
 ## Dependency-security deployment gate
 

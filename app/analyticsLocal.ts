@@ -1,8 +1,8 @@
-import type { ActiveAnalyticsEventName } from "../db/analyticsContracts.ts";
+import type { AnalyticsEventName } from "../db/analyticsContracts.ts";
 import type { AnalyticsProperties } from "../db/analytics.ts";
 
 export type LocalAnalyticsEvent = Readonly<{
-  name: ActiveAnalyticsEventName;
+  name: AnalyticsEventName;
   properties?: AnalyticsProperties;
   referralChallengeCode?: string;
   dedupeKey?: string;

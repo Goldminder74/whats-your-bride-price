@@ -3,6 +3,7 @@ import vinext from "vinext";
 import { defineConfig } from "vite";
 import hostingConfig from "./.openai/hosting.json";
 import {
+  assertCommerceReadiness,
   assertFirstPartyAnalyticsStorage,
   assertSitesCompatibleFeatureFlags,
   assertDynamicResultsStorage,
@@ -45,12 +46,12 @@ const localBindingConfig = {
 
 export default defineConfig(async ({ mode }) => {
   const featureFlags = resolveFeatureFlags(process.env);
-  assertSitesCompatibleFeatureFlags(featureFlags);
   const diagnosticsRequested = process.env.WYBP_REVIEW_DIAGNOSTICS === "true";
   const diagnosticsApproved = process.env.WYBP_REVIEW_BUILD === "true";
   const challengeFixturesRequested = process.env.WYBP_REVIEW_CHALLENGE_FIXTURES === "true";
   const resultFixturesRequested = process.env.WYBP_REVIEW_RESULT_FIXTURES === "true";
   const analyticsFixturesRequested = process.env.WYBP_REVIEW_ANALYTICS_FIXTURES === "true";
+  const commerceFixturesRequested = process.env.WYBP_REVIEW_COMMERCE_FIXTURES === "true";
   if (mode === "production" && diagnosticsRequested && !diagnosticsApproved) {
     throw new Error(
       "Review diagnostics require explicit approval. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_DIAGNOSTICS=true for a local review build. Production builds exclude the panel by default.",
@@ -71,10 +72,15 @@ export default defineConfig(async ({ mode }) => {
       "Analytics fixtures require an explicitly authorised local review build. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_ANALYTICS_FIXTURES=true. Ordinary production builds exclude analytics fixtures.",
     );
   }
+  if (mode === "production" && commerceFixturesRequested && !diagnosticsApproved) {
+    throw new Error("Commerce fixtures require an explicitly authorised local review build. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_COMMERCE_FIXTURES=true. Ordinary production builds exclude commerce fixtures.");
+  }
   const reviewDiagnostics = mode !== "production" || (diagnosticsRequested && diagnosticsApproved);
   const reviewChallengeFixtures = challengeFixturesRequested && diagnosticsApproved;
   const reviewResultFixtures = resultFixturesRequested && diagnosticsApproved;
   const reviewAnalyticsFixtures = analyticsFixturesRequested && diagnosticsApproved;
+  const reviewCommerceFixtures = commerceFixturesRequested && diagnosticsApproved;
+  assertSitesCompatibleFeatureFlags(featureFlags, { authorisedReviewFixtures: reviewCommerceFixtures });
   assertDynamicResultsStorage(featureFlags, {
     d1Configured: Boolean(d1),
     r2Configured: Boolean(r2),
@@ -83,6 +89,12 @@ export default defineConfig(async ({ mode }) => {
   assertFirstPartyAnalyticsStorage(featureFlags, {
     d1Configured: Boolean(d1),
     authorisedReviewFixtures: reviewAnalyticsFixtures,
+  });
+  assertCommerceReadiness(featureFlags, {
+    d1Configured: Boolean(d1),
+    completeConfiguration: false,
+    approvedRateLimiter: false,
+    authorisedReviewFixtures: reviewCommerceFixtures,
   });
   const reviewChallengeData = reviewChallengeFixtures
     ? [
@@ -112,7 +124,7 @@ export default defineConfig(async ({ mode }) => {
     ? { resultSlug: "b".repeat(48), anonymousSessionCredential: "01".repeat(16) }
     : null;
   const publicAppEnvironment: PublicAppEnvironment =
-    reviewResultFixtures || reviewChallengeFixtures || reviewAnalyticsFixtures ? "test" : mode === "production" ? "production" : mode === "test" ? "test" : "development";
+    reviewResultFixtures || reviewChallengeFixtures || reviewAnalyticsFixtures || reviewCommerceFixtures ? "test" : mode === "production" ? "production" : mode === "test" ? "test" : "development";
   const publicAppOrigin = resolvePublicAppOrigin(
     process.env.PUBLIC_APP_ORIGIN,
     publicAppEnvironment,
@@ -139,6 +151,7 @@ export default defineConfig(async ({ mode }) => {
       __WYBP_REVIEW_RESULT_DATA__: JSON.stringify(reviewResultData),
       __WYBP_REVIEW_RESULT_CLIENT__: JSON.stringify(reviewResultClient),
       __WYBP_REVIEW_ANALYTICS_FIXTURES__: JSON.stringify(reviewAnalyticsFixtures),
+      __WYBP_REVIEW_COMMERCE_FIXTURES__: JSON.stringify(reviewCommerceFixtures),
     },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./analyticsConsent.css";
+import "./royalReveal.css";
 import { PRODUCT_SAFEGUARD } from "./productSafeguards";
 import { createPublicAppUrl, PUBLIC_APP_ORIGIN } from "./publicAppOrigin";
 import AnalyticsConsent from "./AnalyticsConsent";

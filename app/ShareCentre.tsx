@@ -57,7 +57,7 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
   const preparedMediaRef = useRef<PreparedShareMedia | null>(null);
   const mediaPreparedEventRef = useRef(false);
   const actionLockRef = useRef(false);
-  const storyProjection = useMemo(() => activeFeatureFlags.story_video
+  const storyProjection = useMemo(() => activeFeatureFlags.story_video && !activeFeatureFlags.commerce
     ? storyVideoProjectionFromShare(activeProjection, PUBLIC_APP_ORIGIN)
     : null, [activeProjection]);
 

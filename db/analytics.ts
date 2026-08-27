@@ -5,7 +5,7 @@ import {
   AnalyticsValidationError,
   eventDestination,
   validateIngestibleEventName,
-  type ActiveAnalyticsEventName,
+  type AnalyticsEventName,
   type AnalyticsChannel,
   type AnalyticsEventDestination,
 } from "./analyticsContracts.ts";
@@ -49,7 +49,7 @@ export type AnalyticsProperties = Readonly<Partial<{
 }>>;
 
 export type AnalyticsClientEvent = Readonly<{
-  name: ActiveAnalyticsEventName;
+  name: AnalyticsEventName;
   eventSchemaVersion: typeof ANALYTICS_EVENT_SCHEMA_VERSION;
   consentNoticeVersion: typeof ANALYTICS_NOTICE_VERSION;
   clientEventUuid: string;
@@ -61,7 +61,7 @@ export type AnalyticsClientEvent = Readonly<{
 export type StoredAnalyticsEvent = Readonly<{
   id: string;
   destination: AnalyticsEventDestination;
-  name: ActiveAnalyticsEventName;
+  name: AnalyticsEventName;
   clientEventUuid: string;
   analyticsSessionHash: string;
   occurredAt: number;
@@ -126,11 +126,11 @@ export function validateAnalyticsProperties(value: unknown): AnalyticsProperties
   return Object.freeze(result) as AnalyticsProperties;
 }
 
-export function validateAnalyticsClientEvent(value: unknown, now = Date.now()): AnalyticsClientEvent {
+export function validateAnalyticsClientEvent(value: unknown, now = Date.now(), commerceEnabled = false): AnalyticsClientEvent {
   if (!value || typeof value !== "object" || Array.isArray(value)) return fail("analytics_event_invalid");
   const candidate = value as Record<string, unknown>;
   if (!exactKeys(candidate, ["name", "eventSchemaVersion", "consentNoticeVersion", "clientEventUuid", "occurredAt", "properties", "referralChallengeCode"])) return fail("analytics_event_field_not_allowed");
-  const name = validateIngestibleEventName(candidate.name);
+  const name = validateIngestibleEventName(candidate.name, commerceEnabled);
   if (candidate.eventSchemaVersion !== ANALYTICS_EVENT_SCHEMA_VERSION) return fail("event_schema_version_invalid");
   if (candidate.consentNoticeVersion !== ANALYTICS_NOTICE_VERSION) return fail("consent_notice_version_invalid");
   if (!Number.isSafeInteger(candidate.occurredAt) || (candidate.occurredAt as number) < now - 10 * 60_000 || (candidate.occurredAt as number) > now + 60_000) return fail("event_timestamp_invalid");
@@ -151,9 +151,9 @@ export function validateAnalyticsClientEvent(value: unknown, now = Date.now()): 
   });
 }
 
-export function validateAnalyticsBatch(value: unknown, now = Date.now()): readonly AnalyticsClientEvent[] {
+export function validateAnalyticsBatch(value: unknown, now = Date.now(), commerceEnabled = false): readonly AnalyticsClientEvent[] {
   if (!Array.isArray(value) || value.length < 1 || value.length > ANALYTICS_MAX_BATCH_SIZE) return fail("analytics_batch_invalid");
-  const events = value.map((event) => validateAnalyticsClientEvent(event, now));
+  const events = value.map((event) => validateAnalyticsClientEvent(event, now, commerceEnabled));
   if (new Set(events.map(({ clientEventUuid }) => clientEventUuid)).size !== events.length) return fail("analytics_batch_duplicate_uuid");
   return Object.freeze(events);
 }
@@ -309,8 +309,9 @@ export class AnalyticsService {
   private readonly repository: AnalyticsRepository;
   private readonly rateLimiter: AnalyticsRateLimiter;
   private readonly now: () => number;
-  constructor(repository: AnalyticsRepository, rateLimiter: AnalyticsRateLimiter, now: () => number = Date.now) {
-    this.repository = repository; this.rateLimiter = rateLimiter; this.now = now;
+  private readonly commerceEnabled: boolean;
+  constructor(repository: AnalyticsRepository, rateLimiter: AnalyticsRateLimiter, now: () => number = Date.now, commerceEnabled = false) {
+    this.repository = repository; this.rateLimiter = rateLimiter; this.now = now; this.commerceEnabled = commerceEnabled;
   }
 
   private async rateLimit(hash: string, now: number): Promise<void> {
@@ -339,7 +340,7 @@ export class AnalyticsService {
   async accept(rawCredential: unknown, eventValue: unknown): Promise<Readonly<{ accepted: true; stored: boolean }>> {
     if (!this.repository.storageAvailable) return fail("analytics_storage_unavailable");
     const now = this.now(); const hash = await deriveAnalyticsSessionHash(rawCredential); await this.rateLimit(hash, now);
-    const event = validateAnalyticsClientEvent(eventValue, now);
+    const event = validateAnalyticsClientEvent(eventValue, now, this.commerceEnabled);
     if (event.name !== "consent_accept") return fail("consent_accept_event_required");
     await this.repository.acceptConsent(hash, ANALYTICS_NOTICE_VERSION, now);
     const result = await this.repository.insertEvents(await this.storedEvents([event], hash, now));
@@ -350,7 +351,7 @@ export class AnalyticsService {
     if (!this.repository.storageAvailable) return fail("analytics_storage_unavailable");
     const now = this.now(); const hash = await deriveAnalyticsSessionHash(rawCredential); await this.rateLimit(hash, now);
     if (!(await this.repository.hasActiveConsent(hash, ANALYTICS_NOTICE_VERSION, now))) return fail("analytics_consent_invalid");
-    const events = validateAnalyticsBatch(eventValues, now);
+    const events = validateAnalyticsBatch(eventValues, now, this.commerceEnabled);
     if (events.some((event) => event.name.startsWith("consent_"))) return fail("consent_event_not_allowed_in_batch");
     const result = await this.repository.insertEvents(await this.storedEvents(events, hash, now));
     return Object.freeze({ accepted: true, stored: result === "inserted" ? events.length : 0 });

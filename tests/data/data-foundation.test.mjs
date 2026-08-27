@@ -92,13 +92,14 @@ function insertResult(database, attempt, overrides = {}) {
 
 test("migration plan is ordered and checksummed", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 6);
+  assert.equal(plan.length, 7);
   assert.equal(plan[0].id, "0000_loving_stepford_cuckoos");
   assert.equal(plan[1].id, "0001_same_vertigo");
   assert.equal(plan[2].id, "0002_little_inertia");
   assert.equal(plan[3].id, "0003_clever_joshua_kane");
   assert.equal(plan[4].id, "0004_yellow_bill_hollister");
   assert.equal(plan[5].id, "0005_special_gamma_corps");
+  assert.equal(plan[6].id, "0006_regular_paibok");
   assert.match(plan[0].checksum, /^[0-9a-f]{64}$/);
 });
 
@@ -107,11 +108,11 @@ test("empty database migration, schema tracking, dry-run and repeated execution 
   try {
     const plan = await loadMigrationPlan();
     const dryRun = applyMigrationPlan(database, plan, { dryRun: true, now });
-    assert.deepEqual(dryRun.pending, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps"]);
+    assert.deepEqual(dryRun.pending, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps", "0006_regular_paibok"]);
     assert.equal(database.prepare("SELECT count(*) AS count FROM sqlite_master WHERE type='table' AND name='results'").get().count, 0);
-    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps"]);
+    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps", "0006_regular_paibok"]);
     assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, []);
-    assert.equal(database.prepare("SELECT count(*) AS count FROM schema_migrations").get().count, 6);
+    assert.equal(database.prepare("SELECT count(*) AS count FROM schema_migrations").get().count, 7);
   } finally {
     database.close();
   }
@@ -135,7 +136,7 @@ test("upgrade from schema version 0000 to 0001 preserves existing question data"
       'published','approved',?, ?, ?, ?
     )`).run("d".repeat(64), now, now, now);
     assert.equal(database.prepare("SELECT count(*) AS count FROM pragma_table_info('questions') WHERE name='visual_start'").get().count, 0);
-    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps"]);
+    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps", "0006_regular_paibok"]);
     const upgraded = database.prepare("SELECT question_text, visual_start FROM questions WHERE stable_id='west_q01'").get();
     assert.deepEqual({ ...upgraded }, { question_text: "Synthetic question", visual_start: null });
   } finally {
@@ -143,13 +144,13 @@ test("upgrade from schema version 0000 to 0001 preserves existing question data"
   }
 });
 
-test("all required tables and indexes exist and payment data is absent", async () => {
+test("all required tables and indexes exist and commerce is limited to the three approved tables", async () => {
   const { database } = await migratedDatabase();
   try {
     const tables = database.prepare("SELECT name FROM sqlite_master WHERE type='table'").all().map((row) => row.name);
     for (const table of durableTableNames) assert.ok(tables.includes(table), `missing table ${table}`);
     assert.ok(tables.includes("schema_migrations"));
-    assert.equal(tables.some((table) => /(payment|order|stripe|card|bank|checkout|advertising_profile)/i.test(table)), false);
+    assert.deepEqual(tables.filter((table) => /(commerce|payment|order|stripe|card|bank|checkout|subscription|invoice)/i.test(table)).sort(), ["commerce_entitlements", "commerce_orders", "stripe_webhook_events"]);
     const indexes = database.prepare("SELECT name FROM sqlite_master WHERE type='index' AND name NOT LIKE 'sqlite_%'").all();
     assert.ok(indexes.length >= 42);
   } finally {
@@ -476,8 +477,9 @@ test("binding readiness is honest and hosting configuration still has no D1 or R
   assert.equal(hosting.r2, null);
 });
 
-test("data-layer source and schema contain no private-photo, secret, payment or order fields", async () => {
+test("data-layer commerce schema excludes private media, secrets and financial instruments", async () => {
   const schema = await readFile(new URL("../../db/schema.ts", import.meta.url), "utf8");
   assert.doesNotMatch(schema, /photo_filename|original_photo|raw_session|deletion_token|card_number|bank_detail/i);
-  assert.doesNotMatch(schema, /sqliteTable\(["'](?:payments?|orders?|stripe|checkout)/i);
+  assert.doesNotMatch(schema, /sqliteTable\(["'](?:payments?|cards?|bank_accounts?|invoices?|subscriptions?|customer_profiles?)/i);
+  assert.doesNotMatch(schema, /webhook_payload|billing_address|customer_email|customer_name|phone_number|card_number|receipt_content/i);
 });

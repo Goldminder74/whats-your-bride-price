@@ -4,7 +4,8 @@ export type AppErrorCode =
   | "photo_read_failed"
   | "result_export_failed"
   | "share_failed"
-  | "challenge_completion_failed";
+  | "challenge_completion_failed"
+  | "result_completion_failed";
 
 export type AppErrorContext = Readonly<Record<string, string | number | boolean>>;
 

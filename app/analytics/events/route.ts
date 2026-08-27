@@ -39,7 +39,7 @@ export async function POST(request: Request): Promise<Response> {
   try { body = JSON.parse(raw); } catch { return json({ accepted: false }, 400); }
   if (!body || typeof body !== "object" || Array.isArray(body)) return json({ accepted: false }, 400);
   const candidate = body as Record<string, unknown>;
-  const service = getAnalyticsService();
+  const service = await getAnalyticsService();
   if (!service) return json({ accepted: false }, 503);
   try {
     if (candidate.action === "accept" && exactKeys(candidate, ["action", "analyticsSessionCredential", "event"])) {

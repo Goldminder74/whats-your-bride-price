@@ -49,11 +49,23 @@ export function resolveFeatureFlags(
   );
 }
 
-export function assertSitesCompatibleFeatureFlags(flags: FeatureFlags): void {
-  if (flags.commerce) {
+export function assertSitesCompatibleFeatureFlags(
+  flags: FeatureFlags,
+  readiness: Readonly<{ authorisedReviewFixtures?: boolean }> = {},
+): void {
+  if (flags.commerce && !readiness.authorisedReviewFixtures) {
     throw new Error(
       "Commerce cannot be enabled while this application targets ChatGPT Sites. Set WYBP_FEATURE_COMMERCE=false, or migrate to an explicitly approved commerce-capable host before adding payment functionality.",
     );
+  }
+}
+
+export function assertCommerceReadiness(
+  flags: FeatureFlags,
+  readiness: Readonly<{ d1Configured: boolean; completeConfiguration: boolean; approvedRateLimiter: boolean; authorisedReviewFixtures: boolean }>,
+): void {
+  if (flags.commerce && !readiness.authorisedReviewFixtures && !(readiness.d1Configured && readiness.completeConfiguration && readiness.approvedRateLimiter)) {
+    throw new Error("Commerce requires an approved D1 binding, complete server-only Stripe configuration and an approved rate limiter. It fails closed unless an explicitly authorised local commerce-fixture review build is used.");
   }
 }
 

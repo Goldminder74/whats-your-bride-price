@@ -256,6 +256,36 @@ Indexes: `analytics_events_name_time_idx`; `analytics_events_retention_idx`.
 
 Projection: `OwnerAnalyticsData` is owner-only. Public output, scoring and entitlements do not consume raw analytics.
 
+### `commerce_orders`
+
+Purpose: pending and verified state for the one-off `royal_reveal_v1` purchase.
+
+Fields: `id`, opaque `public_order_reference`, controlled `product_key`, `result_id`, server-derived `anonymous_owner_hash`, fixed `currency`, fixed `amount_minor`, controlled `state`, `client_reference_id`, configured `stripe_payment_link_id`, optional `stripe_checkout_session_id`, optional `stripe_payment_intent_id`, `consent_notice_version`, `immediate_delivery_consent_at`, `paid_at`, `fulfilled_at`, `refunded_at`, `disputed_at`, `expired_at`, `deleted_at`, `pending_expires_at`, `retention_expires_at`, `idempotency_hash`, `version`, `created_at`, `updated_at`.
+
+Constraints and indexes: unique public reference, client reference and idempotency hash; unique non-null Checkout Session and Payment Intent IDs; exact product/GBP/199 checks; controlled states/timestamp coherence; explicit result foreign key; result-owner-product composite key; pending-expiry and retention indexes.
+
+Projection: order creation returns only public reference, product/display price, validated Payment Link and pending expiry. Status returns neutral public state. Internal ID, owner hash, idempotency hash and Stripe identifiers are never projected.
+
+### `commerce_entitlements`
+
+Purpose: result- and owner-specific Royal Reveal access created only by verified payment.
+
+Fields: `id`, `order_id`, `result_id`, `anonymous_owner_hash`, controlled `product_key`, controlled `state`, `granted_at`, `revoked_at`, `expires_at`, `retention_expires_at`, `deleted_at`, `version`, `created_at`, `updated_at`.
+
+Constraints and indexes: unique order; composite foreign key to the exact order/result/owner/product tuple; explicit result foreign key; controlled state/timestamp checks; one active entitlement per result-owner-product; owner/result lookup and retention indexes.
+
+Projection: a minimal privately branded result-specific capability assembled only after owner verification. It contains no database ID, hash, order reference or Stripe value and cannot be forged as a plain browser object.
+
+### `stripe_webhook_events`
+
+Purpose: minimum replay and processing audit for verified Stripe notifications.
+
+Fields: `id`, unique `stripe_event_id`, controlled `event_type`, `livemode`, `payload_sha256`, `received_at`, `processed_at`, controlled `processing_result`, optional `order_id`, `expires_at`, `deleted_at`, `version`, `created_at`, `updated_at`.
+
+Constraints and indexes: unique Stripe event ID; payload SHA-256 format; controlled five-event allowlist and processing results; explicit optional order foreign key; received-time and expiry indexes. No raw webhook JSON or customer/payment-instrument data is stored.
+
+Projection: none to public clients. Webhook responses are neutral.
+
 ### `feature_flag_overrides`
 
 Purpose: expiring, auditable, server-authoritative owner override. No public mutation endpoint exists.

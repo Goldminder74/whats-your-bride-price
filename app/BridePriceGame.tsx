@@ -15,6 +15,8 @@ import {
 import ChallengeComparison from "./ChallengeComparison";
 import NominateThreePanel from "./NominateThreePanel";
 import ShareCentre from "./ShareCentre";
+import RoyalRevealOffer from "./RoyalRevealOffer.tsx";
+import { royalRevealReviewEnabled, type RoyalRevealReviewScenario } from "./royalRevealReview.ts";
 import {
   buildChallengeAnswerSubmission,
   type ChallengeCompletionClient,
@@ -277,6 +279,7 @@ type BridePriceGameProps = {
   resultPublicationClient?: ResultPublicationClient;
   acceptedChallenge?: boolean;
   acceptedChallengeQuizInstanceId?: string;
+  royalRevealReviewScenario?: RoyalRevealReviewScenario;
 };
 
 function fastInitialScreen(entry: EntryContext | undefined, challenge: TrustedChallengeEntry | undefined, acceptedChallenge = false): Screen {
@@ -286,7 +289,7 @@ function fastInitialScreen(entry: EntryContext | undefined, challenge: TrustedCh
   return entry?.edition ? "fast_setup" : "entry";
 }
 
-export default function BridePriceGame({ initialEntryContext, trustedChallenge: resolvedTrustedChallenge, safeguardReviewFixture, challengeCreationClient, challengeCompletionClient, resultPublicationClient, acceptedChallenge = false, acceptedChallengeQuizInstanceId }: BridePriceGameProps) {
+export default function BridePriceGame({ initialEntryContext, trustedChallenge: resolvedTrustedChallenge, safeguardReviewFixture, challengeCreationClient, challengeCompletionClient, resultPublicationClient, acceptedChallenge = false, acceptedChallengeQuizInstanceId, royalRevealReviewScenario }: BridePriceGameProps) {
   const trustedChallenge = resolvedTrustedChallenge?.validity === "valid" ? resolvedTrustedChallenge : undefined;
   const fastEntryEnabled = activeFeatureFlags.fast_entry;
   const [hydrated, setHydrated] = useState(false);
@@ -329,6 +332,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const [recoveryNotice, setRecoveryNotice] = useState("");
   const [startLocked, setStartLocked] = useState(false);
   const [unverifiedChallenge, setUnverifiedChallenge] = useState(Boolean(initialEntryContext?.challenge && !trustedChallenge));
+  const [purchaseContext, setPurchaseContext] = useState<Readonly<{ resultSlug: string; anonymousSessionCredential: string }> | undefined>();
   const fileRef = useRef<HTMLInputElement>(null);
   const entryArtRef = useRef<HTMLImageElement>(null);
   const audioRef = useRef<AudioContext | null>(null);
@@ -341,6 +345,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const questionHeadingRef = useRef<HTMLHeadingElement>(null);
   const startLockRef = useRef(false);
   const challengeCompletionPromiseRef = useRef<ReturnType<ChallengeCompletionClient["complete"]> | null>(null);
+  const resultCompletionPromiseRef = useRef<Promise<Readonly<{ resultSlug: string; anonymousSessionCredential: string }>> | null>(null);
+  const resultCompletionKeyRef = useRef<string | null>(null);
   const challengeCompleteEventRef = useRef(false);
   const resultViewEventRef = useRef(false);
   const shareCreationKeyRef = useRef<string | null>(null);
@@ -624,6 +630,46 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       reportAppError("challenge_completion_failed", error, { action: "challenge_completion", region: regionKey });
     });
   }, [acceptedChallenge, answerChoices, challengeCompletionClient, comparison, completionState, regionKey, screen, trustedChallenge]);
+
+  useEffect(() => {
+    if (
+      screen !== "result"
+      || !activeFeatureFlags.commerce
+      || royalRevealReviewEnabled
+      || answerChoices.length !== 12
+      || purchaseContext
+    ) return;
+    const session = getOrCreateAnonymousSession(window.sessionStorage);
+    const submission = buildChallengeAnswerSubmission(regionKey, answerChoices);
+    if (!session.available || submission.length !== 12) return;
+    if (!resultCompletionKeyRef.current) {
+      const bytes = new Uint8Array(16);
+      crypto.getRandomValues(bytes);
+      resultCompletionKeyRef.current = [...bytes].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+    }
+    resultCompletionPromiseRef.current ||= fetch("/results/complete", {
+      method: "POST",
+      mode: "same-origin",
+      credentials: "omit",
+      referrerPolicy: "no-referrer",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        anonymousSessionCredential: session.sessionId,
+        idempotencyKey: resultCompletionKeyRef.current,
+        avatarId,
+        answers: submission,
+      }),
+    }).then(async (response) => {
+      const body = await response.json() as Record<string, unknown>;
+      if (!response.ok || body.completed !== true || typeof body.resultSlug !== "string" || !/^[0-9a-f]{48}$/.test(body.resultSlug)) {
+        throw new Error("result_completion_unavailable");
+      }
+      return Object.freeze({ resultSlug: body.resultSlug, anonymousSessionCredential: session.sessionId });
+    });
+    resultCompletionPromiseRef.current.then(setPurchaseContext).catch((error) => {
+      reportAppError("result_completion_failed", error, { action: "result_completion", region: regionKey });
+    });
+  }, [answerChoices, avatarId, purchaseContext, regionKey, screen]);
 
   useEffect(() => {
     if (screen !== "result") return;
@@ -963,6 +1009,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     setNominationOpen(false);
     setShareResultPublicationClient(undefined);
     setComparison(null); setCompletionState("idle"); challengeCompletionPromiseRef.current = null; challengeCompleteEventRef.current = false;
+    setPurchaseContext(undefined); resultCompletionPromiseRef.current = null; resultCompletionKeyRef.current = null;
     resultViewEventRef.current = false;
     if (fastEntryEnabled) { setEntryContext(parseEntryContext("")); setUnverifiedChallenge(false); }
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
@@ -1427,6 +1474,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               <p className="result-description">{tierCopy[tier]}</p>
               <div className="result-aura"><span>Final aura</span><b>{revealAura.toLocaleString()}</b><i>+500 reveal bonus</i></div>
               <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
+              {activeFeatureFlags.commerce && <RoyalRevealOffer edition={regionKey} score={correctCount} total={region.questions.length} avatarId={avatarId} reviewScenario={royalRevealReviewScenario} purchaseContext={purchaseContext} />}
               {fastEntryEnabled && <div className="result-name-editor"><label htmlFor="result-player-name">Name or pseudonym on your portrait <span>(optional)</span></label><input id="result-player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={displayNameError ? "result-name-error" : undefined} placeholder={publicDisplayNameFallback} />{displayNameError && <p className="display-name-error" id="result-name-error" role="alert">{displayNameError}</p>}</div>}
               {photo && <p className="private-media-boundary">Your private photo can appear only in the portrait you deliberately download or send through your device’s share sheet. Public links and previews use approved avatar and regional artwork.</p>}
               {acceptedChallenge && completionState === "loading" && <div className="comparison-loading" role="status" aria-live="polite"><b>Confirming your official challenge score</b><span>Your answers are being checked against the approved answer keys.</span></div>}
@@ -1441,7 +1489,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
                 challengeCreationClient={effectiveChallengeCreationClient}
                 onClose={() => setNominationOpen(false)}
               />}
-              <div className="result-actions">
+              <div className="result-actions" id="free-result-actions">
                 {!acceptedChallenge && <button className="big-action" onClick={openNominations}>Nominate three people <span>↗</span></button>}
                 <button className="outline-action" onClick={(event) => void openShareCentre(event.currentTarget)} disabled={shareCentreBusy}>{shareCentreBusy ? "Preparing Share Centre…" : "Open Share Centre"}</button>
                 <button className="outline-action" onClick={downloadResult}>↓ Download</button>
