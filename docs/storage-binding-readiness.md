@@ -105,3 +105,9 @@ Cloudflare D1 `batch()` is the planned atomic write primitive. Prepared statemen
 The owner approved exactly one additional local migration: `drizzle/0005_special_gamma_corps.sql`, SHA-256 `a13ac6180fa745732266fc922f89d2cd1e10f5f9c88d90e4f310ff833b09701d`. It transactionally rebuilds only `analytics_events`, `referral_events`, `share_events` and `consent_preferences`; preserves legacy rows at schema version 0; verifies copy counts and foreign keys; adds nullable client UUID/session-hash fields, version-1 constraints, indexes and cross-table replay triggers; and rolls back completely on failure. It has not been applied to staging or production.
 
 Analytics remains unavailable while `.openai/hosting.json` has `d1: null`. A future binding decision must be followed by separate explicit migration approval and verification, an approved independent rate limiter, retention scheduling and deletion planning. R2 is not required for analytics and remains null. Review fixtures are local-only and cannot establish hosted readiness.
+
+## Prompt 18 owner dashboard readiness, 27 August 2026
+
+The dashboard and aggregate CSV are local source only. `owner_dashboard` is false by default; `.openai/hosting.json` remains `d1: null` and `r2: null`; migrations stop at unchanged `0006`; and no report table or migration `0007` exists. A missing D1 binding returns a neutral authorised unavailable state and never falls back to browser data.
+
+Activation requires: approved D1 binding and migration state through `0006`; `WYBP_OWNER_DASHBOARD_ALLOWED_SUBJECTS` containing reviewed stable Sites subject IDs; verified dispatch-only ingress and private Sites/workspace access policy; a separately approved distributed CSV limiter; verified private no-store edge behaviour; retention ownership; and the complete Prompt 18 test gate. Review fixtures and the local in-memory export limiter are not production readiness evidence. R2 is not needed.

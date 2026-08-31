@@ -4,6 +4,7 @@ export const featureFlagNames = [
   "dynamic_results",
   "story_video",
   "first_party_analytics",
+  "owner_dashboard",
   "daily_challenge",
   "streaks",
   "groom_mode",
@@ -22,6 +23,7 @@ export const defaultFeatureFlags: FeatureFlags = Object.freeze({
   dynamic_results: false,
   story_video: false,
   first_party_analytics: false,
+  owner_dashboard: false,
   daily_challenge: false,
   streaks: false,
   groom_mode: false,
@@ -87,6 +89,21 @@ export function assertFirstPartyAnalyticsStorage(
   if (flags.first_party_analytics && !readiness.d1Configured && !readiness.authorisedReviewFixtures) {
     throw new Error(
       "First-party analytics requires an approved D1 binding or an explicitly authorised local analytics-fixture review build. It fails closed while storage is unavailable.",
+    );
+  }
+}
+
+export function assertOwnerDashboardReadiness(
+  flags: FeatureFlags,
+  readiness: Readonly<{ d1Configured: boolean; ownerAccessConfigured: boolean; authorisedReviewFixtures: boolean }>,
+): void {
+  if (
+    flags.owner_dashboard &&
+    !readiness.authorisedReviewFixtures &&
+    !(readiness.d1Configured && readiness.ownerAccessConfigured)
+  ) {
+    throw new Error(
+      "The owner dashboard requires an approved D1 binding and a complete server-only Sites subject allowlist. It fails closed unless an explicitly authorised local owner-dashboard fixture build is used.",
     );
   }
 }

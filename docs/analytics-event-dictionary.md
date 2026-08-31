@@ -54,3 +54,11 @@ Every metric returns `{ numerator, denominator, rate }`; a zero denominator retu
 | Story-render-to-handoff | `story_video_share_handoff` | `story_video_render_complete` |
 
 Viral coefficient is nomination handoffs per completed game multiplied by referred-visitor start rate. The initial targets produce `2.5 × 0.45 = 1.125`. This is descriptive measurement of consented traffic, not statistical certainty or total-traffic attribution.
+
+## Prompt 18 owner reporting boundary
+
+The private dashboard applies these formulas only after joining each event's internal session hash to an active, non-withdrawn, non-deleted `analytics-notice-v1` consent with statistical consent true, marketing false and consent expiry after read time. It also requires schema version 1, event `deleted_at IS NULL`, event `expires_at` after read time and a bounded inclusive UTC period. The browser receives only aggregates.
+
+Game mode is not a Prompt 16 property. Prompt 18 therefore provides no mode input, does not send a mode predicate and labels the dimension “Unsupported by the current analytics data contract.” Source, surface and edition remain distinct. The contextual future feature names `groom_mode`, `couples_mode` and `party_mode` are not added to the active event or property allowlists.
+
+The complete additional completion-to-result-view and future disabled commerce formulas, channel limitations, sample rule and viral target are defined in `docs/funnel-and-viral-coefficient-definitions.md`.

@@ -10,7 +10,7 @@ import {
 } from "../../app/featureFlags.ts";
 
 test("every roadmap feature flag defaults to false", () => {
-  assert.equal(featureFlagNames.length, 12);
+  assert.equal(featureFlagNames.length, 13);
   assert.deepEqual(Object.keys(defaultFeatureFlags), [...featureFlagNames]);
   for (const flag of featureFlagNames) assert.equal(defaultFeatureFlags[flag], false);
   assert.deepEqual(resolveFeatureFlags({}), defaultFeatureFlags);

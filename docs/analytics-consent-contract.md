@@ -42,3 +42,9 @@ The retention operation is idempotent, bounded, owner-only at repository level a
 ## Production activation decisions
 
 Activation requires owner and appropriate legal review of the notice, lawful basis, GPC behavior, retention and withdrawal language. It also requires an approved D1 binding, explicit hosted application of migrations through `0005`, an external fail-closed rate limiter, scheduled retention ownership, deletion/aggregate planning, monitoring without sensitive logs, and an approved production test/deployment plan. D1/R2 are currently null and nothing in this contract authorises deployment, migration or analytics activation.
+
+## Prompt 18 read-only reporting dependency
+
+Owner reporting never weakens consent. Every dashboard read rechecks the current consent row and both consent and event expiry; withdrawn, deleted, expired and version-0 records are excluded. Reporting does not run retention deletion, create an identifier, reconnect sessions, enable analytics or store derived reports. Because rejection and non-consent create no events, all dashboard output is explicitly labelled consented measured traffic and cannot represent all players.
+
+Dashboard activation is a separate gate from analytics collection. It requires the server-only Sites subject allowlist, private no-store responses, D1, a distributed CSV-export limiter, retention ownership and the access review in `docs/owner-dashboard-access-contract.md`.

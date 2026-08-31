@@ -309,3 +309,11 @@ This table is created by the isolated runner before forward migrations. Applied 
 Cloudflare documents D1 `batch()` as sequential and transactional: one failure aborts or rolls back the full batch. Future server repositories must use prepared statements and one batch for quiz completion/result creation, challenge acceptance, challenge comparison, streak compare-and-set, mastery-seal award and party capacity/join. Read replication sessions provide sequential read consistency but do not replace the write batch.
 
 No active endpoint invokes these contracts in Prompt 7.
+
+## Prompt 18 aggregate read model (no schema change)
+
+Prompt 18 introduces no table or migration. `db/ownerDashboard.ts` uses fixed, parameterized CTEs over `consent_preferences`, `analytics_events`, `referral_events` and `share_events`. The internal normalized fields are event name, session hash for `COUNT(DISTINCT)` only, occurrence time, controlled edition/source/campaign/channel/outcome and broad duration bucket. They are query-local aliases, not stored columns or client projections.
+
+The consent join requires notice `analytics-notice-v1`, statistical consent 1, marketing 0, and null withdrawal/deletion with unexpired consent. Each event branch requires schema version 1, null deletion, unexpired event and the bounded UTC period. Results are grouped by fixed server-selected dimensions and capped at 1,200 aggregate rows. No DELETE, retention job or derived-report write occurs during a dashboard read.
+
+Game mode is absent. No source, surface, edition or state field is aliased to it. Future contextual flags `groom_mode`, `couples_mode` and `party_mode` remain outside the analytics property contract.

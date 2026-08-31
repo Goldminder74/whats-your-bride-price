@@ -434,3 +434,18 @@ Before the next production deployment, the direct and transitive findings requir
 - Application code changed: no.
 - Database/storage changed: no.
 - Files intentionally created: the four requested documents under `docs/`.
+
+## Prompt 18 local owner-dashboard gate
+
+Run `npm run test:owner-dashboard` for pure authorization/filter/funnel/CSV tests, isolated aggregate-query tests, ordinary disabled-output checks, authorised and unauthorised server-render checks, and browser review across empty/small/healthy/drop-off/viral/channel/edition/unavailable/CSV/responsive states. All reports, screenshots, traces, browser output and build artefacts use operating-system temporary directories or ignored build directories and must remain outside Git.
+
+An authorised local review build requires all of:
+
+- `WYBP_FEATURE_OWNER_DASHBOARD=true`
+- `WYBP_REVIEW_BUILD=true`
+- `WYBP_REVIEW_OWNER_DASHBOARD_FIXTURES=true`
+- `WYBP_OWNER_DASHBOARD_ALLOWED_SUBJECTS=<synthetic stable subject>`
+
+The synthetic request must also carry the matching trusted Sites subject header; fixture/query selection cannot authorize it. Ordinary production builds must omit all four values and return 404 for `/owner/analytics` and its CSV endpoint. Query parameters cannot enable the flag.
+
+Before hosted activation, follow `docs/owner-dashboard-access-contract.md`: approve exact subjects and dispatch-only ingress, bind D1, separately approve migration application through `0006`, add a distributed export limiter, verify consent/retention and no-store behaviour, run `npm run test:all`, and obtain separate deploy approval. Do not activate analytics or commerce merely to populate the dashboard.
