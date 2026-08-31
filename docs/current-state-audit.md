@@ -162,7 +162,7 @@ Consequences:
 ## Result URLs and metadata
 
 - Results exist only in client memory on `/`. Refreshing loses the result.
-- There is no unique, permanent or opaque result URL.
+- At this historical checkpoint there was no unique, durable or opaque result URL.
 - There is no server-authoritative persisted result.
 - The only metadata is static page/layout metadata. It cannot vary by edition, score or player.
 - There is no canonical link or explicit `og:url`.
@@ -282,7 +282,7 @@ Risks and gaps:
 | P11 comparison | Absent. No persisted result, compatible scoring version or head-to-head model |
 | P12 nominate three | One generic nominate action exists. `nominated=1` is ignored; no three-slot flow or honest event semantics |
 | P13 share centre | Native share, WhatsApp and download are partial. No explicit share centre, Facebook, Instagram/TikTok guidance, reliable copy fallback or platform tests |
-| P14 permanent results/OG | Absent. Results are in memory, metadata is generic and the canonical origin is wrong |
+| P14 published expiry-bounded results/OG | Absent at this historical checkpoint. Results were in memory, metadata was generic and the canonical origin was wrong |
 | P15 Story/Reel media | Absent. Only a static 1080 x 1350 PNG result is generated |
 | P16 regional render system | Strong regional visuals exist, but tokens are duplicated across data/CSS/canvas; no shared render model, provenance, approval matrix or visual regression tests |
 | P17 first-party analytics | Absent |
@@ -310,7 +310,7 @@ Risks and gaps:
 2. Canonical origin/public-access verification and fast mobile entry are the next layer and depend on that completed safe-delivery foundation.
 3. Durable D1/R2 design and privacy-safe anonymous identity must precede server-authoritative results, challenges, referrals, analytics, daily play, couples and parties.
 4. A server-authoritative attempt/result model must precede challenge creation; challenge creation must precede challenge landing, comparison and three-person nomination.
-5. The regional token/render model should be centralised before permanent Open Graph images and Story/Reel outputs to avoid implementing every format twice.
+5. The regional token/render model should be centralised before durable Open Graph images and Story/Reel outputs to avoid implementing every format twice.
 6. A share centre depends on canonical result/challenge URLs. Honest analytics semantics should be defined before instrumentation is enabled.
 7. The privacy/storage control layer must ship no later than first-party analytics and before any advertising or sponsorship integration.
 8. The versioned question engine and human cultural-review gate must precede random games, daily challenges and expanded banks.

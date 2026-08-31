@@ -17,6 +17,7 @@ import { activeFeatureFlags } from "./featureFlags";
 import { PUBLIC_APP_ORIGIN } from "./publicAppOrigin";
 import { storyVideoProjectionFromShare } from "./storyVideoProjection";
 import { emitAnalyticsLocalEvent } from "./analyticsLocal";
+import { formatPublicExpiry } from "./privacyDates";
 
 type ShareCentreProps = Readonly<{
   projection: SafeShareProjection;
@@ -261,7 +262,7 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
       emitAnalyticsLocalEvent({ name: "result_publish", properties: { edition: publicProjection.edition, surface: "share_centre" } });
       setActiveProjection(publicProjection);
       setPublicationVisibility("public");
-      setStatus({ kind: "success", message: "Your permanent result link is ready. Nothing has been posted or delivered." });
+      setStatus({ kind: "success", message: `Your public result link is ready and expires ${formatPublicExpiry(publicProjection.expiresAt)}. Nothing has been posted or delivered.` });
     } catch {
       setStatus({ kind: "failed", message: "The result could not be made public. Your current invitation fallback remains available." });
     } finally { setBusy(false); }
@@ -276,7 +277,7 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
       emitAnalyticsLocalEvent({ name: "result_unpublish", properties: { edition: projection.edition, surface: "share_centre" } });
       setActiveProjection(projection);
       setPublicationVisibility("private");
-      setStatus({ kind: "success", message: "The permanent result and its generated preview are no longer publicly available. Your invitation fallback remains ready." });
+      setStatus({ kind: "success", message: "The published result and its generated preview are no longer publicly available. Your invitation fallback remains ready." });
     } catch {
       setStatus({ kind: "failed", message: "The privacy setting could not be changed right now. Please try again." });
     } finally { setBusy(false); }
@@ -292,12 +293,12 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
         <p id="share-centre-description" className="share-centre-description">Choose a platform, copy your safe link, or save a polished story portrait.</p>
         <p className="share-centre-safeguard">{PRODUCT_SAFEGUARD}</p>
         <div className="share-centre-link-mode">
-          <b>{activeProjection.canonicalUrl.includes("/result/") ? "Permanent public result" : activeProjection.personalised ? "Verified personalised challenge" : "Regional invitation fallback"}</b>
+          <b>{activeProjection.canonicalUrl.includes("/result/") ? "Published public result" : activeProjection.personalised ? "Verified personalised challenge" : "Regional invitation fallback"}</b>
           <span>{activeProjection.canonicalUrl.includes("/result/") ? "This public page uses the neutral identity A challenger, your authoritative score, approved avatar and regional edition." : activeProjection.personalised ? "Your approved name, verified score and regional edition match the challenge landing page." : "Durable challenges are unavailable, so this link carries no invented inviter identity or score."}</span>
         </div>
         {resultPublicationClient && <section className="result-publication-choice" data-result-publication data-publication-visibility={publicationVisibility} aria-labelledby="result-publication-title">
-          <h3 id="result-publication-title">{publicationVisibility === "public" ? "Permanent result is public" : "Make this result public?"}</h3>
-          {publicationVisibility === "private" ? <><p>Only continue if you want a permanent page and social preview. It may show:</p><ul>{RESULT_PUBLICATION_DISCLOSURE.map((item) => <li key={item}>{item}</li>)}</ul><p>Your entered name and private uploaded photo are excluded.</p><div><button type="button" onClick={publishResult} disabled={busy}>Make result public</button><button type="button" onClick={() => setStatus({ kind: "cancelled", message: "Result kept private. The existing invitation fallback remains available." })} disabled={busy}>Keep private</button></div></> : <><p>The permanent link now powers Facebook, WhatsApp, Copy link and Native share. You can reverse this choice.</p><button type="button" onClick={unpublishResult} disabled={busy}>Unpublish result</button></>}
+          <h3 id="result-publication-title">{publicationVisibility === "public" ? "Result is public" : "Make this result public?"}</h3>
+          {publicationVisibility === "private" ? <><p>Publishing creates a public result link. Anyone with it may view the result while it remains active. Your public result expires 90 days after you completed the quiz; publishing does not restart, remove or extend that period.</p><p>The owner may unpublish it sooner using valid ownership proof. Search engines and social platforms may temporarily retain their own previews or caches, and this application cannot delete copies already downloaded or shared elsewhere.</p><p>The public page may show:</p><ul>{RESULT_PUBLICATION_DISCLOSURE.map((item) => <li key={item}>{item}</li>)}</ul><p>Your entered name and private uploaded photo are excluded.</p><div><button type="button" onClick={publishResult} disabled={busy}>Make result public</button><button type="button" onClick={() => setStatus({ kind: "cancelled", message: "Result kept private. The existing invitation fallback remains available." })} disabled={busy}>Keep private</button></div></> : <><p>This public result expires on {formatPublicExpiry(activeProjection.expiresAt)}. Unpublishing or valid deletion may make it unavailable sooner. External previews or copies can outlast the application link.</p><button type="button" onClick={unpublishResult} disabled={busy}>Unpublish result</button></>}
         </section>}
         <div className="share-centre-grid" aria-label="Sharing options">
           <button type="button" onClick={() => openExternal("whatsapp", whatsappShareDestination(copy))} disabled={busy}><span aria-hidden="true">◉</span><b>WhatsApp</b><small>Full challenge copy</small></button>

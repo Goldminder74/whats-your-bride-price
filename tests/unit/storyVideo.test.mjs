@@ -20,7 +20,7 @@ import { safeStoryVideoEvent, storyVideoEventNames } from "../../app/storyVideoE
 import { isStoryVideoProjection, storyVideoProjectionFromShare } from "../../app/storyVideoProjection.ts";
 
 const origin = "http://127.0.0.1:3100";
-const safeShare = Object.freeze({ surface: "result", edition: "west", editionLabel: "West Africa", canonicalUrl: `${origin}/result/${"8".repeat(48)}`, personalised: true, displayName: "A challenger", score: 12, maximumScore: 12, resultTitle: "Bride Price Royalty", avatarId: "adjoa" });
+const safeShare = Object.freeze({ surface: "result", edition: "west", editionLabel: "West Africa", canonicalUrl: `${origin}/result/${"8".repeat(48)}`, personalised: true, displayName: "A challenger", score: 12, maximumScore: 12, resultTitle: "Bride Price Royalty", avatarId: "adjoa", expiresAt: Date.UTC(2026, 10, 29) });
 
 test("authoritative animated-media projection contains only approved fields", () => {
   const projection = storyVideoProjectionFromShare({ ...safeShare, privatePhoto: "blob:secret", anonymousSessionCredential: "a".repeat(32), anonymousSubjectHash: "b".repeat(64), internalResultId: "result_1", answers: [1], objectKey: "generated/private" }, origin);

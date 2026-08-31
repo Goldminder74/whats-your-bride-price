@@ -35,7 +35,7 @@ AUDIT-01 complete
                        -> NOM-01 nominate three
                           -> SHARE-01 share centre
               -> MEDIA-01 regional render model
-                 -> OG-01 permanent result URLs and dynamic previews
+                 -> OG-01 published expiry-bounded result URLs and dynamic previews
                  -> STORY-01 Story/Reel media
            -> PRIV-01 UK privacy and storage controls
            -> DASH-01 owner analytics dashboard
@@ -76,7 +76,7 @@ Effort is a rough engineering estimate for one experienced developer and exclude
 | 3 | NOM-01 | P12 | Three-person nomination flow and legacy `nominated=1` compatibility | CHAL-03 | READY after dependencies | Medium | 3-5 days | Three intents can be initiated in under 30 seconds; no contact data is requested/stored; cancelled shares are not counted as messages; old links remain safe |
 | 3 | SHARE-01 | P13 | Explicit multi-platform Share Centre | CHAL-01, OG-01, NOM-01 | READY after dependencies | Medium | 4-6 days | WhatsApp, Facebook, copy, native share and Instagram/TikTok file fallbacks use canonical URLs; unsupported/cancelled API tests and accessible confirmations pass |
 | 3 | MEDIA-01 | P16 | Central regional design tokens and shared render model | FND-02, cultural review input | READY | High | 4-7 days plus cultural review | In-app, OG, portrait and Story fixtures consume one model; all five regions pass contrast, Unicode, missing-asset and visual-regression tests; provenance is documented |
-| 3 | OG-01 | P14 | Permanent `/result/{slug}` pages and dynamic Open Graph assets | RESULT-01, MEDIA-01, ORIGIN-01, R2 | READY after dependencies | High | 6-10 days | Two results produce different opaque URLs, server-rendered metadata and fetchable images; bot tests work without JavaScript; no private photo or secret appears |
+| 3 | OG-01 | P14 | Published expiry-bounded `/result/{slug}` pages and dynamic Open Graph assets | RESULT-01, MEDIA-01, ORIGIN-01, R2 | READY after dependencies | High | 6-10 days | Two results produce different opaque URLs, server-rendered metadata and fetchable images; bot tests work without JavaScript; no private photo or secret appears |
 | 4 | STORY-01 | P15 | Five-second 9:16 Story/Reel media with fallback | MEDIA-01, RESULT-01, SHARE-01 | READY after dependencies | High | 7-12 days | Supported browsers create measured five-second media; unsupported/reduced-motion/low-memory modes create a 9:16 PNG; resources are cancelled and released correctly |
 | 4 | ANALYTICS-01 | P17 | First-party event taxonomy and validated event collector | DATA-01, PRIV-01 design, FND-02 | READY after dependencies | High | 5-8 days | Allowlist rejects prohibited/oversized data; event-order tests pass; opt-out blocks optional events; bots are separated; quiz works when analytics is unavailable |
 | 4 | PRIV-01 | P19 | UK privacy, storage controls and clear-local-data flow | DATA-01 design, ID-01 | READY | High | 5-8 days plus legal review | Machine-readable storage inventory matches UI; optional measurement can be rejected/changed; local data clears; no non-essential script runs before choice |

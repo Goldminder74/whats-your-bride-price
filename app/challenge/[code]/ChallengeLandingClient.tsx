@@ -23,6 +23,7 @@ import { resolveBrowserPublicAppOrigin } from "../../publicAppOrigin";
 import { validateSafeNominationChallenge } from "../../nominationExperience";
 import { prepareShareMedia, shareMediaCardFromProjection } from "../../shareMedia";
 import { shareProjectionFromChallenge, type SafeShareProjection } from "../../shareProjection";
+import { formatPublicExpiry } from "../../privacyDates";
 import {
   createQuizInstanceId,
   readQuizRecovery,
@@ -316,6 +317,7 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
         <p className="challenge-route-edition">{challenge.editionLabel} Edition</p>
         <h1 id="challenge-route-title">Can you protect the family reputation?</h1>
         <p className="challenge-route-score">Score to beat: <strong>{challenge.scoreToBeat}/{challenge.maximumScore}</strong></p>
+        <p className="challenge-link-privacy">Anyone with this link may open the invitation while it remains active. It expires on {formatPublicExpiry(challenge.expiresAt)}. Valid owner revocation, its use limit or the source result becoming unavailable can end it sooner.</p>
         <p className="challenge-route-safeguard" id="challenge-route-safeguard">{PRODUCT_SAFEGUARD}</p>
         <button
           className="challenge-accept-action"

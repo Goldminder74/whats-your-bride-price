@@ -54,6 +54,7 @@ export default defineConfig(async ({ mode }) => {
   const analyticsFixturesRequested = process.env.WYBP_REVIEW_ANALYTICS_FIXTURES === "true";
   const commerceFixturesRequested = process.env.WYBP_REVIEW_COMMERCE_FIXTURES === "true";
   const ownerDashboardFixturesRequested = process.env.WYBP_REVIEW_OWNER_DASHBOARD_FIXTURES === "true";
+  const privacyFixturesRequested = process.env.WYBP_REVIEW_PRIVACY_FIXTURES === "true";
   if (mode === "production" && diagnosticsRequested && !diagnosticsApproved) {
     throw new Error(
       "Review diagnostics require explicit approval. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_DIAGNOSTICS=true for a local review build. Production builds exclude the panel by default.",
@@ -80,12 +81,16 @@ export default defineConfig(async ({ mode }) => {
   if (mode === "production" && ownerDashboardFixturesRequested && !diagnosticsApproved) {
     throw new Error("Owner-dashboard fixtures require an explicitly authorised local review build. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_OWNER_DASHBOARD_FIXTURES=true. Ordinary production builds exclude owner-dashboard fixtures.");
   }
+  if (mode === "production" && privacyFixturesRequested && !diagnosticsApproved) {
+    throw new Error("Privacy fixtures require an explicitly authorised local review build. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_PRIVACY_FIXTURES=true. Ordinary production builds exclude privacy fixtures.");
+  }
   const reviewDiagnostics = mode !== "production" || (diagnosticsRequested && diagnosticsApproved);
   const reviewChallengeFixtures = challengeFixturesRequested && diagnosticsApproved;
   const reviewResultFixtures = resultFixturesRequested && diagnosticsApproved;
   const reviewAnalyticsFixtures = analyticsFixturesRequested && diagnosticsApproved;
   const reviewCommerceFixtures = commerceFixturesRequested && diagnosticsApproved;
   const reviewOwnerDashboardFixtures = ownerDashboardFixturesRequested && diagnosticsApproved;
+  const reviewPrivacyFixtures = privacyFixturesRequested && diagnosticsApproved;
   assertSitesCompatibleFeatureFlags(featureFlags, { authorisedReviewFixtures: reviewCommerceFixtures });
   assertDynamicResultsStorage(featureFlags, {
     d1Configured: Boolean(d1),
@@ -164,6 +169,7 @@ export default defineConfig(async ({ mode }) => {
       __WYBP_REVIEW_ANALYTICS_FIXTURES__: JSON.stringify(reviewAnalyticsFixtures),
       __WYBP_REVIEW_COMMERCE_FIXTURES__: JSON.stringify(reviewCommerceFixtures),
       __WYBP_REVIEW_OWNER_DASHBOARD_FIXTURES__: JSON.stringify(reviewOwnerDashboardFixtures),
+      __WYBP_REVIEW_PRIVACY_FIXTURES__: JSON.stringify(reviewPrivacyFixtures),
     },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }

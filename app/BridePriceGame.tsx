@@ -4,7 +4,7 @@
 /* eslint-disable react-hooks/set-state-in-effect -- URL hydration and result commits are deliberate lifecycle transitions */
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
-import { clearAnonymousSession, getOrCreateAnonymousSession } from "./anonymousSession";
+import { getOrCreateAnonymousSession } from "./anonymousSession";
 import { approvedAvatarRegistry, defaultAvatarId, isApprovedAvatarId, resolveApprovedAvatar } from "./avatarRegistry";
 import type { SafeguardReviewFixture, TrustedChallengeEntry } from "./challengeEntry";
 import {
@@ -51,6 +51,7 @@ import { downloadPreparedShareMedia, prepareShareMedia, type ShareMediaCard } fr
 import { genericShareProjection, shareProjectionFromChallenge, type SafeShareProjection } from "./shareProjection";
 import { createReviewResultPublicationClient, type ResultPublicationClient } from "./resultPublicationClient";
 import { privatePhotoFriendlyMessage, privatePhotoLimits, sanitizePrivatePhoto } from "./privatePhoto";
+import { PRIVACY_CLEAR_EVENT } from "./storageInventory";
 import {
   clearQuizRecovery,
   createQuizInstanceId,
@@ -301,7 +302,6 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const [photoNotice, setPhotoNotice] = useState("");
   const [photoNoticeKind, setPhotoNoticeKind] = useState<"neutral" | "success" | "error">("neutral");
   const [photoProcessing, setPhotoProcessing] = useState(false);
-  const [localDataNotice, setLocalDataNotice] = useState("");
   const [avatarId, setAvatarId] = useState(acceptedChallenge ? defaultAvatarId : trustedChallenge?.avatarId || avatarChoices[0].id);
   const [showAllAvatars, setShowAllAvatars] = useState(false);
   const [index, setIndex] = useState(0);
@@ -1015,16 +1015,21 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
 
-  const clearLocalQuizData = () => {
-    clearPhoto();
-    clearQuizRecovery(window.localStorage, window.sessionStorage);
-    clearAnonymousSession(window.sessionStorage);
-    try { window.localStorage.removeItem("wybp-region-scores"); } catch { /* local continuity is optional */ }
-    setBestScores({});
-    setQuizInstanceId(null);
-    setRecoveryNotice("");
-    setLocalDataNotice("Local quiz recovery, mastery scores and this tab’s anonymous session have been cleared.");
-  };
+  useEffect(() => {
+    const resetAfterLocalClear = () => {
+      if (revealTimerRef.current !== null) { window.clearTimeout(revealTimerRef.current); revealTimerRef.current = null; }
+      clearPhoto();
+      setScreen(fastEntryEnabled ? "entry" : "home"); setRegionKey("west"); setName(""); setAvatarId(avatarChoices[0].id);
+      setAnswers([]); setAnswerChoices([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setDropOpen(false); setBestScores({});
+      setQuizInstanceId(null); setRecoveryNotice(""); setNominationOpen(false); setShareCentreOpen(false); setShareProjection(null); setShareResultPublicationClient(undefined);
+      setComparison(null); setCompletionState("idle"); setPurchaseContext(undefined); setMenuOpen(false); setStartLocked(false); startLockRef.current = false;
+      resultCompletionPromiseRef.current = null; resultCompletionKeyRef.current = null; challengeCompletionPromiseRef.current = null;
+      try { window.history.replaceState({}, "", window.location.pathname); } catch { /* route remains usable */ }
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener(PRIVACY_CLEAR_EVENT, resetAfterLocalClear);
+    return () => window.removeEventListener(PRIVACY_CLEAR_EVENT, resetAfterLocalClear);
+  }, [fastEntryEnabled]);
 
   const leaveSetup = () => {
     if (!fastEntryEnabled) {
@@ -1240,7 +1245,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               {(photo || photoProcessing) && <button onClick={() => clearPhoto("Photo removed. Your avatar is ready instead.")}>Remove my photo</button>}
             </div>
             <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" onChange={onPhoto} hidden />
-            <p className="private-photo-explainer" id="private-photo-explainer">Optional. JPEG, PNG or WebP up to 8 MB. We re-encode the pixels on this device, remove source metadata and never upload the original. Your photo never affects scoring.</p>
+            <p className="private-photo-explainer" id="private-photo-explainer">Optional. JPEG, PNG or WebP up to 8 MB. We re-encode the pixels on this device, remove source metadata and keep the processed copy in browser memory for up to 30 minutes. It may appear only in a static portrait you deliberately download or share; it never enters Story video or a public result and is never uploaded. Remove my photo or Clear my local data releases it sooner. Your photo never affects scoring.</p>
             {photoNotice && <p className={`photo-status is-${photoProcessing ? "processing" : photoNoticeKind}`} data-photo-state={photoProcessing ? "processing" : photoNoticeKind} role="status" aria-live="polite">{photoNotice}</p>}
             <p className="recovery-explainer">No account is required. This tab can restore only your edition, avatar and answer choices for up to 24 hours. Names and photos are never saved.</p>
             <button className="start-again-control" onClick={restart}>Start again</button>
@@ -1351,10 +1356,11 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             <button className="upload-own" aria-describedby="setup-entry-safeguard" disabled={photoProcessing} onClick={() => fileRef.current?.click()}><span>＋</span><b>{photo ? "Choose a different private photo" : "Optional: choose your own photo"}</b><small>Processed on this device. The original is never uploaded.</small></button>
             {(photo || photoProcessing) && <button className="remove-photo-action" onClick={() => clearPhoto("Photo removed. Your avatar is ready instead.")}>Remove my photo</button>}
             <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" onChange={onPhoto} hidden />
-            <p className="private-photo-explainer" id="setup-photo-explainer">We accept JPEG, PNG or WebP up to 8 MB, re-encode the pixels on this device and remove source metadata. Photo choice never affects scoring.</p>
+            <p className="private-photo-explainer" id="setup-photo-explainer">We accept JPEG, PNG or WebP up to 8 MB, re-encode the pixels on this device and remove source metadata. The photo stays in browser memory for up to 30 minutes, may appear only in a static portrait you choose to download or share, never enters Story video or a public result, and is never uploaded. Remove my photo or Clear my local data releases it sooner. Photo choice never affects scoring.</p>
             {photoNotice && <p className={`photo-status is-${photoProcessing ? "processing" : photoNoticeKind}`} data-photo-state={photoProcessing ? "processing" : photoNoticeKind} role="status" aria-live="polite">{photoNotice}</p>}
             <label htmlFor="player-name">What should we call you?</label>
-            <input id="player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={displayNameError ? "setup-name-error" : undefined} placeholder="Name or pseudonym (optional)" />
+            <input id="player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={`setup-name-privacy${displayNameError ? " setup-name-error" : ""}`} placeholder="Name or pseudonym (optional)" />
+            <p id="setup-name-privacy" className="name-privacy-notice">Your name stays in this tab and may appear in media you generate. It is excluded from quiz recovery and published results. If you later create a challenge, the reviewed name is sent to the server and shown to anyone with that challenge link.</p>
             {displayNameError && <p className="display-name-error" id="setup-name-error" role="alert">{displayNameError}</p>}
             <button className="big-action" aria-describedby="setup-entry-safeguard" disabled={photoProcessing} onClick={beginQuiz}>{photoProcessing ? "Processing photo…" : `Enter Region 0${regionOrder.indexOf(regionKey) + 1}`} <span>▶</span></button>
           </div>
@@ -1377,7 +1383,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           </div>
           {fastEntryEnabled && <div className="quiz-player-tools">
             <label htmlFor="quiz-player-name">Display name <span>(optional)</span></label>
-            <input id="quiz-player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={displayNameError ? "quiz-name-error" : undefined} placeholder="Add a name or pseudonym" />
+            <input id="quiz-player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={`quiz-name-privacy${displayNameError ? " quiz-name-error" : ""}`} placeholder="Add a name or pseudonym" />
+            <p id="quiz-name-privacy" className="name-privacy-notice">Stored only in this tab unless you deliberately create a named challenge. It may appear in local media, but not in quiz recovery or a published result.</p>
             {displayNameError && <p className="display-name-error" id="quiz-name-error" role="alert">{displayNameError}</p>}
             <button onClick={restart}>Start again</button>
           </div>}
@@ -1475,7 +1482,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               <div className="result-aura"><span>Final aura</span><b>{revealAura.toLocaleString()}</b><i>+500 reveal bonus</i></div>
               <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
               {activeFeatureFlags.commerce && <RoyalRevealOffer edition={regionKey} score={correctCount} total={region.questions.length} avatarId={avatarId} reviewScenario={royalRevealReviewScenario} purchaseContext={purchaseContext} />}
-              {fastEntryEnabled && <div className="result-name-editor"><label htmlFor="result-player-name">Name or pseudonym on your portrait <span>(optional)</span></label><input id="result-player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={displayNameError ? "result-name-error" : undefined} placeholder={publicDisplayNameFallback} />{displayNameError && <p className="display-name-error" id="result-name-error" role="alert">{displayNameError}</p>}</div>}
+              {fastEntryEnabled && <div className="result-name-editor"><label htmlFor="result-player-name">Name or pseudonym on your portrait <span>(optional)</span></label><input id="result-player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={`result-name-privacy${displayNameError ? " result-name-error" : ""}`} placeholder={publicDisplayNameFallback} /><p id="result-name-privacy" className="name-privacy-notice">This name can appear in your local portrait and, only if you choose nominations, the reviewed public challenge. Published result pages use “A challenger” instead.</p>{displayNameError && <p className="display-name-error" id="result-name-error" role="alert">{displayNameError}</p>}</div>}
               {photo && <p className="private-media-boundary">Your private photo can appear only in the portrait you deliberately download or send through your device’s share sheet. Public links and previews use approved avatar and regional artwork.</p>}
               {acceptedChallenge && completionState === "loading" && <div className="comparison-loading" role="status" aria-live="polite"><b>Confirming your official challenge score</b><span>Your answers are being checked against the approved answer keys.</span></div>}
               {acceptedChallenge && completionState === "error" && <div className="comparison-failure" role="status"><b>Your culture result is safe.</b><span>We could not confirm the head-to-head comparison yet. Retry, or continue with a normal regional quiz.</span><div><button type="button" onClick={() => setCompletionState("idle")}>Retry comparison</button><button type="button" onClick={restart}>Play another region</button></div></div>}
@@ -1520,10 +1527,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             <section className="about-scoring" aria-labelledby="about-scoring-title"><h3 id="about-scoring-title">How scoring works</h3>{SCORING_PRINCIPLES.map((principle) => <p key={principle}>{principle}</p>)}</section>
             <div className="guardrails"><div><b>Africa is plural</b><span>Each short question simplifies a diverse subject and opens a door. It never claims to contain a whole people, place or universal rule.</span></div><div><b>Your portrait is private</b><span>Photos are optional. The original is never uploaded. Its decoded pixels are resized and re-encoded on this device so source metadata is not copied. Remove my photo clears the in-memory copy. Names and photos are excluded from recovery, and neither changes scoring.</span></div><div><b>Limited recovery</b><span>This tab can restore edition, approved avatar and answer choices for up to 24 hours. It is non-authoritative and contains no name, photo or result score.</span></div><div><b>Learn as you play</b><span>Every answer unlocks a reviewed cultural explanation, correct guess or not.</span></div><div><b>An original score</b><span>The reactive audio is an abstract game soundtrack, not a traditional recording.</span></div></div>
             <p className="durable-storage-note"><b>Durable controls</b> Durable storage and public deletion controls are not active in this build. No D1 database or R2 media bucket is connected.</p>
-            <button className="clear-local-data" onClick={clearLocalQuizData}>Clear local quiz data</button>
-            {localDataNotice && <p className="local-data-notice" role="status">{localDataNotice}</p>}
-            <p className="cultural-review-note"><b>Cultural review and reporting</b> Questions and explanations are based on the sources below, but any short quiz can miss nuance. Report cultural inaccuracies or insensitive wording through the Classes for Culture contact channel so the material can be reviewed.</p>
-            <p className="audience-note"><b>Audience</b> Designed for adults and people who meet the applicable age of digital consent. It is not directed to children under 13. The game does not collect age or request proof of age.</p>
+            <p className="cultural-review-note"><b>Cultural review and reporting</b> Questions and explanations are based on the sources below, but any short quiz can miss nuance. An approved community-reporting contact route is not yet configured and is required before production activation.</p>
+            <p className="audience-note"><b>Audience</b> Intended primarily for adults and people above the applicable age of digital consent. It is not directed to children under 13 in the UK. The game does not collect, infer or request proof of age.</p>
             <p className="source-label">Follow the knowledge trail</p>
             <div className="source-links">
               {sourceCollections.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>)}

@@ -42,7 +42,7 @@ test("generic entry offers all regions without loading regional or avatar art", 
   await page.goto("/");
   await expect(page.locator("[data-fast-entry-shell]")).toBeVisible();
   await expect(page.getByRole("heading", { level: 1 })).toContainText(/CHOOSE YOUR\s*AFRICAN REGION/);
-  await expect(page.getByText("A playful culture score, never a measure of human worth.")).toBeVisible();
+  await expect(page.locator("#generic-entry-safeguard")).toHaveText("A playful culture score, never a measure of human worth.");
   for (const name of ["West Africa", "East Africa", "Central Africa", "North Africa", "Southern Africa"]) {
     const regionButton = page.getByRole("button", { name });
     await expect(regionButton).toBeVisible();

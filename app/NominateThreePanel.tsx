@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { ChallengeCreationClient, ChallengeActionMode } from "./challengeCreation.ts";
 import { createChallengeIdempotencyKey } from "./challengeCreation.ts";
 import { publicDisplayNameFallback, validateDisplayName } from "./displayNames.ts";
+import { formatPublicExpiry } from "./privacyDates.ts";
 import type { RegionKey } from "./gameData.ts";
 import {
   genericNominationShareText,
@@ -261,13 +262,15 @@ export default function NominateThreePanel({
           />
           {!nameValidation.valid
             ? <p id="challenger-name-error" className="display-name-error" role="alert">{nameValidation.message}</p>
-            : <p id="challenger-name-note">This validated name will match the challenge landing page and share copy. It never changes your score.</p>}
+            : <p id="challenger-name-note">This validated name is sent to the server when you prepare the challenge and will match its landing page and share copy. It never changes your score.</p>}
+          <p className="nomination-link-privacy">Preparing nominations creates one public challenge link. Anyone with it may open the invitation while active. It lasts up to 30 days and never beyond the source result; server-authoritative expiry or valid revocation may end it sooner.</p>
           {preparationState !== "ready" && <button type="button" className="prepare-nominations" onClick={prepareChallenge} disabled={preparationState === "creating" || !nameValidation.valid}>{preparationState === "creating" ? "Preparing one challenge…" : "Prepare three nominations"}</button>}
         </div>
       ) : <p className="nomination-fallback-note"><b>Regional invitation fallback</b> Verified challenges and durable storage are unavailable, so no score or inviter identity is attached.</p>}
 
       {preparationMessage && <p className={`nomination-preparation is-${preparationState}`} role="status" aria-live="polite">{preparationMessage}</p>}
       {sharePayload && <p className="nomination-link-note">All three slots use the same {challenge ? "canonical challenge" : "regional invitation"} link.</p>}
+      {challenge && <p className="nomination-link-privacy">This challenge expires on {formatPublicExpiry(challenge.projection.expiresAt)}. A valid owner revocation, use limit or the source result becoming unavailable may end it sooner. Copies already shared outside the service cannot be recalled by this application.</p>}
 
       <div className="nomination-slots" aria-label="Three nomination slots">
         {nominationSlotNumbers.map((slot) => {

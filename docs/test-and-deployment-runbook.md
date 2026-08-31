@@ -314,11 +314,11 @@ Run `npm run test:share-centre` before the complete suite. The focused gate vali
 
 Manually verify on current real devices and in-app browsers for WhatsApp, Facebook, Instagram and TikTok before a future approved release. Platform share composers and native sheets cannot be proven by mocked browser tests alone. Confirm popups use `noopener,noreferrer`, popup blocking does not lose the safe link, Instagram and TikTok show exactly two download instructions where file sharing is unavailable, and no UI claims posting, sending or delivery.
 
-Confirm the current static Open Graph image is unchanged. It does not contain the safeguard and remains a temporary fallback pending Prompt 14. Prompt 13’s local 9:16 PNG is not a dynamic preview, permanent result URL, video or R2 object. Confirm no private portrait, name, score, challenge code, token, session value, recipient detail or file byte enters an event or unapproved network request.
+Confirm the current static Open Graph image is unchanged. It does not contain the safeguard and remains a temporary fallback pending Prompt 14. Prompt 13’s local 9:16 PNG is not a dynamic preview, published result URL, video or R2 object. Confirm no private portrait, name, score, challenge code, token, session value, recipient detail or file byte enters an event or unapproved network request.
 
 Prompt 13 adds no dependency, schema, migration, D1/R2 binding or hosted operation. Before any deployment, rerun `npm run test:all`, `npm run build` and `git diff --check`, then repeat the existing protected-file, fixture-isolation, storage and security gates.
 
-### Prompt 14 permanent-result release gate
+### Prompt 14 published-result release gate
 
 Run `npm run test:dynamic-results` before the complete suite. Verify migration `0004_yellow_bill_hollister.sql` checksum `c649185f96cdce28aca0522330649b4688c9f1da93ea6eab0c08842b163b65bc`, historical-private defaulting, explicit owner publication and unpublication, same-origin enforcement, fail-closed rate limiting, neutral unavailable states, raw server HTML, canonical metadata, crawler read-only behaviour, deterministic 1200 by 630 PNG output, the 1,000,000-byte hard ceiling and preferred sub-500,000-byte target, object-key safety, ETag/conditional delivery, Share Centre confirmation and fallback preservation.
 
@@ -449,3 +449,8 @@ An authorised local review build requires all of:
 The synthetic request must also carry the matching trusted Sites subject header; fixture/query selection cannot authorize it. Ordinary production builds must omit all four values and return 404 for `/owner/analytics` and its CSV endpoint. Query parameters cannot enable the flag.
 
 Before hosted activation, follow `docs/owner-dashboard-access-contract.md`: approve exact subjects and dispatch-only ingress, bind D1, separately approve migration application through `0006`, add a distributed export limiter, verify consent/retention and no-store behaviour, run `npm run test:all`, and obtain separate deploy approval. Do not activate analytics or commerce merely to populate the dashboard.
+## Prompt 19 privacy and result-retention gate
+
+Run `npm run test:privacy`, `npm run test:all`, `npm run build` and `git diff --check`. The focused suite covers the versioned inventory and source-registration scan, notice synchronisation, strict analytics opt-in and withdrawal, exact allowlisted clearing, safe gameplay reset, device-local photographs and object-URL cleanup, absence of third-party trackers, legal fail-closed behavior, retention and 90-day publication semantics, keyboard/focus behavior, responsive and reduced-motion layouts, and fixture isolation.
+
+Review fixtures require both `WYBP_REVIEW_BUILD=true` and `WYBP_REVIEW_PRIVACY_FIXTURES=true`; query parameters alone are inert. Store screenshots, browser profiles, reports and build copies only under the operating-system temporary directory. Before any future production activation, complete `docs/legal-content-activation-checklist.md`, verify trusted ingress and real provider storage, bind and migrate D1 only under separate authority, and obtain explicit deployment approval. This gate does not activate analytics, commerce, the owner dashboard, D1 or R2.

@@ -13,7 +13,7 @@ test("valid public result resolves to a privacy-safe approved view", async () =>
   const service = new ResultService(new Repo(record()), { now: () => now, publicOrigin: origin });
   const resolved = await service.getPublic(slug); assert.ok(resolved);
   const view = service.toView(resolved);
-  assert.deepEqual(view, { resultSlug: slug, canonicalUrl: `https://brideprice.classesforculture.com/result/${slug}`, displayName: "A challenger", edition: "west", editionLabel: "West Africa", score: 9, total: 12, tier: 3, resultTitle: "Bride Price Royalty", masterySeal: "West Africa mastery", avatarId: "adjoa", avatarSrc: "/avatars/adjoa-v2.webp", safeguard: PRODUCT_SAFEGUARD });
+  assert.deepEqual(view, { resultSlug: slug, canonicalUrl: `https://brideprice.classesforculture.com/result/${slug}`, displayName: "A challenger", edition: "west", editionLabel: "West Africa", score: 9, total: 12, tier: 3, resultTitle: "Bride Price Royalty", masterySeal: "West Africa mastery", avatarId: "adjoa", avatarSrc: "/avatars/adjoa-v2.webp", safeguard: PRODUCT_SAFEGUARD, expiresAt: now + 1000 });
   assert.doesNotMatch(JSON.stringify(view), /Never public|result_public_review|attempt|subject|photo|token/i);
 });
 

@@ -35,14 +35,14 @@ test("no analytics identifier or transmission exists before consent; rejection l
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true }); await installHarness(context);
   const page = await context.newPage(); await page.goto("/?edition=west&first_party_analytics=0");
   const consent = page.locator("[data-analytics-consent]"); await expect(consent).toBeVisible();
-  const accept = consent.getByRole("button", { name: "Accept analytics" }); const reject = consent.getByRole("button", { name: "Reject analytics" });
+  const accept = consent.getByRole("button", { name: "Allow analytics" }); const reject = consent.getByRole("button", { name: "Do not allow" });
   const [acceptBox, rejectBox] = await Promise.all([accept.boundingBox(), reject.boundingBox()]);
   expect(acceptBox?.height || 0).toBeGreaterThanOrEqual(44); expect(rejectBox?.height || 0).toBeGreaterThanOrEqual(44);
   expect(Math.abs((acceptBox?.width || 0) - (rejectBox?.width || 0))).toBeLessThanOrEqual(1);
   expect(await accept.evaluate((element) => getComputedStyle(element).backgroundColor)).toBe(await reject.evaluate((element) => getComputedStyle(element).backgroundColor));
   expect(await page.evaluate(() => ({ requests: window.__wybpAnalyticsRequests, session: sessionStorage.getItem("wybp-analytics-session-v1"), seen: sessionStorage.getItem("wybp-analytics-seen-v1"), cookies: document.cookie }))).toEqual({ requests: [], session: null, seen: null, cookies: "" });
   await screenshot(page, "initial-choice.png");
-  await reject.click(); await expect(page.getByRole("button", { name: "Manage analytics preferences" })).toBeVisible();
+  await reject.click(); await expect(page.getByRole("button", { name: "Privacy choices" })).toBeVisible();
   expect(await page.evaluate(() => ({ requests: window.__wybpAnalyticsRequests, session: sessionStorage.getItem("wybp-analytics-session-v1") }))).toEqual({ requests: [], session: null });
   await screenshot(page, "rejected-game-continues.png");
   await page.getByRole("button", { name: /Continue without a photo/ }).click(); await expect(page.locator(".hud-round")).toHaveText("Question 1 of 12");
@@ -52,7 +52,7 @@ test("no analytics identifier or transmission exists before consent; rejection l
 test("acceptance transmits first-party events and withdrawal clears the queue and optional identifier", async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true }); await installHarness(context);
   const page = await context.newPage(); await page.goto("/?edition=east");
-  await page.getByRole("button", { name: "Accept analytics" }).click();
+  await page.getByRole("button", { name: "Allow analytics" }).click();
   await expect.poll(() => page.evaluate(() => window.__wybpAnalyticsRequests?.length || 0)).toBeGreaterThanOrEqual(2);
   const accepted = await page.evaluate(() => ({
     requests: window.__wybpAnalyticsRequests || [],
@@ -64,8 +64,8 @@ test("acceptance transmits first-party events and withdrawal clears the queue an
   expect(accepted.requests.map((request) => request.body).join(" ")).toContain("consent_accept"); expect(accepted.requests.map((request) => request.body).join(" ")).toContain("app_visit");
   expect(accepted.requests.map((request) => request.body).join(" ")).not.toMatch(/displayName|photo|answers|anonymousSession|subjectHash|ownership|revocation|token|https?:\/\//i);
   await screenshot(page, "accepted-state.png");
-  await page.getByRole("button", { name: "Manage analytics preferences" }).click(); await expect(page.locator("[data-analytics-consent][data-choice=accepted]")).toBeVisible(); await screenshot(page, "manage-preferences.png");
-  await page.getByRole("button", { name: "Reject analytics" }).click();
+  await page.getByRole("button", { name: "Privacy choices" }).click(); await expect(page.locator("[data-current-analytics-choice]")).toContainText("Allowed"); await screenshot(page, "manage-preferences.png");
+  await page.getByRole("button", { name: "Do not allow" }).click();
   await expect.poll(() => page.evaluate(() => window.__wybpAnalyticsRequests?.some((request) => request.body?.includes('"action":"withdraw"')))).toBe(true);
   expect(await page.evaluate(() => sessionStorage.getItem("wybp-analytics-session-v1"))).toBeNull();
   expect(await page.evaluate(() => localStorage.getItem("wybp-analytics-consent-v1"))).toContain('"choice":"rejected"');
@@ -76,9 +76,9 @@ test("acceptance transmits first-party events and withdrawal clears the queue an
 test("Global Privacy Control rejects by default but permits a later explicit choice", async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } }); await installHarness(context, true);
   const page = await context.newPage(); await page.goto("/");
-  await expect(page.getByRole("button", { name: "Manage analytics preferences" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Privacy choices" })).toBeVisible();
   expect(await page.evaluate(() => ({ requests: window.__wybpAnalyticsRequests, session: sessionStorage.getItem("wybp-analytics-session-v1"), preference: localStorage.getItem("wybp-analytics-consent-v1") }))).toEqual({ requests: [], session: null, preference: null });
-  await page.getByRole("button", { name: "Manage analytics preferences" }).click(); await page.getByRole("button", { name: "Accept analytics" }).click();
+  await page.getByRole("button", { name: "Privacy choices" }).click(); await page.getByRole("button", { name: "Allow analytics" }).click();
   await expect.poll(() => page.evaluate(() => window.__wybpAnalyticsRequests?.length || 0)).toBeGreaterThan(0); await context.close();
 });
 
@@ -99,6 +99,6 @@ test("320px, Android, iPhone, 200 percent zoom, keyboard focus and reduced motio
   }
   const context = await browser.newContext({ viewport: { width: 780, height: 900 }, reducedMotion: "reduce" }); await installHarness(context); const page = await context.newPage(); await page.goto("/");
   await page.evaluate(() => { document.documentElement.style.zoom = "2"; }); expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1); await screenshot(page, "zoom-200-percent.png");
-  const focused = page.getByRole("button", { name: "Accept analytics" }); await focused.focus(); await page.keyboard.press("Shift+Tab"); await page.keyboard.press("Tab"); await expect(focused).toBeFocused(); expect(await focused.evaluate((element) => getComputedStyle(element).outlineStyle)).not.toBe("none"); await screenshot(page, "keyboard-focus-reduced-motion.png");
+  const focused = page.getByRole("button", { name: "Allow analytics" }); await focused.focus(); await page.keyboard.press("Shift+Tab"); await page.keyboard.press("Tab"); await expect(focused).toBeFocused(); expect(await focused.evaluate((element) => getComputedStyle(element).outlineStyle)).not.toBe("none"); await screenshot(page, "keyboard-focus-reduced-motion.png");
   await context.close();
 });

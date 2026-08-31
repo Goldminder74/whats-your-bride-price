@@ -79,7 +79,7 @@ test("active challenge is personalised in raw HTML, accessible and starts the ri
   await expect(page.locator("[data-challenge-active]")).toBeVisible();
   await expect(page.getByText("Nia has challenged you")).toBeVisible();
   await expect(page.getByText("Score to beat:")).toContainText("10/12");
-  await expect(page.getByText("A playful culture score, never a measure of human worth.")).toBeVisible();
+  await expect(page.locator("[data-challenge-active]")).toContainText("A playful culture score, never a measure of human worth.");
   const accept = page.getByRole("button", { name: "Accept challenge" });
   const acceptBox = await accept.boundingBox();
   expect(acceptBox?.height || 0).toBeGreaterThanOrEqual(44);
@@ -260,7 +260,7 @@ test("320px, Android and iPhone in-app-browser layouts keep regional identity an
     await expect(page.locator(".challenge-route-art img"), profile.label).toBeVisible();
     await expect(page.getByText("Nia has challenged you"), profile.label).toBeVisible();
     await expect(page.getByText("Score to beat:"), profile.label).toBeVisible();
-    await expect(page.getByText("A playful culture score, never a measure of human worth."), profile.label).toBeVisible();
+    await expect(page.locator("[data-challenge-active]"), profile.label).toContainText("A playful culture score, never a measure of human worth.");
     const accept = page.getByRole("button", { name: "Accept challenge" });
     await expect(accept, profile.label).toBeVisible();
     const box = await accept.boundingBox();

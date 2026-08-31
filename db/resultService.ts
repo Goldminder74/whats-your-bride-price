@@ -34,6 +34,7 @@ export type PublicResultView = Readonly<{
   avatarId: string | null;
   avatarSrc: string | null;
   safeguard: PublicResultData["safeguard"];
+  expiresAt: number | null;
 }>;
 
 export interface PublicResultRepository {
@@ -78,6 +79,7 @@ export class ResultService {
       avatarId: result.data.safeAvatarId,
       avatarSrc: result.data.safeAvatarId ? resolveApprovedAvatar(result.data.safeAvatarId).src : null,
       safeguard: result.data.safeguard,
+      expiresAt: result.data.expiresAt,
     });
   }
 }

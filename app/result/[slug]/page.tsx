@@ -4,6 +4,7 @@ import { regions } from "../../gameData";
 import { PRODUCT_SAFEGUARD } from "../../productSafeguards";
 import { createPublicAppUrl, createResultUrl } from "../../publicAppOrigin";
 import { loadResultLanding, RESULT_UNAVAILABLE_COPY } from "../../resultLandingServer";
+import { formatPublicExpiry } from "../../privacyDates";
 
 type ResultPageProps = Readonly<{ params: Promise<{ slug: string }> | { slug: string } }>;
 const genericTitle = "Culture Result Unavailable | What’s Your Bride Price?";
@@ -53,6 +54,7 @@ export default async function ResultPage({ params }: ResultPageProps) {
         <div className="public-result-score" aria-label={`Culture score ${result.score} out of ${result.total}`}><strong>{result.score}</strong><span>/ {result.total}</span></div>
         <h2>{result.resultTitle}</h2>{result.masterySeal && <p className="public-result-mastery">✦ {result.masterySeal} seal earned</p>}
         <p className="public-result-safeguard">{PRODUCT_SAFEGUARD}</p>
+        <p className="public-result-expiry">This public result expires on {formatPublicExpiry(result.expiresAt)}. Unpublishing or deletion may make it unavailable sooner.</p>
         <a className="public-result-play" href={createPublicAppUrl("/", { edition: result.edition })}>Play the {result.editionLabel} edition</a>
       </section>
     </main>

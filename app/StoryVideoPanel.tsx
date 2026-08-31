@@ -114,7 +114,7 @@ export default function StoryVideoPanel({
   const downloadExistingStatic = async () => {
     emit("story_static_fallback", "fallback", "static");
     try { await onUseStatic(); setStatus({ state: "fallback", message: "Your static 9:16 Story image download started. It remains available even when video is unsupported." }); }
-    catch { setStatus({ state: "failed", message: "The static Story image could not be prepared. Your permanent link remains available." }); }
+    catch { setStatus({ state: "failed", message: "The static Story image could not be prepared. Your active public or invitation link remains available until its server-authoritative expiry." }); }
   };
 
   const downloadVideo = () => {

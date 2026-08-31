@@ -11,9 +11,9 @@ export type ShareCopy = Readonly<{
 }>;
 
 export function buildShareCopy(projection: SafeShareProjection): ShareCopy {
-  const permanentResult = projection.personalised && new URL(projection.canonicalUrl).pathname.startsWith("/result/");
-  const title = permanentResult ? "A culture score just landed!" : projection.personalised ? "You’ve been challenged!" : "Play the culture challenge!";
-  const sentence = permanentResult
+  const publishedResult = projection.personalised && new URL(projection.canonicalUrl).pathname.startsWith("/result/");
+  const title = publishedResult ? "A culture score just landed!" : projection.personalised ? "You’ve been challenged!" : "Play the culture challenge!";
+  const sentence = publishedResult
     ? `${projection.displayName} scored ${projection.score}/${projection.maximumScore} in the ${projection.editionLabel} Edition and earned ${projection.resultTitle}. Can you beat this culture score?`
     : projection.personalised
       ? `${projection.displayName} challenged you to beat ${projection.score}/${projection.maximumScore} in the ${projection.editionLabel} Edition. Can you protect the family reputation?`

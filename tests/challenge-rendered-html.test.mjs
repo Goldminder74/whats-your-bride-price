@@ -50,7 +50,7 @@ test("raw initial HTML contains only the active challenge safe projection and ge
   const head = html.slice(0, html.indexOf("</head>"));
   assert.match(head, /A Culture Challenge Awaits/i);
   assert.doesNotMatch(head, /Nia|10\/12|West Africa/i);
-  assert.doesNotMatch(body, /result_synthetic|attempt_synthetic|anonymous_subject|idempotency|revocation|private.?photo|data:image|session.?id/i);
+  assert.doesNotMatch(body, /result_synthetic|attempt_synthetic|anonymous_subject|idempotency|revocation_(?:token|hash)|revocationToken|private.?photo|data:image|session.?id/i);
 });
 
 test("expired, revoked, missing, removed and malformed routes are indistinguishable neutral states", async () => {

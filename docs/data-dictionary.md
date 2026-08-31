@@ -317,3 +317,8 @@ Prompt 18 introduces no table or migration. `db/ownerDashboard.ts` uses fixed, p
 The consent join requires notice `analytics-notice-v1`, statistical consent 1, marketing 0, and null withdrawal/deletion with unexpired consent. Each event branch requires schema version 1, null deletion, unexpired event and the bounded UTC period. Results are grouped by fixed server-selected dimensions and capped at 1,200 aggregate rows. No DELETE, retention job or derived-report write occurs during a dashboard read.
 
 Game mode is absent. No source, surface, edition or state field is aliased to it. Future contextual flags `groom_mode`, `couples_mode` and `party_mode` remain outside the analytics property contract.
+## Prompt 19 privacy and retention interpretation
+
+The `quiz_attempts.expires_at` and `results.expires_at` values written by authoritative completion define an exact 90-day active period from completion. `results.visibility` is independent: publication and unpublication change only visibility and never extend, restart or remove `expires_at`. Public page, metadata and preview projections require both public visibility and an active future expiry; expired records return the neutral unavailable projection.
+
+Prompt 19 adds no database column, table, index or migration. Its browser-storage schema is the separate public-safe inventory in `app/storageInventory.ts`; no local browser credential, preference or photo is treated as a database field. Legal configuration is build-time draft information and stores no privacy-request submission.

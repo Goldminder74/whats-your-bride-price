@@ -21,6 +21,7 @@ export type SafeShareProjection = Readonly<{
   maximumScore: number;
   resultTitle: string | null;
   avatarId: string | null;
+  expiresAt: number | null;
 }>;
 
 export function shareProjectionFromChallenge(
@@ -58,6 +59,7 @@ export function shareProjectionFromChallenge(
     maximumScore: projection.maximumScore,
     resultTitle: RESULT_TIER_TITLES[calculateResultTier(projection.scoreToBeat)],
     avatarId: projection.avatarId,
+    expiresAt: projection.expiresAt,
   });
 }
 
@@ -78,6 +80,7 @@ export function genericShareProjection(
     maximumScore: region.questions.length,
     resultTitle: null,
     avatarId: null,
+    expiresAt: null,
   });
 }
 
@@ -109,6 +112,7 @@ export function shareProjectionFromPublicResult(
     maximumScore: result.total,
     resultTitle: RESULT_TIER_TITLES[calculateResultTier(result.score)],
     avatarId: result.safeAvatarId || defaultAvatarId,
+    expiresAt: result.expiresAt,
   });
 }
 
@@ -123,6 +127,7 @@ export function isSafeShareProjection(value: unknown, origin: PublicAppOrigin): 
       && candidate.score === null
       && candidate.resultTitle === null
       && candidate.avatarId === null
+      && candidate.expiresAt === null
       && candidate.canonicalUrl === createPublicAppUrl("/", { edition: candidate.edition as RegionKey }, origin);
   }
   if (candidate.personalised !== true || typeof candidate.canonicalUrl !== "string" || typeof candidate.displayName !== "string") return false;
@@ -142,6 +147,7 @@ export function isSafeShareProjection(value: unknown, origin: PublicAppOrigin): 
     && (candidate.score as number) >= 0
     && (candidate.score as number) <= region.questions.length
     && candidate.resultTitle === RESULT_TIER_TITLES[calculateResultTier(candidate.score as number)]
-    && isApprovedAvatarId(candidate.avatarId),
+    && isApprovedAvatarId(candidate.avatarId)
+    && (candidate.expiresAt === null || (Number.isSafeInteger(candidate.expiresAt) && (candidate.expiresAt as number) > 0)),
   );
 }

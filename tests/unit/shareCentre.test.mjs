@@ -41,7 +41,7 @@ const publicProjection = Object.freeze({
   status: "active",
 });
 
-test("public results use one permanent canonical URL across platform destinations", () => {
+test("published results use one stable expiry-bounded canonical URL across platform destinations", () => {
   const result = Object.freeze({ resultSlug: "b".repeat(48), edition: "west", score: 9, total: 12, tier: 3, safeAvatarId: "adjoa", scoringVersion: "binary-exact-set-v1", safeguard: PRODUCT_SAFEGUARD, createdAt: 1, expiresAt: null, displayName: "A challenger" });
   const resultUrl = createResultUrl(result.resultSlug, origin);
   const projection = shareProjectionFromPublicResult(result, resultUrl, origin);
@@ -49,9 +49,9 @@ test("public results use one permanent canonical URL across platform destination
   assert.equal(projection.canonicalUrl, resultUrl);
   assert.equal(isSafeShareProjection(projection, origin), true);
   assert.equal(new URL(facebookShareDestination(projection)).searchParams.get("u"), resultUrl);
-  const permanentCopy = buildShareCopy(projection);
-  assert.match(permanentCopy.completeText, /A challenger scored 9\/12.*Bride Price Royalty/i);
-  assert.match(new URL(whatsappShareDestination(permanentCopy)).searchParams.get("text"), new RegExp(resultUrl));
+  const publishedCopy = buildShareCopy(projection);
+  assert.match(publishedCopy.completeText, /A challenger scored 9\/12.*Bride Price Royalty/i);
+  assert.match(new URL(whatsappShareDestination(publishedCopy)).searchParams.get("text"), new RegExp(resultUrl));
   assert.equal(shareProjectionFromPublicResult({ ...result, displayName: "Private name" }, resultUrl, origin), null);
   assert.equal(shareProjectionFromPublicResult(result, "https://attacker.example/result/" + result.resultSlug, origin), null);
 });
