@@ -61,13 +61,13 @@ export class QuestionSelectionError extends Error {
 }
 
 const AUTHORIZED_SEED = Symbol("authorised question selection seed");
-export type AuthorizedSelectionSeed = Readonly<{ bytes: Uint8Array; purpose: "challenge" | "comparison"; [AUTHORIZED_SEED]: true }>;
+export type AuthorizedSelectionSeed = Readonly<{ bytes: Uint8Array; purpose: "challenge" | "comparison" | "daily"; [AUTHORIZED_SEED]: true }>;
 
 function fail(code: string): never { throw new QuestionSelectionError(code); }
 
 export function authorizeReproducibleSelectionSeed(
   bytes: Uint8Array,
-  authority: Readonly<{ authorized: true; purpose: "challenge" | "comparison" }>,
+  authority: Readonly<{ authorized: true; purpose: "challenge" | "comparison" | "daily" }>,
 ): AuthorizedSelectionSeed {
   if (authority.authorized !== true || bytes.byteLength !== 32) return fail("reproducible_seed_unauthorized");
   return Object.freeze({ bytes: new Uint8Array(bytes), purpose: authority.purpose, [AUTHORIZED_SEED]: true as const });
@@ -282,9 +282,9 @@ export class D1QuestionSelectionRepository {
     const snapshot = JSON.stringify(input.selection.questions.map((question) => ({ stableId: question.stableId, version: question.version })));
     const result = await this.database.prepare(`INSERT INTO quiz_attempts (
       id,edition_id,anonymous_subject_hash,question_set_version,scoring_version,
-      selected_question_versions_json,selection_policy_version,selection_seed_reference,status,
+      selected_question_versions_json,selection_policy_version,selection_seed_reference,play_mode,status,
       idempotency_key_hash,started_at,expires_at,version,created_at,updated_at
-    ) VALUES (?1,?2,?3,?4,?5,?6,?7,?8,'in_progress',?9,?10,?11,1,?10,?10)
+    ) VALUES (?1,?2,?3,?4,?5,?6,?7,?8,'random','in_progress',?9,?10,?11,1,?10,?10)
     ON CONFLICT(idempotency_key_hash) DO NOTHING`).bind(
       input.id, input.editionId, input.anonymousSubjectHash, input.selection.questionSetVersion,
       input.selection.scoringVersion, snapshot, input.selection.selectionPolicyVersion,

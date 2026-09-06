@@ -57,6 +57,13 @@
       "when": 1788657533900,
       "tag": "0007_ancient_yellow_claw",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1788711619432,
+      "tag": "0008_simple_nocturne",
+      "breakpoints": true
     }
   ]
 }

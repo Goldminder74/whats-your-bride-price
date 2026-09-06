@@ -61,7 +61,7 @@ function insertOrder(database, overrides = {}) {
 
 test("0006 is additive, checksummed, supports empty and 0000-through-0005 upgrades, and is inert on replay", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 8);
+  assert.equal(plan.length, 9);
   assert.match(plan[6].id, /^0006_[a-z0-9_]+$/);
   assert.match(plan[6].checksum, /^[0-9a-f]{64}$/);
   assert.deepEqual(plan[6].statements.filter((statement) => /^CREATE TABLE/i.test(statement)).map((statement) => statement.match(/`([^`]+)`/)?.[1]).sort(), [

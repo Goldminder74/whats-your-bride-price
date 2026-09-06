@@ -108,6 +108,18 @@ export function assertOwnerDashboardReadiness(
   }
 }
 
+export function assertDailyChallengeReadiness(
+  flags: FeatureFlags,
+  readiness: Readonly<{ d1Configured: boolean; serverSecretConfigured: boolean }>,
+): void {
+  if ((flags.daily_challenge || flags.streaks) && !(readiness.d1Configured && readiness.serverSecretConfigured)) {
+    throw new Error("Daily challenges and streaks require approved D1 storage and a server-only daily seed secret. Both features fail closed while either dependency is unavailable.");
+  }
+  if (flags.streaks && !flags.daily_challenge) {
+    throw new Error("Streaks require the separately controlled daily_challenge feature because only an authoritative official daily completion can advance a streak.");
+  }
+}
+
 declare const __WYBP_FEATURE_FLAGS__: FeatureFlags | undefined;
 
 export const activeFeatureFlags: FeatureFlags = Object.freeze({

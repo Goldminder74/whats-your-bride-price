@@ -87,7 +87,7 @@ async function oldDatabaseWithRows() {
 
 test("0005 is ordered, checksummed, applies to empty and 0000-through-0004 databases, and is inert on replay", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 8);
+  assert.equal(plan.length, 9);
   assert.match(plan[5].id, /^0005_[a-z0-9_]+$/);
   assert.match(plan[5].checksum, /^[0-9a-f]{64}$/);
   for (const previousCount of [0, 5]) {

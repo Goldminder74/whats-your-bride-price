@@ -46,7 +46,7 @@ async function completeChallengeQuiz(page: Page, correctCount: number) {
     }
     for (const option of choice) await buttons.nth(option).click();
     if (question.kind === "multi") await page.getByRole("button", { name: /Lock in 3\/3 answers/ }).click();
-    await page.locator(".answer-reveal").getByRole("button", { name: questionIndex === 11 ? /Reveal my result/ : /Next challenge/ }).click({ force: true });
+    await page.locator(".answer-reveal").getByRole("button", { name: questionIndex === 11 ? /Reveal my result/ : /Next challenge/ }).click();
     if (questionIndex < 11 && (questionIndex + 1) % 3 === 0) {
       await page.getByRole("button", { name: /Claim gem/ }).click();
     }

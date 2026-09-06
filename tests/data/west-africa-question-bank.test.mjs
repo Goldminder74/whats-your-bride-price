@@ -115,7 +115,7 @@ test("JSON and CSV import formats round-trip and CSV neutralisation remains acti
   assert.doesNotMatch(review, /(?:^|,)\s*[=+@]/m);
 });
 
-test("existing cultural content and all eight migrations retain their approved hashes", async () => {
+test("existing cultural content and all nine migrations retain their approved hashes", async () => {
   assert.equal(sha256(await readFile(gameDataFile)), "3ce3474de2e6b072bf4e893fc2760c8b9ba996a889697ec5ac15f631cc05c74d");
   const expected = {
     "0000_loving_stepford_cuckoos.sql": "3de5ecdbeb6f60cea664f10dcd5f95144d63bf343b9dd9c22d68c764cc1cdf6a",
@@ -126,6 +126,7 @@ test("existing cultural content and all eight migrations retain their approved h
     "0005_special_gamma_corps.sql": "a13ac6180fa745732266fc922f89d2cd1e10f5f9c88d90e4f310ff833b09701d",
     "0006_regular_paibok.sql": "a34516dbc54f58557dcebd37f31a5a9c212905865bc57fffd9ab56f95e38e52e",
     "0007_ancient_yellow_claw.sql": "10be0f218f97d556a5af73d29481eafce8a5ca3a0bfc56d22e1b33c4de119076",
+    "0008_simple_nocturne.sql": "1c0082c156e094b1af4641596301b6709a2750b0f9b291e96f57945e7f7cd1fe",
   };
   const migrationDir = new URL("../../drizzle/", import.meta.url);
   const migrations = (await readdir(migrationDir)).filter((name) => /^\d{4}_.+\.sql$/.test(name)).sort();

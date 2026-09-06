@@ -96,6 +96,20 @@ export function getOrCreateAnonymousSession(
   }
 }
 
+export function readAnonymousSession(
+  storage: Pick<Storage, "getItem">,
+  now = Date.now(),
+): AnonymousSessionResult {
+  try {
+    const existing = parseStoredSession(storage.getItem(anonymousSessionStorageKey), now);
+    return existing
+      ? Object.freeze({ available: true, sessionId: existing.id, expiresAt: existing.expiresAt, rotated: false })
+      : Object.freeze({ available: false, reason: "storage_unavailable" });
+  } catch {
+    return Object.freeze({ available: false, reason: "storage_unavailable" });
+  }
+}
+
 export function clearAnonymousSession(storage: SessionStorageLike): boolean {
   try {
     storage.removeItem(anonymousSessionStorageKey);

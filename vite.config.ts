@@ -6,6 +6,7 @@ import {
   assertCommerceReadiness,
   assertFirstPartyAnalyticsStorage,
   assertOwnerDashboardReadiness,
+  assertDailyChallengeReadiness,
   assertSitesCompatibleFeatureFlags,
   assertDynamicResultsStorage,
   resolveFeatureFlags,
@@ -111,6 +112,10 @@ export default defineConfig(async ({ mode }) => {
     d1Configured: Boolean(d1),
     ownerAccessConfigured: Boolean(process.env.WYBP_OWNER_DASHBOARD_ALLOWED_SUBJECTS?.trim()),
     authorisedReviewFixtures: reviewOwnerDashboardFixtures,
+  });
+  assertDailyChallengeReadiness(featureFlags, {
+    d1Configured: Boolean(d1),
+    serverSecretConfigured: Boolean(process.env.WYBP_DAILY_SECRET?.trim()),
   });
   const reviewChallengeData = reviewChallengeFixtures
     ? [

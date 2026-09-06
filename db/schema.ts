@@ -101,6 +101,8 @@ export const quizAttempts = sqliteTable("quiz_attempts", {
   selectedQuestionVersionsJson: text("selected_question_versions_json").notNull(),
   selectionPolicyVersion: text("selection_policy_version").notNull().default("balanced-v1"),
   selectionSeedReference: text("selection_seed_reference"),
+  playMode: text("play_mode").notNull().default("random"),
+  dailyChallengeId: text("daily_challenge_id").references(() => dailyChallenges.id, { onDelete: "restrict" }),
   status: text("status").notNull().default("in_progress"),
   idempotencyKeyHash: text("idempotency_key_hash").notNull(),
   referralCode: text("referral_code"),
@@ -118,7 +120,9 @@ export const quizAttempts = sqliteTable("quiz_attempts", {
   index("quiz_attempts_subject_idx").on(table.anonymousSubjectHash, table.createdAt),
   index("quiz_attempts_expiry_idx").on(table.status, table.expiresAt),
   index("quiz_attempts_challenge_idx").on(table.challengeCode),
+  index("quiz_attempts_daily_idx").on(table.dailyChallengeId, table.anonymousSubjectHash, table.status),
   check("quiz_attempts_status_ck", sql`${table.status} in ('in_progress','completed','abandoned','expired','anonymized','deleted')`),
+  check("quiz_attempts_play_mode_ck", sql`${table.playMode} in ('random','daily_official','daily_practice','challenge','comparison')`),
   check("quiz_attempts_questions_json_ck", sql`json_valid(${table.selectedQuestionVersionsJson}) and json_type(${table.selectedQuestionVersionsJson}) = 'array'`),
 ]);
 
@@ -314,6 +318,8 @@ export const dailyChallenges = sqliteTable("daily_challenges", {
   challengeDate: text("challenge_date").notNull(),
   editionId: text("edition_id").notNull().references(() => quizEditions.id, { onDelete: "restrict" }),
   questionSetVersion: text("question_set_version").notNull(),
+  scoringVersion: text("scoring_version").notNull().default("binary-exact-set-v1"),
+  selectionPolicyVersion: text("selection_policy_version").notNull().default("balanced-v1"),
   deterministicSeedHash: text("deterministic_seed_hash").notNull(),
   selectedQuestionVersionsJson: text("selected_question_versions_json").notNull(),
   state: text("state").notNull().default("planned"),
@@ -326,6 +332,48 @@ export const dailyChallenges = sqliteTable("daily_challenges", {
   index("daily_challenges_state_date_idx").on(table.state, table.challengeDate),
   check("daily_challenges_state_ck", sql`${table.state} in ('planned','active','expired','cancelled')`),
   check("daily_challenges_questions_json_ck", sql`json_valid(${table.selectedQuestionVersionsJson}) and json_type(${table.selectedQuestionVersionsJson}) = 'array'`),
+  check("daily_challenges_date_ck", sql`${table.version} = 1 or (length(${table.challengeDate}) = 10 and ${table.challengeDate} glob '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]')`),
+  check("daily_challenges_seed_ck", sql`${table.version} = 1 or (length(${table.deterministicSeedHash}) = 64 and ${table.deterministicSeedHash} = lower(${table.deterministicSeedHash}) and ${table.deterministicSeedHash} not glob '*[^0-9a-f]*')`),
+]);
+
+export const dailyChallengeCompletions = sqliteTable("daily_challenge_completions", {
+  id: text("id").primaryKey(),
+  dailyChallengeId: text("daily_challenge_id").notNull().references(() => dailyChallenges.id, { onDelete: "restrict" }),
+  attemptId: text("attempt_id").notNull().references(() => quizAttempts.id, { onDelete: "restrict" }),
+  resultId: text("result_id").notNull().references(() => results.id, { onDelete: "restrict" }),
+  anonymousSubjectHash: text("anonymous_subject_hash").notNull(),
+  editionId: text("edition_id").notNull().references(() => quizEditions.id, { onDelete: "restrict" }),
+  challengeDate: text("challenge_date").notNull(),
+  scoringVersion: text("scoring_version").notNull(),
+  completedAt: integer("completed_at").notNull(),
+  version: integer("version").notNull().default(1),
+  createdAt: integer("created_at").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+}, (table) => [
+  uniqueIndex("daily_completions_subject_day_uq").on(table.dailyChallengeId, table.anonymousSubjectHash),
+  uniqueIndex("daily_completions_attempt_uq").on(table.attemptId),
+  uniqueIndex("daily_completions_result_uq").on(table.resultId),
+  index("daily_completions_subject_date_idx").on(table.anonymousSubjectHash, table.challengeDate),
+  check("daily_completions_subject_hash_ck", sql`length(${table.anonymousSubjectHash}) = 64 and ${table.anonymousSubjectHash} = lower(${table.anonymousSubjectHash}) and ${table.anonymousSubjectHash} not glob '*[^0-9a-f]*'`),
+  check("daily_completions_date_ck", sql`length(${table.challengeDate}) = 10 and ${table.challengeDate} glob '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'`),
+]);
+
+export const dailyOperationLimits = sqliteTable("daily_operation_limits", {
+  id: text("id").primaryKey(),
+  rateKeyHash: text("rate_key_hash").notNull(),
+  action: text("action").notNull(),
+  windowStartedAt: integer("window_started_at").notNull(),
+  requestCount: integer("request_count").notNull().default(1),
+  expiresAt: integer("expires_at").notNull(),
+  createdAt: integer("created_at").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+}, (table) => [
+  uniqueIndex("daily_operation_limits_bucket_uq").on(table.rateKeyHash, table.action, table.windowStartedAt),
+  index("daily_operation_limits_expiry_idx").on(table.expiresAt),
+  check("daily_operation_limits_hash_ck", sql`length(${table.rateKeyHash}) = 64 and ${table.rateKeyHash} = lower(${table.rateKeyHash}) and ${table.rateKeyHash} not glob '*[^0-9a-f]*'`),
+  check("daily_operation_limits_action_ck", sql`${table.action} in ('start','complete','clear')`),
+  check("daily_operation_limits_count_ck", sql`${table.requestCount} between 1 and 100`),
+  check("daily_operation_limits_time_ck", sql`${table.windowStartedAt} >= 0 and ${table.expiresAt} > ${table.windowStartedAt} and ${table.expiresAt} - ${table.windowStartedAt} <= 86400000`),
 ]);
 
 export const streaks = sqliteTable("streaks", {
@@ -335,6 +383,7 @@ export const streaks = sqliteTable("streaks", {
   currentCount: integer("current_count").notNull().default(0),
   longestCount: integer("longest_count").notNull().default(0),
   lastQualifyingDate: text("last_qualifying_date"),
+  lastQualifiedAt: integer("last_qualified_at"),
   ruleVersion: text("rule_version").notNull(),
   expiresAt: integer("expires_at").notNull(),
   anonymizedAt: integer("anonymized_at"),
@@ -346,6 +395,10 @@ export const streaks = sqliteTable("streaks", {
   uniqueIndex("streaks_subject_type_uq").on(table.anonymousSubjectHash, table.streakType),
   index("streaks_expiry_idx").on(table.expiresAt, table.deletedAt),
   check("streaks_counts_ck", sql`${table.currentCount} >= 0 and ${table.longestCount} >= ${table.currentCount}`),
+  check("streaks_type_ck", sql`${table.version} = 1 or ${table.streakType} in ('daily:west','daily:east','daily:central','daily:north','daily:south')`),
+  check("streaks_subject_hash_ck", sql`${table.version} = 1 or (length(${table.anonymousSubjectHash}) = 64 and ${table.anonymousSubjectHash} = lower(${table.anonymousSubjectHash}) and ${table.anonymousSubjectHash} not glob '*[^0-9a-f]*')`),
+  check("streaks_qualification_ck", sql`${table.version} = 1 or (${table.lastQualifyingDate} is not null and ${table.lastQualifiedAt} is not null and length(${table.lastQualifyingDate}) = 10 and ${table.lastQualifyingDate} glob '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]')`),
+  check("streaks_retention_ck", sql`${table.version} = 1 or ${table.expiresAt} - ${table.lastQualifiedAt} = 15552000000`),
 ]);
 
 export const masterySeals = sqliteTable("mastery_seals", {
@@ -640,7 +693,7 @@ export const featureFlagOverrides = sqliteTable("feature_flag_overrides", {
 export const durableTableNames = [
   "quiz_editions", "questions", "question_sources", "quiz_attempts", "answers", "results",
   "challenges", "challenge_attempts", "referral_events", "share_events", "daily_challenges",
-  "streaks", "mastery_seals", "parties", "party_players", "media_assets",
+  "daily_challenge_completions", "daily_operation_limits", "streaks", "mastery_seals", "parties", "party_players", "media_assets",
   "commerce_orders", "commerce_entitlements", "stripe_webhook_events",
   "consent_preferences", "analytics_events", "feature_flag_overrides",
 ] as const;

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   assertCommerceReadiness,
+  assertDailyChallengeReadiness,
   assertSitesCompatibleFeatureFlags,
   assertDynamicResultsStorage,
   defaultFeatureFlags,
@@ -45,4 +46,15 @@ test("ChatGPT Sites rejects commerce", () => {
   assert.doesNotThrow(() => assertSitesCompatibleFeatureFlags(flags, { authorisedReviewFixtures: true }));
   assert.throws(() => assertCommerceReadiness(flags, { d1Configured: false, completeConfiguration: false, approvedRateLimiter: false, authorisedReviewFixtures: false }), /fails closed/i);
   assert.doesNotThrow(() => assertCommerceReadiness(flags, { d1Configured: false, completeConfiguration: false, approvedRateLimiter: false, authorisedReviewFixtures: true }));
+});
+
+test("daily challenges and streaks default off and fail closed without storage and secret", () => {
+  assert.equal(defaultFeatureFlags.daily_challenge, false);
+  assert.equal(defaultFeatureFlags.streaks, false);
+  const daily = resolveFeatureFlags({ WYBP_FEATURE_DAILY_CHALLENGE: "true" });
+  assert.throws(() => assertDailyChallengeReadiness(daily, { d1Configured: false, serverSecretConfigured: false }), /require approved D1 storage/i);
+  assert.doesNotThrow(() => assertDailyChallengeReadiness(daily, { d1Configured: true, serverSecretConfigured: true }));
+  const streakOnly = resolveFeatureFlags({ WYBP_FEATURE_STREAKS: "true" });
+  assert.throws(() => assertDailyChallengeReadiness(streakOnly, { d1Configured: true, serverSecretConfigured: true }), /require.*daily_challenge/i);
+  assert.equal(resolveFeatureFlags({ QUERY_DAILY_CHALLENGE: "true", WYBP_FEATURE_DAILY_CHALLENGE: "false" }).daily_challenge, false);
 });

@@ -14,6 +14,7 @@ import {
 import type { LocalAnalyticsEvent } from "./analyticsLocal.ts";
 import { activeFeatureFlags } from "./featureFlags.ts";
 import { clearApplicationLocalData, PRIVACY_CLEAR_EVENT } from "./storageInventory.ts";
+import { clearDailyOwnership, clearDailyRecovery, createDailyIdempotencyKey, readDailyOwnershipForClear } from "./dailyChallengeClient.ts";
 
 declare const __WYBP_REVIEW_PRIVACY_FIXTURES__: boolean | undefined;
 type Choice = "unknown" | "accepted" | "rejected";
@@ -51,6 +52,8 @@ export default function AnalyticsConsent() {
   const [choice,setChoice]=useState<Choice>("unknown");
   const [manageOpen,setManageOpen]=useState(false);
   const [confirmClear,setConfirmClear]=useState(false);
+  const [confirmStreakClear,setConfirmStreakClear]=useState(false);
+  const [clearingStreak,setClearingStreak]=useState(false);
   const [announcement,setAnnouncement]=useState("");
   const [fixture,setFixture]=useState<ReviewScenario|null>(null);
   const sessionCredential=useRef<string|null>(null);
@@ -89,7 +92,7 @@ export default function AnalyticsConsent() {
     if(!manageOpen)return;
     closeRef.current?.focus({preventScroll:true});
     const keydown=(keyboardEvent:KeyboardEvent)=>{
-      if(keyboardEvent.key==="Escape"){keyboardEvent.preventDefault();setManageOpen(false);setConfirmClear(false);queueMicrotask(()=>(choice==="unknown"?initialTriggerRef:floatingTriggerRef).current?.focus());return;}
+      if(keyboardEvent.key==="Escape"){keyboardEvent.preventDefault();setManageOpen(false);setConfirmClear(false);setConfirmStreakClear(false);queueMicrotask(()=>(choice==="unknown"?initialTriggerRef:floatingTriggerRef).current?.focus());return;}
       if(keyboardEvent.key!=="Tab"||!dialogRef.current)return;
       const controls=[...dialogRef.current.querySelectorAll<HTMLElement>('a[href],button:not([disabled]),input:not([disabled]),[tabindex]:not([tabindex="-1"])')];
       if(!controls.length)return;const first=controls[0];const last=controls[controls.length-1];if(keyboardEvent.shiftKey&&document.activeElement===first){keyboardEvent.preventDefault();last.focus();}else if(!keyboardEvent.shiftKey&&document.activeElement===last){keyboardEvent.preventDefault();first.focus();}
@@ -97,7 +100,7 @@ export default function AnalyticsConsent() {
     document.addEventListener("keydown",keydown);return()=>document.removeEventListener("keydown",keydown);
   },[choice,manageOpen]);
 
-  const close=()=>{setManageOpen(false);setConfirmClear(false);queueMicrotask(()=>(choice==="unknown"?initialTriggerRef:floatingTriggerRef).current?.focus());};
+  const close=()=>{setManageOpen(false);setConfirmClear(false);setConfirmStreakClear(false);queueMicrotask(()=>(choice==="unknown"?initialTriggerRef:floatingTriggerRef).current?.focus());};
   const accept=async()=>{
     if(fixture){setChoice("accepted");setAnnouncement("Optional analytics allowed in this synthetic review fixture. No analytics request was sent.");return;}
     if(!activeFeatureFlags.first_party_analytics){setAnnouncement("Optional analytics is not active in this build.");return;}
@@ -115,6 +118,19 @@ export default function AnalyticsConsent() {
     window.dispatchEvent(new CustomEvent(PRIVACY_CLEAR_EVENT,{detail:{removedCount:result.removed.length}}));
     setChoice("unknown");setConfirmClear(false);setAnnouncement("Local application data cleared. In-memory photos and generated media were released where open. Analytics is inactive until you choose Allow again. Downloaded files and server-held records were not deleted.");
   };
+  const clearStreak=async()=>{
+    if(clearingStreak)return;
+    const session=readDailyOwnershipForClear(localStorage);
+    clearDailyRecovery(localStorage);
+    if(!session.available){clearDailyOwnership(localStorage);setConfirmStreakClear(false);setAnnouncement("No available streak ownership credential was found. Daily recovery on this device was cleared without creating a new identifier.");return;}
+    setClearingStreak(true);
+    try{
+      const response=await fetch("/streaks/clear",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({anonymousSessionCredential:session.sessionId,idempotencyKey:createDailyIdempotencyKey()})});
+      if(!response.ok)throw new Error("clear");
+      clearDailyOwnership(localStorage);setConfirmStreakClear(false);setAnnouncement("Your streak is unavailable immediately and its server record has been removed. Its device credential and daily recovery were also cleared.");
+    }catch{setAnnouncement("Your streak could not be cleared right now. No new identifier was created; please retry when the service is available.");}
+    finally{setClearingStreak(false);}
+  };
   const analyticsControlsAvailable=activeFeatureFlags.first_party_analytics||Boolean(fixture);
   const showInitial=analyticsControlsAvailable&&choice==="unknown"&&!manageOpen;
   const fixtureNotice=fixture?fixtureNotices[fixture]:undefined;
@@ -131,9 +147,10 @@ export default function AnalyticsConsent() {
       <div ref={dialogRef} className="privacy-dialog" role="dialog" aria-modal="true" aria-labelledby="privacy-dialog-title" aria-describedby="privacy-dialog-summary">
         <header><div><p>Your controls</p><h2 id="privacy-dialog-title">Privacy choices</h2></div><button ref={closeRef} type="button" onClick={close} aria-label="Close Privacy choices">×</button></header>
         <p id="privacy-dialog-summary">Required browser storage supports features you request. Optional first-party analytics is separate, off until affirmative consent, and never required for the quiz.</p>
-        <section aria-labelledby="required-storage-title"><h3 id="required-storage-title">Required functionality</h3><p>Quiz recovery, tab-scoped anonymous ownership, deliberate nomination state and payment-return state are used only for their requested functions. They are never repurposed for advertising or marketing.</p></section>
+        <section aria-labelledby="required-storage-title"><h3 id="required-storage-title">Required functionality</h3><p>Quiz recovery, anonymous ownership, deliberate nomination state, daily streak continuity and payment-return state are used only for their requested functions. They are never repurposed for advertising or marketing.</p></section>
         <section aria-labelledby="optional-analytics-title"><h3 id="optional-analytics-title">Optional first-party analytics</h3><p data-current-analytics-choice>Current choice: <strong>{!analyticsControlsAvailable?"Not active in this build":choice==="accepted"?"Allowed":choice==="rejected"?"Not allowed":"No choice yet"}</strong></p><p>When allowed, controlled event names and coarse product fields may be sent first party. There is no advertising, cross-site tracking, individual profiling, third-party analytics, pixel, tag or marketing consent.</p><div className="privacy-equal-choices"><button type="button" onClick={()=>void accept()} disabled={!analyticsControlsAvailable}>Allow analytics</button><button type="button" onClick={reject} disabled={!analyticsControlsAvailable}>Do not allow</button></div></section>
         <section className="privacy-clear" aria-labelledby="privacy-clear-title"><h3 id="privacy-clear-title">Clear my local data</h3><p>Clears only this application’s allowlisted quiz recovery, best scores, anonymous and analytics credentials, analytics choice, nomination state and pending-order reference. It also asks open game surfaces to release names, photographs and generated-media references.</p><p>It cannot delete downloaded files, public results, challenges, orders, entitlements or third-party copies. Server-held requests use separate ownership checks.</p>{confirmClear?<div className="privacy-clear-confirm" role="alert"><strong>Clear this application’s local data now?</strong><div><button type="button" onClick={clearLocal}>Yes, clear local data</button><button type="button" onClick={()=>setConfirmClear(false)}>Cancel</button></div></div>:<button type="button" onClick={()=>setConfirmClear(true)}>Review and clear local data</button>}</section>
+        {activeFeatureFlags.streaks&&<section className="privacy-clear" aria-labelledby="privacy-streak-clear-title"><h3 id="privacy-streak-clear-title">Clear my streak data</h3><p>Makes every server-held regional streak tied to this device’s functional daily ownership credential unavailable immediately and removes that credential and daily recovery from this device. It does not create a replacement identifier.</p>{confirmStreakClear?<div className="privacy-clear-confirm" role="alert"><strong>Permanently clear your streak data?</strong><div><button type="button" disabled={clearingStreak} onClick={()=>void clearStreak()}>Yes, clear my streak</button><button type="button" disabled={clearingStreak} onClick={()=>setConfirmStreakClear(false)}>Cancel</button></div></div>:<button type="button" onClick={()=>setConfirmStreakClear(true)}>Review and clear streak data</button>}</section>}
         {announcement&&<p className="privacy-visible-status" role="status">{announcement}</p>}
         <nav aria-label="Full privacy information"><Link href="/privacy">Privacy Notice</Link><Link href="/privacy/storage">Cookie and Local Storage Notice</Link><Link href="/privacy/requests">Privacy requests</Link></nav>
       </div>

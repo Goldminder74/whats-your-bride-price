@@ -33,7 +33,7 @@ test("migration 0007 is additive, replay-inert and records the required selectio
   const database = createIsolatedDatabase();
   try {
     const plan = await loadMigrationPlan();
-    assert.equal(plan.at(-1).id, "0007_ancient_yellow_claw");
+    assert.equal(plan[7].id, "0007_ancient_yellow_claw");
     assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, plan.map((migration) => migration.id));
     assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, []);
     const questionColumns = new Set(database.prepare("SELECT name FROM pragma_table_info('questions')").all().map((row) => row.name));

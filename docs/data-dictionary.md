@@ -178,21 +178,41 @@ Projection: owner-only aggregate analytics.
 
 Purpose: deterministic date and edition selection, inactive until its feature is approved.
 
-Fields: `id`, `challenge_date`, `edition_id`, `question_set_version`, `deterministic_seed_hash`, `selected_question_versions_json`, `state`, `expires_at`, `version`, `created_at`, `updated_at`.
+Fields: `id`, `challenge_date`, `edition_id`, `question_set_version`, `scoring_version`, `selection_policy_version`, `deterministic_seed_hash`, `selected_question_versions_json`, `state`, `expires_at`, `version`, `created_at`, `updated_at`.
 
 Indexes: `daily_challenges_date_edition_uq`; `daily_challenges_state_date_idx`.
 
 Projection: active date, edition and safe question selection only after the daily-challenge feature is enabled.
 
+### `daily_challenge_completions`
+
+Purpose: bind exactly one authoritative official completion to a daily definition and anonymous functional owner. Practice completions never enter this table.
+
+Fields: `id`, `daily_challenge_id`, `attempt_id`, `result_id`, `anonymous_subject_hash`, `edition_id`, `challenge_date`, `scoring_version`, `completed_at`, `version`, `created_at`, `updated_at`.
+
+Indexes: unique owner/daily, attempt and result indexes; private subject/date lookup. Foreign keys preserve exact daily, attempt, result and edition authority.
+
+Projection: none directly; only the safe daily completion result and private ownership state.
+
+### `daily_operation_limits`
+
+Purpose: bounded first-party abuse control for start, complete and clear POST operations without storing raw credentials.
+
+Fields: random `id`, HMAC-derived `rate_key_hash`, controlled `action`, minute `window_started_at`, `request_count`, `expires_at`, `created_at`, `updated_at`.
+
+Projection: none. It is security-only and cannot be reused for analytics or marketing.
+
 ### `streaks`
 
 Purpose: privacy-minimised continuity record linked to a hashed approved anonymous identity.
 
-Fields: `id`, `anonymous_subject_hash`, `streak_type`, `current_count`, `longest_count`, optional `last_qualifying_date`, `rule_version`, `expires_at`, `anonymized_at`, `deleted_at`, `version`, `created_at`, `updated_at`.
+Fields: `id`, `anonymous_subject_hash`, `streak_type`, `current_count`, `longest_count`, optional legacy `last_qualifying_date`, optional legacy `last_qualified_at`, `rule_version`, `expires_at`, `anonymized_at`, `deleted_at`, `version`, `created_at`, `updated_at`. Prompt 22 records are version 2 or later and require both qualifying fields.
 
 Indexes: `streaks_subject_type_uq`; `streaks_expiry_idx`.
 
-Projection: private functional state only.
+Constraints: Prompt 22 rows accept only regional daily streak types, a lowercase SHA-256 ownership hash, a valid UTC date and `expires_at - last_qualified_at = 15,552,000,000` milliseconds (exactly 180 days). Version-1 compatibility preserves inactive historical rows during upgrade but the Prompt 22 repository never exposes them.
+
+Projection: private functional state only, unavailable at `expires_at`. Expired rows are removed by a bounded operation within seven days; Clear my streak data removes them immediately.
 
 ### `mastery_seals`
 

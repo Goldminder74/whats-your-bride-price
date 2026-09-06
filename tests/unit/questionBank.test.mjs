@@ -129,11 +129,12 @@ test("challenge-compatible selection preserves exact versions and refuses an una
 });
 
 test("browser selection input cannot request difficulty, answer keys, counts or raw seeds", () => {
-  const valid = { region: "west", anonymousSubjectHash: "a".repeat(64), idempotencyKey: "selection-request-0001" };
+  const valid = { region: "west", anonymousSessionCredential: "a".repeat(32), idempotencyKey: "selection-request-0001" };
   assert.deepEqual(validatePublicSelectionRequest(valid), valid);
   for (const extra of [{ difficulty: "introductory" }, { acceptedAnswers: [["o1"]] }, { count: 1 }, { seed: "easy" }]) {
     assert.throws(() => validatePublicSelectionRequest({ ...valid, ...extra }), /selection_request_field_not_allowed/);
   }
+  assert.throws(() => validatePublicSelectionRequest({ ...valid, anonymousSessionCredential: "a".repeat(64) }), /selection_subject_invalid/);
 });
 
 test("strict JSON and CSV workflows round-trip, reject unsafe imports and never perform writes", async () => {

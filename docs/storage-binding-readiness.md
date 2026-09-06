@@ -114,3 +114,9 @@ Activation requires: approved D1 binding and migration state through `0006`; `WY
 ## Prompt 19 privacy-control readiness, 31 August 2026
 
 At its own checkpoint, Prompt 19 added browser privacy controls, a public-safe storage inventory and draft legal routes without a schema change. Prompt 20 later added the local-only `0007` question-bank migration. `.openai/hosting.json` remains `d1: null` and `r2: null`; no hosted database, object store, migration, seed or retention process was accessed or activated. Production still requires every gate in `docs/legal-content-activation-checklist.md`, explicit binding and migration approval, and a separate deployment approval.
+
+## Prompt 22 daily and streak readiness, 6 September 2026
+
+Exactly one additional local migration, `0008_simple_nocturne.sql`, adds daily scoring/selection authority, attempt play mode and daily linkage, official-completion uniqueness, bounded operation-limit storage and the authoritative streak qualification timestamp. It is additive and preserves every version-1 historical row. Version-gated triggers reject invalid new daily authority, play modes and any Prompt 22 streak whose expiry is not exactly 180 days after qualification.
+
+The `daily_challenge` and `streaks` flags remain false. Activation requires both flags to be deliberately configured, approved D1 through migration 0008, a cryptographically strong server-only `WYBP_DAILY_SECRET`, same-origin POST enforcement, operational rate limiting, a UTC scheduler that invokes the bounded expiry purge within seven days, and completed privacy and legal review. No hosted migration, seed, feature activation or deployment is part of Prompt 22.

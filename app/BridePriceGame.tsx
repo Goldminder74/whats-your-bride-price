@@ -4,6 +4,7 @@
 /* eslint-disable react-hooks/set-state-in-effect -- URL hydration and result commits are deliberate lifecycle transitions */
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { getOrCreateAnonymousSession } from "./anonymousSession";
 import { approvedAvatarRegistry, defaultAvatarId, isApprovedAvatarId, resolveApprovedAvatar } from "./avatarRegistry";
 import type { SafeguardReviewFixture, TrustedChallengeEntry } from "./challengeEntry";
@@ -1283,6 +1284,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               <p className="entry-safeguard safeguard-decision" id="home-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
               <div className="cinema-actions">
                 <button className="play-now" aria-describedby="home-entry-safeguard" onClick={() => setScreen("setup")}><span>▶</span> Start the challenge</button>
+                {activeFeatureFlags.daily_challenge && <Link className="daily-entry" href="/daily/west">Play today’s shared daily</Link>}
                 <button className="trailer-button" onClick={() => setMenuOpen(true)}><span>ⓘ</span> What is this?</button>
               </div>
               <div className="hero-stats"><span><b>5</b> worlds</span><span><b>60</b> challenges</span><span><b>12</b> avatar heroes</span></div>

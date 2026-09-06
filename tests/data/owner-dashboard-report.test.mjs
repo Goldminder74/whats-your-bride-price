@@ -123,10 +123,10 @@ test("report SQL uses existing time, session and retention predicates without de
   } finally { database.close(); }
 });
 
-test("Prompt 20 adds only migration 0007 and preserves the migration checksum manifest", async () => {
+test("Prompt 20 migration remains intact after the separate Prompt 22 migration", async () => {
   const files = await readdir(new URL("../../drizzle", import.meta.url));
   assert.deepEqual(files.filter((name) => /^0007_.*\.sql$/.test(name)), ["0007_ancient_yellow_claw.sql"]);
   const ledger = JSON.parse(await readFile(new URL("../../drizzle/migration-checksums.json", import.meta.url), "utf8"));
-  assert.equal(Object.keys(ledger).length, 8);
-  assert.deepEqual(Object.keys(ledger).sort(), files.filter((name) => /^000[0-7].*\.sql$/.test(name)).sort());
+  assert.equal(Object.keys(ledger).length, 9);
+  assert.deepEqual(Object.keys(ledger).sort(), files.filter((name) => /^000[0-8].*\.sql$/.test(name)).sort());
 });

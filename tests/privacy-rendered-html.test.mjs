@@ -17,7 +17,7 @@ test("legal routes fail safely without invented controller details",async()=>{
 });
 
 test("storage notice and machine inventory stay synchronised",async()=>{
-  const notice=await(await render("/privacy/storage")).text();const response=await render("/privacy/storage/inventory");assert.equal(response.status,200);const inventory=await response.json();assert.equal(inventory.noticeVersion,"privacy-storage-notice-v1");assert.ok(inventory.entries.length>=20);for(const item of inventory.entries)assert.match(notice,new RegExp(item.name.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"i"));
+  const notice=await(await render("/privacy/storage")).text();const response=await render("/privacy/storage/inventory");assert.equal(response.status,200);const inventory=await response.json();assert.equal(inventory.noticeVersion,"privacy-storage-notice-v2");assert.ok(inventory.entries.length>=21);for(const item of inventory.entries)assert.match(notice,new RegExp(item.name.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"i"));
 });
 
 test("ordinary query parameters cannot enable privacy fixtures or analytics",async()=>{

@@ -57,10 +57,11 @@ async function completeChallengeQuiz(page: Page) {
   await page.getByRole("button", { name: "Accept challenge" }).click();
   await page.getByRole("button", { name: "Continue without a photo" }).click();
   for (const [questionIndex, question] of regions.west.questions.entries()) {
+    await expect(page.getByText(`Question ${questionIndex + 1} of 12`).last()).toBeVisible();
     const buttons = page.locator(".answer-grid > button");
     for (const option of question.correct) await buttons.nth(option).click();
     if (question.kind === "multi") await page.getByRole("button", { name: /Lock in 3\/3 answers/ }).click();
-    await page.locator(".answer-reveal").getByRole("button", { name: questionIndex === 11 ? /Reveal my result/ : /Next challenge/ }).click({ force: true });
+    await page.locator(".answer-reveal").getByRole("button", { name: questionIndex === 11 ? /Reveal my result/ : /Next challenge/ }).click();
     if (questionIndex < 11 && (questionIndex + 1) % 3 === 0) await page.getByRole("button", { name: /Claim gem/ }).click();
   }
   await expect(page.locator(".challenge-comparison")).toBeVisible();
