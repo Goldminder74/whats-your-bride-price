@@ -33,6 +33,7 @@ async function completeChallengeQuiz(page: Page, correctCount: number) {
   await page.getByRole("button", { name: "Accept challenge" }).click();
   await page.getByRole("button", { name: "Continue without a photo" }).click();
   for (const [questionIndex, question] of regions.west.questions.entries()) {
+    await expect(page.getByText(`Question ${questionIndex + 1} of 12`).last()).toBeVisible();
     const buttons = page.locator(".answer-grid > button");
     let choice = question.correct;
     if (questionIndex >= correctCount) {
