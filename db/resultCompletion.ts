@@ -14,7 +14,7 @@ export const RESULT_COMPLETION_RETENTION_MS = 90 * 86_400_000;
 export const RESULT_COMPLETION_COLLISION_LIMIT = 5;
 
 const IDEMPOTENCY_KEY_PATTERN = /^[A-Za-z0-9._~-]{16,128}$/;
-const QUESTION_ID_PATTERN = /^(west|east|central|north|south)_q(0[1-9]|1[0-2])$/;
+const QUESTION_ID_PATTERN = /^(west|east|central|north|south)_[a-z0-9][a-z0-9_-]{2,55}$/;
 const OPTION_ID_PATTERN = /^o[1-9][0-9]?$/;
 
 export type ResultCompletionProjection = Readonly<{ resultSlug: string }>;
@@ -25,6 +25,7 @@ export type AuthoritativeResultQuestion = Readonly<{
   version: number;
   optionIds: readonly string[];
   correctOptionIds: readonly string[];
+  acceptedOptionSets: readonly (readonly string[])[];
   scoringWeight: number;
 }>;
 
@@ -65,7 +66,7 @@ export type ResultCompletionInsertOutcome = "created" | "collision";
 export interface ResultCompletionRepository {
   readonly storageAvailable: boolean;
   getByIdempotencyHash(idempotencyHash: string): Promise<ExistingCompletedResult | null>;
-  getAuthority(questionStableIds: readonly string[]): Promise<Readonly<{ editionId: string; edition: RegionKey; questions: readonly AuthoritativeResultQuestion[] }> | null>;
+  getAuthority(questionStableIds: readonly string[], now?: number): Promise<Readonly<{ editionId: string; edition: RegionKey; questions: readonly AuthoritativeResultQuestion[] }> | null>;
   completeAtomically(record: NewCompletedResult): Promise<ResultCompletionInsertOutcome>;
 }
 
@@ -171,7 +172,8 @@ export class ResultCompletionService {
       if (existing.anonymousOwnerHash !== ownerHash) return fail("completion_idempotency_conflict");
       return Object.freeze({ resultSlug: existing.publicSlug });
     }
-    const authority = await this.repository.getAuthority(request.answers.map((answer) => answer.questionStableId));
+    const now = this.options.now?.() ?? Date.now();
+    const authority = await this.repository.getAuthority(request.answers.map((answer) => answer.questionStableId), now);
     if (!authority || authority.questions.length !== 12) return fail("completion_authority_unavailable");
     const submitted = new Map(request.answers.map((answer) => [answer.questionStableId, answer]));
     const answerRows: NewCompletedResult["answers"][number][] = [];
@@ -183,7 +185,7 @@ export class ResultCompletionService {
       if (!answer || question.scoringWeight !== 1 || !answer.selectedOptionIds.every((id) => question.optionIds.includes(id))) {
         return fail("completion_answers_invalid");
       }
-      const correct = exactSet(answer.selectedOptionIds, question.correctOptionIds);
+      const correct = (question.acceptedOptionSets || [question.correctOptionIds]).some((accepted) => exactSet(answer.selectedOptionIds, accepted));
       score += correct ? question.scoringWeight : 0;
       total += question.scoringWeight;
       selectedQuestions.push({ stableId: question.stableId, version: question.version });
@@ -197,7 +199,6 @@ export class ResultCompletionService {
       }));
     }
     if (submitted.size !== authority.questions.length || total !== 12) return fail("completion_authority_unavailable");
-    const now = this.options.now?.() ?? Date.now();
     const randomSource = this.options.randomSource ?? crypto.getRandomValues.bind(crypto);
     for (let attempt = 0; attempt < RESULT_COMPLETION_COLLISION_LIMIT; attempt += 1) {
       const nonce = () => secureHex(16, randomSource);
@@ -242,6 +243,7 @@ type AuthorityRow = Readonly<{
   version: number;
   answer_options_json: string;
   correct_answer_json: string;
+  accepted_answers_json: string;
   scoring_weight: number;
 }>;
 
@@ -268,16 +270,25 @@ export class D1ResultCompletionRepository implements ResultCompletionRepository 
     }) : null;
   }
 
-  async getAuthority(questionStableIds: readonly string[]): Promise<Readonly<{ editionId: string; edition: RegionKey; questions: readonly AuthoritativeResultQuestion[] }> | null> {
+  async getAuthority(questionStableIds: readonly string[], now = Date.now()): Promise<Readonly<{ editionId: string; edition: RegionKey; questions: readonly AuthoritativeResultQuestion[] }> | null> {
     if (questionStableIds.length !== 12 || new Set(questionStableIds).size !== 12) return null;
     const placeholders = questionStableIds.map((_, index) => `?${index + 1}`).join(", ");
     const result = await this.database.prepare(`SELECT qe.id AS edition_id, qe.edition_key, q.id, q.stable_id, q.version,
-      q.answer_options_json, q.correct_answer_json, q.scoring_weight
+      q.answer_options_json, q.correct_answer_json, q.accepted_answers_json, q.scoring_weight
       FROM quiz_editions qe
       JOIN questions q ON q.edition_id = qe.id
       WHERE q.stable_id IN (${placeholders}) AND qe.status = 'active'
         AND q.publication_status = 'published' AND q.source_review_status = 'approved'
-      ORDER BY q.stable_id`).bind(...questionStableIds).all<AuthorityRow & { edition_key: RegionKey }>();
+        AND q.published_at <= ?${questionStableIds.length + 1} AND q.retired_at IS NULL
+        AND (q.valid_from IS NULL OR q.valid_from <= ?${questionStableIds.length + 1})
+        AND (q.valid_until IS NULL OR q.valid_until > ?${questionStableIds.length + 1})
+        AND q.version = (SELECT max(latest.version) FROM questions latest
+          WHERE latest.stable_id=q.stable_id AND latest.edition_id=q.edition_id
+            AND latest.publication_status='published' AND latest.source_review_status='approved'
+            AND latest.published_at <= ?${questionStableIds.length + 1} AND latest.retired_at IS NULL
+            AND (latest.valid_from IS NULL OR latest.valid_from <= ?${questionStableIds.length + 1})
+            AND (latest.valid_until IS NULL OR latest.valid_until > ?${questionStableIds.length + 1}))
+      ORDER BY q.stable_id`).bind(...questionStableIds, now).all<AuthorityRow & { edition_key: RegionKey }>();
     if (!result.success || result.results.length !== 12) return null;
     const edition = result.results[0].edition_key;
     if (!(edition in regions) || result.results.some((row) => row.edition_key !== edition || row.edition_id !== result.results[0].edition_id)) return null;
@@ -286,15 +297,20 @@ export class D1ResultCompletionRepository implements ResultCompletionRepository 
       try {
         const options = JSON.parse(row.answer_options_json) as Array<{ id?: unknown }>;
         const correct = JSON.parse(row.correct_answer_json) as unknown;
+        const alternatives = JSON.parse(row.accepted_answers_json) as unknown;
         if (!Array.isArray(options) || !Array.isArray(correct)
+          || !Array.isArray(alternatives)
           || options.some((option) => typeof option?.id !== "string")
-          || correct.some((id) => typeof id !== "string")) return null;
+          || correct.some((id) => typeof id !== "string")
+          || alternatives.some((set) => !Array.isArray(set) || set.some((id) => typeof id !== "string"))) return null;
+        const acceptedOptionSets = alternatives.length ? alternatives as string[][] : [correct as string[]];
         questions.push(Object.freeze({
           id: row.id,
           stableId: row.stable_id,
           version: row.version,
           optionIds: Object.freeze(options.map((option) => option.id as string)),
           correctOptionIds: Object.freeze(correct as string[]),
+          acceptedOptionSets: Object.freeze(acceptedOptionSets.map((set) => Object.freeze([...set]))),
           scoringWeight: row.scoring_weight,
         }));
       } catch { return null; }

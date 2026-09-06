@@ -65,8 +65,8 @@ async function fixture() {
     completed_at, expires_at, version, created_at, updated_at
   ) VALUES (
     'attempt_inviter_synthetic','edition_west_v1',?,'approved-60-v1','binary-exact-set-v1',
-    '[]','completed',?, ?, ?, ?, 1, ?, ?
-  )`).run(inviterSubject, "d".repeat(64), now - 10_000, now - 1000, now + 86_400_000, now - 10_000, now - 1000);
+    ?,'completed',?, ?, ?, ?, 1, ?, ?
+  )`).run(inviterSubject, JSON.stringify(Array.from({ length: 12 }, (_, index) => ({ stableId: `west_q${String(index + 1).padStart(2, "0")}`, version: 1 }))), "d".repeat(64), now - 10_000, now - 1000, now + 86_400_000, now - 10_000, now - 1000);
   sqlite.prepare(`INSERT INTO results (
     id, public_slug, attempt_id, edition_id, score, total, tier, scoring_version,
     question_set_version, scoring_snapshot_json, safe_avatar_id, reviewed_display_name,
@@ -116,6 +116,9 @@ test("D1 acceptance atomically consumes one use and creates linked minimal recor
       challenge_code: code,
       anonymous_subject_hash: recipientSubject,
     });
+    const authorities = sqlite.prepare(`SELECT selected_question_versions_json,question_set_version,
+      selection_policy_version,selection_seed_reference FROM quiz_attempts ORDER BY id`).all();
+    assert.deepEqual({ ...authorities[0] }, { ...authorities[1] });
     const stored = JSON.stringify(sqlite.prepare("SELECT * FROM challenge_attempts").get());
     assert.doesNotMatch(stored, /recipient-acceptance-key|privatePhoto|revocation/i);
   } finally { sqlite.close(); }

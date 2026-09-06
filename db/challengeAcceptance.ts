@@ -1,7 +1,7 @@
 import { regions, type RegionKey } from "../app/gameData.ts";
 import { constantTimeEqual } from "./deletionReadiness.ts";
 import type { AtomicD1Database } from "./repositories.ts";
-import { QUESTION_SET_VERSION, SCORING_VERSION } from "./seeds/development.ts";
+import { SCORING_VERSION } from "./seeds/development.ts";
 import type {
   ChallengeCreationRateLimiter,
   ChallengeRandomSource,
@@ -29,6 +29,10 @@ export type ChallengeForAcceptance = Readonly<{
   editionKey: string;
   editionLabel: string;
   scoringVersion: string;
+  questionSetVersion: string;
+  selectedQuestionVersionsJson: string;
+  selectionPolicyVersion: string;
+  selectionSeedReference: string | null;
   total: number;
   expiresAt: number;
 }>;
@@ -52,7 +56,10 @@ export type NewChallengeAcceptance = Readonly<{
   quizAttemptIdempotencyHash: string;
   editionId: string;
   scoringVersion: string;
+  questionSetVersion: string;
   selectedQuestionVersionsJson: string;
+  selectionPolicyVersion: string;
+  selectionSeedReference: string | null;
   acceptedAt: number;
   expiresAt: number;
 }>;
@@ -140,11 +147,23 @@ export function validateChallengeAcceptanceInput(input: Readonly<{
   });
 }
 
-function questionVersionSnapshot(edition: RegionKey): string {
-  return JSON.stringify(regions[edition].questions.map((_, index) => ({
-    stableId: `${edition}_q${String(index + 1).padStart(2, "0")}`,
-    version: 1,
-  })));
+function validQuestionVersionSnapshot(value: string, edition: RegionKey, expectedCount: number): string | null {
+  if (value.length > 16_384) return null;
+  try {
+    const parsed = JSON.parse(value) as unknown;
+    if (!Array.isArray(parsed) || parsed.length !== expectedCount) return null;
+    const seen = new Set<string>();
+    for (const item of parsed) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) return null;
+      const stableId = (item as Record<string, unknown>).stableId;
+      const version = (item as Record<string, unknown>).version;
+      if (typeof stableId !== "string" || !stableId.startsWith(`${edition}_`) || !Number.isInteger(version) || Number(version) < 1) return null;
+      const key = `${stableId}@${version}`;
+      if (seen.has(key)) return null;
+      seen.add(key);
+    }
+    return JSON.stringify(parsed);
+  } catch { return null; }
 }
 
 function publicAcceptance(record: StoredChallengeAcceptance, reused: boolean): ChallengeAcceptancePublicData {
@@ -223,6 +242,8 @@ export class ChallengeAcceptanceService {
     ) return fail("challenge_unavailable");
 
     const edition = challenge.editionKey as RegionKey;
+    const compatibleSnapshot = validQuestionVersionSnapshot(challenge.selectedQuestionVersionsJson, edition, challenge.total);
+    if (!compatibleSnapshot || !challenge.questionSetVersion || !challenge.selectionPolicyVersion) return fail("challenge_unavailable");
     const randomSource = this.options.randomSource ?? defaultRandomSource;
     for (let attempt = 0; attempt < CHALLENGE_ACCEPTANCE_COLLISION_LIMIT; attempt += 1) {
       const quizAttemptId = `attempt_${secureHex(24, randomSource)}`;
@@ -238,7 +259,10 @@ export class ChallengeAcceptanceService {
         ),
         editionId: challenge.editionId,
         scoringVersion: challenge.scoringVersion,
-        selectedQuestionVersionsJson: questionVersionSnapshot(edition),
+        questionSetVersion: challenge.questionSetVersion,
+        selectedQuestionVersionsJson: compatibleSnapshot,
+        selectionPolicyVersion: challenge.selectionPolicyVersion,
+        selectionSeedReference: challenge.selectionSeedReference,
         acceptedAt: now,
         expiresAt: Math.min(now + CHALLENGE_ACCEPTANCE_LIFETIME_MS, challenge.expiresAt),
       });
@@ -299,14 +323,20 @@ export class D1ChallengeAcceptanceRepository implements ChallengeAcceptanceRepos
       edition_key: string;
       edition_label: string;
       scoring_version: string;
+      question_set_version: string;
+      selected_question_versions_json: string;
+      selection_policy_version: string;
+      selection_seed_reference: string | null;
       total: number;
       expires_at: number;
     }>(this.database, `SELECT
       c.id, c.public_code, c.edition_id, qe.edition_key, qe.name AS edition_label,
-      c.scoring_version, c.total, c.expires_at
+      c.scoring_version, qa.question_set_version, qa.selected_question_versions_json,
+      qa.selection_policy_version, qa.selection_seed_reference, c.total, c.expires_at
     FROM challenges c
     JOIN quiz_editions qe ON qe.id = c.edition_id
     JOIN results r ON r.id = c.inviter_result_id
+    JOIN quiz_attempts qa ON qa.id = r.attempt_id
     WHERE c.public_code = ?1
       AND c.state = 'active'
       AND c.expires_at > ?2
@@ -321,6 +351,10 @@ export class D1ChallengeAcceptanceRepository implements ChallengeAcceptanceRepos
       editionKey: row.edition_key,
       editionLabel: row.edition_label,
       scoringVersion: row.scoring_version,
+      questionSetVersion: row.question_set_version,
+      selectedQuestionVersionsJson: row.selected_question_versions_json,
+      selectionPolicyVersion: row.selection_policy_version,
+      selectionSeedReference: row.selection_seed_reference,
       total: row.total,
       expiresAt: row.expires_at,
     }) : null;
@@ -367,17 +401,20 @@ export class D1ChallengeAcceptanceRepository implements ChallengeAcceptanceRepos
         ),
         this.database.prepare(`INSERT INTO quiz_attempts (
           id, edition_id, anonymous_subject_hash, question_set_version, scoring_version,
-          selected_question_versions_json, status, idempotency_key_hash, referral_code,
+          selected_question_versions_json, selection_policy_version, selection_seed_reference,
+          status, idempotency_key_hash, referral_code,
           challenge_code, started_at, completed_at, expires_at, version, created_at, updated_at
         )
-        SELECT ?1, ?2, ?3, ?4, ?5, ?6, 'in_progress', ?7, ?8, ?8, ?9, NULL, ?10, 1, ?9, ?9
+        SELECT ?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, 'in_progress', ?9, ?10, ?10, ?11, NULL, ?12, 1, ?11, ?11
         WHERE changes() = 1`).bind(
           record.quizAttemptId,
           record.editionId,
           record.anonymousSubjectHash,
-          QUESTION_SET_VERSION,
+          record.questionSetVersion,
           record.scoringVersion,
           record.selectedQuestionVersionsJson,
+          record.selectionPolicyVersion,
+          record.selectionSeedReference,
           record.quizAttemptIdempotencyHash,
           record.challengePublicCode,
           record.acceptedAt,

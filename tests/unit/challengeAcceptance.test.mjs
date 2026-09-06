@@ -32,6 +32,10 @@ class MemoryAcceptanceRepository {
       editionKey: "west",
       editionLabel: "West Africa",
       scoringVersion: "binary-exact-set-v1",
+      questionSetVersion: "approved-60-v1",
+      selectedQuestionVersionsJson: JSON.stringify(Array.from({ length: 12 }, (_, index) => ({ stableId: `west_q${String(index + 1).padStart(2, "0")}`, version: 1 }))),
+      selectionPolicyVersion: "balanced-v1",
+      selectionSeedReference: null,
       total: 12,
       expiresAt: now + 86_400_000,
     });

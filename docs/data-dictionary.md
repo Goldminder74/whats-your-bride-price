@@ -56,6 +56,8 @@ Purpose: immutable, versioned question bank.
 
 Fields: `id`, `stable_id`, `version`, `edition_id`, optional `country_scope`, `subregion_scope`, `community_scope`, `category`, optional `difficulty`, `question_kind`, `question_text`, `answer_options_json`, `correct_answer_json`, `explanation`, optional `visual_start` preserving the existing image-option asset offset, `scoring_weight`, `locale`, `publication_status`, `source_review_status`, optional `sensitivity_notes`, `content_hash`, `published_at`, `retired_at`, `created_at`, `updated_at`.
 
+Prompt 20 migration `0007_ancient_yellow_claw.sql` adds `accepted_answers_json`, `language`, `reviewed_by`, `reviewed_at`, `valid_from`, `valid_until`, `image_provenance_json` and `audio_provenance_json`. Published or attempted question material and published-source records are immutable; a correction creates a new version.
+
 Relationships: belongs to one edition; parent of answers and optional source records.
 
 Indexes: `questions_stable_version_uq`; `questions_playable_idx` for edition and dual playable states; `questions_category_idx` for balanced selection.
@@ -78,7 +80,7 @@ Projection: approved citation title, organisation and reference may be public. R
 
 Purpose: private server-authoritative attempt state, separate from a completed result.
 
-Fields: `id`, `edition_id`, optional `anonymous_subject_hash`, `question_set_version`, `scoring_version`, `selected_question_versions_json`, `status`, `idempotency_key_hash`, optional safe `referral_code` and `challenge_code`, `started_at`, `completed_at`, `expires_at`, `anonymized_at`, `deleted_at`, `version`, `created_at`, `updated_at`.
+Fields: `id`, `edition_id`, optional `anonymous_subject_hash`, `question_set_version`, `scoring_version`, `selected_question_versions_json`, `selection_policy_version`, optional non-secret `selection_seed_reference`, `status`, `idempotency_key_hash`, optional safe `referral_code` and `challenge_code`, `started_at`, `completed_at`, `expires_at`, `anonymized_at`, `deleted_at`, `version`, `created_at`, `updated_at`.
 
 Relationships: belongs to an edition; parent of answers; linked one-to-one from a result; may be linked from a challenge attempt and referral event.
 

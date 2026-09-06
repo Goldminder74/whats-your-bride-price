@@ -50,6 +50,13 @@
       "when": 1787741947497,
       "tag": "0006_regular_paibok",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1788657533900,
+      "tag": "0007_ancient_yellow_claw",
+      "breakpoints": true
     }
   ]
 }

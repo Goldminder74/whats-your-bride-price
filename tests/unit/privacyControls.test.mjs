@@ -66,9 +66,9 @@ test("retention and draft legal configuration stay honest",()=>{
   assert.equal(legalInformation.approvedForProduction,false);assert.equal(legalInformation.controllerLegalName,null);assert.equal(legalInformation.privacyContact,null);assert.ok(missingLegalActivationDetails.length>=10);
 });
 
-test("repository contains no inaccurate permanent-result promise and no migration 0007",async()=>{
+test("repository contains no inaccurate permanent-result promise and only the authorised migration 0007",async()=>{
   const roots=[new URL("../../app/",import.meta.url),new URL("../../docs/",import.meta.url),new URL("../../tests/",import.meta.url)];let combined="";
   for(const root of roots){for(const entry of await readdir(root,{recursive:true,withFileTypes:true})){if(!entry.isFile()||entry.name==="privacyControls.test.mjs"||!/[.](?:ts|tsx|mjs|md)$/.test(entry.name))continue;combined+=`\n${await readFile(resolve(entry.parentPath,entry.name),"utf8")}`;}}
   assert.doesNotMatch(combined,/permanent (?:public )?result|permanent (?:result )?(?:page|link|route|url)|permanent-result/i);
-  const migrations=await readdir(new URL("../../drizzle/",import.meta.url));assert.equal(migrations.some((name)=>/^0007_/.test(name)),false);
+  const migrations=await readdir(new URL("../../drizzle/",import.meta.url));assert.deepEqual(migrations.filter((name)=>/^0007_.*\.sql$/.test(name)),["0007_ancient_yellow_claw.sql"]);assert.equal(migrations.some((name)=>/^000[89]_/.test(name)),false);
 });

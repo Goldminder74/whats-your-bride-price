@@ -13,7 +13,7 @@ export const CHALLENGE_DIFFICULTY_POLICY = "approved-mixed-v1";
 const SHA256_PATTERN = /^[0-9a-f]{64}$/;
 const PUBLIC_CODE_PATTERN = /^[0-9a-f]{48}$/;
 const IDEMPOTENCY_KEY_PATTERN = /^[A-Za-z0-9._~-]{16,128}$/;
-const QUESTION_ID_PATTERN = /^(west|east|central|north|south)_q(0[1-9]|1[0-2])$/;
+const QUESTION_ID_PATTERN = /^(west|east|central|north|south)_[a-z0-9][a-z0-9_-]{2,55}$/;
 const OPTION_ID_PATTERN = /^o[1-9][0-9]?$/;
 
 export type ChallengeComparisonOutcome = "beat" | "tied" | "did_not_beat" | "unavailable";
@@ -68,6 +68,7 @@ export type AuthoritativeQuestion = Readonly<{
   version: number;
   optionIds: readonly string[];
   correctOptionIds: readonly string[];
+  acceptedOptionSets?: readonly (readonly string[])[];
   scoringWeight: number;
   difficulty: string | null;
 }>;
@@ -328,7 +329,7 @@ export class ChallengeCompletionService {
     for (const question of authority.questions) {
       const answer = submitted.get(question.stableId);
       if (!answer || question.scoringWeight !== 1 || !answer.selectedOptionIds.every((id) => question.optionIds.includes(id))) return fail("invalid_answers");
-      const correct = exactSet(answer.selectedOptionIds, question.correctOptionIds);
+      const correct = (question.acceptedOptionSets || [question.correctOptionIds]).some((accepted) => exactSet(answer.selectedOptionIds, accepted));
       score += correct ? question.scoringWeight : 0;
       maximumScore += question.scoringWeight;
       answerRows.push(Object.freeze({
@@ -513,23 +514,26 @@ export class D1ChallengeCompletionRepository implements ChallengeCompletionRepos
       if (typeof stableId !== "string" || !Number.isInteger(version)) return null;
       const question = await first<{
         id: string; stable_id: string; version: number; answer_options_json: string;
-        correct_answer_json: string; scoring_weight: number; difficulty: string | null;
+        correct_answer_json: string; accepted_answers_json: string; scoring_weight: number; difficulty: string | null;
       }>(this.database, `SELECT id, stable_id, version, answer_options_json,
-        correct_answer_json, scoring_weight, difficulty FROM questions
+        correct_answer_json, accepted_answers_json, scoring_weight, difficulty FROM questions
         WHERE stable_id = ?1 AND version = ?2 AND edition_id = ?3
-          AND publication_status = 'published' AND source_review_status = 'approved'
         LIMIT 1`, [stableId, version, row.edition_id]);
       if (!question) return null;
       try {
         const options = JSON.parse(question.answer_options_json) as Array<{ id?: unknown }>;
         const correct = JSON.parse(question.correct_answer_json) as unknown;
-        if (!Array.isArray(options) || !Array.isArray(correct) || !correct.every((id) => typeof id === "string")) return null;
+        const alternatives = JSON.parse(question.accepted_answers_json) as unknown;
+        if (!Array.isArray(options) || !Array.isArray(correct) || !Array.isArray(alternatives)
+          || !correct.every((id) => typeof id === "string")
+          || alternatives.some((set) => !Array.isArray(set) || set.some((id) => typeof id !== "string"))) return null;
         questions.push(Object.freeze({
           id: question.id,
           stableId: question.stable_id,
           version: question.version,
           optionIds: Object.freeze(options.map((option) => String(option.id))),
           correctOptionIds: Object.freeze(correct as string[]),
+          acceptedOptionSets: Object.freeze((alternatives.length ? alternatives as string[][] : [correct as string[]]).map((set) => Object.freeze([...set]))),
           scoringWeight: question.scoring_weight,
           difficulty: question.difficulty,
         }));

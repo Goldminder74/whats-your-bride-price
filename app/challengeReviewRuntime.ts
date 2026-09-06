@@ -102,6 +102,10 @@ class ReviewChallengeAcceptanceRepository implements ChallengeAcceptanceReposito
       editionKey: fixture.entry.edition,
       editionLabel: regions[fixture.entry.edition].name,
       scoringVersion: SCORING_VERSION,
+      questionSetVersion: QUESTION_SET_VERSION,
+      selectedQuestionVersionsJson: JSON.stringify(regions[fixture.entry.edition].questions.map((_, index) => ({ stableId: `${fixture.entry.edition}_q${String(index + 1).padStart(2, "0")}`, version: 1 }))),
+      selectionPolicyVersion: "balanced-v1",
+      selectionSeedReference: null,
       total: fixture.entry.total,
       expiresAt: record.expiresAt,
     });

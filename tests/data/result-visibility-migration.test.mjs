@@ -39,7 +39,7 @@ function insertHistoricalResult(database) {
 
 test("migration 0004 is additive, ordered, checksummed and repeatable", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 7);
+  assert.equal(plan.length, 8);
   assert.equal(plan[4].id, "0004_yellow_bill_hollister");
   assert.equal(plan[4].checksum, "c649185f96cdce28aca0522330649b4688c9f1da93ea6eab0c08842b163b65bc");
   assert.equal(plan[4].statements.length, 1);

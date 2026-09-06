@@ -1,0 +1,55 @@
+# Versioned question-bank engine
+
+## Scope and transition
+
+The engine introduces a validated, versioned catalogue and server-side selection policy without adding cultural questions. The verified pre-engine catalogue remains the only current content: five editions, twelve questions per edition and sixty questions in total. `app/gameData.ts` remains the canonical byte-for-byte source for that transitional catalogue. `buildLegacyQuestionBankDocument()` maps those records into `question-bank-v1` without changing wording, options, accepted answers, explanations, regional assignment, image offsets or the one-point scoring weight.
+
+The transitional questions are classified as introductory because the earlier data did not store difficulty. This is an explicit compatibility classification; it does not claim a balanced difficulty mix. The selector balances the catalogue it actually has and fails with `insufficient_published_bank` when fewer than the requested twelve valid questions exist. It never fills a gap with a draft or retired record.
+
+The engine accepts any number of validated versions and supports at least fifty approved questions in each of the five edition pools. Adding that researched content is outside Prompt 20. Prompt 21 may add questions only after source research and human cultural review; passing the software tests is not publication approval.
+
+## Contract and lifecycle
+
+`question-bank-v1` requires a stable regional ID, positive version, region and optional country/subregion/community scope, controlled category and difficulty, question kind and text, unique option IDs and text, one or more exact accepted-answer sets, explanation, sources, reviewer metadata, sensitivity notes, language and locale, lifecycle dates, a positive scoring weight, and complete image/audio provenance when media is used.
+
+The lifecycle is:
+
+1. `draft`: editable working content; never selected.
+2. `review`: awaiting source and cultural review; never selected.
+3. `approved`: reviewed but not released; never selected.
+4. `published`: selectable only inside its validity window.
+5. `retired`: retained for historical attempts and excluded from new games.
+
+Publication requires a publication date, at least one approved reliable source, and a recorded reviewer and review date. Retirement requires a retirement date. Published or previously used question material is immutable; corrections create the next version. Lifecycle state may move to retirement without deleting the old version.
+
+## Sources and cultural review
+
+Every imported question needs at least one approved HTTPS, DOI or ISBN reference with a title, organisation or author, source type, access date and the claim it supports. Approved, published and retired content also needs a named review record and review date. Entries with sensitivity notes cannot proceed without that review. Unapproved remote media is rejected. Local media also needs creator, source, licence and review date provenance.
+
+The existing sixty questions retain their pre-engine verified catalogue status and the four collection-level references already shown in the product. New Prompt 21 content must replace collection-level coverage with question-specific evidence wherever practical and must not be marked published by an import.
+
+## Selection and attempt authority
+
+Normal games request twelve questions. The server loads only active-edition rows that are published, source-approved, already released, not retired, and inside `valid_from`/`valid_until`. When more than one currently published version shares a stable ID, the highest valid version is the candidate. Selection greedily spreads categories and controlled difficulty values, uses a cryptographically random 256-bit seed, prevents duplicate stable IDs, and favours versions absent from the most recent valid functional attempt history.
+
+The raw seed never leaves server memory. Attempts store its SHA-256 reference, `balanced-v1`, the scoring version and the exact stable-ID/version list. An authorised challenge or comparison may provide a sealed server-side seed and an exact compatible version list to reproduce a selection. Browser requests have a fixed three-field contract and cannot set count, difficulty, accepted answers or seed.
+
+Challenge acceptance copies the inviter attempt's question-set version, exact question versions, selection-policy version and seed reference. Completion resolves the exact recorded versions even if a question is later retired, so retirement affects new games without rewriting history. Compatibility still requires matching edition, question count, scoring version, question-set version, scoring-weight policy and difficulty policy.
+
+Public selection responses contain only stable question references, versions, kind, text, options and approved local media references. They omit accepted answers, explanations before answer evaluation, raw seeds, seed references, database IDs, hashes, reviewer data and source-review internals.
+
+## Owner CSV and JSON workflow
+
+`GET /owner/questions?format=json` exports `question-bank-v1`; `format=csv` exports the same fields with nested data represented as JSON cells. `POST /owner/questions` accepts either `application/json` or `text/csv` and returns a validation and change preview. The POST route performs no writes: proposed `published` and `retired` records are reported as publication or retirement preparation only.
+
+The JSON object must contain exactly `schemaVersion` and `questions`; each question and nested record also rejects unexpected fields. CSV columns and order are fixed. Imports are capped at 1 MiB and 1,000 rows. Validation rejects malformed files, formula-leading CSV cells, unknown controls, bad versions or dates, duplicate options or accepted-answer sets, missing sources, missing cultural review, unapproved remote assets and changed content for a published stable-ID/version pair. It reports exact and token-near duplicates before any later controlled write workflow.
+
+CSV export quotes RFC-style special characters and prefixes formula-leading values with an apostrophe. Exports contain catalogue records only. They do not query or expose users, attempts, analytics, credentials, tokens, runtime secrets or internal content hashes.
+
+Both methods require HTTPS (or loopback in local tests), same-origin Fetch Metadata, the existing trusted Sites identity, and the server-only owner subject allowlist. Authentication and allowlist checks run before the D1 runtime loader. Missing authorization returns a neutral unavailable response.
+
+## Schema change and activation gate
+
+`drizzle/0007_ancient_yellow_claw.sql` is the sole Prompt 20 migration. It adds accepted-answer alternatives, language, reviewer, validity and media-provenance columns to `questions`; policy and seed-reference columns to `quiz_attempts`; a selection index; and immutability/seed-shape triggers. It contains no question catalogue or seed data. Migrations `0000` through `0006` remain unchanged.
+
+Migration 0007 is local source only. It must not be applied to staging or production without a later, target-specific approval and migration-state check. The feature repository keeps D1 and R2 unbound, so the public selection and owner workflow fail closed when storage is absent. Prompt 21 remains blocked until its researched question records, reliable sources and human cultural reviews are approved.

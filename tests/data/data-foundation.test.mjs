@@ -92,7 +92,7 @@ function insertResult(database, attempt, overrides = {}) {
 
 test("migration plan is ordered and checksummed", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 7);
+  assert.equal(plan.length, 8);
   assert.equal(plan[0].id, "0000_loving_stepford_cuckoos");
   assert.equal(plan[1].id, "0001_same_vertigo");
   assert.equal(plan[2].id, "0002_little_inertia");
@@ -100,6 +100,7 @@ test("migration plan is ordered and checksummed", async () => {
   assert.equal(plan[4].id, "0004_yellow_bill_hollister");
   assert.equal(plan[5].id, "0005_special_gamma_corps");
   assert.equal(plan[6].id, "0006_regular_paibok");
+  assert.equal(plan[7].id, "0007_ancient_yellow_claw");
   assert.match(plan[0].checksum, /^[0-9a-f]{64}$/);
 });
 
@@ -108,11 +109,11 @@ test("empty database migration, schema tracking, dry-run and repeated execution 
   try {
     const plan = await loadMigrationPlan();
     const dryRun = applyMigrationPlan(database, plan, { dryRun: true, now });
-    assert.deepEqual(dryRun.pending, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps", "0006_regular_paibok"]);
+    assert.deepEqual(dryRun.pending, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps", "0006_regular_paibok", "0007_ancient_yellow_claw"]);
     assert.equal(database.prepare("SELECT count(*) AS count FROM sqlite_master WHERE type='table' AND name='results'").get().count, 0);
-    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps", "0006_regular_paibok"]);
+    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0000_loving_stepford_cuckoos", "0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps", "0006_regular_paibok", "0007_ancient_yellow_claw"]);
     assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, []);
-    assert.equal(database.prepare("SELECT count(*) AS count FROM schema_migrations").get().count, 7);
+    assert.equal(database.prepare("SELECT count(*) AS count FROM schema_migrations").get().count, 8);
   } finally {
     database.close();
   }
@@ -136,7 +137,7 @@ test("upgrade from schema version 0000 to 0001 preserves existing question data"
       'published','approved',?, ?, ?, ?
     )`).run("d".repeat(64), now, now, now);
     assert.equal(database.prepare("SELECT count(*) AS count FROM pragma_table_info('questions') WHERE name='visual_start'").get().count, 0);
-    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps", "0006_regular_paibok"]);
+    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0001_same_vertigo", "0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps", "0006_regular_paibok", "0007_ancient_yellow_claw"]);
     const upgraded = database.prepare("SELECT question_text, visual_start FROM questions WHERE stable_id='west_q01'").get();
     assert.deepEqual({ ...upgraded }, { question_text: "Synthetic question", visual_start: null });
   } finally {
@@ -184,10 +185,11 @@ test("development seed is idempotent and detects unexpected content differences"
     applySeed(database, statements);
     assert.equal(database.prepare("SELECT count(*) AS count FROM quiz_editions").get().count, 5);
     assert.equal(database.prepare("SELECT count(*) AS count FROM questions").get().count, 60);
-    database.prepare("UPDATE questions SET question_text = 'tampered' WHERE stable_id = 'west_q01'").run();
+    assert.throws(() => database.prepare("UPDATE questions SET question_text = 'tampered' WHERE stable_id = 'west_q01'").run(), /immutable/);
     const storedRows = database.prepare(`SELECT stable_id, question_text, answer_options_json,
       correct_answer_json, explanation, visual_start, scoring_weight, content_hash FROM questions ORDER BY stable_id`).all();
-    assert.throws(() => assertDevelopmentSeedMatches(storedRows, seed), /Seed integrity mismatch for west_q01/);
+    assert.doesNotThrow(() => assertDevelopmentSeedMatches(storedRows, seed));
+    assert.throws(() => assertDevelopmentSeedMatches(storedRows.map((row) => row.stable_id === "west_q01" ? { ...row, question_text: "tampered" } : row), seed), /Seed integrity mismatch for west_q01/);
   } finally {
     database.close();
   }
@@ -208,7 +210,7 @@ test("foreign keys, enum checks, JSON checks and score boundaries are enforced",
       .run(attempt.id, now, now, now), /missing question version/);
     assert.throws(() => insertResult(database, attempt, { score: 13 }), /CHECK constraint/);
     assert.throws(() => insertResult(database, attempt, { slug: "AB72K" }), /192-bit/);
-    assert.throws(() => database.prepare("UPDATE quiz_attempts SET selected_question_versions_json = 'bad' WHERE id = ?").run(attempt.id), /CHECK constraint/);
+    assert.throws(() => database.prepare("UPDATE quiz_attempts SET selected_question_versions_json = 'bad' WHERE id = ?").run(attempt.id), /(CHECK constraint|selection authority is immutable)/);
   } finally {
     database.close();
   }

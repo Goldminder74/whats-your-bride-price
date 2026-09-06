@@ -38,7 +38,7 @@ function insertChallenge(database, overrides = {}) {
 
 test("0002 remains the approved additive challenge-security migration", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 7);
+  assert.equal(plan.length, 8);
   assert.equal(plan[2].id, "0002_little_inertia");
   assert.equal(plan[2].checksum, "16750df69b0f23cc2f6c2b2e8c55689fd6a2473d7a0c4665a8b2ee4f7e1f64a7");
   assert.equal(plan[2].statements.length, 4);
@@ -46,6 +46,7 @@ test("0002 remains the approved additive challenge-security migration", async ()
   assert.equal(plan[4].id, "0004_yellow_bill_hollister");
   assert.equal(plan[5].id, "0005_special_gamma_corps");
   assert.equal(plan[6].id, "0006_regular_paibok");
+  assert.equal(plan[7].id, "0007_ancient_yellow_claw");
   assert.match(plan[2].statements[0], /^ALTER TABLE `challenges` ADD `creation_idempotency_key_hash` text;$/);
   assert.match(plan[2].statements[1], /^ALTER TABLE `challenges` ADD `revocation_token_hash` text;$/);
   assert.match(plan[2].statements[2], /CREATE UNIQUE INDEX `challenges_creation_idempotency_hash_uq`[\s\S]+WHERE[\s\S]+is not null/);
@@ -60,6 +61,7 @@ test("0002 remains the approved additive challenge-security migration", async ()
     "0004_yellow_bill_hollister.sql": "c649185f96cdce28aca0522330649b4688c9f1da93ea6eab0c08842b163b65bc",
     "0005_special_gamma_corps.sql": "a13ac6180fa745732266fc922f89d2cd1e10f5f9c88d90e4f310ff833b09701d",
     "0006_regular_paibok.sql": "a34516dbc54f58557dcebd37f31a5a9c212905865bc57fffd9ab56f95e38e52e",
+    "0007_ancient_yellow_claw.sql": "10be0f218f97d556a5af73d29481eafce8a5ca3a0bfc56d22e1b33c4de119076",
   });
   for (const [name, expected] of Object.entries(checksums)) {
     const bytes = await readFile(new URL(`../../drizzle/${name}`, import.meta.url));
@@ -91,7 +93,7 @@ test("upgrade from 0000 and 0001 preserves historical challenge rows and nullabl
     ) VALUES ('challenge_historical_0001', ?, NULL, 'edition_west_v1', 7, 12,
       'binary-exact-set-v1', 'active', 0, ?, 1, ?, ?)`).run(code("b"), now + 1000, now, now);
 
-    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps", "0006_regular_paibok"]);
+    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, ["0002_little_inertia", "0003_clever_joshua_kane", "0004_yellow_bill_hollister", "0005_special_gamma_corps", "0006_regular_paibok", "0007_ancient_yellow_claw"]);
     assert.deepEqual({ ...database.prepare(`SELECT id, creation_idempotency_key_hash, revocation_token_hash
       FROM challenges WHERE id='challenge_historical_0001'`).get() }, {
       id: "challenge_historical_0001",
