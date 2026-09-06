@@ -1,0 +1,97 @@
+# Central Africa cultural-review issue log
+
+All 82 candidates remain draft. The word approved inside a source record means the reference passed the software source gate; it does not mean cultural approval.
+
+## Specialist review queue (82)
+
+- **central_angola_sona_medium:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_angola_sona_memory:** Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.
+- **central_angola_sona_method:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_angola_sona_contemporary:** Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.
+- **central_angola_mbanza_plateau:** Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.
+- **central_angola_mbanza_functions:** Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.
+- **central_angola_mbanza_building_layers:** Colonialism, enslavement or violence: trauma-informed historical and community review is required.
+- **central_angola_mbanza_kikongo_text:** Colonialism, enslavement or violence: trauma-informed historical and community review is required.
+- **central_cameroon_nguon_interval:** Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.
+- **central_cameroon_nguon_consultation:** Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.
+- **central_cameroon_nguon_accountability:** Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.
+- **central_cameroon_nguon_transmission:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_cameroon_ngondo_calendar:** Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.
+- **central_cameroon_ngondo_public:** Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.
+- **central_cameroon_ngondo_river:** Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.
+- **central_cameroon_ngondo_transmission:** Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.
+- **central_cameroon_dja_boundary:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_cameroon_dja_intact:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_cameroon_dja_primates:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_cameroon_dja_basin:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_car_aka_voices:** Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.
+- **central_car_aka_improvisation:** Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.
+- **central_car_aka_participation:** Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.
+- **central_car_aka_contexts:** Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.
+- **central_regional_sangha_countries:** Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.
+- **central_regional_sangha_parks:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_regional_sangha_clearings:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_regional_sangha_buffer:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_chad_ounianga_count:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_chad_ounianga_groups:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_chad_ounianga_climate:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_chad_ounianga_past:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_chad_ennedi_rock:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_chad_ennedi_forms:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_chad_ennedi_water:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_chad_ennedi_images:** Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.
+- **central_congo_rumba_name:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_congo_rumba_contexts:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_congo_rumba_transmission:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_congo_rumba_women:** Marriage and gender material: require locally grounded, gender-aware review and do not present one documented practice as universal or prescriptive.
+- **central_congo_odzala_process:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_congo_odzala_ecosystems:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_congo_odzala_primates:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_congo_odzala_consent:** Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.
+- **central_drc_okapi_fraction:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_drc_okapi_identity:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_drc_okapi_rivers:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_drc_okapi_rights:** Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.
+- **central_drc_kuba_state:** Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.
+- **central_drc_kuba_founder:** Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.
+- **central_drc_kuba_ndop:** Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.
+- **central_drc_kuba_ibol:** Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.
+- **central_gabon_lope_interface:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_gabon_lope_petroglyphs:** Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.
+- **central_gabon_lope_timespan:** Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.
+- **central_gabon_lope_corridor:** Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.
+- **central_gabon_ivindo_location:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_gabon_ivindo_waters:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_gabon_ivindo_plants:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_gabon_ivindo_forest:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_regional_mvet_countries:** Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.
+- **central_regional_mvet_audience:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_regional_mvet_forms:** Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.
+- **central_regional_mvet_values:** Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.
+- **central_saotome_tchiloli_setting:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_saotome_tchiloli_story:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_saotome_tchiloli_scale:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_saotome_tchiloli_opening:** Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.
+- **central_equatorial_tentative_status:** Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.
+- **central_equatorial_luba:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_equatorial_annobon:** Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.
+- **central_equatorial_batete:** Colonialism, enslavement or violence: trauma-informed historical and community review is required.
+- **central_regional_cassava_chickwangue:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_regional_cassava_leaves:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_regional_cassava_names:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_regional_cassava_methods:** Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.
+- **central_regional_gnetum_species:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_regional_gnetum_names:** Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.
+- **central_regional_gnetum_domestication:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_regional_gnetum_habitat:** Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.
+- **central_cameroon_kapsiki_marriages:** Marriage and gender material: require locally grounded, gender-aware review and do not present one documented practice as universal or prescriptive.
+- **central_cameroon_kapsiki_change:** Marriage and gender material: require locally grounded, gender-aware review and do not present one documented practice as universal or prescriptive.
+
+## Collection-wide review questions
+
+- Confirm names, diacritics, language register, country scope and community self-identification with reviewers from the named communities.
+- Remove any detail that community reviewers identify as restricted, sacred or unsuitable for a general-audience quiz.
+- Review colonial, enslavement, protected-area and museum-source framing for power imbalance and historical harm.
+- Confirm that Indigenous rights and present-day communities are not displaced by conservation or archaeological narratives.
+- Review marriage and gender wording as contextual and changing, never universal or prescriptive.
+- Recheck every live source and factual claim on the human-review date.
