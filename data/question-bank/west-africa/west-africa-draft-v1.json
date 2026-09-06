@@ -1,0 +1,4092 @@
+{
+  "schemaVersion": "question-bank-v1",
+  "questions": [
+    {
+      "stableId": "west_ghana_kente_strip_construction",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Ghana",
+      "subregionScope": "Asante and Volta regions",
+      "communityScope": "Kente-producing communities",
+      "category": "TEXTILES",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How is a finished Ghanaian Kente cloth characteristically constructed?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Narrow woven strips are joined together"
+        },
+        {
+          "id": "o2",
+          "text": "A single hide is painted and stretched"
+        },
+        {
+          "id": "o3",
+          "text": "Loose fibres are felted without a loom"
+        },
+        {
+          "id": "o4",
+          "text": "One broad sheet is cast in a mould"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO describes Kente as fabric assembled from woven strips rather than as one seamless loom-width.",
+      "sources": [
+        {
+          "title": "Craftsmanship of traditional woven textile Kente",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/craftsmanship-of-traditional-woven-textile-kente-02130",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Kente in Ghana is strip-woven from silk, cotton or rayon, and its skills pass through families, apprenticeships and education."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_ghana_kente_learning",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Ghana",
+      "subregionScope": null,
+      "communityScope": "Kente weavers",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which combination reflects documented ways Kente weaving knowledge is transmitted in Ghana?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only through royal decrees"
+        },
+        {
+          "id": "o2",
+          "text": "Only through imported factory manuals"
+        },
+        {
+          "id": "o3",
+          "text": "Only through museum audio guides"
+        },
+        {
+          "id": "o4",
+          "text": "Families, apprenticeships and educational institutions"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Kente knowledge is living practice learned through family teaching, master-weaver apprenticeships and formal education.",
+      "sources": [
+        {
+          "title": "Craftsmanship of traditional woven textile Kente",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/craftsmanship-of-traditional-woven-textile-kente-02130",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Kente in Ghana is strip-woven from silk, cotton or rayon, and its skills pass through families, apprenticeships and education."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_ghana_highlife_instruments",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Ghana",
+      "subregionScope": null,
+      "communityScope": "Highlife musicians",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which group of instruments fits UNESCO’s description of Ghanaian Highlife?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Sitar, tabla, sarod and tanpura"
+        },
+        {
+          "id": "o2",
+          "text": "Panpipes, bandoneon, charango and cajón"
+        },
+        {
+          "id": "o3",
+          "text": "Guitars, horns, drums, xylophones and percussion"
+        },
+        {
+          "id": "o4",
+          "text": "Bagpipes, harpsichord, lute and timpani"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Highlife ensembles vary, but UNESCO specifically lists guitars, horns, drums, xylophones and other percussion.",
+      "sources": [
+        {
+          "title": "Highlife music and dance",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/highlife-music-and-dance-02141",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ghanaian Highlife combines storytelling, lively rhythms and call-and-response, and includes Dance Band, Guitar Band and Burger styles."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_ghana_highlife_styles",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Ghana",
+      "subregionScope": null,
+      "communityScope": "Highlife musicians",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which set names three documented styles of Ghanaian Highlife?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Bikutsi, makossa and assiko"
+        },
+        {
+          "id": "o2",
+          "text": "Dance Band, Guitar Band and Burger"
+        },
+        {
+          "id": "o3",
+          "text": "Morna, coladeira and funaná"
+        },
+        {
+          "id": "o4",
+          "text": "Gumbe, kussundé and tina"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO identifies Dance Band, Guitar Band and Burger as three main Highlife styles.",
+      "sources": [
+        {
+          "title": "Highlife music and dance",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/highlife-music-and-dance-02141",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ghanaian Highlife combines storytelling, lively rhythms and call-and-response, and includes Dance Band, Guitar Band and Burger styles."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_ghana_asante_building_materials",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Ghana",
+      "subregionScope": "Near Kumasi",
+      "communityScope": "Asante communities",
+      "category": "ART & HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which materials characterize the surviving Asante Traditional Buildings near Kumasi?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Timber, bamboo and mud plaster"
+        },
+        {
+          "id": "o2",
+          "text": "Cut granite, slate and marble"
+        },
+        {
+          "id": "o3",
+          "text": "Coral stone, lime and mangrove poles"
+        },
+        {
+          "id": "o4",
+          "text": "Fired brick, steel and plate glass"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The buildings use vulnerable organic and earthen materials, including timber, bamboo and mud plaster.",
+      "sources": [
+        {
+          "title": "Asante Traditional Buildings",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/35/",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The surviving Asante buildings near Kumasi use timber, bamboo and mud plaster, are arranged around courtyards and carry symbolic bas-reliefs."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_ghana_asante_courtyard_reliefs",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Ghana",
+      "subregionScope": "Near Kumasi",
+      "communityScope": "Asante communities",
+      "category": "ART",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What is a documented feature of the Asante Traditional Buildings?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Underground chambers with mosaic domes"
+        },
+        {
+          "id": "o2",
+          "text": "Floating platforms with carved masts"
+        },
+        {
+          "id": "o3",
+          "text": "Cliff dwellings linked by rope bridges"
+        },
+        {
+          "id": "o4",
+          "text": "Courtyard plans with symbolic wall bas-reliefs"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Their courtyard arrangement and symbolic bas-relief decoration are central features of this Asante architectural tradition.",
+      "sources": [
+        {
+          "title": "Asante Traditional Buildings",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/35/",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The surviving Asante buildings near Kumasi use timber, bamboo and mud plaster, are arranged around courtyards and carry symbolic bas-reliefs."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_senegal_ceebu_origin",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Senegal",
+      "subregionScope": "Saint-Louis",
+      "communityScope": "Fishing communities of Saint-Louis",
+      "category": "FOOD",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Where does UNESCO locate the origin of Senegal’s ceebu jën tradition?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Forest settlements near Mount Nimba"
+        },
+        {
+          "id": "o2",
+          "text": "Caravan towns in the Aïr Mountains"
+        },
+        {
+          "id": "o3",
+          "text": "Fishing communities on the Island of Saint-Louis"
+        },
+        {
+          "id": "o4",
+          "text": "Pastoral camps around Lake Chad"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The inscription traces ceebu jën to fishing communities on Saint-Louis while recognizing later regional variation.",
+      "sources": [
+        {
+          "title": "Ceebu Jën, a culinary art of Senegal",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ceebu-jen-a-culinary-art-of-senegal-01748",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ceebu jën originated in Saint-Louis fishing communities; recipes vary, typically pairing fish and broken rice with locally selected ingredients and dining practices."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_senegal_ceebu_core",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Senegal",
+      "subregionScope": null,
+      "communityScope": null,
+      "category": "FOOD",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which pairing is typical at the centre of ceebu jën?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Beans and wheat noodles"
+        },
+        {
+          "id": "o2",
+          "text": "Fish and broken rice"
+        },
+        {
+          "id": "o3",
+          "text": "Lamb and pearl couscous"
+        },
+        {
+          "id": "o4",
+          "text": "Chicken and fermented maize"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Recipes vary, but the UNESCO description identifies fish and broken rice as characteristic components.",
+      "sources": [
+        {
+          "title": "Ceebu Jën, a culinary art of Senegal",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ceebu-jen-a-culinary-art-of-senegal-01748",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ceebu jën originated in Saint-Louis fishing communities; recipes vary, typically pairing fish and broken rice with locally selected ingredients and dining practices."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_senegal_ceebu_variation",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Senegal",
+      "subregionScope": null,
+      "communityScope": null,
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which statement best respects variation in ceebu jën practice?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Recipes vary by region, household and occasion"
+        },
+        {
+          "id": "o2",
+          "text": "There is one authorized recipe across all West Africa"
+        },
+        {
+          "id": "o3",
+          "text": "Every serving must use the same vegetables"
+        },
+        {
+          "id": "o4",
+          "text": "It is prepared only for state ceremonies"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO records regional recipe variation and notes that ingredients can reflect the occasion and relationship with a guest.",
+      "sources": [
+        {
+          "title": "Ceebu Jën, a culinary art of Senegal",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ceebu-jen-a-culinary-art-of-senegal-01748",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ceebu jën originated in Saint-Louis fishing communities; recipes vary, typically pairing fish and broken rice with locally selected ingredients and dining practices."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_senegambia_circle_groups",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Senegal; Gambia",
+      "subregionScope": "Senegambia",
+      "communityScope": null,
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which pair includes only inscribed Stone Circles of Senegambia groups?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Kumasi and Wanar"
+        },
+        {
+          "id": "o2",
+          "text": "Wassu and Abomey"
+        },
+        {
+          "id": "o3",
+          "text": "Kangaba and Kerbatch"
+        },
+        {
+          "id": "o4",
+          "text": "Wanar and Wassu"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Wanar is in Senegal and Wassu is in The Gambia; both belong to the four inscribed groups.",
+      "sources": [
+        {
+          "title": "Stone Circles of Senegambia",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1226/",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Four inscribed groups in Senegal and The Gambia form part of a landscape of more than 1,000 laterite stone circles and related burial mounds."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_senegambia_circle_material",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Senegal; Gambia",
+      "subregionScope": "River Gambia corridor",
+      "communityScope": null,
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What material forms the standing pillars at the Stone Circles of Senegambia?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Basalt glass"
+        },
+        {
+          "id": "o2",
+          "text": "Coral limestone"
+        },
+        {
+          "id": "o3",
+          "text": "Laterite"
+        },
+        {
+          "id": "o4",
+          "text": "Marble"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The monuments consist of carefully worked laterite pillars associated with burial mounds.",
+      "sources": [
+        {
+          "title": "Stone Circles of Senegambia",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1226/",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Four inscribed groups in Senegal and The Gambia form part of a landscape of more than 1,000 laterite stone circles and related burial mounds."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_senegambia_kankurang_scope",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Senegal; Gambia",
+      "subregionScope": "Casamance and Mbour",
+      "communityScope": "Manding communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Kankurang is documented as an initiatory rite of which cultural and geographic scope?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Guro communities in Côte d’Ivoire"
+        },
+        {
+          "id": "o2",
+          "text": "Manding communities in Senegal and The Gambia"
+        },
+        {
+          "id": "o3",
+          "text": "Tuareg communities in Mali and Niger"
+        },
+        {
+          "id": "o4",
+          "text": "Kasena communities in Burkina Faso"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The UNESCO inscription scopes Kankurang to Manding provinces of Senegal and The Gambia, especially Casamance and Mbour.",
+      "sources": [
+        {
+          "title": "Kankurang, Manding initiatory rite",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/kankurang-manding-initiatory-rite-00143",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Kankurang is a Manding initiatory rite documented in Senegal and The Gambia, especially Casamance and Mbour; some knowledge is access-restricted."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Initiatory practice: specialist review by relevant community knowledge-holders is required; do not add restricted details.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_senegambia_kankurang_review_boundary",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Senegal; Gambia",
+      "subregionScope": "Casamance and Mbour",
+      "communityScope": "Manding communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What is the responsible approach when teaching publicly about Kankurang?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Use public community-approved material and omit restricted knowledge"
+        },
+        {
+          "id": "o2",
+          "text": "Reconstruct unpublished initiation details"
+        },
+        {
+          "id": "o3",
+          "text": "Treat every Manding community as identical"
+        },
+        {
+          "id": "o4",
+          "text": "Replace community names with a regional stereotype"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "An initiatory tradition requires a clear boundary between UNESCO’s public description and knowledge that communities restrict.",
+      "sources": [
+        {
+          "title": "Kankurang, Manding initiatory rite",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/kankurang-manding-initiatory-rite-00143",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Kankurang is a Manding initiatory rite documented in Senegal and The Gambia, especially Casamance and Mbour; some knowledge is access-restricted."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Initiatory practice: specialist review by relevant community knowledge-holders is required; do not add restricted details.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cabo_verde_morna_forms",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Cabo Verde",
+      "subregionScope": null,
+      "communityScope": "Morna practitioners",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which elements can come together in Cabo Verdean Morna?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Mask carving, wrestling and canoe racing"
+        },
+        {
+          "id": "o2",
+          "text": "Horn signals, puppetry and metal casting"
+        },
+        {
+          "id": "o3",
+          "text": "Stone cutting, weaving and horse display"
+        },
+        {
+          "id": "o4",
+          "text": "Voice, instrumental music, poetry and dance"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Morna is both musical and choreographic and may combine singing, instruments, lyric poetry and dance.",
+      "sources": [
+        {
+          "title": "Morna, musical practice of Cabo Verde",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/morna-musical-practice-of-cabo-verde-01469",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Morna combines voice, instruments, poetry and dance; lyrics are now mainly in Cabo Verdean Creole and it accompanies significant social occasions."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cabo_verde_morna_language",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Cabo Verde",
+      "subregionScope": null,
+      "communityScope": "Morna practitioners",
+      "category": "LANGUAGE",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "In which language are Morna lyrics mainly composed today, according to UNESCO?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Bambara"
+        },
+        {
+          "id": "o2",
+          "text": "Ditammari"
+        },
+        {
+          "id": "o3",
+          "text": "Cabo Verdean Creole"
+        },
+        {
+          "id": "o4",
+          "text": "Wolof"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Although Portuguese was also used historically, UNESCO says Morna lyrics today are mainly in Cabo Verdean Creole.",
+      "sources": [
+        {
+          "title": "Morna, musical practice of Cabo Verde",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/morna-musical-practice-of-cabo-verde-01469",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Morna combines voice, instruments, poetry and dance; lyrics are now mainly in Cabo Verdean Creole and it accompanies significant social occasions."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cabo_verde_morna_occasions",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Cabo Verde",
+      "subregionScope": null,
+      "communityScope": "Morna practitioners",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "At which occasions may Morna be performed in Cabo Verdean social life?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only harvest competitions"
+        },
+        {
+          "id": "o2",
+          "text": "Weddings, christenings and family reunions"
+        },
+        {
+          "id": "o3",
+          "text": "Only parliamentary openings"
+        },
+        {
+          "id": "o4",
+          "text": "Only military parades"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO names weddings, christenings and family reunions among Morna’s social settings.",
+      "sources": [
+        {
+          "title": "Morna, musical practice of Cabo Verde",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/morna-musical-practice-of-cabo-verde-01469",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Morna combines voice, instruments, poetry and dance; lyrics are now mainly in Cabo Verdean Creole and it accompanies significant social occasions."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cabo_verde_cidade_velha_island",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Cabo Verde",
+      "subregionScope": "Santiago Island",
+      "communityScope": null,
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "On which Cabo Verdean island is Cidade Velha located?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Santiago"
+        },
+        {
+          "id": "o2",
+          "text": "São Vicente"
+        },
+        {
+          "id": "o3",
+          "text": "Sal"
+        },
+        {
+          "id": "o4",
+          "text": "Boa Vista"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Cidade Velha, the historic Ribeira Grande, lies on Santiago Island.",
+      "sources": [
+        {
+          "title": "Cidade Velha, Historic Centre of Ribeira Grande",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1310",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Cidade Velha on Santiago was an early Atlantic port and a site of colonialism, enslavement and the development of Cabo Verdean Creole society."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cabo_verde_cidade_velha_history",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Cabo Verde",
+      "subregionScope": "Santiago Island",
+      "communityScope": null,
+      "category": "MODERN HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Why does UNESCO treat Cidade Velha as central to Atlantic history?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It was the capital of the Mali Empire"
+        },
+        {
+          "id": "o2",
+          "text": "It was a Tuareg caravan confederation"
+        },
+        {
+          "id": "o3",
+          "text": "It was built as an inland gold-mining settlement"
+        },
+        {
+          "id": "o4",
+          "text": "It records colonial trade, enslavement and the formation of an early Creole society"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The site links Atlantic colonial commerce and trafficking in enslaved people with the development of Cabo Verdean Creole society.",
+      "sources": [
+        {
+          "title": "Cidade Velha, Historic Centre of Ribeira Grande",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1310",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Cidade Velha on Santiago was an early Atlantic port and a site of colonialism, enslavement and the development of Cabo Verdean Creole society."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "History of enslavement and colonial violence: trauma-informed Cabo Verdean historical review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_benin_abomey_succession",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Benin",
+      "subregionScope": "Abomey",
+      "communityScope": "Aja-Fon cultural context",
+      "category": "HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What succession does UNESCO associate with the Royal Palaces of Abomey between 1625 and 1900?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Seven rulers of the Songhai Empire"
+        },
+        {
+          "id": "o2",
+          "text": "Nine chiefs of the Asante Confederacy"
+        },
+        {
+          "id": "o3",
+          "text": "Twelve kings of the Kingdom of Dahomey"
+        },
+        {
+          "id": "o4",
+          "text": "Four emirs of Kano"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The palace complex developed through the succession of twelve kings over this period.",
+      "sources": [
+        {
+          "title": "Royal Palaces of Abomey",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/323",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Abomey palace complex records the succession of twelve rulers from 1625 to 1900 and uses courtyards, earthen walls and polychrome bas-reliefs."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_benin_abomey_layout",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Benin",
+      "subregionScope": "Abomey",
+      "communityScope": "Aja-Fon cultural context",
+      "category": "ART & HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which feature is characteristic of the Royal Palaces of Abomey?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Stone towers connected by covered bridges"
+        },
+        {
+          "id": "o2",
+          "text": "Palaces organized around successive courtyards"
+        },
+        {
+          "id": "o3",
+          "text": "Circular compounds carved into cliffs"
+        },
+        {
+          "id": "o4",
+          "text": "Timber houses raised over tidal flats"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Each palace follows an organization of outer, inner and private courtyards within earthen enclosures.",
+      "sources": [
+        {
+          "title": "Royal Palaces of Abomey",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/323",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Abomey palace complex records the succession of twelve rulers from 1625 to 1900 and uses courtyards, earthen walls and polychrome bas-reliefs."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_gelede_three_country_scope",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Benin; Nigeria; Togo",
+      "subregionScope": "Yoruba-Nago cultural areas",
+      "communityScope": "Yoruba-Nago communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Across which three present-day countries is Gelede documented by UNESCO?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Benin, Nigeria and Togo"
+        },
+        {
+          "id": "o2",
+          "text": "Ghana, Liberia and Sierra Leone"
+        },
+        {
+          "id": "o3",
+          "text": "Mali, Niger and Mauritania"
+        },
+        {
+          "id": "o4",
+          "text": "Senegal, Gambia and Guinea-Bissau"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The inscription explicitly describes a Yoruba-Nago community spread across Benin, Nigeria and Togo.",
+      "sources": [
+        {
+          "title": "Oral heritage of Gelede",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/lists?RL=00002",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Gelede is a Yoruba-Nago ceremony documented across Benin, Nigeria and Togo, combining carved masks, dance and Yoruba-language chants."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Living ceremonial or religious practice: specialist community review is required before progression beyond draft.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_gelede_public_elements",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Benin; Nigeria; Togo",
+      "subregionScope": "Yoruba-Nago cultural areas",
+      "communityScope": "Yoruba-Nago communities",
+      "category": "ART",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which combination is part of UNESCO’s public description of Gelede?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Horse racing, leatherwork and gun salutes"
+        },
+        {
+          "id": "o2",
+          "text": "Canoe racing, wrestling and hand fishing"
+        },
+        {
+          "id": "o3",
+          "text": "Patio houses, square minarets and caravan wells"
+        },
+        {
+          "id": "o4",
+          "text": "Carved masks, dance and Yoruba-language chants"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The public record describes masks, dances and chants while leaving community-restricted knowledge outside this draft.",
+      "sources": [
+        {
+          "title": "Oral heritage of Gelede",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/lists?RL=00002",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Gelede is a Yoruba-Nago ceremony documented across Benin, Nigeria and Togo, combining carved masks, dance and Yoruba-language chants."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Living ceremonial or religious practice: specialist community review is required before progression beyond draft.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_benin_togo_koutammakou_people",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Benin; Togo",
+      "subregionScope": "Atacora region",
+      "communityScope": "Batammariba",
+      "category": "PEOPLES & LANGUAGE",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which community’s living cultural landscape is Koutammakou?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The Tiv"
+        },
+        {
+          "id": "o2",
+          "text": "The Bijagó"
+        },
+        {
+          "id": "o3",
+          "text": "The Batammariba"
+        },
+        {
+          "id": "o4",
+          "text": "The Serer"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Koutammakou is the Batammariba cultural landscape across parts of Benin and Togo.",
+      "sources": [
+        {
+          "title": "Koutammakou, the Land of the Batammariba",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1140",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Koutammakou spans north-western Benin and north-eastern Togo and is shaped by Batammariba settlement, landscape and earthen tower-houses."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_benin_togo_takienta",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Benin; Togo",
+      "subregionScope": "Atacora region",
+      "communityScope": "Batammariba",
+      "category": "ART",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "In Koutammakou, what does takienta name?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A group of standing-stone circles"
+        },
+        {
+          "id": "o2",
+          "text": "A singular Batammariba mud tower-house"
+        },
+        {
+          "id": "o3",
+          "text": "A bowed one-string instrument"
+        },
+        {
+          "id": "o4",
+          "text": "A cassava semolina dish"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Takienta is the singular term used for the distinctive family dwelling; sikien is the plural form.",
+      "sources": [
+        {
+          "title": "Koutammakou, the Land of the Batammariba",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1140",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Koutammakou spans north-western Benin and north-eastern Togo and is shaped by Batammariba settlement, landscape and earthen tower-houses."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_burkina_tiebele_community",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Burkina Faso",
+      "subregionScope": "Tiébélé",
+      "communityScope": "Kasena",
+      "category": "PEOPLES & LANGUAGE",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "The Royal Court of Tiébélé expresses the cultural values of which people?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Kasena"
+        },
+        {
+          "id": "o2",
+          "text": "Tagbana"
+        },
+        {
+          "id": "o3",
+          "text": "Wolof"
+        },
+        {
+          "id": "o4",
+          "text": "Sherbro"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO identifies the court as an architectural expression of Kasena social organization and values.",
+      "sources": [
+        {
+          "title": "Royal Court of Tiébélé",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1713/",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Royal Court of Tiébélé is a Kasena earthen complex whose architecture and decoration express social organization and living building knowledge."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_burkina_tiebele_earthen_complex",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Burkina Faso",
+      "subregionScope": "Tiébélé",
+      "communityScope": "Kasena",
+      "category": "ART",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How does UNESCO characterize the Royal Court of Tiébélé?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A granite citadel surrounding a harbour"
+        },
+        {
+          "id": "o2",
+          "text": "A timber palace built over mangroves"
+        },
+        {
+          "id": "o3",
+          "text": "A line of coral-stone watchtowers"
+        },
+        {
+          "id": "o4",
+          "text": "An earthen complex of concessions, passages and gathering spaces"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Its spatial organization and decorated earthen architecture are maintained through living Kasena knowledge.",
+      "sources": [
+        {
+          "title": "Royal Court of Tiébélé",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1713/",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Royal Court of Tiébélé is a Kasena earthen complex whose architecture and decoration express social organization and living building knowledge."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_senufo_balafon_form",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mali; Burkina Faso; Côte d’Ivoire",
+      "subregionScope": "Cross-border Senufo areas",
+      "communityScope": "Senufo communities",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What kind of instrument is the West African balafon in UNESCO’s multinational inscription?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A transverse horn"
+        },
+        {
+          "id": "o2",
+          "text": "A frame drum"
+        },
+        {
+          "id": "o3",
+          "text": "A wooden xylophone"
+        },
+        {
+          "id": "o4",
+          "text": "A bowed lute"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The balafon belongs to a family of wooden xylophones with differently sized keys.",
+      "sources": [
+        {
+          "title": "Cultural practices and expressions linked to Balafon and Kolintang",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/cultural-practices-and-expressions-linked-to-balafon-and-kolintang-in-mali-burkina-faso-cote-d-ivoire-and-indonesia-02131",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Balafon practices are documented in Mali, Burkina Faso and Côte d’Ivoire; the instruments are wooden xylophones and the living heritage crosses modern borders."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_senufo_balafon_scope",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mali; Burkina Faso; Côte d’Ivoire",
+      "subregionScope": "Cross-border Senufo areas",
+      "communityScope": "Senufo communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which statement accurately scopes the documented Senufo balafon heritage?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It is documented only in coastal Senegal"
+        },
+        {
+          "id": "o2",
+          "text": "It crosses Mali, Burkina Faso and Côte d’Ivoire"
+        },
+        {
+          "id": "o3",
+          "text": "It belongs uniformly to every West African community"
+        },
+        {
+          "id": "o4",
+          "text": "It is confined to Cabo Verde"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The inscription is cross-border but community-specific; it should not be generalized to all of West Africa.",
+      "sources": [
+        {
+          "title": "Cultural practices and expressions linked to Balafon and Kolintang",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/cultural-practices-and-expressions-linked-to-balafon-and-kolintang-in-mali-burkina-faso-cote-d-ivoire-and-indonesia-02131",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Balafon practices are documented in Mali, Burkina Faso and Côte d’Ivoire; the instruments are wooden xylophones and the living heritage crosses modern borders."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_mali_yaaral_degal_crossings",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mali",
+      "subregionScope": "Inner Niger Delta",
+      "communityScope": "Peul pastoral communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What seasonal activity do the Yaaral and Degal festivities mark?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Cattle crossing between Sahelian and Inner Niger Delta pastures"
+        },
+        {
+          "id": "o2",
+          "text": "Salt boats crossing the Atlantic"
+        },
+        {
+          "id": "o3",
+          "text": "Fishing canoes leaving the Niger Delta coast"
+        },
+        {
+          "id": "o4",
+          "text": "Horse processions entering Kano"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The festivities accompany transhumance between dry Sahel lands and the Inner Niger Delta floodplains.",
+      "sources": [
+        {
+          "title": "Cultural space of the Yaaral and Degal",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/cultural-space-of-the-yaaral-and-degal-00132",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Yaaral and Degal mark Peul cattle crossings between Sahelian and Inner Niger Delta pastures, with timing tied to water and pasture conditions."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_mali_yaaral_degal_timing",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mali",
+      "subregionScope": "Inner Niger Delta",
+      "communityScope": "Peul pastoral communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What helps determine the exact timing of Yaaral and Degal festivities?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A fixed Gregorian calendar date"
+        },
+        {
+          "id": "o2",
+          "text": "The opening date of a national museum"
+        },
+        {
+          "id": "o3",
+          "text": "The arrival of Atlantic trade winds"
+        },
+        {
+          "id": "o4",
+          "text": "Pasture conditions and the river level"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The timing responds to ecological conditions rather than a single fixed annual date.",
+      "sources": [
+        {
+          "title": "Cultural space of the Yaaral and Degal",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/cultural-space-of-the-yaaral-and-degal-00132",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Yaaral and Degal mark Peul cattle crossings between Sahelian and Inner Niger Delta pastures, with timing tied to water and pasture conditions."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Living ceremonial or religious practice: specialist community review is required before progression beyond draft.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_mali_mbolon_structure",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mali",
+      "subregionScope": "Sikasso and Koulikoro regions",
+      "communityScope": "Mandinka cultural areas and other southern Malian practitioners",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which description fits the M’Bolon?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A narrow-strip cotton loom"
+        },
+        {
+          "id": "o2",
+          "text": "A pair of transverse cowhide horns"
+        },
+        {
+          "id": "o3",
+          "text": "A string instrument with a skin-covered calabash sound box"
+        },
+        {
+          "id": "o4",
+          "text": "A set of laterite standing stones"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The M’Bolon combines a calabash sound box, animal skin, a bow-shaped wooden neck and strings.",
+      "sources": [
+        {
+          "title": "Cultural practices and expressions linked to the M’Bolon",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/cultural-practices-and-expressions-linked-to-the-m-bolon-a-traditional-musical-percussion-instrument-01689",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The M’Bolon is a southern Malian string instrument with a calabash sound box and varied social, agricultural and ceremonial uses."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_mali_mbolon_uses",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mali",
+      "subregionScope": "Southern Mali",
+      "communityScope": null,
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which statement reflects the documented uses of the M’Bolon?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It has no role beyond studio recording"
+        },
+        {
+          "id": "o2",
+          "text": "Its uses vary with string number and include social, agricultural and ceremonial settings"
+        },
+        {
+          "id": "o3",
+          "text": "It is used only in royal coronations"
+        },
+        {
+          "id": "o4",
+          "text": "It is played only outside Mali"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO describes multiple forms and contexts, including popular events, field work and ceremonies.",
+      "sources": [
+        {
+          "title": "Cultural practices and expressions linked to the M’Bolon",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/cultural-practices-and-expressions-linked-to-the-m-bolon-a-traditional-musical-percussion-instrument-01689",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The M’Bolon is a southern Malian string instrument with a calabash sound box and varied social, agricultural and ceremonial uses."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Living ceremonial or religious practice: specialist community review is required before progression beyond draft.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_mauritania_four_ksour",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mauritania",
+      "subregionScope": "Saharan caravan routes",
+      "communityScope": null,
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which set contains the four ancient Mauritanian ksour on UNESCO’s World Heritage List?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Ouadane, Chinguetti, Tichitt and Oualata"
+        },
+        {
+          "id": "o2",
+          "text": "Agadez, Timbuktu, Gao and Djenné"
+        },
+        {
+          "id": "o3",
+          "text": "Dakar, Saint-Louis, Gorée and Thiès"
+        },
+        {
+          "id": "o4",
+          "text": "Kano, Katsina, Zaria and Sokoto"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The serial property comprises Ouadane, Chinguetti, Tichitt and Oualata.",
+      "sources": [
+        {
+          "title": "Ancient Ksour of Ouadane, Chinguetti, Tichitt and Oualata",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/750/",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mauritania’s four ancient ksour served Saharan caravan routes and retain dense patio houses, narrow streets and mosques with square minarets."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_mauritania_ksour_urban_form",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mauritania",
+      "subregionScope": "Saharan caravan routes",
+      "communityScope": null,
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which urban form characterizes Mauritania’s ancient ksour?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Stilt houses around a tidal lagoon"
+        },
+        {
+          "id": "o2",
+          "text": "Circular stone towers around a forest shrine"
+        },
+        {
+          "id": "o3",
+          "text": "Timber longhouses beside rice terraces"
+        },
+        {
+          "id": "o4",
+          "text": "Patio houses along narrow streets around a mosque with a square minaret"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The compact form reflects adaptation to desert conditions and long-distance caravan life.",
+      "sources": [
+        {
+          "title": "Ancient Ksour of Ouadane, Chinguetti, Tichitt and Oualata",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/750/",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mauritania’s four ancient ksour served Saharan caravan routes and retain dense patio houses, narrow streets and mosques with square minarets."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_mauritania_couscous_process",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mauritania",
+      "subregionScope": null,
+      "communityScope": null,
+      "category": "FOOD",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which step belongs to the documented preparation of couscous?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Fermenting broken rice in seawater"
+        },
+        {
+          "id": "o2",
+          "text": "Pressing yam into woven cotton strips"
+        },
+        {
+          "id": "o3",
+          "text": "Rolling semolina by hand before steaming it"
+        },
+        {
+          "id": "o4",
+          "text": "Roasting whole cassava in palm leaves"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The shared heritage record includes grinding grain, hand-rolling semolina and steaming it.",
+      "sources": [
+        {
+          "title": "Knowledge, know-how and practices pertaining to the production and consumption of couscous",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/knowledge-know-how-and-practices-pertaining-to-the-production-and-consumption-of-couscous-01602",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "In Mauritania and other participating countries, couscous knowledge includes hand-rolling and steaming semolina, with accompaniments varying by place and occasion."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_mauritania_couscous_variation",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mauritania",
+      "subregionScope": null,
+      "communityScope": null,
+      "category": "FOOD",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Why is one fixed description of couscous accompaniments misleading?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only one household may prepare it"
+        },
+        {
+          "id": "o2",
+          "text": "Vegetables and meats vary by region, season and occasion"
+        },
+        {
+          "id": "o3",
+          "text": "UNESCO requires one identical recipe"
+        },
+        {
+          "id": "o4",
+          "text": "The dish is served without accompaniments everywhere"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The multinational inscription stresses variation and social context rather than a single universal recipe.",
+      "sources": [
+        {
+          "title": "Knowledge, know-how and practices pertaining to the production and consumption of couscous",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/knowledge-know-how-and-practices-pertaining-to-the-production-and-consumption-of-couscous-01602",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "In Mauritania and other participating countries, couscous knowledge includes hand-rolling and steaming semolina, with accompaniments varying by place and occasion."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_niger_joking_relationships_purpose",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Niger",
+      "subregionScope": null,
+      "communityScope": "Participating ethnolinguistic communities",
+      "category": "PHILOSOPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What social purpose is associated with joking relationships in Niger?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Supporting solidarity, reconciliation and peaceful dispute handling"
+        },
+        {
+          "id": "o2",
+          "text": "Ranking communities by social worth"
+        },
+        {
+          "id": "o3",
+          "text": "Licensing unrestricted insults between strangers"
+        },
+        {
+          "id": "o4",
+          "text": "Replacing all formal conflict-resolution processes"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "These are governed relationships with obligations of support and peaceful settlement, not permission for general stereotyping.",
+      "sources": [
+        {
+          "title": "Practices and expressions of joking relationships in Niger",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/practices-and-expressions-of-joking-relationships-in-niger-01009",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "In Niger, culturally governed joking relationships support solidarity and peaceful dispute handling in everyday and ceremonial settings."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Ritualized joking can be misrepresented as ordinary stereotyping: Nigerien community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_niger_joking_relationships_settings",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Niger",
+      "subregionScope": null,
+      "communityScope": "Participating ethnolinguistic communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Where may Nigerien joking relationships be practised according to UNESCO?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only inside a national archive"
+        },
+        {
+          "id": "o2",
+          "text": "Only during international football matches"
+        },
+        {
+          "id": "o3",
+          "text": "Only by professional stage comedians"
+        },
+        {
+          "id": "o4",
+          "text": "In daily public life and at family or community occasions"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The practice appears in homes, markets, workplaces and ceremonies, within recognized relationships.",
+      "sources": [
+        {
+          "title": "Practices and expressions of joking relationships in Niger",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/practices-and-expressions-of-joking-relationships-in-niger-01009",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "In Niger, culturally governed joking relationships support solidarity and peaceful dispute handling in everyday and ceremonial settings."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Ritualized joking can be misrepresented as ordinary stereotyping: Nigerien community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_tuareg_imzad_performer",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mali; Niger",
+      "subregionScope": "Tuareg communities across the Sahara and Sahel",
+      "communityScope": "Tuareg communities",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Who is documented as playing the Imzad in Tuareg communities?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Children playing a twenty-key xylophone"
+        },
+        {
+          "id": "o2",
+          "text": "Mounted riders playing kettle drums"
+        },
+        {
+          "id": "o3",
+          "text": "Women playing a single-stringed bowed instrument"
+        },
+        {
+          "id": "o4",
+          "text": "Men playing a six-horn ensemble"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "UNESCO describes women performing Imzad music with the instrument held on the knees.",
+      "sources": [
+        {
+          "title": "Practices and knowledge linked to the Imzad",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/practices-and-knowledge-linked-to-the-imzad-of-the-tuareg-communities-of-algeria-mali-and-niger-00891",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tuareg women in Algeria, Mali and Niger play and make the single-stringed bowed Imzad using a gourd, skin and wooden components."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_tuareg_imzad_materials",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mali; Niger",
+      "subregionScope": "Tuareg communities across the Sahara and Sahel",
+      "communityScope": "Tuareg communities",
+      "category": "ART",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which materials are used to construct an Imzad?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Cowhide-covered tree roots and six mouthpieces"
+        },
+        {
+          "id": "o2",
+          "text": "A hollowed gourd, stretched skin and wooden fittings"
+        },
+        {
+          "id": "o3",
+          "text": "Laterite pillars and iron crossbars"
+        },
+        {
+          "id": "o4",
+          "text": "Dyed cotton strips and a hand loom"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The instrument uses a half gourd, skin soundboard, wooden bridge and bow.",
+      "sources": [
+        {
+          "title": "Practices and knowledge linked to the Imzad",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/practices-and-knowledge-linked-to-the-imzad-of-the-tuareg-communities-of-algeria-mali-and-niger-00891",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tuareg women in Algeria, Mali and Niger play and make the single-stringed bowed Imzad using a gourd, skin and wooden components."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cote_ivoire_narrow_strip_weaving",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Côte d’Ivoire",
+      "subregionScope": null,
+      "communityScope": "Gouro, Baoulé, Malinké, Senufo, Koulango, Nafana and Abron communities",
+      "category": "TEXTILES",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How are many traditional cotton cloths in Côte d’Ivoire assembled?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Narrow woven strips are joined to form a larger patterned cloth"
+        },
+        {
+          "id": "o2",
+          "text": "Whole hides are stitched into a single sheet"
+        },
+        {
+          "id": "o3",
+          "text": "Fibres are pressed into felt without weaving"
+        },
+        {
+          "id": "o4",
+          "text": "Clay panels are painted and tied together"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO describes dyed cotton threads woven in narrow strips and then joined, while noting community-specific techniques.",
+      "sources": [
+        {
+          "title": "Traditional skills of loincloth weaving in Côte d’Ivoire",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/traditional-skills-of-loincloth-weaving-in-cote-d-ivoire-01949",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ivorian weaving traditions vary by community and include joined narrow cotton strips and Dida raffia woven crossways with a spoon."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cote_ivoire_dida_raffia",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Côte d’Ivoire",
+      "subregionScope": "Dida areas",
+      "communityScope": "Dida communities",
+      "category": "TEXTILES",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which material and method are associated with Dida textile production in UNESCO’s account?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Silk strips woven on a drawloom"
+        },
+        {
+          "id": "o2",
+          "text": "Wool felt rolled with hot water"
+        },
+        {
+          "id": "o3",
+          "text": "Bark cloth beaten with stone mallets"
+        },
+        {
+          "id": "o4",
+          "text": "Raffia fibres woven crossways using a spoon"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The Dida example differs from the cotton-strip methods described for several other Ivorian communities.",
+      "sources": [
+        {
+          "title": "Traditional skills of loincloth weaving in Côte d’Ivoire",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/traditional-skills-of-loincloth-weaving-in-cote-d-ivoire-01949",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ivorian weaving traditions vary by community and include joined narrow cotton strips and Dida raffia woven crossways with a spoon."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cote_ivoire_zaouli_scope",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Côte d’Ivoire",
+      "subregionScope": "Bouaflé and Zuénoula departments",
+      "communityScope": "Guro communities",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Zaouli is specifically associated with which communities and places?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Kasena communities in Tiébélé"
+        },
+        {
+          "id": "o2",
+          "text": "Tiv communities around Gboko"
+        },
+        {
+          "id": "o3",
+          "text": "Guro communities in Bouaflé and Zuénoula"
+        },
+        {
+          "id": "o4",
+          "text": "Wolof communities in Dakar and Saint-Louis"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The UNESCO inscription gives Zaouli a precise Guro and departmental scope.",
+      "sources": [
+        {
+          "title": "Zaouli, popular music and dance of the Guro communities in Côte d’Ivoire",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/zaouli-popular-music-and-dance-of-the-guro-communities-in-cote-d-ivoire-01255",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Zaouli is a Guro practice in Bouaflé and Zuénoula that brings sculpture, weaving, music, song and dance into one performance."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cote_ivoire_zaouli_arts",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Côte d’Ivoire",
+      "subregionScope": "Bouaflé and Zuénoula departments",
+      "communityScope": "Guro communities",
+      "category": "ART",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which art forms meet in a Zaouli performance?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Gold casting, horse riding and gun salutes"
+        },
+        {
+          "id": "o2",
+          "text": "Mask sculpture, costume weaving, music, song and dance"
+        },
+        {
+          "id": "o3",
+          "text": "Stone masonry, calligraphy and camel racing"
+        },
+        {
+          "id": "o4",
+          "text": "Canoe carving, wrestling and fishing"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Zaouli is a composite practice in which several visual and performing arts work together.",
+      "sources": [
+        {
+          "title": "Zaouli, popular music and dance of the Guro communities in Côte d’Ivoire",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/zaouli-popular-music-and-dance-of-the-guro-communities-in-cote-d-ivoire-01255",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Zaouli is a Guro practice in Bouaflé and Zuénoula that brings sculpture, weaving, music, song and dance into one performance."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cote_ivoire_gbofe_name",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Côte d’Ivoire",
+      "subregionScope": "Afounkaha",
+      "communityScope": "Tagbana community",
+      "category": "LANGUAGE",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "In the Tagbana community of Afounkaha, what can the word Gbofe refer to?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Both the transverse horns and the performance as a whole"
+        },
+        {
+          "id": "o2",
+          "text": "Only the lead drummer"
+        },
+        {
+          "id": "o3",
+          "text": "Only a harvest meal"
+        },
+        {
+          "id": "o4",
+          "text": "Only the dancers’ woven costume"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The same term names the instruments and the combined music, song and dance performance.",
+      "sources": [
+        {
+          "title": "Gbofe of Afounkaha",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/lists?USL=00005",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Gbofe names both transverse horns and a Tagbana performance in Afounkaha combining six horns, song, dance and drums."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cote_ivoire_gbofe_ensemble",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Côte d’Ivoire",
+      "subregionScope": "Afounkaha",
+      "communityScope": "Tagbana community",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which description matches the documented Gbofe ensemble?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "One bowed string instrument with a solo poet"
+        },
+        {
+          "id": "o2",
+          "text": "Twelve xylophones without voices"
+        },
+        {
+          "id": "o3",
+          "text": "A brass band mounted on horses"
+        },
+        {
+          "id": "o4",
+          "text": "Six transverse horns accompanied by choirs and drums"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Six differently sized horns produce patterns related to Tagbana speech, accompanied by singing and drumming.",
+      "sources": [
+        {
+          "title": "Gbofe of Afounkaha",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/lists?USL=00005",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Gbofe names both transverse horns and a Tagbana performance in Afounkaha combining six horns, song, dance and drums."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cote_ivoire_attieke_base",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Côte d’Ivoire",
+      "subregionScope": "Lagoon areas",
+      "communityScope": "Lagoon peoples",
+      "category": "FOOD",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What is the principal ingredient of attiéké?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Pearl millet"
+        },
+        {
+          "id": "o2",
+          "text": "Durum wheat"
+        },
+        {
+          "id": "o3",
+          "text": "Cassava"
+        },
+        {
+          "id": "o4",
+          "text": "Broken rice"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Attiéké is a steamed cassava preparation associated with Côte d’Ivoire’s lagoon peoples.",
+      "sources": [
+        {
+          "title": "Skills related to Attiéké production in Côte d’Ivoire",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/skills-related-to-attieke-production-in-cote-d-ivoire-02086",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Attiéké is steamed cassava semolina associated with Côte d’Ivoire’s lagoon peoples and a multi-stage family and commercial production practice."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_cote_ivoire_attieke_process",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Côte d’Ivoire",
+      "subregionScope": "Lagoon areas",
+      "communityScope": "Lagoon peoples",
+      "category": "FOOD",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which sequence belongs to attiéké production?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Boil rice, press it into cloth, then roast it"
+        },
+        {
+          "id": "o2",
+          "text": "Prepare fermented cassava semolina, steam it, then cool it"
+        },
+        {
+          "id": "o3",
+          "text": "Dry fish, pound millet, then bake it"
+        },
+        {
+          "id": "o4",
+          "text": "Roll wheat semolina, grill it, then smoke it"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The cited process includes grinding cassava, mixing with fermented cassava, making semolina, steaming and cooling.",
+      "sources": [
+        {
+          "title": "Skills related to Attiéké production in Côte d’Ivoire",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/skills-related-to-attieke-production-in-cote-d-ivoire-02086",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Attiéké is steamed cassava semolina associated with Côte d’Ivoire’s lagoon peoples and a multi-stage family and commercial production practice."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Gendered roles are described by the cited source and must not be presented as universal or prescriptive; specialist review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_guinea_sosso_bala_location",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Guinea",
+      "subregionScope": "Nyagassola",
+      "communityScope": "Dökala family and Kouyaté griots",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Where is the original Sosso-Bala preserved according to UNESCO?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Nyagassola in northern Guinea"
+        },
+        {
+          "id": "o2",
+          "text": "Kangaba in southern Mali"
+        },
+        {
+          "id": "o3",
+          "text": "Tiébélé in Burkina Faso"
+        },
+        {
+          "id": "o4",
+          "text": "Oualata in Mauritania"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The public UNESCO record locates the instrument in a round mud hut in Nyagassola.",
+      "sources": [
+        {
+          "title": "Cultural space of Sosso-Bala",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/cultural-space-of-sosso-bala-00009",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The sacred Sosso-Bala is kept at Nyagassola in Guinea by the Dökala family’s Kouyaté griots, with the Balatigui as guardian."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Sacred or custodial heritage: specialist community review is required and no restricted knowledge may be added.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_guinea_sosso_bala_guardian",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Guinea",
+      "subregionScope": "Nyagassola",
+      "communityScope": "Dökala family and Kouyaté griots",
+      "category": "ORAL HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What title does UNESCO use for the guardian of the Sosso-Bala?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Alaafin"
+        },
+        {
+          "id": "o2",
+          "text": "Sarkin Ruwa"
+        },
+        {
+          "id": "o3",
+          "text": "Chief weaver"
+        },
+        {
+          "id": "o4",
+          "text": "Balatigui"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The Balatigui, patriarch of the Dökala family, is identified as the instrument’s guardian; this question uses only public information.",
+      "sources": [
+        {
+          "title": "Cultural space of Sosso-Bala",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/cultural-space-of-sosso-bala-00009",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The sacred Sosso-Bala is kept at Nyagassola in Guinea by the Dökala family’s Kouyaté griots, with the Balatigui as guardian."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Sacred or custodial heritage: specialist community review is required and no restricted knowledge may be added.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_guinea_bissau_bijagos_islands",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Guinea-Bissau",
+      "subregionScope": "Bolama-Bijagós Archipelago",
+      "communityScope": "Island communities of the Bijagós",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How many islands does UNESCO describe in the Bolama-Bijagós archipelago?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "52"
+        },
+        {
+          "id": "o2",
+          "text": "101"
+        },
+        {
+          "id": "o3",
+          "text": "88"
+        },
+        {
+          "id": "o4",
+          "text": "24"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The biosphere reserve description identifies an archipelago of 88 islands off Guinea-Bissau.",
+      "sources": [
+        {
+          "title": "Bolama-Bijagós",
+          "organisationOrAuthor": "UNESCO Man and the Biosphere Programme",
+          "urlOrReference": "https://www.unesco.org/en/mab/bolama-bijagos",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Bolama-Bijagós Biosphere Reserve is an 88-island Guinea-Bissau archipelago where island communities combine farming, fishing and shell gathering."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_guinea_bissau_bijagos_livelihoods",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Guinea-Bissau",
+      "subregionScope": "Bolama-Bijagós Archipelago",
+      "communityScope": "Island communities of the Bijagós",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which activities are documented among communities of the Bolama-Bijagós Biosphere Reserve?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Tea plantations, reindeer herding and pearl diving"
+        },
+        {
+          "id": "o2",
+          "text": "Farming, fishing and shell gathering"
+        },
+        {
+          "id": "o3",
+          "text": "Glacier herding, mining and skiing"
+        },
+        {
+          "id": "o4",
+          "text": "Vine cultivation, silk rearing and whaling"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO lists agriculture, fishing and shell gathering among present-day island livelihoods.",
+      "sources": [
+        {
+          "title": "Bolama-Bijagós",
+          "organisationOrAuthor": "UNESCO Man and the Biosphere Programme",
+          "urlOrReference": "https://www.unesco.org/en/mab/bolama-bijagos",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Bolama-Bijagós Biosphere Reserve is an 88-island Guinea-Bissau archipelago where island communities combine farming, fishing and shell gathering."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_liberia_vai_creator",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Liberia",
+      "subregionScope": null,
+      "communityScope": "Vai speakers and writers",
+      "category": "LANGUAGE",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Who is credited by the Smithsonian with creating the Vai script around 1832?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Momolu Duwalu Bukele"
+        },
+        {
+          "id": "o2",
+          "text": "Sundiata Keita"
+        },
+        {
+          "id": "o3",
+          "text": "Sumaoro Kanté"
+        },
+        {
+          "id": "o4",
+          "text": "Wegbaja"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The Smithsonian identifies Momolu Duwalu Bukele of Liberia as the script’s inventor around 1832.",
+      "sources": [
+        {
+          "title": "Inscribing Meaning: Writing and Graphic Systems in African Art",
+          "organisationOrAuthor": "Smithsonian National Museum of African Art",
+          "urlOrReference": "https://africa.si.edu/exhibitions/inscribing-meaning-writing-and-graphic-systems-africa-art",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "museum",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Vai syllabary was created in Liberia around 1832 by Momolu Duwalu Bukele; its characters represent syllables and the script is written left to right."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_liberia_vai_syllabary",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Liberia",
+      "subregionScope": null,
+      "communityScope": "Vai speakers and writers",
+      "category": "LANGUAGE",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Why is Vai described as a syllabary?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Each symbol represents a whole paragraph"
+        },
+        {
+          "id": "o2",
+          "text": "It records only musical pitch"
+        },
+        {
+          "id": "o3",
+          "text": "Its signs represent numbers only"
+        },
+        {
+          "id": "o4",
+          "text": "Each character represents a consonant-and-vowel syllable"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Vai characters encode syllables, and the modern script is written from left to right.",
+      "sources": [
+        {
+          "title": "Inscribing Meaning: Writing and Graphic Systems in African Art",
+          "organisationOrAuthor": "Smithsonian National Museum of African Art",
+          "urlOrReference": "https://africa.si.edu/exhibitions/inscribing-meaning-writing-and-graphic-systems-africa-art",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "museum",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Vai syllabary was created in Liberia around 1832 by Momolu Duwalu Bukele; its characters represent syllables and the script is written left to right."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_sierra_leone_sowei_names",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Sierra Leone; Liberia",
+      "subregionScope": null,
+      "communityScope": "Mende, Sherbro, Vai and Gola communities",
+      "category": "ART",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which naming distinction appears in the Smithsonian record for this helmet-mask tradition?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "M’Bolon among Sherbro; Imzad among Vai"
+        },
+        {
+          "id": "o2",
+          "text": "Gbofe among Gola; Zaouli among Mende"
+        },
+        {
+          "id": "o3",
+          "text": "Sowei among Mende, Sherbro and Vai; zogbe among Gola"
+        },
+        {
+          "id": "o4",
+          "text": "Takienta among Mende; sikien among Gola"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The museum record preserves community-specific names rather than applying one label everywhere.",
+      "sources": [
+        {
+          "title": "Helmet mask",
+          "organisationOrAuthor": "Smithsonian National Museum of African Art",
+          "urlOrReference": "https://www.si.edu/object/helmet-mask%3Anmafa_2012-11-1",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "museum",
+          "reviewStatus": "approved",
+          "relevantClaim": "Helmet masks are called sowei among Mende, Sherbro and Vai communities and zogbe among Gola communities in Sierra Leone and Liberia, and are performed by Sande members."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Initiatory practice: specialist review by relevant community knowledge-holders is required; do not add restricted details.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_sierra_leone_sowei_performance",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Sierra Leone; Liberia",
+      "subregionScope": null,
+      "communityScope": "Mende, Sherbro, Vai and Gola communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Who performs the sowei or zogbe helmet masks described by the Smithsonian?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Senegambian stone carvers"
+        },
+        {
+          "id": "o2",
+          "text": "Members of the women’s Sande society"
+        },
+        {
+          "id": "o3",
+          "text": "Kano palace horse riders"
+        },
+        {
+          "id": "o4",
+          "text": "Morna guitar ensembles"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The public museum label identifies Sande members as performers; initiation details remain outside this candidate.",
+      "sources": [
+        {
+          "title": "Helmet mask",
+          "organisationOrAuthor": "Smithsonian National Museum of African Art",
+          "urlOrReference": "https://www.si.edu/object/helmet-mask%3Anmafa_2012-11-1",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "museum",
+          "reviewStatus": "approved",
+          "relevantClaim": "Helmet masks are called sowei among Mende, Sherbro and Vai communities and zogbe among Gola communities in Sierra Leone and Liberia, and are performed by Sande members."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Initiatory practice: specialist review by relevant community knowledge-holders is required; do not add restricted details.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_nigeria_kano_durbar_calendar",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Nigeria",
+      "subregionScope": "Kano",
+      "communityScope": "Kano Durbar participants",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Kano Durbar takes place in connection with which celebrations?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Eid al-Fitr and Eid al-Adha"
+        },
+        {
+          "id": "o2",
+          "text": "New Yam and Homowo"
+        },
+        {
+          "id": "o3",
+          "text": "Tabaski and Timkat"
+        },
+        {
+          "id": "o4",
+          "text": "Mawlid and Meskel"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO links the annual processions to the two Eid celebrations in the Islamic calendar.",
+      "sources": [
+        {
+          "title": "Durbar in Kano",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/durbar-in-kano-01895",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Kano Durbar accompanies Eid celebrations and brings equestrian display together with leatherwork, weaving, dyeing, embroidery, blacksmithing, riding and drumming."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_nigeria_kano_durbar_crafts",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Nigeria",
+      "subregionScope": "Kano",
+      "communityScope": "Kano Durbar participants",
+      "category": "ART",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which craft group is documented as part of Kano Durbar knowledge?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Coral masonry, glass blowing and ship rigging"
+        },
+        {
+          "id": "o2",
+          "text": "Raffia papermaking, porcelain and lacquering"
+        },
+        {
+          "id": "o3",
+          "text": "Marble carving, mosaic and tapestry restoration"
+        },
+        {
+          "id": "o4",
+          "text": "Leatherwork, weaving, dyeing, embroidery and blacksmithing"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Durbar sustains a broad network of equestrian and craft skills beyond the procession itself.",
+      "sources": [
+        {
+          "title": "Durbar in Kano",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/durbar-in-kano-01895",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Kano Durbar accompanies Eid celebrations and brings equestrian display together with leatherwork, weaving, dyeing, embroidery, blacksmithing, riding and drumming."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_nigeria_kwagh_hir_roots",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Nigeria",
+      "subregionScope": "Tiv-speaking areas",
+      "communityScope": "Tiv communities",
+      "category": "ORAL HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Kwagh-Hir theatre developed from which Tiv practice?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Gelede harvest chants"
+        },
+        {
+          "id": "o2",
+          "text": "Mahadra navigation lessons"
+        },
+        {
+          "id": "o3",
+          "text": "Kwagh-alom family storytelling"
+        },
+        {
+          "id": "o4",
+          "text": "Morna lyric contests"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "UNESCO traces Kwagh-Hir to evening family storytelling that later became dramatized.",
+      "sources": [
+        {
+          "title": "Kwagh-Hir theatrical performance",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/kwagh-hir-theatrical-performance-00683",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tiv Kwagh-Hir grew from kwagh-alom storytelling and combines puppetry, masquerade, poetry, music, dance and animated narrative."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_nigeria_kwagh_hir_forms",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Nigeria",
+      "subregionScope": "Tiv-speaking areas",
+      "communityScope": "Tiv communities",
+      "category": "ART",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which combination belongs to Kwagh-Hir performance?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Strip weaving, indigo dyeing and embroidery"
+        },
+        {
+          "id": "o2",
+          "text": "Puppetry, masquerade, poetry, music and dance"
+        },
+        {
+          "id": "o3",
+          "text": "Horse racing, gun salutes and leatherwork"
+        },
+        {
+          "id": "o4",
+          "text": "Canoe racing, hand fishing and wrestling"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Kwagh-Hir is a composite Tiv theatre that presents both past and current social realities.",
+      "sources": [
+        {
+          "title": "Kwagh-Hir theatrical performance",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/kwagh-hir-theatrical-performance-00683",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tiv Kwagh-Hir grew from kwagh-alom storytelling and combines puppetry, masquerade, poetry, music, dance and animated narrative."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_nigeria_argungu_location",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Nigeria",
+      "subregionScope": "Argungu, north-western Nigeria",
+      "communityScope": "Argungu and neighbouring communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Near which river is the Argungu International Fishing and Cultural Festival held?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Matan Fada River"
+        },
+        {
+          "id": "o2",
+          "text": "Senegal River"
+        },
+        {
+          "id": "o3",
+          "text": "Volta River"
+        },
+        {
+          "id": "o4",
+          "text": "Geba River"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The festival gathers communities near the Matan Fada River in north-western Nigeria.",
+      "sources": [
+        {
+          "title": "Argungu international fishing and cultural festival",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/argungu-international-fishing-and-cultural-festival-00901",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Argungu festival is held near the Matan Fada River in north-western Nigeria and features water competitions such as hand fishing and canoe racing."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_nigeria_argungu_water_events",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Nigeria",
+      "subregionScope": "Argungu, north-western Nigeria",
+      "communityScope": "Argungu and neighbouring communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which activities are part of Argungu’s kabanci water competitions?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Horse dressage and archery"
+        },
+        {
+          "id": "o2",
+          "text": "Mask carving and xylophone tuning"
+        },
+        {
+          "id": "o3",
+          "text": "Stone quarrying and wall plastering"
+        },
+        {
+          "id": "o4",
+          "text": "Hand fishing and canoe racing"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Kabanci includes hand fishing, canoe racing and other water competitions alongside additional local sports.",
+      "sources": [
+        {
+          "title": "Argungu international fishing and cultural festival",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/argungu-international-fishing-and-cultural-festival-00901",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Argungu festival is held near the Matan Fada River in north-western Nigeria and features water competitions such as hand fishing and canoe racing."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_mauritania_mahadra_method",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mauritania",
+      "subregionScope": null,
+      "communityScope": "Mahadra teachers and learners",
+      "category": "ORAL HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which learning methods are central to Mauritania’s mahadra system?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only laboratory experiments"
+        },
+        {
+          "id": "o2",
+          "text": "Only recorded video lessons"
+        },
+        {
+          "id": "o3",
+          "text": "Listening and memorization"
+        },
+        {
+          "id": "o4",
+          "text": "Only printed examinations"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Mahadra is a community framework in which oral transmission relies heavily on attentive listening and memorization.",
+      "sources": [
+        {
+          "title": "Mahadra, a community system for transmission of traditional knowledge and oral expressions",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mahadra-a-community-system-for-transmission-of-traditional-knowledge-and-oral-expressions-01960",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mauritanian mahadra is a community learning system based largely on listening and memorization, covering literature, religion and environmental knowledge."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_mauritania_mahadra_topics",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mauritania",
+      "subregionScope": null,
+      "communityScope": "Mahadra teachers and learners",
+      "category": "ORAL HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which range of subjects may be taught through mahadra?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only parliamentary procedure"
+        },
+        {
+          "id": "o2",
+          "text": "Literature, religious sciences and knowledge of the desert environment"
+        },
+        {
+          "id": "o3",
+          "text": "Only maritime engineering"
+        },
+        {
+          "id": "o4",
+          "text": "Only industrial chemistry"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO describes language, literature, religious learning and environmental knowledge such as rain, plants, tracks and stars.",
+      "sources": [
+        {
+          "title": "Mahadra, a community system for transmission of traditional knowledge and oral expressions",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mahadra-a-community-system-for-transmission-of-traditional-knowledge-and-oral-expressions-01960",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mauritanian mahadra is a community learning system based largely on listening and memorization, covering literature, religion and environmental knowledge."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Religious learning is part of the public source description; Mauritanian specialist review is required before progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_mauritania_zaffa_variation",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Mauritania",
+      "subregionScope": null,
+      "communityScope": "Mauritanian zaffa practitioners",
+      "category": "TRADITION",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which statement responsibly describes zaffa in Mauritania?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It is a bridal procession whose music, rituals and symbols vary by community"
+        },
+        {
+          "id": "o2",
+          "text": "It follows one identical script in every participating country"
+        },
+        {
+          "id": "o3",
+          "text": "It is solely a private legal contract without celebration"
+        },
+        {
+          "id": "o4",
+          "text": "It excludes family, artists and community members"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The multinational heritage record describes a shared procession form while emphasizing that symbolic acts vary among practising communities.",
+      "sources": [
+        {
+          "title": "The zaffa in the traditional wedding",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/the-zaffa-in-the-traditional-wedding-02283",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "In Mauritania and other participating countries, zaffa is a bridal procession involving music, dance and community gathering, with symbolic details varying by community."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Wedding practices vary between participating communities; Mauritanian specialist review is required and the example must not be universalized.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_ghana_akan_rooster_proverb",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Ghana; Côte d’Ivoire",
+      "subregionScope": "Akan cultural areas",
+      "communityScope": "Akan communities",
+      "category": "PROVERBS",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What lesson is associated with the rooster-head Akan goldweight in the Smithsonian record?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Avoid speaking during every negotiation"
+        },
+        {
+          "id": "o2",
+          "text": "Store all wealth in a single place"
+        },
+        {
+          "id": "o3",
+          "text": "A leader should never accept advice"
+        },
+        {
+          "id": "o4",
+          "text": "Respond to a situation with proportionate force"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The associated proverb says a large stick is unnecessary for breaking a cock’s head: the response should fit the situation.",
+      "sources": [
+        {
+          "title": "Weight",
+          "organisationOrAuthor": "Smithsonian National Museum of African Art",
+          "urlOrReference": "https://www.si.edu/object/weight%3Anmafa_75-22-312",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "museum",
+          "reviewStatus": "approved",
+          "relevantClaim": "A rooster-head Akan goldweight is associated with a proverb advising an appropriate, proportionate response to a situation."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Proverb wording and interpretation require review by an Akan language and cultural specialist before progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "west_nigeria_yoruba_morning_greeting",
+      "version": 1,
+      "region": "west",
+      "countryScope": "Nigeria",
+      "subregionScope": "South-western Nigeria",
+      "communityScope": "Yorùbá-speaking communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which greeting does the cited Yorùbá language textbook give for the morning?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Káalẹ́"
+        },
+        {
+          "id": "o2",
+          "text": "Ó dààárọ̀"
+        },
+        {
+          "id": "o3",
+          "text": "Káàárọ̀"
+        },
+        {
+          "id": "o4",
+          "text": "Káàsán"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The textbook gives káàárọ̀ for the morning; tone marks and usage need review by a Yorùbá language specialist.",
+      "sources": [
+        {
+          "title": "Yorùbá Yé Mi, Chapter 1: Greetings",
+          "organisationOrAuthor": "University of Texas at Austin Center for Open Educational Resources and Language Learning",
+          "urlOrReference": "https://coerll.utexas.edu/yemi/pdfs/yy_ch1.pdf",
+          "publicationDate": null,
+          "accessDate": "2026-09-03",
+          "sourceType": "academic",
+          "reviewStatus": "approved",
+          "relevantClaim": "The university language textbook documents time-specific Yorùbá greetings, including káàárọ̀ as a morning greeting."
+        }
+      ],
+      "reviewer": "Prompt 21 research triage (not cultural approval)",
+      "reviewDate": "2026-09-03",
+      "sensitivityNotes": "Language accuracy, tone marks and social context require review by a Yorùbá language specialist before progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    }
+  ]
+}

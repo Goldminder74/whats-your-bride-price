@@ -53,3 +53,9 @@ Both methods require HTTPS (or loopback in local tests), same-origin Fetch Metad
 `drizzle/0007_ancient_yellow_claw.sql` is the sole Prompt 20 migration. It adds accepted-answer alternatives, language, reviewer, validity and media-provenance columns to `questions`; policy and seed-reference columns to `quiz_attempts`; a selection index; and immutability/seed-shape triggers. It contains no question catalogue or seed data. Migrations `0000` through `0006` remain unchanged.
 
 Migration 0007 is local source only. It must not be applied to staging or production without a later, target-specific approval and migration-state check. The feature repository keeps D1 and R2 unbound, so the public selection and owner workflow fail closed when storage is absent. Prompt 21 remains blocked until its researched question records, reliable sources and human cultural reviews are approved.
+
+## West Africa Prompt 21 research pack
+
+The West Africa research run adds draft candidates under `data/question-bank/west-africa/`. The validated JSON file is import-ready, while the cultural-review CSV deliberately leaves the human decision, reviewer, review date and reviewer-notes fields empty. The source register records the authoritative URL, access date and supported claim for every source. Coverage, under-representation, duplicate analysis and cultural-review issues are separate review artifacts.
+
+Every candidate remains `draft`, has no publication or validity date and is excluded from public selection. A source record marked `approved` means only that it passed the research-source gate. It does not mean the question has cultural approval. Entries involving initiation, sacred or religious practice, enslavement, ritualized joking, gendered descriptions, weddings, proverbs or language usage carry a specialist-review flag. No candidate may progress until an appropriate human reviewer records a decision.
