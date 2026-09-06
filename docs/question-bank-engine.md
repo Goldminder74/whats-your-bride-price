@@ -59,3 +59,9 @@ Migration 0007 is local source only. It must not be applied to staging or produc
 The West Africa research run adds draft candidates under `data/question-bank/west-africa/`. The validated JSON file is import-ready, while the cultural-review CSV deliberately leaves the human decision, reviewer, review date and reviewer-notes fields empty. The source register records the authoritative URL, access date and supported claim for every source. Coverage, under-representation, duplicate analysis and cultural-review issues are separate review artifacts.
 
 Every candidate remains `draft`, has no publication or validity date and is excluded from public selection. A source record marked `approved` means only that it passed the research-source gate. It does not mean the question has cultural approval. Entries involving initiation, sacred or religious practice, enslavement, ritualized joking, gendered descriptions, weddings, proverbs or language usage carry a specialist-review flag. No candidate may progress until an appropriate human reviewer records a decision.
+
+## East Africa Prompt 21 research pack
+
+The East Africa research run adds a separate draft pack under `data/question-bank/east-africa/`. Its validated JSON, cultural-review CSV, source register, issue log, coverage, under-representation and duplicate-analysis files use the same review-only workflow as the West Africa pack. Duplicate analysis includes the original sixty questions and every West Africa draft.
+
+The pack preserves specific country and community scope for each record and does not treat East Africa as culturally uniform. Sacred, initiatory, healing, religious, customary-law, oral-history, colonial, language and wedding material is queued for specialist review. Automated source and schema checks do not constitute cultural approval, and every record remains excluded from public selection until a later authorized human-review and publication workflow.
