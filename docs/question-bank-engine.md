@@ -65,3 +65,11 @@ Every candidate remains `draft`, has no publication or validity date and is excl
 The East Africa research run adds a separate draft pack under `data/question-bank/east-africa/`. Its validated JSON, cultural-review CSV, source register, issue log, coverage, under-representation and duplicate-analysis files use the same review-only workflow as the West Africa pack. Duplicate analysis includes the original sixty questions and every West Africa draft.
 
 The pack preserves specific country and community scope for each record and does not treat East Africa as culturally uniform. Sacred, initiatory, healing, religious, customary-law, oral-history, colonial, language and wedding material is queued for specialist review. Automated source and schema checks do not constitute cultural approval, and every record remains excluded from public selection until a later authorized human-review and publication workflow.
+
+## North Africa Prompt 21 research pack
+
+The North Africa research run adds a separate draft pack under `data/question-bank/north-africa/`. Its validated JSON, cultural-review CSV, source register, issue log, coverage, under-representation and duplicate-analysis files follow the same review-only workflow. Duplicate analysis includes the original sixty questions and every West and East Africa draft.
+
+The application scope is the Maghreb, Nile and Sahara, but each record keeps a precise country and community scope. The pack documents Mauritania as a cross-edition classification question because it is already represented in the West Africa pack. It leaves Western Sahara, Ceuta and Melilla unassigned pending explicit editorial policy, locally led sourcing and specialist review. This treatment does not imply a position on sovereignty or borders.
+
+Living practices, sacred and therapeutic material, oral traditions, gendered roles, colonial and enslavement history, environmental knowledge, ancient political and funerary interpretation, and identity terminology remain in the specialist-review queue. No proverb candidate was added without adequate attribution, contextual translation and fluent community review. Automated validation remains research triage rather than cultural approval, and all records stay `draft` and excluded from public selection.
