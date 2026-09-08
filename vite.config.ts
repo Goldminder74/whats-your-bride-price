@@ -149,6 +149,7 @@ export default defineConfig(async ({ mode }) => {
   const publicAppOrigin = resolvePublicAppOrigin(
     process.env.PUBLIC_APP_ORIGIN,
     publicAppEnvironment,
+    process.env.WYBP_STAGING_APP_ORIGIN,
   );
 
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
@@ -164,6 +165,7 @@ export default defineConfig(async ({ mode }) => {
     define: {
       __WYBP_FEATURE_FLAGS__: JSON.stringify(featureFlags),
       __WYBP_PUBLIC_APP_ORIGIN__: JSON.stringify(publicAppOrigin),
+      __WYBP_STAGING_APP_ORIGIN__: JSON.stringify(process.env.WYBP_STAGING_APP_ORIGIN ?? null),
       __WYBP_RUNTIME_ENV__: JSON.stringify(publicAppEnvironment),
       __WYBP_REVIEW_DIAGNOSTICS__: JSON.stringify(reviewDiagnostics),
       __WYBP_REVIEW_CHALLENGE_FIXTURES__: JSON.stringify(reviewChallengeFixtures),

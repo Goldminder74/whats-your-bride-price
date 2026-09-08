@@ -4,6 +4,7 @@ import { regions, type RegionKey } from "./gameData.ts";
 import { PRODUCT_SAFEGUARD, RESULT_TIER_TITLES } from "./productSafeguards.ts";
 import { calculateResultTier } from "./gameLogic.ts";
 import type { SafeShareProjection } from "./shareProjection.ts";
+import { PUBLIC_APP_ORIGIN } from "./publicAppOrigin.ts";
 
 export const SHARE_MEDIA_WIDTH = 1080;
 export const SHARE_MEDIA_HEIGHT = 1920;
@@ -199,7 +200,7 @@ export async function prepareShareMedia(card: ShareMediaCard): Promise<PreparedS
   context.fillText(PRODUCT_SAFEGUARD, 540, 1718);
   context.fillStyle = "#f8edda";
   context.font = "22px Arial";
-  context.fillText("brideprice.classesforculture.com", 540, 1780);
+  context.fillText(new URL(PUBLIC_APP_ORIGIN).hostname, 540, 1780);
 
   const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, SHARE_MEDIA_MIME));
   if (!blob || blob.type !== SHARE_MEDIA_MIME) throw new Error("share_media_encoding_failed");

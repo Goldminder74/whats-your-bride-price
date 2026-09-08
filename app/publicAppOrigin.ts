@@ -1,5 +1,6 @@
 const PRODUCTION_HOSTNAME = "brideprice.classesforculture.com";
 const DEFAULT_PRODUCTION_ORIGIN = `https://${PRODUCTION_HOSTNAME}`;
+const APPROVED_STAGING_ORIGIN = "https://whats-your-bride-price-staging.ayo43077.chatgpt.site";
 const localHostnames = new Set(["localhost", "127.0.0.1", "[::1]"]);
 const regionKeys = new Set(["west", "east", "central", "north", "south"]);
 const publicChallengeCodePattern = /^[0-9a-f]{48}$/;
@@ -11,6 +12,7 @@ export type ApprovedPublicQuery = PermittedEntryQuery;
 
 declare const __WYBP_PUBLIC_APP_ORIGIN__: string | undefined;
 declare const __WYBP_RUNTIME_ENV__: PublicAppEnvironment | undefined;
+declare const __WYBP_STAGING_APP_ORIGIN__: string | undefined;
 
 function configurationError(reason: string): Error {
   return new Error(`Invalid PUBLIC_APP_ORIGIN: ${reason}`);
@@ -23,7 +25,12 @@ function isLocalHostname(hostname: string): boolean {
 export function validatePublicAppOrigin(
   value: string,
   environment: PublicAppEnvironment,
+  trustedStagingOrigin?: string,
 ): PublicAppOrigin {
+  // This argument is supplied only by trusted build configuration.
+  if (trustedStagingOrigin !== undefined && trustedStagingOrigin !== APPROVED_STAGING_ORIGIN) {
+    throw configurationError("staging configuration must match the approved staging origin exactly.");
+  }
   const candidate = value.trim();
   if (!candidate) throw configurationError("a non-empty absolute URL is required.");
   if (candidate.startsWith("//") || candidate.startsWith("\\\\")) {
@@ -44,7 +51,11 @@ export function validatePublicAppOrigin(
     throw configurationError("only an origin is permitted; remove paths, queries and fragments.");
   }
 
-  if (environment === "production") {
+  if (trustedStagingOrigin !== undefined) {
+    if (url.origin !== trustedStagingOrigin) {
+      throw configurationError("the origin must match the explicitly configured staging origin.");
+    }
+  } else if (environment === "production") {
     if (url.protocol !== "https:") {
       throw configurationError("production requires HTTPS.");
     }
@@ -72,18 +83,26 @@ export function validatePublicAppOrigin(
 export function resolvePublicAppOrigin(
   configuredValue: string | undefined,
   environment: PublicAppEnvironment,
+  trustedStagingOrigin?: string,
 ): PublicAppOrigin {
-  return validatePublicAppOrigin(configuredValue || DEFAULT_PRODUCTION_ORIGIN, environment);
+  return validatePublicAppOrigin(
+    configuredValue || trustedStagingOrigin || DEFAULT_PRODUCTION_ORIGIN,
+    environment,
+    trustedStagingOrigin,
+  );
 }
 
 const injectedEnvironment =
   typeof __WYBP_RUNTIME_ENV__ === "string" ? __WYBP_RUNTIME_ENV__ : "production";
 const injectedOrigin =
   typeof __WYBP_PUBLIC_APP_ORIGIN__ === "string" ? __WYBP_PUBLIC_APP_ORIGIN__ : undefined;
+const injectedStagingOrigin =
+  typeof __WYBP_STAGING_APP_ORIGIN__ === "string" ? __WYBP_STAGING_APP_ORIGIN__ : undefined;
 
 export const PUBLIC_APP_ORIGIN: PublicAppOrigin = resolvePublicAppOrigin(
   injectedOrigin,
   injectedEnvironment,
+  injectedStagingOrigin,
 );
 
 export function resolveBrowserPublicAppOrigin(currentOrigin: string): PublicAppOrigin {
