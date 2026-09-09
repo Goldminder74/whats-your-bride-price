@@ -99,3 +99,12 @@ test("only explicitly requested image-question assets are eligible for prefetch"
 test("keeps the quiz playable by disabling recovery when secure randomness is unavailable", () => {
   assert.equal(createQuizInstanceId(null), null);
 });
+
+test("random recovery stores only its server-issued attempt reference and accepts shuffled indexes", () => {
+  const random = { ...recovery, randomAttemptId: `attempt_${"a".repeat(48)}`, answerChoices: [[3], [2]], questionPosition: 2 };
+  const parsed = parseQuizRecovery(JSON.stringify(random), random.instanceId, now);
+  assert.equal(parsed?.randomAttemptId, random.randomAttemptId);
+  assert.deepEqual(parsed?.answerChoices, [[3], [2]]);
+  assert.equal(parseQuizRecovery(JSON.stringify({ ...random, randomAttemptId: "attempt_bad" }), random.instanceId, now), null);
+  assert.equal(parseQuizRecovery(JSON.stringify({ ...random, answerChoices: [[10], [2]] }), random.instanceId, now), null);
+});

@@ -1,6 +1,7 @@
 import { getQuestionSelectionRuntime } from "../../questionSelectionRuntime.ts";
 import { QuestionSelectionError } from "../../../db/questionSelection.ts";
 import { QuestionSelectionRequestError } from "../../../db/questionSelectionService.ts";
+import { activeFeatureFlags } from "../../featureFlags.ts";
 
 const responseHeaders = Object.freeze({
   "cache-control": "private, no-store, max-age=0, must-revalidate",
@@ -16,6 +17,7 @@ function sameOrigin(request: Request): boolean {
 }
 
 export async function POST(request: Request): Promise<Response> {
+  if (!activeFeatureFlags.random_quick_play) return response({ available: false }, 404);
   if (!sameOrigin(request)) return response({ available: false }, 403);
   if (request.headers.get("content-type")?.split(";", 1)[0].trim().toLowerCase() !== "application/json") return response({ available: false }, 415);
   const length = Number(request.headers.get("content-length") || "0");
@@ -30,8 +32,14 @@ export async function POST(request: Request): Promise<Response> {
     const selection = await runtime.start(body);
     return response({ available: true, ...selection }, 201);
   } catch (error) {
-    if (error instanceof QuestionSelectionRequestError) return response({ available: false }, 400);
-    if (error instanceof QuestionSelectionError && error.code === "insufficient_published_bank") return response({ available: false, reason: "insufficient_published_bank" }, 409);
+    if (error instanceof QuestionSelectionRequestError) return response({ available: false }, error.code === "selection_rate_limited" ? 429 : error.code.includes("unavailable") ? 503 : 400);
+    if (error instanceof QuestionSelectionError && error.code === "insufficient_published_bank") return response({
+      available: false,
+      reason: "insufficient_published_bank",
+      eligible: error.available ?? 0,
+      required: error.required ?? 30,
+      shortfall: Math.max(0, (error.required ?? 30) - (error.available ?? 0)),
+    }, 409);
     return response({ available: false }, 503);
   }
 }

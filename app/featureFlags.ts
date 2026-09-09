@@ -7,6 +7,7 @@ export const featureFlagNames = [
   "owner_dashboard",
   "daily_challenge",
   "streaks",
+  "random_quick_play",
   "groom_mode",
   "couples_mode",
   "party_mode",
@@ -26,6 +27,7 @@ export const defaultFeatureFlags: FeatureFlags = Object.freeze({
   owner_dashboard: false,
   daily_challenge: false,
   streaks: false,
+  random_quick_play: false,
   groom_mode: false,
   couples_mode: false,
   party_mode: false,
@@ -117,6 +119,15 @@ export function assertDailyChallengeReadiness(
   }
   if (flags.streaks && !flags.daily_challenge) {
     throw new Error("Streaks require the separately controlled daily_challenge feature because only an authoritative official daily completion can advance a streak.");
+  }
+}
+
+export function assertRandomQuickPlayReadiness(
+  flags: FeatureFlags,
+  readiness: Readonly<{ d1Configured: boolean; authorisedReviewFixtures: boolean }>,
+): void {
+  if (flags.random_quick_play && !readiness.d1Configured && !readiness.authorisedReviewFixtures) {
+    throw new Error("Random Quick Play requires approved D1 storage or an explicitly authorised local review build. It fails closed while authoritative selection storage is unavailable.");
   }
 }
 

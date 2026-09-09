@@ -64,6 +64,13 @@ import {
   writeQuizRecovery,
   type QuizRecoveryState,
 } from "./quizRecovery";
+import {
+  createQuickPlayIdempotencyKey,
+  judgeRandomQuickPlayAnswer,
+  resumeRandomQuickPlay,
+  startRandomQuickPlay,
+} from "./randomQuickPlayClient";
+import type { PublicQuestionSelection } from "../db/questionSelectionService";
 
 type Screen = "entry" | "challenge" | "fast_setup" | "home" | "setup" | "quiz" | "reveal" | "result";
 type Question = { prompt: string; options: string[] };
@@ -337,6 +344,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const [quizInstanceId, setQuizInstanceId] = useState<string | null>(acceptedChallengeQuizInstanceId || null);
   const [recoveryNotice, setRecoveryNotice] = useState("");
   const [startLocked, setStartLocked] = useState(false);
+  const [randomSelection, setRandomSelection] = useState<PublicQuestionSelection | null>(null);
+  const [quickPlayNotice, setQuickPlayNotice] = useState("");
   const [unverifiedChallenge, setUnverifiedChallenge] = useState(Boolean(initialEntryContext?.challenge && !trustedChallenge));
   const [purchaseContext, setPurchaseContext] = useState<Readonly<{ resultSlug: string; anonymousSessionCredential: string }> | undefined>();
   const fileRef = useRef<HTMLInputElement>(null);
@@ -355,12 +364,24 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const resultCompletionKeyRef = useRef<string | null>(null);
   const challengeCompleteEventRef = useRef(false);
   const resultViewEventRef = useRef(false);
+  const quickPlayStartKeyRef = useRef<string | null>(null);
   const shareCreationKeyRef = useRef<string | null>(null);
   const shareCreationPromiseRef = useRef<ReturnType<ChallengeCreationClient["create"]> | null>(null);
   const shareTriggerRef = useRef<HTMLElement | null>(null);
   const region = regions[regionKey];
   const question = region.questions[index];
-  const imagePresentations = question.kind === "image" ? imageAnswerPresentations({
+  const randomQuestion = randomSelection?.questions[index];
+  const questionKind = randomQuestion?.kind ?? question.kind;
+  const questionPrompt = randomQuestion?.text ?? question.prompt;
+  const questionOptions = randomQuestion?.options.map((option) => option.text) ?? question.options;
+  const questionOptionIds = randomQuestion?.options.map((option) => option.id) ?? question.options.map((_, optionIndex) => `o${optionIndex + 1}`);
+  const imagePresentations = randomQuestion?.kind === "image"
+    ? randomQuestion.options.map((_, optionIndex) => Object.freeze({
+        marker: String.fromCharCode(65 + optionIndex),
+        assetRef: randomQuestion.imageAssets[optionIndex],
+        accessibilityDescription: randomQuestion.imageDescriptions[optionIndex],
+      }))
+    : question.kind === "image" ? imageAnswerPresentations({
     stableId: legacyImageQuestionStableId(regionKey, index),
     region: regionKey,
     visualStart: question.visualStart ?? null,
@@ -439,7 +460,25 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           setRegionKey(recovery.edition);
           setAvatarId(recovery.avatarId);
           setAnswerChoices(recovery.answerChoices.map((choice) => [...choice]));
-          void recoveryAnswerResults(recovery).then(setAnswers).catch(() => setRecoveryNotice("Your saved answers could not be verified. Please start again when you are ready."));
+          if (recovery.randomAttemptId && activeFeatureFlags.random_quick_play) {
+            const session = getOrCreateAnonymousSession(window.sessionStorage);
+            if (session.available) void resumeRandomQuickPlay(recovery.randomAttemptId, session.sessionId).then(async (selection) => {
+              setRandomSelection(selection);
+              const restoredAnswers = await Promise.all(recovery.answerChoices.map(async (choice, questionIndex) => {
+                const restoredQuestion = selection.questions[questionIndex];
+                const judged = await judgeRandomQuickPlayAnswer({
+                  attemptId: selection.attemptId,
+                  anonymousSessionCredential: session.sessionId,
+                  questionRef: restoredQuestion.questionRef,
+                  selectedOptionIds: choice.map((optionIndex) => restoredQuestion.options[optionIndex]?.id).filter((id): id is string => Boolean(id)),
+                });
+                return judged.correct ? 1 : 0;
+              }));
+              setAnswers(restoredAnswers);
+            }).catch(() => setRecoveryNotice("Your saved fresh game could not be verified. Please start a new game."));
+          } else {
+            void recoveryAnswerResults(recovery).then(setAnswers).catch(() => setRecoveryNotice("Your saved answers could not be verified. Please start again when you are ready."));
+          }
           setIndex(Math.min(recovery.questionPosition, 11));
           setQuizInstanceId(recovery.instanceId);
           setRecoveryNotice("Your private, tab-scoped quiz was restored after refresh.");
@@ -555,7 +594,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
 
   useEffect(() => {
     if (!fastEntryEnabled || !["fast_setup", "quiz"].includes(screen)) return;
-    const assets = questionImageAssets(regionKey, [0, 1]);
+    const assets = randomSelection
+      ? randomSelection.questions.slice(index, index + 2).flatMap((item) => item.imageAssets)
+      : questionImageAssets(regionKey, [0, 1]);
     const links = assets.map((href) => {
       const link = document.createElement("link");
       link.rel = "prefetch";
@@ -566,7 +607,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       return link;
     });
     return () => links.forEach((link) => link.remove());
-  }, [fastEntryEnabled, regionKey, screen]);
+  }, [fastEntryEnabled, index, randomSelection, regionKey, screen]);
 
   useEffect(() => {
     if (screen !== "quiz") return;
@@ -586,9 +627,10 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       updatedAt: Date.now(),
       attribution: safeRecoveryAttribution(entryContext),
       trustedChallengeCode: trustedChallenge?.code,
+      randomAttemptId: randomSelection?.attemptId,
     };
     writeQuizRecovery(window.localStorage, window.sessionStorage, state);
-  }, [answerChoices, avatarId, entryContext, fastEntryEnabled, quizInstanceId, regionKey, screen, trustedChallenge?.code]);
+  }, [answerChoices, avatarId, entryContext, fastEntryEnabled, quizInstanceId, randomSelection?.attemptId, regionKey, screen, trustedChallenge?.code]);
 
   useEffect(() => {
     if (!fastEntryEnabled || acceptedChallenge) return;
@@ -653,7 +695,12 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       || purchaseContext
     ) return;
     const session = getOrCreateAnonymousSession(window.sessionStorage);
-    const submission = buildChallengeAnswerSubmission(regionKey, answerChoices);
+    const submission = randomSelection
+      ? answerChoices.map((choice, questionIndex) => Object.freeze({
+          questionStableId: randomSelection.questions[questionIndex].questionRef,
+          selectedOptionIds: Object.freeze(choice.map((optionIndex) => randomSelection.questions[questionIndex].options[optionIndex].id)),
+        }))
+      : buildChallengeAnswerSubmission(regionKey, answerChoices);
     if (!session.available || submission.length !== 12) return;
     if (!resultCompletionKeyRef.current) {
       const bytes = new Uint8Array(16);
@@ -682,7 +729,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     resultCompletionPromiseRef.current.then(setPurchaseContext).catch((error) => {
       reportAppError("result_completion_failed", error, { action: "result_completion", region: regionKey });
     });
-  }, [answerChoices, avatarId, purchaseContext, regionKey, screen]);
+  }, [answerChoices, avatarId, purchaseContext, randomSelection, regionKey, screen]);
 
   useEffect(() => {
     if (screen !== "result") return;
@@ -908,7 +955,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     }
   };
 
-  const beginQuiz = () => {
+  const beginQuiz = async (classicFallback = false) => {
     if (startLockRef.current) return;
     if (!displayNameValidation.valid) {
       document.querySelector<HTMLInputElement>("[data-display-name]")?.focus();
@@ -917,6 +964,28 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     if (displayNameValidation.value !== null && name !== displayNameValidation.value) setName(displayNameValidation.value);
     startLockRef.current = true;
     setStartLocked(true);
+    setQuickPlayNotice("");
+    if (activeFeatureFlags.random_quick_play && !trustedChallenge && !classicFallback && answerChoices.length === 0) {
+      const session = getOrCreateAnonymousSession(window.sessionStorage);
+      if (!session.available) {
+        setQuickPlayNotice("A fresh game cannot be secured in this browser. You can still play the classic 12-question edition.");
+        startLockRef.current = false; setStartLocked(false); return;
+      }
+      try {
+        quickPlayStartKeyRef.current ||= createQuickPlayIdempotencyKey();
+        setQuickPlayNotice("Preparing a fresh regional game…");
+        setRandomSelection(await startRandomQuickPlay(regionKey, session.sessionId, quickPlayStartKeyRef.current));
+      } catch (error) {
+        const shortfall = Number((error as Error & { shortfall?: number }).shortfall || 0);
+        setQuickPlayNotice(shortfall > 0
+          ? `Fresh regional games need 30 reviewed published questions. This edition is ${shortfall} short; the classic 12-question edition remains available.`
+          : "A fresh game is temporarily unavailable. You can still play the classic 12-question edition.");
+        quickPlayStartKeyRef.current = null;
+        startLockRef.current = false; setStartLocked(false); return;
+      }
+    } else if (classicFallback) {
+      setRandomSelection(null);
+    }
     if (fastEntryEnabled && quizInstanceId) {
       setIndex(Math.min(answerChoices.length, 11));
       if (answerChoices.length === 0) { setAnswers([]); setAnswerChoices([]); }
@@ -964,6 +1033,25 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
 
   const submitAnswer = async (choice: number[]) => {
     if (feedbackOpen) return;
+    if (randomQuestion && randomSelection) {
+      if (imageAnswerPending) return;
+      setImageAnswerPending(true); setImageAnswerError("");
+      try {
+        const session = getOrCreateAnonymousSession(window.sessionStorage);
+        if (!session.available) throw new Error("quick_play_answer_unavailable");
+        const judgement = await judgeRandomQuickPlayAnswer({
+          attemptId: randomSelection.attemptId,
+          anonymousSessionCredential: session.sessionId,
+          questionRef: randomQuestion.questionRef,
+          selectedOptionIds: choice.map((optionIndex) => questionOptionIds[optionIndex]),
+        });
+        acceptAnswerJudgement(choice, judgement.correct, judgement.explanation,
+          judgement.correctOptionIds.map((id) => questionOptionIds.indexOf(id)).filter((value) => value >= 0));
+      } catch {
+        setImageAnswerError("That answer could not be checked. Please try again.");
+      } finally { setImageAnswerPending(false); }
+      return;
+    }
     if (question.kind === "image") {
       if (imageAnswerPending) return;
       setImageAnswerPending(true); setImageAnswerError("");
@@ -996,8 +1084,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
 
   const chooseAnswer = (answerIndex: number) => {
     if (feedbackOpen) return;
-    const question = region.questions[index];
-    if (question.kind === "multi") {
+    if (questionKind === "multi") {
       setSelected((current) => current.includes(answerIndex) ? current.filter((value) => value !== answerIndex) : current.length < 3 ? [...current, answerIndex] : current);
       playTone(390 + answerIndex * 35);
     } else {
@@ -1048,6 +1135,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     }
     clearPhoto();
     setScreen(fastEntryEnabled ? "entry" : "home"); setAnswers([]); setAnswerChoices([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setAllAfricaJustUnlocked(false);
+    setRandomSelection(null); setQuickPlayNotice(""); quickPlayStartKeyRef.current = null;
     setQuizInstanceId(null); setRecoveryNotice(""); setName(""); setAvatarId(avatarChoices[0].id); setShowAllAvatars(false); setStartLocked(false); startLockRef.current = false;
     setNominationOpen(false);
     setShareResultPublicationClient(undefined);
@@ -1066,6 +1154,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       setAnswers([]); setAnswerChoices([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setDropOpen(false); setBestScores({});
       setQuizInstanceId(null); setRecoveryNotice(""); setNominationOpen(false); setShareCentreOpen(false); setShareProjection(null); setShareResultPublicationClient(undefined);
       setComparison(null); setCompletionState("idle"); setPurchaseContext(undefined); setMenuOpen(false); setStartLocked(false); startLockRef.current = false;
+      setRandomSelection(null); setQuickPlayNotice(""); quickPlayStartKeyRef.current = null;
       resultCompletionPromiseRef.current = null; resultCompletionKeyRef.current = null; challengeCompletionPromiseRef.current = null;
       try { window.history.replaceState({}, "", window.location.pathname); } catch { /* route remains usable */ }
       window.scrollTo(0, 0);
@@ -1269,7 +1358,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             </div>
             <p className="compact-duration">12 questions <span>•</span> About 3 minutes</p>
             <p className="entry-safeguard safeguard-decision compact-safeguard" id="avatar-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
-            <button className="big-action fast-quiz-start" aria-describedby="avatar-entry-safeguard" disabled={startLocked || photoProcessing} onClick={beginQuiz}>{photoProcessing ? "Processing photo…" : answerChoices.length > 0 ? `Continue at Question ${Math.min(answerChoices.length + 1, 12)}` : photo ? "Start Question 1" : "Continue without a photo"} <span>▶</span></button>
+            <button className="big-action fast-quiz-start" aria-describedby="avatar-entry-safeguard" disabled={startLocked || photoProcessing} onClick={() => void beginQuiz()}>{photoProcessing ? "Processing photo…" : answerChoices.length > 0 ? `Continue at Question ${Math.min(answerChoices.length + 1, 12)}` : activeFeatureFlags.random_quick_play && !trustedChallenge ? "Start a fresh regional game" : photo ? "Start Question 1" : "Continue without a photo"} <span>▶</span></button>
+            {quickPlayNotice && <div className="quick-play-readiness" role="status"><p>{quickPlayNotice}</p><button type="button" onClick={() => void beginQuiz(true)}>Play the classic 12-question edition</button></div>}
             <div className="compact-avatar-grid" aria-label="Choose an African avatar">
               {avatarChoices.slice(0, showAllAvatars ? avatarChoices.length : 6).map((item, avatarIndex) => {
                 const active = !photo && avatarId === item.id;
@@ -1406,7 +1496,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             <input id="player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={`setup-name-privacy${displayNameError ? " setup-name-error" : ""}`} placeholder="Name or pseudonym (optional)" />
             <p id="setup-name-privacy" className="name-privacy-notice">Your name stays in this tab and may appear in media you generate. It is excluded from quiz recovery and published results. If you later create a challenge, the reviewed name is sent to the server and shown to anyone with that challenge link.</p>
             {displayNameError && <p className="display-name-error" id="setup-name-error" role="alert">{displayNameError}</p>}
-            <button className="big-action" aria-describedby="setup-entry-safeguard" disabled={photoProcessing} onClick={beginQuiz}>{photoProcessing ? "Processing photo…" : `Enter Region 0${regionOrder.indexOf(regionKey) + 1}`} <span>▶</span></button>
+            <button className="big-action" aria-describedby="setup-entry-safeguard" disabled={photoProcessing || startLocked} onClick={() => void beginQuiz()}>{photoProcessing ? "Processing photo…" : activeFeatureFlags.random_quick_play ? "Start a fresh regional game" : `Enter Region 0${regionOrder.indexOf(regionKey) + 1}`} <span>▶</span></button>
+            {quickPlayNotice && <div className="quick-play-readiness" role="status"><p>{quickPlayNotice}</p><button type="button" onClick={() => void beginQuiz(true)}>Play the classic 12-question edition</button></div>}
           </div>
         </section>
       )}
@@ -1440,24 +1531,24 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           </details>
           <div className="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin={1} aria-valuemax={12} aria-valuenow={index + 1}><span style={{ width: `${((index + 1) / 12) * 100}%` }} /></div>
           <div className="question-wrap" key={index}>
-            <div className="question-meta"><p className="eyebrow">{kindLabels[question.kind]}</p><span>{question.topic}</span></div>
-            <h2 ref={questionHeadingRef} tabIndex={-1} className={question.kind === "image" ? "image-question" : question.kind === "complete" ? "sentence-question" : ""}>{question.prompt}</h2>
-            <div className={`answer-grid kind-${question.kind}`}>
-              {question.options.map((option, optionIndex) => {
+            <div className="question-meta"><p className="eyebrow">{kindLabels[questionKind]}</p><span>{randomQuestion ? "FRESH REGIONAL MIX" : question.topic}</span></div>
+            <h2 ref={questionHeadingRef} tabIndex={-1} className={questionKind === "image" ? "image-question" : questionKind === "complete" ? "sentence-question" : ""}>{questionPrompt}</h2>
+            <div className={`answer-grid kind-${questionKind}`}>
+              {questionOptions.map((option, optionIndex) => {
                 const slot = (question.visualStart || 0) + optionIndex;
-                const correctOptions = question.kind === "image" ? revealedCorrectOptions : question.correct;
+                const correctOptions = randomQuestion || questionKind === "image" ? revealedCorrectOptions : question.correct;
                 const classes = [selected.includes(optionIndex) ? "selected" : "", feedbackOpen && correctOptions.includes(optionIndex) ? "correct" : "", feedbackOpen && selected.includes(optionIndex) && !correctOptions.includes(optionIndex) ? "wrong" : ""].filter(Boolean).join(" ");
-                const imagePath = `/quiz-art/${regionKey}-${slot}.webp`;
+                const imagePath = randomQuestion?.kind === "image" ? randomQuestion.imageAssets[optionIndex] : `/quiz-art/${regionKey}-${slot}.webp`;
                 const imagePresentation = imagePresentations[optionIndex];
                 const optionMarker = String.fromCharCode(65 + optionIndex);
-                return <button key={question.kind === "image" ? imagePath : option} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen || imageAnswerPending} aria-label={question.kind === "image" ? `Option ${imagePresentation.marker}: ${imagePresentation.accessibilityDescription}` : undefined}>
-                  {question.kind === "image" && !failedQuestionImages.has(imagePath) && <img className="answer-image" src={imagePresentation.assetRef} alt={imagePresentation.accessibilityDescription} onError={() => setFailedQuestionImages((current) => new Set(current).add(imagePath))} />}
-                  {question.kind === "image" && failedQuestionImages.has(imagePath) && <span className="question-image-fallback">Image unavailable. {imagePresentation.accessibilityDescription}</span>}
-                  <span className="answer-letter">{optionMarker}</span>{question.kind !== "image" && <b>{option}</b>}<i>{question.kind === "multi" ? selected.includes(optionIndex) ? "✓" : "+" : "↗"}</i>
+                return <button key={questionKind === "image" ? imagePath : questionOptionIds[optionIndex]} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen || imageAnswerPending} aria-label={questionKind === "image" ? `Option ${imagePresentation.marker}: ${imagePresentation.accessibilityDescription}` : undefined}>
+                  {questionKind === "image" && !failedQuestionImages.has(imagePath) && <img className="answer-image" src={imagePresentation.assetRef} alt={imagePresentation.accessibilityDescription} onError={() => setFailedQuestionImages((current) => new Set(current).add(imagePath))} />}
+                  {questionKind === "image" && failedQuestionImages.has(imagePath) && <span className="question-image-fallback">Image unavailable. {imagePresentation.accessibilityDescription}</span>}
+                  <span className="answer-letter">{optionMarker}</span>{questionKind !== "image" && <b>{option}</b>}<i>{questionKind === "multi" ? selected.includes(optionIndex) ? "✓" : "+" : "↗"}</i>
                 </button>
               })}
             </div>
-            {question.kind === "multi" && !feedbackOpen && <button className="lock-answer" disabled={selected.length !== 3} onClick={() => void submitAnswer(selected)}>Lock in {selected.length}/3 answers <span>→</span></button>}
+            {questionKind === "multi" && !feedbackOpen && <button className="lock-answer" disabled={selected.length !== 3} onClick={() => void submitAnswer(selected)}>Lock in {selected.length}/3 answers <span>→</span></button>}
             {imageAnswerPending && <p role="status">Checking your answer…</p>}
             {imageAnswerError && <p role="alert">{imageAnswerError}</p>}
             {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">

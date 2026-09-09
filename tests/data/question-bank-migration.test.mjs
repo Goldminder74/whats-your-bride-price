@@ -97,6 +97,10 @@ test("D1 catalogue and selection repositories map the verified bank and persist 
     const attempt = database.prepare("SELECT selection_policy_version,selection_seed_reference,selected_question_versions_json FROM quiz_attempts WHERE id='attempt_question_selection'").get();
     assert.equal(attempt.selection_policy_version, "balanced-v1");
     assert.match(attempt.selection_seed_reference, /^[0-9a-f]{64}$/);
-    assert.equal(JSON.parse(attempt.selected_question_versions_json).length, 12);
+    const storedSelection = JSON.parse(attempt.selected_question_versions_json);
+    assert.equal(storedSelection.length, 12);
+    assert.deepEqual(storedSelection.map(({ stableId, version }) => ({ stableId, version })), selection.questions.map(({ stableId, version }) => ({ stableId, version })));
+    assert.deepEqual(storedSelection.map((item) => item.optionOrder), selection.optionOrders);
+    assert.ok(storedSelection.every((item) => !Object.hasOwn(item, "correct") && !Object.hasOwn(item, "rawSeed")));
   } finally { database.close(); }
 });

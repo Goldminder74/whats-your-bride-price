@@ -80,7 +80,7 @@ Projection: approved citation title, organisation and reference may be public. R
 
 Purpose: private server-authoritative attempt state, separate from a completed result.
 
-Fields: `id`, `edition_id`, optional `anonymous_subject_hash`, `question_set_version`, `scoring_version`, `selected_question_versions_json`, `selection_policy_version`, optional non-secret `selection_seed_reference`, `status`, `idempotency_key_hash`, optional safe `referral_code` and `challenge_code`, `started_at`, `completed_at`, `expires_at`, `anonymized_at`, `deleted_at`, `version`, `created_at`, `updated_at`.
+Fields: `id`, `edition_id`, optional `anonymous_subject_hash`, `question_set_version`, `scoring_version`, `selected_question_versions_json`, `selection_policy_version`, optional non-secret `selection_seed_reference`, `status`, `idempotency_key_hash`, optional safe `referral_code` and `challenge_code`, `started_at`, `completed_at`, `expires_at`, `anonymized_at`, `deleted_at`, `version`, `created_at`, `updated_at`. A Random Quick Play snapshot uses array order as question order and stores only `{ stableId, version, optionOrder }` per item; `optionOrder` contains stable option IDs and no answer key.
 
 Relationships: belongs to an edition; parent of answers; linked one-to-one from a result; may be linked from a challenge attempt and referral event.
 
@@ -196,9 +196,9 @@ Projection: none directly; only the safe daily completion result and private own
 
 ### `daily_operation_limits`
 
-Purpose: bounded first-party abuse control for start, complete and clear POST operations without storing raw credentials.
+Purpose: bounded first-party abuse control for Daily Challenge and Random Quick Play start, complete and clear POST operations without storing raw credentials.
 
-Fields: random `id`, HMAC-derived `rate_key_hash`, controlled `action`, minute `window_started_at`, `request_count`, `expires_at`, `created_at`, `updated_at`.
+Fields: random or domain-separated `id`, server-derived functional `rate_key_hash` (daily uses HMAC; Quick Play reuses its existing anonymous owner hash), controlled `action`, minute `window_started_at`, `request_count`, `expires_at`, `created_at`, `updated_at`.
 
 Projection: none. It is security-only and cannot be reused for analytics or marketing.
 

@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   assertCommerceReadiness,
   assertDailyChallengeReadiness,
+  assertRandomQuickPlayReadiness,
   assertSitesCompatibleFeatureFlags,
   assertDynamicResultsStorage,
   defaultFeatureFlags,
@@ -11,10 +12,20 @@ import {
 } from "../../app/featureFlags.ts";
 
 test("every roadmap feature flag defaults to false", () => {
-  assert.equal(featureFlagNames.length, 13);
+  assert.equal(featureFlagNames.length, 14);
   assert.deepEqual(Object.keys(defaultFeatureFlags), [...featureFlagNames]);
   for (const flag of featureFlagNames) assert.equal(defaultFeatureFlags[flag], false);
   assert.deepEqual(resolveFeatureFlags({}), defaultFeatureFlags);
+});
+
+test("Random Quick Play is controlled only by build configuration and fails closed without D1", () => {
+  assert.equal(defaultFeatureFlags.random_quick_play, false);
+  const flags = resolveFeatureFlags({ WYBP_FEATURE_RANDOM_QUICK_PLAY: "true", random_quick_play: "false" });
+  assert.equal(flags.random_quick_play, true);
+  assert.equal(resolveFeatureFlags({ random_quick_play: "true", QUERY_RANDOM_QUICK_PLAY: "true" }).random_quick_play, false);
+  assert.throws(() => assertRandomQuickPlayReadiness(flags, { d1Configured: false, authorisedReviewFixtures: false }), /requires approved D1 storage/i);
+  assert.doesNotThrow(() => assertRandomQuickPlayReadiness(flags, { d1Configured: true, authorisedReviewFixtures: false }));
+  assert.doesNotThrow(() => assertRandomQuickPlayReadiness(flags, { d1Configured: false, authorisedReviewFixtures: true }));
 });
 
 test("dynamic results fail closed without both durable stores or authorised review fixtures", () => {

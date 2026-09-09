@@ -1,5 +1,7 @@
 # Versioned question-bank engine
 
+Fresh ordinary regional selection, its readiness threshold, persisted presentation order and game-mode boundaries are specified in [random-quick-play.md](./random-quick-play.md). Draft research packs remain outside every playable selection.
+
 ## Spoiler-proof image answers
 
 Image-identification questions use one central presentation contract. Public options expose only stable option IDs, neutral markers (`A`, `B`, `C`, `D`), opaque reviewed asset references and objective accessibility descriptions. The browser catalogue also removes image labels, correct-answer indexes and pre-reveal explanations. A same-origin, POST-only route checks a submitted opaque option ID against the canonical server catalogue and returns the judgement and explanation after submission. Canonical option wording, accepted-answer sets and explanations remain authority data and are not part of the pre-submission public question projection. Text-answer questions keep their original visible wording and scoring behaviour.

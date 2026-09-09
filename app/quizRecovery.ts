@@ -30,10 +30,12 @@ export type QuizRecoveryState = Readonly<{
   updatedAt: number;
   attribution: SafeRecoveryAttribution;
   trustedChallengeCode?: string;
+  randomAttemptId?: string;
 }>;
 
 const instancePattern = /^[A-Za-z0-9-]{16,80}$/;
 const challengePattern = /^[A-Za-z0-9][A-Za-z0-9_-]{5,63}$/;
+const randomAttemptPattern = /^attempt_[0-9a-f]{48}$/;
 const regionKeys = new Set<string>(regionOrder);
 const sources = new Set<ControlledSource>(["whatsapp", "facebook", "instagram", "tiktok", "copy", "native", "direct", "unknown"]);
 const safeToken = /^[A-Za-z0-9][A-Za-z0-9._~-]*$/;
@@ -104,15 +106,19 @@ export function parseQuizRecovery(
 
   const edition = candidate.edition as RegionKey;
   const choices: number[][] = [];
+  const randomAttemptId = candidate.randomAttemptId === undefined
+    ? undefined
+    : optionalToken(candidate.randomAttemptId, 56, randomAttemptPattern);
+  if (candidate.randomAttemptId !== undefined && !randomAttemptId) return null;
   for (let questionIndex = 0; questionIndex < candidate.answerChoices.length; questionIndex += 1) {
     const choice = candidate.answerChoices[questionIndex];
     const question = regions[edition].questions[questionIndex];
-    const required = question.kind === "multi" ? 3 : 1;
+    const required = randomAttemptId ? null : question.kind === "multi" ? 3 : 1;
     if (
       !Array.isArray(choice) ||
-      choice.length !== required ||
+      (required === null ? choice.length < 1 || choice.length > 3 : choice.length !== required) ||
       new Set(choice).size !== choice.length ||
-      choice.some((option) => !Number.isInteger(option) || option < 0 || option >= question.options.length)
+      choice.some((option) => !Number.isInteger(option) || option < 0 || option >= (randomAttemptId ? 10 : question.options.length))
     ) return null;
     choices.push([...choice]);
   }
@@ -134,6 +140,7 @@ export function parseQuizRecovery(
     updatedAt: candidate.updatedAt as number,
     attribution,
     trustedChallengeCode,
+    randomAttemptId,
   });
 }
 
