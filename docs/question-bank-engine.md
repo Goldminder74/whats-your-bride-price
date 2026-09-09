@@ -1,5 +1,11 @@
 # Versioned question-bank engine
 
+## Spoiler-proof image answers
+
+Image-identification questions use one central presentation contract. Public options expose only stable option IDs, neutral markers (`A`, `B`, `C`, `D`), opaque reviewed asset references and objective accessibility descriptions. The browser catalogue also removes image labels, correct-answer indexes and pre-reveal explanations. A same-origin, POST-only route checks a submitted opaque option ID against the canonical server catalogue and returns the judgement and explanation after submission. Canonical option wording, accepted-answer sets and explanations remain authority data and are not part of the pre-submission public question projection. Text-answer questions keep their original visible wording and scoring behaviour.
+
+The ten published legacy image questions use reviewed descriptions keyed by their immutable question IDs and existing numeric asset paths. A future image question must provide one `accessibilityDescription` per option in `imageProvenance`; missing, mismatched, answer-bearing or label-bearing media metadata fails closed. The browser renderer uses the same presentation contract for visible markers, non-empty image alternatives, keyboard-operable controls and meaningful accessible names. Recovery stores only option IDs and rechecks recovered image selections through the server authority; it never stores or derives canonical image labels. No schema migration is required because media provenance is already stored as versioned JSON.
+
 ## Scope and transition
 
 The engine introduces a validated, versioned catalogue and server-side selection policy without adding cultural questions. The verified pre-engine catalogue remains the only current content: five editions, twelve questions per edition and sixty questions in total. `app/gameData.ts` remains the canonical byte-for-byte source for that transitional catalogue. `buildLegacyQuestionBankDocument()` maps those records into `question-bank-v1` without changing wording, options, accepted answers, explanations, regional assignment, image offsets or the one-point scoring weight.

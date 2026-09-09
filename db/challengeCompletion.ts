@@ -1,5 +1,5 @@
 import { calculateResultTier } from "../app/gameLogic.ts";
-import { regions, type RegionKey } from "../app/gameData.ts";
+import { regions, type RegionKey } from "../app/publicGameData.ts";
 import { publicDisplayNameFallback, validateDisplayName } from "../app/displayNames.ts";
 import { PRODUCT_SAFEGUARD } from "../app/productSafeguards.ts";
 import type { AtomicD1Database, BoundStatement } from "./repositories.ts";

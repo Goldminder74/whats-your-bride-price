@@ -1,6 +1,7 @@
 import type { RegionKey } from "../app/gameData.ts";
+import { imageAnswerPresentations } from "../app/imageQuestionPresentation.ts";
 import type { AtomicD1Database } from "./repositories.ts";
-import type { QuestionDifficulty, QuestionKind, QuestionOption } from "./questionBankContracts.ts";
+import type { QuestionDifficulty, QuestionKind, QuestionMediaProvenance, QuestionOption } from "./questionBankContracts.ts";
 import { QUESTION_SET_VERSION, SCORING_VERSION } from "./seeds/development.ts";
 
 export const QUESTION_SELECTION_POLICY_VERSION = "balanced-v1" as const;
@@ -18,6 +19,7 @@ export type SelectableQuestion = Readonly<{
   difficulty: QuestionDifficulty;
   questionKind: QuestionKind;
   questionText: string;
+  visualStart: number | null;
   answerOptions: readonly QuestionOption[];
   acceptedAnswers: readonly (readonly string[])[];
   explanation: string;
@@ -28,8 +30,8 @@ export type SelectableQuestion = Readonly<{
   retiredAt: number | null;
   validFrom: number | null;
   validUntil: number | null;
-  imageProvenance: readonly unknown[];
-  audioProvenance: readonly unknown[];
+  imageProvenance: readonly QuestionMediaProvenance[];
+  audioProvenance: readonly QuestionMediaProvenance[];
 }>;
 
 export type PublicSelectedQuestion = Readonly<{
@@ -39,6 +41,7 @@ export type PublicSelectedQuestion = Readonly<{
   text: string;
   options: readonly QuestionOption[];
   imageAssets: readonly string[];
+  imageDescriptions: readonly string[];
   audioAssets: readonly string[];
 }>;
 
@@ -118,13 +121,28 @@ function safeAssetRefs(value: readonly unknown[]): readonly string[] {
 }
 
 export function toPublicSelectedQuestion(question: SelectableQuestion): PublicSelectedQuestion {
+  const imagePresentation = question.questionKind === "image" ? imageAnswerPresentations({
+    stableId: question.stableId,
+    region: question.region,
+    visualStart: question.visualStart,
+    answerOptions: question.answerOptions,
+    imageProvenance: question.imageProvenance,
+  }) : Object.freeze([]);
   return Object.freeze({
     questionRef: question.stableId,
     version: question.version,
     kind: question.questionKind,
     text: question.questionText,
-    options: Object.freeze(question.answerOptions.map((option) => Object.freeze({ ...option }))),
-    imageAssets: safeAssetRefs(question.imageProvenance),
+    options: Object.freeze(question.answerOptions.map((option, index) => Object.freeze({
+      id: option.id,
+      text: question.questionKind === "image" ? imagePresentation[index].marker : option.text,
+    }))),
+    imageAssets: question.questionKind === "image"
+      ? Object.freeze(imagePresentation.map((item) => item.assetRef))
+      : safeAssetRefs(question.imageProvenance),
+    imageDescriptions: question.questionKind === "image"
+      ? Object.freeze(imagePresentation.map((item) => item.accessibilityDescription))
+      : Object.freeze([]),
     audioAssets: safeAssetRefs(question.audioProvenance),
   });
 }
@@ -205,6 +223,7 @@ export async function selectQuestionSet(input: Readonly<{
 type D1QuestionRow = Readonly<{
   internal_id: string; edition_id: string; stable_id: string; version: number; edition_key: RegionKey;
   category: string; difficulty: string | null; question_kind: QuestionKind; question_text: string;
+  visual_start: number | null;
   answer_options_json: string; correct_answer_json: string; accepted_answers_json: string;
   explanation: string; scoring_weight: number; publication_status: string; source_review_status: string;
   published_at: number; retired_at: number | null; valid_from: number | null; valid_until: number | null;
@@ -218,7 +237,7 @@ export class D1QuestionSelectionRepository {
 
   async getCandidates(region: RegionKey, now: number): Promise<readonly SelectableQuestion[]> {
     const result = await this.database.prepare(`SELECT q.id AS internal_id, q.edition_id, q.stable_id, q.version,
-      qe.edition_key, q.category, q.difficulty, q.question_kind, q.question_text, q.answer_options_json,
+      qe.edition_key, q.category, q.difficulty, q.question_kind, q.question_text, q.visual_start, q.answer_options_json,
       q.correct_answer_json, q.accepted_answers_json, q.explanation, q.scoring_weight,
       q.publication_status, q.source_review_status, q.published_at, q.retired_at, q.valid_from,
       q.valid_until, q.image_provenance_json, q.audio_provenance_json
@@ -234,15 +253,15 @@ export class D1QuestionSelectionRepository {
         const answerOptions = JSON.parse(row.answer_options_json) as QuestionOption[];
         const primary = JSON.parse(row.correct_answer_json) as string[];
         const alternatives = JSON.parse(row.accepted_answers_json) as string[][];
-        const imageProvenance = JSON.parse(row.image_provenance_json) as unknown[];
-        const audioProvenance = JSON.parse(row.audio_provenance_json) as unknown[];
+        const imageProvenance = JSON.parse(row.image_provenance_json) as QuestionMediaProvenance[];
+        const audioProvenance = JSON.parse(row.audio_provenance_json) as QuestionMediaProvenance[];
         if (!Array.isArray(answerOptions) || !Array.isArray(primary) || !Array.isArray(alternatives) || !Array.isArray(imageProvenance) || !Array.isArray(audioProvenance)) continue;
         const acceptedAnswers = alternatives.length ? alternatives : [primary];
         questions.push(Object.freeze({
           internalId: row.internal_id, editionId: row.edition_id, stableId: row.stable_id, version: row.version,
           region: row.edition_key, category: row.category,
           difficulty: row.difficulty === "intermediate" || row.difficulty === "advanced" ? row.difficulty : "introductory",
-          questionKind: row.question_kind, questionText: row.question_text,
+          questionKind: row.question_kind, questionText: row.question_text, visualStart: row.visual_start,
           answerOptions: Object.freeze(answerOptions.map((option) => Object.freeze(option))),
           acceptedAnswers: Object.freeze(acceptedAnswers.map((answer) => Object.freeze([...answer]))),
           explanation: row.explanation, scoringWeight: row.scoring_weight, lifecycleStatus: "published",

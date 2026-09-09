@@ -1,7 +1,7 @@
 import Link from "next/link";
 import DailyChallengeClient from "../../../DailyChallengeClient.tsx";
 import { activeFeatureFlags } from "../../../featureFlags.ts";
-import { regionOrder, type RegionKey } from "../../../gameData.ts";
+import { regionOrder, type RegionKey } from "../../../publicGameData.ts";
 import { nextUtcChallengeBoundary, utcChallengeDate } from "../../../../db/dailyChallenge.ts";
 import { readServerNow } from "../../../serverClock.ts";
 

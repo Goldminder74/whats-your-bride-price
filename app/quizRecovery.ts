@@ -1,5 +1,6 @@
 import { isApprovedAvatarId } from "./avatarRegistry.ts";
-import { regionOrder, regions, type RegionKey } from "./gameData.ts";
+import { regionOrder, regions, type RegionKey } from "./publicGameData.ts";
+import { imageAnswerPresentations, legacyImageQuestionStableId } from "./imageQuestionPresentation.ts";
 import type { ControlledSource, PermittedEntryQuery } from "./entryContext.ts";
 
 export const quizRecoveryStorageKey = "wybp-active-quiz-v1";
@@ -183,17 +184,40 @@ export function clearQuizRecovery(local: StorageLike, session: StorageLike): boo
   } catch { return false; }
 }
 
-export function recoveryAnswerResults(state: QuizRecoveryState): number[] {
-  return state.answerChoices.map((choice, questionIndex) => {
-    const expected = regions[state.edition].questions[questionIndex].correct;
-    return choice.length === expected.length && [...choice].sort().every((value, index) => value === [...expected].sort()[index]) ? 1 : 0;
-  });
+export async function recoveryAnswerResults(
+  state: QuizRecoveryState,
+  fetcher: typeof fetch = fetch,
+): Promise<number[]> {
+  return Promise.all(state.answerChoices.map(async (choice, questionIndex) => {
+    const question = regions[state.edition].questions[questionIndex];
+    if (question.kind !== "image") {
+      const expected = question.correct;
+      return choice.length === expected.length && [...choice].sort().every((value, index) => value === [...expected].sort()[index]) ? 1 : 0;
+    }
+    const response = await fetcher("/questions/image-answer", {
+      method: "POST", mode: "same-origin", credentials: "omit", referrerPolicy: "no-referrer",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        questionStableId: legacyImageQuestionStableId(state.edition, questionIndex),
+        selectedOptionIds: choice.map((optionIndex) => `o${optionIndex + 1}`),
+      }),
+    });
+    const body = await response.json() as Record<string, unknown>;
+    if (!response.ok || body.accepted !== true || typeof body.correct !== "boolean") throw new Error("image_answer_recovery_unavailable");
+    return body.correct ? 1 : 0;
+  }));
 }
 
 export function questionImageAssets(edition: RegionKey, questionIndexes: readonly number[]): string[] {
   return questionIndexes.flatMap((questionIndex) => {
     const question = regions[edition].questions[questionIndex];
     if (!question || question.kind !== "image") return [];
-    return question.options.map((_, optionIndex) => `/quiz-art/${edition}-${(question.visualStart || 0) + optionIndex}.webp`);
+    return imageAnswerPresentations({
+      stableId: legacyImageQuestionStableId(edition, questionIndex),
+      region: edition,
+      visualStart: question.visualStart ?? null,
+      answerOptions: question.options.map((text, optionIndex) => ({ id: `o${optionIndex + 1}`, text })),
+      imageProvenance: [],
+    }).map((item) => item.assetRef);
   });
 }

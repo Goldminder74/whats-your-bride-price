@@ -22,7 +22,7 @@ function selectable(index, overrides = {}) {
     internalId: `question_west_${index}`, editionId: "edition_west_v1", stableId: `west_q${String(index + 1).padStart(2, "0")}`,
     version: 1, region: "west", category: ["HISTORY", "LANGUAGE", "FOOD", "MUSIC"][index % 4],
     difficulty: ["introductory", "intermediate", "advanced"][index % 3], questionKind: "single",
-    questionText: `Question ${index + 1}`, answerOptions: Object.freeze([{ id: "o1", text: "Correct" }, { id: "o2", text: "Other" }]),
+    questionText: `Question ${index + 1}`, visualStart: null, answerOptions: Object.freeze([{ id: "o1", text: "Correct" }, { id: "o2", text: "Other" }]),
     acceptedAnswers: Object.freeze([Object.freeze(["o1"])]), explanation: "Server-only explanation.", scoringWeight: 1,
     lifecycleStatus: "published", sourceReviewStatus: "approved", publishedAt: Date.UTC(2025, 0, 1), retiredAt: null,
     validFrom: null, validUntil: null, imageProvenance: Object.freeze([]), audioProvenance: Object.freeze([]), ...overrides,
@@ -82,7 +82,7 @@ test("daily generation is deterministic per region/day and idempotent per start 
   const other = await service.start({ ...request, anonymousSessionCredential: otherCredential, idempotencyKey: "daily-request-0002" });
   assert.equal(repository.dailies.size, 1); assert.equal(first.attemptId, replay.attemptId);
   assert.deepEqual(first.questions, other.questions); assert.equal(new Set(first.questions.map((item) => item.questionRef)).size, 12);
-  assert.deepEqual(Object.keys(first.questions[0]).sort(), ["audioAssets", "imageAssets", "kind", "options", "questionRef", "text", "version"]);
+  assert.deepEqual(Object.keys(first.questions[0]).sort(), ["audioAssets", "imageAssets", "imageDescriptions", "kind", "options", "questionRef", "text", "version"]);
   assert.doesNotMatch(JSON.stringify(first), /acceptedAnswers|correctAnswer|deterministicSeed|explanation|internalId/);
   now += day; const tomorrow = await service.start({ ...request, idempotencyKey: "daily-request-0003" });
   assert.equal(tomorrow.date, "2026-09-07"); assert.equal(repository.dailies.size, 2);

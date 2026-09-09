@@ -1,5 +1,5 @@
 import { resolveApprovedAvatar } from "./avatarRegistry.ts";
-import { regions } from "./gameData.ts";
+import { regions } from "./publicGameData.ts";
 import { requireRoyalRevealProjection } from "./royalRevealProjection.ts";
 
 export const ROYAL_PORTRAIT_WIDTH=1080; export const ROYAL_PORTRAIT_HEIGHT=1350; export const ROYAL_CERTIFICATE_WIDTH=2480; export const ROYAL_CERTIFICATE_HEIGHT=3508;

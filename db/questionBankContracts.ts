@@ -1,4 +1,4 @@
-import { regionOrder, type RegionKey } from "../app/gameData.ts";
+import { regionOrder, type RegionKey } from "../app/publicGameData.ts";
 
 export const QUESTION_BANK_CATEGORIES = Object.freeze([
   "ART", "ART & HISTORY", "FOOD", "GEOGRAPHY", "HISTORY", "LANGUAGE",
@@ -29,6 +29,7 @@ export type QuestionSource = Readonly<{
 }>;
 export type QuestionMediaProvenance = Readonly<{
   assetRef: string;
+  accessibilityDescription: string | null;
   creator: string;
   source: string;
   licence: string;
@@ -92,7 +93,7 @@ const SOURCE_KEYS = Object.freeze([
   "title", "organisationOrAuthor", "urlOrReference", "publicationDate", "accessDate",
   "sourceType", "reviewStatus", "relevantClaim",
 ]);
-const MEDIA_KEYS = Object.freeze(["assetRef", "creator", "source", "licence", "reviewedAt"]);
+const MEDIA_KEYS = Object.freeze(["assetRef", "accessibilityDescription", "creator", "source", "licence", "reviewedAt"]);
 const OPTION_KEYS = Object.freeze(["id", "text"]);
 const STABLE_ID = /^(west|east|central|north|south)_[a-z0-9][a-z0-9_-]{2,55}$/;
 const OPTION_ID = /^o[1-9][0-9]?$/;
@@ -174,6 +175,7 @@ function validateMedia(value: unknown, path: string, approvedRemoteOrigins: Read
   }
   return Object.freeze({
     assetRef,
+    accessibilityDescription: nullableString(item.accessibilityDescription, `${path}.accessibilityDescription`, 500),
     creator: string(item.creator, `${path}.creator`, 2, 200),
     source: validateReference(string(item.source, `${path}.source`, 5, 300), `${path}.source`),
     licence: string(item.licence, `${path}.licence`, 2, 120),
@@ -253,6 +255,22 @@ export function validateQuestionContract(
   const media = (value: unknown, mediaPath: string) => Array.isArray(value)
     ? Object.freeze(value.map((entry, index) => validateMedia(entry, `${mediaPath}[${index}]`, approvedRemoteOrigins)))
     : fail("invalid_media_provenance", mediaPath);
+  const imageProvenance = media(item.imageProvenance, `${path}.imageProvenance`);
+  if (item.questionKind === "image" && imageProvenance.length > 0) {
+    if (imageProvenance.length !== answerOptions.length) fail("image_option_media_count_mismatch", `${path}.imageProvenance`);
+    for (const [index, entry] of imageProvenance.entries()) {
+      if (!entry.accessibilityDescription || entry.accessibilityDescription.length < 24) {
+        fail("image_option_description_required", `${path}.imageProvenance[${index}].accessibilityDescription`);
+      }
+      const normalise = (candidate: string) => candidate.toLocaleLowerCase("en").replace(/[^a-z0-9]+/g, "");
+      const answer = normalise(answerOptions[index].text);
+      const description = normalise(entry.accessibilityDescription);
+      const assetName = normalise(entry.assetRef.split("/").at(-1) || "");
+      if (answer.length >= 4 && (description.includes(answer) || assetName.includes(answer))) {
+        fail("image_option_answer_leak", `${path}.imageProvenance[${index}]`);
+      }
+    }
+  }
   return Object.freeze({
     stableId,
     version: Number(item.version),
@@ -279,7 +297,7 @@ export function validateQuestionContract(
     validFrom,
     validUntil,
     scoringWeight: Number(item.scoringWeight),
-    imageProvenance: media(item.imageProvenance, `${path}.imageProvenance`),
+    imageProvenance,
     audioProvenance: media(item.audioProvenance, `${path}.audioProvenance`),
   });
 }

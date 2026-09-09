@@ -1,4 +1,4 @@
-import { regionOrder, type RegionKey } from "../app/gameData.ts";
+import { regionOrder, type RegionKey } from "../app/publicGameData.ts";
 import { deriveAnonymousSubjectHash } from "../app/anonymousSession.ts";
 import {
   D1QuestionSelectionRepository,

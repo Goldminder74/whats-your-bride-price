@@ -26,13 +26,14 @@ import { emitChallengeEvent } from "./challengeEvents";
 import { emitAnalyticsLocalEvent } from "./analyticsLocal";
 import type { ChallengeComparisonProjection } from "../db/challengeCompletion";
 import { publicDisplayNameFallback, validateDisplayName } from "./displayNames";
-import { regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type RegionKey } from "./gameData";
+import { regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type RegionKey } from "./publicGameData";
 import { entryContextToQuery, parseEntryContext, type EntryContext } from "./entryContext";
 import { entryDiagnosticsEnabled, readEntryDiagnostics, type EntryDiagnosticsSnapshot } from "./entryDiagnostics";
 import { emitEntryEvent } from "./entryEvents";
 import { reportAppError } from "./errors";
 import { activeFeatureFlags } from "./featureFlags";
 import { answersMatch, calculateResultTier, defaultSoundEnabled, getCelebrationPieceCount } from "./gameLogic";
+import { imageAnswerPresentations, legacyImageQuestionStableId } from "./imageQuestionPresentation";
 import { resolveBrowserPublicAppOrigin } from "./publicAppOrigin";
 import {
   nominationSnapshotVersion,
@@ -311,6 +312,10 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const [selected, setSelected] = useState<number[]>([]);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [lastCorrect, setLastCorrect] = useState(false);
+  const [revealedCorrectOptions, setRevealedCorrectOptions] = useState<readonly number[]>([]);
+  const [answerExplanation, setAnswerExplanation] = useState("");
+  const [imageAnswerPending, setImageAnswerPending] = useState(false);
+  const [imageAnswerError, setImageAnswerError] = useState("");
   const [dropOpen, setDropOpen] = useState(false);
   const [sound, setSound] = useState(defaultSoundEnabled);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -355,6 +360,13 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const shareTriggerRef = useRef<HTMLElement | null>(null);
   const region = regions[regionKey];
   const question = region.questions[index];
+  const imagePresentations = question.kind === "image" ? imageAnswerPresentations({
+    stableId: legacyImageQuestionStableId(regionKey, index),
+    region: regionKey,
+    visualStart: question.visualStart ?? null,
+    answerOptions: question.options.map((text, optionIndex) => ({ id: `o${optionIndex + 1}`, text })),
+    imageProvenance: [],
+  }) : [];
   const avatarChoice = resolveApprovedAvatar(avatarId);
   const avatar = avatarChoice.src;
   const displayNameValidation = useMemo(() => validateDisplayName(name), [name]);
@@ -404,7 +416,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           if (matchingRecovery && matchingRecovery.questionPosition > 0 && matchingRecovery.questionPosition <= 12) {
             setAvatarId(matchingRecovery.avatarId);
             setAnswerChoices(matchingRecovery.answerChoices.map((choice) => [...choice]));
-            setAnswers(recoveryAnswerResults(matchingRecovery));
+            void recoveryAnswerResults(matchingRecovery).then(setAnswers).catch(() => setRecoveryNotice("Your saved answers could not be verified. Please start again when you are ready."));
             setIndex(Math.min(matchingRecovery.questionPosition, 11));
             setQuizInstanceId(matchingRecovery.instanceId);
             const restoredScreen: Screen = matchingRecovery.questionPosition === 12 ? "result" : "quiz";
@@ -427,7 +439,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           setRegionKey(recovery.edition);
           setAvatarId(recovery.avatarId);
           setAnswerChoices(recovery.answerChoices.map((choice) => [...choice]));
-          setAnswers(recoveryAnswerResults(recovery));
+          void recoveryAnswerResults(recovery).then(setAnswers).catch(() => setRecoveryNotice("Your saved answers could not be verified. Please start again when you are ready."));
           setIndex(Math.min(recovery.questionPosition, 11));
           setQuizInstanceId(recovery.instanceId);
           setRecoveryNotice("Your private, tab-scoped quiz was restored after refresh.");
@@ -944,12 +956,42 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     playTone(520, true); window.scrollTo(0, 0);
   };
 
-  const submitAnswer = (choice: number[]) => {
+  const acceptAnswerJudgement = (choice: number[], isCorrect: boolean, explanation: string, correctOptions: readonly number[]) => {
+    setSelected(choice); setLastCorrect(isCorrect); setRevealedCorrectOptions(correctOptions); setAnswerExplanation(explanation);
+    setAnswers((current) => [...current, isCorrect ? 1 : 0]); setAnswerChoices((current) => [...current, [...choice]]); setFeedbackOpen(true);
+    playTone(isCorrect ? 680 : 260, isCorrect);
+  };
+
+  const submitAnswer = async (choice: number[]) => {
     if (feedbackOpen) return;
+    if (question.kind === "image") {
+      if (imageAnswerPending) return;
+      setImageAnswerPending(true); setImageAnswerError("");
+      try {
+        const response = await fetch("/questions/image-answer", {
+          method: "POST", mode: "same-origin", credentials: "omit", referrerPolicy: "no-referrer",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            questionStableId: legacyImageQuestionStableId(regionKey, index),
+            selectedOptionIds: choice.map((optionIndex) => `o${optionIndex + 1}`),
+          }),
+        });
+        const body = await response.json() as Record<string, unknown>;
+        if (!response.ok || body.accepted !== true || typeof body.correct !== "boolean" || typeof body.explanation !== "string"
+          || !Array.isArray(body.correctOptionIds) || !body.correctOptionIds.every((id) => typeof id === "string" && /^o[1-4]$/.test(id))) {
+          throw new Error("image_answer_unavailable");
+        }
+        acceptAnswerJudgement(choice, body.correct, body.explanation, body.correctOptionIds.map((id) => Number(id.slice(1)) - 1));
+      } catch {
+        setImageAnswerError("That answer could not be checked. Please try again.");
+      } finally {
+        setImageAnswerPending(false);
+      }
+      return;
+    }
     const expected = region.questions[index].correct;
     const isCorrect = answersMatch(choice, expected);
-    setSelected(choice); setLastCorrect(isCorrect); setAnswers((current) => [...current, isCorrect ? 1 : 0]); setAnswerChoices((current) => [...current, [...choice]]); setFeedbackOpen(true);
-    playTone(isCorrect ? 680 : 260, isCorrect);
+    acceptAnswerJudgement(choice, isCorrect, question.explanation, expected);
   };
 
   const chooseAnswer = (answerIndex: number) => {
@@ -959,7 +1001,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       setSelected((current) => current.includes(answerIndex) ? current.filter((value) => value !== answerIndex) : current.length < 3 ? [...current, answerIndex] : current);
       playTone(390 + answerIndex * 35);
     } else {
-      submitAnswer([answerIndex]);
+      void submitAnswer([answerIndex]);
     }
   };
 
@@ -983,7 +1025,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
         setScreen("result");
       }, revealDuration);
     } else {
-      setIndex((current) => current + 1); setSelected([]); setFeedbackOpen(false);
+      setIndex((current) => current + 1); setSelected([]); setFeedbackOpen(false); setRevealedCorrectOptions([]); setAnswerExplanation(""); setImageAnswerError("");
       if ((index + 1) % 3 === 0) setDropOpen(true);
     }
   };
@@ -1403,19 +1445,24 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             <div className={`answer-grid kind-${question.kind}`}>
               {question.options.map((option, optionIndex) => {
                 const slot = (question.visualStart || 0) + optionIndex;
-                const classes = [selected.includes(optionIndex) ? "selected" : "", feedbackOpen && question.correct.includes(optionIndex) ? "correct" : "", feedbackOpen && selected.includes(optionIndex) && !question.correct.includes(optionIndex) ? "wrong" : ""].filter(Boolean).join(" ");
+                const correctOptions = question.kind === "image" ? revealedCorrectOptions : question.correct;
+                const classes = [selected.includes(optionIndex) ? "selected" : "", feedbackOpen && correctOptions.includes(optionIndex) ? "correct" : "", feedbackOpen && selected.includes(optionIndex) && !correctOptions.includes(optionIndex) ? "wrong" : ""].filter(Boolean).join(" ");
                 const imagePath = `/quiz-art/${regionKey}-${slot}.webp`;
-                return <button key={option} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen}>
-                  {question.kind === "image" && !failedQuestionImages.has(imagePath) && <img className="answer-image" src={imagePath} alt={option} onError={() => setFailedQuestionImages((current) => new Set(current).add(imagePath))} />}
-                  {question.kind === "image" && failedQuestionImages.has(imagePath) && <span className="question-image-fallback">Image unavailable. Use the answer text.</span>}
-                  <span className="answer-letter">{String.fromCharCode(65 + optionIndex)}</span><b>{option}</b><i>{question.kind === "multi" ? selected.includes(optionIndex) ? "✓" : "+" : "↗"}</i>
+                const imagePresentation = imagePresentations[optionIndex];
+                const optionMarker = String.fromCharCode(65 + optionIndex);
+                return <button key={question.kind === "image" ? imagePath : option} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen || imageAnswerPending} aria-label={question.kind === "image" ? `Option ${imagePresentation.marker}: ${imagePresentation.accessibilityDescription}` : undefined}>
+                  {question.kind === "image" && !failedQuestionImages.has(imagePath) && <img className="answer-image" src={imagePresentation.assetRef} alt={imagePresentation.accessibilityDescription} onError={() => setFailedQuestionImages((current) => new Set(current).add(imagePath))} />}
+                  {question.kind === "image" && failedQuestionImages.has(imagePath) && <span className="question-image-fallback">Image unavailable. {imagePresentation.accessibilityDescription}</span>}
+                  <span className="answer-letter">{optionMarker}</span>{question.kind !== "image" && <b>{option}</b>}<i>{question.kind === "multi" ? selected.includes(optionIndex) ? "✓" : "+" : "↗"}</i>
                 </button>
               })}
             </div>
-            {question.kind === "multi" && !feedbackOpen && <button className="lock-answer" disabled={selected.length !== 3} onClick={() => submitAnswer(selected)}>Lock in {selected.length}/3 answers <span>→</span></button>}
+            {question.kind === "multi" && !feedbackOpen && <button className="lock-answer" disabled={selected.length !== 3} onClick={() => void submitAnswer(selected)}>Lock in {selected.length}/3 answers <span>→</span></button>}
+            {imageAnswerPending && <p role="status">Checking your answer…</p>}
+            {imageAnswerError && <p role="alert">{imageAnswerError}</p>}
             {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
               <div><span>{lastCorrect ? "✦ CORRECT" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? "Culture gem energy!" : "Good guess. Bank this fact."}</b></div>
-              <p>{question.explanation}</p>
+              <p>{answerExplanation}</p>
               <button onClick={nextQuestion}>{index === 11 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
             </div>}
           </div>

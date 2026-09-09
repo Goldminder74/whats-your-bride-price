@@ -1,6 +1,6 @@
 import { isApprovedAvatarId } from "../app/avatarRegistry.ts";
 import { validateDisplayName } from "../app/displayNames.ts";
-import { regionOrder, type RegionKey } from "../app/gameData.ts";
+import { regionOrder, type RegionKey } from "../app/publicGameData.ts";
 import { featureFlagNames, type FeatureFlagName } from "../app/featureFlags.ts";
 import { PRODUCT_SAFEGUARD } from "../app/productSafeguards.ts";
 

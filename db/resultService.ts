@@ -1,5 +1,5 @@
 import { resolveApprovedAvatar } from "../app/avatarRegistry.ts";
-import { regions, type RegionKey } from "../app/gameData.ts";
+import { regions, type RegionKey } from "../app/publicGameData.ts";
 import {
   createResultUrl,
   type PublicAppOrigin,

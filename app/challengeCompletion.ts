@@ -2,7 +2,7 @@ import type {
   ChallengeAnswerSubmission,
   ChallengeComparisonProjection,
 } from "../db/challengeCompletion.ts";
-import { regions, type RegionKey } from "./gameData.ts";
+import { regions, type RegionKey } from "./publicGameData.ts";
 
 export interface ChallengeCompletionClient {
   readonly storageAvailable: boolean;

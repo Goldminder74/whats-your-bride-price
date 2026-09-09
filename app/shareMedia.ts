@@ -1,6 +1,6 @@
 import { isApprovedAvatarId, resolveApprovedAvatar } from "./avatarRegistry.ts";
 import { validateDisplayName } from "./displayNames.ts";
-import { regions, type RegionKey } from "./gameData.ts";
+import { regions, type RegionKey } from "./publicGameData.ts";
 import { PRODUCT_SAFEGUARD, RESULT_TIER_TITLES } from "./productSafeguards.ts";
 import { calculateResultTier } from "./gameLogic.ts";
 import type { SafeShareProjection } from "./shareProjection.ts";

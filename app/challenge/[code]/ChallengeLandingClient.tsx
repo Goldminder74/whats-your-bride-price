@@ -17,7 +17,7 @@ import { createChallengeIdempotencyKey } from "../../challengeCreation";
 import type { ChallengeCompletionClient } from "../../challengeCompletion";
 import type { ChallengeAnswerSubmission } from "../../../db/challengeCompletion";
 import { entryContextToQuery, parseEntryContext, type EntryContext } from "../../entryContext";
-import { regions } from "../../gameData";
+import { regions } from "../../publicGameData";
 import { PRODUCT_SAFEGUARD } from "../../productSafeguards";
 import { resolveBrowserPublicAppOrigin } from "../../publicAppOrigin";
 import { validateSafeNominationChallenge } from "../../nominationExperience";

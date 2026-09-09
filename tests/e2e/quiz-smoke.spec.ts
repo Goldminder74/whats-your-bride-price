@@ -92,6 +92,53 @@ test("homepage loads the complete regional entry surface", async ({ page }) => {
   await expect(page.getByRole("button", { name: /Start the challenge/ })).toHaveAttribute("aria-describedby", "home-entry-safeguard");
 });
 
+test("published image answers use neutral visible markers and descriptive keyboard controls", async ({ page }) => {
+  await page.goto("/?edition=west");
+  await page.getByRole("button", { name: /Enter Region 01/ }).click();
+
+  for (let questionIndex = 0; questionIndex < 3; questionIndex += 1) {
+    const question = regions.west.questions[questionIndex];
+    const buttons = page.locator(".answer-grid > button");
+    for (const correctIndex of question.correct) await buttons.nth(correctIndex).click();
+    if (question.kind === "multi") await page.getByRole("button", { name: /Lock in 3\/3 answers/ }).click();
+    await page.getByRole("button", { name: /Next challenge/ }).click();
+  }
+
+  const question = regions.west.questions[3];
+  const answerGrid = page.locator(".answer-grid");
+  const buttons = answerGrid.locator("> button");
+  await expect(buttons).toHaveCount(4);
+  for (const [optionIndex, canonicalAnswer] of question.options.entries()) {
+    const button = buttons.nth(optionIndex);
+    const image = button.locator("img");
+    await expect(button.locator(".answer-letter")).toHaveText(String.fromCharCode(65 + optionIndex));
+    await expect(button).not.toContainText(canonicalAnswer);
+    await expect(button).not.toHaveAttribute("title");
+    const alternativeText = await image.getAttribute("alt");
+    expect(alternativeText?.length).toBeGreaterThanOrEqual(24);
+    expect(alternativeText?.toLocaleLowerCase("en")).not.toContain(canonicalAnswer.toLocaleLowerCase("en"));
+  }
+  await buttons.first().focus();
+  await expect(buttons.first()).toBeFocused();
+  const judgement = page.waitForResponse((response) => new URL(response.url()).pathname === "/questions/image-answer");
+  await page.keyboard.press("Enter");
+  expect((await judgement).status()).toBe(200);
+  await expect(page.locator(".answer-reveal")).toContainText("CORRECT");
+
+  const deliveredJavaScript = await page.evaluate(async () => {
+    const urls = [...new Set(performance.getEntriesByType("resource")
+      .map((entry) => entry.name)
+      .filter((url) => new URL(url).pathname.endsWith(".js")))];
+    return (await Promise.all(urls.map(async (url) => (await fetch(url)).text()))).join("\n");
+  });
+  for (const unnecessaryImageLabel of ["Ankh", "Beaded collar", "Painted house", "Jebena and cups", "Calabash bowl", "Raffia cloth", "Ndebele beadwork", "Talking drum"]) {
+    expect(deliveredJavaScript).not.toContain(unnecessaryImageLabel);
+  }
+  for (const { question } of regionKeys.flatMap((region) => regions[region].questions.map((item) => ({ question: item }))).filter(({ question }) => question.kind === "image")) {
+    expect(deliveredJavaScript).not.toContain(question.explanation);
+  }
+});
+
 test("About explains scoring, privacy, cultural review and intended audience", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: "About the game" }).click();

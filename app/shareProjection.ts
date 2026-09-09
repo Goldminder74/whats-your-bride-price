@@ -1,6 +1,6 @@
 import { defaultAvatarId, isApprovedAvatarId } from "./avatarRegistry.ts";
 import { validateDisplayName } from "./displayNames.ts";
-import { regions, type RegionKey } from "./gameData.ts";
+import { regions, type RegionKey } from "./publicGameData.ts";
 import type { SafeNominationChallenge } from "./nominationExperience.ts";
 import { createChallengeUrl, createPublicAppUrl, createResultUrl, type PublicAppOrigin } from "./publicAppOrigin.ts";
 import { RESULT_TIER_TITLES } from "./productSafeguards.ts";

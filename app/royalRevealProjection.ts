@@ -1,6 +1,6 @@
 import { isApprovedAvatarId } from "./avatarRegistry.ts";
 import { calculateResultTier } from "./gameLogic.ts";
-import { regions, type RegionKey } from "./gameData.ts";
+import { regions, type RegionKey } from "./publicGameData.ts";
 import { PRODUCT_SAFEGUARD, RESULT_TIER_TITLES } from "./productSafeguards.ts";
 import type { EntitlementProjection } from "../db/commerce.ts";
 import { ROYAL_REVEAL_PRODUCT_KEY } from "../db/commerceContracts.ts";

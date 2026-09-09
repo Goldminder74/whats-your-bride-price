@@ -1,6 +1,6 @@
 import { isApprovedAvatarId } from "../app/avatarRegistry.ts";
 import { calculateResultTier } from "../app/gameLogic.ts";
-import { regions, type RegionKey } from "../app/gameData.ts";
+import { regions, type RegionKey } from "../app/publicGameData.ts";
 import { deriveCommerceOwnerHash } from "./commerceContracts.ts";
 import {
   CHALLENGE_DIFFICULTY_POLICY,

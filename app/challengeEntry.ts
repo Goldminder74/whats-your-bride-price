@@ -1,6 +1,6 @@
 import { isApprovedAvatarId } from "./avatarRegistry.ts";
 import { validateDisplayName } from "./displayNames.ts";
-import { regionOrder, type RegionKey } from "./gameData.ts";
+import { regionOrder, type RegionKey } from "./publicGameData.ts";
 
 declare const __WYBP_REVIEW_CHALLENGE_FIXTURES__: boolean | undefined;
 declare const __WYBP_REVIEW_CHALLENGE_DATA__: unknown;

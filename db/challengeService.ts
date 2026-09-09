@@ -1,6 +1,6 @@
 import { publicDisplayNameFallback, validateDisplayName } from "../app/displayNames.ts";
 import { isApprovedAvatarId } from "../app/avatarRegistry.ts";
-import { regions, type RegionKey } from "../app/gameData.ts";
+import { regions, type RegionKey } from "../app/publicGameData.ts";
 import { createChallengeUrl, type PublicAppOrigin } from "../app/publicAppOrigin.ts";
 import { PRODUCT_SAFEGUARD } from "../app/productSafeguards.ts";
 import { constantTimeEqual } from "./deletionReadiness.ts";

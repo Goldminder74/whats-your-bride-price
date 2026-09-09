@@ -37,6 +37,7 @@ function selectable(index, overrides = {}) {
     difficulty,
     questionKind: "single",
     questionText: `Synthetic selection prompt ${index}`,
+    visualStart: null,
     answerOptions: Object.freeze([{ id: "o1", text: "First" }, { id: "o2", text: "Second" }]),
     acceptedAnswers: Object.freeze([Object.freeze(["o1"])]),
     explanation: "Synthetic explanation used only by tests.",
@@ -87,7 +88,7 @@ test("selection is deterministic for authorised seeds, varies across seeds and e
   const difficultyCounts = Object.groupBy(first.questions, (question) => question.difficulty);
   assert.ok(Math.max(...Object.values(difficultyCounts).map((items) => items.length)) - Math.min(...Object.values(difficultyCounts).map((items) => items.length)) <= 1);
   const projection = toPublicSelectedQuestion(first.questions[0]);
-  assert.deepEqual(Object.keys(projection).sort(), ["audioAssets", "imageAssets", "kind", "options", "questionRef", "text", "version"]);
+  assert.deepEqual(Object.keys(projection).sort(), ["audioAssets", "imageAssets", "imageDescriptions", "kind", "options", "questionRef", "text", "version"]);
   assert.doesNotMatch(JSON.stringify(projection), /answer|correct|review|seed|internal|explanation/i);
 });
 
@@ -159,7 +160,7 @@ test("contracts reject missing sources, review gaps, duplicates, unknown control
   assert.throws(() => validateQuestionContract({ ...question, category: "UNKNOWN" }), /unknown_value/);
   assert.throws(() => validateQuestionContract({ ...question, difficulty: "easy" }), /unknown_value/);
   assert.throws(() => validateQuestionContract({ ...question, lifecycleStatus: "live" }), /unknown_value/);
-  assert.throws(() => validateQuestionContract({ ...question, imageProvenance: [{ assetRef: "https://unapproved.invalid/image.png", creator: "Creator", source: "https://example.org/source", licence: "CC BY", reviewedAt: "2026-08-22" }] }), /unapproved_remote_asset/);
+  assert.throws(() => validateQuestionContract({ ...question, imageProvenance: [{ assetRef: "https://unapproved.invalid/image.png", accessibilityDescription: "A neutral description of the visible subject.", creator: "Creator", source: "https://example.org/source", licence: "CC BY", reviewedAt: "2026-08-22" }] }), /unapproved_remote_asset/);
 });
 
 test("published versions cannot be overwritten and near duplicates are reported", async () => {

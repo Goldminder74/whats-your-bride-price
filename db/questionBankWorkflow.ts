@@ -1,4 +1,4 @@
-import { sourceCollections } from "../app/gameData.ts";
+import { sourceCollections } from "../app/publicGameData.ts";
 import {
   isFormulaInjectionValue,
   neutralizeCsvFormula,

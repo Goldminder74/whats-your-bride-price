@@ -1,4 +1,5 @@
-import { avatarChoices, type AvatarChoice } from "./gameData.ts";
+import { avatarChoices } from "./publicGameData.ts";
+import type { AvatarChoice } from "./gameData.ts";
 
 export const approvedAvatarRegistry: readonly Readonly<AvatarChoice>[] = Object.freeze(
   avatarChoices.map((avatar) => Object.freeze({ ...avatar })),

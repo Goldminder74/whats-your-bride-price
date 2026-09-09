@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { regions } from "../../gameData";
+import { regions } from "../../publicGameData";
 import { PRODUCT_SAFEGUARD } from "../../productSafeguards";
 import { createPublicAppUrl, createResultUrl } from "../../publicAppOrigin";
 import { loadResultLanding, RESULT_UNAVAILABLE_COPY } from "../../resultLandingServer";

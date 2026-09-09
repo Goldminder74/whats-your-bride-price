@@ -1,7 +1,7 @@
 import { isApprovedAvatarId } from "../app/avatarRegistry.ts";
 import { deriveAnonymousSubjectHash } from "../app/anonymousSession.ts";
 import { calculateResultTier } from "../app/gameLogic.ts";
-import { regionOrder, type RegionKey } from "../app/gameData.ts";
+import { regionOrder, type RegionKey } from "../app/publicGameData.ts";
 import type { AtomicD1Database, BoundStatement } from "./repositories.ts";
 import {
   authorizeReproducibleSelectionSeed,
@@ -501,7 +501,8 @@ export class DailyChallengeService {
 
 type QuestionRow = Readonly<{
   internal_id: string; edition_id: string; stable_id: string; version: number; edition_key: RegionKey;
-  category: string; difficulty: string | null; question_kind: "single" | "multi"; question_text: string;
+  category: string; difficulty: string | null; question_kind: SelectableQuestion["questionKind"]; question_text: string;
+  visual_start: number | null;
   answer_options_json: string; correct_answer_json: string; accepted_answers_json: string;
   explanation: string; scoring_weight: number; publication_status: string; source_review_status: string;
   published_at: number | null; retired_at: number | null; valid_from: number | null; valid_until: number | null;
@@ -559,7 +560,7 @@ export class D1DailyChallengeRepository implements DailyChallengeRepository {
 
   async getQuestions(record: DailyChallengeRecord): Promise<readonly SelectableQuestion[]> {
     const result = await this.database.prepare(`SELECT q.id AS internal_id,q.edition_id,q.stable_id,q.version,qe.edition_key,q.category,q.difficulty,q.question_kind,q.question_text,
-      q.answer_options_json,q.correct_answer_json,q.accepted_answers_json,q.explanation,q.scoring_weight,q.publication_status,q.source_review_status,
+      q.visual_start,q.answer_options_json,q.correct_answer_json,q.accepted_answers_json,q.explanation,q.scoring_weight,q.publication_status,q.source_review_status,
       q.published_at,q.retired_at,q.valid_from,q.valid_until,q.image_provenance_json,q.audio_provenance_json
       FROM questions q JOIN quiz_editions qe ON qe.id=q.edition_id WHERE q.edition_id=?1 AND q.publication_status IN ('published','retired') AND q.source_review_status='approved'`).bind(record.editionId).all<QuestionRow>();
     if (!result.success) return [];
@@ -579,7 +580,7 @@ export class D1DailyChallengeRepository implements DailyChallengeRepository {
           internalId: row.internal_id, editionId: row.edition_id, stableId: row.stable_id, version: row.version,
           region: row.edition_key, category: row.category,
           difficulty: row.difficulty === "advanced" || row.difficulty === "intermediate" ? row.difficulty : "introductory",
-          questionKind: row.question_kind, questionText: row.question_text, answerOptions: Object.freeze(options),
+          questionKind: row.question_kind, questionText: row.question_text, visualStart: row.visual_start, answerOptions: Object.freeze(options),
           acceptedAnswers: Object.freeze((alternatives.length ? alternatives : [correct]).map((set: string[]) => Object.freeze(set))),
           explanation: row.explanation, scoringWeight: row.scoring_weight, lifecycleStatus: "published",
           sourceReviewStatus: "approved", publishedAt: Number(row.published_at || 0), retiredAt: row.retired_at,

@@ -1,4 +1,4 @@
-import { regionOrder, type RegionKey } from "./gameData.ts";
+import { regionOrder, type RegionKey } from "./publicGameData.ts";
 
 export const controlledSources = [
   "whatsapp",

@@ -1,7 +1,7 @@
 import type { ChallengeCreationClient } from "./challengeCreation.ts";
 import { resolveReviewNominationFixture } from "./challengeEntry.ts";
 import { publicDisplayNameFallback, validateDisplayName } from "./displayNames.ts";
-import { regions } from "./gameData.ts";
+import { regions } from "./publicGameData.ts";
 import { createChallengeUrl, resolveBrowserPublicAppOrigin } from "./publicAppOrigin.ts";
 import type { PrivateChallengeCreationResponse } from "../db/challengeService.ts";
 

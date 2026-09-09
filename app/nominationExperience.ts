@@ -1,6 +1,6 @@
 import type { PublicChallengeProjection } from "../db/challengeService.ts";
 import { validateDisplayName } from "./displayNames.ts";
-import { regions, type RegionKey } from "./gameData.ts";
+import { regions, type RegionKey } from "./publicGameData.ts";
 import {
   createChallengeUrl,
   createPublicAppUrl,

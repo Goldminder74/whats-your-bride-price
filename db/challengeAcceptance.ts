@@ -1,4 +1,4 @@
-import { regions, type RegionKey } from "../app/gameData.ts";
+import { regions, type RegionKey } from "../app/publicGameData.ts";
 import { constantTimeEqual } from "./deletionReadiness.ts";
 import type { AtomicD1Database } from "./repositories.ts";
 import { SCORING_VERSION } from "./seeds/development.ts";

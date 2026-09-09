@@ -33,12 +33,12 @@ const recovery = {
   attribution: { source: "whatsapp", nominated: true, utm_campaign: "roots_2026" },
 };
 
-test("versioned recovery accepts only minimal, compatible quiz fields", () => {
+test("versioned recovery accepts only minimal, compatible quiz fields", async () => {
   const parsed = parseQuizRecovery(JSON.stringify(recovery), recovery.instanceId, now);
   assert.ok(parsed);
   assert.equal(parsed.questionPosition, 2);
   assert.deepEqual(parsed.answerChoices, [[1], [0]]);
-  assert.deepEqual(recoveryAnswerResults(parsed), [1, 1]);
+  assert.deepEqual(await recoveryAnswerResults(parsed), [1, 1]);
   assert.equal("name" in parsed, false);
   assert.equal("photo" in parsed, false);
   for (const prohibited of ["displayName", "anonymousSessionId", "imageBlob", "objectUrl", "filename", "score", "freeText", "secret"]) {
@@ -68,6 +68,22 @@ test("storage is tab-scoped, failure-safe and clearable", () => {
   assert.equal(readQuizRecovery(local, anotherTab, now), null);
   assert.equal(clearQuizRecovery(local, session), true);
   assert.equal(local.getItem(quizRecoveryStorageKey), null);
+});
+
+test("image answers are rechecked through server authority during recovery", async () => {
+  const imageRecovery = { ...recovery, questionPosition: 4, answerChoices: [[1], [0], [0, 1, 2], [0]] };
+  const parsed = parseQuizRecovery(JSON.stringify(imageRecovery), imageRecovery.instanceId, now);
+  assert.ok(parsed);
+  const requests = [];
+  const results = await recoveryAnswerResults(parsed, async (url, init) => {
+    requests.push({ url, body: JSON.parse(init.body) });
+    return Response.json({ accepted: true, correct: true });
+  });
+  assert.deepEqual(results, [1, 1, 1, 1]);
+  assert.deepEqual(requests, [{
+    url: "/questions/image-answer",
+    body: { questionStableId: "west_q04", selectedOptionIds: ["o1"] },
+  }]);
 });
 
 test("only explicitly requested image-question assets are eligible for prefetch", () => {

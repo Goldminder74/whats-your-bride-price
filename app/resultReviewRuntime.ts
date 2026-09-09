@@ -1,6 +1,6 @@
 import { activeFeatureFlags } from "./featureFlags.ts";
 import { deriveAnonymousSubjectHash } from "./anonymousSession.ts";
-import { regions, type RegionKey } from "./gameData.ts";
+import { regions, type RegionKey } from "./publicGameData.ts";
 import { PUBLIC_APP_ORIGIN } from "./publicAppOrigin.ts";
 import type { ResultRecord, ResultState, ResultVisibility } from "../db/dataContracts.ts";
 import { InMemoryChallengeRateLimiter } from "../db/challengeService.ts";

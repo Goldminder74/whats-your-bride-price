@@ -380,7 +380,7 @@ test("question focus, exact progress, duplicate-start guard and local hooks work
   expect(names?.filter((name) => name === "quiz_started")).toHaveLength(1);
 });
 
-test("question media failure remains playable through answer text", async ({ page }) => {
+test("question media failure remains playable through objective non-spoiler descriptions", async ({ page }) => {
   await page.route("**/quiz-art/west-*.webp", (route) => route.abort());
   await page.goto(directWest);
   await page.getByRole("button", { name: "Continue without a photo" }).click();
@@ -393,7 +393,12 @@ test("question media failure remains playable through answer text", async ({ pag
   await page.getByRole("button", { name: /Next challenge/ }).click();
   await expect(page.getByRole("heading", { level: 2 })).toContainText("jollof rice");
   await expect(page.locator(".question-image-fallback")).toHaveCount(4);
-  await expect(page.getByRole("button", { name: /Jollof rice/ })).toBeEnabled();
+  await expect(page.locator(".answer-grid")).not.toContainText("Jollof rice");
+  await expect(page.locator(".answer-grid")).not.toContainText("Injera platter");
+  const firstImageOption = page.getByRole("button", { name: /Option A: A bowl of reddish-orange rice/ });
+  await expect(firstImageOption).toBeEnabled();
+  await firstImageOption.focus();
+  await expect(firstImageOption).toBeFocused();
 });
 
 test("only the first two question asset slots are considered after edition selection", async ({ page }) => {
