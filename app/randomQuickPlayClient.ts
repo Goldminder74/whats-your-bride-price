@@ -1,5 +1,6 @@
 import type { RegionKey } from "./publicGameData.ts";
 import type { PublicQuestionSelection } from "../db/questionSelectionService.ts";
+import { activeFeatureFlags } from "./featureFlags.ts";
 
 const attempt = /^attempt_[0-9a-f]{48}$/;
 const questionRef = /^(west|east|central|north|south)_[a-z0-9][a-z0-9_-]{2,55}$/;
@@ -59,7 +60,7 @@ async function post(path: string, body: Record<string, unknown>, fetcher: typeof
 }
 
 export async function startRandomQuickPlay(region: RegionKey, anonymousSessionCredential: string, idempotencyKey: string, fetcher: typeof fetch = fetch): Promise<PublicQuestionSelection> {
-  const response = await post("/questions/select", { region, anonymousSessionCredential, idempotencyKey }, fetcher);
+  const response = await post(activeFeatureFlags.cowrie_economy ? "/cowries/play" : "/questions/select", { region, anonymousSessionCredential, idempotencyKey }, fetcher);
   const body = await response.json() as Record<string, unknown>;
   if (response.status === 409 && body.reason === "insufficient_published_bank") {
     const error = new Error("quick_play_bank_not_ready") as Error & { shortfall?: number };

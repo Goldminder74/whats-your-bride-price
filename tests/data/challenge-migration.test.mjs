@@ -38,7 +38,7 @@ function insertChallenge(database, overrides = {}) {
 
 test("0002 remains the approved additive challenge-security migration", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 9);
+  assert.equal(plan.length, 10);
   assert.equal(plan[2].id, "0002_little_inertia");
   assert.equal(plan[2].checksum, "16750df69b0f23cc2f6c2b2e8c55689fd6a2473d7a0c4665a8b2ee4f7e1f64a7");
   assert.equal(plan[2].statements.length, 4);
@@ -48,6 +48,7 @@ test("0002 remains the approved additive challenge-security migration", async ()
   assert.equal(plan[6].id, "0006_regular_paibok");
   assert.equal(plan[7].id, "0007_ancient_yellow_claw");
   assert.equal(plan[8].id, "0008_simple_nocturne");
+  assert.equal(plan[9].id, "0009_clammy_shooting_star");
   assert.match(plan[2].statements[0], /^ALTER TABLE `challenges` ADD `creation_idempotency_key_hash` text;$/);
   assert.match(plan[2].statements[1], /^ALTER TABLE `challenges` ADD `revocation_token_hash` text;$/);
   assert.match(plan[2].statements[2], /CREATE UNIQUE INDEX `challenges_creation_idempotency_hash_uq`[\s\S]+WHERE[\s\S]+is not null/);
@@ -64,6 +65,7 @@ test("0002 remains the approved additive challenge-security migration", async ()
     "0006_regular_paibok.sql": "a34516dbc54f58557dcebd37f31a5a9c212905865bc57fffd9ab56f95e38e52e",
     "0007_ancient_yellow_claw.sql": "10be0f218f97d556a5af73d29481eafce8a5ca3a0bfc56d22e1b33c4de119076",
     "0008_simple_nocturne.sql": "1c0082c156e094b1af4641596301b6709a2750b0f9b291e96f57945e7f7cd1fe",
+    "0009_clammy_shooting_star.sql": "09f939354916ba2923b948a316c2c132929b8b8f912a9e5fc3f77e819011dd2b",
   });
   for (const [name, expected] of Object.entries(checksums)) {
     const bytes = await readFile(new URL(`../../drizzle/${name}`, import.meta.url));

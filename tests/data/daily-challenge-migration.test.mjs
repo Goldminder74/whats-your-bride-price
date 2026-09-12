@@ -35,8 +35,8 @@ function deterministicRandom() { let byte = 1; return (value) => { value.fill(by
 function answers(selection) { return selection.questions.map((question) => ({ questionStableId: question.questionRef, selectedOptionIds: ["o1"] })); }
 
 test("0008 is one checksummed additive migration and preserves populated 0007 rows", async () => {
-  const plan = await loadMigrationPlan(); const migration = plan.at(-1);
-  assert.equal(plan.length, 9); assert.equal(migration.id, "0008_simple_nocturne");
+  const plan = await loadMigrationPlan(); const migration = plan[8];
+  assert.equal(plan.length, 10); assert.equal(migration.id, "0008_simple_nocturne");
   const raw = await readFile(new URL("../../drizzle/0008_simple_nocturne.sql", import.meta.url));
   assert.equal(createHash("sha256").update(raw).digest("hex"), migration.checksum);
   assert.doesNotMatch(raw.toString(), /INSERT INTO [`"]?questions|INSERT INTO [`"]?quiz_editions/i);
@@ -47,8 +47,8 @@ test("0008 is one checksummed additive migration and preserves populated 0007 ro
     database.prepare(`INSERT INTO daily_challenges (id,challenge_date,edition_id,question_set_version,deterministic_seed_hash,selected_question_versions_json,state,expires_at,version,created_at,updated_at) VALUES ('daily_legacy','legacy-date','edition_legacy','legacy','legacy','[]','active',?,1,?,?)`).run(now + 1, now, now);
     database.prepare(`INSERT INTO quiz_attempts (id,edition_id,question_set_version,scoring_version,selected_question_versions_json,selection_policy_version,status,idempotency_key_hash,started_at,expires_at,version,created_at,updated_at) VALUES ('attempt_legacy','edition_legacy','legacy','legacy','[]','balanced-v1','in_progress','legacy-key',?,?,1,?,?)`).run(now, now + day, now, now);
     database.prepare(`INSERT INTO streaks (id,anonymous_subject_hash,streak_type,current_count,longest_count,last_qualifying_date,rule_version,expires_at,version,created_at,updated_at) VALUES ('streak_legacy','legacy-owner','legacy',2,4,NULL,'legacy',?,1,?,?)`).run(now + day, now, now);
-    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, [migration.id]);
-    assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, []);
+    assert.deepEqual(applyMigrationPlan(database, plan.slice(0, 9), { now }).applied, [migration.id]);
+    assert.deepEqual(applyMigrationPlan(database, plan.slice(0, 9), { now }).applied, []);
     assert.equal(database.prepare("SELECT play_mode,daily_challenge_id FROM quiz_attempts WHERE id='attempt_legacy'").get().play_mode, "random");
     assert.equal(database.prepare("SELECT scoring_version,selection_policy_version FROM daily_challenges WHERE id='daily_legacy'").get().scoring_version, "binary-exact-set-v1");
     assert.equal(database.prepare("SELECT current_count,longest_count,last_qualified_at FROM streaks WHERE id='streak_legacy'").get().longest_count, 4);
@@ -62,7 +62,7 @@ test("a failed 0008 rolls back columns, tables and its migration ledger row", as
   const plan = await loadMigrationPlan(); const database = createIsolatedDatabase();
   try {
     applyMigrationPlan(database, plan.slice(0, 8), { now });
-    const migration = plan.at(-1); const failing = { ...migration, statements: [...migration.statements, "INSERT INTO table_that_does_not_exist VALUES (1)"] };
+    const migration = plan[8]; const failing = { ...migration, statements: [...migration.statements, "INSERT INTO table_that_does_not_exist VALUES (1)"] };
     assert.throws(() => applyMigrationPlan(database, [failing], { now }), /no such table/);
     assert.equal(database.prepare("SELECT count(*) count FROM schema_migrations WHERE migration_id=?").get(migration.id).count, 0);
     assert.equal(database.prepare("SELECT count(*) count FROM pragma_table_info('quiz_attempts') WHERE name='play_mode'").get().count, 0);

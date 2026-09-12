@@ -27,3 +27,7 @@ The browser sends only the server-issued attempt ID, the same functional credent
 Replay clears the former attempt reference and requests a new cryptographic selection. Daily Challenge continues to derive one fixed regional set from the UTC date and server secret. Accepted shared challenges continue to use their compatible fixed question versions. Future Couples and Party modes must issue compatible fixed sets to every comparable player rather than independently randomizing them.
 
 Recent-question history uses the existing functional owner relationship. It does not use analytics consent or analytics identifiers, does not create another identity, and is absent from public URLs. Considering a question does not extend attempt, result or streak retention.
+
+## Optional Cowrie access boundary
+
+`cowrie_economy` is a separate false-by-default flag. When it is off, this flow is unchanged. When both flags are later approved, D1 is bound, and the regional bank has at least 30 eligible versions, the first two persisted random Quick Plays for an authoritative anonymous owner are free. Later random starts cost one Cowrie, with valid bonus Cowries spent before purchased Cowries. Attempt creation and allowance or debit are one atomic operation; recovery, Daily Challenges, incoming challenges, results, nominations, sharing and the classic fallback do not consume Cowries. See [cowrie-wallet-and-play-access.md](./cowrie-wallet-and-play-access.md).

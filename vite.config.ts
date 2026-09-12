@@ -8,6 +8,7 @@ import {
   assertOwnerDashboardReadiness,
   assertDailyChallengeReadiness,
   assertRandomQuickPlayReadiness,
+  assertCowrieEconomyReadiness,
   assertSitesCompatibleFeatureFlags,
   assertDynamicResultsStorage,
   resolveFeatureFlags,
@@ -58,6 +59,7 @@ export default defineConfig(async ({ mode }) => {
   const ownerDashboardFixturesRequested = process.env.WYBP_REVIEW_OWNER_DASHBOARD_FIXTURES === "true";
   const privacyFixturesRequested = process.env.WYBP_REVIEW_PRIVACY_FIXTURES === "true";
   const randomQuickPlayFixturesRequested = process.env.WYBP_REVIEW_RANDOM_QUICK_PLAY_FIXTURES === "true";
+  const cowrieFixturesRequested = process.env.WYBP_REVIEW_COWRIE_FIXTURES === "true";
   if (mode === "production" && diagnosticsRequested && !diagnosticsApproved) {
     throw new Error(
       "Review diagnostics require explicit approval. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_DIAGNOSTICS=true for a local review build. Production builds exclude the panel by default.",
@@ -90,6 +92,9 @@ export default defineConfig(async ({ mode }) => {
   if (mode === "production" && randomQuickPlayFixturesRequested && !diagnosticsApproved) {
     throw new Error("Random Quick Play fixtures require an explicitly authorised local review build. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_RANDOM_QUICK_PLAY_FIXTURES=true. Ordinary production builds exclude these fixtures.");
   }
+  if (mode === "production" && cowrieFixturesRequested && !diagnosticsApproved) {
+    throw new Error("Cowrie Wallet fixtures require an explicitly authorised local review build. Set WYBP_REVIEW_BUILD=true with WYBP_REVIEW_COWRIE_FIXTURES=true. Ordinary production builds exclude these fixtures.");
+  }
   const reviewDiagnostics = mode !== "production" || (diagnosticsRequested && diagnosticsApproved);
   const reviewChallengeFixtures = challengeFixturesRequested && diagnosticsApproved;
   const reviewResultFixtures = resultFixturesRequested && diagnosticsApproved;
@@ -98,6 +103,7 @@ export default defineConfig(async ({ mode }) => {
   const reviewOwnerDashboardFixtures = ownerDashboardFixturesRequested && diagnosticsApproved;
   const reviewPrivacyFixtures = privacyFixturesRequested && diagnosticsApproved;
   const reviewRandomQuickPlayFixtures = randomQuickPlayFixturesRequested && diagnosticsApproved;
+  const reviewCowrieFixtures = cowrieFixturesRequested && diagnosticsApproved;
   assertSitesCompatibleFeatureFlags(featureFlags, { authorisedReviewFixtures: reviewCommerceFixtures });
   assertDynamicResultsStorage(featureFlags, {
     d1Configured: Boolean(d1),
@@ -127,6 +133,11 @@ export default defineConfig(async ({ mode }) => {
     d1Configured: Boolean(d1),
     authorisedReviewFixtures: reviewRandomQuickPlayFixtures,
   });
+  assertCowrieEconomyReadiness(featureFlags, {
+    d1Configured: Boolean(d1),
+    authorisedReviewFixtures: reviewCowrieFixtures && reviewRandomQuickPlayFixtures,
+    approvedOperationalReview: false,
+  });
   const reviewChallengeData = reviewChallengeFixtures
     ? [
         { scenario: "valid", code: "1".repeat(48), inviterDisplayName: "Nia", edition: "west", verifiedScore: 10, total: 12, avatarId: "adjoa", validity: "valid" },
@@ -155,7 +166,7 @@ export default defineConfig(async ({ mode }) => {
     ? { resultSlug: "b".repeat(48), anonymousSessionCredential: "01".repeat(16) }
     : null;
   const publicAppEnvironment: PublicAppEnvironment =
-    reviewResultFixtures || reviewChallengeFixtures || reviewAnalyticsFixtures || reviewCommerceFixtures || reviewOwnerDashboardFixtures || reviewRandomQuickPlayFixtures ? "test" : mode === "production" ? "production" : mode === "test" ? "test" : "development";
+    reviewResultFixtures || reviewChallengeFixtures || reviewAnalyticsFixtures || reviewCommerceFixtures || reviewOwnerDashboardFixtures || reviewRandomQuickPlayFixtures || reviewCowrieFixtures ? "test" : mode === "production" ? "production" : mode === "test" ? "test" : "development";
   const publicAppOrigin = resolvePublicAppOrigin(
     process.env.PUBLIC_APP_ORIGIN,
     publicAppEnvironment,
@@ -188,6 +199,7 @@ export default defineConfig(async ({ mode }) => {
       __WYBP_REVIEW_OWNER_DASHBOARD_FIXTURES__: JSON.stringify(reviewOwnerDashboardFixtures),
       __WYBP_REVIEW_PRIVACY_FIXTURES__: JSON.stringify(reviewPrivacyFixtures),
       __WYBP_REVIEW_RANDOM_QUICK_PLAY_FIXTURES__: JSON.stringify(reviewRandomQuickPlayFixtures),
+      __WYBP_REVIEW_COWRIE_FIXTURES__: JSON.stringify(reviewCowrieFixtures),
     },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }

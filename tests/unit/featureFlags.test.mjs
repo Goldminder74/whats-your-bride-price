@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   assertCommerceReadiness,
+  assertCowrieEconomyReadiness,
   assertDailyChallengeReadiness,
   assertRandomQuickPlayReadiness,
   assertSitesCompatibleFeatureFlags,
@@ -12,10 +13,20 @@ import {
 } from "../../app/featureFlags.ts";
 
 test("every roadmap feature flag defaults to false", () => {
-  assert.equal(featureFlagNames.length, 14);
+  assert.equal(featureFlagNames.length, 15);
   assert.deepEqual(Object.keys(defaultFeatureFlags), [...featureFlagNames]);
   for (const flag of featureFlagNames) assert.equal(defaultFeatureFlags[flag], false);
   assert.deepEqual(resolveFeatureFlags({}), defaultFeatureFlags);
+});
+
+test("Cowrie economy is build-controlled, disabled by default and depends on Random Quick Play", () => {
+  assert.equal(defaultFeatureFlags.cowrie_economy, false);
+  assert.equal(resolveFeatureFlags({ cowrie_economy: "true", QUERY_COWRIE_ECONOMY: "true" }).cowrie_economy, false);
+  const cowrieOnly = resolveFeatureFlags({ WYBP_FEATURE_COWRIE_ECONOMY: "true" });
+  assert.throws(() => assertCowrieEconomyReadiness(cowrieOnly, { d1Configured: true, authorisedReviewFixtures: false, approvedOperationalReview: true }), /requires.*random_quick_play/i);
+  const enabled = resolveFeatureFlags({ WYBP_FEATURE_COWRIE_ECONOMY: "true", WYBP_FEATURE_RANDOM_QUICK_PLAY: "true" });
+  assert.throws(() => assertCowrieEconomyReadiness(enabled, { d1Configured: true, authorisedReviewFixtures: false, approvedOperationalReview: false }), /operational, privacy and legal review/i);
+  assert.doesNotThrow(() => assertCowrieEconomyReadiness(enabled, { d1Configured: false, authorisedReviewFixtures: true, approvedOperationalReview: false }));
 });
 
 test("Random Quick Play is controlled only by build configuration and fails closed without D1", () => {

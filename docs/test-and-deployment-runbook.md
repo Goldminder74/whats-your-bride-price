@@ -449,8 +449,16 @@ An authorised local review build requires all of:
 The synthetic request must also carry the matching trusted Sites subject header; fixture/query selection cannot authorize it. Ordinary production builds must omit all four values and return 404 for `/owner/analytics` and its CSV endpoint. Query parameters cannot enable the flag.
 
 Before hosted activation, follow `docs/owner-dashboard-access-contract.md`: approve exact subjects and dispatch-only ingress, bind D1, separately approve migration application through `0006`, add a distributed export limiter, verify consent/retention and no-store behaviour, run `npm run test:all`, and obtain separate deploy approval. Do not activate analytics or commerce merely to populate the dashboard.
+
+## Workstream C Cowrie Wallet gate
+
+Run `npm run test:cowrie`, then two consecutive `npm run test:all` runs, `npm run build` and `git diff --check`. The focused command proves migration integrity, wallet ownership, exact two-free-play enforcement, atomic attempt/debit behavior, bonus-first spending, deterministic awards, 180-day bonus expiry, recovery and rotation, strict public request shapes, disabled output and the authorised local browser review.
+
+The browser review requires `WYBP_FEATURE_RANDOM_QUICK_PLAY=true`, `WYBP_FEATURE_COWRIE_ECONOMY=true`, `WYBP_REVIEW_BUILD=true`, `WYBP_REVIEW_RANDOM_QUICK_PLAY_FIXTURES=true` and `WYBP_REVIEW_COWRIE_FIXTURES=true`. Evidence belongs only in the operating-system temporary directory. Before any deployment, separately approve D1 migration 0009, privacy, legal and support rules, distributed abuse controls, Workstream D refund and dispute fulfilment, and feature activation. Never use review fixtures as production configuration.
 ## Prompt 19 privacy and result-retention gate
 
 Run `npm run test:privacy`, `npm run test:all`, `npm run build` and `git diff --check`. The focused suite covers the versioned inventory and source-registration scan, notice synchronisation, strict analytics opt-in and withdrawal, exact allowlisted clearing, safe gameplay reset, device-local photographs and object-URL cleanup, absence of third-party trackers, legal fail-closed behavior, retention and 90-day publication semantics, keyboard/focus behavior, responsive and reduced-motion layouts, and fixture isolation.
 
 Review fixtures require both `WYBP_REVIEW_BUILD=true` and `WYBP_REVIEW_PRIVACY_FIXTURES=true`; query parameters alone are inert. Store screenshots, browser profiles, reports and build copies only under the operating-system temporary directory. Before any future production activation, complete `docs/legal-content-activation-checklist.md`, verify trusted ingress and real provider storage, bind and migrate D1 only under separate authority, and obtain explicit deployment approval. This gate does not activate analytics, commerce, the owner dashboard, D1 or R2.
+
+The final Cowrie gate must run after the issuance marker change: do not count any earlier full run. The focused suite covers both transactional race winners, double-click/retry identity, invalid/immutable timestamps, pre-issuance reversal, post-issuance loss without refund, fresh-device recovery, strict enabled POST boundaries and historical migration rollback. Keep both final complete runs consecutive without editing source or retrying individual failures.

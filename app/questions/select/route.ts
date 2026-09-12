@@ -2,6 +2,7 @@ import { getQuestionSelectionRuntime } from "../../questionSelectionRuntime.ts";
 import { QuestionSelectionError } from "../../../db/questionSelection.ts";
 import { QuestionSelectionRequestError } from "../../../db/questionSelectionService.ts";
 import { activeFeatureFlags } from "../../featureFlags.ts";
+import { POST as cowriePlay } from "../../cowries/play/route.ts";
 
 const responseHeaders = Object.freeze({
   "cache-control": "private, no-store, max-age=0, must-revalidate",
@@ -18,6 +19,7 @@ function sameOrigin(request: Request): boolean {
 
 export async function POST(request: Request): Promise<Response> {
   if (!activeFeatureFlags.random_quick_play) return response({ available: false }, 404);
+  if (activeFeatureFlags.cowrie_economy) return cowriePlay(request);
   if (!sameOrigin(request)) return response({ available: false }, 403);
   if (request.headers.get("content-type")?.split(";", 1)[0].trim().toLowerCase() !== "application/json") return response({ available: false }, 415);
   const length = Number(request.headers.get("content-length") || "0");

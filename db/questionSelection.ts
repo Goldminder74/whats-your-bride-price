@@ -330,12 +330,14 @@ export class D1QuestionSelectionRepository {
     return Object.freeze(questions);
   }
 
-  private async getStoredAttempt(where: "id" | "idempotency_key_hash", value: string, anonymousSubjectHash: string, now: number): Promise<StoredQuestionSelection | null> {
+  private async getStoredAttempt(where: "id" | "idempotency_key_hash", value: string, anonymousSubjectHash: string, now: number, allowUnissuedCowrie = false): Promise<StoredQuestionSelection | null> {
     const row = await this.database.prepare(`SELECT qa.id,qa.selected_question_versions_json,qa.question_set_version,
       qa.scoring_version,qa.selection_policy_version,qa.selection_seed_reference,qa.expires_at,qe.edition_key
       FROM quiz_attempts qa JOIN quiz_editions qe ON qe.id=qa.edition_id
       WHERE qa.${where}=?1 AND qa.anonymous_subject_hash=?2 AND qa.status='in_progress'
-        AND qa.deleted_at IS NULL AND qa.expires_at>?3 LIMIT 1`).bind(value, anonymousSubjectHash, now).first<{
+          AND qa.deleted_at IS NULL AND qa.expires_at>?3
+          AND (?4=1 OR qa.cowrie_issued_at IS NOT NULL OR NOT EXISTS (SELECT 1 FROM cowrie_ledger debit WHERE debit.related_attempt_id=qa.id AND debit.entry_type='quick_play_debit'))
+          LIMIT 1`).bind(value, anonymousSubjectHash, now, allowUnissuedCowrie ? 1 : 0).first<{
         id: string; selected_question_versions_json: string; question_set_version: string; scoring_version: string;
         selection_policy_version: typeof QUESTION_SELECTION_POLICY_VERSION | typeof RANDOM_QUICK_PLAY_POLICY_VERSION; selection_seed_reference: string;
         expires_at: number; edition_key: RegionKey;
@@ -384,6 +386,11 @@ export class D1QuestionSelectionRepository {
 
   async getAttemptByIdempotencyHash(hash: string, anonymousSubjectHash: string, now: number): Promise<StoredQuestionSelection | null> {
     return this.getStoredAttempt("idempotency_key_hash", hash, anonymousSubjectHash, now);
+  }
+
+  /** Internal preparation only; public resume/answer paths require paid issuance. */
+  async getCowriePreparedAttemptByIdempotencyHash(hash: string, anonymousSubjectHash: string, now: number): Promise<StoredQuestionSelection | null> {
+    return this.getStoredAttempt("idempotency_key_hash", hash, anonymousSubjectHash, now, true);
   }
 
   async getAttempt(attemptId: string, anonymousSubjectHash: string, now: number): Promise<StoredQuestionSelection | null> {

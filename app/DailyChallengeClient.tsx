@@ -5,7 +5,8 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { DailyCompletionProjection, DailyStartProjection } from "../db/dailyChallenge.ts";
-import { getOrCreateAnonymousSession } from "./anonymousSession.ts";
+import { getOrCreateAnonymousSession, readAnonymousSession } from "./anonymousSession.ts";
+import { activeFeatureFlags } from "./featureFlags.ts";
 import { defaultAvatarId } from "./avatarRegistry.ts";
 import { regions, type RegionKey } from "./publicGameData.ts";
 import { resolveBrowserPublicAppOrigin } from "./publicAppOrigin.ts";
@@ -123,10 +124,12 @@ export default function DailyChallengeClient({ region, serverNow, nextBoundary, 
     if (!online) { setBusy(false); return; }
     try {
       const session = ownershipCredential(selection.mode);
-      if (!session.available) throw new Error("session");
-      const response = await fetch("/daily/complete", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({
+        if (!session.available) throw new Error("session");
+        const walletOwner = activeFeatureFlags.cowrie_economy && selection.mode === "official" ? readAnonymousSession(sessionStorage) : null;
+        const response = await fetch("/daily/complete", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({
         attemptId: selection.attemptId, anonymousSessionCredential: session.sessionId, avatarId: defaultAvatarId,
-        answers: selection.questions.map((item, answerIndex) => ({ questionStableId: item.questionRef, selectedOptionIds: answers[answerIndex] })),
+          answers: selection.questions.map((item, answerIndex) => ({ questionStableId: item.questionRef, selectedOptionIds: answers[answerIndex] })),
+          ...(walletOwner?.available ? { cowrieOwnerCredential: walletOwner.sessionId } : {}),
       }) });
       const body = await response.json() as CompletionBody;
       if (!response.ok || !body.completed || typeof body.score !== "number" || typeof body.total !== "number") throw new Error("complete");

@@ -71,6 +71,7 @@ import {
   startRandomQuickPlay,
 } from "./randomQuickPlayClient";
 import type { PublicQuestionSelection } from "../db/questionSelectionService";
+import CowrieWalletPanel from "./CowrieWalletPanel.tsx";
 
 type Screen = "entry" | "challenge" | "fast_setup" | "home" | "setup" | "quiz" | "reveal" | "result";
 type Question = { prompt: string; options: string[] };
@@ -689,7 +690,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   useEffect(() => {
     if (
       screen !== "result"
-      || !activeFeatureFlags.commerce
+      || !(activeFeatureFlags.commerce || (activeFeatureFlags.cowrie_economy && randomSelection))
       || royalRevealReviewEnabled
       || answerChoices.length !== 12
       || purchaseContext
@@ -707,7 +708,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       crypto.getRandomValues(bytes);
       resultCompletionKeyRef.current = [...bytes].map((byte) => byte.toString(16).padStart(2, "0")).join("");
     }
-    resultCompletionPromiseRef.current ||= fetch("/results/complete", {
+    resultCompletionPromiseRef.current ||= fetch(activeFeatureFlags.cowrie_economy && randomSelection ? "/cowries/complete" : "/results/complete", {
       method: "POST",
       mode: "same-origin",
       credentials: "omit",
@@ -718,6 +719,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
         idempotencyKey: resultCompletionKeyRef.current,
         avatarId,
         answers: submission,
+        ...(activeFeatureFlags.cowrie_economy && randomSelection ? { attemptId: randomSelection.attemptId } : {}),
       }),
     }).then(async (response) => {
       const body = await response.json() as Record<string, unknown>;
@@ -979,7 +981,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
         const shortfall = Number((error as Error & { shortfall?: number }).shortfall || 0);
         setQuickPlayNotice(shortfall > 0
           ? `Fresh regional games need 30 reviewed published questions. This edition is ${shortfall} short; the classic 12-question edition remains available.`
-          : "A fresh game is temporarily unavailable. You can still play the classic 12-question edition.");
+          : activeFeatureFlags.cowrie_economy
+            ? "Check Cowrie Wallet to create or recover access. After two free random plays, another costs 1 Cowrie. Daily Challenges and incoming challenges stay free. If storage is unavailable, try again later."
+            : "A fresh game is temporarily unavailable. You can still play the classic 12-question edition.");
         quickPlayStartKeyRef.current = null;
         startLockRef.current = false; setStartLocked(false); return;
       }
@@ -1277,6 +1281,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           <button className="sound-button" onClick={() => setSound(!sound)} aria-label={sound ? "Turn sound off" : "Turn sound on"}><span>{sound ? "♪" : "×"}</span> Sound {sound ? "on" : "off"}</button>
         </div>
       </header>
+      {activeFeatureFlags.cowrie_economy && <CowrieWalletPanel refreshKey={`${randomSelection?.attemptId || ""}:${purchaseContext?.resultSlug || ""}`} />}
 
       {screen === "entry" && (
         <section className="fast-entry-shell" data-fast-entry-shell data-entry-source={entryContext.source}>

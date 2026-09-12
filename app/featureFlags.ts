@@ -8,6 +8,7 @@ export const featureFlagNames = [
   "daily_challenge",
   "streaks",
   "random_quick_play",
+  "cowrie_economy",
   "groom_mode",
   "couples_mode",
   "party_mode",
@@ -28,6 +29,7 @@ export const defaultFeatureFlags: FeatureFlags = Object.freeze({
   daily_challenge: false,
   streaks: false,
   random_quick_play: false,
+  cowrie_economy: false,
   groom_mode: false,
   couples_mode: false,
   party_mode: false,
@@ -128,6 +130,19 @@ export function assertRandomQuickPlayReadiness(
 ): void {
   if (flags.random_quick_play && !readiness.d1Configured && !readiness.authorisedReviewFixtures) {
     throw new Error("Random Quick Play requires approved D1 storage or an explicitly authorised local review build. It fails closed while authoritative selection storage is unavailable.");
+  }
+}
+
+export function assertCowrieEconomyReadiness(
+  flags: FeatureFlags,
+  readiness: Readonly<{ d1Configured: boolean; authorisedReviewFixtures: boolean; approvedOperationalReview: boolean }>,
+): void {
+  if (!flags.cowrie_economy) return;
+  if (!flags.random_quick_play) {
+    throw new Error("The Cowrie economy requires the separately controlled random_quick_play feature.");
+  }
+  if (!readiness.authorisedReviewFixtures && !(readiness.d1Configured && readiness.approvedOperationalReview)) {
+    throw new Error("The Cowrie economy requires approved D1 storage and completed operational, privacy and legal review. It fails closed unless an explicitly authorised local review build is used.");
   }
 }
 

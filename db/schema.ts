@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { check, foreignKey, index, integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
+import { check, foreignKey, index, integer, sqliteTable, text, uniqueIndex, type AnySQLiteColumn } from "drizzle-orm/sqlite-core";
 
 export const quizEditions = sqliteTable("quiz_editions", {
   id: text("id").primaryKey(),
@@ -109,6 +109,7 @@ export const quizAttempts = sqliteTable("quiz_attempts", {
   challengeCode: text("challenge_code"),
   startedAt: integer("started_at").notNull(),
   completedAt: integer("completed_at"),
+  cowrieIssuedAt: integer("cowrie_issued_at"),
   expiresAt: integer("expires_at").notNull(),
   anonymizedAt: integer("anonymized_at"),
   deletedAt: integer("deleted_at"),
@@ -124,6 +125,7 @@ export const quizAttempts = sqliteTable("quiz_attempts", {
   check("quiz_attempts_status_ck", sql`${table.status} in ('in_progress','completed','abandoned','expired','anonymized','deleted')`),
   check("quiz_attempts_play_mode_ck", sql`${table.playMode} in ('random','daily_official','daily_practice','challenge','comparison')`),
   check("quiz_attempts_questions_json_ck", sql`json_valid(${table.selectedQuestionVersionsJson}) and json_type(${table.selectedQuestionVersionsJson}) = 'array'`),
+  check("quiz_attempts_cowrie_issued_at_ck", sql`${table.cowrieIssuedAt} is null or (typeof(${table.cowrieIssuedAt}) = 'integer' and ${table.cowrieIssuedAt} > 0 and ${table.cowrieIssuedAt} <= 8640000000000000 and ${table.cowrieIssuedAt} >= ${table.startedAt})`),
 ]);
 
 export const answers = sqliteTable("answers", {
@@ -583,6 +585,105 @@ export const commerceEntitlements = sqliteTable("commerce_entitlements", {
   check("commerce_entitlements_time_ck", sql`${table.grantedAt} > 0 and ${table.createdAt} > 0 and ${table.updatedAt} >= ${table.createdAt} and (${table.expiresAt} is null or ${table.expiresAt} > ${table.grantedAt}) and ${table.retentionExpiresAt} > ${table.grantedAt}`),
 ]);
 
+export const cowrieWallets = sqliteTable("cowrie_wallets", {
+  id: text("id").primaryKey(),
+  publicReference: text("public_reference").notNull(),
+  anonymousOwnerHash: text("anonymous_owner_hash").notNull(),
+  state: text("state").notNull().default("active"),
+  freeQuickPlaysConsumed: integer("free_quick_plays_consumed").notNull().default(0),
+  purchasedBalance: integer("purchased_balance").notNull().default(0),
+  bonusBalance: integer("bonus_balance").notNull().default(0),
+  recoveryCredentialHash: text("recovery_credential_hash").notNull(),
+  recoveryCredentialVersion: integer("recovery_credential_version").notNull().default(1),
+  lastAccessIdempotencyHash: text("last_access_idempotency_hash"),
+  frozenAt: integer("frozen_at"),
+  deletedAt: integer("deleted_at"),
+  retentionExpiresAt: integer("retention_expires_at"),
+  version: integer("version").notNull().default(1),
+  createdAt: integer("created_at").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+}, (table) => [
+  uniqueIndex("cowrie_wallets_public_reference_uq").on(table.publicReference),
+  uniqueIndex("cowrie_wallets_recovery_hash_uq").on(table.recoveryCredentialHash),
+  uniqueIndex("cowrie_wallets_live_owner_uq").on(table.anonymousOwnerHash).where(sql`${table.state} in ('active','frozen')`),
+  index("cowrie_wallets_owner_state_idx").on(table.anonymousOwnerHash, table.state),
+  index("cowrie_wallets_retention_idx").on(table.retentionExpiresAt, table.deletedAt),
+  check("cowrie_wallets_id_ck", sql`length(${table.id}) = 39 and substr(${table.id},1,7) = 'wallet_' and substr(${table.id},8) not glob '*[^0-9a-f]*'`),
+  check("cowrie_wallets_public_reference_ck", sql`length(${table.publicReference}) = 35 and substr(${table.publicReference},1,3) = 'cw_' and substr(${table.publicReference},4) not glob '*[^0-9a-f]*'`),
+  check("cowrie_wallets_owner_hash_ck", sql`length(${table.anonymousOwnerHash}) = 64 and ${table.anonymousOwnerHash} = lower(${table.anonymousOwnerHash}) and ${table.anonymousOwnerHash} not glob '*[^0-9a-f]*'`),
+  check("cowrie_wallets_recovery_hash_ck", sql`length(${table.recoveryCredentialHash}) = 64 and ${table.recoveryCredentialHash} = lower(${table.recoveryCredentialHash}) and ${table.recoveryCredentialHash} not glob '*[^0-9a-f]*'`),
+  check("cowrie_wallets_access_hash_ck", sql`${table.lastAccessIdempotencyHash} is null or (length(${table.lastAccessIdempotencyHash}) = 64 and ${table.lastAccessIdempotencyHash} = lower(${table.lastAccessIdempotencyHash}) and ${table.lastAccessIdempotencyHash} not glob '*[^0-9a-f]*')`),
+  check("cowrie_wallets_state_ck", sql`${table.state} in ('active','frozen','deleted')`),
+  check("cowrie_wallets_balance_ck", sql`${table.freeQuickPlaysConsumed} between 0 and 2 and ${table.purchasedBalance} >= 0 and ${table.bonusBalance} >= 0`),
+  check("cowrie_wallets_version_ck", sql`${table.recoveryCredentialVersion} >= 1 and ${table.version} >= 1`),
+  check("cowrie_wallets_lifecycle_ck", sql`(${table.state} = 'active' and ${table.frozenAt} is null and ${table.deletedAt} is null and ${table.retentionExpiresAt} is null) or (${table.state} = 'frozen' and ${table.frozenAt} is not null and ${table.deletedAt} is null and ${table.retentionExpiresAt} is null) or (${table.state} = 'deleted' and ${table.deletedAt} is not null and ${table.retentionExpiresAt} > ${table.deletedAt})`),
+  check("cowrie_wallets_time_ck", sql`${table.createdAt} > 0 and ${table.updatedAt} >= ${table.createdAt}`),
+]);
+
+export const cowriePurchaseAllocations = sqliteTable("cowrie_purchase_allocations", {
+  id: text("id").primaryKey(),
+  orderId: text("order_id").notNull().references(() => commerceOrders.id, { onDelete: "restrict" }),
+  walletId: text("wallet_id").notNull().references(() => cowrieWallets.id, { onDelete: "restrict" }),
+  productKey: text("product_key").notNull(),
+  originalQuantity: integer("original_quantity").notNull(),
+  remainingQuantity: integer("remaining_quantity").notNull(),
+  state: text("state").notNull().default("active"),
+  fulfilmentIdempotencyHash: text("fulfilment_idempotency_hash").notNull(),
+  fulfilledAt: integer("fulfilled_at"),
+  refundedAt: integer("refunded_at"),
+  disputedAt: integer("disputed_at"),
+  deletedAt: integer("deleted_at"),
+  retentionExpiresAt: integer("retention_expires_at").notNull(),
+  version: integer("version").notNull().default(1),
+  createdAt: integer("created_at").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+}, (table) => [
+  uniqueIndex("cowrie_allocations_order_uq").on(table.orderId),
+  uniqueIndex("cowrie_allocations_fulfilment_hash_uq").on(table.fulfilmentIdempotencyHash),
+  index("cowrie_allocations_wallet_state_idx").on(table.walletId, table.state),
+  index("cowrie_allocations_retention_idx").on(table.retentionExpiresAt, table.deletedAt),
+  check("cowrie_allocations_id_ck", sql`length(${table.id}) = 43 and substr(${table.id},1,11) = 'allocation_' and substr(${table.id},12) not glob '*[^0-9a-f]*'`),
+  check("cowrie_allocations_product_ck", sql`${table.productKey} = 'cowrie_pack_v1'`),
+  check("cowrie_allocations_quantity_ck", sql`${table.originalQuantity} between 1 and 10000 and ${table.remainingQuantity} between 0 and ${table.originalQuantity}`),
+  check("cowrie_allocations_state_ck", sql`${table.state} in ('active','refunded','disputed','review_required','deleted')`),
+  check("cowrie_allocations_idempotency_ck", sql`length(${table.fulfilmentIdempotencyHash}) = 64 and ${table.fulfilmentIdempotencyHash} = lower(${table.fulfilmentIdempotencyHash}) and ${table.fulfilmentIdempotencyHash} not glob '*[^0-9a-f]*'`),
+  check("cowrie_allocations_time_ck", sql`${table.createdAt} > 0 and ${table.updatedAt} >= ${table.createdAt} and ${table.retentionExpiresAt} > ${table.createdAt}`),
+]);
+
+export const cowrieLedger = sqliteTable("cowrie_ledger", {
+  id: text("id").primaryKey(),
+  walletId: text("wallet_id").notNull().references(() => cowrieWallets.id, { onDelete: "restrict" }),
+  bucket: text("bucket").notNull(),
+  entryType: text("entry_type").notNull(),
+  delta: integer("delta").notNull(),
+  idempotencyDomain: text("idempotency_domain").notNull(),
+  idempotencyHash: text("idempotency_hash").notNull(),
+  relatedAttemptId: text("related_attempt_id").references(() => quizAttempts.id, { onDelete: "restrict" }),
+  relatedAchievementKey: text("related_achievement_key"),
+  relatedOrderId: text("related_order_id").references(() => commerceOrders.id, { onDelete: "restrict" }),
+  relatedAllocationId: text("related_allocation_id").references(() => cowriePurchaseAllocations.id, { onDelete: "restrict" }),
+  reasonCode: text("reason_code").notNull(),
+  bonusExpiresAt: integer("bonus_expires_at"),
+  reversalOfLedgerId: text("reversal_of_ledger_id").references((): AnySQLiteColumn => cowrieLedger.id, { onDelete: "restrict" }),
+  createdAt: integer("created_at").notNull(),
+}, (table) => [
+  uniqueIndex("cowrie_ledger_idempotency_uq").on(table.idempotencyDomain, table.idempotencyHash),
+  uniqueIndex("cowrie_ledger_reversal_uq").on(table.reversalOfLedgerId).where(sql`${table.reversalOfLedgerId} is not null and ${table.entryType} != 'bonus_expiry'`),
+  index("cowrie_ledger_wallet_created_idx").on(table.walletId, table.createdAt),
+  index("cowrie_ledger_bonus_expiry_idx").on(table.bucket, table.bonusExpiresAt, table.createdAt),
+  index("cowrie_ledger_attempt_idx").on(table.relatedAttemptId, table.entryType),
+  index("cowrie_ledger_allocation_idx").on(table.relatedAllocationId, table.entryType),
+  check("cowrie_ledger_id_ck", sql`length(${table.id}) = 39 and substr(${table.id},1,7) = 'ledger_' and substr(${table.id},8) not glob '*[^0-9a-f]*'`),
+  check("cowrie_ledger_bucket_ck", sql`${table.bucket} in ('purchased','bonus')`),
+  check("cowrie_ledger_type_ck", sql`${table.entryType} in ('purchase_credit','bonus_credit','quick_play_debit','technical_reversal','bonus_expiry','refund_reversal','dispute_freeze','owner_correction')`),
+  check("cowrie_ledger_domain_ck", sql`${table.idempotencyDomain} in ('purchase','bonus','quick_play','reversal','expiry','refund','dispute','owner')`),
+  check("cowrie_ledger_hash_ck", sql`length(${table.idempotencyHash}) = 64 and ${table.idempotencyHash} = lower(${table.idempotencyHash}) and ${table.idempotencyHash} not glob '*[^0-9a-f]*'`),
+  check("cowrie_ledger_reason_ck", sql`${table.reasonCode} in ('verified_purchase','perfect_region_day','daily_streak_3','daily_streak_7','all_region_mastery','random_quick_play','delivery_failure','bonus_retention_expiry','verified_refund','verified_dispute','protected_owner_correction')`),
+  check("cowrie_ledger_delta_ck", sql`(${table.entryType} = 'purchase_credit' and ${table.bucket} = 'purchased' and ${table.delta} > 0) or (${table.entryType} = 'bonus_credit' and ${table.bucket} = 'bonus' and ${table.delta} between 1 and 3) or (${table.entryType} = 'quick_play_debit' and ${table.delta} = -1) or (${table.entryType} = 'technical_reversal' and ${table.delta} = 1 and ${table.reversalOfLedgerId} is not null) or (${table.entryType} = 'bonus_expiry' and ${table.bucket} = 'bonus' and ${table.delta} < 0) or (${table.entryType} = 'refund_reversal' and ${table.bucket} = 'purchased' and ${table.delta} < 0) or (${table.entryType} = 'dispute_freeze' and ${table.bucket} = 'purchased' and ${table.delta} = 0) or (${table.entryType} = 'owner_correction' and ${table.delta} != 0)`),
+  check("cowrie_ledger_bonus_expiry_ck", sql`(${table.entryType} = 'bonus_credit' and ${table.bonusExpiresAt} - ${table.createdAt} = 15552000000) or (${table.entryType} != 'bonus_credit' and ${table.bonusExpiresAt} is null)`),
+  check("cowrie_ledger_achievement_ck", sql`${table.relatedAchievementKey} is null or (length(${table.relatedAchievementKey}) between 8 and 160 and ${table.relatedAchievementKey} not glob '*[^a-z0-9:_-]*')`),
+]);
+
 export const stripeWebhookEvents = sqliteTable("stripe_webhook_events", {
   id: text("id").primaryKey(),
   stripeEventId: text("stripe_event_id").notNull(),
@@ -695,5 +796,6 @@ export const durableTableNames = [
   "challenges", "challenge_attempts", "referral_events", "share_events", "daily_challenges",
   "daily_challenge_completions", "daily_operation_limits", "streaks", "mastery_seals", "parties", "party_players", "media_assets",
   "commerce_orders", "commerce_entitlements", "stripe_webhook_events",
+  "cowrie_wallets", "cowrie_ledger", "cowrie_purchase_allocations",
   "consent_preferences", "analytics_events", "feature_flag_overrides",
 ] as const;

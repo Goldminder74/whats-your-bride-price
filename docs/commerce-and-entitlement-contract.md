@@ -42,6 +42,10 @@ Pending orders expire; commerce rows have explicit retention-expiry and soft-del
 The quiz, basic result, nominations, challenges, copy-link sharing, free static portrait and free static Story image remain available without payment. The entitled pack contains the five-second 1080 × 1920 Story/Reel video, three 1080 × 1350 PNG portraits (Royal Gold, Cowrie Crown and Indigo Celebration), and a 2480 × 3508 PNG Royal Culture Score Certificate. Every generator validates a private, result-specific verified entitlement projection; hiding UI is not the security boundary. Private photographs are excluded and no premium media is uploaded.
 
 All premium media uses approved edition, authoritative score and maximum, approved title, approved avatar, regional identity, product branding and: “A playful culture score, never a measure of human worth.”
+
+## Cowrie purchase boundary
+
+The local Cowrie migration reserves `cowrie_purchase_allocations` for a future verified `commerce_orders` relationship. Workstream C creates no allocation, purchase credit, Checkout session, Stripe request or public credit route. Future Workstream D must verify the exact order and quantity, insert the allocation and append the purchased-bucket ledger credit idempotently. Refunds and disputes must preserve exact allocation provenance and cannot merge purchased and bonus balances. Royal Reveal remains its own £1.99 product and never grants or consumes Cowries.
 ## Prompt 19 result-retention disclosure
 
 Ordinary Royal Reveal regeneration requires the authoritative result to remain active and therefore ends no later than 90 days after quiz completion. Publishing does not extend or restart that period. The protected return-status path may finish a verified purchase already in progress after redirect, but it does not extend public result availability or create permanent account access. A downloaded Royal Reveal file remains independently usable on the purchaser’s device until they delete it. Consumer-rights, refund and dispute wording remains subject to professional review before commerce activation.
