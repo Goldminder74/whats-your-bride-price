@@ -11,3 +11,10 @@ export function answersMatch(
 export function calculateResultTier(correctCount: number): number {
   return Math.min(3, Math.floor(correctCount / 3));
 }
+
+export function getCelebrationPieceCount(tier: number): number {
+  return celebrationPieceCounts[Math.max(0, Math.min(3, tier))];
+}
+export const defaultSoundEnabled = true;
+
+const celebrationPieceCounts = [12, 22, 38, 58] as const;

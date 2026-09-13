@@ -1,5 +1,83 @@
 {
   "version": "7",
   "dialect": "sqlite",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1787509255888,
+      "tag": "0000_loving_stepford_cuckoos",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1787509811482,
+      "tag": "0001_same_vertigo",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1787526910924,
+      "tag": "0002_little_inertia",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1787535444617,
+      "tag": "0003_clever_joshua_kane",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1787608223123,
+      "tag": "0004_yellow_bill_hollister",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1787630790641,
+      "tag": "0005_special_gamma_corps",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1787741947497,
+      "tag": "0006_regular_paibok",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1788657533900,
+      "tag": "0007_ancient_yellow_claw",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1788711619432,
+      "tag": "0008_simple_nocturne",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1789235613228,
+      "tag": "0009_clammy_shooting_star",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1789243301434,
+      "tag": "0010_hard_aqueduct",
+      "breakpoints": true
+    }
+  ]
 }

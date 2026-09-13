@@ -1,10 +1,12 @@
 /** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
+import { resultMetadataHtml } from "../app/resultMetadata.ts";
 
 interface Env {
   ASSETS: Fetcher;
-  DB: D1Database;
+  DB?: D1Database;
+  MEDIA?: R2Bucket;
   IMAGES: {
     input(stream: ReadableStream): {
       transform(options: Record<string, unknown>): {
@@ -40,7 +42,23 @@ const worker = {
       }, allowedWidths);
     }
 
-    return handler.fetch(request, env, ctx);
+    const response = await handler.fetch(request, env, ctx);
+    if (
+      request.method === "GET"
+      && /^\/result\/[^/]+$/.test(url.pathname)
+      && response.headers.get("content-type")?.includes("text/html")
+    ) {
+      const html = await response.text();
+      if (!html.includes("<!--wybp-result-metadata-->")) {
+        const slug = url.pathname.slice("/result/".length);
+        const metadata = await resultMetadataHtml(slug);
+        const headers = new Headers(response.headers);
+        headers.delete("content-length");
+        headers.set("x-content-type-options", "nosniff");
+        return new Response(html.replace("</head>", `${metadata}</head>`), { status: response.status, statusText: response.statusText, headers });
+      }
+    }
+    return response;
   },
 };
 

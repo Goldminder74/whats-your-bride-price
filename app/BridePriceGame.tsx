@@ -4,12 +4,76 @@
 /* eslint-disable react-hooks/set-state-in-effect -- URL hydration and result commits are deliberate lifecycle transitions */
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
-import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections } from "./gameData";
+import Link from "next/link";
+import { getOrCreateAnonymousSession } from "./anonymousSession";
+import { approvedAvatarRegistry, defaultAvatarId, isApprovedAvatarId, resolveApprovedAvatar } from "./avatarRegistry";
+import type { SafeguardReviewFixture, TrustedChallengeEntry } from "./challengeEntry";
+import {
+  createChallengeIdempotencyKey,
+  resolveChallengeActionMode,
+  type ChallengeCreationClient,
+} from "./challengeCreation";
+import ChallengeComparison from "./ChallengeComparison";
+import NominateThreePanel from "./NominateThreePanel";
+import ShareCentre from "./ShareCentre";
+import RoyalRevealOffer from "./RoyalRevealOffer.tsx";
+import { royalRevealReviewEnabled, type RoyalRevealReviewScenario } from "./royalRevealReview.ts";
+import {
+  buildChallengeAnswerSubmission,
+  type ChallengeCompletionClient,
+} from "./challengeCompletion";
+import { emitChallengeEvent } from "./challengeEvents";
+import { emitAnalyticsLocalEvent } from "./analyticsLocal";
+import type { ChallengeComparisonProjection } from "../db/challengeCompletion";
+import { publicDisplayNameFallback, validateDisplayName } from "./displayNames";
+import { regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type RegionKey } from "./publicGameData";
+import { entryContextToQuery, parseEntryContext, type EntryContext } from "./entryContext";
+import { entryDiagnosticsEnabled, readEntryDiagnostics, type EntryDiagnosticsSnapshot } from "./entryDiagnostics";
+import { emitEntryEvent } from "./entryEvents";
 import { reportAppError } from "./errors";
-import { answersMatch, calculateResultTier } from "./gameLogic";
+import { activeFeatureFlags } from "./featureFlags";
+import { answersMatch, calculateResultTier, defaultSoundEnabled, getCelebrationPieceCount } from "./gameLogic";
+import { imageAnswerPresentations, legacyImageQuestionStableId } from "./imageQuestionPresentation";
+import { resolveBrowserPublicAppOrigin } from "./publicAppOrigin";
+import {
+  nominationSnapshotVersion,
+  readNominationSnapshot,
+  validateSafeNominationChallenge,
+  writeNominationSnapshot,
+} from "./nominationExperience";
+import { createReviewNominationClient } from "./nominationReviewClient";
+import {
+  PRODUCT_SAFEGUARD,
+  RESULT_TIER_COPY,
+  RESULT_TIER_GIFTS,
+  RESULT_TIER_TITLES,
+  SCORING_PRINCIPLES,
+} from "./productSafeguards";
+import { downloadPreparedShareMedia, prepareShareMedia, type ShareMediaCard } from "./shareMedia";
+import { genericShareProjection, shareProjectionFromChallenge, type SafeShareProjection } from "./shareProjection";
+import { createReviewResultPublicationClient, type ResultPublicationClient } from "./resultPublicationClient";
+import { privatePhotoFriendlyMessage, privatePhotoLimits, sanitizePrivatePhoto } from "./privatePhoto";
+import { PRIVACY_CLEAR_EVENT } from "./storageInventory";
+import {
+  clearQuizRecovery,
+  createQuizInstanceId,
+  questionImageAssets,
+  readQuizRecovery,
+  recoveryAnswerResults,
+  safeRecoveryAttribution,
+  writeQuizRecovery,
+  type QuizRecoveryState,
+} from "./quizRecovery";
+import {
+  createQuickPlayIdempotencyKey,
+  judgeRandomQuickPlayAnswer,
+  resumeRandomQuickPlay,
+  startRandomQuickPlay,
+} from "./randomQuickPlayClient";
+import type { PublicQuestionSelection } from "../db/questionSelectionService";
+import CowrieWalletPanel from "./CowrieWalletPanel.tsx";
 
-type RegionKey = "west" | "east" | "central" | "north" | "south";
-type Screen = "home" | "setup" | "quiz" | "result";
+type Screen = "entry" | "challenge" | "fast_setup" | "home" | "setup" | "quiz" | "reveal" | "result";
 type Question = { prompt: string; options: string[] };
 
 const q = (prompt: string, ...options: string[]): Question => ({ prompt, options });
@@ -144,7 +208,7 @@ const legacyAvatarChoices = [
 ];
 const regions = educationalRegions;
 const regionOrder = educationalRegionOrder;
-const avatarChoices = educationalAvatarChoices;
+const avatarChoices = approvedAvatarRegistry;
 const stampNames: Record<RegionKey, string[]> = {
   west: ["Story Keeper", "Rhythm Caller", "Table Diplomat", "Golden Host"],
   east: ["Horizon Seeker", "Coffee Circle", "Coast Connector", "Open Sky"],
@@ -152,52 +216,188 @@ const stampNames: Record<RegionKey, string[]> = {
   north: ["Medina Eye", "Desert Star", "Tea Poet", "Courtyard Light"],
   south: ["Ubuntu Heart", "Amapiano Step", "Bold Horizon", "Community Fire"],
 };
-const tierTitles = ["Roots Rookie", "Culture Climber", "Motherland Scholar", "Bride Price Royalty"];
-const tierCopy = [
-  "Your curiosity has officially entered the chat. The roots are there; they simply want a longer conversation. Study the reveals, try again and prepare a glorious comeback.",
-  "You know enough to keep the table interested, and enough to know the continent has more to teach you. A little revision could turn this promising score into serious bride-price energy.",
-  "Strong knowledge, sharp instincts and only a few facts between you and regional mastery. The aunties are nodding; one focused replay could earn this passport seal.",
-  "Nine or more correct! Regional mastery confirmed. The family council has raised the bride price, polished the certificate and warned the groom to arrive financially prepared.",
-];
-const gifts = [
-  ["Bride price: 5 cowries", "a curiosity crown", "a comeback invitation"],
-  ["Bride price: 15 cowries", "a promising family report", "one trunk of celebration fabric"],
-  ["Bride price: 30 cowries", "the aunties’ approving nod", "front-row status at the function"],
-  ["Bride price: 50 cowries", "a five-auntie standing ovation", "the groom’s emergency budget meeting"],
-];
+const tierTitles = RESULT_TIER_TITLES;
+const tierCopy = RESULT_TIER_COPY;
+const gifts = RESULT_TIER_GIFTS;
 const resultCalls = ["YOUR JOURNEY", "THE ROOTS ARE", "SO CLOSE TO", "THE COUNCIL IS"];
 const resultCallEmphasis = ["BEGINS.", "CALLING.", "MASTERY.", "IMPRESSED."];
 const kindLabels = { single: "ONE ANSWER", multi: "SELECT THREE", complete: "COMPLETE THE SENTENCE", image: "IMAGE CHALLENGE" } as const;
+const regionalIntervals: Record<RegionKey, number[]> = {
+  west: [1, 1.25, 1.5],
+  east: [1, 1.2, 1.6],
+  central: [1, 1.333, 1.666],
+  north: [1, 1.125, 1.5],
+  south: [1, 1.25, 1.75],
+};
+const regionalRollAccents: Record<RegionKey, number[]> = {
+  west: [1, .58, .82, .66, 1, .72],
+  east: [1, .62, .74, 1, .58, .86],
+  central: [1, .72, .54, .92, .66, 1],
+  north: [1, .55, .78, .62, .9, .7],
+  south: [1, .7, 1, .58, .82, .68],
+};
+const revealLines = [
+  "A bright beginning is taking shape.",
+  "The rhythm is building.",
+  "Regional mastery is almost in reach.",
+  "The whole celebration is waking up.",
+];
 function fillPercussionNoise(channel: Float32Array<ArrayBufferLike>): void {
   for (let i = 0; i < channel.length; i += 1) {
     channel[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / channel.length, 4);
   }
 }
 
-export default function BridePriceGame() {
+function scheduleDrumHit(
+  context: AudioContext,
+  at: number,
+  pitch: number,
+  intensity: number,
+): void {
+  const body = context.createOscillator();
+  const bodyGain = context.createGain();
+  body.type = "sine";
+  body.frequency.setValueAtTime(pitch * 1.9, at);
+  body.frequency.exponentialRampToValueAtTime(pitch, at + .13);
+  bodyGain.gain.setValueAtTime(.0001, at);
+  bodyGain.gain.exponentialRampToValueAtTime(.075 * intensity, at + .008);
+  bodyGain.gain.exponentialRampToValueAtTime(.001, at + .24);
+  body.connect(bodyGain).connect(context.destination);
+  body.start(at);
+  body.stop(at + .26);
+
+  const skinBuffer = context.createBuffer(1, Math.round(context.sampleRate * .055), context.sampleRate);
+  fillPercussionNoise(skinBuffer.getChannelData(0));
+  const skin = context.createBufferSource();
+  const skinGain = context.createGain();
+  const skinFilter = context.createBiquadFilter();
+  skin.buffer = skinBuffer;
+  skinFilter.type = "bandpass";
+  skinFilter.frequency.value = 720 + pitch * 2;
+  skinFilter.Q.value = 1.2;
+  skinGain.gain.setValueAtTime(.028 * intensity, at);
+  skinGain.gain.exponentialRampToValueAtTime(.001, at + .07);
+  skin.connect(skinFilter).connect(skinGain).connect(context.destination);
+  skin.start(at);
+}
+
+type BridePriceGameProps = {
+  initialEntryContext?: EntryContext;
+  trustedChallenge?: TrustedChallengeEntry;
+  safeguardReviewFixture?: SafeguardReviewFixture;
+  challengeCreationClient?: ChallengeCreationClient;
+  challengeCompletionClient?: ChallengeCompletionClient;
+  resultPublicationClient?: ResultPublicationClient;
+  acceptedChallenge?: boolean;
+  acceptedChallengeQuizInstanceId?: string;
+  royalRevealReviewScenario?: RoyalRevealReviewScenario;
+};
+
+function fastInitialScreen(entry: EntryContext | undefined, challenge: TrustedChallengeEntry | undefined, acceptedChallenge = false): Screen {
+  if (challenge) return acceptedChallenge ? "fast_setup" : "challenge";
+  if (entry?.challenge) return "entry";
+  if (entry?.nominated === "1") return "entry";
+  return entry?.edition ? "fast_setup" : "entry";
+}
+
+export default function BridePriceGame({ initialEntryContext, trustedChallenge: resolvedTrustedChallenge, safeguardReviewFixture, challengeCreationClient, challengeCompletionClient, resultPublicationClient, acceptedChallenge = false, acceptedChallengeQuizInstanceId, royalRevealReviewScenario }: BridePriceGameProps) {
+  const trustedChallenge = resolvedTrustedChallenge?.validity === "valid" ? resolvedTrustedChallenge : undefined;
+  const fastEntryEnabled = activeFeatureFlags.fast_entry;
   const [hydrated, setHydrated] = useState(false);
-  const [screen, setScreen] = useState<Screen>("home");
-  const [regionKey, setRegionKey] = useState<RegionKey>("west");
+  const [entryContext, setEntryContext] = useState<EntryContext>(() => initialEntryContext || parseEntryContext(""));
+  const [screen, setScreen] = useState<Screen>(() => safeguardReviewFixture?.screen || (fastEntryEnabled ? fastInitialScreen(initialEntryContext, trustedChallenge, acceptedChallenge) : "home"));
+  const [regionKey, setRegionKey] = useState<RegionKey>(() => trustedChallenge?.edition || initialEntryContext?.edition || "west");
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState<string | null>(null);
-  const [avatar, setAvatar] = useState(avatarChoices[0].src);
+  const [photoNotice, setPhotoNotice] = useState("");
+  const [photoNoticeKind, setPhotoNoticeKind] = useState<"neutral" | "success" | "error">("neutral");
+  const [photoProcessing, setPhotoProcessing] = useState(false);
+  const [avatarId, setAvatarId] = useState(acceptedChallenge ? defaultAvatarId : trustedChallenge?.avatarId || avatarChoices[0].id);
+  const [showAllAvatars, setShowAllAvatars] = useState(false);
   const [index, setIndex] = useState(0);
-  const [answers, setAnswers] = useState<number[]>([]);
+  const [answers, setAnswers] = useState<number[]>(() => safeguardReviewFixture?.screen === "result" ? Array(12).fill(safeguardReviewFixture.score === 12 ? 1 : 0) : []);
+  const [answerChoices, setAnswerChoices] = useState<number[][]>([]);
   const [selected, setSelected] = useState<number[]>([]);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [lastCorrect, setLastCorrect] = useState(false);
+  const [revealedCorrectOptions, setRevealedCorrectOptions] = useState<readonly number[]>([]);
+  const [answerExplanation, setAnswerExplanation] = useState("");
+  const [imageAnswerPending, setImageAnswerPending] = useState(false);
+  const [imageAnswerError, setImageAnswerError] = useState("");
   const [dropOpen, setDropOpen] = useState(false);
-  const [sound, setSound] = useState(true);
+  const [sound, setSound] = useState(defaultSoundEnabled);
   const [menuOpen, setMenuOpen] = useState(false);
   const [bestScores, setBestScores] = useState<Partial<Record<RegionKey, number>>>({});
   const [allAfricaJustUnlocked, setAllAfricaJustUnlocked] = useState(false);
   const [revealAura, setRevealAura] = useState(0);
+  const [entryMediaAttempt, setEntryMediaAttempt] = useState(0);
+  const [entryMediaFailed, setEntryMediaFailed] = useState(false);
+  const [entryTimings, setEntryTimings] = useState({ navigationMs: 0, shellVisibleMs: 0, interactiveMs: 0 });
+  const [entryDiagnostics, setEntryDiagnostics] = useState<EntryDiagnosticsSnapshot | null>(null);
+  const [nominationOpen, setNominationOpen] = useState(false);
+  const [shareCentreOpen, setShareCentreOpen] = useState(false);
+  const [shareCentreBusy, setShareCentreBusy] = useState(false);
+  const [shareProjection, setShareProjection] = useState<SafeShareProjection | null>(null);
+  const [shareResultPublicationClient, setShareResultPublicationClient] = useState<ResultPublicationClient | undefined>();
+  const [comparison, setComparison] = useState<ChallengeComparisonProjection | null>(null);
+  const [completionState, setCompletionState] = useState<"idle" | "loading" | "error">("idle");
+  const [failedQuestionImages, setFailedQuestionImages] = useState<Set<string>>(() => new Set());
+  const [quizInstanceId, setQuizInstanceId] = useState<string | null>(acceptedChallengeQuizInstanceId || null);
+  const [recoveryNotice, setRecoveryNotice] = useState("");
+  const [startLocked, setStartLocked] = useState(false);
+  const [randomSelection, setRandomSelection] = useState<PublicQuestionSelection | null>(null);
+  const [quickPlayNotice, setQuickPlayNotice] = useState("");
+  const [unverifiedChallenge, setUnverifiedChallenge] = useState(Boolean(initialEntryContext?.challenge && !trustedChallenge));
+  const [purchaseContext, setPurchaseContext] = useState<Readonly<{ resultSlug: string; anonymousSessionCredential: string }> | undefined>();
   const fileRef = useRef<HTMLInputElement>(null);
+  const entryArtRef = useRef<HTMLImageElement>(null);
   const audioRef = useRef<AudioContext | null>(null);
+  const revealTimerRef = useRef<number | null>(null);
+  const photoObjectUrlRef = useRef<string | null>(null);
+  const photoBlobRef = useRef<Blob | null>(null);
+  const photoAbortRef = useRef<AbortController | null>(null);
+  const photoExpiryTimerRef = useRef<number | null>(null);
+  const photoSelectionRef = useRef(0);
+  const questionHeadingRef = useRef<HTMLHeadingElement>(null);
+  const startLockRef = useRef(false);
+  const challengeCompletionPromiseRef = useRef<ReturnType<ChallengeCompletionClient["complete"]> | null>(null);
+  const resultCompletionPromiseRef = useRef<Promise<Readonly<{ resultSlug: string; anonymousSessionCredential: string }>> | null>(null);
+  const resultCompletionKeyRef = useRef<string | null>(null);
+  const challengeCompleteEventRef = useRef(false);
+  const resultViewEventRef = useRef(false);
+  const quickPlayStartKeyRef = useRef<string | null>(null);
+  const shareCreationKeyRef = useRef<string | null>(null);
+  const shareCreationPromiseRef = useRef<ReturnType<ChallengeCreationClient["create"]> | null>(null);
+  const shareTriggerRef = useRef<HTMLElement | null>(null);
   const region = regions[regionKey];
   const question = region.questions[index];
+  const randomQuestion = randomSelection?.questions[index];
+  const questionKind = randomQuestion?.kind ?? question.kind;
+  const questionPrompt = randomQuestion?.text ?? question.prompt;
+  const questionOptions = randomQuestion?.options.map((option) => option.text) ?? question.options;
+  const questionOptionIds = randomQuestion?.options.map((option) => option.id) ?? question.options.map((_, optionIndex) => `o${optionIndex + 1}`);
+  const imagePresentations = randomQuestion?.kind === "image"
+    ? randomQuestion.options.map((_, optionIndex) => Object.freeze({
+        marker: String.fromCharCode(65 + optionIndex),
+        assetRef: randomQuestion.imageAssets[optionIndex],
+        accessibilityDescription: randomQuestion.imageDescriptions[optionIndex],
+      }))
+    : question.kind === "image" ? imageAnswerPresentations({
+    stableId: legacyImageQuestionStableId(regionKey, index),
+    region: regionKey,
+    visualStart: question.visualStart ?? null,
+    answerOptions: question.options.map((text, optionIndex) => ({ id: `o${optionIndex + 1}`, text })),
+    imageProvenance: [],
+  }) : [];
+  const avatarChoice = resolveApprovedAvatar(avatarId);
+  const avatar = avatarChoice.src;
+  const displayNameValidation = useMemo(() => validateDisplayName(name), [name]);
+  const privatePlayerName = displayNameValidation.valid ? displayNameValidation.value || "" : "";
+  const portraitDisplayName = privatePlayerName || publicDisplayNameFallback;
+  const displayNameError = displayNameValidation.valid ? "" : displayNameValidation.message;
   const portrait = photo || avatar;
-  const correctCount = answers.reduce((sum, answer) => sum + answer, 0);
+  const browserCorrectCount = answers.reduce((sum, answer) => sum + answer, 0);
+  const correctCount = comparison?.recipientScore ?? browserCorrectCount;
   const tier = calculateResultTier(correctCount);
   const aura = answers.reduce((sum, answer) => sum + (answer ? 150 : 45), 0);
   let streak = 0;
@@ -206,22 +406,349 @@ export default function BridePriceGame() {
   const displayScores = screen === "result" ? { ...bestScores, [regionKey]: Math.max(bestScores[regionKey] || 0, correctCount) } : bestScores;
   const masteredRegions = regionOrder.filter((key) => (displayScores[key] || 0) > 8);
   const allAfricaUnlocked = masteredRegions.length === regionOrder.length;
+  const celebrationPieceCount = getCelebrationPieceCount(tier);
+  const reviewChallengeCreationClient = safeguardReviewFixture?.nomination ? createReviewNominationClient() : undefined;
+  const effectiveChallengeCreationClient = challengeCreationClient || reviewChallengeCreationClient;
+  const challengeActionMode = resolveChallengeActionMode(activeFeatureFlags.challenges, effectiveChallengeCreationClient);
+  const nominationScopeId = quizInstanceId || (safeguardReviewFixture?.nomination ? "review-nomination-scope" : "result-not-ready");
 
   useEffect(() => {
     setHydrated(true);
-    const edition = new URLSearchParams(window.location.search).get("edition") as RegionKey | null;
-    if (edition && regions[edition]) {
-      setRegionKey(edition);
-      setScreen("setup");
+    if (safeguardReviewFixture) return;
+    if (fastEntryEnabled) {
+      const parsedEntryContext = parseEntryContext(window.location.search, document.referrer);
+      const challengeIsUnverified = Boolean(parsedEntryContext.challenge && !trustedChallenge);
+      const safeEntryContext = challengeIsUnverified
+        ? parseEntryContext(entryContextToQuery(parsedEntryContext, { edition: undefined, nominated: undefined, challenge: undefined }))
+        : parsedEntryContext;
+      setUnverifiedChallenge(challengeIsUnverified);
+      const effectiveEntryContext = acceptedChallenge && initialEntryContext
+        ? initialEntryContext
+        : safeEntryContext;
+      setEntryContext(effectiveEntryContext);
+      if (trustedChallenge) {
+        setRegionKey(trustedChallenge.edition);
+        setAvatarId(acceptedChallenge ? defaultAvatarId : trustedChallenge.avatarId);
+        if (acceptedChallenge) {
+          const recovery = readQuizRecovery(window.localStorage, window.sessionStorage);
+          const matchingRecovery = recovery?.trustedChallengeCode === trustedChallenge.code
+            && recovery.edition === trustedChallenge.edition
+            ? recovery
+            : null;
+          if (matchingRecovery && matchingRecovery.questionPosition > 0 && matchingRecovery.questionPosition <= 12) {
+            setAvatarId(matchingRecovery.avatarId);
+            setAnswerChoices(matchingRecovery.answerChoices.map((choice) => [...choice]));
+            void recoveryAnswerResults(matchingRecovery).then(setAnswers).catch(() => setRecoveryNotice("Your saved answers could not be verified. Please start again when you are ready."));
+            setIndex(Math.min(matchingRecovery.questionPosition, 11));
+            setQuizInstanceId(matchingRecovery.instanceId);
+            const restoredScreen: Screen = matchingRecovery.questionPosition === 12 ? "result" : "quiz";
+            setRecoveryNotice(matchingRecovery.questionPosition === 12
+              ? "Your completed challenge result was restored for official confirmation."
+              : "Your accepted challenge was restored in this tab.");
+            setScreen(restoredScreen);
+            window.history.replaceState({ wybpScreen: restoredScreen, wybpChallengeAccepted: true }, "", window.location.href);
+          } else {
+            setScreen("fast_setup");
+            window.history.replaceState({ wybpScreen: "fast_setup", wybpChallengeAccepted: true }, "", window.location.href);
+          }
+        } else {
+          setScreen("challenge");
+          window.history.replaceState({ wybpScreen: "challenge" }, "", window.location.href);
+        }
+      } else {
+        const recovery = readQuizRecovery(window.localStorage, window.sessionStorage);
+        if (recovery && parsedEntryContext.edition === recovery.edition && !challengeIsUnverified) {
+          setRegionKey(recovery.edition);
+          setAvatarId(recovery.avatarId);
+          setAnswerChoices(recovery.answerChoices.map((choice) => [...choice]));
+          if (recovery.randomAttemptId && activeFeatureFlags.random_quick_play) {
+            const session = getOrCreateAnonymousSession(window.sessionStorage);
+            if (session.available) void resumeRandomQuickPlay(recovery.randomAttemptId, session.sessionId).then(async (selection) => {
+              setRandomSelection(selection);
+              const restoredAnswers = await Promise.all(recovery.answerChoices.map(async (choice, questionIndex) => {
+                const restoredQuestion = selection.questions[questionIndex];
+                const judged = await judgeRandomQuickPlayAnswer({
+                  attemptId: selection.attemptId,
+                  anonymousSessionCredential: session.sessionId,
+                  questionRef: restoredQuestion.questionRef,
+                  selectedOptionIds: choice.map((optionIndex) => restoredQuestion.options[optionIndex]?.id).filter((id): id is string => Boolean(id)),
+                });
+                return judged.correct ? 1 : 0;
+              }));
+              setAnswers(restoredAnswers);
+            }).catch(() => setRecoveryNotice("Your saved fresh game could not be verified. Please start a new game."));
+          } else {
+            void recoveryAnswerResults(recovery).then(setAnswers).catch(() => setRecoveryNotice("Your saved answers could not be verified. Please start again when you are ready."));
+          }
+          setIndex(Math.min(recovery.questionPosition, 11));
+          setQuizInstanceId(recovery.instanceId);
+          setRecoveryNotice("Your private, tab-scoped quiz was restored after refresh.");
+          const restoredScreen = recovery.questionPosition === 12 ? "result" : "quiz";
+          setScreen(restoredScreen);
+          window.history.replaceState({ wybpScreen: restoredScreen }, "", window.location.href);
+          emitEntryEvent({
+            name: "quiz_resumed",
+            source: recovery.attribution.source,
+            edition: recovery.edition,
+            nominated: recovery.attribution.nominated,
+            hasChallenge: Boolean(recovery.trustedChallengeCode),
+            hasInvalidContext: false,
+            elapsedMs: performance.now(),
+          });
+        } else {
+          if (safeEntryContext.edition) setRegionKey(safeEntryContext.edition);
+          const initialScreen: Screen = safeEntryContext.edition && safeEntryContext.nominated !== "1" ? "fast_setup" : "entry";
+          setScreen(initialScreen);
+          window.history.replaceState({ wybpScreen: initialScreen }, "", window.location.href);
+        }
+      }
+      emitEntryEvent({
+        name: "entry_view",
+        source: parsedEntryContext.source,
+        edition: parsedEntryContext.edition,
+        nominated: parsedEntryContext.nominated === "1",
+        hasChallenge: Boolean(parsedEntryContext.challenge),
+        hasInvalidContext: parsedEntryContext.invalidFields.length > 0,
+        elapsedMs: performance.now(),
+      });
+      if (parsedEntryContext.invalidFields.length > 0) emitEntryEvent({
+        name: "entry_context_invalid",
+        source: parsedEntryContext.source,
+        edition: parsedEntryContext.edition,
+        nominated: parsedEntryContext.nominated === "1",
+        hasChallenge: Boolean(parsedEntryContext.challenge),
+        hasInvalidContext: true,
+        elapsedMs: performance.now(),
+      });
+    } else {
+      const edition = new URLSearchParams(window.location.search).get("edition") as RegionKey | null;
+      if (edition && regions[edition]) {
+        setRegionKey(edition);
+        setScreen("setup");
+      }
     }
     try {
       const saved = JSON.parse(localStorage.getItem("wybp-region-scores") || "{}") as Partial<Record<RegionKey, number>>;
       setBestScores(Object.fromEntries(Object.entries(saved).filter(([key, value]) => regions[key as RegionKey] && typeof value === "number")) as Partial<Record<RegionKey, number>>);
     } catch { /* device progress is optional */ }
+  }, [acceptedChallenge, fastEntryEnabled, initialEntryContext, safeguardReviewFixture, trustedChallenge]);
+
+  useEffect(() => {
+    const session = getOrCreateAnonymousSession(window.sessionStorage);
+    if (!session.available) return;
+    const timer = window.setTimeout(() => {
+      void getOrCreateAnonymousSession(window.sessionStorage);
+    }, Math.max(1, session.expiresAt - Date.now() + 1));
+    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
+    if (!fastEntryEnabled || !["entry", "challenge", "fast_setup"].includes(screen)) return;
+    const shellVisibleMs = performance.now();
+    const navigation = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
+    setEntryTimings((current) => ({ ...current, navigationMs: navigation?.responseStart || 0, shellVisibleMs }));
+    emitEntryEvent({
+      name: "entry_shell_visible",
+      source: entryContext.source,
+      edition: entryContext.edition,
+      nominated: entryContext.nominated === "1",
+      hasChallenge: Boolean(entryContext.challenge),
+      hasInvalidContext: entryContext.invalidFields.length > 0,
+      elapsedMs: shellVisibleMs,
+      shellVisibleMs,
+      firstMeaningfulChoiceReadyMs: shellVisibleMs,
+      avatarChoiceReadyMs: screen === "fast_setup" ? shellVisibleMs : undefined,
+    });
+    const frame = window.requestAnimationFrame(() => {
+      const interactiveMs = performance.now();
+      setEntryTimings((current) => ({ ...current, interactiveMs }));
+      emitEntryEvent({
+        name: "entry_interactive",
+        source: entryContext.source,
+        edition: entryContext.edition,
+        nominated: entryContext.nominated === "1",
+        hasChallenge: Boolean(entryContext.challenge),
+        hasInvalidContext: entryContext.invalidFields.length > 0,
+        elapsedMs: interactiveMs,
+        shellVisibleMs,
+        firstMeaningfulChoiceReadyMs: interactiveMs,
+        avatarChoiceReadyMs: screen === "fast_setup" ? interactiveMs : undefined,
+      });
+      if (entryDiagnosticsEnabled) setEntryDiagnostics(readEntryDiagnostics());
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [entryContext, fastEntryEnabled, screen]);
+
+  useEffect(() => {
+    setEntryMediaAttempt(0);
+    setEntryMediaFailed(false);
+  }, [regionKey]);
+
+  useEffect(() => {
+    if (!fastEntryEnabled || screen !== "entry" || !entryContext.edition) return;
+    const verifyMedia = window.setTimeout(() => {
+      const image = entryArtRef.current;
+      if (image?.complete && image.naturalWidth === 0) setEntryMediaFailed(true);
+    }, 0);
+    return () => window.clearTimeout(verifyMedia);
+  }, [entryContext.edition, entryMediaAttempt, fastEntryEnabled, screen]);
+
+  useEffect(() => {
+    if (!fastEntryEnabled || !["fast_setup", "quiz"].includes(screen)) return;
+    const assets = randomSelection
+      ? randomSelection.questions.slice(index, index + 2).flatMap((item) => item.imageAssets)
+      : questionImageAssets(regionKey, [0, 1]);
+    const links = assets.map((href) => {
+      const link = document.createElement("link");
+      link.rel = "prefetch";
+      link.as = "image";
+      link.href = href;
+      link.dataset.wybpQuestionPrefetch = "true";
+      document.head.appendChild(link);
+      return link;
+    });
+    return () => links.forEach((link) => link.remove());
+  }, [fastEntryEnabled, index, randomSelection, regionKey, screen]);
+
+  useEffect(() => {
+    if (screen !== "quiz") return;
+    const frame = window.requestAnimationFrame(() => questionHeadingRef.current?.focus({ preventScroll: true }));
+    return () => window.cancelAnimationFrame(frame);
+  }, [index, screen]);
+
+  useEffect(() => {
+    if (!fastEntryEnabled || !quizInstanceId || !["quiz", "reveal", "result"].includes(screen)) return;
+    const state: QuizRecoveryState = {
+      version: 1,
+      instanceId: quizInstanceId,
+      edition: regionKey,
+      avatarId,
+      questionPosition: answerChoices.length,
+      answerChoices,
+      updatedAt: Date.now(),
+      attribution: safeRecoveryAttribution(entryContext),
+      trustedChallengeCode: trustedChallenge?.code,
+      randomAttemptId: randomSelection?.attemptId,
+    };
+    writeQuizRecovery(window.localStorage, window.sessionStorage, state);
+  }, [answerChoices, avatarId, entryContext, fastEntryEnabled, quizInstanceId, randomSelection?.attemptId, regionKey, screen, trustedChallenge?.code]);
+
+  useEffect(() => {
+    if (!fastEntryEnabled || acceptedChallenge) return;
+    const restoreEntryScreen = (event: PopStateEvent) => {
+      const parsedEntryContext = parseEntryContext(window.location.search, document.referrer);
+      setEntryContext(parsedEntryContext);
+      if (parsedEntryContext.edition) setRegionKey(parsedEntryContext.edition);
+      const state = event.state as { wybpScreen?: string } | null;
+      setScreen(state?.wybpScreen === "fast_setup" && parsedEntryContext.edition ? "fast_setup" : "entry");
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("popstate", restoreEntryScreen);
+    return () => window.removeEventListener("popstate", restoreEntryScreen);
+  }, [acceptedChallenge, fastEntryEnabled]);
+
+  useEffect(() => () => {
+    if (revealTimerRef.current !== null) window.clearTimeout(revealTimerRef.current);
+    photoSelectionRef.current += 1;
+    photoAbortRef.current?.abort();
+    photoAbortRef.current = null;
+    if (photoExpiryTimerRef.current !== null) window.clearTimeout(photoExpiryTimerRef.current);
+    photoExpiryTimerRef.current = null;
+    if (photoObjectUrlRef.current) URL.revokeObjectURL(photoObjectUrlRef.current);
+    photoObjectUrlRef.current = null;
+    photoBlobRef.current = null;
+  }, []);
+
+  useEffect(() => {
+    if (
+      screen !== "result"
+      || !acceptedChallenge
+      || !challengeCompletionClient?.storageAvailable
+      || !trustedChallenge
+      || answerChoices.length !== 12
+      || comparison
+      || completionState !== "idle"
+    ) return;
+    const submission = buildChallengeAnswerSubmission(regionKey, answerChoices);
+    if (submission.length !== 12) { setCompletionState("error"); return; }
+    setCompletionState("loading");
+    challengeCompletionPromiseRef.current ||= challengeCompletionClient.complete(submission);
+    challengeCompletionPromiseRef.current.then((confirmed) => {
+      setComparison(confirmed);
+      setCompletionState("idle");
+      if (!challengeCompleteEventRef.current) {
+        challengeCompleteEventRef.current = true;
+        emitChallengeEvent({ name: "challenge_complete", edition: confirmed.edition, state: "completed" });
+      }
+    }).catch((error) => {
+      challengeCompletionPromiseRef.current = null;
+      setCompletionState("error");
+      reportAppError("challenge_completion_failed", error, { action: "challenge_completion", region: regionKey });
+    });
+  }, [acceptedChallenge, answerChoices, challengeCompletionClient, comparison, completionState, regionKey, screen, trustedChallenge]);
+
+  useEffect(() => {
+    if (
+      screen !== "result"
+      || !(activeFeatureFlags.commerce || (activeFeatureFlags.cowrie_economy && randomSelection))
+      || royalRevealReviewEnabled
+      || answerChoices.length !== 12
+      || purchaseContext
+    ) return;
+    const session = getOrCreateAnonymousSession(window.sessionStorage);
+    const submission = randomSelection
+      ? answerChoices.map((choice, questionIndex) => Object.freeze({
+          questionStableId: randomSelection.questions[questionIndex].questionRef,
+          selectedOptionIds: Object.freeze(choice.map((optionIndex) => randomSelection.questions[questionIndex].options[optionIndex].id)),
+        }))
+      : buildChallengeAnswerSubmission(regionKey, answerChoices);
+    if (!session.available || submission.length !== 12) return;
+    if (!resultCompletionKeyRef.current) {
+      const bytes = new Uint8Array(16);
+      crypto.getRandomValues(bytes);
+      resultCompletionKeyRef.current = [...bytes].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+    }
+    resultCompletionPromiseRef.current ||= fetch(activeFeatureFlags.cowrie_economy && randomSelection ? "/cowries/complete" : "/results/complete", {
+      method: "POST",
+      mode: "same-origin",
+      credentials: "omit",
+      referrerPolicy: "no-referrer",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        anonymousSessionCredential: session.sessionId,
+        idempotencyKey: resultCompletionKeyRef.current,
+        avatarId,
+        answers: submission,
+        ...(activeFeatureFlags.cowrie_economy && randomSelection ? { attemptId: randomSelection.attemptId } : {}),
+      }),
+    }).then(async (response) => {
+      const body = await response.json() as Record<string, unknown>;
+      if (!response.ok || body.completed !== true || typeof body.resultSlug !== "string" || !/^[0-9a-f]{48}$/.test(body.resultSlug)) {
+        throw new Error("result_completion_unavailable");
+      }
+      return Object.freeze({ resultSlug: body.resultSlug, anonymousSessionCredential: session.sessionId });
+    });
+    resultCompletionPromiseRef.current.then(setPurchaseContext).catch((error) => {
+      reportAppError("result_completion_failed", error, { action: "result_completion", region: regionKey });
+    });
+  }, [answerChoices, avatarId, purchaseContext, randomSelection, regionKey, screen]);
+
+  useEffect(() => {
     if (screen !== "result") return;
+    if (!resultViewEventRef.current) {
+      resultViewEventRef.current = true;
+      emitAnalyticsLocalEvent({
+        name: "result_view",
+        properties: {
+          edition: regionKey,
+          surface: "result",
+          source: trustedChallenge ? "challenge" : entryContext.nominated === "1" ? "nomination" : "direct",
+          scoreBand: tier === 0 ? "learning" : tier === 1 ? "growing" : tier === 2 ? "strong" : "mastery",
+          maximumScoreVersion: "12-v1",
+        },
+      });
+    }
+    if (acceptedChallenge && !comparison) return;
     const beforeMastered = regionOrder.filter((key) => (bestScores[key] || 0) > 8).length;
     const next = { ...bestScores, [regionKey]: Math.max(bestScores[regionKey] || 0, correctCount) };
     const afterMastered = regionOrder.filter((key) => (next[key] || 0) > 8).length;
@@ -238,7 +765,7 @@ export default function BridePriceGame() {
     }, 28);
     return () => window.clearInterval(timer);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [screen]);
+  }, [comparison, screen]);
 
   const playTone = (frequency = 420, flourish = false) => {
     if (!sound) return;
@@ -248,10 +775,6 @@ export default function BridePriceGame() {
       const context = audioRef.current || new AudioContextClass();
       audioRef.current = context;
       if (context.state === "suspended") void context.resume();
-      const regionalIntervals: Record<RegionKey, number[]> = {
-        west: [1, 1.25, 1.5], east: [1, 1.2, 1.6], central: [1, 1.333, 1.666],
-        north: [1, 1.125, 1.5], south: [1, 1.25, 1.75],
-      };
       const notes = flourish ? regionalIntervals[regionKey] : [1];
       notes.forEach((interval, noteIndex) => {
         const oscillator = context.createOscillator();
@@ -276,147 +799,475 @@ export default function BridePriceGame() {
     } catch { /* sound is an optional flourish */ }
   };
 
+  const playResultDrumRoll = (scoreTier: number): number => {
+    const silentDurations = [1000, 1250, 1550, 1950];
+    if (!sound) return silentDurations[scoreTier];
+    try {
+      const AudioContextClass = window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+      if (!AudioContextClass) return silentDurations[scoreTier];
+      const context = audioRef.current || new AudioContextClass();
+      audioRef.current = context;
+      if (context.state === "suspended") void context.resume();
+
+      const hitCounts = [6, 9, 13, 19];
+      const accents = regionalRollAccents[regionKey];
+      const start = context.currentTime + .05;
+      let cursor = start;
+      for (let hit = 0; hit < hitCounts[scoreTier]; hit += 1) {
+        const progress = hit / Math.max(1, hitCounts[scoreTier] - 1);
+        const intensity = (.62 + scoreTier * .07) * accents[hit % accents.length];
+        const pitch = 78 + (hit % 3) * 18 + scoreTier * 5;
+        scheduleDrumHit(context, cursor, pitch, intensity);
+        cursor += .22 - progress * (.08 + scoreTier * .015);
+      }
+
+      const finale = cursor + .08;
+      regionalIntervals[regionKey].slice(0, scoreTier + 1).forEach((interval, noteIndex) => {
+        scheduleDrumHit(context, finale + noteIndex * .075, 92 * interval, .9 + scoreTier * .06);
+      });
+      if (scoreTier === 3) {
+        [0, .11, .22, .36].forEach((offset, index) => scheduleDrumHit(context, finale + offset, 116 + index * 14, 1));
+      }
+      navigator.vibrate?.(scoreTier === 3 ? [35, 35, 45, 35, 70] : [24, 35, 38]);
+      return Math.ceil((finale - context.currentTime + .72 + scoreTier * .08) * 1000);
+    } catch (error) {
+      reportAppError("audio_failed", error, { action: "result_reveal", region: regionKey });
+      return silentDurations[scoreTier];
+    }
+  };
+
+  const clearPhoto = (notice = "", noticeKind: "neutral" | "error" = "neutral") => {
+    photoSelectionRef.current += 1;
+    photoAbortRef.current?.abort();
+    photoAbortRef.current = null;
+    if (photoExpiryTimerRef.current !== null) window.clearTimeout(photoExpiryTimerRef.current);
+    photoExpiryTimerRef.current = null;
+    if (photoObjectUrlRef.current) URL.revokeObjectURL(photoObjectUrlRef.current);
+    photoObjectUrlRef.current = null;
+    photoBlobRef.current = null;
+    setPhoto(null);
+    setPhotoProcessing(false);
+    setPhotoNotice(notice);
+    setPhotoNoticeKind(noticeKind);
+    if (fileRef.current) fileRef.current.value = "";
+  };
+
+  const selectAvatar = (id: string) => {
+    if (!isApprovedAvatarId(id)) return;
+    clearPhoto();
+    setAvatarId(id);
+    if (fastEntryEnabled) emitEntryEvent({
+      name: "avatar_selected",
+      source: entryContext.source,
+      edition: regionKey,
+      nominated: entryContext.nominated === "1",
+      hasChallenge: Boolean(trustedChallenge),
+      hasInvalidContext: entryContext.invalidFields.length > 0,
+    });
+    playTone(470, true);
+  };
+
   const chooseRegion = (key: RegionKey) => {
     setRegionKey(key);
-    setScreen("setup");
+    setScreen(fastEntryEnabled ? "fast_setup" : "setup");
     setAnswers([]);
+    setAnswerChoices([]);
     setIndex(0);
-    window.history.replaceState({}, "", `?edition=${key}`);
+    setSelected([]);
+    setFeedbackOpen(false);
+    setQuizInstanceId(null);
+    setRecoveryNotice("");
+    setStartLocked(false);
+    startLockRef.current = false;
+    if (fastEntryEnabled) {
+      clearQuizRecovery(window.localStorage, window.sessionStorage);
+      const nextContext = parseEntryContext(entryContextToQuery(entryContext, { edition: key }));
+      setEntryContext(nextContext);
+      const query = entryContextToQuery(nextContext).toString();
+      window.history.pushState({ wybpScreen: "fast_setup" }, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
+      emitEntryEvent({
+        name: "edition_selected",
+        source: nextContext.source,
+        edition: key,
+        nominated: nextContext.nominated === "1",
+        hasChallenge: Boolean(trustedChallenge),
+        hasInvalidContext: nextContext.invalidFields.length > 0,
+      });
+    } else {
+      window.history.replaceState({}, "", `?edition=${key}`);
+    }
     playTone(350 + regionOrder.indexOf(key) * 60, true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const onPhoto = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-    if (!file.type.startsWith("image/")) return;
-    const reader = new FileReader();
-    reader.onload = () => setPhoto(String(reader.result));
-    reader.onerror = () => reportAppError("photo_read_failed", reader.error || new Error("FileReader failed"));
-    reader.readAsDataURL(file);
+  const acceptTrustedChallenge = () => {
+    if (!trustedChallenge) return;
+    setRegionKey(trustedChallenge.edition);
+    setAvatarId(trustedChallenge.avatarId);
+    const nextContext = parseEntryContext(entryContextToQuery(entryContext, { edition: trustedChallenge.edition }));
+    setEntryContext(nextContext);
+    setScreen("fast_setup");
+    window.history.replaceState({ wybpScreen: "fast_setup" }, "", `?${entryContextToQuery(nextContext)}`);
+    emitEntryEvent({
+      name: "edition_selected",
+      source: nextContext.source,
+      edition: trustedChallenge.edition,
+      nominated: true,
+      hasChallenge: true,
+      hasInvalidContext: false,
+    });
+    window.scrollTo(0, 0);
   };
 
-  const beginQuiz = () => {
-    setIndex(0); setAnswers([]); setSelected([]); setFeedbackOpen(false); setScreen("quiz");
+  const onPhoto = async (event: ChangeEvent<HTMLInputElement>) => {
+    const input = event.currentTarget;
+    const file = event.target.files?.[0];
+    if (!file) return;
+    clearPhoto();
+    const selection = photoSelectionRef.current;
+    const controller = new AbortController();
+    photoAbortRef.current = controller;
+    setPhotoProcessing(true);
+    setPhotoNoticeKind("neutral");
+    setPhotoNotice("Processing your photo privately on this device…");
+    try {
+      const sanitized = await sanitizePrivatePhoto(file, { signal: controller.signal });
+      if (selection !== photoSelectionRef.current || controller.signal.aborted) return;
+      const sanitizedUrl = URL.createObjectURL(sanitized.blob);
+      photoBlobRef.current = sanitized.blob;
+      photoObjectUrlRef.current = sanitizedUrl;
+      setPhoto(sanitizedUrl);
+      setPhotoNoticeKind("success");
+      setPhotoNotice("Sanitised photo ready. The original was not uploaded, and metadata was removed from this on-device copy.");
+      photoExpiryTimerRef.current = window.setTimeout(() => {
+        clearPhoto("Your private photo expired from memory. Your avatar is ready instead.");
+      }, privatePhotoLimits.lifetimeMs);
+    } catch (error) {
+      if (selection === photoSelectionRef.current) {
+        setPhotoNoticeKind("error");
+        setPhotoNotice(privatePhotoFriendlyMessage(error));
+        if (!(error instanceof DOMException && error.name === "AbortError")) reportAppError("photo_read_failed", error, { action: "private_photo_sanitize" });
+      }
+    } finally {
+      if (selection === photoSelectionRef.current) {
+        setPhotoProcessing(false);
+        photoAbortRef.current = null;
+        input.value = "";
+      }
+    }
+  };
+
+  const beginQuiz = async (classicFallback = false) => {
+    if (startLockRef.current) return;
+    if (!displayNameValidation.valid) {
+      document.querySelector<HTMLInputElement>("[data-display-name]")?.focus();
+      return;
+    }
+    if (displayNameValidation.value !== null && name !== displayNameValidation.value) setName(displayNameValidation.value);
+    startLockRef.current = true;
+    setStartLocked(true);
+    setQuickPlayNotice("");
+    if (activeFeatureFlags.random_quick_play && !trustedChallenge && !classicFallback && answerChoices.length === 0) {
+      const session = getOrCreateAnonymousSession(window.sessionStorage);
+      if (!session.available) {
+        setQuickPlayNotice("A fresh game cannot be secured in this browser. You can still play the classic 12-question edition.");
+        startLockRef.current = false; setStartLocked(false); return;
+      }
+      try {
+        quickPlayStartKeyRef.current ||= createQuickPlayIdempotencyKey();
+        setQuickPlayNotice("Preparing a fresh regional game…");
+        setRandomSelection(await startRandomQuickPlay(regionKey, session.sessionId, quickPlayStartKeyRef.current));
+      } catch (error) {
+        const shortfall = Number((error as Error & { shortfall?: number }).shortfall || 0);
+        setQuickPlayNotice(shortfall > 0
+          ? `Fresh regional games need 30 reviewed published questions. This edition is ${shortfall} short; the classic 12-question edition remains available.`
+          : activeFeatureFlags.cowrie_economy
+            ? "Check Cowrie Wallet to create or recover access. After two free random plays, another costs 1 Cowrie. Daily Challenges and incoming challenges stay free. If storage is unavailable, try again later."
+            : "A fresh game is temporarily unavailable. You can still play the classic 12-question edition.");
+        quickPlayStartKeyRef.current = null;
+        startLockRef.current = false; setStartLocked(false); return;
+      }
+    } else if (classicFallback) {
+      setRandomSelection(null);
+    }
+    if (fastEntryEnabled && quizInstanceId) {
+      setIndex(Math.min(answerChoices.length, 11));
+      if (answerChoices.length === 0) { setAnswers([]); setAnswerChoices([]); }
+    } else {
+      setIndex(0); setAnswers([]); setAnswerChoices([]);
+      setQuizInstanceId(createQuizInstanceId());
+    }
+    setSelected([]); setFeedbackOpen(false); setScreen("quiz");
+    resultViewEventRef.current = false;
+    const analyticsSource = trustedChallenge ? "challenge" : entryContext.nominated === "1" ? "nomination" : "direct";
+    emitAnalyticsLocalEvent({ name: "quiz_start", properties: { edition: regionKey, surface: "quiz", source: analyticsSource } });
+    emitAnalyticsLocalEvent({ name: "first_question_start", properties: { edition: regionKey, surface: "quiz", source: analyticsSource } });
+    if (trustedChallenge) emitAnalyticsLocalEvent({
+      name: "referred_quiz_start",
+      properties: { edition: regionKey, surface: "quiz", source: "challenge", campaign: "challenge", referred: true },
+      referralChallengeCode: trustedChallenge.code,
+      dedupeKey: "referred_quiz_start",
+    });
+    if (fastEntryEnabled) {
+      if (!photo) emitEntryEvent({
+        name: "photo_skipped",
+        source: entryContext.source,
+        edition: regionKey,
+        nominated: entryContext.nominated === "1",
+        hasChallenge: Boolean(trustedChallenge),
+        hasInvalidContext: entryContext.invalidFields.length > 0,
+      });
+      emitEntryEvent({
+        name: "quiz_started",
+        source: entryContext.source,
+        edition: regionKey,
+        nominated: entryContext.nominated === "1",
+        hasChallenge: Boolean(trustedChallenge),
+        hasInvalidContext: entryContext.invalidFields.length > 0,
+      });
+    }
     playTone(520, true); window.scrollTo(0, 0);
   };
 
-  const submitAnswer = (choice: number[]) => {
+  const acceptAnswerJudgement = (choice: number[], isCorrect: boolean, explanation: string, correctOptions: readonly number[]) => {
+    setSelected(choice); setLastCorrect(isCorrect); setRevealedCorrectOptions(correctOptions); setAnswerExplanation(explanation);
+    setAnswers((current) => [...current, isCorrect ? 1 : 0]); setAnswerChoices((current) => [...current, [...choice]]); setFeedbackOpen(true);
+    playTone(isCorrect ? 680 : 260, isCorrect);
+  };
+
+  const submitAnswer = async (choice: number[]) => {
     if (feedbackOpen) return;
+    if (randomQuestion && randomSelection) {
+      if (imageAnswerPending) return;
+      setImageAnswerPending(true); setImageAnswerError("");
+      try {
+        const session = getOrCreateAnonymousSession(window.sessionStorage);
+        if (!session.available) throw new Error("quick_play_answer_unavailable");
+        const judgement = await judgeRandomQuickPlayAnswer({
+          attemptId: randomSelection.attemptId,
+          anonymousSessionCredential: session.sessionId,
+          questionRef: randomQuestion.questionRef,
+          selectedOptionIds: choice.map((optionIndex) => questionOptionIds[optionIndex]),
+        });
+        acceptAnswerJudgement(choice, judgement.correct, judgement.explanation,
+          judgement.correctOptionIds.map((id) => questionOptionIds.indexOf(id)).filter((value) => value >= 0));
+      } catch {
+        setImageAnswerError("That answer could not be checked. Please try again.");
+      } finally { setImageAnswerPending(false); }
+      return;
+    }
+    if (question.kind === "image") {
+      if (imageAnswerPending) return;
+      setImageAnswerPending(true); setImageAnswerError("");
+      try {
+        const response = await fetch("/questions/image-answer", {
+          method: "POST", mode: "same-origin", credentials: "omit", referrerPolicy: "no-referrer",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            questionStableId: legacyImageQuestionStableId(regionKey, index),
+            selectedOptionIds: choice.map((optionIndex) => `o${optionIndex + 1}`),
+          }),
+        });
+        const body = await response.json() as Record<string, unknown>;
+        if (!response.ok || body.accepted !== true || typeof body.correct !== "boolean" || typeof body.explanation !== "string"
+          || !Array.isArray(body.correctOptionIds) || !body.correctOptionIds.every((id) => typeof id === "string" && /^o[1-4]$/.test(id))) {
+          throw new Error("image_answer_unavailable");
+        }
+        acceptAnswerJudgement(choice, body.correct, body.explanation, body.correctOptionIds.map((id) => Number(id.slice(1)) - 1));
+      } catch {
+        setImageAnswerError("That answer could not be checked. Please try again.");
+      } finally {
+        setImageAnswerPending(false);
+      }
+      return;
+    }
     const expected = region.questions[index].correct;
     const isCorrect = answersMatch(choice, expected);
-    setSelected(choice); setLastCorrect(isCorrect); setAnswers((current) => [...current, isCorrect ? 1 : 0]); setFeedbackOpen(true);
-    playTone(isCorrect ? 680 : 260, isCorrect);
+    acceptAnswerJudgement(choice, isCorrect, question.explanation, expected);
   };
 
   const chooseAnswer = (answerIndex: number) => {
     if (feedbackOpen) return;
-    const question = region.questions[index];
-    if (question.kind === "multi") {
+    if (questionKind === "multi") {
       setSelected((current) => current.includes(answerIndex) ? current.filter((value) => value !== answerIndex) : current.length < 3 ? [...current, answerIndex] : current);
       playTone(390 + answerIndex * 35);
     } else {
-      submitAnswer([answerIndex]);
+      void submitAnswer([answerIndex]);
     }
   };
 
   const nextQuestion = () => {
     if (index === 11) {
-      setScreen("result"); setDropOpen(false); playTone(720, true);
+      emitAnalyticsLocalEvent({
+        name: "quiz_complete",
+        properties: {
+          edition: regionKey,
+          surface: "quiz",
+          source: trustedChallenge ? "challenge" : entryContext.nominated === "1" ? "nomination" : "direct",
+          scoreBand: tier === 0 ? "learning" : tier === 1 ? "growing" : tier === 2 ? "strong" : "mastery",
+          maximumScoreVersion: "12-v1",
+        },
+      });
+      setScreen("reveal");
+      setDropOpen(false);
+      const revealDuration = playResultDrumRoll(tier);
+      revealTimerRef.current = window.setTimeout(() => {
+        revealTimerRef.current = null;
+        setScreen("result");
+      }, revealDuration);
     } else {
-      setIndex((current) => current + 1); setSelected([]); setFeedbackOpen(false);
+      setIndex((current) => current + 1); setSelected([]); setFeedbackOpen(false); setRevealedCorrectOptions([]); setAnswerExplanation(""); setImageAnswerError("");
       if ((index + 1) % 3 === 0) setDropOpen(true);
     }
   };
 
   const restart = () => {
-    setScreen("home"); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null); setAllAfricaJustUnlocked(false);
+    if (revealTimerRef.current !== null) {
+      window.clearTimeout(revealTimerRef.current);
+      revealTimerRef.current = null;
+    }
+    if (fastEntryEnabled) {
+      emitEntryEvent({
+        name: "quiz_restarted",
+        source: entryContext.source,
+        edition: regionKey,
+        nominated: entryContext.nominated === "1",
+        hasChallenge: Boolean(trustedChallenge),
+        hasInvalidContext: entryContext.invalidFields.length > 0,
+      });
+      clearQuizRecovery(window.localStorage, window.sessionStorage);
+    }
+    clearPhoto();
+    setScreen(fastEntryEnabled ? "entry" : "home"); setAnswers([]); setAnswerChoices([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setAllAfricaJustUnlocked(false);
+    setRandomSelection(null); setQuickPlayNotice(""); quickPlayStartKeyRef.current = null;
+    setQuizInstanceId(null); setRecoveryNotice(""); setName(""); setAvatarId(avatarChoices[0].id); setShowAllAvatars(false); setStartLocked(false); startLockRef.current = false;
+    setNominationOpen(false);
+    setShareResultPublicationClient(undefined);
+    setComparison(null); setCompletionState("idle"); challengeCompletionPromiseRef.current = null; challengeCompleteEventRef.current = false;
+    setPurchaseContext(undefined); resultCompletionPromiseRef.current = null; resultCompletionKeyRef.current = null;
+    resultViewEventRef.current = false;
+    if (fastEntryEnabled) { setEntryContext(parseEntryContext("")); setUnverifiedChallenge(false); }
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
 
-  const nominationUrl = useMemo(() => {
-    if (typeof window === "undefined") return "";
-    return `${window.location.origin}${window.location.pathname}?edition=${regionKey}&nominated=1`;
-  }, [regionKey]);
+  useEffect(() => {
+    const resetAfterLocalClear = () => {
+      if (revealTimerRef.current !== null) { window.clearTimeout(revealTimerRef.current); revealTimerRef.current = null; }
+      clearPhoto();
+      setScreen(fastEntryEnabled ? "entry" : "home"); setRegionKey("west"); setName(""); setAvatarId(avatarChoices[0].id);
+      setAnswers([]); setAnswerChoices([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setDropOpen(false); setBestScores({});
+      setQuizInstanceId(null); setRecoveryNotice(""); setNominationOpen(false); setShareCentreOpen(false); setShareProjection(null); setShareResultPublicationClient(undefined);
+      setComparison(null); setCompletionState("idle"); setPurchaseContext(undefined); setMenuOpen(false); setStartLocked(false); startLockRef.current = false;
+      setRandomSelection(null); setQuickPlayNotice(""); quickPlayStartKeyRef.current = null;
+      resultCompletionPromiseRef.current = null; resultCompletionKeyRef.current = null; challengeCompletionPromiseRef.current = null;
+      try { window.history.replaceState({}, "", window.location.pathname); } catch { /* route remains usable */ }
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener(PRIVACY_CLEAR_EVENT, resetAfterLocalClear);
+    return () => window.removeEventListener(PRIVACY_CLEAR_EVENT, resetAfterLocalClear);
+  }, [fastEntryEnabled]);
 
-  const nominate = async () => {
-    const text = `${name || "I"} just played the ${region.name} edition of What’s Your Bride Price? I nominate you next. Your turn!`;
-    if (navigator.share) {
-      try { await navigator.share({ title: "You’ve been nominated!", text, url: nominationUrl }); return; } catch (error) {
-        if (!(error instanceof DOMException && error.name === "AbortError")) reportAppError("share_failed", error, { action: "nomination" });
-        return;
-      }
+  const leaveSetup = () => {
+    if (!fastEntryEnabled) {
+      setScreen("home");
+      return;
     }
-    await navigator.clipboard?.writeText(`${text} ${nominationUrl}`);
-    alert("Nomination link copied!");
+    const state = window.history.state as { wybpScreen?: string } | null;
+    if (state?.wybpScreen === "fast_setup" && window.history.length > 1) window.history.back();
+    else {
+      const genericContext = parseEntryContext(entryContextToQuery(entryContext, { edition: undefined, nominated: undefined, challenge: undefined }));
+      setEntryContext(genericContext);
+      setScreen("entry");
+      window.history.replaceState({ wybpScreen: "entry" }, "", `${window.location.pathname}?${entryContextToQuery(genericContext)}`);
+    }
   };
 
-  const resultBlob = async (): Promise<Blob | null> => {
-    const canvas = document.createElement("canvas");
-    canvas.width = 1080; canvas.height = 1350;
-    const ctx = canvas.getContext("2d"); if (!ctx) return null;
-    const [base, accent, dark] = region.palette;
-    ctx.fillStyle = base; ctx.fillRect(0, 0, canvas.width, canvas.height);
-    const worldArt = new Image(); worldArt.src = `/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`; await worldArt.decode();
-    ctx.save(); ctx.globalAlpha = .48; ctx.drawImage(worldArt, 0, 0, worldArt.width, worldArt.height, 0, 0, 1080, 1350); ctx.restore();
-    const veil = ctx.createLinearGradient(0, 0, 0, 1350); veil.addColorStop(0, `${dark}99`); veil.addColorStop(.52, `${dark}dd`); veil.addColorStop(1, dark); ctx.fillStyle = veil; ctx.fillRect(0, 0, 1080, 1350);
-    ctx.globalAlpha = .22; ctx.strokeStyle = accent; ctx.lineWidth = 12;
-    for (let x = -400; x < 1400; x += 90) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 680, 1350); ctx.stroke(); }
-    ctx.globalAlpha = 1; ctx.fillStyle = dark; ctx.fillRect(55, 55, 970, 1240);
-    ctx.strokeStyle = accent; ctx.lineWidth = 3; ctx.strokeRect(78, 78, 924, 1194);
-    ctx.textAlign = "center"; ctx.fillStyle = accent; ctx.font = "700 28px Arial";
-    ctx.fillText(`${region.name.toUpperCase()} EDITION • CEREMONIAL SCORECARD`, 540, 145);
-    if (portrait) {
-      const image = new Image(); image.src = portrait; await image.decode();
-      ctx.save(); ctx.beginPath(); ctx.arc(540, 370, 165, 0, Math.PI * 2); ctx.clip();
-      const side = Math.min(image.width, image.height);
-      ctx.drawImage(image, (image.width - side) / 2, (image.height - side) / 2, side, side, 375, 205, 330, 330); ctx.restore();
-      ctx.strokeStyle = accent; ctx.lineWidth = 12; ctx.beginPath(); ctx.arc(540, 370, 172, 0, Math.PI * 2); ctx.stroke();
-    } else {
-      ctx.fillStyle = accent; ctx.font = "110px Georgia"; ctx.fillText(region.mark, 540, 410);
-    }
-    ctx.fillStyle = "#f3e7cc"; ctx.font = "italic 46px Georgia"; ctx.fillText(name || "A Most Excellent Human", 540, 625);
-    ctx.fillStyle = accent; ctx.font = "900 84px Impact, Arial Black"; ctx.fillText(tierTitles[tier].toUpperCase(), 540, 735);
-    ctx.fillStyle = "#f3e7cc"; ctx.font = "36px Georgia";
-    ctx.fillText(gifts[tier][0].toUpperCase(), 540, 845);
-    ctx.font = "italic 29px Georgia"; ctx.fillText(`+${gifts[tier][1]} + ${gifts[tier][2]}`, 540, 907);
-    ctx.fillStyle = accent; ctx.font = "700 25px Arial"; ctx.fillText(`KNOWLEDGE SCORE ${correctCount}/12 • ${region.name.toUpperCase()}`, 540, 1010);
-    ctx.fillStyle = "#f3e7cc"; ctx.font = "900 58px Impact, Arial Black"; ctx.fillText("WHAT’S YOUR BRIDE PRICE?", 540, 1130);
-    ctx.font = "24px Arial"; ctx.fillText("Play your region. Share your result. Nominate a friend.", 540, 1190);
-    return new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+  const changeAvatarDuringQuiz = () => {
+    startLockRef.current = false;
+    setStartLocked(false);
+    setScreen(fastEntryEnabled ? "fast_setup" : "setup");
+    window.scrollTo(0, 0);
   };
+
+  const openNominations = () => {
+    setShareCentreOpen(false);
+    setNominationOpen(true);
+    window.requestAnimationFrame(() => document.getElementById("nominate-three-title")?.focus());
+  };
+
+  const localResultMediaCard = (): ShareMediaCard => Object.freeze({
+    edition: regionKey,
+    displayName: shareProjection?.personalised && shareProjection.displayName ? shareProjection.displayName : portraitDisplayName,
+    score: shareProjection?.personalised && shareProjection.score !== null ? shareProjection.score : correctCount,
+    maximumScore: region.questions.length,
+    resultTitle: shareProjection?.personalised && shareProjection.resultTitle ? shareProjection.resultTitle : tierTitles[tier],
+    avatarId: shareProjection?.personalised && shareProjection.avatarId ? shareProjection.avatarId : avatarId,
+    portraitUrl: photo,
+  });
+
+  const prepareResultMedia = () => prepareShareMedia(localResultMediaCard());
 
   const downloadResult = async () => {
     try {
-      const blob = await resultBlob(); if (!blob) return;
-      const url = URL.createObjectURL(blob); const anchor = document.createElement("a");
-      anchor.href = url; anchor.download = `bride-price-${regionKey}-result.png`; anchor.click(); URL.revokeObjectURL(url);
+      downloadPreparedShareMedia(await prepareResultMedia());
     } catch (error) {
       reportAppError("result_export_failed", error, { action: "download", region: regionKey });
       alert("We could not prepare the portrait this time. Please try again.");
     }
   };
 
-  const shareResult = async () => {
+  const openShareCentre = async (trigger?: HTMLElement) => {
+    if (shareCentreBusy) return;
+    if (trigger) shareTriggerRef.current = trigger;
+    setShareCentreBusy(true);
+    setNominationOpen(false);
     try {
-      const blob = await resultBlob();
-      const file = blob ? new File([blob], "my-bride-price-result.png", { type: "image/png" }) : null;
-      const shareData: ShareData = { title: "My Bride Price culture-game result", text: `I scored ${correctCount}/12 and unlocked ${tierTitles[tier]} in the ${region.name} edition. Can you beat me?`, url: nominationUrl };
-      if (file && navigator.canShare?.({ files: [file] })) shareData.files = [file];
-      if (navigator.share) {
-        try { await navigator.share(shareData); } catch (error) {
-          if (!(error instanceof DOMException && error.name === "AbortError")) reportAppError("share_failed", error, { action: "result" });
-        }
+      const origin = resolveBrowserPublicAppOrigin(window.location.origin);
+      let safeProjection: SafeShareProjection | null = null;
+      const restored = readNominationSnapshot(window.sessionStorage, nominationScopeId, window.location.origin);
+      if (restored) {
+        safeProjection = shareProjectionFromChallenge(
+          acceptedChallenge && comparison ? "comparison" : "result",
+          restored.challenge,
+          origin,
+        );
       }
-      else await downloadResult();
-    } catch (error) {
-      reportAppError("result_export_failed", error, { action: "share", region: regionKey });
-      alert("We could not prepare the portrait this time. Please try again.");
+      if (!safeProjection && challengeActionMode === "personalised" && effectiveChallengeCreationClient?.storageAvailable) {
+        shareCreationKeyRef.current ||= createChallengeIdempotencyKey();
+        shareCreationPromiseRef.current ||= effectiveChallengeCreationClient.create(shareCreationKeyRef.current, portraitDisplayName);
+        try {
+          const response = await shareCreationPromiseRef.current;
+          const challenge = validateSafeNominationChallenge(response.challenge, response.challengeUrl, origin);
+          if (challenge) {
+            emitAnalyticsLocalEvent({ name: "challenge_create", properties: { edition: regionKey, surface: acceptedChallenge && comparison ? "comparison" : "result" } });
+            writeNominationSnapshot(window.sessionStorage, Object.freeze({
+              version: nominationSnapshotVersion,
+              scope: nominationScopeId,
+              challenge,
+              completedSlots: Object.freeze([]),
+              savedAt: Date.now(),
+            }));
+            safeProjection = shareProjectionFromChallenge(
+              acceptedChallenge && comparison ? "comparison" : "result",
+              challenge,
+              origin,
+            );
+          }
+        }
+        catch { shareCreationPromiseRef.current = null; }
+      }
+      const finalProjection = safeProjection || genericShareProjection(acceptedChallenge && comparison ? "comparison" : "result", regionKey, origin);
+      setShareProjection(finalProjection);
+      setShareResultPublicationClient(acceptedChallenge ? undefined : resultPublicationClient || createReviewResultPublicationClient(origin));
+      setShareCentreOpen(true);
+      emitAnalyticsLocalEvent({ name: "share_centre_open", properties: { edition: regionKey, surface: "share_centre" } });
+    } finally {
+      setShareCentreBusy(false);
     }
   };
 
   return (
-    <main className={`game-shell theme-${regionKey} screen-${screen}`} data-hydrated={hydrated}>
+    <main className={`game-shell theme-${regionKey} screen-${screen}${safeguardReviewFixture?.reducedMotion ? " review-reduced-motion" : ""}`} data-hydrated={hydrated}>
       <div className="grain" aria-hidden="true" />
       <header className="topbar">
         <button className="wordmark wordmark-button" onClick={restart} aria-label="Return home">
@@ -430,6 +1281,133 @@ export default function BridePriceGame() {
           <button className="sound-button" onClick={() => setSound(!sound)} aria-label={sound ? "Turn sound off" : "Turn sound on"}><span>{sound ? "♪" : "×"}</span> Sound {sound ? "on" : "off"}</button>
         </div>
       </header>
+      {activeFeatureFlags.cowrie_economy && <CowrieWalletPanel refreshKey={`${randomSelection?.attemptId || ""}:${purchaseContext?.resultSlug || ""}`} />}
+
+      {screen === "entry" && (
+        <section className="fast-entry-shell" data-fast-entry-shell data-entry-source={entryContext.source}>
+          <div className="fast-entry-copy">
+            <p className="fast-entry-kicker">The Motherland is calling</p>
+            {entryContext.edition && !unverifiedChallenge ? (
+              <>
+                <span className="fast-entry-mark" aria-hidden="true">{region.mark}</span>
+                <p className="eyebrow">{region.place}</p>
+                <h1>{entryContext.nominated ? "YOU’VE BEEN NOMINATED." : "YOUR REGION IS READY."}<br /><i>{region.name}</i></h1>
+                <p>{entryContext.nominated ? `You have been nominated for the ${region.name} Edition. This legacy invitation carries no inviter name or score.` : region.hello}</p>
+                {entryContext.challenge && <p className="fast-entry-context">Challenge link recognised. Your score will be earned in the game.</p>}
+                <p className="entry-safeguard safeguard-decision" id="direct-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
+                <button className="big-action fast-entry-action" aria-describedby="direct-entry-safeguard" onClick={() => chooseRegion(entryContext.edition!)}>{entryContext.nominated ? `Start ${region.name} edition` : `Enter ${region.name}`} <span>▶</span></button>
+              </>
+            ) : (
+              <>
+                <span className="fast-entry-mark" aria-hidden="true">W</span>
+                <p className="eyebrow">Five regions. Sixty culture questions.</p>
+                <h1>CHOOSE YOUR<br /><i>AFRICAN REGION.</i></h1>
+                <p>{entryContext.nominated ? "You were nominated to play. Choose a regional edition to begin; no inviter identity or score is attached." : "Go straight to the edition you know best, or choose one you want to discover."}</p>
+                <p className="entry-safeguard safeguard-decision" id="generic-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
+                <div className="fast-region-grid" aria-label="Choose your African region">
+                  {regionOrder.map((key) => <button key={key} className={`region-choice-${key}`} data-entry-choice aria-describedby="generic-entry-safeguard" onClick={() => chooseRegion(key)}><span aria-hidden="true">{regions[key].mark}</span>{regions[key].name}</button>)}
+                </div>
+              </>
+            )}
+            {entryContext.invalidFields.length > 0 && <p className="entry-context-notice" role="status">Some link details were not recognised, so they were safely ignored.</p>}
+            {unverifiedChallenge && <p className="entry-context-notice" role="status">That challenge could not be verified, so no inviter name or score was used. Choose any region to play safely.</p>}
+          </div>
+          {entryContext.edition && <div className={`fast-entry-art ${entryMediaFailed ? "media-failed" : ""}`}>
+            {!entryMediaFailed && <img ref={entryArtRef} src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp${entryMediaAttempt ? `?retry=${entryMediaAttempt}` : ""}`} alt={`${region.name} illustrated game world`} width="1200" height="800" fetchPriority="high" onLoad={() => setEntryMediaFailed(false)} onError={() => {
+              setEntryMediaFailed(true);
+            }} />}
+            {entryMediaFailed && <div className="entry-media-fallback" role="status"><span aria-hidden="true">{region.mark}</span><p>The artwork is taking longer than expected. The game is still ready.</p><button onClick={() => {
+              setEntryMediaFailed(false);
+              setEntryMediaAttempt((attempt) => attempt + 1);
+              emitEntryEvent({ name: "entry_retry", source: entryContext.source, edition: regionKey, nominated: entryContext.nominated === "1", hasChallenge: Boolean(entryContext.challenge), hasInvalidContext: entryContext.invalidFields.length > 0, elapsedMs: performance.now() });
+            }}>Retry artwork</button></div>}
+          </div>}
+        </section>
+      )}
+
+      {screen === "challenge" && trustedChallenge && (
+        <section className="trusted-challenge-stage" data-fast-entry-shell data-trusted-challenge data-entry-source={entryContext.source}>
+          <div className="challenge-glow" aria-hidden="true" />
+          <div className="trusted-challenge-card">
+            <p className="fast-entry-kicker">A verified culture challenge</p>
+            <div className="challenge-inviter">
+              <img src={avatar} alt="" width="160" height="160" />
+              <span>{trustedChallenge.inviterDisplayName} scored</span>
+              <b>{trustedChallenge.verifiedScore}/{trustedChallenge.total}</b>
+            </div>
+            <p className="eyebrow">{region.name} edition</p>
+            <h1>CAN YOU<br /><i>BEAT IT?</i></h1>
+            <p>{trustedChallenge.inviterDisplayName} has invited you into {region.name}. Accept once, then choose your player and begin.</p>
+            <p className="entry-safeguard safeguard-decision" id="trusted-challenge-safeguard">{PRODUCT_SAFEGUARD}</p>
+            <button className="big-action fast-entry-action" aria-describedby="trusted-challenge-safeguard" onClick={acceptTrustedChallenge}>Accept the challenge <span>▶</span></button>
+          </div>
+          <div className="trusted-challenge-art"><img src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt={`${region.name} illustrated game world`} width="1200" height="800" fetchPriority="high" /></div>
+        </section>
+      )}
+
+      {screen === "fast_setup" && (
+        <section className="fast-avatar-stage" data-fast-entry-shell data-fast-avatar data-entry-source={entryContext.source}>
+          <div className="fast-avatar-world" aria-hidden="true"><img src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" width="1200" height="800" fetchPriority="high" /></div>
+          <button className="back-link" onClick={leaveSetup}>← All regions</button>
+          <div className="fast-avatar-copy">
+            <p className="eyebrow">{region.place}</p>
+            <h1>CHOOSE YOUR<br /><i>PLAYER.</i></h1>
+            <p>{region.name} is ready. Play anonymously with no account. Use an avatar, or optionally add a private photo processed only on this device.</p>
+            <div className="setup-meta"><span>12 questions</span><span>About 3 minutes</span></div>
+          </div>
+          <div className="compact-player-card">
+            <div className="compact-avatar-hero">
+              <img src={portrait} alt="Your selected player portrait" width="256" height="256" />
+              <div><span>{photo ? "Private photo" : avatarChoice.name}</span><b>{photo ? "Ready on this device" : avatarChoice.vibe}</b></div>
+              <i aria-hidden="true">✓ SELECTED</i>
+            </div>
+            <p className="compact-duration">12 questions <span>•</span> About 3 minutes</p>
+            <p className="entry-safeguard safeguard-decision compact-safeguard" id="avatar-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
+            <button className="big-action fast-quiz-start" aria-describedby="avatar-entry-safeguard" disabled={startLocked || photoProcessing} onClick={() => void beginQuiz()}>{photoProcessing ? "Processing photo…" : answerChoices.length > 0 ? `Continue at Question ${Math.min(answerChoices.length + 1, 12)}` : activeFeatureFlags.random_quick_play && !trustedChallenge ? "Start a fresh regional game" : photo ? "Start Question 1" : "Continue without a photo"} <span>▶</span></button>
+            {quickPlayNotice && <div className="quick-play-readiness" role="status"><p>{quickPlayNotice}</p><button type="button" onClick={() => void beginQuiz(true)}>Play the classic 12-question edition</button></div>}
+            <div className="compact-avatar-grid" aria-label="Choose an African avatar">
+              {avatarChoices.slice(0, showAllAvatars ? avatarChoices.length : 6).map((item, avatarIndex) => {
+                const active = !photo && avatarId === item.id;
+                return <button key={item.id} className={active ? "active" : ""} aria-pressed={active} onClick={() => selectAvatar(item.id)} aria-label={`Choose ${item.name}, ${item.vibe}${active ? ", selected" : ""}`}>
+                  <img src={item.src} alt="" width="128" height="128" loading={avatarIndex < 6 ? "eager" : "lazy"} decoding="async" />
+                  <span>{item.name}</span>{active && <b>✓</b>}
+                </button>;
+              })}
+            </div>
+            <button className="show-avatar-action" onClick={() => setShowAllAvatars((current) => !current)}>{showAllAvatars ? "Show fewer avatars" : "See all 12 avatars"}</button>
+            <div className="private-photo-actions">
+              <button aria-describedby="avatar-entry-safeguard" disabled={photoProcessing} onClick={() => {
+                emitEntryEvent({ name: "photo_picker_opened", source: entryContext.source, edition: regionKey, nominated: entryContext.nominated === "1", hasChallenge: Boolean(trustedChallenge), hasInvalidContext: false });
+                fileRef.current?.click();
+              }}>＋ {photo ? "Choose a different private photo" : "Choose a private photo"}</button>
+              {(photo || photoProcessing) && <button onClick={() => clearPhoto("Photo removed. Your avatar is ready instead.")}>Remove my photo</button>}
+            </div>
+            <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" onChange={onPhoto} hidden />
+            <p className="private-photo-explainer" id="private-photo-explainer">Optional. JPEG, PNG or WebP up to 8 MB. We re-encode the pixels on this device, remove source metadata and keep the processed copy in browser memory for up to 30 minutes. It may appear only in a static portrait you deliberately download or share; it never enters Story video or a public result and is never uploaded. Remove my photo or Clear my local data releases it sooner. Your photo never affects scoring.</p>
+            {photoNotice && <p className={`photo-status is-${photoProcessing ? "processing" : photoNoticeKind}`} data-photo-state={photoProcessing ? "processing" : photoNoticeKind} role="status" aria-live="polite">{photoNotice}</p>}
+            <p className="recovery-explainer">No account is required. This tab can restore only your edition, avatar and answer choices for up to 24 hours. Names and photos are never saved.</p>
+            <button className="start-again-control" onClick={restart}>Start again</button>
+          </div>
+        </section>
+      )}
+
+      {entryDiagnosticsEnabled && entryDiagnostics && fastEntryEnabled && (
+        <aside className="entry-diagnostics" data-entry-diagnostics aria-label="Entry diagnostics">
+          <b>Entry diagnostics</b>
+          <span>Source: {entryContext.source}</span>
+          <span>Edition: {entryContext.edition || "not selected"}</span>
+          <span>Nominated: {entryContext.nominated === "1" ? "yes" : "no"}</span>
+          <span>Challenge: {entryContext.challenge ? "valid shape" : "none"}</span>
+          <span>Invalid fields: {entryContext.invalidFields.length}</span>
+          <span>Reduced motion: {entryDiagnostics.reducedMotion ? "yes" : "no"}</span>
+          <span>Web Share: {entryDiagnostics.webShare ? "available" : "unavailable"}</span>
+          <span>Storage: {entryDiagnostics.storage}</span>
+          <span>Connection: {entryDiagnostics.connection}</span>
+          <span>Navigation: {Math.round(entryTimings.navigationMs)} ms</span>
+          <span>Shell: {Math.round(entryTimings.shellVisibleMs)} ms</span>
+          <span>Interactive: {Math.round(entryTimings.interactiveMs)} ms</span>
+        </aside>
+      )}
 
       {screen === "home" && (
         <>
@@ -438,10 +1416,12 @@ export default function BridePriceGame() {
             <div className="cinema-copy">
               <div className="live-pill"><i /> The Motherland is calling</div>
               <p className="cinema-kicker">A pan-African knowledge quest</p>
-              <h1 className="challenge-headline"><span>DO YOU KNOW YOUR ROOTS?</span><em>THE MORE YOU SCORE THE HIGHER YOUR BRIDE PRICE</em><strong>LET’S PLAY!</strong></h1>
-              <p>Pick a region you know best because Africa is one giant continent. Decode proverbs. Spot the dish. Trace an empire. Leave with high scores, and a certificate proving the high bride price you deserve. The groom must pay!</p>
+              <h1 className="challenge-headline"><span>DO YOU KNOW YOUR ROOTS?</span><em>THE MORE YOU KNOW, THE BRIGHTER YOUR SCORE</em><strong>LET’S PLAY!</strong></h1>
+              <p>Pick a region you know best, or one you want to discover, because Africa is one vast and varied continent. Decode proverbs. Spot the dish. Trace an empire. Leave with a culture score, a regional portrait and facts worth sharing.</p>
+              <p className="entry-safeguard safeguard-decision" id="home-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
               <div className="cinema-actions">
-                <button className="play-now" onClick={() => setScreen("setup")}><span>▶</span> Start the challenge</button>
+                <button className="play-now" aria-describedby="home-entry-safeguard" onClick={() => setScreen("setup")}><span>▶</span> Start the challenge</button>
+                {activeFeatureFlags.daily_challenge && <Link className="daily-entry" href="/daily/west">Play today’s shared daily</Link>}
                 <button className="trailer-button" onClick={() => setMenuOpen(true)}><span>ⓘ</span> What is this?</button>
               </div>
               <div className="hero-stats"><span><b>5</b> worlds</span><span><b>60</b> challenges</span><span><b>12</b> avatar heroes</span></div>
@@ -485,7 +1465,7 @@ export default function BridePriceGame() {
             </div>
           </section>
           <section className="values-strip">
-            <p>This game celebrates culture. It never measures human worth.</p>
+            <p>{PRODUCT_SAFEGUARD}</p>
             <div><span>12</span> questions <i>•</i> <span>3</span> minutes <i>•</i> <span>1</span> unforgettable reveal</div>
           </section>
         </>
@@ -493,8 +1473,8 @@ export default function BridePriceGame() {
 
       {screen === "setup" && (
         <section className="setup-stage">
-          <div className="regional-backdrop"><img src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" /><span>{region.mark}</span></div>
-          <button className="back-link" onClick={() => setScreen("home")}>← All editions</button>
+          <div className="regional-backdrop"><img src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" width="1200" height="800" fetchPriority="high" /><span>{region.mark}</span></div>
+          <button className="back-link" onClick={leaveSetup}>← All editions</button>
           <div className="setup-copy">
             <p className="eyebrow">{region.place}</p>
             <h1>{region.name}<br /><i>Edition</i></h1>
@@ -505,17 +1485,24 @@ export default function BridePriceGame() {
             <div className="card-pin"><span>AVATAR LAB</span><b>Choose your player</b></div>
             <div className="avatar-hero">
               <img src={portrait} alt="Your selected player portrait" />
-              <div><span>{photo ? "Custom icon" : avatarChoices.find((item) => item.src === avatar)?.name}</span><b>{photo ? "One of one" : avatarChoices.find((item) => item.src === avatar)?.vibe}</b></div>
+              <div><span>{photo ? "Custom icon" : avatarChoice.name}</span><b>{photo ? "One of one" : avatarChoice.vibe}</b></div>
               <i>READY</i>
             </div>
             <div className="avatar-grid" aria-label="Choose an African avatar">
-              {avatarChoices.map((item) => <button key={item.name} className={!photo && avatar === item.src ? "active" : ""} aria-pressed={!photo && avatar === item.src} onClick={() => { setAvatar(item.src); setPhoto(null); playTone(470, true); }} aria-label={`Choose ${item.name}, ${item.vibe}`}><img src={item.src} alt="" /><span>{item.name}</span></button>)}
+              {avatarChoices.map((item) => <button key={item.id} className={!photo && avatarId === item.id ? "active" : ""} aria-pressed={!photo && avatarId === item.id} onClick={() => selectAvatar(item.id)} aria-label={`Choose ${item.name}, ${item.vibe}`}><img src={item.src} alt="" width="256" height="256" loading={fastEntryEnabled ? "lazy" : undefined} decoding="async" /><span>{item.name}</span></button>)}
             </div>
-            <button className="upload-own" onClick={() => fileRef.current?.click()}><span>＋</span><b>Or upload your own icon</b><small>Private. Never leaves your device.</small></button>
-            <input ref={fileRef} type="file" accept="image/*" onChange={onPhoto} hidden />
+            <p className="entry-safeguard safeguard-decision setup-safeguard" id="setup-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
+            <button className="upload-own" aria-describedby="setup-entry-safeguard" disabled={photoProcessing} onClick={() => fileRef.current?.click()}><span>＋</span><b>{photo ? "Choose a different private photo" : "Optional: choose your own photo"}</b><small>Processed on this device. The original is never uploaded.</small></button>
+            {(photo || photoProcessing) && <button className="remove-photo-action" onClick={() => clearPhoto("Photo removed. Your avatar is ready instead.")}>Remove my photo</button>}
+            <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" onChange={onPhoto} hidden />
+            <p className="private-photo-explainer" id="setup-photo-explainer">We accept JPEG, PNG or WebP up to 8 MB, re-encode the pixels on this device and remove source metadata. The photo stays in browser memory for up to 30 minutes, may appear only in a static portrait you choose to download or share, never enters Story video or a public result, and is never uploaded. Remove my photo or Clear my local data releases it sooner. Photo choice never affects scoring.</p>
+            {photoNotice && <p className={`photo-status is-${photoProcessing ? "processing" : photoNoticeKind}`} data-photo-state={photoProcessing ? "processing" : photoNoticeKind} role="status" aria-live="polite">{photoNotice}</p>}
             <label htmlFor="player-name">What should we call you?</label>
-            <input id="player-name" value={name} onChange={(e) => setName(e.target.value.slice(0, 30))} placeholder="Your name (optional)" />
-            <button className="big-action" onClick={beginQuiz}>Enter Region 0{regionOrder.indexOf(regionKey) + 1} <span>▶</span></button>
+            <input id="player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={`setup-name-privacy${displayNameError ? " setup-name-error" : ""}`} placeholder="Name or pseudonym (optional)" />
+            <p id="setup-name-privacy" className="name-privacy-notice">Your name stays in this tab and may appear in media you generate. It is excluded from quiz recovery and published results. If you later create a challenge, the reviewed name is sent to the server and shown to anyone with that challenge link.</p>
+            {displayNameError && <p className="display-name-error" id="setup-name-error" role="alert">{displayNameError}</p>}
+            <button className="big-action" aria-describedby="setup-entry-safeguard" disabled={photoProcessing || startLocked} onClick={() => void beginQuiz()}>{photoProcessing ? "Processing photo…" : activeFeatureFlags.random_quick_play ? "Start a fresh regional game" : `Enter Region 0${regionOrder.indexOf(regionKey) + 1}`} <span>▶</span></button>
+            {quickPlayNotice && <div className="quick-play-readiness" role="status"><p>{quickPlayNotice}</p><button type="button" onClick={() => void beginQuiz(true)}>Play the classic 12-question edition</button></div>}
           </div>
         </section>
       )}
@@ -524,34 +1511,54 @@ export default function BridePriceGame() {
         <section className="quiz-stage">
           <div className="quiz-pattern" aria-hidden="true" />
           <div className="quiz-header">
-            <button onClick={() => setScreen("setup")}>← Exit</button>
-            <div className="quiz-player"><img src={portrait} alt="" /><span>{name || "Player one"}</span></div>
+            <button onClick={changeAvatarDuringQuiz}>← Change avatar</button>
+            <div className="quiz-player"><img src={portrait} alt="" /><span>{privatePlayerName || avatarChoice.name}</span></div>
             <div className="game-hud">
               <span className="hud-edition">{region.name}</span>
               <span className="hud-aura"><i>✦</i><b>{aura}</b> aura</span>
               <span className="hud-streak"><i>⚡</i><b>{streak}</b> streak</span>
               <span className="hud-stamps"><i>◉</i><b>{stamps}</b>/4 gems</span>
-              <b className="hud-round">{String(index + 1).padStart(2, "0")} / 12</b>
+              <b className="hud-round">{fastEntryEnabled ? `Question ${index + 1} of 12` : `${String(index + 1).padStart(2, "0")} / 12`}</b>
             </div>
           </div>
+          {fastEntryEnabled && <div className="quiz-player-tools">
+            <label htmlFor="quiz-player-name">Display name <span>(optional)</span></label>
+            <input id="quiz-player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={`quiz-name-privacy${displayNameError ? " quiz-name-error" : ""}`} placeholder="Add a name or pseudonym" />
+            <p id="quiz-name-privacy" className="name-privacy-notice">Stored only in this tab unless you deliberately create a named challenge. It may appear in local media, but not in quiz recovery or a published result.</p>
+            {displayNameError && <p className="display-name-error" id="quiz-name-error" role="alert">{displayNameError}</p>}
+            <button onClick={restart}>Start again</button>
+          </div>}
+          {recoveryNotice && <p className="quiz-recovery-notice" role="status">{recoveryNotice}</p>}
+          {fastEntryEnabled && <p className="sr-only" role="status" aria-live="polite">Question {index + 1} of 12</p>}
+          <details className="scoring-details" open={safeguardReviewFixture?.screen === "quiz"}>
+            <summary>How scoring works</summary>
+            <div><p>{PRODUCT_SAFEGUARD}</p>{SCORING_PRINCIPLES.map((principle) => <p key={principle}>{principle}</p>)}</div>
+          </details>
           <div className="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin={1} aria-valuemax={12} aria-valuenow={index + 1}><span style={{ width: `${((index + 1) / 12) * 100}%` }} /></div>
           <div className="question-wrap" key={index}>
-            <div className="question-meta"><p className="eyebrow">{kindLabels[question.kind]}</p><span>{question.topic}</span></div>
-            <h2 className={question.kind === "image" ? "image-question" : question.kind === "complete" ? "sentence-question" : ""}>{question.prompt}</h2>
-            <div className={`answer-grid kind-${question.kind}`}>
-              {question.options.map((option, optionIndex) => {
+            <div className="question-meta"><p className="eyebrow">{kindLabels[questionKind]}</p><span>{randomQuestion ? "FRESH REGIONAL MIX" : question.topic}</span></div>
+            <h2 ref={questionHeadingRef} tabIndex={-1} className={questionKind === "image" ? "image-question" : questionKind === "complete" ? "sentence-question" : ""}>{questionPrompt}</h2>
+            <div className={`answer-grid kind-${questionKind}`}>
+              {questionOptions.map((option, optionIndex) => {
                 const slot = (question.visualStart || 0) + optionIndex;
-                const classes = [selected.includes(optionIndex) ? "selected" : "", feedbackOpen && question.correct.includes(optionIndex) ? "correct" : "", feedbackOpen && selected.includes(optionIndex) && !question.correct.includes(optionIndex) ? "wrong" : ""].filter(Boolean).join(" ");
-                return <button key={option} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen}>
-                  {question.kind === "image" && <img className="answer-image" src={`/quiz-art/${regionKey}-${slot}.webp`} alt={option} />}
-                  <span className="answer-letter">{String.fromCharCode(65 + optionIndex)}</span><b>{option}</b><i>{question.kind === "multi" ? selected.includes(optionIndex) ? "✓" : "+" : "↗"}</i>
+                const correctOptions = randomQuestion || questionKind === "image" ? revealedCorrectOptions : question.correct;
+                const classes = [selected.includes(optionIndex) ? "selected" : "", feedbackOpen && correctOptions.includes(optionIndex) ? "correct" : "", feedbackOpen && selected.includes(optionIndex) && !correctOptions.includes(optionIndex) ? "wrong" : ""].filter(Boolean).join(" ");
+                const imagePath = randomQuestion?.kind === "image" ? randomQuestion.imageAssets[optionIndex] : `/quiz-art/${regionKey}-${slot}.webp`;
+                const imagePresentation = imagePresentations[optionIndex];
+                const optionMarker = String.fromCharCode(65 + optionIndex);
+                return <button key={questionKind === "image" ? imagePath : questionOptionIds[optionIndex]} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen || imageAnswerPending} aria-label={questionKind === "image" ? `Option ${imagePresentation.marker}: ${imagePresentation.accessibilityDescription}` : undefined}>
+                  {questionKind === "image" && !failedQuestionImages.has(imagePath) && <img className="answer-image" src={imagePresentation.assetRef} alt={imagePresentation.accessibilityDescription} onError={() => setFailedQuestionImages((current) => new Set(current).add(imagePath))} />}
+                  {questionKind === "image" && failedQuestionImages.has(imagePath) && <span className="question-image-fallback">Image unavailable. {imagePresentation.accessibilityDescription}</span>}
+                  <span className="answer-letter">{optionMarker}</span>{questionKind !== "image" && <b>{option}</b>}<i>{questionKind === "multi" ? selected.includes(optionIndex) ? "✓" : "+" : "↗"}</i>
                 </button>
               })}
             </div>
-            {question.kind === "multi" && !feedbackOpen && <button className="lock-answer" disabled={selected.length !== 3} onClick={() => submitAnswer(selected)}>Lock in {selected.length}/3 answers <span>→</span></button>}
+            {questionKind === "multi" && !feedbackOpen && <button className="lock-answer" disabled={selected.length !== 3} onClick={() => void submitAnswer(selected)}>Lock in {selected.length}/3 answers <span>→</span></button>}
+            {imageAnswerPending && <p role="status">Checking your answer…</p>}
+            {imageAnswerError && <p role="alert">{imageAnswerError}</p>}
             {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
               <div><span>{lastCorrect ? "✦ CORRECT" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? "Culture gem energy!" : "Good guess. Bank this fact."}</b></div>
-              <p>{question.explanation}</p>
+              <p>{answerExplanation}</p>
               <button onClick={nextQuestion}>{index === 11 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
             </div>}
           </div>
@@ -571,25 +1578,47 @@ export default function BridePriceGame() {
         </section>
       )}
 
+      {screen === "reveal" && (
+        <section className={`score-reveal-stage reveal-tier-${tier}`} aria-live="assertive" aria-label="Your score is being revealed">
+          <img className="score-reveal-world" src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" />
+          <div className="score-reveal-veil" aria-hidden="true" />
+          <div className="reveal-bead-orbit" aria-hidden="true">
+            {Array.from({ length: 12 + tier * 4 }, (_, beadIndex) => <i key={beadIndex} style={{ "--angle": `${(360 / (12 + tier * 4)) * beadIndex}deg` } as React.CSSProperties}>{beadIndex % 4 === 0 ? "◆" : "●"}</i>)}
+          </div>
+          <div className="reveal-drum">
+            <span aria-hidden="true">{region.mark}</span>
+            <img src={portrait} alt="Your player portrait" />
+          </div>
+          <p>{region.name} score ceremony</p>
+          <h1>HOLD YOUR<br /><i>BREATH.</i></h1>
+          <div className="drum-roll-meter" aria-hidden="true">{Array.from({ length: 7 + tier * 2 }, (_, pulse) => <i key={pulse} style={{ "--height": `${10 + (pulse % 5) * 6}px`, "--delay": `${pulse * -.04}s` } as React.CSSProperties} />)}</div>
+          <b>{revealLines[tier]}</b>
+          <p className="result-safeguard reveal-safeguard">{PRODUCT_SAFEGUARD}</p>
+          <small>Knowledge. Rhythm. Reveal.</small>
+        </section>
+      )}
+
       {screen === "result" && (
-        <section className="result-stage">
-          <div className="confetti" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <i key={i} style={{ "--i": i } as React.CSSProperties} />)}</div>
+        <section className={`result-stage celebration-tier-${tier}`}>
+          <div className={`confetti confetti-tier-${tier}`} aria-hidden="true">{Array.from({ length: celebrationPieceCount }, (_, i) => <i key={i} style={{ "--i": i, "--x": `${(i * 43) % 100}%`, "--rotation": `${i * 27}deg`, "--duration": `${2.5 + (i % 5) * .3}s`, "--delay": `${(i % 7) * .08}s` } as React.CSSProperties}>{i % 9 === 0 ? "◌" : i % 5 === 0 ? region.mark : ""}</i>)}</div>
+          {tier >= 2 && <div className="celebration-halo" aria-hidden="true">{Array.from({ length: 16 + tier * 4 }, (_, i) => <i key={i} style={{ "--angle": `${i * 15}deg`, "--delay": `${(i % 5) * .07}s` } as React.CSSProperties} />)}</div>}
           {allAfricaJustUnlocked && <div className="all-africa-coronation" role="dialog" aria-modal="true" aria-label="All Africa access unlocked">
             <div className="coronation-fire" aria-hidden="true">{Array.from({ length: 45 }, (_, i) => <i key={i} style={{ "--i": i } as React.CSSProperties} />)}</div>
-            <div className="coronation-card"><span>✦ ◆ ◈ ✺ ☼</span><p>THE ULTIMATE PASSPORT</p><h2>ALL AFRICA<br /><i>ACCESS UNLOCKED</i></h2><b>Five regions mastered. Five scores of 9 or higher. One continent explored.</b><small>{name || "Champion"}, your Motherland Passport is complete. The council has declared your knowledge and your bride price legendary.</small><button onClick={() => setAllAfricaJustUnlocked(false)}>Claim the crown ✦</button></div>
+            <div className="coronation-card"><span>✦ ◆ ◈ ✺ ☼</span><p>THE ULTIMATE PASSPORT</p><h2>ALL AFRICA<br /><i>ACCESS UNLOCKED</i></h2><b>Five regions mastered. Five scores of 9 or higher. One continent explored.</b><small>{privatePlayerName || "Champion"}, your Motherland Passport is complete. The council has declared your knowledge journey legendary.</small><small className="coronation-safeguard">{PRODUCT_SAFEGUARD}</small><button onClick={() => setAllAfricaJustUnlocked(false)}>Claim the crown ✦</button></div>
           </div>}
-          <p className="result-kicker">{region.name} edition • official bride price knowledge certificate</p>
+          <p className="result-kicker">{region.name} edition • playful cultural knowledge scorecard</p>
           <div className="result-layout">
             <div className="result-card">
               <img className="result-world-art" src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" />
               <div className="result-frame">
                 <div className="result-region">{region.mark} {region.short.toUpperCase()} AFRICA {region.mark}</div>
                 <div className="result-portrait with-image"><img src={portrait} alt="" /></div>
-                <p>{name || "A Most Excellent Human"}</p>
+                <p>{portraitDisplayName}</p>
                 <h1>{tierTitles[tier]}</h1>
                 <div className="result-gift"><b>{gifts[tier][0]}</b><span>+ {gifts[tier][1]}<br />+ {gifts[tier][2]}</span></div>
                 <div className="result-gems">{stampNames[regionKey].map((stamp) => <i key={stamp} title={stamp}>◆</i>)}</div>
                 <small>Knowledge score {correctCount}/12 • {region.short} Africa</small>
+                <p className="result-card-safeguard">{PRODUCT_SAFEGUARD}</p>
               </div>
             </div>
             <div className="result-copy">
@@ -597,22 +1626,54 @@ export default function BridePriceGame() {
               <p className="result-description">{tierCopy[tier]}</p>
               <div className="result-aura"><span>Final aura</span><b>{revealAura.toLocaleString()}</b><i>+500 reveal bonus</i></div>
               <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
-              <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>
-              <button className="nominate-action" onClick={nominate}><span>＋</span><b>Nominate a friend</b><small>Sends them straight to the {region.short} edition</small><i>→</i></button>
-              <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`I nominate you for the ${region.name} edition of What’s Your Bride Price? ${nominationUrl}`)}`} target="_blank" rel="noreferrer">Send nomination on WhatsApp ↗</a>
+              {activeFeatureFlags.commerce && <RoyalRevealOffer edition={regionKey} score={correctCount} total={region.questions.length} avatarId={avatarId} reviewScenario={royalRevealReviewScenario} purchaseContext={purchaseContext} />}
+              {fastEntryEnabled && <div className="result-name-editor"><label htmlFor="result-player-name">Name or pseudonym on your portrait <span>(optional)</span></label><input id="result-player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={`result-name-privacy${displayNameError ? " result-name-error" : ""}`} placeholder={publicDisplayNameFallback} /><p id="result-name-privacy" className="name-privacy-notice">This name can appear in your local portrait and, only if you choose nominations, the reviewed public challenge. Published result pages use “A challenger” instead.</p>{displayNameError && <p className="display-name-error" id="result-name-error" role="alert">{displayNameError}</p>}</div>}
+              {photo && <p className="private-media-boundary">Your private photo can appear only in the portrait you deliberately download or send through your device’s share sheet. Public links and previews use approved avatar and regional artwork.</p>}
+              {acceptedChallenge && completionState === "loading" && <div className="comparison-loading" role="status" aria-live="polite"><b>Confirming your official challenge score</b><span>Your answers are being checked against the approved answer keys.</span></div>}
+              {acceptedChallenge && completionState === "error" && <div className="comparison-failure" role="status"><b>Your culture result is safe.</b><span>We could not confirm the head-to-head comparison yet. Retry, or continue with a normal regional quiz.</span><div><button type="button" onClick={() => setCompletionState("idle")}>Retry comparison</button><button type="button" onClick={restart}>Play another region</button></div></div>}
+              {acceptedChallenge && comparison && <ChallengeComparison comparison={comparison} onRechallenge={openNominations} onShare={(trigger) => void openShareCentre(trigger)} onPlayAnotherRegion={restart} />}
+              {nominationOpen && <NominateThreePanel
+                surface={acceptedChallenge && comparison ? "comparison" : "result"}
+                edition={regionKey}
+                defaultDisplayName={portraitDisplayName}
+                scopeId={nominationScopeId}
+                actionMode={challengeActionMode}
+                challengeCreationClient={effectiveChallengeCreationClient}
+                onClose={() => setNominationOpen(false)}
+              />}
+              <div className="result-actions" id="free-result-actions">
+                {!acceptedChallenge && <button className="big-action" onClick={openNominations}>Nominate three people <span>↗</span></button>}
+                <button className="outline-action" onClick={(event) => void openShareCentre(event.currentTarget)} disabled={shareCentreBusy}>{shareCentreBusy ? "Preparing Share Centre…" : "Open Share Centre"}</button>
+                <button className="outline-action" onClick={downloadResult}>↓ Download</button>
+              </div>
+              {!acceptedChallenge && <p className="challenge-action-note">{challengeActionMode === "personalised" ? "Prepares one private, verified score challenge for all three sharing slots." : "Opens three honest regional-invitation slots while verified challenges are unavailable."}</p>}
               <div className={`passport-progress ${allAfricaUnlocked ? "all-access" : ""}`}><span>{allAfricaUnlocked ? "ALL-AFRICA ACCESS UNLOCKED" : "Motherland passport locked"}</span><div>{regionOrder.map((key) => <i key={key} className={(displayScores[key] || 0) > 8 ? "earned" : ""} title={`${regions[key].name}: ${displayScores[key] || 0}/12`}><span>{regions[key].mark}</span><b>{displayScores[key] || 0}/12</b></i>)}</div><b>{allAfricaUnlocked ? "Five masteries complete • Ultimate passport earned" : `${masteredRegions.length}/5 mastery seals • score 9+ in every region to unlock`}</b></div>
-              <button className="play-again" onClick={restart}>Play another edition</button>
+              {!acceptedChallenge && <button className="play-again" onClick={restart}>Play another edition</button>}
             </div>
           </div>
         </section>
       )}
 
+      {shareCentreOpen && shareProjection && <ShareCentre
+        projection={shareProjection}
+        prepareMedia={prepareResultMedia}
+        onClose={() => setShareCentreOpen(false)}
+        returnFocusRef={shareTriggerRef}
+        resultPublicationClient={shareResultPublicationClient}
+        soundEnabled={sound}
+      />}
+
       {menuOpen && (
         <div className="about-modal" role="dialog" aria-modal="true" aria-label="About this game">
           <div className="about-sheet"><button className="modal-close" onClick={() => setMenuOpen(false)}>×</button>
-            <p className="eyebrow">About this experience</p><h2>THE STAKES ARE HIGH<br /><i>PROVE YOUR HIGH VALUE</i></h2>
-            <p>Five fast-moving editions turn Africa’s languages, histories, proverbs, foodways, music and visual cultures into a knowledge quest built for curiosity.</p>
-            <div className="guardrails"><div><b>Africa is plural</b><span>Each answer opens a door, never claims to contain a whole people or place.</span></div><div><b>Your portrait is private</b><span>Photos are processed in your browser and are never uploaded or stored.</span></div><div><b>Learn as you play</b><span>Every answer unlocks a clear explanation, correct guess or not.</span></div><div><b>An original score</b><span>The reactive audio is an abstract game soundtrack, not a traditional recording.</span></div></div>
+            <p className="eyebrow">About this experience</p><h2>THE STAKES ARE HIGH<br /><i>PROVE YOUR CULTURE KNOWLEDGE</i></h2>
+            <p className="about-safeguard">{PRODUCT_SAFEGUARD}</p>
+            <p>This is a fictional entertainment and learning experience. Five fast-moving editions turn selected African languages, histories, proverbs, foodways, music and visual cultures into a knowledge quest built for curiosity. It does not value people or assess anyone’s suitability for marriage or relationships. Anonymous play needs no account.</p>
+            <section className="about-scoring" aria-labelledby="about-scoring-title"><h3 id="about-scoring-title">How scoring works</h3>{SCORING_PRINCIPLES.map((principle) => <p key={principle}>{principle}</p>)}</section>
+            <div className="guardrails"><div><b>Africa is plural</b><span>Each short question simplifies a diverse subject and opens a door. It never claims to contain a whole people, place or universal rule.</span></div><div><b>Your portrait is private</b><span>Photos are optional. The original is never uploaded. Its decoded pixels are resized and re-encoded on this device so source metadata is not copied. Remove my photo clears the in-memory copy. Names and photos are excluded from recovery, and neither changes scoring.</span></div><div><b>Limited recovery</b><span>This tab can restore edition, approved avatar and answer choices for up to 24 hours. It is non-authoritative and contains no name, photo or result score.</span></div><div><b>Learn as you play</b><span>Every answer unlocks a reviewed cultural explanation, correct guess or not.</span></div><div><b>An original score</b><span>The reactive audio is an abstract game soundtrack, not a traditional recording.</span></div></div>
+            <p className="durable-storage-note"><b>Durable controls</b> Durable storage and public deletion controls are not active in this build. No D1 database or R2 media bucket is connected.</p>
+            <p className="cultural-review-note"><b>Cultural review and reporting</b> Questions and explanations are based on the sources below, but any short quiz can miss nuance. An approved community-reporting contact route is not yet configured and is required before production activation.</p>
+            <p className="audience-note"><b>Audience</b> Intended primarily for adults and people above the applicable age of digital consent. It is not directed to children under 13 in the UK. The game does not collect, infer or request proof of age.</p>
             <p className="source-label">Follow the knowledge trail</p>
             <div className="source-links">
               {sourceCollections.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>)}
