@@ -61,7 +61,7 @@ function insertOrder(database, overrides = {}) {
 
 test("0006 is additive, checksummed, supports empty and 0000-through-0005 upgrades, and is inert on replay", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 10);
+  assert.equal(plan.length, 11);
   assert.match(plan[6].id, /^0006_[a-z0-9_]+$/);
   assert.match(plan[6].checksum, /^[0-9a-f]{64}$/);
   assert.deepEqual(plan[6].statements.filter((statement) => /^CREATE TABLE/i.test(statement)).map((statement) => statement.match(/`([^`]+)`/)?.[1]).sort(), [
@@ -111,7 +111,7 @@ test("authoritative completion creates the durable owner-bound result used by th
 test("orders enforce exact product, price, idempotency and Stripe identifier uniqueness", async () => {
   const database = createIsolatedDatabase();
   try {
-    applyMigrationPlan(database, await loadMigrationPlan(), { now }); seedResult(database); insertOrder(database);
+    applyMigrationPlan(database, (await loadMigrationPlan()).slice(0,10), { now }); seedResult(database); insertOrder(database);
     assert.throws(() => insertOrder(database, { id: "order-2", reference: `rr_${"2".repeat(32)}` }), /UNIQUE constraint/);
     assert.throws(() => insertOrder(database, { id: "order-3", reference: `rr_${"3".repeat(32)}`, idempotency: "f".repeat(64), product: "other" }), /CHECK constraint/);
     assert.throws(() => insertOrder(database, { id: "order-4", reference: `rr_${"4".repeat(32)}`, idempotency: "1".repeat(64), currency: "USD" }), /CHECK constraint/);

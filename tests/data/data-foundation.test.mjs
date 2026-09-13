@@ -92,7 +92,7 @@ function insertResult(database, attempt, overrides = {}) {
 
 test("migration plan is ordered and checksummed", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 10);
+  assert.equal(plan.length, 11);
   assert.equal(plan[0].id, "0000_loving_stepford_cuckoos");
   assert.equal(plan[1].id, "0001_same_vertigo");
   assert.equal(plan[2].id, "0002_little_inertia");
@@ -115,7 +115,7 @@ test("empty database migration, schema tracking, dry-run and repeated execution 
     assert.equal(database.prepare("SELECT count(*) AS count FROM sqlite_master WHERE type='table' AND name='results'").get().count, 0);
     assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, plan.map((migration) => migration.id));
     assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, []);
-    assert.equal(database.prepare("SELECT count(*) AS count FROM schema_migrations").get().count, 10);
+    assert.equal(database.prepare("SELECT count(*) AS count FROM schema_migrations").get().count, 11);
   } finally {
     database.close();
   }

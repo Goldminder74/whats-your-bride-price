@@ -36,7 +36,7 @@ function answers(selection) { return selection.questions.map((question) => ({ qu
 
 test("0008 is one checksummed additive migration and preserves populated 0007 rows", async () => {
   const plan = await loadMigrationPlan(); const migration = plan[8];
-  assert.equal(plan.length, 10); assert.equal(migration.id, "0008_simple_nocturne");
+  assert.equal(plan.length, 11); assert.equal(migration.id, "0008_simple_nocturne");
   const raw = await readFile(new URL("../../drizzle/0008_simple_nocturne.sql", import.meta.url));
   assert.equal(createHash("sha256").update(raw).digest("hex"), migration.checksum);
   assert.doesNotMatch(raw.toString(), /INSERT INTO [`"]?questions|INSERT INTO [`"]?quiz_editions/i);

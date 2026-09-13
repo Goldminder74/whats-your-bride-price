@@ -361,3 +361,7 @@ The disabled Cowrie Wallet model stores a random internal ID, opaque public refe
 Cowrie operations are strictly functional and do not depend on analytics consent. Owner hashes, wallet references, attempt IDs, ledger IDs and recovery values cannot be reused for analytics, marketing or cross-site tracking. The raw 32-byte recovery credential appears only in the controlled creation or rotation response and in a copy or download the player explicitly requests. Clearing browser storage does not fingerprint a returning player; losing both credentials can prevent automatic recovery.
 
 The private nullable Cowrie issuance timestamp records server commitment of a paid attempt projection for return. It is not proof of receipt, viewing or completion; it never enters analytics, public projections, URLs or application logs, and it extends no retention. A pre-issuance reversal retires the paid attempt and restores its exact bucket once; network loss after issuance does not refund.
+
+## Disabled Cowrie purchases
+
+The new tab-local pending purchase key contains only an opaque order reference and is explicitly cleared by application local clearing. No Stripe ID, recovery value or wallet/ledger identifier is stored there. Signature-first webhook audit gains three bounded nullable reconciliation facts; no raw payload/customer/card data is added. Cowrie purchase analytics are unsupported. Draft immediate delivery is separate from analytics. See [Cowrie commerce](cowrie-commerce.md).

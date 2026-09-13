@@ -41,3 +41,7 @@ const repository: CowrieWalletRepository = {
 
 let service: CowrieWalletService | null = null;
 export function getCowrieReviewRuntime(): CowrieWalletService { return service ||= new CowrieWalletService(repository); }
+
+// Imported only by the explicitly authorised, server-side commerce review runtime.
+export function getReviewCowrieWallet(reference: string): CowrieWalletRow | null { return references.get(reference) || null; }
+export function getReviewCowrieWalletById(id: string): CowrieWalletRow | null { return [...references.values()].find(row => row.id === id) || null; }

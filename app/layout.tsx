@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./analyticsConsent.css";
 import "./privacyControls.css";
+import "./cowrieCommerce.css";
 import "./privacyReview.css";
 import "./royalReveal.css";
 import "./dailyChallenge.css";

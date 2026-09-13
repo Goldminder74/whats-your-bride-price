@@ -223,27 +223,26 @@ test("purchased reversal restores the exact allocation once and purchased value 
     const first = database.prepare("SELECT id FROM quiz_attempts ORDER BY created_at,id LIMIT 1").get().id;
     const selection = await new D1QuestionSelectionRepository(adapter).getAttempt(first, database.prepare("SELECT anonymous_owner_hash FROM cowrie_wallets").get().anonymous_owner_hash, now);
     const completion = await completeCowrieQuickPlay(adapter, { attemptId: first, anonymousSessionCredential: owner, idempotencyKey: "purchase-test-result", avatarId: defaultAvatarId, answers: selection.selection.questions.map(question => ({ questionStableId: question.stableId, selectedOptionIds: [question.answerOptions.find(option => !question.acceptedAnswers.some(accepted => accepted.length === 1 && accepted[0] === option.id)).id] })) }, now);
-    const result = database.prepare("SELECT id FROM results WHERE public_slug=?").get(completion.resultSlug).id;
+    assert.ok(database.prepare("SELECT id FROM results WHERE public_slug=?").get(completion.resultSlug).id);
     const wallet = database.prepare("SELECT * FROM cowrie_wallets").get();
-    // Synthetic local FK scaffolding only. The existing order schema accepts
-    // Royal Reveal only; real Cowrie order/fulfilment support remains Workstream D.
+    // Synthetic local, authoritative Cowrie allocation; no provider is contacted.
     const reference = `rr_${"d".repeat(32)}`;
-    database.prepare(`INSERT INTO commerce_orders (id,public_order_reference,product_key,result_id,anonymous_owner_hash,currency,amount_minor,state,client_reference_id,stripe_payment_link_id,consent_notice_version,immediate_delivery_consent_at,pending_expires_at,retention_expires_at,idempotency_hash,version,created_at,updated_at) VALUES ('order_cowrie_test',?,'royal_reveal_v1',?,?,'GBP',199,'fulfilled',?,'plink_localfixture','royal-reveal-immediate-delivery-v1',?,?,?, ?,1,?,?)`).run(reference, result, wallet.anonymous_owner_hash, reference, now, now + 1800000, now + 400 * 86400000, "d".repeat(64), now, now);
+    database.prepare(`INSERT INTO commerce_orders (id,public_order_reference,product_key,cowrie_wallet_id,anonymous_owner_hash,currency,amount_minor,state,client_reference_id,stripe_payment_link_id,consent_notice_version,immediate_delivery_consent_at,pending_expires_at,retention_expires_at,idempotency_hash,version,created_at,updated_at) VALUES ('order_cowrie_test',?,'cowrie_5_v1',?,?,'GBP',199,'fulfilled',?,'plink_localfixture','royal-reveal-immediate-delivery-v1',?,?,?, ?,1,?,?)`).run(reference, wallet.id, wallet.anonymous_owner_hash, reference, now, now + 1800000, now + 400 * 86400000, "d".repeat(64), now, now);
     const allocation = `allocation_${"d".repeat(32)}`;
-    database.prepare(`INSERT INTO cowrie_purchase_allocations (id,order_id,wallet_id,product_key,original_quantity,remaining_quantity,state,fulfilment_idempotency_hash,fulfilled_at,retention_expires_at,version,created_at,updated_at) VALUES (?,'order_cowrie_test',?,'cowrie_pack_v1',2,2,'active',?,?,?,1,?,?)`).run(allocation, wallet.id, "d".repeat(64), now, now + 400 * 86400000, now, now);
-    database.prepare(`INSERT INTO cowrie_ledger (id,wallet_id,bucket,entry_type,delta,idempotency_domain,idempotency_hash,related_order_id,related_allocation_id,reason_code,created_at) VALUES (?,?,'purchased','purchase_credit',2,'purchase',?,'order_cowrie_test',?,'verified_purchase',?)`).run(`ledger_${"d".repeat(32)}`, wallet.id, "d".repeat(64), allocation, now);
+    database.prepare(`INSERT INTO cowrie_purchase_allocations (id,order_id,wallet_id,product_key,original_quantity,remaining_quantity,state,fulfilment_idempotency_hash,fulfilled_at,retention_expires_at,version,created_at,updated_at) VALUES (?,'order_cowrie_test',?,'cowrie_5_v1',5,5,'active',?,?,?,1,?,?)`).run(allocation, wallet.id, "d".repeat(64), now, now + 400 * 86400000, now, now);
+    database.prepare(`INSERT INTO cowrie_ledger (id,wallet_id,bucket,entry_type,delta,idempotency_domain,idempotency_hash,related_order_id,related_allocation_id,reason_code,created_at) VALUES (?,?,'purchased','purchase_credit',5,'purchase',?,'order_cowrie_test',?,'verified_purchase',?)`).run(`ledger_${"d".repeat(32)}`, wallet.id, "d".repeat(64), allocation, now);
     await service.startQuickPlay(request("consume-bonus-one")); await service.startQuickPlay(request("consume-bonus-two"));
     const transition = await preparePaid(context, "purchased-pending");
-    assert.equal(database.prepare("SELECT purchased_balance FROM cowrie_wallets").get().purchased_balance, 1);
-    assert.equal(database.prepare("SELECT remaining_quantity FROM cowrie_purchase_allocations").get().remaining_quantity, 1);
+    assert.equal(database.prepare("SELECT purchased_balance FROM cowrie_wallets").get().purchased_balance, 4);
+    assert.equal(database.prepare("SELECT remaining_quantity FROM cowrie_purchase_allocations").get().remaining_quantity, 4);
     assert.equal(await repository.reverseUnissued(transition), true); assert.equal(await repository.reverseUnissued(transition), false);
-    assert.equal(database.prepare("SELECT purchased_balance FROM cowrie_wallets").get().purchased_balance, 2);
-    assert.equal(database.prepare("SELECT remaining_quantity FROM cowrie_purchase_allocations").get().remaining_quantity, 2);
+    assert.equal(database.prepare("SELECT purchased_balance FROM cowrie_wallets").get().purchased_balance, 5);
+    assert.equal(database.prepare("SELECT remaining_quantity FROM cowrie_purchase_allocations").get().remaining_quantity, 5);
     assert.equal(await repository.commitIssuance(transition), false);
-    const next = await service.startQuickPlay(request("purchased-new-key")); assert.equal(next.access, "purchased"); assert.equal(next.wallet.purchasedBalance, 1);
+    const next = await service.startQuickPlay(request("purchased-new-key")); assert.equal(next.access, "purchased"); assert.equal(next.wallet.purchasedBalance, 4);
     assert.equal(await repository.expireBonuses({ walletId: wallet.id, now: now + 181 * 86400000, limit: 100 }), 0);
-    assert.equal(database.prepare("SELECT purchased_balance FROM cowrie_wallets").get().purchased_balance, 1);
-    assert.equal(database.prepare("SELECT remaining_quantity FROM cowrie_purchase_allocations").get().remaining_quantity, 1);
+    assert.equal(database.prepare("SELECT purchased_balance FROM cowrie_wallets").get().purchased_balance, 4);
+    assert.equal(database.prepare("SELECT remaining_quantity FROM cowrie_purchase_allocations").get().remaining_quantity, 4);
     assert.equal(database.prepare("PRAGMA foreign_key_check").all().length, 0);
   } finally { database.close(); }
 });
