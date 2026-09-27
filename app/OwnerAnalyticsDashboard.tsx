@@ -94,7 +94,7 @@ export default function OwnerAnalyticsDashboard({ report, reviewFixture, storage
       <p className="owner-mode-unsupported"><b>Game mode</b><span>Unsupported by the current analytics data contract.</span></p>
     </form>
 
-    <aside className="owner-active-filters" aria-label="Active filter summary"><b>Active filters</b><span>{report.filterSummary}</span><Link href={`/owner/analytics/export?${exportQuery.toString()}`}>Export aggregate CSV</Link></aside>
+    <aside className="owner-active-filters" aria-label="Active filter summary"><b>Active filters</b><span>{report.filterSummary}</span><a href={`/owner/analytics/export?${exportQuery.toString()}`}>Export aggregate CSV</a></aside>
 
     {storageUnavailable ? <section className="owner-empty" role="alert"><p className="owner-kicker">Report unavailable</p><h2>Analytics data is unavailable</h2><p>The dashboard failed closed without querying or exposing fallback data. No infrastructure details are shown.</p></section> : !hasData && <section className="owner-empty" role="status"><p className="owner-kicker">No measured events</p><h2>No data for these filters</h2><p>No synthetic production values are shown. Adjust the reporting period or wait for consented measured traffic.</p></section>}
     {!analyticsEnabled && <aside className="owner-analytics-disabled" role="status"><b>Analytics collection is disabled.</b><span>This report does not activate collection. It may only describe already-retained consented measured traffic.</span></aside>}

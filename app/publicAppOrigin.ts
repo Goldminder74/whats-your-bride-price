@@ -1,3 +1,4 @@
+import { validateHostingOrigin, type HostingOrigin } from "./hostingOrigin.ts";
 const PRODUCTION_HOSTNAME = "brideprice.classesforculture.com";
 const DEFAULT_PRODUCTION_ORIGIN = `https://${PRODUCTION_HOSTNAME}`;
 const APPROVED_STAGING_ORIGIN = "https://whats-your-bride-price-staging.ayo43077.chatgpt.site";
@@ -13,6 +14,7 @@ export type ApprovedPublicQuery = PermittedEntryQuery;
 declare const __WYBP_PUBLIC_APP_ORIGIN__: string | undefined;
 declare const __WYBP_RUNTIME_ENV__: PublicAppEnvironment | undefined;
 declare const __WYBP_STAGING_APP_ORIGIN__: string | undefined;
+declare const __WYBP_HOSTING_ORIGIN__: HostingOrigin | undefined;
 
 function configurationError(reason: string): Error {
   return new Error(`Invalid PUBLIC_APP_ORIGIN: ${reason}`);
@@ -26,7 +28,14 @@ export function validatePublicAppOrigin(
   value: string,
   environment: PublicAppEnvironment,
   trustedStagingOrigin?: string,
+  hosting?: HostingOrigin,
 ): PublicAppOrigin {
+  if (hosting !== undefined) {
+    if (trustedStagingOrigin !== undefined || value !== validateHostingOrigin(hosting)) {
+      throw configurationError("hosting origin must match explicit configuration exactly.");
+    }
+    return value as PublicAppOrigin;
+  }
   // This argument is supplied only by trusted build configuration.
   if (trustedStagingOrigin !== undefined && trustedStagingOrigin !== APPROVED_STAGING_ORIGIN) {
     throw configurationError("staging configuration must match the approved staging origin exactly.");
@@ -84,11 +93,13 @@ export function resolvePublicAppOrigin(
   configuredValue: string | undefined,
   environment: PublicAppEnvironment,
   trustedStagingOrigin?: string,
+  hosting?: HostingOrigin,
 ): PublicAppOrigin {
   return validatePublicAppOrigin(
-    configuredValue || trustedStagingOrigin || DEFAULT_PRODUCTION_ORIGIN,
+    configuredValue || hosting?.origin || trustedStagingOrigin || DEFAULT_PRODUCTION_ORIGIN,
     environment,
     trustedStagingOrigin,
+    hosting,
   );
 }
 
@@ -103,6 +114,7 @@ export const PUBLIC_APP_ORIGIN: PublicAppOrigin = resolvePublicAppOrigin(
   injectedOrigin,
   injectedEnvironment,
   injectedStagingOrigin,
+  typeof __WYBP_HOSTING_ORIGIN__ === "object" ? __WYBP_HOSTING_ORIGIN__ : undefined,
 );
 
 export function resolveBrowserPublicAppOrigin(currentOrigin: string): PublicAppOrigin {

@@ -14,6 +14,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "work/**",
+    "outputs/netlify-worker/**",
     "next-env.d.ts",
   ]),
   eslint.configs.recommended,

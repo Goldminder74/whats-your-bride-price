@@ -2,6 +2,7 @@ import { sites } from "@openai/sites-vite-plugin";
 import vinext from "vinext";
 import { defineConfig } from "vite";
 import hostingConfig from "./.openai/hosting.json";
+import { validateHostingOrigin, type HostingOrigin } from "./app/hostingOrigin.ts";
 import {
   assertCommerceReadiness,
   assertFirstPartyAnalyticsStorage,
@@ -49,7 +50,22 @@ const localBindingConfig = {
 };
 
 export default defineConfig(async ({ mode }) => {
+  const target = process.env.WYBP_DEPLOY_TARGET || "sites";
+  if (target !== "sites" && target !== "netlify-worker") throw new Error("Unknown deployment target");
+  const netlifyWorker = target === "netlify-worker";
+  let hostingOrigin: HostingOrigin | undefined;
+  if (netlifyWorker) {
+    const environment = process.env.WYBP_HOSTING_ENVIRONMENT;
+    if (environment !== "test" && environment !== "production") throw new Error("Explicit hosting environment required");
+    hostingOrigin = { environment, origin: process.env.PUBLIC_APP_ORIGIN || "" };
+    validateHostingOrigin(hostingOrigin);
+    if (process.env.WYBP_STAGING_APP_ORIGIN) throw new Error("Sites staging configuration cannot select the Netlify origin");
+    if (Object.entries(process.env).some(([key, value]) => key.startsWith("WYBP_REVIEW_") && value && value !== "false")) {
+      throw new Error("Review overrides are unavailable on the Netlify target");
+    }
+  }
   const featureFlags = resolveFeatureFlags(process.env);
+  if (netlifyWorker && Object.values(featureFlags).some(Boolean)) throw new Error("Initial Netlify target requires every feature flag disabled");
   const diagnosticsRequested = process.env.WYBP_REVIEW_DIAGNOSTICS === "true";
   const diagnosticsApproved = process.env.WYBP_REVIEW_BUILD === "true";
   const challengeFixturesRequested = process.env.WYBP_REVIEW_CHALLENGE_FIXTURES === "true";
@@ -104,7 +120,7 @@ export default defineConfig(async ({ mode }) => {
   const reviewPrivacyFixtures = privacyFixturesRequested && diagnosticsApproved;
   const reviewRandomQuickPlayFixtures = randomQuickPlayFixturesRequested && diagnosticsApproved;
   const reviewCowrieFixtures = cowrieFixturesRequested && diagnosticsApproved;
-  assertSitesCompatibleFeatureFlags(featureFlags, { authorisedReviewFixtures: reviewCommerceFixtures });
+  if (!netlifyWorker) assertSitesCompatibleFeatureFlags(featureFlags, { authorisedReviewFixtures: reviewCommerceFixtures });
   assertDynamicResultsStorage(featureFlags, {
     d1Configured: Boolean(d1),
     r2Configured: Boolean(r2),
@@ -171,6 +187,7 @@ export default defineConfig(async ({ mode }) => {
     process.env.PUBLIC_APP_ORIGIN,
     publicAppEnvironment,
     process.env.WYBP_STAGING_APP_ORIGIN,
+    hostingOrigin,
   );
 
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
@@ -183,11 +200,40 @@ export default defineConfig(async ({ mode }) => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    environments: {
+      client: {
+        build: {
+          rolldownOptions: {
+            output: {
+              codeSplitting: {
+                groups: [{
+                  name: "vinext",
+                  // Vinext beta.2 returns early for installed node_modules before
+                  // its shared-shim rule. Mirror upstream #2795 without changing
+                  // dependencies or pulling route-owned shims into the entry.
+                  test(id: string) {
+                    const relative = id.replaceAll("\\", "/").split("/node_modules/vinext/dist/shims/")[1];
+                    if (!relative) return false;
+                    const shim = relative.split("?", 1)[0].replace(/\.[^.]+$/, "");
+                    return ![
+                      "compat-router", "dynamic", "dynamic-preload-chunks", "form",
+                      "image", "internal/hybrid-client-route-owner", "layout-segment-context",
+                      "legacy-image", "link", "offline", "router", "script", "web-vitals",
+                    ].includes(shim);
+                  },
+                }],
+              },
+            },
+          },
+        },
+      },
+    },
     define: {
       __WYBP_FEATURE_FLAGS__: JSON.stringify(featureFlags),
       __WYBP_PUBLIC_APP_ORIGIN__: JSON.stringify(publicAppOrigin),
       __WYBP_STAGING_APP_ORIGIN__: JSON.stringify(process.env.WYBP_STAGING_APP_ORIGIN ?? null),
       __WYBP_RUNTIME_ENV__: JSON.stringify(publicAppEnvironment),
+      __WYBP_HOSTING_ORIGIN__: hostingOrigin ? JSON.stringify(hostingOrigin) : "undefined",
       __WYBP_REVIEW_DIAGNOSTICS__: JSON.stringify(reviewDiagnostics),
       __WYBP_REVIEW_CHALLENGE_FIXTURES__: JSON.stringify(reviewChallengeFixtures),
       __WYBP_REVIEW_CHALLENGE_DATA__: JSON.stringify(reviewChallengeData),
@@ -206,10 +252,10 @@ export default defineConfig(async ({ mode }) => {
       : undefined,
     plugins: [
       vinext(),
-      sites(),
+      ...(!netlifyWorker ? [sites()] : []),
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
-        config: localBindingConfig,
+        ...(netlifyWorker ? { configPath: "wrangler.netlify.jsonc" } : { config: localBindingConfig }),
       }),
     ],
   };

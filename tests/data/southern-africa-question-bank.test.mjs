@@ -103,7 +103,7 @@ test("prior packs, protected files and migrations retain approved hashes", async
   const protectedFiles = new Map([
     [new URL("../../app/gameData.ts", import.meta.url), "3ce3474de2e6b072bf4e893fc2760c8b9ba996a889697ec5ac15f631cc05c74d"],
     [new URL("../../.openai/hosting.json", import.meta.url), "757e9a6341e9b78488a0d053875fd148be1c07b3ec00c7b7c2cb5ee3eb44cf7e"],
-    [new URL("../../package-lock.json", import.meta.url), "2d31d7ae177fd0fec55044c069c86109ad92c3baceb79b85c7c05508de60646a"],
+    [new URL("../../package-lock.json", import.meta.url), "237e35d0429f629f976ac53bb16e32ccb01cf1b8e8c9c2acfd87603df07b0129"],
     [priorFiles[0], "74ad3ce51666c010fb7e82e4f0539f5af8d57b68efb19b1dd0f02c96282c6871"],
     [priorFiles[1], "51142019e2ee3926c2baca666508b451b017724175a9fbca3206b9000288a2cc"],
     [priorFiles[2], "88abc07b04832b530930e422960a90e8bcd88b0b4e49010c1e19c6a9007c17e2"],

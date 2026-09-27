@@ -64,10 +64,24 @@ test("channel and edition comparisons use exact identifiers and accessible table
 
 test("empty, small-sample, unavailable and CSV states are honest", async ({ browser }) => {
   const context = await ownerContext(browser, { viewport: { width: 1180, height: 850 } }); const page = await context.newPage();
+  const exportRequests: string[] = [];
+  page.on("request", request => { if (new URL(request.url()).pathname === "/owner/analytics/export") exportRequests.push(request.url()); });
   await page.goto("/owner/analytics?fixture=empty"); await expect(page.getByRole("heading", { name: "No data for these filters" })).toBeVisible(); await screenshot(page, "empty-state.png");
   await page.goto("/owner/analytics?fixture=small_sample"); await expect(page.getByText("small sample", { exact: true }).first()).toBeVisible(); await screenshot(page, "small-sample-state.png");
   await page.goto("/owner/analytics?fixture=d1_unavailable"); await expect(page.getByRole("heading", { name: "Analytics data is unavailable" })).toBeVisible(); await screenshot(page, "d1-unavailable-state.png");
   await page.goto("/owner/analytics?fixture=csv_export"); const link = page.getByRole("link", { name: "Export aggregate CSV" }); await link.focus(); await screenshot(page, "csv-export.png");
+  expect(exportRequests, "Viewing/focusing an export must not consume the owner's export quota").toEqual([]);
+  const exportPageUrl = page.url();
+  await page.evaluate(() => { document.documentElement.dataset.exportDocument = "retained"; });
+  const downloadPending = page.waitForEvent("download");
+  await link.click();
+  const download = await downloadPending;
+  expect(await download.failure()).toBeNull();
+  expect(download.suggestedFilename()).toBe("wybp-aggregate-report.csv");
+  expect(exportRequests).toHaveLength(1);
+  expect(new URL(exportRequests[0]).searchParams.has("_rsc")).toBe(false);
+  expect(page.url()).toBe(exportPageUrl);
+  expect(await page.evaluate(() => document.documentElement.dataset.exportDocument)).toBe("retained");
   const href = await link.getAttribute("href"); expect(href).toBeTruthy();
   const csvResponse = await context.request.get(href!, { headers: { "sec-fetch-site": "same-origin" } }); expect(csvResponse.status()).toBe(200);
   const csv = await csvResponse.text(); expect(csv).toContain('"dimension","gameMode"'); expect(csv).not.toMatch(/analytics_session_hash|properties_json|review-owner/i);

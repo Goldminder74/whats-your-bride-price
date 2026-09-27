@@ -105,5 +105,5 @@ function stop() {
 process.on("SIGINT", stop);
 process.on("SIGTERM", stop);
 server.listen(port, hostname, () => {
-  console.log(`Review preview ready at http://${hostname}:${port}`);
+  console.log(`Review preview ready at http://${hostname}:${server.address().port}`);
 });
