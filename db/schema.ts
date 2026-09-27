@@ -803,13 +803,53 @@ export const featureFlagOverrides = sqliteTable("feature_flag_overrides", {
   check("feature_flag_overrides_reason_ck", sql`length(${table.reason}) between 3 and 500`),
 ]);
 
+export const questionEvidenceVerifications = sqliteTable("question_evidence_verifications", {
+  id: text("id").primaryKey(),
+  questionId: text("question_id").notNull().references(() => questions.id, { onDelete: "restrict" }),
+  questionVersion: integer("question_version").notNull(),
+  questionContentSha256: text("question_content_sha256").notNull(),
+  method: text("method").notNull(),
+  status: text("status").notNull(),
+  riskClass: text("risk_class").notNull(),
+  policyVersion: text("policy_version").notNull(),
+  evidenceBundleSha256: text("evidence_bundle_sha256").notNull(),
+  sourceCount: integer("source_count").notNull(),
+  independentSourceCount: integer("independent_source_count").notNull(),
+  primarySourceCount: integer("primary_source_count").notNull(),
+  verifiedAt: integer("verified_at").notNull(),
+  recheckAt: integer("recheck_at").notNull(),
+  revokedAt: integer("revoked_at"),
+  revocationReason: text("revocation_reason"),
+  createdAt: integer("created_at").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+  expiresAt: integer("expires_at").notNull(),
+  deletedAt: integer("deleted_at"),
+}, (table) => [
+  uniqueIndex("question_evidence_active_version_policy_uq").on(table.questionId, table.questionVersion, table.policyVersion)
+    .where(sql`${table.status} = 'verified'`),
+  index("question_evidence_eligibility_idx").on(table.questionId, table.status, table.recheckAt, table.expiresAt),
+  check("question_evidence_id_ck", sql`length(${table.id}) = 45 and substr(${table.id},1,13) = 'verification_' and substr(${table.id},14) not glob '*[^0-9a-f]*'`),
+  check("question_evidence_version_ck", sql`${table.questionVersion} >= 1`),
+  check("question_evidence_method_ck", sql`${table.method} = 'machine_evidence_v1'`),
+  check("question_evidence_status_ck", sql`${table.status} in ('verified','revoked','expired','deleted')`),
+  check("question_evidence_risk_ck", sql`${table.riskClass} = 'low_objective'`),
+  check("question_evidence_policy_ck", sql`${table.policyVersion} = 'low-objective-evidence-v1'`),
+  check("question_evidence_content_hash_ck", sql`length(${table.questionContentSha256}) = 64 and ${table.questionContentSha256} not glob '*[^0-9a-f]*'`),
+  check("question_evidence_bundle_hash_ck", sql`length(${table.evidenceBundleSha256}) = 64 and ${table.evidenceBundleSha256} not glob '*[^0-9a-f]*'`),
+  check("question_evidence_sources_ck", sql`${table.sourceCount} >= 2 and ${table.independentSourceCount} >= 2 and ${table.independentSourceCount} <= ${table.sourceCount} and ${table.primarySourceCount} >= 1 and ${table.primarySourceCount} <= ${table.sourceCount}`),
+  check("question_evidence_time_ck", sql`${table.verifiedAt} > 0 and ${table.createdAt} >= ${table.verifiedAt} and ${table.updatedAt} >= ${table.createdAt} and ${table.recheckAt} > ${table.verifiedAt} and ${table.recheckAt} - ${table.verifiedAt} <= 15552000000 and ${table.expiresAt} >= ${table.recheckAt}`),
+  check("question_evidence_policy_expiry_ck", sql`${table.expiresAt} <= 1820793600000`),
+  check("question_evidence_revocation_ck", sql`(${table.status} = 'revoked' and ${table.revokedAt} is not null and ${table.revokedAt} >= ${table.verifiedAt} and ${table.revocationReason} is not null and ${table.revocationReason} in ('source_unavailable','source_conflict','unsupported_claim','ambiguity','cultural_risk','duplicate','policy_withdrawn')) or (${table.status} != 'revoked' and ${table.revokedAt} is null and ${table.revocationReason} is null)`),
+  check("question_evidence_deletion_ck", sql`(${table.status} = 'deleted' and ${table.deletedAt} is not null and ${table.deletedAt} >= ${table.verifiedAt}) or (${table.status} != 'deleted' and ${table.deletedAt} is null)`),
+]);
+
 export const durableTableNames = [
   "quiz_editions", "questions", "question_sources", "quiz_attempts", "answers", "results",
   "challenges", "challenge_attempts", "referral_events", "share_events", "daily_challenges",
   "daily_challenge_completions", "daily_operation_limits", "streaks", "mastery_seals", "parties", "party_players", "media_assets",
   "commerce_orders", "commerce_entitlements", "stripe_webhook_events",
   "cowrie_wallets", "cowrie_ledger", "cowrie_purchase_allocations",
-  "consent_preferences", "analytics_events", "feature_flag_overrides",
+  "consent_preferences", "analytics_events", "feature_flag_overrides", "question_evidence_verifications",
 ] as const;
 
 // Migration 0010 also maintains explicit authority/immutable triggers and replaces

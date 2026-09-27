@@ -27,7 +27,10 @@ async function setup() {
   const prototype = { ...database.prepare("SELECT * FROM questions WHERE stable_id='west_q01'").get() };
   const columns = Object.keys(prototype);
   const insert = database.prepare(`INSERT INTO questions (${columns.map((name) => `"${name}"`).join(",")}) VALUES (${columns.map(() => "?").join(",")})`);
-  for (let index = 0; index < 18; index += 1) { const row = { ...prototype, id: `question_test_extra_${index}`, stable_id: `west_extra_${String(index).padStart(3, "0")}` }; insert.run(...columns.map((column) => row[column])); }
+  for (let index = 0; index < 18; index += 1) {
+    const row = { ...prototype, id: `question_test_extra_${index}`, stable_id: `west_extra_${String(index).padStart(3, "0")}`, reviewed_by: "synthetic_test_human_reviewer", reviewed_at: now };
+    insert.run(...columns.map((column) => row[column]));
+  }
   const adapter = new Adapter(database); const selection = new D1QuestionSelectionRepository(adapter); const repository = new D1CowrieWalletRepository(adapter, selection);
   let byte = 1; const service = new CowrieWalletService(repository, { now: () => now, randomSource: (bytes) => { bytes.fill(byte++); return bytes; } });
   return { database, adapter, repository, service };

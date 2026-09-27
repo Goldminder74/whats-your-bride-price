@@ -2,7 +2,8 @@ import type { RegionKey } from "../app/gameData.ts";
 import { imageAnswerPresentations } from "../app/imageQuestionPresentation.ts";
 import type { AtomicD1Database } from "./repositories.ts";
 import type { QuestionDifficulty, QuestionKind, QuestionMediaProvenance, QuestionOption } from "./questionBankContracts.ts";
-import { QUESTION_SET_VERSION, SCORING_VERSION } from "./seeds/development.ts";
+import { buildDevelopmentSeed, QUESTION_SET_VERSION, SCORING_VERSION } from "./seeds/development.ts";
+import { currentMachineEvidence, type StoredEvidenceVerification } from "./questionEvidence.ts";
 
 export const QUESTION_SELECTION_POLICY_VERSION = "balanced-v1" as const;
 export const RANDOM_QUICK_PLAY_POLICY_VERSION = "balanced-random-v2" as const;
@@ -37,6 +38,8 @@ export type SelectableQuestion = Readonly<{
   validUntil: number | null;
   imageProvenance: readonly QuestionMediaProvenance[];
   audioProvenance: readonly QuestionMediaProvenance[];
+  /** Trusted repository metadata only; never accepted from a public request or projected to clients. */
+  machineEvidence?: Readonly<{ verification: StoredEvidenceVerification; contentHash: string }>;
 }>;
 
 export type PublicSelectedQuestion = Readonly<{
@@ -116,7 +119,11 @@ function current(question: SelectableQuestion, now: number): boolean {
     && question.publishedAt <= now
     && question.retiredAt === null
     && (question.validFrom === null || question.validFrom <= now)
-    && (question.validUntil === null || question.validUntil > now);
+    && (question.validUntil === null || question.validUntil > now)
+    && (!question.machineEvidence || currentMachineEvidence(question.machineEvidence.verification, {
+      id: question.internalId, version: question.version, contentHash: question.machineEvidence.contentHash,
+      reviewer: null, sensitivityNotes: null, communityScope: null,
+    }, now));
 }
 
 function referenceKey(question: Pick<SelectableQuestion, "stableId" | "version">): string {
@@ -283,7 +290,25 @@ type D1QuestionRow = Readonly<{
   explanation: string; scoring_weight: number; publication_status: string; source_review_status: string;
   published_at: number; retired_at: number | null; valid_from: number | null; valid_until: number | null;
   image_provenance_json: string; audio_provenance_json: string;
+  content_hash?: string; reviewed_by?: string | null; reviewed_at?: number | null; sensitivity_notes?: string | null; community_scope?: string | null;
+  machine_history?: number; evidence_id?: string | null; evidence_method?: string; evidence_status?: string;
+  evidence_risk_class?: string; evidence_policy_version?: string; evidence_question_version?: number;
+  evidence_content_sha256?: string; evidence_bundle_sha256?: string; evidence_source_count?: number;
+  evidence_independent_source_count?: number; evidence_primary_source_count?: number;
+  evidence_verified_at?: number; evidence_recheck_at?: number; evidence_expires_at?: number;
+  evidence_revoked_at?: number | null; evidence_deleted_at?: number | null;
 }>;
+
+function evidenceFromRow(row: D1QuestionRow): StoredEvidenceVerification | null {
+  if (!row.evidence_id) return null;
+  return {
+    questionId: row.internal_id, questionVersion: row.evidence_question_version!, questionContentSha256: row.evidence_content_sha256!,
+    method: row.evidence_method!, status: row.evidence_status!, riskClass: row.evidence_risk_class!, policyVersion: row.evidence_policy_version!,
+    evidenceBundleSha256: row.evidence_bundle_sha256!, sourceCount: row.evidence_source_count!, independentSourceCount: row.evidence_independent_source_count!,
+    primarySourceCount: row.evidence_primary_source_count!, verifiedAt: row.evidence_verified_at!, recheckAt: row.evidence_recheck_at!, expiresAt: row.evidence_expires_at!,
+    revokedAt: row.evidence_revoked_at ?? null, deletedAt: row.evidence_deleted_at ?? null,
+  };
+}
 
 function selectableFromRow(row: D1QuestionRow): SelectableQuestion | null {
   try {
@@ -319,14 +344,42 @@ export class D1QuestionSelectionRepository {
       qe.edition_key, q.category, q.difficulty, q.question_kind, q.question_text, q.visual_start, q.answer_options_json,
       q.correct_answer_json, q.accepted_answers_json, q.explanation, q.scoring_weight,
       q.publication_status, q.source_review_status, q.published_at, q.retired_at, q.valid_from,
-      q.valid_until, q.image_provenance_json, q.audio_provenance_json
+      q.valid_until, q.image_provenance_json, q.audio_provenance_json,
+      q.content_hash,q.reviewed_by,q.reviewed_at,q.sensitivity_notes,q.community_scope,
+      EXISTS(SELECT 1 FROM question_evidence_verifications history WHERE history.question_id=q.id AND history.question_version=q.version) AS machine_history,
+      ev.id AS evidence_id,ev.method AS evidence_method,ev.status AS evidence_status,ev.risk_class AS evidence_risk_class,
+      ev.policy_version AS evidence_policy_version,ev.question_version AS evidence_question_version,
+      ev.question_content_sha256 AS evidence_content_sha256,ev.evidence_bundle_sha256 AS evidence_bundle_sha256,
+      ev.source_count AS evidence_source_count,ev.independent_source_count AS evidence_independent_source_count,
+      ev.primary_source_count AS evidence_primary_source_count,ev.verified_at AS evidence_verified_at,
+      ev.recheck_at AS evidence_recheck_at,ev.expires_at AS evidence_expires_at,
+      ev.revoked_at AS evidence_revoked_at,ev.deleted_at AS evidence_deleted_at
     FROM questions q JOIN quiz_editions qe ON qe.id=q.edition_id
+    LEFT JOIN question_evidence_verifications ev ON ev.question_id=q.id AND ev.question_version=q.version AND ev.status='verified'
     WHERE qe.edition_key=?1 AND qe.status='active' AND q.publication_status='published'
       AND q.source_review_status='approved' AND q.published_at<=?2 AND q.retired_at IS NULL
       AND (q.valid_from IS NULL OR q.valid_from<=?2) AND (q.valid_until IS NULL OR q.valid_until>?2)
     ORDER BY q.stable_id,q.version DESC`).bind(region, now).all<D1QuestionRow>();
     if (!result.success) return fail("question_storage_unavailable");
-    const questions = result.results.map(selectableFromRow).filter((question): question is SelectableQuestion => Boolean(question));
+    const canonical = (await buildDevelopmentSeed()).questions;
+    const questions = result.results.flatMap((row): SelectableQuestion[] => {
+      const question = selectableFromRow(row);
+      if (!question) return [];
+      const original = canonical.some((entry) => entry.id === row.internal_id && entry.stableId === row.stable_id
+        && entry.version === row.version && entry.editionId === row.edition_id && entry.contentHash === row.content_hash);
+      const human = typeof row.reviewed_by === "string" && Boolean(row.reviewed_by.trim())
+        && typeof row.reviewed_at === "number" && row.reviewed_at > 0 && row.reviewed_at <= now;
+      if (original || human) return [question];
+      // Preserve the exact pre-engine sixty, whose source review predates reviewer
+      // identities. New null-reviewer versions require their own current evidence.
+      if (!row.machine_history) return [];
+      const verification = evidenceFromRow(row);
+      if (!currentMachineEvidence(verification, {
+        id: row.internal_id, version: row.version, contentHash: row.content_hash || "",
+        reviewer: row.reviewed_by ?? null, sensitivityNotes: row.sensitivity_notes ?? null, communityScope: row.community_scope ?? null,
+      }, now) || !verification) return [];
+      return [Object.freeze({ ...question, machineEvidence: Object.freeze({ verification: Object.freeze(verification), contentHash: row.content_hash! }) })];
+    });
     return Object.freeze(questions);
   }
 

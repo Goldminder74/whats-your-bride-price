@@ -127,6 +127,6 @@ test("Prompt 20 migration remains intact after the separate Prompt 22 migration"
   const files = await readdir(new URL("../../drizzle", import.meta.url));
   assert.deepEqual(files.filter((name) => /^0007_.*\.sql$/.test(name)), ["0007_ancient_yellow_claw.sql"]);
   const ledger = JSON.parse(await readFile(new URL("../../drizzle/migration-checksums.json", import.meta.url), "utf8"));
-  assert.equal(Object.keys(ledger).length, 11);
+  assert.equal(Object.keys(ledger).length, 12);
   assert.deepEqual(Object.keys(ledger).sort(), files.filter((name) => /^\d{4}_.*\.sql$/.test(name)).sort());
 });

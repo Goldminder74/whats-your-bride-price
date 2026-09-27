@@ -1,6 +1,7 @@
 import type { AtomicD1Database } from "./repositories.ts";
 import { validateQuestionBankDocument, type QuestionBankDocument, type QuestionBankQuestion, type QuestionSource } from "./questionBankContracts.ts";
 import { buildLegacyQuestionBankDocument } from "./questionBankWorkflow.ts";
+import { machineEvidenceCatalogContext, type StoredEvidenceVerification } from "./questionEvidence.ts";
 
 type QuestionRow = Readonly<Record<string, unknown> & {
   id: string; stable_id: string; version: number; edition_key: string; country_scope: string | null;
@@ -31,20 +32,26 @@ export class D1QuestionBankRepository {
   constructor(database: AtomicD1Database) { this.database = database; }
 
   async list(): Promise<QuestionBankDocument> {
-    const [questionResult, sourceResult, legacy] = await Promise.all([
+    const [questionResult, sourceResult, legacy, evidenceResult] = await Promise.all([
       this.database.prepare(`SELECT q.id,q.stable_id,q.version,qe.edition_key,q.country_scope,q.subregion_scope,
         q.community_scope,q.category,q.difficulty,q.question_kind,q.question_text,q.answer_options_json,
         q.correct_answer_json,q.accepted_answers_json,q.explanation,q.scoring_weight,q.language,q.locale,
         q.publication_status,q.source_review_status,q.sensitivity_notes,q.reviewed_by,q.reviewed_at,
-        q.published_at,q.retired_at,q.valid_from,q.valid_until,q.image_provenance_json,q.audio_provenance_json
+        q.published_at,q.retired_at,q.valid_from,q.valid_until,q.image_provenance_json,q.audio_provenance_json,q.content_hash
       FROM questions q JOIN quiz_editions qe ON qe.id=q.edition_id
       ORDER BY q.stable_id,q.version`).all<QuestionRow>(),
       this.database.prepare(`SELECT question_id,title,organisation_or_author,url_or_reference,publication_date,
         access_date,source_type,review_status,relevant_claim FROM question_sources
       WHERE question_id IS NOT NULL ORDER BY question_id,url_or_reference`).all<SourceRow>(),
       buildLegacyQuestionBankDocument(),
+      this.database.prepare(`SELECT question_id AS questionId,question_version AS questionVersion,
+        question_content_sha256 AS questionContentSha256,method,status,risk_class AS riskClass,
+        policy_version AS policyVersion,evidence_bundle_sha256 AS evidenceBundleSha256,
+        source_count AS sourceCount,independent_source_count AS independentSourceCount,primary_source_count AS primarySourceCount,
+        verified_at AS verifiedAt,recheck_at AS recheckAt,expires_at AS expiresAt,revoked_at AS revokedAt,deleted_at AS deletedAt
+        FROM question_evidence_verifications ORDER BY question_id,verified_at DESC`).all<StoredEvidenceVerification>(),
     ]);
-    if (!questionResult.success || !sourceResult.success) throw new Error("question_bank_storage_unavailable");
+    if (!questionResult.success || !sourceResult.success || !evidenceResult.success) throw new Error("question_bank_storage_unavailable");
     const legacyByVersion = new Map(legacy.questions.map((question) => [`${question.stableId}@${question.version}`, question]));
     const sources = new Map<string, QuestionSource[]>();
     for (const source of sourceResult.results) {
@@ -79,6 +86,11 @@ export class D1QuestionBankRepository {
       };
       return record;
     });
-    return validateQuestionBankDocument({ schemaVersion: "question-bank-v1", questions });
+    const byId = new Map(questionResult.results.map((row) => [row.id, row]));
+    const machineCatalogContext = machineEvidenceCatalogContext(evidenceResult.results.flatMap((verification) => {
+      const row = byId.get(verification.questionId);
+      return row ? [{ stableId: row.stable_id, version: row.version, contentHash: String(row.content_hash), verification }] : [];
+    }));
+    return validateQuestionBankDocument({ schemaVersion: "question-bank-v1", questions }, { machineCatalogContext });
   }
 }

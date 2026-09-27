@@ -132,3 +132,9 @@ The single local migration 0009 also adds only the authorised nullable cowrie_is
 ## Workstream D remains disabled
 
 Migration 0010 is local source only. No hosted binding, migration, seed, Stripe link or payment configuration was created. Purchasing requires every region to have thirty currently valid approved/published questions, all three feature flags, active ownership, complete explicit bundle configuration and approved distributed limiting. The 352 draft research candidates do not qualify. See [Cowrie commerce](cowrie-commerce.md).
+
+## Workstream E remains offline and unpublished
+
+Migration 0011 is additive local source only. It creates `question_evidence_verifications` for exact version-bound evidence authority; it creates no endpoint, import operation, seed or automatic publication path. Evidence packs and regional reports are generated deterministically into an explicitly supplied directory outside the repository. The builder rejects repository output and contains no network or database writer.
+
+Before any later import, an owner must review the generated pack, deliberately create the question/version rows, apply publication lifecycle state separately, and insert only the matching current bundle proof through a separately authorised server operation. The 352 source drafts remain unchanged and unpublished. No Workstream E migration or content has been applied to staging or production.

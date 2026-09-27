@@ -1,4 +1,5 @@
 import { regionOrder, type RegionKey } from "../app/publicGameData.ts";
+import { hasMachineEvidenceCatalogBasis, type MachineEvidenceCatalogContext } from "./questionEvidence.ts";
 
 export const QUESTION_BANK_CATEGORIES = Object.freeze([
   "ART", "ART & HISTORY", "FOOD", "GEOGRAPHY", "HISTORY", "LANGUAGE",
@@ -219,7 +220,7 @@ function validateAcceptedAnswers(value: unknown, options: readonly QuestionOptio
 
 export function validateQuestionContract(
   value: unknown,
-  options: Readonly<{ approvedRemoteAssetOrigins?: ReadonlySet<string> }> = {},
+  options: Readonly<{ approvedRemoteAssetOrigins?: ReadonlySet<string>; machineCatalogContext?: MachineEvidenceCatalogContext }> = {},
   path = "questions[0]",
 ): QuestionBankQuestion {
   const item = record(value, path);
@@ -237,7 +238,10 @@ export function validateQuestionContract(
   const lifecycleStatus = enumeration(item.lifecycleStatus, QUESTION_LIFECYCLE_STATUSES, `${path}.lifecycleStatus`);
   const reviewer = nullableString(item.reviewer, `${path}.reviewer`, 200);
   const reviewDate = isoDay(item.reviewDate, `${path}.reviewDate`);
-  if (["approved", "published", "retired"].includes(lifecycleStatus) && (!reviewer || !reviewDate)) fail("cultural_review_required", path);
+  const machineBasis = reviewer === null && reviewDate === null
+    && hasMachineEvidenceCatalogBasis(options.machineCatalogContext, `${stableId}@${item.version}`);
+  if (machineBasis && (item.sensitivityNotes !== null || item.communityScope !== null)) fail("machine_review_identity_invalid", path);
+  if (["approved", "published", "retired"].includes(lifecycleStatus) && (!reviewer || !reviewDate) && !machineBasis) fail("cultural_review_required", path);
   const sensitivityNotes = nullableString(item.sensitivityNotes, `${path}.sensitivityNotes`, 1000);
   if (sensitivityNotes && (!reviewer || !reviewDate)) fail("sensitivity_review_required", path);
   const publishedAt = isoDay(item.publishedAt, `${path}.publishedAt`);
@@ -304,7 +308,7 @@ export function validateQuestionContract(
 
 export function validateQuestionBankDocument(
   value: unknown,
-  options: Readonly<{ approvedRemoteAssetOrigins?: ReadonlySet<string>; maximumQuestions?: number }> = {},
+  options: Readonly<{ approvedRemoteAssetOrigins?: ReadonlySet<string>; maximumQuestions?: number; machineCatalogContext?: MachineEvidenceCatalogContext }> = {},
 ): QuestionBankDocument {
   const document = record(value, "document");
   exactKeys(document, ["schemaVersion", "questions"], "document");
