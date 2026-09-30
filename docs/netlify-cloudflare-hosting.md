@@ -71,7 +71,8 @@ There is no Netlify Next.js adapter, Nitro conversion or PostgreSQL migration.
 
 Netlify's documented x-nf-sign JWS is verified with jose/HS256. Required claims
 are exp, iss=netlify, exact netlify_id, deploy_context and site_url. The signing
-secret is runtime-only, at least 32 random bytes represented as a string, and must
+secret is runtime-only by default (see the isolated Personal-plan exception below),
+at least 32 random bytes represented as a string, and must
 match on Netlify and the Worker. Missing/invalid credentials return neutral 404
 before application or assets. This authenticates a gateway, not a player. It is
 not a Stripe signature and is not a per-request body signature. Never echo/log it.
@@ -164,8 +165,36 @@ of permissions or database ownership.
 Netlify: private visibility for production deploys AND previews; owner only;
 fixed test netlify.app address; no custom domain, Git connection or automatic
 preview builds; Node 24.16.0 if a future approved build pipeline is configured.
-Set WYBP_NETLIFY_PROXY_SECRET with Runtime scope, never a public/build variable.
+Prefer Runtime scope for WYBP_NETLIFY_PROXY_SECRET; the isolated Personal-plan
+exception below permits all scopes only with the stated manual-build boundary.
 Verify signed-out access is denied for pages, assets and API routes.
+
+### Authorised Personal-plan test deployment exception
+
+For the isolated, owner-only Netlify test project, the proxy secret may be a
+project-level **all-scopes** variable with its value limited to the **Production**
+deploy context. It must never be a shared team variable. Production here means
+the private test project's primary deployment, not a public launch.
+
+This exception requires locally built, manually uploaded releases. Build and
+verify the client/Worker pair before generating the signing secret. The build
+process must never receive that secret through its environment, environment
+files, configuration imports or command arguments. Install the matching Netlify
+project variable and encrypted Worker secret in a separate short-lived process;
+that process may run the deployable verifier but must not rebuild. Keep secret
+values out of client files, release artifacts, Git, logs and reports.
+
+Upload only the generated client directory from its paired release directory,
+using `netlify deploy --no-build --prod --site <project-UUID> --dir client`.
+Production and preview visibility must both be Private, with anonymous denial
+verified against a content-free deployment before uploading application content.
+
+Do not enable Git builds, Agent Runners, build hooks, `netlify build`, environment
+imports or additional integrations without reviewing this boundary again.
+All-scopes configuration does not prevent future hosted builds from receiving
+the secret: the protection depends on keeping those execution paths disabled.
+Runtime-only scoping remains the preferred approach before adopting Netlify-hosted
+builds. Worker signature, claim, origin and expiry checks remain unchanged.
 
 Cloudflare: generated release Worker config, nodejs_compat, ASSETS with
 run_worker_first=true, IMAGES binding, and the generated non-secret identity vars.
