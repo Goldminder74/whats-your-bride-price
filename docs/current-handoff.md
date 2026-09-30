@@ -2,19 +2,19 @@
 
 ## Source checkpoint
 
-Checked 30 September 2026: application source on `feature/viral-build-sprint` is `18598a0779fdfe3e7b11057159e3b0f195354fdf` (`fix: preserve private hosting access for image answers`), verified on origin after pushing. This handoff update is documentation only and does not change the deployed application checkpoint. PR #1 remains open, draft and unmerged, with base `master`.
+Checked 30 September 2026: application source on `feature/viral-build-sprint` is `d862f6315e85604000b078d4355d878b58dbcea9` (`fix: reveal quiz progression and retry controls`), verified on origin after pushing. This handoff update is documentation only and does not change the deployed application checkpoint. PR #1 remains open, draft and unmerged, with base `master`.
 
 ## Implemented versus deployed
 
 The Vinext/Vite application supports a private Netlify client and signed proxy requests to a Cloudflare Worker. Compiled navigation repairs and Worker packaging verification are committed. Explicit ESModule rules now include all 138 server modules; the regression reproduces the original omission. Packaging, hosting-security, both compiled navigation targets and the rebuilt release verifier passed at this source checkpoint.
 
-**[wybp-protected-test](https://wybp-protected-test.netlify.app/) serves the owner-only test application; the blocking progression repair below is not deployed yet.** Netlify production and preview URLs deny anonymous access. Worker `wybp-test-r001` has its signature-protected primary endpoint enabled and preview endpoints disabled. Existing websites remain unchanged. D1/R2 are unbound and optional features remain disabled.
+**[wybp-protected-test](https://wybp-protected-test.netlify.app/) serves the repaired, live-verified owner-only test application.** Netlify production and preview URLs deny anonymous access. Worker `wybp-test-r001` has its signature-protected primary endpoint enabled and preview endpoints disabled. Existing websites remain unchanged. D1/R2 are unbound and optional features remain disabled.
 
 ## Current task and next action
 
-Owner testing found a blocking image-question progression defect: the answer succeeded but the continuation panel remained below the image grid, outside the viewport. The scoped repair focuses and reveals the progression or explicit retry control, then reveals the following question. Complete all five regional quizzes on desktop/mobile and verify the repaired private release before handing back for owner testing.
+Fixed the blocking image-question defect: successful answers left continuation below the viewport. The repair focuses and reveals progression/retry controls and the following question. All 12 questions in all five regions were completed live at 1366×768 and 390×844: 120 answers, every image question, ten verified 12/12 results, no console errors. No additional gameplay blocker was found. Next: owner review; public launch remains gated below.
 
-The image-answer POST retains `credentials: "same-origin"`. Both compiled targets now complete all five regions on desktop/mobile, including correct/wrong image answers, visible continuation controls, retries and final results. Application authentication, ownership, Origin and Fetch Metadata checks remain unchanged.
+The image-answer POST retains `credentials: "same-origin"`. Both compiled targets passed all regions at desktop/mobile sizes, including correct/wrong image answers and final results. Server/network/malformed-response retries passed. All aggregate stages, builds and diff checks passed. Authentication, ownership, Origin and Fetch Metadata checks remain unchanged.
 
 The client verifier reconciles Netlify's lowercase path keys while rejecting missing/altered files and case collisions. Consult the local checkpoint for release/deployment IDs and validation details. The protected placeholder remains available for rollback.
 
