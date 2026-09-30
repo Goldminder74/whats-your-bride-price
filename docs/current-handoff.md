@@ -2,21 +2,21 @@
 
 ## Source checkpoint
 
-Checked 30 September 2026: branch `feature/viral-build-sprint`, HEAD and local remote-tracking ref `origin/feature/viral-build-sprint` both at `06ad6d97f0ba6a391a1f43f65d47bc314036f082` (`fix: include server modules in Worker releases`). The remote was verified after the push; this documentation check did not fetch again. The working tree was clean before these handoff additions. PR #1 was last verified open, draft and unmerged, with base `master`.
+Checked 30 September 2026: application source on `feature/viral-build-sprint` is `18598a0779fdfe3e7b11057159e3b0f195354fdf` (`fix: preserve private hosting access for image answers`), verified on origin after pushing. This handoff update is documentation only and does not change the deployed application checkpoint. PR #1 remains open, draft and unmerged, with base `master`.
 
 ## Implemented versus deployed
 
 The Vinext/Vite application supports a private Netlify client and signed proxy requests to a Cloudflare Worker. Compiled navigation repairs and Worker packaging verification are committed. Explicit ESModule rules now include all 138 server modules; the regression reproduces the original omission. Packaging, hosting-security, both compiled navigation targets and the rebuilt release verifier passed at this source checkpoint.
 
-The isolated application upload was rolled back after live checks failed. **[wybp-protected-test](https://wybp-protected-test.netlify.app/) currently serves the protected placeholder, not a verified working application.** Worker `wybp-test-r001` contains the uploaded application version, but its primary and preview endpoints are disabled. Existing websites remain unchanged. D1/R2 are unbound and optional features remain disabled.
+**[wybp-protected-test](https://wybp-protected-test.netlify.app/) now serves the verified owner-only application.** Netlify production and preview URLs deny anonymous access. Worker `wybp-test-r001` has its signature-protected primary endpoint enabled and preview endpoints disabled. Existing websites remain unchanged. D1/R2 are unbound and optional features remain disabled.
 
 ## Current task and next action
 
-The working rules and handoff were committed as `04db1a2002fd8171dd18e8c898824d8c98448fcb`. The user has now authorised the scoped credential correction, regression, checksum reconciliation, commit/push and isolated redeployment. Preserve the completed packaging fix.
+The authorised credential correction, regression, checksum reconciliation and isolated redeployment are complete. Next: owner testing of the private application. No public launch, storage activation or payment setup is implied.
 
 The image-answer POST now uses `credentials: "same-origin"` rather than `"omit"`, preserving the private access cookie. Both compiled browser harnesses check the actual cookie-bearing request and authoritative answer. Application authentication, ownership, Origin and Fetch Metadata checks remain unchanged.
 
-The 29 apparent checksum mismatches were lowercase API path keys, not altered bytes: all 109 archived client digests match. The new client verifier detects missing/altered files and case collisions. Complete validation and fresh matched release deployment; retain the protected placeholder until ready, and restore it and disable Worker endpoints if live verification fails. Consult the local checkpoint for the resulting deployment IDs and verification state.
+The 29 apparent checksum mismatches were lowercase API path keys, not altered bytes. All 109 newly deployed client digests match; the verifier rejects missing/altered files and case collisions. Live checks passed for owner access, anonymous denial, invalid signatures, cross-origin rejection, images, quiz image answers, Privacy return, Terms, history and refresh. No browser console errors were observed. Consult the local checkpoint for release/deployment IDs and validation details. The protected placeholder remains available for rollback.
 
 ## Essential constraints and references
 
