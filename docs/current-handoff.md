@@ -12,11 +12,11 @@ The isolated application upload was rolled back after live checks failed. **[wyb
 
 ## Current task and next action
 
-The working rules and handoff are authorised for a documentation-only commit. The packaging correction is complete; deployment remains blocked by the issues below. Do not repeat passed packaging checks for unchanged source or redeploy the known failing build.
+The working rules and handoff were committed as `04db1a2002fd8171dd18e8c898824d8c98448fcb`. The user has now authorised the scoped credential correction, regression, checksum reconciliation, commit/push and isolated redeployment. Preserve the completed packaging fix.
 
-Before resuming deployment, obtain authorisation for the narrow same-origin credential correction and regression: image-answer submission uses `credentials: "omit"`, dropping the private Netlify access cookie and returning 401. A correctly signed Worker request succeeds. Preserve application authentication, ownership, Origin and Fetch Metadata checks.
+The image-answer POST now uses `credentials: "same-origin"` rather than `"omit"`, preserving the private access cookie. Both compiled browser harnesses check the actual cookie-bearing request and authoritative answer. Application authentication, ownership, Origin and Fetch Metadata checks remain unchanged.
 
-Also resolve the post-upload client checksum comparison: 29 JavaScript/CSS entries differ in the API comparison. The cause is not established; do not claim a matched live release yet. Then follow the existing runbook for authorised rebuild, matched deployment, live verification and rollback.
+The 29 apparent checksum mismatches were lowercase API path keys, not altered bytes: all 109 archived client digests match. The new client verifier detects missing/altered files and case collisions. Complete validation and fresh matched release deployment; retain the protected placeholder until ready, and restore it and disable Worker endpoints if live verification fails. Consult the local checkpoint for the resulting deployment IDs and verification state.
 
 ## Essential constraints and references
 

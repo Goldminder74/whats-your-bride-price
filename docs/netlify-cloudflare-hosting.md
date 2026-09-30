@@ -1,7 +1,8 @@
 # Netlify entry point with Cloudflare application server
 
-Status: local adaptation only. No resource creation, hosted migration, publication,
-payment activation or domain cutover is part of this change.
+This document defines the hosting contract. See [current handoff](current-handoff.md)
+and its local checkpoint for deployment status; readiness notes below describe
+the original local adaptation, not a claim about the latest live attempt.
 
 ## Compiled navigation correction
 
@@ -90,6 +91,23 @@ https://docs.netlify.com/manage/routing/redirects/rewrites-proxies/
 Netlify's documented proxy timeout is 26 seconds. Test slow paths before activation.
 
 ## Local commands and evidence
+
+The private test gate requires its HttpOnly access cookie on the classic image
+answer POST. The browser uses `credentials: "same-origin"` together with
+`mode: "same-origin"`; it does not send credentials to other origins. Server
+Origin, Fetch Metadata and answer validation are unchanged. Both compiled-target
+harnesses exercise the actual submission and assert its cookie, origin metadata,
+authoritative response and visible answer reveal.
+
+To reconcile a deployed client, save the authenticated deployment-specific file
+list from `GET /api/v1/deploys/<deploy-id>/files` outside Git, then run
+`node scripts/verify-netlify-client.mjs <release-directory> <file-list.json>`.
+The observed Netlify API lowercases paths, including case-sensitive-looking
+chunk filenames. The verifier rejects case collisions and compares every client
+file's SHA-1 and size after validating the local SHA-256 release manifest. It
+rejects unexpected entries except the CLI's `netlify.toml` configuration record.
+This resolved the earlier 29 apparent mismatches: all 109 client digests matched.
+Also verify live retrieval and navigation; metadata alone is not a browser test.
 
 The first isolated Worker upload exposed a packaging defect: `no_bundle` uses
 Wrangler's additional-module rules, whose defaults do not include JavaScript.

@@ -5,7 +5,7 @@ import { resolve, extname, sep } from "node:path";
 import { pathToFileURL } from "node:url";
 import { SignJWT } from "jose";
 import { chromium } from "@playwright/test";
-import { exerciseCompiledNavigation } from "./compiled-navigation.mjs";
+import { exerciseCompiledNavigation, exerciseCompiledImageAnswer } from "./compiled-navigation.mjs";
 import { verifyRelease } from "../scripts/netlify-release.mjs";
 
 const pointer = JSON.parse(await readFile("outputs/netlify-worker/latest.json", "utf8"));
@@ -92,13 +92,22 @@ try {
     const url = new URL(incoming.url());
     assert.equal(url.origin, origin, "Browser must not contact hosted services");
     if (url.searchParams.has("_rsc") || incoming.headers().rsc === "1") browserRscRequests++;
+    const headers = await incoming.allHeaders();
+    if (url.pathname === "/questions/image-answer" && incoming.method() === "POST") {
+      assert.equal(headers.origin, origin);
+      // Interception is before Chromium's network-layer Fetch Metadata. Model
+      // that layer for this same-origin POST; hostile metadata is tested above.
+      headers["sec-fetch-site"] = "same-origin";
+      headers["sec-fetch-mode"] = "same-origin";
+    }
     const staticResponse = incoming.method() === "GET" ? await asset(new Request(url)) : null;
     const response = staticResponse?.status === 200 ? staticResponse : await proxy(url.pathname + url.search, {
-      method: incoming.method(), headers: await incoming.allHeaders(), body: incoming.postDataBuffer() || undefined,
+      method: incoming.method(), headers, body: incoming.postDataBuffer() || undefined,
     });
     await route.fulfill({ status: response.status, headers: Object.fromEntries(response.headers), body: Buffer.from(await response.arrayBuffer()) });
   });
   await exerciseCompiledNavigation(page, origin);
+  await exerciseCompiledImageAnswer(page, origin);
   assert.ok(browserRscRequests > 0, "Next-style Link navigation uses the authenticated RSC path");
   assert.deepEqual(errors, []);
   await context.close();

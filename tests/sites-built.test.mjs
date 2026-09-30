@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { chromium } from "@playwright/test";
-import { exerciseCompiledNavigation } from "./compiled-navigation.mjs";
+import { exerciseCompiledNavigation, exerciseCompiledImageAnswer } from "./compiled-navigation.mjs";
 
 // One freshly compiled Sites client/server pair, on an OS-assigned local port.
 const server = spawn(process.execPath, ["tests/preview-server.mjs"], {
@@ -27,7 +27,9 @@ try {
     assert.equal(new URL(route.request().url()).origin, origin, "No hosted service may be contacted");
     return route.continue();
   });
-  await exerciseCompiledNavigation(await context.newPage(), origin);
+  const page = await context.newPage();
+  await exerciseCompiledNavigation(page, origin);
+  await exerciseCompiledImageAnswer(page, origin);
   await context.close();
 } finally {
   await browser?.close();

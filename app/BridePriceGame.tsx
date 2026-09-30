@@ -1061,7 +1061,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       setImageAnswerPending(true); setImageAnswerError("");
       try {
         const response = await fetch("/questions/image-answer", {
-          method: "POST", mode: "same-origin", credentials: "omit", referrerPolicy: "no-referrer",
+          method: "POST", mode: "same-origin", credentials: "same-origin", referrerPolicy: "no-referrer",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({
             questionStableId: legacyImageQuestionStableId(regionKey, index),

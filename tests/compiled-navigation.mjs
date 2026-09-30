@@ -1,4 +1,48 @@
 import assert from "node:assert/strict";
+import { expect } from "@playwright/test";
+
+// A private hosting gateway needs its HttpOnly cookie on the actual browser
+// request. Checking the request (not a mocked fetch option) catches omit again.
+export async function exerciseCompiledImageAnswer(page, origin) {
+  const errors = [];
+  const onError = error => errors.push(error.message);
+  page.on("pageerror", onError);
+  await page.context().addCookies([{
+    name: "compiled_private_access", value: "local-test-only", url: origin,
+    httpOnly: true, secure: origin.startsWith("https:"), sameSite: "Strict",
+  }]);
+  await page.goto(origin + "/?edition=west");
+  await page.locator("main[data-hydrated='true']").waitFor();
+  await page.getByRole("button", { name: /Enter Region 01/ }).click();
+  for (let index = 1; index <= 3; index++) {
+    await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", String(index));
+    await page.locator(".answer-grid > button").first().click();
+    if (index === 3) {
+      await page.locator(".answer-grid > button").nth(1).click();
+      await page.locator(".answer-grid > button").nth(2).click();
+      await page.getByRole("button", { name: /Lock in 3\/3 answers/ }).click();
+    }
+    await page.locator(".answer-reveal").getByRole("button", { name: /Next challenge/ }).click();
+  }
+  await page.getByRole("button", { name: /Claim gem/ }).click();
+  await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "4");
+  const responsePromise = page.waitForResponse(response => new URL(response.url()).pathname === "/questions/image-answer");
+  await page.locator(".answer-grid > button").first().click();
+  const response = await responsePromise;
+  const headers = await response.request().allHeaders();
+  assert.match(headers.cookie || "", /(?:^|; )compiled_private_access=local-test-only(?:;|$)/);
+  assert.equal(headers.origin, origin);
+  // Chromium decorates Fetch Metadata after Playwright's interception point;
+  // the unchanged server guard must accept it for this response to be 200.
+  assert.equal(response.status(), 200);
+  const judgement = await response.json();
+  assert.equal(judgement.accepted, true);
+  assert.equal(judgement.correct, true);
+  await expect(page.locator(".answer-reveal")).toContainText("CORRECT");
+  assert.deepEqual(errors, []);
+  page.off("pageerror", onError);
+  console.log("PASS compiled image answer: HttpOnly same-origin cookie, Origin/Fetch Metadata, authoritative judgement and reveal.");
+}
 
 // Shared by both compiled targets. A document marker detects MPA fallbacks;
 // actual component responses prove we exercised the compiled RSC client router.

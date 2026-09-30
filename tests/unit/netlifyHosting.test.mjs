@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createHmac } from "node:crypto";
+import { createHmac, createHash } from "node:crypto";
 import { mkdtemp, mkdir, readFile, writeFile, readdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -12,6 +12,7 @@ import { POST as imageAnswer } from "../../app/questions/image-answer/route.ts";
 import { verifyStripeWebhook } from "../../db/commerceContracts.ts";
 import { createReviewCommerceConfig } from "../../db/commerce.ts";
 import { packageRelease, verifyRelease, syntheticConfiguration, netlifyConfiguration } from "../../scripts/netlify-release.mjs";
+import { verifyNetlifyClient } from "../../scripts/verify-netlify-client.mjs";
 
 const hosting = { environment: "test", origin: syntheticConfiguration.origin };
 const now = new Date("2026-09-27T12:00:00Z");
@@ -141,4 +142,22 @@ test("paired releases exclude non-public material and detect tampering; syntheti
   assert.equal((await verifyRelease(release)).releaseId, manifest.releaseId);
   await writeFile(join(release, "client/unexpected.sql"), "sensitive");
   await assert.rejects(() => verifyRelease(release), /Unrecorded/);
+});
+
+test("deployed client reconciliation accepts API case folding but rejects missing, altered and ambiguous files", async () => {
+  const root = await mkdtemp(join(tmpdir(), "wybp-client-digest-"));
+  await mkdir(join(root, "dist/client"), { recursive: true });
+  await mkdir(join(root, "dist/server"), { recursive: true });
+  const bytes = "verified browser content";
+  await writeFile(join(root, "dist/client/App-AbC.js"), bytes);
+  await writeFile(join(root, "dist/server/index.js"), "server");
+  await writeFile(join(root, "dist/server/wrangler.json"), JSON.stringify({ compatibility_date: "2026-05-15", compatibility_flags: ["nodejs_compat"] }));
+  const release = await packageRelease(root, syntheticConfiguration);
+  const files = [{ path: "/app-abc.js", size: Buffer.byteLength(bytes), sha: createHash("sha1").update(bytes).digest("hex") }];
+  assert.equal((await verifyNetlifyClient(release, files)).clientFiles, 1);
+  await assert.rejects(() => verifyNetlifyClient(release, []), /Missing/);
+  await assert.rejects(() => verifyNetlifyClient(release, [{ ...files[0], sha: "0".repeat(40) }]), /digest mismatch/);
+  await assert.rejects(() => verifyNetlifyClient(release, [{ ...files[0], size: 1 }]), /size mismatch/);
+  await assert.rejects(() => verifyNetlifyClient(release, [...files, { ...files[0], path: "/App-AbC.js" }]), /Duplicate/);
+  await assert.rejects(() => verifyNetlifyClient(release, [...files, { ...files[0], path: "/unexpected.js" }]), /Unexpected/);
 });
