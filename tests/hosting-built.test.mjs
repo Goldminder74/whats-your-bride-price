@@ -7,6 +7,7 @@ import { SignJWT } from "jose";
 import { chromium } from "@playwright/test";
 import { exerciseCompiledNavigation, exerciseCompiledImageAnswer } from "./compiled-navigation.mjs";
 import { exerciseRegionalProgression } from "./compiled-regional-progression.mjs";
+import { exerciseMobileLayout } from "./compiled-mobile.mjs";
 import { verifyRelease } from "../scripts/netlify-release.mjs";
 
 const pointer = JSON.parse(await readFile("outputs/netlify-worker/latest.json", "utf8"));
@@ -83,7 +84,7 @@ assert.ok(!(await readdir(root)).includes(".openai"));
 
 const browser = await chromium.launch({ headless: true, channel: process.platform === "win32" ? "msedge" : undefined });
 try {
-  const context = await browser.newContext({ reducedMotion: "reduce", serviceWorkers: "block" });
+  const context = await browser.newContext({ reducedMotion: "reduce", serviceWorkers: "block", hasTouch: true, deviceScaleFactor: 2 });
   const page = await context.newPage();
   const errors = [];
   let browserRscRequests = 0;
@@ -109,6 +110,7 @@ try {
   });
   await exerciseCompiledNavigation(page, origin);
   await exerciseCompiledImageAnswer(page, origin);
+  await exerciseMobileLayout(page, origin);
   await exerciseRegionalProgression(page, origin);
   assert.ok(browserRscRequests > 0, "Next-style Link navigation uses the authenticated RSC path");
   assert.deepEqual(errors, []);

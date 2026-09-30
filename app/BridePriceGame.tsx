@@ -1443,7 +1443,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             </div>
             <div className="cinema-visual" aria-label="Five regional game worlds">
               {regionOrder.map((key, artIndex) => <button key={key} className={`world-poster world-${artIndex + 1}`} onClick={() => chooseRegion(key)}>
-                <img src={`/regions/${key === "south" ? "southern" : key}-africa.webp`} alt={`${regions[key].name} illustrated game world`} />
+                <img src={`/regions/${key === "south" ? "southern" : key}-africa.webp`} alt={`${regions[key].name} illustrated game world`} width="1200" height="800" loading={artIndex === 0 ? "eager" : "lazy"} decoding="async" />
                 <span><small>World 0{artIndex + 1}</small>{regions[key].name}</span>
               </button>)}
               <div className="orbit-copy"><span>CHOOSE YOUR</span><b>AFRICAN</b><em>REGION</em></div>
@@ -1460,7 +1460,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               {regionOrder.map((key, cardIndex) => {
                 const item = regions[key];
                 return <div className={`region-card ${key}`} key={key} role="button" tabIndex={0} data-region={key} onClick={() => chooseRegion(key)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); chooseRegion(key); } }} aria-label={`Play the ${item.name} edition`}>
-                  <img className="region-art" src={`/regions/${key === "south" ? "southern" : key}-africa.webp`} alt="" />
+                  <img className="region-art" src={`/regions/${key === "south" ? "southern" : key}-africa.webp`} alt="" width="1200" height="800" loading="lazy" decoding="async" />
                   <div className="card-pattern" aria-hidden="true" /><div className="card-number">0{cardIndex + 1}</div>
                   <div className="card-mark" aria-hidden="true">{item.mark}</div>
                   <div className="card-copy"><p>{item.place}</p><h3>{item.name}</h3>
@@ -1499,12 +1499,12 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           <div className="player-card">
             <div className="card-pin"><span>AVATAR LAB</span><b>Choose your player</b></div>
             <div className="avatar-hero">
-              <img src={portrait} alt="Your selected player portrait" />
+              <img src={portrait} alt="Your selected player portrait" width="256" height="256" decoding="async" />
               <div><span>{photo ? "Custom icon" : avatarChoice.name}</span><b>{photo ? "One of one" : avatarChoice.vibe}</b></div>
               <i>READY</i>
             </div>
             <div className="avatar-grid" aria-label="Choose an African avatar">
-              {avatarChoices.map((item) => <button key={item.id} className={!photo && avatarId === item.id ? "active" : ""} aria-pressed={!photo && avatarId === item.id} onClick={() => selectAvatar(item.id)} aria-label={`Choose ${item.name}, ${item.vibe}`}><img src={item.src} alt="" width="256" height="256" loading={fastEntryEnabled ? "lazy" : undefined} decoding="async" /><span>{item.name}</span></button>)}
+              {avatarChoices.map((item) => <button key={item.id} className={!photo && avatarId === item.id ? "active" : ""} aria-pressed={!photo && avatarId === item.id} onClick={() => selectAvatar(item.id)} aria-label={`Choose ${item.name}, ${item.vibe}`}><img src={item.src} alt="" width="256" height="256" loading="lazy" decoding="async" /><span>{item.name}</span></button>)}
             </div>
             <p className="entry-safeguard safeguard-decision setup-safeguard" id="setup-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
             <button className="upload-own" aria-describedby="setup-entry-safeguard" disabled={photoProcessing} onClick={() => fileRef.current?.click()}><span>＋</span><b>{photo ? "Choose a different private photo" : "Optional: choose your own photo"}</b><small>Processed on this device. The original is never uploaded.</small></button>
@@ -1527,7 +1527,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           <div className="quiz-pattern" aria-hidden="true" />
           <div className="quiz-header">
             <button onClick={changeAvatarDuringQuiz}>← Change avatar</button>
-            <div className="quiz-player"><img src={portrait} alt="" /><span>{privatePlayerName || avatarChoice.name}</span></div>
+            <div className="quiz-player"><img src={portrait} alt="" width="256" height="256" decoding="async" /><span>{privatePlayerName || avatarChoice.name}</span></div>
             <div className="game-hud">
               <span className="hud-edition">{region.name}</span>
               <span className="hud-aura"><i>✦</i><b>{aura}</b> aura</span>
@@ -1562,7 +1562,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
                 const imagePresentation = imagePresentations[optionIndex];
                 const optionMarker = String.fromCharCode(65 + optionIndex);
                 return <button key={questionKind === "image" ? imagePath : questionOptionIds[optionIndex]} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen || imageAnswerPending} aria-label={questionKind === "image" ? `Option ${imagePresentation.marker}: ${imagePresentation.accessibilityDescription}` : undefined}>
-                  {questionKind === "image" && !failedQuestionImages.has(imagePath) && <img className="answer-image" src={imagePresentation.assetRef} alt={imagePresentation.accessibilityDescription} onError={() => setFailedQuestionImages((current) => new Set(current).add(imagePath))} />}
+                  {questionKind === "image" && !failedQuestionImages.has(imagePath) && <img className="answer-image" src={imagePresentation.assetRef} alt={imagePresentation.accessibilityDescription} width="720" height="540" decoding="async" onError={() => setFailedQuestionImages((current) => new Set(current).add(imagePath))} />}
                   {questionKind === "image" && failedQuestionImages.has(imagePath) && <span className="question-image-fallback">Image unavailable. {imagePresentation.accessibilityDescription}</span>}
                   <span className="answer-letter">{optionMarker}</span>{questionKind !== "image" && <b>{option}</b>}<i>{questionKind === "multi" ? selected.includes(optionIndex) ? "✓" : "+" : "↗"}</i>
                 </button>
@@ -1630,7 +1630,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               <img className="result-world-art" src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" />
               <div className="result-frame">
                 <div className="result-region">{region.mark} {region.short.toUpperCase()} AFRICA {region.mark}</div>
-                <div className="result-portrait with-image"><img src={portrait} alt="" /></div>
+                <div className="result-portrait with-image"><img src={portrait} alt="" width="256" height="256" decoding="async" /></div>
                 <p>{portraitDisplayName}</p>
                 <h1>{tierTitles[tier]}</h1>
                 <div className="result-gift"><b>{gifts[tier][0]}</b><span>+ {gifts[tier][1]}<br />+ {gifts[tier][2]}</span></div>
@@ -1683,7 +1683,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
 
       {menuOpen && (
         <div className="about-modal" role="dialog" aria-modal="true" aria-label="About this game">
-          <div className="about-sheet"><button className="modal-close" onClick={() => setMenuOpen(false)}>×</button>
+          <div className="about-sheet"><button className="modal-close" aria-label="Close about the game" onClick={() => setMenuOpen(false)}>×</button>
             <p className="eyebrow">About this experience</p><h2>THE STAKES ARE HIGH<br /><i>PROVE YOUR CULTURE KNOWLEDGE</i></h2>
             <p className="about-safeguard">{PRODUCT_SAFEGUARD}</p>
             <p>This is a fictional entertainment and learning experience. Five fast-moving editions turn selected African languages, histories, proverbs, foodways, music and visual cultures into a knowledge quest built for curiosity. It does not value people or assess anyone’s suitability for marriage or relationships. Anonymous play needs no account.</p>

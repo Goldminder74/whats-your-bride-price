@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./analyticsConsent.css";
 import "./privacyControls.css";
@@ -6,12 +6,21 @@ import "./cowrieCommerce.css";
 import "./privacyReview.css";
 import "./royalReveal.css";
 import "./dailyChallenge.css";
+import "./mobile.css";
 import { PRODUCT_SAFEGUARD } from "./productSafeguards";
 import { createPublicAppUrl, PUBLIC_APP_ORIGIN } from "./publicAppOrigin";
 import AnalyticsConsent from "./AnalyticsConsent";
 
 const canonicalHomeUrl = createPublicAppUrl();
 const socialImageUrl = createPublicAppUrl("/og-v2.png");
+
+// Vinext beta.2 omits viewportFit when serializing Viewport. Emit one explicit
+// tag below, suppressing its default width/scale tag. Keep pinch zoom available.
+export const viewport: Viewport = {
+  width: undefined,
+  initialScale: undefined,
+  themeColor: "#1d120b",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(PUBLIC_APP_ORIGIN),
@@ -56,6 +65,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" /></head>
       <body>{children}<AnalyticsConsent /></body>
     </html>
   );
