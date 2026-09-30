@@ -9,6 +9,9 @@ ownership or hosting-ingress rules change.
 - One explicit zoom-enabled viewport includes `viewport-fit=cover`. Vinext
   1.0.0-beta.2's viewport serializer ignores `viewportFit`; the layout suppresses
   its default tag and renders the complete tag. Compiled tests require exactly one.
+- The same-origin manifest link uses `crossorigin="use-credentials"` so the browser
+  includes the owner's session on the private deployment. Manifest protection is
+  retained; no service worker or offline copy of authenticated content is added.
 - Shared mobile styles provide 44px controls, readable editable text, wrapping
   answers, safe-area spacing and a scrollable short-screen About dialog.
 - Footer/privacy links have larger touch targets. The About close button has an
@@ -52,6 +55,7 @@ catalogue/runtime/payment work in [the handoff](current-handoff.md).
 
 Reference guidance: [W3C reflow](https://www.w3.org/WAI/WCAG21/Understanding/reflow),
 [target sizes](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum), and
-[native image loading](https://web.dev/articles/browser-level-image-lazy-loading).
+[native image loading](https://web.dev/articles/browser-level-image-lazy-loading),
+plus [credentialed manifests](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/crossorigin#web_manifest_with_credentials).
 The 44px control target is a project ergonomics choice; it is not a claim of full
 WCAG conformance.

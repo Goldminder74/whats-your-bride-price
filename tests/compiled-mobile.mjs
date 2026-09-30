@@ -12,11 +12,28 @@ async function touchTargets(locator) {
 }
 
 export async function exerciseMobileLayout(page, origin) {
+  const manifestCookies = [];
+  await page.context().addCookies([{name:"wybp_mobile_manifest_probe",value:"owner-session-probe",url:origin,httpOnly:true,sameSite:"Lax",secure:origin.startsWith("https:")}]);
+  await page.route("**/manifest.webmanifest", async route => {
+    manifestCookies.push((await route.request().allHeaders()).cookie || "");
+    await route.fallback();
+  });
   for (const size of [{ width:320,height:568 }, { width:360,height:640 }, { width:430,height:932 }, { width:844,height:390 }, { width:768,height:1024 }]) {
     await page.setViewportSize(size);
     await page.goto(origin);
     await page.locator("main[data-hydrated='true']").waitFor();
     await expect(page.locator('meta[name="viewport"]')).toHaveCount(1);
+    await expect(page.locator('link[rel="manifest"]')).toHaveCount(1);
+    await expect(page.locator('link[rel="manifest"]')).toHaveAttribute("crossorigin", "use-credentials");
+    if (size.width === 320) {
+      const session = await page.context().newCDPSession(page);
+      try {
+        const manifest = await session.send("Page.getAppManifest");
+        assert.deepEqual(manifest.errors, []);
+        assert.ok(manifest.data.includes('"name"'));
+        assert.ok(manifestCookies.some(cookie => cookie.includes("wybp_mobile_manifest_probe=owner-session-probe")), "The browser includes same-origin HttpOnly credentials when fetching the protected manifest");
+      } finally { await session.detach(); }
+    }
     const viewport = await page.locator('meta[name="viewport"]').getAttribute("content");
     assert.match(viewport, /viewport-fit=cover/);
     assert.doesNotMatch(viewport, /user-scalable=no|maximum-scale=1/);
@@ -63,4 +80,5 @@ export async function exerciseMobileLayout(page, origin) {
     assert.equal(await page.evaluate(() => document.getAnimations().filter(a => a.playState === 'running').length), 0, "Reduced motion stops decorative animations");
     console.log(`PASS mobile layout ${size.width}x${size.height}: touch, dialogs, zoom, enlarged text, progression, reduced motion.`);
   }
+  await page.unroute("**/manifest.webmanifest");
 }
