@@ -6,6 +6,7 @@ import { pathToFileURL } from "node:url";
 import { SignJWT } from "jose";
 import { chromium } from "@playwright/test";
 import { exerciseCompiledNavigation, exerciseCompiledImageAnswer } from "./compiled-navigation.mjs";
+import { exerciseRegionalProgression } from "./compiled-regional-progression.mjs";
 import { verifyRelease } from "../scripts/netlify-release.mjs";
 
 const pointer = JSON.parse(await readFile("outputs/netlify-worker/latest.json", "utf8"));
@@ -108,6 +109,7 @@ try {
   });
   await exerciseCompiledNavigation(page, origin);
   await exerciseCompiledImageAnswer(page, origin);
+  await exerciseRegionalProgression(page, origin);
   assert.ok(browserRscRequests > 0, "Next-style Link navigation uses the authenticated RSC path");
   assert.deepEqual(errors, []);
   await context.close();

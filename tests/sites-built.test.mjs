@@ -3,6 +3,7 @@ import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { chromium } from "@playwright/test";
 import { exerciseCompiledNavigation, exerciseCompiledImageAnswer } from "./compiled-navigation.mjs";
+import { exerciseRegionalProgression } from "./compiled-regional-progression.mjs";
 
 // One freshly compiled Sites client/server pair, on an OS-assigned local port.
 const server = spawn(process.execPath, ["tests/preview-server.mjs"], {
@@ -30,6 +31,7 @@ try {
   const page = await context.newPage();
   await exerciseCompiledNavigation(page, origin);
   await exerciseCompiledImageAnswer(page, origin);
+  await exerciseRegionalProgression(page, origin);
   await context.close();
 } finally {
   await browser?.close();

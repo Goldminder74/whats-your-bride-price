@@ -8,17 +8,19 @@ Checked 30 September 2026: application source on `feature/viral-build-sprint` is
 
 The Vinext/Vite application supports a private Netlify client and signed proxy requests to a Cloudflare Worker. Compiled navigation repairs and Worker packaging verification are committed. Explicit ESModule rules now include all 138 server modules; the regression reproduces the original omission. Packaging, hosting-security, both compiled navigation targets and the rebuilt release verifier passed at this source checkpoint.
 
-**[wybp-protected-test](https://wybp-protected-test.netlify.app/) now serves the verified owner-only application.** Netlify production and preview URLs deny anonymous access. Worker `wybp-test-r001` has its signature-protected primary endpoint enabled and preview endpoints disabled. Existing websites remain unchanged. D1/R2 are unbound and optional features remain disabled.
+**[wybp-protected-test](https://wybp-protected-test.netlify.app/) serves the owner-only test application; the blocking progression repair below is not deployed yet.** Netlify production and preview URLs deny anonymous access. Worker `wybp-test-r001` has its signature-protected primary endpoint enabled and preview endpoints disabled. Existing websites remain unchanged. D1/R2 are unbound and optional features remain disabled.
 
 ## Current task and next action
 
-The authorised credential correction, regression, checksum reconciliation and isolated redeployment are complete. Next: owner testing of the private application. No public launch, storage activation or payment setup is implied.
+Owner testing found a blocking image-question progression defect: the answer succeeded but the continuation panel remained below the image grid, outside the viewport. The scoped repair focuses and reveals the progression or explicit retry control, then reveals the following question. Complete all five regional quizzes on desktop/mobile and verify the repaired private release before handing back for owner testing.
 
-The image-answer POST now uses `credentials: "same-origin"` rather than `"omit"`, preserving the private access cookie. Both compiled browser harnesses check the actual cookie-bearing request and authoritative answer. Application authentication, ownership, Origin and Fetch Metadata checks remain unchanged.
+The image-answer POST retains `credentials: "same-origin"`. Both compiled targets now complete all five regions on desktop/mobile, including correct/wrong image answers, visible continuation controls, retries and final results. Application authentication, ownership, Origin and Fetch Metadata checks remain unchanged.
 
-The 29 apparent checksum mismatches were lowercase API path keys, not altered bytes. All 109 newly deployed client digests match; the verifier rejects missing/altered files and case collisions. Live checks passed for owner access, anonymous denial, invalid signatures, cross-origin rejection, images, quiz image answers, Privacy return, Terms, history and refresh. No browser console errors were observed. Consult the local checkpoint for release/deployment IDs and validation details. The protected placeholder remains available for rollback.
+The client verifier reconciles Netlify's lowercase path keys while rejecting missing/altered files and case collisions. Consult the local checkpoint for release/deployment IDs and validation details. The protected placeholder remains available for rollback.
 
 ## Essential constraints and references
+
+Public launch must include **random regional replay, Cowrie play access and purchases, and Royal Reveal payments**. Activation requires catalogue readiness, database/runtime configuration and verified payment flows. This requirement does not authorise live payments or public activation during this bug fix. See [random play](random-quick-play.md), [Cowrie access](cowrie-wallet-and-play-access.md), [purchases](cowrie-commerce.md) and [Royal Reveal](commerce-and-entitlement-contract.md).
 
 Keep builds secret-free; install secrets separately. Do not enable hosted builds or Git deployment under the current Personal-plan exception. Preserve migrations, question data, feature defaults, signature checks, authenticated assets, existing websites, DNS, other Workers, staging branch and stash. Keep PR #1 draft and unmerged. No storage binding, migration, seed, payment activation or other external change without authorisation.
 

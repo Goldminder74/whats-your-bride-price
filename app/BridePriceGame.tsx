@@ -359,6 +359,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const photoExpiryTimerRef = useRef<number | null>(null);
   const photoSelectionRef = useRef(0);
   const questionHeadingRef = useRef<HTMLHeadingElement>(null);
+  const answerActionRef = useRef<HTMLButtonElement>(null);
+  const submittedChoiceRef = useRef<number[]>([]);
   const startLockRef = useRef(false);
   const challengeCompletionPromiseRef = useRef<ReturnType<ChallengeCompletionClient["complete"]> | null>(null);
   const resultCompletionPromiseRef = useRef<Promise<Readonly<{ resultSlug: string; anonymousSessionCredential: string }>> | null>(null);
@@ -612,9 +614,21 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
 
   useEffect(() => {
     if (screen !== "quiz") return;
-    const frame = window.requestAnimationFrame(() => questionHeadingRef.current?.focus({ preventScroll: true }));
+    const frame = window.requestAnimationFrame(() => {
+      questionHeadingRef.current?.focus({ preventScroll: true });
+      questionHeadingRef.current?.scrollIntoView({ block: "center", behavior: "instant" });
+    });
     return () => window.cancelAnimationFrame(frame);
   }, [index, screen]);
+
+  useEffect(() => {
+    if (screen !== "quiz" || (!feedbackOpen && !imageAnswerError)) return;
+    const frame = window.requestAnimationFrame(() => {
+      answerActionRef.current?.focus({ preventScroll: true });
+      answerActionRef.current?.scrollIntoView({ block: "center", behavior: "instant" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [feedbackOpen, imageAnswerError, screen]);
 
   useEffect(() => {
     if (!fastEntryEnabled || !quizInstanceId || !["quiz", "reveal", "result"].includes(screen)) return;
@@ -1037,6 +1051,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
 
   const submitAnswer = async (choice: number[]) => {
     if (feedbackOpen) return;
+    submittedChoiceRef.current = [...choice];
     if (randomQuestion && randomSelection) {
       if (imageAnswerPending) return;
       setImageAnswerPending(true); setImageAnswerError("");
@@ -1555,11 +1570,14 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             </div>
             {questionKind === "multi" && !feedbackOpen && <button className="lock-answer" disabled={selected.length !== 3} onClick={() => void submitAnswer(selected)}>Lock in {selected.length}/3 answers <span>→</span></button>}
             {imageAnswerPending && <p role="status">Checking your answer…</p>}
-            {imageAnswerError && <p role="alert">{imageAnswerError}</p>}
+            {imageAnswerError && <div className="answer-reveal is-learning">
+              <p id="answer-error" role="alert">{imageAnswerError}</p>
+              <button ref={answerActionRef} aria-describedby="answer-error" disabled={imageAnswerPending} onClick={() => void submitAnswer(submittedChoiceRef.current)}>Retry answer</button>
+            </div>}
             {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
               <div><span>{lastCorrect ? "✦ CORRECT" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? "Culture gem energy!" : "Good guess. Bank this fact."}</b></div>
-              <p>{answerExplanation}</p>
-              <button onClick={nextQuestion}>{index === 11 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
+              <p id="answer-explanation">{answerExplanation}</p>
+              <button ref={answerActionRef} aria-describedby="answer-explanation" onClick={nextQuestion}>{index === 11 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
             </div>}
           </div>
           <div className="quiz-footer"><span>{region.mark}</span><p>Right or wrong, every reveal teaches you something worth carrying forward.</p></div>
