@@ -91,6 +91,20 @@ Netlify's documented proxy timeout is 26 seconds. Test slow paths before activat
 
 ## Local commands and evidence
 
+The first isolated Worker upload exposed a packaging defect: `no_bundle` uses
+Wrangler's additional-module rules, whose defaults do not include JavaScript.
+The release held 138 server modules, but only the entry module was uploaded;
+Cloudflare rejected its first missing import with error 10021. The generated
+config now explicitly collects `**/*.js` as ES modules beneath the server entry
+directory. Server files remain outside the Netlify client directory.
+
+Every Netlify/Worker build now runs Wrangler's actual `deploy --dry-run` package
+step and compares every uploaded server module byte-for-byte with the release
+manifest. `node --test tests/worker-package.test.mjs` covers static and dynamic
+imports and proves the original configuration fails this check. It also runs
+within `test:compiled-hosting`, so the aggregate gate includes it. To inspect an
+existing release, run `node scripts/verify-worker-package.mjs <release-directory>`.
+
 * npm run test:hosting — focused security and release tests.
 * npm run test:all — aggregate suite, including hosting unit tests and the mandatory
   compiled harness below. A successful aggregate now requires real Link navigation.
@@ -193,6 +207,12 @@ Do not enable Git builds, Agent Runners, build hooks, `netlify build`, environme
 imports or additional integrations without reviewing this boundary again.
 All-scopes configuration does not prevent future hosted builds from receiving
 the secret: the protection depends on keeping those execution paths disabled.
+Personal requires omitting an explicit scope list in the environment API; the
+default includes all four scopes. Its optional Secrets Controller marker rejects
+the included post-processing scope, so this exception uses an ordinary project
+variable. Owner-authorized UI/API access can read that value; never print it or
+import it into a build. This does not expose it to anonymous visitors or client
+files. Keep snippet injection and additional integrations unconfigured.
 Runtime-only scoping remains the preferred approach before adopting Netlify-hosted
 builds. Worker signature, claim, origin and expiry checks remain unchanged.
 

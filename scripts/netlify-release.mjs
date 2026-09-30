@@ -68,6 +68,8 @@ export async function packageRelease(projectRoot, config) {
   const generatedWorker = JSON.parse(await readFile(resolve(buildRoot, "server/wrangler.json"), "utf8"));
   const worker = {
     name: config.workerName, main: "server/index.js", no_bundle: true,
+    // Wrangler's no-bundle collector has no default JavaScript module rule.
+    rules: [{ type: "ESModule", globs: ["**/*.js"] }],
     compatibility_date: generatedWorker.compatibility_date, compatibility_flags: generatedWorker.compatibility_flags,
     assets: { directory: "client", binding: "ASSETS", run_worker_first: true },
     images: { binding: "IMAGES" }, observability: { enabled: false },
