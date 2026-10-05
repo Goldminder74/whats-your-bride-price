@@ -17,6 +17,11 @@ function run(args) {
 }
 run(["--test", "tests/worker-package.test.mjs"]);
 run(["node_modules/vinext/dist/cli.js", "build"]);
+if (process.argv.includes("--webkit")) {
+  process.env.WYBP_TEST_BROWSER = "webkit";
+  run(["tests/sites-built.test.mjs"]);
+  process.exit(0);
+}
 run(["tests/sites-built.test.mjs"]);
 run(["scripts/build-netlify-worker.mjs", "--synthetic"]);
 run(["tests/hosting-built.test.mjs"]);

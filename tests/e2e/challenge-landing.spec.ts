@@ -1,5 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import { regions } from "../../app/gameData";
+import { classicAnswerButton } from "../classic-answer-button.ts";
 
 const codes = Object.freeze({
   valid: "1".repeat(48),
@@ -34,7 +35,6 @@ async function completeChallengeQuiz(page: Page, correctCount: number) {
   await page.getByRole("button", { name: "Continue without a photo" }).click();
   for (const [questionIndex, question] of regions.west.questions.entries()) {
     await expect(page.getByText(`Question ${questionIndex + 1} of 12`).last()).toBeVisible();
-    const buttons = page.locator(".answer-grid > button");
     let choice = question.correct;
     if (questionIndex >= correctCount) {
       if (question.kind === "multi") {
@@ -44,7 +44,7 @@ async function completeChallengeQuiz(page: Page, correctCount: number) {
         choice = [(question.correct[0] + 1) % question.options.length];
       }
     }
-    for (const option of choice) await buttons.nth(option).click();
+    for (const option of choice) await classicAnswerButton(page, "west", questionIndex, question, option).click();
     if (question.kind === "multi") await page.getByRole("button", { name: /Lock in 3\/3 answers/ }).click();
     await page.locator(".answer-reveal").getByRole("button", { name: questionIndex === 11 ? /Reveal my result/ : /Next challenge/ }).click();
     if (questionIndex < 11 && (questionIndex + 1) % 3 === 0) {

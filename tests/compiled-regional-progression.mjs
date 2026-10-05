@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { expect } from "@playwright/test";
 import { regions } from "../app/gameData.ts";
+import { classicAnswerButton } from "./classic-answer-button.ts";
 
 async function reachable(action) {
   // Check before click(): Playwright's automatic scrolling concealed this bug.
@@ -26,6 +27,8 @@ export async function exerciseRegionalProgression(page, origin) {
       await page.getByRole("button", { name: /Enter Region 0/ }).click();
       let expectedScore = 0;
       let imageCount = 0;
+      const originalFirstPositions = [0, 0, 0, 0];
+      const correctPositions = [0, 0, 0, 0];
       for (const [index, question] of region.questions.entries()) {
         await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", String(index + 1));
         const image = question.kind === "image";
@@ -33,6 +36,10 @@ export async function exerciseRegionalProgression(page, origin) {
         const correct = !image || profile.width !== 390;
         if (correct) expectedScore++;
         const buttons = page.locator(".answer-grid > button");
+        const position = async canonical => classicAnswerButton(page, edition, index, question, canonical)
+          .evaluate(element => [...element.parentElement.children].indexOf(element));
+        originalFirstPositions[await position(0)]++;
+        if (question.correct.length === 1) correctPositions[await position(question.correct[0])]++;
         const failure = image ? failures.shift() : undefined;
         const requests = [];
         if (failure) {
@@ -51,7 +58,7 @@ export async function exerciseRegionalProgression(page, origin) {
             await expect(button.locator("img")).toHaveAttribute("alt", /.{24,}/);
           }
         }
-        for (const option of choice) await buttons.nth(option).click();
+        for (const option of choice) await classicAnswerButton(page, edition, index, question, option).click();
         if (question.kind === "multi") await page.getByRole("button", { name: /Lock in 3\/3 answers/ }).click();
         if (failure) {
           const retry = page.getByRole("button", { name: "Retry answer", exact: true });
@@ -81,7 +88,8 @@ export async function exerciseRegionalProgression(page, origin) {
       await expect(result.locator(".knowledge-note")).toContainText(`You answered ${expectedScore} of 12 correctly`);
       await expect(result.getByRole("button", { name: "Play another edition", exact: true })).toBeVisible();
       assert.equal(imageCount, 2);
-      console.log(`PASS ${profile.width}x${profile.height} ${edition}: 12 answers, 2 image progressions, result ${expectedScore}/12; controls focused, in viewport and unobstructed before clicking.`);
+      assert.deepEqual(originalFirstPositions, [3, 3, 3, 3], "Original A options are evenly spread in the rendered game");
+      console.log(`PASS ${profile.width}x${profile.height} ${edition}: 12 answers, 2 image progressions, result ${expectedScore}/12; canonical A displayed 3 times per letter; correct single-answer positions ${correctPositions.join("/")}; controls reachable.`);
     }
   }
   assert.deepEqual(errors, []);

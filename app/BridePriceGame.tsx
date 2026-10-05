@@ -34,6 +34,7 @@ import { reportAppError } from "./errors";
 import { activeFeatureFlags } from "./featureFlags";
 import { answersMatch, calculateResultTier, defaultSoundEnabled, getCelebrationPieceCount } from "./gameLogic";
 import { imageAnswerPresentations, legacyImageQuestionStableId } from "./imageQuestionPresentation";
+import { classicAnswerOrder } from "./answerOrder";
 import { resolveBrowserPublicAppOrigin } from "./publicAppOrigin";
 import {
   nominationSnapshotVersion,
@@ -378,6 +379,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const questionPrompt = randomQuestion?.text ?? question.prompt;
   const questionOptions = randomQuestion?.options.map((option) => option.text) ?? question.options;
   const questionOptionIds = randomQuestion?.options.map((option) => option.id) ?? question.options.map((_, optionIndex) => `o${optionIndex + 1}`);
+  const displayedOptionOrder = randomQuestion
+    ? questionOptions.map((_, optionIndex) => optionIndex)
+    : classicAnswerOrder(quizInstanceId, regionKey, index, questionOptions.length);
   const imagePresentations = randomQuestion?.kind === "image"
     ? randomQuestion.options.map((_, optionIndex) => Object.freeze({
         marker: String.fromCharCode(65 + optionIndex),
@@ -1076,7 +1080,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       setImageAnswerPending(true); setImageAnswerError("");
       try {
         const response = await fetch("/questions/image-answer", {
-          method: "POST", mode: "same-origin", credentials: "same-origin", referrerPolicy: "no-referrer",
+          method: "POST", mode: "cors", credentials: "same-origin", redirect: "error", referrerPolicy: "no-referrer",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({
             questionStableId: legacyImageQuestionStableId(regionKey, index),
@@ -1554,14 +1558,15 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             <div className="question-meta"><p className="eyebrow">{kindLabels[questionKind]}</p><span>{randomQuestion ? "FRESH REGIONAL MIX" : question.topic}</span></div>
             <h2 ref={questionHeadingRef} tabIndex={-1} className={questionKind === "image" ? "image-question" : questionKind === "complete" ? "sentence-question" : ""}>{questionPrompt}</h2>
             <div className={`answer-grid kind-${questionKind}`}>
-              {questionOptions.map((option, optionIndex) => {
+              {displayedOptionOrder.map((optionIndex, displayIndex) => {
+                const option = questionOptions[optionIndex];
                 const slot = (question.visualStart || 0) + optionIndex;
                 const correctOptions = randomQuestion || questionKind === "image" ? revealedCorrectOptions : question.correct;
                 const classes = [selected.includes(optionIndex) ? "selected" : "", feedbackOpen && correctOptions.includes(optionIndex) ? "correct" : "", feedbackOpen && selected.includes(optionIndex) && !correctOptions.includes(optionIndex) ? "wrong" : ""].filter(Boolean).join(" ");
                 const imagePath = randomQuestion?.kind === "image" ? randomQuestion.imageAssets[optionIndex] : `/quiz-art/${regionKey}-${slot}.webp`;
                 const imagePresentation = imagePresentations[optionIndex];
-                const optionMarker = String.fromCharCode(65 + optionIndex);
-                return <button key={questionKind === "image" ? imagePath : questionOptionIds[optionIndex]} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen || imageAnswerPending} aria-label={questionKind === "image" ? `Option ${imagePresentation.marker}: ${imagePresentation.accessibilityDescription}` : undefined}>
+                const optionMarker = String.fromCharCode(65 + displayIndex);
+                return <button key={questionKind === "image" ? imagePath : questionOptionIds[optionIndex]} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen || imageAnswerPending} aria-label={questionKind === "image" ? `Option ${optionMarker}: ${imagePresentation.accessibilityDescription}` : undefined}>
                   {questionKind === "image" && !failedQuestionImages.has(imagePath) && <img className="answer-image" src={imagePresentation.assetRef} alt={imagePresentation.accessibilityDescription} width="720" height="540" decoding="async" onError={() => setFailedQuestionImages((current) => new Set(current).add(imagePath))} />}
                   {questionKind === "image" && failedQuestionImages.has(imagePath) && <span className="question-image-fallback">Image unavailable. {imagePresentation.accessibilityDescription}</span>}
                   <span className="answer-letter">{optionMarker}</span>{questionKind !== "image" && <b>{option}</b>}<i>{questionKind === "multi" ? selected.includes(optionIndex) ? "✓" : "+" : "↗"}</i>

@@ -135,6 +135,11 @@ test("server image authority preserves every approved score and reveals it only 
   }));
   assert.equal(hostile.status, 403);
   assert.deepEqual(await hostile.json(), { accepted: false });
+  const opaque = await checkImageAnswer(new Request("https://quiz.example/questions/image-answer", {
+    method: "POST",
+    headers: { origin: "null", "sec-fetch-site": "same-origin", "sec-fetch-mode": "cors", "content-type": "application/json" }, body,
+  }));
+  assert.equal(opaque.status, 403, "Mobile compatibility must not accept opaque origins");
 });
 
 test("renderers expose descriptions without captions, titles or tooltips", async () => {
@@ -143,7 +148,7 @@ test("renderers expose descriptions without captions, titles or tooltips", async
     readFile(new URL("../../app/DailyChallengeClient.tsx", import.meta.url), "utf8"),
   ]);
   assert.match(game, /alt=\{imagePresentation\.accessibilityDescription\}/);
-  assert.match(game, /Option \$\{imagePresentation\.marker\}: \$\{imagePresentation\.accessibilityDescription\}/);
+  assert.match(game, /Option \$\{optionMarker\}: \$\{imagePresentation\.accessibilityDescription\}/);
   assert.doesNotMatch(game, /alt=\{option\}|title=\{option\}/);
   assert.match(daily, /alt=\{imageDescription\}/);
   assert.doesNotMatch(daily, /title=\{(?:option|imageDescription)/);

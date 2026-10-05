@@ -81,6 +81,13 @@ const server = createServer(async (incoming, outgoing) => {
           { waitUntil() {}, passThroughOnException() {} },
         );
 
+    if (process.env.WYBP_PREVIEW_IMAGE_AUDIT === "true" && requestUrl.pathname === "/questions/image-answer") {
+      // Local test evidence only; never log cookies, request bodies or secrets.
+      console.log("Image answer wire: " + JSON.stringify({
+        origin: requestHeaders.get("origin"), mode: requestHeaders.get("sec-fetch-mode"),
+        site: requestHeaders.get("sec-fetch-site"), status: response.status,
+      }));
+    }
     outgoing.writeHead(response.status, Object.fromEntries(response.headers));
     if (incoming.method === "HEAD" || !response.body) {
       outgoing.end();

@@ -28,6 +28,29 @@ ownership or hosting-ingress rules change.
 
 ## Regression gate
 
+Classic quiz choices use a fresh device-generated game ID to shuffle balanced
+four-question blocks. Every original option visits each letter once per block;
+the block schedules and base permutations vary. Recovery keeps the same order.
+Displayed letters never become scoring IDs: submissions, multi-select, image
+judgements and results retain canonical IDs. This removes the original A bias
+without exposing image authority or imposing a guessable correct-letter quota.
+Random Quick Play keeps its existing server-held option order.
+
+Image answers use a relative same-origin URL, `credentials: same-origin`,
+`mode: cors`, `redirect: error` and `referrerPolicy: no-referrer`. WebKit sends
+`Origin: null` for the former `same-origin` mode with this referrer policy;
+Chromium does not reproduce that failure. CORS mode retains the actual origin
+without sending a referrer path/query. The server still rejects null/arbitrary
+origins and cross-site Fetch Metadata; gateway signatures remain mandatory.
+See the [Fetch Origin algorithm](https://fetch.spec.whatwg.org/#append-a-request-origin-header).
+
+`npx playwright install webkit` prepares the additional test browser.
+`npm run test:mobile-webkit` builds the ordinary compiled target and tests real
+WebKit navigation and all five twelve-question games on desktop/mobile layouts.
+Image POSTs bypass Playwright interception so browser-generated security headers
+reach the server unchanged. Run this alongside the compiled hosting release gate.
+WebKit on Windows is an engine check, not a physical iPhone certification.
+
 `npm run test:compiled-hosting` runs the same checks against freshly paired Sites
 and synthetic Netlify/Worker builds, with no hosted requests:
 

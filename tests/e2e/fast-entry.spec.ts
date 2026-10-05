@@ -395,7 +395,7 @@ test("question media failure remains playable through objective non-spoiler desc
   await expect(page.locator(".question-image-fallback")).toHaveCount(4);
   await expect(page.locator(".answer-grid")).not.toContainText("Jollof rice");
   await expect(page.locator(".answer-grid")).not.toContainText("Injera platter");
-  const firstImageOption = page.getByRole("button", { name: /Option A: A bowl of reddish-orange rice/ });
+  const firstImageOption = page.getByRole("button", { name: /Option [A-D]: A bowl of reddish-orange rice/ });
   await expect(firstImageOption).toBeEnabled();
   await firstImageOption.focus();
   await expect(firstImageOption).toBeFocused();

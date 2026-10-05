@@ -100,7 +100,7 @@ try {
       // Interception is before Chromium's network-layer Fetch Metadata. Model
       // that layer for this same-origin POST; hostile metadata is tested above.
       headers["sec-fetch-site"] = "same-origin";
-      headers["sec-fetch-mode"] = "same-origin";
+      headers["sec-fetch-mode"] = "cors";
     }
     const staticResponse = incoming.method() === "GET" ? await asset(new Request(url)) : null;
     const response = staticResponse?.status === 200 ? staticResponse : await proxy(url.pathname + url.search, {

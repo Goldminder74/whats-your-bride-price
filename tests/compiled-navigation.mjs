@@ -1,9 +1,11 @@
 import assert from "node:assert/strict";
 import { expect } from "@playwright/test";
+import { regions } from "../app/gameData.ts";
+import { classicAnswerButton } from "./classic-answer-button.ts";
 
 // A private hosting gateway needs its HttpOnly cookie on the actual browser
 // request. Checking the request (not a mocked fetch option) catches omit again.
-export async function exerciseCompiledImageAnswer(page, origin) {
+export async function exerciseCompiledImageAnswer(page, origin, legacyTransportProbe = false) {
   const errors = [];
   const onError = error => errors.push(error.message);
   page.on("pageerror", onError);
@@ -26,14 +28,49 @@ export async function exerciseCompiledImageAnswer(page, origin) {
   }
   await page.getByRole("button", { name: /Claim gem/ }).click();
   await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "4");
+  if (legacyTransportProbe) {
+    // Reproduce the old client transport on WebKit's real network stack, then
+    // restore fetch before Retry. Neither response nor headers are mocked.
+    await page.evaluate(() => {
+      const original = window.fetch;
+      window.fetch = (input, init) => {
+        if (input === "/questions/image-answer") {
+          window.fetch = original;
+          return original(input, { ...init, mode: "same-origin" });
+        }
+        return original(input, init);
+      };
+    });
+    const rejectedPromise = page.waitForResponse(response => new URL(response.url()).pathname === "/questions/image-answer");
+    await classicAnswerButton(page, "west", 3, regions.west.questions[3], 0).click();
+    const rejected = await rejectedPromise;
+    assert.equal((await rejected.request().allHeaders()).origin, "null");
+    assert.equal(rejected.status(), 403, "Opaque origins remain rejected");
+    await expect(page.getByRole("alert")).toContainText("could not be checked");
+    await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "4");
+    const responsePromise = page.waitForResponse(response => new URL(response.url()).pathname === "/questions/image-answer");
+    await page.getByRole("button", { name: "Retry answer", exact: true }).click();
+    assert.equal((await responsePromise).status(), 200);
+    await expect(page.locator(".answer-reveal")).toContainText("CORRECT");
+    console.log("PASS WebKit regression: old Origin:null rejected with 403; unchanged canonical choice retried with corrected transport and accepted.");
+    await page.reload();
+    await page.locator("main[data-hydrated='true']").waitFor();
+    // This independent probe is complete. The normal journey below checks the
+    // fresh app request, cookie, origin, response and reveal from start to finish.
+    page.off("pageerror", onError);
+    assert.deepEqual(errors, []);
+    return exerciseCompiledImageAnswer(page, origin);
+  }
   const responsePromise = page.waitForResponse(response => new URL(response.url()).pathname === "/questions/image-answer");
-  await page.locator(".answer-grid > button").first().click();
+  await classicAnswerButton(page, "west", 3, regions.west.questions[3], 0).click();
   const response = await responsePromise;
   const headers = await response.request().allHeaders();
   assert.match(headers.cookie || "", /(?:^|; )compiled_private_access=local-test-only(?:;|$)/);
   assert.equal(headers.origin, origin);
-  // Chromium decorates Fetch Metadata after Playwright's interception point;
-  // the unchanged server guard must accept it for this response to be 200.
+  assert.equal(headers.referer, undefined, "No page path or query is transmitted as a referrer");
+  // Playwright can omit network-generated Fetch Metadata from allHeaders().
+  // The Sites harness audits it at the receiving server without interception;
+  // the signed proxy harness models it explicitly and tests hostile values.
   assert.equal(response.status(), 200);
   const judgement = await response.json();
   assert.equal(judgement.accepted, true);
@@ -69,14 +106,25 @@ export async function exerciseCompiledNavigation(page, origin) {
     assert.equal(documents, documentCount, "No full-page fallback may conceal broken RSC navigation");
   }
   const legalLink = name => page.getByRole("navigation", { name: "Legal and privacy", exact: true }).getByRole("link", { name, exact: true });
+  async function direct(url) {
+    // Let genuine Link prefetches finish before intentionally replacing the
+    // document. WebKit can report aborted in-flight prefetches as CORS errors.
+    // Keep every error assertion; make the test's hard navigation deterministic.
+    await page.waitForLoadState("networkidle");
+    await page.goto(url);
+  }
+  async function refresh() {
+    await page.waitForLoadState("networkidle");
+    await page.reload();
+  }
 
   // Retained failing journey and assertions: hydration, quiz entry, then the
   // Privacy return Link. Do not replace this with goto() or suppress its error.
-  await page.goto(origin + "/?edition=west");
+  await direct(origin + "/?edition=west");
   await game();
   await page.getByRole("button", { name: /Enter Region 01/ }).click();
   await page.getByRole("progressbar").waitFor();
-  await page.goto(origin + "/privacy");
+  await direct(origin + "/privacy");
   await privacy();
   await markDocument();
   await page.getByRole("link", { name: "Return to the game" }).click();
@@ -113,9 +161,9 @@ export async function exerciseCompiledNavigation(page, origin) {
 
   // The return Link deliberately targets '/'. History must still restore the
   // original entry query; direct loads and refresh must retain it as well.
-  await page.goto(origin + "/?edition=west");
+  await direct(origin + "/?edition=west");
   await game();
-  await page.reload();
+  await refresh();
   await game();
   assert.equal(new URL(page.url()).search, "?edition=west");
   await markDocument();
@@ -129,9 +177,9 @@ export async function exerciseCompiledNavigation(page, origin) {
   await page.goForward();
   await privacy();
   await sameDocument();
-  await page.goto(origin + "/privacy");
+  await direct(origin + "/privacy");
   await privacy();
-  await page.reload();
+  await refresh();
   await privacy();
   assert.equal(new URL(page.url()).pathname, "/privacy");
   assert.ok(componentResponses.length >= 3, "Multiple real component navigations must complete");

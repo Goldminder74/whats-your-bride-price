@@ -1,5 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import { regions, type RegionKey } from "../../app/gameData";
+import { classicAnswerButton } from "../classic-answer-button.ts";
 
 declare global {
   interface Window {
@@ -56,8 +57,7 @@ async function completePerfectWestQuiz(page: Page) {
       "aria-valuenow",
       String(questionIndex + 1),
     );
-    const answerButtons = page.locator(".answer-grid > button");
-    for (const correctIndex of question.correct) await answerButtons.nth(correctIndex).click();
+    for (const correctIndex of question.correct) await classicAnswerButton(page, "west", questionIndex, question, correctIndex).click();
     if (question.kind === "multi") {
       await page.getByRole("button", { name: /Lock in 3\/3 answers/ }).click();
     }
@@ -98,8 +98,7 @@ test("published image answers use neutral visible markers and descriptive keyboa
 
   for (let questionIndex = 0; questionIndex < 3; questionIndex += 1) {
     const question = regions.west.questions[questionIndex];
-    const buttons = page.locator(".answer-grid > button");
-    for (const correctIndex of question.correct) await buttons.nth(correctIndex).click();
+    for (const correctIndex of question.correct) await classicAnswerButton(page, "west", questionIndex, question, correctIndex).click();
     if (question.kind === "multi") await page.getByRole("button", { name: /Lock in 3\/3 answers/ }).click();
     await page.getByRole("button", { name: /Next challenge/ }).click();
   }
@@ -118,8 +117,9 @@ test("published image answers use neutral visible markers and descriptive keyboa
     expect(alternativeText?.length).toBeGreaterThanOrEqual(24);
     expect(alternativeText?.toLocaleLowerCase("en")).not.toContain(canonicalAnswer.toLocaleLowerCase("en"));
   }
-  await buttons.first().focus();
-  await expect(buttons.first()).toBeFocused();
+  const correctImage = classicAnswerButton(page, "west", 3, question, question.correct[0]);
+  await correctImage.focus();
+  await expect(correctImage).toBeFocused();
   const judgement = page.waitForResponse((response) => new URL(response.url()).pathname === "/questions/image-answer");
   await page.keyboard.press("Enter");
   expect((await judgement).status()).toBe(200);
