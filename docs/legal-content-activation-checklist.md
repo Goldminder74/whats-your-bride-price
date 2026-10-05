@@ -27,3 +27,7 @@ The current legal routes are draft, visibly unapproved and `noindex`. Production
 21. Explicit deployment approval.
 
 No legal entity, address, email, DPO, company number, ICO number, lawful basis, transfer mechanism, processor agreement or professional approval may be inferred from this repository. Missing configuration must remain visibly unapproved rather than publishing a placeholder as fact.
+
+## Confirmed draft seller details — 5 October 2026
+
+Owner-confirmed legal seller/controller candidate: Ayodele Ayeni, UK sole trader, trading as Classes for Culture, not VAT registered. Support contact: team@classesforculture.com. These facts may inform draft documentation; they do not constitute final legal approval or published notices. Geographic business/postal contact address, required phone, ICO applicability/fee, identity/bank verification and final digital-content/refund/receipt wording remain outstanding. No private address or identity document is requested in chat or committed. See [current seller/payment guide](stripe-payment-link-setup.md#owner-confirmed-seller-and-separate-account--5-october-2026). Sherwood Consulting Services Ltd and Wigsmi.com remain completely separate and untouched.

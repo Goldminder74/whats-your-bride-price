@@ -645,3 +645,7 @@ and [webhook registration/signatures](https://docs.stripe.com/webhooks).
    all other features and public/live payments disabled.
 
 See [only missing retention/purge decisions](retention-schedule.md#only-remaining-financialsupport-and-physical-purge-decisions).
+
+### October owner decisions and preparation update
+
+Seller now confirmed as Ayodele Ayeni, UK sole trader, trading as Classes for Culture, not VAT registered; support team@classesforculture.com. Sherwood/Wigsmi Stripe is excluded. Current [seller/four-product instructions](stripe-payment-link-setup.md), [unapproved retention proposals](retention-schedule.md#proposed-rules--not-approved-or-activated), [source capture reconciliation](launch-source-capture-reconciliation.md), [private backup steps](launch-evidence-backup.md) and [exact approval package](isolated-test-approval-package.md) supersede the earlier unresolved-owner/preservation status above. Original archive remains immutable; recovery supplement is separately checksummed. Nine source gaps affect 13 proposal questions, so publication readiness is still held. No independent backup or hosted/Stripe change claimed.
