@@ -420,15 +420,14 @@ region** afterwards. At evidence expiry/revocation eligibility falls immediately
 commerce readiness then fails below threshold. Ten reserves stay out of import
 and publication. All 352 original research-file records remain byte-exact drafts.
 
-**Identity decision:** the accepted Workstream E ready set includes
-`west_cabo_verde_cidade_velha_island@1`, one unchanged original West draft, plus
-89 replacements. Publishing that exact identity conflicts with a literal rule
-that every one of the 352 draft identities must remain unpublished. The proposal
-exposes this provenance; remote West publication additionally requires
-`--approve-original-draft west_cabo_verde_cidade_velha_island@1`. No exception
-has been assumed. Alternatively, a separately verified new replacement is needed;
-none of the ten reserves may silently be promoted. This is a hosted-publication
-blocker, not permission to edit or publish research files.
+**Identity resolved:**
+The original Cidade Velha research identity remains unpublished. The distinct
+launch identity is `west_e_897218520e14659da149e286@1`; its hash-bound
+`draftProvenance` refers to the original draft and explicitly acknowledges the
+single intentional ancestor match. Local machine checks do not represent human
+cultural approval. All 352 original identities and the ten original reserve IDs
+remain excluded. The operator now refuses any original-draft publication rather
+than accepting an override. See the [policy](machine-evidence-question-policy.md#authorised-cidade-velha-launch-derivation-5-october-2026).
 
 Before any hosted import/publication, place the twelve regenerated outputs,
 proposal, source-builder revision, five immutable research-pack hashes, policy
@@ -497,8 +496,7 @@ is allowed. Immediate-delivery consent and draft legal notices remain intact.
 
 ### Remaining hosted gates and rollback
 
-Owner approval is still needed for provisioning/name/budget, the exact manifest
-and West identity decision, durable evidence receipts, test sandbox and four link
+Owner approval is still needed for provisioning/name/budget, the exact manifest, durable evidence receipts, test sandbox and four link
 IDs/URLs/signing-secret installation, retention/support rules, and isolated
 migrations/import/publication/cron/feature deployment. No settings were changed.
 
@@ -524,3 +522,126 @@ References: [D1 atomic batches](https://developers.cloudflare.com/d1/worker-api/
 [UTC cron](https://developers.cloudflare.com/workers/configuration/cron-triggers/),
 [Stripe webhooks](https://docs.stripe.com/webhooks),
 [Payment Link returns](https://docs.stripe.com/payment-links/post-payment).
+
+### Self-contained audit archive and independent preservation
+
+`scripts/archive-launch-evidence.mjs` packages the complete 90-question proposal,
+180 structured question/source records, all twelve deterministic output files,
+research inputs (including original draft/review/source-register files), source
+code, policy, unchanged migrations and per-file SHA-256 checksums. It rejects
+missing/tampered captures, unlisted files and unsafe paths. Reproduction is tested
+from the included source snapshot without installed dependencies for the offline
+builder. No credentials, runtime configuration files, hosted data or generated
+application builds enter this archive.
+
+Prepared local artefacts live under ignored `outputs/activation-preparation/`,
+not in temporary storage or a public/client directory. The ZIP sidecar hashes the
+whole container; `checksums.json` inside hashes every payload except itself.
+Source/manifest/scripts/research inputs are preserved in GitHub after this commit.
+The generated ZIP and current source-page bodies are local only: OneDrive sync,
+external storage and an independent backup have **not** been verified.
+
+Current source bodies are supplemental, timestamped separately from the historical
+21 September inspection. The inventory distinguishes captured HTTP bodies from
+transport/HTTP failures; a response is not proof of fact accuracy, and dynamic or
+linked documents may need manual inspection. No source is requalified and no
+expiry is extended. Original historical raw captures were not located in the
+checked working-output/temp locations and remain unverified; never label current
+captures as their replacement. Restore those captures where available and resolve
+missing source bodies before claiming independently complete source audit.
+
+Regenerate outside the repository; then prepare a fresh archive directory:
+
+```powershell
+node scripts/build-machine-evidence-question-bank.mjs --output <outside-repository-evidence>
+node scripts/archive-launch-evidence.mjs --evidence <outside-repository-evidence> --output <fresh-local-archive-directory> --capture-cache outputs/activation-preparation/current-source-captures
+```
+
+The optional `--capture-current --capture-cache <fresh-cache-directory>` command
+reads public source pages only, without cookies or account credentials. It never
+imports or publishes questions. Back up the completed ZIP and SHA-256 sidecar to
+an owner-controlled location independent of this machine/OneDrive folder. Read
+both copies back, verify the ZIP hash, extract and verify every payload, and record
+location/date/checksum receipts outside Git. Until this happens, backup status is
+unverified. Keep audit/source captures out of Netlify's client upload directory. For a
+fresh GitHub reproduction clone, use `git -c core.autocrlf=false clone` so byte
+checksums are not changed by checkout newline conversion. Archive extraction
+already preserves exact bytes.
+
+### Exact owner Stripe sandbox setup — instructions only, do not execute yet
+
+These steps require later hosted/Stripe approval. No account settings were read
+or changed here. Current official instructions: [sandbox management](https://docs.stripe.com/sandboxes/dashboard/manage),
+[Payment Links](https://docs.stripe.com/payment-links/create),
+[after-payment redirects](https://docs.stripe.com/payment-links/post-payment),
+[URL correlation](https://docs.stripe.com/payment-links/url-parameters),
+and [webhook registration/signatures](https://docs.stripe.com/webhooks).
+
+1. Inventory existing sandboxes first. In Stripe's account picker, select **Switch
+   to sandbox → Manage sandboxes** and reuse the intended isolated sandbox if it
+   exists. Otherwise, after approval, **Create sandbox**, name it `WYBP Private
+   Test`, and choose **Create an account from scratch** rather than copying live
+   settings. Verify the sandbox banner every time. Do not create a connected
+   account, enable live mode or change the live business. Your role must permit
+   sandbox management; actual permission has not been checked.
+2. In that sandbox open **Payment Links → +New**, choose/add a fixed-price product,
+   and create these four **one-off GBP** prices/links. Keep their non-secret
+   `price_`/`plink_` IDs and `https://buy.stripe.com/test_...` URLs in a private
+   operator configuration receipt. The application's product key is the mapping
+   below, not a fabricated Stripe product ID.
+
+| Application key / suggested sandbox product | Exact one-off price | Checkout quantity | Digital fulfilment | Exact After the payment → Redirect URL |
+|---|---:|---:|---|---|
+| `royal_reveal_v1` / Royal Reveal Pack | GBP 1.99 (`199`) | 1 | One result-bound Royal Reveal | `https://wybp-protected-test.netlify.app/royal-reveal/return` |
+| `cowrie_5_v1` / 5 Cowries | GBP 1.99 (`199`) | 1 | 5 purchased Cowries | `https://wybp-protected-test.netlify.app/cowries/return` |
+| `cowrie_15_v1` / 15 Cowries | GBP 4.99 (`499`) | 1 | 15 purchased Cowries | `https://wybp-protected-test.netlify.app/cowries/return` |
+| `cowrie_40_v1` / 40 Cowries | GBP 9.99 (`999`) | 1 | 40 purchased Cowries | `https://wybp-protected-test.netlify.app/cowries/return` |
+
+3. Keep line quantity fixed at **1**. Disable adjustable quantities, customer-chosen
+   amounts, subscriptions, trials, optional items, discounts/promotion codes,
+   shipping and automatic tax that changes the expected total. Use card payments
+   initially; do not enable delayed methods that can settle beyond the application's
+   unchanged 30-minute authority. Do not collect optional names/phone/address/tax
+   IDs/custom fields. Stripe may collect its own checkout email; the app must not
+   copy it into D1. Do not enable receipt/invoice/custom automations or substitute
+   live terms. The app's deliberate immediate-delivery consent remains separate
+   and unchecked by default. No tax policy for public launch is decided here.
+4. Use the exact redirect URLs above: no `{CHECKOUT_SESSION_ID}`, owner credential,
+   result slug, email or marketing parameters. The app alone appends the opaque
+   `client_reference_id` to the Payment Link; do not hard-code it. This matches
+   server-owned orders. A return URL/query value is never proof of payment.
+5. Configure the Worker variables from the existing **Retention and Stripe test
+   settings** section, using actual four link IDs/URLs and `false` for every
+   livemode field. Royal uses `STRIPE_PAYMENT_LINK_*`; Cowries use uppercase
+   `COWRIE_5_V1_*`, `COWRIE_15_V1_*`, `COWRIE_40_V1_*`. Product, quantity, GBP and
+   minor amount must match the table. These non-secret settings are installed
+   separately from the secret-free build; no Stripe account API key is required.
+6. After the approved payments Worker is ready, in sandbox **Workbench → Webhooks
+   → Create an event destination**, select **Your account**, **snapshot events**
+   (not thin events), and an explicitly recorded stable API version. Select only
+   `checkout.session.completed`, `checkout.session.async_payment_succeeded`,
+   `checkout.session.async_payment_failed`, `charge.refunded`,
+   `charge.dispute.created`. Choose **Webhook endpoint** and the exact URL
+   `https://wybp-test-r001.ayo-m-ayeni.workers.dev/commerce/stripe-test-webhook`.
+   No query or trailing slash; no Netlify owner login. The actual sandbox API
+   version is unknown: verify full `data.object` payloads and the expected
+   session/link/intent/amount/currency fields before activation; unsupported shapes
+   must stop, never relax validation or silently upgrade dependencies.
+7. Install the endpoint signing secret through Cloudflare Dashboard **Workers &
+   Pages → wybp-test-r001 → Settings → Variables and Secrets → Add → Secret**,
+   named `STRIPE_WEBHOOK_SIGNING_SECRET` ([Cloudflare secret controls](https://developers.cloudflare.com/workers/configuration/secrets/)). The owner transfers it directly from
+   Stripe's signing-secret control into that secret field; never paste it into
+   chat, source, shell arguments, `.env`, screenshots or logs. Do not use a CLI
+   listener secret or a live endpoint secret. Keep the existing Netlify proxy
+   secret unchanged. Installation and any resulting Worker update still require
+   hosted approval; `WYBP_TEST_WEBHOOK_ENABLED` remains false until separately
+   authorised. Keep secrets absent from build/upload processes.
+8. Once activation is approved, start orders from the private app, use Stripe's
+   documented test cards (never a real card), check signed delivery/one fulfilment,
+   duplicate delivery, cancellation/failure, mobile return and downloads. Test all
+   four products, full/partial refund and dispute distinctions and frozen-wallet
+   boundaries. Confirm live events and unsigned/direct non-webhook requests fail.
+   An uncorrelated Dashboard sample event does not prove order fulfilment. Keep
+   all other features and public/live payments disabled.
+
+See [only missing retention/purge decisions](retention-schedule.md#only-remaining-financialsupport-and-physical-purge-decisions).

@@ -27,3 +27,25 @@ Only stable low-objective geography, official heritage location/names, documente
 Questions use neutral UK English, four plausible distinct options, one supported answer, one point and respectful bounded explanations. Text-only replacements are preferred. IDs are opaque and evidence/answer keys are server/offline only. Exact/near duplicates and repeated concepts are checked against the canonical sixty, all 352 drafts and all replacements. Regional coverage shortfalls are reported rather than weakening the policy.
 
 No client, public endpoint, query, browser storage or review fixture can write verification authority. No new endpoint or activation control is introduced. Random Quick Play, Cowries, commerce, analytics, daily challenges, streaks and owner dashboard remain disabled. Hosted storage, Stripe, staging and production are untouched.
+
+## Authorised Cidade Velha launch derivation (5 October 2026)
+
+`west_e_897218520e14659da149e286@1` is a distinct launch derivative of
+`west_cabo_verde_cidade_velha_island@1`. The research row remains draft and
+unpublished, with all bytes and review annotations unchanged. The derivative uses
+the existing canonical island template, the original answer/distractors and two
+previously recorded independent sources. It carries the ancestor file SHA-256,
+canonical question SHA-256, original lifecycle and explicit relationship.
+
+The validator pins this exception to that exact launch ID, ancestor, version and
+Cidade Velha/Santiago claim; verifies both hashes against the actual unchanged
+research input; rejects specialist/community/sensitivity flags; and admits exactly
+one acknowledged near-match ancestor. It still rejects exact duplicates, other
+near matches and any repeated eligible launch concept. Both identities cannot
+enter the operator publication manifest. This is an explicitly recorded ancestry
+exception, not a claim that the corpus contains no matching draft.
+
+Local machine derivation checks are dated 5 October. Upstream source inspection
+remains dated 21 September; no fresh inspection or human cultural approval is
+claimed. Recheck/expiry remain 20 March 2027, 21:00 UTC. The exact original ten
+reserves are retained; none is promoted by the new identity's sorting position.

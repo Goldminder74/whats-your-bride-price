@@ -42,6 +42,7 @@ export type EvidenceBundle = Readonly<{
   method: typeof MACHINE_EVIDENCE_METHOD;
   policyVersion: typeof MACHINE_EVIDENCE_POLICY;
   candidateOrigin: Readonly<{ kind: "replacement" | "original_draft"; stableId: string; version: number; sourceSha256: string | null }>;
+  draftProvenance?: Readonly<{ stableId: string; version: number; sourceSha256: string; questionSha256: string; originalLifecycle: "draft"; originalPublishedAt: null; relationship: "distinct_launch_derivative" }>;
   question: QuestionBankQuestion;
   fact: EvidenceFact;
   sources: readonly EvidenceSource[];
@@ -155,6 +156,22 @@ export async function validateEvidenceBundle(bundle: EvidenceBundle, context: Re
     if (canonicalEvidenceJson(question) !== canonicalEvidenceJson(original.question)) reject("original_draft_modified");
   } else if (bundle.candidateOrigin.kind !== "replacement" || !OPAQUE_ID.test(question.stableId)
     || bundle.candidateOrigin.stableId !== question.stableId || bundle.candidateOrigin.version !== question.version || bundle.candidateOrigin.sourceSha256 !== null) reject("replacement_identity_invalid");
+  // Only the explicitly authorised Cidade Velha derivative may acknowledge one unpublished ancestor.
+  const ancestor = bundle.draftProvenance;
+  if (question.stableId === "west_e_897218520e14659da149e286" && !ancestor) reject("draft_derivation_invalid");
+  if (ancestor) {
+    const original = context.originalDraftReviews.get(`${ancestor.stableId}@${ancestor.version}`);
+    if (bundle.candidateOrigin.kind !== "replacement" || (question.stableId !== "west_e_897218520e14659da149e286" || question.version !== 1)
+      || ancestor.stableId !== "west_cabo_verde_cidade_velha_island" || ancestor.version !== 1
+      || ancestor.relationship !== "distinct_launch_derivative" || ancestor.originalLifecycle !== "draft" || ancestor.originalPublishedAt !== null
+      || !original || original.question.stableId !== ancestor.stableId || original.question.version !== ancestor.version || original.sha256 !== ancestor.sourceSha256 || original.question.lifecycleStatus !== "draft" || original.question.publishedAt !== null
+      || original.specialistReviewRequired || original.sensitivityNotes || original.communityScope
+      || bundle.fact.subject !== "Cidade Velha" || bundle.fact.predicate !== "island" || bundle.fact.value !== "Santiago"
+      || question.region !== "west" || question.countryScope !== "Cabo Verde") reject("draft_derivation_invalid");
+    const bytes = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(canonicalEvidenceJson(original.question)));
+    const hash = [...new Uint8Array(bytes)].map(byte => byte.toString(16).padStart(2,"0")).join("");
+    if (hash !== ancestor.questionSha256) reject("draft_derivation_invalid");
+  }
   const wording = evidenceQuestionWording(bundle.fact);
   if (bundle.candidateOrigin.kind === "replacement" && question.questionText !== wording.questionText) reject("unsupported_claim");
   if (bundle.candidateOrigin.kind === "replacement" && question.explanation !== wording.explanation) reject("unsupported_explanation");
@@ -199,7 +216,7 @@ export async function validateEvidenceBundle(bundle: EvidenceBundle, context: Re
   }
   if (bundle.duplicateAnalysis.corpusSha256 !== context.corpusSha256 || !HASH.test(context.corpusSha256)
     || bundle.duplicateAnalysis.conceptKey !== evidenceConceptKey(bundle.fact) || !bundle.duplicateAnalysis.finding.trim()
-    || bundle.duplicateAnalysis.exactMatches !== 0 || bundle.duplicateAnalysis.nearMatches !== 0
+    || bundle.duplicateAnalysis.exactMatches !== 0 || bundle.duplicateAnalysis.nearMatches !== (ancestor ? 1 : 0)
     || context.duplicateConceptKeys.has(bundle.duplicateAnalysis.conceptKey)) reject("duplicate_question");
   const kinds = ["entailment", "adversarial_ambiguity", "cultural_regional_risk"];
   if (bundle.reviewPasses.length !== 3 || new Set(bundle.reviewPasses.map((pass) => pass.kind)).size !== 3) reject("three_review_passes_required");

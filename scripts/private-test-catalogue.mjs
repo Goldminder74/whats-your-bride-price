@@ -52,7 +52,7 @@ export async function loadEvidence(directory, now = Date.now()) {
         questionContentSha256:canonicalHash(bundle.question),evidenceBundleSha256:bundle.evidenceBundleSha256,
         evidenceFile:`${region}-evidence-pack.json`,evidenceFileSha256:sha256(bytes),
         evidenceReference:`${region}-evidence-pack.json#/bundles/${pack.bundles.indexOf(bundle)}`,
-        candidateOrigin:bundle.candidateOrigin,method:bundle.method,policyVersion:bundle.policyVersion,verifiedAt:bundle.verifiedAt,recheckAt:bundle.recheckAt,expiresAt:bundle.expiresAt,
+        candidateOrigin:bundle.candidateOrigin,...(bundle.draftProvenance ? {draftProvenance:bundle.draftProvenance} : {}),method:bundle.method,policyVersion:bundle.policyVersion,verifiedAt:bundle.verifiedAt,recheckAt:bundle.recheckAt,expiresAt:bundle.expiresAt,
         sources:bundle.sources.map(source => ({id:source.id,url:source.url,locator:source.locator,upstreamIdentity:source.upstreamIdentity,
           sourceRecordSha256:canonicalHash(source)}))});
     }
@@ -75,7 +75,7 @@ export async function loadEvidence(directory, now = Date.now()) {
     lifecycle:"proposed_not_imported_or_published",method:"machine_evidence_v1",humanCulturalApproval:false,
     canonicalSeedChecksum:seed.contentChecksum,canonicalPerRegion:12,evidencePerRegion:18,eligiblePerRegion:30,
     researchDraftFilesUnchanged:352,researchFiles,selectedOriginalDraftVersions:entries.filter(entry=>entry.candidateOrigin.kind==="original_draft").map(entry=>`${entry.stableId}@${entry.version}`),
-    requiresOriginalDraftPublicationDecision:true,excludedReserves:10,reproductionFiles,gameDataSha256,schemaSha256,
+    requiresOriginalDraftPublicationDecision:entries.some(entry=>entry.candidateOrigin.kind==="original_draft"),excludedReserves:10,reproductionFiles,gameDataSha256,schemaSha256,
     evidenceManifestSha256:sha256(await readFile(resolve(directory,"manifest.json"))),
     migrations:migrations.map(({name,checksum}) => ({name,sha256:checksum})),entries};
   return {packs,manifest,seed};
@@ -201,7 +201,7 @@ async function main() {
   const hash=sha256(manifestBytes);
   if(args.includes("--apply")) {
     if(!args.includes("--remote") || value("--approve-manifest")!==hash || value("--approve-target")!==process.env.WYBP_TEST_D1_DATABASE_ID) throw new Error("explicit_target_and_manifest_approval_required");
-    if(operation==="publish"&&value("--region")==="west"&&value("--approve-original-draft")!==data.manifest.selectedOriginalDraftVersions[0])throw new Error("original_research_draft_publication_requires_separate_decision");
+    if(operation==="publish"&&data.manifest.selectedOriginalDraftVersions.length)throw new Error("original_research_draft_publication_forbidden");
     await executeTargetBatch({databaseId:process.env.WYBP_TEST_D1_DATABASE_ID,token:process.env.CLOUDFLARE_API_TOKEN,plan,migrations:data.manifest.migrations,schemaSha256:data.manifest.schemaSha256});
   }
   console.log(JSON.stringify({operation,region:operation==="seed"?null:value("--region"),dryRun:!args.includes("--apply"),statements:plan.length,manifestSha256:hash,target:PRIVATE_TEST.databaseName}));

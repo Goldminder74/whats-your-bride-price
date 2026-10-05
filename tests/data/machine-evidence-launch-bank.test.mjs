@@ -38,9 +38,9 @@ before(async () => {
 after(async () => { if (output) await rm(output, { recursive: true, force: true }); });
 
 test("the deterministic launch bank contains eighteen ready and two reserve drafts per region", async () => {
-  assert.deepEqual(manifest.examined, { west: 86, east: 89, central: 102, north: 86, south: 88 });
+  assert.deepEqual(manifest.examined, { west: 87, east: 89, central: 102, north: 86, south: 88 });
   assert.deepEqual(manifest.failed, { west: 66, east: 69, central: 82, north: 66, south: 68 });
-  assert.deepEqual(manifest.replacementCounts, { west: 19, east: 20, central: 20, north: 20, south: 20 });
+  assert.deepEqual(manifest.replacementCounts, { west: 20, east: 20, central: 20, north: 20, south: 20 });
   const ids = new Set();
   for (const region of regions) {
     const pack = packs[region];
@@ -79,8 +79,9 @@ test("every generated bundle has current direct evidence, one primary source and
     await validateEvidenceBundle(bundle, {
       now: Date.parse(manifest.generatedAt),
       corpusSha256: manifest.corpusSha256,
-      originalDraftReviews: bundle.candidateOrigin.kind === "original_draft"
-        ? new Map([[`${bundle.question.stableId}@${bundle.question.version}`, { sha256: bundle.candidateOrigin.sourceSha256, specialistReviewRequired: false, sensitivityNotes: null, communityScope: null, question: bundle.question }]])
+      originalDraftReviews: bundle.draftProvenance
+        ? new Map([[`${bundle.draftProvenance.stableId}@1`, { sha256: bundle.draftProvenance.sourceSha256, specialistReviewRequired: false, sensitivityNotes: null, communityScope: null,
+          question: JSON.parse(await readFile("data/question-bank/west-africa/west-africa-draft-v1.json","utf8")).questions.find(question=>question.stableId===bundle.draftProvenance.stableId) }]])
         : new Map(),
       duplicateConceptKeys: new Set(),
     });
@@ -106,12 +107,12 @@ test("duplicate analysis covers the immutable source corpus and excludes repeate
   for (const pack of Object.values(packs)) for (const bundle of pack.bundles) {
     assert.equal(bundle.duplicateAnalysis.corpusSha256, manifest.corpusSha256);
     assert.equal(bundle.duplicateAnalysis.exactMatches, 0);
-    assert.equal(bundle.duplicateAnalysis.nearMatches, 0);
+    assert.equal(bundle.duplicateAnalysis.nearMatches, bundle.draftProvenance ? 1 : 0);
     concepts.push(bundle.duplicateAnalysis.conceptKey);
     if (bundle.candidateOrigin.kind === "original_draft") originalCount += 1;
   }
   assert.equal(new Set(concepts).size, 100);
-  assert.equal(originalCount, 1);
+  assert.equal(originalCount, 0);
 });
 
 test("pack hashes and reports are deterministic and no failed lead enters a pack", async () => {
@@ -138,4 +139,24 @@ test("the offline builder cannot write inside the repository or contact a databa
   await assert.rejects(execFile(process.execPath, ["--experimental-strip-types", "scripts/build-machine-evidence-question-bank.mjs", "--output", "tests/generated-evidence"], { cwd: new URL("../../", import.meta.url), windowsHide: true }), /evidence_output_must_be_outside_repository/);
   const source = await readFile(new URL("../../scripts/build-machine-evidence-question-bank.mjs", import.meta.url), "utf8");
   assert.doesNotMatch(source, /\bfetch\s*\(|\.prepare\s*\(|\bINSERT\s+INTO\b|\bUPDATE\s+questions\b|\bDELETE\s+FROM\b/i);
+});
+
+test("Cidade Velha has a distinct hash-bound launch ancestor; original identity and reserves stay excluded",async()=>{
+  const city=packs.west.bundles.find(bundle=>bundle.fact.subject==="Cidade Velha");
+  assert.equal(city.question.stableId,"west_e_897218520e14659da149e286");
+  assert.equal(city.candidateOrigin.kind,"replacement");assert.equal(city.duplicateAnalysis.nearMatches,1);
+  assert.equal(city.draftProvenance.stableId,"west_cabo_verde_cidade_velha_island");
+  const original=JSON.parse(await readFile("data/question-bank/west-africa/west-africa-draft-v1.json","utf8")).questions.find(question=>question.stableId===city.draftProvenance.stableId);
+  assert.equal(original.lifecycleStatus,"draft");assert.equal(original.publishedAt,null);
+  const ctx={now:Date.parse(manifest.generatedAt),corpusSha256:manifest.corpusSha256,duplicateConceptKeys:new Set(),originalDraftReviews:new Map([[original.stableId+"@1",{sha256:protectedHashes.west,specialistReviewRequired:false,sensitivityNotes:null,communityScope:null,question:original}]])};
+  for(const change of [b=>b.draftProvenance.sourceSha256="0".repeat(64),b=>b.draftProvenance.questionSha256="0".repeat(64),b=>b.draftProvenance.stableId="another_draft",b=>b.question.stableId=original.stableId,b=>b.duplicateAnalysis.nearMatches=2,b=>b.duplicateAnalysis.nearMatches=0,b=>delete b.draftProvenance,b=>{delete b.draftProvenance;b.duplicateAnalysis.nearMatches=0;},b=>b.question.version=2]){
+    const altered=structuredClone(city);change(altered);altered.evidenceBundleSha256=await evidenceBundleHash(altered);
+    await assert.rejects(validateEvidenceBundle(altered,ctx));
+  }
+  await assert.rejects(validateEvidenceBundle(city,{...ctx,originalDraftReviews:new Map([[original.stableId+"@1",{...ctx.originalDraftReviews.get(original.stableId+"@1"),specialistReviewRequired:true}]])}));
+});
+
+test("all ten previously excluded reserves keep their exact identities",()=>{
+  const expected={west:["west_e_f25dee02837d0465284d3952","west_e_fb3704fd227087ca83aa73c5"],east:["east_e_e65fb17485445f2ef404a66c","east_e_e6844633274539f1bd60b372"],central:["central_e_eefe171be0c76dc5c5bd010c","central_e_fcd0ec6a10f83e733277b3e9"],north:["north_e_d94118dd233a0913cdd2b325","north_e_e5eeafc81267f1eec0e6786b"],south:["south_e_df8f235b65a7d0f5efeeb50e","south_e_e6acbbddd05874d001f00987"]};
+  for(const region of regions)assert.deepEqual(packs[region].reserves,expected[region]);
 });

@@ -30,7 +30,7 @@ import { assertSecretFreeBuild } from "../../scripts/secret-free-build.mjs";
 import { releaseConfiguration } from "../../scripts/netlify-release.mjs";
 import { writeFile } from "node:fs/promises";
 
-const now=Date.UTC(2026,9,5,12);
+const now=Date.UTC(2026,9,5,16);
 let directory,data,plan;
 before(async()=>{
   directory=await mkdtemp(join(tmpdir(),"wybp-test-catalogue-"));
@@ -45,6 +45,10 @@ async function seedPublish(adapter){await adapter.batch(bind(adapter,seedPlan(da
 test("proposal reproduces exactly, reserves/drafts excluded; seed/import/publication are atomic, separate and idempotent",async()=>{
   assert.deepEqual(data.manifest,JSON.parse(await readFile(publicationManifestPath,"utf8")));
   assert.equal(data.manifest.entries.length,90);assert.equal(data.manifest.humanCulturalApproval,false);
+  assert.deepEqual(data.manifest.selectedOriginalDraftVersions,[]);assert.equal(data.manifest.requiresOriginalDraftPublicationDecision,false);
+  const city=data.manifest.entries.find(entry=>entry.draftProvenance);assert.equal(city.stableId,"west_e_897218520e14659da149e286");
+  assert.equal(city.draftProvenance.stableId,"west_cabo_verde_cidade_velha_island");
+  assert.ok(!data.manifest.entries.some(entry=>entry.stableId===city.draftProvenance.stableId));
   const {db,adapter}=await dbFixture();
   try{
     adapter.failAt=70;await assert.rejects(adapter.batch(bind(adapter,seedPlan(data.seed))));assert.equal(db.prepare("SELECT COUNT(*) n FROM quiz_editions").get().n,0);adapter.failAt=-1;

@@ -19,3 +19,35 @@ Cowrie bonuses expire exactly 180 days after their authoritative award. Purchase
 ## Disabled Cowrie payment continuity
 
 Cowrie pending/async fulfilment authority is at most thirty minutes from creation. Existing webhook evidence retention remains 400 days and outlives all valid fulfilment windows, including unresolved verified adverse events. Only the explicit bounded retention operation removes expired evidence. No ordinary request extends payment/bonus retention. Financial wallet/ledger deletion remains subject to separate legal/support approval; frozen access does not make purchased value expire. See [Cowrie commerce](cowrie-commerce.md).
+
+## Only remaining financial/support and physical-purge decisions
+
+Reviewed against official UK guidance on 5 October 2026. The seller's entity,
+jurisdiction and VAT status are not yet confirmed. For a UK limited company,
+required accounting/tax records generally run six years from the end of the
+relevant financial year ([GOV.UK](https://www.gov.uk/running-a-limited-company/company-and-accounting-records));
+for UK self-employment, at least five years after the relevant 31 January filing
+deadline ([GOV.UK](https://www.gov.uk/self-employed-records/how-long-to-keep-your-records));
+UK VAT records generally require at least six years (ten for OSS/MOSS cases)
+([GOV.UK](https://www.gov.uk/charge-reclaim-record-vat/keeping-vat-records)).
+These are conditional statutory requirements for necessary records, not a reason
+to retain every quiz answer or identifier. Confirm applicability and accounting
+storage with the seller/accountant. No statutory period has been configured.
+
+UK GDPR does not prescribe one retention period for each data type: necessity,
+justification and deletion/anonymisation are required
+([ICO storage limitation](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles/a-guide-to-the-data-protection-principles/storage-limitation/)).
+Erasure can be restricted for legal obligations or legal claims, and backup
+handling must be addressed
+([ICO erasure](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/individual-rights/right-to-erasure/)).
+The existing 400-day commerce setting is a technical proposal, not a verified
+statutory accounting schedule. No period, hold or purge is activated here.
+
+| Missing decision | Records affected | Operational consequence / nature |
+|---|---|---|
+| 1. Confirm seller jurisdiction/entity/VAT status, necessary accounting evidence and its approved schedule/location; decide how long operational wallet/order identity links are needed after closure or settlement. | Wallets, immutable ledger, purchase allocations, orders, entitlements, minimal Stripe references and any separate accounting export. | Statutory minimums depend on the business. Operational links are a purpose-based choice. Deleting links prematurely can prevent proving paid value, refunds or ownership; keeping every link for the tax period is not automatically justified. Existing purchased-value rules stay unchanged. |
+| 2. Specify support/refund/dispute case retention and its start/end trigger, authorised handler/contact, minimal case fields and unresolved-case hold/release rules. | Frozen wallet references, settlement/order evidence, privacy requests and future support correspondence/case records; no support-ticket store currently exists. | Mainly a product/support choice with legal obligations/claims where applicable. Clearing freezes access, but there is no approved case closure/deletion schedule. Expired webhook evidence must not be assumed to substitute for accounting/support proof. No identifiable deletion logs are added. |
+| 3. Set physical deletion or irreversible anonymisation deadlines after expiry or an accepted deletion request, and a safe dependency order. | Expired incomplete attempts, completed attempts, answers, results and related daily/challenge ownership/completion rows; payment-linked result/entitlement references may need a minimised retained proof first. | Product/privacy implementation choice, not a new access period. Access expiry already works; rows can remain stored because purge deadlines are missing. Immutable scoring/financial triggers and foreign keys must be respected; any later necessary schema change needs separate review, not blind cascading deletion. |
+| 4. Set the matching backup/export expiry and deletion propagation rules, and responsibility for reapplying deletions after restore. | Future D1 recovery copies, accounting/support exports and any replicated owner links. | Live deletion alone does not remove backup copies. Legal holds may preserve necessary evidence; otherwise define when copies cease use and are overwritten. Restoring must not resurrect expired/deleted ownership. Non-personal question-evidence backups are separate from player/financial data. |
+
+Already approved access/bonus/streak periods are not open decisions in this list.
