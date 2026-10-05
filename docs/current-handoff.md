@@ -39,10 +39,11 @@ Historical captures remain unverified; no dates/expiry/qualification were renewe
 
 Original local ZIP/receipt and recovery supplement are checksum verified under
 ignored `outputs/activation-preparation/`; GitHub holds source/manifest/research
-inputs, not raw bodies/ZIPs. Google Drive connected to ayo.m.ayeni@gmail.com: four owner-only files uploaded;
-authenticated download materialisation returned 403, so checksums are not verified
-from cloud readback. Personal OneDrive upload access remains unavailable. [Manual private upload/readback steps](launch-evidence-backup.md)
-cover the two specified owner accounts. Neither cloud backup is verified.
+inputs, not raw bodies/ZIPs. Google Drive connected to ayo.m.ayeni@gmail.com: four owner-only files uploaded.
+Owner-provided downloads of both ZIPs now match unchanged trusted local receipts
+and all 363 original/15 supplement payloads; Drive archive readback is verified.
+Downloaded sidecar copies were not supplied. Personal OneDrive remains unverified. [Manual private upload/readback steps](launch-evidence-backup.md)
+cover the two specified owner accounts. Drive archive backup is verified; OneDrive backup still needs upload/readback.
 
 [Seller/payment guide](stripe-payment-link-setup.md) prepares a NEW sole-trader
 account, four GBP links and test-to-live gates; Adaptive Pricing compatibility
@@ -55,7 +56,7 @@ targets, migrations/catalogue, preservation, test profiles, webhook/cron and rol
 ## Next action and constraints
 
 Owner: approve retention choices, address/legal completion and resource budget;
-restore evidence gaps and verify two private backup readbacks. Then separately
+restore evidence gaps and verify the remaining OneDrive backup/readback. Then separately
 authorise the exact isolated hosted/test-Stripe package; no public/live approval.
 
 Prior 90 affected tests/lint/typecheck and integration gates are reused; this task

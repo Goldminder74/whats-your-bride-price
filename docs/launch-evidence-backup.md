@@ -1,6 +1,6 @@
-# Private evidence preservation — upload pending
+# Private evidence preservation — Drive archives verified; OneDrive pending
 
-5 October 2026 update. The Google Drive connector is now connected and verified as **ayo.m.ayeni@gmail.com**. All four files below were uploaded to My Drive (root; no folder-creation capability was used), then metadata readback verified `shared=false` and exactly the intended owner permission. They are uploaded and owner-only, **not yet checksum-verified cloud backups**. Raw connector fetches succeeded but their authenticated materialisation URLs returned HTTP 403 on local download, including a fresh retry. No download URL or credential is preserved in documentation. OneDrive remains unavailable/unverified.
+5 October 2026 update. The Google Drive connector is now connected and verified as **ayo.m.ayeni@gmail.com**. All four files below were uploaded to My Drive (root; no folder-creation capability was used), then metadata readback verified `shared=false` and exactly the intended owner permission. They are uploaded and owner-only. Subsequent owner-provided downloads in `C:/Users/Admin/Downloads/` verified BOTH archive containers against unchanged trusted local checksum receipts, ZIP integrity, exact file inventory and all 363 original/15 supplement payload hashes. **Drive archive readback is verified.** Downloaded receipt copies were not supplied; no receipt was replaced. Raw connector fetches succeeded but their authenticated materialisation URLs returned HTTP 403 on local download, including a fresh retry. No download URL or credential is preserved in documentation. OneDrive remains unavailable/unverified.
 
 | Uploaded file | Google Drive file ID |
 |---|---|
@@ -9,7 +9,7 @@
 | launch-evidence-recovery-20261005.zip | `1RA_P9XT323L6IJ7KP7idGzs4C6k-22fv` |
 | launch-evidence-recovery-20261005.zip.sha256 | `1ys5Gq_1NNvJ66ewjlW8gk_-OydhLFhJ3` |
 
-Private upload receipt is local ignored `outputs/activation-preparation/google-drive-upload-receipt.json`. Original local archives are unchanged. For Google Drive, **do not upload duplicates**: locate these exact files/IDs, download directly while signed into the owner account, and perform steps 4–5 below. Steps 1–3 remain the manual instructions for the still-missing OneDrive copy and any future organisation into a private folder.
+Private upload receipt is local ignored `outputs/activation-preparation/google-drive-upload-receipt.json`. Original local archives are unchanged. For Google Drive, **do not upload duplicates**: the two ZIP readbacks are complete; retain these exact files/IDs. Receipt readbacks can be checked separately if downloaded. Steps 1–3 remain the manual instructions for the still-missing OneDrive copy and any future organisation into a private folder.
 
 ## Exact manual steps
 
@@ -36,4 +36,4 @@ The supplement `checksums.json` records each body's bytes/hash; verify every ext
 
 ## Preservation boundaries
 
-GitHub preserves source, original research inputs, structured records/builder, policy and publication manifest; raw/current source bodies and ZIPs are ignored local artefacts. Original archive remains unchanged and documents 119 captures/22 gaps; the separate supplement adds 13 useful current captures, one NASA error body and eight failed requests. Together nine gaps affect 13 proposed questions; see [reconciliation](launch-source-capture-reconciliation.md). No capture is represented as historical raw evidence or human cultural approval. Independent/historical backup remains unverified until actual readback.
+GitHub preserves source, original research inputs, structured records/builder, policy and publication manifest; raw/current source bodies and ZIPs are ignored local artefacts. Original archive remains unchanged and documents 119 captures/22 gaps; the separate supplement adds 13 useful current captures, one NASA error body and eight failed requests. Together nine gaps affect 13 proposed questions; see [reconciliation](launch-source-capture-reconciliation.md). No capture is represented as historical raw evidence or human cultural approval. Google Drive archive preservation is verified by owner-provided readback; OneDrive and historical-capture preservation remain unverified. Verification does not resolve the nine evidence gaps.
