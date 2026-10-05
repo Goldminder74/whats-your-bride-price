@@ -16,9 +16,9 @@ Corrected the Safari-family image-answer failure: WebKit sends `Origin: null` wi
 
 Classic choices shuffle per game in balanced presentation blocks. Canonical option IDs, content and scoring remain unchanged; recovery retains the order and retries retain the choice. Random Quick Play retains its server-held order. See [mobile readiness and test commands](mobile-readiness.md).
 
-All integration stages completed, with the affected compiled gate rerun after raw-header audit correction. Both compiled targets and WebKit completed all twelve questions in all five regions at desktop/mobile sizes, including correct/wrong image answers, retries and results. Final Chromium/WebKit navigation checks, lint, typecheck, builds, package verification and diff checks passed. Live checks verified all forty image choices, protected assets/images, signatures, ownership and anonymous denial. Owner-browser mobile progression remains pending: the UI helper cannot restore the minimized Personal Edge window and reports conflicting input even after the owner leaves it idle. API checks are not full UI evidence.
+All integration stages completed, with the affected compiled gate rerun after raw-header audit correction. Both compiled targets and WebKit completed all twelve questions in all five regions at desktop/mobile sizes, including correct/wrong image answers, retries and results. Final Chromium/WebKit navigation checks, lint, typecheck, builds, package verification and diff checks passed. Live checks verified all forty image choices, protected assets/images, signatures, ownership and anonymous denial. Signed-in Edge at a 390×844 emulated viewport verified Jollof image selection, server-checked feedback, the visible continuation control and progression to question five. No application console error appeared; browser-extension notices were separate.
 
-Next: finish that live UI check, then physical iOS/Android review. Device keyboards, cutouts, assistive technology and measured field speed remain public-launch gates.
+Next: physical iOS/Android review. Emulation does not verify device keyboards, cutouts, assistive technology or measured field speed; these remain public-launch gates.
 
 ## Essential constraints and references
 
