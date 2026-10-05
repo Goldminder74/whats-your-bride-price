@@ -1,6 +1,15 @@
 # Private evidence preservation — upload pending
 
-5 October 2026. Supported connector discovery found Google Drive available but not connected; no authenticated upload/download capability was available for either requested account. Personal OneDrive access is not proved by SharePoint availability. No cloud copy/upload or independent backup is claimed. Do not rely on the local OneDrive folder name as sync proof.
+5 October 2026 update. The Google Drive connector is now connected and verified as **ayo.m.ayeni@gmail.com**. All four files below were uploaded to My Drive (root; no folder-creation capability was used), then metadata readback verified `shared=false` and exactly the intended owner permission. They are uploaded and owner-only, **not yet checksum-verified cloud backups**. Raw connector fetches succeeded but their authenticated materialisation URLs returned HTTP 403 on local download, including a fresh retry. No download URL or credential is preserved in documentation. OneDrive remains unavailable/unverified.
+
+| Uploaded file | Google Drive file ID |
+|---|---|
+| launch-evidence-a42ea07f.zip | `1oad_ELFUbe_5uK3vJpfvGgMf9893tc0L` |
+| launch-evidence-a42ea07f.zip.sha256 | `1BcNqbCSyyqXIKDgSyVIlWQVrDmun2VCi` |
+| launch-evidence-recovery-20261005.zip | `1RA_P9XT323L6IJ7KP7idGzs4C6k-22fv` |
+| launch-evidence-recovery-20261005.zip.sha256 | `1ys5Gq_1NNvJ66ewjlW8gk_-OydhLFhJ3` |
+
+Private upload receipt is local ignored `outputs/activation-preparation/google-drive-upload-receipt.json`. Original local archives are unchanged. For Google Drive, **do not upload duplicates**: locate these exact files/IDs, download directly while signed into the owner account, and perform steps 4–5 below. Steps 1–3 remain the manual instructions for the still-missing OneDrive copy and any future organisation into a private folder.
 
 ## Exact manual steps
 

@@ -39,8 +39,9 @@ Historical captures remain unverified; no dates/expiry/qualification were renewe
 
 Original local ZIP/receipt and recovery supplement are checksum verified under
 ignored `outputs/activation-preparation/`; GitHub holds source/manifest/research
-inputs, not raw bodies/ZIPs. Google Drive is available but not connected; personal
-OneDrive upload access unavailable. [Manual private upload/readback steps](launch-evidence-backup.md)
+inputs, not raw bodies/ZIPs. Google Drive connected to ayo.m.ayeni@gmail.com: four owner-only files uploaded;
+authenticated download materialisation returned 403, so checksums are not verified
+from cloud readback. Personal OneDrive upload access remains unavailable. [Manual private upload/readback steps](launch-evidence-backup.md)
 cover the two specified owner accounts. Neither cloud backup is verified.
 
 [Seller/payment guide](stripe-payment-link-setup.md) prepares a NEW sole-trader
