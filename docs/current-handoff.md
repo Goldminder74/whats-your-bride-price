@@ -2,28 +2,28 @@
 
 ## Source checkpoint
 
-Checked 30 September 2026: application source on `feature/viral-build-sprint` is `d862f6315e85604000b078d4355d878b58dbcea9` (`fix: reveal quiz progression and retry controls`), verified on origin after pushing. This handoff update is documentation only and does not change the deployed application checkpoint. PR #1 remains open, draft and unmerged, with base `master`.
+Checked 5 October 2026: application source on `feature/viral-build-sprint` is `5959b4e1b21bc6fc7f667461ccd643b303cde18c` (`fix: shuffle quiz choices and support mobile image answers`), pushed normally to origin. PR #1 remains open, draft and unmerged, base `master`.
 
 ## Implemented versus deployed
 
-The Vinext/Vite application supports a private Netlify client and signed proxy requests to a Cloudflare Worker. Compiled navigation repairs and Worker packaging verification are committed. Explicit ESModule rules now include all 138 server modules; the regression reproduces the original omission. Packaging, hosting-security, both compiled navigation targets and the rebuilt release verifier passed at this source checkpoint.
+[wybp-protected-test](https://wybp-protected-test.netlify.app/) serves the matched private Netlify/Cloudflare application. Netlify production and preview URLs deny anonymous access. Worker `wybp-test-r001` requires verified proxy signatures before application/assets delivery; preview endpoints are disabled. D1/R2 are unbound, optional features disabled and Stripe disconnected. Existing websites remain unchanged.
 
-**[wybp-protected-test](https://wybp-protected-test.netlify.app/) serves the repaired, live-verified owner-only test application.** Netlify production and preview URLs deny anonymous access. Worker `wybp-test-r001` has its signature-protected primary endpoint enabled and preview endpoints disabled. Existing websites remain unchanged. D1/R2 are unbound and optional features remain disabled.
+The source includes compiled navigation and Worker packaging repairs, reachable progression/retry controls, mobile layouts, zoom/safe-area support, reduced motion, image loading improvements and a credentialed private manifest.
 
 ## Current task and next action
 
-Fixed the blocking image-question defect: successful answers left continuation below the viewport. The repair focuses and reveals progression/retry controls and the following question. All 12 questions in all five regions were completed live at 1366×768 and 390×844: 120 answers, every image question, ten verified 12/12 results, no console errors. No additional gameplay blocker was found. Next: owner review; public launch remains gated below.
+Corrected the Safari-family image-answer failure: WebKit sends `Origin: null` with the old same-origin fetch mode and no-referrer policy. The relative POST now uses CORS mode, same-origin credentials, no referrer and rejects redirects. Null/arbitrary origins, cross-site Fetch Metadata, ownership and ingress protections remain intact.
 
-The image-answer POST retains `credentials: "same-origin"`. Both compiled targets passed all regions at desktop/mobile sizes, including correct/wrong image answers and final results. Server/network/malformed-response retries passed. All aggregate stages, builds and diff checks passed. Authentication, ownership, Origin and Fetch Metadata checks remain unchanged.
+Classic choices shuffle per game in balanced presentation blocks. Canonical option IDs, content and scoring remain unchanged; recovery retains the order and retries retain the choice. Random Quick Play retains its server-held order. See [mobile readiness and test commands](mobile-readiness.md).
 
-The client verifier reconciles Netlify's lowercase path keys while rejecting missing/altered files and case collisions. Consult the local checkpoint for release/deployment IDs and validation details. The protected placeholder remains available for rollback.
+All integration stages completed, with the affected compiled gate rerun after raw-header audit correction. Both compiled targets and WebKit completed all twelve questions in all five regions at desktop/mobile sizes, including correct/wrong image answers, retries and results. Final Chromium/WebKit navigation checks, lint, typecheck, builds, package verification and diff checks passed. Live checks verified all forty image choices, protected assets/images, signatures, ownership and anonymous denial. Owner-browser mobile progression remains pending: the UI helper cannot restore the minimized Personal Edge window and reports conflicting input even after the owner leaves it idle. API checks are not full UI evidence.
+
+Next: finish that live UI check, then physical iOS/Android review. Device keyboards, cutouts, assistive technology and measured field speed remain public-launch gates.
 
 ## Essential constraints and references
 
-Public launch must include **random regional replay, Cowrie play access and purchases, and Royal Reveal payments**. Activation requires catalogue readiness, database/runtime configuration and verified payment flows. This requirement does not authorise live payments or public activation during this bug fix. See [random play](random-quick-play.md), [Cowrie access](cowrie-wallet-and-play-access.md), [purchases](cowrie-commerce.md) and [Royal Reveal](commerce-and-entitlement-contract.md).
+Public launch must include random regional replay, Cowrie play access and purchases, and Royal Reveal payments. These require catalogue readiness, database/runtime configuration and verified payment flows before activation. No live payments/public activation is authorised here. See [random play](random-quick-play.md), [Cowrie access](cowrie-wallet-and-play-access.md), [purchases](cowrie-commerce.md) and [Royal Reveal](commerce-and-entitlement-contract.md).
 
-Keep builds secret-free; install secrets separately. Do not enable hosted builds or Git deployment under the current Personal-plan exception. Preserve migrations, question data, feature defaults, signature checks, authenticated assets, existing websites, DNS, other Workers, staging branch and stash. Keep PR #1 draft and unmerged. No storage binding, migration, seed, payment activation or other external change without authorisation.
+Keep builds secret-free and secret installation separate. Do not enable hosted builds/Git deployment under the Personal-plan exception. Preserve migrations, question packs, defaults, existing websites/DNS/Workers, staging branch and stash. Keep PR #1 draft. No hosted storage changes, seed, publishing or activation.
 
-- [Hosting contract, commands and rollback](netlify-cloudflare-hosting.md). Its original readiness statements predate the recorded deployment attempt; use the checkpoint below for the latest recorded deployment state.
-- [Privacy contract](privacy-controls-contract.md), [retention](retention-schedule.md), [storage gates](storage-binding-readiness.md)
-- Local ignored evidence: [deployment checkpoint](../outputs/netlify-deployment-checkpoint.json) and [original package omissions](../outputs/original-worker-package-omissions.json). Release manifests are under `outputs/netlify-worker/<release-id>/release.json`. These are not preserved by Git and may be absent from a fresh clone; independent archival backup remains unverified.
+[Hosting and rollback](netlify-cloudflare-hosting.md); [privacy](privacy-controls-contract.md); [retention](retention-schedule.md); [storage gates](storage-binding-readiness.md). Ignored local evidence: `outputs/netlify-deployment-checkpoint.json`, `outputs/original-worker-package-omissions.json`, release manifests under `outputs/netlify-worker/<release-id>/release.json` and temporary test logs. Independent archival backup remains unverified; a fresh clone may lack this evidence.
