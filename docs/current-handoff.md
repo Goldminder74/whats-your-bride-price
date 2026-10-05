@@ -33,8 +33,9 @@ and ten reserves remain untouched/unpublished; no human cultural approval.
 
 [Source reconciliation](launch-source-capture-reconciliation.md) maps 22 previous
 gaps affecting 25 questions: 13 useful bodies recovered, one NASA error body,
-eight failed requests. Nine remaining gaps affect 13 questions: publication audit
-hold until recovery or separately reviewed replacements still support 30/region.
+eight failed requests. Second-pass recovery preserves the exact Egypt PDF (printed p.101), closing five
+missing-body holds. Eight proposals remain held; authoritative repair records and
+metadata corrections are prepared, not requalified. Validate before claiming 30/region.
 Historical captures remain unverified; no dates/expiry/qualification were renewed.
 
 Original local ZIP/receipt and recovery supplement are checksum verified under
@@ -42,8 +43,9 @@ ignored `outputs/activation-preparation/`; GitHub holds source/manifest/research
 inputs, not raw bodies/ZIPs. Google Drive connected to ayo.m.ayeni@gmail.com: four owner-only files uploaded.
 Owner-provided downloads of both ZIPs now match unchanged trusted local receipts
 and all 363 original/15 supplement payloads; Drive archive readback is verified.
-Downloaded sidecar copies were not supplied. Personal OneDrive remains unverified. [Manual private upload/readback steps](launch-evidence-backup.md)
-cover the two specified owner accounts. Drive archive backup is verified; OneDrive backup still needs upload/readback.
+Downloaded sidecar copies were not supplied. Owner chose verified Google Drive only; OneDrive is deferred and not a gate. [Manual private upload/readback steps](launch-evidence-backup.md)
+cover the two specified owner accounts. The two original Drive archives are verified. New gap-recovery supplement is
+locally checksum verified and uploaded owner-only; its cloud readback is unverified.
 
 [Seller/payment guide](stripe-payment-link-setup.md) prepares a NEW sole-trader
 account, four GBP links and test-to-live gates; Adaptive Pricing compatibility
@@ -56,7 +58,7 @@ targets, migrations/catalogue, preservation, test profiles, webhook/cron and rol
 ## Next action and constraints
 
 Owner: approve retention choices, address/legal completion and resource budget;
-restore evidence gaps and verify the remaining OneDrive backup/readback. Then separately
+review retention choices while local evidence repairs proceed; OneDrive is deferred. Then separately
 authorise the exact isolated hosted/test-Stripe package; no public/live approval.
 
 Prior 90 affected tests/lint/typecheck and integration gates are reused; this task
