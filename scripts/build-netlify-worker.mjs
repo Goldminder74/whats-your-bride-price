@@ -1,14 +1,23 @@
 import { spawnSync } from "node:child_process";
 import { packageRelease, releaseConfiguration, syntheticConfiguration } from "./netlify-release.mjs";
 import { verifyWorkerPackage } from "./verify-worker-package.mjs";
+import { assertSecretFreeBuild } from "./secret-free-build.mjs";
+import { writeFile, readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { resolveFeatureFlags } from "../app/featureFlags.ts";
+import { assertPrivateTestFlags } from "../app/privateTestProfile.ts";
 
 const args = process.argv.slice(2);
 if (args.some(arg => arg !== "--synthetic")) throw Error("Only --synthetic is supported; this tool never deploys");
 const configuration = args.includes("--synthetic") ? syntheticConfiguration : releaseConfiguration(process.env);
 const environment = { ...process.env, WYBP_DEPLOY_TARGET: "netlify-worker", WYBP_HOSTING_ENVIRONMENT: configuration.environment, PUBLIC_APP_ORIGIN: configuration.origin };
+await assertSecretFreeBuild(process.cwd(), environment);
+assertPrivateTestFlags(configuration.profile || "off", resolveFeatureFlags(environment));
 // Vite rejects enabled features/review overrides rather than silently disabling them.
 const result = spawnSync(process.execPath, ["node_modules/vinext/dist/cli.js", "build"], { env: environment, stdio: "inherit" });
 if (result.status !== 0) process.exit(result.status || 1);
+if (configuration.profile) await writeFile("dist/private-build.json", JSON.stringify({configuration,
+  flags:resolveFeatureFlags(environment),serverEntrySha256:createHash("sha256").update(await readFile("dist/server/index.js")).digest("hex")})+"\n");
 const root = await packageRelease(process.cwd(), configuration);
 const upload = await verifyWorkerPackage(root);
 console.log(`Wrangler upload verified: ${upload.serverModules} unchanged server modules.`);

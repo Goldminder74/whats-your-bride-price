@@ -104,7 +104,7 @@ export function parseQuestionBankJson(value: string): QuestionBankDocument {
   return validateQuestionBankDocument(parsed, { maximumQuestions: QUESTION_BANK_MAX_IMPORT_ROWS });
 }
 
-function parseCsvRows(value: string): string[][] {
+export function parseCsvRows(value: string): string[][] {
   if (!value || utf8Bytes(value) > QUESTION_BANK_MAX_IMPORT_BYTES) return fail("import_size_invalid");
   const rows: string[][] = [];
   let row: string[] = [];

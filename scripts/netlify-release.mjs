@@ -2,6 +2,8 @@ import { createHash } from "node:crypto";
 import { readdir, readFile, mkdir, writeFile, copyFile, lstat } from "node:fs/promises";
 import { resolve, relative, dirname, extname, sep } from "node:path";
 import { validateHostingOrigin } from "../app/hostingOrigin.ts";
+import { PRIVATE_TEST, validatePrivateTestProfile, validateTestDatabaseId } from "../app/privateTestProfile.ts";
+import { assertPrivateTestFlags } from "../app/privateTestProfile.ts";
 
 export const syntheticConfiguration = Object.freeze({
   synthetic: true, environment: "test", origin: "https://wybp-local-fixture.netlify.app",
@@ -17,12 +19,21 @@ export function releaseConfiguration(env) {
     projectId: env.WYBP_NETLIFY_PROJECT_ID, context: env.WYBP_NETLIFY_CONTEXT,
     workerOrigin: env.WYBP_WORKER_ORIGIN, workerName: env.WYBP_WORKER_NAME,
   };
+  const profile = validatePrivateTestProfile(env.WYBP_PRIVATE_TEST_PROFILE);
+  if (profile !== "off") Object.assign(config, { profile, databaseId: validateTestDatabaseId(env.WYBP_TEST_D1_DATABASE_ID) });
   validateConfiguration(config);
   return config;
 }
 
 export function validateConfiguration(config) {
   validateHostingOrigin(config);
+  const profile = validatePrivateTestProfile(config.profile);
+  if (profile !== "off") {
+    validateTestDatabaseId(config.databaseId);
+    if (config.synthetic || config.environment !== "test" || config.origin !== PRIVATE_TEST.origin
+      || config.projectId !== PRIVATE_TEST.projectId || config.context !== "production"
+      || config.workerName !== PRIVATE_TEST.workerName || config.workerOrigin !== PRIVATE_TEST.workerOrigin) throw Error("Private data release identity mismatch");
+  } else if (config.databaseId) throw Error("D1 requires an explicit private test profile");
   if (!/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/.test(config.projectId || "")
     || !["production", "deploy-preview", "branch-deploy"].includes(config.context)
     || !/^wybp-[a-z0-9-]+$/.test(config.workerName || "")) throw Error("Missing or invalid release identity");
@@ -75,6 +86,20 @@ export async function packageRelease(projectRoot, config) {
     images: { binding: "IMAGES" }, observability: { enabled: false },
     vars: { WYBP_NETLIFY_PROJECT_ID: config.projectId, WYBP_NETLIFY_CONTEXT: config.context, WYBP_NETLIFY_SITE_URL: config.origin },
   };
+  if (config.profile) {
+    const receiptBytes = await readFile(resolve(buildRoot, "private-build.json"));
+    const receipt = JSON.parse(receiptBytes.toString());
+    if (JSON.stringify(receipt.configuration) !== JSON.stringify(config) || receipt.serverEntrySha256 !== digest(entries["server/index.js"])) throw Error("Private build/release mismatch");
+    assertPrivateTestFlags(config.profile, receipt.flags);
+    entries["private-build.json"] = receiptBytes;
+    worker.account_id = PRIVATE_TEST.accountId;
+    worker.d1_databases = [{ binding: "DB", database_name: PRIVATE_TEST.databaseName, database_id: config.databaseId, migrations_dir: "../../../drizzle" }];
+    worker.vars.WYBP_PRIVATE_TEST_PROFILE = config.profile;
+    worker.vars.WYBP_TEST_WORKER_ORIGIN = config.workerOrigin;
+    // Scheduling is installed only under later hosted authorisation.
+    worker.vars.WYBP_TEST_RETENTION_ENABLED = "false";
+    worker.vars.WYBP_TEST_WEBHOOK_ENABLED = "false";
+  }
   entries["wrangler.json"] = Buffer.from(JSON.stringify(worker, null, 2) + "\n");
   entries["netlify.toml"] = Buffer.from(netlifyConfiguration(config));
   const hashes = Object.fromEntries(Object.entries(entries).map(([path, bytes]) => [path, digest(bytes)]));
@@ -106,8 +131,21 @@ export async function verifyRelease(root, deployable = false, env = process.env)
   if (actual.some(path => path !== "release.json" && !Object.hasOwn(manifest.files, path))) throw Error("Unrecorded release file");
   if (digest(JSON.stringify({ config: manifest.configuration, hashes: manifest.files })) !== manifest.releaseId) throw Error("Release identity mismatch");
   if (await readFile(resolve(root, "netlify.toml"), "utf8") !== netlifyConfiguration(manifest.configuration)) throw Error("Proxy target mismatch");
+  const worker = JSON.parse(await readFile(resolve(root, "wrangler.json"), "utf8"));
+  const config = manifest.configuration;
+  if (config.profile) {
+    const receipt = JSON.parse(await readFile(resolve(root, "private-build.json"), "utf8"));
+    assertPrivateTestFlags(config.profile, receipt.flags);
+    if (JSON.stringify(receipt.configuration) !== JSON.stringify(config) || receipt.serverEntrySha256 !== manifest.files["server/index.js"]
+      || worker.account_id !== PRIVATE_TEST.accountId || worker.vars.WYBP_TEST_WORKER_ORIGIN !== config.workerOrigin) throw Error("Private build/identity mismatch");
+    if (worker.name !== PRIVATE_TEST.workerName || worker.d1_databases?.length !== 1 || worker.d1_databases[0].binding !== "DB"
+      || worker.d1_databases[0].database_name !== PRIVATE_TEST.databaseName || worker.d1_databases[0].database_id !== config.databaseId
+      || worker.r2_buckets?.length || worker.triggers || worker.vars.WYBP_PRIVATE_TEST_PROFILE !== config.profile
+      || worker.vars.WYBP_TEST_WEBHOOK_ENABLED !== "false" || worker.vars.WYBP_TEST_RETENTION_ENABLED !== "false") throw Error("Unsafe private test binding or activation");
+  } else if (worker.d1_databases?.length || worker.r2_buckets?.length || worker.triggers) throw Error("Unexpected storage or cron in disabled release");
   if (deployable) {
     if (manifest.configuration.synthetic || !/^[0-9a-f]{32}$/.test(env.CLOUDFLARE_ACCOUNT_ID || "")
+      || (config.profile && (env.CLOUDFLARE_ACCOUNT_ID !== PRIVATE_TEST.accountId || env.WYBP_TEST_D1_DATABASE_ID !== config.databaseId))
       || !env.WYBP_NETLIFY_PROXY_SECRET || Buffer.byteLength(env.WYBP_NETLIFY_PROXY_SECRET) < 32
       || env.WYBP_NETLIFY_PROJECT_ID !== manifest.configuration.projectId
       || env.WYBP_CONFIRMED_PRIVATE_PROJECT !== manifest.configuration.projectId) {

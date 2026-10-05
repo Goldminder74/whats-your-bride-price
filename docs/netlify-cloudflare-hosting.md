@@ -289,3 +289,238 @@ refund/dispute distinctions and idempotency remain mandatory.
 
 Local tests simulate the documented proxy. Live Netlify signing, private access,
 Cloudflare permissions, Images service and deployment/rollback remain unverified.
+
+## Next milestone: local implementation; hosted activation pending
+
+Starting source: `332e8edbce3eb374d3f873882244c0354db40903` on
+`feature/viral-build-sprint`. The owner authorised local code, tests, commit/push
+and both planning documents. This does not authorise hosted activation.
+Deployed source remains `5959b4e1b21bc6fc7f667461ccd643b303cde18c`;
+its private access, signing and mobile gameplay were previously verified.
+The historical readiness statements above do not override that checkpoint.
+
+### Implemented controls
+
+`app/privateTestProfile.ts` restricts the data/payment profiles to the existing
+private Netlify project `edee23f4-b86f-4975-8859-9c4be03ebbc0`, exact origin
+`https://wybp-protected-test.netlify.app`, Worker `wybp-test-r001` at
+`https://wybp-test-r001.ayo-m-ayeni.workers.dev`, and Cloudflare account
+`b6b22a9a87b5758725e5c499782160af`. The generated release binds only
+`wybp-test-d1-r001` as `DB`; its actual UUID must be supplied after provisioning.
+R2 remains unbound. Release receipts bind the selected profile/flags to the actual
+server entry and paired client checksums. No deployed database UUID is invented.
+
+Default profile `off` keeps every optional feature false. Profile `data` enables
+only `random_quick_play` and `cowrie_economy`; profile `payments` additionally
+enables `commerce`. All other flags and all review overrides remain false.
+Sites builds reject either private profile and retain their original configuration.
+Runtime requires matching server-only profile, project, origin, Worker and `DB`.
+Missing test payment settings or any live-mode setting fail closed.
+
+Wallet, random selection/recovery/judgement, result persistence, Cowrie checkout
+and Royal checkout/return use relative URLs, CORS mode, same-origin credentials,
+no referrer and refused redirects. Existing Origin, Fetch Metadata, body,
+ownership and ingress checks remain in force. Result saving has an idempotent
+retry. Completed Cowrie attempts now match their results' exact 90-day deadline,
+rather than retaining the earlier 24-hour incomplete-attempt deadline.
+The D1 commerce projection uses the same canonical tier function/titles as the
+quiz and Royal UI. Its earlier independent thresholds rejected valid score-3 and
+score-6 entitlements; a real-completion regression now covers every score 0–12.
+
+The commerce limiter shares atomic D1 admission across Worker instances:
+20 requests per functional owner per minute, a separately hashed namespace,
+bounded counters, 24-hour limiter-row expiry and denial on storage failure.
+No IP header or analytics identity supplies authority.
+
+The sole direct ingress exception is **POST
+`https://wybp-test-r001.ayo-m-ayeni.workers.dev/commerce/stripe-test-webhook`**,
+without query parameters or trailing slash. It requires the compiled payment
+profile, matching runtime and `WYBP_TEST_WEBHOOK_ENABLED=true` (default false).
+A maximum 65,536-byte unmodified UTF-8 body and Stripe HMAC signature with
+five-minute tolerance authenticate before reconciliation or database access.
+Live-mode events/configuration are rejected. Existing event allowlist,
+price/link/order/allocation validation, replay protection, refund/dispute reasons
+and atomic fulfilment remain intact. All other direct requests still require the
+Netlify signature; no seed, owner, asset or image exception exists.
+
+### Proposed D1 and operator sequence — do not execute yet
+
+Create one isolated D1 named `wybp-test-d1-r001` after checking for duplicates,
+then obtain its real UUID. Bind it only to the existing test Worker. Build locally
+without credentials or credential-bearing `.env*` files; retain separate runtime
+secret installation and manual no-build Netlify upload. Never connect Git builds
+under the Personal-plan exception.
+
+Build configuration is `WYBP_PRIVATE_TEST_PROFILE=data` (then `payments`),
+`WYBP_TEST_D1_DATABASE_ID=<actual UUID>`, the exact identity variables above,
+`WYBP_HOSTING_ENVIRONMENT=test`, `WYBP_NETLIFY_CONTEXT=production`,
+`PUBLIC_APP_ORIGIN=<exact private origin>`, `WYBP_WORKER_NAME`,
+`WYBP_WORKER_ORIGIN`, `WYBP_NETLIFY_PROJECT_ID`, and only the profile's explicit
+`WYBP_FEATURE_*` flags. Run `npm run build:netlify-worker`; inspect and verify
+the generated `outputs/netlify-worker/<release-id>/wrangler.json`. It has no cron,
+and both `WYBP_TEST_RETENTION_ENABLED` and `WYBP_TEST_WEBHOOK_ENABLED` are false.
+
+The twelve migrations and their hashes are recorded in the publication proposal
+and `drizzle/migration-checksums.json`. No migration 0012 is required or created.
+All twelve were rehearsed against local D1, including table rebuilds and triggers.
+After separate hosted approval, with the verified target config:
+
+```powershell
+node scripts/data-migrations.mjs --dry-run
+node node_modules/wrangler/bin/wrangler.js d1 migrations list DB --remote --config <verified-release>/wrangler.json
+node node_modules/wrangler/bin/wrangler.js d1 migrations apply DB --remote --config <verified-release>/wrangler.json
+```
+
+Archive the actual ordered application log and checksum attestation outside Git.
+Wrangler's `d1_migrations` ledger records names, not SQL checksums. The operator
+also checks the complete expected application schema fingerprint and foreign keys,
+rejecting unknown or partial migration state before catalogue writes.
+
+Regenerate evidence to a fresh directory **outside Git**:
+
+```powershell
+node scripts/build-machine-evidence-question-bank.mjs --output <fresh-evidence-directory>
+node scripts/private-test-catalogue.mjs --evidence <directory> --operation seed
+node scripts/private-test-catalogue.mjs --evidence <directory> --operation import --region west
+node scripts/private-test-catalogue.mjs --evidence <directory> --operation publish --region west
+```
+
+Repeat the latter dry runs for east, central, north and south. Without `--apply`,
+these are offline validations and perform no network or database writes. They
+validate current evidence, not fabricated new review dates. Seed requires empty
+catalogue or all five/sixty exact canonical rows; partial/conflicting seed stops.
+Do not rerun seed after extra questions have been imported. Imports accept only
+an empty regional proposal or a complete exact prior import; partial sources,
+question rows or proof stop. Publication is separate and idempotent; published
+sources/questions are never rewritten. Each seed/region operation is one atomic
+D1 API batch, with preconditions inside the transaction and no new schema.
+
+After exact target/publication approval only, the operator's separate process
+may use `CLOUDFLARE_API_TOKEN` (target account's D1 read/write permissions) and
+`WYBP_TEST_D1_DATABASE_ID`, adding `--remote --apply --approve-target <UUID>
+--approve-manifest <proposal SHA-256>`. The API checks account/UUID/name,
+the twelve-entry ledger, exact schema and foreign keys before one batch.
+No browser/admin endpoint or public seed secret is added.
+
+### Exact question proposal and evidence preservation
+
+`data/question-bank/launch/publication-manifest-v1.json` is the proposed allowlist:
+18 exact IDs/versions per region, all 90 content/bundle/pack/source-record hashes,
+evidence locators/URLs, original provenance, migration hashes and hashes of all
+12 reproducible outputs. The canonical five-edition/sixty-question seed checksum
+is `91ed04fcc134fa53d14a8694eedb04ca7fafb0cbf45c11b07b0d2eff17f8da6a`;
+`app/gameData.ts` remains hash
+`3ce3474de2e6b072bf4e893fc2760c8b9ba996a889697ec5ac15f631cc05c74d`.
+
+Proposed transitions: import exact evidence-qualified copies as **draft**, source
+administration **approved**, with immutable `machine_evidence_v1` proof and null
+human reviewer; separately publish only approved manifest versions in test D1.
+Local rehearsals verify the real selector sees 12 before publication and **30 per
+region** afterwards. At evidence expiry/revocation eligibility falls immediately;
+commerce readiness then fails below threshold. Ten reserves stay out of import
+and publication. All 352 original research-file records remain byte-exact drafts.
+
+**Identity decision:** the accepted Workstream E ready set includes
+`west_cabo_verde_cidade_velha_island@1`, one unchanged original West draft, plus
+89 replacements. Publishing that exact identity conflicts with a literal rule
+that every one of the 352 draft identities must remain unpublished. The proposal
+exposes this provenance; remote West publication additionally requires
+`--approve-original-draft west_cabo_verde_cidade_velha_island@1`. No exception
+has been assumed. Alternatively, a separately verified new replacement is needed;
+none of the ten reserves may silently be promoted. This is a hosted-publication
+blocker, not permission to edit or publish research files.
+
+Before any hosted import/publication, place the twelve regenerated outputs,
+proposal, source-builder revision, five immutable research-pack hashes, policy
+and migration attestation in an owner-controlled durable archive and a second
+independent backup. Verify every proposal `reproductionFiles` hash in both copies,
+record locations/receipt outside Git, and rehearse reproduction from the pushed
+commit into a fresh directory. Structured source records are durably preserved in
+Git's builder and research packs; the new generated output directory is temporary,
+not a durable archive. Original raw research captures and their independent backup
+remain unverified; preserve them unchanged and inventory/hash/archive them where
+available. Do not claim structured summaries are full source captures. Question
+proof expires/requires recheck **20 March 2027, 21:00 UTC**.
+
+### Retention and Stripe test settings
+
+The compiled `scheduled()` handler requires the matching private runtime and
+`WYBP_TEST_RETENTION_ENABLED=true`; packaging installs no trigger. Proposed test
+cron after approval: `*/15 * * * *` (UTC), test Worker only. Each run processes
+at most 50 unissued debits, 50 expired bonus wallets (one credit per wallet),
+50 records in each limiter/streak/result/attempt bucket and 50 expired webhook
+records. Monitor aggregate counts and backlog; increase frequency within approved
+budget if needed to meet the seven-day streak removal rule. No identifiers or
+identifiable deletion logs are emitted. Visits/practice/sharing never extend time.
+
+Authority expires immediately: incomplete play 24 hours; completion/result 90
+days; bonus credit 180 days; official streak 180 days with physical removal within
+seven days; webhook evidence 400 days. Clearing a streak removes it immediately.
+Technical reversal is limited to expired, unissued, active-wallet funded attempts.
+Purchased Cowries never expire; frozen wallets and immutable financial references
+remain preserved. Permanent wallet/ledger/allocation/order/support deletion and
+physical removal deadlines for retained attempt/answer/result rows are **not
+approved**. This job implements access expiry and known deletions only; owners
+must approve the remaining financial/privacy/support policy before public use.
+
+Configure test Payment Links on the Worker, separately from builds:
+
+| Product key | Quantity | GBP amount (minor) | Return path |
+|---|---:|---:|---|
+| `royal_reveal_v1` | 1 | 199 | `/royal-reveal/return` |
+| `cowrie_5_v1` | 5 Cowries | 199 | `/cowries/return` |
+| `cowrie_15_v1` | 15 Cowries | 499 | `/cowries/return` |
+| `cowrie_40_v1` | 40 Cowries | 999 | `/cowries/return` |
+
+Royal variables: `STRIPE_PAYMENT_LINK_URL`, `STRIPE_PAYMENT_LINK_ID`,
+`ROYAL_REVEAL_PRODUCT_KEY=royal_reveal_v1`, `ROYAL_REVEAL_AMOUNT_MINOR=199`,
+`ROYAL_REVEAL_CURRENCY=GBP`, `STRIPE_EXPECTED_LIVEMODE=false`.
+For each uppercase Cowrie product prefix, configure `_PAYMENT_LINK_URL`,
+`_PAYMENT_LINK_ID`, `_PRODUCT_KEY`, `_QUANTITY`, `_AMOUNT_MINOR`, `_CURRENCY=GBP`,
+`_LIVEMODE=false` from the table. Links must be HTTPS `buy.stripe.com` test links,
+one-off, fixed Checkout quantity 1, no coupons/promotion codes, optional items,
+shipping, adjustable quantities or automatic tax that changes the expected total.
+Cowrie quantity is the digital fulfilment allocation, not Checkout line-item count.
+Return URLs use the exact private origin; forward only opaque `client_reference_id`.
+Do not expose owner credentials, question answers or result slugs to Stripe.
+
+Store only `STRIPE_WEBHOOK_SIGNING_SECRET` as a Worker secret for the exact test
+endpoint; Netlify's existing proxy secret remains separately installed on both
+sides. No Stripe account API key is required by this Payment Links integration.
+Subscribe only to `checkout.session.completed`,
+`checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`,
+`charge.refunded`, `charge.dispute.created`. Pin/test a supported event API version
+with actual payloads in the chosen sandbox; its currently configured version and
+identifiers are not yet known. Local signed fixtures do not prove live Stripe
+compatibility. All subscriptions must be test-mode; no live secret/config/event
+is allowed. Immediate-delivery consent and draft legal notices remain intact.
+
+### Remaining hosted gates and rollback
+
+Owner approval is still needed for provisioning/name/budget, the exact manifest
+and West identity decision, durable evidence receipts, test sandbox and four link
+IDs/URLs/signing-secret installation, retention/support rules, and isolated
+migrations/import/publication/cron/feature deployment. No settings were changed.
+
+Sequence: inventory/provision/attest the empty test DB; apply twelve migrations;
+verify/archive evidence; seed/import/publish only approved identities; deploy a
+matched **data** pair privately; check real replay, recovery, two free plays,
+bonus/purchased debit boundaries and cross-owner/rate limits; then install test
+payment configuration, approve the **payments** pair and exact webhook/cron
+activation. Test Royal and all bundles, actual signatures, async/failure/cancel,
+duplicates/concurrent delivery, partial/full refund/dispute allocations, mobile
+returns and usable downloads. Verify anonymous denial, all other direct Worker
+paths/asset denial, RSC navigation and release identity. Keep analytics, owner,
+daily/streaks, dynamic publishing and every other feature off.
+
+Rollback: restore the previous matched all-off private pair, disable only the new
+test webhook/cron and retain isolated D1/audit history for reconciliation. Never
+reverse migrations or delete/restore financial data blindly. Existing websites,
+DNS, Sites, other Workers, staging/stash and PR #1 remain untouched.
+
+References: [D1 atomic batches](https://developers.cloudflare.com/d1/worker-api/d1-database/),
+[D1 operator batch API](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/query/),
+[D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/),
+[UTC cron](https://developers.cloudflare.com/workers/configuration/cron-triggers/),
+[Stripe webhooks](https://docs.stripe.com/webhooks),
+[Payment Link returns](https://docs.stripe.com/payment-links/post-payment).

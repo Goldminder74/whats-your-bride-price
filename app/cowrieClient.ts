@@ -1,4 +1,5 @@
 import type { PublicCowrieWallet } from "../db/cowrieWallet.ts";
+import { privatePostOptions } from "./privatePost.ts";
 
 const walletReference = /^cw_[0-9a-f]{32}$/;
 const recoveryCredential = /^[0-9a-f]{64}$/;
@@ -16,7 +17,7 @@ function parseWallet(value: unknown): PublicCowrieWallet {
   return Object.freeze(candidate as PublicCowrieWallet);
 }
 async function post(path: string, body: Record<string, unknown>, fetcher: typeof fetch): Promise<Record<string, unknown>> {
-  const response = await fetcher(path, { method: "POST", mode: "same-origin", credentials: "omit", referrerPolicy: "no-referrer", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+  const response = await fetcher(path, privatePostOptions(body));
   const value = await response.json() as Record<string, unknown>;
   if (!response.ok || value.available !== true) throw new Error("cowrie_wallet_unavailable");
   return value;
@@ -39,7 +40,7 @@ export async function recoverCowrieWallet(input: Readonly<{ walletReference: str
 }
 
 export async function clearCowrieWallet(anonymousSessionCredential: string, fetcher: typeof fetch = fetch): Promise<"deleted" | "frozen"> {
-  const response = await fetcher("/cowries/clear", { method: "POST", mode: "same-origin", credentials: "omit", referrerPolicy: "no-referrer", headers: { "content-type": "application/json" }, body: JSON.stringify({ anonymousSessionCredential }) });
+  const response = await fetcher("/cowries/clear", privatePostOptions({ anonymousSessionCredential }));
   const value = await response.json() as Record<string, unknown>;
   if (!response.ok || value.unavailable !== true || !["deleted", "frozen"].includes(String(value.state))) throw new Error("cowrie_wallet_unavailable");
   return value.state as "deleted" | "frozen";

@@ -1,6 +1,7 @@
 import type { RegionKey } from "./publicGameData.ts";
 import type { PublicQuestionSelection } from "../db/questionSelectionService.ts";
 import { activeFeatureFlags } from "./featureFlags.ts";
+import { privatePostOptions } from "./privatePost.ts";
 
 const attempt = /^attempt_[0-9a-f]{48}$/;
 const questionRef = /^(west|east|central|north|south)_[a-z0-9][a-z0-9_-]{2,55}$/;
@@ -56,7 +57,7 @@ function parseSelection(value: unknown): PublicQuestionSelection {
 }
 
 async function post(path: string, body: Record<string, unknown>, fetcher: typeof fetch): Promise<Response> {
-  return fetcher(path, { method: "POST", mode: "same-origin", credentials: "omit", referrerPolicy: "no-referrer", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+  return fetcher(path, privatePostOptions(body));
 }
 
 export async function startRandomQuickPlay(region: RegionKey, anonymousSessionCredential: string, idempotencyKey: string, fetcher: typeof fetch = fetch): Promise<PublicQuestionSelection> {

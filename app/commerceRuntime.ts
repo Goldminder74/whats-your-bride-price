@@ -4,6 +4,9 @@ import { D1ResultCompletionRepository, ResultCompletionService } from "../db/res
 import { activeFeatureFlags } from "./featureFlags.ts";
 import { cowrieProducts, cowrieProductKeys, type CowrieProductKey } from "../db/cowrieProducts.ts";
 import type { CowrieBundleConfiguration } from "../db/commerceContracts.ts";
+import { loadCommerceConfiguration } from "../db/commerceConfiguration.ts";
+import { D1CommerceRateLimiter } from "../db/commerceRateLimit.ts";
+import { privateTestProfile, privateTestRuntimeReady } from "./privateTestProfile.ts";
 
 declare const __WYBP_REVIEW_COMMERCE_FIXTURES__: boolean | undefined;
 const reviewEnabled = typeof __WYBP_REVIEW_COMMERCE_FIXTURES__ === "boolean" && __WYBP_REVIEW_COMMERCE_FIXTURES__;
@@ -38,29 +41,16 @@ async function reviewRuntime(): Promise<CommerceRuntime> {
   return reviewRuntimePromise;
 }
 
-function productionConfig(runtime: Record<string, unknown>): CommerceConfiguration | null {
-  try {
-    if (!["true","false"].includes(String(runtime.STRIPE_EXPECTED_LIVEMODE))) return null;
-    const bundles = {} as Record<CowrieProductKey,CowrieBundleConfiguration>;
-    const cowries = activeFeatureFlags.cowrie_economy && activeFeatureFlags.random_quick_play;
-    if (cowries) for (const key of cowrieProductKeys) {
-      const prefix = key.toUpperCase();
-      if (!["true","false"].includes(String(runtime[`${prefix}_LIVEMODE`]))) return null;
-      bundles[key] = {publicPaymentLinkUrl:String(runtime[`${prefix}_PAYMENT_LINK_URL`]||""),expectedPaymentLinkId:String(runtime[`${prefix}_PAYMENT_LINK_ID`]||""),expectedProductKey:runtime[`${prefix}_PRODUCT_KEY`] as CowrieProductKey,expectedQuantity:Number(runtime[`${prefix}_QUANTITY`]),expectedAmountMinor:Number(runtime[`${prefix}_AMOUNT_MINOR`]),expectedCurrency:runtime[`${prefix}_CURRENCY`] as "GBP",expectedLivemode:runtime[`${prefix}_LIVEMODE`] === "true"};
-    }
-    return validateCommerceConfiguration({ publicPaymentLinkUrl:runtime.STRIPE_PAYMENT_LINK_URL,expectedPaymentLinkId:runtime.STRIPE_PAYMENT_LINK_ID,webhookSigningSecret:runtime.STRIPE_WEBHOOK_SIGNING_SECRET,expectedProductKey:runtime.ROYAL_REVEAL_PRODUCT_KEY,expectedAmountMinor:Number(runtime.ROYAL_REVEAL_AMOUNT_MINOR),expectedCurrency:runtime.ROYAL_REVEAL_CURRENCY,expectedLivemode:runtime.STRIPE_EXPECTED_LIVEMODE === "true",...(cowries?{cowrieBundles:bundles}:{}) });
-  }
-  catch { return null; }
-}
 
 export async function getCommerceRuntime(): Promise<CommerceRuntime | null> {
   if (!activeFeatureFlags.commerce) return null;
   if (reviewEnabled) return reviewRuntime();
   const { env } = await import("cloudflare:workers");
-  const runtime = env as unknown as Record<string, unknown> & { DB?: D1Database }; const config = productionConfig(runtime);
+  const runtime = env as unknown as Record<string, unknown> & { DB?: D1Database }; const config = loadCommerceConfiguration(runtime, activeFeatureFlags.cowrie_economy && activeFeatureFlags.random_quick_play);
+  if (privateTestProfile !== "off" && (!privateTestRuntimeReady(runtime) || config?.expectedLivemode !== false)) return null;
   if (!runtime.DB || !config) return null;
   return Object.freeze({
-    service:new CommerceService(new D1CommerceRepository(runtime.DB),new UnavailableCommerceRateLimiter(),config,Date.now,{cowriePurchasesEnabled:activeFeatureFlags.cowrie_economy && activeFeatureFlags.random_quick_play}),
+    service:new CommerceService(new D1CommerceRepository(runtime.DB),(privateTestProfile === "payments" ? new D1CommerceRateLimiter(runtime.DB) : new UnavailableCommerceRateLimiter()),config,Date.now,{cowriePurchasesEnabled:activeFeatureFlags.cowrie_economy && activeFeatureFlags.random_quick_play}),
     resultCompletionService:new ResultCompletionService(new D1ResultCompletionRepository(runtime.DB)),
     config,
   });

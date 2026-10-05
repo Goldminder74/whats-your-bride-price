@@ -1,29 +1,68 @@
 # Current handoff
 
-## Source checkpoint
+## Source and deployment
 
-Checked 5 October 2026: application source on `feature/viral-build-sprint` is `5959b4e1b21bc6fc7f667461ccd643b303cde18c` (`fix: shuffle quiz choices and support mobile image answers`), pushed normally to origin. PR #1 remains open, draft and unmerged, base `master`.
+Branch `feature/viral-build-sprint`; this scoped implementation starts from
+`332e8edbce3eb374d3f873882244c0354db40903`. Resolve its final checkpoint with
+`git rev-parse HEAD`; do not confuse source completion with hosted activation.
+PR #1 remains draft/open, base `master`.
 
-## Implemented versus deployed
+[Private application](https://wybp-protected-test.netlify.app/) still runs source
+`5959b4e1b21bc6fc7f667461ccd643b303cde18c`. Owner protection covers primary and
+preview URLs. Proxy signatures protect the existing `wybp-test-r001` Worker and
+assets. D1/R2 remain unbound, Stripe disconnected, optional features disabled.
+The owner confirms gameplay is fixed. Existing websites remain unchanged.
 
-[wybp-protected-test](https://wybp-protected-test.netlify.app/) serves the matched private Netlify/Cloudflare application. Netlify production and preview URLs deny anonymous access. Worker `wybp-test-r001` requires verified proxy signatures before application/assets delivery; preview endpoints are disabled. D1/R2 are unbound, optional features disabled and Stripe disconnected. Existing websites remain unchanged.
+## Local milestone and next action
 
-The source includes compiled navigation and Worker packaging repairs, reachable progression/retry controls, mobile layouts, zoom/safe-area support, reduced motion, image loading improvements and a credentialed private manifest.
+Implemented: isolated data/payment build and runtime profiles; paired-release
+receipts/D1 configuration; credentialed private/mobile POSTs; idempotent result
+retry, canonical Royal tier projection and exact 90-day completed-attempt/result
+authority; atomic fail-closed D1
+commerce limiter; exact raw-signature-authenticated test POST webhook;
+target/schema/migration-bound seed/import/publication tools and bounded scheduled
+retention. No migration or dependency change was needed. Both pending planning
+documents are included in this scope.
 
-## Current task and next action
+The [runbook](netlify-cloudflare-hosting.md#next-milestone-local-implementation-hosted-activation-pending)
+contains configuration, migration/operator commands, exact prices, retention,
+evidence preservation, activation sequence and rollback. All new hosted operations
+remain unauthorised. Next: review the publication identity conflict, durable
+evidence receipts and remaining owner settings before approving hosted changes.
 
-Corrected the Safari-family image-answer failure: WebKit sends `Origin: null` with the old same-origin fetch mode and no-referrer policy. The relative POST now uses CORS mode, same-origin credentials, no referrer and rejects redirects. Null/arbitrary origins, cross-site Fetch Metadata, ownership and ingress protections remain intact.
+Local verification covers real D1 migrations/batches, 30 selector-eligible
+questions per region, atomic/idempotent/conflict handling, distributed admission,
+completion ownership/expiry, refunds/disputes and retention. The compiled private
+harness uses closed local HTTPS and actual cookies/Origin/Fetch Metadata in desktop
+Chromium/mobile WebKit, twelve-answer progression/result retry, Royal/all-bundle
+signed fulfilment/returns, protected assets and RSC navigation. Final affected
+checks passed 25/25 (including all thirteen Royal score boundaries); the complete
+`npm run test:all` gate passed with Sites, synthetic Netlify and private-profile
+builds/packaging. Diff checks passed. Hosted Stripe payloads are not verified.
 
-Classic choices shuffle per game in balanced presentation blocks. Canonical option IDs, content and scoring remain unchanged; recovery retains the order and retries retain the choice. Random Quick Play retains its server-held order. See [mobile readiness and test commands](mobile-readiness.md).
+## Remaining decisions and constraints
 
-All integration stages completed, with the affected compiled gate rerun after raw-header audit correction. Both compiled targets and WebKit completed all twelve questions in all five regions at desktop/mobile sizes, including correct/wrong image answers, retries and results. Final Chromium/WebKit navigation checks, lint, typecheck, builds, package verification and diff checks passed. Live checks verified all forty image choices, protected assets/images, signatures, ownership and anonymous denial. Signed-in Edge at a 390×844 emulated viewport verified Jollof image selection, server-checked feedback, the visible continuation control and progression to question five. No application console error appeared; browser-extension notices were separate.
+The [proposal](../data/question-bank/launch/publication-manifest-v1.json) lists 90
+exact versions and all twelve reproduction-file hashes. One selected West version,
+`west_cabo_verde_cidade_velha_island@1`, is an unchanged original research draft.
+Publishing it conflicts with a literal exclusion of all 352 draft identities;
+West publication requires a separate decision. No reserve was substituted. All
+research files remain unchanged/draft; ten reserves stay unpublished.
 
-Next: physical iOS/Android review. Emulation does not verify device keyboards, cutouts, assistive technology or measured field speed; these remain public-launch gates.
+Owner-controlled evidence archive and independent backup receipts are outstanding;
+original raw captures' independent backup remains unverified. Generated packs are
+temporary. Evidence expires/requires recheck 20 March 2027, 21:00 UTC.
 
-## Essential constraints and references
+Still needed: isolated D1/budget and hosted-operation approval; exact lifecycle
+manifest approval; Stripe sandbox/four test link IDs/URLs and secret installation;
+financial/support retention and retained attempt/result physical-removal rules.
+Do not invent missing retention or human approval. All migrations 0000–0011 and
+question content remain unchanged; no 0012.
 
-Public launch must include random regional replay, Cowrie play access and purchases, and Royal Reveal payments. These require catalogue readiness, database/runtime configuration and verified payment flows before activation. No live payments/public activation is authorised here. See [random play](random-quick-play.md), [Cowrie access](cowrie-wallet-and-play-access.md), [purchases](cowrie-commerce.md) and [Royal Reveal](commerce-and-entitlement-contract.md).
-
-Keep builds secret-free and secret installation separate. Do not enable hosted builds/Git deployment under the Personal-plan exception. Preserve migrations, question packs, defaults, existing websites/DNS/Workers, staging branch and stash. Keep PR #1 draft. No hosted storage changes, seed, publishing or activation.
-
-[Hosting and rollback](netlify-cloudflare-hosting.md); [privacy](privacy-controls-contract.md); [retention](retention-schedule.md); [storage gates](storage-binding-readiness.md). Ignored local evidence: `outputs/netlify-deployment-checkpoint.json`, `outputs/original-worker-package-omissions.json`, release manifests under `outputs/netlify-worker/<release-id>/release.json` and temporary test logs. Independent archival backup remains unverified; a fresh clone may lack this evidence.
+Public launch must include random replay, Cowrie play access/purchases and Royal
+Reveal payments after catalogue/runtime/payment readiness. No live/public
+activation is authorised. Keep builds secret-free, installation separate and
+hosted/Git builds disconnected. Preserve Sites, DNS, existing Workers, staging,
+stash and draft PR. [Privacy](privacy-controls-contract.md),
+[retention](retention-schedule.md), [evidence policy](machine-evidence-question-policy.md),
+[mobile gates](mobile-readiness.md). Do not repeat passed unchanged-source checks.

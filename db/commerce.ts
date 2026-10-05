@@ -1,4 +1,6 @@
 import type { RegionKey } from "../app/gameData.ts";
+import { calculateResultTier } from "../app/gameLogic.ts";
+import { RESULT_TIER_TITLES } from "../app/productSafeguards.ts";
 import type { AtomicD1Database } from "./repositories.ts";
 import { cowrieProducts, cowrieProductKeys, isCowrieProduct, COWRIE_DELIVERY_NOTICE_VERSION, type CommerceProductKey, type CowrieProductKey } from "./cowrieProducts.ts";
 import { D1QuestionSelectionRepository } from "./questionSelection.ts";
@@ -232,7 +234,7 @@ export class D1CommerceRepository implements CommerceRepository {
   constructor(database: AtomicD1Database) { this.database = database; }
   async getOwnedCompletedResult(publicSlug: string): Promise<CommerceOwnedResult | null> {
     const row = await this.database.prepare(`SELECT r.id,r.public_slug,qe.edition_key,r.score,r.total,r.safe_avatar_id,r.state,r.expires_at,qa.status attempt_status,qa.completed_at attempt_completed_at,qa.expires_at attempt_expires_at,qa.anonymous_subject_hash FROM results r JOIN quiz_attempts qa ON qa.id=r.attempt_id JOIN quiz_editions qe ON qe.id=r.edition_id WHERE r.public_slug=?1 LIMIT 1`).bind(publicSlug).first<OwnedResultRow>();
-    return row ? Object.freeze({ id: row.id, publicSlug: row.public_slug, edition: row.edition_key, score: row.score, total: row.total, resultTitle: ["Roots Rookie","Culture Climber","Motherland Scholar","Bride Price Royalty"][row.score >= 9 ? 3 : row.score >= 7 ? 2 : row.score >= 4 ? 1 : 0], avatarId: row.safe_avatar_id, state: row.state, expiresAt: row.expires_at, attemptStatus: row.attempt_status, attemptCompletedAt: row.attempt_completed_at, attemptExpiresAt: row.attempt_expires_at, anonymousOwnerHash: row.anonymous_subject_hash }) : null;
+    return row ? Object.freeze({ id: row.id, publicSlug: row.public_slug, edition: row.edition_key, score: row.score, total: row.total, resultTitle: RESULT_TIER_TITLES[calculateResultTier(row.score)], avatarId: row.safe_avatar_id, state: row.state, expiresAt: row.expires_at, attemptStatus: row.attempt_status, attemptCompletedAt: row.attempt_completed_at, attemptExpiresAt: row.attempt_expires_at, anonymousOwnerHash: row.anonymous_subject_hash }) : null;
   }
   async getOwnedCompletedResultById(resultId: string) { const row = await this.database.prepare("SELECT public_slug FROM results WHERE id=?1").bind(resultId).first<{ public_slug: string }>(); return row ? this.getOwnedCompletedResult(row.public_slug) : null; }
   private async order(query: string, value: string) { const row = await this.database.prepare(query).bind(value).first<OrderRow>(); return row ? orderFromRow(row) : null; }

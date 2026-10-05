@@ -3,6 +3,7 @@ import vinext from "vinext";
 import { defineConfig } from "vite";
 import hostingConfig from "./.openai/hosting.json";
 import { validateHostingOrigin, type HostingOrigin } from "./app/hostingOrigin.ts";
+import { PRIVATE_TEST, validatePrivateTestProfile, validateTestDatabaseId, assertPrivateTestFlags } from "./app/privateTestProfile.ts";
 import {
   assertCommerceReadiness,
   assertFirstPartyAnalyticsStorage,
@@ -65,7 +66,16 @@ export default defineConfig(async ({ mode }) => {
     }
   }
   const featureFlags = resolveFeatureFlags(process.env);
-  if (netlifyWorker && Object.values(featureFlags).some(Boolean)) throw new Error("Initial Netlify target requires every feature flag disabled");
+  const testProfile = validatePrivateTestProfile(process.env.WYBP_PRIVATE_TEST_PROFILE);
+  const testData = netlifyWorker && testProfile !== "off";
+  if (!netlifyWorker && testProfile !== "off") throw new Error("Private data profile cannot target Sites");
+  if (netlifyWorker) assertPrivateTestFlags(testProfile, featureFlags);
+  if (testData) {
+    if (hostingOrigin?.environment !== "test" || hostingOrigin.origin !== PRIVATE_TEST.origin
+      || process.env.WYBP_WORKER_NAME !== PRIVATE_TEST.workerName || process.env.WYBP_WORKER_ORIGIN !== PRIVATE_TEST.workerOrigin
+      || process.env.WYBP_NETLIFY_PROJECT_ID !== PRIVATE_TEST.projectId) throw new Error("Private data profile requires the isolated test identity");
+    validateTestDatabaseId(process.env.WYBP_TEST_D1_DATABASE_ID);
+  }
   const diagnosticsRequested = process.env.WYBP_REVIEW_DIAGNOSTICS === "true";
   const diagnosticsApproved = process.env.WYBP_REVIEW_BUILD === "true";
   const challengeFixturesRequested = process.env.WYBP_REVIEW_CHALLENGE_FIXTURES === "true";
@@ -131,9 +141,10 @@ export default defineConfig(async ({ mode }) => {
     authorisedReviewFixtures: reviewAnalyticsFixtures,
   });
   assertCommerceReadiness(featureFlags, {
-    d1Configured: Boolean(d1),
-    completeConfiguration: false,
-    approvedRateLimiter: false,
+    d1Configured: testData || Boolean(d1),
+    // This is a test-only code capability; runtime still validates real settings.
+    completeConfiguration: testData && testProfile === "payments",
+    approvedRateLimiter: testData,
     authorisedReviewFixtures: reviewCommerceFixtures,
   });
   assertOwnerDashboardReadiness(featureFlags, {
@@ -146,13 +157,13 @@ export default defineConfig(async ({ mode }) => {
     serverSecretConfigured: Boolean(process.env.WYBP_DAILY_SECRET?.trim()),
   });
   assertRandomQuickPlayReadiness(featureFlags, {
-    d1Configured: Boolean(d1),
+    d1Configured: testData || Boolean(d1),
     authorisedReviewFixtures: reviewRandomQuickPlayFixtures,
   });
   assertCowrieEconomyReadiness(featureFlags, {
-    d1Configured: Boolean(d1),
+    d1Configured: testData || Boolean(d1),
     authorisedReviewFixtures: reviewCowrieFixtures && reviewRandomQuickPlayFixtures,
-    approvedOperationalReview: false,
+    approvedOperationalReview: testData,
   });
   const reviewChallengeData = reviewChallengeFixtures
     ? [
@@ -234,6 +245,7 @@ export default defineConfig(async ({ mode }) => {
       __WYBP_STAGING_APP_ORIGIN__: JSON.stringify(process.env.WYBP_STAGING_APP_ORIGIN ?? null),
       __WYBP_RUNTIME_ENV__: JSON.stringify(publicAppEnvironment),
       __WYBP_HOSTING_ORIGIN__: hostingOrigin ? JSON.stringify(hostingOrigin) : "undefined",
+      __WYBP_PRIVATE_TEST_PROFILE__: JSON.stringify(testProfile),
       __WYBP_REVIEW_DIAGNOSTICS__: JSON.stringify(reviewDiagnostics),
       __WYBP_REVIEW_CHALLENGE_FIXTURES__: JSON.stringify(reviewChallengeFixtures),
       __WYBP_REVIEW_CHALLENGE_DATA__: JSON.stringify(reviewChallengeData),

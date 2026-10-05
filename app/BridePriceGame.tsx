@@ -350,6 +350,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   const [quickPlayNotice, setQuickPlayNotice] = useState("");
   const [unverifiedChallenge, setUnverifiedChallenge] = useState(Boolean(initialEntryContext?.challenge && !trustedChallenge));
   const [purchaseContext, setPurchaseContext] = useState<Readonly<{ resultSlug: string; anonymousSessionCredential: string }> | undefined>();
+  const [resultPersistenceError, setResultPersistenceError] = useState(false);
+  const [resultPersistenceRetry, setResultPersistenceRetry] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
   const entryArtRef = useRef<HTMLImageElement>(null);
   const audioRef = useRef<AudioContext | null>(null);
@@ -728,8 +730,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     }
     resultCompletionPromiseRef.current ||= fetch(activeFeatureFlags.cowrie_economy && randomSelection ? "/cowries/complete" : "/results/complete", {
       method: "POST",
-      mode: "same-origin",
-      credentials: "omit",
+      mode: "cors",
+      credentials: "same-origin",
+      redirect: "error",
       referrerPolicy: "no-referrer",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
@@ -746,10 +749,13 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       }
       return Object.freeze({ resultSlug: body.resultSlug, anonymousSessionCredential: session.sessionId });
     });
-    resultCompletionPromiseRef.current.then(setPurchaseContext).catch((error) => {
+    let active = true;
+    resultCompletionPromiseRef.current.then(context => { if (active) setPurchaseContext(context); }).catch((error) => {
+      if (active) setResultPersistenceError(true);
       reportAppError("result_completion_failed", error, { action: "result_completion", region: regionKey });
     });
-  }, [answerChoices, avatarId, purchaseContext, randomSelection, regionKey, screen]);
+    return () => { active = false; };
+  }, [answerChoices, avatarId, purchaseContext, randomSelection, regionKey, screen, resultPersistenceRetry]);
 
   useEffect(() => {
     if (screen !== "result") return;
@@ -1163,7 +1169,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     setNominationOpen(false);
     setShareResultPublicationClient(undefined);
     setComparison(null); setCompletionState("idle"); challengeCompletionPromiseRef.current = null; challengeCompleteEventRef.current = false;
-    setPurchaseContext(undefined); resultCompletionPromiseRef.current = null; resultCompletionKeyRef.current = null;
+    setPurchaseContext(undefined); setResultPersistenceError(false); resultCompletionPromiseRef.current = null; resultCompletionKeyRef.current = null;
     resultViewEventRef.current = false;
     if (fastEntryEnabled) { setEntryContext(parseEntryContext("")); setUnverifiedChallenge(false); }
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
@@ -1176,7 +1182,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       setScreen(fastEntryEnabled ? "entry" : "home"); setRegionKey("west"); setName(""); setAvatarId(avatarChoices[0].id);
       setAnswers([]); setAnswerChoices([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setDropOpen(false); setBestScores({});
       setQuizInstanceId(null); setRecoveryNotice(""); setNominationOpen(false); setShareCentreOpen(false); setShareProjection(null); setShareResultPublicationClient(undefined);
-      setComparison(null); setCompletionState("idle"); setPurchaseContext(undefined); setMenuOpen(false); setStartLocked(false); startLockRef.current = false;
+      setComparison(null); setCompletionState("idle"); setPurchaseContext(undefined); setResultPersistenceError(false); setMenuOpen(false); setStartLocked(false); startLockRef.current = false;
       setRandomSelection(null); setQuickPlayNotice(""); quickPlayStartKeyRef.current = null;
       resultCompletionPromiseRef.current = null; resultCompletionKeyRef.current = null; challengeCompletionPromiseRef.current = null;
       try { window.history.replaceState({}, "", window.location.pathname); } catch { /* route remains usable */ }
@@ -1649,6 +1655,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               <p className="result-description">{tierCopy[tier]}</p>
               <div className="result-aura"><span>Final aura</span><b>{revealAura.toLocaleString()}</b><i>+500 reveal bonus</i></div>
               <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
+              {resultPersistenceError && !purchaseContext && <div role="alert"><p>Your result could not be saved. Your free result remains available.</p><button type="button" onClick={() => { resultCompletionPromiseRef.current = null; setResultPersistenceError(false); setResultPersistenceRetry(value => value + 1); }}>Retry saving result</button></div>}
               {activeFeatureFlags.commerce && <RoyalRevealOffer edition={regionKey} score={correctCount} total={region.questions.length} avatarId={avatarId} reviewScenario={royalRevealReviewScenario} purchaseContext={purchaseContext} />}
               {fastEntryEnabled && <div className="result-name-editor"><label htmlFor="result-player-name">Name or pseudonym on your portrait <span>(optional)</span></label><input id="result-player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={`result-name-privacy${displayNameError ? " result-name-error" : ""}`} placeholder={publicDisplayNameFallback} /><p id="result-name-privacy" className="name-privacy-notice">This name can appear in your local portrait and, only if you choose nominations, the reviewed public challenge. Published result pages use “A challenger” instead.</p>{displayNameError && <p className="display-name-error" id="result-name-error" role="alert">{displayNameError}</p>}</div>}
               {photo && <p className="private-media-boundary">Your private photo can appear only in the portrait you deliberately download or send through your device’s share sheet. Public links and previews use approved avatar and regional artwork.</p>}

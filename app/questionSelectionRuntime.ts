@@ -1,3 +1,4 @@
+import { privateTestProfile, privateTestRuntimeReady } from "./privateTestProfile.ts";
 import { D1QuestionSelectionRepository } from "../db/questionSelection.ts";
 import { QuestionSelectionService } from "../db/questionSelectionService.ts";
 
@@ -9,5 +10,6 @@ export async function getQuestionSelectionRuntime(): Promise<QuestionSelectionSe
   }
   const { env } = await import("cloudflare:workers");
   const runtime = env as unknown as { DB?: D1Database };
+  if (privateTestProfile !== "off" && !privateTestRuntimeReady(runtime)) return null;
   return runtime.DB ? new QuestionSelectionService(new D1QuestionSelectionRepository(runtime.DB)) : null;
 }

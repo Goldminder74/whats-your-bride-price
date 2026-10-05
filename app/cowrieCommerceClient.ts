@@ -1,4 +1,5 @@
 import { cowrieProducts,isCowrieProduct,COWRIE_DELIVERY_NOTICE_VERSION,type CowrieProductKey } from "../db/cowrieProducts.ts";
+import { privatePostOptions } from "./privatePost.ts";
 export const COWRIE_PENDING_ORDER_KEY="wybp-cowrie-pending-order-v1";
 export const COWRIE_RETURN_POLL_LIMIT=12;
 export const COWRIE_RETURN_POLL_INTERVAL_MS=1500;
@@ -8,7 +9,7 @@ export function readPendingCowrieOrder(storage:Pick<Storage,"getItem"|"removeIte
 }
 export function savePendingCowrieOrder(storage:Pick<Storage,"setItem">,reference:string):void{if(!referencePattern.test(reference))throw new Error("order unavailable");storage.setItem(COWRIE_PENDING_ORDER_KEY,reference);}
 async function post(path:string,body:Record<string,unknown>,signal?:AbortSignal):Promise<Record<string,unknown>>{
- const response=await fetch(path,{method:"POST",headers:{"content-type":"application/json"},credentials:"same-origin",cache:"no-store",body:JSON.stringify(body),signal});if(!response.ok)throw new Error("unavailable");const value:unknown=await response.json();if(!value||typeof value!=="object"||Array.isArray(value))throw new Error("unavailable");return value as Record<string,unknown>;
+ const response=await fetch(path,privatePostOptions(body,signal));if(!response.ok)throw new Error("unavailable");const value:unknown=await response.json();if(!value||typeof value!=="object"||Array.isArray(value))throw new Error("unavailable");return value as Record<string,unknown>;
 }
 export async function readCowrieOffer(walletReference:string,anonymousSessionCredential:string,signal?:AbortSignal){
  const value=await post("/commerce/status",{walletReference,anonymousSessionCredential},signal);
