@@ -50,15 +50,12 @@ locally checksum verified and uploaded owner-only; its cloud readback is unverif
 [Seller/payment guide](stripe-payment-link-setup.md) prepares a NEW sole-trader
 account, four GBP links and test-to-live gates; Adaptive Pricing compatibility
 needs real sandbox verification, never weakened exact payment checks.
-[Retention proposals](retention-schedule.md#proposed-rules--not-approved-or-activated)
-distinguish sole-trader statutory accounting minimum from product choices. None
-is activated. [Approval package](isolated-test-approval-package.md) defines exact
+[Retention policy](retention-schedule.md#owner-approved-rules--not-activated): owner approved all six rules on 5 October 2026. Policy approval only; safe implementation, professional review and provider backup verification remain pending. Nothing is activated. [Approval package](isolated-test-approval-package.md) defines exact
 targets, migrations/catalogue, preservation, test profiles, webhook/cron and rollback.
 
 ## Next action and constraints
 
-Owner: approve retention choices, address/legal completion and resource budget;
-review retention choices while local evidence repairs proceed; OneDrive is deferred. Then separately
+Owner: complete address/legal details and approve resource budget. Retention implementation is blocked on authoritative final wallet closure and a dependency-safe migration design (see retention safety checkpoint). Validate evidence repairs; OneDrive is deferred. Then separately
 authorise the exact isolated hosted/test-Stripe package; no public/live approval.
 
 Prior 90 affected tests/lint/typecheck and integration gates are reused; this task
