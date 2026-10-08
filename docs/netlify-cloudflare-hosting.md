@@ -666,11 +666,11 @@ which supersede historical readiness statements above. Existing websites and clo
 resources are unchanged; operational restore custody/provider tests and the eight
 question evidence holds still prevent blanket activation readiness.
 
-### Owner-approved catalogue/replay activation — 8 October 2026
+### Owner-approved catalogue/replay activation ï¿½ 8 October 2026
 
 The owner approved exact v2 manifest
 `4b6883d08e9efceb336ab333bab0e67e0219d107693ec85b99757170dff8c22d`,
-unchanged migrations 0000–0012, canonical seed, exact 90 imports/publications and
+unchanged migrations 0000ï¿½0012, canonical seed, exact 90 imports/publications and
 private random replay within existing plan allowances. No new charge/upgrade,
 Cowrie enforcement, commerce, cron, live payments or public deployment is approved.
 The live operator now checks the immutable v2 file AND regenerated manifest against
@@ -679,28 +679,58 @@ v1 remains for archive reproduction only. `data` profile enables random replay
 alone; use `WYBP_FEATURE_RANDOM_QUICK_PLAY=true`, all other feature flags false.
 The existing `payments` profile retains Cowrie/commerce for its separate future gate.
 
-Cloudflare OAuth identity verified as ayo.m.ayeni@gmail.com in exact account
-`b6b22a9a87b5758725e5c499782160af`, but current scopes have no `d1:write`.
-D1 inventory returns authentication error 10000, so DB existence/state, current
-allowance headroom and UUID are unverified. No creation/write may precede inventory.
-A scoped Wrangler refresh must retain existing user:read, offline_access,
-account:read, workers:write and workers_scripts:write and add ONLY d1:write.
-OAuth is account-level; restrict actual operations to the isolated named database.
-Never use Wrangler's unqualified default login (which requests unrelated scopes).
-An owner manual alternative from this repository is:
+Cloudflare OAuth now includes only the newly authorised d1:write scope, retaining
+existing scopes. Wrangler adds offline_access automatically; do not list it explicitly:
 
 ```powershell
-node node_modules/wrangler/bin/wrangler.js login --scopes user:read offline_access account:read workers:write workers_scripts:write d1:write
+node node_modules/wrangler/bin/wrangler.js login --scopes user:read account:read workers:write workers_scripts:write d1:write
 ```
 
-Complete authentication in Cloudflare directly; no token/secret belongs in chat.
-Then recheck plans/usage, database inventory/empty state, Worker identity and private
-Netlify access before approved operations. Offline runtime schema fingerprint:
-`5d45ee35ee5e5cce814d5d4659418324f1bb4fde9657a5f893dbc6640122c9c4`.
-All 11 catalogue dry runs pass; this is not a hosted migration/catalogue receipt.
+No further login is required at this checkpoint. Free Workers plan and allowance
+headroom were verified. D1 inventory was empty before creation. Actual database
+`wybp-test-d1-r001` UUID `1a268b28-e6d5-4431-8f84-a886df9369f1` is preserved.
+All 13 unchanged migrations and exact canonical seed/approved 90 versions completed;
+application repository selection verifies exactly 30 eligible questions per region.
+Schema SHA-256 `5d45ee35ee5e5cce814d5d4659418324f1bb4fde9657a5f893dbc6640122c9c4`.
+Do not recreate the database, repeat seed, or overwrite unexpected catalogue data.
 
-Rollback remains the previous verified matched all-off private client/Worker pair,
-source `5959b4e1b21bc6fc7f667461ccd643b303cde18c`; disable only test data profile
-on failure and preserve the database/audit history. Do not reverse migrations,
-erase accounting, change existing sites or expose a failed replacement. Missing
-external restore receipt must continue to fail closed, even with cron disabled.
+Wrangler's remote migration query parser rejected 0009 with incomplete input.
+Read-only inspection proved complete rollback to the exact 0008 prefix/schema.
+All migration bytes matched Git and contained no CR; this was not a CRLF correction.
+Resumption used the supported D1 SQL file-import path with each unchanged migration
+and its standard migration-ledger insertion, followed by exact prefix/schema/FK
+verification before each next migration. No migration was edited/added.
+
+Local ignored receipts under outputs/activation-preparation:
+- d1-r001-after-migration-failure.json and per-migration file-import logs.
+- d1-r001-catalogue-receipts.json (seed, five imports, five publications).
+- d1-r001-catalogue-verified.json (exact IDs/versions, checksums, eligibility).
+- initial-retention-receipt-r001.json (actual empty financial/authority review).
+- live-release-verification.json and rollback-release-verification.json.
+These are local operational receipts, not independently verified backups.
+
+Application checkpoint `4f291c4247519f1dcc7b6ad3123b8ecdb60b427c` produced paired
+release `a66907f863fdafa200004d2a8b995a796e34c69bc127d417e91c0e244e678621`,
+Worker version `6130e970-b5a4-4a4a-9531-9a181542284d`, Netlify deployment
+`6ac805569a0329269e7f3b7c`. Actual upload verified all 140 server modules and
+109 client file checksums. Secrets were absent from build environment/artifacts;
+existing signing configuration reused separately. Primary/preview anonymous access
+returned 401; unsigned/invalid Worker signatures returned 404. Five complete desktop
+random games/results passed, including images and shuffled choices. Mobile West
+reached question seven, but refresh returned to setup. Source gates recovery reads,
+writes and instance creation behind disabled fast_entry. This is a genuine activation
+blocker; remaining complete mobile/recovery checks were not represented as passed.
+
+Rollback completed and verified to paired release
+`cb5ce5b6bce83d1c16342c60c33fc17b0d7fae3ac0bc6f84142006181f98ff16`, application
+source `5959b4e1b21bc6fc7f667461ccd643b303cde18c`, existing Netlify deployment
+`6ac39ed9dc048234fd201369`, new rollback Worker version
+`04f763af-acb6-4c33-baf0-d0af508b2ef7`. Private primary/preview and unsigned Worker
+denial were reverified; active Worker has no D1/R2 binding, cron or optional features.
+The database and audit history were preserved. Initial server-only restore-receipt
+configuration is retained for the subsequent approved retry; do not expose it in builds.
+
+Next scope: decouple random recovery from fast_entry without enabling that feature,
+add compiled refresh/ownership regression, then rebuild/deploy a matched random-only
+pair and complete all five mobile games/recovery checks. Do not repeat catalogue
+writes or successful unchanged local suites. Cron/payment activation remains excluded.
