@@ -3,7 +3,7 @@
 ## Source and deployment
 
 Branch `feature/viral-build-sprint`; activation preparation starts at verified
-`45a4ab3d86ae0ddd186a59721b92b17c69e9b07a`. Resolve final committed source with
+`941e8f72d8872f45d421179e2c9cfb229c63117a`. Resolve final committed source with
 `git rev-parse HEAD`. PR #1 remains open/draft/unmerged, base `master`.
 [Private application](https://wybp-protected-test.netlify.app/) still runs source
 `5959b4e1b21bc6fc7f667461ccd643b303cde18c`; owner-confirmed gameplay fix remains.
@@ -42,8 +42,8 @@ Additional Cairo bot-response correction yields eleven evidence-only v2 revision
 question wording/scoring and 352 research drafts remain unchanged/unpublished.
 [Proposed v2 manifest](../data/question-bank/launch/publication-manifest-v2.proposed.json)
 SHA-256 `4b6883d08e9efceb336ab333bab0e67e0219d107693ec85b99757170dff8c22d`;
-local rehearsal verifies 30 eligible/region. Original v1 preserved; CLI still pins
-v1 and must not activate it. [Evidence reconciliation](launch-source-capture-reconciliation.md).
+local rehearsal verifies 30 eligible/region. Owner approved exact v2 for isolated test publication; original v1 preserved.
+CLI now requires exact immutable v2 and rejects v1/mutations. [Evidence reconciliation](launch-source-capture-reconciliation.md).
 
 Original Drive archives reused; recovery supplement and new complete evidence/
 synthetic restore archives independently downloaded/checksummed owner-only.
@@ -53,12 +53,19 @@ verify. Historical captures unverified; OneDrive deferred by owner.
 
 ## Next action and constraints
 
-Approve exact v2 revisions/substitutions, then adopt its CLI pointer under review.
-[Activation package](isolated-test-approval-package.md) requests separate isolated
-D1/budget/binding, 13 migrations, canonical seed, exact publication and matched
-private data deployment approval. Operational custody/provider restoration and
+Owner approved isolated D1/migrations 0000–0012, canonical seed, exact 90
+publication and matched private random replay within existing allowances. `data`
+profile now enables random replay only; Cowrie/commerce remain off. Eleven local
+dry runs and 14 affected tests pass; lint/typecheck and compiled local D1 desktop/
+WebKit ownership, retry and navigation checks pass. Account identity verified,
+but current OAuth lacks d1:write and inventory fails (10000); DB UUID/state and
+allowance headroom remain unverified. Narrow additional scope approval requested.
+No hosted operations occurred. [Activation package](isolated-test-approval-package.md)
+and [resume/rollback](netlify-cloudflare-hosting.md#owner-approved-cataloguereplay-activation--8-october-2026)
+record exact next steps and unchanged known resource identities. Operational custody/provider restoration and
 capacity precede any cron; sole-trader sandbox/settings precede test payments.
 [Seller/Stripe steps](stripe-payment-link-setup.md) include Adaptive Pricing tests.
 Preserve existing websites/DNS/Workers/Sites, staging/stash, disabled defaults,
-secret-free builds and disconnected hosted Git builds. No hosted database,
-migration, seed/publication, job, Stripe change, live payment or charge authorised.
+secret-free builds and disconnected hosted Git builds. Approved test DB/replay
+operations remain blocked on authentication; no cron, Stripe change, live payment,
+public/production activation or new charge is authorised.

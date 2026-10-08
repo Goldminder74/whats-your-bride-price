@@ -100,7 +100,14 @@ test("operator target identity and migration ledger must match before a write; d
   const fetcher=async()=>{calls++;return Response.json({success:true,result:{uuid:id,name:"production"}});};
   await assert.rejects(executeTargetBatch({databaseId:id,token:"synthetic",plan:seedPlan(data.seed),migrations:data.manifest.migrations,fetcher}),/identity/);assert.equal(calls,1);
   const hash=sha256(await readFile(publicationManifestPath));assert.equal(hash.length,64);
-  const out=await promisify(execFile)(process.execPath,["--experimental-strip-types","scripts/private-test-catalogue.mjs","--evidence",directory,"--operation","seed"],{windowsHide:true});assert.equal(JSON.parse(out.stdout).dryRun,true);
+  const cli=["--experimental-strip-types","scripts/private-test-catalogue.mjs","--evidence",directory,"--operation","seed"];
+  await assert.rejects(promisify(execFile)(process.execPath,cli,{windowsHide:true}),/owner_approved_publication_manifest_mismatch/);
+  const approvedDirectory=join(directory,"approved");
+  await promisify(execFile)(process.execPath,["--experimental-strip-types","scripts/prepare-launch-readiness.mjs","--output",approvedDirectory],{windowsHide:true});
+  cli[cli.indexOf("--evidence")+1]=approvedDirectory;
+  const out=await promisify(execFile)(process.execPath,cli,{windowsHide:true});assert.equal(JSON.parse(out.stdout).dryRun,true);
+  assert.equal(JSON.parse(out.stdout).manifestSha256,"4b6883d08e9efceb336ab333bab0e67e0219d107693ec85b99757170dff8c22d");
+  await assert.rejects(promisify(execFile)(process.execPath,[...cli,"--write-manifest"],{windowsHide:true}),/owner_approved_manifest_is_immutable/);
 });
 
 test("D1 commerce limiter admits exactly twenty concurrent requests across instances and fails closed",async()=>{
@@ -211,6 +218,10 @@ test("scheduler reverses an expired unissued debit once, preserving allocations 
 
 test("profile is exact and defaults stay off; credentialed mobile posts refuse redirects",()=>{
   assertPrivateTestFlags("off",defaultFeatureFlags);assert.throws(()=>assertPrivateTestFlags("data",defaultFeatureFlags));
+  const replayOnly={...defaultFeatureFlags,random_quick_play:true};assertPrivateTestFlags("data",replayOnly);
+  assert.throws(()=>assertPrivateTestFlags("data",{...replayOnly,cowrie_economy:true}),/mismatch/);
+  assert.throws(()=>assertPrivateTestFlags("data",{...replayOnly,commerce:true}),/mismatch/);
+  assertPrivateTestFlags("payments",{...replayOnly,cowrie_economy:true,commerce:true});
   assert.equal(privateTestRuntimeReady(runtime({}),"payments"),true);
   assert.equal(privateTestRuntimeReady({...runtime({}),WYBP_NETLIFY_SITE_URL:"https://evil.invalid"},"payments"),false);
   assert.throws(()=>validateTestDatabaseId("00000000-0000-0000-0000-000000000000"));

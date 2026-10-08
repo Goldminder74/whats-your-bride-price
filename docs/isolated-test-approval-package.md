@@ -1,6 +1,6 @@
 # Isolated test activation approval package
 
-Updated 8 October 2026; **not authority to execute**. Retention starting checkpoint `50366d03efe7396b9e86555c25f6eb211d2ac51a`; final docs checkpoint is `git rev-parse HEAD`.
+Updated 8 October 2026. Owner approved the exact v2 manifest, isolated test D1/migrations/catalogue and private random replay from `941e8f72d8872f45d421179e2c9cfb229c63117a`, within existing allowances only. Remaining payment/cron/provider gates below are not authorised. Resolve final source using `git rev-parse HEAD`.
 
 ## Fixed scope and target
 
@@ -18,3 +18,22 @@ Reuse Netlify `wybp-protected-test` (project `edee23f4-b86f-4975-8859-9c4be03ebb
 8. **Live checks/rollback:** actual sandbox all-four fulfilment, concurrent duplicates, refunds/disputes, cross-owner denial, mobile returns/downloads and navigation, anonymous/private URL denial, signing, assets and release-match. Restore previous matched all-off private release and disable only test webhook/cron on failure; preserve D1/audit history, do not reverse migrations or erase payment data. This package excludes public launch/live payments.
 
 Owner must separately approve exact resource/budget, resolved evidence/manifest, hosted retention scheduling and test account/settings. The six retention policy rules were owner-approved on 5 October 2026; implementation and hosted activation remain separate gates. No hosted operation has occurred during preparation. Public launch later requires random replay, Cowrie access/purchases and Royal Reveal together, approved seller/legal/privacy and verified live payment/runtime flows. Analytics, owner dashboard, daily/streaks and unrelated optional features stay disabled.
+
+## Execution checkpoint
+
+Exact v2 hash is now required by the operator, including local dry runs. The
+owner approval is machine-evidence approval, not human cultural/professional
+sign-off. Runtime `data` profile is random-only; Cowrie and commerce remain off.
+Local seed + five import + five publish dry runs pass; local 13-migration simulation
+still gives exactly 30 eligible questions/region. Current OAuth lacks d1:write,
+and database inventory is rejected; no hosted DB identity, migration or catalogue
+receipt exists yet. Authentication scope approval is requested separately. Use
+[the narrow login/resume steps](netlify-cloudflare-hosting.md#owner-approved-cataloguereplay-activation--8-october-2026).
+
+Before writes verify allowance headroom and the actual isolated DB; stop on an
+unexpected populated/partial catalogue or migration state. Reuse existing private
+resources and secrets, keep secrets absent during builds and no Git-connected
+hosted build. Verify all five complete desktop/mobile games, option shuffling,
+recovery and image progression on the newly matched release before reporting it
+as live. Rollback uses the previously verified all-off matched pair and preserves
+D1 history. Cron/payment gates and restoration/custody/capacity limitations remain.

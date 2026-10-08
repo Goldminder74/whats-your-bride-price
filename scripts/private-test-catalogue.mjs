@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { readFile, writeFile, readdir } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { PRIVATE_TEST, validateTestDatabaseId } from "../app/privateTestProfile.ts";
@@ -12,6 +12,17 @@ export const regions = ["west", "east", "central", "north", "south"];
 const draftDirectories = {west:"west-africa",east:"east-africa",central:"central-africa",north:"north-africa",south:"southern-africa"};
 export const publicationManifestPath = "data/question-bank/launch/publication-manifest-v1.json";
 export const sha256 = value => createHash("sha256").update(value).digest("hex");
+// Historical v1 remains available for archive reproduction; live operations pin owner-approved v2.
+export const approvedPublicationManifestPath = "data/question-bank/launch/publication-manifest-v2.proposed.json";
+export const approvedPublicationManifestSha256 = "4b6883d08e9efceb336ab333bab0e67e0219d107693ec85b99757170dff8c22d";
+export async function assertApprovedPublicationManifest(manifest) {
+  const recorded=await readFile(approvedPublicationManifestPath);
+  const generated=canonicalEvidenceJson(manifest)+"\n";
+  if(sha256(recorded)!==approvedPublicationManifestSha256 || sha256(generated)!==approvedPublicationManifestSha256
+    || recorded.toString()!==generated)throw new Error("owner_approved_publication_manifest_mismatch");
+  return approvedPublicationManifestSha256;
+}
+
 const canonicalHash = value => sha256(canonicalEvidenceJson(value));
 export const SCHEMA_QUERY = "SELECT type,name,tbl_name,sql FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' AND name NOT LIKE '_cf_%' AND name NOT IN ('schema_migrations','d1_migrations') AND sql IS NOT NULL ORDER BY type,name";
 export const schemaHash = rows => canonicalHash(rows.map(row => ({type:row.type,name:row.name,tbl_name:row.tbl_name,sql:row.sql})));
@@ -197,12 +208,8 @@ async function main() {
   if(!args.includes("--evidence")) throw new Error("regenerated_evidence_directory_required");
   const data=await loadEvidence(resolve(value("--evidence")));
   const manifestBytes=canonicalEvidenceJson(data.manifest)+"\n";
-  if(args.includes("--write-manifest")) {
-    if(args.some(arg=>["--apply","--remote"].includes(arg))) throw new Error("manifest_generation_is_local_only");
-    await writeFile(publicationManifestPath,manifestBytes);
-    console.log(JSON.stringify({manifest:publicationManifestPath,sha256:sha256(manifestBytes),entries:90}));return;
-  }
-  if(await readFile(publicationManifestPath,"utf8")!==manifestBytes) throw new Error("publication_manifest_mismatch");
+  if(args.includes("--write-manifest")) throw new Error("owner_approved_manifest_is_immutable");
+  await assertApprovedPublicationManifest(data.manifest);
   const operation=value("--operation");
   const plan=operation==="seed"?seedPlan(data.seed):regionPlan(operation,value("--region"),data);
   const hash=sha256(manifestBytes);

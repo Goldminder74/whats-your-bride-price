@@ -22,7 +22,7 @@ export function validateTestDatabaseId(value: unknown): string {
   return value;
 }
 export function assertPrivateTestFlags(profile: PrivateTestProfile, flags: FeatureFlags): void {
-  const allowed = profile === "off" ? [] : ["random_quick_play", "cowrie_economy", ...(profile === "payments" ? ["commerce"] : [])];
+  const allowed = profile === "off" ? [] : profile === "data" ? ["random_quick_play"] : ["random_quick_play", "cowrie_economy", "commerce"];
   for (const [name, enabled] of Object.entries(flags)) {
     if (enabled !== allowed.includes(name)) throw new Error(`Private test profile/feature mismatch: ${name}`);
   }

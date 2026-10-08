@@ -311,7 +311,7 @@ R2 remains unbound. Release receipts bind the selected profile/flags to the actu
 server entry and paired client checksums. No deployed database UUID is invented.
 
 Default profile `off` keeps every optional feature false. Profile `data` enables
-only `random_quick_play` and `cowrie_economy`; profile `payments` additionally
+only `random_quick_play`; Cowrie enforcement remains off. Profile `payments` enables `random_quick_play`, `cowrie_economy` and
 enables `commerce`. All other flags and all review overrides remain false.
 Sites builds reject either private profile and retain their original configuration.
 Runtime requires matching server-only profile, project, origin, Worker and `DB`.
@@ -379,7 +379,7 @@ rejecting unknown or partial migration state before catalogue writes.
 Regenerate evidence to a fresh directory **outside Git**:
 
 ```powershell
-node scripts/build-machine-evidence-question-bank.mjs --output <fresh-evidence-directory>
+node scripts/prepare-launch-readiness.mjs --output <fresh-evidence-directory>
 node scripts/private-test-catalogue.mjs --evidence <directory> --operation seed
 node scripts/private-test-catalogue.mjs --evidence <directory> --operation import --region west
 node scripts/private-test-catalogue.mjs --evidence <directory> --operation publish --region west
@@ -665,3 +665,42 @@ See [private operations](retention-operations.md) and [current activation gates]
 which supersede historical readiness statements above. Existing websites and cloud
 resources are unchanged; operational restore custody/provider tests and the eight
 question evidence holds still prevent blanket activation readiness.
+
+### Owner-approved catalogue/replay activation — 8 October 2026
+
+The owner approved exact v2 manifest
+`4b6883d08e9efceb336ab333bab0e67e0219d107693ec85b99757170dff8c22d`,
+unchanged migrations 0000–0012, canonical seed, exact 90 imports/publications and
+private random replay within existing plan allowances. No new charge/upgrade,
+Cowrie enforcement, commerce, cron, live payments or public deployment is approved.
+The live operator now checks the immutable v2 file AND regenerated manifest against
+a fixed hash before any dry run/apply; `--write-manifest` is rejected. Historical
+v1 remains for archive reproduction only. `data` profile enables random replay
+alone; use `WYBP_FEATURE_RANDOM_QUICK_PLAY=true`, all other feature flags false.
+The existing `payments` profile retains Cowrie/commerce for its separate future gate.
+
+Cloudflare OAuth identity verified as ayo.m.ayeni@gmail.com in exact account
+`b6b22a9a87b5758725e5c499782160af`, but current scopes have no `d1:write`.
+D1 inventory returns authentication error 10000, so DB existence/state, current
+allowance headroom and UUID are unverified. No creation/write may precede inventory.
+A scoped Wrangler refresh must retain existing user:read, offline_access,
+account:read, workers:write and workers_scripts:write and add ONLY d1:write.
+OAuth is account-level; restrict actual operations to the isolated named database.
+Never use Wrangler's unqualified default login (which requests unrelated scopes).
+An owner manual alternative from this repository is:
+
+```powershell
+node node_modules/wrangler/bin/wrangler.js login --scopes user:read offline_access account:read workers:write workers_scripts:write d1:write
+```
+
+Complete authentication in Cloudflare directly; no token/secret belongs in chat.
+Then recheck plans/usage, database inventory/empty state, Worker identity and private
+Netlify access before approved operations. Offline runtime schema fingerprint:
+`5d45ee35ee5e5cce814d5d4659418324f1bb4fde9657a5f893dbc6640122c9c4`.
+All 11 catalogue dry runs pass; this is not a hosted migration/catalogue receipt.
+
+Rollback remains the previous verified matched all-off private client/Worker pair,
+source `5959b4e1b21bc6fc7f667461ccd643b303cde18c`; disable only test data profile
+on failure and preserve the database/audit history. Do not reverse migrations,
+erase accounting, change existing sites or expose a failed replacement. Missing
+external restore receipt must continue to fail closed, even with cron disabled.

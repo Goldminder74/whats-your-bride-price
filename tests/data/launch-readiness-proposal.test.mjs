@@ -5,7 +5,7 @@ import {tmpdir} from "node:os";
 import {join} from "node:path";
 import {prepareReadiness,readinessProposalPath} from "../../scripts/prepare-launch-readiness.mjs";
 import {canonicalEvidenceJson} from "../../db/questionEvidence.ts";
-import {loadEvidence,regions,regionPlan,seedPlan,sha256} from "../../scripts/private-test-catalogue.mjs";
+import {loadEvidence,regions,regionPlan,seedPlan,sha256,assertApprovedPublicationManifest,approvedPublicationManifestSha256} from "../../scripts/private-test-catalogue.mjs";
 import {createIsolatedDatabase,loadMigrationPlan,applyMigrationPlan} from "../../scripts/data-migrations.mjs";
 import {Adapter} from "../helpers/cowrieCommerce.mjs";
 import {D1QuestionSelectionRepository,selectQuestionSet} from "../../db/questionSelection.ts";
@@ -30,7 +30,10 @@ test("revised proposal is reproducible, pins eleven v2 corrections and two reser
   for(const region of regions){await adapter.batch(bind(regionPlan("import",region,data,now)));assert.equal((await repo.getCandidates(region,now)).length,12);for(let i=0;i<2;i++)await adapter.batch(bind(regionPlan("publish",region,data,now)));const candidates=await repo.getCandidates(region,now);assert.equal(candidates.length,30);assert.equal((await selectQuestionSet({region,candidates,now,minimumEligibleCount:30,randomSource:b=>{b.fill(7);return b;}})).questions.length,12);}
   assert.equal(db.prepare("SELECT COUNT(*) n FROM questions").get().n,150);assert.deepEqual(db.prepare("PRAGMA foreign_key_check").all(),[]);
   const old=JSON.parse(await readFile("data/question-bank/launch/publication-manifest-v1.json","utf8"));assert.equal(sha256(canonicalEvidenceJson(old)+"\n"),data.manifest.readinessProposal.priorPublicationManifestSha256);
-  // Live operator remains pinned to v1; using v2 requires a later explicit owner decision.
+  // Owner-approved exact v2 is accepted; historical v1 and any regenerated mutation fail closed.
+  assert.equal(await assertApprovedPublicationManifest(data.manifest),approvedPublicationManifestSha256);
+  await assert.rejects(assertApprovedPublicationManifest(old),/owner_approved_publication_manifest_mismatch/);
+  await assert.rejects(assertApprovedPublicationManifest({...data.manifest,humanCulturalApproval:true}),/owner_approved_publication_manifest_mismatch/);
   assert.notEqual(recorded,canonicalEvidenceJson(old)+"\n");assert.deepEqual((await loadEvidence(first)).manifest,data.manifest);
   console.log(JSON.stringify({proposalSha256:sha256(recorded),regions:Object.fromEntries(regions.map(r=>[r,30])),sourceLifecycle:"all draft; isolated simulation only"}));
  }finally {db.close();await rm(root,{recursive:true,force:true});}
