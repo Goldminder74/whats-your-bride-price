@@ -361,7 +361,7 @@ the generated `outputs/netlify-worker/<release-id>/wrangler.json`. It has no cro
 and both `WYBP_TEST_RETENTION_ENABLED` and `WYBP_TEST_WEBHOOK_ENABLED` are false.
 
 The twelve migrations and their hashes are recorded in the publication proposal
-and `drizzle/migration-checksums.json`. No migration 0012 is required or created.
+and `drizzle/migration-checksums.json`. The 8 October retention adaptation adds exactly one local migration `0012_retention_authority.sql`; hosted migration approval must cover all 13 checksums. The immutable catalogue proposal remains based on its original 12-migration schema, while remote operator apply separately requires the current runtime `--approve-schema` fingerprint.
 All twelve were rehearsed against local D1, including table rebuilds and triggers.
 After separate hosted approval, with the verified target config:
 
@@ -644,8 +644,24 @@ and [webhook registration/signatures](https://docs.stripe.com/webhooks).
    An uncorrelated Dashboard sample event does not prove order fulfilment. Keep
    all other features and public/live payments disabled.
 
-See [only missing retention/purge decisions](retention-schedule.md#only-remaining-financialsupport-and-physical-purge-decisions).
+See [approved retention and private restore operations](retention-operations.md).
 
 ### October owner decisions and preparation update
 
-Seller now confirmed as Ayodele Ayeni, UK sole trader, trading as Classes for Culture, not VAT registered; support team@classesforculture.com. Sherwood/Wigsmi Stripe is excluded. Current [seller/four-product instructions](stripe-payment-link-setup.md), [unapproved retention proposals](retention-schedule.md#proposed-rules--not-approved-or-activated), [source capture reconciliation](launch-source-capture-reconciliation.md), [private backup steps](launch-evidence-backup.md) and [exact approval package](isolated-test-approval-package.md) supersede the earlier unresolved-owner/preservation status above. Original archive remains immutable; recovery supplement is separately checksummed. Nine source gaps affect 13 proposal questions, so publication readiness is still held. No independent backup or hosted/Stripe change claimed.
+Seller now confirmed as Ayodele Ayeni, UK sole trader, trading as Classes for Culture, not VAT registered; support team@classesforculture.com. Sherwood/Wigsmi Stripe is excluded. Current [seller/four-product instructions](stripe-payment-link-setup.md), [owner-approved retention policy](retention-schedule.md#owner-approved-rules--not-activated), [source capture reconciliation](launch-source-capture-reconciliation.md), [private backup steps](launch-evidence-backup.md) and [exact approval package](isolated-test-approval-package.md) supersede the earlier unresolved-owner/preservation status above. Original archive remains immutable; recovery supplement is separately checksummed. Nine source gaps affect 13 proposal questions, so publication readiness is still held. No independent backup or hosted/Stripe change claimed.
+
+
+### 8 October retention compatibility update
+
+The six policy rules and authoritative closure definition are owner-approved and
+implemented locally, not professionally signed off or hosted. Before a data/payment
+profile can serve content or run maintenance, independently review suppression,
+active holds/cases/closures and financial reconciliation, install the D1 receipt,
+then set matching `WYBP_RESTORE_RECEIPT_SHA256` in the separate Worker runtime.
+It is a non-secret receipt hash, not browser-selected configuration. Missing or
+stale receipt fails closed. Disable access/cron and remove that runtime hash before
+any privileged D1 restore; never rely on the restored database to certify itself.
+See [private operations](retention-operations.md) and [current activation gates](isolated-test-approval-package.md),
+which supersede historical readiness statements above. Existing websites and cloud
+resources are unchanged; operational restore custody/provider tests and the eight
+question evidence holds still prevent blanket activation readiness.

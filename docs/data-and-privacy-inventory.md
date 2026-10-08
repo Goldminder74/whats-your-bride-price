@@ -366,3 +366,7 @@ The private nullable Cowrie issuance timestamp records server commitment of a pa
 ## Disabled Cowrie purchases
 
 The new tab-local pending purchase key contains only an opaque order reference and is explicitly cleared by application local clearing. No Stripe ID, recovery value or wallet/ledger identifier is stored there. Signature-first webhook audit gains three bounded nullable reconciliation facts; no raw payload/customer/card data is added. Cowrie purchase analytics are unsupported. Draft immediate delivery is separate from analytics. See [Cowrie commerce](cowrie-commerce.md).
+
+## Private retention authority (migration 0012)
+
+The seven operator-only `retention_*` tables hold scoped legal/support holds, cases, verified settlement proofs, immutable wallet closure, bounded restore suppression, restore receipts and dependency-safe order minimisation authority. They are not analytics identifiers or browser-accessible controls. See [retention operations](retention-operations.md) for exact approved periods, access boundaries and the mandatory restore protocol. Financial dependencies and purchased value remain protected; operational backup custody is still an activation gate.

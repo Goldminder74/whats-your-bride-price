@@ -602,6 +602,8 @@ export const cowrieWallets = sqliteTable("cowrie_wallets", {
   recoveryCredentialVersion: integer("recovery_credential_version").notNull().default(1),
   lastAccessIdempotencyHash: text("last_access_idempotency_hash"),
   frozenAt: integer("frozen_at"),
+  closedAt: integer("closed_at"),
+  ownershipMinimizedAt: integer("ownership_minimized_at"),
   deletedAt: integer("deleted_at"),
   retentionExpiresAt: integer("retention_expires_at"),
   version: integer("version").notNull().default(1),
@@ -609,7 +611,7 @@ export const cowrieWallets = sqliteTable("cowrie_wallets", {
   updatedAt: integer("updated_at").notNull(),
 }, (table) => [
   uniqueIndex("cowrie_wallets_public_reference_uq").on(table.publicReference),
-  uniqueIndex("cowrie_wallets_recovery_hash_uq").on(table.recoveryCredentialHash),
+  uniqueIndex("cowrie_wallets_recovery_hash_uq").on(table.recoveryCredentialHash).where(sql`${table.ownershipMinimizedAt} is null`),
   uniqueIndex("cowrie_wallets_live_owner_uq").on(table.anonymousOwnerHash).where(sql`${table.state} in ('active','frozen')`),
   index("cowrie_wallets_owner_state_idx").on(table.anonymousOwnerHash, table.state),
   index("cowrie_wallets_retention_idx").on(table.retentionExpiresAt, table.deletedAt),
@@ -850,8 +852,44 @@ export const durableTableNames = [
   "commerce_orders", "commerce_entitlements", "stripe_webhook_events",
   "cowrie_wallets", "cowrie_ledger", "cowrie_purchase_allocations",
   "consent_preferences", "analytics_events", "feature_flag_overrides", "question_evidence_verifications",
+  "retention_holds", "retention_cases", "retention_settlements", "retention_closures",
+  "retention_suppression", "retention_restore", "retention_order_minimisation",
 ] as const;
 
 // Migration 0010 also maintains explicit authority/immutable triggers and replaces
 // the ledger active-wallet/cache triggers solely for verified negative purchased
 // refund_reversal settlements on frozen wallets. dispute_freeze remains zero-only.
+
+// Private operator-owned retention authority; no application route writes these tables.
+export const retentionHolds = sqliteTable("retention_holds", {
+  id: text("id").primaryKey(), scope: text("scope").notNull(), subjectId: text("subject_id").notNull(),
+  reason: text("reason").notNull(), openedAt: integer("opened_at").notNull(), releasedAt: integer("released_at"),
+  evidenceHash: text("evidence_hash").notNull(),
+});
+export const retentionCases = sqliteTable("retention_cases", {
+  id: text("id").primaryKey(), walletId: text("wallet_id").references(() => cowrieWallets.id, {onDelete:"restrict"}),
+  orderId: text("order_id").references(() => commerceOrders.id, {onDelete:"restrict"}),
+  kind: text("kind").notNull(), openedAt: integer("opened_at").notNull(), closedAt: integer("closed_at"),
+  retainUntil: integer("retain_until"), evidenceHash: text("evidence_hash").notNull(),
+});
+export const retentionSettlements = sqliteTable("retention_settlements", {
+  orderId: text("order_id").primaryKey().references(() => commerceOrders.id,{onDelete:"restrict"}),
+  eventId: text("event_id").notNull().references(() => stripeWebhookEvents.id,{onDelete:"restrict"}),
+  reason: text("reason").notNull(), settledAt: integer("settled_at").notNull(), retainUntil: integer("retain_until").notNull(),
+});
+export const retentionClosures = sqliteTable("retention_closures", {
+  walletId: text("wallet_id").primaryKey().references(() => cowrieWallets.id,{onDelete:"restrict"}),
+  closedAt: integer("closed_at").notNull(), financialUntil: integer("financial_until").notNull(), evidenceHash: text("evidence_hash").notNull(),
+});
+export const retentionSuppression = sqliteTable("retention_suppression", {
+  scope: text("scope").notNull(), subjectId: text("subject_id").primaryKey(), unavailableAt: integer("unavailable_at").notNull(),
+  forgetAfter: integer("forget_after").notNull(),
+});
+export const retentionRestore = sqliteTable("retention_restore", {
+  id: text("id").primaryKey(), receiptHash: text("receipt_hash").notNull(), verifiedAt: integer("verified_at").notNull(),
+});
+
+export const retentionOrderMinimisation = sqliteTable("retention_order_minimisation", {
+  orderId: text("order_id").primaryKey().references(() => commerceOrders.id,{onDelete:"restrict"}),
+  minimisedAt: integer("minimised_at").notNull(),
+});

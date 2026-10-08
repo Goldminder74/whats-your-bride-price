@@ -21,7 +21,7 @@ const manifest=await verifyRelease(pointer.directory);
 assert.equal(manifest.configuration.profile,"payments");assert.equal(manifest.configuration.databaseId,"11111111-2222-4333-8444-555555555555");
 const workerConfig=JSON.parse(await readFile(resolve(pointer.directory,"wrangler.json"),"utf8"));
 const secret="synthetic-local-runtime-canary-"+"x".repeat(40);
-const bindings={...workerConfig.vars,WYBP_NETLIFY_PROXY_SECRET:secret,WYBP_TEST_WEBHOOK_ENABLED:"true",WYBP_TEST_RETENTION_ENABLED:"true",
+const bindings={...workerConfig.vars,WYBP_NETLIFY_PROXY_SECRET:secret,WYBP_TEST_WEBHOOK_ENABLED:"true",WYBP_TEST_RETENTION_ENABLED:"true",WYBP_RESTORE_RECEIPT_SHA256:"d".repeat(64),
   STRIPE_EXPECTED_LIVEMODE:"false",STRIPE_PAYMENT_LINK_URL:config.publicPaymentLinkUrl,STRIPE_PAYMENT_LINK_ID:config.expectedPaymentLinkId,
   STRIPE_WEBHOOK_SIGNING_SECRET:config.webhookSigningSecret,ROYAL_REVEAL_PRODUCT_KEY:config.expectedProductKey,ROYAL_REVEAL_AMOUNT_MINOR:199,ROYAL_REVEAL_CURRENCY:"GBP"};
 for(const key of cowrieProductKeys){const p=key.toUpperCase(),v=cowrieProducts[key];Object.assign(bindings,{[`${p}_PAYMENT_LINK_URL`]:config.cowrieBundles[key].publicPaymentLinkUrl,[`${p}_PAYMENT_LINK_ID`]:config.cowrieBundles[key].expectedPaymentLinkId,[`${p}_PRODUCT_KEY`]:key,[`${p}_QUANTITY`]:v.quantity,[`${p}_AMOUNT_MINOR`]:v.amountMinor,[`${p}_CURRENCY`] :"GBP",[`${p}_LIVEMODE`]:"false"});}
@@ -42,6 +42,8 @@ async function proxy(path,init={}){
 try{
   const db=await mf.getD1Database("DB");
   for(const migration of await loadMigrationPlan())await db.batch(migration.statements.map(sql=>db.prepare(sql)));
+  assert.equal((await proxy("/")).status,503,"missing restore receipt must fail closed");
+  await db.prepare("INSERT INTO retention_restore(id,receipt_hash,verified_at) VALUES('active',?,?)").bind("d".repeat(64),Date.now()).run();
   await promisify(execFile)(process.execPath,["scripts/build-machine-evidence-question-bank.mjs","--output",evidence],{windowsHide:true});
   const catalogue=await loadEvidence(evidence);
   const batch=rows=>db.batch(rows.map(row=>db.prepare(row.sql).bind(...row.params)));
@@ -75,11 +77,14 @@ try{
       const context=await browser.newContext({...contextOptions,ignoreHTTPSErrors:true,reducedMotion:"reduce",serviceWorkers:"block"});
       await context.addCookies([{name:"compiled_private_access",value:"local-only",url:origin,httpOnly:true,secure:true,sameSite:"Lax"}]);
       const page=await context.newPage();const errors=[];
+      // As in compiled-navigation.mjs, finish Link prefetches before intentionally
+      // replacing the document: WebKit reports aborted prefetches as CORS failures.
+      const direct=async url=>{await page.waitForLoadState("networkidle");await page.goto(url);};
       page.setDefaultNavigationTimeout(30000);
       page.setDefaultTimeout(30000);
       page.on("pageerror",error=>errors.push(error.message));
       const failures=[];page.on("requestfailed",request=>failures.push({path:new URL(request.url()).pathname,error:request.failure()?.errorText}));
-      await page.goto(origin+"/?edition=west");
+      await direct(origin+"/?edition=west");
       try { await page.locator("main[data-hydrated='true']").waitFor(); }
       catch(error){console.error(JSON.stringify({errors,failures,proxyErrors:local.errors.map(error=>error.message),body:(await page.locator("body").innerText()).slice(0,150)}));throw error;}
       await page.getByRole("button",{name:/Cowries/}).click();await page.getByRole("button",{name:"Create wallet",exact:true}).click();
@@ -96,7 +101,7 @@ try{
       await expect(page.getByRole("button",{name:"Retry saving result"})).toBeVisible();await page.getByRole("button",{name:"Retry saving result"}).click();
       await expect(page.getByRole("button",{name:"Retry saving result"})).toHaveCount(0);
       await expect(page.getByRole("button",{name:"Unlock for £1.99"})).toBeVisible();
-      await page.locator(".royal-delivery-consent input").check();await page.getByRole("button",{name:"Unlock for £1.99"}).click();
+      await page.locator(".royal-delivery-consent input").check();await page.waitForLoadState("networkidle");await page.getByRole("button",{name:"Unlock for £1.99"}).click();
       try { await page.waitForURL("https://buy.stripe.com/**"); }
       catch(error){console.error(JSON.stringify({browser:browserType.name(),errors,proxyErrors:local.errors.map(error=>error.message),posts,offerError:await page.locator(".royal-offer-error").allTextContents()}));throw error;}
       assert.match(checkoutReference,/^rr_[0-9a-f]{32}$/);
@@ -105,23 +110,23 @@ try{
         payment_intent:`pi_local_royal_${browserType.name()}`,amount_total:199,currency:"gbp",mode:"payment",payment_status:"paid"}}});
       const at=Math.floor(Date.now()/1000),sig=`t=${at},v1=${createHmac("sha256",config.webhookSigningSecret).update(`${at}.${paidBody}`).digest("hex")}`;
       for(let repeat=0;repeat<2;repeat++)assert.equal((await mf.dispatchFetch(PRIVATE_TEST.workerOrigin+webhookPath,{method:"POST",headers:{"content-type":"application/json","stripe-signature":sig},body:paidBody})).status,200);
-      await page.goto(origin+"/royal-reveal/return?paid=1");await expect(page.getByRole("heading",{name:"Your Royal Reveal Pack",exact:true})).toBeVisible();
-      await page.goto(origin+"/privacy");await page.getByRole("link",{name:"Return to the game"}).click();await page.locator("main[data-hydrated='true']").waitFor();
+      await direct(origin+"/royal-reveal/return?paid=1");await expect(page.getByRole("heading",{name:"Your Royal Reveal Pack",exact:true})).toBeVisible();
+      await direct(origin+"/privacy");await page.getByRole("link",{name:"Return to the game"}).click();await page.locator("main[data-hydrated='true']").waitFor();
       await page.goBack();await page.getByRole("heading",{name:"Privacy Notice",exact:true}).waitFor();await page.goForward();await page.locator("main[data-hydrated='true']").waitFor();await page.reload();await page.locator("main[data-hydrated='true']").waitFor();
       for(const key of cowrieProductKeys){
         await page.getByRole("button",{name:/Cowries/}).click();await page.getByRole("heading",{name:"One-off Cowrie bundles",exact:true}).waitFor();
         await page.locator(`#bundle-${key}`).check();await page.locator(".cowrie-delivery-consent input").check();
-        await page.getByRole("button",{name:`Continue to Stripe · ${cowrieProducts[key].displayPrice}`,exact:true}).click();await page.waitForURL("https://buy.stripe.com/**");
+        await page.waitForLoadState("networkidle");await page.getByRole("button",{name:`Continue to Stripe · ${cowrieProducts[key].displayPrice}`,exact:true}).click();await page.waitForURL("https://buy.stripe.com/**");
         const body=JSON.stringify({id:`evt_local_${key}_${browserType.name()}`,type:"checkout.session.completed",livemode:false,data:{object:{id:`cs_local_${key}_${browserType.name()}`,
           client_reference_id:checkoutReference,payment_link:config.cowrieBundles[key].expectedPaymentLinkId,payment_intent:`pi_local_${key}_${browserType.name()}`,
           amount_total:cowrieProducts[key].amountMinor,currency:"gbp",mode:"payment",payment_status:"paid"}}});
         const t=Math.floor(Date.now()/1000),signed=`t=${t},v1=${createHmac("sha256",config.webhookSigningSecret).update(`${t}.${body}`).digest("hex")}`;
         for(let repeat=0;repeat<2;repeat++)assert.equal((await mf.dispatchFetch(PRIVATE_TEST.workerOrigin+webhookPath,{method:"POST",headers:{"content-type":"application/json","stripe-signature":signed},body})).status,200);
-        await page.goto(origin+"/cowries/return?paid=1");await expect(page.getByText(`${cowrieProducts[key].quantity} purchased Cowries were credited only after verified payment.`,{exact:true})).toBeVisible();
-        await page.goto(origin+"/?edition=west");await page.locator("main[data-hydrated='true']").waitFor();
+        await direct(origin+"/cowries/return?paid=1");await expect(page.getByText(`${cowrieProducts[key].quantity} purchased Cowries were credited only after verified payment.`,{exact:true})).toBeVisible();
+        await direct(origin+"/?edition=west");await page.locator("main[data-hydrated='true']").waitFor();
       }
       assert.ok(posts.includes("/cowries/wallet"));assert.ok(posts.includes("/cowries/play"));assert.ok(posts.includes("/questions/answer"));assert.ok(posts.filter(path=>path==="/cowries/complete").length>=2);
-      assert.deepEqual(errors,[]);assert.deepEqual(local.errors,[]);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth),true);
+      assert.deepEqual(errors,[],`${browserType.name()}: ${JSON.stringify(failures)}`);assert.deepEqual(local.errors,[]);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth),true);
       await context.close();
     }finally{await browser.close();await local.close();}
   }

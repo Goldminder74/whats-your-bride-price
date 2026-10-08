@@ -92,7 +92,7 @@ function insertResult(database, attempt, overrides = {}) {
 
 test("migration plan is ordered and checksummed", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 12);
+  assert.equal(plan.length, 13);
   assert.equal(plan[0].id, "0000_loving_stepford_cuckoos");
   assert.equal(plan[1].id, "0001_same_vertigo");
   assert.equal(plan[2].id, "0002_little_inertia");
@@ -115,7 +115,7 @@ test("empty database migration, schema tracking, dry-run and repeated execution 
     assert.equal(database.prepare("SELECT count(*) AS count FROM sqlite_master WHERE type='table' AND name='results'").get().count, 0);
     assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, plan.map((migration) => migration.id));
     assert.deepEqual(applyMigrationPlan(database, plan, { now }).applied, []);
-    assert.equal(database.prepare("SELECT count(*) AS count FROM schema_migrations").get().count, 12);
+    assert.equal(database.prepare("SELECT count(*) AS count FROM schema_migrations").get().count, 13);
   } finally {
     database.close();
   }
@@ -153,7 +153,7 @@ test("all required tables and indexes exist and commerce is limited to the three
     const tables = database.prepare("SELECT name FROM sqlite_master WHERE type='table'").all().map((row) => row.name);
     for (const table of durableTableNames) assert.ok(tables.includes(table), `missing table ${table}`);
     assert.ok(tables.includes("schema_migrations"));
-    assert.deepEqual(tables.filter((table) => /(commerce|payment|order|stripe|card|bank|checkout|subscription|invoice)/i.test(table)).sort(), ["commerce_entitlements", "commerce_orders", "stripe_webhook_events"]);
+    assert.deepEqual(tables.filter((table) => /(commerce|payment|order|stripe|card|bank|checkout|subscription|invoice)/i.test(table)).sort(), ["commerce_entitlements", "commerce_orders", "retention_order_minimisation", "stripe_webhook_events"]);
     const indexes = database.prepare("SELECT name FROM sqlite_master WHERE type='index' AND name NOT LIKE 'sqlite_%'").all();
     assert.ok(indexes.length >= 42);
   } finally {

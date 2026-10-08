@@ -45,10 +45,10 @@ function publish(db, id) { db.prepare("UPDATE questions SET publication_status='
 test("0011 adds exactly one table without altering historical schema, questions or migration checksums", async () => {
   const { db, plan, before } = await setup();
   try {
-    assert.equal(plan.length, 12); assert.equal(plan[11].id, "0011_useful_wendell_vaughn");
+    assert.equal(plan.length, 13); assert.equal(plan[11].id, "0011_useful_wendell_vaughn");
     const files = await readdir(new URL("../../drizzle/", import.meta.url));
     assert.deepEqual(files.filter(f => /^0011_.*\.sql$/.test(f)), ["0011_useful_wendell_vaughn.sql"]);
-    assert.equal(files.some(f => /^0012_/.test(f)), false);
+    assert.deepEqual(files.filter(f => /^0012_.*\.sql$/.test(f)), ["0012_retention_authority.sql"]);
     assert.equal(plan[11].statements.filter(s => /^CREATE TABLE/.test(s)).length, 1);
     assert.ok(plan[11].statements.every(s => /^(CREATE TABLE|CREATE UNIQUE INDEX|CREATE INDEX|CREATE TRIGGER)/.test(s)));
     assert.deepEqual(db.prepare("SELECT * FROM questions ORDER BY id").all().map(r => ({ ...r })), before);

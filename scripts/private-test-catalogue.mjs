@@ -14,7 +14,12 @@ export const publicationManifestPath = "data/question-bank/launch/publication-ma
 export const sha256 = value => createHash("sha256").update(value).digest("hex");
 const canonicalHash = value => sha256(canonicalEvidenceJson(value));
 export const SCHEMA_QUERY = "SELECT type,name,tbl_name,sql FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' AND name NOT LIKE '_cf_%' AND name NOT IN ('schema_migrations','d1_migrations') AND sql IS NOT NULL ORDER BY type,name";
-const schemaHash = rows => canonicalHash(rows.map(row => ({type:row.type,name:row.name,tbl_name:row.tbl_name,sql:row.sql})));
+export const schemaHash = rows => canonicalHash(rows.map(row => ({type:row.type,name:row.name,tbl_name:row.tbl_name,sql:row.sql})));
+
+export async function runtimeMigrationTarget() {
+  const migrations=await loadMigrationPlan();const db=createIsolatedDatabase();
+  try {applyMigrationPlan(db,migrations);return {migrations,schemaSha256:schemaHash(db.prepare(SCHEMA_QUERY).all())};} finally {db.close();}
+}
 
 export async function loadEvidence(directory, now = Date.now()) {
   const evidenceManifest = JSON.parse(await readFile(resolve(directory, "manifest.json"), "utf8"));
@@ -60,7 +65,7 @@ export async function loadEvidence(directory, now = Date.now()) {
   }
   const seed = await buildDevelopmentSeed();
   if (seed.contentChecksum !== "91ed04fcc134fa53d14a8694eedb04ca7fafb0cbf45c11b07b0d2eff17f8da6a") throw new Error("canonical_seed_mismatch");
-  const migrations = await loadMigrationPlan();
+  const migrations = (await loadMigrationPlan()).slice(0,12);
   if (migrations.length !== 12) throw new Error("unexpected_migration_count");
   const local=createIsolatedDatabase();let schemaSha256;
   try{applyMigrationPlan(local,migrations);schemaSha256=schemaHash(local.prepare(SCHEMA_QUERY).all());}finally{local.close();}
@@ -202,7 +207,9 @@ async function main() {
   if(args.includes("--apply")) {
     if(!args.includes("--remote") || value("--approve-manifest")!==hash || value("--approve-target")!==process.env.WYBP_TEST_D1_DATABASE_ID) throw new Error("explicit_target_and_manifest_approval_required");
     if(operation==="publish"&&data.manifest.selectedOriginalDraftVersions.length)throw new Error("original_research_draft_publication_forbidden");
-    await executeTargetBatch({databaseId:process.env.WYBP_TEST_D1_DATABASE_ID,token:process.env.CLOUDFLARE_API_TOKEN,plan,migrations:data.manifest.migrations,schemaSha256:data.manifest.schemaSha256});
+    const target=await runtimeMigrationTarget();
+    if(value("--approve-schema")!==target.schemaSha256)throw new Error("explicit_runtime_schema_approval_required");
+    await executeTargetBatch({databaseId:process.env.WYBP_TEST_D1_DATABASE_ID,token:process.env.CLOUDFLARE_API_TOKEN,plan,...target});
   }
   console.log(JSON.stringify({operation,region:operation==="seed"?null:value("--region"),dryRun:!args.includes("--apply"),statements:plan.length,manifestSha256:hash,target:PRIVATE_TEST.databaseName}));
 }

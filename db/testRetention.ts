@@ -2,6 +2,7 @@ import type { AtomicD1Database } from "./repositories.ts";
 import { D1CowrieWalletRepository } from "./cowrieWallet.ts";
 import { D1QuestionSelectionRepository } from "./questionSelection.ts";
 import { D1CommerceRepository } from "./commerce.ts";
+import { runApprovedRetention } from "./retention.ts";
 
 /** Bounded maintenance only. Financial balances/history and deletion deadlines are never invented. */
 export async function runTestRetention(database: AtomicD1Database, now: number, limit = 50) {
@@ -23,12 +24,13 @@ export async function runTestRetention(database: AtomicD1Database, now: number, 
   let bonusExpiries = 0;
   for (const row of bonusWallets.results) bonusExpiries += await wallets.expireBonuses({walletId:row.id,now,limit:1});
   const statements = [
-    `DELETE FROM daily_operation_limits WHERE id IN (SELECT id FROM daily_operation_limits WHERE expires_at<=?1 ORDER BY expires_at,id LIMIT ?2)`,
-    `DELETE FROM streaks WHERE id IN (SELECT id FROM streaks WHERE expires_at<=?1 OR deleted_at IS NOT NULL ORDER BY expires_at,id LIMIT ?2)`,
+    `DELETE FROM daily_operation_limits WHERE id IN (SELECT id FROM daily_operation_limits WHERE expires_at<=?1 AND NOT EXISTS(SELECT 1 FROM retention_holds WHERE scope='global' AND released_at IS NULL) ORDER BY expires_at,id LIMIT ?2)`,
+    `DELETE FROM streaks WHERE id IN (SELECT id FROM streaks WHERE (expires_at<=?1 OR deleted_at IS NOT NULL) AND NOT EXISTS(SELECT 1 FROM retention_holds WHERE scope='global' AND released_at IS NULL) ORDER BY expires_at,id LIMIT ?2)`,
     `UPDATE results SET state='expired',updated_at=?1 WHERE id IN (SELECT id FROM results WHERE state='active' AND expires_at<=?1 ORDER BY expires_at,id LIMIT ?2)`,
     `UPDATE quiz_attempts SET status='expired',updated_at=?1 WHERE id IN (SELECT id FROM quiz_attempts WHERE status='in_progress' AND expires_at<=?1 AND NOT EXISTS (SELECT 1 FROM cowrie_ledger d WHERE d.related_attempt_id=quiz_attempts.id AND d.entry_type='quick_play_debit' AND quiz_attempts.cowrie_issued_at IS NULL AND NOT EXISTS (SELECT 1 FROM cowrie_ledger r WHERE r.reversal_of_ledger_id=d.id)) ORDER BY expires_at,id LIMIT ?2)`,
   ];
   const results = await database.batch(statements.map(sql => database.prepare(sql).bind(now, limit)));
   const webhookExpiries = await new D1CommerceRepository(database).retainExpired(now, limit, true);
-  return { reversals, bonusExpiries, webhookExpiries, changes: results.map(result => Number(result.meta?.changes || 0)) };
+  const approved = await runApprovedRetention(database, now, limit);
+  return { reversals, bonusExpiries, webhookExpiries, approved, changes: results.map(result => Number(result.meta?.changes || 0)) };
 }

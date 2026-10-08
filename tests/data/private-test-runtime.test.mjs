@@ -8,7 +8,7 @@ import { promisify } from "node:util";
 import test,{before,after} from "node:test";
 import { Adapter,setup,config,request,checkout,verified,balance,adverse,credential } from "../helpers/cowrieCommerce.mjs";
 import { applyMigrationPlan,createIsolatedDatabase,loadMigrationPlan } from "../../scripts/data-migrations.mjs";
-import { loadEvidence,seedPlan,regionPlan,publicationManifestPath,sha256,executeTargetBatch,regions,SCHEMA_QUERY } from "../../scripts/private-test-catalogue.mjs";
+import { loadEvidence,seedPlan,regionPlan,publicationManifestPath,sha256,executeTargetBatch,regions,SCHEMA_QUERY,runtimeMigrationTarget } from "../../scripts/private-test-catalogue.mjs";
 import { canonicalEvidenceJson } from "../../db/questionEvidence.ts";
 import { D1QuestionSelectionRepository,selectQuestionSet } from "../../db/questionSelection.ts";
 import { D1CommerceRateLimiter } from "../../db/commerceRateLimit.ts";
@@ -119,7 +119,7 @@ test("real local D1 engine accepts unchanged migrations, atomic operator guards 
   try{
     const db=await mf.getD1Database("DB");
     for(const migration of plan)await db.batch(migration.statements.map(sql=>db.prepare(sql)));
-    const schema=await db.prepare(SCHEMA_QUERY).all();assert.equal(sha256(canonicalEvidenceJson(schema.results)),data.manifest.schemaSha256);
+    const schema=await db.prepare(SCHEMA_QUERY).all();assert.equal(sha256(canonicalEvidenceJson(schema.results)),(await runtimeMigrationTarget()).schemaSha256);
     await seedPublish(db);
     assert.equal((await db.prepare("SELECT COUNT(*) n FROM questions").first()).n,150);
     const outcomes=await Promise.all(Array.from({length:25},()=>new D1CommerceRateLimiter(db).consume("a".repeat(64),now)));

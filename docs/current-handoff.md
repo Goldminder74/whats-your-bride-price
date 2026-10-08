@@ -2,65 +2,64 @@
 
 ## Source and deployment
 
-Branch `feature/viral-build-sprint`; latest verified implementation checkpoint
-`e473579a006ae83559855ab32303376f5e9b448e`. Resolve final documentation checkpoint
-with `git rev-parse HEAD`. PR #1 stays open/draft/unmerged, base `master`.
+Branch `feature/viral-build-sprint`; retention implementation prepared from
+`50366d03efe7396b9e86555c25f6eb211d2ac51a`. Resolve the final committed checkpoint
+with `git rev-parse HEAD`. PR #1 remains open/draft/unmerged, base `master`.
+[Private application](https://wybp-protected-test.netlify.app/) still runs source
+`5959b4e1b21bc6fc7f667461ccd643b303cde18c`; owner-confirmed gameplay fix remains.
+Owner-only primary/preview protection and signed Worker/assets stay intact.
+D1/R2 are unbound, Stripe disconnected and optional features disabled.
 
-[Private application](https://wybp-protected-test.netlify.app/) remains source
-`5959b4e1b21bc6fc7f667461ccd643b303cde18c`; gameplay is owner-confirmed fixed.
-Owner-only primary/preview protection and signed Worker/assets remain. D1/R2 are
-unbound, Stripe disconnected, optional features disabled. No hosted change here.
+## Owner requirements
 
-## Confirmed owner requirements
+Seller Ayodele Ayeni, UK sole trader, not VAT registered; brand Classes for Culture;
+support team@classesforculture.com. Address/required phone, direct Stripe identity/
+bank verification and final consumer/privacy notices remain open. Sherwood
+Consulting Services Ltd and Wigsmi.com Stripe are excluded. Public launch MUST
+include random regional replay, Cowrie access/purchases and Royal Reveal payments
+following catalogue, runtime, payment and privacy readiness.
 
-Seller: Ayodele Ayeni, UK sole trader, not VAT registered; brand Classes for
-Culture; support team@classesforculture.com. Address/required phone, direct Stripe
-identity/bank verification and final legal/privacy/consumer notices remain open.
-Sherwood Consulting Services Ltd and Wigsmi.com Stripe are excluded completely.
-Public launch MUST include random regional replay, Cowrie play/access/purchases
-and Royal Reveal payments after catalogue/runtime/payment/privacy readiness.
+## Implemented locally versus prepared
 
-## Implemented versus prepared
+Isolated data/payment profiles, authenticated mobile requests, distributed
+fail-closed commerce limits, exact signed test POST webhook and atomic idempotent
+catalogue operators are implemented. Owner approved six retention rules on
+5 October and authoritative final closure on 8 October 2026. [Retention operations](retention-operations.md)
+add private holds/cases/verified settlement/immutable closure, bounded purge,
+30-day minimisation and fail-closed external restore receipts. Purchased value,
+ledger history and dependencies are protected. Owner approval is not professional
+legal sign-off; operational mailbox/export custody and independent restore evidence
+must be arranged before activation. No job or hosted operation is activated.
+Local validation: 203 data tests, 16 focused retention tests, 43 affected unit tests,
+five rendered privacy checks, desktop/WebKit private-runtime journey, all 13
+migration replay, lint/typecheck and Sites/Worker builds passed. WebKit hard-navigation
+setup waits for genuine prefetch completion; all error assertions remain.
 
-Source implements isolated data/payment profiles, authenticated mobile requests,
-fail-closed distributed commerce limits, exact signed test POST webhook, atomic
-idempotent operators and bounded approved retention. Twelve unchanged migrations
-0000â€“0011; no 0012. Cidade Velha launch derivative retains hash-bound original
-provenance; originals remain unpublished. Manifest SHA-256
+Migrations 0000–0011 remain unchanged; single additive `0012_retention_authority.sql`
+and checksum are in `drizzle/migration-checksums.json`. Catalogue evidence remains
+bound to its original 12-migration proposal; runtime schema approval separately
+covers all 13. Manifest SHA-256
 `a42ea07f7797075718c8694b931916579f88ebc5fe2a8545ee7375f7eab7e3d9`
-proposes 18 exact versions per region plus canonical 12. All 352 research drafts
-and ten reserves remain untouched/unpublished; no human cultural approval.
+proposes 18 exact versions per region plus canonical 12. Cidade Velha derivative
+retains original provenance. All 352 research drafts/ten reserves remain unpublished;
+no human cultural approval is claimed. [Source reconciliation](launch-source-capture-reconciliation.md)
+still holds eight proposals; validate repairs before claiming 30 eligible per region.
 
-[Source reconciliation](launch-source-capture-reconciliation.md) maps 22 previous
-gaps affecting 25 questions: 13 useful bodies recovered, one NASA error body,
-eight failed requests. Second-pass recovery preserves the exact Egypt PDF (printed p.101), closing five
-missing-body holds. Eight proposals remain held; authoritative repair records and
-metadata corrections are prepared, not requalified. Validate before claiming 30/region.
-Historical captures remain unverified; no dates/expiry/qualification were renewed.
-
-Original local ZIP/receipt and recovery supplement are checksum verified under
-ignored `outputs/activation-preparation/`; GitHub holds source/manifest/research
-inputs, not raw bodies/ZIPs. Google Drive connected to ayo.m.ayeni@gmail.com: four owner-only files uploaded.
-Owner-provided downloads of both ZIPs now match unchanged trusted local receipts
-and all 363 original/15 supplement payloads; Drive archive readback is verified.
-Downloaded sidecar copies were not supplied. Owner chose verified Google Drive only; OneDrive is deferred and not a gate. [Manual private upload/readback steps](launch-evidence-backup.md)
-cover the two specified owner accounts. The two original Drive archives are verified. New gap-recovery supplement is
-locally checksum verified and uploaded owner-only; its cloud readback is unverified.
-
-[Seller/payment guide](stripe-payment-link-setup.md) prepares a NEW sole-trader
-account, four GBP links and test-to-live gates; Adaptive Pricing compatibility
-needs real sandbox verification, never weakened exact payment checks.
-[Retention policy](retention-schedule.md#owner-approved-rules--not-activated): owner approved all six rules on 5 October 2026. Policy approval only; safe implementation, professional review and provider backup verification remain pending. Nothing is activated. [Approval package](isolated-test-approval-package.md) defines exact
-targets, migrations/catalogue, preservation, test profiles, webhook/cron and rollback.
+Two original owner-downloaded Google Drive archives match trusted receipts and all
+363/15 payloads. Owner accepts verified Drive only; OneDrive is deferred. New
+second-pass recovery supplement is locally verified/uploaded owner-only, cloud
+readback unverified. Historical captures remain unverified. Raw bodies/ZIPs live
+outside Git under ignored `outputs/activation-preparation/`; [backup details](launch-evidence-backup.md).
 
 ## Next action and constraints
 
-Owner: complete address/legal details and approve resource budget. Retention implementation is blocked on authoritative final wallet closure and a dependency-safe migration design (see retention safety checkpoint). Validate evidence repairs; OneDrive is deferred. Then separately
-authorise the exact isolated hosted/test-Stripe package; no public/live approval.
-
-Prior 90 affected tests/lint/typecheck and integration gates are reused; this task
-changes documentation/evidence only. No application tests repeated. Preserve
-Sites/existing websites/DNS/Workers, staging/stash, flags, question content and
-migration checksums. Builds remain secret-free and hosted Git builds disconnected.
-No resource creation, hosted migration/seed/publication/cron, Stripe changes,
-feature activation, live payments, public deployment or new charges authorised.
+[Activation package](isolated-test-approval-package.md) covers exact isolated
+resources, all 13 migrations, catalogue, restore custody, runtime/cron and rollback.
+Resolve evidence holds, arrange operational retention/restore custody and obtain
+separate resource/budget/hosted approval. [Seller/Stripe steps](stripe-payment-link-setup.md)
+require a new sole-trader sandbox and actual Adaptive Pricing compatibility tests.
+Use recorded affected checks for unchanged source; do not repeat full suites merely
+for documentation. Preserve existing websites/Sites/DNS/Workers, staging/stash,
+feature defaults, questions and migration checksums. Builds stay secret-free;
+hosted Git builds disconnected. No hosted creation/migration/seed/publication/cron,
+Stripe changes, payments, public activation or charges are authorised.
