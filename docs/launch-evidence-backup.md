@@ -41,3 +41,48 @@ GitHub preserves source, original research inputs, structured records/builder, p
 ## Owner-selected Google Drive only
 
 Owner chose the two verified Google Drive archives as the preservation destination; OneDrive is deferred and is no longer an activation gate requiring owner downloads. Do not claim a OneDrive backup exists or is verified. The original ZIPs/receipts remain immutable. New second-pass evidence is separately uploaded owner-only as Drive file `1Oe0jXujCjjDxHdM2AEi5Sh6j-AQcLgmZ` with receipt `1AdGvCpORe68Ax_GAAr1moTTci6VkeMB5`, SHA-256 `3c495c64cb23aa3fe964a1259bf091d296b6d054968f109db7d6390c7ae2d263`. Local ZIP and twelve listed payloads verified; this NEW supplement cloud readback remains unverified. Do not require another owner download to repeat verification of the two original archives.
+
+## 8 October independently verified readback
+
+Reuse of the existing second-pass archive succeeded: Drive ZIP
+`1Oe0jXujCjjDxHdM2AEi5Sh6j-AQcLgmZ` matches unchanged receipt
+`1AdGvCpORe68Ax_GAAr1moTTci6VkeMB5`, SHA-256
+`3c495c64cb23aa3fe964a1259bf091d296b6d054968f109db7d6390c7ae2d263`.
+ZIP integrity and all 12 payload checksums passed; the receipt text matches the
+trusted original. No duplicate or replacement upload was made.
+
+Two new, distinct archives and receipts were uploaded only after searching for
+existing copies. Metadata readback verified `shared=false` and the sole owner
+`ayo.m.ayeni@gmail.com` on all four. Each was independently downloaded with its
+receipt, compared with the unchanged local receipt, checked for exact inventory,
+ZIP integrity and every payload SHA-256.
+
+| File | Drive ID | SHA-256 / payloads |
+|---|---|---|
+| launch-evidence-readiness-4b6883d0.zip | `1pUD7yAMQpOYalhkcIfpbQiw9QaSefdKW` | `574ea7f5dc751f20fb4b9348c2940e58fb6b8309eb3849f039e20bd20a3cd16f`; 388 |
+| launch-evidence-readiness-4b6883d0.sha256.txt | `1UvyZIvuviPa6qooGv4lqM8Jt2me03x0I` | whole-container receipt |
+| retention-custody-rehearsal-20261008.zip | `1RvhLwSKNPXv4GupNPwQhZH_m-YTEnD0n` | `d94b1886f946fb871b0ba5726374efcbb81a18b1a8fe82c3db533faa56257c87`; 5 |
+| retention-custody-rehearsal-20261008.sha256.txt | `1dJkt_qdr2gKmFugXokvQZNqKoIxZtsIr` | whole-container receipt |
+
+The new question archive covers 90 proposed questions, 136 selected raw source
+bodies and zero missing selected bodies. From **downloaded** `source/`, the offline
+readiness generator reproduced all 12 evidence outputs byte for byte. The root
+archive filename `publication-manifest-v1.json` is legacy packaging terminology;
+its bytes match the proposed v2 hash. Both accurately named source manifests are
+included under `source/`. Archive `independentBackup: unverified` records the
+creation-time status; this separate readback receipt records subsequent verification.
+Structured question/source records and repair proposal are preserved in GitHub;
+raw bodies and ZIPs are intentionally outside Git in ignored preparation storage.
+Historical original capture custody remains unverified.
+
+The retention archive contains **synthetic data only**, with database snapshots,
+independent hold/case/closure/suppression authority and verified-event settlement
+fixture. Replaying the Drive-downloaded database and authority independently proved
+repeat-safe suppression, denied deleted/closed access, hold protection and intact
+ledger/order/allocation dependencies. It is not a customer backup, live D1 restore,
+or an automated rolling operational journal. Real operational custody and provider
+restore remain separate activation requirements. No secrets or user payment data
+were uploaded. Local download materialisation URLs were not retained.
+
+Owner accepts verified Google Drive custody; OneDrive is deferred and unverified.
+No further OneDrive action is needed for this agreed preparation milestone.

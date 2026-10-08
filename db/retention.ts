@@ -90,7 +90,8 @@ export function restoreSuppressionPlan(entries:readonly Suppression[], receiptHa
 export async function runApprovedRetention(database:AtomicD1Database,now:number,limit=50):Promise<readonly number[]> {
   retentionTime(now);if(!Number.isInteger(limit)||limit<1||limit>100)throw new Error("invalid_retention_bounds");
   const expired=`(expires_at<=?1 OR deleted_at IS NOT NULL)`;
-  const attempts=`SELECT id FROM quiz_attempts WHERE ${expired} AND id NOT IN (SELECT id FROM retention_protected_attempts) ORDER BY expires_at,id LIMIT ?2`;
+  // Bound the deleted child rows, not a parent page that can remain forever after its children drain.
+  const attempts=`SELECT id FROM quiz_attempts WHERE ${expired} AND id NOT IN (SELECT id FROM retention_protected_attempts)`;
   const plan:RetentionStatement[]=[
     statement(`PRAGMA defer_foreign_keys=ON`),
     statement(`INSERT INTO retention_suppression(scope,subject_id,unavailable_at,forget_after) SELECT 'wallet',id,closed_at,closed_at+2592000000 FROM cowrie_wallets WHERE closed_at IS NOT NULL AND ownership_minimized_at IS NULL AND closed_at+2592000000<=?1 AND id NOT IN (SELECT id FROM retention_active_wallet_holds) AND NOT EXISTS(SELECT 1 FROM retention_cases c WHERE c.closed_at IS NULL AND c.wallet_id=cowrie_wallets.id) ORDER BY closed_at,id LIMIT ?2 ON CONFLICT(subject_id) DO NOTHING`,[now,limit]),

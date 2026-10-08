@@ -96,3 +96,48 @@ before activation. The existing nonpersonal evidence backup does not prove it.
 Cloudflare documents seven-day Free/30-day Paid recovery and transactional deferred
 foreign keys; live account/provider controls remain a hosted verification gate.
 Owner policy approval is not professional legal sign-off.
+
+## Measured local restoration and capacity — 8 October 2026
+
+`npm run test:activation-readiness` includes a failing-before-fix starvation
+regression, actual file-backed SQLite restore, repeated authority replay and real
+Miniflare D1 migration/purge checks. The prior parent query repeatedly chose the
+oldest 50 expired attempts even after their answers drained, starving later child
+rows. Parent eligibility is now unrestricted; each child deletion remains bounded
+by the unchanged 1–100 limit. Holds and accounting protections are unchanged.
+No migration was added or altered.
+
+The file-backed rehearsal copies a pre-operator snapshot, independently reads its
+checksum-verified authority, reconciles persisted verified settlement, replays
+original case/closure/hold clocks twice, and requires matching external receipt
+before access. Deleted results/attempts remain unavailable; closed wallet ownership
+and recovery fail. Active holds protect proof and owner links; after release,
+already-due minimisation proceeds without touching immutable accounting lineage.
+A later restored pre-minimisation snapshot is re-minimised, not reopened. The
+separate Drive-downloaded synthetic database/authority also passed these checks.
+
+Recorded measurements, **local only**, at default limit 50:
+
+| Engine / volume | Passes | Purge time | Schedule at one pass / 15 min |
+|---|---:|---:|---:|
+| SQLite, 1,000 completed quizzes / 12,000 answer rows | 240 | 2,129 ms; p95 13 ms/pass; 5,636 answer rows/sec | 60 hours |
+| Miniflare D1, 120 completed quizzes / 1,440 answer rows | 29 | 2,017 ms; about 714 answer rows/sec | 7.25 hours |
+
+Timings exclude fixture/migration setup and are not hosted Cloudflare benchmarks.
+Each table's deletion remains separately bounded. At the proposed schedule,
+answer-row capacity is 4,800/day or 33,600/week (400 twelve-answer quizzes/day;
+2,800 in seven days), assuming uninterrupted jobs and no new backlog. Ongoing
+arrivals, retries, outages, holds and dependency delays reduce spare capacity.
+A 5,000-quiz answer backlog would take 300 hours and **miss seven days**.
+Monitor oldest eligible age and backlog per table, prove hosted completion within
+the budget, and approve an adjusted bounded schedule/limit before larger volume.
+Do not claim an unconditional deadline guarantee from these local measurements.
+
+Current export/restore authority is deliberately capped at 100 records **per
+category**, with a 64 KiB input cap; exceeding either fails closed. Automatic
+independent journaling, unbounded/paginated restore and provider-level restore are
+not implemented or verified. An isolated owner trial must stay below those limits;
+scalable independent custody is a prerequisite for broader activation. Before any
+provider restore, follow the all-off/external-receipt-removal procedure above and
+reconcile the latest independent authority. A privileged unannounced rollback
+cannot be detected solely by application state. No live job was activated.

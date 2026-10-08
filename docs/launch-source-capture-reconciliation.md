@@ -70,4 +70,68 @@ Eight original URLs remain unavailable or unusable, affecting eight proposed que
 
 All eight keep publication holds until corrected evidence/availability, three required review passes and refreshed manifest/pack checks pass. No source edit or renewed machine qualification was made during this documentation/evidence pass. Country facts are corroborated, but preservation and metadata are separate gates. Manifest stays `a42ea07f7797075718c8694b931916579f88ebc5fe2a8545ee7375f7eab7e3d9`; dropping held entries does not meet 30/region.
 
-A new, separately hashed supplement contains the recovered PDF, five authoritative alternative bodies, exact URL failure inventory, PDF locators, inspection notes and eight-question repair proposal. Local ZIP `outputs/activation-preparation/launch-evidence-gap-recovery-v2.zip`, SHA-256 `3c495c64cb23aa3fe964a1259bf091d296b6d054968f109db7d6390c7ae2d263`. It does not replace either verified archive. Google Drive file ID `1Oe0jXujCjjDxHdM2AEi5Sh6j-AQcLgmZ`; receipt `1AdGvCpORe68Ax_GAAr1moTTci6VkeMB5`. Uploaded owner-only; NEW supplement cloud readback is not verified. Historical raw captures remain unverified.
+A new, separately hashed supplement contains the recovered PDF, five authoritative alternative bodies, exact URL failure inventory, PDF locators, inspection notes and eight-question repair proposal. Local ZIP `outputs/activation-preparation/launch-evidence-gap-recovery-v2.zip`, SHA-256 `3c495c64cb23aa3fe964a1259bf091d296b6d054968f109db7d6390c7ae2d263`. It does not replace either verified archive. Google Drive file ID `1Oe0jXujCjjDxHdM2AEi5Sh6j-AQcLgmZ`; receipt `1AdGvCpORe68Ax_GAAr1moTTci6VkeMB5`. Uploaded owner-only; This historical status is superseded by the 8 October readback below. Historical raw captures remain unverified.
+
+## 8 October activation proposal — gaps resolved, approval still required
+
+The eight original gaps have six repaired authoritative source records and two
+proposed reserve substitutions. Aorounga uses Western University's field-based
+Impact Earth record; Monte Alen uses the Bristol research team's own study notice
+(counted as the same upstream study); Katse uses NASA's Landsat-based Lesotho
+Highlands Water Project record instead of the inconsistent ISS-frame metadata;
+Gariep, Bloemhof and Sterkfontein use the national water authority's 8 January 2025
+statement for location claims only. All exact URLs, capture hashes, locators and
+independence findings are in `data/question-bank/launch/evidence-readiness-repairs.json`.
+
+An additional integrity check found the old Cairo University PDF capture was HTTP
+200 **Bot Detection HTML**, not a paper. No challenge was bypassed. The actual
+publisher PDF at https://www.fspublishers.org/published_papers/46241_..pdf is seven
+pages, SHA-256 `7d583a99b70412682bb3612c9dd1b8c5b45d1cfdf3c30db4c701189dea22666c`.
+Its title is *Plant Diversity Around Springs and Wells in Five Oases of the Western
+Desert, Egypt*, Abd El Ghani and Fawzy, IJAB 8(2), 2006, pp.249–255. Page 1 names
+all five oases and Egypt. Five corresponding evidence records now point to this
+preserved publisher body; the independent Library of Congress country source remains.
+
+Eleven evidence-metadata revisions use version 2, with exact version-1 question
+and evidence hashes retained as provenance. Wording, options, accepted answers,
+scoring and original source expiry are unchanged. Original research identities,
+352 research drafts, original evidence builder and v1 publication manifest are
+unchanged. No human cultural approval is asserted.
+
+| Revised identity | Proposed version |
+|---|---|
+| `central_e_44f1869fb0a511125407badf` | 2 |
+| `central_e_75abe299c08c63e0e715e7e4` | 2 |
+| `south_e_705101d3cfef6f052efd5f3d` | 2 |
+| `south_e_3d6cdde615bb7e9002b8c757` | 2 |
+| `south_e_845321df75d3bf871324e2cd` | 2 |
+| `south_e_c79578125b79073aa3ba9780` | 2 |
+| `north_e_0f67ded63c5a886b76a15b40` | 2 |
+| `north_e_3b9730643c18374a145365e1` | 2 |
+| `north_e_61e404a89c5e2cc2cdb85a41` | 2 |
+| `north_e_74e7e8aac469f828a249e08e` | 2 |
+| `north_e_e5eeafc81267f1eec0e6786b` | 2 |
+
+| Held selection removed | Reserve proposed instead |
+|---|---|
+| `central_e_e10f41bebdbd2418ff53f992@1` | `central_e_eefe171be0c76dc5c5bd010c` |
+| `north_e_d7c0e215bf88ac576e4bdc41@1` | `north_e_e5eeafc81267f1eec0e6786b` |
+
+Obo and Waw retain their original unpublished identities/evidence and explicit
+current audit holds. The ten original reserve identities remain unpublished;
+two are proposed for selection, with the outgoing held questions taking their
+places in the proposal's excluded list. Nothing has been imported or published.
+
+`data/question-bank/launch/publication-manifest-v2.proposed.json` SHA-256:
+`4b6883d08e9efceb336ab333bab0e67e0219d107693ec85b99757170dff8c22d`. The isolated 13-migration rehearsal proves canonical 12 + proposed
+18 = **30 eligible questions in every region**, including repeat-safe seed/import/
+publish operations. Three required review passes were rerun for corrected records.
+All 12 reproduction outputs match independently regenerated copies. The operator
+CLI deliberately still targets v1: **approve v2 and separately adopt its exact
+hash/pointer before hosted writes; v1 must not be used for activation**.
+
+The new archive preserves all 90 proposed records, all 136 selected-source bodies,
+immutable research inputs, original v1 and proposed v2 manifests, policy and
+reproduction source. Downloaded Drive contents reproduced all 12 outputs byte for
+byte. Original historical captures remain unverified; current preservation and
+machine qualification do not constitute professional or human cultural sign-off.

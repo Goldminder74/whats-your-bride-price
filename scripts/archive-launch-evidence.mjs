@@ -7,14 +7,18 @@ import { canonicalEvidenceJson } from "../db/questionEvidence.ts";
 
 const safePath = path => typeof path === "string" && !path.includes("\\") && !path.includes(":") && !path.includes("\0") && !path.startsWith("/")
   && !path.split("/").some(part=>!part||part===".."||part===".");
-async function selectedSources(evidence) {
+export function assertCapturedSourceBody(url,bytes) {
+  if(new URL(url).pathname.toLowerCase().endsWith(".pdf")&&!bytes.subarray(0,5).equals(Buffer.from("%PDF-")))throw new Error("source_pdf_body_invalid");
+  if(/<title>\s*Bot Detection\s*<\/title>|Invalid roll specified/i.test(bytes.toString("utf8")))throw new Error("source_challenge_or_error_body");
+}
+async function selectedSources(evidence, manifestPath=publicationManifestPath) {
   const data=await loadEvidence(evidence),records=[];
   for(const entry of data.manifest.entries){
     const bundle=data.packs[entry.region].bundles.find(bundle=>bundle.question.stableId===entry.stableId);
     for(const source of bundle.sources)records.push({question:entry.stableId,version:entry.version,evidenceBundleSha256:entry.evidenceBundleSha256,
       sourceRecordSha256:sha256(canonicalEvidenceJson(source)),source});
   }
-  if(canonicalEvidenceJson(data.manifest)+"\n"!==await readFile(publicationManifestPath,"utf8"))throw new Error("publication_manifest_mismatch");
+  if(canonicalEvidenceJson(data.manifest)+"\n"!==await readFile(manifestPath,"utf8"))throw new Error("publication_manifest_mismatch");
   return {data,records,urls:[...new Set(records.map(record=>record.source.url))].sort()};
 }
 
@@ -32,7 +36,7 @@ export async function captureCurrentSources(evidence,cache) {
         if(!response.ok)throw new Error("source_http_unavailable");
         const reader=response.body.getReader(),chunks=[];let size=0;
         for(;;){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>2*1024*1024){await reader.cancel();throw new Error("source_body_limit");}chunks.push(value);}
-        const bytes=Buffer.concat(chunks);if(!bytes.length)throw new Error("source_empty_body");
+        const bytes=Buffer.concat(chunks);if(!bytes.length)throw new Error("source_empty_body");assertCapturedSourceBody(url,bytes);
         record.path=`${sha256(url)}.body`;record.sha256=sha256(bytes);record.bytes=bytes.length;record.status="captured_current_http_body";
         await writeFile(join(cache,record.path),bytes);
       }catch(error){record.status="unavailable";record.failure=error.name==="TimeoutError"?"timeout":error.message==="source_body_limit"?"body_limit":"http_or_transport_unavailable";}
@@ -57,12 +61,13 @@ export async function verifyArchiveDirectory(directory) {
   return manifest;
 }
 
-export async function archiveLaunchEvidence({evidence,destination,captureCache}) {
-  const {data,records,urls}=await selectedSources(evidence);await mkdir(destination,{recursive:false});
+export async function archiveLaunchEvidence({evidence,destination,captureCache,manifestPath=publicationManifestPath}) {
+  const {data,records,urls}=await selectedSources(evidence,manifestPath);await mkdir(destination,{recursive:false});
   const files=[];
   async function put(path,bytes){if(!safePath(path))throw new Error("unsafe_archive_path");await mkdir(dirname(join(destination,path)),{recursive:true});await writeFile(join(destination,path),bytes);files.push({path,bytes:bytes.length,sha256:sha256(bytes)});}
   for(const file of data.manifest.reproductionFiles)await put(`evidence/${file.path}`,await readFile(join(evidence,file.path)));
-  await put("publication-manifest-v1.json",await readFile(publicationManifestPath));
+  await put("publication-manifest-v1.json",await readFile(manifestPath));
+  if(manifestPath!==publicationManifestPath)for(const path of [".gitattributes","scripts/prepare-launch-readiness.mjs","data/question-bank/launch/evidence-readiness-repairs.json",publicationManifestPath,manifestPath])await put(`source/${path}`,await readFile(path));
   await put("source-records.json",Buffer.from(canonicalEvidenceJson(records)+"\n"));
   const tracked=execFileSync("git",["ls-files"],{encoding:"utf8"}).trim().split(/\r?\n/);
   const paths=[...new Set([...tracked,"scripts/archive-launch-evidence.mjs","tests/data/launch-evidence-archive.test.mjs"])].filter(path=>
@@ -77,14 +82,15 @@ export async function archiveLaunchEvidence({evidence,destination,captureCache})
     if(row.status==="captured_current_http_body"){
       if(!safePath(row.path)||row.historicalCapture!==false||!Number.isFinite(Date.parse(row.capturedAt)))throw new Error("capture_metadata_invalid");
       const bytes=await readFile(join(captureCache,row.path));if(sha256(bytes)!==row.sha256||bytes.length!==row.bytes)throw new Error("capture_checksum_mismatch");
+      assertCapturedSourceBody(url,bytes);
       await put(`source-captures/${row.path}`,bytes);
     }inventory.push(row);
   }
   await put("source-capture-inventory.json",Buffer.from(canonicalEvidenceJson(inventory)+"\n"));
-  await put("README.md",Buffer.from("# Proposed launch evidence archive\n\nAll 90 proposed identities, complete structured source records, twelve reproduction outputs, immutable research inputs, policy, migrations and reproduction source are included. No import, publication or human cultural approval occurred.\n\nCurrent HTTP bodies are supplemental snapshots, not proof of historical inspection or fact accuracy. Unavailable sources and historical captures are explicitly inventoried. JavaScript-rendered/linked material may need manual capture. Independent backup remains unverified.\n\nVerify every payload against checksums.json (the checksum file excludes itself); the adjacent ZIP SHA-256 covers the whole container. Reproduce from source/ with Node 24.16 and the committed package lock (dependencies are not vendored), build evidence into a fresh directory outside source/, then compare all twelve output hashes and publication manifest. npm ci may require the package registry; auditing the recorded evidence needs no network.\n\nNever use this archive as evidence that a source was freshly requalified or a question was published. Preserve source expiry and separate hosted approval.\n"));
+  await put("README.md",Buffer.from("# Proposed launch evidence archive\n\nAll 90 proposed identities, complete structured source records, twelve reproduction outputs, immutable research inputs, policy, migrations and reproduction source are included. No import, publication or human cultural approval occurred.\n\nCurrent HTTP bodies are supplemental snapshots, not proof of historical inspection or fact accuracy. Unavailable sources and historical captures are explicitly inventoried. JavaScript-rendered/linked material may need manual capture. Independent backup remains unverified.\n\nVerify every payload against checksums.json (the checksum file excludes itself); the adjacent ZIP SHA-256 covers the whole container. Reproduce from source/ with Node 24.16 and the committed package lock (dependencies are not vendored), build evidence into a fresh directory outside source/, then compare all twelve output hashes and publication manifest. npm ci may require the package registry; auditing the recorded evidence needs no network.\n\nA captured body alone does not prove fresh qualification. Audit the structured review records and their dates; no question was published. Preserve source expiry and separate hosted approval.\n"));
   const checksum={schemaVersion:"wybp-evidence-archive-v1",sourceCheckpoint:execFileSync("git",["rev-parse","HEAD"],{encoding:"utf8"}).trim(),
     sourceCheckpointIsClean:execFileSync("git",["status","--porcelain"],{encoding:"utf8"}).trim()==="",
-    createdAt:new Date().toISOString(),publicationManifestSha256:sha256(await readFile(publicationManifestPath)),questions:90,
+    createdAt:new Date().toISOString(),publicationManifestSha256:sha256(await readFile(manifestPath)),questions:90,
     historicalSourceCaptures:"unverified_not_included",independentBackup:"unverified",currentSourceBodies:inventory.filter(row=>row.status==="captured_current_http_body").length,
     missingCurrentSourceBodies:inventory.filter(row=>row.status!=="captured_current_http_body").length,files:files.sort((a,b)=>a.path.localeCompare(b.path))};
   await writeFile(join(destination,"checksums.json"),canonicalEvidenceJson(checksum)+"\n");await verifyArchiveDirectory(destination);return checksum;

@@ -5,8 +5,15 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
-import { archiveLaunchEvidence,verifyArchiveDirectory } from "../../scripts/archive-launch-evidence.mjs";
+import { archiveLaunchEvidence,verifyArchiveDirectory,assertCapturedSourceBody } from "../../scripts/archive-launch-evidence.mjs";
 import { sha256 } from "../../scripts/private-test-catalogue.mjs";
+
+test("HTTP 200 bot/error pages cannot masquerade as preserved source PDFs",()=>{
+  assert.throws(()=>assertCapturedSourceBody("https://university.invalid/paper.pdf",Buffer.from("<title>Bot Detection</title>")),/pdf_body_invalid/);
+  assert.throws(()=>assertCapturedSourceBody("https://university.invalid/article",Buffer.from("<title>Bot Detection</title>")),/challenge_or_error/);
+  assert.throws(()=>assertCapturedSourceBody("https://nasa.invalid/photo",Buffer.from("Invalid roll specified")),/challenge_or_error/);
+  assert.doesNotThrow(()=>assertCapturedSourceBody("https://publisher.invalid/paper.pdf",Buffer.from("%PDF-1.4 synthetic header check only")));
+});
 
 test("self-contained archive reproduces all twelve outputs, lists 180 source records and detects tampering",async()=>{
   const root=await mkdtemp(join(tmpdir(),"wybp-archive-check-"));

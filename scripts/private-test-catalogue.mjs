@@ -33,6 +33,7 @@ export async function loadEvidence(directory, now = Date.now()) {
     const pack = JSON.parse(bytes.toString());
     if (pack.region !== region || pack.publicationReady.length !== 18 || pack.reserves.length !== 2
       || pack.bundles.length !== 20 || new Set([...pack.publicationReady,...pack.reserves]).size !== 20) throw new Error("evidence_pack_counts");
+    if ((pack.currentAuditHolds || []).some(hold => pack.publicationReady.includes(hold.stableId))) throw new Error("held_evidence_cannot_be_selected");
     const base = `data/question-bank/${draftDirectories[region]}/${draftDirectories[region]}`;
     const originalBytes = await readFile(`${base}-draft-v1.json`);
     const original = JSON.parse(originalBytes.toString());
@@ -77,6 +78,7 @@ export async function loadEvidence(directory, now = Date.now()) {
   const gameDataSha256=sha256(await readFile("app/gameData.ts"));
   if(gameDataSha256!=="3ce3474de2e6b072bf4e893fc2760c8b9ba996a889697ec5ac15f631cc05c74d")throw new Error("game_data_hash_mismatch");
   const manifest = {schemaVersion:"wybp-private-publication-proposal-v1",target:PRIVATE_TEST.databaseName,
+    ...(evidenceManifest.readinessProposal ? {readinessProposal:evidenceManifest.readinessProposal} : {}),
     lifecycle:"proposed_not_imported_or_published",method:"machine_evidence_v1",humanCulturalApproval:false,
     canonicalSeedChecksum:seed.contentChecksum,canonicalPerRegion:12,evidencePerRegion:18,eligiblePerRegion:30,
     researchDraftFilesUnchanged:352,researchFiles,selectedOriginalDraftVersions:entries.filter(entry=>entry.candidateOrigin.kind==="original_draft").map(entry=>`${entry.stableId}@${entry.version}`),
