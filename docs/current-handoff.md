@@ -1,60 +1,60 @@
 # Current handoff
 
-## Source and deployment
+## Source and private deployment
 
-Branch `feature/viral-build-sprint`; application source checkpoint
-`4f291c4247519f1dcc7b6ad3123b8ecdb60b427c`. Resolve final documentation commit
-with `git rev-parse HEAD`. PR #1 remains open/draft/unmerged, base master.
-[Private application](https://wybp-protected-test.netlify.app/) was rolled back to
-verified source `5959b4e1b21bc6fc7f667461ccd643b303cde18c` after the new random
-release failed live refresh recovery. It currently offers the previous classic
-application, not activated database-backed random replay. Owner-only primary and
-preview protection, signed ingress/assets remain; D1/R2 are unbound in the active
-Worker. Cowries, commerce, cron, webhook, analytics and other optional features are off.
+Branch `feature/viral-build-sprint`; resolve the verified recovery commit with
+`git rev-parse HEAD` (based on `2613be002e02a97dbba24953debf15ffdf9d2ce8`).
+PR #1 remains open/draft/unmerged, base master.
+[Private application](https://wybp-protected-test.netlify.app/) now runs
+**database-backed random Quick Play**, independently of disabled fast_entry.
+Matched release `f1cbdeec1c3df2340ed58efbaddc49d24061bb6e9e13cfd12437a0adf110dd70`;
+Netlify deploy `6ac815e3a823977864ab5e66`; Worker version
+`a3c48009-acfc-411d-8838-7d39c2299d5d`. Owner-only primary/preview access and
+signed ingress/assets remain. D1 is bound only to the isolated test Worker; R2
+is unbound. Cowries, commerce, cron, webhook, analytics, fast_entry and other
+optional features remain off. No Stripe activation occurred.
 
-## Completed isolated activation
+## Catalogue and recovery verification
 
-Only OAuth `d1:write` was added. Free Workers plan and existing Netlify allowances
-were verified; no upgrade/new charge authorised. Created isolated
-`wybp-test-d1-r001`, UUID `1a268b28-e6d5-4431-8f84-a886df9369f1`.
-All unchanged migrations 0000–0012 applied, schema SHA-256
+Existing `wybp-test-d1-r001`, UUID `1a268b28-e6d5-4431-8f84-a886df9369f1`, was
+reused without repeating migrations, seed or publication. Unchanged migrations
+0000–0012; schema fingerprint
 `5d45ee35ee5e5cce814d5d4659418324f1bb4fde9657a5f893dbc6640122c9c4`.
-Wrangler query parsing failed at 0009; complete rollback/prefix was verified before
-resuming with unchanged SQL through the supported file-import path.
-Canonical five editions/60 questions plus exactly 90 approved versions are present:
-30 eligible per region. Approved manifest
+Five editions/60 canonical questions plus exactly 90 approved versions provide
+30 eligible questions per region. Manifest
 `4b6883d08e9efceb336ab333bab0e67e0219d107693ec85b99757170dff8c22d`.
-352 research drafts and unused reserves remain unpublished. No human cultural
-approval is claimed. Initial restore receipt reviews actual empty financial/
-authority state; it is not a provider restore or operational backup certification.
-Local ignored receipts: `outputs/activation-preparation/`; details in
-[activation package](isolated-test-approval-package.md) and [runbook](netlify-cloudflare-hosting.md).
+352 research drafts and unused reserves remain unpublished; no human cultural
+approval is claimed.
 
-## Live results and blocker
+Recovery saves the tab-scoped attempt and choices, resumes its owned server
+snapshot and rejudges previous answers. It never selects or purchases another
+attempt. Authoritatively completed paid attempts clear recovery only after success.
+Unit coverage, the final complete integration suite, both compiled hosting targets,
+Chromium/WebKit recovery and secret-free matched release verification passed.
+All five live 390×844 mobile-viewport games completed twelve questions/results,
+refreshing after seven answers; desktop recovery/image progression also passed.
+Recovered question/option order was unchanged. Live desktop D1 counts stayed
+13 attempts/zero ledger entries across refresh. Physical-device testing is not claimed.
+109 uploaded client checksums matched; primary/preview anonymous requests returned
+401, unsigned/invalid Worker requests 404. Ignored receipts/screenshots remain in
+`outputs/activation-preparation/`; lengthy logs are outside Git in TEMP.
 
-Random-only matched release `a66907f8…` deployed temporarily: all five desktop
-12-question games/result screens passed, with image progression and shuffled options.
-Mobile 390×844 West Africa reached question seven; refresh lost the game.
-Confirmed source gates recovery reads/writes/instance setup behind `fast_entry`,
-which the authorised random-only profile disables. Do not enable another feature
-or claim complete mobile/recovery verification. Next action: a scoped correction
-making random recovery independent of fast entry, regression checks, then matched
-redeployment and all five complete mobile games. No application correction was
-made during this activation.
+## Next action and boundaries
 
-Rollback verified: Netlify deploy `6ac39ed9dc048234fd201369`, paired release
-`cb5ce5b6…`, Worker version `04f763af-acb6-4c33-baf0-d0af508b2ef7`.
-Database/catalogue preserved; never rerun canonical seed over the imported catalogue.
-
-## Remaining gates and constraints
-
+Stop before Stripe activation. Next payment prerequisite is authenticated access
+to the separate Classes for Culture account `acct_1UOOZAIb8Lefpj36` and secure
+sandbox configuration: [setup](stripe-payment-link-setup.md).
 Public launch requires random replay, Cowrie access/purchases and Royal Reveal.
 Seller Ayodele Ayeni, UK sole trader, not VAT registered; Classes for Culture;
-team@classesforculture.com. Address/phone, separate Stripe sandbox and secure four-link
-configuration precede the payment gate: [setup](stripe-payment-link-setup.md).
-Wigsmi/Sherwood, existing websites/DNS/Workers/Sites, staging/stash remain excluded.
-Keep secret-free builds and disconnected Git builds. Retention policies are owner
-approved, not professional legal sign-off. Live custody/provider restore and purge
-capacity remain outstanding before cron; exports cap at 100/category and 64 KiB.
-[Retention limits](retention-operations.md), [verified evidence custody](launch-evidence-backup.md).
-OneDrive deferred; historical captures remain unverified.
+team@classesforculture.com. Address/phone and payment/provider gates remain.
+Wigsmi/Sherwood, existing websites/DNS/Workers/Sites, staging/stash are excluded.
+No live payments/public activation. Keep secret-free builds and disconnected Git builds.
+
+[Runbook and rollback](netlify-cloudflare-hosting.md),
+[activation package](isolated-test-approval-package.md),
+[retention limits](retention-operations.md), [evidence custody](launch-evidence-backup.md).
+Previous matched all-off release `cb5ce5b6…` and Netlify deploy
+`6ac39ed9dc048234fd201369` remain the rollback pair; preserve D1 on rollback.
+Live provider restore/custody and purge-capacity limits remain before cron;
+exports cap at 100/category and 64 KiB. Retention approval is not professional
+legal sign-off. OneDrive is deferred; historical captures remain unverified.

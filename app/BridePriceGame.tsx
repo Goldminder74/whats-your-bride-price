@@ -68,6 +68,7 @@ import {
 import {
   createQuickPlayIdempotencyKey,
   judgeRandomQuickPlayAnswer,
+  restoreRandomQuickPlay,
   resumeRandomQuickPlay,
   startRandomQuickPlay,
 } from "./randomQuickPlayClient";
@@ -423,6 +424,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   useEffect(() => {
     setHydrated(true);
     if (safeguardReviewFixture) return;
+    let recoveryActive = true;
     if (fastEntryEnabled) {
       const parsedEntryContext = parseEntryContext(window.location.search, document.referrer);
       const challengeIsUnverified = Boolean(parsedEntryContext.challenge && !trustedChallenge);
@@ -529,16 +531,45 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
         elapsedMs: performance.now(),
       });
     } else {
-      const edition = new URLSearchParams(window.location.search).get("edition") as RegionKey | null;
+      const parsedEntry = parseEntryContext(window.location.search, document.referrer);
+      const edition = activeFeatureFlags.random_quick_play ? parsedEntry.edition
+        : new URLSearchParams(window.location.search).get("edition") as RegionKey | null;
       if (edition && regions[edition]) {
         setRegionKey(edition);
         setScreen("setup");
+      }
+      const recovery = activeFeatureFlags.random_quick_play
+        ? readQuizRecovery(window.localStorage, window.sessionStorage) : null;
+      if (recovery?.randomAttemptId && recovery.edition === edition && !parsedEntry.challenge) {
+        const session = getOrCreateAnonymousSession(window.sessionStorage);
+        setStartLocked(true);
+        setQuickPlayNotice("Restoring your saved regional game…");
+        void (async () => {
+          if (!session.available) throw new Error("quick_play_recovery_unavailable");
+          const restored = await restoreRandomQuickPlay(recovery, session.sessionId);
+          // Clearing data or deliberately choosing another region cancels recovery.
+          if (!recoveryActive || readQuizRecovery(window.localStorage, window.sessionStorage)?.instanceId !== recovery.instanceId) return;
+          setEntryContext(parsedEntry);
+          setRandomSelection(restored.selection);
+          setAnswerChoices(recovery.answerChoices.map(choice => [...choice]));
+          setAnswers([...restored.answers]);
+          setIndex(Math.min(recovery.questionPosition, 11));
+          setAvatarId(recovery.avatarId);
+          setQuizInstanceId(recovery.instanceId);
+          setRecoveryNotice("Your private, tab-scoped quiz was restored after refresh.");
+          setScreen(recovery.questionPosition === 12 ? "result" : "quiz");
+        })().catch(() => {
+          if (!recoveryActive) return;
+          setRecoveryNotice("Your saved fresh game could not be verified. Please start a new game.");
+          setQuickPlayNotice("Your saved fresh game could not be verified. Please start a new game.");
+        }).finally(() => { if (recoveryActive) setStartLocked(false); });
       }
     }
     try {
       const saved = JSON.parse(localStorage.getItem("wybp-region-scores") || "{}") as Partial<Record<RegionKey, number>>;
       setBestScores(Object.fromEntries(Object.entries(saved).filter(([key, value]) => regions[key as RegionKey] && typeof value === "number")) as Partial<Record<RegionKey, number>>);
     } catch { /* device progress is optional */ }
+    return () => { recoveryActive = false; };
   }, [acceptedChallenge, fastEntryEnabled, initialEntryContext, safeguardReviewFixture, trustedChallenge]);
 
   useEffect(() => {
@@ -637,7 +668,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
   }, [feedbackOpen, imageAnswerError, screen]);
 
   useEffect(() => {
-    if (!fastEntryEnabled || !quizInstanceId || !["quiz", "reveal", "result"].includes(screen)) return;
+    if ((!fastEntryEnabled && !randomSelection?.attemptId) || !quizInstanceId || (randomSelection?.attemptId && purchaseContext) || !["quiz", "reveal", "result"].includes(screen)) return;
     const state: QuizRecoveryState = {
       version: 1,
       instanceId: quizInstanceId,
@@ -651,7 +682,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       randomAttemptId: randomSelection?.attemptId,
     };
     writeQuizRecovery(window.localStorage, window.sessionStorage, state);
-  }, [answerChoices, avatarId, entryContext, fastEntryEnabled, quizInstanceId, randomSelection?.attemptId, regionKey, screen, trustedChallenge?.code]);
+  }, [answerChoices, avatarId, entryContext, fastEntryEnabled, purchaseContext, quizInstanceId, randomSelection?.attemptId, regionKey, screen, trustedChallenge?.code]);
 
   useEffect(() => {
     if (!fastEntryEnabled || acceptedChallenge) return;
@@ -750,7 +781,12 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
       return Object.freeze({ resultSlug: body.resultSlug, anonymousSessionCredential: session.sessionId });
     });
     let active = true;
-    resultCompletionPromiseRef.current.then(context => { if (active) setPurchaseContext(context); }).catch((error) => {
+    resultCompletionPromiseRef.current.then(context => {
+      if (active) {
+        if (randomSelection) clearQuizRecovery(window.localStorage, window.sessionStorage);
+        setPurchaseContext(context);
+      }
+    }).catch((error) => {
       if (active) setResultPersistenceError(true);
       reportAppError("result_completion_failed", error, { action: "result_completion", region: regionKey });
     });
@@ -903,8 +939,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
     setRecoveryNotice("");
     setStartLocked(false);
     startLockRef.current = false;
+    if (fastEntryEnabled || activeFeatureFlags.random_quick_play) clearQuizRecovery(window.localStorage, window.sessionStorage);
     if (fastEntryEnabled) {
-      clearQuizRecovery(window.localStorage, window.sessionStorage);
       const nextContext = parseEntryContext(entryContextToQuery(entryContext, { edition: key }));
       setEntryContext(nextContext);
       const query = entryContextToQuery(nextContext).toString();
@@ -1160,8 +1196,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
         hasChallenge: Boolean(trustedChallenge),
         hasInvalidContext: entryContext.invalidFields.length > 0,
       });
-      clearQuizRecovery(window.localStorage, window.sessionStorage);
     }
+    if (fastEntryEnabled || activeFeatureFlags.random_quick_play) clearQuizRecovery(window.localStorage, window.sessionStorage);
     clearPhoto();
     setScreen(fastEntryEnabled ? "entry" : "home"); setAnswers([]); setAnswerChoices([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setAllAfricaJustUnlocked(false);
     setRandomSelection(null); setQuickPlayNotice(""); quickPlayStartKeyRef.current = null;

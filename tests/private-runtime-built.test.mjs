@@ -90,16 +90,43 @@ try{
       await page.getByRole("button",{name:/Cowries/}).click();await page.getByRole("button",{name:"Create wallet",exact:true}).click();
       await expect(page.getByText("Wallet created. Save the recovery credential now; it will not be shown again.")).toBeVisible();
       await page.getByRole("button",{name:"Close Cowrie Wallet"}).click();
+      const selectionResponse=page.waitForResponse(response=>new URL(response.url()).pathname==="/cowries/play");
       await page.getByRole("button",{name:"Start a fresh regional game"}).click();
+      const playResponse=await (await selectionResponse).json();
+      // Wallet/access fields describe issuance; the persisted selection snapshot excludes them.
+      const originalSelection=Object.fromEntries(Object.entries(playResponse).filter(([key])=>!["wallet","access"].includes(key)));
       for(let number=1;number<=12;number++){
         await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow",String(number));
         await page.locator(".answer-grid > button").first().click();
         const lock=page.getByRole("button",{name:/Lock in/});if(await lock.count()){for(const button of (await page.locator(".answer-grid > button").all()).slice(1,3))await button.click();await lock.click();}
         await page.locator(".answer-reveal").getByRole("button").last().click();
         if(number<12){await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow",String(number+1));if(number%3===0)await page.getByRole("button",{name:/Claim gem/}).click();}
+        if(number===7){
+          const prompt=await page.getByRole("heading",{level:2}).first().textContent();
+          const options=await page.locator(".answer-grid > button").allTextContents();
+          const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem("wybp-active-quiz-v1")));
+          assert.equal(saved.randomAttemptId,originalSelection.attemptId);assert.equal(saved.answerChoices.length,7);
+          const before=await db.prepare("SELECT (SELECT count(*) FROM quiz_attempts) attempts,(SELECT count(*) FROM cowrie_ledger) ledger").first();
+          const starts=posts.filter(path=>path==="/cowries/play"||path==="/questions/select").length;
+          const resumedResponse=page.waitForResponse(response=>new URL(response.url()).pathname==="/questions/resume");
+          await page.reload();assert.deepEqual(await (await resumedResponse).json(),originalSelection);
+          await expect(page.getByText("Your private, tab-scoped quiz was restored after refresh.",{exact:true})).toBeVisible();
+          await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow","8");
+          assert.equal(await page.getByRole("heading",{level:2}).first().textContent(),prompt);
+          assert.deepEqual(await page.locator(".answer-grid > button").allTextContents(),options);
+          const afterSaved=await page.evaluate(()=>JSON.parse(localStorage.getItem("wybp-active-quiz-v1")));
+          assert.deepEqual(afterSaved.answerChoices,saved.answerChoices);assert.equal(afterSaved.instanceId,saved.instanceId);
+          assert.deepEqual(await db.prepare("SELECT (SELECT count(*) FROM quiz_attempts) attempts,(SELECT count(*) FROM cowrie_ledger) ledger").first(),before);
+          assert.equal(posts.filter(path=>path==="/cowries/play"||path==="/questions/select").length,starts);
+          console.log("PASS "+browserType.name()+": fast_entry disabled; refresh preserves exact attempt, all question/option orders and seven answers; no attempt or ledger entry added.");
+        }
       }
-      await expect(page.getByRole("button",{name:"Retry saving result"})).toBeVisible();await page.getByRole("button",{name:"Retry saving result"}).click();
+      await expect(page.getByRole("button",{name:"Retry saving result"})).toBeVisible();
+      const savedResultResponse=page.waitForResponse(response=>new URL(response.url()).pathname==="/cowries/complete"&&response.status()===201);
+      await page.getByRole("button",{name:"Retry saving result"}).click();
+      assert.equal((await (await savedResultResponse).json()).completed,true);
       await expect(page.getByRole("button",{name:"Retry saving result"})).toHaveCount(0);
+      assert.equal(await page.evaluate(()=>localStorage.getItem("wybp-active-quiz-v1")),null,"authoritatively completed attempts must no longer be offered for recovery");
       await expect(page.getByRole("button",{name:"Unlock for £1.99"})).toBeVisible();
       await page.locator(".royal-delivery-consent input").check();await page.waitForLoadState("networkidle");await page.getByRole("button",{name:"Unlock for £1.99"}).click();
       try { await page.waitForURL("https://buy.stripe.com/**"); }

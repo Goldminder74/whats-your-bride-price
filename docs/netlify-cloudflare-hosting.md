@@ -734,3 +734,37 @@ Next scope: decouple random recovery from fast_entry without enabling that featu
 add compiled refresh/ownership regression, then rebuild/deploy a matched random-only
 pair and complete all five mobile games/recovery checks. Do not repeat catalogue
 writes or successful unchanged local suites. Cron/payment activation remains excluded.
+
+## Recovery correction and successful private retry — 8 October 2026
+
+This supersedes the failed activation status above. Random recovery no longer
+requires fast_entry: it writes the tab-scoped existing attempt, resumes the owned
+immutable snapshot and rejudges saved choices without starting/purchasing a game.
+Confirmed paid completion clears its recovery record; failed completion retains it.
+The compiled regression checks all question/option orders, seven saved choices,
+instance identity and unchanged attempt/ledger counts on Chromium and WebKit.
+Result retry waits for the successful authoritative completion response.
+
+Final `npm run test:all`, affected lint and `git diff --check` passed. Both compiled
+hosting targets and their navigation/security/image progression checks passed.
+Secret-free random-only data release
+`f1cbdeec1c3df2340ed58efbaddc49d24061bb6e9e13cfd12437a0adf110dd70`
+verified 140 server modules and all 109 uploaded client checksums. Existing signing
+and restore-receipt configuration were reused separately from the build.
+Worker version `a3c48009-acfc-411d-8838-7d39c2299d5d`, Netlify deployment
+`6ac815e3a823977864ab5e66`; existing isolated D1 bound, R2 unbound.
+
+All five live mobile-viewport regional games completed 12 answers/results, with
+refresh after answer seven preserving the next question/option order. Desktop
+recovery and image progression also completed. Live desktop attempt/ledger counts
+remained 13/0 across refresh. Compiled WebKit also verifies exact saved choices and
+snapshot; physical-device testing is not claimed. Owner access worked; anonymous
+primary/immutable preview returned 401, unsigned/invalid Worker calls 404.
+Ignored evidence: `outputs/activation-preparation/recovery-live-*`, recovery count
+receipts and mobile screenshot. Full logs remain in TEMP outside Git.
+
+No catalogue operations were repeated. Cowries, commerce, fast_entry, cron, webhook
+and unrelated features remain disabled. Stripe activation is paused. Existing public
+websites, DNS, other resources, staging and stash were untouched. If later live checks
+fail, restore the previous `cb5ce5b6…` Worker/client pair and Netlify deployment
+`6ac39ed9dc048234fd201369`; keep the test D1 intact. Rollback is not reverse SQL.

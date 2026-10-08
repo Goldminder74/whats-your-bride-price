@@ -44,3 +44,15 @@ migration/publication operations. Follow [execution and rollback receipts](netli
 Cron/Cowrie/commerce/Stripe remain disabled; provider restore/custody and hosted
 purge-capacity limits remain unresolved. No human cultural or professional legal
 approval is claimed.
+
+## Verified recovery retry — 8 October 2026
+
+The recovery blocker above is resolved and the matched random-only release is now
+active privately. See the [recovery execution receipt](netlify-cloudflare-hosting.md#recovery-correction-and-successful-private-retry--8-october-2026).
+All five mobile-viewport games and desktop recovery completed, with refresh after
+seven answers and unchanged question/option order. Exact snapshot/previous-answer
+and no-new-attempt/charge regression passed on Chromium/WebKit; live D1 counts were
+unchanged across desktop refresh. Owner-only primary/preview and signed ingress
+were reverified. No migrations, seeding or publication were repeated. Cowries,
+commerce, cron, fast_entry and webhook remain disabled. Stop before Stripe activation;
+provider restore/custody and purge-capacity limits remain outstanding.

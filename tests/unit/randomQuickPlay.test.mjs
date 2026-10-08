@@ -118,3 +118,24 @@ test("public image presentation stays spoiler-proof after an option shuffle", ()
   assert.deepEqual(projection.imageAssets, ["/quiz-art/west-3.webp", "/quiz-art/west-1.webp", "/quiz-art/west-0.webp", "/quiz-art/west-2.webp"]);
   assert.doesNotMatch(JSON.stringify(projection), /jollof|injera|pilau|fufu|correct|answer/i);
 });
+
+
+test("random recovery resumes the exact shuffled snapshot and rejudges answers without selection or charging", async () => {
+  const { restoreRandomQuickPlay } = await import("../../app/randomQuickPlayClient.ts");
+  const { defaultFeatureFlags } = await import("../../app/featureFlags.ts");
+  assert.equal(defaultFeatureFlags.fast_entry, false);
+  const id = "attempt_" + "a".repeat(48);
+  const snapshot = { available:true,attemptId:id,questions:Array.from({length:12},(_,i)=>toPublicSelectedQuestion(question(i),["o4","o2","o1","o3"])),questionSetVersion:"12-v1",scoringVersion:"12-v1",selectionPolicyVersion:RANDOM_QUICK_PLAY_POLICY_VERSION,expiresAt:now+86400000 };
+  const recovery = { edition:"west",randomAttemptId:id,answerChoices:[[0],[2]],questionPosition:2 };
+  const calls=[];const fetcher=async(path,init)=>{calls.push({path,body:JSON.parse(init.body),credentials:init.credentials});return Response.json(path==="/questions/resume"?snapshot:{accepted:true,correct:calls.length===2,correctOptionIds:["o2"],explanation:"Verified"});};
+  const restored=await restoreRandomQuickPlay(recovery,"b".repeat(32),fetcher);
+  assert.equal(restored.selection.attemptId,id);
+  assert.deepEqual(restored.selection.questions,snapshot.questions);
+  assert.deepEqual(restored.answers,[1,0]);
+  assert.deepEqual(calls.map(x=>x.path),["/questions/resume","/questions/answer","/questions/answer"]);
+  assert.ok(calls.every(x=>x.credentials==="same-origin"&&x.body.anonymousSessionCredential==="b".repeat(32)));
+  assert.deepEqual(calls.slice(1).map(x=>x.body.selectedOptionIds),[["o4"],["o1"]]);
+  await assert.rejects(restoreRandomQuickPlay(recovery,"c".repeat(32),async()=>new Response(null,{status:404})),/recovery_unavailable/);
+  await assert.rejects(restoreRandomQuickPlay(recovery,"b".repeat(32),async()=>Response.json({...snapshot,attemptId:"attempt_"+"d".repeat(48)})),/recovery_unavailable/);
+  await assert.rejects(restoreRandomQuickPlay({...recovery,answerChoices:[[9]]},"b".repeat(32),fetcher),/recovery_unavailable/);
+});

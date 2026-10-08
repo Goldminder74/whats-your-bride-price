@@ -2,6 +2,7 @@ import type { RegionKey } from "./publicGameData.ts";
 import type { PublicQuestionSelection } from "../db/questionSelectionService.ts";
 import { activeFeatureFlags } from "./featureFlags.ts";
 import { privatePostOptions } from "./privatePost.ts";
+import type { QuizRecoveryState } from "./quizRecovery.ts";
 
 const attempt = /^attempt_[0-9a-f]{48}$/;
 const questionRef = /^(west|east|central|north|south)_[a-z0-9][a-z0-9_-]{2,55}$/;
@@ -90,4 +91,20 @@ export function createQuickPlayIdempotencyKey(cryptoApi: Pick<Crypto, "getRandom
   const bytes = new Uint8Array(16);
   if (cryptoApi.getRandomValues(bytes) !== bytes) throw new Error("secure_random_unavailable");
   return `quick-play-${[...bytes].map((byte) => byte.toString(16).padStart(2, "0")).join("")}`;
+}
+
+/** Resume only the existing owned snapshot; this path never selects or purchases a game. */
+export async function restoreRandomQuickPlay(recovery: QuizRecoveryState, anonymousSessionCredential: string, fetcher: typeof fetch = fetch): Promise<Readonly<{ selection: PublicQuestionSelection; answers: readonly number[] }>> {
+  if (!recovery.randomAttemptId) throw new Error("quick_play_recovery_unavailable");
+  const selection = await resumeRandomQuickPlay(recovery.randomAttemptId, anonymousSessionCredential, fetcher);
+  if (selection.attemptId !== recovery.randomAttemptId || selection.questions.some(question => !question.questionRef.startsWith(recovery.edition + "_"))) throw new Error("quick_play_recovery_unavailable");
+  const answers: number[] = [];
+  for (let index = 0; index < recovery.answerChoices.length; index++) {
+    const question = selection.questions[index];
+    const choice = recovery.answerChoices[index];
+    if (!question || choice.some(option => !question.options[option])) throw new Error("quick_play_recovery_unavailable");
+    const judgement = await judgeRandomQuickPlayAnswer({ attemptId: selection.attemptId, anonymousSessionCredential, questionRef: question.questionRef, selectedOptionIds: choice.map(option => question.options[option].id) }, fetcher);
+    answers.push(judgement.correct ? 1 : 0);
+  }
+  return Object.freeze({ selection, answers: Object.freeze(answers) });
 }
