@@ -41,29 +41,26 @@ checks pass, including holds/closure/accounting, suppression, minimisation, inte
 expiry at 30 days and failed/incomplete readback. Three ignored diagnostic scripts'
 lint errors were corrected locally; generated evidence remains outside Git.
 
-Production target confirmed by owner: https://classesforculture.com/. No cutover
-is authorised. Next approval: isolated synthetic `wybp-restore-rehearsal-r001` D1,
-unchanged migrations 0000–0012, complete export/restore and bounded capacity rehearsal
-within verified free allowances. Never overwrite the current test database. Owner
-must approve custodian, encrypted backup destination/access/key custody and supply
-peak demand, backlog and outage tolerance. Hosted D1 snapshot consistency and atomic
-external journal delivery still need provider integration/review; local SQLite
-atomicity is not evidence of those guarantees.
-
-Operational custody, hosted restore and complete scheduled-path capacity remain
-unverified. Local rehearsal/capacity receipts are linked below; they do not verify hosted limits.
-Research Drive backup verified; OneDrive deferred; neither backs up payment records. No hosted
-reads/writes, restore, purge, cron or custody upload occurred in this local task.
+Production target: https://classesforculture.com/. Owner authorised the exact synthetic
+hosted rehearsal and Drive readback on 10 October. Preflight stopped before creating
+resources: local tooling rejects remote operation and depends on SQLite ATTACH;
+D1 snapshot/import and durable external journal delivery adapters are missing.
+See the approval package's dated preflight for official provider guarantees and gaps.
+No hosted behaviour, allowances, resource inventory, new custody or purge throughput
+was verified. No resource created in this run needs cleanup; existing resources were
+not inventoried or altered. Next decision: authorise the scoped provider adapter and
+crash-gap tests; explain/approve any necessary schema change before a migration.
+Keep the rehearsal unbound, synthetic-only, within verified free allowances; preserve
+the current test D1, wallets, catalogue, sites and Stripe. No cutover or cron authority.
+Owner demand/backlog/outage tolerance and operational custodian/destination/key custody
+remain needed. Prior Drive research/synthetic receipts do not verify this new rehearsal.
 
 Public launch requires replay, Cowrie purchases/access and Royal Reveal together,
 production runtime/live webhook implementation, approved seller/legal/provider setup
 and explicit activation. Owner retention approval is not professional legal sign-off.
 Preserve Wigsmi/Sherwood, websites/DNS, staging/stash. Secret-free builds; no hosted
-changes or live payment activation in this task. Copy validation remains 29 unit,
-31 rendered and 62 browser checks; no completed payment checks repeated.
-Local recovery validation logs remain outside Git in TEMP `wybp-operational-*`.
-Share Centre focus repair keeps dialog lifetime independent of changing parent close
-callbacks. Original Escape assertion and added desktop/mobile nested focus checks pass.
+changes or live payment activation in this task. Share Centre focus repair keeps dialog lifetime independent of changing parent close
+callbacks. Desktop/mobile nested Escape/focus checks pass.
 All complete-suite stages passed: the aggregate stopped only on sandbox filesystem
 access in packaging; remaining compiled-hosting/private-runtime stages passed with
 file access granted. Final build/diff passed; receipts are

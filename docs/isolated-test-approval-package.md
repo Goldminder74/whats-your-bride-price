@@ -94,7 +94,8 @@ See the handover for final integration results.
 
 ## Proposed isolated hosted rehearsal approval
 
-This scope is prepared for owner approval only; none has run. Production target is
+Owner approved this scope on 10 October, subject to the blocked preflight below.
+No hosted operation has run under this scope. Production target is
 https://classesforculture.com/; the rehearsal must not serve application traffic.
 
 1. **Inventory and budget:** inspect only Cloudflare account
@@ -150,3 +151,52 @@ Detailed contracts: [retention operations](retention-operations.md),
 [Stripe seller/payment setup](stripe-payment-link-setup.md),
 [hosting and rollback](netlify-cloudflare-hosting.md),
 [evidence backup receipts](launch-evidence-backup.md).
+
+
+## Authorised rehearsal preflight — 10 October 2026
+
+Owner authorised the exact synthetic rehearsal above, including private Drive archive
+readback and documented cleanup. Starting source `087e6f691104d25a8e043560412945148c911578`,
+clean `feature/viral-build-sprint`. Execution stopped before resource creation because
+step 3's provider adapter prerequisite is not implemented. No Cloudflare inventory,
+allowance check, database creation, hosted migration/write/export/restore, benchmark,
+Drive upload/download or cleanup was performed. Do not infer the named rehearsal
+resource is absent: existing resources were not inventoried in this stopped run.
+No resource created by this run needs cleanup; existing resources remain untouched.
+
+**Observed repository evidence:** `scripts/operational-backup.mjs` is local-only,
+rejects `--remote`, and uses attached SQLite databases for atomic authority/progress
+commits. The existing remote retention operator is bounded and tied to the existing
+private-test identity; it is not a complete paginated D1 export/restore adapter.
+Do not retarget that operator to bypass isolation or claim offline replay is hosted
+restore. The prior seven focused checks and complete-suite stages remain reusable;
+no application test was repeated for this documentation-only preflight.
+
+**Documented provider guarantees, checked 10 October:**
+[batch documentation](https://developers.cloudflare.com/d1/worker-api/d1-database/)
+describes transactional batch rollback on statement failure. [Export documentation](https://developers.cloudflare.com/d1/best-practices/import-export-data/)
+states exports block other database requests; raw SQLite import is unsupported and
+SQL conversion is required. It also warns about numeric precision and unsupported
+virtual-table export. [Export API](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/export/)
+documents an export bookmark stable for the task and a temporary SQL download URL.
+These statements do not establish a transaction spanning D1 and an independent
+journal/Drive destination. No live provider behaviour was observed in this run.
+
+**Required scoped implementation before resuming:** a private operator restricted to
+the rehearsal database identity, verified export cutoff and lossless SQL-to-local
+snapshot conversion, complete table/count/schema receipts, resumable D1 import with
+checkpoint reconciliation, and durable journal delivery with idempotent acknowledgement
+and tested crash-gap recovery. Design the D1 commit-to-independent-custody boundary
+explicitly; if an atomic outbox/schema addition is necessary, explain its exact scope
+and obtain approval before creating any migration. Do not assume the existing SQLite
+super-journal carries over. This exceeds a documentation or narrow existing-code
+correction; seek explicit adapter implementation authority, not a waiver of guarantees.
+
+**Capacity/custody status:** hosted throughput and the new archive's independent
+Drive custody remain unverified. Prior research/synthetic Drive receipts remain valid
+historical evidence, not a new hosted rehearsal pass. At the proposed 50 answers per
+15 minutes, theoretical capacity is 4,800/day or 33,600/seven days, before arrivals,
+outages and other work. The 1,440-answer fixture needs 29 bounded passes (conservatively
+7h15 at that schedule). This arithmetic is not measured hosted throughput or evidence
+of a seven-day production deadline. Owner demand, backlog/outage tolerance, custodian,
+private operational destination and separate key custody remain production decisions.
