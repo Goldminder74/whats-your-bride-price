@@ -212,9 +212,9 @@ test("avatar choices are compact, keyboard-operable, stable and non-colour selec
 
 test("name begins after entry, remains editable and is never persisted", async ({ page }) => {
   await page.goto(directWest);
-  await expect(page.getByLabel(/Display name/)).toHaveCount(0);
+  await expect(page.getByLabel("What should we call you?", { exact: true })).toHaveCount(0);
   await page.getByRole("button", { name: "Continue without a photo" }).click();
-  const name = page.getByLabel(/Display name/);
+  const name = page.getByLabel("What should we call you?", { exact: true });
   await name.fill("Adaeze");
   await page.getByRole("button", { name: /dawn/i }).click();
   await expect.poll(() => page.evaluate(() => localStorage.getItem("wybp-active-quiz-v1"))).not.toBeNull();
@@ -259,7 +259,10 @@ test("private photo picker is explicit, removable and produces no external reque
     mimeType: "image/png",
     buffer: pngWithControlledMetadata(),
   });
-  await expect(page.getByRole("status")).toContainText("metadata was removed");
+  await expect(page.getByRole("status")).toContainText("Your photo is ready");
+  await page.getByRole("button", { name: "About your photo", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "Your photo", exact: true })).toContainText("remove source metadata");
+  await page.keyboard.press("Escape");
   await expect(page.getByRole("status")).toHaveAttribute("data-photo-state", "success");
   await expect(page.locator(".compact-avatar-hero img")).toHaveAttribute("src", /^blob:/);
   const sanitised = await page.locator(".compact-avatar-hero img").evaluate(async (image) => {
@@ -321,9 +324,9 @@ test("a superseded photo cannot replace the latest sanitised selection", async (
   const input = page.locator('input[type="file"]');
   await input.setInputFiles({ name: "first.png", mimeType: "image/png", buffer: tinyPng });
   await input.setInputFiles({ name: "second.png", mimeType: "image/png", buffer: pngWithControlledMetadata("SECOND_SOURCE_MARKER") });
-  await expect(page.getByRole("status")).toContainText("Sanitised photo ready");
+  await expect(page.getByRole("status")).toContainText("Your photo is ready");
   await page.waitForTimeout(180);
-  await expect(page.getByRole("status")).toContainText("Sanitised photo ready");
+  await expect(page.getByRole("status")).toContainText("Your photo is ready");
   await expect(page.locator(".compact-avatar-hero img")).toHaveAttribute("src", /^blob:/);
 });
 

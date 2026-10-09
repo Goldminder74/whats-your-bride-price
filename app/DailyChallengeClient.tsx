@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element -- question images are reviewed same-origin answer assets */
 
 import Link from "next/link";
+import InformationControl from "./InformationControl";
 import { useEffect, useRef, useState } from "react";
 import type { DailyCompletionProjection, DailyStartProjection } from "../db/dailyChallenge.ts";
 import { getOrCreateAnonymousSession, readAnonymousSession } from "./anonymousSession.ts";
@@ -135,7 +136,7 @@ export default function DailyChallengeClient({ region, serverNow, nextBoundary, 
       if (!response.ok || !body.completed || typeof body.score !== "number" || typeof body.total !== "number") throw new Error("complete");
       if (streaksEnabled && selection.mode === "official"
         && (!body.streak || !extendDailyOwnership(localStorage, session.sessionId, body.streak.expiresAt, authoritativeClientNow()))) throw new Error("ownership");
-      setResult(body as DailyCompletionProjection); clearDailyRecovery(localStorage); setStatus("Your authoritative result is confirmed.");
+      setResult(body as DailyCompletionProjection); clearDailyRecovery(localStorage); setStatus("Your result is ready.");
     } catch { setStatus("Your answers remain saved on this device. Retry after the connection is stable."); }
     finally { setBusy(false); }
   };
@@ -143,8 +144,8 @@ export default function DailyChallengeClient({ region, serverNow, nextBoundary, 
   return <main className={`daily-shell theme-${region}`}>
     <header className="daily-heading"><p>One shared set · UTC</p><h1>{regions[region].name} Daily Challenge</h1><div className="daily-countdown" role="timer" aria-live="off"><span>Next set in</span><strong>{formatDailyCountdown(remaining)}</strong></div></header>
     <p className="daily-safeguard">A playful culture score, never a measure of human worth.</p>
-    <p className="daily-privacy-note">An official completion can update a private regional streak when that separate feature is active. It expires exactly 180 days after your latest valid official daily completion; practice and ordinary play never extend it. You can clear it from Privacy choices.</p>
-    {!selection && !result && <section className="daily-start" aria-labelledby="daily-start-title"><h2 id="daily-start-title">Today’s twelve</h2><p>Everyone in this edition receives the same authoritative question versions until the next UTC day. No account is required.</p><div><button disabled={busy} onClick={() => void start("official")}>Play today’s official set</button><button disabled={busy} onClick={() => void start("practice")}>Practise without changing a streak</button></div></section>}
+    <div className="information-label"><span>Official play counts towards your streak when enabled.</span><InformationControl title="Daily play and streaks" topic="daily"><p>An official completion can update a private regional streak when that separate feature is active. It expires exactly 180 days after your latest valid official daily completion; practice and ordinary play never extend it. You can clear it from Privacy choices.</p></InformationControl></div>
+    {!selection && !result && <section className="daily-start" aria-labelledby="daily-start-title"><h2 id="daily-start-title">Today’s twelve</h2><p>One shared regional set, refreshed at midnight UTC. No account needed.</p><div><button disabled={busy} onClick={() => void start("official")}>Play today’s official set</button><button disabled={busy} onClick={() => void start("practice")}>Practise without changing a streak</button></div></section>}
     {selection?.officialAlreadyCompleted && !result && <section className="daily-result"><h2>Official entry complete</h2><p>Your first confirmed result remains today’s official one.</p><button onClick={() => void start("practice")}>Practise the set</button></section>}
     {question && !selection?.officialAlreadyCompleted && !result && <section className="daily-question" aria-labelledby="daily-question-title"><p>Question {index + 1} of {selection.questions.length}</p><h2 id="daily-question-title">{question.text}</h2><fieldset className={question.kind === "image" ? "daily-image-options" : undefined}><legend>{question.kind === "multi" ? "Choose every answer that applies" : "Choose one answer"}</legend>{question.options.map((option, optionIndex) => {
       const imageAsset = question.imageAssets[optionIndex];
@@ -153,7 +154,7 @@ export default function DailyChallengeClient({ region, serverNow, nextBoundary, 
       return <label key={option.id}><input type={question.kind === "multi" ? "checkbox" : "radio"} name={`daily-${index}`} checked={selected.includes(option.id)} onChange={() => choose(option.id)} aria-label={imageLabel} />{question.kind === "image" && <img src={imageAsset} alt={imageDescription} />} <span>{question.kind === "image" ? `Option ${option.text}` : option.text}</span></label>;
     })}</fieldset><button disabled={!selected.length || busy} onClick={advance}>{index === 11 ? "Confirm result" : "Next question"}</button></section>}
     {result && <section className="daily-result" aria-live="polite"><p>{result.official ? "Official result" : "Practice result"}</p><h2>{result.score}/{result.total}</h2>{result.streak && <div className="daily-streak"><strong>{result.streak.current} day streak</strong><span>Best: {result.streak.best}</span><span>Milestone: {result.streak.milestone.replaceAll("-", " ")}{result.streak.masterySeal ? " · mastery seal earned" : ""}</span></div>}<button onClick={() => void start("practice")}>Practise again</button></section>}
-    {selection && shareUrl && <div className="daily-share"><label htmlFor="daily-share-url">Today’s expiry-bounded link</label><input id="daily-share-url" readOnly value={shareUrl} /><button onClick={() => void navigator.clipboard?.writeText(shareUrl)}>Copy link</button></div>}
+    {selection && shareUrl && <div className="daily-share"><label htmlFor="daily-share-url">Today’s challenge link</label><input id="daily-share-url" readOnly value={shareUrl} /><button onClick={() => void navigator.clipboard?.writeText(shareUrl)}>Copy link</button></div>}
     <p className="daily-status" role="status">{status}</p>
     <nav className="daily-regions" aria-label="Daily challenge editions">{(Object.keys(regions) as RegionKey[]).map((key) => <Link key={key} href={`/daily/${key}`} aria-current={key === region ? "page" : undefined}>{regions[key].name}</Link>)}</nav>
     <Link className="daily-home" href="/">Return to the game</Link>

@@ -89,6 +89,22 @@ test("default production client output excludes review diagnostics", async () =>
   assert.doesNotMatch(ordinaryOutput, /review_result_[0-9a-f]|Review-only private name|888888888888888888888888888888888888888888888888|999999999999999999999999999999999999999999999999|8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f|9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/);
 });
 
+test("FAQ groups complete information without claiming activation or cultural approval", async () => {
+  const response = await render("/faq");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const topic of ["scoring", "photos", "names", "recovery", "sharing", "daily", "purchases", "privacy"]) assert.match(html, new RegExp(`id="${topic}"`));
+  assert.match(html, /never a measure of human worth/);
+  assert.match(html, /never enters Story video or a public result/);
+  assert.match(html, /shown to anyone with that challenge link/);
+  assert.match(html, /does not imply human cultural approval/);
+  assert.match(html, /90 days after quiz completion/);
+  assert.match(html, /only an official completion/);
+  assert.match(html, /Where purchases are enabled/);
+  assert.match(html, /never required to play/);
+  assert.match(html, /href="\/privacy\/retention"/);
+});
+
 test("ships sixty educational questions, varied play modes, privacy copy and broad sources", async () => {
   const source = await readFile(new URL("../app/BridePriceGame.tsx", import.meta.url), "utf8");
   const data = await readFile(new URL("../app/gameData.ts", import.meta.url), "utf8");
@@ -98,8 +114,9 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
     assert.match(data, new RegExp(`\\b${key}: \\{`));
   }
   assert.match(source, /The original is never uploaded/);
-  assert.match(source, /metadata was removed/);
-  assert.match(source, /No account is required/);
+  const information = await readFile(new URL("../app/playerInformation.ts", import.meta.url), "utf8");
+  assert.match(information, /remove source metadata/);
+  assert.match(information, /No account is required/);
   assert.match(safeguards, /A playful culture score, never a measure of human worth\./);
   assert.match(source, /avatarChoices/);
   assert.match(data, /"image"/);

@@ -18,10 +18,10 @@ export const RESULT_TIER_TITLES = [
 ] as const;
 
 export const RESULT_TIER_COPY = [
-  "Your curiosity has officially entered the chat. The roots are there; they simply want a longer conversation. Study the reveals, try again and prepare a glorious comeback.",
-  "You know enough to keep the table interested, and enough to know the continent has more to teach you. A little revision could turn this promising score into serious culture-score energy.",
-  "Strong knowledge, sharp instincts and only a few facts between you and regional mastery. The aunties are nodding; one focused replay could earn this passport seal.",
-  "Nine or more correct! Regional mastery confirmed. The family council has polished the fictional scorecard and queued an epic knowledge celebration.",
+  "Your adventure has begun. Collect the discoveries, explore another region and make your comeback legendary.",
+  "You’ve found your rhythm. Take the discoveries with you and chase your next culture milestone.",
+  "Sharp instincts, strong knowledge. One more adventure could earn your regional mastery seal.",
+  "Nine or more correct! Regional mastery earned. Your culture celebration starts here.",
 ] as const;
 
 export const RESULT_TIER_GIFTS = [

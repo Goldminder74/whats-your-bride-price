@@ -7,6 +7,7 @@ import "./privacyReview.css";
 import "./royalReveal.css";
 import "./dailyChallenge.css";
 import "./mobile.css";
+import "./information.css";
 import { PRODUCT_SAFEGUARD } from "./productSafeguards";
 import { createPublicAppUrl, PUBLIC_APP_ORIGIN } from "./publicAppOrigin";
 import AnalyticsConsent from "./AnalyticsConsent";

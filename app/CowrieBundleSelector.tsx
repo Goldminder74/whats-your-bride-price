@@ -8,9 +8,9 @@ export default function CowrieBundleSelector({walletReference,ownerCredential}:R
  useEffect(()=>{const controller=new AbortController();void readCowrieOffer(walletReference,ownerCredential,controller.signal).then(()=>setAvailable(true)).catch(()=>setAvailable(false));return()=>controller.abort();},[walletReference,ownerCredential]);
  if(!available)return null;
  const buy=async()=>{
-   if(!selected||!consent){setNotice("Choose a bundle and confirm the draft immediate-delivery notice before checkout.");return;}
-   setBusy(true);setNotice("Creating your protected order…");
-   try{if(!attempt.current)attempt.current=[...crypto.getRandomValues(new Uint8Array(16))].map(byte=>byte.toString(16).padStart(2,"0")).join("");const order=await createCowriePurchase({productKey:selected,walletReference,anonymousSessionCredential:ownerCredential,consent,idempotencyKey:attempt.current});savePendingCowrieOrder(window.sessionStorage,order.reference);window.location.assign(order.url);}catch{setBusy(false);setNotice("Checkout is unavailable. Your balance has not changed. Try again or continue with free game options.");}
+   if(!selected||!consent){setNotice("Choose a bundle and confirm immediate digital delivery to continue.");return;}
+   setBusy(true);setNotice("Preparing your checkout…");
+   try{if(!attempt.current)attempt.current=[...crypto.getRandomValues(new Uint8Array(16))].map(byte=>byte.toString(16).padStart(2,"0")).join("");const order=await createCowriePurchase({productKey:selected,walletReference,anonymousSessionCredential:ownerCredential,consent,idempotencyKey:attempt.current});savePendingCowrieOrder(window.sessionStorage,order.reference);window.location.assign(order.url);}catch{setBusy(false);setNotice("Checkout is unavailable. Your balance is unchanged. Retry or choose a free game.");}
  };
  return <section className="cowrie-bundles" aria-labelledby="cowrie-bundles-title">
   <h3 id="cowrie-bundles-title">One-off Cowrie bundles</h3><p>1 Cowrie unlocks 1 additional random Quick Play. Your first two random Quick Plays are free; Daily Challenges and incoming challenges stay free.</p>

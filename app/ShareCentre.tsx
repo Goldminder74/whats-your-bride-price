@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
+import InformationControl from "./InformationControl";
 import { isNativeShareCancellation } from "./nominationExperience";
 import {
   emitShareCentreEvent,
@@ -290,22 +291,22 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
           <div><p className="share-centre-kicker">Pass the culture spark on</p><h2 id="share-centre-title">Share Centre</h2></div>
           <button type="button" className="share-centre-close" onClick={onClose} aria-label="Close Share Centre" ref={closeRef}>×</button>
         </header>
-        <p id="share-centre-description" className="share-centre-description">Choose a platform, copy your safe link, or save a polished story portrait.</p>
+        <p id="share-centre-description" className="share-centre-description">Pass it on: share your link or save a story portrait.</p>
         <p className="share-centre-safeguard">{PRODUCT_SAFEGUARD}</p>
         <div className="share-centre-link-mode">
-          <b>{activeProjection.canonicalUrl.includes("/result/") ? "Published public result" : activeProjection.personalised ? "Verified personalised challenge" : "Regional invitation fallback"}</b>
-          <span>{activeProjection.canonicalUrl.includes("/result/") ? "This public page uses the neutral identity A challenger, your authoritative score, approved avatar and regional edition." : activeProjection.personalised ? "Your approved name, verified score and regional edition match the challenge landing page." : "Durable challenges are unavailable, so this link carries no invented inviter identity or score."}</span>
+          <b>{activeProjection.canonicalUrl.includes("/result/") ? "Published public result" : activeProjection.personalised ? "Verified personalised challenge" : "Regional invitation"}</b>
+          <span>{activeProjection.canonicalUrl.includes("/result/") ? "This public page uses the neutral identity A challenger, your authoritative score, approved avatar and regional edition." : activeProjection.personalised ? "Your approved name, verified score and regional edition match the challenge landing page." : "Share this regional invitation with no inviter identity or verified score attached."}</span>
         </div>
         {resultPublicationClient && <section className="result-publication-choice" data-result-publication data-publication-visibility={publicationVisibility} aria-labelledby="result-publication-title">
           <h3 id="result-publication-title">{publicationVisibility === "public" ? "Result is public" : "Make this result public?"}</h3>
-          {publicationVisibility === "private" ? <><p>Publishing creates a public result link. Anyone with it may view the result while it remains active. Your public result expires 90 days after you completed the quiz; publishing does not restart, remove or extend that period.</p><p>The owner may unpublish it sooner using valid ownership proof. Search engines and social platforms may temporarily retain their own previews or caches, and this application cannot delete copies already downloaded or shared elsewhere.</p><p>The public page may show:</p><ul>{RESULT_PUBLICATION_DISCLOSURE.map((item) => <li key={item}>{item}</li>)}</ul><p>Your entered name and private uploaded photo are excluded.</p><div><button type="button" onClick={publishResult} disabled={busy}>Make result public</button><button type="button" onClick={() => setStatus({ kind: "cancelled", message: "Result kept private. The existing invitation fallback remains available." })} disabled={busy}>Keep private</button></div></> : <><p>This public result expires on {formatPublicExpiry(activeProjection.expiresAt)}. Unpublishing or valid deletion may make it unavailable sooner. External previews or copies can outlast the application link.</p><button type="button" onClick={unpublishResult} disabled={busy}>Unpublish result</button></>}
+          {publicationVisibility === "private" ? <><p>Publishing creates a public result link. Anyone with it may view the result while it remains active. Your public result expires 90 days after you completed the quiz; publishing does not restart, remove or extend that period.</p><p>The owner may unpublish it sooner using valid ownership proof. Search engines and social platforms may temporarily retain their own previews or caches, and this application cannot delete copies already downloaded or shared elsewhere.</p><p>The public page may show:</p><ul>{RESULT_PUBLICATION_DISCLOSURE.map((item) => <li key={item}>{item}</li>)}</ul><p>Your entered name and private uploaded photo are excluded.</p><div><button type="button" onClick={publishResult} disabled={busy}>Make result public</button><button type="button" onClick={() => setStatus({ kind: "cancelled", message: "Result kept private. Your regional invitation is ready to share." })} disabled={busy}>Keep private</button></div></> : <><p>This public result expires on {formatPublicExpiry(activeProjection.expiresAt)}. Unpublishing or valid deletion may make it unavailable sooner. External previews or copies can outlast the application link.</p><button type="button" onClick={unpublishResult} disabled={busy}>Unpublish result</button></>}
         </section>}
         <div className="share-centre-grid" aria-label="Sharing options">
           <button type="button" onClick={() => openExternal("whatsapp", whatsappShareDestination(copy))} disabled={busy}><span aria-hidden="true">◉</span><b>WhatsApp</b><small>Full challenge copy</small></button>
           <button type="button" onClick={() => openExternal("facebook", facebookShareDestination(activeProjection))} disabled={busy}><span aria-hidden="true">f</span><b>Facebook</b><small>Open share composer</small></button>
           <button type="button" onClick={() => shareToVisualPlatform("instagram")} disabled={busy || !mediaReady}><span aria-hidden="true">◎</span><b>Instagram Story</b><small>{mediaReady ? "Story portrait handoff" : "Preparing portrait…"}</small></button>
           <button type="button" onClick={() => shareToVisualPlatform("tiktok")} disabled={busy || !mediaReady}><span aria-hidden="true">♪</span><b>TikTok</b><small>{mediaReady ? "Story portrait handoff" : "Preparing portrait…"}</small></button>
-          <button type="button" onClick={copyLink} disabled={busy}><span aria-hidden="true">⧉</span><b>Copy link</b><small>Canonical safe URL</small></button>
+          <button type="button" onClick={copyLink} disabled={busy}><span aria-hidden="true">⧉</span><b>Copy link</b><small>Game link</small></button>
           <button type="button" onClick={nativeShare} disabled={busy}><span aria-hidden="true">↗</span><b>Native share</b><small>Your device share menu</small></button>
           <button type="button" onClick={download} disabled={busy || !mediaReady}><span aria-hidden="true">↓</span><b>Download portrait</b><small>{mediaReady ? "1080 × 1920 PNG" : "Preparing portrait…"}</small></button>
           {storyProjection && <button type="button" className="story-video-launch" onClick={() => setStoryVideoOpen(true)} disabled={busy}><span aria-hidden="true">▶</span><b>Create Story video</b><small>Five-second 9:16 reveal</small></button>}
@@ -316,11 +317,10 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
           {status.instructions && <ol aria-label="Manual platform steps">{status.instructions.map((instruction) => <li key={instruction}>{instruction}</li>)}</ol>}
           {status.manualText && <textarea readOnly value={status.manualText} aria-label="Manual safe link" onFocus={(event) => event.currentTarget.select()} />}
         </div>
-        <details className="share-centre-limitations">
-          <summary>How platform sharing works</summary>
+        <div className="information-label"><span>Sharing & photos</span><InformationControl title="Sharing and photos" topic="sharing">
           <p>WhatsApp opens with the full safe copy. Facebook receives the canonical link; public result links use their generated regional preview, while challenge and fallback links retain the approved site preview. When Story video is enabled, supported browsers can create a local five-second file for the device share sheet. Instagram, TikTok and Facebook cannot be targeted or verified by this browser. No app login, contact list, delivery receipt or selected recipient is visible to this game.</p>
-        </details>
         <p className="share-centre-privacy">Private photos are re-encoded locally and appear only in the existing portrait you deliberately download or hand to your device share sheet. Story video always uses an approved avatar instead. Photos never enter public links, preview metadata or generated video.</p>
+        </InformationControl></div>
       </div>
     </div>
   );

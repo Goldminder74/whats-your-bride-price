@@ -2,6 +2,68 @@ import { expect, test, type Page } from "@playwright/test";
 import { regions, type RegionKey } from "../../app/gameData";
 import { classicAnswerButton } from "../classic-answer-button.ts";
 
+for (const viewport of [{ width: 1366, height: 900 }, { width: 320, height: 640 }]) {
+  test(`contextual information is labelled, keyboard/touch accessible and dismissible at ${viewport.width}px`, async ({ browser }) => {
+    const context = await browser.newContext({ viewport, reducedMotion: "reduce", hasTouch: viewport.width === 320, isMobile: viewport.width === 320 });
+    try {
+      const page = await context.newPage();
+      const errors: string[] = [];
+      page.on("pageerror", error => errors.push(error.message));
+      await page.goto("http://127.0.0.1:3100/?edition=west");
+      await expect(page.locator("main[data-hydrated='true']")).toBeVisible();
+      const photo = page.getByRole("button", { name: "About your photo", exact: true });
+      const panel = page.getByRole("dialog", { name: "Your photo", exact: true });
+      await expect(panel).toBeHidden();
+      await expect(page.getByText("Optional photo · JPEG, PNG or WebP · up to 8 MB", { exact: true })).toBeVisible();
+      const box = await photo.boundingBox();
+      expect(box!.width).toBeGreaterThanOrEqual(44); expect(box!.height).toBeGreaterThanOrEqual(44);
+      await photo.focus(); await page.keyboard.press("Enter");
+      expect(await photo.evaluate(element => getComputedStyle(element).outlineStyle)).toBe("solid");
+      await expect(panel).toBeVisible(); await expect(photo).toHaveAttribute("aria-expanded", "true");
+      await expect(panel).toContainText("remove source metadata");
+      await expect(panel).toContainText("up to 30 minutes");
+      await expect(panel).toContainText("never enters Story video or a public result");
+      await expect(panel).toContainText("Remove my photo or Clear my local data");
+      await expect(panel).toContainText("never affects scoring");
+      await page.keyboard.press("Tab");
+      await expect(panel.getByRole("button", { name: "Close your photo information" })).toBeFocused();
+      await page.keyboard.press("Escape");
+      await expect(panel).toBeHidden(); await expect(photo).toBeFocused();
+      if (viewport.width === 320) await photo.tap(); else await photo.click();
+      await expect(panel).toBeVisible();
+      const panelBox = await panel.boundingBox();
+      expect(await panel.evaluate(element => getComputedStyle(element).animationName)).toBe("none");
+      expect(panelBox!.x).toBeGreaterThanOrEqual(0);
+      expect(panelBox!.x + panelBox!.width).toBeLessThanOrEqual(viewport.width);
+      await panel.getByRole("button", { name: "Close your photo information" }).click();
+      await expect(photo).toBeFocused();
+      const name = page.getByRole("button", { name: "About your display name", exact: true });
+      await expect(page.getByLabel("What should we call you?", { exact: true })).toBeVisible();
+      await name.click();
+      const namePanel = page.getByRole("dialog", { name: "Your display name" });
+      await expect(namePanel).toContainText("excluded from quiz recovery and published results");
+      await expect(namePanel).toContainText("shown to anyone with that challenge link");
+      await page.getByRole("heading", { level: 1 }).click();
+      await expect(namePanel).toBeHidden();
+      const tinyPng = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=", "base64");
+      await page.locator('input[type="file"]').setInputFiles({ name: "portrait.png", mimeType: "image/png", buffer: tinyPng });
+      await expect(page.getByRole("button", { name: "Remove my photo", exact: true })).toBeVisible();
+      await page.getByRole("button", { name: "Remove my photo", exact: true }).click();
+      await expect(page.locator(".avatar-hero img")).not.toHaveAttribute("src", /^blob:/);
+      await page.getByRole("link", { name: "FAQ", exact: true }).click();
+      await expect(page.getByRole("heading", { name: "Game FAQ", exact: true })).toBeVisible();
+      await expect(page.locator("#sharing")).toContainText("90 days after quiz completion");
+      await expect(page.locator("#purchases")).toContainText("40 for £9.99");
+      await expect(page.locator("#daily")).toContainText("only an official completion");
+      await expect(page.locator("#privacy")).toContainText("never required to play");
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+      await page.getByRole("link", { name: "Return to the game", exact: true }).click();
+      await expect(page.getByRole("heading", { level: 1 })).toContainText("DO YOU KNOW YOUR ROOTS?");
+      expect(errors).toEqual([]);
+    } finally { await context.close(); }
+  });
+}
+
 declare global {
   interface Window {
     __wybpShares?: Array<{

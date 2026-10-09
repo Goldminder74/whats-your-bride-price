@@ -164,7 +164,7 @@ test("invalid names are rejected and the generic fallback creates no legacy link
   await page.getByRole("button", { name: "Nominate three people" }).click();
   const panel = page.locator("[data-nominate-three]");
   await expect(panel).toHaveAttribute("data-mode", "generic");
-  await expect(panel.getByText("Regional invitation fallback")).toBeVisible();
+  await expect(panel.getByText("Regional invitation", { exact: true })).toBeVisible();
   await panel.locator('[data-slot="1"]').getByRole("button", { name: "Copy link" }).click();
   const copied = await page.evaluate(() => window.__wybpShareCalls?.find((call) => call.channel === "copy")?.text as string);
   expect(copied).toContain("edition=west");

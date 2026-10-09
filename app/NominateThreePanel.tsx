@@ -1,4 +1,5 @@
 "use client";
+import InformationControl from "./InformationControl";
 
 /* eslint-disable react-hooks/set-state-in-effect -- tab-scoped nomination continuity is restored after browser hydration */
 
@@ -153,7 +154,7 @@ export default function NominateThreePanel({
       setPreparationState("failed");
       setPreparationMessage(error instanceof Error && "userMessage" in error && typeof error.userMessage === "string"
         ? error.userMessage
-        : "A verified challenge could not be created. No challenge was invented. Try again, or use the regional invitation fallback later.");
+        : "Your challenge is not ready yet. Retry or share a regional invitation.");
     }
   };
 
@@ -262,11 +263,11 @@ export default function NominateThreePanel({
           />
           {!nameValidation.valid
             ? <p id="challenger-name-error" className="display-name-error" role="alert">{nameValidation.message}</p>
-            : <p id="challenger-name-note">This validated name is sent to the server when you prepare the challenge and will match its landing page and share copy. It never changes your score.</p>}
+            : <p id="challenger-name-note">Preparing a challenge sends this name to the server and shows it to anyone with its link. Choose a name or pseudonym you want to share.</p>}
           <p className="nomination-link-privacy">Preparing nominations creates one public challenge link. Anyone with it may open the invitation while active. It lasts up to 30 days and never beyond the source result; server-authoritative expiry or valid revocation may end it sooner.</p>
           {preparationState !== "ready" && <button type="button" className="prepare-nominations" onClick={prepareChallenge} disabled={preparationState === "creating" || !nameValidation.valid}>{preparationState === "creating" ? "Preparing one challenge…" : "Prepare three nominations"}</button>}
         </div>
-      ) : <p className="nomination-fallback-note"><b>Regional invitation fallback</b> Verified challenges and durable storage are unavailable, so no score or inviter identity is attached.</p>}
+      ) : <p className="nomination-fallback-note"><b>Regional invitation</b> Share a regional invitation with no verified score or inviter identity attached.</p>}
 
       {preparationMessage && <p className={`nomination-preparation is-${preparationState}`} role="status" aria-live="polite">{preparationMessage}</p>}
       {sharePayload && <p className="nomination-link-note">All three slots use the same {challenge ? "canonical challenge" : "regional invitation"} link.</p>}
@@ -276,7 +277,7 @@ export default function NominateThreePanel({
         {nominationSlotNumbers.map((slot) => {
           const view = slots[slot];
           return <article className={`nomination-slot state-${view.state}`} key={slot} data-slot={slot} data-slot-state={view.state}>
-            <div className="nomination-slot-title"><span aria-hidden="true">{slot}</span><div><h4>Nomination slot {slot}</h4><p>{completedSlots.has(slot) ? "Handoff counted once" : "Awaiting a successful handoff"}</p></div></div>
+            <div className="nomination-slot-title"><span aria-hidden="true">{slot}</span><div><h4>Nomination slot {slot}</h4><p>{completedSlots.has(slot) ? "Handoff counted once" : "Ready to share"}</p></div></div>
             <div className="nomination-methods">
               <button type="button" onClick={() => shareSlot(slot, "whatsapp")} disabled={view.state === "opening" || !sharePayload}>WhatsApp</button>
               {nativeShareAvailable && <button type="button" onClick={() => shareSlot(slot, "native")} disabled={view.state === "opening" || !sharePayload}>Share menu</button>}
@@ -288,8 +289,8 @@ export default function NominateThreePanel({
         })}
       </div>
 
-      {celebrating && <div className="nomination-celebration" role="status" aria-live="polite"><span aria-hidden="true">✦ ◆ ✦</span><b>Three nominations ready to travel. Keep the challenge going!</b><p>Three nomination handoffs were completed or started. Message delivery is not claimed, and every sharing option remains available.</p></div>}
-      <p className="nomination-privacy">No names of recipients, telephone numbers, email addresses, contacts, share-sheet contents or private photos are requested or stored.</p>
+      {celebrating && <div className="nomination-celebration" role="status" aria-live="polite"><span aria-hidden="true">✦ ◆ ✦</span><b>Three nominations ready to travel. Keep the challenge going!</b><p>Your sharing steps are ready. Check your chosen app to confirm delivery.</p></div>}
+      <div className="information-label"><span>The game never asks for your contacts.</span><InformationControl title="Nomination privacy" topic="sharing"><p className="nomination-privacy">No names of recipients, telephone numbers, email addresses, contacts, share-sheet contents or private photos are requested or stored.</p></InformationControl></div>
     </section>
   );
 }

@@ -155,6 +155,6 @@ export default function AnalyticsConsent() {
         <nav aria-label="Full privacy information"><Link href="/privacy">Privacy Notice</Link><Link href="/privacy/storage">Cookie and Local Storage Notice</Link><Link href="/privacy/requests">Privacy requests</Link></nav>
       </div>
     </div>}
-    <footer className="site-legal-footer"><p>A playful culture score, never a measure of human worth.</p><nav aria-label="Legal and privacy"><Link href="/privacy">Privacy</Link><Link href="/privacy/storage">Storage</Link><Link href="/terms">Terms</Link><Link href="/community-standards">Community standards</Link><Link href="/privacy/retention">Retention</Link><Link href="/privacy/requests">Privacy requests</Link></nav><small>Draft technical compliance wording. Not professionally approved or activated for production.</small></footer>
+    <footer className="site-legal-footer"><p>A playful culture score, never a measure of human worth.</p><nav aria-label="Legal and privacy"><Link href="/faq">FAQ</Link><Link href="/privacy">Privacy</Link><Link href="/privacy/storage">Storage</Link><Link href="/terms">Terms</Link><Link href="/community-standards">Community standards</Link><Link href="/privacy/retention">Retention</Link><Link href="/privacy/requests">Privacy requests</Link></nav><small>Draft technical compliance wording. Not professionally approved or activated for production.</small></footer>
   </>;
 }

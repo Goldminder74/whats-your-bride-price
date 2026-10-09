@@ -153,7 +153,7 @@ test("temporary and offline acceptance failures are retryable without a generic 
   await page.route(`**${validPath}/accept`, (route) => route.abort("internetdisconnected"));
   await page.goto(validPath);
   await page.getByRole("button", { name: "Accept challenge" }).click();
-  await expect(page.getByRole("status")).toContainText("connection paused");
+  await expect(page.getByRole("status")).toContainText("waiting for confirmation");
   await expect(page.getByRole("button", { name: "Retry acceptance" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Choose a normal quiz instead" })).toBeVisible();
   await page.unroute(`**${validPath}/accept`);
@@ -182,7 +182,7 @@ test("direct completed recovery without an accepted server attempt does not inve
   await page.goto(validPath);
   await expect(page.locator(".result-stage")).toBeVisible();
   await expect(page.locator(".comparison-failure")).toBeVisible();
-  await expect(page.locator("body")).toContainText("could not confirm the head-to-head comparison");
+  await expect(page.locator("body")).toContainText("Your comparison is waiting for confirmation");
   await expect(page.locator("body")).not.toContainText(/beat Nia|tied Nia|family rank|winner/i);
   const storage = await page.evaluate(() => localStorage.getItem("wybp-active-quiz-v1") || "");
   expect(storage).not.toMatch(/Nia|score|photo|token|sessionId/i);

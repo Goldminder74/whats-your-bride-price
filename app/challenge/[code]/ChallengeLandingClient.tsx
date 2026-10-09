@@ -184,7 +184,7 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
       setStatusMessage("");
     } catch {
       setAcceptanceState("failure");
-      setStatusMessage("The connection paused before acceptance was confirmed. Retry, or choose a normal quiz.");
+      setStatusMessage("Your challenge is waiting for confirmation. Retry or explore a regional quiz.");
     } finally {
       acceptancePromiseRef.current = null;
     }
@@ -237,7 +237,7 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
         <section className="challenge-state-card" aria-labelledby="challenge-completed-title">
           <p className="challenge-route-kicker">Challenge already played</p>
           <h1 id="challenge-completed-title">You completed this challenge on this device.</h1>
-          <p>No comparison is shown yet. Official challenge results arrive in a later game update.</p>
+          <p>Your challenge is complete. A comparison is unavailable here; explore another region.</p>
           <p className="challenge-route-safeguard">{PRODUCT_SAFEGUARD}</p>
           <Link className="challenge-normal-link" href={normalQuizHref(trustedChallenge.edition)}>Play this region as a normal quiz</Link>
         </section>
@@ -252,7 +252,7 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
           <span className="challenge-neutral-mark" aria-hidden="true">W</span>
           <p className="challenge-route-kicker">Culture challenge</p>
           <h1 id="challenge-unavailable-title">{state.message}</h1>
-          <p>The invitation may have expired or changed. No private details are shown.</p>
+          <p>This invitation is no longer available. Choose a region for your next adventure.</p>
           <p className="challenge-route-safeguard">{PRODUCT_SAFEGUARD}</p>
           <Link className="challenge-normal-link" href="/">Choose a normal regional quiz</Link>
         </section>
@@ -267,7 +267,7 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
           <span className="challenge-neutral-mark" aria-hidden="true">W</span>
           <p className="challenge-route-kicker">Culture challenge</p>
           <h1 id="challenge-temporary-title">{state.message}</h1>
-          <p>Your invitation details remain private. Retry when your connection is ready.</p>
+          <p>Reconnect to open your invitation, then try again.</p>
           <div className="challenge-state-actions">
             <button type="button" onClick={() => window.location.reload()}>Retry challenge</button>
             <Link href="/">Choose a normal regional quiz</Link>

@@ -83,7 +83,7 @@ test("mobile result Share Centre reuses one challenge and supports every explici
   const page = await context.newPage();
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/?safeguard_fixture=nomination-result");
-  await page.getByLabel("Name or pseudonym on your portrait").fill("Ọlá");
+  await page.getByLabel("What should we call you?", { exact: true }).fill("Ọlá");
   const trigger = page.getByRole("button", { name: "Open Share Centre" }).last();
   await trigger.click();
   const centre = page.locator("[data-share-centre]");
@@ -92,7 +92,14 @@ test("mobile result Share Centre reuses one challenge and supports every explici
   await expect(centre).toHaveAttribute("data-share-mode", "personalised");
   await expect(page.getByRole("button", { name: "Close Share Centre" })).toBeFocused();
   await expect(centre).toContainText("A playful culture score, never a measure of human worth.");
-  await expect(centre.getByRole("button")).toHaveCount(8);
+  await expect(centre.getByRole("button")).toHaveCount(9);
+  const information = centre.getByRole("button", { name: "About sharing and photos", exact: true });
+  await information.click();
+  await expect(page.getByRole("dialog", { name: "Sharing and photos", exact: true })).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("dialog", { name: "Sharing and photos", exact: true })).toBeHidden();
+  await expect(centre).toBeVisible();
+  await expect(information).toBeFocused();
   await expect(centre).toHaveAttribute("data-media-ready", "true");
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
 
@@ -205,7 +212,7 @@ test("comparison Share Centre falls back honestly while durable challenge creati
   const centre = page.locator("[data-share-centre]");
   await expect(centre).toHaveAttribute("data-share-surface", "comparison");
   await expect(centre).toHaveAttribute("data-share-mode", "generic");
-  await expect(centre).toContainText("no invented inviter identity or score");
+  await expect(centre).toContainText("no inviter identity or verified score attached");
   await centre.getByRole("button", { name: /Copy link/ }).click();
   const copied = await page.evaluate(() => String(window.__wybpPlatformCalls?.find((call) => call.channel === "copy")?.text || ""));
   expect(copied).toContain("edition=west");
@@ -235,6 +242,7 @@ test("Share Centre remains usable on desktop, Android, iPhone and 200 percent zo
   await zoomPage.evaluate(() => { document.documentElement.style.zoom = "2"; });
   await zoomPage.getByRole("button", { name: /Open Share Centre/ }).click();
   await expect(zoomPage.getByRole("button", { name: /Copy link/ })).toBeVisible();
-  await expect(zoomPage.locator("[data-share-centre]")).toContainText("How platform sharing works");
+  await zoomPage.getByRole("button", { name: "About sharing and photos" }).click();
+  await expect(zoomPage.getByRole("dialog", { name: "Sharing and photos", exact: true })).toContainText("No app login, contact list, delivery receipt or selected recipient");
   await zoomContext.close();
 });

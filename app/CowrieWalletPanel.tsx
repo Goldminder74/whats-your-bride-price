@@ -45,7 +45,7 @@ export default function CowrieWalletPanel({ refreshKey }: Readonly<{ refreshKey?
     try {
       const value = await recoverCowrieWallet({ walletReference: recoveryReference, recoveryCredential: recoveryInput, anonymousSessionCredential: ownerCredential }, rotate);
       setWallet(value.wallet); setRawRecovery(value.recoveryCredential || ""); setStatus(rotate ? "Recovery credential rotated. Save the new value now." : "Wallet recovered on this device.");
-    } catch { setStatus("Recovery could not be completed. Check both values and try again."); }
+    } catch { setStatus("Check your wallet reference and recovery credential, then try again."); }
   };
   const clear = async () => {
     if (!window.confirm("Freeze wallet access? Your balance and play history will be preserved. Permanent deletion requires the protected support process, which is not active yet.")) return;
@@ -58,7 +58,7 @@ export default function CowrieWalletPanel({ refreshKey }: Readonly<{ refreshKey?
   return <aside className="cowrie-wallet-control" data-cowrie-wallet>
     <button type="button" ref={toggleRef} className="cowrie-wallet-toggle" aria-expanded={open} onClick={() => setOpen((value) => !value)}><span aria-hidden="true">◉</span> Cowries <b>{wallet?.totalBalance ?? "—"}</b></button>
     {open && <section className="cowrie-wallet-panel" aria-labelledby="cowrie-wallet-title">
-      <header><div><p>Closed-loop play access</p><h2 id="cowrie-wallet-title">Cowrie Wallet</h2></div><button type="button" aria-label="Close Cowrie Wallet" onClick={() => {setOpen(false);toggleRef.current?.focus();}}>×</button></header>
+      <header><div><p>Ready for your next adventure</p><h2 id="cowrie-wallet-title">Cowrie Wallet</h2></div><button type="button" aria-label="Close Cowrie Wallet" onClick={() => {setOpen(false);toggleRef.current?.focus();}}>×</button></header>
       {wallet ? <>
         <div className="cowrie-balance"><span>Total available</span><strong>{wallet.totalBalance}</strong><small>Cowries</small></div>
         <dl><div><dt>Bonus</dt><dd>{wallet.bonusBalance}</dd></div><div><dt>Purchased</dt><dd>{wallet.purchasedBalance}</dd></div><div><dt>Free random plays left</dt><dd>{wallet.freeQuickPlaysRemaining} of 2</dd></div></dl>

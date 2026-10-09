@@ -59,3 +59,65 @@ Record four sandbox product/price/Payment Link IDs and `buy.stripe.com` URLs out
 - Complete new account verification and live capability review. Review Stripe fees/tax obligations and seller bank before separately approving charges. Recreate all four LIVE products/prices/links in the NEW seller account; sandbox IDs/secrets never become live ones automatically.
 - Inventory approved production host/DB/limits, origin and exact live webhook/secret; keep private test separate. Confirm all 30 eligible questions per region and evidence preservation. Only separately reviewed production wiring may accept live events; the dedicated test webhook MUST continue rejecting live-mode events.
 - Public launch must include random replay, Cowrie play/purchases and Royal Reveal payments together. Other optional features stay off. Require explicit public/live approval, matched release verification, real payment/fulfilment checks and rollback before activation. Never modify Wigsmi/Sherwood.
+
+
+## Sandbox setup receipt — 9 October 2026 (historical)
+
+Owner-authorised sandbox work uses committed source `a7f3ade1754a965a3c39061771dd9f75a826bd2f`; the pending copy/FAQ edits remain local and excluded. The signed-in parent account was verified as Classes for Culture `acct_1UOOZAIb8Lefpj36`. Its existing **Classes for Culture sandbox**, `acct_1UOOZKEsGCyaV3rl`, was selected. Both product and Payment Link inventories were empty before creation.
+
+| Product / application key | Fixed GBP | Sandbox Payment Link ID |
+|---|---:|---|
+| Royal Reveal / `royal_reveal_v1` | £1.99 | `plink_1UOQGrEsGCyaV3rlgnErJlaW` |
+| 5 Cowries / `cowrie_5_v1` | £1.99 | `plink_1UOQKLEsGCyaV3rlwZnTMcit` |
+| 15 Cowries / `cowrie_15_v1` | £4.99 | `plink_1UOQLEEsGCyaV3rlSyQBT7kq` |
+| 40 Cowries / `cowrie_40_v1` | £9.99 | `plink_1UOQLhEsGCyaV3rlYCOF7RYL` |
+
+Each has fixed Checkout quantity 1, no promotion codes, optional customer names/phone/address, automatic tax, invoice PDF or saved-payment-details option. Return URLs are exactly `https://wybp-protected-test.netlify.app/royal-reveal/return` for Royal Reveal and `https://wybp-protected-test.netlify.app/cowries/return` for Cowries. The application appends its own opaque `client_reference_id`; no reference is hard-coded in Stripe. Sandbox default methods were narrowed to card/network and Apple Pay support; alternatives and delayed methods were disabled only in this sandbox. Stripe displays Adaptive Pricing as enabled; non-GBP payloads must continue to fail closed, and UK/GBP live sandbox payload checks remain required.
+
+Webhook `we_1UOQOYEsGCyaV3rlnR8Gk5LJ`, **WYBP Private Test Payments**, uses own-account snapshot events at `2026-09-30.endive` (the stable version offered by this sandbox). Endpoint: `https://wybp-test-r001.ayo-m-ayeni.workers.dev/commerce/stripe-test-webhook`. Subscribed exactly: `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`, `charge.refunded`, `charge.dispute.created`. This records configuration, not verified payload compatibility or successful fulfilment.
+
+Signing-secret installation is pending owner entry directly into the isolated Worker's encrypted `STRIPE_WEBHOOK_SIGNING_SECRET` setting. No value is retained in documentation, source, chat, logs or artifacts. The Worker webhook remains disabled. Private production/preview URLs returned 401; Git builds are disconnected. Read-only D1 checks found 30 published/approved, non-retired questions per region and zero orders/ledger entries. No migrations, catalogue writes or scheduled jobs were performed.
+
+Payments release `57fda08728a9a8df1d6d42b835f5bb513536114de1ef65e7340bd2e3230f302e` built from a temporary archive of the exact checkpoint, with all 140 server modules verified. Separate deployable verification reused the existing gateway secret in memory and proved it absent from artifacts. **Not deployed or activated.** Ignored non-secret receipts/screenshots/configuration are in `outputs/activation-preparation/stripe-sandbox-20261009/`; the release/source snapshot is in the local TEMP directory `wybp-payments-a7f3ade-20261009`.
+
+Next: verify secret installation; install only these test runtime settings; deploy a matched private payments pair; verify actual signed session/refund/dispute payloads, idempotent fulfilment, two-free-game/Cowrie charging, result-bound Royal Reveal, owner/mobile returns and ingress denial. Reuse the existing D1 without migration/seed/publication. Roll back to the handover's current data-profile pair and retain D1 if a gate fails. Live payments/public launch remain prohibited. Live parent Account status showed no active tasks and Payments/Payouts active; this does not replace legal, seller-detail or public-launch approval.
+
+### Live sandbox check and safe rollback
+
+Owner installed the signing secret; only its name was verified. Matched payment
+release `57fda08728a9a8df1d6d42b835f5bb513536114de1ef65e7340bd2e3230f302e`
+was briefly deployed (Netlify `6ac825cc204428759b874d8d`, Worker
+`393e3569-9db2-4ad5-a1b5-2ae35c700af0`). The five-Cowrie test purchase succeeded.
+Real snapshot event `evt_1UOQg0EsGCyaV3rlmYaVTsfF` delivered successfully;
+resending left exactly one fulfilled order and one purchase credit of five.
+The actual API-version payload therefore passed for this completed checkout.
+
+The fifteen-Cowrie order subsequently failed with the visible checkout-unavailable
+message; no pending order was created. Its underlying cause is unconfirmed.
+Remaining bundle, free-play/debit, Royal Reveal, failure, refund/dispute and mobile
+payment journeys are not verified. Return-page refresh after fulfilment showed
+status unavailable because the completed pending-order reference is removed;
+the wallet retained its five-Cowrie balance.
+
+Restored the previous random-only release `f1cbdeec` and Netlify deployment
+`6ac815e3a823977864ab5e66`; new rollback Worker version
+`82353ffb-c037-48cc-9387-b4cf58155025`. All 109 client checksums matched;
+primary/preview anonymous requests returned 401 and disabled webhook POST 404.
+D1, the verified sandbox credit, Stripe objects and installed secret are preserved.
+Commerce, Cowrie enforcement, webhook, cron and logging are off. Earlier pending
+secret/local-release notes above are superseded by this receipt. No live payment
+or public activation occurred. Diagnose the second checkout before reactivation.
+
+### Current verified outcome — 9 October 2026
+
+The setup and first-checkout receipts above are historical. The signing secret is
+installed; all four products subsequently passed sandbox fulfilment. Same-owner
+and separate-owner fifteen-Cowrie purchases, declined-card retry on the same order,
+redirect-independent delivery, Royal Reveal, two-free-game/paid play, mobile returns,
+refunds, disputes and signed retries are recorded in the current handover. A frozen
+synthetic wallet settled only its exact unused purchase allocations, remained frozen
+at zero, and left the original active 54-Cowrie wallet unchanged. The original
+fifteen-Cowrie failure has no recoverable root cause; do not describe it as fixed.
+Commerce/webhook were disabled after verification; no live payment was activated.
+See the [production activation checklist](isolated-test-approval-package.md#production-activation-checklist--9-october-2026)
+for remaining code, custody, seller and approval gates. Do not recreate sandbox objects.
