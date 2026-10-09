@@ -166,9 +166,9 @@ that uncertainty rather than treat a new replay as historical processing proof.
    approve a restricted, encrypted rolling database/authority export destination,
    access list and verification procedure under the already approved retention
    periods. Google Drive research/synthetic archives do not back up current payment
-   records. Automated independent journaling and recovery beyond 100 records/category
-   or 64 KiB are missing implementation, not settings to switch on. Approve scoped
-   checkpointed/paginated export and restore development before exceeding those caps.
+   records. Local complete paginated export/restore and encrypted authority journaling are now
+   implemented below. Hosted D1 snapshot acquisition and atomic external authority
+   delivery remain missing provider integration, not settings to switch on.
    Preserve financial dependencies and apply the existing 30-day operational window;
    do not invent a longer identifiable suppression log.
 2. **Provider restore rehearsal:** separately approve either an isolated rehearsal D1
@@ -202,3 +202,93 @@ include invocation/query-duration limits.
 stops queries at account daily limits until midnight UTC; include all account usage
 and index writes in hosted capacity budgeting. No plan or charge was approved here.
 Owner policy approval remains distinct from professional legal sign-off.
+
+
+## Local complete operational recovery — 9 October 2026
+
+`scripts/operational-backup.mjs` is an **offline SQLite operator**, not a hosted D1
+export command. No application schema or migrations change. Node's SQLite API is
+required. It rejects remote flags and restricts files to OS temporary storage or
+ignored `outputs/retention-authority/`. Use a dedicated owner-only directory with
+verified Windows ACLs/encrypted disk; POSIX mode 0600 alone does not enforce Windows
+access. Never use real records until custody/access and transfer are approved.
+
+Every application table, schema object, migration receipt and SQLite sequence is
+inventoried from a fixed snapshot. Pages contain at most 100 rows with no total
+record/64 KiB ceiling. AES-256-GCM protects pages, checkpoints, manifest and journal
+bodies. Typed integer/blob encoding avoids lossy JSON conversion. Table counts,
+page offsets, checksums, schema and whole-content hashes prevent silent omissions;
+missing/extra/duplicate/corrupt pages reject. Interrupted export resumes the same
+snapshot; subsequent journalled changes replay after restoration. The temporary
+working snapshot is plaintext and deleted on successful completion: secure and
+remove abandoned working files within the approved operational backup window.
+Archives become unusable at 30 days; the custodian must physically delete expired
+archives, copies and abandoned working files under that same approved window.
+The tool does not activate or claim an automatic deletion job.
+
+The sidecar journal is encrypted and hash chained. SQLite DELETE/FULL super-journal
+commits each database batch and its journal event together; fault rollback affects
+both. Stable opaque operation IDs make interrupted retries inert and reject changed
+intent. All offline writes must pass through this journal. Unjournalled changes,
+stale/truncated authority and a mismatched externally preserved head fail closed.
+Copy the journal independently with `--journal-export`; verify its checksum/head
+and preserve the key separately. A valid independent journal copy plus archive can
+recover after the original database and journal are lost. Retiring old identifiable
+history requires `--compact` against an exact, complete, current verified checkpoint;
+older restore anchors then reject. Refresh independent custody before retiring old
+copies. Journal history is not permission for indefinite identifiable retention.
+
+Example command shapes (substitute private paths; no values or records in shell
+history). Supply an existing raw 32-byte key file through approved secret custody;
+never commit/export it with an archive or print it:
+
+```text
+node --experimental-strip-types scripts/operational-backup.mjs --local --database PRIVATE_SOURCE --journal PRIVATE_JOURNAL --key-file PRIVATE_KEY --export PRIVATE_ARCHIVE
+node --experimental-strip-types scripts/operational-backup.mjs --local --database PRIVATE_SOURCE --journal PRIVATE_JOURNAL --key-file PRIVATE_KEY --journal-export PRIVATE_INDEPENDENT_COPY
+node --experimental-strip-types scripts/operational-backup.mjs --local --journal PRIVATE_INDEPENDENT_COPY --key-file PRIVATE_KEY --restore PRIVATE_ARCHIVE --destination PRIVATE_NEW_DATABASE --review PRIVATE_REVIEW
+```
+
+The private review JSON must contain exact `manifestHash`, `schemaHash`, latest
+independently pinned `journalHead`, `reviewedThrough` (within 15 minutes), and true
+`financialReconciliation`, `holdsReconciled`, `caseAuthorityReconciled`. These are
+operator attestations, not substitute reconciliation or legal approval. Never set
+them merely to bypass rejection. Restore never overwrites a destination. Checkpointed
+page transactions and latest-authority replay finish in a private staging database;
+only verified completion renames it to the destination. Repeating a completed restore
+against that destination rejects rather than duplicates records.
+
+Replayed original holds, support cases, settlements, immutable closure timestamps,
+erasures and approved purge operations retain their original clocks and accounting
+dependencies. No automatic reopening occurs. An old runtime restore receipt is removed;
+access remains blocked pending fresh independent reconciliation/review and receipt
+installation. Local tests cover closed/deleted access denial, held dependencies,
+post-minimisation recovery, source loss, interrupted pages and atomic journal rollback.
+Outputs/logs contain metadata and hashes only; record bodies remain in private files.
+
+**Hosted boundary:** SQLite attached-database atomicity does not prove atomicity
+between D1 and independent storage. Before production, implement/review a provider
+snapshot/completeness and durable authority-delivery protocol, including concurrent
+writes, crash gaps and custody acknowledgement. Existing bounded remote operators
+remain unchanged. No hosted D1 reads/writes, restore, custody upload, cron or benchmark
+was performed in this task. The next rehearsal must use a separately approved isolated
+synthetic target, never overwrite the current private game's database or payment data.
+
+
+### Local validation checkpoint
+
+Seven focused operational recovery tests pass, including real accounting/closure,
+holds, suppression/minimisation, source loss, interruption and exact 30-day expiry.
+All complete-suite stages pass: lint, typecheck, unit/218 data checks, rendered pages,
+all browser suites, compiled Sites/Netlify hosting and in-memory private runtime.
+The `npm run test:all` invocation stopped at a sandbox filesystem denial in Wrangler's
+packaging fixture. Remaining compiled-hosting and private-runtime stages passed with
+file access granted; earlier successful stages were not repeated. No packaging source
+change was needed. Logs preserve this distinction rather than claim an uninterrupted
+aggregate exit of zero.
+
+The separate Share Centre focus failure was caused by changing parent close callbacks
+restarting its focus effect. Latest callback updates are now independent of dialog
+lifetime; original focus assertions remain with added keyboard/mobile nested-dismissal
+coverage. Affected suite passes four browser tests. No timeout/coverage weakening.
+Final ordinary build and diff-check receipts are recorded in the handover. Evidence
+stays in TEMP `wybp-recovery-focus-*`, outside Git. No hosted operation occurred.

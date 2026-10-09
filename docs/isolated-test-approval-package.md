@@ -67,24 +67,83 @@ separate. Owner-approved retention is not professional legal sign-off.
 
 | Gate / exact action and acceptance evidence | Who acts | Approval needed |
 |---|---|---|
-| **Complete exports:** implement checkpointed, paginated database/authority export and restore beyond the current 100/category and 64 KiB caps. Include every protected financial dependency, holds, closure clocks and restore suppression; test interruption/resume, duplicate pages, completeness/checksums and repeat restore without resurrecting access. Keep approved retention periods. | Codex implements/tests; owner reviews | Scoped local implementation approval first; no hosted writes required. |
+| **Complete exports:** implement checkpointed, paginated database/authority export and restore beyond the current 100/category and 64 KiB caps. Include every protected financial dependency, holds, closure clocks and restore suppression; test interruption/resume, duplicate pages, completeness/checksums and repeat restore without resurrecting access. Keep approved retention periods. | Codex implements/tests; owner reviews | Local implementation authorised and verified; provider integration and hosted rehearsal remain separately approved gates. |
 | **Independent custody:** appoint an accounting/support custodian; choose a restricted encrypted operational database/authority backup destination, access list, key custody, approved rolling window and readback procedure. Verify independently downloaded checksums and current authority journal. Existing verified research Drive archives are not payment backups. | Owner selects custodian/destination; operator implements and verifies | Explicit destination/access and backup-operation approval; any charge separately approved. |
 | **Hosted restore rehearsal:** choose a separately isolated rehearsal D1 within verified allowances, or explicitly approve maintenance-window restoration of test D1. Export current state, keep all features/cron off, restore with independent latest authority, reconcile payments/ledger/holds/closures, replay suppression, prove expired/deleted/closed data inaccessible, install fresh reviewed restore receipt. Preserve a recovery copy and test DB. | Owner approves target; Codex/operator rehearses and records receipts | Exact resource/restore scope and allowance ceiling. Time Travel availability is verified, restoration is not; it cannot clone the database. |
 | **Purge capacity/schedule:** supply peak games/day, backlog and tolerated outage. Benchmark the entire hosted scheduled path, including bonus expiry and unissued-play reversals, query/CPU/row usage, deadline age and outage catch-up; choose bounded schedule with headroom, alerts and an escalation owner. Local 12,000-answer/240-pass proof is not hosted throughput. 50 answers/15 minutes is only 4,800/day before arrivals/outages. | Owner supplies demand/operations owner; Codex/operator measures | Exact synthetic benchmark target/volume/allowance; approve measured schedule and cron activation separately. |
 | **Seller/legal:** confirm Ayodele Ayeni trading as Classes for Culture, non-VAT registered, support team@classesforculture.com; supply geographic contact address/phone where required securely. Complete consumer delivery/cancellation/refund and durable receipt review, privacy/processor/transfer/ICO/children/accessibility checks; approve final notices and support/claims process. Remove draft status only after recorded approval. | Owner with appropriate legal/privacy/accounting advice | Final disclosure/policy approval; owner approval alone is not professional sign-off. See legal activation checklist. |
 | **Stripe live readiness:** verify the Classes for Culture parent account's current payments/payouts/verification status directly in Stripe; enter identity/bank details there. Confirm GBP market/tax treatment and resolve Adaptive Pricing so currencies offered match server validation. Wigsmi/Sherwood are excluded. | Owner in Stripe; Codex may inspect under separate authority | Live account/configuration authority and any costs; no live setup implied by sandbox evidence. |
-| **Production source/runtime:** implement reviewed production DB/runtime/restore-receipt, rate-limiter, retention and webhook wiring. Current private profiles, scheduled entry and exact test webhook are test-only; never accept live events on the test route. Decide actual canonical domain: current future Netlify production allowlist is https://classesforculture.com, while Sites defaults use https://brideprice.classesforculture.com. Neither may replace an existing website without an explicit domain decision. Preserve authenticated assets, raw-body signatures, replay/ownership/origin checks and fail-closed limits. | Owner chooses domain/topology; Codex implements/tests | Scoped production implementation approval after domain decision. No domain setting, source allowlist change or new resource yet. |
+| **Production source/runtime:** implement reviewed production DB/runtime/restore-receipt, rate-limiter, retention and webhook wiring. Current private profiles, scheduled entry and exact test webhook are test-only; never accept live events on the test route. Owner confirmed https://classesforculture.com/ as the production launch target on 9 October. Sites defaults remain https://brideprice.classesforculture.com. No replacement, domain setting or DNS change is authorised by that decision. Preserve authenticated assets, raw-body signatures, replay/ownership/origin checks and fail-closed limits. | Owner chooses domain/topology; Codex implements/tests | Scoped production implementation approval after domain decision. No domain setting, source allowlist change or new resource yet. |
 | **Isolated production provisioning:** inventory existing resources, approve exact new project/Worker/D1 names, account IDs and cost ceilings; configure private protection first, verified migrations 0000–0012 and only approved catalogue publications, 30 eligible/region. Never copy sandbox financial records or secret values. Establish independent operational backup/authority custody and restore receipt before opening traffic. | Owner approves; operator provisions/verifies | Explicit resource creation, hosted migrations/catalogue writes and cost approval. Existing test publications do not authorise production publication. |
 | **Four LIVE links/webhook:** create/reuse live one-off GBP Royal Reveal £1.99 and 5/15/40 Cowrie £1.99/£4.99/£9.99 objects in the correct parent only. Set exact approved production /royal-reveal/return and /cowries/return URLs; let the application append opaque client_reference_id. Register only the five documented events on the separately implemented production POST webhook. Install live IDs, amounts, expected livemode and signing secrets securely at runtime; separate Netlify proxy secret from secret-free build/upload. Never reuse sandbox IDs or secrets. | Owner/operator, with Codex under explicit authority | Live Stripe configuration and secret-installation approval; no live charge yet. |
 | **Private production release gate:** build matched client/Worker from approved commit, verify package/client checksums, production origin, secret absence, private/preview protection, signatures, live-event route isolation, catalogue, limiter and retention readiness. Review final copy and payment terms. Sandbox checks need repeating only for changed paths. Define explicitly authorised low-value live fulfilment/refund check, limits and operator before live traffic. | Codex/operator; owner signs off | Private production deployment approval; live transaction authority separately specified. |
 | **Domain cutover and activation:** snapshot existing DNS/site deployment and verified rollback pair; prepare exact DNS/hosting diff without changing other sites. After all receipts pass, obtain approval for that diff and simultaneous replay/Cowrie/Royal Reveal activation, then verify HTTPS, navigation, image rounds, mobile returns, fulfilment and monitoring. Leave analytics, daily/streaks, owner tools and unrelated features off. | Owner authorises; operator executes | Final exact domain/DNS, public deployment and live-payment activation approval. |
 | **Rollback:** stop new checkout/payment feature exposure, preserve signed settlement handling for payments already accepted, disable affected public entry points, restore previous matched code/config and approved prior DNS/site state. Preserve D1/ledger/holds/closures and reconcile in-flight payments; never roll back financial data or erase orders. Restore suppression must precede access after any database recovery. Keep an on-call owner and decision thresholds. | Operator; owner controls domain rollback | Include exact rollback operations in cutover approval; financial-data restore still needs explicit incident authority. |
 
-**Smallest next approval:** authorise local paginated export/restore and independent
-operational authority-journal implementation with affected tests, keeping the existing
-retention rules and hosted state unchanged. In parallel the owner can choose the
-custodian/destination and intended domain. Hosted rehearsal/capacity, provisioning,
-Stripe live setup and cutover each remain later, separate approvals.
+**Local preparation completed:** complete paginated offline exports, encrypted atomic
+SQLite authority journaling, resumable restore and independent journal readback are
+implemented; see [local recovery contract](retention-operations.md#local-complete-operational-recovery--9-october-2026).
+There is no new application migration. This does not establish hosted D1/external
+journal atomicity, independent payment-backup custody or hosted restore performance.
+
+**Local focus repair:** changing parent close callbacks previously restarted Share
+Centre's focus effect. The latest handler now updates independently; focus setup and
+return belong to the dialog lifetime. Existing assertions remain, with added keyboard,
+touch, nested Escape and close-button focus checks on desktop and mobile profiles.
+See the handover for final integration results.
+
+## Proposed isolated hosted rehearsal approval
+
+This scope is prepared for owner approval only; none has run. Production target is
+https://classesforculture.com/; the rehearsal must not serve application traffic.
+
+1. **Inventory and budget:** inspect only Cloudflare account
+   `b6b22a9a87b5758725e5c499782160af` for `wybp-restore-rehearsal-r001` and remaining free allowances. Reuse only if empty
+   or proven to contain this rehearsal's synthetic data; stop on unexpected data.
+   Approve creation of that one D1 if absent, never bind it to any Worker, deploy,
+   create routes, connect Stripe or change `wybp-test-d1-r001`. No new charge or upgrade.
+2. **Fixtures and migrations:** verify committed checksums, apply unchanged migrations
+   0000�0012 only to the rehearsal D1. Use deterministic synthetic fixtures, never
+   copy real owners, payments or current test balances: at most 120 completed quizzes
+   (1,440 answers), 20 wallets/orders with allocated ledger entries, five holds and
+   five closed/deletion cases; cap total fixture rows at 10,000. Record exact counts
+   and synthetic fixture hashes. Stop before writing if remaining account allowances
+   cannot cover the planned operation; measured budget is a pre-write gate.
+3. **Export/restore:** prove consistent provider snapshot/cut-off, every table/count,
+   pagination, schema/migration hashes, interrupted-page resume and independent latest
+   authority readback. Before claiming D1/external journal atomicity, implement and
+   validate provider delivery/crash-gap handling under separately scoped code authority.
+   Existing local SQLite sidecar cannot supply that guarantee. Rehearse recovery in
+   the isolated synthetic database only; require financial/holds/closure reconciliation,
+   suppression before access, repeat-safe replay and a fresh reviewed restore receipt.
+   Stop on missing/unacknowledged authority; preserve the encrypted recovery copy.
+4. **Capacity:** manually invoke bounded operations (50 records/batch), no cron. Include
+   approved purge, held dependencies, bonus expiry, unissued-play reversal and repeat
+   execution through an authenticated operator, not a public endpoint. Record D1
+   query duration/row usage, elapsed throughput and remaining backlog. Worker CPU and
+   invocation limits remain unverified because no Worker binding/deployment is in
+   this scope. Stop if provider execution needs an unapproved adapter or resource.
+   Stop at the fixture/allowance ceiling; do not extrapolate this small sample into a
+   production deadline guarantee. Owner peak games/day, backlog and outage tolerance
+   are required before approving a production schedule or larger benchmark.
+5. **Custody:** synthetic artifacts may remain in private local temporary storage;
+   no cloud backup upload is included. Before real operational backups, owner names
+   custodian, encrypted destination/access list, separate key custody and readback
+   procedure. Archives expire at 30 days; preserve no identifiable history beyond
+   approved rules. Existing research Drive custody is not operational custody.
+6. **Cleanup/rollback:** approval must include deletion of only the newly created
+   rehearsal D1 after counts, checksum and reconciliation receipts are preserved.
+   If reusing a database, do not delete it or unrelated data: obtain an exact cleanup
+   approval after inventory. On failure stop operations, preserve private diagnostic
+   receipts and the pre-operation synthetic export, keep access blocked, and abandon
+   or restore only this isolated rehearsal state after authority reconciliation.
+   Never restore/overwrite the private game's D1, wallets or existing websites.
+   Delete local synthetic working copies/keys when evidence review finishes and no
+   later than the approved backup window. Keep only non-personal verification receipts.
+
+Cron, production resources/runtime activation, live Stripe, DNS/cutover and any costs
+remain separate approvals. A hosted rehearsal pass is technical evidence, not legal
+or cultural sign-off.
 
 Detailed contracts: [retention operations](retention-operations.md),
 [legal activation](legal-content-activation-checklist.md),

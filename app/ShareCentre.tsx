@@ -59,6 +59,8 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
   const preparedMediaRef = useRef<PreparedShareMedia | null>(null);
   const mediaPreparedEventRef = useRef(false);
   const actionLockRef = useRef(false);
+  const onCloseRef = useRef(onClose);
+  useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
   const storyProjection = useMemo(() => activeFeatureFlags.story_video && !activeFeatureFlags.commerce
     ? storyVideoProjectionFromShare(activeProjection, PUBLIC_APP_ORIGIN)
     : null, [activeProjection]);
@@ -96,7 +98,7 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
     const keydown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        onClose();
+        onCloseRef.current();
         return;
       }
       if (event.key !== "Tab" || !dialogRef.current) return;
@@ -112,9 +114,10 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
       document.removeEventListener("keydown", keydown);
       returnFocusElement?.focus();
     };
-    // prepareMedia is deliberately captured once for this dialog instance.
+    // Focus belongs to this dialog instance, not changing parent callbacks.
+    // prepareMedia is deliberately captured once; Escape reads the latest onClose.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onClose, returnFocusRef]);
+  }, [returnFocusRef]);
 
   const clipboardFallback = async (channel: ShareCentreChannel, failedMessage: string) => {
     try {
