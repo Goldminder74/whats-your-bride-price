@@ -31,3 +31,37 @@ test("partial refund preserves value and enters protected review without proport
 test("consumed allocation refund records review, no debt; pre-issuance reversal retires and restores before refund",async()=>{for(const issued of [true,false]){const c=await setup();try{await c.walletService.startQuickPlay({region:"west",anonymousSessionCredential:credential,idempotencyKey:"actual-d1-d-local-free-1"});await c.walletService.startQuickPlay({region:"west",anonymousSessionCredential:credential,idempotencyKey:"actual-d1-d-local-free-2"});const order=await c.service.startOrder(request(c));await c.service.webhook(await verified("checkout.session.completed",checkout(order)));if(!issued){c.walletRepository.commitIssuance=async()=>{throw new Error("before delivery");};c.walletRepository.reverseUnissued=async()=>false;await assert.rejects(c.walletService.startQuickPlay({region:"west",anonymousSessionCredential:credential,idempotencyKey:"actual-d1-d-local-paid-one"}),/access_conflict/);}else await c.walletService.startQuickPlay({region:"west",anonymousSessionCredential:credential,idempotencyKey:"actual-d1-d-local-paid-one"});assert.equal(balance(c).purchased_balance,4);await c.service.webhook(await verified("charge.refunded",adverse()));assert.equal(balance(c).purchased_balance,0);assert.equal(state(c,order),issued?"review_required":"refunded");assert.equal(c.database.prepare("SELECT COUNT(*) n FROM cowrie_ledger WHERE entry_type='technical_reversal'").get().n,issued?0:1);assert.equal(c.database.prepare("PRAGMA foreign_key_check").all().length,0);}finally{c.database.close();}}});
 test("batch failure rolls back audit, paid state, allocation and credit together; retry credits once",async()=>{const c=await setup();try{const order=await c.service.startOrder(request(c));const event=await verified("checkout.session.completed",checkout(order));c.adapter.failAt=9;await assert.rejects(c.service.webhook(event),/processing_unavailable/);assert.equal(state(c,order),"pending");assert.equal(balance(c).purchased_balance,0);assert.equal(c.database.prepare("SELECT COUNT(*) n FROM stripe_webhook_events").get().n,0);c.adapter.failAt=-1;await c.service.webhook(event);assert.equal(balance(c).purchased_balance,5);}finally{c.database.close();}});
 test("owner, every-region readiness, disabled service, fail-closed limiter and expiry protect purchase/status",async()=>{const c=await setup();try{await assert.rejects(c.service.startOrder({...request(c),anonymousSessionCredential:"b".repeat(32)}),/unavailable/);await assert.rejects(c.service.startOrder({...request(c),anonymousSessionCredential:await deriveCommerceOwnerHash(credential)}),/unavailable/);const disabled=new CommerceService(c.repository,new InMemoryCommerceRateLimiter(),config,()=>now);await assert.rejects(disabled.startOrder(request(c)),/unavailable/);const limiter=new CommerceService(c.repository,new UnavailableCommerceRateLimiter(),config,()=>now,{cowriePurchasesEnabled:true});await assert.rejects(limiter.startOrder(request(c)),/rate_limit_unavailable/);const order=await c.service.startOrder(request(c));await assert.rejects(c.service.orderStatus({publicOrderReference:order.publicOrderReference,anonymousSessionCredential:"b".repeat(32)}),/unavailable/);c.database.prepare("UPDATE commerce_orders SET pending_expires_at=? WHERE public_order_reference=?").run(now+1,order.publicOrderReference);const expired=new CommerceService(c.repository,new InMemoryCommerceRateLimiter(),config,()=>now+2,{cowriePurchasesEnabled:true});await expired.webhook(await verified("checkout.session.completed",checkout(order)));assert.equal(state(c,order),"expired");assert.equal(balance(c).purchased_balance,0);c.database.prepare("UPDATE questions SET publication_status='retired',retired_at=? WHERE stable_id LIKE 'south_d_extra_%'").run(now);await assert.rejects(c.service.startOrder(request(c,"cowrie_15_v1","2")),/unavailable/);}finally{c.database.close();}});
+
+
+test("audit records first verified processing atomically; replay never invents legacy timestamps",async()=>{
+  const c=await setup();try{
+    const order=await c.service.startOrder(request(c));
+    const event=await verified("checkout.session.completed",checkout(order));
+    c.adapter.failAt=9;
+    await assert.rejects(c.repository.processVerifiedWebhook(event,now),/processing_unavailable/);
+    assert.equal(c.database.prepare("SELECT COUNT(*) n FROM stripe_webhook_events").get().n,0);
+    c.adapter.failAt=-1;
+    await c.repository.processVerifiedWebhook(event,now);
+    const audit=()=>c.database.prepare("SELECT processed_at FROM stripe_webhook_events WHERE stripe_event_id=?").get(event.stripeEventId).processed_at;
+    assert.equal(audit(),now);
+    await Promise.all([c.repository.processVerifiedWebhook(event,now+1000),c.repository.processVerifiedWebhook(event,now+2000)]);
+    assert.equal(audit(),now);
+    assert.equal(balance(c).purchased_balance,5);
+    c.database.prepare("UPDATE stripe_webhook_events SET processed_at=NULL WHERE stripe_event_id=?").run(event.stripeEventId);
+    await c.repository.processVerifiedWebhook(event,now+3000);
+    assert.equal(audit(),null);
+  }finally{c.database.close();}
+});
+
+test("unmatched adverse audit waits for authoritative order reconciliation before timestamping",async()=>{
+  const c=await setup();try{
+    const early=await verified("charge.refunded",adverse());
+    await c.repository.processVerifiedWebhook(early,now);
+    const audit=()=>({...c.database.prepare("SELECT processed_at,processing_result FROM stripe_webhook_events WHERE stripe_event_id=?").get(early.stripeEventId)});
+    assert.deepEqual(audit(),{processed_at:null,processing_result:"received"});
+    const order=await c.service.startOrder(request(c));
+    await c.repository.processVerifiedWebhook(await verified("checkout.session.completed",checkout(order)),now+1000);
+    assert.deepEqual(audit(),{processed_at:now+1000,processing_result:"processed"});
+    assert.equal(balance(c).purchased_balance,0);
+  }finally{c.database.close();}
+});
