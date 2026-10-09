@@ -156,7 +156,7 @@ test("full refunds and disputes revoke; partial refunds require review without a
   const partialRaw=stripeRaw("charge.refunded",{id:"ch_partial",payment_intent:"pi_paid",amount:199,amount_refunded:100,currency:"gbp"},`evt_${"f".repeat(24)}`); await service.webhook(await verifyStripeWebhook({rawBody:partialRaw,signatureHeader:signed(partialRaw),config,now})); assert.equal(repository.entitlements.size,1);
   const fullRaw=stripeRaw("charge.refunded",{id:"ch_full",payment_intent:"pi_paid",amount:199,amount_refunded:199,currency:"gbp"},`evt_${"1".repeat(24)}`); await service.webhook(await verifyStripeWebhook({rawBody:fullRaw,signatureHeader:signed(fullRaw),config,now})); assert.equal(repository.entitlements.size,0);
   const disputed=await fixture();const disputedPending=await disputed.service.startOrder(request());const disputedPaid={id:"cs_test_disputed",client_reference_id:disputedPending.publicOrderReference,payment_status:"paid",payment_link:config.expectedPaymentLinkId,payment_intent:"pi_disputed",amount_total:199,currency:"gbp",mode:"payment"};const disputedPaidRaw=stripeRaw("checkout.session.completed",disputedPaid,`evt_${"6".repeat(24)}`);await disputed.service.webhook(await verifyStripeWebhook({rawBody:disputedPaidRaw,signatureHeader:signed(disputedPaidRaw),config,now}));
-  const disputeRaw=stripeRaw("charge.dispute.created",{id:"dp_test",payment_intent:"pi_disputed",amount:199,currency:"gbp"},`evt_${"7".repeat(24)}`);await disputed.service.webhook(await verifyStripeWebhook({rawBody:disputeRaw,signatureHeader:signed(disputeRaw),config,now}));assert.equal(disputed.repository.entitlements.size,0);assert.equal((await disputed.service.orderStatus({publicOrderReference:disputedPending.publicOrderReference,anonymousSessionCredential:rawCredential})).state,"disputed");
+  const disputeRaw=stripeRaw("charge.dispute.created",{id:"du_test",payment_intent:"pi_disputed",amount:199,currency:"gbp"},`evt_${"7".repeat(24)}`);await disputed.service.webhook(await verifyStripeWebhook({rawBody:disputeRaw,signatureHeader:signed(disputeRaw),config,now}));assert.equal(disputed.repository.entitlements.size,0);assert.equal((await disputed.service.orderStatus({publicOrderReference:disputedPending.publicOrderReference,anonymousSessionCredential:rawCredential})).state,"disputed");
 });
 
 test("success-page and query-shaped values cannot grant entitlement", async () => {
@@ -171,4 +171,17 @@ test("premium media requires a verified result-specific entitlement and exposes 
   for(const style of ROYAL_PORTRAIT_STYLES)assert.match(royalPortraitFilename(style,"west"),/\.png$/);assert.match(royalCertificateFilename("west"),/\.png$/);assert.equal(royalStoryProjection(projection).publicResultUrl,null);
   const [media,story,pack]=await Promise.all([readFile(new URL("../../app/royalRevealMedia.ts",import.meta.url),"utf8"),readFile(new URL("../../app/storyVideo.ts",import.meta.url),"utf8"),readFile(new URL("../../app/RoyalRevealPack.tsx",import.meta.url),"utf8")]);
   assert.match(story,/activeFeatureFlags\.commerce[^]*requireRoyalRevealProjection/);assert.match(media,/requireRoyalRevealProjection/);assert.doesNotMatch(`${media}\n${pack}`,/privatePhoto|portraitUrl|orderReference|stripe|credential|challengeCode/i);
+});
+
+test("signed real Stripe dispute IDs are accepted; incorrect object prefixes and signatures remain rejected", async () => {
+  const object = {id:"du_sandbox_snapshot_regression",object:"dispute",payment_intent:"pi_sandbox_snapshot_regression",amount:199,currency:"gbp"};
+  const raw = stripeRaw("charge.dispute.created",object);
+  assert.equal((await verifyStripeWebhook({rawBody:raw,signatureHeader:signed(raw),config,now})).eventType,"charge.dispute.created");
+  for (const id of ["dp_test","ch_test","du_","du_bad/unsafe"]) {
+    const invalid = stripeRaw("charge.dispute.created",{...object,id});
+    await assert.rejects(()=>verifyStripeWebhook({rawBody:invalid,signatureHeader:signed(invalid),config,now}),/stripe_payment_mismatch/);
+  }
+  await assert.rejects(()=>verifyStripeWebhook({rawBody:raw+" ",signatureHeader:signed(raw),config,now}),/stripe_signature_invalid/);
+  const live = JSON.stringify({id:"evt_live_dispute",type:"charge.dispute.created",livemode:true,data:{object}});
+  await assert.rejects(()=>verifyStripeWebhook({rawBody:live,signatureHeader:signed(live),config,now}),/stripe_event_invalid/);
 });

@@ -36,7 +36,7 @@ export function request(context,key="cowrie_5_v1",id="1") {return{productKey:key
 let eventNumber=0;
 export function rawEvent(type,object,extra={}){return JSON.stringify({id:`evt_local_D_${++eventNumber}`,type,livemode:false,data:{object},...extra});}
 export function sign(raw,timestamp=Math.floor(now/1000)){return `t=${timestamp},v1=${createHmac("sha256",config.webhookSigningSecret).update(`${timestamp}.${raw}`).digest("hex")}`;}
-export async function verified(type,object,extra={}){const raw=rawEvent(type,type==="charge.dispute.created"?{...object,id:"dp_local_D_dispute"}:object,extra);return verifyStripeWebhook({rawBody:raw,signatureHeader:sign(raw),config,now});}
+export async function verified(type,object,extra={}){const raw=rawEvent(type,type==="charge.dispute.created"?{...object,id:"du_local_D_dispute"}:object,extra);return verifyStripeWebhook({rawBody:raw,signatureHeader:sign(raw),config,now});}
 export function checkout(order,key="cowrie_5_v1",intent="pi_local_D_primary",status="paid"){return{id:`cs_local_D_${intent.slice(3)}`,client_reference_id:order.publicOrderReference,payment_link:config.cowrieBundles[key].expectedPaymentLinkId,payment_intent:intent,amount_total:cowrieProducts[key].amountMinor,currency:"gbp",mode:"payment",payment_status:status};}
 export function adverse(intent="pi_local_D_primary",amount=199,refunded=amount){return{id:"ch_local_D_refund",payment_intent:intent,amount,amount_refunded:refunded,currency:"gbp"};}
 export function balance(context){return {...context.database.prepare("SELECT purchased_balance,bonus_balance FROM cowrie_wallets LIMIT 1").get()};}
