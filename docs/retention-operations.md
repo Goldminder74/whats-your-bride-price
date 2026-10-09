@@ -141,3 +141,64 @@ scalable independent custody is a prerequisite for broader activation. Before an
 provider restore, follow the all-off/external-receipt-removal procedure above and
 reconcile the latest independent authority. A privileged unannounced rollback
 cannot be detected solely by application state. No live job was activated.
+
+
+## Readiness audit — 9 October 2026
+
+Current source: `62df79596e16dfa176730c73837cc693a8b6000a`.
+The four isolated local rehearsal checks passed again against the audit-timestamp
+correction. SQLite drained 12,000 answers in 240 bounded passes, 2,009 ms total,
+p95 11 ms/pass (about 5,972 rows/sec). Miniflare D1 drained 1,440 answers in
+29 passes, 2,468 ms. These measure local execution, not a hosted deadline guarantee.
+File-backed restore replay preserved original holds/closure clocks and accounting
+lineage, suppressed deleted/closed access, survived repeated replay and re-minimised
+an older snapshot. No hosted purge or restore ran. The existing test database exposes
+a current Time Travel bookmark; this verifies availability, not successful restoration.
+
+The timestamp correction does not alter expiry, retention eligibility or financial
+protection. Seven earlier processed sandbox events still have unknown processing
+timestamps; no dates were manufactured. Operational backup review must preserve
+that uncertainty rather than treat a new replay as historical processing proof.
+
+### Exact work and approval still required
+
+1. **Independent operational custody:** appoint the accounting/support custodian and
+   approve a restricted, encrypted rolling database/authority export destination,
+   access list and verification procedure under the already approved retention
+   periods. Google Drive research/synthetic archives do not back up current payment
+   records. Automated independent journaling and recovery beyond 100 records/category
+   or 64 KiB are missing implementation, not settings to switch on. Approve scoped
+   checkpointed/paginated export and restore development before exceeding those caps.
+   Preserve financial dependencies and apply the existing 30-day operational window;
+   do not invent a longer identifiable suppression log.
+2. **Provider restore rehearsal:** separately approve either an isolated rehearsal D1
+   within existing allowances or a maintenance-window restore of the existing test D1.
+   Do not restore production. Before any restore: verified current export and independent
+   latest authority, protected all-off release, cron off, external restore receipt
+   removed. Afterwards reconcile signed payments/ledger/allocations, reapply holds,
+   cases, closures and suppression, verify inaccessible records and accounting, then
+   install a fresh reviewed receipt before reopening. Time Travel cannot currently
+   clone a database; an in-place rollback needs explicit approval and a recovery plan.
+3. **Hosted capacity proof:** separately approve synthetic hosted benchmarks, their
+   exact database/volume and allowance ceiling. Measure the complete scheduled path
+   (including bonus expiry and unissued-play reversal), CPU, query counts, rows read/
+   written, backlog age, held dependencies and outage catch-up. Current local figures
+   cover the approved purge, not every scheduled workload. No benchmark data or job
+   was added to hosted storage here.
+4. **Volume/schedule decision:** supply expected peak games/day, existing deletion
+   backlog and outage allowance. At 50 answers every 15 minutes, theoretical capacity
+   is 4,800/day or 33,600/week before arrivals/outages; 5,000 twelve-answer quizzes
+   need 300 hours and miss seven days. A five-minute schedule at the same bound would
+   triple theoretical capacity but remains unapproved/unverified on the host. Approve
+   the measured schedule, monitoring/alerts and operator escalation before enabling
+   any cron. The current scheduled entry is explicitly test-only, not production wiring.
+
+Provider documentation checked 9 October 2026:
+[Time Travel](https://developers.cloudflare.com/d1/reference/time-travel/) is always
+on, has no additional history/restore charge and retains seven days on Free or
+30 on Paid; this is not independent custody. [D1 limits](https://developers.cloudflare.com/d1/platform/limits/)
+include invocation/query-duration limits.
+[Free-tier enforcement](https://developers.cloudflare.com/changelog/product/d1/)
+stops queries at account daily limits until midnight UTC; include all account usage
+and index writes in hosted capacity budgeting. No plan or charge was approved here.
+Owner policy approval remains distinct from professional legal sign-off.
