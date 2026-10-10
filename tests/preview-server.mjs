@@ -8,12 +8,19 @@ const clientRoot = resolve(projectRoot, "dist", "client");
 const serverEntry = resolve(projectRoot, "dist", "server", "index.js");
 const port = Number(process.env.WYBP_PREVIEW_PORT || 3100);
 const hostname = process.env.WYBP_PREVIEW_HOST || "127.0.0.1";
+const reviewOwnerSubject = process.env.WYBP_REVIEW_BUILD === "true"
+  && process.env.WYBP_REVIEW_OWNER_DASHBOARD_FIXTURES === "true"
+  && /^[A-Za-z0-9][A-Za-z0-9_.:@-]{0,127}$/.test(process.env.WYBP_PREVIEW_OWNER_SUBJECT || "")
+  ? process.env.WYBP_PREVIEW_OWNER_SUBJECT
+  : "";
 
 const mimeTypes = new Map([
   [".css", "text/css; charset=utf-8"],
   [".html", "text/html; charset=utf-8"],
+  [".ico", "image/x-icon"],
   [".js", "text/javascript; charset=utf-8"],
   [".json", "application/json; charset=utf-8"],
+  [".webmanifest", "application/manifest+json; charset=utf-8"],
   [".png", "image/png"],
   [".svg", "image/svg+xml"],
   [".webp", "image/webp"],
@@ -54,14 +61,33 @@ const server = createServer(async (incoming, outgoing) => {
       return;
     }
     const directAsset = await findAsset(requestUrl.pathname);
+    const requestBody = !["GET", "HEAD"].includes(incoming.method || "GET")
+      ? Buffer.concat(await Array.fromAsync(incoming))
+      : undefined;
+    const requestHeaders = new Headers(incoming.headers);
+    if (reviewOwnerSubject && requestUrl.pathname.startsWith("/owner/analytics")) {
+      requestHeaders.set("oai-authenticated-user-id", reviewOwnerSubject);
+      requestHeaders.set("oai-authenticated-user-email", "review-owner@example.invalid");
+    }
     const response = directAsset
       ? await assetResponse(new Request(requestUrl))
       : await worker.fetch(
-          new Request(requestUrl, { method: incoming.method, headers: incoming.headers }),
+          new Request(requestUrl, {
+            method: incoming.method,
+            headers: requestHeaders,
+            body: requestBody?.length ? requestBody : undefined,
+          }),
           { ASSETS: { fetch: assetResponse } },
           { waitUntil() {}, passThroughOnException() {} },
         );
 
+    if (process.env.WYBP_PREVIEW_IMAGE_AUDIT === "true" && requestUrl.pathname === "/questions/image-answer") {
+      // Local test evidence only; never log cookies, request bodies or secrets.
+      console.log("Image answer wire: " + JSON.stringify({
+        origin: requestHeaders.get("origin"), mode: requestHeaders.get("sec-fetch-mode"),
+        site: requestHeaders.get("sec-fetch-site"), status: response.status,
+      }));
+    }
     outgoing.writeHead(response.status, Object.fromEntries(response.headers));
     if (incoming.method === "HEAD" || !response.body) {
       outgoing.end();
@@ -76,10 +102,15 @@ const server = createServer(async (incoming, outgoing) => {
 });
 
 function stop() {
+  server.closeIdleConnections?.();
   server.close(() => process.exit(0));
+  setTimeout(() => {
+    server.closeAllConnections?.();
+    process.exit(0);
+  }, 250).unref();
 }
 process.on("SIGINT", stop);
 process.on("SIGTERM", stop);
 server.listen(port, hostname, () => {
-  console.log(`Review preview ready at http://${hostname}:${port}`);
+  console.log(`Review preview ready at http://${hostname}:${server.address().port}`);
 });

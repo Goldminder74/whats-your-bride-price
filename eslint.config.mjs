@@ -13,6 +13,8 @@ const eslintConfig = defineConfig([
     "dist/**",
     "out/**",
     "build/**",
+    "work/**",
+    "outputs/netlify-worker/**",
     "next-env.d.ts",
   ]),
   eslint.configs.recommended,
