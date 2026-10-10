@@ -768,3 +768,74 @@ and unrelated features remain disabled. Stripe activation is paused. Existing pu
 websites, DNS, other resources, staging and stash were untouched. If later live checks
 fail, restore the previous `cb5ce5b6…` Worker/client pair and Netlify deployment
 `6ac39ed9dc048234fd201369`; keep the test D1 intact. Rollback is not reverse SQL.
+
+## Complete private-source deployment — 10 October 2026
+
+Audited clean local/remote `feature/viral-build-sprint` source
+`0d2a94589136d4b41c8387671e1835544986e3cc` against the deployed `a7f3ade` source.
+The complete matched build incorporates these formerly missing commits:
+
+| Commit | Included change |
+| --- | --- |
+| `a036c99` | Verified Stripe dispute identifier validation; commerce remains disabled |
+| `62df795` | Verified webhook processing timestamps; webhook remains disabled |
+| `6f38448` | Recorded sandbox gates and retention limits |
+| `ec29853` | Site-wide shorter copy, accessible information controls and FAQ |
+| `087e6f6` | Share Centre Escape/focus return and operational backup tooling |
+| `7ba5e73` | Recorded rehearsal adapter blocker |
+| `0d2a945` | Completed operational recovery adapters and migration 0013, operator-only |
+
+The operational scripts are repository tools, not newly exposed application routes.
+Migration 0013 adds operator recovery tables; runtime source has no dependency on
+them. Authenticated preflight/postflight compared existing D1 with local migrations
+0000–0012, verified the migration ledger and foreign keys, and confirmed 30 published
+questions per region. No migration, seed or publication was performed. The two
+wallets, 13 ledger entries, purchased balance total 54 and bonus total zero remained
+unchanged. Authorised gameplay creates ordinary quiz activity only.
+
+Matched release `241c49f2a5cc56b463235cc0be528123845f09dee4e8bd42657f4c220df65f3d`:
+
+- Netlify deployment `6ac98b120f83c2a037e6c32d` on existing private project
+  `edee23f4-b86f-4975-8859-9c4be03ebbc0`.
+- Worker version `2eab2542-2d29-400a-8c19-b4539f30b688` on `wybp-test-r001`.
+- Secret-free local build and actual Wrangler dry-run package verified all 142
+  required server modules. Separate secret-dependent verification reused existing
+  signing configuration; no secret entered release files or the build environment.
+- No-build Netlify upload reconciled every one of the 110 client files by checksum
+  and size. Same release identity/configuration verified for Worker and client.
+- Existing D1/profile, authenticated ASSETS, Images and `run_worker_first=true`
+  retained; R2 unbound. Only random replay enabled. Commerce, Cowrie enforcement,
+  webhook, cron, fast_entry and other optional flags remain disabled.
+
+Fresh validation: entry/gameplay E2E 12/12; Share Centre E2E 4/4 plus its unit/rendered
+checks; feature, commerce, hosting and private-runtime focused tests 41/41. The
+recorded complete integration gate for unchanged source, including both compiled
+targets and disabled-journey local fixtures, was reused rather than repeated.
+Build/package/release verification and final diff check passed.
+
+Live owner-browser checks completed all five 12-question random games and result
+screens. Every region exercised a mobile viewport and refresh after question seven;
+Southern Africa's final questions additionally exercised desktop image progression.
+Desktop refresh separately preserved the exact prompt/options. Photo/name
+information, click/keyboard dismissal, 320px layout, FAQ, Share Centre Escape/focus,
+Privacy return, Terms, browser back/forward and refresh passed without captured
+browser errors. Shared invitation controls were inspected; no external message or
+public result was published. Physical-device and newly activated optional journeys
+are not claimed. Those journeys remain disabled and covered by local fixtures.
+
+Primary and immutable preview anonymous access returned 401. Unsigned/invalid
+direct Worker requests, assets and the disabled webhook returned 404; valid signing
+was accepted. Netlify protection remains `all`, with no Git repository connected.
+No public site, DNS, Stripe, settings, plan or existing secret changed.
+
+Evidence remains outside Git in TEMP: `wybp-copy-release-*.log/json`,
+`wybp-copy-live-release-verification.json`, `wybp-copy-netlify-deployment.json`,
+`wybp-copy-worker-deploy.log` and `wybp-updated-private-entry.jpg`.
+These are diagnostic receipts, not independently archived production evidence.
+
+Rollback pair verified before deployment: release
+`f1cbdeec1c3df2340ed58efbaddc49d24061bb6e9e13cfd12437a0adf110dd70`,
+Netlify `6ac815e3a823977864ab5e66`, Worker
+`dec43f5c-6949-4438-9fb7-eb8be10afd6f`. Restore that Netlify deployment and Worker
+version together, verify owner/anonymous access and signed ingress, and preserve D1.
+Do not reverse migrations or reset wallets. No rollback was necessary.
