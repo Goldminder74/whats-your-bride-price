@@ -306,3 +306,6 @@ export async function main(args = process.argv.slice(2)) {
   } finally { journal.close(); }
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) main().then(result => console.log(JSON.stringify(result))).catch(() => { console.error("Local operational recovery rejected. No record contents or credentials logged."); process.exitCode = 1; });
+
+// Reused by the provider operator; callers must retain private-path and custody gates.
+export { seal as encryptRecord, open as decryptRecord, digest as recoveryHash };

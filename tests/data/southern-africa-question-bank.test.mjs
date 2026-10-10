@@ -124,6 +124,7 @@ test("prior packs, protected files and migrations retain approved hashes", async
     "0010_hard_aqueduct.sql": "1a969b4a9a0bfb528dc4d811d968ab7c1769a02e279840defc045553289edc79",
     "0011_useful_wendell_vaughn.sql": "729a57db96851c507e74d705efd669407a1a1f5785f2b61aa85551ac15222f33",
     "0012_retention_authority.sql": "d9be0683f51232ab55a08ce093d72ad1c3cec9b57d9f170e09cef325f6741ec2",
+    "0013_operational_recovery.sql": "9cc74ee4cd863d2fbde55fcaf8b855547defc88ac5508708e54f6c3d128dc4dd",
   };
   const migrationDir = new URL("../../drizzle/", import.meta.url);
   const migrations = (await readdir(migrationDir)).filter((name) => /^\d{4}_.+\.sql$/.test(name)).sort();

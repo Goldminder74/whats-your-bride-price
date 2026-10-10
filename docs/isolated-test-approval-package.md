@@ -200,3 +200,37 @@ outages and other work. The 1,440-answer fixture needs 29 bounded passes (conser
 7h15 at that schedule). This arithmetic is not measured hosted throughput or evidence
 of a seven-day production deadline. Owner demand, backlog/outage tolerance, custodian,
 private operational destination and separate key custody remain production decisions.
+
+## Approved operational migration extension — 10 October 2026
+
+Owner approval extends this exact synthetic rehearsal to unchanged 0000–0012 plus
+`0013_operational_recovery.sql` (SHA-256
+`9cc74ee4cd863d2fbde55fcaf8b855547defc88ac5508708e54f6c3d128dc4dd`).
+Only `wybp-restore-rehearsal-r001` may receive 0013; existing test/production must not.
+No resource was present at authenticated inventory; Workers Free and its D1 limits
+were visible in the signed-in account. Current usage must be checked before writes.
+
+See [D1 operator boundaries](retention-operations.md#d1-recovery-adapter-and-approved-migration-0013--10-october-2026).
+The rehearsal remains unbound and synthetic-only. Its own data may be restored into
+that same isolated database after verified encrypted export; preserve the independent
+archive and authority receipt before resetting only the rehearsal state. Keep all
+application routes, cron, payments, websites and other databases unchanged. Delete
+only the newly created rehearsal database after evidence/custody receipts are saved;
+otherwise leave it unbound and report the precise cleanup blocker.
+
+### Rehearsal completed and cleaned — 10 October 2026
+
+The approved synthetic rehearsal received unchanged migrations 0000–0013 only in
+`ed22b01c-c791-4982-ba2e-5c8d2aa8c164`, never bound to a Worker. Transaction rollback,
+fixed-bookmark full export, interrupted/resumed import and delivery, fresh suppression,
+closed-wallet/hold/accounting preservation passed. Measured 1,440 answers/29 bounded
+passes: 14.758 seconds total, p95 0.874 seconds. Owner-only Drive download and all
+221 file checksums verified. The rehearsal database was then deleted; inventory
+confirmed cleanup. Detailed receipts and limitations: [retention operations](retention-operations.md#verified-synthetic-hosted-rehearsal--10-october-2026).
+
+Next approval must identify production custodian, private destination and separate
+key custody; expected arrivals/backlog/outage allowance and an operational purge
+schedule within quotas; continuous independent authority delivery plus failure alerts;
+and the separately reviewed production runtime/live-payment/domain activation scope.
+This rehearsal grants none of those activations. Existing test D1 remains 0000–0012;
+0013 must not be applied there or to production under this approval.

@@ -117,7 +117,7 @@ test("restore requires external receipt, suppresses erased ownership immediately
 });
 
 test("private CLI requires explicit target/action approval and verifies current schema; never contacts hosted service in dry-run",async()=>{
-  const target=await retentionTargetSchema();assert.equal(target.migrations.length,13);assert.match(target.schemaSha256,/^[0-9a-f]{64}$/);
+  const target=await retentionTargetSchema();assert.equal(target.migrations.length,14);assert.match(target.schemaSha256,/^[0-9a-f]{64}$/);
   await assert.rejects(operatorMain([],{}),/input_required/);
   assert.equal((await operatorMain(["--export-suppression"],{})).dryRun,true);
 });

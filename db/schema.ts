@@ -893,3 +893,29 @@ export const retentionOrderMinimisation = sqliteTable("retention_order_minimisat
   orderId: text("order_id").primaryKey().references(() => commerceOrders.id,{onDelete:"restrict"}),
   minimisedAt: integer("minimised_at").notNull(),
 });
+
+
+// Operator-only recovery metadata. No application feature is enabled by these tables.
+export const operationalAuthorityOutbox = sqliteTable("operational_authority_outbox", {
+  sequence: integer("sequence").primaryKey(), operationId: text("operation_id").notNull().unique(),
+  intentHash: text("intent_hash").notNull(), previousHash: text("previous_hash").notNull(),
+  eventHash: text("event_hash").notNull().unique(), encryptedEvent: text("encrypted_event").notNull(),
+  createdAt: integer("created_at").notNull(), expiresAt: integer("expires_at").notNull(),
+  deliveryReceipt: text("delivery_receipt"), acknowledgedAt: integer("acknowledged_at"),
+}, table => [
+  check("operational_outbox_window_ck", sql`${table.expiresAt} - ${table.createdAt} = 2592000000`),
+  check("operational_outbox_sequence_ck", sql`${table.sequence} > 0`),
+  check("operational_outbox_ack_ck", sql`(${table.deliveryReceipt} is null and ${table.acknowledgedAt} is null) or (${table.deliveryReceipt} is not null and ${table.acknowledgedAt} >= ${table.createdAt})`),
+]);
+export const operationalRecoveryCheckpoints = sqliteTable("operational_recovery_checkpoints", {
+  id: text("id").primaryKey(), kind: text("kind").notNull(), manifestHash: text("manifest_hash").notNull(),
+  sequence: integer("sequence").notNull().default(0), headHash: text("head_hash").notNull(),
+  cursor: integer("cursor").notNull().default(0), state: text("state").notNull(),
+  version: integer("version").notNull().default(1), createdAt: integer("created_at").notNull(),
+  expiresAt: integer("expires_at").notNull(),
+}, table => [
+  check("operational_checkpoint_window_ck", sql`${table.expiresAt} - ${table.createdAt} = 2592000000`),
+  check("operational_checkpoint_kind_ck", sql`${table.kind} in ('journal','export','restore','custody')`),
+  check("operational_checkpoint_state_ck", sql`${table.state} in ('idle','exporting','importing','complete')`),
+  check("operational_checkpoint_progress_ck", sql`${table.sequence} >= 0 and ${table.cursor} >= 0 and ${table.version} >= 1`),
+]);

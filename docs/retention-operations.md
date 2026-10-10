@@ -292,3 +292,128 @@ lifetime; original focus assertions remain with added keyboard/mobile nested-dis
 coverage. Affected suite passes four browser tests. No timeout/coverage weakening.
 Final ordinary build and diff-check receipts are recorded in the handover. Evidence
 stays in TEMP `wybp-recovery-focus-*`, outside Git. No hosted operation occurred.
+
+## D1 recovery adapter and approved migration 0013 — 10 October 2026
+
+The owner approved `0013_operational_recovery.sql` only for the unbound synthetic
+rehearsal database. Existing test/production databases remain at 0000–0012.
+The two additive tables contain encrypted operator intents, unique time-bound
+operation IDs, delivery receipts and resumable progress. They do not enable features.
+
+`scripts/d1-rehearsal-provider.mjs` pins the account and exact rehearsal name/UUID,
+refuses the application test database and sanitises provider errors. Inject the existing
+OAuth credential in the operator process; never put it in arguments, artifacts or logs.
+It polls the native export's fixed bookmark, encrypts SQL and polling checkpoints, and
+sends no account credential to the HTTPS Cloudflare Storage download URL.
+
+`scripts/d1-operational-recovery.mjs` records an immutable encrypted independent
+intent **before** the transactional D1 business/outbox/head batch. Delivery and
+readback are separate from D1, not cross-provider atomic. A lost response is retried
+with the same operation ID. Conflicting IDs or hash chains fail closed. An unresolved
+intent blocks recovery. An operator may record an explicit abort only after fencing
+the source against further journalled writes and verifying that no outbox commit
+exists. Source loss before that proof cannot be treated as a successful abort.
+
+A fenced, complete native snapshot plus encrypted pages/history and the latest
+independent authority boundary is the recovery unit. Every listed file and checksum
+must read back; later intents invalidate the old boundary. Native provider export
+blocks database queries while running. This design assumes an exclusive operator
+and a database never bound to application routes; it does not fence arbitrary
+Cloudflare administrators or track writes bypassing this operator.
+
+The offline import plan accepts only the unbound rehearsal target, requires empty
+application tables, pins the complete plan, and commits each page with its cursor.
+Historical values must not rerun live accounting side effects: application triggers
+are temporarily omitted inside this unbound, access-blocked import and reinstated
+exactly before final schema/content/foreign-key reconciliation. Operational fencing
+triggers remain installed. Failed/partial imports never receive an active runtime
+restore receipt. Checkpoint completion alone cannot authorise access: the existing
+fresh independently reviewed suppression receipt is still required. No automated
+binding, receipt installation or application reopen is provided. After complete review,
+`resumeJournalAfterRestore` resumes the pinned sequence/hash in the same independent
+custody namespace, so later authority invalidates pre-restore boundaries too.
+
+Retention reuses the **approved 30-day operational-backup window**, not financial
+retention. Expired boundaries/checkpoints/intents are unavailable immediately.
+`cleanupRecovery` removes at most 50 covered expired outbox records, 50 completed
+expired checkpoints and 50 private files per call, after a fresh full boundary covers
+retired authority. It never deletes financial rows, holds or closure authority.
+Operators must complete a fresh full snapshot before retiring old history; failed
+custody must alert and block recovery, not silently discard unresolved authority.
+No hosted cleanup schedule is activated by this implementation. Complete fixture,
+provider, custody and throughput results belong in the dated rehearsal receipt below.
+
+If replacement custody is unavailable, `expireRecoveryArtifacts` still removes
+expired encrypted operational data/progress in bounded passes at the same approved
+30-day deadline. It invalidates journal progress instead of extending retention or
+claiming safe recovery. Holds/closure/accounting authority in application tables is
+untouched. Re-establishing a reviewed full baseline is required before recovery;
+expired or missing progress never permits access. Local plaintext snapshot working
+files and downloaded private copies must be removed with the same backup window;
+this operator does not claim control over provider snapshots or independently held keys.
+
+`RemoteCustody` supplies a paginated independently authenticated storage transport:
+readback verifies every object; lost upload responses and identical duplicates are
+idempotent, conflicting copies fail closed. Transport credentials/permissions are
+injected outside the module. The rehearsal uses durable private operator files for
+precommit intent plus a separately uploaded/downloaded Drive archive for custody;
+this does **not** claim that continuous production Drive delivery is installed or
+that filesystem durability proves a third-party upload. Partial local ciphertext
+uploads are hidden from recovery and bounded cleanup uses the same 30-day window.
+
+Native schema delivery uses Cloudflare's SQL import API (checksum-verified upload,
+ingestion and bounded polling). The query API rejected the unchanged migration 0009
+with `incomplete input`; native import accepted the intact compound triggers. Schema
+pages include their migration receipt or restore cursor in the same import. Bound
+values are rendered with strict scalar validation and SQL quoting, outside literals
+and comments. Uploads never receive the account Authorization header. After an
+ambiguous response, the caller reads the durable receipt/cursor before retrying.
+This is operator-only on the pinned unbound rehearsal database, not an application
+runtime change. See [Cloudflare import/export](https://developers.cloudflare.com/d1/best-practices/import-export-data/)
+and [import API](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/import/).
+
+### Verified synthetic hosted rehearsal — 10 October 2026
+
+- Created only unbound `wybp-restore-rehearsal-r001`, UUID
+  `ed22b01c-c791-4982-ba2e-5c8d2aa8c164`; applied all 14 checksum-verified migrations.
+  A deliberately failing query batch left zero probe rows. Migration 0013 hash above
+  remains unchanged; existing application database received no migration or write.
+- Fixed-bookmark native SQL snapshots were compared against all source schema objects
+  and complete table contents, including operator metadata. Synthetic fixture:
+  120 quizzes, 1,440 answers, six wallets, five refunded orders, five closures/holds.
+- Bounded retention removed 1,440 answers in 29 passes, each at most 50: 14,758 ms
+  aggregate, p95 874 ms. All five holds survived. At one pass per 15 minutes this
+  fixture requires 7h15; theoretical answer capacity is 33,600/seven days, **not**
+  a production guarantee. Arrival rate, backlog, outages, other tables and free-tier
+  write/read budgets must be included in the production schedule. No cron activated.
+- Independent readback interruption resumed without changing ciphertext; later intent
+  rejected an old boundary. Import interrupted after page three and resumed from its
+  committed cursor. Access failed before completion and before fresh suppression
+  receipt. Restored answers stayed absent; five closed wallets could not reopen.
+  Holds and ledger/order/allocation references reconciled; foreign-key check returned
+  zero violations. Releasing one hold allowed exactly one wallet minimisation; four
+  holds remained and ledger values were unchanged.
+- The isolated reset first rejected foreign-key RESTRICT dependencies. Dependency-
+  ordered synthetic deletion, including self-referenced ledger leaves, resolved it
+  without disabling foreign keys. Native import rejected an extra empty statement;
+  the serializer now emits exactly one terminator and protects quoted parameters.
+  Original failed receipts/logs are retained privately; they are not successful passes.
+- Encrypted archive `d1-rehearsal-20261010-encrypted.zip`, 7,066,537 bytes, SHA-256
+  `31bc31cec42455709bf07ab4632989977f1b6f671666b33334f2bdcdd8fc9a91`.
+  Owner-only Drive file `1rK5BZBmatLS2emdCBw4dQ3TiCYTAfedN`, receipt
+  `1zkLWLvUhDUmp3VcDhPI4cjdadW-n5XSh`, in approved private account. Downloaded
+  archive matched SHA-256; all 221 internal files matched their manifest. No key,
+  plaintext SQL/database, credentials or local auth configuration was uploaded.
+  Key remains separately local; independent key custody is **not** verified.
+- Final native bookmark `00000006-000000ca-00005100-753e3210280c802d99c21b5601d9b661`.
+  New rehearsal DB deleted after custody verification; inventory confirmed its absence
+  and preserved existing test DB. Private generated receipts/logs remain in ignored
+  `outputs/retention-authority/d1-rehearsal-20261010` and TEMP, subject to the approved
+  30-day backup window. Provider snapshot expiry/deletion is provider-managed;
+  deleting the resource does not prove immediate physical erasure of provider backups.
+
+Local validation: complete `test:all` integration gate passed, final operator tests
+17/17, prior data gate 228/228, final lint/build/diff passed. The final native-import
+correction affects only the operator; its affected tests/lint were rerun, not unchanged
+application suites. Independent delivery is never claimed atomic with D1. Observed
+rehearsal recovery does not establish continuous production delivery or key custody.
