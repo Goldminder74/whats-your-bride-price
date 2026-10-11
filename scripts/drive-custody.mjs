@@ -30,6 +30,7 @@ export class DriveCustody {
     this.name(name); bytes = Buffer.from(bytes);
     if (!bytes.length || bytes.length > 4 * 1024 * 1024) throw Error('drive_file_bounds');
     let id = await this.index.get(name);
+    if (id) id = await this.index.reserve(name, id);
     if (!id) {
       const response = await this.request('https://www.googleapis.com/drive/v3/files/generateIds?count=1&space=drive&type=files');
       if (!response.ok) throw Error('drive_generate_id');
@@ -71,4 +72,56 @@ export class DriveCustody {
     } while (page);
     return names.sort();
   }
+  async inventoryReceipt() {
+    const files = [];
+    for (const name of await this.list()) {
+      const bytes = await this.get(name);
+      if (!bytes) throw Error('drive_inventory_gap');
+      files.push({ name, id: await this.index.get(name), sha256: recoveryHash(bytes) });
+    }
+    return { files, sha256: recoveryHash(Buffer.from(JSON.stringify(files))) };
+  }
+  /** The expected receipt comes from separately secured recovery custody, never
+   * an untrusted archive. Recover mappings only after folder/name/bytes readback. */
+  async recoverIndex(files, expectedReceipt) {
+    if (!Array.isArray(files) || files.length > 10000 || !/^[a-f0-9]{64}$/.test(expectedReceipt)
+      || recoveryHash(Buffer.from(JSON.stringify(files))) !== expectedReceipt) throw Error('drive_inventory_receipt');
+    const seen = new Set();
+    for (const file of files) {
+      this.name(file.name);
+      if (!valid(file.id) || !/^[a-f0-9]{64}$/.test(file.sha256) || seen.has(file.name)) throw Error('drive_inventory_conflict');
+      seen.add(file.name);
+      const response = await this.request('https://www.googleapis.com/drive/v3/files/' + file.id + '?fields=id,name,parents,trashed');
+      if (!response.ok) throw Error('drive_recovery_metadata');
+      const metadata = await response.json();
+      if (metadata.id !== file.id || metadata.name !== file.name || metadata.trashed
+        || !metadata.parents?.includes(this.folderId)) throw Error('drive_recovery_scope');
+      const media = await this.request('https://www.googleapis.com/drive/v3/files/' + file.id + '?alt=media');
+      if (!media.ok) throw Error('drive_download');
+      const bytes = Buffer.from(await media.arrayBuffer());
+      if (bytes.length > 4 * 1024 * 1024 || recoveryHash(bytes) !== file.sha256) throw Error('drive_recovery_hash');
+      if (await this.index.reserve(file.name, file.id) !== file.id) throw Error('drive_index_conflict');
+    }
+    return files.length;
+  }
+  async remove(name) {
+    const id = await this.index.get(this.name(name));
+    if (!id) return;
+    if (!valid(id)) throw Error('drive_file_identity');
+    const response = await this.request('https://www.googleapis.com/drive/v3/files/' + id, { method: 'DELETE' });
+    if (!response.ok && response.status !== 404) throw Error('drive_delete');
+    // Preserve the reservation until its approved expiry, preventing ID/name reuse.
+  }
+  async cleanupTemporary(_now, limit = 50) {
+    if (!this.index.expired || !this.index.releaseExpired) throw Error('drive_cleanup_index_required');
+    const rows = await this.index.expired(limit);
+    for (const row of rows) {
+      const response = await this.request('https://www.googleapis.com/drive/v3/files/' + row.fileId, { method: 'DELETE' });
+      if (!response.ok && response.status !== 404) throw Error('drive_delete');
+      // Do not forget the stable ID until provider deletion is acknowledged.
+      await this.index.releaseExpired(row.checkpoint);
+    }
+    return rows.length;
+  }
+
 }

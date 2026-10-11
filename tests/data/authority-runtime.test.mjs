@@ -29,7 +29,7 @@ test('private runtime delivers verified authority and retries never repeat a mut
 test('interrupted delivery fences access, emits no private detail, and resumes safely',async()=>{
  const f=await fixture();try {let fail=true;f.options.snapshot=async()=>{if(fail)throw Error('provider-secret-must-not-leak');const b=Buffer.from('encrypted');return {files:[{name:'s.enc',sha256:await f.options.custody.put('s.enc',b)}]};};
  const service=createAuthorityService(f.options);await assert.rejects(service.deliver('interrupted'));
- await assert.rejects(service.ready(),/authority_unavailable/);assert.deepEqual(f.alerts,[{component:'authority',status:'blocked',at:f.at}]);
+ await assert.rejects(service.ready(),/authority_writer_unavailable/);assert.deepEqual(f.alerts,[{component:'authority',status:'blocked',at:f.at}]);
  fail=false;await service.deliver('interrupted');assert.equal(await service.ready(),true);
  }finally{f.sql.close();}
 });
@@ -52,5 +52,44 @@ test('overlapping local invocation cannot cross a delivery fence',async()=>{
  const service=createAuthorityService(f.options),delivery=service.deliver('overlap');await started;
  await assert.rejects(service.mutate(createOperationId(f.at),[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['blocked']}]),/authority_busy/);
  release();await delivery;assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,0);
+ }finally{f.sql.close();}
+});
+
+test('independent service instances share the database writer fence during an interrupted intent upload',async()=>{
+ const f=await fixture();try{let release,entered;const started=new Promise(r=>entered=r),put=f.options.custody.put;
+ f.options.custody.put=async(n,b)=>{if(n.endsWith('.intent')){entered();await new Promise(r=>release=r);}return put(n,b);};
+ const a=createAuthorityService(f.options),b=createAuthorityService(f.options),first=createOperationId(f.at),second=createOperationId(f.at);
+ const pending=a.mutate(first,[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['one']}]);await started;
+ await assert.rejects(b.mutate(second,[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['two']}]));
+ assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,0);await assert.rejects(b.ready(),/authority_writer_unavailable/);
+ release();await pending;f.options.custody.put=put;
+ await b.mutate(second,[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['two']}]);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,2);
+ }finally{f.sql.close();}
+});
+test('lost commit acknowledgement preserves a global fence; stable retry resolves without another accounting write',async()=>{
+ const f=await fixture();try{const batch=f.options.db.batch;let lose=true;
+ f.options.db.batch=async rows=>{const result=await batch(rows);if(lose&&rows.some(r=>r.sql.startsWith('INSERT INTO operational_authority_outbox'))){lose=false;throw Error('lost_ack');}return result;};
+ const op=createOperationId(f.at),statements=[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['one']}];
+ await assert.rejects(createAuthorityService(f.options).mutate(op,statements),/lost_ack/);
+ const replacement=createAuthorityService(f.options);await assert.rejects(replacement.ready(),/authority_writer_unavailable/);
+ await assert.rejects(replacement.mutate(createOperationId(f.at),[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['two']}]));
+ await replacement.mutate(op,statements);assert.equal(await replacement.ready(),true);
+ assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,1);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM operational_authority_outbox').get().n,1);
+ }finally{f.sql.close();}
+});
+
+test('production factory rejects absent secrets and wrong role before touching a database or network',async()=>{
+ const {configuredAuthorityService}=await import('../../worker/authorityService.mjs');let accessed=false;
+ const env={WYBP_AUTHORITY_ROLE:'test',get DB(){accessed=true;throw Error('must_not_access');}};
+ assert.throws(()=>configuredAuthorityService(env,{snapshot:async()=>{},alert:async()=>{}}),/authority_runtime_configuration/);assert.equal(accessed,false);
+ assert.throws(()=>configuredAuthorityService({WYBP_AUTHORITY_ROLE:'production-ops',WYBP_AUTHORITY_DATABASE_NAME:'wybp-prod-d1-r001'},{snapshot:async()=>{},alert:async()=>{}}),/authority_runtime_configuration/);
+});
+
+test('a replacement generation fences a still-running previous instance even for the same retry identity',async()=>{
+ const {D1WriterFence}=await import('../../worker/d1WriterFence.mjs'),f=await fixture();try{
+ let release,entered;const started=new Promise(r=>entered=r),a=new D1WriterFence(f.options.db),b=new D1WriterFence(f.options.db);
+ const old=a.run('same-retry','same-payload',async db=>{entered();await new Promise(r=>release=r);await db.batch([{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['stale']}]);});await started;
+ await b.run('same-retry','same-payload',db=>db.batch([{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['replacement']}]));release();await assert.rejects(old);
+ assert.deepEqual(f.sql.prepare('SELECT id FROM synthetic_records').all().map(r=>r.id),['replacement']);
  }finally{f.sql.close();}
 });

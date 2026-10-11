@@ -162,7 +162,7 @@ export async function expireRecoveryArtifacts(authority,{limit=50,now=Date.now()
  if(!Number.isInteger(limit)||limit<1||limit>50)reject('cleanup_bounds');
  const rows=await authority.db.query('SELECT sequence FROM operational_authority_outbox WHERE expires_at<=?1 ORDER BY sequence LIMIT ?2',[now,limit]);
  if(rows.length)await authority.db.batch([{sql:"UPDATE operational_recovery_checkpoints SET state='importing',version=version+1 WHERE id='journal'",params:[]},...rows.map(row=>({sql:'DELETE FROM operational_authority_outbox WHERE sequence=?1 AND expires_at<=?2',params:[row.sequence,now]}))]);
- const checkpoints=await authority.db.query("SELECT id FROM operational_recovery_checkpoints WHERE expires_at<=?1 ORDER BY id LIMIT ?2",[now,limit]);
+ const checkpoints=await authority.db.query("SELECT id FROM operational_recovery_checkpoints WHERE expires_at<=?1 AND id NOT LIKE 'drive_file:%' ORDER BY id LIMIT ?2",[now,limit]);
  if(checkpoints.length)await authority.db.batch(checkpoints.map(row=>({sql:'DELETE FROM operational_recovery_checkpoints WHERE id=?1 AND expires_at<=?2',params:[row.id,now]})));
  let files=0;
  const names=await authority.custody.list();
