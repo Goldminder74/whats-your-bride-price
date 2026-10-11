@@ -3,7 +3,7 @@
 ## Source and private deployment
 
 Branch feature/viral-build-sprint; this continuation starts at
-8ef06c69ebe95cb5e8cc55de483e516161c0dd4f. Resolve the resulting checkpoint with
+19fca74bfc9a8c4bf06bb43e7ac209811573f266. Resolve the resulting checkpoint with
 git rev-parse HEAD. PR #1 remains draft/unmerged.
 [Private game](https://wybp-protected-test.netlify.app/) is unchanged: deployed source
 42bf37abbfc18e783da3815e12ee9c176007ba1b; release
@@ -29,12 +29,18 @@ this commit. No new migration, production resource, deployment or activation.
 Application writers still require routing through this service; snapshot capture,
 real Drive custody, alert delivery and hosted concurrency/recovery remain unverified.
 
-No dedicated Drive OAuth credentials found in checked local configuration or test
-Worker secret names. Existing interactive Drive access is not unattended runtime access.
+Intended ops Worker wybp-prod-ops-r001 was NOT FOUND in the verified Cloudflare
+account. No local OAuth configuration found; there is no intended runtime for installation.
+Connected ChatGPT Drive access is not an unattended runtime credential.
 Minimum owner setup, exact drive.file permission, folder selection and secure Wrangler
 installation are in [continuation](production-preparation-continuation.md).
-Alert recipient prepared: team@classesforculture.com; NOT confirmed, nothing sent.
-Owner must confirm destination before any test message. Never put secrets in chat/builds.
+Owner APPROVED operational alerts to team@classesforculture.com and one labelled test
+after secure setup. Public MX points to Private Email; mailbox ownership/verified
+sender credentials and compatible transport remain unverified; nothing sent.
+Nine new/affected checks pass, including encrypted delivery across database reopen and
+lost acknowledgement, persistent IDs, hash/decryption and sanitised test-alert preparation.
+Real Drive upload/arrival verification is pending credentials/transport, not locally proved.
+Never put secrets in chat/builds.
 
 Classes for Culture sandbox acct_1UOOZKEsGCyaV3rl was verified; converted EUR2.45
 checkout retained GBP1.99 original fields and a full GBP1.99 refund succeeded.
@@ -49,7 +55,8 @@ or verified5000games/day capacity. No paid upgrade/top-up. Shared Netlify credit
 headroom, hosted purge/journal throughput and schedule approval remain unresolved.
 No public access, DNS, existing-site replacement or live payments authorised.
 
-Next: complete secure custody/recipient setup and application writer coverage; then
+Next: owner checks dedicated Google OAuth project/client and identifies email provider.
+Complete secure custody/transport setup and application writer coverage; then
 free-allowance benchmark and recovery verification before scheduling or cost review.
 Owner policy approval is not professional legal sign-off. Reuse unchanged passed checks.
 

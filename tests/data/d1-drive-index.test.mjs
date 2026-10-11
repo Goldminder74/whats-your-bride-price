@@ -46,3 +46,34 @@ test('lost delete acknowledgement retries with the same ID; unexpired reservatio
  assert.equal(await c.cleanupTemporary(now,1),1);assert.equal(await index.get('one.intent'),null);
  }finally{sql.close();}
 });
+
+
+test('encrypted delivery survives database/process reopen and a lost provider acknowledgement',async()=>{
+ const {mkdtemp,rm}=await import('node:fs/promises'),{tmpdir}=await import('node:os'),{join}=await import('node:path');
+ const {randomBytes}=await import('node:crypto'),{encryptRecord,decryptRecord,recoveryHash}=await import('../../scripts/recovery-crypto.mjs');
+ const directory=await mkdtemp(join(tmpdir(),'wybp-drive-synthetic-')),path=join(directory,'index.sqlite');let sql;
+ try{
+ sql=new DatabaseSync(path);applyMigrationPlan(sql,await loadMigrationPlan());
+ const db={async query(s,p=[]){return sql.prepare(s).all(...p);},async batch(rows){sql.exec('BEGIN');try{const result=rows.map(r=>sql.prepare(r.sql).all(...r.params));sql.exec('COMMIT');return result;}catch(e){sql.exec('ROLLBACK');throw e;}}};
+ const key=randomBytes(32),plain={synthetic:'recovery-only',sequence:1},aad='synthetic-delivery',bytes=encryptRecord(plain,key,aad),files=new Map();let uploads=0,generated=0;
+ const fetcher=async(url,options)=>{
+  assert.equal(options.redirect,'error');
+  if(url.includes('generateIds')){generated++;return Response.json({ids:['synthetic_file_001']});}
+  if(url.includes('/upload/')){uploads++;const body=Buffer.from(options.body),text=body.toString(),metadata=JSON.parse(text.split('\r\n\r\n')[1].split('\r\n--')[0]);
+   const marker=Buffer.from('Content-Type: application/octet-stream\r\n\r\n'),start=body.indexOf(marker)+marker.length,end=body.lastIndexOf(Buffer.from('\r\n--'));
+   const stored=body.subarray(start,end);assert.equal(stored.includes(Buffer.from('recovery-only')),false);assert.deepEqual(stored,bytes);files.set(metadata.id,stored);
+   throw Error('lost-upload-acknowledgement');
+  }
+  if(url.includes('alt=media')){const id=url.split('/files/')[1].split('?')[0];return files.has(id)?new Response(files.get(id)):new Response(null,{status:404});}
+  throw Error('unexpected_synthetic_request');
+ };
+ const make=()=>new DriveCustody({folderId:'synthetic_folder_001',index:new D1DriveIndex(db,'synthetic_folder_001'),accessToken:async()=> 'synthetic',fetcher});
+ await assert.rejects(make().put('encrypted-check.enc',bytes),/^Error: drive_transport$/);
+ sql.close();sql=new DatabaseSync(path);
+ const restarted=make();assert.equal(await restarted.put('encrypted-check.enc',bytes),recoveryHash(bytes));assert.equal(uploads,1);assert.equal(generated,1);
+ assert.equal(await new D1DriveIndex(db,'synthetic_folder_001').get('encrypted-check.enc'),'synthetic_file_001');
+ const downloaded=await restarted.get('encrypted-check.enc');assert.equal(recoveryHash(downloaded),recoveryHash(bytes));assert.deepEqual(decryptRecord(downloaded,key,aad),plain);
+ assert.throws(()=>decryptRecord(downloaded,randomBytes(32),aad));files.set('synthetic_file_001',Buffer.from('tampered'));
+ await assert.rejects(restarted.put('encrypted-check.enc',bytes),/custody_conflict/);
+ }finally{sql?.close();await rm(directory,{recursive:true,force:true});}
+});

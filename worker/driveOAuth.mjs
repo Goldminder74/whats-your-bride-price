@@ -19,8 +19,9 @@ export function driveAccessToken({ clientId, clientSecret, refreshToken, fetcher
     try{return await pending;}finally{pending=undefined;}
   };
 }
-export function prepareAuthorityAlert({ component, status, at }) {
-  if(component!=='authority'||!['blocked','verified'].includes(status)||!Number.isSafeInteger(at))throw Error('authority_alert');
-  // A prepared envelope only. No sender or network call until the owner confirms.
-  return Object.freeze({to:'team@classesforculture.com',subject:'WYBP authority '+status,body:'Authority recovery status: '+status+'. UTC: '+new Date(at).toISOString(),sendApproved:false});
+export function prepareAuthorityAlert({ component, status, at, test = false }) {
+  if(component!=='authority'||!['blocked','verified'].includes(status)||!Number.isSafeInteger(at)||typeof test!=='boolean')throw Error('authority_alert');
+  // Owner approved the recipient and one labelled test. This remains preparation only;
+  // dispatch still requires a securely configured and verified transport.
+  return Object.freeze({to:'team@classesforculture.com',subject:(test?'[TEST - synthetic data] ':'')+'WYBP authority '+status,body:(test?'TEST ALERT. Synthetic recovery check only. ':'')+'Authority recovery status: '+status+'. UTC: '+new Date(at).toISOString(),sendApproved:false});
 }

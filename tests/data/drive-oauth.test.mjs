@@ -17,3 +17,10 @@ test('malformed or broader-scope token responses never leak their body or grant 
  await assert.rejects(driveAccessToken({...config,fetcher:async()=>new Response('private-secret-body')})(),/^Error: drive_oauth_response$/);
  await assert.rejects(driveAccessToken({...config,fetcher:async()=>Response.json({access_token:'synthetic-access',token_type:'Bearer',expires_in:3600,scope:'https://www.googleapis.com/auth/drive'})})(),/drive_oauth_scope/);
 });
+
+test('labelled test alert contains only approved recipient, synthetic status and timestamp',()=>{
+ const value=prepareAuthorityAlert({component:'authority',status:'verified',at:1791734400000,test:true,privateValue:'must-not-appear'});
+ assert.equal(value.to,'team@classesforculture.com');assert.match(value.subject,/^\[TEST - synthetic data\]/);assert.match(value.body,/^TEST ALERT\./);
+ assert.equal(value.sendApproved,false);assert.equal(JSON.stringify(value).includes('must-not-appear'),false);
+ assert.throws(()=>prepareAuthorityAlert({component:'authority',status:'verified',at:0,test:'yes'}),/authority_alert/);
+});

@@ -144,54 +144,125 @@ receipt design and measurement before production approval. No silent truncation 
 
 ## Minimum secure Drive OAuth setup
 
-Inspection found no dedicated Drive OAuth environment configuration, no local gcloud
-application credentials, and no Drive OAuth secret names on the existing test Worker.
-This does not prove that an unused OAuth client is absent from your Google account or
-password manager. The connected interactive Drive app is not an unattended Worker credential.
+Read-only runtime inspection on 11 October confirmed Cloudflare account
+b6b22a9a87b5758725e5c499782160af. Intended Worker wybp-prod-ops-r001 was NOT FOUND.
+There is no intended runtime to inspect/install secrets in yet. No matching OAuth
+environment names or local environment-file paths were found. The previous test
+Worker secret-name inspection found no Drive credentials. This does not establish
+whether an unused client exists in Google Console or the owner's password manager.
+A connected ChatGPT Drive account is not an unattended runtime credential.
 
-1. In Google Cloud Console, sign in as `ayo.m.ayeni@gmail.com`. Reuse a dedicated recovery
-   project/client if one exists; otherwise prepare one and enable Google Drive API.
-   Do not enable billing, buy storage or use another person's cloud project.
-2. Configure the consent app for your account. Request ONLY
-   `https://www.googleapis.com/auth/drive.file` (create/read/update/delete files explicitly
-   used by this app), with offline access. No Gmail, whole-Drive or domain-wide delegation.
-   Add only your account as a test user while setting it up. Testing refresh tokens expire
-   after seven days: that state is not suitable for unattended production recovery.
-   Resolve Google's applicable production-consent requirements before relying on it.
-3. One supported manual token flow is Google's OAuth Playground using YOUR dedicated Web
-   OAuth client, with authorised redirect URI `https://developers.google.com/oauthplayground`.
-   In Playground settings choose “Use your own OAuth credentials”; enter them directly
-   there. Authorise the exact scope above with offline access, then exchange the code.
-   Save client ID/secret/refresh token directly in your secure password manager. Do not
-   paste them into chat, shell arguments, repository files, screenshots or logs.
-4. Grant the app only the approved private `WYBP Production Recovery` folder. An existing
-   folder needs explicit Google Picker selection by this app; its ID alone is insufficient
-   with drive.file. If none exists, the app can create the approved folder through Drive
-   API, making it app-accessible. Check your Drive first; do not create a duplicate.
-   Do not broaden scope merely because a folder is inaccessible. Picker selection or
-   app-owned folder creation remains a secure setup step, not a completed operation.
-5. Once the isolated ops Worker exists and its identity/cost gate has passed, install
-   each value using Wrangler's interactive secret prompt on that Worker ONLY:
-   `npx wrangler secret put WYBP_DRIVE_CLIENT_ID --name wybp-prod-ops-r001`
-   `npx wrangler secret put WYBP_DRIVE_CLIENT_SECRET --name wybp-prod-ops-r001`
-   `npx wrangler secret put WYBP_DRIVE_REFRESH_TOKEN --name wybp-prod-ops-r001`
-   `npx wrangler secret put WYBP_AUTHORITY_KEY_BASE64 --name wybp-prod-ops-r001`
-   Paste values only into the secret prompts; never append them to commands. The key is
-   the verified32-byte recovery key encoded as base64, with its independent secure copy.
-   Configure non-secret folder ID as `WYBP_DRIVE_FOLDER_ID`; role `production-ops` and DB
-   name `wybp-prod-d1-r001`. Do not run secret-put against a nonexistent Worker or accept
-   resource-creation prompts. No secret belongs in Netlify, the app Worker or a build.
-6. Verify token refresh, private folder read/write/readback, revocation failure and recovery
-   from the independent key copy before enabling delivery. The local factory refuses
-   absent credentials, wrong role, missing snapshot capture or missing alert transport.
-   No production job is active yet.
+Owner setup (ayo.m.ayeni@gmail.com only; no billing, purchases or broader scopes):
 
-Google references:
+1. Open https://console.cloud.google.com/auth/overview and check the project selector
+   for an existing dedicated recovery project/client. Reuse it if correct. Otherwise
+   use https://console.cloud.google.com/projectcreate to create WYBP Recovery.
+   At https://console.cloud.google.com/apis/library/drive.googleapis.com select that
+   project and Enable the Google Drive API; do not attach a billing account.
+2. In Google Auth Platform, Branding: app name WYBP Recovery; support/developer email
+   ayo.m.ayeni@gmail.com. Audience: External (personal Gmail account), initially add
+   only that account as a test user. Data Access: Add or remove scopes, enter ONLY
+   https://www.googleapis.com/auth/drive.file. It permits app-created/app-selected
+   files, including read/write/delete; full-Drive, Gmail, sharing and domain-wide
+   delegation are unnecessary. This is Google's non-sensitive per-file permission.
+3. Clients: https://console.cloud.google.com/auth/clients -> Create client ->
+   Web application -> WYBP Recovery Operator. Authorised redirect URI exactly
+   https://developers.google.com/oauthplayground (no trailing slash). No JavaScript
+   origins needed for this manual flow. Save client ID and secret in the secure
+   password manager. Never paste either into chat, arguments, Git or recorded output.
+4. At https://developers.google.com/oauthplayground/ open the settings cog; enable
+   Use your own OAuth credentials. Enter this dedicated client ID/secret directly.
+   Choose server-side flow and offline access; use consent prompting when needed
+   to obtain a refresh token. Step1: enter exactly the drive.file URL above, Authorize
+   APIs, select ayo.m.ayeni@gmail.com, inspect the permission and approve only that
+   scope. Step2: Exchange authorization code for tokens. Store the refresh token
+   directly in the password manager. Do not send tokens or screenshots to Codex.
+5. Check https://drive.google.com/drive/my-drive for an existing private WYBP Production
+   Recovery folder before creating anything. An existing folder must already be
+   accessible to this dedicated app or be selected through its Google Picker flow;
+   merely pasting a folder ID does NOT grant drive.file access. If it exists but is
+   inaccessible, stop and report that fact without widening the scope or duplicating it.
+   If absent, OAuth Playground Step3 can create the app-owned private folder:
+   method POST; URI https://www.googleapis.com/drive/v3/files?fields=id,name,parents;
+   Content-Type application/json; body
+   {"name":"WYBP Production Recovery","mimeType":"application/vnd.google-apps.folder"}.
+   Use the authenticated Send request control; never copy its Authorization header.
+   Record only the returned non-secret folder ID. In Drive confirm General access is
+   Restricted; do not create public links or extra sharing. Use only synthetic data
+   until encrypted upload/readback and recovery custody are verified.
+6. Testing consent status causes this Drive refresh token to expire after seven days.
+   Before unattended operation, Audience -> Publish app / In production. This OAuth
+   setting does NOT publish the game or open the private folder. Re-authorize using
+   the dedicated client after publishing. Non-sensitive drive.file does not require
+   sensitive/restricted-scope verification; any branding/policy requirements displayed
+   by Google still apply. Never call the token permanent: revocation, inactivity,
+   token limits and account policy can invalidate it. Monitoring must detect refresh
+   failure. Do not use Playground's shared client for the runtime token.
+7. Install only after the intended isolated ops Worker exists and its identity/cost
+   gate passes. In an unrecorded local terminal, run each command and paste its value
+   ONLY into Wrangler's hidden interactive prompt:
+   npx wrangler secret put WYBP_DRIVE_CLIENT_ID --name wybp-prod-ops-r001
+   npx wrangler secret put WYBP_DRIVE_CLIENT_SECRET --name wybp-prod-ops-r001
+   npx wrangler secret put WYBP_DRIVE_REFRESH_TOKEN --name wybp-prod-ops-r001
+   npx wrangler secret put WYBP_AUTHORITY_KEY_BASE64 --name wybp-prod-ops-r001
+   Never append values to commands, pipe them from a logged process or store them in
+   environment files. Decline any prompt to create a missing Worker; stop on identity
+   mismatch. The recovery key is verified32-byte base64 with a separately secured copy.
+   Configure non-secret WYBP_DRIVE_FOLDER_ID, role production-ops, and DB name
+   wybp-prod-d1-r001. No secret belongs in Netlify, the game Worker or a build.
+8. Operator then verifies token refresh, private folder identity, encrypted synthetic
+   upload, deliberately lost acknowledgement/retry, unchanged persistent file ID,
+   download/hash/decryption and independent-key recovery. Retain a pinned inventory
+   receipt outside the database; do not claim live delivery from local mock tests.
+   No production job starts before those checks and reviewed scheduling/cost gates.
+
+Official references:
 - https://developers.google.com/workspace/drive/api/guides/api-specific-auth
 - https://developers.google.com/identity/protocols/oauth2
+- https://developers.google.com/identity/protocols/oauth2/production-readiness/sensitive-scope-verification
 - https://developers.google.com/oauthplayground/
 
-Alerts are prepared for `team@classesforculture.com`. The prepared envelope has
-`sendApproved:false`; no sender, message or test has been activated. Owner confirmation
-of this destination is still required, followed by secure sender configuration and a
-verified heartbeat/absence alarm. A prepared message is not a working alert service.
+## Alert approval and provider dependency
+
+Owner has approved operational alerts to team@classesforculture.com, including ONE
+clearly labelled test after secure configuration. Recipient confirmation is complete.
+No email has been sent. prepareAuthorityAlert({test:true,...}) builds a fixed-recipient
+[TEST - synthetic data] subject and status/timestamp-only body; no SQL, identifiers,
+archive contents, provider messages or credentials. Its sendApproved:false field means
+this helper does not authorise dispatch or provide a transport, NOT that owner approval
+is missing. Normal runtime messages retain their existing status-only format.
+
+Public MX lookup returned mx1.privateemail.com and mx2.privateemail.com, consistent
+with Namecheap Private Email. This verifies routing, not mailbox ownership, an active
+sending account or unattended credentials. Official settings specify authenticated
+mail.privateemail.com SMTP, port465 SSL or587 STARTTLS. If the owner confirms this
+mailbox and existing entitlement, use a dedicated/revocable app password where the
+account supports it; install only through a secure runtime prompt after a compatible
+transport is prepared. Do not change the mailbox master password or buy a new service.
+Provider setup references:
+https://www.namecheap.com/support/knowledgebase/article.aspx/1179/2175/general-private-email-configuration-for-mail-clients-and-mobile-devices/
+https://www.namecheap.com/support/knowledgebase/article.aspx/10816/2178/how-to-use-app-passwords-for-private-email/
+Owner supplies setup status only, then installs any required credential directly via
+the same runtime secret mechanism. Do not request Gmail scopes
+for Drive or send from the connected personal Gmail account as a substitute. Cloudflare
+Email Service documents free sends to verified destinations, but availability requires
+account/domain/sender/recipient checks; do not change MX/DNS, plans or another website
+just to enable it. If an existing free secure sender cannot be used, report the exact
+provider prerequisite/cost before proceeding. No paid service is authorised.
+
+After configuration: send one labelled synthetic test, retain only provider acknowledgement
+and a non-sensitive receipt, and verify arrival in the recipient mailbox (or ask owner
+for arrival confirmation). Provider acceptance alone is not proof of arrival. Do not
+retry an uncertain send automatically and risk duplicating the one approved test.
+Independent absence/heartbeat monitoring remains separate from email delivery.
+https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/
+
+## Additional local evidence
+
+A combined synthetic test encrypts the payload, stores it through DriveCustody with a
+D1DriveIndex backed by on-disk SQLite, loses the upload acknowledgement, closes/reopens
+the database and reconstructs both adapters. Retry performs no second upload or ID
+allocation. Download SHA-256 and authenticated decryption match; a wrong key and
+corrupt provider bytes reject. This tests the real adapter code against a fake provider,
+not a live Drive account or hosted D1. Nine affected checks and scoped lint/diff pass.
+No unchanged full application suite repeated. No resource, secret or schedule installed.
