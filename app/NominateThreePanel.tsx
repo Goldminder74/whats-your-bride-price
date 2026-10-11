@@ -30,7 +30,6 @@ import {
   type NominationChannel,
   type NominationSurface,
 } from "./nominationEvents.ts";
-import { PRODUCT_SAFEGUARD } from "./productSafeguards.ts";
 import { resolveBrowserPublicAppOrigin } from "./publicAppOrigin.ts";
 import { copyShareText, hasWebShare } from "./shareSupport.ts";
 import { emitAnalyticsLocalEvent } from "./analyticsLocal.ts";
@@ -164,7 +163,7 @@ export default function NominateThreePanel({
         title: "You’ve been challenged!",
         url: challenge.challengeUrl,
         completeText: personalisedChallengeShareText(challenge),
-        nativeText: `${personalisedChallengeSentence(challenge)}\n${PRODUCT_SAFEGUARD}`,
+        nativeText: personalisedChallengeSentence(challenge),
       };
     }
     if (typeof window === "undefined" || personalised) return null;
@@ -247,7 +246,7 @@ export default function NominateThreePanel({
         <button type="button" className="nomination-close" onClick={onClose} aria-label="Close nomination panel">×</button>
       </div>
       <p className="nomination-intro">Three numbered handoffs, one safe link, and no contact access. Choose how each invitation leaves your device.</p>
-      <p className="nomination-safeguard">{PRODUCT_SAFEGUARD}</p>
+
 
       {personalised ? (
         <div className="nomination-identity">

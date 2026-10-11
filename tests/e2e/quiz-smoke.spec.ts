@@ -132,7 +132,7 @@ async function completePerfectWestQuiz(page: Page) {
 
     if (questionIndex === 11) {
       await expect(page.locator(".score-reveal-stage")).toBeVisible();
-      await expect(page.locator(".reveal-safeguard")).toHaveText("A playful culture score, never a measure of human worth.");
+      await expect(page.locator(".reveal-safeguard")).toHaveCount(0);
       await expect(page.locator(".drum-roll-meter i")).toHaveCount(13);
     }
 
@@ -150,8 +150,8 @@ test("homepage loads the complete regional entry surface", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1 })).toContainText("DO YOU KNOW YOUR ROOTS?");
   await expect(page.locator(".region-card")).toHaveCount(5);
   await expect(page.getByRole("button", { name: "Turn sound off" })).toContainText("Sound on");
-  await expect(page.locator("#home-entry-safeguard")).toHaveText("A playful culture score, never a measure of human worth.");
-  await expect(page.getByRole("button", { name: /Start the challenge/ })).toHaveAttribute("aria-describedby", "home-entry-safeguard");
+  await expect(page.locator("#home-entry-safeguard")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /Start the challenge/ })).not.toHaveAttribute("aria-describedby", /safeguard/);
 });
 
 test("published image answers use neutral visible markers and descriptive keyboard controls", async ({ page }) => {
@@ -205,9 +205,9 @@ test("About explains scoring, privacy, cultural review and intended audience", a
   await page.goto("/");
   await page.getByRole("button", { name: "About the game" }).click();
   const about = page.getByRole("dialog", { name: "About this game" });
-  await expect(about).toContainText("A playful culture score, never a measure of human worth.");
+  await expect(about).not.toContainText("A playful culture score, never a measure of human worth.");
   await expect(about).toContainText("How scoring works");
-  await expect(about).toContainText("does not assess suitability for marriage or relationships");
+  await expect(about.getByRole("link", { name: "FAQ", exact: true })).toHaveAttribute("href", "/faq#scoring");
   await expect(about).toContainText("The original is never uploaded");
   await expect(about).toContainText("source metadata is not copied");
   await expect(about).toContainText("public deletion controls are not active");
@@ -293,8 +293,10 @@ test("a perfect quiz preserves scoring, result, download, sharing and nomination
 
   await expect(page.locator(".result-copy .eyebrow")).toHaveText("Your score: 12/12");
   await expect(page.locator(".result-card h1")).toHaveText("Bride Price Royalty");
+  await expect(page.locator(".result-gift span")).toHaveText("+ A five-auntie standing ovation+ A knowledge victory dance");
+  expect(await page.locator(".result-gift span").evaluate(element => getComputedStyle(element).textTransform)).toBe("none");
   await expect(page.locator(".result-card small")).toContainText("Knowledge score 12/12");
-  await expect(page.locator(".result-card-safeguard")).toHaveText("A playful culture score, never a measure of human worth.");
+  await expect(page.locator(".result-card-safeguard")).toHaveCount(0);
   await expect(page.locator(".confetti i")).toHaveCount(58);
   await expect(page.locator(".celebration-halo")).toBeVisible();
 
@@ -314,7 +316,7 @@ test("a perfect quiz preserves scoring, result, download, sharing and nomination
     url: expect.stringContaining("?edition=west"),
     fileCount: 1,
   });
-  expect(shares?.[0]?.text).toContain("A playful culture score, never a measure of human worth.");
+  expect(shares?.[0]?.text).not.toContain("A playful culture score, never a measure of human worth.");
   expect(shares?.[0]?.url).not.toContain("nominated=1");
   expect(new URL(shares?.[0]?.url || "").origin).toBe("http://127.0.0.1:3100");
 
@@ -331,7 +333,7 @@ test("a perfect quiz preserves scoring, result, download, sharing and nomination
   });
   expect(shares?.[1]?.url).not.toContain("/challenge/");
   expect(shares?.[1]?.url).not.toContain("nominated=1");
-  expect(shares?.[1]?.text).toContain("A playful culture score, never a measure of human worth.");
+  expect(shares?.[1]?.text).not.toContain("A playful culture score, never a measure of human worth.");
   await expect(page.locator(".challenge-action-note")).toContainText("regional-invitation slots");
 });
 

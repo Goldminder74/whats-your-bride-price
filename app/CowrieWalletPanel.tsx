@@ -70,7 +70,7 @@ export default function CowrieWalletPanel({ refreshKey }: Readonly<{ refreshKey?
       <details className="cowrie-recovery"><summary>Recover or rotate a wallet</summary><label>Wallet reference<input value={recoveryReference} onChange={(event) => setRecoveryReference(event.target.value)} autoComplete="off" /></label><label>Recovery credential<input value={recoveryInput} onChange={(event) => setRecoveryInput(event.target.value.trim().toLowerCase())} autoComplete="off" /></label><div><button type="button" disabled={!ownerCredential} onClick={() => void recover(false)}>Recover wallet</button><button type="button" disabled={!ownerCredential} onClick={() => void recover(true)}>Rotate credential</button></div></details>
       <p className="cowrie-no-value">Cowries have no cash value. They cannot be transferred, resold or withdrawn.</p>
       {wallet && <button type="button" className="cowrie-clear" onClick={() => void clear()}>Freeze wallet access</button>}
-      <p className="cowrie-worth">A playful culture score, never a measure of human worth.</p>
+
       <p className="cowrie-status" role="status" aria-live="polite">{status}</p>
     </section>}
   </aside>;

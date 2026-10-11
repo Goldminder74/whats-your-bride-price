@@ -18,7 +18,6 @@ import type { ChallengeCompletionClient } from "../../challengeCompletion";
 import type { ChallengeAnswerSubmission } from "../../../db/challengeCompletion";
 import { entryContextToQuery, parseEntryContext, type EntryContext } from "../../entryContext";
 import { regions } from "../../publicGameData";
-import { PRODUCT_SAFEGUARD } from "../../productSafeguards";
 import { resolveBrowserPublicAppOrigin } from "../../publicAppOrigin";
 import { validateSafeNominationChallenge } from "../../nominationExperience";
 import { prepareShareMedia, shareMediaCardFromProjection } from "../../shareMedia";
@@ -238,7 +237,7 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
           <p className="challenge-route-kicker">Challenge already played</p>
           <h1 id="challenge-completed-title">You completed this challenge on this device.</h1>
           <p>Your challenge is complete. A comparison is unavailable here; explore another region.</p>
-          <p className="challenge-route-safeguard">{PRODUCT_SAFEGUARD}</p>
+
           <Link className="challenge-normal-link" href={normalQuizHref(trustedChallenge.edition)}>Play this region as a normal quiz</Link>
         </section>
       </main>
@@ -253,7 +252,7 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
           <p className="challenge-route-kicker">Culture challenge</p>
           <h1 id="challenge-unavailable-title">{state.message}</h1>
           <p>This invitation is no longer available. Choose a region for your next adventure.</p>
-          <p className="challenge-route-safeguard">{PRODUCT_SAFEGUARD}</p>
+
           <Link className="challenge-normal-link" href="/">Choose a normal regional quiz</Link>
         </section>
       </main>
@@ -318,14 +317,14 @@ export default function ChallengeLandingClient({ code, initialState }: Challenge
         <h1 id="challenge-route-title">Can you protect the family reputation?</h1>
         <p className="challenge-route-score">Score to beat: <strong>{challenge.scoreToBeat}/{challenge.maximumScore}</strong></p>
         <p className="challenge-link-privacy">Anyone with this link may open the invitation while it remains active. It expires on {formatPublicExpiry(challenge.expiresAt)}. Valid owner revocation, its use limit or the source result becoming unavailable can end it sooner.</p>
-        <p className="challenge-route-safeguard" id="challenge-route-safeguard">{PRODUCT_SAFEGUARD}</p>
+
         <button
           className="challenge-accept-action"
           type="button"
           onClick={beginAcceptance}
           disabled={acceptanceState === "loading"}
           aria-busy={acceptanceState === "loading"}
-          aria-describedby="challenge-route-safeguard"
+
         >
           {acceptanceState === "loading" ? "Accepting challenge…" : acceptanceState === "failure" ? "Retry acceptance" : "Accept challenge"}
           <span aria-hidden="true">▶</span>

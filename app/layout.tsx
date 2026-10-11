@@ -8,7 +8,6 @@ import "./royalReveal.css";
 import "./dailyChallenge.css";
 import "./mobile.css";
 import "./information.css";
-import { PRODUCT_SAFEGUARD } from "./productSafeguards";
 import { createPublicAppUrl, PUBLIC_APP_ORIGIN } from "./publicAppOrigin";
 import AnalyticsConsent from "./AnalyticsConsent";
 
@@ -26,7 +25,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(PUBLIC_APP_ORIGIN),
   title: "What’s Your Bride Price? | The Pan-African Party Game",
-  description: `Five regions. Sixty questions. One unforgettable reveal. ${PRODUCT_SAFEGUARD}`,
+  description: `Five regions. Sixty questions. One unforgettable reveal.`,
   alternates: {
     canonical: canonicalHomeUrl,
   },
@@ -37,14 +36,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "What’s Your Bride Price?",
-    description: `Choose your African edition and test your culture knowledge. ${PRODUCT_SAFEGUARD}`,
+    description: `Choose your African edition and test your culture knowledge.`,
     url: canonicalHomeUrl,
     images: [socialImageUrl],
   },
   twitter: {
     card: "summary_large_image",
     title: "What’s Your Bride Price?",
-    description: `Five regions. Sixty questions. One unforgettable reveal. ${PRODUCT_SAFEGUARD}`,
+    description: `Five regions. Sixty questions. One unforgettable reveal.`,
     images: [socialImageUrl],
   },
   icons: {

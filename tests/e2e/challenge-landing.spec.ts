@@ -80,7 +80,7 @@ test("active challenge is personalised in raw HTML, accessible and starts the ri
   await expect(page.locator("[data-challenge-active]")).toBeVisible();
   await expect(page.getByText("Nia has challenged you")).toBeVisible();
   await expect(page.getByText("Score to beat:")).toContainText("10/12");
-  await expect(page.locator("[data-challenge-active]")).toContainText("A playful culture score, never a measure of human worth.");
+  await expect(page.locator("[data-challenge-active]")).not.toContainText("A playful culture score, never a measure of human worth.");
   const accept = page.getByRole("button", { name: "Accept challenge" });
   const acceptBox = await accept.boundingBox();
   expect(acceptBox?.height || 0).toBeGreaterThanOrEqual(44);
@@ -207,7 +207,7 @@ test("beat, tie and loss show authoritative, encouraging and accessible comparis
     await expect(comparison).toContainText(`Nia${10}Inviter score`);
     await expect(comparison).toContainText(`You${scenario.score}Your score`);
     await expect(comparison).toContainText(scenario.difference);
-    await expect(comparison).toContainText("A playful culture score, never a measure of human worth.");
+    await expect(comparison).not.toContainText("A playful culture score, never a measure of human worth.");
     await expect(page.getByRole("button", { name: /Nominate three people/ })).toBeVisible();
     await expect(page.getByRole("button", { name: "Play another region" })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
@@ -261,7 +261,7 @@ test("320px, Android and iPhone in-app-browser layouts keep regional identity an
     await expect(page.locator(".challenge-route-art img"), profile.label).toBeVisible();
     await expect(page.getByText("Nia has challenged you"), profile.label).toBeVisible();
     await expect(page.getByText("Score to beat:"), profile.label).toBeVisible();
-    await expect(page.locator("[data-challenge-active]"), profile.label).toContainText("A playful culture score, never a measure of human worth.");
+    await expect(page.locator("[data-challenge-active]"), profile.label).not.toContainText("A playful culture score, never a measure of human worth.");
     const accept = page.getByRole("button", { name: "Accept challenge" });
     await expect(accept, profile.label).toBeVisible();
     const box = await accept.boundingBox();

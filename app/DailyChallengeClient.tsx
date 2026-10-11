@@ -143,7 +143,7 @@ export default function DailyChallengeClient({ region, serverNow, nextBoundary, 
 
   return <main className={`daily-shell theme-${region}`}>
     <header className="daily-heading"><p>One shared set · UTC</p><h1>{regions[region].name} Daily Challenge</h1><div className="daily-countdown" role="timer" aria-live="off"><span>Next set in</span><strong>{formatDailyCountdown(remaining)}</strong></div></header>
-    <p className="daily-safeguard">A playful culture score, never a measure of human worth.</p>
+
     <div className="information-label"><span>Official play counts towards your streak when enabled.</span><InformationControl title="Daily play and streaks" topic="daily"><p>An official completion can update a private regional streak when that separate feature is active. It expires exactly 180 days after your latest valid official daily completion; practice and ordinary play never extend it. You can clear it from Privacy choices.</p></InformationControl></div>
     {!selection && !result && <section className="daily-start" aria-labelledby="daily-start-title"><h2 id="daily-start-title">Today’s twelve</h2><p>One shared regional set, refreshed at midnight UTC. No account needed.</p><div><button disabled={busy} onClick={() => void start("official")}>Play today’s official set</button><button disabled={busy} onClick={() => void start("practice")}>Practise without changing a streak</button></div></section>}
     {selection?.officialAlreadyCompleted && !result && <section className="daily-result"><h2>Official entry complete</h2><p>Your first confirmed result remains today’s official one.</p><button onClick={() => void start("practice")}>Practise the set</button></section>}

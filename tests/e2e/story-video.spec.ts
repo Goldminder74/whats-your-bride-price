@@ -42,7 +42,7 @@ async function openStory(page: Page, code: string) {
   await centre.getByRole("button", { name: /Create Story video/ }).click();
   const panel = centre.locator("[data-story-video]"); await expect(panel).toBeVisible();
   await expect(panel.locator("canvas")).toHaveAttribute("width", "1080"); await expect(panel.locator("canvas")).toHaveAttribute("height", "1920");
-  await expect(panel).toContainText("A playful culture score, never a measure of human worth.");
+  await expect(panel).not.toContainText("A playful culture score, never a measure of human worth.");
   await panel.scrollIntoViewIfNeeded();
   return { centre, panel };
 }

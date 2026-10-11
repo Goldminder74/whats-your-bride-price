@@ -7,7 +7,7 @@ export const RESULT_PREVIEW_WIDTH = 1200;
 export const RESULT_PREVIEW_HEIGHT = 630;
 export const RESULT_PREVIEW_MIME = "image/png";
 export const RESULT_PREVIEW_MAX_BYTES = 1_000_000;
-export const RESULT_PREVIEW_GENERATION = "og1";
+export const RESULT_PREVIEW_GENERATION = "og2";
 export const RESULT_PREVIEW_FALLBACK_PATH = "/og-v2.png";
 
 export const approvedResultPreviewArtwork = Object.freeze({
@@ -238,9 +238,6 @@ function previewPixels(contract: ResultPreviewContract): Uint8Array {
   const titleScale = fittedScale(contract.resultTitle, 640, 7, 4);
   drawText(canvas, contract.resultTitle, 82, 445, titleScale, accent);
   if (contract.masterySeal) drawText(canvas, "REGIONAL MASTERY SEAL", 82, 500, 3, cream);
-  const [safeguardLead, safeguardClose] = contract.safeguard.split(", ");
-  drawText(canvas, `${safeguardLead},`, 82, 552, fittedScale(`${safeguardLead},`, 650, 3), cream);
-  drawText(canvas, safeguardClose, 82, 579, fittedScale(safeguardClose, 650, 3), cream);
   return canvas.pixels;
 }
 

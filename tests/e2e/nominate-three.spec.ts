@@ -96,7 +96,7 @@ test("three mobile handoffs reuse one canonical challenge in under 30 seconds an
   expect(new Set(codes).size).toBe(1);
   for (const payload of sharedPayloads) expect(payload).toContain(`http://127.0.0.1:3100/challenge/${codes[0]}`);
   expect(serialized).toContain("Ọlá challenged you to beat 12/12 in the West Africa Edition. Can you protect the family reputation?");
-  expect(serialized).toContain("A playful culture score, never a measure of human worth.");
+  expect(serialized).not.toContain("A playful culture score, never a measure of human worth.");
   expect(serialized).not.toMatch(/nominated=1|photo|session|idempotency|revocation|recipient/i);
 
   let events = await page.evaluate(() => window.__wybpNominationEvents || []);

@@ -5,7 +5,29 @@ Audit date: 22 August 2026
 Branch reviewed: `feature/viral-build-sprint`
 Approved baseline: `ebd6127a460582923a78a135d3c105d1167b8b11`
 
-## Permanent safeguard
+## Current owner-approved placement — 10 October 2026
+
+The owner explicitly superseded the earlier repetition requirement. Keep one clear
+explanation in the FAQ and at most one additional brief explanation in the footer.
+Entry, quizzes, reveals, results, certificates, portraits, Story media, social
+metadata, sharing and nominations must not repeat it or equivalent disclaimers.
+About and quiz scoring controls link to the FAQ. Privacy notices, price/delivery
+terms, visibility/expiry disclosures and destructive-action warnings remain intact.
+Internal versioned projection fields remain compatible; renderers do not draw or
+share their legacy explanation field. No scoring or question content changed.
+
+Reward captions use the shared four-tier table, with only the first character
+capitalised after “+”. Remaining characters, proper names, scores and rewards are
+unchanged. All five regions use this table; CSS must not force lowercase.
+
+Regression coverage checks all twenty region/tier combinations through the media
+renderers, actual PNG downloads, preview copy, share messages and accessible UI.
+
+## Historical baseline (superseded placement requirements)
+
+The sections below record the August audit, not current placement instructions.
+
+### Original safeguard
 
 The canonical sentence is:
 

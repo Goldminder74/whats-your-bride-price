@@ -2,12 +2,11 @@ import BridePriceGame from "./BridePriceGame";
 import { resolveReviewChallengeFixture, resolveSafeguardReviewFixture } from "./challengeEntry";
 import { entryContextFromRecord } from "./entryContext";
 import { activeFeatureFlags } from "./featureFlags";
-import { PRODUCT_SAFEGUARD } from "./productSafeguards";
 import { resolveRoyalRevealReviewScenario } from "./royalRevealReview.ts";
 
 export const metadata = {
   title: "What’s Your Bride Price? | The Pan-African Party Game",
-  description: `Choose a region, answer 12 culture-inspired questions, and reveal a playful ceremonial culture score. ${PRODUCT_SAFEGUARD}`,
+  description: `Choose a region, answer 12 culture-inspired questions, and reveal a playful ceremonial culture score.`,
 };
 
 type HomeProps = {

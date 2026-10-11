@@ -27,7 +27,7 @@ test("result previews are deterministic bounded 1200 by 630 PNG assets", async (
   assert.ok(first.bytes.length < 500_000, `preferred preview budget exceeded: ${first.bytes.length} bytes`);
   assert.equal(first.contentHash, second.contentHash);
   assert.deepEqual(first.bytes, second.bytes);
-  assert.match(first.objectKey, /^generated\/west\/2026\/08\/[0-9a-f]{64}-vog1\.png$/);
+  assert.match(first.objectKey, /^generated\/west\/2026\/08\/[0-9a-f]{64}-vog2\.png$/);
   assert.equal(first.contract.safeguard, PRODUCT_SAFEGUARD);
   assert.equal(first.contract.displayName, "A challenger");
 });

@@ -46,11 +46,9 @@ import {
 } from "./nominationExperience";
 import { createReviewNominationClient } from "./nominationReviewClient";
 import {
-  PRODUCT_SAFEGUARD,
   RESULT_TIER_COPY,
   RESULT_TIER_GIFTS,
   RESULT_TIER_TITLES,
-  SCORING_PRINCIPLES,
 } from "./productSafeguards";
 import { downloadPreparedShareMedia, prepareShareMedia, type ShareMediaCard } from "./shareMedia";
 import { genericShareProjection, shareProjectionFromChallenge, type SafeShareProjection } from "./shareProjection";
@@ -1357,8 +1355,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
                 <h1>{entryContext.nominated ? "YOU’VE BEEN NOMINATED." : "YOUR REGION IS READY."}<br /><i>{region.name}</i></h1>
                 <p>{entryContext.nominated ? `You have been nominated for the ${region.name} Edition. This legacy invitation carries no inviter name or score.` : region.hello}</p>
                 {entryContext.challenge && <p className="fast-entry-context">Challenge link recognised. Your score will be earned in the game.</p>}
-                <p className="entry-safeguard safeguard-decision" id="direct-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
-                <button className="big-action fast-entry-action" aria-describedby="direct-entry-safeguard" onClick={() => chooseRegion(entryContext.edition!)}>{entryContext.nominated ? `Start ${region.name} edition` : `Enter ${region.name}`} <span>▶</span></button>
+
+                <button className="big-action fast-entry-action" onClick={() => chooseRegion(entryContext.edition!)}>{entryContext.nominated ? `Start ${region.name} edition` : `Enter ${region.name}`} <span>▶</span></button>
               </>
             ) : (
               <>
@@ -1366,9 +1364,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
                 <p className="eyebrow">Five regions. Sixty culture questions.</p>
                 <h1>CHOOSE YOUR<br /><i>AFRICAN REGION.</i></h1>
                 <p>{entryContext.nominated ? "You were nominated to play. Choose a regional edition to begin; no inviter identity or score is attached." : "Go straight to the edition you know best, or choose one you want to discover."}</p>
-                <p className="entry-safeguard safeguard-decision" id="generic-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
+
                 <div className="fast-region-grid" aria-label="Choose your African region">
-                  {regionOrder.map((key) => <button key={key} className={`region-choice-${key}`} data-entry-choice aria-describedby="generic-entry-safeguard" onClick={() => chooseRegion(key)}><span aria-hidden="true">{regions[key].mark}</span>{regions[key].name}</button>)}
+                  {regionOrder.map((key) => <button key={key} className={`region-choice-${key}`} data-entry-choice onClick={() => chooseRegion(key)}><span aria-hidden="true">{regions[key].mark}</span>{regions[key].name}</button>)}
                 </div>
               </>
             )}
@@ -1401,8 +1399,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             <p className="eyebrow">{region.name} edition</p>
             <h1>CAN YOU<br /><i>BEAT IT?</i></h1>
             <p>{trustedChallenge.inviterDisplayName} has invited you into {region.name}. Accept once, then choose your player and begin.</p>
-            <p className="entry-safeguard safeguard-decision" id="trusted-challenge-safeguard">{PRODUCT_SAFEGUARD}</p>
-            <button className="big-action fast-entry-action" aria-describedby="trusted-challenge-safeguard" onClick={acceptTrustedChallenge}>Accept the challenge <span>▶</span></button>
+
+            <button className="big-action fast-entry-action" onClick={acceptTrustedChallenge}>Accept the challenge <span>▶</span></button>
           </div>
           <div className="trusted-challenge-art"><img src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt={`${region.name} illustrated game world`} width="1200" height="800" fetchPriority="high" /></div>
         </section>
@@ -1425,8 +1423,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               <i aria-hidden="true">✓ SELECTED</i>
             </div>
             <p className="compact-duration">12 questions <span>•</span> About 3 minutes</p>
-            <p className="entry-safeguard safeguard-decision compact-safeguard" id="avatar-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
-            <button className="big-action fast-quiz-start" aria-describedby="avatar-entry-safeguard" disabled={startLocked || photoProcessing} onClick={() => void beginQuiz()}>{photoProcessing ? "Processing photo…" : answerChoices.length > 0 ? `Continue at Question ${Math.min(answerChoices.length + 1, 12)}` : activeFeatureFlags.random_quick_play && !trustedChallenge ? "Start a fresh regional game" : photo ? "Start Question 1" : "Continue without a photo"} <span>▶</span></button>
+
+            <button className="big-action fast-quiz-start" disabled={startLocked || photoProcessing} onClick={() => void beginQuiz()}>{photoProcessing ? "Processing photo…" : answerChoices.length > 0 ? `Continue at Question ${Math.min(answerChoices.length + 1, 12)}` : activeFeatureFlags.random_quick_play && !trustedChallenge ? "Start a fresh regional game" : photo ? "Start Question 1" : "Continue without a photo"} <span>▶</span></button>
             {quickPlayNotice && <div className="quick-play-readiness" role="status"><p>{quickPlayNotice}</p><button type="button" onClick={() => void beginQuiz(true)}>Play the classic 12-question edition</button></div>}
             <div className="compact-avatar-grid" aria-label="Choose an African avatar">
               {avatarChoices.slice(0, showAllAvatars ? avatarChoices.length : 6).map((item, avatarIndex) => {
@@ -1439,7 +1437,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             </div>
             <button className="show-avatar-action" onClick={() => setShowAllAvatars((current) => !current)}>{showAllAvatars ? "Show fewer avatars" : "See all 12 avatars"}</button>
             <div className="private-photo-actions">
-              <button aria-describedby="avatar-entry-safeguard" disabled={photoProcessing} onClick={() => {
+              <button disabled={photoProcessing} onClick={() => {
                 emitEntryEvent({ name: "photo_picker_opened", source: entryContext.source, edition: regionKey, nominated: entryContext.nominated === "1", hasChallenge: Boolean(trustedChallenge), hasInvalidContext: false });
                 fileRef.current?.click();
               }}>＋ {photo ? "Choose a different private photo" : "Choose a private photo"}</button>
@@ -1481,9 +1479,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
               <p className="cinema-kicker">A pan-African knowledge quest</p>
               <h1 className="challenge-headline"><span>DO YOU KNOW YOUR ROOTS?</span><em>THE MORE YOU KNOW, THE BRIGHTER YOUR SCORE</em><strong>LET’S PLAY!</strong></h1>
               <p>Pick a region you know best, or one you want to discover, because Africa is one vast and varied continent. Decode proverbs. Spot the dish. Trace an empire. Leave with a culture score, a regional portrait and facts worth sharing.</p>
-              <p className="entry-safeguard safeguard-decision" id="home-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
+
               <div className="cinema-actions">
-                <button className="play-now" aria-describedby="home-entry-safeguard" onClick={() => setScreen("setup")}><span>▶</span> Start the challenge</button>
+                <button className="play-now" onClick={() => setScreen("setup")}><span>▶</span> Start the challenge</button>
                 {activeFeatureFlags.daily_challenge && <Link className="daily-entry" href="/daily/west">Play today’s shared daily</Link>}
                 <button className="trailer-button" onClick={() => setMenuOpen(true)}><span>ⓘ</span> What is this?</button>
               </div>
@@ -1528,7 +1526,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             </div>
           </section>
           <section className="values-strip">
-            <p>{PRODUCT_SAFEGUARD}</p>
+
             <div><span>12</span> questions <i>•</i> <span>3</span> minutes <i>•</i> <span>1</span> unforgettable reveal</div>
           </section>
         </>
@@ -1554,8 +1552,8 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             <div className="avatar-grid" aria-label="Choose an African avatar">
               {avatarChoices.map((item) => <button key={item.id} className={!photo && avatarId === item.id ? "active" : ""} aria-pressed={!photo && avatarId === item.id} onClick={() => selectAvatar(item.id)} aria-label={`Choose ${item.name}, ${item.vibe}`}><img src={item.src} alt="" width="256" height="256" loading="lazy" decoding="async" /><span>{item.name}</span></button>)}
             </div>
-            <p className="entry-safeguard safeguard-decision setup-safeguard" id="setup-entry-safeguard">{PRODUCT_SAFEGUARD}</p>
-            <button className="upload-own" aria-describedby="setup-entry-safeguard" disabled={photoProcessing} onClick={() => fileRef.current?.click()}><span>＋</span><b>{photo ? "Choose a different private photo" : "Optional: choose your own photo"}</b><small>Processed on this device. The original is never uploaded.</small></button>
+
+            <button className="upload-own" disabled={photoProcessing} onClick={() => fileRef.current?.click()}><span>＋</span><b>{photo ? "Choose a different private photo" : "Optional: choose your own photo"}</b><small>Processed on this device. The original is never uploaded.</small></button>
             {(photo || photoProcessing) && <button className="remove-photo-action" onClick={() => clearPhoto("Photo removed. Your avatar is ready instead.")}>Remove my photo</button>}
             <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" onChange={onPhoto} hidden />
             <div className="information-label"><span>Optional photo · JPEG, PNG or WebP · up to 8 MB</span><InformationControl title="Your photo" topic="photos"><p>{PHOTO_INFORMATION}</p></InformationControl></div>
@@ -1564,7 +1562,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
             <input id="player-name" data-display-name value={name} onChange={(event) => setName(event.target.value)} onBlur={() => { if (displayNameValidation.valid) setName(displayNameValidation.value || ""); }} aria-invalid={Boolean(displayNameError)} aria-describedby={`setup-name-privacy${displayNameError ? " setup-name-error" : ""}`} placeholder="Name or pseudonym (optional)" />
             <p id="setup-name-privacy" className="name-privacy-notice">A name or pseudonym is optional.</p>
             {displayNameError && <p className="display-name-error" id="setup-name-error" role="alert">{displayNameError}</p>}
-            <button className="big-action" aria-describedby="setup-entry-safeguard" disabled={photoProcessing || startLocked} onClick={() => void beginQuiz()}>{photoProcessing ? "Processing photo…" : activeFeatureFlags.random_quick_play ? "Start a fresh regional game" : `Enter Region 0${regionOrder.indexOf(regionKey) + 1}`} <span>▶</span></button>
+            <button className="big-action" disabled={photoProcessing || startLocked} onClick={() => void beginQuiz()}>{photoProcessing ? "Processing photo…" : activeFeatureFlags.random_quick_play ? "Start a fresh regional game" : `Enter Region 0${regionOrder.indexOf(regionKey) + 1}`} <span>▶</span></button>
             {quickPlayNotice && <div className="quick-play-readiness" role="status"><p>{quickPlayNotice}</p><button type="button" onClick={() => void beginQuiz(true)}>Play the classic 12-question edition</button></div>}
           </div>
         </section>
@@ -1595,7 +1593,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           {fastEntryEnabled && <p className="sr-only" role="status" aria-live="polite">Question {index + 1} of 12</p>}
           <details className="scoring-details" open={safeguardReviewFixture?.screen === "quiz"}>
             <summary>How scoring works</summary>
-            <div><p>{PRODUCT_SAFEGUARD}</p>{SCORING_PRINCIPLES.map((principle) => <p key={principle}>{principle}</p>)}</div>
+            <div><p>Discover the scoring and question sources in the <a href="/faq#scoring">FAQ</a>.</p></div>
           </details>
           <div className="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin={1} aria-valuemax={12} aria-valuenow={index + 1}><span style={{ width: `${((index + 1) / 12) * 100}%` }} /></div>
           <div className="question-wrap" key={index}>
@@ -1660,7 +1658,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           <h1>HOLD YOUR<br /><i>BREATH.</i></h1>
           <div className="drum-roll-meter" aria-hidden="true">{Array.from({ length: 7 + tier * 2 }, (_, pulse) => <i key={pulse} style={{ "--height": `${10 + (pulse % 5) * 6}px`, "--delay": `${pulse * -.04}s` } as React.CSSProperties} />)}</div>
           <b>{revealLines[tier]}</b>
-          <p className="result-safeguard reveal-safeguard">{PRODUCT_SAFEGUARD}</p>
+
           <small>Knowledge. Rhythm. Reveal.</small>
         </section>
       )}
@@ -1671,7 +1669,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
           {tier >= 2 && <div className="celebration-halo" aria-hidden="true">{Array.from({ length: 16 + tier * 4 }, (_, i) => <i key={i} style={{ "--angle": `${i * 15}deg`, "--delay": `${(i % 5) * .07}s` } as React.CSSProperties} />)}</div>}
           {allAfricaJustUnlocked && <div className="all-africa-coronation" role="dialog" aria-modal="true" aria-label="All Africa access unlocked">
             <div className="coronation-fire" aria-hidden="true">{Array.from({ length: 45 }, (_, i) => <i key={i} style={{ "--i": i } as React.CSSProperties} />)}</div>
-            <div className="coronation-card"><span>✦ ◆ ◈ ✺ ☼</span><p>THE ULTIMATE PASSPORT</p><h2>ALL AFRICA<br /><i>ACCESS UNLOCKED</i></h2><b>Five regions mastered. Five scores of 9 or higher. One continent explored.</b><small>{privatePlayerName || "Champion"}, your Motherland Passport is complete. The council has declared your knowledge journey legendary.</small><small className="coronation-safeguard">{PRODUCT_SAFEGUARD}</small><button onClick={() => setAllAfricaJustUnlocked(false)}>Claim the crown ✦</button></div>
+            <div className="coronation-card"><span>✦ ◆ ◈ ✺ ☼</span><p>THE ULTIMATE PASSPORT</p><h2>ALL AFRICA<br /><i>ACCESS UNLOCKED</i></h2><b>Five regions mastered. Five scores of 9 or higher. One continent explored.</b><small>{privatePlayerName || "Champion"}, your Motherland Passport is complete. The council has declared your knowledge journey legendary.</small><button onClick={() => setAllAfricaJustUnlocked(false)}>Claim the crown ✦</button></div>
           </div>}
           <p className="result-kicker">{region.name} edition • playful cultural knowledge scorecard</p>
           <div className="result-layout">
@@ -1685,7 +1683,7 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
                 <div className="result-gift"><b>{gifts[tier][0]}</b><span>+ {gifts[tier][1]}<br />+ {gifts[tier][2]}</span></div>
                 <div className="result-gems">{stampNames[regionKey].map((stamp) => <i key={stamp} title={stamp}>◆</i>)}</div>
                 <small>Knowledge score {correctCount}/12 • {region.short} Africa</small>
-                <p className="result-card-safeguard">{PRODUCT_SAFEGUARD}</p>
+
               </div>
             </div>
             <div className="result-copy">
@@ -1735,9 +1733,9 @@ export default function BridePriceGame({ initialEntryContext, trustedChallenge: 
         <div className="about-modal" role="dialog" aria-modal="true" aria-label="About this game">
           <div className="about-sheet"><button className="modal-close" aria-label="Close about the game" onClick={() => setMenuOpen(false)}>×</button>
             <p className="eyebrow">About this experience</p><h2>THE STAKES ARE HIGH<br /><i>PROVE YOUR CULTURE KNOWLEDGE</i></h2>
-            <p className="about-safeguard">{PRODUCT_SAFEGUARD}</p>
-            <p>This is a fictional entertainment and learning experience. Five fast-moving editions turn selected African languages, histories, proverbs, foodways, music and visual cultures into a knowledge quest built for curiosity. It does not value people or assess anyone’s suitability for marriage or relationships. Anonymous play needs no account.</p>
-            <section className="about-scoring" aria-labelledby="about-scoring-title"><h3 id="about-scoring-title">How scoring works</h3>{SCORING_PRINCIPLES.map((principle) => <p key={principle}>{principle}</p>)}</section>
+
+            <p>Five regions. A world of discoveries. Explore African languages, histories, proverbs, foodways, music and visual cultures, then challenge a friend to beat your score. Anonymous play needs no account.</p>
+            <section className="about-scoring" aria-labelledby="about-scoring-title"><h3 id="about-scoring-title">How scoring works</h3><p>Discover the scoring and question sources in the <a href="/faq#scoring">FAQ</a>.</p></section>
             <div className="guardrails"><div><b>Africa is plural</b><span>Each short question simplifies a diverse subject and opens a door. It never claims to contain a whole people, place or universal rule.</span></div><div><b>Your portrait is private</b><span>Photos are optional. The original is never uploaded. Its decoded pixels are resized and re-encoded on this device so source metadata is not copied. Remove my photo clears the in-memory copy. Names and photos are excluded from recovery, and neither changes scoring.</span></div><div><b>Limited recovery</b><span>This tab can restore edition, approved avatar and answer choices for up to 24 hours. It is non-authoritative and contains no name, photo or result score.</span></div><div><b>Learn as you play</b><span>Every answer unlocks a reviewed cultural explanation, correct guess or not.</span></div><div><b>An original score</b><span>The reactive audio is an abstract game soundtrack, not a traditional recording.</span></div></div>
             <p className="durable-storage-note"><b>Durable controls</b> Server-backed features use configured storage when available; public deletion controls are not active in this build. See Privacy choices for local controls.</p>
             <p className="cultural-review-note"><b>Cultural review and reporting</b> Questions and explanations are based on the sources below, but any short quiz can miss nuance. An approved community-reporting contact route is not yet configured and is required before production activation.</p>

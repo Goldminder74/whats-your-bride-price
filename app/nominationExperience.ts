@@ -7,7 +7,6 @@ import {
   resolveBrowserPublicAppOrigin,
   type PublicAppOrigin,
 } from "./publicAppOrigin.ts";
-import { PRODUCT_SAFEGUARD } from "./productSafeguards.ts";
 
 export const nominationSlotNumbers = Object.freeze([1, 2, 3] as const);
 export const nominationSnapshotVersion = 1;
@@ -69,7 +68,7 @@ export function personalisedChallengeSentence(challenge: SafeNominationChallenge
 }
 
 export function personalisedChallengeShareText(challenge: SafeNominationChallenge): string {
-  return `${personalisedChallengeSentence(challenge)}\n${PRODUCT_SAFEGUARD}\n${challenge.challengeUrl}`;
+  return `${personalisedChallengeSentence(challenge)}\n${challenge.challengeUrl}`;
 }
 
 export function genericNominationUrl(edition: RegionKey, origin: PublicAppOrigin): string {
@@ -77,7 +76,7 @@ export function genericNominationUrl(edition: RegionKey, origin: PublicAppOrigin
 }
 
 export function genericNominationShareText(edition: RegionKey, url: string): string {
-  return `You have been invited to play the ${regions[edition].name} Edition of What’s Your Bride Price? Bring your culture knowledge.\n${PRODUCT_SAFEGUARD}\n${url}`;
+  return `You have been invited to play the ${regions[edition].name} Edition of What’s Your Bride Price? Bring your culture knowledge.\n${url}`;
 }
 
 export function whatsappShareUrl(completeText: string): string {

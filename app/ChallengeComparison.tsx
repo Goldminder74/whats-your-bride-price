@@ -70,7 +70,7 @@ export default function ChallengeComparison({
       {difference && <p className="comparison-difference">{difference}</p>}
       <p className="comparison-explanation">{comparison.explanation}</p>
       {comparison.masterySealAwarded && <p className="comparison-mastery"><span aria-hidden="true">✦</span> Regional mastery seal earned through the normal 9+ rule.</p>}
-      <p className="comparison-safeguard">{comparison.safeguard}</p>
+
       <div className="comparison-actions">
         <button type="button" className="big-action" onClick={rechallenge}>
           Nominate three people <span aria-hidden="true">↗</span>

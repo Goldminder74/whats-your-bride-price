@@ -1,5 +1,7 @@
 # Share Centre platform and media contract
 
+Current copy placement follows the [owner-approved October policy](product-safeguard-copy-audit.md#current-owner-approved-placement--10-october-2026): the cultural-score explanation is limited to FAQ/footer; legacy media/share repetition requirements below are superseded. Purchase terms, consent, privacy and security contracts remain unchanged.
+
 Date: 24 August 2026
 
 Prompt 13 adds one reusable, client-side Share Centre to normal results, official comparison results and valid personalised challenge landings. Prompt 14 adds an explicitly published, expiry-bounded result route and dynamic Open Graph image behind `dynamic_results`. Prompt 15 adds browser-local video export. Prompt 16 can adapt the established local hooks into consented, allowlisted first-party metadata events, but adds no social SDK, OAuth flow, contact picker, recipient field, media upload or third-party analytics transport.

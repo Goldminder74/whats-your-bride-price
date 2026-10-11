@@ -133,7 +133,7 @@ export default function StoryVideoPanel({
       return;
     }
     try {
-      await navigator.share({ title: `${projection.editionLabel} culture result`, text: projection.safeguard, files: [video.file] });
+      await navigator.share({ title: `${projection.editionLabel} culture result`, text: `${projection.editionLabel} culture result`, files: [video.file] });
       emit("story_video_share_handoff", "ready", channel, undefined, video.byteSize);
       setStatus({ state: "ready", message: `The device share sheet completed its handoff. Choose ${label} there; the game cannot confirm posting or delivery.` });
     } catch (error) {
@@ -159,7 +159,7 @@ export default function StoryVideoPanel({
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       {videoUrl && <video className={videoPlayable ? "is-playable" : ""} controls playsInline preload="metadata" src={videoUrl} poster={videoPoster || undefined} onLoadedMetadata={(event) => { const media = event.currentTarget; media.currentTime = Math.max(0, Math.min(STORY_VIDEO_DURATION_MS / 1000 - .08, media.duration - .08)); }} onCanPlay={() => setVideoPlayable(true)} aria-label="Generated five-second Story video preview" />}
     </div>
-    <p className="story-video-safeguard">{projection.safeguard}</p>
+
     {reducedMotion && !video && <p className="story-video-motion-note">Motion is paused for your preference. The static final frame is shown. Video generation starts only if you choose it.</p>}
     {status.state === "rendering" && <div className="story-video-progress"><label htmlFor="story-video-progress">{status.message}</label><progress id="story-video-progress" max={1} value={progress}>{Math.round(progress * 100)}%</progress><button type="button" onClick={() => abortRef.current?.abort()}>Cancel generation</button></div>}
     {status.state !== "rendering" && <div className="story-video-actions">

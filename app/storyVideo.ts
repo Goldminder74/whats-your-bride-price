@@ -180,8 +180,6 @@ export function drawStoryVideoFrame(
   context.fillStyle = `${dark}ee`; context.fillRect(72, 1545, 936, 260);
   context.strokeStyle = accent; context.lineWidth = 4; context.strokeRect(90, 1563, 900, 224);
   context.fillStyle = "#fff4df"; context.font = "700 29px Arial";
-  context.fillText("A playful culture score, never a measure", 540, 1650);
-  context.fillText("of human worth.", 540, 1694);
   context.fillStyle = accent; context.font = "800 24px Arial";
   context.fillText("CLASSES FOR CULTURE  •  BRIDEPRICE.CLASSESFORCULTURE.COM", 540, 1760);
   context.restore();

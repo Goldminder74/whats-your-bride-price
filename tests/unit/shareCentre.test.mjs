@@ -95,7 +95,7 @@ test("generic fallback is neutral and cannot invent a score, name or challenge r
 test("platform copy is fixed, practical and encodes canonical data exactly once", () => {
   const projection = personalised("challenge_landing");
   const copy = buildShareCopy(projection);
-  assert.equal(copy.completeText, `Ọlá challenged you to beat 11/12 in the West Africa Edition. Can you protect the family reputation?\n${PRODUCT_SAFEGUARD}\n${projection.canonicalUrl}`);
+  assert.equal(copy.completeText, `Ọlá challenged you to beat 11/12 in the West Africa Edition. Can you protect the family reputation?\n${projection.canonicalUrl}`);
   assert.ok(copy.completeText.length <= shareCopyMaximumLength);
   assert.equal(countTextOccurrences(copy.completeText, projection.canonicalUrl), 1);
   const whatsapp = new URL(whatsappShareDestination(copy));

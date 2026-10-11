@@ -1,4 +1,3 @@
-import { PRODUCT_SAFEGUARD } from "./productSafeguards.ts";
 import { createPublicAppUrl, createResultUrl } from "./publicAppOrigin.ts";
 import { loadResultLanding, RESULT_UNAVAILABLE_COPY } from "./resultLandingServer.ts";
 
@@ -16,12 +15,12 @@ export async function resultMetadataHtml(slug: string): Promise<string> {
     ? "Culture Result Unavailable | What’s Your Bride Price?"
     : `${state.result.score}/${state.result.total} ${state.result.editionLabel} Culture Score | What’s Your Bride Price?`;
   const description = unavailable
-    ? `${RESULT_UNAVAILABLE_COPY} Choose an African regional edition and keep learning. ${PRODUCT_SAFEGUARD}`
-    : `${state.result.displayName} earned ${state.result.score}/${state.result.total} in the ${state.result.editionLabel} edition: ${state.result.resultTitle}. ${PRODUCT_SAFEGUARD}`;
+    ? `${RESULT_UNAVAILABLE_COPY} Choose an African regional edition and keep learning.`
+    : `${state.result.displayName} earned ${state.result.score}/${state.result.total} in the ${state.result.editionLabel} edition: ${state.result.resultTitle}.`;
   const image = state.previewUrl;
   const alt = unavailable
     ? "What’s Your Bride Price? culture quiz"
-    : `${state.result.editionLabel} culture score ${state.result.score} out of ${state.result.total}, ${state.result.resultTitle}. ${PRODUCT_SAFEGUARD}`;
+    : `${state.result.editionLabel} culture score ${state.result.score} out of ${state.result.total}, ${state.result.resultTitle}.`;
   const tag = (attribute: "property" | "name", key: string, content: string) => `<meta ${attribute}="${key}" content="${escapeHtml(content)}"/>`;
   return [
     "<!--wybp-result-metadata-->",

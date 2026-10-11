@@ -1,4 +1,3 @@
-import { PRODUCT_SAFEGUARD } from "./productSafeguards.ts";
 import type { SafeShareProjection } from "./shareProjection.ts";
 
 export const shareCopyVariant = "share-centre-v1" as const;
@@ -18,7 +17,7 @@ export function buildShareCopy(projection: SafeShareProjection): ShareCopy {
     : projection.personalised
       ? `${projection.displayName} challenged you to beat ${projection.score}/${projection.maximumScore} in the ${projection.editionLabel} Edition. Can you protect the family reputation?`
     : `You have been invited to play the ${projection.editionLabel} Edition of What’s Your Bride Price? Bring your culture knowledge.`;
-  const completeText = `${sentence}\n${PRODUCT_SAFEGUARD}\n${projection.canonicalUrl}`;
+  const completeText = `${sentence}\n${projection.canonicalUrl}`;
   if (completeText.length > shareCopyMaximumLength) throw new Error("share_copy_too_long");
   return Object.freeze({ title, sentence, completeText });
 }

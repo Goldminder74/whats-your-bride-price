@@ -1,5 +1,7 @@
 # Royal Reveal commerce and entitlement contract
 
+Current copy placement follows the [owner-approved October policy](product-safeguard-copy-audit.md#current-owner-approved-placement--10-october-2026): the cultural-score explanation is limited to FAQ/footer; legacy media/share repetition requirements below are superseded. Purchase terms, consent, privacy and security contracts remain unchanged.
+
 Date: 26 August 2026
 Status: implemented locally, disabled, unbound and not approved for live use
 

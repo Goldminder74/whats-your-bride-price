@@ -1,4 +1,5 @@
 import {
+  RESULT_PREVIEW_GENERATION,
   RESULT_PREVIEW_MAX_BYTES,
   RESULT_PREVIEW_MIME,
   renderResultPreview,
@@ -65,6 +66,10 @@ export class InMemoryResultPreviewRepository implements ResultPreviewRepository 
     if (!this.storageAvailable) throw new Error("generated_media_metadata_unavailable");
     const existing = this.records.get(record.resultSlug);
     if (existing) {
+      if (existing.resultId === record.resultId && existing.expiresAt === record.expiresAt
+        && existing.generationVersion === "og1" && record.generationVersion === RESULT_PREVIEW_GENERATION) {
+        this.records.set(record.resultSlug, record); this.writeCount.save += 1; return record;
+      }
       if (existing.contentHash !== record.contentHash || existing.objectKey !== record.objectKey) throw new Error("generated_media_record_conflict");
       if (existing.state === "ready") return existing;
       this.records.set(record.resultSlug, record); this.writeCount.save += 1; return record;
@@ -145,7 +150,7 @@ export class ResultMediaService {
   async prepare(resultId: string, result: PublicResultData): Promise<StoredResultPreview> {
     if (!this.storageAvailable) throw new Error("generated_media_storage_unavailable");
     const existing = await this.repository.getReadyForResult(result.resultSlug);
-    if (existing) return existing;
+    if (existing?.generationVersion === RESULT_PREVIEW_GENERATION) return existing;
     const rendered: RenderedResultPreview = await renderResultPreview(result);
     await this.objects.putImmutable(rendered.objectKey, rendered.bytes, rendered.mimeType);
     return this.repository.saveReady(Object.freeze({
@@ -166,7 +171,7 @@ export class ResultMediaService {
   async get(resultSlug: string, contentHash: string): Promise<PublicPreviewAsset | null> {
     if (!this.storageAvailable || !PUBLIC_SLUG_PATTERN.test(resultSlug) || !SHA256_PATTERN.test(contentHash)) return null;
     const record = await this.repository.getReadyForResult(resultSlug);
-    if (!record || record.contentHash !== contentHash || record.mimeType !== RESULT_PREVIEW_MIME || record.byteSize > RESULT_PREVIEW_MAX_BYTES) return null;
+    if (!record || record.generationVersion !== RESULT_PREVIEW_GENERATION || record.contentHash !== contentHash || record.mimeType !== RESULT_PREVIEW_MIME || record.byteSize > RESULT_PREVIEW_MAX_BYTES) return null;
     const bytes = await this.objects.get(record.objectKey);
     return bytes && bytes.length === record.byteSize ? Object.freeze({ record, bytes }) : null;
   }

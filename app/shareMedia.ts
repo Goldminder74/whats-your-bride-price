@@ -1,7 +1,7 @@
 import { isApprovedAvatarId, resolveApprovedAvatar } from "./avatarRegistry.ts";
 import { validateDisplayName } from "./displayNames.ts";
 import { regions, type RegionKey } from "./publicGameData.ts";
-import { PRODUCT_SAFEGUARD, RESULT_TIER_TITLES } from "./productSafeguards.ts";
+import { RESULT_TIER_TITLES } from "./productSafeguards.ts";
 import { calculateResultTier } from "./gameLogic.ts";
 import type { SafeShareProjection } from "./shareProjection.ts";
 import { PUBLIC_APP_ORIGIN } from "./publicAppOrigin.ts";
@@ -197,7 +197,6 @@ export async function prepareShareMedia(card: ShareMediaCard): Promise<PreparedS
 
   context.fillStyle = accent;
   context.font = "700 24px Arial";
-  context.fillText(PRODUCT_SAFEGUARD, 540, 1718);
   context.fillStyle = "#f8edda";
   context.font = "22px Arial";
   context.fillText(new URL(PUBLIC_APP_ORIGIN).hostname, 540, 1780);

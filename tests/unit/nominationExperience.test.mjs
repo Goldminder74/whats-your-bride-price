@@ -39,7 +39,7 @@ class MemoryStorage {
   get length() { return this.values.size; }
 }
 
-test("personalised copy is projection-derived, canonical and includes the permanent safeguard", () => {
+test("personalised copy is projection-derived, canonical without repetitive disclaimers", () => {
   const challengeUrl = createChallengeUrl(projection.challengeCode, origin);
   const challenge = validateSafeNominationChallenge(projection, challengeUrl, origin);
   assert.ok(challenge);
@@ -49,7 +49,7 @@ test("personalised copy is projection-derived, canonical and includes the perman
   );
   assert.equal(
     personalisedChallengeShareText(challenge),
-    `Ọlá challenged you to beat 11/12 in the West Africa Edition. Can you protect the family reputation?\n${PRODUCT_SAFEGUARD}\n${challengeUrl}`,
+    `Ọlá challenged you to beat 11/12 in the West Africa Edition. Can you protect the family reputation?\n${challengeUrl}`,
   );
   assert.equal(validateSafeNominationChallenge({ ...projection, scoreToBeat: 1, editionLabel: "Browser Africa" }, challengeUrl, origin), null);
   assert.equal(validateSafeNominationChallenge({ ...projection, displayName: "<b>Ọlá</b>" }, challengeUrl, origin), null);
@@ -72,7 +72,7 @@ test("generic fallback is honest, direct and never generates nominated=1", () =>
   assert.equal(parsed.searchParams.has("nominated"), false);
   const text = genericNominationShareText("east", url);
   assert.match(text, /invited to play the East Africa Edition/);
-  assert.match(text, new RegExp(PRODUCT_SAFEGUARD.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  assert.doesNotMatch(text, new RegExp(PRODUCT_SAFEGUARD.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   assert.doesNotMatch(text, /scored|score to beat|challenged you to beat/i);
 });
 

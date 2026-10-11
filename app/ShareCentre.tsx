@@ -10,7 +10,6 @@ import {
 import { buildShareCopy, facebookShareDestination, whatsappShareDestination } from "./shareCopy";
 import { downloadPreparedShareMedia, type PreparedShareMedia } from "./shareMedia";
 import type { SafeShareProjection } from "./shareProjection";
-import { PRODUCT_SAFEGUARD } from "./productSafeguards";
 import { RESULT_PUBLICATION_DISCLOSURE } from "../db/resultPublication";
 import type { ResultPublicationClient } from "./resultPublicationClient";
 import StoryVideoPanel from "./StoryVideoPanel";
@@ -207,7 +206,7 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
       await clipboardFallback("native", "The device share sheet is unavailable.");
       return;
     }
-    const data: ShareData = { title: copy.title, text: `${copy.sentence}\n${PRODUCT_SAFEGUARD}`, url: activeProjection.canonicalUrl };
+    const data: ShareData = { title: copy.title, text: copy.sentence, url: activeProjection.canonicalUrl };
     try {
       const media = preparedMediaRef.current;
       if (media && canShareFiles(media)) data.files = [media.file];
@@ -295,7 +294,7 @@ export default function ShareCentre({ projection, prepareMedia, onClose, returnF
           <button type="button" className="share-centre-close" onClick={onClose} aria-label="Close Share Centre" ref={closeRef}>×</button>
         </header>
         <p id="share-centre-description" className="share-centre-description">Pass it on: share your link or save a story portrait.</p>
-        <p className="share-centre-safeguard">{PRODUCT_SAFEGUARD}</p>
+
         <div className="share-centre-link-mode">
           <b>{activeProjection.canonicalUrl.includes("/result/") ? "Published public result" : activeProjection.personalised ? "Verified personalised challenge" : "Regional invitation"}</b>
           <span>{activeProjection.canonicalUrl.includes("/result/") ? "This public page uses the neutral identity A challenger, your authoritative score, approved avatar and regional edition." : activeProjection.personalised ? "Your approved name, verified score and regional edition match the challenge landing page." : "Share this regional invitation with no inviter identity or verified score attached."}</span>

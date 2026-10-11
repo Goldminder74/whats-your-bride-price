@@ -91,7 +91,7 @@ test("mobile result Share Centre reuses one challenge and supports every explici
   await expect(centre).toHaveAttribute("data-share-surface", "result");
   await expect(centre).toHaveAttribute("data-share-mode", "personalised");
   await expect(page.getByRole("button", { name: "Close Share Centre" })).toBeFocused();
-  await expect(centre).toContainText("A playful culture score, never a measure of human worth.");
+  await expect(centre).not.toContainText("A playful culture score, never a measure of human worth.");
   await expect(centre.getByRole("button")).toHaveCount(9);
   const information = centre.getByRole("button", { name: "About sharing and photos", exact: true });
   await information.click();
