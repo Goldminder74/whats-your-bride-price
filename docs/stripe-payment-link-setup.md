@@ -121,3 +121,32 @@ fifteen-Cowrie failure has no recoverable root cause; do not describe it as fixe
 Commerce/webhook were disabled after verification; no live payment was activated.
 See the [production activation checklist](isolated-test-approval-package.md#production-activation-checklist--9-october-2026)
 for remaining code, custody, seller and approval gates. Do not recreate sandbox objects.
+
+### Adaptive Pricing compatibility - 11 October 2026
+
+The earlier assumption that converted checkout requires accepting a converted top-level
+currency was incorrect. Stripe documents Checkout Session and PaymentIntent amounts
+in the configured INTEGRATION currency, with customer currency/amount in separate
+presentment_details. Payment Links always enable Adaptive Pricing. Refunds use the
+integration currency and original exchange rate to return the customer's original amount.
+[Official hosted contract](https://docs.stripe.com/payments/currencies/localize-prices/adaptive-pricing?payment-ui=stripe-hosted).
+
+Keep exact signed GBP/Payment Link validation unchanged. Never grant credits from
+presentment_details, exchange rates or redirects. New signed synthetic regressions cover
+Royal Reveal/all three Cowrie bundles, replay-safe credit and exact-GBP full refunds;
+converted top-level currency/amount, wrong links and tampered signatures stay rejected.
+This is local sandbox-shaped evidence, NOT a newly observed Stripe checkout.
+
+Remaining direct sandbox check: use each EXISTING link with URL-encoded
+prefilled_email=test+location_FR@example.com, preserve the application-issued opaque
+reference, choose EUR presentment and test cards only. Inspect sanitised signed checkout,
+refund and dispute events against the original GBP order/allocation. Never invent a GBP
+dispute amount if Stripe returns something different: retain review-required status and
+resolve authoritative reconciliation before live activation. Converted disputes remain
+unverified. No private commerce/webhook was enabled for this preparation.
+
+Signed-in parent/context verified: acct_1UOOZAIb8Lefpj36, live, Classes for Culture.
+Setup guide: profile review not started; profile address fields empty. This does NOT
+establish charge/payout capability. Owner must enter address/verification directly in
+Stripe; no sensitive values copied into Git. No live objects were changed/created;
+inventory before future creation. Wigsmi/Sherwood untouched; legal configuration draft.

@@ -417,3 +417,33 @@ Local validation: complete `test:all` integration gate passed, final operator te
 correction affects only the operator; its affected tests/lint were rerun, not unchanged
 application suites. Independent delivery is never claimed atomic with D1. Observed
 rehearsal recovery does not establish continuous production delivery or key custody.
+
+## Production key custody - owner decision, 11 October 2026
+
+Primary operator: Ayodele Ayeni. Recovery target <=24h, ordinary gameplay loss <=24h.
+Financial reconciliation and closure/deletion/hold authority require an independently
+verified recovery boundary before access resumes. Daily snapshots alone are insufficient.
+No independent human custodian is confirmed. A separately encrypted recovery copy helps
+with device loss; it does not remove operator absence or shared-credential risks.
+
+Secure installation steps; never send keys or passwords in chat:
+1. Prepare a dedicated entry in your encrypted password manager. Generate a fresh
+   cryptographically random 32-byte BINARY key in a restricted file outside Git;
+   store it as an encrypted attachment. Never reuse sandbox keys or use build variables.
+   Windows ACL protection needs explicit review; POSIX mode0600 alone is insufficient.
+2. Save a copy on separately encrypted offline storage with separately secured unlock
+   material, away from the primary device and Drive ciphertext. Do not store the
+   decryption key alongside its backup or in plain-text email/cloud notes.
+3. Lock/reopen both stores, retrieve each key into separate restricted temporary files
+   outside Git, then run:
+   node --experimental-strip-types scripts/verify-key-custody.mjs --primary-file <primary-file> --recovery-file <recovered-file>
+   Only matching/decryption booleans are printed. Same paths/hard links are rejected.
+   This proves synthetic decryption, NOT physical independence or human custody.
+   Record retrieval/storage assessment without passwords. Remove plaintext exports
+   using your secure store's process; deletion does not guarantee SSD/synced-backup erasure.
+4. After production runtime/cost gates pass, install through secure provider input
+   into only the required private runtime, separately from the secret-free build.
+   Rehearse real archive/authority readback and recovery before cron activation.
+
+These steps are prepared, not performed. No production key/store, independent custody,
+alert delivery or production recovery SLA is verified. Approved retention is unchanged.

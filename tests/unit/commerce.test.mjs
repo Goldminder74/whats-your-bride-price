@@ -128,6 +128,16 @@ test("webhook validation rejects livemode, Payment Link, price, currency and unk
   const live=JSON.stringify({id:`evt_${"b".repeat(24)}`,type:"checkout.session.completed",livemode:true,data:{object}}); await assert.rejects(()=>verifyStripeWebhook({rawBody:live,signatureHeader:signed(live),config,now}),/event/);
 });
 
+test("Adaptive Pricing presentment cannot replace the exact signed GBP integration price", async () => {
+  // Stripe documents original integration amounts on Checkout and separate presentment_details.
+  const object={id:"cs_test_adaptive",client_reference_id:`rr_${"1".repeat(32)}`,payment_status:"paid",payment_link:config.expectedPaymentLinkId,payment_intent:"pi_adaptive",amount_total:199,currency:"gbp",mode:"payment",presentment_details:{presentment_amount:239,presentment_currency:"eur"}};
+  const verify=async(value)=>{const raw=stripeRaw("checkout.session.completed",value);return verifyStripeWebhook({rawBody:raw,signatureHeader:signed(raw),config,now});};
+  const event=await verify(object);assert.equal(event.amountTotal,199);assert.equal(event.currency,"GBP");
+  for(const mutation of [{currency:"eur",amount_total:239},{amount_total:200},{currency:"usd"},{payment_link:"plink_other"}])await assert.rejects(verify({...object,...mutation}),/mismatch/);
+  const raw=stripeRaw("checkout.session.completed",object);
+  await assert.rejects(verifyStripeWebhook({rawBody:raw.replace('239','240'),signatureHeader:signed(raw),config,now}),/signature/);
+});
+
 test("paid, delayed, async-failure and replay handling are authoritative and idempotent", async () => {
   const {repository,service}=await fixture(); const pending=await service.startOrder(request());
   const base={id:"cs_test_paid",client_reference_id:pending.publicOrderReference,payment_link:config.expectedPaymentLinkId,payment_intent:"pi_paid",amount_total:199,currency:"gbp",mode:"payment"};
