@@ -2,20 +2,22 @@
 
 ## Source and deployment
 
-Branch `feature/viral-build-sprint`; deployed source `0d2a94589136d4b41c8387671e1835544986e3cc`.
+Branch `feature/viral-build-sprint`; deployed source `42bf37abbfc18e783da3815e12ee9c176007ba1b`.
 Resolve documentation checkpoint with `git rev-parse HEAD`; PR #1 stays draft/unmerged.
 [Private game](https://wybp-protected-test.netlify.app/) now includes copy/FAQ,
-Share Centre focus repair and subsequent completed runtime fixes. Matched release
-`241c49f2a5cc56b463235cc0be528123845f09dee4e8bd42657f4c220df65f3d`;
-Netlify `6ac98b120f83c2a037e6c32d`, Worker `2eab2542-2d29-400a-8c19-b4539f30b688`.
+Share Centre focus repair and subsequent completed fixes. Sentence-case captions
+cover every region/tier; the cultural-score explanation remains only in FAQ/footer.
+Purchase consent/privacy disclosures are preserved. Matched release
+`8de3defd3c05c3d18ee64414be5b18deb252fdb5b0a069a225311fc31ca7f7b5`;
+Netlify `6acb796444ae067fcc06f6c9`, Worker `1b76d3fd-6d42-478e-a172-36e6c648c05e`.
 Commerce, Cowrie enforcement, webhook, cron and unrelated features remain off; R2 unbound.
-Random replay alone is enabled. All five live 12-question games/result screens passed,
-with mobile image progression and refresh after question seven; desktop recovery,
-navigation, 320px information controls, FAQ and Share Centre Escape/focus passed.
-Anonymous denial, signed ingress and 110 client checksums verified. Fresh affected
-tests passed: entry 12/12, Share Centre 4/4, security/runtime 41/41; package includes
-142 server modules. Prior complete integration passes reused for unchanged source,
-including disabled-journey fixtures. See hosting runbook for audit and rollback pair.
+Random replay alone is enabled. Final integration stages passed, including both
+compiled targets, all five regional desktop/mobile games, and Chromium/WebKit
+private-runtime recovery/payment fixtures. Package has 142 server modules.
+Live entry/About/FAQ, desktop-to-mobile game, final image/result transition,
+sentence-case captions, downloaded portrait and Share Centre Escape/focus passed.
+Anonymous denial, signed ingress and 110 client checksums verified. Earlier live
+five-region recovery coverage remains recorded; see runbook for limits/rollback.
 
 Existing test D1 `wybp-test-d1-r001` (`1a268b28-e6d5-4431-8f84-a886df9369f1`)
 remains only on `wybp-test-r001`, migrations 0000–0012. Canonical 60 + approved 90

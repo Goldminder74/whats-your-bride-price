@@ -839,3 +839,57 @@ Netlify `6ac815e3a823977864ab5e66`, Worker
 `dec43f5c-6949-4438-9fb7-eb8be10afd6f`. Restore that Netlify deployment and Worker
 version together, verify owner/anonymous access and signed ingress, and preserve D1.
 Do not reverse migrations or reset wallets. No rollback was necessary.
+
+### 11 October 2026: caption and disclaimer copy release
+
+Deployed source `42bf37abbfc18e783da3815e12ee9c176007ba1b` changes 43 reviewed
+source/test/policy files. Captions capitalise only their first character, covering
+five regions and four tiers. The owner-superseded repetition policy now permits
+one FAQ explanation and one footer sentence. Entry, quiz, reveal, sharing,
+nominations and newly generated portrait/certificate/Story/preview media omit it.
+Internal projection validation fields remain for compatibility, but are not drawn
+or included in share copy. Preview generation `og2` prevents reuse of old artwork;
+legacy bytes are preserved. R2/dynamic public results remain disabled here.
+
+Matched release `8de3defd3c05c3d18ee64414be5b18deb252fdb5b0a069a225311fc31ca7f7b5`;
+Netlify `6acb796444ae067fcc06f6c9`, Worker
+`1b76d3fd-6d42-478e-a172-36e6c648c05e`. Secret-free build, 142 actual packaged
+server modules and 110 uploaded client checksums passed. Existing D1 schema
+0000–0012 remains compatible; no migration or new runtime setting was required.
+
+Validation: focused final media tests 14/14; all `test:all` stages before compiled
+hosting passed. Its packaging subprocess hit Windows sandbox directory denial;
+unchanged `test:compiled-hosting` then passed with required filesystem access,
+followed by `test:private-runtime`. This is a gate completed in stages, not a claim
+of an uninterrupted full-suite pass. Both ordinary Sites and synthetic Worker
+compiled navigation, mobile layouts, five-region desktop/mobile games and image
+progression passed. Chromium/WebKit private-runtime recovery and disabled-commerce
+fixtures passed. Build, lint and diff checks passed; tests were not weakened.
+All 20 region/tier media draw-command combinations exclude the old disclaimer;
+actual generated royal certificate/portraits and deterministic social PNG were
+also inspected locally. Premium journeys were not activated on the private site.
+
+Live owner-browser entry/About/FAQ and a complete West Africa game passed,
+switching desktop to 390px mobile, including Jollof and final Sankofa image
+progression. Result captions show `text-transform: none`; the actual downloaded
+1080×1920 portrait was inspected without the disclaimer. The browser download-event
+observer timed out, but the downloaded file itself was found and visually verified.
+Share Centre dismissal/focus passed; no captured browser errors. Newly repeating
+all five hosted games or physical-device coverage is not claimed for this copy edit.
+Anonymous primary/immutable preview both return 401; unsigned/invalid direct Worker
+requests and assets remain denied. Signed ingress passes. Postflight confirms
+30 eligible questions/region, two wallets, 13 ledger entries, 54 purchased Cowries,
+zero bonus, unchanged schema, random-only flags, no cron/webhook/R2. Verification
+play creates ordinary attempts/results; catalogue and financial records were not
+reset or changed. No public website, DNS, Stripe, secret or plan changed.
+
+Receipts/logs remain outside Git in TEMP under `wybp-caption-*`; visual evidence
+includes `wybp-caption-live-mobile.jpg`, actual generated royal PNGs under the
+latest `wybp-prompt17-*/visual-review`, and the downloaded portrait in Downloads.
+These are local diagnostics, not independently archived production evidence.
+
+Rollback together to Netlify `6ac98b120f83c2a037e6c32d` and Worker
+`2eab2542-2d29-400a-8c19-b4539f30b688`, release
+`241c49f2a5cc56b463235cc0be528123845f09dee4e8bd42657f4c220df65f3d`.
+Preserve D1 and secrets; recheck private access, signatures and matching assets.
+No rollback was necessary. Remaining production gates are unchanged.
