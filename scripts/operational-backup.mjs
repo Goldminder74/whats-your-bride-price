@@ -1,5 +1,6 @@
+import { encryptRecord as seal, decryptRecord as open } from './recovery-crypto.mjs';
 import { DatabaseSync } from "node:sqlite";
-import { createHash, createCipheriv, createDecipheriv, randomBytes } from "node:crypto";
+import { createHash } from "node:crypto";
 import { readFile, writeFile, mkdir, rename, unlink, realpath } from "node:fs/promises";
 import { resolve, join, relative } from "node:path";
 import { tmpdir } from "node:os";
@@ -17,18 +18,6 @@ const cell = value => typeof value === "bigint" ? ["integer", String(value)]
     : ["value", value];
 const uncell = ([type, value]) => type === "integer" ? BigInt(value) : type === "blob" ? Buffer.from(value, "base64") : value;
 const rows = (db, sql, params = []) => { const s = db.prepare(sql); s.setReadBigInts(true); return s.all(...params).map(row => Object.values(row).map(cell)); };
-function seal(value, key, aad) {
-  if (!Buffer.isBuffer(key) || key.length !== 32) fail("backup_key_required");
-  const iv = randomBytes(12), cipher = createCipheriv("aes-256-gcm", key, iv);
-  cipher.setAAD(Buffer.from(aad));
-  const body = Buffer.concat([cipher.update(json(value)), cipher.final()]);
-  return json({ iv: iv.toString("hex"), tag: cipher.getAuthTag().toString("hex"), body: body.toString("base64") });
-}
-function open(bytes, key, aad) {
-  const value = JSON.parse(Buffer.from(bytes).toString("utf8")), decipher = createDecipheriv("aes-256-gcm", key, Buffer.from(value.iv, "hex"));
-  decipher.setAAD(Buffer.from(aad)); decipher.setAuthTag(Buffer.from(value.tag, "hex"));
-  return JSON.parse(Buffer.concat([decipher.update(Buffer.from(value.body, "base64")), decipher.final()]));
-}
 async function exists(path) { try { await realpath(path); return true; } catch (error) { if (error.code === "ENOENT") return false; throw error; } }
 async function atomic(path, bytes) {
   const temp = path + ".writing";

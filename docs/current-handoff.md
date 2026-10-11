@@ -49,7 +49,12 @@ Parent Stripe identity/live context verified; profile review not started/address
 charges/payout readiness not established. Owner enters details directly in Stripe.
 Synthetic key-copy/decryption tool prepared; actual retrieval/custody unverified.
 
-Next: resolve cost inputs/Workers upgrade review while completing production profile,
+Next: owner confirms other subscriptions GBP0. Review the consolidated estimate in
+[continuation](production-preparation-continuation.md). Portable authority core/private
+service and bounded delivery/alert tick are implemented locally, not production-wired.
+Cross-instance writer integration and independent storage/monitoring remain incomplete.
+Stripe dashboard inspection was rejected by automatic approval review; actual converted
+sandbox evidence is blocked, no workaround attempted. Continue production profile,
 bound financial/authority journalling, independent delivery/fencing, alerts and secure
 keys. Existing recovery adapters are exclusive-operator/unbound tooling, not production
 concurrency guarantees. Rehearsal/Drive readback passed and DB deleted; key custody and
@@ -60,6 +65,10 @@ is not professional sign-off. No hosted writes or feature changes this checkpoin
 [recovery/key steps](retention-operations.md), [custody](launch-evidence-backup.md),
 [hosting](netlify-cloudflare-hosting.md), [payments](stripe-payment-link-setup.md).
 
-Preparation validation:21 focused checks/scoped lint/diff passed; all14 migration hashes
+Continuation:33 distinct affected recovery/runtime/custody checks and scoped lint/diff
+passed; portable in-memory bundles passed. No production deployment or complete writer
+integration. Detailed gaps/cost estimate/benchmark are in the continuation document.
+
+Preparation validation:21 earlier focused checks/scoped lint/diff passed; all14 migration hashes
 and exact manifest verified unchanged. Application runtime/build/source behaviour unchanged;
 existing gates reused. Detailed capacity/cost limits and launch/rollback order in package.
