@@ -9,8 +9,9 @@ operator imports/re-exports the same implementation, preserving recovery semanti
 D1 batch and query response failures, interrupted delivery, replay, sanitised alerts,
 readback and monitor failure are covered by synthetic checks.
 
-This is NOT complete production wiring. Application financial/closure/deletion
-writers still need routing through the private authority service. Cross-instance
+This is NOT complete hosted production wiring. The 13 October continuation below
+adds repository/private operator integration; service binding, snapshot capture,
+sender/monitor transport and hosted verification remain required. Cross-instance
 fencing and the durable Drive adapter now have synthetic validation; real credentials,
 snapshot capture, independent custody and live heartbeat delivery remain unverified. D1 fencing remains authoritative; an
 unresolved intent prevents a verified recovery boundary. No cross-provider atomicity
@@ -150,6 +151,10 @@ There is no intended runtime to inspect/install secrets in yet. No matching OAut
 environment names or local environment-file paths were found. The previous test
 Worker secret-name inspection found no Drive credentials. This does not establish
 whether an unused client exists in Google Console or the owner's password manager.
+Subsequently the owner reports creating wybp-recovery, enabling Drive API, configuring
+OAuth branding/test user/drive.file, creating the dedicated web client and securely
+saving a testing refresh token. Audience remains Testing with Publish app disabled.
+Blank app-domain links are visible, but the complete blocking condition is not verified.
 A connected ChatGPT Drive account is not an unattended runtime credential.
 
 Owner setup (ayo.m.ayeni@gmail.com only; no billing, purchases or broader scopes):
@@ -224,9 +229,11 @@ Official references:
 
 ## Alert approval and provider dependency
 
-Owner has approved operational alerts to team@classesforculture.com, including ONE
+Owner has approved operational alerts to noreply@classesforculture.com, including ONE
 clearly labelled test after secure configuration. Recipient confirmation is complete.
-No email has been sent. prepareAuthorityAlert({test:true,...}) builds a fixed-recipient
+Owner explicitly confirmed that noreply replaces team as the RECIPIENT. Namecheap
+Private Email hosts the destination; the sender identity/transport remain unconfigured.
+The fixed-recipient code and assertions now match this decision. No email has been sent. prepareAuthorityAlert({test:true,...}) builds a fixed-recipient
 [TEST - synthetic data] subject and status/timestamp-only body; no SQL, identifiers,
 archive contents, provider messages or credentials. Its sendApproved:false field means
 this helper does not authorise dispatch or provide a transport, NOT that owner approval
@@ -266,3 +273,131 @@ allocation. Download SHA-256 and authenticated decryption match; a wrong key and
 corrupt provider bytes reject. This tests the real adapter code against a fake provider,
 not a live Drive account or hosted D1. Nine affected checks and scoped lint/diff pass.
 No unchanged full application suite repeated. No resource, secret or schedule installed.
+
+## OAuth publication preparation — 12 October 2026
+
+[Three local review pages](recovery-oauth/README.md) now describe the internal recovery
+application, Google data use and operator terms. They are not deployed or legally
+approved. Business details and owner-controlled hosting/domain verification remain
+prerequisites. No existing website or DNS changed; no placeholder URL supplied to
+Google. Publishing information pages needs a reviewed hosting location; it is not
+game launch or permission to expose recovery endpoints. Screenshots confirm Testing,
+not a specific verified diagnosis of every publication blocker. Testing refresh
+tokens remain unsuitable for unattended production operation.
+
+## 13 October continuation — inactive local integration
+
+Production commerce, Cowrie and random-selection factories now require a private
+AUTHORITY binding and role production-app; absence returns unavailable, never raw D1.
+Private test profiles retain their existing DB path. worker/authorityDatabase.mjs
+wraps repository statements without a browser SQL endpoint. Mutations use the fenced
+encrypted intent/outbox transaction and retain original D1 changes()/RETURNING results.
+After loss of a committed response, authority_result_recovery_required requires domain
+readback; the financial batch is not rerun to fabricate affected-row counts. Known
+committed replay releases its fence; uncertain writes stay fenced. Reads compare journal
+generation before/after D1, rejecting stale active-wallet projections across closure.
+Production-ops also requires the separately pinned restore receipt before operations.
+Private operator closure/holds and bounded deletion use existing reviewed plans via
+applyAuthorityRetentionAction/purgeThroughAuthority. Legacy CLI remains test-targeted.
+No migration, dependency change, hosted resource, deployment or activation occurred.
+The actual private RPC entry/binding, complete production route coverage, snapshot
+provider and distributed production limiter remain integration/hosting gates. These
+local seams are not a production-readiness claim. Logs: ignored outputs/authority-preparation/.
+
+### Recovery-page alternative and OAuth requirements
+
+Netlify's documented digest API requires every required_functions bundle to be uploaded.
+The prior draft required the original system emails bundle, absent from linked source.
+Documentation does not establish safe path-only publication preserving that bundle.
+No further draft was attempted. Existing website/deploy/function remains untouched.
+Smallest alternative: one static information-only project on the existing Netlify team,
+no Git builds/functions/custom domain/DNS, using a provider hostname after name and
+Google domain-verification feasibility checks. Needs approval outside the existing-site
+path. Uses shared credits (one production publication costs15), not another subscription.
+Do not claim the resource exists or Google accepts an unverified provider hostname.
+
+Official Google requirements reviewed13October: accurate non-login-only homepage,
+matching linked privacy notice on the same owned/verified domain, terms, authorised
+domains, monitored support/developer contacts and accurate Limited Use disclosures.
+Brand verification and data-scope verification differ. Personal-use exemption does not
+prove current publishing blockers resolved. Only drive.file is requested. Where shown,
+use Verify Branding/View issues to identify actual checks, publish approved branding,
+then inspect Audience publication. Re-authorise dedicated-client offline access after
+production status; Testing Drive refresh tokens expire after seven days. Connected
+Google Console currently requires sign-in; owner sign-in requested. No credentials
+were installed/displayed. Existing secure-installation steps above remain applicable
+only once the intended private runtime and recovery gates exist.
+
+Sources:
+- https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/
+- https://docs.netlify.com/extend/install-and-use/setup-guides/email-integration/
+- https://support.google.com/cloud/answer/15549049?hl=en
+- https://support.google.com/cloud/answer/13464323?hl=en
+
+### Alerts and converted dispute — observed, not inferred
+
+Recipient is noreply@classesforculture.com. Owner13October confirms webmail access,
+but initially did not check regularly. Owner subsequently commits to daily monitoring
+of noreply. Do not silently switch to team@ or configure forwarding. Sender authentication is separate.
+No test sent; compatible SMTP and secure sender/app-password installation remain
+pending. No paid provider selected; email alone does not provide independent monitoring.
+
+Read-only correct-sandbox dashboard13October confirms GBP1.99 payment, GBP1.91 dispute,
+and Adaptive Pricing EUR presentment. Stripe Dispute documentation allows amount
+differences from currency fluctuation or partial disputes. That is a possible mechanism,
+not proof of this event's exact cause. Do not normalise191 to199 or settle an allocation
+from this observation; preserve review-required handling. No dispute acceptance,
+response, refund or settings change made. Application-linked converted checkout,
+fulfilment/refund/dispute remain unverified; private commerce/webhook remains off.
+https://docs.stripe.com/api/disputes/object
+
+### Whole-account model — scenarios, not a spending guarantee
+
+Demand:150000games/30days,500/hour burst;48h outage adds10000games/120000answers.
+Include existing public site, private game and all other projects on the shared team.
+Read-only13October balance659.2/1000credits,rechargeOFF is not a full monthly baseline.
+Current partial-cycle usage:22deploys/330credits,19020requests/3.8credits,
+bandwidth6.9credits,compute0. These team totals do not establish per-project monthly demand.
+Netlify total =15*productionDeploys +20*GBTransferred +0.0002*webRequests
++10*computeGBHours, plus other metered services. Proxy/API/redirect/assets count.
+Private tests, other-site traffic and operations are additive; caching must be measured.
+
+| Illustrative app-only scenario | Transfer/requests per game | Monthly credits incl4 deploys | Extra500-credit packs before other sites |
+|---|---|---|---|
+| Low |0.25MB /15|1260|1 ($5)|
+| Middle |1MB /20|3660|6 ($30)|
+| High |5MB /40|16260|31 ($155)|
+
+Decimal units; excludes compute/other projects. Packs are hypothetical, not purchases.
+Add actual other-project baseline, not a guessed extrapolation of partial-cycle usage.
+With proposed Workers$5 and existing Netlify$9, illustrative USD1=GBP0.80 and20% tax,
+middle scenario isGBP42.24 BEFORE other sites/storage/alerts/payment fees; highGBP162.24,
+lowGBP18.24. GBP14–25 is not a verified workload estimate or budget commitment.
+
+Proposed Workers$5 includes account-wide10mrequests/30mCPU-ms, then$0.30/m requests
+and$0.02/mCPU-ms. At3m invocations averaging10msCPU the allowance is exhausted;
+ops/service calls, other Workers and crypto add demand. D1 paid includes50m writes,
+25bn reads,5GB; then$1/m writes,$0.001/m reads,$0.75/GB-month. Raw20-row/game fixture
+already gives3m logical writes/month before index billing, journal/fence/custody,
+rate limits/payments/purge. Free100000writes/day is exhausted by gameplay alone.
+Actual query rows_read/rows_written and CPU amplification remain unmeasured. Paid usage
+has no GBP50 hard cap; no upgrade approved by this model.
+
+Drive requires30 daily full snapshots plus retained encrypted intent/event chunks,
+inventory/receipts, research archives and existing personal usage. For snapshot S GB
+and journal J GB, reserve at least30*S+J GB plus retry/restore headroom, and monthly
+upload30*S+J plus download/readback traffic. S=1GB alone exceeds15GB free storage.
+Actual S/J, quota and API call volume remain unknown; free storage is not assumed.
+SMTP uses existing entitlement only if confirmed; independent heartbeat may require
+another cost decision. Include Images, logs, FX/tax and live Stripe transaction/dispute
+fees; sandbox fees are not live quotes. R2 is unbound/unused.
+
+Candidate100answers/min gives144000/day. After60000daily arrivals,120000answer backlog
+needs1.43 ideal days. At50% successful passes spare capacity is12000/day:10days catch-up,
+FAILS the remaining5days after48h outage. Include all tables, holds, crypto/delivery and
+contention. No schedule approved/activated; alerts do not provide provider spending caps.
+
+Pricing checked13October:
+- https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/how-credits-work/
+- https://developers.cloudflare.com/workers/platform/pricing/
+- https://developers.cloudflare.com/d1/platform/pricing/

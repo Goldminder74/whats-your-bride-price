@@ -2,6 +2,7 @@ import { privateTestProfile, privateTestRuntimeReady } from "./privateTestProfil
 import { CowrieWalletService, D1CowrieWalletRepository } from "../db/cowrieWallet.ts";
 import { D1QuestionSelectionRepository } from "../db/questionSelection.ts";
 import { activeFeatureFlags } from "./featureFlags.ts";
+import { applicationAuthorityDatabase } from "../db/authorityDatabase.ts";
 
 declare const __WYBP_REVIEW_COWRIE_FIXTURES__: boolean | undefined;
 
@@ -10,8 +11,10 @@ export async function getCowrieRuntime(): Promise<CowrieWalletService | null> {
     return (await import("./cowrieReviewRuntime.ts")).getCowrieReviewRuntime();
   }
   const { env } = await import("cloudflare:workers");
-  const runtime = env as unknown as { DB?: D1Database };
+  const runtime = env as unknown as Record<string, unknown> & { DB?: D1Database };
   if (!runtime.DB || (privateTestProfile !== "off" && !privateTestRuntimeReady(runtime))) return null;
-  const selection = new D1QuestionSelectionRepository(runtime.DB);
-  return new CowrieWalletService(new D1CowrieWalletRepository(runtime.DB, selection), { streaksEnabled: activeFeatureFlags.streaks && activeFeatureFlags.daily_challenge });
+  const database = applicationAuthorityDatabase(runtime, privateTestProfile !== "off");
+  if (!database) return null;
+  const selection = new D1QuestionSelectionRepository(database);
+  return new CowrieWalletService(new D1CowrieWalletRepository(database, selection), { streaksEnabled: activeFeatureFlags.streaks && activeFeatureFlags.daily_challenge });
 }

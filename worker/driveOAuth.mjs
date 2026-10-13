@@ -23,5 +23,5 @@ export function prepareAuthorityAlert({ component, status, at, test = false }) {
   if(component!=='authority'||!['blocked','verified'].includes(status)||!Number.isSafeInteger(at)||typeof test!=='boolean')throw Error('authority_alert');
   // Owner approved the recipient and one labelled test. This remains preparation only;
   // dispatch still requires a securely configured and verified transport.
-  return Object.freeze({to:'team@classesforculture.com',subject:(test?'[TEST - synthetic data] ':'')+'WYBP authority '+status,body:(test?'TEST ALERT. Synthetic recovery check only. ':'')+'Authority recovery status: '+status+'. UTC: '+new Date(at).toISOString(),sendApproved:false});
+  return Object.freeze({to:'noreply@classesforculture.com',subject:(test?'[TEST - synthetic data] ':'')+'WYBP authority '+status,body:(test?'TEST ALERT. Synthetic recovery check only. ':'')+'Authority recovery status: '+status+'. UTC: '+new Date(at).toISOString(),sendApproved:false});
 }

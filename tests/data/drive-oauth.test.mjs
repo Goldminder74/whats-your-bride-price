@@ -8,7 +8,7 @@ test('server token refresh coalesces concurrent requests and never extends an ex
 test('revoked credentials fail closed with sanitised errors; alerts are only prepared',async()=>{
  const token=driveAccessToken({clientId:'synthetic-client',clientSecret:'synthetic-secret',refreshToken:'synthetic-refresh',fetcher:async()=>new Response('private-provider-detail',{status:400})});
  await assert.rejects(token(),/^Error: drive_oauth_refresh$/);
- const alert=prepareAuthorityAlert({component:'authority',status:'blocked',at:Date.now()});assert.equal(alert.to,'team@classesforculture.com');assert.equal(alert.sendApproved,false);
+ const alert=prepareAuthorityAlert({component:'authority',status:'blocked',at:Date.now()});assert.equal(alert.to,'noreply@classesforculture.com');assert.equal(alert.sendApproved,false);
  assert.throws(()=>prepareAuthorityAlert({component:'SQL-private',status:'blocked',at:Date.now()}),/authority_alert/);
 });
 
@@ -20,7 +20,7 @@ test('malformed or broader-scope token responses never leak their body or grant 
 
 test('labelled test alert contains only approved recipient, synthetic status and timestamp',()=>{
  const value=prepareAuthorityAlert({component:'authority',status:'verified',at:1791734400000,test:true,privateValue:'must-not-appear'});
- assert.equal(value.to,'team@classesforculture.com');assert.match(value.subject,/^\[TEST - synthetic data\]/);assert.match(value.body,/^TEST ALERT\./);
+ assert.equal(value.to,'noreply@classesforculture.com');assert.match(value.subject,/^\[TEST - synthetic data\]/);assert.match(value.body,/^TEST ALERT\./);
  assert.equal(value.sendApproved,false);assert.equal(JSON.stringify(value).includes('must-not-appear'),false);
  assert.throws(()=>prepareAuthorityAlert({component:'authority',status:'verified',at:0,test:'yes'}),/authority_alert/);
 });

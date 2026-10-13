@@ -1,6 +1,7 @@
 import { privateTestProfile, privateTestRuntimeReady } from "./privateTestProfile.ts";
 import { D1QuestionSelectionRepository } from "../db/questionSelection.ts";
 import { QuestionSelectionService } from "../db/questionSelectionService.ts";
+import { applicationAuthorityDatabase } from "../db/authorityDatabase.ts";
 
 declare const __WYBP_REVIEW_RANDOM_QUICK_PLAY_FIXTURES__: boolean | undefined;
 
@@ -9,7 +10,8 @@ export async function getQuestionSelectionRuntime(): Promise<QuestionSelectionSe
     return (await import("./randomQuickPlayReviewRuntime.ts")).getRandomQuickPlayReviewRuntime();
   }
   const { env } = await import("cloudflare:workers");
-  const runtime = env as unknown as { DB?: D1Database };
+  const runtime = env as unknown as Record<string, unknown> & { DB?: D1Database };
   if (privateTestProfile !== "off" && !privateTestRuntimeReady(runtime)) return null;
-  return runtime.DB ? new QuestionSelectionService(new D1QuestionSelectionRepository(runtime.DB)) : null;
+  const database = applicationAuthorityDatabase(runtime, privateTestProfile !== "off");
+  return database ? new QuestionSelectionService(new D1QuestionSelectionRepository(database)) : null;
 }

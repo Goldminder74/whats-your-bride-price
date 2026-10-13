@@ -7,6 +7,7 @@ import type { CowrieBundleConfiguration } from "../db/commerceContracts.ts";
 import { loadCommerceConfiguration } from "../db/commerceConfiguration.ts";
 import { D1CommerceRateLimiter } from "../db/commerceRateLimit.ts";
 import { privateTestProfile, privateTestRuntimeReady } from "./privateTestProfile.ts";
+import { applicationAuthorityDatabase } from "../db/authorityDatabase.ts";
 
 declare const __WYBP_REVIEW_COMMERCE_FIXTURES__: boolean | undefined;
 const reviewEnabled = typeof __WYBP_REVIEW_COMMERCE_FIXTURES__ === "boolean" && __WYBP_REVIEW_COMMERCE_FIXTURES__;
@@ -49,9 +50,11 @@ export async function getCommerceRuntime(): Promise<CommerceRuntime | null> {
   const runtime = env as unknown as Record<string, unknown> & { DB?: D1Database }; const config = loadCommerceConfiguration(runtime, activeFeatureFlags.cowrie_economy && activeFeatureFlags.random_quick_play);
   if (privateTestProfile !== "off" && (!privateTestRuntimeReady(runtime) || config?.expectedLivemode !== false)) return null;
   if (!runtime.DB || !config) return null;
+  const database = applicationAuthorityDatabase(runtime, privateTestProfile !== "off");
+  if (!database) return null;
   return Object.freeze({
-    service:new CommerceService(new D1CommerceRepository(runtime.DB),(privateTestProfile === "payments" ? new D1CommerceRateLimiter(runtime.DB) : new UnavailableCommerceRateLimiter()),config,Date.now,{cowriePurchasesEnabled:activeFeatureFlags.cowrie_economy && activeFeatureFlags.random_quick_play}),
-    resultCompletionService:new ResultCompletionService(new D1ResultCompletionRepository(runtime.DB)),
+    service:new CommerceService(new D1CommerceRepository(database),(privateTestProfile === "payments" ? new D1CommerceRateLimiter(runtime.DB) : new UnavailableCommerceRateLimiter()),config,Date.now,{cowriePurchasesEnabled:activeFeatureFlags.cowrie_economy && activeFeatureFlags.random_quick_play}),
+    resultCompletionService:new ResultCompletionService(new D1ResultCompletionRepository(database)),
     config,
   });
 }
