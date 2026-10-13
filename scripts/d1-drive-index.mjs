@@ -47,7 +47,7 @@ export class D1DriveIndex {
 
   async expired(limit = 50) {
     if (!Number.isInteger(limit) || limit < 1 || limit > 50) throw Error('cleanup_bounds');
-    const rows = await this.db.query("SELECT id,head_hash FROM operational_recovery_checkpoints WHERE kind='custody' AND id LIKE ?1 AND expires_at<=?2 ORDER BY id LIMIT ?3", [this.prefix + '%', this.now(), limit]);
+    const rows = await this.db.query("SELECT id,head_hash FROM operational_recovery_checkpoints WHERE kind='custody' AND substr(id,1,?1)=?2 AND expires_at<=?3 ORDER BY id LIMIT ?4", [this.prefix.length,this.prefix,this.now(),limit]);
     return rows.map(row => {
       const id = row.id.slice(this.prefix.length + 65);
       if (!fileId(id) || recoveryHash(Buffer.from(row.id)) !== row.head_hash) throw Error('drive_index_corrupt');

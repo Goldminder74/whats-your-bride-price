@@ -2,7 +2,7 @@
 
 ## Checkpoint and protected environments
 
-Branch `feature/viral-build-sprint`; starting source `2359935c8f45596f7449f904a68c8669490ae140`.
+Branch `feature/viral-build-sprint`; starting source `8248ad47e96f6297aa4fc07038479c746087c566`.
 Resolve this continuation's commit with `git rev-parse HEAD`.
 [Private game](https://wybp-protected-test.netlify.app/) is unchanged: source
 `42bf37abbfc18e783da3815e12ee9c176007ba1b`, Netlify `6acb796444ae067fcc06f6c9`,
@@ -13,11 +13,11 @@ R2 unbound. Preserve wallets, catalogue, unpublished drafts/reserves, existing
 websites/email, Wigsmi/Sherwood, Sites, staging and stash.
 
 Private operations Worker `wybp-prod-ops-r001`, version
-`97ecac41-8a50-4e02-bb6e-8126fea472dd`, has no public endpoints or schedules.
+`7de3483b-f7ac-4440-a7db-72c3151cb9c4`, has no public endpoints or schedules.
 Its only D1 is approved isolated `wybp-prod-d1-r001`,
 `a5b2b409-ed08-48c9-ac1d-36699fc6c4b9`,WEUR. Empty inventory preceded unchanged
-0000-0013 import; all14hosted migration checksum receipts match Git. No application,
-financial or catalogue data imported there.
+0000-0013 import; all14hosted migration receipts remain intact. Only synthetic rehearsal
+data was restored there and removed from active tables after verification; no real data imported.
 
 ## Verified recovery and current task
 
@@ -32,12 +32,15 @@ concurrent retries, pinned empty-baseline recovery and wrong-receipt denial pass
 SMTP test accepted and owner confirmed receipt at noreply@classesforculture.com;
 owner monitors daily. Test gate OFF; never repeat the alert.
 
-New actual Worker-format populated restore passed locally: accounting relationships,
-closed wallet, legal hold, deletion suppression, interrupted/resumed import, no duplicates
-and fail-closed access before reconciliation. Hosted loss/reconstruction of only the
-synthetic file mapping passed twice, preserving exact ID and original expiry. Inventories
-now include original reservation clocks; missing/expired clocks fail closed. No new migration.
-Focused12/12 plus compiled/safety10/10, scoped lint/diff pass. Detailed receipts/IDs:
+Hosted populated restore now passed from a pinned encrypted Drive fixture:39pages,
+one refunded order,123closed support cases, legal hold, closed wallet, deletion suppression,
+full row/trigger/foreign-key reconciliation, interrupted/resumed imports and duplicates.
+Full five-file Drive inventory recovered after interruption at two mappings, with forced
+two-file pagination, original IDs/clocks preserved, and no premature access. D1's50-byte
+LIKE limit exposed a scope-query defect; exact substring comparisons fix loss and expiry
+cleanup. Nine cleanup pages restored original triggers/zero active business rows; old
+empty baseline verified before operational access reopened. Hosted-rehearsal gate OFF.
+Focused30/30 plus compiled/safety10/10, scoped lint/diff pass. No new migration. Receipts:
 [private operations](private-operations-runtime.md). Sanitised evidence is ignored under
 outputs/authority-preparation/; local logs are not independent custody.
 
@@ -45,12 +48,13 @@ Owner-supplied saved key copy successfully decrypted the existing synthetic Driv
 on13October2026. Temporary WYBP_RECOVERY_KEY_CHECK_BASE64 Secret removed and absence
 verified; primary key unchanged. No alert repeated. Storage independence/emergency access
 remain owner-reported, not independently audited; no separate custodian confirmed.
-Next: complete hosted populated-format restore and full-inventory recovery, and document
-independent custody/emergency access. Local evidence is not a hosted guarantee.
+Key/alert checks were not repeated. Next: secure durable receipt/key emergency custody,
+then production wiring/monitoring and representative capacity/purge verification. This
+synthetic correctness rehearsal is not a production scale or recovery-time guarantee.
 
 ## Remaining launch gates
 
-Independent recovery/key custody; production rate limiting, continuous authority delivery,
+Durable independent inventory-receipt/emergency-key custody; production rate limiting, continuous authority delivery,
 independent monitoring and measured purge/outage capacity; approved operating schedule
 and whole-account costs within GBP50/month (no upgrades/top-ups). Converted-currency
 application-linked payment/refund/dispute verification remains incomplete; GBP1.91 dispute

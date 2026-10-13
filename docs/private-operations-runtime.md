@@ -7,7 +7,7 @@ service binding. `RecoveryOperator` additionally exposes delivery, boundary
 verification and the separately gated, single-claim labelled test alert. Never bind
 the operator entrypoint to the public application or expose it through an HTTP bridge.
 
-The deployed private version is `97ecac41-8a50-4e02-bb6e-8126fea472dd`.
+The deployed private version is `7de3483b-f7ac-4440-a7db-72c3151cb9c4`.
 On 13 October all six Secret names were confirmed without retrieving values.
 The approved isolated D1 `wybp-prod-d1-r001` was created in WEUR, UUID
 `a5b2b409-ed08-48c9-ac1d-36699fc6c4b9`, and bound only to this operational Worker.
@@ -77,6 +77,68 @@ No jobs, live payments, public game or existing-site changes were activated.
 
 ## Verification and limitations
 
+### Hosted populated restore and full-inventory recovery — 13 October
+
+Completed in existing isolated D1 `a5b2b409-ed08-48c9-ac1d-36699fc6c4b9`, never
+bound to public application routes. Existing private-game D1, websites, payments,
+keys and alert were untouched. No resource, migration, paid plan or schedule added.
+
+`scripts/prepare-hosted-recovery.mjs` prepares synthetic data only. The exact bundle
+is pinned at `7124b17522a6d2028b3a615a30ab3646807f61161a2aadb1d8fc144cdfe383c6`.
+It contains 39 import pages, complete expected rows/triggers and original cleanup
+definitions; runtime credentials/key never enter preparation. The private Worker
+encrypted it in Drive, downloaded/decrypted that archive for each bounded import,
+and checked the pinned content. Ciphertext file `1tjVwt99nxDCzvkjynt_GRtiyD8OoQ6BL`,
+SHA-256 `6d35f40a8574f8cbfd5644567e20b6dfcb46a523ad89bb732dfed3c8e30517b2`.
+Its original reservation expires 12 November2026,12:12:37.563UTC. Preserve that clock;
+existing bounded cleanup is required by then while scheduled operations remain off.
+
+Forced two-file Drive pagination captured all five files, including clocks and hashes.
+Full inventory receipt:
+`7f6cc6ffd12fc7b5bb17ba94a7d799b0ff151d3921c0a1cc5dcc60e5974c2ecc`.
+All five file mappings were removed under the recovery fence. Reconstruction stopped
+after two mappings; actual read-fence access remained denied. A fresh RPC resumed all
+five, then a separate phase verified complete inventory and baseline bytes before
+unfencing. No file duplication or retention-clock renewal occurred. The root folder
+configuration and non-file operational authority were deliberately preserved.
+
+First attempts rolled back without removing mappings: D1 rejected the long LIKE
+pattern. Its documented limit is [50 bytes](https://developers.cloudflare.com/d1/platform/limits/).
+Exact substring-prefix equality now scopes both loss and expiry queries. Focused
+tests enforce this provider constraint and reject cross-folder cleanup. Temporary
+redacted metadata diagnostics were removed; only controlled error codes remain.
+A local minimal D1-binding diagnostic stalled and was stopped; no hosted mutation
+occurred from that diagnostic. The actual hosted execution supplies the result.
+
+Hosted import deliberately stopped after its first committed page, denied premature
+completion/access, then resumed all39pages. Eight-table reconciliation batches compare
+all quoted values, triggers and foreign keys, including more than100support records.
+Verified: one refunded order and its ledger/allocation relationships,123closed support
+cases, one legal hold, permanent wallet closure, deleted attempt/result, duplicate
+execution without extra orders, and rejection of wallet reopening/balance corruption.
+No access receipt was restored while populated synthetic data existed.
+
+Nine bounded cleanup pages removed only this pinned fixture and restored the original
+triggers. All business tables/foreign keys/schema were reconciled;14migration receipts
+remain. The original empty baseline was read back before restoring its operational
+receipt. This is active-table cleanup, not a claim of physical erasure from provider
+history. Evidence remains encrypted under the approved backup window.
+
+Final private version `7de3483b-f7ac-4440-a7db-72c3151cb9c4`:
+`WYBP_HOSTED_REHEARSAL_ENABLED=false`, alert gate false, no public URLs/cron.
+Actual final read fence passes and rehearsal calls are denied. Future rehearsal needs
+explicit scoped re-enablement; never target real data with these synthetic operators.
+
+Evidence under ignored `outputs/authority-preparation/`: full-inventory-receipt.json,
+full-inventory-recovery-live.json, hosted-populated-restore-live.json,
+hosted-recovery-cleanup-live.json, hosted-final-empty-counts.json, hosted-final-gates.json,
+hosted-focused-final.log(30/30),hosted-package-final.log(10/10).
+No full application/key/alert checks repeated. Local plaintext material is synthetic only.
+Full inventory receipt material currently has a local evidence copy and a Git/runtime
+hash anchor; independent durable private receipt custody remains a production gate.
+This correctness fixture does not benchmark5,000games/day, outage catch-up, purge
+deadlines or production recovery time. No new operational or legal guarantee is implied.
+
 ### Populated recovery continuation — 13 October
 
 The new offline `scripts/worker-snapshot-restore.mjs` materialises the actual
@@ -133,13 +195,15 @@ fail closed on mismatch. SMTP failures are sanitised; a lost final acknowledgeme
 is uncertain delivery, never evidence of mailbox receipt. The single test-alert
 claim prevents automatic resend after uncertainty. Investigate rather than reset it.
 
-Remaining gates include a complete restore of populated snapshot pages with authority
-suppression/holds/accounting, independent custody/emergency access, full-inventory recovery,
-continuous delivery/monitoring. The single labelled alert's receipt is owner-confirmed.
+Hosted encrypted SQL-page restore, suppression/accounting and full folder-inventory
+recovery are now verified above. Remaining gates include automated production capture
+and snapshot-materialisation integration, durable independent receipt custody/emergency
+access, and continuous delivery/monitoring. The alert receipt is owner-confirmed.
 Do not activate production schedules. Snapshot capture is bounded
-to 1,000 pages per invocation by default; production capacity and a complete restore
-of this snapshot format remain unverified. Local recovery tests do not establish
-hosted recovery, continuous delivery or an independent custodian.
+to 1,000 pages per invocation by default; production capacity and the fully automated
+hosted snapshot-to-materialisation pipeline remain unverified. Local Worker-format
+tests and the hosted encrypted SQL-page rehearsal are complementary evidence, not a
+single production-scale end-to-end pipeline or an independent custodian.
 
 Evidence is ignored under `outputs/authority-preparation/`: operations-final.log,
 operations-recovery.log, operations-lint.log, ops-deployment.log and d1-inventory.json.

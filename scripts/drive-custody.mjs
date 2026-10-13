@@ -4,10 +4,11 @@ const valid = value => typeof value === 'string' && /^[a-zA-Z0-9_-]{10,160}$/.te
  * Its durable state must survive process loss. Never substitute an in-memory map in production.
  * Access tokens are obtained only at request time, never returned or logged. */
 export class DriveCustody {
-  constructor({ folderId, accessToken, index, fetcher = (input, init) => globalThis.fetch(input, init) }) {
+  constructor({ folderId, accessToken, index, fetcher = (input, init) => globalThis.fetch(input, init), pageSize=1000 }) {
     if (!valid(folderId) || typeof accessToken !== 'function' || typeof index?.reserve !== 'function'
       || typeof index?.get !== 'function') throw Error('drive_custody_configuration');
-    Object.assign(this, { folderId, accessToken, index, fetcher });
+    if(!Number.isInteger(pageSize)||pageSize<1||pageSize>1000)throw Error('drive_inventory_page_bounds');
+    Object.assign(this, { folderId, accessToken, index, fetcher, pageSize });
   }
   name(name) { if (!/^[a-zA-Z0-9_.-]{1,180}$/.test(name)) throw Error('custody_name'); return name; }
   async request(url, options = {}) {
@@ -55,7 +56,7 @@ export class DriveCustody {
     const names = [], seen = new Set(), pages = new Set(); let page;
     do {
       const query = new URLSearchParams({ q: "'" + this.folderId + "' in parents and trashed=false and appProperties has { key='wybpRecovery' and value='1' }",
-        fields: 'nextPageToken,incompleteSearch,files(id,name)', pageSize: '1000' });
+        fields: 'nextPageToken,incompleteSearch,files(id,name)', pageSize: String(this.pageSize) });
       if (page) query.set('pageToken', page);
       const response = await this.request('https://www.googleapis.com/drive/v3/files?' + query);
       if (!response.ok) throw Error('drive_inventory');
@@ -83,7 +84,7 @@ export class DriveCustody {
   }
   /** The expected receipt comes from separately secured recovery custody, never
    * an untrusted archive. Recover mappings only after folder/name/bytes readback. */
-  async recoverIndex(files, expectedReceipt) {
+  async recoverIndex(files, expectedReceipt, fault=()=>{}) {
     if (!Array.isArray(files) || files.length > 10000 || !/^[a-f0-9]{64}$/.test(expectedReceipt)
       || recoveryHash(Buffer.from(JSON.stringify(files))) !== expectedReceipt) throw Error('drive_inventory_receipt');
     const seen = new Set();
@@ -102,6 +103,7 @@ export class DriveCustody {
       if (bytes.length > 4 * 1024 * 1024 || recoveryHash(bytes) !== file.sha256) throw Error('drive_recovery_hash');
       const recovered=this.index.recoverReserve?await this.index.recoverReserve(file.name,file.id,file):await this.index.reserve(file.name,file.id);
       if (recovered !== file.id) throw Error('drive_index_conflict');
+      await fault(file,seen.size);
     }
     return files.length;
   }

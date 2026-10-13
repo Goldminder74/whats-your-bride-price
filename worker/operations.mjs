@@ -11,6 +11,7 @@ import { D1DriveIndex } from '../scripts/d1-drive-index.mjs';
 import { DriveCustody } from '../scripts/drive-custody.mjs';
 import { D1Authority } from '../scripts/authority-runtime.mjs';
 import { restoreSuppressionPlan } from '../db/retention.ts';
+import { hostedSyntheticRecovery } from './hostedSyntheticRecovery.mjs';
 
 function runtime(env) {
   const alert = authorityMail(env, connect);
@@ -36,6 +37,23 @@ export class ApplicationAuthority extends WorkerEntrypoint {
 }
 
 export class RecoveryOperator extends ApplicationAuthority {
+  async hostedSynthetic(action,payload) {
+    if(this.env.WYBP_HOSTED_REHEARSAL_ENABLED!=='true')throw Error('hosted_synthetic_recovery_disabled');
+    try {
+      const configured=runtime(this.env);configured.custody.pageSize=2;
+      const recovery=hostedSyntheticRecovery({env:this.env,db:d1AuthorityAdapter(this.env.DB),custody:configured.custody,index:configured.index,key:Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64')});
+      switch(action){
+        case 'stage':return await recovery.stage(payload);
+        case 'step':return await recovery.step(payload);
+        case 'finish':return await recovery.finish(payload?.cleanup===true);
+        case 'protection':return await recovery.verifyProtection();
+        case 'empty-receipt':return await recovery.restoreEmptyReceipt();
+        case 'inventory':return await recovery.inventory();
+        case 'recover-inventory':return await recovery.recoverInventory(payload.files,payload.receipt,payload.interrupt===true);
+        default:throw Error('scope');
+      }
+    }catch(error){throw Error(/^hosted_inventory_(receipt|head|loss_transaction|recover|verify|complete)_(type|reference|binding|constraint|other|batch_shape|query_shape|authorization|database)$/.test(error.message)?error.message:'hosted_synthetic_recovery_blocked');}
+  }
   async reconstructSyntheticIndex(files,receipt) {
     try {
       if(this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||receipt!==this.env.WYBP_SYNTHETIC_RECOVERY_RECEIPT||!Array.isArray(files)||files.length!==1||files[0].name!=='synthetic-commissioning-v1.enc')throw Error('scope');

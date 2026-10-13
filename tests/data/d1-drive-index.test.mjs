@@ -60,6 +60,16 @@ test('lost mapping reconstruction preserves the original clock and rejects missi
  }finally{sql.close();}
 });
 
+test('bounded expiry supports D1 50-byte LIKE limits and cannot cross folder scopes',async()=>{
+ const {sql,db}=await fixture();try{
+  let now=Date.now();const provider={...db,async query(statement,params=[]){if(/LIKE\s+\?/i.test(statement)&&params.some(p=>typeof p==='string'&&p.length>50))throw Error('LIKE pattern too complex');return db.query(statement,params);}};
+  const first=new D1DriveIndex(provider,'synthetic_folder_001',{now:()=>now}),second=new D1DriveIndex(provider,'synthetic_folder_002',{now:()=>now});
+  await first.reserve('one.enc','synthetic_file_001');await second.reserve('two.enc','synthetic_file_002');now+=30*86400000;
+  const rows=await first.expired(1);assert.equal(rows.length,1);assert.equal(rows[0].fileId,'synthetic_file_001');
+  await first.releaseExpired(rows[0].checkpoint);assert.equal(await second.get('two.enc'),'synthetic_file_002');
+ }finally{sql.close();}
+});
+
 
 test('encrypted delivery survives database/process reopen and a lost provider acknowledgement',async()=>{
  const {mkdtemp,rm}=await import('node:fs/promises'),{tmpdir}=await import('node:os'),{join}=await import('node:path');
