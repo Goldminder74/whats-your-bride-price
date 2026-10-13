@@ -7,8 +7,8 @@ service binding. `RecoveryOperator` additionally exposes delivery, boundary
 verification and the separately gated, single-claim labelled test alert. Never bind
 the operator entrypoint to the public application or expose it through an HTTP bridge.
 
-The deployed inactive version is `f008404e-e5a5-4cca-8786-750e780b667e`.
-Readback on 13 October confirmed that version and an empty secret list. Account
+The deployed inactive version is `21f81c77-2603-4c24-b8c1-c35d0869a507`.
+On 13 October all six Secret names were confirmed, without retrieving values. Account
 inventory contains the existing test D1 only; no production database is bound.
 This is runtime preparation, not activated recovery or a verified live backup.
 
@@ -33,7 +33,15 @@ or an explicit supported grant, then configure its verified `WYBP_DRIVE_FOLDER_I
 No folder ID is guessed. Sender and monitored recipient are both noreply@ here;
 they are separate roles. Transport uses Namecheap implicit TLS on port 465.
 
-Before any RPC test, inventory/create only the already approved isolated production
+The private `verifyCredentials` RPC performs only a synthetic encryption round trip
+and Google token refresh; it returns booleans or controlled diagnostic codes, never
+tokens or provider text. An authenticated remote service binding from a loopback-only
+local caller was verified. It creates no public endpoint or hosted caller resource.
+The live check reached Google, which returned `invalid_grant`; replace the installed
+Refresh token with the saved token for the matching dedicated client. Do not infer
+revocation or expiry from this code alone. No backup or alert has been sent.
+
+Before database/backup/alert RPC tests, inventory/create only the already approved isolated production
 D1 within free allowances, verify unchanged migrations 0000–0013, establish the
 approved initial recovery boundary/receipt, and bind that exact database. Pin
 `WYBP_RESTORE_RECEIPT_SHA256` to the verified receipt. Never use the existing test
@@ -43,6 +51,10 @@ caller is required; the compiled local caller is a test fixture, not a hosted ca
 ## Verification and limitations
 
 Run `npm run test:operations` for an actual Wrangler package and private RPC tests.
+The compiled success regression reproduced an unsupported `redirect:error` failure;
+OAuth and Drive now use manual redirects and reject unsuccessful responses. Explicit
+redirect-denial tests preserve the no-credential-forwarding protection. Default fetch
+wrappers also preserve the native receiver when passed through custody objects.
 Snapshot pages are encrypted, read back, decrypted and compared; immutable names
 reuse ciphertext on retries. Schema, counts, pagination bounds and authority fences
 fail closed on mismatch. SMTP failures are sanitised; a lost final acknowledgement

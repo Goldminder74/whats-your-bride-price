@@ -4,7 +4,7 @@ const valid = value => typeof value === 'string' && /^[a-zA-Z0-9_-]{10,160}$/.te
  * Its durable state must survive process loss. Never substitute an in-memory map in production.
  * Access tokens are obtained only at request time, never returned or logged. */
 export class DriveCustody {
-  constructor({ folderId, accessToken, index, fetcher = fetch }) {
+  constructor({ folderId, accessToken, index, fetcher = (input, init) => globalThis.fetch(input, init) }) {
     if (!valid(folderId) || typeof accessToken !== 'function' || typeof index?.reserve !== 'function'
       || typeof index?.get !== 'function') throw Error('drive_custody_configuration');
     Object.assign(this, { folderId, accessToken, index, fetcher });
@@ -13,7 +13,7 @@ export class DriveCustody {
   async request(url, options = {}) {
     const token = await this.accessToken();
     if (typeof token !== 'string' || !token) throw Error('drive_authentication');
-    try { return await this.fetcher(url, { ...options, redirect: 'error', headers: { ...options.headers, Authorization: 'Bearer ' + token } }); }
+    try { return await this.fetcher(url, { ...options, redirect: 'manual', headers: { ...options.headers, Authorization: 'Bearer ' + token } }); }
     catch { throw Error('drive_transport'); }
   }
   async get(name) {

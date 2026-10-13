@@ -5,6 +5,8 @@ import { authoritySnapshot } from './authoritySnapshot.mjs';
 import { authorityMail } from './authorityMail.mjs';
 import { readBoundary } from '../scripts/authority-runtime.mjs';
 import { RETENTION_POLICY, RETENTION_DAY } from '../db/retentionPolicy.ts';
+import { driveAccessToken } from './driveOAuth.mjs';
+import { encryptRecord, decryptRecord } from '../scripts/recovery-crypto.mjs';
 
 function runtime(env) {
   const alert = authorityMail(env, connect);
@@ -30,6 +32,26 @@ export class ApplicationAuthority extends WorkerEntrypoint {
 }
 
 export class RecoveryOperator extends ApplicationAuthority {
+  async verifyCredentials() {
+    let stage='configuration';
+    try {
+      if (this.env.WYBP_AUTHORITY_ROLE !== 'production-ops') throw Error('role');
+      const encoded=this.env.WYBP_AUTHORITY_KEY_BASE64;
+      if(typeof encoded!=='string'||!/^[A-Za-z0-9+/]{43}=$/.test(encoded))throw Error('key');
+      const key=Buffer.from(encoded,'base64');
+      if(key.length!==32||key.toString('base64')!==encoded)throw Error('key');
+      const name='credential-check', sample={synthetic:true};
+      if(decryptRecord(encryptRecord(sample,key,name),key,name).synthetic!==true)throw Error('encryption');
+      const token=driveAccessToken({clientId:this.env.WYBP_DRIVE_CLIENT_ID,clientSecret:this.env.WYBP_DRIVE_CLIENT_SECRET,refreshToken:this.env.WYBP_DRIVE_REFRESH_TOKEN});
+      stage='oauth_refresh';
+      await token();
+      return {oauthRefreshVerified:true,encryptionRoundTripVerified:true};
+    } catch(error) {
+      const cause=['invalid_grant','invalid_client','unauthorized_client','invalid_scope','provider_rejected'].includes(error.cause)?'_'+error.cause:
+        ['drive_oauth_transport','drive_oauth_response','drive_oauth_scope','drive_oauth_configuration'].includes(error.message)?'_'+error.message:'';
+      throw Error('credential_verification_failed_'+stage+cause);
+    }
+  }
   async deliver(boundaryId) {
     try {
       const configured = runtime(this.env);

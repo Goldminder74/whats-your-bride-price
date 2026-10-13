@@ -57,7 +57,7 @@ test('encrypted delivery survives database/process reopen and a lost provider ac
  const db={async query(s,p=[]){return sql.prepare(s).all(...p);},async batch(rows){sql.exec('BEGIN');try{const result=rows.map(r=>sql.prepare(r.sql).all(...r.params));sql.exec('COMMIT');return result;}catch(e){sql.exec('ROLLBACK');throw e;}}};
  const key=randomBytes(32),plain={synthetic:'recovery-only',sequence:1},aad='synthetic-delivery',bytes=encryptRecord(plain,key,aad),files=new Map();let uploads=0,generated=0;
  const fetcher=async(url,options)=>{
-  assert.equal(options.redirect,'error');
+  assert.equal(options.redirect,'manual');
   if(url.includes('generateIds')){generated++;return Response.json({ids:['synthetic_file_001']});}
   if(url.includes('/upload/')){uploads++;const body=Buffer.from(options.body),text=body.toString(),metadata=JSON.parse(text.split('\r\n\r\n')[1].split('\r\n--')[0]);
    const marker=Buffer.from('Content-Type: application/octet-stream\r\n\r\n'),start=body.indexOf(marker)+marker.length,end=body.lastIndexOf(Buffer.from('\r\n--'));

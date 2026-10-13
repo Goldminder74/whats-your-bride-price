@@ -114,7 +114,7 @@ export function purgeThroughAuthority(database, service, at, limit = 50) {
 /** Private production-ops factory only. No credentials enter the application build.
  * Initialisation/migrations, snapshot capture and approved alert transport are explicit
  * operator dependencies: absent setup never falls back to local or unprotected storage. */
-export function configuredAuthorityService(env, { snapshot, alert, now = Date.now, fetcher = fetch }) {
+export function configuredAuthorityService(env, { snapshot, alert, now = Date.now, fetcher = (input, init) => globalThis.fetch(input, init) }) {
   if (env?.WYBP_AUTHORITY_ROLE !== 'production-ops' || env.WYBP_AUTHORITY_DATABASE_NAME !== 'wybp-prod-d1-r001'
     || typeof snapshot !== 'function' || typeof alert !== 'function'
     || typeof env.WYBP_RESTORE_RECEIPT_SHA256 !== 'string' || !/^[a-f0-9]{64}$/.test(env.WYBP_RESTORE_RECEIPT_SHA256)

@@ -6,7 +6,7 @@ function fixture() {
  const ids=new Map(),files=new Map();let uploads=0,lose=false;
  const index={async get(n){return ids.get(n);},async reserve(n,id){if(!ids.has(n))ids.set(n,id);return ids.get(n);}};
  const fetcher=async(url,options)=>{
-  assert.equal(options.redirect,'error');assert.equal(options.headers.Authorization,'Bearer synthetic-token');
+  assert.equal(options.redirect,'manual');assert.equal(options.headers.Authorization,'Bearer synthetic-token');
   if(url.includes('generateIds'))return Response.json({ids:['synthetic_file_001']});
   if(url.includes('/upload/')){uploads++;const b=Buffer.from(options.body),text=b.toString(),metadata=JSON.parse(text.split('\r\n\r\n')[1].split('\r\n--')[0]);
    if(files.has(metadata.id))return new Response(null,{status:409});
@@ -19,6 +19,11 @@ function fixture() {
  const config={folderId:'synthetic_folder_001',accessToken:async()=> 'synthetic-token',index,fetcher};
  return {config,files,ids,get uploads(){return uploads;},loseNext(){lose=true;}};
 }
+
+test('Drive redirects fail closed without forwarding credentials',async()=>{
+ let calls=0;const c=new DriveCustody({folderId:'synthetic_folder_001',accessToken:async()=> 'synthetic-token',index:{get:async()=> 'synthetic_file_001',reserve:async()=> 'synthetic_file_001'},fetcher:async(url,options)=>{calls++;assert.equal(options.redirect,'manual');assert.match(url,/^https:\/\/www.googleapis.com\//);return new Response(null,{status:302,headers:{Location:'https://untrusted.invalid/'}});}});
+ await assert.rejects(c.get('one.intent'),/^Error: drive_download$/);assert.equal(calls,1);
+});
 test('uncertain upload resumes across process replacement using the durable reserved ID',async()=>{
  const f=fixture(),bytes=Buffer.from('encrypted-synthetic');f.loseNext();
  await assert.rejects(new DriveCustody(f.config).put('one.intent',bytes),/^Error: drive_transport$/);

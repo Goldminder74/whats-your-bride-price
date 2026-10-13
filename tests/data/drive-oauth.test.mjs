@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { driveAccessToken, prepareAuthorityAlert } from '../../worker/driveOAuth.mjs';
 test('server token refresh coalesces concurrent requests and never extends an expired credential',async()=>{
- let at=0,calls=0;const token=driveAccessToken({clientId:'synthetic-client',clientSecret:'synthetic-secret',refreshToken:'synthetic-refresh',now:()=>at,fetcher:async(url,o)=>{assert.equal(url,'https://oauth2.googleapis.com/token');assert.equal(o.redirect,'error');calls++;return Response.json({access_token:'synthetic-access-'+calls,token_type:'Bearer',expires_in:3600});}});
+ let at=0,calls=0;const token=driveAccessToken({clientId:'synthetic-client',clientSecret:'synthetic-secret',refreshToken:'synthetic-refresh',now:()=>at,fetcher:async(url,o)=>{assert.equal(url,'https://oauth2.googleapis.com/token');assert.equal(o.redirect,'manual');calls++;return Response.json({access_token:'synthetic-access-'+calls,token_type:'Bearer',expires_in:3600});}});
  assert.deepEqual(await Promise.all([token(),token()]),['synthetic-access-1','synthetic-access-1']);assert.equal(calls,1);at=3540000;assert.equal(await token(),'synthetic-access-2');
 });
 test('revoked credentials fail closed with sanitised errors; alerts are only prepared',async()=>{
@@ -23,4 +23,16 @@ test('labelled test alert contains only approved recipient, synthetic status and
  assert.equal(value.to,'noreply@classesforculture.com');assert.match(value.subject,/^\[TEST - synthetic data\]/);assert.match(value.body,/^TEST ALERT\./);
  assert.equal(value.sendApproved,false);assert.equal(JSON.stringify(value).includes('must-not-appear'),false);
  assert.throws(()=>prepareAuthorityAlert({component:'authority',status:'verified',at:0,test:'yes'}),/authority_alert/);
+});
+
+test('OAuth rejection diagnostics retain only controlled codes, never provider details',async()=>{
+ for(const [provider,expected] of [['invalid_grant','invalid_grant'],['private-token-value','provider_rejected']]){
+  const token=driveAccessToken({clientId:'synthetic-client',clientSecret:'synthetic-secret',refreshToken:'synthetic-refresh',fetcher:async()=>Response.json({error:provider,error_description:'private-secret-body'},{status:400})});
+  await assert.rejects(token(),error=>error.message==='drive_oauth_refresh'&&error.cause===expected&&!JSON.stringify(error).includes('private-secret-body'));
+ }
+});
+
+test('OAuth redirects are never followed or accepted',async()=>{
+ let calls=0;const token=driveAccessToken({clientId:'synthetic-client',clientSecret:'synthetic-secret',refreshToken:'synthetic-refresh',fetcher:async(url,options)=>{calls++;assert.equal(url,'https://oauth2.googleapis.com/token');assert.equal(options.redirect,'manual');return new Response(null,{status:302,headers:{Location:'https://untrusted.invalid/'}});}});
+ await assert.rejects(token(),/^Error: drive_oauth_refresh$/);assert.equal(calls,1);
 });
