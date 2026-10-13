@@ -19,10 +19,11 @@ test('approved benchmark requires catch-up capacity after a 48-hour outage; old 
   assert.throws(()=>productionCapacity({limit:101}));assert.throws(()=>productionCapacity({cadenceMinutes:0}));
 });
 
-test('new planning target separates abandonment, retries and abuse and fails old purge schedule',()=>{
-  assert.equal(productionCapacity().gamesPerDay,500000);
-  assert.equal(productionCapacity().deadlineFeasible,false);
-  const plan=workloadPlan(),small=workloadPlan(5000);
+test('retained 5k target preserves deferred scale arithmetic and separates abandonment, retries and abuse',()=>{
+  assert.equal(productionCapacity().gamesPerDay,5000);
+  assert.equal(workloadPlan().completions,5000);
+  assert.equal(productionCapacity({gamesPerDay:500000}).deadlineFeasible,false);
+  const plan=workloadPlan(500000),small=workloadPlan();
   assert.equal(plan.completions,500000);
   assert.ok(Math.abs(plan.starts-plan.incomplete-plan.completions)<1e-8);
   assert.equal(plan.answers,12*plan.completions+4*plan.incomplete);

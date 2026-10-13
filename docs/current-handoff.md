@@ -52,10 +52,14 @@ Key/alert checks were not repeated. Next: secure durable receipt/key emergency c
 then production wiring/monitoring and representative capacity/purge verification. This
 synthetic correctness rehearsal is not a production scale or recovery-time guarantee.
 
-Capacity planning target is now500,000 completed games/day;5k and50k are pilot
-comparators. [Capacity proposal](production-capacity-proposal.md) models workload,
-48h recovery, architecture changes, costs and bounded benchmarks. Arithmetic
-regressions pass; no hosted throughput claim. GBP50 ceiling remains unchanged.
+Owner retains current architecture,5,000 completed games/day planning target and
+GBP50/month ceiling. The500k redesign and proposed benchmark are deferred; do not
+start them. [Capacity assessment](production-capacity-proposal.md) records measured
+small-fixture evidence and unverified workload estimates:5k/day withinGBP50 is NOT
+verified. Local20 logical writes/free game alone projects100k/day before overhead;
+hosted1,440-answer purge took14.8s, not a sustained/outage-capacity guarantee.
+Next: existing authorised production wiring, custody and sandbox/legal preparation;
+resolve quota/cost/retention gates without upgrades, hosted load or activation.
 
 ## Remaining launch gates
 

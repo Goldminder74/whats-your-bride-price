@@ -1,6 +1,50 @@
-# Capacity proposal — 13 October 2026
+# Current capacity decision and deferred proposal — 13 October 2026
 
-Planning target: **500,000 completed 12-question games/day**, replacing 5,000/day.
+## Active decision: current architecture, 5,000/day, GBP50/month
+
+The owner's latest instruction supersedes the500k proposal below. Retain the current
+architecture and5,000 completed games/day planning target. Defer the500k redesign
+and all proposed benchmark stages; do not start them. No paid upgrade, top-up,
+production schedule, public launch, DNS cutover or live-payment activation.
+
+**Assessment:5,000/day withinGBP50 is not verified.** Reused evidence, no new load:
+
+- `outputs/authority-preparation/integration-final.log`: the local actual free-game
+  fixture recorded20 logical writes/game (30 games/360 answers; purge95ms total).
+  Scaling gameplay alone gives100k writes/day, equal to the D1 Free allowance,
+  before index billing, purchased play, authority/index/outbox and purge. This is
+  an extrapolation of a measured fixture, not hosted billing at5k/day.
+- `outputs/retention-authority/d1-rehearsal-20261010/purge-receipt.json`: hosted
+  synthetic purge removed1,440 answers in29 passes at limit50,14,758ms total,
+  p95 pass874ms; receipt recorded12,583 writes/280,830 reads. Approximately97.6
+  answers/sec over this small sample is not a sustained full-path guarantee;
+  instrumentation/fixture effects prevent treating per-row billing as universal.
+- Proposed100/minute cadence gives144k/day. Modelled abandonment increases answer
+  demand to68,571/day. At50% successful passes,72k capacity leaves only3,429/day
+  spare;137,143 rows accumulated over48h would take40 days to drain, beyond the
+  five days remaining in the approved seven-day purge deadline. Cadence is not active.
+- The richer planning model estimates119k API requests/day before additional
+  operational/Worker-first asset calls, exceeding Workers Free100k/day. This is
+  assumed traffic, not observed account consumption. Actual plan/whole-account
+  headroom must be confirmed before claiming readiness; no upgrade performed.
+- At150k completions/month the model gives roughly8.61m total requests, about1,722
+  Netlify credits for requests alone, exceeding Personal's1,000 shared credits before
+  bandwidth/deploys/other sites. Real cache/browser/request behaviour remains
+  unmeasured. The previousGBP60–250 current-path envelope is an estimate, not a
+  measured monthly bill; the oldGBP14–25 figure never verified5k/day.
+
+No monetary overspend or full-scale throughput shortfall was newly measured here.
+Observed fixtures expose quota/cadence risks;5k/day cannot be certified on that basis.
+Do not buy capacity or silently reduce retention/security. Continue already authorised
+local production wiring, independent custody and outstanding sandbox/legal work;
+reuse passed checks. Whole-account byte/request billing, sustained authority/purge
+throughput and independent snapshot growth remain launch gates. With recharge OFF,
+exhaustion can affect other Netlify projects, soGBP50 is not permission to consume
+the shared allowance unchecked. Provider rate references below were rechecked.
+
+## Deferred 500,000/day proposal — historical planning only
+
+Deferred scenario: **500,000 completed 12-question games/day**; not the active target.
 This is not permission to generate load or activate anything. Current GBP50/month
 ceiling, no upgrades/top-ups and all existing protected environments remain unchanged.
 Source inspected: a70cad7b6f09c3c45d3f2248a95e8d34ef3a66d4. Arithmetic lives in

@@ -1,5 +1,5 @@
 /** Planning only: never enables cron, changes admission limits or contacts a provider. */
-export function productionCapacity({gamesPerDay=500000,burstPerHour=100000,outageHours=48,limit=100,cadenceMinutes=1,days=30,bytesPerGame,requestsPerGame,deploys=2,existingCredits=0}={}) {
+export function productionCapacity({gamesPerDay=5000,burstPerHour=1000,outageHours=48,limit=100,cadenceMinutes=1,days=30,bytesPerGame,requestsPerGame,deploys=2,existingCredits=0}={}) {
   for(const value of [gamesPerDay,burstPerHour,outageHours,limit,cadenceMinutes,days,deploys,existingCredits]) {
     if(!Number.isSafeInteger(value)||value<0)throw Error('invalid_capacity_input');
   }
@@ -23,7 +23,7 @@ export function productionCapacity({gamesPerDay=500000,burstPerHour=100000,outag
 }
 
 /** Explicit planning assumptions, not telemetry, admission settings or a load generator. */
-export function workloadPlan(completions = 500000) {
+export function workloadPlan(completions = 5000) {
   if (!Number.isSafeInteger(completions) || completions < 1) throw Error('invalid_capacity_input');
   const starts = completions / .7, incomplete = starts - completions;
   const answers = 12 * completions + 4 * incomplete;

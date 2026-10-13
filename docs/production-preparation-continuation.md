@@ -351,11 +351,12 @@ response, refund or settings change made. Application-linked converted checkout,
 fulfilment/refund/dispute remain unverified; private commerce/webhook remains off.
 https://docs.stripe.com/api/disputes/object
 
-### Whole-account capacity proposal — supersedes the provisional target
+### Current owner decision — retained architecture and 5,000/day
 
-The owner replaced 5,000/day with **500,000 completed games/day** on13October2026.
-The current workload, cost sensitivities, architecture bottlenecks,48h outage
-requirement and staged benchmark scope are consolidated in
-[the capacity proposal](production-capacity-proposal.md). Earlier5k benchmark
-receipts remain historical correctness/small-volume evidence only. No schedule,
-paid upgrade or large hosted load is approved. GBP50/month remains the ceiling.
+The owner's latest decision supersedes the500k proposal: retain the current
+architecture, **5,000 completed games/day** planning target and GBP50/month ceiling.
+The500k redesign and proposed benchmark are deferred and must not be started.
+[Current assessment and deferred proposal](production-capacity-proposal.md) separates
+recorded small-fixture measurements from modelled costs. Capacity withinGBP50 has
+not passed verification. Continue existing authorised launch preparation; no upgrade,
+schedule activation, public launch, DNS change or live payments.
