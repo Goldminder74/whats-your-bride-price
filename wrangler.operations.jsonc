@@ -1,0 +1,18 @@
+{
+  // Private, inactive operational Worker. No D1 UUID or credentials are guessed.
+  // Bind only verified wybp-prod-d1-r001 after inventory/schema/restore receipt checks.
+  "name": "wybp-prod-ops-r001",
+  "account_id": "b6b22a9a87b5758725e5c499782160af",
+  "main": "worker/operations.mjs",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "observability": {"enabled": false},
+  "vars": {
+    "WYBP_AUTHORITY_ROLE": "production-ops",
+    "WYBP_AUTHORITY_DATABASE_NAME": "wybp-prod-d1-r001",
+    "WYBP_ALERT_SENDER": "noreply@classesforculture.com",
+    "WYBP_TEST_ALERT_APPROVED": "false"
+  }
+}

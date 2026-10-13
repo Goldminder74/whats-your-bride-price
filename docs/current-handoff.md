@@ -2,10 +2,9 @@
 
 ## Source and deployed state
 
-Branch feature/viral-build-sprint; source checkpoint188339c7689d2e45e827e22eb06d3c68f280db22
-matches origin at the start of13October2026. This continuation integrates the18
-reviewed source/documentation paths; resolve its resulting checkpoint with git rev-parse HEAD.
-The original eight pending files are preserved within that scoped work.
+Branch feature/viral-build-sprint; starting checkpoint3ae8f2837ab46ce5c932c0c98dd9c19c4dd93c9b
+matches origin on13October2026. Resolve this continuation's commit with git rev-parse HEAD.
+Prior pending Google-setup documentation is preserved in this update.
 
 [Private game](https://wybp-protected-test.netlify.app/) remains deployed from
 42bf37abbfc18e783da3815e12ee9c176007ba1b; release
@@ -26,9 +25,14 @@ Restore receipt is required by the production factory. No new migration/dependen
 79focused checks, scoped lint/typecheck, complete test:all and build pass. Initial
 build sandbox EPERM cleaning dist resolved by build-only unsandboxed retry, no source
 change/full-suite repeat. Diff check passes. Evidence:ignored outputs/authority-preparation/.
-Actual production RPC entry/binding, snapshot capture, distributed production limiter,
-alert transport and hosted concurrency/recovery remain unfinished/unverified. No runtime
-credentials installed; connected Drive is not a runtime credential.
+Private RPC entrypoints, fenced encrypted snapshot capture and TLS alert transport now
+implemented. Actual compiled-package8checks and63affected recovery/authority checks,
+scoped lint and diff pass; no existing application source changed. Evidence remains ignored.
+Inactive ops Worker deployed/version readback f008404e-e5a5-4cca-8786-750e780b667e:
+no public endpoints, cron or D1 binding; secret list empty. Inventory found test D1 only.
+Distributed production limiting, live delivery/recovery and snapshot-format restore remain
+unverified. No runtime credentials installed; connected Drive is not a runtime credential.
+See [secure installation and limits](private-operations-runtime.md).
 
 ## Publication and owner setup
 
@@ -45,14 +49,19 @@ normally pushed; clean tree and PR#1open/draft/unmerged verified afterward.
 Owner's public Search Console tag is published and anonymously retrievable in the homepage
 head. Two successful publications consume the full approved30credit allowance;
 second15credit debit awaits billing-display reconciliation. No further publication authorised.
-Google ownership/hostname acceptance pending owner clicking Verify in Search Console;
-connected browser is not signed in. Do not assume acceptance or change OAuth fields yet.
-See [publication scope](recovery-oauth/README.md). Dedicated drive.file OAuth reported in Testing;
-production publishing and secure reauthorisation remain pending.
+Owner screenshots confirm Search Console ownership verified by HTML tag and OAuth
+Audience In production. Owner reports branding URLs saved. Data Access screenshots
+show drive.file only; sensitive/restricted tables empty. Existing client is WYBP Recovery
+Operator,Web application,redirect https://developers.google.com/oauthplayground.
+Owner reports fresh own-client/offline authorisation and securely saved refresh token,
+client ID/secret. Values never provided to chat. Credentials remain uninstalled and
+actual token grant/private-folder access unverified. Connected browser remains signed out.
+See [publication scope](recovery-oauth/README.md). OAuth production status is not
+professional approval, runtime activation or a verified recoverable backup.
 
 Owner confirms daily monitoring of noreply@classesforculture.com, superseding team@.
-Recipient is distinct from sender; compatible transport/secure credentials and labelled
-test delivery/receipt pending. Nothing sent.
+Sender and recipient are separate roles; configured TLS sender is also noreply@.
+Secure SMTP installation and labelled test delivery/receipt pending. Nothing sent.
 
 Converted EUR sandbox payment/full GBP1.99 refund verified provider-only; GBP1.91
 dispute remains review-required. Application-linked converted fulfilment/refund/dispute
@@ -63,8 +72,9 @@ provider sources and purge-outage shortfall are in [continuation](production-pre
 Schedules, production setup, custody/key retrieval and hosted capacity remain gates.
 Owner policy approval is not professional legal sign-off. No public launch/live payments/DNS.
 
-Next: owner clicks Verify in Search Console and reports the result; confirm ownership
-before entering URLs; finish private
-runtime wiring and secure custody/alerts independently. Detailed [activation/rollback](isolated-test-approval-package.md),
+Next: securely install existing OAuth/key/SMTP credentials per the runbook; verify
+app-granted private Drive folder access, isolated D1 baseline/receipt and trusted private
+operator caller before synthetic live delivery/recovery/alert tests. Do not fabricate a
+receipt, bind test D1, broaden OAuth or enable schedules. Detailed [activation/rollback](isolated-test-approval-package.md),
 [retention](retention-operations.md), [custody](launch-evidence-backup.md),
 [hosting](netlify-cloudflare-hosting.md), [payments](stripe-payment-link-setup.md).
