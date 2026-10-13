@@ -76,7 +76,7 @@ professional approval, runtime activation or a verified recoverable backup.
 
 Owner confirms daily monitoring of noreply@classesforculture.com, superseding team@.
 Sender and recipient are separate roles; configured TLS sender is also noreply@.
-SMTP authenticated and accepted the approved labelled test alert; owner receipt pending.
+SMTP authenticated and accepted the approved labelled test alert; owner confirmed receipt on13October2026.
 Single claim complete; approval flag false again, no automatic resend.
 Owner confirmed matching encryption key saved in password manager;
 independent recovery-copy retrieval remains unverified.
@@ -90,7 +90,7 @@ provider sources and purge-outage shortfall are in [continuation](production-pre
 Schedules, production setup, custody/key retrieval and hosted capacity remain gates.
 Owner policy approval is not professional legal sign-off. No public launch/live payments/DNS.
 
-Next: confirm alert receipt; complete populated-snapshot restore/authority-suppression,
+Next: complete populated-snapshot restore/authority-suppression,
 lost-index/key-copy recovery and independent monitoring/capacity gates. Do not mistake
 the empty baseline for full wallet recovery. Do not bind test D1, broaden OAuth or enable
 schedules. Detailed [activation/rollback](isolated-test-approval-package.md),

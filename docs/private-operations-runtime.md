@@ -71,7 +71,7 @@ Fresh-instance boundary verification and read fence pass; a wrong receipt is den
 This proves an empty source boundary, not restoration of customer data or wallets.
 
 SMTP accepted the single labelled test alert to noreply@classesforculture.com;
-owner receipt confirmation remains pending. The durable test claim is complete and
+owner confirmed mailbox receipt on 13 October 2026. The durable test claim is complete and
 the approval flag is false again. Never repeat it merely because receipt is pending.
 No jobs, live payments, public game or existing-site changes were activated.
 
@@ -90,7 +90,7 @@ claim prevents automatic resend after uncertainty. Investigate rather than reset
 
 Remaining gates include a complete restore of populated snapshot pages with authority
 suppression/holds/accounting, independent key-copy retrieval, lost-index recovery,
-continuous delivery/monitoring and the labelled alert's mailbox receipt.
+continuous delivery/monitoring. The single labelled alert's receipt is owner-confirmed.
 Do not activate production schedules. Snapshot capture is bounded
 to 1,000 pages per invocation by default; production capacity and a complete restore
 of this snapshot format remain unverified. Local recovery tests do not establish
