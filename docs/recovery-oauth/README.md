@@ -99,8 +99,8 @@ team endpoint created one project only, with no Git or custom domain configurati
 Verified anonymously:HTTPS200, accurate reviewed content/status, working internal
 links,3files,zero functions,game/function paths404. Existing website/private-game deploy
 IDs unchanged. Netlify pretty-URL processing rewrites .html links to extensionless URLs.
-One successful publication implies15credits under the documented tariff; observed billing
-still showed659.2/22deploys immediately afterward, so debit display is not yet reconciled.
+Billing subsequently confirms15credits used:balance659.2to644.2 and22to23deploys,
+production-deploy usage330to345credits. Auto recharge remains unchanged/disabled.
 Preserve up to15remaining authorised credits for verification tag/file publication.
 
 Google Search Console in connected browser is not authenticated. Owner asked to add
