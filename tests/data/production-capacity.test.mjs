@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {performance} from 'node:perf_hooks';
-import {productionCapacity} from '../../scripts/production-capacity.mjs';
+import {productionCapacity,workloadPlan} from '../../scripts/production-capacity.mjs';
 import {setup,credential} from '../helpers/cowrieCommerce.mjs';
 import {D1QuestionSelectionRepository} from '../../db/questionSelection.ts';
 import {deriveAnonymousSubjectHash} from '../../app/anonymousSession.ts';
@@ -9,14 +9,29 @@ import {completeCowrieQuickPlay} from '../../db/cowrieCompletion.ts';
 import {runTestRetention} from '../../db/testRetention.ts';
 
 test('approved benchmark requires catch-up capacity after a 48-hour outage; old cadence fails',()=>{
-  const old=productionCapacity({limit:50,cadenceMinutes:5});
+  const old=productionCapacity({gamesPerDay:5000,limit:50,cadenceMinutes:5});
   assert.equal(old.answersPerDay,60000);assert.equal(old.backlogAnswers,120000);
   assert.equal(old.scheduledAnswersPerDay,14400);assert.equal(old.deadlineFeasible,false);
-  const proposed=productionCapacity();assert.equal(proposed.scheduledAnswersPerDay,144000);
+  const proposed=productionCapacity({gamesPerDay:5000});assert.equal(proposed.scheduledAnswersPerDay,144000);
   assert.equal(proposed.catchupDays,10/7);assert.equal(proposed.deadlineFeasible,true);
   assert.equal(proposed.sevenDayAnswerVolume,540000);
   assert.equal(productionCapacity({bytesPerGame:1e6,requestsPerGame:14}).fitsPersonalIncludedCredits,false);
   assert.throws(()=>productionCapacity({limit:101}));assert.throws(()=>productionCapacity({cadenceMinutes:0}));
+});
+
+test('new planning target separates abandonment, retries and abuse and fails old purge schedule',()=>{
+  assert.equal(productionCapacity().gamesPerDay,500000);
+  assert.equal(productionCapacity().deadlineFeasible,false);
+  const plan=workloadPlan(),small=workloadPlan(5000);
+  assert.equal(plan.completions,500000);
+  assert.ok(Math.abs(plan.starts-plan.incomplete-plan.completions)<1e-8);
+  assert.equal(plan.answers,12*plan.completions+4*plan.incomplete);
+  assert.equal(plan.recoveryRequests,plan.recoveries*8);
+  assert.ok(plan.retryRequests>0 && plan.rejectedAbuseRequests>0);
+  assert.equal(plan.outageAnswerBacklog,plan.answers*2);
+  assert.equal(plan.installedPurgeRowsPerSecondAt50PercentAvailability,plan.purgeRowsPerSecondFor24hCatchup*2);
+  assert.ok(Math.abs(plan.apiRequests/small.apiRequests-100)<1e-10);
+  assert.throws(()=>workloadPlan(0));assert.throws(()=>workloadPlan(1.5));
 });
 
 test('full existing maintenance path makes bounded progress at representative answer volume',async()=>{

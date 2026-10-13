@@ -351,53 +351,11 @@ response, refund or settings change made. Application-linked converted checkout,
 fulfilment/refund/dispute remain unverified; private commerce/webhook remains off.
 https://docs.stripe.com/api/disputes/object
 
-### Whole-account model — scenarios, not a spending guarantee
+### Whole-account capacity proposal — supersedes the provisional target
 
-Demand:150000games/30days,500/hour burst;48h outage adds10000games/120000answers.
-Include existing public site, private game and all other projects on the shared team.
-Read-only13October balance659.2/1000credits,rechargeOFF is not a full monthly baseline.
-Current partial-cycle usage:22deploys/330credits,19020requests/3.8credits,
-bandwidth6.9credits,compute0. These team totals do not establish per-project monthly demand.
-Netlify total =15*productionDeploys +20*GBTransferred +0.0002*webRequests
-+10*computeGBHours, plus other metered services. Proxy/API/redirect/assets count.
-Private tests, other-site traffic and operations are additive; caching must be measured.
-
-| Illustrative app-only scenario | Transfer/requests per game | Monthly credits incl4 deploys | Extra500-credit packs before other sites |
-|---|---|---|---|
-| Low |0.25MB /15|1260|1 ($5)|
-| Middle |1MB /20|3660|6 ($30)|
-| High |5MB /40|16260|31 ($155)|
-
-Decimal units; excludes compute/other projects. Packs are hypothetical, not purchases.
-Add actual other-project baseline, not a guessed extrapolation of partial-cycle usage.
-With proposed Workers$5 and existing Netlify$9, illustrative USD1=GBP0.80 and20% tax,
-middle scenario isGBP42.24 BEFORE other sites/storage/alerts/payment fees; highGBP162.24,
-lowGBP18.24. GBP14–25 is not a verified workload estimate or budget commitment.
-
-Proposed Workers$5 includes account-wide10mrequests/30mCPU-ms, then$0.30/m requests
-and$0.02/mCPU-ms. At3m invocations averaging10msCPU the allowance is exhausted;
-ops/service calls, other Workers and crypto add demand. D1 paid includes50m writes,
-25bn reads,5GB; then$1/m writes,$0.001/m reads,$0.75/GB-month. Raw20-row/game fixture
-already gives3m logical writes/month before index billing, journal/fence/custody,
-rate limits/payments/purge. Free100000writes/day is exhausted by gameplay alone.
-Actual query rows_read/rows_written and CPU amplification remain unmeasured. Paid usage
-has no GBP50 hard cap; no upgrade approved by this model.
-
-Drive requires30 daily full snapshots plus retained encrypted intent/event chunks,
-inventory/receipts, research archives and existing personal usage. For snapshot S GB
-and journal J GB, reserve at least30*S+J GB plus retry/restore headroom, and monthly
-upload30*S+J plus download/readback traffic. S=1GB alone exceeds15GB free storage.
-Actual S/J, quota and API call volume remain unknown; free storage is not assumed.
-SMTP uses existing entitlement only if confirmed; independent heartbeat may require
-another cost decision. Include Images, logs, FX/tax and live Stripe transaction/dispute
-fees; sandbox fees are not live quotes. R2 is unbound/unused.
-
-Candidate100answers/min gives144000/day. After60000daily arrivals,120000answer backlog
-needs1.43 ideal days. At50% successful passes spare capacity is12000/day:10days catch-up,
-FAILS the remaining5days after48h outage. Include all tables, holds, crypto/delivery and
-contention. No schedule approved/activated; alerts do not provide provider spending caps.
-
-Pricing checked13October:
-- https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/how-credits-work/
-- https://developers.cloudflare.com/workers/platform/pricing/
-- https://developers.cloudflare.com/d1/platform/pricing/
+The owner replaced 5,000/day with **500,000 completed games/day** on13October2026.
+The current workload, cost sensitivities, architecture bottlenecks,48h outage
+requirement and staged benchmark scope are consolidated in
+[the capacity proposal](production-capacity-proposal.md). Earlier5k benchmark
+receipts remain historical correctness/small-volume evidence only. No schedule,
+paid upgrade or large hosted load is approved. GBP50/month remains the ceiling.

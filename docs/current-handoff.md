@@ -52,6 +52,11 @@ Key/alert checks were not repeated. Next: secure durable receipt/key emergency c
 then production wiring/monitoring and representative capacity/purge verification. This
 synthetic correctness rehearsal is not a production scale or recovery-time guarantee.
 
+Capacity planning target is now500,000 completed games/day;5k and50k are pilot
+comparators. [Capacity proposal](production-capacity-proposal.md) models workload,
+48h recovery, architecture changes, costs and bounded benchmarks. Arithmetic
+regressions pass; no hosted throughput claim. GBP50 ceiling remains unchanged.
+
 ## Remaining launch gates
 
 Durable independent inventory-receipt/emergency-key custody; production rate limiting, continuous authority delivery,
