@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { randomBytes } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { authoritySnapshot } from '../../worker/authoritySnapshot.mjs';
+import { authoritySnapshot, assertEmptyOperationalSource } from '../../worker/authoritySnapshot.mjs';
 import { authorityMail } from '../../worker/authorityMail.mjs';
 import { decryptRecord, recoveryHash } from '../../scripts/recovery-crypto.mjs';
 
@@ -16,6 +16,16 @@ function fixture() {
   const key=randomBytes(32),head={state:'exporting',manifest_hash:'synthetic_one',sequence:0,head_hash:'zero'};
   return {sql,db,custody,key,head,files,uploads:()=>uploads};
 }
+
+test('empty-baseline commissioning rejects application or financial rows before custody operations',async()=>{
+ const f=fixture();try{
+  await assert.rejects(assertEmptyOperationalSource(f.db),/^Error: nonempty_operational_source$/);
+  f.sql.exec('DELETE FROM synthetic_rows; CREATE TABLE operational_authority_outbox(id TEXT PRIMARY KEY);');
+  await assertEmptyOperationalSource(f.db);
+  f.sql.exec("INSERT INTO operational_authority_outbox VALUES('synthetic-event')");
+  await assert.rejects(assertEmptyOperationalSource(f.db),/^Error: nonempty_operational_source$/);
+ }finally{f.sql.close();}
+});
 test('fenced encrypted snapshot exports every row, preserves binary data and retries immutable pages',async()=>{
   const f=fixture();try {
     const capture=authoritySnapshot(f.db,f.custody,f.key,{pageSize:2});
@@ -71,10 +81,12 @@ test('SMTP rejection, connection errors and uncertain delivery expose only sanit
 test('SMTP deadline closes a stalled connection without exposing credentials',async()=>{
   let closed=false;await assert.rejects(authorityMail(env,()=>({opened:new Promise(()=>{}),async close(){closed=true;}}),{timeoutMs:5})({component:'authority',status:'blocked',at:0}),/^Error: alert_transport_unavailable$/);assert.equal(closed,true);
 });
-test('operational configuration has no public URLs, cron, data identity or secret values',()=>{
+test('operational configuration binds only the approved isolated database and has no public URLs, cron or secrets',()=>{
   const config=readFileSync('wrangler.operations.jsonc','utf8'),source=readFileSync('worker/operations.mjs','utf8');
   assert.match(config,/"workers_dev": false/);assert.match(config,/"preview_urls": false/);
-  assert.doesNotMatch(config,/"triggers"|"routes"|"database_id"|"WYBP_DRIVE_CLIENT_SECRET"/);
+  assert.doesNotMatch(config,/"triggers"|"routes"|"WYBP_DRIVE_CLIENT_SECRET"/);
+  assert.match(config,/"database_id":"a5b2b409-ed08-48c9-ac1d-36699fc6c4b9"/);
+  assert.doesNotMatch(config,/1a268b28-e6d5-4431-8f84-a886df9369f1/);
   assert.doesNotMatch(source,/scheduled\(|console\.|runtime\(\)\s*\{/);
   assert.match(source,/ON CONFLICT\(id\) DO NOTHING RETURNING id/);
   assert.match(source,/fetch\(\).*status:404/);

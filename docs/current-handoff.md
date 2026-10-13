@@ -2,7 +2,7 @@
 
 ## Source and deployed state
 
-Branch feature/viral-build-sprint; starting checkpoint7852e25794c63ec98e6019651dba1b53d8c52002
+Branch feature/viral-build-sprint; starting checkpointbcc6377cdf36115b97eb930ee2ed574dd3dc6775
 matches origin on13October2026. Resolve this continuation's commit with git rev-parse HEAD.
 Prior pending Google-setup documentation is preserved in this update.
 
@@ -28,19 +28,25 @@ change/full-suite repeat. Diff check passes. Evidence:ignored outputs/authority-
 Private RPC entrypoints, fenced encrypted snapshot capture and TLS alert transport now
 implemented. Actual compiled-package8checks and63affected recovery/authority checks,
 scoped lint and diff pass; no existing application source changed. Evidence remains ignored.
-Inactive ops Worker latest version21f81c77-2603-4c24-b8c1-c35d0869a507:
-no public endpoints, cron or D1 binding. Inventory still found test D1 only.
+Private ops Worker latest versionc06ce865-3656-4694-9873-75758b2c046a:
+no public endpoints/cron. New approved isolated D1 wybp-prod-d1-r001,
+UUIDa5b2b409-ed08-48c9-ac1d-36699fc6c4b9,WEUR,bound only to ops.
+Empty inventory, unchanged0000–0013 import and all14hosted checksum receipts verified.
+No catalogue/financial/application data imported; existing test D1 remains untouched.
 Distributed production limiting, live delivery/recovery and snapshot-format restore remain
 unverified. All six owner-installed Secret names verified without reading values.
 Private authenticated remote service binding through a loopback-only caller verified;
 read fence rejects the absent recovery baseline. Compiled runtime exposed unsupported
 redirect:error in OAuth; manual handling now rejects redirects without forwarding secrets.
 Actual compiled regression9/9, affected custody/index/OAuth/repository24/24 pass.
-Live probe passes key format/encryption stages, then Google returns invalid_grant.
-Owner asked to re-install saved Refresh token matching the dedicated client, not repeat
-project/publishing setup. No Drive archive, database creation or alert sent this continuation.
-Sanitised evidence:outputs/authority-preparation/credential-live-status.json and
-credential-compiled-regression-fixed.log,credential-affected.log. Local logs are not custody.
+Live OAuth/key check now passes: saved secret edits had created undeployed versions;
+activating the owner version resolved invalid_grant. Do not repeat Google setup.
+Private Drive folder created; encrypted synthetic upload/download/decryption, stable ID
+on retries/concurrent calls, pinned inventory mapping validation and empty-baseline
+boundary/read fence verified. Wrong receipt denied. This is NOT populated-data recovery.
+Final compiled/safety10/10,affected custody/OAuth/index/repository24/24,lint/diff pass.
+Evidence/IDs/receipt/limits in [operational runbook](private-operations-runtime.md);
+ignored outputs/authority-preparation/ contains sanitised receipts. Local logs are not custody.
 See [secure installation and limits](private-operations-runtime.md).
 
 ## Publication and owner setup
@@ -64,14 +70,15 @@ show drive.file only; sensitive/restricted tables empty. Existing client is WYBP
 Operator,Web application,redirect https://developers.google.com/oauthplayground.
 Owner reports fresh own-client/offline authorisation and securely saved refresh token,
 client ID/secret. Values never provided to chat. Runtime installation now present;
-Google rejects the installed grant, and private-folder access remains unverified.
+OAuth refresh and app-created private-folder access now verified in the deployed runtime.
 See [publication scope](recovery-oauth/README.md). OAuth production status is not
 professional approval, runtime activation or a verified recoverable backup.
 
 Owner confirms daily monitoring of noreply@classesforculture.com, superseding team@.
 Sender and recipient are separate roles; configured TLS sender is also noreply@.
-SMTP Secret names installed; authentication and labelled test delivery/receipt pending.
-Nothing sent. Owner confirmed matching encryption key saved in password manager;
+SMTP authenticated and accepted the approved labelled test alert; owner receipt pending.
+Single claim complete; approval flag false again, no automatic resend.
+Owner confirmed matching encryption key saved in password manager;
 independent recovery-copy retrieval remains unverified.
 
 Converted EUR sandbox payment/full GBP1.99 refund verified provider-only; GBP1.91
@@ -83,9 +90,9 @@ provider sources and purge-outage shortfall are in [continuation](production-pre
 Schedules, production setup, custody/key retrieval and hosted capacity remain gates.
 Owner policy approval is not professional legal sign-off. No public launch/live payments/DNS.
 
-Next: correct installed Google refresh grant, then verify
-app-granted private Drive folder access, isolated D1 baseline/receipt and trusted private
-operator caller before synthetic live delivery/recovery/alert tests. Do not fabricate a
-receipt, bind test D1, broaden OAuth or enable schedules. Detailed [activation/rollback](isolated-test-approval-package.md),
+Next: confirm alert receipt; complete populated-snapshot restore/authority-suppression,
+lost-index/key-copy recovery and independent monitoring/capacity gates. Do not mistake
+the empty baseline for full wallet recovery. Do not bind test D1, broaden OAuth or enable
+schedules. Detailed [activation/rollback](isolated-test-approval-package.md),
 [retention](retention-operations.md), [custody](launch-evidence-backup.md),
 [hosting](netlify-cloudflare-hosting.md), [payments](stripe-payment-link-setup.md).

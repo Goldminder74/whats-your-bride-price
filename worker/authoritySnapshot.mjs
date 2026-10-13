@@ -4,6 +4,14 @@ const encode = value => value instanceof Uint8Array ? { binary: Buffer.from(valu
 
 /** All application writers must use the authority fence. A partial capture remains
  * fenced and resumes from immutable encrypted pages; no cross-provider atomicity. */
+export async function assertEmptyOperationalSource(db) {
+  const tables=await db.query("SELECT name FROM sqlite_schema WHERE type='table' AND name NOT LIKE 'sqlite_%' AND name NOT LIKE '_cf_%'");
+  for(const {name} of tables){
+    if(['schema_migrations','operational_recovery_checkpoints','retention_restore'].includes(name))continue;
+    if((await db.query('SELECT COUNT(*) n FROM '+quote(name)))[0]?.n!==0)throw Error('nonempty_operational_source');
+  }
+}
+
 export function authoritySnapshot(db, custody, key, { pageSize = 50, maxPages = 1000 } = {}) {
   if (!Number.isInteger(pageSize) || pageSize < 1 || pageSize > 100 || !Number.isInteger(maxPages) || maxPages < 1) throw Error('snapshot_bounds');
   return async head => {

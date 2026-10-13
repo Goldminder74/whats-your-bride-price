@@ -7,10 +7,12 @@ service binding. `RecoveryOperator` additionally exposes delivery, boundary
 verification and the separately gated, single-claim labelled test alert. Never bind
 the operator entrypoint to the public application or expose it through an HTTP bridge.
 
-The deployed inactive version is `21f81c77-2603-4c24-b8c1-c35d0869a507`.
-On 13 October all six Secret names were confirmed, without retrieving values. Account
-inventory contains the existing test D1 only; no production database is bound.
-This is runtime preparation, not activated recovery or a verified live backup.
+The deployed private version is `c06ce865-3656-4694-9873-75758b2c046a`.
+On 13 October all six Secret names were confirmed without retrieving values.
+The approved isolated D1 `wybp-prod-d1-r001` was created in WEUR, UUID
+`a5b2b409-ed08-48c9-ac1d-36699fc6c4b9`, and bound only to this operational Worker.
+Empty inventory preceded import; all 14 unchanged migrations 0000–0013 and their
+hosted checksum receipts match Git. No catalogue, wallets or application data imported.
 
 ## Secure installation — completed Google setup stays intact
 
@@ -37,9 +39,10 @@ The private `verifyCredentials` RPC performs only a synthetic encryption round t
 and Google token refresh; it returns booleans or controlled diagnostic codes, never
 tokens or provider text. An authenticated remote service binding from a loopback-only
 local caller was verified. It creates no public endpoint or hosted caller resource.
-The live check reached Google, which returned `invalid_grant`; replace the installed
-Refresh token with the saved token for the matching dedicated client. Do not infer
-revocation or expiry from this code alone. No backup or alert has been sent.
+Initial checks returned `invalid_grant` using the old active version. Dashboard
+secret edits had created undeployed versions; activating the owner's saved version
+resolved the check. OAuth refresh and synthetic encryption round trip now pass.
+For future secret edits, verify deployment/version state before asking for new consent.
 
 Before database/backup/alert RPC tests, inventory/create only the already approved isolated production
 D1 within free allowances, verify unchanged migrations 0000–0013, establish the
@@ -47,6 +50,30 @@ approved initial recovery boundary/receipt, and bind that exact database. Pin
 `WYBP_RESTORE_RECEIPT_SHA256` to the verified receipt. Never use the existing test
 database or fabricate a receipt to bypass the gate. A trusted private service-binding
 caller is required; the compiled local caller is a test fixture, not a hosted caller.
+
+## Observed live commissioning — 13 October
+
+Only private RPC via authenticated remote service binding and a loopback-only caller
+was used. No hosted caller/public route was created. The app-created private folder
+`1-fO04arPlwSpuWQ7T2--yzTS5pHEXyxr` has one owner-user permission, no sharing.
+Encrypted synthetic file `1eSo8Jjx2-mYuvwolc7GwVA1iS7uV1Z44` was uploaded, downloaded,
+decrypted and checked. Ciphertext SHA-256:
+`17f78fd019fc39a6d5a27884515dc2d5774948b981659bd4239c402e542e6638`.
+Repeat calls and two concurrent RPC calls preserved the same file ID/hash. A fresh
+custody instance validated the pinned inventory and idempotently recovered mappings;
+this was not a destructive loss-of-index rehearsal.
+
+Operator-only empty-baseline commissioning refuses any application or outbox rows,
+verifies an encrypted snapshot and then records its receipt. It cannot overwrite a
+conflicting receipt. Pinned empty-baseline receipt:
+`2860bffa5489697ce3828b40549ee10ef6972bebd3bf4f6092513571550834f0`.
+Fresh-instance boundary verification and read fence pass; a wrong receipt is denied.
+This proves an empty source boundary, not restoration of customer data or wallets.
+
+SMTP accepted the single labelled test alert to noreply@classesforculture.com;
+owner receipt confirmation remains pending. The durable test claim is complete and
+the approval flag is false again. Never repeat it merely because receipt is pending.
+No jobs, live payments, public game or existing-site changes were activated.
 
 ## Verification and limitations
 
@@ -61,15 +88,18 @@ fail closed on mismatch. SMTP failures are sanitised; a lost final acknowledgeme
 is uncertain delivery, never evidence of mailbox receipt. The single test-alert
 claim prevents automatic resend after uncertainty. Investigate rather than reset it.
 
-Live verification remains required: synthetic encrypted Drive delivery, stable IDs
-across instances, retries, downloaded/decrypted checksums, authority recovery and
-the labelled alert's mailbox receipt. Enable its approval flag only during that
-approved test. Do not activate production schedules. Snapshot capture is bounded
+Remaining gates include a complete restore of populated snapshot pages with authority
+suppression/holds/accounting, independent key-copy retrieval, lost-index recovery,
+continuous delivery/monitoring and the labelled alert's mailbox receipt.
+Do not activate production schedules. Snapshot capture is bounded
 to 1,000 pages per invocation by default; production capacity and a complete restore
 of this snapshot format remain unverified. Local recovery tests do not establish
 hosted recovery, continuous delivery or an independent custodian.
 
 Evidence is ignored under `outputs/authority-preparation/`: operations-final.log,
 operations-recovery.log, operations-lint.log, ops-deployment.log and d1-inventory.json.
+New receipts: credential-live-status.json, synthetic-custody-live.json,
+empty-baseline-live.json, commissioning-final-live.json, alert-live-status.json,
+production-migration-checksums.json and commissioning-final-tests.log (10/10).
 These local logs are not durable independent backup custody. Existing application
 deployment, database, wallets, website, DNS and payment settings were not changed.

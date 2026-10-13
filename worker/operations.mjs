@@ -1,12 +1,16 @@
 import { WorkerEntrypoint } from 'cloudflare:workers';
 import { connect } from 'cloudflare:sockets';
 import { configuredAuthorityService, d1AuthorityAdapter, authorityDeliveryTick } from './authorityService.mjs';
-import { authoritySnapshot } from './authoritySnapshot.mjs';
+import { authoritySnapshot, assertEmptyOperationalSource } from './authoritySnapshot.mjs';
 import { authorityMail } from './authorityMail.mjs';
 import { readBoundary } from '../scripts/authority-runtime.mjs';
 import { RETENTION_POLICY, RETENTION_DAY } from '../db/retentionPolicy.ts';
 import { driveAccessToken } from './driveOAuth.mjs';
-import { encryptRecord, decryptRecord } from '../scripts/recovery-crypto.mjs';
+import { encryptRecord, decryptRecord, recoveryHash } from '../scripts/recovery-crypto.mjs';
+import { D1DriveIndex } from '../scripts/d1-drive-index.mjs';
+import { DriveCustody } from '../scripts/drive-custody.mjs';
+import { D1Authority } from '../scripts/authority-runtime.mjs';
+import { restoreSuppressionPlan } from '../db/retention.ts';
 
 function runtime(env) {
   const alert = authorityMail(env, connect);
@@ -32,6 +36,54 @@ export class ApplicationAuthority extends WorkerEntrypoint {
 }
 
 export class RecoveryOperator extends ApplicationAuthority {
+  async commissionEmptyBaseline() {
+    try {
+      const db=d1AuthorityAdapter(this.env.DB);
+      await assertEmptyOperationalSource(db);
+      const proof=await this.verifySyntheticBackup();
+      const index=new D1DriveIndex(db,proof.folderId),accessToken=driveAccessToken({clientId:this.env.WYBP_DRIVE_CLIENT_ID,clientSecret:this.env.WYBP_DRIVE_CLIENT_SECRET,refreshToken:this.env.WYBP_DRIVE_REFRESH_TOKEN});
+      const custody=new DriveCustody({folderId:proof.folderId,index,accessToken}),key=Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64');
+      const authority=new D1Authority(db,custody,key),id='commissioning-empty-baseline-v1';
+      const head=await authority.initialise();if(head.sequence!==0||head.head_hash!=='0'.repeat(64))throw Error('authority_present');
+      const {receipt}=await authority.deliver(id,authoritySnapshot(db,custody,key));
+      const prior=await db.query("SELECT receipt_hash FROM retention_restore WHERE id='active'");
+      if(prior.length&&prior[0].receipt_hash!==receipt)throw Error('receipt_conflict');
+      if(!prior.length)await db.batch(restoreSuppressionPlan([],receipt,Date.now()));
+      return {verified:true,receipt,folderId:proof.folderId,sequence:0,scope:'empty-database-only',applicationRecoveryVerified:false};
+    }catch{throw Error('empty_baseline_verification_failed');}
+  }
+  // Credential/custody commissioning only: never creates a runtime-access receipt.
+  async verifySyntheticBackup() {
+    try {
+      await this.verifyCredentials();
+      if(this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001')throw Error('target');
+      const db=d1AuthorityAdapter(this.env.DB);
+      if((await db.query('SELECT COUNT(*) n FROM schema_migrations'))[0]?.n!==14)throw Error('schema');
+      const accessToken=driveAccessToken({clientId:this.env.WYBP_DRIVE_CLIENT_ID,clientSecret:this.env.WYBP_DRIVE_CLIENT_SECRET,refreshToken:this.env.WYBP_DRIVE_REFRESH_TOKEN});
+      const request=async(url,options={})=>{
+        const response=await globalThis.fetch(url,{...options,redirect:'manual',headers:{...options.headers,Authorization:'Bearer '+await accessToken()}});
+        if(!response.ok&&response.status!==409)throw Error('provider');return response;
+      };
+      const root=new D1DriveIndex(db,'wybp_recovery_root');
+      let folderId=await root.get('production-recovery-folder');
+      if(!folderId){const response=await request('https://www.googleapis.com/drive/v3/files/generateIds?count=1&space=drive&type=files');folderId=await root.reserve('production-recovery-folder',(await response.json()).ids?.[0]);}
+      const metadataUrl='https://www.googleapis.com/drive/v3/files/'+folderId+'?fields=id,name,mimeType,trashed,permissions(type,role)';
+      let metadata=await globalThis.fetch(metadataUrl,{redirect:'manual',headers:{Authorization:'Bearer '+await accessToken()}});
+      if(metadata.status===404){await request('https://www.googleapis.com/drive/v3/files?fields=id',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:folderId,name:'WYBP Production Recovery',mimeType:'application/vnd.google-apps.folder',appProperties:{wybpRecoveryFolder:'1'}})});metadata=await request(metadataUrl);}
+      if(!metadata.ok)throw Error('folder');const folder=await metadata.json();
+      if(folder.id!==folderId||folder.name!=='WYBP Production Recovery'||folder.mimeType!=='application/vnd.google-apps.folder'||folder.trashed||!Array.isArray(folder.permissions)||folder.permissions.length!==1||folder.permissions[0].type!=='user'||folder.permissions[0].role!=='owner')throw Error('folder_privacy');
+      const index=new D1DriveIndex(db,folderId),custody=new DriveCustody({folderId,index,accessToken}),key=Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64');
+      const name='synthetic-commissioning-v1.enc',payload={version:1,synthetic:true,purpose:'credential-and-custody-verification'};
+      const bytes=await custody.get(name)||encryptRecord(payload,key,name);
+      if(JSON.stringify(decryptRecord(bytes,key,name))!==JSON.stringify(payload))throw Error('payload');
+      const sha256=await custody.put(name,bytes),downloaded=await custody.get(name);
+      if(!downloaded||JSON.stringify(decryptRecord(downloaded,key,name))!==JSON.stringify(payload))throw Error('readback');
+      const files=[{name,id:await index.get(name),sha256}];
+      const receipt=recoveryHash(Buffer.from(JSON.stringify(files)));
+      await new DriveCustody({folderId,index:new D1DriveIndex(db,folderId),accessToken}).recoverIndex(files,receipt);
+      return {verified:true,folderId,fileId:files[0].id,sha256,inventoryReceipt:receipt,indexRecoveryVerified:true,runtimeAccess:'blocked_pending_recovery_baseline'};
+    }catch{throw Error('synthetic_custody_verification_failed');}
+  }
   async verifyCredentials() {
     let stage='configuration';
     try {

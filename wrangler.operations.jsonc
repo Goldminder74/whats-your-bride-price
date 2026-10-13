@@ -1,6 +1,5 @@
 {
-  // Private, inactive operational Worker. No D1 UUID or credentials are guessed.
-  // Bind only verified wybp-prod-d1-r001 after inventory/schema/restore receipt checks.
+  // Private operational Worker; application/recovery access remains receipt-gated.
   "name": "wybp-prod-ops-r001",
   "account_id": "b6b22a9a87b5758725e5c499782160af",
   "main": "worker/operations.mjs",
@@ -9,9 +8,12 @@
   "workers_dev": false,
   "preview_urls": false,
   "observability": {"enabled": false},
+  "d1_databases": [{"binding":"DB","database_name":"wybp-prod-d1-r001","database_id":"a5b2b409-ed08-48c9-ac1d-36699fc6c4b9"}],
   "vars": {
     "WYBP_AUTHORITY_ROLE": "production-ops",
     "WYBP_AUTHORITY_DATABASE_NAME": "wybp-prod-d1-r001",
+    "WYBP_DRIVE_FOLDER_ID": "1-fO04arPlwSpuWQ7T2--yzTS5pHEXyxr",
+    "WYBP_RESTORE_RECEIPT_SHA256": "2860bffa5489697ce3828b40549ee10ef6972bebd3bf4f6092513571550834f0",
     "WYBP_ALERT_SENDER": "noreply@classesforculture.com",
     "WYBP_TEST_ALERT_APPROVED": "false"
   }
