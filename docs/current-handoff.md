@@ -37,12 +37,15 @@ emails function bundle. Failed draft cancelled; published6844a06d30342e00087fbdf
 unchanged. No supported path-only patch/bundle retrieval verified; do not retry/rebuild.
 Owner approved static project; [recovery information](https://wybp-recovery-info.netlify.app/)
 is published:site12db20fa-5c2b-47cd-b983-d56d10de86df,
-deploy6acd7a70d78da6a3e1f28705. Exactly3files/no functions/Git/custom domain/DNS/email
+deploy6acd7f966a7f2852189e2f19 (public ownership-tag update). Exactly3files/no functions/Git/custom domain/DNS/email
 changes. Anonymous HTTPS, all links and existing-site/private-game deploy IDs verified.
 Billing confirms15credits used:659.2to644.2,22to23deploys. Maximum30publicationcredits
 approved; traffic extra, no top-ups/upgrades. Source commit5e93339b006e6c66257bda8763ab08c25a533802
 normally pushed; clean tree and PR#1open/draft/unmerged verified afterward.
-Google ownership/hostname acceptance pending owner Search Console URL-prefix HTML tag;
+Owner's public Search Console tag is published and anonymously retrievable in the homepage
+head. Two successful publications consume the full approved30credit allowance;
+second15credit debit awaits billing-display reconciliation. No further publication authorised.
+Google ownership/hostname acceptance pending owner clicking Verify in Search Console;
 connected browser is not signed in. Do not assume acceptance or change OAuth fields yet.
 See [publication scope](recovery-oauth/README.md). Dedicated drive.file OAuth reported in Testing;
 production publishing and secure reauthorisation remain pending.
@@ -60,8 +63,8 @@ provider sources and purge-outage shortfall are in [continuation](production-pre
 Schedules, production setup, custody/key retrieval and hosted capacity remain gates.
 Owner policy approval is not professional legal sign-off. No public launch/live payments/DNS.
 
-Next: obtain public Google verification tag, use remaining15credits if needed, verify
-ownership before entering URLs; finish private
+Next: owner clicks Verify in Search Console and reports the result; confirm ownership
+before entering URLs; finish private
 runtime wiring and secure custody/alerts independently. Detailed [activation/rollback](isolated-test-approval-package.md),
 [retention](retention-operations.md), [custody](launch-evidence-backup.md),
 [hosting](netlify-cloudflare-hosting.md), [payments](stripe-payment-link-setup.md).

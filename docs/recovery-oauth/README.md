@@ -110,3 +110,13 @@ unverified. Do not add netlify.app itself or invent a DNS verification route. If
 requires a controlled custom domain, stop and report before any outside-scope change.
 Receipts:ignored outputs/recovery-pages/static-publication.json and static-verification.json.
 Rollback:unpublish/revert this isolated project only; never touch the existing sites.
+
+Owner supplied public HTML verification tag; added only that meta element to index.html
+and published existing project as6acd7f966a7f2852189e2f19. Anonymous readback confirms
+the exact tag, all three pages/links,zero functions and unchanged existing-site/game
+deployment IDs. Receipts:verification-tag-publication.json and verification-tag-check.json
+under ignored outputs/recovery-pages/. No application test repeat required for meta-only
+change. Two successful publishes exhaust the approved30publicationcredit allowance;
+second debit is tariff-derived until the billing display catches up. Owner must click
+Verify in Search Console; no Google acceptance/ownership success claimed yet. OAuth
+URL fields remain unchanged until that result is confirmed.
