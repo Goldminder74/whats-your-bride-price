@@ -7,7 +7,7 @@ service binding. `RecoveryOperator` additionally exposes delivery, boundary
 verification and the separately gated, single-claim labelled test alert. Never bind
 the operator entrypoint to the public application or expose it through an HTTP bridge.
 
-The deployed private version is `c06ce865-3656-4694-9873-75758b2c046a`.
+The deployed private version is `97ecac41-8a50-4e02-bb6e-8126fea472dd`.
 On 13 October all six Secret names were confirmed without retrieving values.
 The approved isolated D1 `wybp-prod-d1-r001` was created in WEUR, UUID
 `a5b2b409-ed08-48c9-ac1d-36699fc6c4b9`, and bound only to this operational Worker.
@@ -109,14 +109,18 @@ Focused evidence: `outputs/authority-preparation/populated-recovery-final.log` (
 `recovery-operations-final.log` (10/10 actual compiled/safety checks),
 `synthetic-index-recovery-receipt.json` and `lost-index-live.json`.
 
-Independent key retrieval remains pending. The owner asked for clarification about
-the separately secured copy. Do not confuse the primary password-manager entry with
-independent custody or ask for key values. Once the owner retrieves the same existing
-key from separate secure storage, they may install it directly as temporary encrypted
-Secret `WYBP_RECOVERY_KEY_CHECK_BASE64` in this private Worker. Verify the saved version
-is deployed, invoke private `verifyIndependentKeyCopy`, then remove that temporary
-Secret. This decrypts only the synthetic archive and returns a boolean; it never
-replaces/displays the primary key. Physical independence still requires owner confirmation.
+Owner-supplied saved key copy verified on13October2026. Their temporary encrypted
+Secret version `cc3f7e3e-131f-44c7-bc0b-21b6e94b8159` was explicitly deployed;
+private `verifyIndependentKeyCopy` returned syntheticArchiveDecryptionVerified=true.
+It decrypted the existing encrypted synthetic Drive file without displaying or replacing
+the primary key. Temporary Secret deletion and absence were verified; resulting deployed
+version `97ecac41-8a50-4e02-bb6e-8126fea472dd`. The first removal command used an
+unsupported --force option and made no change; the supported confirmation flow succeeded.
+Evidence:ignored key-copy-live.json,key-copy-removal.log,key-copy-final-deployments.log.
+No alert repeated. This is cryptographic verification of the supplied copy; physical
+storage independence/emergency access remain owner-reported and not independently audited.
+No independent custodian is confirmed. Never request key values in chat or rotate the
+primary key merely to repeat this check.
 
 Run `npm run test:operations` for an actual Wrangler package and private RPC tests.
 The compiled success regression reproduced an unsupported `redirect:error` failure;
@@ -130,7 +134,7 @@ is uncertain delivery, never evidence of mailbox receipt. The single test-alert
 claim prevents automatic resend after uncertainty. Investigate rather than reset it.
 
 Remaining gates include a complete restore of populated snapshot pages with authority
-suppression/holds/accounting, independent key-copy retrieval, lost-index recovery,
+suppression/holds/accounting, independent custody/emergency access, full-inventory recovery,
 continuous delivery/monitoring. The single labelled alert's receipt is owner-confirmed.
 Do not activate production schedules. Snapshot capture is bounded
 to 1,000 pages per invocation by default; production capacity and a complete restore

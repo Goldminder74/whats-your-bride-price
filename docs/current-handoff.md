@@ -2,7 +2,7 @@
 
 ## Checkpoint and protected environments
 
-Branch `feature/viral-build-sprint`; starting source `7265720673193b5f2231475e18590e777a051f6b`.
+Branch `feature/viral-build-sprint`; starting source `2359935c8f45596f7449f904a68c8669490ae140`.
 Resolve this continuation's commit with `git rev-parse HEAD`.
 [Private game](https://wybp-protected-test.netlify.app/) is unchanged: source
 `42bf37abbfc18e783da3815e12ee9c176007ba1b`, Netlify `6acb796444ae067fcc06f6c9`,
@@ -13,7 +13,7 @@ R2 unbound. Preserve wallets, catalogue, unpublished drafts/reserves, existing
 websites/email, Wigsmi/Sherwood, Sites, staging and stash.
 
 Private operations Worker `wybp-prod-ops-r001`, version
-`2b2f27c3-d26e-4969-b55e-265757238ffb`, has no public endpoints or schedules.
+`97ecac41-8a50-4e02-bb6e-8126fea472dd`, has no public endpoints or schedules.
 Its only D1 is approved isolated `wybp-prod-d1-r001`,
 `a5b2b409-ed08-48c9-ac1d-36699fc6c4b9`,WEUR. Empty inventory preceded unchanged
 0000-0013 import; all14hosted migration checksum receipts match Git. No application,
@@ -41,10 +41,12 @@ Focused12/12 plus compiled/safety10/10, scoped lint/diff pass. Detailed receipts
 [private operations](private-operations-runtime.md). Sanitised evidence is ignored under
 outputs/authority-preparation/; local logs are not independent custody.
 
-Owner needs plain guidance on a separately secured encryption-key copy. Retrieval and
-synthetic decryption with that copy remain pending; never replace/display the primary key.
-Next: establish whether a second copy exists, verify it securely, then complete hosted
-populated-format restore and full-inventory recovery. Local evidence is not a hosted guarantee.
+Owner-supplied saved key copy successfully decrypted the existing synthetic Drive archive
+on13October2026. Temporary WYBP_RECOVERY_KEY_CHECK_BASE64 Secret removed and absence
+verified; primary key unchanged. No alert repeated. Storage independence/emergency access
+remain owner-reported, not independently audited; no separate custodian confirmed.
+Next: complete hosted populated-format restore and full-inventory recovery, and document
+independent custody/emergency access. Local evidence is not a hosted guarantee.
 
 ## Remaining launch gates
 
