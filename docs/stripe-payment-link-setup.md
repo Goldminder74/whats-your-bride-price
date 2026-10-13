@@ -1,5 +1,24 @@
 # Stripe Payment Link activation guide
 
+## Latest read-only converted reconciliation audit — 13 October 2026
+
+Connected context verified `acct_1UOOZKEsGCyaV3rl`, Classes for Culture sandbox,
+livemode=false. Payment `pi_3UPO3BEsGCyaV3rl1MVpI2of` shows5 Cowries,199p GBP
+integration amount,245 cents EUR presentment and191p GBP disputed. Completed
+Checkout explicitly has `client_reference_id:null`. This recorded payment therefore
+does NOT prove application-issued order fulfilment. Do not invent a matching order,
+rewrite history, accept the dispute or normalise191 to199. Stripe permits currency
+fluctuation/partial disputes; neither cause is established for this event.
+https://docs.stripe.com/api/disputes/object
+
+Remaining gate: fresh EXISTING links opened from synthetic application orders with
+opaque reference preserved; original GBP validation, EUR presentment, signed delivery/
+replay, refund and dispute. Existing ordinary-GBP bundle/refund/frozen-wallet evidence
+stands. This audit made no Stripe changes, enabled no private commerce/webhook and
+performed no charge/refund. Authentication is available; actual application-linked
+provider verification remains outstanding, not replaced by local signed fixtures.
+Sanitised evidence: ignored outputs/authority-preparation/converted-audit.json.
+
 The original Prompt 17 baseline below is historical; the current four-product isolated plan is in the October update and hosting runbook. Nothing here creates, activates or calls a Stripe Payment Link. Complete these gates manually in order, with owner and appropriate professional approval, before live commerce:
 
 1. Approve the Stripe account.

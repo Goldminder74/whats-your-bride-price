@@ -1,5 +1,27 @@
 import type { AtomicD1Database } from "./repositories.ts";
 import type { CommerceRateLimiter, CommerceRateLimitDecision } from "./commerce.ts";
+import { UnavailableCommerceRateLimiter } from "./commerce.ts";
+
+type AuthorityFence = { readFence(): Promise<string> };
+
+/** Ephemeral admission buckets do not grant access or mutate money. Production
+ * admission is fenced on both sides so restore/closure races cannot admit an order.
+ * Financial writes still pass through the journalled repository separately. */
+export function runtimeCommerceRateLimiter(database: AtomicD1Database, profile: string,
+  role: unknown, authority: unknown): CommerceRateLimiter {
+  if (profile === "payments") return new D1CommerceRateLimiter(database);
+  if (profile !== "off" || role !== "production-app" || !authority
+    || typeof (authority as AuthorityFence).readFence !== "function") return new UnavailableCommerceRateLimiter();
+  const limiter = new D1CommerceRateLimiter(database), fence = authority as AuthorityFence;
+  return { async consume(ownerHash, now) {
+    try {
+      const before = await fence.readFence();
+      if (typeof before !== "string" || !before) return "unavailable";
+      const decision = await limiter.consume(ownerHash, now);
+      return await fence.readFence() === before ? decision : "unavailable";
+    } catch { return "unavailable"; }
+  } };
+}
 
 /** One atomic admission; different Worker instances share the same bounded bucket. */
 export class D1CommerceRateLimiter implements CommerceRateLimiter {

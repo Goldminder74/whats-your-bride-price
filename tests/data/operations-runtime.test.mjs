@@ -6,6 +6,41 @@ import { readFileSync } from 'node:fs';
 import { authoritySnapshot, assertEmptyOperationalSource } from '../../worker/authoritySnapshot.mjs';
 import { authorityMail } from '../../worker/authorityMail.mjs';
 import { decryptRecord, recoveryHash } from '../../scripts/recovery-crypto.mjs';
+import { operationalMaintenance,operationalHeartbeat } from '../../worker/operationalMaintenance.mjs';
+
+test('private maintenance orders recovery, bounded purge, verified delivery and independent heartbeat',async()=>{
+  const calls=[];
+  const service={async ready(){calls.push('ready');},async deliver(){calls.push('deliver');return 'receipt';}};
+  const deps={now:()=>123,async purge(_service,at,limit){assert.equal(at,123);assert.equal(limit,50);calls.push('purge');},async heartbeat(){calls.push('heartbeat');}};
+  assert.equal((await operationalMaintenance(service,deps,'op_synthetic')).verified,true);
+  assert.deepEqual(calls,['ready','purge','deliver','ready','heartbeat']);
+  calls.length=0;
+  await assert.rejects(operationalMaintenance(service,{...deps,heartbeat:null},'op_synthetic'),/configuration/);
+  assert.deepEqual(calls,[]);
+  for(const stage of ['purge','deliver','heartbeat']){
+    calls.length=0;
+    const failure=async()=>{throw Error('synthetic credential must not leak');};
+    await assert.rejects(operationalMaintenance({...service,...(stage==='deliver'?{deliver:failure}:{})},{...deps,...(stage!=='deliver'?{[stage]:failure}:{})},'op_retry'),/^Error: operational_maintenance_unavailable$/);
+    if(stage==='purge')assert.deepEqual(calls,['ready']);
+    if(stage==='deliver')assert.deepEqual(calls,['ready','purge']);
+  }
+});
+
+test('heartbeat refuses redirects, wrong origins and failures and emits no receipt or secret in its body',async()=>{
+  const env={WYBP_HEARTBEAT_URL:'https://monitor.example/synthetic-secret',WYBP_HEARTBEAT_HOST:'monitor.example'};
+  assert.throws(()=>operationalHeartbeat({...env,WYBP_HEARTBEAT_URL:'http://monitor.example/'}),/configuration/);
+  assert.throws(()=>operationalHeartbeat({...env,WYBP_HEARTBEAT_HOST:'other.example'}),/configuration/);
+  let sends=0;
+  const heartbeat=operationalHeartbeat(env,async(_url,options)=>{
+    sends++;assert.equal(options.redirect,'manual');
+    const body=JSON.parse(options.body);assert.deepEqual(Object.keys(body),['component','status','at']);
+    assert.equal(body.status,'verified');assert.ok(!options.body.includes('synthetic-secret'));
+    return {status:204};
+  });
+  await heartbeat({status:'verified',receipt:'not-for-monitor'});assert.equal(sends,1);
+  await assert.rejects(operationalHeartbeat(env,async()=>({status:302}))({status:'verified'}),/^Error: operational_monitor_unavailable$/);
+  await assert.rejects(operationalHeartbeat(env,async()=>{throw Error('secret');})({status:'verified'}),/^Error: operational_monitor_unavailable$/);
+});
 
 function fixture() {
   const sql=new DatabaseSync(':memory:');

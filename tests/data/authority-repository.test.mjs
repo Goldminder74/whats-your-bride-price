@@ -8,6 +8,35 @@ import { createJournaledDatabase } from '../../worker/authorityDatabase.mjs';
 import { applicationAuthorityDatabase } from '../../db/authorityDatabase.ts';
 import { createOperationId } from '../../scripts/authority-runtime.mjs';
 import { recoveryHash } from '../../scripts/recovery-crypto.mjs';
+import { runtimeCommerceRateLimiter } from '../../db/commerceRateLimit.ts';
+
+test('production admission uses shared D1 buckets only with a stable private authority fence',async()=>{
+  const c=await setup();try {
+    const buckets=c.database.prepare("SELECT COUNT(*) n FROM daily_operation_limits").get().n;
+    const authority={async readFence(){return 'verified-fence';}};
+    const limiter=()=>runtimeCommerceRateLimiter(c.adapter,'off','production-app',authority);
+    const outcomes=await Promise.all(Array.from({length:40},()=>limiter().consume('a'.repeat(64),now)));
+    assert.equal(outcomes.filter(x=>x==='allowed').length,20);
+    assert.equal(outcomes.filter(x=>x==='limited').length,20);
+    assert.equal(await limiter().consume('b'.repeat(64),now),'allowed');
+    for(const [profile,role,binding] of [['data','production-app',authority],['off','wrong',authority],['off','production-app',{}]])
+      assert.equal(await runtimeCommerceRateLimiter(c.adapter,profile,role,binding).consume('c'.repeat(64),now),'unavailable');
+    assert.equal(c.database.prepare("SELECT COUNT(*) n FROM daily_operation_limits").get().n,buckets+2);
+  }finally{c.database.close();}
+});
+
+test('production admission rejects recovery failure and changed fences without granting an order',async()=>{
+  const c=await setup();try {
+    const buckets=c.database.prepare("SELECT COUNT(*) n FROM daily_operation_limits").get().n;
+    let reads=0;
+    const changed={async readFence(){return String(++reads);}};
+    assert.equal(await runtimeCommerceRateLimiter(c.adapter,'off','production-app',changed).consume('d'.repeat(64),now),'unavailable');
+    const failed={async readFence(){throw Error('synthetic recovery pending');}};
+    assert.equal(await runtimeCommerceRateLimiter(c.adapter,'off','production-app',failed).consume('e'.repeat(64),now),'unavailable');
+    assert.equal(c.database.prepare("SELECT COUNT(*) n FROM commerce_orders").get().n,0);
+    assert.equal(c.database.prepare("SELECT COUNT(*) n FROM daily_operation_limits").get().n,buckets+1);
+  }finally{c.database.close();}
+});
 
 async function fixture() {
   const c = await setup(), files = new Map();
@@ -55,6 +84,20 @@ test('real purchase, replay and full refund preserve accounting through authorit
     await c.authority.deliver('repository_delivery');
     assert.equal(await c.authority.ready(),true);
     assert.equal(c.database.prepare('PRAGMA foreign_key_check').all().length,0);
+  }finally{c.database.close();}
+});
+
+test('production-selected limiter permits a journalled purchase and exact refund without duplicate credit',async()=>{
+  const c=await fixture();try {
+    const service=new CommerceService(new D1CommerceRepository(c.journaled),runtimeCommerceRateLimiter(c.adapter,'off','production-app',c.authority),config,()=>now,{cowriePurchasesEnabled:true});
+    const order=await service.startOrder(request(c));
+    const event=await verified('checkout.session.completed',checkout(order));
+    await service.webhook(event);await service.webhook(event);
+    assert.equal(balance(c).purchased_balance,5);
+    assert.equal(c.database.prepare("SELECT COUNT(*) n FROM cowrie_ledger WHERE entry_type='purchase_credit'").get().n,1);
+    await service.webhook(await verified('charge.refunded',adverse()));
+    assert.equal(balance(c).purchased_balance,0);
+    assert.ok(c.database.prepare('SELECT COUNT(*) n FROM operational_authority_outbox').get().n>=3);
   }finally{c.database.close();}
 });
 

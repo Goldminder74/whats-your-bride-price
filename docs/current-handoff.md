@@ -1,78 +1,65 @@
 # Current handoff
 
-## Checkpoint and protected environments
+## Decision and checkpoint
 
-Branch `feature/viral-build-sprint`; starting source `8248ad47e96f6297aa4fc07038479c746087c566`.
-Resolve this continuation's commit with `git rev-parse HEAD`.
-[Private game](https://wybp-protected-test.netlify.app/) is unchanged: source
+Branch `feature/viral-build-sprint`; continuation starts at `b6259a3`.
+Resolve validated continuation commit with `git rev-parse HEAD`.
+Owner retains current architecture, **5,000 completed games/day and GBP50/month**.
+The500k redesign/benchmark are deferred. No paid upgrade/top-up, DNS change,
+public launch, live payment or production schedule activation.
+
+## Deployed and preserved
+
+[Private game](https://wybp-protected-test.netlify.app/) remains source
 `42bf37abbfc18e783da3815e12ee9c176007ba1b`, Netlify `6acb796444ae067fcc06f6c9`,
-Worker `1b76d3fd-6d42-478e-a172-36e6c648c05e`. Random replay ON only;
-Cowries, commerce, webhook, cron and other optional features OFF. Test D1
-`1a268b28-e6d5-4431-8f84-a886df9369f1`, schema0000-0012, 30 eligible questions/region;
-R2 unbound. Preserve wallets, catalogue, unpublished drafts/reserves, existing
-websites/email, Wigsmi/Sherwood, Sites, staging and stash.
+Worker `1b76d3fd-6d42-478e-a172-36e6c648c05e`: random ON; commerce/Cowries/webhook/
+cron/other optional flags OFF. D1 `1a268b28-e6d5-4431-8f84-a886df9369f1`,
+0000–0012,30 eligible questions/region; R2 unbound. Preserve wallets/catalogue,
+unpublished research/reserves, existing websites/email, Wigsmi/Sherwood, Sites,
+staging/stash. No hosted application data/settings changed this continuation.
 
-Private operations Worker `wybp-prod-ops-r001`, version
-`7de3483b-f7ac-4440-a7db-72c3151cb9c4`, has no public endpoints or schedules.
-Its only D1 is approved isolated `wybp-prod-d1-r001`,
-`a5b2b409-ed08-48c9-ac1d-36699fc6c4b9`,WEUR. Empty inventory preceded unchanged
-0000-0013 import; all14hosted migration receipts remain intact. Only synthetic rehearsal
-data was restored there and removed from active tables after verification; no real data imported.
+Private ops `wybp-prod-ops-r001`, version `7de3483b-f7ac-4440-a7db-72c3151cb9c4`,
+only D1 `a5b2b409-ed08-48c9-ac1d-36699fc6c4b9`/WEUR, unchanged0000–0013.
+No public endpoints/schedules. Hosted synthetic data cleaned; original empty baseline
+and all14migration receipts verified. New local code below is not deployed.
 
-## Verified recovery and current task
+## Passed evidence and local continuation
 
-Google project/branding, ownership, drive.file-only consent and production OAuth
-status are completed. All six runtime Secrets installed without values entering chat,
-Git or builds. OAuth refresh/encryption checks pass after deploying the owner's saved
-secret version; do not repeat Google setup. Public information site:
-https://wybp-recovery-info.netlify.app/ (30 approved publication credits consumed).
+Google OAuth/ownership/drive.file setup and six Secrets completed. Do not repeat.
+[Recovery information](https://wybp-recovery-info.netlify.app/) used30 approved credits.
+Encrypted Drive upload/readback/decryption, persistent IDs, concurrent retries,
+39-page populated restore,123-case pagination, accounting/holds/closed wallets/deletion
+suppression and interrupted/full lost-index recovery passed. Cleanup restored original
+baseline/triggers. Saved independent-key copy decrypted archive; temporary secret removed.
+Custody independence/emergency access remain owner-reported; no separate custodian.
+SMTP labelled test arrived at daily-monitored noreply@classesforculture.com; gate OFF.
+Never repeat the alert/key checks. Detailed receipts: [operations](private-operations-runtime.md).
 
-Private Drive synthetic encryption/upload/download/decryption, persistent IDs,
-concurrent retries, pinned empty-baseline recovery and wrong-receipt denial passed.
-SMTP test accepted and owner confirmed receipt at noreply@classesforculture.com;
-owner monitors daily. Test gate OFF; never repeat the alert.
+New local production limiter uses shared D1 buckets with authority fences before/after
+admission. Private bounded maintenance now connects retention, verified snapshot delivery
+and external heartbeat; missing monitor/gate denies execution. No schema/cron added.
+21 focused+2 compiled RPC checks, typecheck/scoped lint and secret-free synthetic matched
+build/package verification passed (143 server modules). Synthetic release is not deployable.
+Initial sandbox startup restrictions resolved with local access, not weaker assertions.
+Evidence logs ignored under outputs/authority-preparation/launch-continuation-*.
 
-Hosted populated restore now passed from a pinned encrypted Drive fixture:39pages,
-one refunded order,123closed support cases, legal hold, closed wallet, deletion suppression,
-full row/trigger/foreign-key reconciliation, interrupted/resumed imports and duplicates.
-Full five-file Drive inventory recovered after interruption at two mappings, with forced
-two-file pagination, original IDs/clocks preserved, and no premature access. D1's50-byte
-LIKE limit exposed a scope-query defect; exact substring comparisons fix loss and expiry
-cleanup. Nine cleanup pages restored original triggers/zero active business rows; old
-empty baseline verified before operational access reopened. Hosted-rehearsal gate OFF.
-Focused30/30 plus compiled/safety10/10, scoped lint/diff pass. No new migration. Receipts:
-[private operations](private-operations-runtime.md). Sanitised evidence is ignored under
-outputs/authority-preparation/; local logs are not independent custody.
+Read-only correct Stripe sandbox confirms199p GBP,245 cents EUR and191p dispute;
+completed Checkout has client_reference_id:null. It cannot prove application-linked
+fulfilment. Preserve review-required; no Stripe mutation. [Payment evidence](stripe-payment-link-setup.md).
 
-Owner-supplied saved key copy successfully decrypted the existing synthetic Drive archive
-on13October2026. Temporary WYBP_RECOVERY_KEY_CHECK_BASE64 Secret removed and absence
-verified; primary key unchanged. No alert repeated. Storage independence/emergency access
-remain owner-reported, not independently audited; no separate custodian confirmed.
-Key/alert checks were not repeated. Next: secure durable receipt/key emergency custody,
-then production wiring/monitoring and representative capacity/purge verification. This
-synthetic correctness rehearsal is not a production scale or recovery-time guarantee.
+## Next action and remaining gates
 
-Owner retains current architecture,5,000 completed games/day planning target and
-GBP50/month ceiling. The500k redesign and proposed benchmark are deferred; do not
-start them. [Capacity assessment](production-capacity-proposal.md) records measured
-small-fixture evidence and unverified workload estimates:5k/day withinGBP50 is NOT
-verified. Local20 logical writes/free game alone projects100k/day before overhead;
-hosted1,440-answer purge took14.8s, not a sustained/outage-capacity guarantee.
-Next: existing authorised production wiring, custody and sandbox/legal preparation;
-resolve quota/cost/retention gates without upgrades, hosted load or activation.
+Continue private production wiring/custody/monitor setup and fresh application-linked
+converted sandbox reconciliation under existing authority. Monitor URL requires secure
+installation; keep jobs OFF.5k/day withinGBP50 remains unverified: measured20 logical
+writes/free game exhaust100k/day allowance before overhead; small hosted purge1,440answers/
+14.8s is not sustained recovery proof. Proposed cadence fails modelled outage allowance.
+No deferred benchmark started. [Capacity](production-capacity-proposal.md).
 
-## Remaining launch gates
-
-Durable independent inventory-receipt/emergency-key custody; production rate limiting, continuous authority delivery,
-independent monitoring and measured purge/outage capacity; approved operating schedule
-and whole-account costs within GBP50/month (no upgrades/top-ups). Converted-currency
-application-linked payment/refund/dispute verification remains incomplete; GBP1.91 dispute
-against GBP1.99 stays review-required. Seller address/legal/provider review, production
-catalogue/runtime, live Stripe readiness, existing-site backup, domain cutover/rollback and
-separate public-launch/payment approval remain. Owner policy is not professional sign-off.
-
-Contracts: [activation/rollback](isolated-test-approval-package.md),
-[retention](retention-operations.md), [custody](launch-evidence-backup.md),
-[costs](production-preparation-continuation.md), [hosting](netlify-cloudflare-hosting.md),
-[payments](stripe-payment-link-setup.md). No public launch, DNS changes, live payments or
-production schedule activation authorised here.
+Owner: secure seller/complaints address and Stripe verification directly in provider;
+final consumer/privacy/tax/support decisions; independent monitor/emergency custody.
+Production catalogue/runtime, costs/cadence and converted reconciliation remain gates.
+[Current configuration/cutover plan](production-preparation-continuation.md) supersedes
+older proposals in [activation package](isolated-test-approval-package.md).
+Public target https://classesforculture.com/; preserve old site/email and exact rollback
+before separate launch/payment approval. Owner policy is not professional legal sign-off.

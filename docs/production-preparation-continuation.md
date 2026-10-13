@@ -1,5 +1,53 @@
 # Production preparation continuation — 11 October 2026
 
+## Current launch continuation — 13 October 2026
+
+Latest decision: current architecture,5,000 completed games/day,GBP50/month;
+500k redesign/benchmark deferred. No upgrades, DNS, public activation or real charges.
+This section supersedes historical pending-code descriptions below. Hosted receipts
+and operating schedules are not changed. Local fixes: production fenced D1 commerce
+limiter; private bounded maintenance/delivery/external-heartbeat integration, disabled.
+See [operations](private-operations-runtime.md) for settings/evidence.
+
+| Gate | Exact remaining action / responsibility |
+|---|---|
+| Runtime | Codex bind protected production application's AUTHORITY only to existing wybp-prod-ops-r001/ApplicationAuthority, same approved D1 on both sides, role production-app, correct restore receipt/origin/signing. RecoveryOperator belongs only to private operator. No binding/deployment installed this turn. |
+| Monitoring/custody | Owner secure independent missing-heartbeat endpoint and emergency receipt/key access; Codex verify provider acceptance, actual outage detection and recovery. New URL is a Secret, never chat. Keep monitor paused/jobs OFF until measured cadence approved; do not repeat passed key/SMTP tests. |
+| Capacity | Codex resolve whole-account byte/request/write headroom and48h purge backlog against current GBP50. Free D1 baseline already exhausts write allowance before cleanup; modelled100/min cadence with50% successful passes fails recovery. No new load/benchmark. Any hosted work outside recorded correctness scope needs exact approval. |
+| Sandbox | Codex complete fresh application-linked converted Checkout/refund/dispute in existing resources after temporary private-payment release preflight; restore OFF afterwards. Current converted event has null client reference;191/199p dispute stays review-required. No owner sign-in step currently needed. |
+| Seller | Owner enter actual geographical establishment/contact address and different complaints address if applicable through secure seller/Stripe setup; phone where available/required; complete Stripe-requested identity/bank verification directly there. Known name/brand/non-VAT/support need not be repeated. |
+| Legal/support | Owner review final digital-delivery/cancellation/refund/complaint terms, durable contract receipt, support/privacy handling, age/children policy, processor/transfer disclosures, ICO assessment and overseas digital-sales tax position. Codex align public pages to verified behaviour. Owner retention approval is not legal sign-off. |
+
+Seller address basis: [Consumer Contracts Schedule2](https://www.legislation.gov.uk/uksi/2013/3134/schedule/2).
+Review [online selling](https://www.gov.uk/online-and-distance-selling-for-businesses/online-selling)
+and [digital-services VAT](https://www.gov.uk/guidance/the-vat-rules-if-you-supply-digital-services-to-private-consumers)
+against actual products/markets; do not infer legal clearance or tax registration.
+
+### Prepared classesforculture.com cutover/rollback — held
+
+1. Read-only inventory existing public project's deploy/domain/DNS/TLS/email function
+   and team-wide allowances. Preserve source/assets/config, working deploy ID and
+   exact domain state. Recover the missing email-function bundle or verify an intact
+   supported routing alternative before replacement; never rebuild it blindly.
+2. Verify production D1 unchanged0000–0013 receipts, protected production project/
+   Worker IDs and exact origin. Prepare60 canonical+90 exact approved manifest
+   catalogue, same-D1 private authority binding and restore receipt. No re-seed/import
+   this turn. Secrets installed separately, absent from builds; activation flags OFF.
+3. Pass independent custody/monitor/capacity gates before any operating schedule.
+   Complete application-linked converted sandbox reconciliation before live links.
+   Verify parent Stripe acct_1UOOZAIb8Lefpj36 seller/payout readiness; inventory/reuse
+   four authorised GBP1.99/1.99/4.99/9.99 live products only after conditional gates,
+   leaving customer checkout unavailable. Wigsmi/Sherwood untouched.
+4. Build matched canonical https://classesforculture.com release; verify protected
+   origin first. Present actual domain/DNS diff, prior-site restore receipt, cost
+   headroom and exact matched rollback IDs for separate launch approval. Preserve MX
+   and email; do not guess DNS values or claim canonical browser verification early.
+5. Only after approval, launch random replay/Cowries/Royal Reveal together and perform
+   authorised canonical/mobile/payment checks. On failure stop new purchases/paid
+   admissions; retain signature-verified settlement for accepted payments. Restore
+   previous site/domain/matched release. Never revert wallet/order/ledger data or
+   reopen closed wallets. Database recovery remains fenced. Real charges need approval.
+
 ## Current local boundary
 
 `worker/authorityService.mjs` supplies a private, dependency-injected authority

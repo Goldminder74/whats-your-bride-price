@@ -1,6 +1,7 @@
 import { WorkerEntrypoint } from 'cloudflare:workers';
 import { connect } from 'cloudflare:sockets';
-import { configuredAuthorityService, d1AuthorityAdapter, authorityDeliveryTick } from './authorityService.mjs';
+import { configuredAuthorityService, d1AuthorityAdapter, authorityDeliveryTick, purgeThroughAuthority } from './authorityService.mjs';
+import { operationalMaintenance, operationalHeartbeat } from './operationalMaintenance.mjs';
 import { authoritySnapshot, assertEmptyOperationalSource } from './authoritySnapshot.mjs';
 import { authorityMail } from './authorityMail.mjs';
 import { readBoundary } from '../scripts/authority-runtime.mjs';
@@ -37,6 +38,14 @@ export class ApplicationAuthority extends WorkerEntrypoint {
 }
 
 export class RecoveryOperator extends ApplicationAuthority {
+  async maintain(boundaryId,limit=50) {
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true')throw Error('operational_maintenance_disabled');
+    // Validate the independent monitor before constructing or mutating authority.
+    const heartbeat=operationalHeartbeat(this.env),configured=runtime(this.env);
+    return operationalMaintenance(configured.service,{
+      purge:(service,at,bound)=>purgeThroughAuthority(this.env.DB,service,at,bound),heartbeat,
+    },boundaryId,limit);
+  }
   async hostedSynthetic(action,payload) {
     if(this.env.WYBP_HOSTED_REHEARSAL_ENABLED!=='true')throw Error('hosted_synthetic_recovery_disabled');
     try {

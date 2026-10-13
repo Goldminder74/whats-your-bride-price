@@ -1,11 +1,11 @@
 import { deriveCommerceOwnerHash, validateCommerceConfiguration, type CommerceConfiguration } from "../db/commerceContracts.ts";
-import { CommerceService, D1CommerceRepository, InMemoryCommerceRateLimiter, InMemoryCommerceRepository, UnavailableCommerceRateLimiter, createReviewCommerceConfig } from "../db/commerce.ts";
+import { CommerceService, D1CommerceRepository, InMemoryCommerceRateLimiter, InMemoryCommerceRepository, createReviewCommerceConfig } from "../db/commerce.ts";
 import { D1ResultCompletionRepository, ResultCompletionService } from "../db/resultCompletion.ts";
 import { activeFeatureFlags } from "./featureFlags.ts";
 import { cowrieProducts, cowrieProductKeys, type CowrieProductKey } from "../db/cowrieProducts.ts";
 import type { CowrieBundleConfiguration } from "../db/commerceContracts.ts";
 import { loadCommerceConfiguration } from "../db/commerceConfiguration.ts";
-import { D1CommerceRateLimiter } from "../db/commerceRateLimit.ts";
+import { runtimeCommerceRateLimiter } from "../db/commerceRateLimit.ts";
 import { privateTestProfile, privateTestRuntimeReady } from "./privateTestProfile.ts";
 import { applicationAuthorityDatabase } from "../db/authorityDatabase.ts";
 
@@ -53,7 +53,7 @@ export async function getCommerceRuntime(): Promise<CommerceRuntime | null> {
   const database = applicationAuthorityDatabase(runtime, privateTestProfile !== "off");
   if (!database) return null;
   return Object.freeze({
-    service:new CommerceService(new D1CommerceRepository(database),(privateTestProfile === "payments" ? new D1CommerceRateLimiter(runtime.DB) : new UnavailableCommerceRateLimiter()),config,Date.now,{cowriePurchasesEnabled:activeFeatureFlags.cowrie_economy && activeFeatureFlags.random_quick_play}),
+    service:new CommerceService(new D1CommerceRepository(database),runtimeCommerceRateLimiter(runtime.DB,privateTestProfile,runtime.WYBP_AUTHORITY_ROLE,runtime.AUTHORITY),config,Date.now,{cowriePurchasesEnabled:activeFeatureFlags.cowrie_economy && activeFeatureFlags.random_quick_play}),
     resultCompletionService:new ResultCompletionService(new D1ResultCompletionRepository(database)),
     config,
   });

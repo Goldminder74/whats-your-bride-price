@@ -1,5 +1,45 @@
 # Private operational runtime
 
+## Local continuation — 13 October 2026
+
+Current architecture/5,000 completed games/day/GBP50 ceiling retained;500k redesign
+and benchmark deferred. New code below is local, not deployed or activated.
+
+Production commerce now selects the existing atomic20/minute/owner D1 limiter only
+with `production-app` role/private authority binding. Recovery fences before/after
+admission reject missing/changed authority. Ephemeral buckets grant no money/access;
+financial repositories remain journalled. Private payment wiring/defaults unchanged.
+
+Private `RecoveryOperator.maintain(boundaryId,limit)` requires
+`WYBP_OPERATIONS_ENABLED=true`, boundary ID beginning `op_`, limit1–100. It checks
+recovery, runs existing approved retention through authority, delivers/readbacks a
+snapshot, rechecks readiness, then sends a minimal external heartbeat. Missing
+monitor configuration stops before purge; any failure cannot report success. There
+is no HTTP management route, cron or automatic retry. Use a new boundary per new
+run; privately reconcile interrupted boundaries before retry. No cross-provider
+atomicity or sustained-capacity promise. Existing retention/holds are unchanged.
+
+Pending configuration in ops only: Secret `WYBP_HEARTBEAT_URL` (full private HTTPS
+ping URL); variable `WYBP_HEARTBEAT_HOST` (exact hostname); variable
+`WYBP_OPERATIONS_ENABLED` absent/false until capacity/cadence/recovery gates and
+activation approval. Nothing installed/changed hosted. Transport refuses redirects,
+waits<=10s, sends only component/status/time. Provider2xx is not alert receipt proof.
+
+A free [Healthchecks.io](https://healthchecks.io/) monitor is a compatible candidate,
+not a configured independent service. Owner accepts account terms, chooses the
+existing monitored noreply@ recipient, keeps it paused and securely installs the
+URL after setup agreement; never paste it in chat. Test actual missing-ping detection
+before jobs. SMTP alone cannot detect total provider outage. Do not repeat the
+already received labelled test alert. A separately monitored custody receipt/key
+emergency copy remains required; a personally controlled second copy is not absence cover.
+
+Evidence:21 focused checks,2 actual compiled Worker RPC checks, typecheck/scoped lint,
+secret-free synthetic matched build/package verification (143 server modules).
+Compiled checks confirm maintenance disabled/HTTP404. Logs ignored under
+outputs/authority-preparation/launch-continuation-*. Initial sandbox workerd/Vite
+startup restrictions resolved by the same local checks with required filesystem/network
+access. No hosted deployment/migration or extra alert; no newly measured load.
+
 `wrangler.operations.jsonc` packages `wybp-prod-ops-r001`. Both HTTP entrypoints
 return 404; workers.dev, preview URLs, logs and scheduled handlers are disabled.
 `ApplicationAuthority` exposes fenced transactional recording through a private
