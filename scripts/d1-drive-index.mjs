@@ -27,14 +27,21 @@ export class D1DriveIndex {
     return { ...row, fileId: id };
   }
   async get(name) { return (await this.row(name))?.fileId || null; }
-  async reserve(name, proposedId) {
+  async recoveryRecord(name) {const row=await this.row(name);return row?{createdAt:row.created_at,expiresAt:row.expires_at}:null;}
+  async recoverReserve(name, proposedId, record) {
+    if(!Number.isSafeInteger(record?.createdAt)||!Number.isSafeInteger(record?.expiresAt)
+      ||record.createdAt>this.now()||record.expiresAt-record.createdAt!==WINDOW||record.expiresAt<=this.now())throw Error('drive_recovery_window');
+    return this.reserve(name,proposedId,record);
+  }
+  async reserve(name, proposedId, recovery) {
     if (!fileId(proposedId)) throw Error('drive_file_identity');
-    const identity = this.identity(name), id = this.prefix + identity + ':' + proposedId, at = this.now();
+    const identity = this.identity(name), id = this.prefix + identity + ':' + proposedId, at = this.now(), createdAt=recovery?.createdAt??at, expiresAt=recovery?.expiresAt??at+WINDOW;
     // D1 executes this conditional INSERT atomically: independent processes pick one winner.
     await this.db.batch([{ sql: "INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) SELECT ?1,'custody',?2,0,?3,0,'complete',1,?4,?5 WHERE NOT EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE kind='custody' AND manifest_hash=?2 AND id LIKE 'drive_file:%')",
-      params: [id, identity, recoveryHash(Buffer.from(id)), at, at + WINDOW] }]);
+      params: [id, identity, recoveryHash(Buffer.from(id)), createdAt, expiresAt] }]);
     const row = await this.row(name);
     if (!row || row.expires_at <= at) throw Error('drive_reservation_expired');
+    if(recovery&&(row.fileId!==proposedId||row.created_at!==createdAt||row.expires_at!==expiresAt))throw Error('drive_recovery_conflict');
     return row.fileId;
   }
 

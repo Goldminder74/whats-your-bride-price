@@ -30,11 +30,11 @@ test('failed provider deletion preserves reservation; acknowledged deletion perm
 test('lost D1 mappings rebuild only from a pinned inventory and verified private-folder bytes',async()=>{
  const {recoveryHash}=await import('../../scripts/recovery-crypto.mjs');const {sql,db}=await fixture();try{
  const index=new D1DriveIndex(db,'synthetic_folder_001'),bytes=Buffer.from('encrypted-synthetic'),files=[{name:'one.intent',id:'synthetic_file_001',sha256:recoveryHash(bytes)}];
- const receipt=recoveryHash(Buffer.from(JSON.stringify(files)));let wrongFolder=false;
+ const createdAt=Date.now()-86400000;Object.assign(files[0],{createdAt,expiresAt:createdAt+30*86400000});const receipt=recoveryHash(Buffer.from(JSON.stringify(files)));let wrongFolder=false;
  const c=new DriveCustody({folderId:'synthetic_folder_001',index,accessToken:async()=> 'synthetic',fetcher:async url=>url.includes('alt=media')?new Response(bytes):Response.json({id:files[0].id,name:files[0].name,parents:[wrongFolder?'another_folder_001':'synthetic_folder_001'],trashed:false})});
  await assert.rejects(c.recoverIndex(files,'0'.repeat(64)),/drive_inventory_receipt/);assert.equal(await index.get('one.intent'),null);
  wrongFolder=true;await assert.rejects(c.recoverIndex(files,receipt),/drive_recovery_scope/);assert.equal(await index.get('one.intent'),null);
- wrongFolder=false;assert.equal(await c.recoverIndex(files,receipt),1);assert.equal(await c.recoverIndex(files,receipt),1);assert.equal(await index.get('one.intent'),files[0].id);
+ wrongFolder=false;assert.equal(await c.recoverIndex(files,receipt),1);assert.equal(await c.recoverIndex(files,receipt),1);assert.equal(await index.get('one.intent'),files[0].id);assert.deepEqual(await index.recoveryRecord('one.intent'),{createdAt:files[0].createdAt,expiresAt:files[0].expiresAt});
  }finally{sql.close();}
 });
 
@@ -44,6 +44,19 @@ test('lost delete acknowledgement retries with the same ID; unexpired reservatio
  assert.equal(await c.cleanupTemporary(now,1),0);assert.equal(calls,0);now+=30*86400000;
  await assert.rejects(c.cleanupTemporary(now,1),/drive_transport/);assert.equal(await index.get('one.intent'),'synthetic_file_001');
  assert.equal(await c.cleanupTemporary(now,1),1);assert.equal(await index.get('one.intent'),null);
+ }finally{sql.close();}
+});
+
+test('lost mapping reconstruction preserves the original clock and rejects missing, conflicting or expired clocks',async()=>{
+ const {sql,db}=await fixture();try{
+  let now=Date.now();const index=new D1DriveIndex(db,'synthetic_folder_001',{now:()=>now});
+  await index.reserve('clock.enc','synthetic_file_001');const clock=await index.recoveryRecord('clock.enc');
+  sql.exec("DELETE FROM operational_recovery_checkpoints WHERE id LIKE 'drive_file:%'");now+=86400000;
+  await assert.rejects(index.recoverReserve('clock.enc','synthetic_file_001',{}),/drive_recovery_window/);
+  await index.recoverReserve('clock.enc','synthetic_file_001',clock);await index.recoverReserve('clock.enc','synthetic_file_001',clock);
+  assert.deepEqual(await index.recoveryRecord('clock.enc'),clock);assert.equal(sql.prepare("SELECT COUNT(*) n FROM operational_recovery_checkpoints WHERE id LIKE 'drive_file:%'").get().n,1);
+  await assert.rejects(index.recoverReserve('clock.enc','synthetic_file_002',clock),/drive_recovery_conflict/);
+  now=clock.expiresAt;await assert.rejects(index.recoverReserve('clock.enc','synthetic_file_001',clock),/drive_recovery_window/);
  }finally{sql.close();}
 });
 

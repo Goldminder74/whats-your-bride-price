@@ -77,6 +77,47 @@ No jobs, live payments, public game or existing-site changes were activated.
 
 ## Verification and limitations
 
+### Populated recovery continuation — 13 October
+
+The new offline `scripts/worker-snapshot-restore.mjs` materialises the actual
+`wybp-d1-pages-v1` encrypted Worker format, validates every page/hash/count, restores
+indexes before foreign-key checks, and installs accounting triggers after historical
+rows so they cannot create duplicate ledger effects. It never opens runtime access.
+Existing `providerRestorePlan`, `restorePages`, reconciliation and suppression tools
+then restore into an isolated local target. The new end-to-end synthetic test proves
+accounting relationships, closed-wallet permanence, legal holds, deleted attempts and
+results, interrupted/resumed import, no duplicate orders, wrong-key/missing-page
+denial and a fresh receipt gate. This is local evidence; the populated Worker-format
+restore has not yet been repeated against hosted D1.
+
+Lost-index recovery exposed a retention gap: old inventories omitted reservation
+clocks. New D1 inventories pin original `createdAt`/`expiresAt`; recovery refuses
+missing, conflicting or expired clocks rather than restarting the approved 30 days.
+Old receipts remain historical evidence, but cannot reconstruct a lost production
+D1 mapping without independently verified original clocks. No migration is needed.
+
+The new pinned synthetic inventory receipt is
+`705351dcb06bd11cc42ac784173c7c33468707a0255d4c1342e5b6cd6ee5363a`.
+Private operator RPC removed only the mapping for `synthetic-commissioning-v1.enc`,
+reconstructed it from this pre-pinned receipt and verified encrypted Drive bytes.
+Live execution and repeat both preserved the exact file ID and original expiry.
+No archive was replaced, no new Drive file was uploaded, no application data changed,
+and no alert was repeated. Latest private Worker:
+`2b2f27c3-d26e-4969-b55e-265757238ffb`; public endpoints/schedules remain absent.
+
+Focused evidence: `outputs/authority-preparation/populated-recovery-final.log` (12/12),
+`recovery-operations-final.log` (10/10 actual compiled/safety checks),
+`synthetic-index-recovery-receipt.json` and `lost-index-live.json`.
+
+Independent key retrieval remains pending. The owner asked for clarification about
+the separately secured copy. Do not confuse the primary password-manager entry with
+independent custody or ask for key values. Once the owner retrieves the same existing
+key from separate secure storage, they may install it directly as temporary encrypted
+Secret `WYBP_RECOVERY_KEY_CHECK_BASE64` in this private Worker. Verify the saved version
+is deployed, invoke private `verifyIndependentKeyCopy`, then remove that temporary
+Secret. This decrypts only the synthetic archive and returns a boolean; it never
+replaces/displays the primary key. Physical independence still requires owner confirmation.
+
 Run `npm run test:operations` for an actual Wrangler package and private RPC tests.
 The compiled success regression reproduced an unsupported `redirect:error` failure;
 OAuth and Drive now use manual redirects and reject unsuccessful responses. Explicit

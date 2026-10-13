@@ -36,6 +36,33 @@ export class ApplicationAuthority extends WorkerEntrypoint {
 }
 
 export class RecoveryOperator extends ApplicationAuthority {
+  async reconstructSyntheticIndex(files,receipt) {
+    try {
+      if(this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||receipt!==this.env.WYBP_SYNTHETIC_RECOVERY_RECEIPT||!Array.isArray(files)||files.length!==1||files[0].name!=='synthetic-commissioning-v1.enc')throw Error('scope');
+      const configured=runtime(this.env);await configured.service.ready();
+      if(recoveryHash(Buffer.from(JSON.stringify(files)))!==receipt)throw Error('receipt');
+      const file=files[0],row=await configured.index.row(file.name);
+      if(row&&(row.fileId!==file.id||row.created_at!==file.createdAt||row.expires_at!==file.expiresAt))throw Error('conflict');
+      // Only this explicitly synthetic mapping is removed. Encrypted Drive bytes,
+      // financial authority, real mappings and the primary key remain untouched.
+      if(row)await d1AuthorityAdapter(this.env.DB).batch([{sql:'DELETE FROM operational_recovery_checkpoints WHERE id=?1 AND manifest_hash=?2',params:[row.id,row.manifest_hash]}]);
+      await configured.custody.recoverIndex(files,receipt);
+      const after=await configured.index.row(file.name),bytes=await configured.custody.get(file.name);
+      if(!bytes||recoveryHash(bytes)!==file.sha256||decryptRecord(bytes,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),file.name).synthetic!==true)throw Error('readback');
+      return {verified:true,originalIdPreserved:after.fileId===file.id,originalExpiryPreserved:after.created_at===file.createdAt&&after.expires_at===file.expiresAt};
+    }catch{throw Error('synthetic_index_recovery_failed');}
+  }
+  async verifyIndependentKeyCopy() {
+    try {
+      const encoded=this.env.WYBP_RECOVERY_KEY_CHECK_BASE64;
+      if(typeof encoded!=='string'||!/^[A-Za-z0-9+/]{43}=$/.test(encoded))throw Error('candidate');
+      const key=Buffer.from(encoded,'base64');if(key.length!==32||key.toString('base64')!==encoded)throw Error('candidate');
+      const configured=runtime(this.env),name='synthetic-commissioning-v1.enc',bytes=await configured.custody.get(name);
+      if(!bytes)throw Error('archive');const value=decryptRecord(bytes,key,name);
+      if(value.synthetic!==true||value.purpose!=='credential-and-custody-verification')throw Error('archive');
+      return {syntheticArchiveDecryptionVerified:true,custodyIndependence:'owner_confirmation_required'};
+    }catch{throw Error('independent_key_verification_failed');}
+  }
   async commissionEmptyBaseline() {
     try {
       const db=d1AuthorityAdapter(this.env.DB);
@@ -78,7 +105,7 @@ export class RecoveryOperator extends ApplicationAuthority {
       if(JSON.stringify(decryptRecord(bytes,key,name))!==JSON.stringify(payload))throw Error('payload');
       const sha256=await custody.put(name,bytes),downloaded=await custody.get(name);
       if(!downloaded||JSON.stringify(decryptRecord(downloaded,key,name))!==JSON.stringify(payload))throw Error('readback');
-      const files=[{name,id:await index.get(name),sha256}];
+      const files=[{name,id:await index.get(name),sha256,...await index.recoveryRecord(name)}];
       const receipt=recoveryHash(Buffer.from(JSON.stringify(files)));
       await new DriveCustody({folderId,index:new D1DriveIndex(db,folderId),accessToken}).recoverIndex(files,receipt);
       return {verified:true,folderId,fileId:files[0].id,sha256,inventoryReceipt:receipt,indexRecoveryVerified:true,runtimeAccess:'blocked_pending_recovery_baseline'};

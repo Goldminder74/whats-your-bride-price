@@ -77,7 +77,7 @@ export class DriveCustody {
     for (const name of await this.list()) {
       const bytes = await this.get(name);
       if (!bytes) throw Error('drive_inventory_gap');
-      files.push({ name, id: await this.index.get(name), sha256: recoveryHash(bytes) });
+      files.push({ name, id: await this.index.get(name), sha256: recoveryHash(bytes),...(this.index.recoveryRecord?await this.index.recoveryRecord(name):{}) });
     }
     return { files, sha256: recoveryHash(Buffer.from(JSON.stringify(files))) };
   }
@@ -100,7 +100,8 @@ export class DriveCustody {
       if (!media.ok) throw Error('drive_download');
       const bytes = Buffer.from(await media.arrayBuffer());
       if (bytes.length > 4 * 1024 * 1024 || recoveryHash(bytes) !== file.sha256) throw Error('drive_recovery_hash');
-      if (await this.index.reserve(file.name, file.id) !== file.id) throw Error('drive_index_conflict');
+      const recovered=this.index.recoverReserve?await this.index.recoverReserve(file.name,file.id,file):await this.index.reserve(file.name,file.id);
+      if (recovered !== file.id) throw Error('drive_index_conflict');
     }
     return files.length;
   }
