@@ -11,6 +11,7 @@
   "d1_databases": [{"binding":"DB","database_name":"wybp-prod-d1-r001","database_id":"a5b2b409-ed08-48c9-ac1d-36699fc6c4b9"}],
   "vars": {
     "WYBP_AUTHORITY_ROLE": "production-ops",
+    "WYBP_HEARTBEAT_HOST": "hc-ping.com",
     "WYBP_AUTHORITY_DATABASE_NAME": "wybp-prod-d1-r001",
     "WYBP_DRIVE_FOLDER_ID": "1-fO04arPlwSpuWQ7T2--yzTS5pHEXyxr",
     "WYBP_RESTORE_RECEIPT_SHA256": "2860bffa5489697ce3828b40549ee10ef6972bebd3bf4f6092513571550834f0",

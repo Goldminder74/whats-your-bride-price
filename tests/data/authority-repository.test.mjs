@@ -9,6 +9,9 @@ import { applicationAuthorityDatabase } from '../../db/authorityDatabase.ts';
 import { createOperationId } from '../../scripts/authority-runtime.mjs';
 import { recoveryHash } from '../../scripts/recovery-crypto.mjs';
 import { runtimeCommerceRateLimiter } from '../../db/commerceRateLimit.ts';
+import {holdCapacityAttempt} from '../../scripts/isolated-capacity-check.mjs';
+import {D1CowrieWalletRepository} from '../../db/cowrieWallet.ts';
+import {D1QuestionSelectionRepository} from '../../db/questionSelection.ts';
 
 test('production admission uses shared D1 buckets only with a stable private authority fence',async()=>{
   const c=await setup();try {
@@ -69,6 +72,39 @@ async function fixture() {
   c.service=new CommerceService(new D1CommerceRepository(database),new InMemoryCommerceRateLimiter(),config,()=>now,{cowriePurchasesEnabled:true});
   return {...c,authority,journaled:database,options,files};
 }
+
+test('production-authority bonus availability and expiry preserve FIFO and reject unsafe read forms',async()=>{
+  const c=await fixture();try {
+    const id=c.database.prepare('SELECT id FROM cowrie_wallets').get().id;
+    const credit=c.database.prepare("INSERT INTO cowrie_ledger(id,wallet_id,bucket,entry_type,delta,idempotency_domain,idempotency_hash,related_achievement_key,reason_code,bonus_expires_at,created_at) VALUES(?1,?2,'bonus','bonus_credit',?3,'bonus',?4,?1,'perfect_region_day',?5,?6)");
+    credit.run('ledger_'+'a'.repeat(32),id,3,'a'.repeat(64),now,now-180*86400000);
+    credit.run('ledger_'+'b'.repeat(32),id,2,'b'.repeat(64),now+180*86400000,now);
+    const repository=new D1CowrieWalletRepository(c.journaled,new D1QuestionSelectionRepository(c.journaled));
+    assert.equal(await repository.getExpiredBonusBalance(id,now),3);
+    assert.equal(await repository.expireBonuses({walletId:id,now,limit:1}),3);
+    assert.equal(await repository.getExpiredBonusBalance(id,now),0);
+    assert.equal(await repository.expireBonuses({walletId:id,now,limit:1}),0);
+    assert.equal(c.database.prepare('SELECT bonus_balance FROM cowrie_wallets WHERE id=?').get(id).bonus_balance,2);
+    assert.equal(c.database.prepare("SELECT COUNT(*) n FROM cowrie_ledger WHERE entry_type='bonus_expiry'").get().n,1);
+    for(const sql of ['WITH hidden AS (SELECT 1) SELECT * FROM hidden','PRAGMA foreign_keys','UPDATE cowrie_wallets SET bonus_balance=0 RETURNING id'])
+      await assert.rejects(c.journaled.prepare(sql).all(),/authority_read_scope/);
+    assert.equal(await c.authority.ready(),true);
+    assert.equal(c.database.prepare('PRAGMA foreign_key_check').all().length,0);
+  }finally{c.database.close();}
+});
+
+test('capacity hold reaches durable authority and repeat execution preserves one hold without accounting changes',async()=>{
+  const c=await fixture();try {
+    const before=c.database.prepare('SELECT COUNT(*) n FROM cowrie_ledger').get().n;
+    await holdCapacityAttempt(c.authority,'synthetic_attempt',now);
+    await holdCapacityAttempt(c.authority,'synthetic_attempt',now);
+    assert.equal(c.database.prepare("SELECT COUNT(*) n FROM retention_holds WHERE id='capacity_hold' AND scope='attempt' AND subject_id='synthetic_attempt' AND released_at IS NULL").get().n,1);
+    assert.equal(c.database.prepare('SELECT COUNT(*) n FROM operational_authority_outbox').get().n,2);
+    assert.equal(c.database.prepare('SELECT COUNT(*) n FROM cowrie_ledger').get().n,before);
+    assert.equal(await c.authority.ready(),true);
+    assert.equal(c.database.prepare('PRAGMA foreign_key_check').all().length,0);
+  }finally{c.database.close();}
+});
 
 test('real purchase, replay and full refund preserve accounting through authority',async()=>{
   const c=await fixture();try {

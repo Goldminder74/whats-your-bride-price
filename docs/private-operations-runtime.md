@@ -252,3 +252,23 @@ empty-baseline-live.json, commissioning-final-live.json, alert-live-status.json,
 production-migration-checksums.json and commissioning-final-tests.log (10/10).
 These local logs are not durable independent backup custody. Existing application
 deployment, database, wallets, website, DNS and payment settings were not changed.
+
+## 15 October isolated monitoring verification
+
+The owner created the existing free Healthchecks account/check, selected the daily
+monitored noreply@classesforculture.com recipient and securely installed Secret
+WYBP_HEARTBEAT_URL plus exact-host variable WYBP_HEARTBEAT_HOST=hc-ping.com.
+Do not request Google credentials or repeat the previously received SMTP alert.
+
+Private ops version09b6acb0-f2af-45bb-a3ca-04591c5453e0 adds RecoveryOperator.verifyHeartbeat:
+private RPC only, fixed synthetic status, no database/retention work, no URL returned.
+Both HTTP surfaces remain404; operations activation is absent/false, rehearsal false,
+no cron/public routes. The existing supported Wrangler remote service binding returned
+{accepted:true,synthetic:true}; this verifies installed-secret delivery, not outage alert
+receipt or a running production schedule. Installed hostname was read back without secrets.
+Owner temporarily resumed the same check at1-minute period+1-minute grace for a
+controlled missing-ping test. One ping accepted, then intentionally no further pings.
+Owner confirmed Down state, receipt of the down-alert email, then paused/restored the check. This is owner-observed provider/receipt evidence, not dashboard readback. Final agreed state is PAUSED,1day/1hour temporary defaults;
+production cadence remains unapproved. Logs/receipts under
+outputs/authority-preparation/20261015-final-gates/heartbeat-*.json; no credentials in Git.
+Focused source/compiled RPC checks preserve missing-config denial and HTTP isolation.

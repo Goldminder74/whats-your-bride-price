@@ -390,7 +390,7 @@ export class D1CowrieWalletRepository implements CowrieWalletRepository {
     return bucket === "bonus" || bucket === "purchased" ? bucket : "free";
   }
   async getExpiredBonusBalance(walletId: string, now: number): Promise<number> {
-    const amount = await this.database.prepare(`WITH credits AS (SELECT delta,bonus_expires_at,SUM(delta) OVER (ORDER BY created_at,id ROWS UNBOUNDED PRECEDING) cumulative FROM cowrie_ledger WHERE wallet_id=?1 AND bucket='bonus' AND entry_type='bonus_credit'), debits AS (SELECT COALESCE(-SUM(delta),0) used FROM cowrie_ledger WHERE wallet_id=?1 AND bucket='bonus' AND entry_type!='bonus_credit') SELECT COALESCE(SUM(MIN(delta,MAX(0,cumulative-used))),0) amount FROM credits CROSS JOIN debits WHERE bonus_expires_at<=?2`).bind(walletId, now).first<number>("amount");
+    const amount = await this.database.prepare(`SELECT COALESCE(SUM(MIN(delta,MAX(0,cumulative-used))),0) amount FROM (SELECT delta,bonus_expires_at,SUM(delta) OVER (ORDER BY created_at,id ROWS UNBOUNDED PRECEDING) cumulative FROM cowrie_ledger WHERE wallet_id=?1 AND bucket='bonus' AND entry_type='bonus_credit') credits CROSS JOIN (SELECT COALESCE(-SUM(delta),0) used FROM cowrie_ledger WHERE wallet_id=?1 AND bucket='bonus' AND entry_type!='bonus_credit') debits WHERE bonus_expires_at<=?2`).bind(walletId, now).first<number>("amount");
     return amount ?? 0;
   }
   getCandidates(region: RegionKey, now: number) { return this.selectionRepository.getCandidates(region, now); }
@@ -437,11 +437,10 @@ export class D1CowrieWalletRepository implements CowrieWalletRepository {
     for (let index = 0; index < input.limit; index += 1) {
       const wallet = await this.database.prepare("SELECT bonus_balance,version FROM cowrie_wallets WHERE id=?1 AND state='active'").bind(input.walletId).first<{ bonus_balance: number; version: number }>();
       if (!wallet || wallet.bonus_balance === 0) break;
-      const row = await this.database.prepare(`WITH credits AS (
+      const row = await this.database.prepare(`SELECT id,MIN(delta,MAX(0,cumulative-used)) remaining FROM (
         SELECT id,delta,bonus_expires_at,created_at,SUM(delta) OVER (ORDER BY created_at,id ROWS UNBOUNDED PRECEDING) cumulative
         FROM cowrie_ledger WHERE wallet_id=?1 AND bucket='bonus' AND entry_type='bonus_credit'
-      ), debits AS (SELECT COALESCE(-SUM(delta),0) used FROM cowrie_ledger WHERE wallet_id=?1 AND bucket='bonus' AND entry_type!='bonus_credit')
-      SELECT id,MIN(delta,MAX(0,cumulative-used)) remaining FROM credits CROSS JOIN debits
+      ) credits CROSS JOIN (SELECT COALESCE(-SUM(delta),0) used FROM cowrie_ledger WHERE wallet_id=?1 AND bucket='bonus' AND entry_type!='bonus_credit') debits
       WHERE bonus_expires_at<=?2 AND MIN(delta,MAX(0,cumulative-used))>0 ORDER BY created_at,id LIMIT 1`).bind(input.walletId, input.now).first<{ id: string; remaining: number }>();
       if (!row) break;
       const quantity = Math.min(wallet.bonus_balance, row.remaining);

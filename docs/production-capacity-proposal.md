@@ -368,3 +368,215 @@ Sources checked13October2026: [Netlify meters](https://docs.netlify.com/manage/a
 [R2](https://developers.cloudflare.com/r2/pricing/),
 [Drive](https://developers.google.com/workspace/drive/api/guides/limits),
 [Stripe UK](https://stripe.com/gb/pricing).
+
+## 15 October reconciliation — current launch gate (supersedes smaller-pilot recommendation)
+
+Launch requires **5,000 completed games/day, 500/hour and 48 hours of outage allowance**.
+GBP50/month remains the whole-account hosting/backup/operations ceiling. Drive storage
+is paid separately; Stripe transaction/dispute fees are separate. No target downgrade,
+paid change, schedule or larger benchmark is approved.
+
+### Observed baseline and confirmed defect
+
+The approved up-to-25-game, 30-minute check completed only THREE games/36 answers.
+Receipt: outputs/authority-preparation/20261015-final-gates/capacity-receipt.json.
+769 HTTP calls,17,487 billed reads,1,964 billed writes,~2.04MB transfer; final database
+1,044,480 bytes. These totals INCLUDE migration/seed overhead. Each completed fixture
+added101 billed writes and approximately612–619 reads, without production authority,
+Drive delivery, recovery traffic or paid play. API-call p50~121ms,p95~182ms measures
+the operator REST transport, not browser/Worker latency or sustainable throughput.
+
+After gameplay the runner called applyAuthorityRetentionAction(service,action,time),
+omitting operationId. The actual contract requires(service,operationId,action,time).
+It therefore rejected the malformed action before recording a hold. Reconciliation
+confirmed3 synthetic wallets/attempts,36 answers,zero holds/outbox events. The corrected
+holdCapacityAttempt helper generates the required operation ID; real local authority
+regressions verify durable, repeat-safe holds and unchanged accounting. Concurrent
+budget admission is now serialised to preserve1request/sec and prevent cap races.
+The original30-minute window expired; counters were NOT reset or the failed workload
+repeated. No hosted purge/authority throughput result exists from this run.
+Disposable wybp-capacity-d1-r001 was reconciled and deleted; both existing databases
+remain. Sanitised inventory, failure, checksum and cleanup receipts are outside Git.
+
+### Complete daily model (assumptions, not observed conversion)
+
+70% completion gives7,143 starts and2,143 incomplete games at four answers each:
+68,571 answer submissions. Include5,000 completion calls plus5,000 result reads,1,000 recoveries
+with8,000 recovery/rejudgement calls,7,143 wallet reads,3,000 sharing calls,
+150 purchases/600 checkout-status calls,465 webhook deliveries (retries/adverse events),
+3,148 ordinary retry calls and10,807 rejected-abuse calls. Total approximately118,877
+API calls and168,000 asset calls/day:286,877 total,8.61million/month. Unbounded abuse
+has no finite cost ceiling; cache hits still consume Netlify delivery credits.
+
+500 completions/hour implies~11,888 API+16,800 asset calls/hour,~7.97 total/sec.
+Use a5x one-minute microburst (~40/sec), separately from the500/hour requirement.
+This is a test assumption; production journal hot-wallet contention and external
+Drive service limits must be measured. Starts/incomplete/recovery consume capacity
+but must never cause duplicate attempts, charges or credits.
+
+The48h answer backlog is137,143. To drain within the five remaining days of the
+approved seven-day purge deadline requires96,000 successful answer deletions/day
+INCLUDING new arrivals. At50% successful operation, install at least192,000/day;
+one100-row pass/minute supplies only72,000 effective/day and takes~40days to catch up.
+Three100-row passes/minute would nominally catch up within24h at50% availability,
+but OTHER record families, holds, journal delivery and CPU also consume that budget.
+This is proposed arithmetic, NOT an approved schedule or measured purge capacity.
+Backups must cover24h gameplay RPO and financial/deletion authority's stricter fence;
+never acknowledge protected authority as recoverable before durable verified delivery.
+Daily snapshots, full paginated inventories,30-day backup cleanup and reconciliation
+must be budgeted in bytes/reads/Drive calls; size and continuous delivery costs remain
+unmeasured at the full retained stock. A small empty snapshot is not representative.
+
+### Whole-account cost and bottlenecks
+
+Official rates checked15October: Netlify20credits/GB,2credits/10k requests,15/publication;
+PersonalUSD9/1,000credits; existing-team Pro5,000credits USD33,10,000 USD63,
+20,000 USD126. Cloudflare Workers Paid USD5 minimum;10m requests/30m CPU-ms included;
+D1 first50m writes/25bn reads/month and5GB included. No plan was changed.
+Use USD1=GBP0.80 plus20% tax/FX contingency (planning assumption, not a quoted exchange
+rate or tax assessment). Current shared preparation usage is not a monthly steady baseline.
+
+At150,000 completions/month,0.75–4.5MB/completion gives112.5–675GB,2,250–13,500
+bandwidth credits plus1,721 request credits. Reserve60credits for four team-wide
+publications,50 for other-project traffic/compute and200 for safety:4,281–15,531credits,
+BEFORE additional dynamic compute or viral sharing. Other projects share all meters;
+50credits is an allowance requiring monitoring, not verified future demand.
+
+The low envelope needs Pro5k+Workers Paid:USD38~GBP36.48, plusGBP5–10 operational/
+storage/CPU contingency =>~GBP42–47/month. It fitsGBP50 ONLY IF low bytes, bounded
+other-project demand, D1 stock and authority amplification are verified. Upper unchanged
+path needs Pro20k+Workers Paid:USD131~GBP125.76 plusGBP10–20 contingency =>~GBP136–146.
+Recommended unchanged-path provisional budget:GBP150/month, approximatelyGBP100 above
+the current ceiling; not spending approval. GBP50 sufficiency is NOT established.
+Existing Personal+Free cannot support the target: the101-write fixture extrapolates
+to505,000 writes/day,405,000 above Free BEFORE production overhead; modelled API
+traffic alone exceeds100,000 Worker requests/day. Protected worker-first asset calls
+also count; do not remove authentication-first delivery to save money.
+
+Smallest changes to investigate: existing-team credit tier (replace, not duplicate,
+Personal), Workers Paid, reduce delivered bytes to<=0.75MB/completion, preserve protected
+cache semantics, batch operator transport and independent journal delivery without
+weakening the acknowledged recovery boundary, and fairly bounded multi-pass retention.
+Paid D1 avoids daily Free write quota but does not prove journal/Drive throughput.
+No R2, queue, new paid monitor or alternate hosting subscription is assumed installed.
+Separately funded Drive storage addsGBP0 to THIS ceiling, but consumes its own quota;
+existing free Healthchecks adds no new subscription. The existing Namecheap mailbox has no new subscription here, but its monthly project cost allocation is unverified and must fit the operational contingency or be explicitly separately funded.
+
+### Production authority amplification — new local evidence
+
+The real production adapter wraps gameplay/financial writers, not just purchases.
+A local actual-repository counter (transport stubbed ONLY to count calls) measured
+18 authority transactions/33 repository statements/450 fence reads per completed
+free game, plus2 transactions/8 fence reads for a new wallet. Receipt:
+outputs/authority-preparation/20261015-final-gates/local-authority-workload.json.
+This is NOT hosted latency, cryptographic delivery or billed-row measurement. A
+second instantaneous same-owner game hit the existing20/minute limiter as expected;
+the counted one-game fixture was used rather than weakening/resetting that protection.
+
+At5k completions this models90k protected operations and2.25m private fence RPCs/day,
+before incomplete games, new wallets, paid play, payments and purge. With7,143 new
+wallets/day the fresh-owner upper scenario adds14,286 operations. Every operation
+currently creates an independent .intent and eventually .event: approximately208,572
+new files/day,6.26million over the approved30-day backup window, before snapshots.
+Google documents500,000 items per non-root My Drive folder. The currently configured
+single-folder arrangement cannot retain that stock; more paid bytes do not fix it.
+[Google folder limits](https://developers.google.com/workspace/drive/api/guides/folder).
+Actual Drive project quota units and sustained latency remain unmeasured; do not
+assume old request-quota figures or bypass provider403/429 backoff.
+
+Delivery currently lists ALL retained names, resolves each persistent index entry,
+downloads retained intents and takes a full fenced snapshot. Repeating that operation
+at purge/heartbeat cadence would grow with retained history and block ordinary writers;
+no500/hour or24h recovery guarantee follows from the successful small recovery tests.
+Even a10–30 EXTRA billed-metadata-write/operation sensitivity gives31–94m additional
+writes/month plus~15m baseline, i.e.46–109m total. This is an explicit assumption,
+not measured amplification; D1 overage could addUSD0–59 (~GBP0–57 with the stated tax/
+FX allowance). Thus the earlierGBP42–146 delivery envelope is insufficient as a
+current-source all-in promise; sensitivity is~GBP42–203 and inventory costs may exceed
+it. No finite small-sample envelope certifies this unbounded scan pattern.
+
+Minimum local changes before Phase B: separate ephemeral atomic rate buckets from
+financial journalling under the existing fail-closed admission/fence contract; bounded
+incremental event delivery and hash-verified compaction/time-partitioned custody with
+complete lost-index reconstruction; decouple purge/heartbeat from full daily snapshots;
+batch persistent-index reads and bound maintenance lock duration. Preserve every
+financial/closure/deletion/hold recovery boundary, strict acknowledgement semantics,
+approved retention and idempotency. Do not acknowledge independently recoverable
+financial commitment merely because an intent upload or D1 transaction succeeded.
+No cross-provider atomicity is claimed. These optimisations are NOT implemented here,
+require crash/retry/restore regressions, and no new migration is assumed or approved.
+
+A production-only blocker discovered while counting was the authority guard rejecting
+the wallet's legitimate WITH bonus queries. Both were rewritten as equivalent SELECT
+subqueries, keeping FIFO arithmetic, balances and the guard unchanged. Actual authority-
+backed expiry/repeat/accounting and unsafe-read rejection regression passed. This fix
+is source-only for the game; the restored private profile bypasses that production
+adapter, and current wallets/data were not modified for it.
+
+Recommendation: first validate these bounded changes under existing local authority.
+KeepGBP50 until measured post-change costs show whether it suffices. GBP150 is a
+provisional conservative POST-optimisation delivery envelope, not a recommendation
+to spend now or a cure for current unbounded work. Current-source sensitivity can
+exceed the ceiling by~GBP153/month; minimum viable production budget is still unproved.
+Only after local gates, seek the exact separate hosted Phase A/B/C approval below.
+### Smallest proposed hosted benchmark — NEW APPROVAL REQUIRED
+
+No new run is authorised by this proposal. First finish corrected local full-path
+checks and approve a separate execution window; never reset the original30-minute
+baseline budget. Phase A:<=22 additional games (25 cumulative with the original three) with the fixed hold/pacing and a private
+RPC harness to remove per-query REST overhead; max1,000HTTP/10k writes/100k reads,
+10MB D1/100MB transfer/10Drive objects/10MB,1HTTP/sec,30minutes,GBP0 new spending,
+stop at80% any limit. This confirms tooling correctness, not launch capacity.
+
+Phase B: one isolated private Netlify project wybp-capacity-private-r002, one signed-
+ingress Worker wybp-capacity-worker-r002 and ONLY its synthetic D1
+wybp-capacity-d1-r002; no production DNS or existing application binding. Reuse existing
+team, no paid Netlify subscription duplicate. Unchanged0000–0013, synthetic150-question
+catalogue, distinct credentials installed securely (absent in builds), owner-only
+client and signed Worker ingress. This extra isolated client is necessary to measure
+the complete Netlify/Worker path without loading real wallets/catalogue.
+
+Exactly<=500 completed games over60minutes,<=215 incomplete starts,<=100 refresh
+recoveries, synthetic financial/hold/closure cases and actual encrypted Drive custody.
+Total<=40,000HTTP requests,250,000 billed writes,2m billed reads,100MB D1,1GB egress,
+1,000Drive objects/25MB encrypted transfer;<=40HTTP/sec for<=60seconds and<=10/sec
+otherwise. Count browser assets, rejects, provider/operator calls and retries as well
+as gameplay. Abort at80% ANY cap, integrity error, unknown billing or account headroom
+boundary. These maxima require Workers Paid: do NOT try250k writes under Free100k/day.
+
+Phase C, separately metered on the SAME isolated resources:<=150,000 aged answer
+rows plus bounded other-family/hold fixtures,<=2,000 passes at100rows,<=60minutes;
+max2m billed writes,50m reads,100MB D1,200MB egress,10k HTTP,5,000Drive objects/50MB.
+Include creation, journal/index overhead, deletion and cleanup in ALL caps. Measure
+actual forward progress and dependency preservation after a simulated48h scheduling
+outage. Stop before80% any bound; do not claim success if caps prevent backlog drain.
+This models the answer backlog, not a full multi-year retained financial stock or a
+real48h provider outage. Require additional retained-stock capacity evidence before
+promising the24h RTO or perpetual retention storage fit.
+
+Proposed cumulative execution ceiling:GBP6 NEW spending for one reviewedUSD5 Workers
+Paid month with tax/FX allowance, within existingGBP50 total; existing Netlify credits
+<=60 for at most four publications plus measured<=35 traffic credits. No top-up or
+other paid service. Account-wide Paid change itself needs explicit owner approval;
+check existing subscriptions/tax and resource availability first. If the provider
+cannot bound the test withinGBP6 or the existing allowance, stop before upgrading.
+CPU-per-invocation limits and script request/row counters bound this experiment;
+provider spend alerts are NOT an enforceable monthly monetary cap.
+
+Preserve sanitised checksums/receipts, verify holds/accounting/recovery barriers,
+restore private feature flags, delete ONLY these synthetic resources/Drive objects
+under approved cleanup, verify absence. No cron activation, live Stripe or public
+access. Phase B substantiates one measured500/hour sample; Phase C supports bounded
+outage-backlog extrapolation. Neither alone proves sustained24h service or unbounded
+abuse. Production approval still requires measured billing/headroom/stock, operating
+schedule, seller/payment gates and a rollback drill. No proposed phase has been run.
+Sources: [Netlify plans/rates](https://www.netlify.com/pricing/),
+[Netlify tier prices](https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/credit-based-pricing-plans/),
+[Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/),
+[D1 pricing](https://developers.cloudflare.com/d1/platform/pricing/).
+
+15October whole-team dashboard readback before final restore:523/1,000 credits
+remaining,31 publications/465credits,21,530 requests/4.3credits; compute0. Recharge
+settings explicitly Disabled (read-only modal, cancelled unchanged). API top-up pack
+amount500 is NOT an enabled-state indicator. Charts lag balance; do not reconcile
+future cost from a partial-cycle chart or assume other-project monthly usage is zero.

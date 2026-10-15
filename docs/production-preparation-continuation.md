@@ -436,3 +436,48 @@ UK sources checked: https://www.gov.uk/online-and-distance-selling-for-businesse
 and https://www.legislation.gov.uk/uksi/2013/3134/schedule/2 ; overseas digital tax:
 https://www.gov.uk/guidance/the-vat-rules-if-you-supply-digital-services-to-private-consumers .
 Owner-approved policy must not be described as professional legal approval.
+
+### Final purchase/sales decisions for review — 15 October
+
+Owner confirms Stripe setup has no outstanding tasks. This is owner-reported;
+do not request the same verification again or equate it with legal sign-off.
+Website publication still requires the actual seller/contact address through the
+secure runtime mechanism; Stripe completion does not populate website legal pages.
+
+Proposed player-facing terms, NOT activated/legally approved:
+- 5 Cowries GBP1.99;15 GBP4.99;40 GBP9.99. One-off, no subscription. After the
+  implemented two-free-game allowance, one Cowrie buys one eligible random Quick Play.
+  Purchased Cowries do not expire; bonus Cowries expire after180days. No transfer,
+  resale, cash withdrawal or forfeiture to achieve wallet closure.
+- Royal Reveal GBP1.99 purchases the premium pack for THIS result only: animated
+  Story video, premium portraits and certificate. Regenerate while the result remains
+  active, up to90days; downloaded files remain on the player's device.
+- Delivery follows verified payment, never the redirect. Show the full price,
+  result/bundle identity and separate unchecked delivery consent before checkout.
+  For applicable digital downloads, cancellation acknowledgement must expressly
+  describe loss of the14-day right and appear in durable contract confirmation.
+  Current draft's 'may be affected' wording is not certification of a valid waiver.
+- Faulty/not-as-described statutory rights remain. Verified unused full refunds
+  reverse only that purchase; used/partial/mismatched/refund/dispute cases receive
+  protected review. Refund through the original payment method after verification;
+  do not promise an invented processing period or blanket no-refund rule.
+- Contact team@classesforculture.com for purchase/support/complaints. Owner must
+  approve the actual response/complaint procedure. Provide saveable terms and an
+  order-specific durable contract confirmation; a payment receipt alone is insufficient
+  unless it contains the required contract/consent information. No receipt emails were
+  sent for the observed synthetic purchases; this delivery gate remains open.
+
+Genuine choices: (1) approve/revise the above terms and obtain any needed classification/
+consumer review, especially Cowrie credits versus future services; (2) UK-only paid
+launch, explicitly named additional countries after local tax/consumer checks, or
+worldwide after comprehensive review. Recommend UK-only paid launch initially, but
+neither territorial choice nor enforced restriction is implemented/approved here.
+Free-game visibility is a separate decision. (3) securely install the actual public
+seller address/contact fields and approve the complaints/confirmation procedure.
+Do not collect identity, banking details or secrets in chat. No need to approve the
+six retention rules again. Public payment/DNS activation remains a separate final gate.
+
+Authoritative guidance rechecked15October:
+[UK online selling/digital delivery](https://www.gov.uk/online-and-distance-selling-for-businesses/online-selling),
+[pre-contract/durable information](https://www.gov.uk/online-and-distance-selling-for-businesses/distance-selling),
+[overseas digital VAT](https://www.gov.uk/guidance/the-vat-rules-if-you-supply-digital-services-to-private-consumers).

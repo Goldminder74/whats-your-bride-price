@@ -38,6 +38,11 @@ export class ApplicationAuthority extends WorkerEntrypoint {
 }
 
 export class RecoveryOperator extends ApplicationAuthority {
+  async verifyHeartbeat() {
+    if(this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_monitor_configuration');
+    await operationalHeartbeat(this.env)({status:'synthetic_verification'});
+    return {accepted:true,synthetic:true};
+  }
   async maintain(boundaryId,limit=50) {
     if(this.env.WYBP_OPERATIONS_ENABLED!=='true')throw Error('operational_maintenance_disabled');
     // Validate the independent monitor before constructing or mutating authority.

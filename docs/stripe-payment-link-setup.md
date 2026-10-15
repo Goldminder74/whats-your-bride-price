@@ -218,3 +218,41 @@ Final integration validation completed15October from the13October run: all stage
 of test:all passed across converted-corrected-integration-gate.log and the resumed
 remaining-stage log. A transient Windows dist EPERM interrupted the first run after
 passed smoke tests; no assertion/timeouts weakened. Final diff check passed.
+
+## 15 October hosted converted-product completion
+
+Reused verified matched release4955449cda2b11bbab19d3dfdbbee681041204302fd68f2657dd901ea637dc52;
+no build with secrets, migration or catalogue write. Classes for Culture sandbox
+acct_1UOOZKEsGCyaV3rl only; parent live account/Wigsmi untouched. Private pair was
+restored first, then temporarily deployed solely for these tests; final rollback
+must be verified separately in the handover.
+
+Application-created40-Cowrie checkout:EUR12.28 presentment, authoritativeGBP999p,
+exactly one40 credit; signed checkout retry did not duplicate credit. Full sandbox
+refund produced one-40 refund_reversal and zero balance. Same synthetic owner then
+successfully created another40-Cowrie order; Stripe dispute-card fixture presented
+EUR12.28 and delivered a signedGBP961p dispute against999p. review_required remains,
+zero available value, no proportional deduction or fabricated settlement. Original
+fifteen-Cowrie failure is still not assigned an invented root cause.
+
+Royal Reveal: actual12-question game, image/final-question progression, application-
+linkedGBP199p order/EUR2.45 presentment. Mobile390px return delivered three premium
+portrait controls, result-specific certificate preview and observed certificate
+PNG download-start confirmation. Exactly one active entitlement for the purchased
+result. Full refund revoked it; stale original checkout replay kept it revoked.
+A separate completed result's dispute-card order generated signedGBP191p vs199p.
+The dispute preceded checkout; both retained review_required with zero active
+entitlements. Signed dispute and checkout retries cannot grant access again.
+Existing GBP/frozen-wallet/free-allowance/paid-play/security evidence is reused.
+
+Stripe event payload confirms original GBP amount plus presentment_details EUR;
+dispute balance_transaction exchange_rate was null. General Stripe guidance permits
+conversion-related differences, but this is NOT verified transaction-specific
+reconciliation or proof of the earlier unlinked191/199 event's cause. Preserve review
+until authoritative evidence/operator settlement; never replace199 with191 or accept
+arbitrary converted amounts. [Stripe explanation of conversion-related dispute amounts](https://support.stripe.com/questions/amount-of-customer-dispute-is-greater-than-original-charge).
+
+Sanitised D1 receipts: outputs/authority-preparation/20261015-final-gates/forty-*,
+royal-*,payment-final-accounting.json. Original/frozen wallet records are preserved;
+synthetic sandbox orders remain for audit, not reset or deleted to force a pass.
+No real charge, live link, subscription, public activation or Stripe configuration change.
