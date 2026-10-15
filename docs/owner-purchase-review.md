@@ -73,6 +73,14 @@ a customer receipt service. No new migration is authorised by this document.
 
 ## Secure seller-address steps
 
+Local implementation now exists in app/sellerDetails.ts (not installed/deployed).
+Use Secret WYBP_PUBLIC_SELLER_DETAILS_JSON only in the protected production
+application Worker with WYBP_AUTHORITY_ROLE=production-app. The exact eight-field
+version1 schema is in that source; save actual details in the password manager and
+enter them directly in Cloudflare's Secret UI once that Worker is provisioned.
+This supersedes any older statement that the runtime route is missing. It does not
+approve legal pages or activate commerce. Do not install the real address in ops/test.
+
 1. Save the exact public seller details in your password manager under
    “Classes for Culture — public seller details”. No identity documents or bank data.
 2. Do not change Stripe again merely for this task: its setup is owner-confirmed complete.

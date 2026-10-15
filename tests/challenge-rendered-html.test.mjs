@@ -35,6 +35,21 @@ function initialBody(html) {
   return html.slice(html.indexOf("<body>"), html.indexOf("<script", html.indexOf("<body>")));
 }
 
+function assertGenericChallengeMetadata(head) {
+  // Content hashes can coincidentally contain an inviter's short name. Exclude
+  // only fixed public static asset paths, keeping titles/meta/inline state tested.
+  const metadata = head.replace(/(?:href|src)="\/_next\/static\/(?:chunks|css)\/[A-Za-z0-9._/-]+"/g, "");
+  assert.doesNotMatch(metadata, /Nia|10\/12|West Africa/i);
+}
+
+test("generic metadata check ignores public asset hash collisions but rejects private metadata and inline state", () => {
+  const asset = '<link href="/_next/static/chunks/framework-CNIa-E3O.js"/>';
+  assert.doesNotThrow(() => assertGenericChallengeMetadata(asset + '<title>A Culture Challenge Awaits</title>'));
+  for (const leak of ['<title>Nia</title>', '<meta content="West Africa"/>', '<script>{"name":"Nia"}</script>', '<meta content="10/12"/>', '<link href="/_next/static/chunks/example.js?name=Nia"/>']) {
+    assert.throws(() => assertGenericChallengeMetadata(asset + leak), assert.AssertionError);
+  }
+});
+
 test("raw initial HTML contains only the active challenge safe projection and generic metadata", async () => {
   const html = await htmlFor(codes.valid);
   const body = initialBody(html);
@@ -49,7 +64,7 @@ test("raw initial HTML contains only the active challenge safe projection and ge
   assert.match(body, />Accept challenge</i);
   const head = html.slice(0, html.indexOf("</head>"));
   assert.match(head, /A Culture Challenge Awaits/i);
-  assert.doesNotMatch(head, /Nia|10\/12|West Africa/i);
+  assertGenericChallengeMetadata(head);
   assert.doesNotMatch(body, /result_synthetic|attempt_synthetic|anonymous_subject|idempotency|revocation_(?:token|hash)|revocationToken|private.?photo|data:image|session.?id/i);
 });
 

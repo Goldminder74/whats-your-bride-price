@@ -1,5 +1,14 @@
 # Benchmark continuation — 15 October 2026
 
+Latest continuation: see [one consolidated launch decision](launch-decision-report.md).
+The checkout error below is superseded: final quote now loads, USD5/month due today
+plus usage, independently observed and owner supplied. No tax line or settled GBP
+total supplied; no purchase. Fresh Netlify507.8 credits and auto recharge Disabled.
+The real-service game core and seller-details installation path are now implemented
+locally, not deployed. Complete metered hosted harness and full-stock recovery remain
+unfinished. The 66 affected authority/accounting regressions and331 data tests pass;
+full lint/typecheck pass. See handover for final integration-gate outcome.
+
 Based on bbb8352. No purchase, hosted creation, deployment, data mutation or load
 occurred. The normal private game and its OFF commerce/webhook/cron flags were
 not changed. No disposable resource was created, so no hosted cleanup is due.

@@ -14,6 +14,27 @@ access, DNS or live payment approved. No purchase or benchmark execution occurre
 
 ## Latest continuation — read first
 
+[Consolidated launch decision](launch-decision-report.md) supersedes earlier checkout
+blocker: final Workers quote now loads and owner confirms USD5/month due today plus
+usage. No purchase or hosted change. Fresh Netlify507.8 credits, auto recharge
+Disabled. Real-service synthetic game core exposed issuance SELECT incompatibility
+with authority SQL guard; narrow SELECT CASE correction passes66 affected tests.
+Runtime-only seller-details route implemented locally, not installed/deployed.
+Hosted driver, full-stock segmented recovery and GBP50 capacity proof remain unfinished;
+do not attribute these to missing owner permission or claim launch readiness.
+
+Validation: complete integration gate passed across resumed stages after fixing a
+metadata-test false positive caused by a public chunk hash containing a short name.
+Privacy assertions still reject private metadata/inline/query values. Final lint,
+typecheck,331 data tests and66 affected accounting/authority regressions pass.
+Compiled hosting/mobile and private runtime pass, including Chromium/WebKit exact
+refresh recovery, real local D1, signed webhook isolation and idempotent completion.
+Windows sandbox TEMP realpath errors required the existing permitted external
+synthetic temp directory; no assertions, timeouts or global lint rules weakened.
+Ignored evidence: outputs/authority-preparation/launch-final-{data,lint,typecheck}.log,
+launch-accounting-regressions.log and launch-integration-gate-complete.log (initial
+chain; final resumed stages verified exit0). No hosted validation claimed this turn.
+
 [Driver, fresh billing observations and owner choices](benchmark-driver-continuation.md): browser review now works; existing CLI/API authentication verified without added scopes. D1 inventory has two databases and no r002. Netlify has 507.8 credits remaining, Personal $9. Cloudflare remains Free; subscription API403 and dashboard checkout error prevent final quote. Recharge/whole-account preflight incomplete. No spending/resources/load. Local orchestration passes24 focused tests, lint/diff; real-service harness adapter and secure seller-address runtime route remain unfinished. Keep private game and OFF flags unchanged.
 
 ## Prior blocker and independent preparation (superseded where noted)
