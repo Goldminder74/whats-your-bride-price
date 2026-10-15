@@ -1,0 +1,4031 @@
+{
+  "schemaVersion": "question-bank-v1",
+  "questions": [
+    {
+      "stableId": "north_algeria_ahellil_form",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria",
+      "subregionScope": "Gourara",
+      "communityScope": "Zenete communities of Gourara",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which combination best describes Ahellil in Gourara?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Poetry, polyphonic chant, music and dance"
+        },
+        {
+          "id": "o2",
+          "text": "Solo painting without music"
+        },
+        {
+          "id": "o3",
+          "text": "A horse race without singing"
+        },
+        {
+          "id": "o4",
+          "text": "A written legal code"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO describes Ahellil as several expressive forms performed together.",
+      "sources": [
+        {
+          "title": "Ahellil of Gourara — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/gelede-00121",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ahellil is a Zenete poetic and musical genre of Gourara combining poetry, polyphonic chant, music and dance in a three-part performance."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Identity terminology and community scope require review by people from the named communities, including preferred names and spellings.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_algeria_ahellil_structure",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria",
+      "subregionScope": "Gourara",
+      "communityScope": "Zenete communities of Gourara",
+      "category": "ORAL HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What is the order of the three named stages in an Ahellil performance?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Tra, lemserreh, then aougrout"
+        },
+        {
+          "id": "o2",
+          "text": "Aougrout, tra, then lemserreh"
+        },
+        {
+          "id": "o3",
+          "text": "Timoulawine, tra, then foggara"
+        },
+        {
+          "id": "o4",
+          "text": "Lemserreh, aougrout, then tra"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The performance narrows from broad participation to experienced and then most accomplished performers.",
+      "sources": [
+        {
+          "title": "Ahellil of Gourara — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/gelede-00121",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ahellil is a Zenete poetic and musical genre of Gourara combining poetry, polyphonic chant, music and dance in a three-part performance."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Oral tradition: community review is required and the narrative must not be reframed as independently verified chronology.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_algeria_imzad_instrument",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria; Mali; Niger",
+      "subregionScope": "Sahara and Sahel",
+      "communityScope": "Tuareg communities",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What type of instrument is the Imzad?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A clay drum with two heads"
+        },
+        {
+          "id": "o2",
+          "text": "A reed pipe played in pairs"
+        },
+        {
+          "id": "o3",
+          "text": "A single-string bowed instrument"
+        },
+        {
+          "id": "o4",
+          "text": "A five-string plucked harp"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "A seated musician holds the Imzad on her knees and plays it with an arched wooden bow.",
+      "sources": [
+        {
+          "title": "Practices and knowledge linked to the Imzad of the Tuareg communities of Algeria, Mali and Niger — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/practices-and-knowledge-linked-to-the-imzad-of-the-tuareg-communities-of-algeria-mali-and-niger-00891",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tuareg women play and make the single-string bowed Imzad, which accompanies poetry and songs and is transmitted through observation and assimilation."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Identity terminology and community scope require review by people from the named communities, including preferred names and spellings.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_algeria_imzad_making",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria; Mali; Niger",
+      "subregionScope": "Sahara and Sahel",
+      "communityScope": "Tuareg communities",
+      "category": "ART",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which object forms the body of an Imzad in UNESCO's description?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Two wooden boxes joined with wire"
+        },
+        {
+          "id": "o2",
+          "text": "Half of a dried hollow gourd covered with skin"
+        },
+        {
+          "id": "o3",
+          "text": "A whole metal bucket covered with paper"
+        },
+        {
+          "id": "o4",
+          "text": "A carved stone bowl filled with water"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The instrument also uses rosette-shaped sound holes and a V-shaped wooden bridge.",
+      "sources": [
+        {
+          "title": "Practices and knowledge linked to the Imzad of the Tuareg communities of Algeria, Mali and Niger — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/practices-and-knowledge-linked-to-the-imzad-of-the-tuareg-communities-of-algeria-mali-and-niger-00891",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tuareg women play and make the single-string bowed Imzad, which accompanies poetry and songs and is transmitted through observation and assimilation."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Gendered practice or space: community review must confirm respectful wording and avoid presenting a documented role as fixed or universal.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_algeria_sebeiba_timing",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria",
+      "subregionScope": "Djanet oasis",
+      "communityScope": "Tuareg communities of Djanet",
+      "category": "TRADITION",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What happens immediately before the main Sebeïba ritual day?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A nine-day contest called Timoulawine"
+        },
+        {
+          "id": "o2",
+          "text": "A forty-day sea voyage"
+        },
+        {
+          "id": "o3",
+          "text": "A one-hour pottery market"
+        },
+        {
+          "id": "o4",
+          "text": "A year-long building project"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The contest selects the male dancers and female singers who represent two Djanet communities.",
+      "sources": [
+        {
+          "title": "Ritual and ceremonies of Sebeïba in the oasis of Djanet, Algeria — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ritual-and-ceremonies-of-sebeiba-in-the-oasis-of-djanet-algeria-00665",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Two Djanet communities hold a nine-day Timoulawine contest before Sebeïba, where male dancers and female singers turn rivalry into artistic competition."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_algeria_sebeiba_purpose",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria",
+      "subregionScope": "Djanet oasis",
+      "communityScope": "Tuareg communities of Djanet",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How does UNESCO describe Sebeïba's treatment of rivalry?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It requires physical combat between villages"
+        },
+        {
+          "id": "o2",
+          "text": "It erases the identities of both communities"
+        },
+        {
+          "id": "o3",
+          "text": "It replaces music with courtroom debate"
+        },
+        {
+          "id": "o4",
+          "text": "It symbolically moves potential violence into artistic competition"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The public description connects simulated contest with social cohesion.",
+      "sources": [
+        {
+          "title": "Ritual and ceremonies of Sebeïba in the oasis of Djanet, Algeria — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ritual-and-ceremonies-of-sebeiba-in-the-oasis-of-djanet-algeria-00665",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Two Djanet communities hold a nine-day Timoulawine contest before Sebeïba, where male dancers and female singers turn rivalry into artistic competition."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_algeria_foggara_roles",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria",
+      "subregionScope": "Touat and Tidikelt",
+      "communityScope": "Saharan ksour communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which task belongs to foggara water measurers?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Building an artificial Roman harbour"
+        },
+        {
+          "id": "o2",
+          "text": "Firing two-tone pottery"
+        },
+        {
+          "id": "o3",
+          "text": "Calculating water shares"
+        },
+        {
+          "id": "o4",
+          "text": "Choosing performers for a poetry festival"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Their work also includes repairing distribution combs and conducting water through channels.",
+      "sources": [
+        {
+          "title": "Knowledge and skills of the water measurers of the foggaras or water bailiffs of Touat and Tidikelt — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/knowledge-and-skills-of-the-water-measurers-of-the-foggaras-or-water-bailiffs-of-touat-and-tidikelt-01274",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Water measurers in Touat and Tidikelt calculate shares, repair distribution combs and conduct water through foggara channels for Saharan ksour communities."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living environmental knowledge and resource use require local practitioner and conservation review before progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_algeria_foggara_status",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria",
+      "subregionScope": "Touat and Tidikelt",
+      "communityScope": "Saharan ksour communities",
+      "category": "MODERN HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Why is foggara water-measuring knowledge on UNESCO's urgent safeguarding list?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The measurements were never used by communities"
+        },
+        {
+          "id": "o2",
+          "text": "Few younger practitioners are learning the threatened knowledge"
+        },
+        {
+          "id": "o3",
+          "text": "All channels have moved to the coast"
+        },
+        {
+          "id": "o4",
+          "text": "The practice was invented for tourism"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Urbanization, modernization and disrupted transmission have reduced the number of practitioners.",
+      "sources": [
+        {
+          "title": "Knowledge and skills of the water measurers of the foggaras or water bailiffs of Touat and Tidikelt — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/knowledge-and-skills-of-the-water-measurers-of-the-foggaras-or-water-bailiffs-of-touat-and-tidikelt-01274",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Water measurers in Touat and Tidikelt calculate shares, repair distribution combs and conduct water through foggara channels for Saharan ksour communities."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living environmental knowledge and resource use require local practitioner and conservation review before progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_algeria_mzab_number",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria",
+      "subregionScope": "M'Zab Valley",
+      "communityScope": "M'Zab valley communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How many fortified settlements form the historic M'Zab Valley ensemble?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Five"
+        },
+        {
+          "id": "o2",
+          "text": "Two"
+        },
+        {
+          "id": "o3",
+          "text": "Nine"
+        },
+        {
+          "id": "o4",
+          "text": "Twenty-five"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The five ksour form a compact ensemble adapted to the valley.",
+      "sources": [
+        {
+          "title": "M'Zab Valley — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/188",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The M'Zab Valley contains five fortified settlements, or ksour, whose compact architecture and communal organization were adapted to a Saharan environment."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Identity terminology and community scope require review by people from the named communities, including preferred names and spellings.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_algeria_mzab_design",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria",
+      "subregionScope": "M'Zab Valley",
+      "communityScope": "M'Zab valley communities",
+      "category": "ART & HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What shaped the compact architecture of the M'Zab settlements?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A need for ocean-going docks"
+        },
+        {
+          "id": "o2",
+          "text": "Industrial railway zoning"
+        },
+        {
+          "id": "o3",
+          "text": "Glacial farming terraces"
+        },
+        {
+          "id": "o4",
+          "text": "Communal organization and adaptation to a Saharan environment"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The settlement pattern joins built form, social organization and desert conditions.",
+      "sources": [
+        {
+          "title": "M'Zab Valley — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/188",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The M'Zab Valley contains five fortified settlements, or ksour, whose compact architecture and communal organization were adapted to a Saharan environment."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Identity terminology and community scope require review by people from the named communities, including preferred names and spellings.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_algeria_tipasa_layers",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria",
+      "subregionScope": "Mediterranean coast west of Algiers",
+      "communityScope": "Tipasa heritage communities",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which sequence of cultural remains appears together at Tipasa?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Viking, Saxon, Norman and Tudor"
+        },
+        {
+          "id": "o2",
+          "text": "Mughal, Khmer, Han and Edo"
+        },
+        {
+          "id": "o3",
+          "text": "Phoenician, Roman, early Christian and Byzantine"
+        },
+        {
+          "id": "o4",
+          "text": "Mayan, Inca, Aztec and Moche"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "UNESCO emphasizes the site's layered history and Indigenous monuments.",
+      "sources": [
+        {
+          "title": "Tipasa — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/193",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tipasa combines Phoenician, Roman, early Christian and Byzantine remains with Indigenous monuments, documenting long contact in the Maghreb."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_algeria_tipasa_distance",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria",
+      "subregionScope": "Mediterranean coast west of Algiers",
+      "communityScope": "Tipasa heritage communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Where is Tipasa located relative to Algiers?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Directly beneath central Algiers"
+        },
+        {
+          "id": "o2",
+          "text": "About 70 kilometres west"
+        },
+        {
+          "id": "o3",
+          "text": "About 70 kilometres south in the deep Sahara"
+        },
+        {
+          "id": "o4",
+          "text": "On an island 700 kilometres east"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The serial property includes two archaeological parks and the Royal Mauritanian Mausoleum.",
+      "sources": [
+        {
+          "title": "Tipasa — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/193",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tipasa combines Phoenician, Roman, early Christian and Byzantine remains with Indigenous monuments, documenting long contact in the Maghreb."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_morocco_gnawa_scope",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Morocco",
+      "subregionScope": null,
+      "communityScope": "Gnawa communities and practitioners",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which description reflects the breadth of Moroccan Gnawa?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Music and performance joined with fraternal and therapeutic ritual practices"
+        },
+        {
+          "id": "o2",
+          "text": "One instrument with no social setting"
+        },
+        {
+          "id": "o3",
+          "text": "A Roman building method"
+        },
+        {
+          "id": "o4",
+          "text": "A harvest tax collected at ports"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Gnawa is a multifaceted living practice rather than a single musical genre alone.",
+      "sources": [
+        {
+          "title": "Gnawa — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/gnawa-01170",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Moroccan Gnawa includes music, performances, fraternal practices and therapeutic rituals shaped by histories of slavery and African, Arab-Muslim and Amazigh influences."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or religious material: use only public-source details and require review by the relevant practitioners and knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_morocco_gnawa_history",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Morocco",
+      "subregionScope": null,
+      "communityScope": "Gnawa communities and practitioners",
+      "category": "HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which history is central to UNESCO's account of Gnawa?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Origins in twentieth-century radio advertising"
+        },
+        {
+          "id": "o2",
+          "text": "Creation by Roman harbour engineers"
+        },
+        {
+          "id": "o3",
+          "text": "Development only in royal cavalry schools"
+        },
+        {
+          "id": "o4",
+          "text": "Roots among people affected by slavery and the slave trade"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The source also describes African ancestral, Arab-Muslim and Amazigh cultural influences.",
+      "sources": [
+        {
+          "title": "Gnawa — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/gnawa-01170",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Moroccan Gnawa includes music, performances, fraternal practices and therapeutic rituals shaped by histories of slavery and African, Arab-Muslim and Amazigh influences."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonialism, enslavement or violence: trauma-informed historical and community review is required before progression beyond draft.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_morocco_tbourida_troupe",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Morocco",
+      "subregionScope": null,
+      "communityScope": "Tbourida riders, horse breeders and craftspeople",
+      "category": "TRADITION",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What is distinctive about the size of a Tbourida troupe?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It has exactly one hundred riders"
+        },
+        {
+          "id": "o2",
+          "text": "Its size may never exceed four"
+        },
+        {
+          "id": "o3",
+          "text": "It has an odd number of fifteen to twenty-five riders"
+        },
+        {
+          "id": "o4",
+          "text": "It always has two riders"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The troupe rides in line and coordinates a ceremonial charge.",
+      "sources": [
+        {
+          "title": "Tbourida — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/tbourida-01483",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tbourida is a Moroccan equestrian performance in which an odd-numbered troupe of fifteen to twenty-five riders simulates military parades."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_morocco_tbourida_action",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Morocco",
+      "subregionScope": null,
+      "communityScope": "Tbourida riders, horse breeders and craftspeople",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What does Tbourida simulate?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A manuscript-copying lesson"
+        },
+        {
+          "id": "o2",
+          "text": "A succession of military parades"
+        },
+        {
+          "id": "o3",
+          "text": "A fishing expedition"
+        },
+        {
+          "id": "o4",
+          "text": "A pottery firing"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The equestrian performance follows documented Arab-Amazigh conventions and rituals.",
+      "sources": [
+        {
+          "title": "Tbourida — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/tbourida-01483",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tbourida is a Moroccan equestrian performance in which an odd-numbered troupe of fifteen to twenty-five riders simulates military parades."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_morocco_malhun_language",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Morocco",
+      "subregionScope": null,
+      "communityScope": "Malhun poets, musicians and audiences",
+      "category": "LANGUAGE",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "In which language forms are malhun verses sung?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Dialectal Arabic and sometimes Hebrew"
+        },
+        {
+          "id": "o2",
+          "text": "Only Latin"
+        },
+        {
+          "id": "o3",
+          "text": "Only Classical Chinese"
+        },
+        {
+          "id": "o4",
+          "text": "Only Old Norse"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO describes an accessible Moroccan poetic form with varied linguistic history.",
+      "sources": [
+        {
+          "title": "Malhun, a popular poetic and musical art — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/malhun-a-popular-poetic-and-musical-art-01592",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Moroccan malhun sets dialectal Arabic and sometimes Hebrew verse to lute, violin, rebab and small drums, addressing varied social and poetic themes."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Identity terminology and community scope require review by people from the named communities, including preferred names and spellings.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_morocco_malhun_instruments",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Morocco",
+      "subregionScope": null,
+      "communityScope": "Malhun poets, musicians and audiences",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which group of instruments accompanies malhun?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Bagpipes, organ and cymbals only"
+        },
+        {
+          "id": "o2",
+          "text": "Mbira, marimba and kudu horn"
+        },
+        {
+          "id": "o3",
+          "text": "Electric guitar without voice"
+        },
+        {
+          "id": "o4",
+          "text": "Lute, violin, rebab and small drums"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Malhun combines sung poetry, music, theatre, metaphor and symbolism.",
+      "sources": [
+        {
+          "title": "Malhun, a popular poetic and musical art — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/malhun-a-popular-poetic-and-musical-art-01592",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Moroccan malhun sets dialectal Arabic and sometimes Hebrew verse to lute, violin, rebab and small drums, addressing varied social and poetic themes."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_morocco_argan_steps",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Morocco",
+      "subregionScope": "Arganeraie Biosphere Reserve",
+      "communityScope": "Rural argan-producing communities",
+      "category": "FOOD",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which sequence includes documented steps in traditional argan-oil extraction?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Fermenting fish, smoking meat and baking"
+        },
+        {
+          "id": "o2",
+          "text": "Spinning cotton, weaving and dyeing"
+        },
+        {
+          "id": "o3",
+          "text": "Drying, pulping, grinding, milling and mixing"
+        },
+        {
+          "id": "o4",
+          "text": "Freezing, bleaching, casting and welding"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The process begins with harvested fruit and requires several precise hand skills.",
+      "sources": [
+        {
+          "title": "Argan, practices and know-how concerning the argan tree — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/argan-practices-and-know-how-concerning-the-argan-tree-00955",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Rural communities of southwest Morocco use multiple hand processes to extract argan oil, with knowledge often transmitted by women through practice."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_morocco_argan_transmission",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Morocco",
+      "subregionScope": "Arganeraie Biosphere Reserve",
+      "communityScope": "Rural argan-producing communities",
+      "category": "TRADITION",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Who does UNESCO particularly identify with transmitting argan-oil know-how?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Court scribes teaching only from printed manuals"
+        },
+        {
+          "id": "o2",
+          "text": "Argan women teaching daughters through practice"
+        },
+        {
+          "id": "o3",
+          "text": "Roman governors teaching soldiers"
+        },
+        {
+          "id": "o4",
+          "text": "Sailors teaching through navigation charts"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The source describes imitation and non-formal education while noting that men also participate in some work.",
+      "sources": [
+        {
+          "title": "Argan, practices and know-how concerning the argan tree — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/argan-practices-and-know-how-concerning-the-argan-tree-00955",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Rural communities of southwest Morocco use multiple hand processes to extract argan oil, with knowledge often transmitted by women through practice."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Gendered practice or space: community review must confirm respectful wording and avoid presenting a documented role as fixed or universal.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_morocco_jemaa_roles",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Morocco",
+      "subregionScope": "Marrakesh",
+      "communityScope": "Jemaa el-Fna performers, traders and audiences",
+      "category": "ORAL HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which performers are part of Jemaa el-Fna's public cultural space?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Storytellers, poets and musicians"
+        },
+        {
+          "id": "o2",
+          "text": "Only silent painters"
+        },
+        {
+          "id": "o3",
+          "text": "Only professional athletes"
+        },
+        {
+          "id": "o4",
+          "text": "Only maritime navigators"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The square supports a changing mix of oral, musical, artistic and commercial activity.",
+      "sources": [
+        {
+          "title": "Cultural space of Jemaa el-Fna Square — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/cultural-space-of-jemaa-el-fna-square-00014",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Jemaa el-Fna is a Marrakesh meeting place where commerce, storytelling, poetry, music and other public expressions continue through adaptation and improvisation."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_morocco_jemaa_adaptation",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Morocco",
+      "subregionScope": "Marrakesh",
+      "communityScope": "Jemaa el-Fna performers, traders and audiences",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How do bards at Jemaa el-Fna keep older recital forms current?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "They prohibit all changes to delivery"
+        },
+        {
+          "id": "o2",
+          "text": "They replace speech entirely with maps"
+        },
+        {
+          "id": "o3",
+          "text": "They perform only from state examination papers"
+        },
+        {
+          "id": "o4",
+          "text": "They improvise from an outline and adapt to contemporary contexts"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "UNESCO presents renewal and improvisation as part of the square's living oral culture.",
+      "sources": [
+        {
+          "title": "Cultural space of Jemaa el-Fna Square — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/cultural-space-of-jemaa-el-fna-square-00014",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Jemaa el-Fna is a Marrakesh meeting place where commerce, storytelling, poetry, music and other public expressions continue through adaptation and improvisation."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Oral tradition: community review is required and the narrative must not be reframed as independently verified chronology.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_morocco_fez_period",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Morocco",
+      "subregionScope": "Fez",
+      "communityScope": "Residents and heritage custodians of Fez",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "During which dynastic period did medieval Fez reach a major high point?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The Ptolemaic period in the first century BCE"
+        },
+        {
+          "id": "o2",
+          "text": "The Aghlabid period in the ninth century only"
+        },
+        {
+          "id": "o3",
+          "text": "The Marinid period in the thirteenth and fourteenth centuries"
+        },
+        {
+          "id": "o4",
+          "text": "The Severan period in the third century"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Fez replaced Marrakesh as capital during this era and later retained cultural importance.",
+      "sources": [
+        {
+          "title": "Medina of Fez — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/170",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Founded in the ninth century, Fez reached a high point under the Marinids and preserves madrasas, fondouks, palaces, residences, mosques and fountains."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_morocco_fez_buildings",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Morocco",
+      "subregionScope": "Fez",
+      "communityScope": "Residents and heritage custodians of Fez",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which buildings help define the Medina of Fez?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only pyramids and rock-cut tombs"
+        },
+        {
+          "id": "o2",
+          "text": "Madrasas, fondouks, palaces, residences, mosques and fountains"
+        },
+        {
+          "id": "o3",
+          "text": "Only lighthouses and shipyards"
+        },
+        {
+          "id": "o4",
+          "text": "Only glass towers and motorways"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The surviving urban fabric reflects local knowledge alongside Andalusian, eastern and African influences.",
+      "sources": [
+        {
+          "title": "Medina of Fez — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/170",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Founded in the ninth century, Fez reached a high point under the Marinids and preserves madrasas, fondouks, palaces, residences, mosques and fountains."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or religious material: use only public-source details and require review by the relevant practitioners and knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_tunisia_harissa_base",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Tunisia",
+      "subregionScope": null,
+      "communityScope": "Tunisian households and chilli growers",
+      "category": "FOOD",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What is the main base of Tunisian harissa?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Dried chilli peppers ground into a paste"
+        },
+        {
+          "id": "o2",
+          "text": "Boiled seaweed pressed into blocks"
+        },
+        {
+          "id": "o3",
+          "text": "Fresh apples whipped with cream"
+        },
+        {
+          "id": "o4",
+          "text": "Unroasted coffee beans soaked in milk"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Salt, garlic and coriander are among the seasonings named by UNESCO.",
+      "sources": [
+        {
+          "title": "Harissa, knowledge, skills and culinary and social practices — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/harissa-knowledge-skills-and-culinary-and-social-practices-01710",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tunisian harissa is made by drying, preparing and grinding chillies before seasoning them with salt, garlic and coriander and storing the paste."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_tunisia_harissa_storage",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Tunisia",
+      "subregionScope": null,
+      "communityScope": "Tunisian households and chilli growers",
+      "category": "FOOD",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How is prepared harissa commonly stored?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only in woven wool bags"
+        },
+        {
+          "id": "o2",
+          "text": "Underwater in fishing traps"
+        },
+        {
+          "id": "o3",
+          "text": "Inside musical instruments"
+        },
+        {
+          "id": "o4",
+          "text": "In glass or pottery"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The practice belongs to household provisioning and varies by family and neighbourhood.",
+      "sources": [
+        {
+          "title": "Harissa, knowledge, skills and culinary and social practices — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/harissa-knowledge-skills-and-culinary-and-social-practices-01710",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tunisian harissa is made by drying, preparing and grinding chillies before seasoning them with salt, garlic and coriander and storing the paste."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_tunisia_sejnane_material",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Tunisia",
+      "subregionScope": "Sejnane",
+      "communityScope": "Women potters of Sejnane and their families",
+      "category": "ART",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Where is clay for Sejnane pottery commonly collected?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "From glacier ice"
+        },
+        {
+          "id": "o2",
+          "text": "From imported steel mines"
+        },
+        {
+          "id": "o3",
+          "text": "From wadi beds"
+        },
+        {
+          "id": "o4",
+          "text": "From coral reefs"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The clay is cut, crushed, purified, soaked, kneaded and shaped by hand.",
+      "sources": [
+        {
+          "title": "Pottery skills of the women of Sejnane — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/pottery-skills-of-the-women-of-sejnane-01406",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Women of Sejnane make hand-shaped terracotta household wares and figurines from local clay and decorate them with two-tone geometric patterns."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Gendered practice or space: community review must confirm respectful wording and avoid presenting a documented role as fixed or universal.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_tunisia_sejnane_decoration",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Tunisia",
+      "subregionScope": "Sejnane",
+      "communityScope": "Women potters of Sejnane and their families",
+      "category": "ART",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How are fired Sejnane pots commonly decorated?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "With uncut diamonds"
+        },
+        {
+          "id": "o2",
+          "text": "With two-tone geometric patterns"
+        },
+        {
+          "id": "o3",
+          "text": "With electronic screens"
+        },
+        {
+          "id": "o4",
+          "text": "With feathers only"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO relates the patterns to local visual traditions including tattoo and weaving forms.",
+      "sources": [
+        {
+          "title": "Pottery skills of the women of Sejnane — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/pottery-skills-of-the-women-of-sejnane-01406",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Women of Sejnane make hand-shaped terracotta household wares and figurines from local clay and decorate them with two-tone geometric patterns."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Identity terminology and community scope require review by people from the named communities, including preferred names and spellings.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_tunisia_charfia_structure",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Tunisia",
+      "subregionScope": "Kerkennah Islands",
+      "communityScope": "Kerkennian fishing communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What creates the guiding barrier in a charfia fishery?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Palm fronds fixed into the seabed"
+        },
+        {
+          "id": "o2",
+          "text": "Concrete walls across the entire sea"
+        },
+        {
+          "id": "o3",
+          "text": "Floating metal cages pulled by engines"
+        },
+        {
+          "id": "o4",
+          "text": "Stone towers built on beaches"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The triangular barrier works with ebb tides to guide fish into chambers and traps.",
+      "sources": [
+        {
+          "title": "Charfia fishing in the Kerkennah Islands — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/charfia-fishing-in-the-kerkennah-islands-01566",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Kerkennah charfia uses palm-frond barriers, ebb tides and seabed knowledge to guide live fish into chambers and traps during a seasonal fishing period."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living environmental knowledge and resource use require local practitioner and conservation review before progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_tunisia_charfia_season",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Tunisia",
+      "subregionScope": "Kerkennah Islands",
+      "communityScope": "Kerkennian fishing communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Why is charfia operated only from the autumn equinox to June?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Because the islands disappear each summer"
+        },
+        {
+          "id": "o2",
+          "text": "Because palm fronds cannot touch seawater"
+        },
+        {
+          "id": "o3",
+          "text": "To match a Roman tax calendar"
+        },
+        {
+          "id": "o4",
+          "text": "To leave a biological rest period for marine life"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The seasonal limit is part of the documented relationship between fishing and the marine environment.",
+      "sources": [
+        {
+          "title": "Charfia fishing in the Kerkennah Islands — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/charfia-fishing-in-the-kerkennah-islands-01566",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Kerkennah charfia uses palm-frond barriers, ebb tides and seabed knowledge to guide live fish into chambers and traps during a seasonal fishing period."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living environmental knowledge and resource use require local practitioner and conservation review before progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_tunisia_djerba_pattern",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Tunisia",
+      "subregionScope": "Djerba",
+      "communityScope": "Djerban communities of diverse cultures and faiths",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What was the key feature of Djerba's historic settlement pattern?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Nomadic boats with no land settlement"
+        },
+        {
+          "id": "o2",
+          "text": "A rectangular Roman military camp only"
+        },
+        {
+          "id": "o3",
+          "text": "Dispersed, low-density neighbourhoods linked by roads"
+        },
+        {
+          "id": "o4",
+          "text": "One dense tower containing the entire population"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The pattern combined rural family estates, denser clusters, markets and worship sites.",
+      "sources": [
+        {
+          "title": "Djerba: Testimony to a settlement pattern in an island territory — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1640",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Djerba's low-density settlement linked self-sustaining neighbourhoods, family estates, worship sites and markets in adaptation to a water-scarce island."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Identity terminology and community scope require review by people from the named communities, including preferred names and spellings.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_tunisia_djerba_adaptation",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Tunisia",
+      "subregionScope": "Djerba",
+      "communityScope": "Djerban communities of diverse cultures and faiths",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which environmental pressure shaped Djerba's settlement system?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "High-altitude volcanic snow"
+        },
+        {
+          "id": "o2",
+          "text": "A semi-dry, water-scarce island environment"
+        },
+        {
+          "id": "o3",
+          "text": "Permanent polar ice"
+        },
+        {
+          "id": "o4",
+          "text": "Tropical rainforest flooding"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Local organization linked economically self-sustaining neighbourhoods under limited water conditions.",
+      "sources": [
+        {
+          "title": "Djerba: Testimony to a settlement pattern in an island territory — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1640",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Djerba's low-density settlement linked self-sustaining neighbourhoods, family estates, worship sites and markets in adaptation to a water-scarce island."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Identity terminology and community scope require review by people from the named communities, including preferred names and spellings.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_tunisia_carthage_foundation",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Tunisia",
+      "subregionScope": "Gulf of Tunis",
+      "communityScope": "Carthage heritage communities",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Who founded ancient Carthage according to UNESCO's summary?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Phoenicians"
+        },
+        {
+          "id": "o2",
+          "text": "Vikings"
+        },
+        {
+          "id": "o3",
+          "text": "Aztecs"
+        },
+        {
+          "id": "o4",
+          "text": "Mongols"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The city was founded in the ninth century BCE and became a major Mediterranean trading power.",
+      "sources": [
+        {
+          "title": "Archaeological Site of Carthage — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/37",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Carthage began as a Phoenician foundation, became a Mediterranean trading power and was rebuilt by Rome after its destruction in 146 BCE."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_tunisia_carthage_rebuild",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Tunisia",
+      "subregionScope": "Gulf of Tunis",
+      "communityScope": "Carthage heritage communities",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What happened at Carthage after Rome destroyed the Punic city in 146 BCE?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The site became a permanent glacier"
+        },
+        {
+          "id": "o2",
+          "text": "A medieval Japanese capital was built"
+        },
+        {
+          "id": "o3",
+          "text": "The harbour moved to the Atlantic Ocean"
+        },
+        {
+          "id": "o4",
+          "text": "A Roman city was established on its ruins"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The archaeological site preserves Punic, Roman and later cultural layers.",
+      "sources": [
+        {
+          "title": "Archaeological Site of Carthage — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/37",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Carthage began as a Phoenician foundation, became a Mediterranean trading power and was rebuilt by Rome after its destruction in 146 BCE."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_egypt_hilali_subject",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt",
+      "subregionScope": null,
+      "communityScope": "Al-Sirah Al-Hilaliyyah poets and audiences",
+      "category": "ORAL HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Whose migration is narrated in Al-Sirah Al-Hilaliyyah?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A Roman march to Britain"
+        },
+        {
+          "id": "o2",
+          "text": "A Polynesian settlement of the Pacific"
+        },
+        {
+          "id": "o3",
+          "text": "The Bani Hilal Bedouin tribe's journey to North Africa"
+        },
+        {
+          "id": "o4",
+          "text": "A Viking voyage to Greenland"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The epic is an Arabic oral tradition whose narrative must be treated as performed heritage.",
+      "sources": [
+        {
+          "title": "Al-Sirah Al-Hilaliyyah epic — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/al-sirah-al-hilaliyyah-epic-00075",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Egyptian poets perform the Hilali epic in integral musical form with percussion or a two-string spike fiddle, preserving an Arabic oral tradition."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Oral tradition: community review is required and the narrative must not be reframed as independently verified chronology.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_egypt_hilali_music",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt",
+      "subregionScope": null,
+      "communityScope": "Al-Sirah Al-Hilaliyyah poets and audiences",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which instrument may accompany a singer of the Hilali epic?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A Highland bagpipe"
+        },
+        {
+          "id": "o2",
+          "text": "A two-string spike fiddle called a rabab"
+        },
+        {
+          "id": "o3",
+          "text": "A thirty-key electric organ"
+        },
+        {
+          "id": "o4",
+          "text": "A steel pan orchestra"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Poets may also use percussion, and full performances can extend across multiple days.",
+      "sources": [
+        {
+          "title": "Al-Sirah Al-Hilaliyyah epic — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/al-sirah-al-hilaliyyah-epic-00075",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Egyptian poets perform the Hilali epic in integral musical form with percussion or a two-string spike fiddle, preserving an Arabic oral tradition."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Oral tradition: community review is required and the narrative must not be reframed as independently verified chronology.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_egypt_tahteeb_exchange",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt",
+      "subregionScope": "Upper Egypt",
+      "communityScope": "Saeedy Tahteeb practitioners",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How is the central exchange in modern Tahteeb described?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A brief, controlled and non-violent stick game"
+        },
+        {
+          "id": "o2",
+          "text": "An unrestricted fight with no rules"
+        },
+        {
+          "id": "o3",
+          "text": "A silent board game"
+        },
+        {
+          "id": "o4",
+          "text": "A horse race across the desert"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "No striking is allowed; control and mutual respect are central to the public description.",
+      "sources": [
+        {
+          "title": "Tahteeb, stick game — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/tahteeb-stick-game-01189",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tahteeb is now a festive Upper Egyptian game featuring a controlled, non-violent exchange between two stick-wielding participants with folk music."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Gendered practice or space: community review must confirm respectful wording and avoid presenting a documented role as fixed or universal.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_egypt_tahteeb_values",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt",
+      "subregionScope": "Upper Egypt",
+      "communityScope": "Saeedy Tahteeb practitioners",
+      "category": "PHILOSOPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which values underpin the rules of Tahteeb?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Secrecy, isolation and silence"
+        },
+        {
+          "id": "o2",
+          "text": "Profit, taxation and rank"
+        },
+        {
+          "id": "o3",
+          "text": "Speed, distance and navigation"
+        },
+        {
+          "id": "o4",
+          "text": "Mutual respect, friendship, courage and chivalry"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The living practice is especially associated with male Saeedy populations and needs community review.",
+      "sources": [
+        {
+          "title": "Tahteeb, stick game — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/tahteeb-stick-game-01189",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tahteeb is now a festive Upper Egyptian game featuring a controlled, non-violent exchange between two stick-wielding participants with folk music."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Gendered practice or space: community review must confirm respectful wording and avoid presenting a documented role as fixed or universal.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_egypt_aragoz_voice",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt",
+      "subregionScope": "Cairo and travelling-performance histories",
+      "communityScope": "Al-Aragoz puppeteers and audiences",
+      "category": "ART",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How does an Al-Aragoz puppeteer create the main puppet's distinctive voice?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "With a gramophone only"
+        },
+        {
+          "id": "o2",
+          "text": "With a water drum"
+        },
+        {
+          "id": "o3",
+          "text": "With a voice modifier"
+        },
+        {
+          "id": "o4",
+          "text": "With a pipe organ"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The puppeteer remains hidden inside a small portable stage.",
+      "sources": [
+        {
+          "title": "Traditional hand puppetry — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/traditional-hand-puppetry-01376",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Al-Aragoz is Egyptian hand-puppet theatre in which a hidden puppeteer uses a voice modifier and improvises with an assistant and the audience."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_egypt_aragoz_interaction",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt",
+      "subregionScope": "Cairo and travelling-performance histories",
+      "communityScope": "Al-Aragoz puppeteers and audiences",
+      "category": "ORAL HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What role does improvisation play in Al-Aragoz?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It is used only to measure fishing tides"
+        },
+        {
+          "id": "o2",
+          "text": "It supports live interaction among puppeteer, assistant and audience"
+        },
+        {
+          "id": "o3",
+          "text": "It is prohibited in every performance"
+        },
+        {
+          "id": "o4",
+          "text": "It replaces the puppets with written exams"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The comic theatre addresses daily-life themes and has a history of travelling performance.",
+      "sources": [
+        {
+          "title": "Traditional hand puppetry — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/traditional-hand-puppetry-01376",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Al-Aragoz is Egyptian hand-puppet theatre in which a hidden puppeteer uses a voice modifier and improvises with an assistant and the audience."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Oral tradition: community review is required and the narrative must not be reframed as independently verified chronology.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_egypt_weaving_fibres",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt",
+      "subregionScope": "Upper Egypt (Sa'eed)",
+      "communityScope": "Upper Egyptian handloom-weaving communities",
+      "category": "TEXTILES",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which fibres are named in accounts of Upper Egyptian handloom weaving?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Linen, cotton, wool and silk"
+        },
+        {
+          "id": "o2",
+          "text": "Fibreglass, nylon and carbon fibre only"
+        },
+        {
+          "id": "o3",
+          "text": "Palm leaves and coral only"
+        },
+        {
+          "id": "o4",
+          "text": "Metal wire and stone only"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Different workshops and periods used different fibres while maintaining core handloom skills.",
+      "sources": [
+        {
+          "title": "Handmade weaving in Upper Egypt (Sa'eed) — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/handmade-weaving-in-upper-egypt-sa-eed-01605",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Upper Egyptian handloom weaving uses complex preparation, threading and weaving skills with linen, cotton, wool or silk and is threatened by economic change."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_egypt_weaving_risk",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt",
+      "subregionScope": "Upper Egypt (Sa'eed)",
+      "communityScope": "Upper Egyptian handloom-weaving communities",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which pressure threatens Upper Egyptian handmade weaving?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A ban on all natural fibres worldwide"
+        },
+        {
+          "id": "o2",
+          "text": "An excess of apprentices and empty looms"
+        },
+        {
+          "id": "o3",
+          "text": "The disappearance of every building in Upper Egypt"
+        },
+        {
+          "id": "o4",
+          "text": "High costs and reduced transmission as weaving becomes less viable"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "UNESCO lists economic pressures, space needs and expensive materials among the threats.",
+      "sources": [
+        {
+          "title": "Handmade weaving in Upper Egypt (Sa'eed) — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/handmade-weaving-in-upper-egypt-sa-eed-01605",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Upper Egyptian handloom weaving uses complex preparation, threading and weaving skills with linen, cotton, wool or silk and is threatened by economic change."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_egypt_holy_family_cycles",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt",
+      "subregionScope": "Multiple towns including Durunka and Cairo",
+      "communityScope": "Coptic Christian and Muslim festival participants",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How many festival cycles does the UNESCO element about the Holy Family journey describe?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Seven"
+        },
+        {
+          "id": "o2",
+          "text": "Forty"
+        },
+        {
+          "id": "o3",
+          "text": "Two"
+        },
+        {
+          "id": "o4",
+          "text": "One"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "They are the Advent of the Holy Family festival and the Nativity of the Virgin feast.",
+      "sources": [
+        {
+          "title": "Festivals related to the Journey of the Holy family in Egypt — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/festivals-related-to-the-journey-of-the-holy-family-in-egypt-01700",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Two Egyptian festival cycles commemorate the Holy Family journey through processions, performances, shared foods and participation by Coptic Christian and Muslim residents."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or religious material: use only public-source details and require review by the relevant practitioners and knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_egypt_holy_family_activities",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt",
+      "subregionScope": "Multiple towns including Durunka and Cairo",
+      "communityScope": "Coptic Christian and Muslim festival participants",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which activities appear in the Holy Family journey festivals?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only underwater ceremonies"
+        },
+        {
+          "id": "o2",
+          "text": "Processions, performances, shared foods and traditional games"
+        },
+        {
+          "id": "o3",
+          "text": "Only private written examinations"
+        },
+        {
+          "id": "o4",
+          "text": "Only commercial horse racing"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The festivals include participants from Coptic Christian and Muslim communities.",
+      "sources": [
+        {
+          "title": "Festivals related to the Journey of the Holy family in Egypt — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/festivals-related-to-the-journey-of-the-holy-family-in-egypt-01700",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Two Egyptian festival cycles commemorate the Holy Family journey through processions, performances, shared foods and participation by Coptic Christian and Muslim residents."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or religious material: use only public-source details and require review by the relevant practitioners and knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_egypt_cairo_monuments",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt",
+      "subregionScope": "Historic Cairo",
+      "communityScope": "Residents and heritage custodians of Historic Cairo",
+      "category": "ART & HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which group of buildings characterizes Historic Cairo?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Mosques, madrasas, hammams and fountains"
+        },
+        {
+          "id": "o2",
+          "text": "Skyscrapers, airports and motorways only"
+        },
+        {
+          "id": "o3",
+          "text": "Pyramids, glaciers and lighthouses"
+        },
+        {
+          "id": "o4",
+          "text": "Factories, dams and mines only"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Whole neighbourhoods survive alongside major monuments from successive periods.",
+      "sources": [
+        {
+          "title": "Historic Cairo — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/89",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Historic Cairo preserves neighbourhoods and monuments including mosques, madrasas, hammams and fountains from successive periods of the city's history."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or religious material: use only public-source details and require review by the relevant practitioners and knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_egypt_cairo_founding",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt",
+      "subregionScope": "Historic Cairo",
+      "communityScope": "Residents and heritage custodians of Historic Cairo",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "When was Fatimid Cairo founded?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "969 BCE"
+        },
+        {
+          "id": "o2",
+          "text": "146 BCE"
+        },
+        {
+          "id": "o3",
+          "text": "1912 CE"
+        },
+        {
+          "id": "o4",
+          "text": "969 CE"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The historic city later incorporated earlier settlements and expanded under Ayyubid, Mamluk and Ottoman rule.",
+      "sources": [
+        {
+          "title": "Historic Cairo — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/89",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Historic Cairo preserves neighbourhoods and monuments including mosques, madrasas, hammams and fountains from successive periods of the city's history."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_sudan_barkal_components",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Sudan",
+      "subregionScope": "Napatan region of the Nile Valley",
+      "communityScope": "Nubian heritage communities and custodians",
+      "category": "HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How many archaeological sites make up the Gebel Barkal World Heritage property?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Twelve"
+        },
+        {
+          "id": "o2",
+          "text": "Fifty"
+        },
+        {
+          "id": "o3",
+          "text": "Five"
+        },
+        {
+          "id": "o4",
+          "text": "One"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The components are Gebel Barkal, Kurru, Nuri, Sanam and Zuma.",
+      "sources": [
+        {
+          "title": "Gebel Barkal and the Sites of the Napatan Region — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1073",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Five sites along more than sixty kilometres of the Nile preserve Napatan and Meroitic tombs, pyramids, temples, palaces and living complexes."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_sudan_barkal_periods",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Sudan",
+      "subregionScope": "Napatan region of the Nile Valley",
+      "communityScope": "Nubian heritage communities and custodians",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which cultures are represented at Gebel Barkal and the associated sites?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Inca and Moche cultures"
+        },
+        {
+          "id": "o2",
+          "text": "Napatan and Meroitic cultures"
+        },
+        {
+          "id": "o3",
+          "text": "Aztec and Maya cultures"
+        },
+        {
+          "id": "o4",
+          "text": "Viking and Saxon cultures"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The sites preserve evidence of the second kingdom of Kush across long chronological periods.",
+      "sources": [
+        {
+          "title": "Gebel Barkal and the Sites of the Napatan Region — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1073",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Five sites along more than sixty kilometres of the Nile preserve Napatan and Meroitic tombs, pyramids, temples, palaces and living complexes."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_sudan_meroe_setting",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Sudan",
+      "subregionScope": "Between the Nile and Atbara rivers",
+      "communityScope": "Kushite and Nubian heritage custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Where is the Island of Meroe archaeological landscape?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "In a semi-desert area between the Nile and Atbara rivers"
+        },
+        {
+          "id": "o2",
+          "text": "On a Mediterranean island"
+        },
+        {
+          "id": "o3",
+          "text": "Inside a tropical Atlantic delta"
+        },
+        {
+          "id": "o4",
+          "text": "High in the Atlas Mountains"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The property links a riverine royal city with hinterland religious centres.",
+      "sources": [
+        {
+          "title": "Archaeological Sites of the Island of Meroe — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1336",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Meroe, Naqa and Musawwarat es-Sufra preserve Kushite urban, religious, funerary, industrial and water-management remains between the Nile and Atbara."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_sudan_meroe_parts",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Sudan",
+      "subregionScope": "Between the Nile and Atbara rivers",
+      "communityScope": "Kushite and Nubian heritage custodians",
+      "category": "ART & HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which three places form the Island of Meroe World Heritage property?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Fez, Rabat and Essaouira"
+        },
+        {
+          "id": "o2",
+          "text": "Cairo, Luxor and Aswan"
+        },
+        {
+          "id": "o3",
+          "text": "Cyrene, Sabratha and Ghadamès"
+        },
+        {
+          "id": "o4",
+          "text": "Meroe, Naqa and Musawwarat es-Sufra"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Together they preserve Kushite urban, religious, funerary and technological evidence.",
+      "sources": [
+        {
+          "title": "Archaeological Sites of the Island of Meroe — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1336",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Meroe, Naqa and Musawwarat es-Sufra preserve Kushite urban, religious, funerary, industrial and water-management remains between the Nile and Atbara."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_sudan_sanganeb_atoll",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Sudan",
+      "subregionScope": "Sudanese Red Sea coast",
+      "communityScope": "Red Sea coastal communities and conservation custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What is distinctive about Sanganeb in the Red Sea?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It is an inland sandstone pyramid"
+        },
+        {
+          "id": "o2",
+          "text": "It is a volcanic city wall"
+        },
+        {
+          "id": "o3",
+          "text": "It is an isolated atoll-like coral reef about 25 kilometres offshore"
+        },
+        {
+          "id": "o4",
+          "text": "It is a freshwater glacier"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Sanganeb forms one component of Sudan's serial marine World Heritage property.",
+      "sources": [
+        {
+          "title": "Sanganeb Marine National Park and Dungonab Bay – Mukkawar Island Marine National Park — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/262",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Sudan's serial Red Sea property includes the Sanganeb atoll and Dungonab Bay habitats of coral reefs, mangroves, seagrass and significant marine fauna."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living environmental knowledge and resource use require local practitioner and conservation review before progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_sudan_dungonab_habitats",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Sudan",
+      "subregionScope": "Sudanese Red Sea coast",
+      "communityScope": "Red Sea coastal communities and conservation custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which habitats occur around Dungonab Bay and Mukkawar Island?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Urban canals and concrete basins only"
+        },
+        {
+          "id": "o2",
+          "text": "Coral reefs, mangroves, seagrass beds, beaches and islets"
+        },
+        {
+          "id": "o3",
+          "text": "Alpine meadows and glaciers"
+        },
+        {
+          "id": "o4",
+          "text": "Temperate oak forests only"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The area supports dugongs, turtles, sharks, manta rays and seabirds.",
+      "sources": [
+        {
+          "title": "Sanganeb Marine National Park and Dungonab Bay – Mukkawar Island Marine National Park — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/262",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Sudan's serial Red Sea property includes the Sanganeb atoll and Dungonab Bay habitats of coral reefs, mangroves, seagrass and significant marine fauna."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living environmental knowledge and resource use require local practitioner and conservation review before progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_north_date_palm_uses",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt; Morocco; Sudan; Tunisia",
+      "subregionScope": "Arid and oasis regions",
+      "communityScope": "Date-palm cultivating communities",
+      "category": "FOOD",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which set reflects the cultural uses of date palms documented by UNESCO?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Food, crafts, cultivation knowledge and social traditions"
+        },
+        {
+          "id": "o2",
+          "text": "Only ornamental painting"
+        },
+        {
+          "id": "o3",
+          "text": "Only shipbuilding with steel"
+        },
+        {
+          "id": "o4",
+          "text": "Only written examinations"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The multinational element recognizes varied practices rather than one uniform regional custom.",
+      "sources": [
+        {
+          "title": "Date palm, knowledge, skills, traditions and practices — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/date-palm-knowledge-skills-traditions-and-practices-01902",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Communities across participating countries, including Egypt, Morocco, Sudan and Tunisia, use date-palm knowledge in cultivation, crafts, food and social traditions."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_north_date_palm_ecology",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Egypt; Morocco; Sudan; Tunisia",
+      "subregionScope": "Arid and oasis regions",
+      "communityScope": "Date-palm cultivating communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "In what environments are date palms typically cultivated?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Permanent ice sheets"
+        },
+        {
+          "id": "o2",
+          "text": "Deep ocean trenches"
+        },
+        {
+          "id": "o3",
+          "text": "Rainforests without seasonal variation"
+        },
+        {
+          "id": "o4",
+          "text": "Deserts and dry temperate areas with suitable irrigation"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Deep roots and managed water make the palm important in many arid settlements.",
+      "sources": [
+        {
+          "title": "Date palm, knowledge, skills, traditions and practices — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/date-palm-knowledge-skills-traditions-and-practices-01902",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Communities across participating countries, including Egypt, Morocco, Sudan and Tunisia, use date-palm knowledge in cultivation, crafts, food and social traditions."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living environmental knowledge and resource use require local practitioner and conservation review before progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_north_calligraphy_direction",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria; Egypt; Morocco; Sudan; Tunisia",
+      "subregionScope": null,
+      "communityScope": "Arabic calligraphers and learners",
+      "category": "LANGUAGE",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "In which direction is Arabic calligraphy written?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only from left to right"
+        },
+        {
+          "id": "o2",
+          "text": "In alternating circles"
+        },
+        {
+          "id": "o3",
+          "text": "From right to left"
+        },
+        {
+          "id": "o4",
+          "text": "Only from bottom to top"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The practice shapes the Arabic alphabet's twenty-eight letters through fluid handwritten forms.",
+      "sources": [
+        {
+          "title": "Arabic calligraphy: knowledge, skills and practices — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/arabic-calligraphy-knowledge-skills-and-practices-01718",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Arabic calligraphy uses the alphabet's twenty-eight letters in cursive writing from right to left and is transmitted through formal and informal education."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or religious material: use only public-source details and require review by the relevant practitioners and knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_north_calligraphy_learning",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Algeria; Egypt; Morocco; Sudan; Tunisia",
+      "subregionScope": null,
+      "communityScope": "Arabic calligraphers and learners",
+      "category": "ART",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How is Arabic calligraphy knowledge transmitted?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only through ocean navigation"
+        },
+        {
+          "id": "o2",
+          "text": "Through both formal and informal education"
+        },
+        {
+          "id": "o3",
+          "text": "Only through archaeological excavation"
+        },
+        {
+          "id": "o4",
+          "text": "Only through competitive horse riding"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Transmission may occur through schools, apprenticeships, families and community practice.",
+      "sources": [
+        {
+          "title": "Arabic calligraphy: knowledge, skills and practices — UNESCO Intangible Cultural Heritage",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/arabic-calligraphy-knowledge-skills-and-practices-01718",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Arabic calligraphy uses the alphabet's twenty-eight letters in cursive writing from right to left and is transmitted through formal and informal education."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_libya_leptis_severus",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Libya",
+      "subregionScope": "Khoms district",
+      "communityScope": "Libyan heritage custodians",
+      "category": "HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which Roman emperor was born at Leptis Magna and later embellished it?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Septimius Severus"
+        },
+        {
+          "id": "o2",
+          "text": "Augustus"
+        },
+        {
+          "id": "o3",
+          "text": "Hadrian"
+        },
+        {
+          "id": "o4",
+          "text": "Constantine XI"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The Severan rebuilding helped make the city a major monument of Roman North Africa.",
+      "sources": [
+        {
+          "title": "Archaeological Site of Leptis Magna — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/183",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Leptis Magna grew from a Phoenician trading port and was greatly embellished under the Severan emperors, preserving an artificial harbour and civic buildings."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_libya_leptis_harbour",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Libya",
+      "subregionScope": "Khoms district",
+      "communityScope": "Libyan heritage custodians",
+      "category": "ART & HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What engineering feature survives at Leptis Magna?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A hydroelectric dam from the twentieth century"
+        },
+        {
+          "id": "o2",
+          "text": "A floating wooden palace"
+        },
+        {
+          "id": "o3",
+          "text": "A railway tunnel through the Atlas"
+        },
+        {
+          "id": "o4",
+          "text": "An artificial harbour basin with a barrage and canal"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The harbour regulated Wadi Lebda and supported the ancient commercial city.",
+      "sources": [
+        {
+          "title": "Archaeological Site of Leptis Magna — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/183",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Leptis Magna grew from a Phoenician trading port and was greatly embellished under the Severan emperors, preserving an artificial harbour and civic buildings."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_libya_cyrene_origin",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Libya",
+      "subregionScope": "Jebel Akhdar",
+      "communityScope": "Libyan heritage custodians",
+      "category": "HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Settlers from which Greek island founded Cyrene?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Cyprus"
+        },
+        {
+          "id": "o2",
+          "text": "Rhodes"
+        },
+        {
+          "id": "o3",
+          "text": "Thera"
+        },
+        {
+          "id": "o4",
+          "text": "Crete"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Cyrene later became one of the principal cities of the Hellenic world.",
+      "sources": [
+        {
+          "title": "Archaeological Site of Cyrene — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/190",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Cyrene was founded by Greeks from Thera, became a principal Hellenic city, was Romanized and remained a major capital until the earthquake of 365 CE."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_libya_cyrene_endpoint",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Libya",
+      "subregionScope": "Jebel Akhdar",
+      "communityScope": "Libyan heritage custodians",
+      "category": "HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which event marks the end of Cyrene's period as a great capital in UNESCO's summary?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The founding of Fez in the ninth century"
+        },
+        {
+          "id": "o2",
+          "text": "The earthquake of 365 CE"
+        },
+        {
+          "id": "o3",
+          "text": "The eruption of Vesuvius in 79 CE"
+        },
+        {
+          "id": "o4",
+          "text": "The fall of Carthage in 146 BCE"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The ruins preserve roughly a millennium of Greek and Roman history.",
+      "sources": [
+        {
+          "title": "Archaeological Site of Cyrene — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/190",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Cyrene was founded by Greeks from Thera, became a principal Hellenic city, was Romanized and remained a major capital until the earthquake of 365 CE."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_libya_sabratha_trade",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Libya",
+      "subregionScope": "Zawiya district",
+      "communityScope": "Libyan heritage custodians",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What was Sabratha before its Roman rebuilding?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A Phoenician trading post linked to the African hinterland"
+        },
+        {
+          "id": "o2",
+          "text": "A Viking naval base"
+        },
+        {
+          "id": "o3",
+          "text": "A Kushite royal cemetery"
+        },
+        {
+          "id": "o4",
+          "text": "A medieval university in Fez"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Its position connected inland products with Mediterranean trade.",
+      "sources": [
+        {
+          "title": "Archaeological Site of Sabratha — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/184",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Sabratha was a Phoenician trading post for African hinterland products, entered Massinissa's Numidian kingdom and was later Romanized and rebuilt."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_libya_sabratha_sequence",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Libya",
+      "subregionScope": "Zawiya district",
+      "communityScope": "Libyan heritage custodians",
+      "category": "HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which political sequence does UNESCO give for Sabratha?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Roman city, Viking colony, then Inca capital"
+        },
+        {
+          "id": "o2",
+          "text": "Kushite city, Ottoman port, then Greek island"
+        },
+        {
+          "id": "o3",
+          "text": "Amazigh village, Egyptian temple, then British fort"
+        },
+        {
+          "id": "o4",
+          "text": "Phoenician trading post, Numidian kingdom, then Romanized city"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The site records overlapping Mediterranean and African histories without reducing them to one identity.",
+      "sources": [
+        {
+          "title": "Archaeological Site of Sabratha — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/184",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Sabratha was a Phoenician trading post for African hinterland products, entered Massinissa's Numidian kingdom and was later Romanized and rebuilt."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_libya_ghadames_levels",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Libya",
+      "subregionScope": "Ghadamès oasis",
+      "communityScope": "Ghadamès community",
+      "category": "ART & HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How were functions arranged vertically in traditional Ghadamès houses?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Temples below, mines above, and roads inside walls"
+        },
+        {
+          "id": "o2",
+          "text": "All activities occurred in one undivided room"
+        },
+        {
+          "id": "o3",
+          "text": "Storage below, family space above, and open terraces at the top"
+        },
+        {
+          "id": "o4",
+          "text": "Workshops above, ships below, and farms on the roof"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Covered alleys and upper terraces formed distinct circulation spaces.",
+      "sources": [
+        {
+          "title": "Old Town of Ghadamès — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/362",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ghadamès is an oasis settlement whose vertically divided houses, covered alleys, terraces, water system and palm groves respond to Saharan conditions."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Gendered practice or space: community review must confirm respectful wording and avoid presenting a documented role as fixed or universal.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_libya_ghadames_climate",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Libya",
+      "subregionScope": "Ghadamès oasis",
+      "communityScope": "Ghadamès community",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What helped Ghadamès respond to Saharan heat and wind?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Deep-sea tunnels and steel harbours"
+        },
+        {
+          "id": "o2",
+          "text": "Compact mud architecture, covered passages, water management and palm groves"
+        },
+        {
+          "id": "o3",
+          "text": "Open glass towers with no shade"
+        },
+        {
+          "id": "o4",
+          "text": "Ice roads and timber bridges"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The settlement's architecture and oasis ecology work as a connected system.",
+      "sources": [
+        {
+          "title": "Old Town of Ghadamès — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/362",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ghadamès is an oasis settlement whose vertically divided houses, covered alleys, terraces, water system and palm groves respond to Saharan conditions."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Identity terminology and community scope require review by people from the named communities, including preferred names and spellings.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_libya_tadrart_dates",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Libya",
+      "subregionScope": "Fezzan",
+      "communityScope": "Saharan heritage custodians",
+      "category": "ART & HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Across what broad span do the Tadrart Acacus rock images date?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "About 12,000 BCE to 100 CE"
+        },
+        {
+          "id": "o2",
+          "text": "Only 1900 to 2000 CE"
+        },
+        {
+          "id": "o3",
+          "text": "About 500 to 400 BCE only"
+        },
+        {
+          "id": "o4",
+          "text": "The tenth to twelfth centuries only"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Thousands of images belong to several styles across a long period.",
+      "sources": [
+        {
+          "title": "Rock-Art Sites of Tadrart Acacus — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/287",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tadrart Acacus has thousands of rock images dating from about 12,000 BCE to 100 CE that record changing environments and ways of life in the Sahara."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "north_libya_tadrart_evidence",
+      "version": 1,
+      "region": "north",
+      "countryScope": "Libya",
+      "subregionScope": "Fezzan",
+      "communityScope": "Saharan heritage custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What changes do the Tadrart Acacus images help document?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Changes in Arctic glaciers only"
+        },
+        {
+          "id": "o2",
+          "text": "Changes in Pacific navigation only"
+        },
+        {
+          "id": "o3",
+          "text": "Changes in European factory laws only"
+        },
+        {
+          "id": "o4",
+          "text": "Changes in Sahara fauna, flora and human ways of life"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The rock art records different environments and lifeways in this part of the Sahara.",
+      "sources": [
+        {
+          "title": "Rock-Art Sites of Tadrart Acacus — UNESCO World Heritage Centre",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/287",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tadrart Acacus has thousands of rock images dating from about 12,000 BCE to 100 CE that record changing environments and ways of life in the Sahara."
+        }
+      ],
+      "reviewer": "North Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    }
+  ]
+}

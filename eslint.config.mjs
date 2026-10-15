@@ -13,6 +13,10 @@ const eslintConfig = defineConfig([
     "dist/**",
     "out/**",
     "build/**",
+    "work/**",
+    "outputs/netlify-worker/**",
+    // Wrangler emits temporary third-party bundles here, including nested operator runs.
+    "**/.wrangler/**",
     "next-env.d.ts",
   ]),
   eslint.configs.recommended,

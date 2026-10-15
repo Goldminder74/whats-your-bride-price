@@ -1,0 +1,4153 @@
+{
+  "schemaVersion": "question-bank-v1",
+  "questions": [
+    {
+      "stableId": "south_bw_dikopelo_form",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Botswana",
+      "subregionScope": "Kgatleng District",
+      "communityScope": "Bakgatla ba Kgafela communities",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which description best fits Dikopelo music?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Choir singing with patterned dance and no instruments"
+        },
+        {
+          "id": "o2",
+          "text": "Solo harp music"
+        },
+        {
+          "id": "o3",
+          "text": "A brass-band march"
+        },
+        {
+          "id": "o4",
+          "text": "A masked drum contest"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO describes communal vocal music joined to patterned choreography.",
+      "sources": [
+        {
+          "title": "Dikopelo folk music of Bakgatla ba Kgafela in Kgatleng District",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/dikopelo-folk-music-of-bakgatla-ba-kgafela-in-kgatleng-district-01290",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Dikopelo is communal vocal music and patterned choreography without instruments, transmitted across generations and adapted from farmland gatherings to village settings."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_bw_dikopelo_members",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Botswana",
+      "subregionScope": "Kgatleng District",
+      "communityScope": "Bakgatla ba Kgafela communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Who participates in Dikopelo in UNESCO's account?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only visiting musicians"
+        },
+        {
+          "id": "o2",
+          "text": "Only hereditary chiefs"
+        },
+        {
+          "id": "o3",
+          "text": "Only schoolteachers"
+        },
+        {
+          "id": "o4",
+          "text": "Men, women and children"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The practice is communal and spans generations.",
+      "sources": [
+        {
+          "title": "Dikopelo folk music of Bakgatla ba Kgafela in Kgatleng District",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/dikopelo-folk-music-of-bakgatla-ba-kgafela-in-kgatleng-district-01290",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Dikopelo is communal vocal music and patterned choreography without instruments, transmitted across generations and adapted from farmland gatherings to village settings."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_bw_dikopelo_origins",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Botswana",
+      "subregionScope": "Kgatleng District",
+      "communityScope": "Bakgatla ba Kgafela communities",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "In what setting did Dikopelo develop as a communal event?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Inside mines"
+        },
+        {
+          "id": "o2",
+          "text": "At airport terminals"
+        },
+        {
+          "id": "o3",
+          "text": "On farmlands"
+        },
+        {
+          "id": "o4",
+          "text": "In coastal shipyards"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Choirs later moved towards villages as farming participation declined.",
+      "sources": [
+        {
+          "title": "Dikopelo folk music of Bakgatla ba Kgafela in Kgatleng District",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/dikopelo-folk-music-of-bakgatla-ba-kgafela-in-kgatleng-district-01290",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Dikopelo is communal vocal music and patterned choreography without instruments, transmitted across generations and adapted from farmland gatherings to village settings."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_bw_dikopelo_today",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Botswana",
+      "subregionScope": "Kgatleng District",
+      "communityScope": "Bakgatla ba Kgafela communities",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What contemporary aim is linked to Dikopelo revival efforts?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Restricting performances to tourists"
+        },
+        {
+          "id": "o2",
+          "text": "Sharing positive community messages with young people"
+        },
+        {
+          "id": "o3",
+          "text": "Ending all choral competition"
+        },
+        {
+          "id": "o4",
+          "text": "Replacing Setswana with another language"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Practitioners connect safeguarding with positive social messages.",
+      "sources": [
+        {
+          "title": "Dikopelo folk music of Bakgatla ba Kgafela in Kgatleng District",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/dikopelo-folk-music-of-bakgatla-ba-kgafela-in-kgatleng-district-01290",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Dikopelo is communal vocal music and patterned choreography without instruments, transmitted across generations and adapted from farmland gatherings to village settings."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_bw_pottery_method",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Botswana",
+      "subregionScope": "Kgatleng District",
+      "communityScope": "Bakgatla ba Kgafela women potters",
+      "category": "ART",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "How are Kgatleng earthenware pots formed?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "They are hand-built from the base to the rim"
+        },
+        {
+          "id": "o2",
+          "text": "They are blown from glass"
+        },
+        {
+          "id": "o3",
+          "text": "They are carved from one stone"
+        },
+        {
+          "id": "o4",
+          "text": "They are woven from wool"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The pots are slab-built by hand and smoothed with a wooden paddle.",
+      "sources": [
+        {
+          "title": "Earthenware pottery-making skills in Botswana's Kgatleng District",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/earthenware-pottery-making-skills-in-botswana-s-kgatleng-district-00753",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Bakgatla ba Kgafela women hand-build pottery from local materials, fire it in pit kilns and transmit skills through observation and practice; the craft needs urgent safeguarding."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Gendered roles are source-specific descriptions, not universal rules; require locally grounded, gender-aware review.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_bw_pottery_firing",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Botswana",
+      "subregionScope": "Kgatleng District",
+      "communityScope": "Bakgatla ba Kgafela women potters",
+      "category": "ART",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Where are the decorated Kgatleng pots fired?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "In a blast furnace"
+        },
+        {
+          "id": "o2",
+          "text": "In seawater"
+        },
+        {
+          "id": "o3",
+          "text": "Under glacier ice"
+        },
+        {
+          "id": "o4",
+          "text": "In a pit kiln"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Pit firing follows shaping and decoration.",
+      "sources": [
+        {
+          "title": "Earthenware pottery-making skills in Botswana's Kgatleng District",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/earthenware-pottery-making-skills-in-botswana-s-kgatleng-district-00753",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Bakgatla ba Kgafela women hand-build pottery from local materials, fire it in pit kilns and transmit skills through observation and practice; the craft needs urgent safeguarding."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_bw_pottery_materials",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Botswana",
+      "subregionScope": "Kgatleng District",
+      "communityScope": "Bakgatla ba Kgafela women potters",
+      "category": "ART",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which material is documented in the Kgatleng pottery process?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Aluminium foil"
+        },
+        {
+          "id": "o2",
+          "text": "Synthetic rubber"
+        },
+        {
+          "id": "o3",
+          "text": "Weathered sandstone"
+        },
+        {
+          "id": "o4",
+          "text": "Marble mosaic"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The documented materials also include clay soil, iron oxide and organic fuels.",
+      "sources": [
+        {
+          "title": "Earthenware pottery-making skills in Botswana's Kgatleng District",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/earthenware-pottery-making-skills-in-botswana-s-kgatleng-district-00753",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Bakgatla ba Kgafela women hand-build pottery from local materials, fire it in pit kilns and transmit skills through observation and practice; the craft needs urgent safeguarding."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_bw_pottery_transmission",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Botswana",
+      "subregionScope": "Kgatleng District",
+      "communityScope": "Bakgatla ba Kgafela women potters",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How have Kgatleng pottery skills traditionally passed between generations?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Through overseas auctions"
+        },
+        {
+          "id": "o2",
+          "text": "Through observation and practice"
+        },
+        {
+          "id": "o3",
+          "text": "Through military drill"
+        },
+        {
+          "id": "o4",
+          "text": "Through printed patents only"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO describes daughters and granddaughters learning alongside master potters.",
+      "sources": [
+        {
+          "title": "Earthenware pottery-making skills in Botswana's Kgatleng District",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/earthenware-pottery-making-skills-in-botswana-s-kgatleng-district-00753",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Bakgatla ba Kgafela women hand-build pottery from local materials, fire it in pit kilns and transmit skills through observation and practice; the craft needs urgent safeguarding."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Gendered roles are source-specific descriptions, not universal rules; require locally grounded, gender-aware review.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_bw_seperu_elements",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Botswana",
+      "subregionScope": "Chobe District",
+      "communityScope": "Veekuhane communities",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which arts are part of public descriptions of Seperu?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Singing and dancing"
+        },
+        {
+          "id": "o2",
+          "text": "Stone carving and metal casting"
+        },
+        {
+          "id": "o3",
+          "text": "Poetry without movement"
+        },
+        {
+          "id": "o4",
+          "text": "Puppet theatre only"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Seperu combines performance with sacred practices that require disclosure boundaries.",
+      "sources": [
+        {
+          "title": "Seperu folkdance and associated practices",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/seperu-folkdance-and-associated-practices-01502",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Veekuhane Seperu combines singing, dancing and sacred practices at important life milestones; public descriptions identify layered mushishi dresses and intergenerational transmission."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_bw_seperu_milestones",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Botswana",
+      "subregionScope": "Chobe District",
+      "communityScope": "Veekuhane communities",
+      "category": "TRADITION",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "When is Seperu performed according to UNESCO?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only during parliamentary elections"
+        },
+        {
+          "id": "o2",
+          "text": "Only at football finals"
+        },
+        {
+          "id": "o3",
+          "text": "Only during lunar eclipses"
+        },
+        {
+          "id": "o4",
+          "text": "At ceremonies marking important life milestones"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The practice is tied to specific Veekuhane community occasions.",
+      "sources": [
+        {
+          "title": "Seperu folkdance and associated practices",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/seperu-folkdance-and-associated-practices-01502",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Veekuhane Seperu combines singing, dancing and sacred practices at important life milestones; public descriptions identify layered mushishi dresses and intergenerational transmission."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_bw_seperu_dress",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Botswana",
+      "subregionScope": "Chobe District",
+      "communityScope": "Veekuhane communities",
+      "category": "TEXTILES",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What garment is associated with women dancing Seperu?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A Roman toga"
+        },
+        {
+          "id": "o2",
+          "text": "A sailor uniform"
+        },
+        {
+          "id": "o3",
+          "text": "A layered mushishi dress"
+        },
+        {
+          "id": "o4",
+          "text": "A wool ski suit"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The layered dress is moved during the dance and is sometimes likened to a peacock tail.",
+      "sources": [
+        {
+          "title": "Seperu folkdance and associated practices",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/seperu-folkdance-and-associated-practices-01502",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Veekuhane Seperu combines singing, dancing and sacred practices at important life milestones; public descriptions identify layered mushishi dresses and intergenerational transmission."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Gendered roles are source-specific descriptions, not universal rules; require locally grounded, gender-aware review.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_bw_seperu_status",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Botswana",
+      "subregionScope": "Chobe District",
+      "communityScope": "Veekuhane communities",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Why is Seperu on UNESCO's Urgent Safeguarding List?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It is legally banned in Botswana"
+        },
+        {
+          "id": "o2",
+          "text": "Its transmission and continued practice are at risk"
+        },
+        {
+          "id": "o3",
+          "text": "It has no living practitioners by definition"
+        },
+        {
+          "id": "o4",
+          "text": "It was invented for the inscription"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Safeguarding status signals risk, not cultural importance or ownership.",
+      "sources": [
+        {
+          "title": "Seperu folkdance and associated practices",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/seperu-folkdance-and-associated-practices-01502",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Veekuhane Seperu combines singing, dancing and sacred practices at important life milestones; public descriptions identify layered mushishi dresses and intergenerational transmission."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_na_oshituthi_drink",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Namibia",
+      "subregionScope": "Northern Namibia",
+      "communityScope": "Eight Aawambo communities",
+      "category": "FOOD",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What fruit is used to make omagongo for Oshituthi shomagongo?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Marula"
+        },
+        {
+          "id": "o2",
+          "text": "Olive"
+        },
+        {
+          "id": "o3",
+          "text": "Coconut"
+        },
+        {
+          "id": "o4",
+          "text": "Blueberry"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Omagongo is prepared from ripe marula fruit.",
+      "sources": [
+        {
+          "title": "Oshituthi shomagongo, marula fruit festival",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/oshituthi-shomagongo-marula-fruit-festival-01089",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Eight Aawambo communities in northern Namibia prepare omagongo from marula fruit and gather for food, hospitality, songs, histories, dance and intergenerational learning."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_na_oshituthi_season",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Namibia",
+      "subregionScope": "Northern Namibia",
+      "communityScope": "Eight Aawambo communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "When does Oshituthi shomagongo usually take place?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only in December"
+        },
+        {
+          "id": "o2",
+          "text": "Every leap-day"
+        },
+        {
+          "id": "o3",
+          "text": "Throughout all twelve months"
+        },
+        {
+          "id": "o4",
+          "text": "Between March and April"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The two-to-three-day gathering follows the marula season.",
+      "sources": [
+        {
+          "title": "Oshituthi shomagongo, marula fruit festival",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/oshituthi-shomagongo-marula-fruit-festival-01089",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Eight Aawambo communities in northern Namibia prepare omagongo from marula fruit and gather for food, hospitality, songs, histories, dance and intergenerational learning."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_na_oshituthi_hospitality",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Namibia",
+      "subregionScope": "Northern Namibia",
+      "communityScope": "Eight Aawambo communities",
+      "category": "FOOD",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What happens after the omagongo fermentation is complete?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only judges may taste it"
+        },
+        {
+          "id": "o2",
+          "text": "The gathering moves to another country"
+        },
+        {
+          "id": "o3",
+          "text": "Community members and guests share it with traditional cuisine"
+        },
+        {
+          "id": "o4",
+          "text": "The drink is discarded"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Hospitality, food and social gathering are central to the public account.",
+      "sources": [
+        {
+          "title": "Oshituthi shomagongo, marula fruit festival",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/oshituthi-shomagongo-marula-fruit-festival-01089",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Eight Aawambo communities in northern Namibia prepare omagongo from marula fruit and gather for food, hospitality, songs, histories, dance and intergenerational learning."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_na_oshituthi_learning",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Namibia",
+      "subregionScope": "Northern Namibia",
+      "communityScope": "Eight Aawambo communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How do younger people learn during marula processing?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "By avoiding older practitioners"
+        },
+        {
+          "id": "o2",
+          "text": "Through observation, participation and emulation"
+        },
+        {
+          "id": "o3",
+          "text": "Only by written examination"
+        },
+        {
+          "id": "o4",
+          "text": "Only through radio adverts"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Preparation brings generations together to exchange skills and histories.",
+      "sources": [
+        {
+          "title": "Oshituthi shomagongo, marula fruit festival",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/oshituthi-shomagongo-marula-fruit-festival-01089",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Eight Aawambo communities in northern Namibia prepare omagongo from marula fruit and gather for food, hospitality, songs, histories, dance and intergenerational learning."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Gendered roles are source-specific descriptions, not universal rules; require locally grounded, gender-aware review.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_na_nama_music_bow",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Namibia",
+      "subregionScope": "Nama communities in Namibia",
+      "communityScope": "Nama musicians and dancers",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What is the khab in Nama ancestral music?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A musical bow"
+        },
+        {
+          "id": "o2",
+          "text": "A clay cooking pot"
+        },
+        {
+          "id": "o3",
+          "text": "A stone tower"
+        },
+        {
+          "id": "o4",
+          "text": "A woven basket"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO lists the khab among the tradition's instruments.",
+      "sources": [
+        {
+          "title": "Aboxan Musik ǀŌb ǂÂns tsî ǁKhasigu, ancestral musical sound knowledge and skills",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mbira-01540",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Nama ancestral music uses instruments including khab, !guitsib and vlies with singing and Nama≠Nāb dance; UNESCO adopted the community-requested current name in 2023."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous terminology, rights and knowledge require community-led review; historical labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_na_nama_music_guitar",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Namibia",
+      "subregionScope": "Nama communities in Namibia",
+      "communityScope": "Nama musicians and dancers",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which name identifies a traditional guitar in this Nama practice?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Omagongo"
+        },
+        {
+          "id": "o2",
+          "text": "Buyombo"
+        },
+        {
+          "id": "o3",
+          "text": "Mushishi"
+        },
+        {
+          "id": "o4",
+          "text": "!guitsib"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The current public description pairs !guitsib with khab and vlies.",
+      "sources": [
+        {
+          "title": "Aboxan Musik ǀŌb ǂÂns tsî ǁKhasigu, ancestral musical sound knowledge and skills",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mbira-01540",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Nama ancestral music uses instruments including khab, !guitsib and vlies with singing and Nama≠Nāb dance; UNESCO adopted the community-requested current name in 2023."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous terminology, rights and knowledge require community-led review; historical labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_na_nama_music_dance",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Namibia",
+      "subregionScope": "Nama communities in Namibia",
+      "communityScope": "Nama musicians and dancers",
+      "category": "LANGUAGE",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What does Nama≠Nāb refer to in the updated UNESCO description?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A pottery kiln"
+        },
+        {
+          "id": "o2",
+          "text": "A court title"
+        },
+        {
+          "id": "o3",
+          "text": "Nama dancing steps"
+        },
+        {
+          "id": "o4",
+          "text": "A mountain pass"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "UNESCO adopted this community-requested terminology in 2023.",
+      "sources": [
+        {
+          "title": "Aboxan Musik ǀŌb ǂÂns tsî ǁKhasigu, ancestral musical sound knowledge and skills",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mbira-01540",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Nama ancestral music uses instruments including khab, !guitsib and vlies with singing and Nama≠Nāb dance; UNESCO adopted the community-requested current name in 2023."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous terminology, rights and knowledge require community-led review; historical labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_na_nama_music_purpose",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Namibia",
+      "subregionScope": "Nama communities in Namibia",
+      "communityScope": "Nama musicians and dancers",
+      "category": "MODERN HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Besides entertainment, how is the music used?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "To issue passports"
+        },
+        {
+          "id": "o2",
+          "text": "To educate and instruct community members"
+        },
+        {
+          "id": "o3",
+          "text": "To replace all spoken teaching"
+        },
+        {
+          "id": "o4",
+          "text": "To set national tax rates"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The source gives environmental awareness as one example.",
+      "sources": [
+        {
+          "title": "Aboxan Musik ǀŌb ǂÂns tsî ǁKhasigu, ancestral musical sound knowledge and skills",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mbira-01540",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Nama ancestral music uses instruments including khab, !guitsib and vlies with singing and Nama≠Nāb dance; UNESCO adopted the community-requested current name in 2023."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_na_twyfelfontein_art",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Namibia",
+      "subregionScope": "Kunene Region",
+      "communityScope": "San hunter-gatherer heritage and present custodians",
+      "category": "ART & HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What kind of art is especially concentrated at Twyfelfontein or /Ui-//aes?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Rock engravings"
+        },
+        {
+          "id": "o2",
+          "text": "Oil paintings on canvas"
+        },
+        {
+          "id": "o3",
+          "text": "Stained-glass windows"
+        },
+        {
+          "id": "o4",
+          "text": "Bronze equestrian statues"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The property also includes painted rock shelters.",
+      "sources": [
+        {
+          "title": "Twyfelfontein or /Ui-//aes",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1255",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Namibia's Twyfelfontein or /Ui-//aes preserves a major concentration of rock engravings and painted shelters linked to hunter-gatherer ritual and reliable water over at least two millennia."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_na_twyfelfontein_animals",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Namibia",
+      "subregionScope": "Kunene Region",
+      "communityScope": "San hunter-gatherer heritage and present custodians",
+      "category": "ART",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which animal is among those shown in Twyfelfontein engravings?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Polar bear"
+        },
+        {
+          "id": "o2",
+          "text": "Kangaroo"
+        },
+        {
+          "id": "o3",
+          "text": "Walrus"
+        },
+        {
+          "id": "o4",
+          "text": "Rhinoceros"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "UNESCO also names elephants, ostriches and giraffes.",
+      "sources": [
+        {
+          "title": "Twyfelfontein or /Ui-//aes",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1255",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Namibia's Twyfelfontein or /Ui-//aes preserves a major concentration of rock engravings and painted shelters linked to hunter-gatherer ritual and reliable water over at least two millennia."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_na_twyfelfontein_timespan",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Namibia",
+      "subregionScope": "Kunene Region",
+      "communityScope": "San hunter-gatherer heritage and present custodians",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "For at least how long does the site's rock art record hunter-gatherer ritual practices?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Two centuries"
+        },
+        {
+          "id": "o2",
+          "text": "Twenty years"
+        },
+        {
+          "id": "o3",
+          "text": "Two millennia"
+        },
+        {
+          "id": "o4",
+          "text": "Two decades"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The high-quality record extends over at least 2,000 years.",
+      "sources": [
+        {
+          "title": "Twyfelfontein or /Ui-//aes",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1255",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Namibia's Twyfelfontein or /Ui-//aes preserves a major concentration of rock engravings and painted shelters linked to hunter-gatherer ritual and reliable water over at least two millennia."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous terminology, rights and knowledge require community-led review; historical labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_na_twyfelfontein_water",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Namibia",
+      "subregionScope": "Kunene Region",
+      "communityScope": "San hunter-gatherer heritage and present custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What environmental feature helped nurture seasonal communities near the rock art?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A tidal lagoon"
+        },
+        {
+          "id": "o2",
+          "text": "A reliable aquifer"
+        },
+        {
+          "id": "o3",
+          "text": "A permanent glacier"
+        },
+        {
+          "id": "o4",
+          "text": "A coral reef"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO links ritual and economic practices to dependable water.",
+      "sources": [
+        {
+          "title": "Twyfelfontein or /Ui-//aes",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1255",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Namibia's Twyfelfontein or /Ui-//aes preserves a major concentration of rock engravings and painted shelters linked to hunter-gatherer ritual and reliable water over at least two millennia."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_richtersveld_ownership",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Northern Cape",
+      "communityScope": "Nama pastoralists and Richtersveld community",
+      "category": "TRADITION",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "How is the Richtersveld cultural landscape managed?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Communally"
+        },
+        {
+          "id": "o2",
+          "text": "As a private airport"
+        },
+        {
+          "id": "o3",
+          "text": "By an overseas monarchy"
+        },
+        {
+          "id": "o4",
+          "text": "As an uninhabited naval base"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Communal ownership and management support the living cultural landscape.",
+      "sources": [
+        {
+          "title": "Richtersveld Cultural and Botanical Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1265",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The communally managed Richtersveld sustains Nama seasonal pastoralism, grazing, plant knowledge, oral traditions and portable mat-roofed |haru oms in north-west South Africa."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous terminology, rights and knowledge require community-led review; historical labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_richtersveld_movement",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Northern Cape",
+      "communityScope": "Nama pastoralists and Richtersveld community",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What seasonal practice shapes Nama life in the Richtersveld?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Deep-sea fishing migrations"
+        },
+        {
+          "id": "o2",
+          "text": "Glacier climbing"
+        },
+        {
+          "id": "o3",
+          "text": "Rice-terrace flooding"
+        },
+        {
+          "id": "o4",
+          "text": "Moving between grazing areas and stockposts"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "This form of transhumance is tied to the arid landscape.",
+      "sources": [
+        {
+          "title": "Richtersveld Cultural and Botanical Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1265",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The communally managed Richtersveld sustains Nama seasonal pastoralism, grazing, plant knowledge, oral traditions and portable mat-roofed |haru oms in north-west South Africa."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_richtersveld_house",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Northern Cape",
+      "communityScope": "Nama pastoralists and Richtersveld community",
+      "category": "ART",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What is a |haru om?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A copper mine"
+        },
+        {
+          "id": "o2",
+          "text": "A river ferry"
+        },
+        {
+          "id": "o3",
+          "text": "A portable mat-roofed house"
+        },
+        {
+          "id": "o4",
+          "text": "A stone prison"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Portable dwellings accompany seasonal pastoral movement.",
+      "sources": [
+        {
+          "title": "Richtersveld Cultural and Botanical Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1265",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The communally managed Richtersveld sustains Nama seasonal pastoralism, grazing, plant knowledge, oral traditions and portable mat-roofed |haru oms in north-west South Africa."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous terminology, rights and knowledge require community-led review; historical labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_richtersveld_plants",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Northern Cape",
+      "communityScope": "Nama pastoralists and Richtersveld community",
+      "category": "ORAL HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which knowledge is associated with places in the Richtersveld?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Subway engineering"
+        },
+        {
+          "id": "o2",
+          "text": "Medicinal and other plant knowledge"
+        },
+        {
+          "id": "o3",
+          "text": "Arctic whaling routes"
+        },
+        {
+          "id": "o4",
+          "text": "Tea plantation machinery"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Plant knowledge and oral traditions are connected to the landscape.",
+      "sources": [
+        {
+          "title": "Richtersveld Cultural and Botanical Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1265",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The communally managed Richtersveld sustains Nama seasonal pastoralism, grazing, plant knowledge, oral traditions and portable mat-roofed |haru oms in north-west South Africa."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous terminology, rights and knowledge require community-led review; historical labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_khomani_borders",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Northern Cape borderlands",
+      "communityScope": "ǂKhomani San communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "The ǂKhomani Cultural Landscape lies near South Africa's borders with which countries?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Botswana and Namibia"
+        },
+        {
+          "id": "o2",
+          "text": "Kenya and Uganda"
+        },
+        {
+          "id": "o3",
+          "text": "Ghana and Togo"
+        },
+        {
+          "id": "o4",
+          "text": "Morocco and Algeria"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Its Kalahari setting crosses modern ecological and cultural borders.",
+      "sources": [
+        {
+          "title": "ǂKhomani Cultural Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1545",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The ǂKhomani Cultural Landscape at South Africa's borders with Botswana and Namibia records long San presence, desert adaptation, ethnobotanical knowledge and language recovery."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_khomani_adaptation",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Northern Cape borderlands",
+      "communityScope": "ǂKhomani San communities",
+      "category": "HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What long-term skill does the ǂKhomani landscape demonstrate?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Navigation through pack ice"
+        },
+        {
+          "id": "o2",
+          "text": "Rice farming on deltas"
+        },
+        {
+          "id": "o3",
+          "text": "Building ocean-going galleons"
+        },
+        {
+          "id": "o4",
+          "text": "Adaptation to desert conditions"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The landscape records interaction with a harsh desert environment.",
+      "sources": [
+        {
+          "title": "ǂKhomani Cultural Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1545",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The ǂKhomani Cultural Landscape at South Africa's borders with Botswana and Namibia records long San presence, desert adaptation, ethnobotanical knowledge and language recovery."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous terminology, rights and knowledge require community-led review; historical labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_khomani_knowledge",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Northern Cape borderlands",
+      "communityScope": "ǂKhomani San communities",
+      "category": "PEOPLES & LANGUAGE",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which knowledge system is highlighted in the ǂKhomani landscape?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only written maritime law"
+        },
+        {
+          "id": "o2",
+          "text": "Only orchestral notation"
+        },
+        {
+          "id": "o3",
+          "text": "Ethnobotanical knowledge"
+        },
+        {
+          "id": "o4",
+          "text": "Only industrial chemistry"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Living plant and veld knowledge require community-led review.",
+      "sources": [
+        {
+          "title": "ǂKhomani Cultural Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1545",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The ǂKhomani Cultural Landscape at South Africa's borders with Botswana and Namibia records long San presence, desert adaptation, ethnobotanical knowledge and language recovery."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous terminology, rights and knowledge require community-led review; historical labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_khomani_language",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Northern Cape borderlands",
+      "communityScope": "ǂKhomani San communities",
+      "category": "LANGUAGE",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What cultural recovery concern is linked to the ǂKhomani landscape?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "An invented tourist language"
+        },
+        {
+          "id": "o2",
+          "text": "Knowledge held by the last speakers of !Ui-Taa languages"
+        },
+        {
+          "id": "o3",
+          "text": "A single official European dialect"
+        },
+        {
+          "id": "o4",
+          "text": "A lost Roman alphabet"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Language work is part of reclaiming knowledge and identity.",
+      "sources": [
+        {
+          "title": "ǂKhomani Cultural Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1545",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The ǂKhomani Cultural Landscape at South Africa's borders with Botswana and Namibia records long San presence, desert adaptation, ethnobotanical knowledge and language recovery."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous terminology, rights and knowledge require community-led review; historical labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_robben_uses",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Western Cape",
+      "communityScope": "Former prisoners, affected communities and heritage custodians",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which use formed part of Robben Island's history?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A prison"
+        },
+        {
+          "id": "o2",
+          "text": "A royal tea plantation"
+        },
+        {
+          "id": "o3",
+          "text": "A mountain kingdom"
+        },
+        {
+          "id": "o4",
+          "text": "A desert caravan station"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The island also served hospital and military functions.",
+      "sources": [
+        {
+          "title": "Robben Island",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/916",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Robben Island's surviving prison, hospital, military and religious buildings document a long history of isolation and the eventual triumph of democracy and freedom over oppression and racism."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonialism, apartheid, political imprisonment or violence: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_robben_prisoners",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Western Cape",
+      "communityScope": "Former prisoners, affected communities and heritage custodians",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Who was held in Robben Island's maximum-security prison?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only visiting athletes"
+        },
+        {
+          "id": "o2",
+          "text": "Only merchant sailors"
+        },
+        {
+          "id": "o3",
+          "text": "Only museum curators"
+        },
+        {
+          "id": "o4",
+          "text": "Political prisoners"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "This history is central to the island's twentieth-century meaning.",
+      "sources": [
+        {
+          "title": "Robben Island",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/916",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Robben Island's surviving prison, hospital, military and religious buildings document a long history of isolation and the eventual triumph of democracy and freedom over oppression and racism."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonialism, apartheid, political imprisonment or violence: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_robben_meaning",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Western Cape",
+      "communityScope": "Former prisoners, affected communities and heritage custodians",
+      "category": "PHILOSOPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What broad transition does UNESCO associate with Robben Island?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A monarchy replacing elections"
+        },
+        {
+          "id": "o2",
+          "text": "A glacier replacing a harbour"
+        },
+        {
+          "id": "o3",
+          "text": "Democracy and freedom overcoming oppression and racism"
+        },
+        {
+          "id": "o4",
+          "text": "Pastoralism replacing mining"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The site's meaning depends on memory, resistance and human dignity.",
+      "sources": [
+        {
+          "title": "Robben Island",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/916",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Robben Island's surviving prison, hospital, military and religious buildings document a long history of isolation and the eventual triumph of democracy and freedom over oppression and racism."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonialism, apartheid, political imprisonment or violence: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_robben_layers",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Western Cape",
+      "communityScope": "Former prisoners, affected communities and heritage custodians",
+      "category": "ART & HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What do Robben Island's surviving buildings reveal?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A modern theme park"
+        },
+        {
+          "id": "o2",
+          "text": "Successive prison, hospital, military and religious uses"
+        },
+        {
+          "id": "o3",
+          "text": "Only one period of occupation"
+        },
+        {
+          "id": "o4",
+          "text": "A prehistoric farming village alone"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The built landscape records several overlapping histories.",
+      "sources": [
+        {
+          "title": "Robben Island",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/916",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Robben Island's surviving prison, hospital, military and religious buildings document a long history of isolation and the eventual triumph of democracy and freedom over oppression and racism."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonialism, apartheid, political imprisonment or violence: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_rights_count",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Fourteen sites around South Africa",
+      "communityScope": "Liberation-struggle communities and custodians",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How many component places make up the Nelson Mandela Legacy Sites property?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Fourteen"
+        },
+        {
+          "id": "o2",
+          "text": "Four"
+        },
+        {
+          "id": "o3",
+          "text": "Forty"
+        },
+        {
+          "id": "o4",
+          "text": "One hundred"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The serial property links places across South Africa.",
+      "sources": [
+        {
+          "title": "Human Rights, Liberation and Reconciliation: Nelson Mandela Legacy Sites",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1676",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Fourteen South African places of memory connect the twentieth-century struggle against apartheid with human rights, liberation, reconciliation, non-racialism, Pan-Africanism and ubuntu."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonialism, apartheid, political imprisonment or violence: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_rights_sharpeville",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Fourteen sites around South Africa",
+      "communityScope": "Liberation-struggle communities and custodians",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What do the Sharpeville Sites commemorate?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The opening of a gold mine"
+        },
+        {
+          "id": "o2",
+          "text": "A royal wedding"
+        },
+        {
+          "id": "o3",
+          "text": "A football championship"
+        },
+        {
+          "id": "o4",
+          "text": "The killing of 69 people protesting unjust Pass Laws"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The question requires trauma-informed historical review.",
+      "sources": [
+        {
+          "title": "Human Rights, Liberation and Reconciliation: Nelson Mandela Legacy Sites",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1676",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Fourteen South African places of memory connect the twentieth-century struggle against apartheid with human rights, liberation, reconciliation, non-racialism, Pan-Africanism and ubuntu."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonialism, apartheid, political imprisonment or violence: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_rights_mqhekezweni",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Fourteen sites around South Africa",
+      "communityScope": "Liberation-struggle communities and custodians",
+      "category": "HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which component is linked to Nelson Mandela's youth and traditional leadership?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Thaba-Bosiu"
+        },
+        {
+          "id": "o2",
+          "text": "Twyfelfontein"
+        },
+        {
+          "id": "o3",
+          "text": "The Great Place at Mqhekezweni"
+        },
+        {
+          "id": "o4",
+          "text": "The Devil's Cataract"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The site is one of fourteen connected places of memory.",
+      "sources": [
+        {
+          "title": "Human Rights, Liberation and Reconciliation: Nelson Mandela Legacy Sites",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1676",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Fourteen South African places of memory connect the twentieth-century struggle against apartheid with human rights, liberation, reconciliation, non-racialism, Pan-Africanism and ubuntu."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonialism, apartheid, political imprisonment or violence: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_za_rights_ideas",
+      "version": 1,
+      "region": "south",
+      "countryScope": "South Africa",
+      "subregionScope": "Fourteen sites around South Africa",
+      "communityScope": "Liberation-struggle communities and custodians",
+      "category": "PHILOSOPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which set of ideas is central to the serial property's interpretation?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Mining, taxation and railways"
+        },
+        {
+          "id": "o2",
+          "text": "Human rights, liberation and reconciliation"
+        },
+        {
+          "id": "o3",
+          "text": "Conquest, extraction and isolation"
+        },
+        {
+          "id": "o4",
+          "text": "Navigation, astronomy and trade winds"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO connects these ideas with non-racialism, Pan-Africanism and ubuntu.",
+      "sources": [
+        {
+          "title": "Human Rights, Liberation and Reconciliation: Nelson Mandela Legacy Sites",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1676",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Fourteen South African places of memory connect the twentieth-century struggle against apartheid with human rights, liberation, reconciliation, non-racialism, Pan-Africanism and ubuntu."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonialism, apartheid, political imprisonment or violence: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_ls_za_maloti_parts",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Lesotho; South Africa",
+      "subregionScope": "Maloti-Drakensberg mountains",
+      "communityScope": "Basotho, neighbouring communities and San heritage custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which two areas form the Maloti-Drakensberg Park?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Sehlabathebe National Park and uKhahlamba Drakensberg Park"
+        },
+        {
+          "id": "o2",
+          "text": "Robben Island and Khami"
+        },
+        {
+          "id": "o3",
+          "text": "Ngwenya and Twyfelfontein"
+        },
+        {
+          "id": "o4",
+          "text": "Kgatleng and Chobe"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The property joins Lesotho and South Africa.",
+      "sources": [
+        {
+          "title": "Maloti-Drakensberg Park",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/985",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The transboundary South Africa-Lesotho mountain property combines distinctive geology, biodiversity, watersheds and a dense record of San rock art created over four millennia."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_ls_za_maloti_rock",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Lesotho; South Africa",
+      "subregionScope": "Maloti-Drakensberg mountains",
+      "communityScope": "Basotho, neighbouring communities and San heritage custodians",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What cultural record is especially dense in the Maloti-Drakensberg Park?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Medieval stained glass"
+        },
+        {
+          "id": "o2",
+          "text": "Roman mosaics"
+        },
+        {
+          "id": "o3",
+          "text": "Viking runestones"
+        },
+        {
+          "id": "o4",
+          "text": "San rock paintings"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The shelters preserve a long visual record of San spiritual life.",
+      "sources": [
+        {
+          "title": "Maloti-Drakensberg Park",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/985",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The transboundary South Africa-Lesotho mountain property combines distinctive geology, biodiversity, watersheds and a dense record of San rock art created over four millennia."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous terminology, rights and knowledge require community-led review; historical labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_ls_za_maloti_fish",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Lesotho; South Africa",
+      "subregionScope": "Maloti-Drakensberg mountains",
+      "communityScope": "Basotho, neighbouring communities and San heritage custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Where is the Maloti minnow found within the property?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The Kgatleng hills"
+        },
+        {
+          "id": "o2",
+          "text": "Khami's Hill Ruin"
+        },
+        {
+          "id": "o3",
+          "text": "Sehlabathebe National Park"
+        },
+        {
+          "id": "o4",
+          "text": "Robben Island"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The endemic fish is one part of the transboundary property's biodiversity.",
+      "sources": [
+        {
+          "title": "Maloti-Drakensberg Park",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/985",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The transboundary South Africa-Lesotho mountain property combines distinctive geology, biodiversity, watersheds and a dense record of San rock art created over four millennia."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_ls_za_maloti_watershed",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Lesotho; South Africa",
+      "subregionScope": "Maloti-Drakensberg mountains",
+      "communityScope": "Basotho, neighbouring communities and San heritage custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "The Maloti-Drakensberg range feeds rivers flowing toward which oceans?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only an inland salt lake"
+        },
+        {
+          "id": "o2",
+          "text": "The Indian and Atlantic oceans"
+        },
+        {
+          "id": "o3",
+          "text": "The Arctic and Pacific oceans"
+        },
+        {
+          "id": "o4",
+          "text": "Only the Mediterranean"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The mountain chain forms an important watershed.",
+      "sources": [
+        {
+          "title": "Maloti-Drakensberg Park",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/985",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The transboundary South Africa-Lesotho mountain property combines distinctive geology, biodiversity, watersheds and a dense record of San rock art created over four millennia."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_ls_thaba_landform",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Lesotho",
+      "subregionScope": "Phuthiatsana Valley",
+      "communityScope": "Basotho heritage communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What kind of landform is Thaba-Bosiu?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A plateau"
+        },
+        {
+          "id": "o2",
+          "text": "A coral island"
+        },
+        {
+          "id": "o3",
+          "text": "A glacier"
+        },
+        {
+          "id": "o4",
+          "text": "A river delta"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The monument rises from the Phuthiatsana Valley.",
+      "sources": [
+        {
+          "title": "Thaba-Bosiu National Monument",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/tentativelists/5392",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lesotho's tentative-list monument is a plateau in the Phuthiatsana Valley about 23 kilometres south-east of Maseru, associated with Moshoeshoe I and Basotho nation-building from 1824."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_ls_thaba_distance",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Lesotho",
+      "subregionScope": "Phuthiatsana Valley",
+      "communityScope": "Basotho heritage communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "About how far is Thaba-Bosiu from Maseru?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "230 kilometres north"
+        },
+        {
+          "id": "o2",
+          "text": "Two kilometres west"
+        },
+        {
+          "id": "o3",
+          "text": "On the coast"
+        },
+        {
+          "id": "o4",
+          "text": "23 kilometres south-east"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "UNESCO's tentative-list record gives this approximate location.",
+      "sources": [
+        {
+          "title": "Thaba-Bosiu National Monument",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/tentativelists/5392",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lesotho's tentative-list monument is a plateau in the Phuthiatsana Valley about 23 kilometres south-east of Maseru, associated with Moshoeshoe I and Basotho nation-building from 1824."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_ls_thaba_founder",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Lesotho",
+      "subregionScope": "Phuthiatsana Valley",
+      "communityScope": "Basotho heritage communities",
+      "category": "HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which leader is closely associated with Thaba-Bosiu from 1824?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Seretse Khama"
+        },
+        {
+          "id": "o2",
+          "text": "Julius Nyerere"
+        },
+        {
+          "id": "o3",
+          "text": "Moshoeshoe I"
+        },
+        {
+          "id": "o4",
+          "text": "Samora Machel"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The site is tied to Moshoeshoe I and Basotho nation-building.",
+      "sources": [
+        {
+          "title": "Thaba-Bosiu National Monument",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/tentativelists/5392",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lesotho's tentative-list monument is a plateau in the Phuthiatsana Valley about 23 kilometres south-east of Maseru, associated with Moshoeshoe I and Basotho nation-building from 1824."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_ls_thaba_status",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Lesotho",
+      "subregionScope": "Phuthiatsana Valley",
+      "communityScope": "Basotho heritage communities",
+      "category": "MODERN HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What is Thaba-Bosiu's current UNESCO status?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It is not recorded by UNESCO"
+        },
+        {
+          "id": "o2",
+          "text": "It is on Lesotho's Tentative List"
+        },
+        {
+          "id": "o3",
+          "text": "It is an Urgent Safeguarding List dance"
+        },
+        {
+          "id": "o4",
+          "text": "It is a marine biosphere reserve"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Tentative listing is a preliminary national nomination step, not inscription.",
+      "sources": [
+        {
+          "title": "Thaba-Bosiu National Monument",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/tentativelists/5392",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lesotho's tentative-list monument is a plateau in the Phuthiatsana Valley about 23 kilometres south-east of Maseru, associated with Moshoeshoe I and Basotho nation-building from 1824."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_sz_ngwenya_ochre",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Eswatini",
+      "subregionScope": "Hhohho Region",
+      "communityScope": "Communities and custodians around Ngwenya",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What material was extracted in Ngwenya's early mine workings?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Red ochre and specularite"
+        },
+        {
+          "id": "o2",
+          "text": "Coal and petroleum"
+        },
+        {
+          "id": "o3",
+          "text": "Salt and amber"
+        },
+        {
+          "id": "o4",
+          "text": "Gold leaf and silk"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The pigments connect mineral extraction with regional cultural use.",
+      "sources": [
+        {
+          "title": "Ngwenya Mines",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/tentativelists/5421",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Eswatini's tentative-list Ngwenya Mines preserve evidence of ancient red ochre and specularite extraction, later iron working and modern mining history in the Hhohho region."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_sz_ngwenya_tools",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Eswatini",
+      "subregionScope": "Hhohho Region",
+      "communityScope": "Communities and custodians around Ngwenya",
+      "category": "ART & HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What material were early mining hammers and picks at Ngwenya made from?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Plastic"
+        },
+        {
+          "id": "o2",
+          "text": "Aluminium"
+        },
+        {
+          "id": "o3",
+          "text": "Ivory"
+        },
+        {
+          "id": "o4",
+          "text": "Dolerite"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Stone mining tools support interpretation of the ancient workings.",
+      "sources": [
+        {
+          "title": "Ngwenya Mines",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/tentativelists/5421",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Eswatini's tentative-list Ngwenya Mines preserve evidence of ancient red ochre and specularite extraction, later iron working and modern mining history in the Hhohho region."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_sz_ngwenya_later",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Eswatini",
+      "subregionScope": "Hhohho Region",
+      "communityScope": "Communities and custodians around Ngwenya",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What later technology is documented at Ngwenya around the first millennium CE?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Electric telegraphy"
+        },
+        {
+          "id": "o2",
+          "text": "Concrete skyscrapers"
+        },
+        {
+          "id": "o3",
+          "text": "Iron-ore smelting"
+        },
+        {
+          "id": "o4",
+          "text": "Steam locomotives"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The site preserves more than one period of extraction.",
+      "sources": [
+        {
+          "title": "Ngwenya Mines",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/tentativelists/5421",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Eswatini's tentative-list Ngwenya Mines preserve evidence of ancient red ochre and specularite extraction, later iron working and modern mining history in the Hhohho region."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_sz_ngwenya_status",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Eswatini",
+      "subregionScope": "Hhohho Region",
+      "communityScope": "Communities and custodians around Ngwenya",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How should Ngwenya Mines be described in UNESCO terms?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A transatlantic marine reserve"
+        },
+        {
+          "id": "o2",
+          "text": "An Eswatini Tentative List property"
+        },
+        {
+          "id": "o3",
+          "text": "A World Heritage property already inscribed"
+        },
+        {
+          "id": "o4",
+          "text": "An intangible dance element"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Tentative-list status must not be confused with inscription.",
+      "sources": [
+        {
+          "title": "Ngwenya Mines",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/tentativelists/5421",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Eswatini's tentative-list Ngwenya Mines preserve evidence of ancient red ochre and specularite extraction, later iron working and modern mining history in the Hhohho region."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zw_khami_dynasty",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zimbabwe",
+      "subregionScope": "Near Bulawayo",
+      "communityScope": "Torwa-period heritage and present custodians",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which dynasty made Khami its capital after Great Zimbabwe?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The Torwa dynasty"
+        },
+        {
+          "id": "o2",
+          "text": "The Ptolemaic dynasty"
+        },
+        {
+          "id": "o3",
+          "text": "The Merovingian dynasty"
+        },
+        {
+          "id": "o4",
+          "text": "The Ming dynasty"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Khami became a major political centre after Great Zimbabwe's capital was abandoned.",
+      "sources": [
+        {
+          "title": "Khami Ruins National Monument",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/365",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Khami near Bulawayo was the Torwa dynasty's capital after Great Zimbabwe; its dry-stone platforms, decorated walls and imported objects document occupation from about 1450 to 1650."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zw_khami_building",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zimbabwe",
+      "subregionScope": "Near Bulawayo",
+      "communityScope": "Torwa-period heritage and present custodians",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What construction technique defines Khami's platforms?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Cast iron framing"
+        },
+        {
+          "id": "o2",
+          "text": "Reinforced glass"
+        },
+        {
+          "id": "o3",
+          "text": "Bamboo scaffolding"
+        },
+        {
+          "id": "o4",
+          "text": "Dry-stone walling"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Stone retaining walls created platforms for daga buildings.",
+      "sources": [
+        {
+          "title": "Khami Ruins National Monument",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/365",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Khami near Bulawayo was the Torwa dynasty's capital after Great Zimbabwe; its dry-stone platforms, decorated walls and imported objects document occupation from about 1450 to 1650."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zw_khami_decoration",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zimbabwe",
+      "subregionScope": "Near Bulawayo",
+      "communityScope": "Torwa-period heritage and present custodians",
+      "category": "ART",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which patterns appear on Khami's decorated walls?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Alphabetic neon signs"
+        },
+        {
+          "id": "o2",
+          "text": "Printed floral wallpaper"
+        },
+        {
+          "id": "o3",
+          "text": "Chevron and chequered patterns"
+        },
+        {
+          "id": "o4",
+          "text": "Only plain whitewash"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The wall surfaces show varied stone decoration.",
+      "sources": [
+        {
+          "title": "Khami Ruins National Monument",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/365",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Khami near Bulawayo was the Torwa dynasty's capital after Great Zimbabwe; its dry-stone platforms, decorated walls and imported objects document occupation from about 1450 to 1650."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zw_khami_trade",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zimbabwe",
+      "subregionScope": "Near Bulawayo",
+      "communityScope": "Torwa-period heritage and present custodians",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What do imported objects found at Khami help demonstrate?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A lack of craft production"
+        },
+        {
+          "id": "o2",
+          "text": "Long-distance trade connections"
+        },
+        {
+          "id": "o3",
+          "text": "Complete isolation from other regions"
+        },
+        {
+          "id": "o4",
+          "text": "Twentieth-century air travel"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Porcelain and European stoneware occur in the archaeological record.",
+      "sources": [
+        {
+          "title": "Khami Ruins National Monument",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/365",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Khami near Bulawayo was the Torwa dynasty's capital after Great Zimbabwe; its dry-stone platforms, decorated walls and imported objects document occupation from about 1450 to 1650."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zw_matobo_geology",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zimbabwe",
+      "subregionScope": "Matabeleland South",
+      "communityScope": "Local communities and heritage custodians of Matobo",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What rock shapes Matobo Hills' distinctive landforms?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Granite"
+        },
+        {
+          "id": "o2",
+          "text": "Coral limestone"
+        },
+        {
+          "id": "o3",
+          "text": "Glacial ice"
+        },
+        {
+          "id": "o4",
+          "text": "Volcanic pumice only"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Weathering of varied granite created the area's boulders and hills.",
+      "sources": [
+        {
+          "title": "Matobo Hills",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/306",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Zimbabwe's Matobo Hills combine distinctive granite landforms, long human occupation, dense rock art and living sacred places that remain important to local communities."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zw_matobo_art",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zimbabwe",
+      "subregionScope": "Matabeleland South",
+      "communityScope": "Local communities and heritage custodians of Matobo",
+      "category": "ART & HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What makes Matobo especially significant for rock art?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The region's only oil portraits"
+        },
+        {
+          "id": "o2",
+          "text": "A collection made entirely after 2000"
+        },
+        {
+          "id": "o3",
+          "text": "Paintings moved from Europe"
+        },
+        {
+          "id": "o4",
+          "text": "One of Southern Africa's highest concentrations"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The paintings date back at least 13,000 years.",
+      "sources": [
+        {
+          "title": "Matobo Hills",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/306",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Zimbabwe's Matobo Hills combine distinctive granite landforms, long human occupation, dense rock art and living sacred places that remain important to local communities."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zw_matobo_shelters",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zimbabwe",
+      "subregionScope": "Matabeleland South",
+      "communityScope": "Local communities and heritage custodians of Matobo",
+      "category": "HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What did Matobo's large boulders provide over long periods?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Ice cellars"
+        },
+        {
+          "id": "o2",
+          "text": "Canal locks"
+        },
+        {
+          "id": "o3",
+          "text": "Natural shelters"
+        },
+        {
+          "id": "o4",
+          "text": "Floating harbours"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The shelters relate to occupation from early Stone Age times onward.",
+      "sources": [
+        {
+          "title": "Matobo Hills",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/306",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Zimbabwe's Matobo Hills combine distinctive granite landforms, long human occupation, dense rock art and living sacred places that remain important to local communities."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zw_matobo_living",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zimbabwe",
+      "subregionScope": "Matabeleland South",
+      "communityScope": "Local communities and heritage custodians of Matobo",
+      "category": "TRADITION",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Why are parts of Matobo still important to local communities?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "They are closed to all cultural practice"
+        },
+        {
+          "id": "o2",
+          "text": "They include living shrines and sacred places"
+        },
+        {
+          "id": "o3",
+          "text": "They contain an active international airport"
+        },
+        {
+          "id": "o4",
+          "text": "They host only abandoned factories"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "No restricted ritual detail is included in this draft.",
+      "sources": [
+        {
+          "title": "Matobo Hills",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/306",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Zimbabwe's Matobo Hills combine distinctive granite landforms, long human occupation, dense rock art and living sacred places that remain important to local communities."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zm_zw_mosi_river",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zambia; Zimbabwe",
+      "subregionScope": "Zambezi River border",
+      "communityScope": "Communities and custodians on both sides of the falls",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which river forms Mosi-oa-Tunya / Victoria Falls?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The Zambezi"
+        },
+        {
+          "id": "o2",
+          "text": "The Nile"
+        },
+        {
+          "id": "o3",
+          "text": "The Senegal"
+        },
+        {
+          "id": "o4",
+          "text": "The Orange"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The river is more than two kilometres wide near the falls.",
+      "sources": [
+        {
+          "title": "Mosi-oa-Tunya / Victoria Falls",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/509",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Zambia-Zimbabwe transboundary property centres on the Zambezi River's great curtain of falling water, basalt gorges, spray-dependent ecology and jointly managed protected areas."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zm_zw_mosi_rock",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zambia; Zimbabwe",
+      "subregionScope": "Zambezi River border",
+      "communityScope": "Communities and custodians on both sides of the falls",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Into what kind of gorges does the water fall?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Coral caves"
+        },
+        {
+          "id": "o2",
+          "text": "Sand dunes"
+        },
+        {
+          "id": "o3",
+          "text": "Glacial valleys"
+        },
+        {
+          "id": "o4",
+          "text": "Basalt gorges"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Erosion has cut a zigzag series of steep-sided gorges.",
+      "sources": [
+        {
+          "title": "Mosi-oa-Tunya / Victoria Falls",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/509",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Zambia-Zimbabwe transboundary property centres on the Zambezi River's great curtain of falling water, basalt gorges, spray-dependent ecology and jointly managed protected areas."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zm_zw_mosi_countries",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zambia; Zimbabwe",
+      "subregionScope": "Zambezi River border",
+      "communityScope": "Communities and custodians on both sides of the falls",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which countries jointly share the World Heritage property?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Namibia and Angola"
+        },
+        {
+          "id": "o2",
+          "text": "Eswatini and South Africa"
+        },
+        {
+          "id": "o3",
+          "text": "Zambia and Zimbabwe"
+        },
+        {
+          "id": "o4",
+          "text": "Botswana and Lesotho"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The property is explicitly transboundary.",
+      "sources": [
+        {
+          "title": "Mosi-oa-Tunya / Victoria Falls",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/509",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Zambia-Zimbabwe transboundary property centres on the Zambezi River's great curtain of falling water, basalt gorges, spray-dependent ecology and jointly managed protected areas."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zm_zw_mosi_mist",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zambia; Zimbabwe",
+      "subregionScope": "Zambezi River border",
+      "communityScope": "Communities and custodians on both sides of the falls",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What visible feature is created by the great volume of falling water?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A coastal tide"
+        },
+        {
+          "id": "o2",
+          "text": "A high plume of spray and mist"
+        },
+        {
+          "id": "o3",
+          "text": "A permanent snow field"
+        },
+        {
+          "id": "o4",
+          "text": "A volcanic ash cloud"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The spray supports a fragile riverine forest ecosystem.",
+      "sources": [
+        {
+          "title": "Mosi-oa-Tunya / Victoria Falls",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/509",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Zambia-Zimbabwe transboundary property centres on the Zambezi River's great curtain of falling water, basalt gorges, spray-dependent ecology and jointly managed protected areas."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zm_mooba_who",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zambia",
+      "subregionScope": "Central, Copperbelt and Lusaka Provinces",
+      "communityScope": "Lenje communities",
+      "category": "MUSIC",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Who performs the Mooba dance in Lenje communities?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Women and men"
+        },
+        {
+          "id": "o2",
+          "text": "Only visiting tourists"
+        },
+        {
+          "id": "o3",
+          "text": "Only children under ten"
+        },
+        {
+          "id": "o4",
+          "text": "Only government officials"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO describes participation by both women and men.",
+      "sources": [
+        {
+          "title": "Mooba dance of the Lenje ethnic group of Central Province of Zambia",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mooba-dance-of-the-lenje-ethnic-group-of-central-province-of-zambia-01372",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lenje Mooba is performed by women and men in Central, Copperbelt and Lusaka Provinces, combining dance, drumming, song and public social transmission with spiritual and healing meanings."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zm_mooba_skirt",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zambia",
+      "subregionScope": "Central, Copperbelt and Lusaka Provinces",
+      "communityScope": "Lenje communities",
+      "category": "TEXTILES",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What is the traditional skirt named in public descriptions of Mooba?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Mushishi"
+        },
+        {
+          "id": "o2",
+          "text": "|haru om"
+        },
+        {
+          "id": "o3",
+          "text": "Vlies"
+        },
+        {
+          "id": "o4",
+          "text": "Buyombo"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The costume also includes coloured beads and calf rattles.",
+      "sources": [
+        {
+          "title": "Mooba dance of the Lenje ethnic group of Central Province of Zambia",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mooba-dance-of-the-lenje-ethnic-group-of-central-province-of-zambia-01372",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lenje Mooba is performed by women and men in Central, Copperbelt and Lusaka Provinces, combining dance, drumming, song and public social transmission with spiritual and healing meanings."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Gendered roles are source-specific descriptions, not universal rules; require locally grounded, gender-aware review.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zm_mooba_regions",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zambia",
+      "subregionScope": "Central, Copperbelt and Lusaka Provinces",
+      "communityScope": "Lenje communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Beyond Central Province, where is Mooba also practised?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only in northern Europe"
+        },
+        {
+          "id": "o2",
+          "text": "Only in the Sahara"
+        },
+        {
+          "id": "o3",
+          "text": "Parts of Copperbelt and Lusaka Provinces"
+        },
+        {
+          "id": "o4",
+          "text": "Only on Indian Ocean islands"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The country scope is specific and does not imply all Zambian communities practise it.",
+      "sources": [
+        {
+          "title": "Mooba dance of the Lenje ethnic group of Central Province of Zambia",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mooba-dance-of-the-lenje-ethnic-group-of-central-province-of-zambia-01372",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lenje Mooba is performed by women and men in Central, Copperbelt and Lusaka Provinces, combining dance, drumming, song and public social transmission with spiritual and healing meanings."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "south_zm_mooba_learning",
+      "version": 1,
+      "region": "south",
+      "countryScope": "Zambia",
+      "subregionScope": "Central, Copperbelt and Lusaka Provinces",
+      "communityScope": "Lenje communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How can children learn the public performance of Mooba?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "By avoiding performances"
+        },
+        {
+          "id": "o2",
+          "text": "By observing and practising at open social functions"
+        },
+        {
+          "id": "o3",
+          "text": "Only by reading secret texts"
+        },
+        {
+          "id": "o4",
+          "text": "Only through foreign conservatories"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Sacred and healing meanings still require Lenje knowledge-holder review.",
+      "sources": [
+        {
+          "title": "Mooba dance of the Lenje ethnic group of Central Province of Zambia",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mooba-dance-of-the-lenje-ethnic-group-of-central-province-of-zambia-01372",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lenje Mooba is performed by women and men in Central, Copperbelt and Lusaka Provinces, combining dance, drumming, song and public social transmission with spiritual and healing meanings."
+        }
+      ],
+      "reviewer": "Southern Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    }
+  ]
+}
