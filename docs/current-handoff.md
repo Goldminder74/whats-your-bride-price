@@ -2,7 +2,7 @@
 
 ## Decision and checkpoint
 
-Branch `feature/viral-build-sprint`; continuation based on `2b5e8ae3ba2d84078f867b6ebeb6dfa0e26a7028`.
+Branch `feature/viral-build-sprint`; continuation based on `bbb8352bdbc9f6d5fb1d4acab49d3984e1356621`.
 Resolve the validated continuation with `git rev-parse HEAD`.
 Launch REQUIRES **5,000 completed games/day,500/hour,48h outage allowance**.
 GBP50/month covers hosting/backups/operations; Stripe fees, separately funded Drive
@@ -12,7 +12,11 @@ Standard Paid$5/month, <=GBP8 incremental/first-month andGBP50 total, after fres
 headroom/quote checks. No top-up, other paid service, production schedule, public
 access, DNS or live payment approved. No purchase or benchmark execution occurred.
 
-## Current blocker and independent preparation
+## Latest continuation — read first
+
+[Driver, fresh billing observations and owner choices](benchmark-driver-continuation.md): browser review now works; existing CLI/API authentication verified without added scopes. D1 inventory has two databases and no r002. Netlify has 507.8 credits remaining, Personal $9. Cloudflare remains Free; subscription API403 and dashboard checkout error prevent final quote. Recharge/whole-account preflight incomplete. No spending/resources/load. Local orchestration passes24 focused tests, lint/diff; real-service harness adapter and secure seller-address runtime route remain unfinished. Keep private game and OFF flags unchanged.
+
+## Prior blocker and independent preparation (superseded where noted)
 
 Automatic approval review failed the browser inventory action because of its usage
 limit; action NOT executed. This is review unavailability, not an unsafe-action

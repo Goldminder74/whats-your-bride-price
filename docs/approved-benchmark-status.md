@@ -1,3 +1,5 @@
+Latest continuation supersedes the access-blocker paragraphs below: [15 October driver and billing update](benchmark-driver-continuation.md). No hosted benchmark executed.
+
 # Approved benchmark status — 15 October 2026
 
 Owner approved the exact capped phases and conditional Workers Standard Paid$5/month,
