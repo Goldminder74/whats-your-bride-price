@@ -10,7 +10,7 @@ import { operationalMaintenance,operationalHeartbeat } from '../../worker/operat
 
 test('private maintenance orders recovery, bounded purge, verified delivery and independent heartbeat',async()=>{
   const calls=[];
-  const service={async ready(){calls.push('ready');},async deliver(){calls.push('deliver');return 'receipt';}};
+  const service={async ready(){calls.push('ready');},async flush(_id,limit){assert.equal(limit,25);calls.push('deliver');return {pending:0};},async deliver(){throw Error('must not snapshot in a purge tick');}};
   const deps={now:()=>123,async purge(_service,at,limit){assert.equal(at,123);assert.equal(limit,50);calls.push('purge');},async heartbeat(){calls.push('heartbeat');}};
   assert.equal((await operationalMaintenance(service,deps,'op_synthetic')).verified,true);
   assert.deepEqual(calls,['ready','purge','deliver','ready','heartbeat']);
@@ -20,10 +20,16 @@ test('private maintenance orders recovery, bounded purge, verified delivery and 
   for(const stage of ['purge','deliver','heartbeat']){
     calls.length=0;
     const failure=async()=>{throw Error('synthetic credential must not leak');};
-    await assert.rejects(operationalMaintenance({...service,...(stage==='deliver'?{deliver:failure}:{})},{...deps,...(stage!=='deliver'?{[stage]:failure}:{})},'op_retry'),/^Error: operational_maintenance_unavailable$/);
+    await assert.rejects(operationalMaintenance({...service,...(stage==='deliver'?{flush:failure}:{})},{...deps,...(stage!=='deliver'?{[stage]:failure}:{})},'op_retry'),/^Error: operational_maintenance_unavailable$/);
     if(stage==='purge')assert.deepEqual(calls,['ready']);
     if(stage==='deliver')assert.deepEqual(calls,['ready','purge']);
   }
+});
+
+test('maintenance reports undelivered backlog without manufacturing a snapshot receipt',async()=>{
+ const status=[];const service={async ready(){},async flush(){return {delivered:25,pending:40};},async deliver(){assert.fail('full snapshot is separately authorised');}};
+ const result=await operationalMaintenance(service,{purge:async()=>{},heartbeat:async e=>status.push(e.status)},'op_bounded');
+ assert.deepEqual(status,['backlog']);assert.equal(result.snapshotCreated,false);assert.equal(result.delivery.pending,40);assert.equal(Object.hasOwn(result,'receipt'),false);
 });
 
 test('heartbeat refuses redirects, wrong origins and failures and emits no receipt or secret in its body',async()=>{
@@ -70,6 +76,16 @@ test('fenced encrypted snapshot exports every row, preserves binary data and ret
     assert.deepEqual(rows.map(x=>x.id),['a','b','c']);assert.deepEqual(rows[0].value,{binary:'AQI='});
     for(const bytes of f.files.values())assert.equal(bytes.toString().includes('synthetic_rows'),false);
   }finally{f.sql.close();}
+});
+
+test('snapshot keysets cover composite keys and never issue offset scans',async()=>{
+ const f=fixture();try{
+  f.sql.exec("CREATE TABLE synthetic_composite(a TEXT NOT NULL,b INTEGER NOT NULL,PRIMARY KEY(a,b)); INSERT INTO synthetic_composite VALUES('a',1),('a',2),('b',1),('b',3),('c',1)");
+  const db={async query(s,p=[]){assert.doesNotMatch(s,/\bOFFSET\b/i);return f.db.query(s,p);}};
+  const result=await authoritySnapshot(db,f.custody,f.key,{pageSize:2})(f.head);
+  const rows=result.files.filter(file=>file.name.includes('.t')).flatMap(file=>decryptRecord(f.files.get(file.name),f.key,file.name)).filter(page=>page.table==='synthetic_composite').flatMap(page=>page.rows);
+  assert.deepEqual(rows.map(row=>[row.a,row.b]),[['a',1],['a',2],['b',1],['b',3],['c',1]]);
+ }finally{f.sql.close();}
 });
 test('interrupted snapshot resumes same ciphertext and detects conflicting source or absent fence',async()=>{
   const f=fixture();try {

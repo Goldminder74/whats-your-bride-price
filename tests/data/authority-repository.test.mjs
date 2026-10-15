@@ -73,6 +73,31 @@ async function fixture() {
   return {...c,authority,journaled:database,options,files};
 }
 
+test('Quick Play admission remains shared and fenced without retaining ephemeral buckets as authority',async()=>{
+ const c=await fixture();try{
+  const selection=new D1QuestionSelectionRepository(c.journaled),owner='f'.repeat(64);
+  const before=c.database.prepare('SELECT COUNT(*) n FROM operational_authority_outbox').get().n;
+  const results=await Promise.all(Array.from({length:25},()=>selection.consumeRateLimit(owner,'start',now,20)));
+  assert.ok(results.includes('limited'));assert.ok(results.filter(x=>x==='allowed').length<=20);
+  assert.equal(c.database.prepare('SELECT COUNT(*) n FROM operational_authority_outbox').get().n,before);
+  assert.equal(c.files.size,0);
+  c.database.exec("UPDATE operational_recovery_checkpoints SET state='exporting' WHERE id='journal'");
+  const buckets=c.database.prepare('SELECT SUM(request_count) n FROM daily_operation_limits').get().n;
+  assert.equal(await selection.consumeRateLimit(owner,'start',now,20),'unavailable');
+  assert.equal(c.database.prepare('SELECT SUM(request_count) n FROM daily_operation_limits').get().n,buckets);
+ }finally{c.database.close();}
+});
+
+test('Quick Play changed recovery fences deny admission without creating financial authority',async()=>{
+ const c=await setup();try{
+  let reads=0,writes=0;
+  const database=createJournaledDatabase(c.adapter,{async readFence(){return String(++reads);},async transact(){writes++;throw Error('must not grant financial state');}});
+  const selection=new D1QuestionSelectionRepository(database);
+  assert.equal(await selection.consumeRateLimit('e'.repeat(64),'start',now,20),'unavailable');
+  assert.equal(writes,0);assert.equal(c.database.prepare('SELECT COUNT(*) n FROM commerce_orders').get().n,0);
+ }finally{c.database.close();}
+});
+
 test('production-authority bonus availability and expiry preserve FIFO and reject unsafe read forms',async()=>{
   const c=await fixture();try {
     const id=c.database.prepare('SELECT id FROM cowrie_wallets').get().id;

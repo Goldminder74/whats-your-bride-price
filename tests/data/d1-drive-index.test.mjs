@@ -9,6 +9,21 @@ async function fixture(){
  const db={async query(s,p=[]){return sql.prepare(s).all(...p);},async batch(rows){sql.exec('BEGIN');try{const result=rows.map(r=>sql.prepare(r.sql).all(...r.params));sql.exec('COMMIT');return result;}catch(e){sql.exec('ROLLBACK');throw e;}}};
  return {sql,db};
 }
+
+test('bulk inventory identity checks use bounded queries and reject corrupted reservations',async()=>{
+ const {sql,db}=await fixture();try{
+  const index=new D1DriveIndex(db,'synthetic_folder_001');
+  for(let i=0;i<95;i++)await index.reserve('record_'+i+'.intent','synthetic_file_'+String(i).padStart(3,'0'));
+  let queries=0;const counted=new D1DriveIndex({...db,async query(...args){queries++;return db.query(...args);}},'synthetic_folder_001');
+  const names=Array.from({length:95},(_,i)=>'record_'+i+'.intent');assert.equal((await counted.getMany(names)).size,95);assert.equal(queries,3);
+  const prefix=index.prefix+index.identity(names[0])+':';
+  const plan=sql.prepare('EXPLAIN QUERY PLAN SELECT * FROM operational_recovery_checkpoints WHERE id>=?1 AND id<?2').all(prefix,prefix+'~').map(row=>row.detail).join(' ');
+  assert.match(plan,/SEARCH .* USING INDEX .*\(id>\? AND id<\?\)/);assert.doesNotMatch(plan,/\bSCAN\b/);
+  await assert.rejects(counted.getMany([names[0],names[0]]),/bounds/);
+  sql.exec("UPDATE operational_recovery_checkpoints SET head_hash='corrupt' WHERE id LIKE 'drive_file:%'");
+  await assert.rejects(counted.getMany([names[0]]),/corrupt/);
+ }finally{sql.close();}
+});
 test('independent index instances reserve exactly one durable ID and retries do not renew retention',async()=>{
  const {sql,db}=await fixture();try{let now=Date.now();const a=new D1DriveIndex(db,'synthetic_folder_001',{now:()=>now}),b=new D1DriveIndex(db,'synthetic_folder_001',{now:()=>now});
  const ids=await Promise.all([a.reserve('one.intent','synthetic_file_001'),b.reserve('one.intent','synthetic_file_002')]);assert.equal(ids[0],ids[1]);

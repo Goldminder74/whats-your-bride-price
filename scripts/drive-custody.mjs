@@ -27,16 +27,18 @@ export class DriveCustody {
     if (bytes.length > 4 * 1024 * 1024) throw Error('drive_file_bounds');
     return bytes;
   }
-  async put(name, bytes) {
+  async put(name, bytes, retention) {
     this.name(name); bytes = Buffer.from(bytes);
     if (!bytes.length || bytes.length > 4 * 1024 * 1024) throw Error('drive_file_bounds');
     let id = await this.index.get(name);
-    if (id) id = await this.index.reserve(name, id);
+    if (retention && typeof this.index.recoverReserve !== 'function') throw Error('drive_retention_index_required');
+    const reserve = proposed => retention ? this.index.recoverReserve(name, proposed, retention) : this.index.reserve(name, proposed);
+    if (id) id = await reserve(id);
     if (!id) {
       const response = await this.request('https://www.googleapis.com/drive/v3/files/generateIds?count=1&space=drive&type=files');
       if (!response.ok) throw Error('drive_generate_id');
       const proposed = (await response.json()).ids?.[0]; if (!valid(proposed)) throw Error('drive_file_identity');
-      id = await this.index.reserve(name, proposed);
+      id = await reserve(proposed);
     }
     if (!valid(id)) throw Error('drive_file_identity');
     const prior = await this.get(name);
@@ -52,9 +54,11 @@ export class DriveCustody {
     if (!downloaded || recoveryHash(downloaded) !== recoveryHash(bytes)) throw Error('custody_conflict');
     return recoveryHash(bytes);
   }
-  async list() {
-    const names = [], seen = new Set(), pages = new Set(); let page;
+  async *inventoryPages({ maxPages = 100, maxFiles = 10000 } = {}) {
+    if (!Number.isInteger(maxPages) || maxPages < 1 || maxPages > 10000 || !Number.isInteger(maxFiles) || maxFiles < 1 || maxFiles > 100000) throw Error('drive_inventory_bounds');
+    const seen = new Set(), pages = new Set(); let page, count = 0;
     do {
+      if (++count > maxPages) throw Error('drive_inventory_capacity');
       const query = new URLSearchParams({ q: "'" + this.folderId + "' in parents and trashed=false and appProperties has { key='wybpRecovery' and value='1' }",
         fields: 'nextPageToken,incompleteSearch,files(id,name)', pageSize: String(this.pageSize) });
       if (page) query.set('pageToken', page);
@@ -62,15 +66,22 @@ export class DriveCustody {
       if (!response.ok) throw Error('drive_inventory');
       const data = await response.json();
       if (data.incompleteSearch || !Array.isArray(data.files)) throw Error('drive_inventory_incomplete');
+      if (data.files.length > this.pageSize || seen.size + data.files.length > maxFiles) throw Error('drive_inventory_capacity');
+      const ids = this.index.getMany ? await this.index.getMany(data.files.map(file => file.name)) : null;
       for (const file of data.files) {
         this.name(file.name);
-        if (seen.has(file.name) || await this.index.get(file.name) !== file.id) throw Error('drive_inventory_conflict');
-        seen.add(file.name); names.push(file.name);
+        if (seen.has(file.name) || (ids ? ids.get(file.name) : await this.index.get(file.name)) !== file.id) throw Error('drive_inventory_conflict');
+        seen.add(file.name);
       }
       if (data.nextPageToken && pages.has(data.nextPageToken)) throw Error('drive_inventory_loop');
       if (data.nextPageToken) pages.add(data.nextPageToken);
       page = data.nextPageToken;
+      yield data.files.map(file => ({ name: file.name, id: file.id }));
     } while (page);
+  }
+  async list(bounds) {
+    const names = [];
+    for await (const page of this.inventoryPages(bounds)) names.push(...page.map(file => file.name));
     return names.sort();
   }
   async inventoryReceipt() {

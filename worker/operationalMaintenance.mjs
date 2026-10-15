@@ -1,4 +1,3 @@
-import { authorityDeliveryTick } from './authorityService.mjs';
 
 /** One explicit private invocation, never a scheduler. Missing monitoring stops
  * before purge. Independent provider acceptance is not proof of alert receipt. */
@@ -8,8 +7,12 @@ export async function operationalMaintenance(service, {purge, heartbeat, now=Dat
   try {
     await service.ready();
     await purge(service,now(),limit);
-    const receipt=await authorityDeliveryTick(service,boundaryId,heartbeat);
-    return {verified:true,receipt,limit};
+    // Purge ticks must not take a complete source snapshot or scan Drive history.
+    // A verified chunk is delivery progress, not a fresh restore boundary.
+    const delivery=await service.flush(boundaryId,25);
+    await service.ready();
+    await heartbeat({component:'authority',status:delivery.pending?'backlog':'verified'});
+    return {verified:true,delivery,limit,snapshotCreated:false};
   }catch{throw Error('operational_maintenance_unavailable');}
 }
 

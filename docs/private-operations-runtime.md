@@ -272,3 +272,30 @@ Owner confirmed Down state, receipt of the down-alert email, then paused/restore
 production cadence remains unapproved. Logs/receipts under
 outputs/authority-preparation/20261015-final-gates/heartbeat-*.json; no credentials in Git.
 Focused source/compiled RPC checks preserve missing-config denial and HTTP isolation.
+
+## Source-only bounded delivery continuation — 15 October
+
+No hosted changes. `maintain` now purges bounded rows and flushes at most25 committed
+events into one encrypted immutable chunk, returning delivered/pending counts and
+`snapshotCreated:false`. It does not silently create or attest a full snapshot.
+Heartbeat status distinguishes backlog; missing-ping monitoring alone does not
+prove acceptable backlog age/drain rate. Production schedule remains unapproved.
+Full snapshot delivery stays an explicit separate private operator operation.
+Chunk upload/readback/checkpoint crashes retain the writer barrier until stable retry;
+delivery is not atomic across D1 and independent custody. Original intents still
+precede accounting/hold/closure/deletion commits. Snapshot proofs support legacy
+event files and pinned chunks; missing proofs fail closed.
+
+No migration. Existing0013 custody checkpoints store chunk receipts/progress with
+the approved30-day window; chunks inherit the earliest event's expiry without renewal.
+Optional text setting `WYBP_DRIVE_SHARD_FOLDER_IDS` lists exactly16 distinct private
+folder IDs, excluding the legacy root. No code creates those folders. It is absent
+from hosted configuration and incompatible with the legacy commissioning/rehearsal
+flag; use an isolated benchmark-only configuration under separate approval.
+Folder-pinned inventories/recovery preserve original IDs and expiry, including
+interruption/retry; bounded inventory overflow fails rather than returning a partial list.
+Generic recovery cleanup now preserves `drive_file:` reservations until the provider
+deletion path acknowledges removal. Delayed snapshot checkpoints anchor their existing
+30-day window to proof expiry; the boundary still records actual capture time.
+See [benchmark scope](bounded-hosted-benchmark-approval.md) for remaining stock limits
+and [owner review](owner-purchase-review.md) for secure seller details (route pending).

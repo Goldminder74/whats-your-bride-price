@@ -580,3 +580,53 @@ remaining,31 publications/465credits,21,530 requests/4.3credits; compute0. Recha
 settings explicitly Disabled (read-only modal, cancelled unchanged). API top-up pack
 amount500 is NOT an enabled-state indicator. Charts lag balance; do not reconcile
 future cost from a partial-cycle chart or assume other-project monthly usage is zero.
+
+## Local bounded optimisation — 15 October continuation
+
+Based on dbe0b23; source-only, no deployment, settings, folders or paid plan changed.
+[Exact benchmark approval](bounded-hosted-benchmark-approval.md) supersedes the
+older Phase B/C caps above. [Owner review](owner-purchase-review.md) consolidates
+sales decisions without inventing legal approval or an installed address route.
+
+- Exact Quick Play admission SQL now uses before/after recovery fences without an
+  authority intent. Only ephemeral shared counters are exempt; money, attempts,
+  answers, closures, deletion and holds remain journalled. Actual local repositories:
+  **4 transactions/19 statements/478 fence reads** per game, versus18/33/450;
+  new wallet1 transaction/10 fence reads. Transport stubbed only for counting:
+  these are not billed-row or latency measurements.
+- `flush` readbacks at most25 encrypted committed events in one immutable chunk,
+  then transactionally checkpoints delivery. Crashes reuse ciphertext; an uncertain
+  writer stays fenced. No snapshot baseline advances, cleanup authority or claim of
+  cross-provider atomicity. Precommit intent is still durable before business commit.
+- Snapshots pin chunk proofs instead of duplicate per-event files where available.
+  Missing/tampered chunks block recovery; legacy boundaries remain readable.
+  Chunks keep the earliest event's original30-day expiry, with no retry renewal;
+  referencing boundaries expire no later than their chunk.
+- Purge ticks report bounded delivery/backlog rather than export the entire source.
+  Full snapshots remain separate explicit operator work. Snapshot/outbox keysets
+  replace offsets; inventory identity checks use validated primary-key range queries of40 names (80 binds), with no new index.
+- Optional16-folder custody preserves legacy root files, pins actual folders and
+  resumes lost-index reconstruction. It creates no folders or hosted settings.
+  Provisioning and benchmark-only configuration need the separate hosted approval.
+
+At5k/day,4 operations/game plus up to7,143 new wallets imply27,143 intents/day,
+814,290 over30days, before incomplete games/payments/retention; roughly1,086 proof
+chunks/day when full. Sixteen folders distribute this illustrative stock to about53k
+files/folder on average, not a balance/latency/retention guarantee. Counters still cost
+D1 writes and fences: completed games alone imply2.39m fence RPC/day.
+
+Remaining **technical gates**: global writer fencing/read latency; cleanup scan
+amplification; full stock beyond bounded snapshot/inventory
+invocations; incremental recovery and cleanup at that stock. Default1,000x50-row
+snapshot cannot cover one day's60k completed answers. Do not increase a limit merely
+to hide that gap. A resumable full-stock snapshot/inventory plan needs validation
+before launch; explain any future schema/index addition before implementation.
+The proposed small benchmark can measure throughput/reveal limits, not waive them.
+
+Official Standard Workers service-binding RPC adds CPU/D1 work but no second inbound
+request fee. Do not multiply request fees by fence RPC count. £42–47 optimistic and
+£136–146 high-transfer envelopes remain assumptions pending measured CPU, metadata,
+retention/backup stock and other-project use. Prior £203 source sensitivity is
+historical, not a verified post-change quote. £50 sufficiency remains unproven.
+Evidence (ignored): `outputs/authority-preparation/bounded-journal-*.log` and
+`bounded-journal-workload.json`. No hosted benchmark or activation occurred.

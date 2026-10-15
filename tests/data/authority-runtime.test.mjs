@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { randomBytes } from 'node:crypto';
 import { loadMigrationPlan, applyMigrationPlan } from '../../scripts/data-migrations.mjs';
-import { createOperationId } from '../../scripts/authority-runtime.mjs';
+import { createOperationId, D1Authority, readBoundary } from '../../scripts/authority-runtime.mjs';
 import { recoveryHash } from '../../scripts/recovery-crypto.mjs';
 import { createAuthorityService, d1AuthorityAdapter } from '../../worker/authorityService.mjs';
 async function fixture() {
@@ -19,6 +19,60 @@ async function fixture() {
   const options={db,custody,key:randomBytes(32),now:()=>at,alert:async event=>alerts.push(event),snapshot:async()=>{const bytes=Buffer.from('encrypted-synthetic');return {files:[{name:'snapshot.enc',sha256:await custody.put('snapshot.enc',bytes)}]};}};
   return {sql,options,files,alerts,at};
 }
+
+test('bounded chunks resume after each crash boundary without repeating financial mutations',async()=>{
+ for(const stage of ['chunk_uploaded','chunk_verified','chunk_checkpointed']){
+  const f=await fixture();try{
+   const service=createAuthorityService(f.options);
+   for(let i=0;i<3;i++)await service.mutate(createOperationId(f.at),[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['record_'+i]}]);
+   const {D1WriterFence}=await import('../../worker/d1WriterFence.mjs');
+   const writer=new D1WriterFence(f.options.db,{now:()=>f.at});let fail=true;
+   const flush=()=>writer.run('chunk_retry','stable',db=>new D1Authority(db,f.options.custody,f.options.key,{now:()=>f.at,fault:s=>{if(fail&&s===stage)throw Error('synthetic_crash');}}).flush(2));
+   await assert.rejects(flush(),/synthetic_crash/);await assert.rejects(writer.ready(),/unavailable/);
+   fail=false;await flush();await writer.ready();
+   let passes=0;while((await service.flush('continue',2)).pending){assert.ok(++passes<3,'bounded drain must make progress');}
+   assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,3);
+   assert.equal(f.sql.prepare("SELECT sequence FROM operational_recovery_checkpoints WHERE id='journal-delivery'").get().sequence,3);
+   assert.equal([...f.files.keys()].filter(n=>n.startsWith('journal-chunk_')).length,2);
+   const receipt=await service.deliver('chunk_snapshot');
+   assert.equal((await readBoundary(f.options.custody,f.options.key,'chunk_snapshot',receipt,f.at)).sequence,3);
+   assert.equal([...f.files.keys()].filter(n=>n.endsWith('.event')).length,0);
+   const chunk=[...f.files.keys()].find(n=>n.startsWith('journal-chunk_')),saved=f.files.get(chunk);f.files.delete(chunk);
+   await assert.rejects(readBoundary(f.options.custody,f.options.key,'chunk_snapshot',receipt,f.at),/chunk_readback/);
+   f.files.set(chunk,saved);
+   await service.mutate(createOperationId(f.at),[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['later_authority']}]);
+   await assert.rejects(readBoundary(f.options.custody,f.options.key,'chunk_snapshot',receipt,f.at),/later_or_missing_intent/);
+  }finally{f.sql.close();}
+ }
+});
+
+test('chunk bounds, missing sequence and concurrent writers fail closed',async()=>{
+ const f=await fixture();try{
+  const service=createAuthorityService(f.options);
+  await assert.rejects(service.flush('bad',26),/bounds/);
+  const original=f.options.custody.put;let unblock,entered;
+  const started=new Promise(resolve=>entered=resolve);
+  f.options.custody.put=async(n,b,...rest)=>{if(n.endsWith('.intent')){entered();await new Promise(resolve=>unblock=resolve);}return original(n,b,...rest);};
+  const mutation=service.mutate(createOperationId(f.at),[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['only']}]);await started;
+  await assert.rejects(createAuthorityService(f.options).flush('parallel'),/writer_busy/);unblock();await mutation;
+  f.sql.exec('DELETE FROM operational_authority_outbox');
+  await assert.rejects(service.flush('gap'),/outbox_page_gap/);await assert.rejects(service.ready(),/unavailable/);
+ }finally{f.sql.close();}
+});
+
+test('delayed chunk snapshots preserve original expiry and the existing checkpoint window',async()=>{
+ const f=await fixture();try{
+  const first=createAuthorityService(f.options);await first.mutate(createOperationId(f.at),[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['protected']}]);
+  await first.flush('initial_chunk');
+  const delayed=createAuthorityService({...f.options,now:()=>f.at+86400000});
+  const receipt=await delayed.deliver('delayed_snapshot');
+  const body=await readBoundary(f.options.custody,f.options.key,'delayed_snapshot',receipt,f.at+86400000);
+  assert.equal(body.createdAt,f.at+86400000);assert.equal(body.expiresAt,f.at+30*86400000);
+  const checkpoint=f.sql.prepare("SELECT * FROM operational_recovery_checkpoints WHERE id='baseline'").get();
+  assert.equal(checkpoint.created_at,f.at);assert.equal(checkpoint.expires_at-checkpoint.created_at,30*86400000);
+  await assert.rejects(readBoundary(f.options.custody,f.options.key,'delayed_snapshot',receipt,f.at+30*86400000),/boundary_expired/);
+ }finally{f.sql.close();}
+});
 test('private runtime delivers verified authority and retries never repeat a mutation',async()=>{
  const f=await fixture();try {const service=createAuthorityService(f.options),op=createOperationId(f.at),statements=[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['one']}];
  await service.mutate(op,statements);await service.mutate(op,statements);

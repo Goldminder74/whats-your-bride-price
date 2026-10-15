@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DriveCustody } from '../../scripts/drive-custody.mjs';
 import { recoveryHash } from '../../scripts/recovery-crypto.mjs';
+import { PartitionedDriveCustody } from '../../scripts/partitioned-drive-custody.mjs';
 function fixture() {
  const ids=new Map(),files=new Map();let uploads=0,lose=false;
  const index={async get(n){return ids.get(n);},async reserve(n,id){if(!ids.has(n))ids.set(n,id);return ids.get(n);}};
@@ -19,6 +20,35 @@ function fixture() {
  const config={folderId:'synthetic_folder_001',accessToken:async()=> 'synthetic-token',index,fetcher};
  return {config,files,ids,get uploads(){return uploads;},loseNext(){lose=true;}};
 }
+
+test('partitioned custody preserves legacy files, deterministic IDs, and resumable pinned lost-index recovery',async()=>{
+ const children=Array.from({length:17},(_,i)=>{const f=fixture();f.config.folderId='synthetic_folder_'+String(i).padStart(3,'0');const original=f.config.fetcher;
+  f.config.fetcher=async(url,options)=>{if(url.includes('?fields=id,name,parents,trashed')){const id=url.split('/files/')[1].split('?')[0],file=f.files.get(id);return Response.json({id,name:file?.name,parents:[f.config.folderId],trashed:false});}return original(url,options);};
+  const c=new DriveCustody(f.config);c.index.recoveryRecord=async()=>({createdAt:1,expiresAt:2592000001});return {f,c};});
+ const custody=new PartitionedDriveCustody(children[0].c,children.slice(1).map(x=>x.c),{verifyFolder:async(id,parent)=>children.slice(1).some(x=>x.c.folderId===id)&&parent===children[0].c.folderId});
+ await children[0].c.put('legacy.intent',Buffer.from('legacy'));
+ await custody.put('new.intent',Buffer.from('new'));await custody.put('new.intent',Buffer.from('new'));
+ assert.equal((await custody.get('legacy.intent')).toString(),'legacy');
+ const inventory=await custody.inventoryReceipt();assert.equal(inventory.files.length,2);assert.equal(inventory.files.find(f=>f.name==='legacy.intent').folderId,children[0].c.folderId);
+ const target=children.find(x=>x.c===custody.target('new.intent'));assert.equal(target.f.uploads,1);
+ for(const child of children)child.f.ids.clear();
+ await assert.rejects(custody.recoverIndex(inventory.files,inventory.sha256,()=>{throw Error('interrupted');}),/interrupted/);
+ assert.equal(await custody.recoverIndex(inventory.files,inventory.sha256),2);
+ assert.equal((await custody.get('new.intent')).toString(),'new');
+ const altered=inventory.files.map(file=>({...file,folderId:'outside_folder_001'}));
+ await assert.rejects(custody.recoverIndex(altered,recoveryHash(Buffer.from(JSON.stringify(altered)))),/recovery_scope/);
+ await assert.rejects(custody.list({maxPages:1}),/inventory_capacity/);
+ const blocked=new PartitionedDriveCustody(children[0].c,children.slice(1).map(x=>x.c),{verifyFolder:async()=>false});
+ await assert.rejects(blocked.put('blocked.intent',Buffer.from('must not upload')),/partition_scope/);
+});
+
+test('bounded inventory cannot silently return a truncated result',async()=>{
+ const f=fixture();let reads=0;
+ const c=new DriveCustody({...f.config,pageSize:1,fetcher:async()=>{reads++;return Response.json({files:[{id:'synthetic_file_001',name:'one.intent'}],nextPageToken:'next'});}});
+ f.ids.set('one.intent','synthetic_file_001');
+ await assert.rejects(c.list({maxPages:1,maxFiles:2}),/inventory_capacity/);assert.equal(reads,1);
+ reads=0;await assert.rejects(c.list({maxPages:2,maxFiles:1}),/inventory_capacity/);assert.equal(reads,2);
+});
 
 test('Drive redirects fail closed without forwarding credentials',async()=>{
  let calls=0;const c=new DriveCustody({folderId:'synthetic_folder_001',accessToken:async()=> 'synthetic-token',index:{get:async()=> 'synthetic_file_001',reserve:async()=> 'synthetic_file_001'},fetcher:async(url,options)=>{calls++;assert.equal(options.redirect,'manual');assert.match(url,/^https:\/\/www.googleapis.com\//);return new Response(null,{status:302,headers:{Location:'https://untrusted.invalid/'}});}});

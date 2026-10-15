@@ -42,14 +42,48 @@ export class D1Authority {
   async freeze(id){if(!/^[a-zA-Z0-9_-]{1,80}$/.test(id))reject('boundary_id');const head=await this.head();if(!head||head.expires_at<=this.now())reject('journal_expired');
     if(head.state==='exporting'&&head.manifest_hash===id)return head;
     await this.db.batch([{sql:"UPDATE operational_recovery_checkpoints SET state='exporting',manifest_hash=?1,version=version+1 WHERE id='journal' AND state='idle' AND version=?2",params:[id,head.version]}]);const fenced=await this.head();if(fenced.state!=='exporting'||fenced.manifest_hash!==id)reject('export_fence');return fenced;}
+  /** Bounded independent delivery only. This never advances a snapshot baseline,
+   * authorises cleanup, or claims D1/Drive atomicity. The writer fence is external. */
+  async flush(limit=25) {
+    if (!Number.isInteger(limit) || limit < 1 || limit > 25) reject('journal_chunk_bounds');
+    const head=await this.head();if(!head||head.state!=='idle'||head.expires_at<=this.now())reject('journal_unavailable');
+    const checkpoint=(await this.db.query("SELECT * FROM operational_recovery_checkpoints WHERE id='journal-delivery'"))[0];
+    const base=(await this.db.query("SELECT sequence,head_hash FROM operational_recovery_checkpoints WHERE id='baseline'"))[0]||{sequence:0,head_hash:ZERO};
+    const start=checkpoint&&checkpoint.sequence>base.sequence?checkpoint:base;
+    const events=await this.db.query('SELECT * FROM operational_authority_outbox WHERE sequence>?1 AND sequence<=?2 ORDER BY sequence LIMIT ?3',[start.sequence,head.sequence,limit]);
+    if(!events.length){if(start.sequence!==head.sequence||start.head_hash!==head.head_hash)reject('outbox_page_gap');return {delivered:0,sequence:start.sequence,pending:0};}
+    let sequence=start.sequence,previous=start.head_hash;
+    for(const event of events){if(event.sequence!==++sequence||event.previous_hash!==previous||recoveryHash(Buffer.from(event.encrypted_event))!==event.event_hash||event.expires_at<=this.now())reject('outbox_chain');previous=event.event_hash;}
+    const name='journal-chunk_'+(start.sequence+1)+'_'+sequence+'.enc';
+    const body={version:1,base:{sequence:start.sequence,head:start.head_hash},sequence,head:previous,events:events.map(event=>({operationId:event.operation_id,hash:event.event_hash,encrypted:event.encrypted_event}))};
+    if(json(body).length>3*1024*1024)reject('journal_chunk_bounds');
+    const prior=await this.custody.get(name);
+    if(prior&&JSON.stringify(decryptRecord(prior,this.key,name))!==JSON.stringify(body))reject('journal_chunk_conflict');
+    const expires=Math.min(...events.map(event=>event.expires_at)),created=expires-WINDOW;
+    const bytes=prior||encryptRecord(body,this.key,name);await this.custody.put(name,bytes,{createdAt:created,expiresAt:expires});this.fault('chunk_uploaded');
+    const downloaded=await this.custody.get(name);if(!downloaded||recoveryHash(downloaded)!==recoveryHash(bytes))reject('journal_chunk_readback');
+    this.fault('chunk_verified');
+    const receipt=recoveryHash(bytes);
+    await this.db.batch([
+      {sql:"SELECT CASE WHEN EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id='journal' AND state='idle' AND sequence=?1 AND head_hash=?2) THEN 1 ELSE json('journal_delivery_changed') END",params:[head.sequence,head.head_hash]},
+      {sql:"INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES(?1,'custody',?2,?3,?4,?5,'complete',1,?6,?7) ON CONFLICT(id) DO NOTHING",params:[name,receipt,sequence,previous,start.sequence,created,expires]},
+      {sql:"INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES('journal-delivery','custody',?1,?2,?3,0,'complete',1,?4,?5) ON CONFLICT(id) DO UPDATE SET manifest_hash=excluded.manifest_hash,sequence=excluded.sequence,head_hash=excluded.head_hash,created_at=excluded.created_at,expires_at=excluded.expires_at,version=version+1",params:[receipt,sequence,previous,created,expires]},
+    ]);this.fault('chunk_checkpointed');return {delivered:events.length,sequence,receipt,pending:head.sequence-sequence};
+  }
   async deliver(id,snapshot){
     const head=await this.freeze(id);this.fault('source_fenced');
     const base=(await this.db.query("SELECT sequence,head_hash FROM operational_recovery_checkpoints WHERE id='baseline'"))[0]||{sequence:0,head_hash:ZERO};
     const count=(await this.db.query('SELECT COUNT(*) n FROM operational_authority_outbox WHERE sequence>?1',[base.sequence]))[0].n, events=[];
-    for(let offset=0;offset<count;offset+=100)events.push(...await this.db.query('SELECT * FROM operational_authority_outbox WHERE sequence>?1 ORDER BY sequence LIMIT 100 OFFSET ?2',[base.sequence,offset]));
+    if(!Number.isSafeInteger(count)||count>10000)reject('delivery_capacity_exceeded');
+    let cursor=base.sequence;
+    while(events.length<count){const page=await this.db.query('SELECT * FROM operational_authority_outbox WHERE sequence>?1 AND sequence<=?2 ORDER BY sequence LIMIT 100',[cursor,head.sequence]);if(!page.length||page.at(-1).sequence<=cursor)reject('outbox_page_gap');events.push(...page);cursor=page.at(-1).sequence;}
     if(events.length!==count)reject('outbox_page_gap');let sequence=base.sequence,previous=base.head_hash;
+    const chunks=(await this.db.query("SELECT id,manifest_hash,expires_at FROM operational_recovery_checkpoints WHERE kind='custody' AND id LIKE 'journal-chunk_%' AND cursor>=?1 AND sequence<=?2 AND expires_at>?3 ORDER BY cursor",[base.sequence,head.sequence,this.now()])).map(row=>({name:row.id,sha256:row.manifest_hash,expiresAt:row.expires_at}));
+    const compacted=await readChunks(this.custody,this.key,chunks);
     for(const event of events){if(event.sequence!==++sequence||event.previous_hash!==previous||recoveryHash(Buffer.from(event.encrypted_event))!==event.event_hash)reject('outbox_chain');
-      await this.custody.put(event.operation_id+'.event',Buffer.from(event.encrypted_event));previous=event.event_hash;}
+      const proof=compacted.get(event.operation_id);
+      if(proof&&proof.hash!==event.event_hash)reject('journal_chunk_conflict');
+      if(!proof)await this.custody.put(event.operation_id+'.event',Buffer.from(event.encrypted_event));previous=event.event_hash;}
     if(sequence!==head.sequence||previous!==head.head_hash)reject('outbox_head');
     const names=await this.custody.list(),intents=[];for(const name of names.filter(n=>n.endsWith('.intent'))){if(decryptRecord(await this.custody.get(name),this.key,name).sequence>base.sequence)intents.push(name);}
     // A precommitted intent absent from this fenced source is unresolved, never silently discarded.
@@ -63,7 +97,7 @@ export class D1Authority {
       if(body.sequence!==head.sequence||body.head!==head.head_hash)reject('boundary_source_changed');
     }else{
       const captured=await snapshot(head);this.fault('snapshot_captured');const now=this.now();
-      body={...captured,version:1,id,createdAt:now,expiresAt:now+WINDOW,sequence:head.sequence,head:head.head_hash,base:{sequence:base.sequence,head:base.head_hash},intents:await Promise.all(intents.map(async name=>({name,aborted:!!await this.custody.get(name.replace('.intent','.abort'))})))};
+      body={...captured,version:1,id,createdAt:now,expiresAt:Math.min(now+WINDOW,...chunks.map(chunk=>chunk.expiresAt)),sequence:head.sequence,head:head.head_hash,base:{sequence:base.sequence,head:base.head_hash},chunks,intents:await Promise.all(intents.map(async name=>({name,aborted:!!await this.custody.get(name.replace('.intent','.abort'))})))};
       boundary=encryptRecord(body,this.key,id+'.boundary');await this.custody.put(id+'.boundary',boundary);
     }
     const receipt=recoveryHash(boundary);await readBoundary(this.custody,this.key,id,receipt,this.now());this.fault('independent_readback');
@@ -72,22 +106,44 @@ export class D1Authority {
     }
     await this.db.batch([
       {sql:"SELECT CASE WHEN EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id='journal' AND state='exporting' AND manifest_hash=?1 AND sequence=?2 AND head_hash=?3) THEN 1 ELSE json('delivery_fence_changed') END",params:[id,head.sequence,head.head_hash]},
-      {sql:"INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES('baseline','custody',?1,?2,?3,0,'complete',1,?4,?5) ON CONFLICT(id) DO UPDATE SET manifest_hash=excluded.manifest_hash,sequence=excluded.sequence,head_hash=excluded.head_hash,created_at=excluded.created_at,expires_at=excluded.expires_at,version=version+1",params:[receipt,head.sequence,head.head_hash,body.createdAt,body.expiresAt]},
-      {sql:"UPDATE operational_recovery_checkpoints SET state='idle',created_at=?2,expires_at=?3,version=version+1 WHERE id='journal' AND state='exporting' AND manifest_hash=?1",params:[id,body.createdAt,body.expiresAt]},
+      {sql:"INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES('baseline','custody',?1,?2,?3,0,'complete',1,?4,?5) ON CONFLICT(id) DO UPDATE SET manifest_hash=excluded.manifest_hash,sequence=excluded.sequence,head_hash=excluded.head_hash,created_at=excluded.created_at,expires_at=excluded.expires_at,version=version+1",params:[receipt,head.sequence,head.head_hash,body.expiresAt-WINDOW,body.expiresAt]},
+      {sql:"UPDATE operational_recovery_checkpoints SET state='idle',created_at=?2,expires_at=?3,version=version+1 WHERE id='journal' AND state='exporting' AND manifest_hash=?1",params:[id,body.expiresAt-WINDOW,body.expiresAt]},
     ]);
     this.fault('delivery_acknowledged');return {receipt,body};
   }
 }
 // Exported custody inventory pins ciphertext hashes; no row contents enter logs.
 export async function custodyInventory(custody){const files=[];for(const name of await custody.list())files.push({name,sha256:recoveryHash(await custody.get(name))});return files;}
+async function readChunks(custody,key,chunks=[]) {
+  if(!Array.isArray(chunks)||chunks.length>10000)reject('journal_chunk_bounds');
+  const proofs=new Map();
+  for(const file of chunks){
+    if(!/^journal-chunk_\d+_\d+\.enc$/.test(file.name)||!/^[a-f0-9]{64}$/.test(file.sha256))reject('journal_chunk_reference');
+    const bytes=await custody.get(file.name);if(!bytes||recoveryHash(bytes)!==file.sha256)reject('journal_chunk_readback');
+    const chunk=decryptRecord(bytes,key,file.name);if(chunk.version!==1||!Array.isArray(chunk.events)||!chunk.events.length||chunk.events.length>25)reject('journal_chunk_bounds');
+    let sequence=chunk.base.sequence,previous=chunk.base.head;
+    for(const event of chunk.events){
+      const encrypted=Buffer.from(event.encrypted),intent=decryptRecord(encrypted,key,event.operationId+'.intent');
+      if(proofs.has(event.operationId)||intent.operationId!==event.operationId||recoveryHash(encrypted)!==event.hash||intent.sequence!==++sequence||intent.previousHash!==previous)reject('journal_chunk_chain');
+      // Keep only identity/hash in memory; ciphertext is independently pinned by
+      // the chunk receipt and need not be retained a second time during recovery.
+      proofs.set(event.operationId,{hash:event.hash});previous=event.hash;
+    }
+    if(sequence!==chunk.sequence||previous!==chunk.head)reject('journal_chunk_chain');
+  }
+  return proofs;
+}
 export async function readBoundary(custody,key,id,expectedReceipt,now=Date.now()){
   const bytes=await custody.get(id+'.boundary');if(!bytes||recoveryHash(bytes)!==expectedReceipt)reject('boundary_receipt');
   const b=decryptRecord(bytes,key,id+'.boundary');if(b.expiresAt<=now||b.createdAt>now)reject('boundary_expired');
   const names=[];for(const name of (await custody.list()).filter(n=>n.endsWith('.intent'))){if(decryptRecord(await custody.get(name),key,name).sequence>(b.base?.sequence||0))names.push(name);}names.sort();if(JSON.stringify(names)!==JSON.stringify(b.intents.map(x=>x.name).sort()))reject('later_or_missing_intent');
+  const compacted=await readChunks(custody,key,b.chunks);
   let sequence=b.base?.sequence||0,previous=b.base?.head||ZERO;
   const ordered=[];for(const name of names){const intent=await custody.get(name),aborted=b.intents.find(x=>x.name===name)?.aborted;
     if(aborted){const abort=await custody.get(name.replace('.intent','.abort'));if(!abort||decryptRecord(abort,key,name.replace('.intent','.abort')).intentHash!==recoveryHash(intent))reject('abort_missing');continue;}
-    const event=await custody.get(name.replace('.intent','.event'));if(!event||recoveryHash(intent)!==recoveryHash(event))reject('undelivered_authority');ordered.push({value:decryptRecord(intent,key,name),hash:recoveryHash(intent)});}
+    const compact=compacted.get(name.replace('.intent',''));
+    const proof=compact?null:await custody.get(name.replace('.intent','.event'));
+    if(recoveryHash(intent)!==(compact?.hash||(proof&&recoveryHash(proof))))reject('undelivered_authority');ordered.push({value:decryptRecord(intent,key,name),hash:recoveryHash(intent)});}
   ordered.sort((a,c)=>a.value.sequence-c.value.sequence);for(const event of ordered){if(event.value.sequence!==++sequence||event.value.previousHash!==previous)reject('boundary_chain');previous=event.hash;}
   if(sequence!==b.sequence||previous!==b.head)reject('boundary_head');
   if(!Array.isArray(b.files)||!b.files.length)reject('snapshot_inventory_required');

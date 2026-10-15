@@ -18,15 +18,36 @@ export class D1DriveIndex {
   }
   async row(name) {
     const identity = this.identity(name);
-    const rows = await this.db.query("SELECT * FROM operational_recovery_checkpoints WHERE kind='custody' AND manifest_hash=?1 AND id LIKE 'drive_file:%'", [identity]);
+    const prefix=this.prefix+identity+':';
+    const rows = await this.db.query('SELECT * FROM operational_recovery_checkpoints WHERE id>=?1 AND id<?2', [prefix,prefix+'~']);
     if (rows.length > 1) throw Error('drive_index_conflict');
-    const row = rows[0]; if (!row) return null;
+    return this.validateRow(name, rows[0]);
+  }
+  validateRow(name, row) {
+    if (!row) return null;
+    const identity = this.identity(name);
     const prefix = this.prefix + identity + ':', id = row.id.slice(prefix.length);
-    if (!row.id.startsWith(prefix) || !fileId(id) || row.head_hash !== recoveryHash(Buffer.from(row.id))
+    if (row.kind!=='custody'||row.manifest_hash!==identity||!row.id.startsWith(prefix) || !fileId(id) || row.head_hash !== recoveryHash(Buffer.from(row.id))
       || row.state !== 'complete' || row.expires_at - row.created_at !== WINDOW) throw Error('drive_index_corrupt');
     return { ...row, fileId: id };
   }
   async get(name) { return (await this.row(name))?.fileId || null; }
+  async getMany(names) {
+    if (!Array.isArray(names) || names.length > 1000 || new Set(names).size !== names.length) throw Error('drive_index_bounds');
+    const result = new Map();
+    for (let offset = 0; offset < names.length; offset += 40) {
+      const page = names.slice(offset, offset + 40), prefixes = page.map(name => this.prefix+this.identity(name)+':');
+      // Two binds/range stay below D1's100-parameter limit. No unindexed kind/hash
+      // predicate may turn this identity lookup into a retained-stock table scan.
+      const rows = await this.db.query('SELECT * FROM operational_recovery_checkpoints WHERE '+prefixes.map((_,i)=>'(id>=?'+(i*2+1)+' AND id<?'+(i*2+2)+')').join(' OR '),prefixes.flatMap(prefix=>[prefix,prefix+'~']));
+      for (const name of page) {
+        const matching = rows.filter(row => row.manifest_hash === this.identity(name));
+        if (matching.length > 1) throw Error('drive_index_conflict');
+        result.set(name, this.validateRow(name, matching[0])?.fileId || null);
+      }
+    }
+    return result;
+  }
   async recoveryRecord(name) {const row=await this.row(name);return row?{createdAt:row.created_at,expiresAt:row.expires_at}:null;}
   async recoverReserve(name, proposedId, record) {
     if(!Number.isSafeInteger(record?.createdAt)||!Number.isSafeInteger(record?.expiresAt)
@@ -37,8 +58,9 @@ export class D1DriveIndex {
     if (!fileId(proposedId)) throw Error('drive_file_identity');
     const identity = this.identity(name), id = this.prefix + identity + ':' + proposedId, at = this.now(), createdAt=recovery?.createdAt??at, expiresAt=recovery?.expiresAt??at+WINDOW;
     // D1 executes this conditional INSERT atomically: independent processes pick one winner.
-    await this.db.batch([{ sql: "INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) SELECT ?1,'custody',?2,0,?3,0,'complete',1,?4,?5 WHERE NOT EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE kind='custody' AND manifest_hash=?2 AND id LIKE 'drive_file:%')",
-      params: [id, identity, recoveryHash(Buffer.from(id)), createdAt, expiresAt] }]);
+    const prefix=this.prefix+identity+':';
+    await this.db.batch([{ sql: "INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) SELECT ?1,'custody',?2,0,?3,0,'complete',1,?4,?5 WHERE NOT EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id>=?6 AND id<?7)",
+      params: [id, identity, recoveryHash(Buffer.from(id)), createdAt, expiresAt,prefix,prefix+'~'] }]);
     const row = await this.row(name);
     if (!row || row.expires_at <= at) throw Error('drive_reservation_expired');
     if(recovery&&(row.fileId!==proposedId||row.created_at!==createdAt||row.expires_at!==expiresAt))throw Error('drive_recovery_conflict');

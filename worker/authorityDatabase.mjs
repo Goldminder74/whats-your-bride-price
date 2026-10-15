@@ -1,5 +1,16 @@
 import { createOperationId } from '../scripts/authority-runtime.mjs';
 
+// Exact repository-owned SQL only. This admission counter cannot grant money,
+// an attempt, an entitlement or restore access. Arbitrary SQL stays journalled.
+const QUICK_PLAY_ADMISSION = 'INSERT INTO daily_operation_limits (id,rate_key_hash,action,window_started_at,request_count,expires_at,created_at,updated_at) VALUES (?1,?2,?3,?4,1,?5,?6,?6) ON CONFLICT(rate_key_hash,action,window_started_at) DO UPDATE SET request_count=request_count+1,updated_at=excluded.updated_at';
+function ephemeralAdmission(sql, params) {
+  return sql.trim().replace(/\s+/g,' ') === QUICK_PLAY_ADMISSION && params.length === 6
+    && /^quick_play_limit_[a-f0-9]{32}$/.test(params[0]) && /^[a-f0-9]{64}$/.test(params[1])
+    && ['start','complete'].includes(params[2]) && Number.isSafeInteger(params[3])
+    && params[3]>0 && params[3]%60000===0 && params[4]===params[3]+86400000
+    && Number.isSafeInteger(params[5]) && params[5]>=params[3] && params[5]<params[3]+60000;
+}
+
 /** Private repository adapter. Never accept a service URL or SQL from the browser.
  * A lost transaction result is unavailable, not a fabricated successful write.
  * Repositories must recover through their existing authoritative idempotency reads.
@@ -14,6 +25,13 @@ export function createJournaledDatabase(database, authority, { now = Date.now } 
     const statement = {
       bind(...values) { return prepare(sql, values); },
       async run() {
+        if (ephemeralAdmission(sql,params)) {
+          const fence=await authority.readFence();
+          if(typeof fence!=='string'||!fence)throw Error('authority_read_unavailable');
+          const result=await database.prepare(sql).bind(...params).run();
+          if(!result.success||await authority.readFence()!==fence)throw Error('authority_read_changed');
+          return result;
+        }
         operationId ||= createOperationId(now());
         const result = await authority.transact(operationId, [plan]);
         return validate(result, 1)[0];

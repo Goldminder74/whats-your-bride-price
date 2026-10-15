@@ -45,10 +45,16 @@ export function authoritySnapshot(db, custody, key, { pageSize = 50, maxPages = 
       if (!Number.isSafeInteger(count) || count < 0) throw Error('snapshot_count');
       counts[table.name] = count;
       const order = primary.map(column => quote(column.name)).join(',');
+      let cursor;
       for (let offset = 0; offset < count; offset += pageSize) {
         if (++pages > maxPages) throw Error('snapshot_capacity_exceeded');
-        const rows = await db.query('SELECT * FROM ' + quote(table.name) + ' ORDER BY ' + order + ' LIMIT ?1 OFFSET ?2', [pageSize, offset]);
+        // Composite primary-key keysets avoid rescanning every previous page.
+        // Nullable legacy primary keys cannot form an unambiguous resume cursor.
+        const predicate = cursor ? ' WHERE (' + order + ') > (' + primary.map((_, i) => '?' + (i + 2)).join(',') + ')' : '';
+        const rows = await db.query('SELECT * FROM ' + quote(table.name) + predicate + ' ORDER BY ' + order + ' LIMIT ?1', [pageSize, ...(cursor || [])]);
         if (rows.length !== Math.min(pageSize, count-offset)) throw Error('snapshot_page_gap');
+        cursor = primary.map(column => rows.at(-1)[column.name]);
+        if (cursor.some(value => value === null || value === undefined)) throw Error('snapshot_primary_key_null');
         const encoded = rows.map(row => Object.fromEntries(Object.entries(row).map(([k,v]) => [k,encode(v)])));
         await put(head.manifest_hash + '.t' + tables.indexOf(table) + '.p' + offset + '.enc', { table: table.name, offset, rows: encoded });
       }

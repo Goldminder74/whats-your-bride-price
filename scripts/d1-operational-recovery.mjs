@@ -105,7 +105,9 @@ export async function cleanupRecovery(authority,id,receipt,{limit=50,now=Date.no
  const covered=boundary.base?.sequence||0;
  const rows=await authority.db.query('SELECT sequence FROM operational_authority_outbox WHERE sequence<=?1 AND expires_at<=?2 AND delivery_receipt IS NOT NULL ORDER BY sequence LIMIT ?3',[covered,now,limit]);
  if(rows.length)await authority.db.batch(rows.map(r=>({sql:'DELETE FROM operational_authority_outbox WHERE sequence=?1 AND expires_at<=?2 AND delivery_receipt IS NOT NULL',params:[r.sequence,now]})));
- const checkpoints=await authority.db.query("SELECT id FROM operational_recovery_checkpoints WHERE id NOT IN ('journal','baseline') AND state='complete' AND expires_at<=?1 ORDER BY id LIMIT ?2",[now,limit]);
+ // Provider IDs must survive until Drive acknowledges deletion. Its bounded
+ // cleanup removes reservations itself; generic checkpoint retirement cannot.
+ const checkpoints=await authority.db.query("SELECT id FROM operational_recovery_checkpoints WHERE id NOT IN ('journal','baseline') AND id NOT LIKE 'drive_file:%' AND state='complete' AND expires_at<=?1 ORDER BY id LIMIT ?2",[now,limit]);
  if(checkpoints.length)await authority.db.batch(checkpoints.map(r=>({sql:"DELETE FROM operational_recovery_checkpoints WHERE id=?1 AND state='complete' AND expires_at<=?2",params:[r.id,now]})));
  let files=0;
  for(const name of (await authority.custody.list()).filter(n=>n.endsWith('.intent'))){if(files+2>limit)break;

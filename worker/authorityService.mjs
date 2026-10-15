@@ -6,6 +6,7 @@ import { D1Authority } from '../scripts/authority-runtime.mjs';
 import { recoveryHash } from '../scripts/recovery-crypto.mjs';
 import { operatorRetentionPlan, runApprovedRetention, assertRestoreReceipt } from '../db/retention.ts';
 import { createJournaledDatabase } from './authorityDatabase.mjs';
+import { PartitionedDriveCustody } from '../scripts/partitioned-drive-custody.mjs';
 
 /** Private service wiring only. There is deliberately no public HTTP or cron handler. */
 export function createAuthorityService({ db, custody, key, snapshot, alert, now = Date.now, recoveryReady = async () => {} }) {
@@ -50,6 +51,11 @@ export function createAuthorityService({ db, custody, key, snapshot, alert, now 
       if (!Array.isArray(statements) || !statements.length || statements.length > 97) return Promise.reject(Error('authority_batch_bounds'));
       return exclusive(() => writer.run(operationId, JSON.stringify(statements), fenced =>
         new D1Authority(fenced, custody, key, { now }).mutate(operationId, statements)));
+    },
+    flush(boundaryId, limit=25) {
+      if (!/^[a-zA-Z0-9_-]{1,80}$/.test(boundaryId) || !Number.isInteger(limit) || limit<1 || limit>25) return Promise.reject(Error('journal_chunk_bounds'));
+      return exclusive(() => writer.run('journal:' + boundaryId, JSON.stringify([boundaryId,limit]), async fenced =>
+        new D1Authority(fenced,custody,key,{now}).flush(limit)));
     },
     deliver(boundaryId) { return exclusive(() => writer.run('delivery:' + boundaryId, boundaryId, async fenced => {
       const { receipt } = await new D1Authority(fenced, custody, key, { now }).deliver(boundaryId, snapshot);
@@ -124,7 +130,20 @@ export function configuredAuthorityService(env, { snapshot, alert, now = Date.no
   const db = d1AuthorityAdapter(env.DB);
   const index = new D1DriveIndex(db, env.WYBP_DRIVE_FOLDER_ID, { now });
   const accessToken = driveAccessToken({clientId:env.WYBP_DRIVE_CLIENT_ID,clientSecret:env.WYBP_DRIVE_CLIENT_SECRET,refreshToken:env.WYBP_DRIVE_REFRESH_TOKEN,fetcher,now});
-  const custody = new DriveCustody({folderId:env.WYBP_DRIVE_FOLDER_ID,index,accessToken,fetcher});
+  const root = new DriveCustody({folderId:env.WYBP_DRIVE_FOLDER_ID,index,accessToken,fetcher});
+  let custody=root;
+  if(env.WYBP_DRIVE_SHARD_FOLDER_IDS!==undefined){
+    let folders;try{folders=JSON.parse(env.WYBP_DRIVE_SHARD_FOLDER_IDS);}catch{throw Error('drive_partition_configuration');}
+    if(!Array.isArray(folders)||folders.length!==16||env.WYBP_HOSTED_REHEARSAL_ENABLED==='true')throw Error('drive_partition_configuration');
+    custody=new PartitionedDriveCustody(root,folders.map(folderId=>new DriveCustody({folderId,index:new D1DriveIndex(db,folderId,{now}),accessToken,fetcher})),{
+      async verifyFolder(folderId,parent){
+        const response=await root.request('https://www.googleapis.com/drive/v3/files/'+folderId+'?fields=id,parents,mimeType,trashed');
+        if(!response.ok)throw Error('drive_partition_scope');
+        const metadata=await response.json();
+        return metadata.id===folderId&&!metadata.trashed&&metadata.mimeType==='application/vnd.google-apps.folder'&&metadata.parents?.includes(parent)===true;
+      },
+    });
+  }
   const recoveryReady = () => assertRestoreReceipt(env.DB, env.WYBP_RESTORE_RECEIPT_SHA256);
   return { service:createAuthorityService({db,custody,key,snapshot,alert,now,recoveryReady}), custody, index };
 }

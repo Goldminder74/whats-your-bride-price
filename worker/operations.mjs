@@ -38,6 +38,10 @@ export class ApplicationAuthority extends WorkerEntrypoint {
 }
 
 export class RecoveryOperator extends ApplicationAuthority {
+  async snapshot(boundaryId) {
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
+    return authorityDeliveryTick(runtime(this.env).service,boundaryId,operationalHeartbeat(this.env));
+  }
   async verifyHeartbeat() {
     if(this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_monitor_configuration');
     await operationalHeartbeat(this.env)({status:'synthetic_verification'});

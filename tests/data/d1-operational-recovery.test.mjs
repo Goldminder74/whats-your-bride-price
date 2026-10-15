@@ -117,7 +117,9 @@ test('bounded retirement requires a fresh full boundary, expires records at the 
   let clock=at+29*86400000;c.authority.now=()=>clock;
   const next=await c.authority.deliver('next',()=>snapshot(c));
   clock=at+30*86400000;
+  c.sqlite.prepare("INSERT INTO operational_recovery_checkpoints VALUES('drive_file:synthetic_reservation','custody',?1,0,?1,0,'complete',1,?2,?3)").run('a'.repeat(64),at,clock);
   const result=await cleanupRecovery(c.authority,'next',next.receipt,{now:clock,limit:2});assert.equal(result.outbox,1);assert.equal(result.files,2);
+  assert.equal(c.sqlite.prepare("SELECT COUNT(*) n FROM operational_recovery_checkpoints WHERE id='drive_file:synthetic_reservation'").get().n,1);
   assert.equal((await cleanupRecovery(c.authority,'next',next.receipt,{now:clock,limit:2})).outbox,0);
   await assert.rejects(c.authority.mutate(op('one'),insert('one')),/authority_operation/);
   await assert.rejects(readBoundary(c.custody,c.key,'first',next.receipt,clock));
