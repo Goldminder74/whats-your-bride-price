@@ -14,6 +14,19 @@ access, DNS or live payment approved. No purchase or benchmark execution occurre
 
 ## Latest continuation — read first
 
+[Launch-priority continuation](launch-priority-continuation.md): GBP150/month is now
+a planning envelope only, not spending approval. ConditionalUSD5/GBP8 benchmark
+and actualGBP50 spending bounds remain unchanged. Global cross-phase35-credit
+traffic/compute reservations and bounded segmented snapshot/streaming implemented
+locally;24 focused and54 preparation tests, affected lint/diff pass.51,003 synthetic
+rows resume across42 capture steps without duplication/premature access. No migration,
+deployment, purchase or hosted load. Full boundary/import/lost-index integration and
+metered hosted harness remain unfinished; do not claim full-stock recovery/capacity.
+Read-only inventory stilltwo D1 DBs/no r002; subscription API403 persists. No broader
+scope requested. Realistic PhaseC dependency sizing and actual retained-stock model
+must be corrected before execution. See continuation for pricing, assumptions and
+consolidated owner decisions; no speculative upgrade request or purchase.
+
 [Consolidated launch decision](launch-decision-report.md) supersedes earlier checkout
 blocker: final Workers quote now loads and owner confirms USD5/month due today plus
 usage. No purchase or hosted change. Fresh Netlify507.8 credits, auto recharge

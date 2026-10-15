@@ -1,5 +1,11 @@
 # Consolidated launch decision — 15 October 2026
 
+Latest update: [launch-priority continuation](launch-priority-continuation.md).
+Owner permits assessing GBP150/month, not spending it. Local segmented capture and
+global benchmark traffic-credit reservation now pass focused checks; hosted harness,
+full-stock recovery integration and measured costs remain gates. Actual spending
+authority is still conditionalUSD5/GBP8 benchmark withinGBP50. No purchase or load.
+
 **NO-GO for public launch.** Requirements remain 5,000 completed games/day,
 500/hour and a 48-hour outage allowance within GBP50/month. Drive storage and
 Namecheap email are separately funded; Stripe fees are outside this ceiling.

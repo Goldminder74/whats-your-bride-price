@@ -3,12 +3,31 @@ import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {mkdirSync,mkdtempSync,realpathSync,unlinkSync,rmdirSync} from 'node:fs';
 import {resolve,join,sep} from 'node:path';
-import {ApprovedBenchmarkBudget,BENCHMARK_PHASES,verifyBenchmarkPreflight,assertBenchmarkResource,peakHourSchedule,executeBudgetedAction} from '../../scripts/approved-benchmark-budget.mjs';
+import {ApprovedBenchmarkBudget,BENCHMARK_PHASES,verifyBenchmarkPreflight,assertBenchmarkResource,peakHourSchedule,executeBudgetedAction,benchmarkTrafficMicrocredits} from '../../scripts/approved-benchmark-budget.mjs';
 
 const at=Date.UTC(2026,9,15);
 const facts=()=>({reviewAvailable:true,verifiedAt:at,evidenceSha256:'a'.repeat(64),account:'b6b22a9a87b5758725e5c499782160af',netlifyTeam:'goldminder74',autoTopups:false,standardPaidQuoted:true,standardPaidConfirmed:true,workerCpuLimitMs:100,usageGBPPerUSD:.96,subscriptionGBP:4.8,maximumUsageGBP:2,currentWholeAccountGBP:9,otherSubscriptionsKnown:true,netlifyCreditsAvailable:400,includedWritesAvailable:5100000,includedReadsAvailable:71000000,includedStorageBytesAvailable:250*1024*1024});
 const vector=(overrides={})=>({...Object.fromEntries(Object.keys(BENCHMARK_PHASES.A.caps).map(key=>[key,0])),...overrides});
 const receipt='b'.repeat(64);
+test('traffic credits include compute and reserve across phases and replacement instances',()=>{
+ assert.equal(benchmarkTrafficMicrocredits({external:10000,transferBytes:1000000000,computeGbMs:3600000}),32000000);
+ assert.throws(()=>benchmarkTrafficMicrocredits({external:1,transferBytes:0}),/credit_unknown/);
+ const db=new DatabaseSync(':memory:');let clock=at;
+ const options={runId:'synthetic_credit',preflight:facts(),now:()=>clock};
+ try{
+  const b=new ApprovedBenchmarkBudget(db,{...options,phase:'B'});
+  // Stay below every individual phase limit, but reserve most global credit budget.
+  const upper=vector({transferBytes:700000000,computeGbMs:2800000});
+  b.reserve('credit_b',upper);
+  clock+=1000;
+  const c=new ApprovedBenchmarkBudget(db,{...options,phase:'C',preflight:{...facts(),verifiedAt:clock}});
+  assert.throws(()=>c.reserve('credit_c',vector({transferBytes:150000000,computeGbMs:1400000})),/traffic_credit_stop/);
+  assert.equal(c.receipt().used.transferBytes,0);
+  const replacement=new ApprovedBenchmarkBudget(db,{...options,phase:'B',preflight:{...facts(),verifiedAt:clock}});
+  assert.equal(replacement.reserve('credit_b',upper).execute,false);
+  assert.throws(()=>replacement.reserve('more',vector({computeGbMs:1000000})),/limit_computeGbMs|traffic_credit_stop/);
+ }finally{db.close();}
+});
 function fixture(phase='B'){
  const db=new DatabaseSync(':memory:');let clock=at;
  const options={runId:'synthetic_run',phase,preflight:facts(),now:()=>clock};

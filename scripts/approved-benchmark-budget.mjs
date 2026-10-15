@@ -1,7 +1,16 @@
 import { createHash, randomUUID } from 'node:crypto';
 
 const MB=1000000; // Conservative decimal MB/GB; never enlarge an approved cap.
-const freezePhase=phase=>Object.freeze({...phase,caps:Object.freeze(phase.caps)});
+// Fixed-point credits: reserve rounded UP before effects. All external requests
+// and bytes are conservatively treated as Netlify-billed, including provider I/O.
+// computeGbMs is allocated GB * elapsed milliseconds, rounded up by the adapter.
+export function benchmarkTrafficMicrocredits(value) {
+ if(!value||['external','transferBytes','computeGbMs'].some(k=>!Number.isSafeInteger(value[k])||value[k]<0))throw Error('benchmark_credit_unknown');
+ const credits=value.external*200+Math.ceil(value.transferBytes/50)+Math.ceil(value.computeGbMs*25/9);
+ if(!Number.isSafeInteger(credits))throw Error('benchmark_credit_unknown');return credits;
+}
+const TRAFFIC_MICROCREDITS=35000000;
+const freezePhase=phase=>Object.freeze({...phase,caps:Object.freeze({...phase.caps,computeGbMs:3600000})});
 export const BENCHMARK_PHASES=Object.freeze({
  A:freezePhase({durationMs:30*60000,externalPerSecond:1,internalPerSecond:1,completedGames:22,caps:{external:1000,internal:0,writes:10000,reads:100000,storageBytes:10*MB,transferBytes:100*MB,driveObjects:100,driveBytes:10*MB}}),
  B:freezePhase({durationMs:60*60000,externalPerSecond:10,internalPerSecond:500,completedGames:500,caps:{external:80000,internal:600000,writes:2000000,reads:10000000,storageBytes:100*MB,transferBytes:1000*MB,driveObjects:6000,driveBytes:100*MB}}),
@@ -95,6 +104,9 @@ export class ApprovedBenchmarkBudget {
     if(projected>this.phase.caps[key]*threshold||(!cleanup&&upper[key]>0&&projected===this.phase.caps[key]*threshold))reject('benchmark_limit_'+key);
     used[key]=projected;
    }
+   const other=this.db.prepare('SELECT used FROM benchmark_runs WHERE substr(id,1,?1)=?2 AND id<>?3').all(this.session.length+1,this.session+':',this.id);
+   const credits=benchmarkTrafficMicrocredits(used)+other.reduce((sum,r)=>sum+benchmarkTrafficMicrocredits(JSON.parse(r.used)),0);
+   if(credits>TRAFFIC_MICROCREDITS*(cleanup?1:.8)||(!cleanup&&credits===TRAFFIC_MICROCREDITS*.8))reject('benchmark_traffic_credit_stop');
    let burstAt=row.burst_at;
    if(burst){if(!this.id.endsWith(':B'))reject('benchmark_burst_scope');burstAt??=at;if(at-burstAt>=60000)reject('benchmark_burst_expired');}
    const second=Math.floor(at/1000),rate=this.db.prepare('SELECT * FROM benchmark_rate WHERE run_id=?1 AND second=?2').get(this.id,second)||{external:0,internal:0};
