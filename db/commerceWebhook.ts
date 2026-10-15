@@ -40,12 +40,13 @@ export async function processCommerceWebhook(database: AtomicD1Database, event: 
     }
   }
   const dispute = "EXISTS(SELECT 1 FROM stripe_webhook_events e WHERE e.order_id=commerce_orders.id AND e.event_type='charge.dispute.created')";
+  const disputedAmountMismatch = "EXISTS(SELECT 1 FROM stripe_webhook_events e WHERE e.order_id=commerce_orders.id AND e.event_type='charge.dispute.created' AND (e.amount_minor IS NULL OR e.amount_minor!=commerce_orders.amount_minor))";
   const full = "EXISTS(SELECT 1 FROM stripe_webhook_events e WHERE e.order_id=commerce_orders.id AND e.event_type='charge.refunded' AND e.amount_minor=commerce_orders.amount_minor AND e.amount_refunded_minor=e.amount_minor)";
   const partial = "EXISTS(SELECT 1 FROM stripe_webhook_events e WHERE e.order_id=commerce_orders.id AND e.event_type='charge.refunded')";
   const consumed = "EXISTS(SELECT 1 FROM cowrie_ledger debit JOIN cowrie_purchase_allocations a ON a.id=debit.related_allocation_id WHERE a.order_id=commerce_orders.id AND debit.entry_type='quick_play_debit' AND NOT EXISTS(SELECT 1 FROM cowrie_ledger reversal WHERE reversal.reversal_of_ledger_id=debit.id))";
   statements.push(database.prepare(`UPDATE commerce_orders SET state=CASE
     WHEN state IN('deleted','expired') THEN state
-    WHEN ${dispute} OR disputed_at IS NOT NULL THEN CASE WHEN ${consumed} THEN 'review_required' ELSE 'disputed' END
+    WHEN ${dispute} OR disputed_at IS NOT NULL THEN CASE WHEN ${consumed} OR ${disputedAmountMismatch} THEN 'review_required' ELSE 'disputed' END
     WHEN ${full} THEN CASE WHEN ${consumed} THEN 'review_required' ELSE 'refunded' END
     WHEN refunded_at IS NOT NULL THEN state
     WHEN ${partial} OR state='review_required' THEN 'review_required'
@@ -62,7 +63,7 @@ export async function processCommerceWebhook(database: AtomicD1Database, event: 
   statements.push(database.prepare(`UPDATE commerce_orders SET fulfilled_at=COALESCE(fulfilled_at,?2),updated_at=MAX(updated_at,?2) WHERE id=${target} AND state='fulfilled'`).bind(event.stripeEventId,now));
   // Royal Reveal stays a direct, result-specific entitlement.
   statements.push(database.prepare(`INSERT INTO commerce_entitlements(id,order_id,result_id,anonymous_owner_hash,product_key,state,granted_at,retention_expires_at,version,created_at,updated_at) SELECT 'commerce_entitlement_'||id,id,result_id,anonymous_owner_hash,product_key,'active',?2,retention_expires_at,1,?2,?2 FROM commerce_orders WHERE id=${target} AND product_key='royal_reveal_v1' AND state='fulfilled' ON CONFLICT(order_id) DO NOTHING`).bind(event.stripeEventId,now));
-  statements.push(database.prepare(`UPDATE commerce_entitlements SET state='revoked',revoked_at=COALESCE(revoked_at,?2),updated_at=MAX(updated_at,?2) WHERE order_id=${target} AND state='active' AND EXISTS(SELECT 1 FROM commerce_orders o WHERE o.id=order_id AND (o.state IN('refunded','disputed') OR o.refunded_at IS NOT NULL))`).bind(event.stripeEventId,now));
+  statements.push(database.prepare(`UPDATE commerce_entitlements SET state='revoked',revoked_at=COALESCE(revoked_at,?2),updated_at=MAX(updated_at,?2) WHERE order_id=${target} AND state='active' AND EXISTS(SELECT 1 FROM commerce_orders o WHERE o.id=order_id AND (o.state IN('refunded','disputed') OR o.refunded_at IS NOT NULL OR o.disputed_at IS NOT NULL))`).bind(event.stripeEventId,now));
   // Order IDs are opaque and unique. Independent domains bind each immutable entry.
   const reference = event.clientReferenceId || event.paymentIntentHash || event.stripeEventId;
   const credit = await digest(`wybp:cowrie-purchase:v1\u0000${reference}`);

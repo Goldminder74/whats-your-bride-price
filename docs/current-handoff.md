@@ -2,64 +2,65 @@
 
 ## Decision and checkpoint
 
-Branch `feature/viral-build-sprint`; continuation starts at `b6259a3`.
+Branch `feature/viral-build-sprint`; continuation starts at `e2ecf30`.
 Resolve validated continuation commit with `git rev-parse HEAD`.
-Owner retains current architecture, **5,000 completed games/day and GBP50/month**.
-The500k redesign/benchmark are deferred. No paid upgrade/top-up, DNS change,
-public launch, live payment or production schedule activation.
+Current architecture and **5,000 completed games/day planning target** retained;
+500k redesign/benchmark deferred. **GBP50/month covers hosting/backups/operations,
+not Stripe fees**. Existing paid Drive storage is separately funded and excluded
+by owner instruction. No upgrade/top-up, public launch, DNS/live-payment or schedule activation.
 
 ## Deployed and preserved
 
-[Private game](https://wybp-protected-test.netlify.app/) remains source
+[Private game](https://wybp-protected-test.netlify.app/) restored to source
 `42bf37abbfc18e783da3815e12ee9c176007ba1b`, Netlify `6acb796444ae067fcc06f6c9`,
-Worker `1b76d3fd-6d42-478e-a172-36e6c648c05e`: random ON; commerce/Cowries/webhook/
-cron/other optional flags OFF. D1 `1a268b28-e6d5-4431-8f84-a886df9369f1`,
-0000–0012,30 eligible questions/region; R2 unbound. Preserve wallets/catalogue,
-unpublished research/reserves, existing websites/email, Wigsmi/Sherwood, Sites,
-staging/stash. No hosted application data/settings changed this continuation.
+Worker `1b76d3fd-6d42-478e-a172-36e6c648c05e`: random ON; Cowries/commerce/webhook/
+cron/other optional flags OFF. D1 `1a268b28-e6d5-4431-8f84-a886df9369f1`,0000–0012,
+30 eligible questions/region unchanged. Existing54-Cowrie/frozen wallets preserved;
+new synthetic wallet zero. R2 unbound. Preserve websites/email, Wigsmi/Sherwood,
+unpublished drafts/reserves, staging/stash. No migration, catalogue or production-data writes.
 
-Private ops `wybp-prod-ops-r001`, version `7de3483b-f7ac-4440-a7db-72c3151cb9c4`,
-only D1 `a5b2b409-ed08-48c9-ac1d-36699fc6c4b9`/WEUR, unchanged0000–0013.
-No public endpoints/schedules. Hosted synthetic data cleaned; original empty baseline
-and all14migration receipts verified. New local code below is not deployed.
+Private ops version `7de3483b-f7ac-4440-a7db-72c3151cb9c4`, D1
+`a5b2b409-ed08-48c9-ac1d-36699fc6c4b9`/WEUR,0000–0013; no public routes/schedules.
+New production limiter/authority-fenced maintenance remains local, not deployed.
 
-## Passed evidence and local continuation
+## Verified continuation
 
-Google OAuth/ownership/drive.file setup and six Secrets completed. Do not repeat.
-[Recovery information](https://wybp-recovery-info.netlify.app/) used30 approved credits.
-Encrypted Drive upload/readback/decryption, persistent IDs, concurrent retries,
-39-page populated restore,123-case pagination, accounting/holds/closed wallets/deletion
-suppression and interrupted/full lost-index recovery passed. Cleanup restored original
-baseline/triggers. Saved independent-key copy decrypted archive; temporary secret removed.
-Custody independence/emergency access remain owner-reported; no separate custodian.
-SMTP labelled test arrived at daily-monitored noreply@classesforculture.com; gate OFF.
-Never repeat the alert/key checks. Detailed receipts: [operations](private-operations-runtime.md).
+Application-linked EUR5-Cowrie purchase retained exact199p GBP order, credited5 once;
+full refund reversed5. Same-owner15-Cowrie EUR6.14 purchase succeeded,499p order,
+480p signed dispute. Found missing mismatch-review state; narrow D1/memory correction
+retains review_required, revokes affected Royal Reveal, preserves existing accounting.
+Corrected release `4955449cda2b11bbab19d3dfdbbee681041204302fd68f2657dd901ea637dc52`
+(Netlify `6ace8316f7070ee94bbb500a`, Worker `79b5e909-1707-4337-8bae-6f228448fac4`)
+verified signed dispute/stale-checkout replay: one credit/reversal,zero value restored.
+Then rolled back matched pair above. Owner entry observed; anonymous primary/preview401,
+unsigned Worker/disabled webhook404. Secrets absent during build;143 modules/110 hashes.
+Original fifteen-Cowrie failure and earlier191/199 discrepancy have no proven cause.
+New converted live coverage5/15 only; reuse prior GBP all-product/mobile evidence.
+[Payment receipts and limitations](stripe-payment-link-setup.md).
 
-New local production limiter uses shared D1 buckets with authority fences before/after
-admission. Private bounded maintenance now connects retention, verified snapshot delivery
-and external heartbeat; missing monitor/gate denies execution. No schema/cron added.
-21 focused+2 compiled RPC checks, typecheck/scoped lint and secret-free synthetic matched
-build/package verification passed (143 server modules). Synthetic release is not deployable.
-Initial sandbox startup restrictions resolved with local access, not weaker assertions.
-Evidence logs ignored under outputs/authority-preparation/launch-continuation-*.
+Focused accounting/early-event/retry/frozen-wallet/Royal Reveal regressions and compiled
+payment/mobile gates passed. Lint fix ignores generated **/.wrangler/** only.
+Final full integration gate passed across two logs: generated-dist Windows EPERM
+interrupted after smoke; resumed remaining stages without repeating passed checks.
+Compiled hosting/private-runtime Chromium+WebKit passed. Logs: outputs/authority-preparation/converted-*.
 
-Read-only correct Stripe sandbox confirms199p GBP,245 cents EUR and191p dispute;
-completed Checkout has client_reference_id:null. It cannot prove application-linked
-fulfilment. Preserve review-required; no Stripe mutation. [Payment evidence](stripe-payment-link-setup.md).
+## Remaining gates and next action
 
-## Next action and remaining gates
+Netlify Personal USD9,583.8/1,000 credits available; auto recharge OFF; four shared
+projects.13October observations: Drive343.5GB free of400GB; intended Cloudflare
+Workers Free,257/100k requests today. CLI subscriptions API403; normal dashboard
+sign-in completed without extra CLI scope. Ops current version:2calls/1exception,
+zero CPU-limit errors; attribution unproved, recorded gate denial consistent.
+[100/day provisional pilot arithmetic](production-capacity-proposal.md) is NOT certified
+capacity or an approved schedule.5k/day fails current quota/cadence model. No benchmark run.
 
-Continue private production wiring/custody/monitor setup and fresh application-linked
-converted sandbox reconciliation under existing authority. Monitor URL requires secure
-installation; keep jobs OFF.5k/day withinGBP50 remains unverified: measured20 logical
-writes/free game exhaust100k/day allowance before overhead; small hosted purge1,440answers/
-14.8s is not sustained recovery proof. Proposed cadence fails modelled outage allowance.
-No deferred benchmark started. [Capacity](production-capacity-proposal.md).
-
-Owner: secure seller/complaints address and Stripe verification directly in provider;
-final consumer/privacy/tax/support decisions; independent monitor/emergency custody.
-Production catalogue/runtime, costs/cadence and converted reconciliation remain gates.
-[Current configuration/cutover plan](production-preparation-continuation.md) supersedes
-older proposals in [activation package](isolated-test-approval-package.md).
-Public target https://classesforculture.com/; preserve old site/email and exact rollback
-before separate launch/payment approval. Owner policy is not professional legal sign-off.
+Reuse passed encrypted custody, independent-key,39-page populated/lost-index restore,
+accounting/holds/closure/deletion and received daily-monitored noreply test alert; never repeat.
+[Operations](private-operations-runtime.md). Independent monitoring/emergency custody,
+production wiring/catalogue, sustained billing/purge/outage evidence remain gates.
+Owner completes secure seller address/verification and final consumer/tax/privacy/support
+choices via [secure checklist/cutover plan](production-preparation-continuation.md).
+Next: approve smallest bounded pilot validation scope after reviewing capacity gaps;
+finish outstanding converted-product evidence/reconciliation policy before live approval.
+Public target https://classesforculture.com/; protect old website/email and rollback.
+Owner policy is not professional legal sign-off.

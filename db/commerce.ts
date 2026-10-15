@@ -209,16 +209,17 @@ export class InMemoryCommerceRepository implements CommerceRepository {
     if(current.stripePaymentIntentHash&&event.paymentIntentHash&&current.stripePaymentIntentHash!==event.paymentIntentHash)return fail('stripe_order_unavailable');
     const adverse=[...this.verifiedEvents.values()].filter(value=>hash&&value.paymentIntentHash===hash);
     const dispute=adverse.some(value=>value.eventType==='charge.dispute.created');
+    const disputedAmountMismatch=adverse.some(value=>value.eventType==='charge.dispute.created'&&value.amountTotal!==(current.amountMinor??199));
     const full=adverse.some(value=>value.eventType==='charge.refunded'&&value.amountTotal===(current.amountMinor??199)&&value.amountRefunded===value.amountTotal);
     const partial=adverse.some(value=>value.eventType==='charge.refunded');
     let state:CommerceOrderState=current.state;
     if(!['expired','deleted'].includes(state)) {
-      if(dispute||current.disputedAt)state='disputed';else if(full)state='refunded';else if(partial||state==='review_required'||current.refundedAt)state=state==='refunded'?'refunded':'review_required';else if(state==='fulfilled')state='fulfilled';else if(current.pendingExpiresAt<=now)state='expired';else if(event.paymentStatus==='paid')state='fulfilled';else if(event.eventType==='checkout.session.async_payment_failed')state='failed';else if(event.eventType==='checkout.session.completed'&&state!=='failed')state='processing';
+      if(dispute||current.disputedAt)state=disputedAmountMismatch?'review_required':'disputed';else if(full)state='refunded';else if(partial||state==='review_required'||current.refundedAt)state=state==='refunded'?'refunded':'review_required';else if(state==='fulfilled')state='fulfilled';else if(current.pendingExpiresAt<=now)state='expired';else if(event.paymentStatus==='paid')state='fulfilled';else if(event.eventType==='checkout.session.async_payment_failed')state='failed';else if(event.eventType==='checkout.session.completed'&&state!=='failed')state='processing';
     }
     this.orders.set(current.id,Object.freeze({...current,state,stripePaymentIntentHash:hash||null,stripeCheckoutSessionId:event.checkoutSessionId||current.stripeCheckoutSessionId,paidAt:state==='fulfilled'?current.paidAt||now:current.paidAt,fulfilledAt:state==='fulfilled'?current.fulfilledAt||now:current.fulfilledAt,refundedAt:full?current.refundedAt||now:current.refundedAt,disputedAt:dispute?current.disputedAt||now:current.disputedAt}));
     const result=current.resultId?await this.getOwnedCompletedResultById(current.resultId):null;
     if(result&&state==='fulfilled')this.entitlements.set(result.publicSlug+':'+current.anonymousOwnerHash,Object.freeze({active:true,productKey:ROYAL_REVEAL_PRODUCT_KEY,resultSlug:result.publicSlug,edition:result.edition,score:result.score,maximumScore:result.total,resultTitle:result.resultTitle,avatarId:result.avatarId}));
-    if(result&&['refunded','disputed'].includes(state))this.entitlements.delete(result.publicSlug+':'+current.anonymousOwnerHash);
+    if(result&&(['refunded','disputed'].includes(state)||dispute))this.entitlements.delete(result.publicSlug+':'+current.anonymousOwnerHash);
     return Object.freeze({replay:Boolean(prior),state});
   }
   async retainExpired(now: number, limit: number, authorized: boolean) { if (!authorized || !Number.isInteger(limit) || limit < 1 || limit > 500) return fail("retention_not_authorized"); let count = 0; for (const [id, order] of this.orders) if (count < limit && order.pendingExpiresAt <= now && order.state !== "fulfilled") { this.orders.delete(id); count += 1; } return count; }

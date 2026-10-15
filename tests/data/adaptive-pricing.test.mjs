@@ -19,3 +19,24 @@ for(const key of ['cowrie_5_v1','cowrie_15_v1','cowrie_40_v1']) {
     }finally{c.database.close();}
   });
 }
+
+for (const beforeCheckout of [false,true]) {
+  test(`unreconciled converted dispute stays review-required; retries cannot restore value (early=${beforeCheckout})`,async()=>{
+    const c=await setup();try{
+      const order=await c.service.startOrder(request(c,'cowrie_15_v1'));
+      const paid=await verified('checkout.session.completed',checkout(order,'cowrie_15_v1'));
+      const disputed=await verified('charge.dispute.created',adverse('pi_local_D_primary',480,0));
+      if(beforeCheckout) await c.service.webhook(disputed);
+      await c.service.webhook(paid);
+      await c.service.webhook(disputed);
+      await c.service.webhook(disputed);
+      await c.service.webhook(paid);
+      assert.equal(c.database.prepare('SELECT state FROM commerce_orders WHERE public_order_reference=?').get(order.publicOrderReference).state,'review_required');
+      assert.equal(balance(c).purchased_balance,0);
+      const ledger=c.database.prepare('SELECT entry_type,COUNT(*) n,SUM(delta) delta FROM cowrie_ledger GROUP BY entry_type').all();
+      if(beforeCheckout) assert.equal(ledger.length,0);
+      else assert.deepEqual(ledger.map(x=>({...x})),[{entry_type:'purchase_credit',n:1,delta:15},{entry_type:'refund_reversal',n:1,delta:-15}]);
+      assert.equal(c.database.prepare("SELECT COUNT(*) n FROM stripe_webhook_events WHERE processing_result!='review_required' OR processed_at IS NULL").get().n,0);
+    }finally{c.database.close();}
+  });
+}

@@ -195,3 +195,15 @@ test("signed real Stripe dispute IDs are accepted; incorrect object prefixes and
   const live = JSON.stringify({id:"evt_live_dispute",type:"charge.dispute.created",livemode:true,data:{object}});
   await assert.rejects(()=>verifyStripeWebhook({rawBody:live,signatureHeader:signed(live),config,now}),/stripe_event_invalid/);
 });
+
+test('Royal Reveal mismatched dispute revokes only its entitlement and keeps review through retries', async()=>{
+  const c=await fixture();const order=await c.service.startOrder(request());
+  const paidRaw=stripeRaw('checkout.session.completed',{id:'cs_test_mismatch',client_reference_id:order.publicOrderReference,payment_status:'paid',payment_link:config.expectedPaymentLinkId,payment_intent:'pi_test_mismatch',amount_total:199,currency:'gbp',mode:'payment'},'evt_test_mismatch_paid');
+  const disputeRaw=stripeRaw('charge.dispute.created',{id:'du_test_mismatch',payment_intent:'pi_test_mismatch',amount:191,currency:'gbp'},'evt_test_mismatch_disputed');
+  const paid=await verifyStripeWebhook({rawBody:paidRaw,signatureHeader:signed(paidRaw),config,now});
+  const dispute=await verifyStripeWebhook({rawBody:disputeRaw,signatureHeader:signed(disputeRaw),config,now});
+  await c.service.webhook(paid);assert.equal(c.repository.entitlements.size,1);
+  await c.service.webhook(dispute);await c.service.webhook(dispute);await c.service.webhook(paid);
+  assert.equal(c.repository.entitlements.size,0);
+  assert.equal((await c.service.orderStatus({publicOrderReference:order.publicOrderReference,anonymousSessionCredential:rawCredential})).state,'review_required');
+});

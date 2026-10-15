@@ -169,3 +169,52 @@ Setup guide: profile review not started; profile address fields empty. This does
 establish charge/payout capability. Owner must enter address/verification directly in
 Stripe; no sensitive values copied into Git. No live objects were changed/created;
 inventory before future creation. Wigsmi/Sherwood untouched; legal configuration draft.
+
+### Application-linked converted sandbox verification — 13 October 2026
+
+New synthetic owner only; existing54-Cowrie wallet and frozen test wallet preserved.
+Correct sandbox acct_1UOOZKEsGCyaV3rl observed, livemode:false. Existing products,
+Payment Links, signing secret and D1 reused; no migration/seed/publication/reset.
+
+- Five Cowries: application created opaque order reference; actual EUR2.45 checkout
+  retained199p GBP integration amount and original Payment Link. Signed checkout
+  credited5 exactly once. Dashboard full GBP1.99 refund reconciled to zero with one
+  immutable purchase credit and one reversal. Both settlement-audit timestamps exist.
+  Session cs_test_a1JJXaa0mHKwe3poukyQ2txmRFCKjTco1V0XmF6TaAa0b8t71TSBb8Neu3;
+  checkout evt_1UQAkMEsGCyaV3rlKvLM8RMv; refund evt_3UQAkKEsGCyaV3rl1mEfMYUi.
+- Same-owner second purchase: fifteen-Cowrie application checkout created correctly,
+  EUR6.14 presentment,499p GBP integration. Test card0259 produced signed dispute
+  evt_1UQAzWEsGCyaV3rlOUgagKYX for480p GBP. The earlier191/199 event's exact cause
+  remains unproved; this new difference is observed, not a normalised substitute.
+- Confirmed defect: D1/memory repositories treated every dispute as reconciled
+  disputed state unless value had been consumed; amount differences did not require
+  review. Correction compares signed dispute amount to the original order, retains
+  review_required on mismatch, revokes affected Royal Reveal entitlement and preserves
+  existing purchase-specific unused-value reversal. No currency/amount is rewritten.
+- Corrected matched release4955449cda2b11bbab19d3dfdbbee681041204302fd68f2657dd901ea637dc52,
+  Netlify6ace8316f7070ee94bbb500a, Worker79b5e909-1707-4337-8bae-6f228448fac4.
+  Exact signed dispute replay changed the synthetic order/audits to review_required;
+  stale checkout replay left zero balance, one15credit/one15reversal. Historical
+  records were not manually edited; only authenticated normal event processing ran.
+- Live new converted coverage is5/15Cowries. Prior GBP all-four-product/failure/paid-
+  play/mobile gates reused; all three bundles and Royal Reveal foreign-presentment
+  contracts have local coverage. Do not claim a new converted live40/Royal purchase.
+  Return-page refresh after consumed pending reference still displays unavailable;
+  the current wallet remains authoritative. This recorded UX limitation is unchanged.
+
+143 deployment modules and110 client hashes verified; secret-free build and separate
+secret-dependent verification. Commerce/owner/security compiled focused gates passed.
+Regression covers early/late mismatched disputes, duplicate deliveries, stale checkout,
+zero restored value and Royal Reveal revocation; exact valid disputes remain accepted.
+Evidence ignored under outputs/authority-preparation/converted-*; no credentials logged.
+
+Restored verified Netlify6acb796444ae067fcc06f6c9 / Worker1b76d3fd-6d42-478e-a172-36e6c648c05e.
+Random remains ON; Cowries/commerce/webhook/cron OFF. Owner entry observed; primary and
+preview anonymous401, unsigned Worker404, disabled webhook POST404. No public launch.
+Unresolved converted amount differences require protected operator review before live
+settlement policy; never infer a financial amount from presentment or a redirect.
+
+Final integration validation completed15October from the13October run: all stages
+of test:all passed across converted-corrected-integration-gate.log and the resumed
+remaining-stage log. A transient Windows dist EPERM interrupted the first run after
+passed smoke tests; no assertion/timeouts weakened. Final diff check passed.

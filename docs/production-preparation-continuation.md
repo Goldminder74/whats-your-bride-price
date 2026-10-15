@@ -408,3 +408,31 @@ The500k redesign and proposed benchmark are deferred and must not be started.
 recorded small-fixture measurements from modelled costs. Capacity withinGBP50 has
 not passed verification. Continue existing authorised launch preparation; no upgrade,
 schedule activation, public launch, DNS change or live payments.
+
+### Secure seller completion route — 13 October 2026
+
+Known, do not request again: Ayodele Ayeni, UK sole trader trading as Classes for
+Culture; not VAT registered; support team@classesforculture.com. Daily operational
+alerts go to noreply@classesforculture.com; sending authentication is separate.
+
+Only remaining seller inputs/decisions:
+1. Confirm the real geographical business/contact address and complaints address
+   if different, plus available customer telephone contact. Enter address/identity/
+   payout requirements directly in the intended account's secure Business settings:
+   https://dashboard.stripe.com/acct_1UOOZAIb8Lefpj36/settings/business-details .
+   Correct-account page observed; address/task/payout completeness was NOT verified.
+   Do not send identity documents, bank details or addresses in chat. Website seller
+   fields must subsequently use the established secure runtime installation process;
+   entering Stripe does not automatically update the website. Do not touch Wigsmi.
+2. Finalise the actual Cowrie/Royal Reveal digital-delivery, cancellation/refund and
+   complaint handling wording and durable purchase confirmation. Existing draft
+   consent is technically tested, not legal sign-off. Keep terms visible at checkout.
+3. Confirm initial sales territories and obtain the relevant overseas digital-VAT/
+   consumer position; UK non-registration alone does not settle overseas duties.
+   Final privacy/children/processor-transfer and support arrangements remain recorded
+   launch gates, not a request to approve retention rules again.
+
+UK sources checked: https://www.gov.uk/online-and-distance-selling-for-businesses/online-selling
+and https://www.legislation.gov.uk/uksi/2013/3134/schedule/2 ; overseas digital tax:
+https://www.gov.uk/guidance/the-vat-rules-if-you-supply-digital-services-to-private-consumers .
+Owner-approved policy must not be described as professional legal approval.

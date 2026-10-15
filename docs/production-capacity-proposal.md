@@ -42,6 +42,101 @@ throughput and independent snapshot growth remain launch gates. With recharge OF
 exhaustion can affect other Netlify projects, soGBP50 is not permission to consume
 the shared allowance unchecked. Provider rate references below were rechecked.
 
+## Read-only headroom and smaller pilot proposal — 13 October
+
+Owner clarification: GBP50 covers hosting, backups and operations only; Stripe
+processing/dispute fees are separate. No upgrade or additional spending approved.
+Goldmind Personal is USD9/month, 1,000 shared credits, four projects, no add-ons,
+auto recharge OFF. General billing showed 598.8 remaining after initial temporary
+payment release/restore, 26 publications/390 credits, 20,055 requests/4 credits and
+7.2 bandwidth credits. Usage charts lagged the general balance. These are whole-team
+figures, not an attribution to other projects or a final bill. Preserve other sites.
+Final general billing:583.8 credits remaining,27 publications/405 credits,20,080
+requests/4 credits,7.2 bandwidth credits. Existing credits used; no purchased packs.
+
+Wrangler read-only rolling24h counters: private test D1 ~1.33MB; ops D1 ~909kB,
+60,249 reads/2,778 writes. These are not UTC-day remaining account quotas. Connected
+Cloudflare sign-in subsequently completed through the existing Google identity.
+Intended account dashboard verifies Workers Free current plan; Paid offerUSD5/month
+plus usage, not selected. Workers & Pages observed257/100,000 requests today
+(~99,743 nominal headroom at that instant); October1–13 total1.53k requests and
+29.78k CPU ms. This is delayed accounting, not a throughput proof. The ops overview
+reported101 invocations/21 uncaught exceptions across historical versions/24h,
+zero CPU-limit errors. Active7de3483b alone:2calls/1uncaught exception, median CPU
+0.98ms, p90/p99 10.41ms. Recorded final gate check is one200 read-fence plus one503
+blocked rehearsal, consistent with these counts but not a proved event attribution;
+logs/traces disabled. Do not infer sustained Free10ms compatibility from this sample.
+Original no-route
+ops version7de3483b remains deployed. Official account-subscriptions API returned403 with
+existing CLI authentication; no extra CLI scope requested. Intended Drive account quota subsequently observed:343.5GB
+free of400GB. Owner confirms this is paid separately and explicitly excludes it from the GBP50
+project budget; do not request its price again. Backup use still consumes that quota.
+
+**Recommend evaluating a provisional100 completed games/day pilot**, not launching
+or claiming certified capacity. Retain5k/day as the longer-term target. Reuse the
+70% completion, four abandoned answers,20% recovery,3% retry,10% abuse and purchase
+assumptions above/below: ~2,378 API/day, ~5,738 total requests/day. At4.5MB transferred
+per completion, monthly Netlify traffic is13.5GB/270 credits plus~34.4 request credits.
+Reserve120 credits for EIGHT publications across the ENTIRE team,50 other-site
+traffic/compute credits and200 safety credits: ~674.4/1,000. These are proposed
+budgets, not measured steady usage; the current26-publication preparation pace
+cannot continue unchanged. Viral sharing, bots, larger assets or other-site growth
+consume the same reserve. No publication or traffic cap has been implemented.
+
+Conservative provisional D1 envelope:180 gameplay/payment/authority billed writes
+plus120 steady purge writes per completion; a48h purge backlog drained in24h adds
+240 writes/completion/day. With10k other-operation reserve,100/day gives64k/day,
+not a measured amplification factor. Reads:500k gameplay + ~535k backlog purge
+scans +500k operations reserve = ~1.54m/day. Both require representative billing
+verification before approval. Worker-first assets/ops/other Workers must fit shared
+100k requests/day. No new benchmark was run or authorised by this proposal.
+
+Candidate50-answer purge pass every5min yields14,400/day nominal,7,200/day at50%
+success.100 completions produce~1,371 answer rows/day; a48h backlog (~2,743) could
+drain in~11.3h after new arrivals, before the seven-day deadline. This assumes the
+existing small-fixture pass duration holds, fair capacity for OTHER record families,
+protected holds and adequate D1 billing. It is NOT an approved/activated schedule.
+Retention-stock estimate72–253MB at one year excludes uncertain index/authority
+growth and does not prove multi-year financial retention fits500MB. Upper growth
+could exhaust Free in year2; never shorten approved retention to avoid an upgrade. Thirty full daily snapshots
+would need roughly2.2–7.6GB plus journals/retries; 343.5GB free was observed, but retain approved backup lifetimes. Do not shorten retention to fit a quota.
+
+Estimated recurring base: USD9 Netlify (~GBP8.64 at assumed0.80 GBP/USD and20% tax
+allowance); Cloudflare Free GBP0; Drive/SMTP/monitor GBP0 incremental ONLY if current
+allowances and existing mailbox entitlement suffice. Budget GBP5/month contingency:
+~GBP9–14 provisional infrastructure total. Exchange rate, actual tax, mailbox renewal,
+independent-monitor entitlement, mailbox renewal and shared usage remain
+unverified costs. Existing Drive subscription is separately funded and excluded
+by explicit owner instruction; no additional storage purchase is authorised.
+GBP50 is an owner ceiling, NOT an enforceable multi-provider spending cap. No automatic
+top-up; exhausted Netlify/D1 quotas can instead interrupt service.
+
+Potential later change, not purchased: Workers Paid minimum USD5/month plus tax/usage
+(~GBP4.80 using the same assumptions), for D1's50m monthly included writes and larger
+single database. Combined base ~GBP13.44, before usage/storage/alerts. This alone does
+not make5k/day affordable: Netlify traffic and outage capacity remain bottlenecks.
+No paid upgrade is necessary to finish the few authorised sandbox transactions.
+
+Sources rechecked13October: [Netlify meters](https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/how-credits-work/),
+[D1 rates/index billing](https://developers.cloudflare.com/d1/platform/pricing/),
+[Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/).
+Netlify documents rollback as zero publication credits; observed team balance changed
+by30 during the initial verification window, so do not attribute the entire delta to
+this project's restore without billing attribution. Provider counters are delayed.
+
+Smallest proposed hosted capacity approval (NOT executed): reuse an inventoried,
+unbound synthetic rehearsal resource only; if none exists, request its exact creation
+separately. Maximum25 completed synthetic games/300 answers,1,000 HTTP requests,
+10,000 billed writes,100,000 reads,10MB new D1 data,100MB transfer,10 encrypted Drive
+objects/10MB,1request/sec,30min; GBP0 incremental/new charges. Stop before80% of
+any request/row/storage/account allowance, ambiguity in billing, integrity failure or
+unexpected data. Measure real index/authority amplification and bounded purge with
+48h equivalent aged rows; these small measurements do not certify5k/day. Preserve
+approved holds/closure/deletion authority, keep resources unbound, no schedules or
+Stripe. Remove only uniquely marked synthetic fixtures/objects after checksums and
+receipts, using existing approved cleanup; never alter private-game wallets/catalogue.
+Owner approval and current whole-account quota evidence required before execution.
+
 ## Deferred 500,000/day proposal — historical planning only
 
 Deferred scenario: **500,000 completed 12-question games/day**; not the active target.
