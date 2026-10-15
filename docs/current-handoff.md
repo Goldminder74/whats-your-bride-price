@@ -2,12 +2,36 @@
 
 ## Decision and checkpoint
 
-Branch `feature/viral-build-sprint`; continuation based on `dbe0b23e4892a2fdefaa3a21b26b058ae172a23a`.
+Branch `feature/viral-build-sprint`; continuation based on `2b5e8ae3ba2d84078f867b6ebeb6dfa0e26a7028`.
 Resolve the validated continuation with `git rev-parse HEAD`.
 Launch REQUIRES **5,000 completed games/day,500/hour,48h outage allowance**.
-GBP50/month covers hosting/backups/operations; Stripe fees and separately funded
-Drive storage excluded.500k redesign deferred. No upgrade/top-up, larger benchmark,
-production schedules, public access, DNS or live payments approved.
+GBP50/month covers hosting/backups/operations; Stripe fees, separately funded Drive
+and Namecheap Private Email excluded by explicit owner decisions.500k redesign deferred.
+Owner now approves ONLY the documented capped benchmark and conditional Workers
+Standard Paid$5/month, <=GBP8 incremental/first-month andGBP50 total, after fresh
+headroom/quote checks. No top-up, other paid service, production schedule, public
+access, DNS or live payment approved. No purchase or benchmark execution occurred.
+
+## Current blocker and independent preparation
+
+Automatic approval review failed the browser inventory action because of its usage
+limit; action NOT executed. This is review unavailability, not an unsafe-action
+finding. Do not bypass it through another privileged path. Fresh account headroom,
+actual tax/GBP quote and Paid confirmation are unverified; stop before spending.
+No new disposable cloud resources exist; existing private game/settings unchanged.
+
+[Approved benchmark status and NO-GO assessment](approved-benchmark-status.md)
+records conditional monthly scenarios and unmeasured peak/outage gates.
+Local `approved-benchmark-budget.mjs` adds SQLite reservations, exact resource guards,
+immutable caps, bounded rates/burst/duration, uncertain-response stops across phases,
+file-backed resume, actual overrun recording and receipt-backed completion counting.
+Pre-purchase quote checks differ from post-purchase execution; execution also requires
+verified100ms CPU limit. Decimal byte caps are conservative. This is a local control/
+schedule component, NOT a finished hosted application/provider driver.
+18 focused budget/baseline tests passed; prior complete build/private game/recovery
+gate reused for unchanged application source. Affected lint and diff checks passed. Evidence ignored: `outputs/authority-preparation/approved-benchmark-*`.
+[Multiplayer proposal](multiplayer-proposal.md) is preparation only; no implementation,
+charges or retention changes. Four owner purchase decisions are summarised in status.
 
 ## Deployed and preserved
 
@@ -72,8 +96,8 @@ diff checks. No weakened assertions. Evidence ignored under
 `outputs/authority-preparation/bounded-journal-*`; no repeated key/alert/payment test.
 
 [Exact benchmark approval, costs and cleanup](bounded-hosted-benchmark-approval.md)
-supersedes earlier Phase B/C caps. Not run; conditional Workers Paid proposal<=GBP8
-incremental requires approval and current headroom/actual GBP check, insideGBP50.
+supersedes earlier Phase B/C caps. Not run; conditional Workers Paid<=GBP8 incremental
+is now approved, but fresh headroom/actual GBP check and available review are required.
 [One owner-review document](owner-purchase-review.md) contains draft terms, territory
 choices, durable confirmation and secure seller steps. Actual website address route
 is NOT installed: legalConfig remains null; do not ask for details in chat.
@@ -87,8 +111,8 @@ answers. Do not raise limits to disguise it or claim launch readiness from small
 
 Prior counter18 transactions/450 reads is superseded by4/478 above. Per-operation
 precommit intents/full-history recovery and snapshot fences still need retained-stock
-evidence. Continue authorised local stock-recovery planning; hosted benchmark needs
-the exact separate approval linked above. GBP50 sufficiency/minimum budget unverified;
+evidence. Continue authorised local stock-recovery/driver preparation; hosted benchmark
+has conditional approval above but review/headroom gates remain. GBP50 sufficiency unverified;
 source sensitivity~GBP42–203/month,not a quote/cap. No paid change made.
 Owner confirms Stripe setup complete; do not repeat setup. Remaining seller terms,
 territories,durable contract confirmation and secure WEBSITE address installation:

@@ -1,8 +1,11 @@
-# Isolated capacity benchmark — proposed approval, not executed
+# Isolated capacity benchmark — approved conditionally, not executed
 
 15 October 2026. Supersedes the older Phase B/C caps in the capacity proposal.
 Requirement remains 5,000 completions/day, 500/hour and a 48-hour outage allowance,
-within £50/month excluding separately funded Drive. No launch or spending approved.
+within £50/month excluding separately funded Drive and Namecheap Private Email.
+The owner approved these capped phases and conditional Workers Standard Paid purchase,
+subject to£8 incremental/£50 total, fresh headroom and no top-ups. No purchase or
+execution has occurred. See [execution status](approved-benchmark-status.md).
 
 ## Preconditions and resources
 
@@ -123,8 +126,8 @@ not fix recovery bounds. £50 feasibility and the minimum viable launch budget r
 unproven. Do not purchase a launch tier now.
 
 Drive is separately funded (£0 charged to this ceiling, not zero physical usage).
-Existing Namecheap receiving/sending service must be accounted for or explicitly
-confirmed separately funded; free Healthchecks adds no subscription. Include CPU,
+Owner confirmed Namecheap Private Email is separately funded; free Healthchecks
+adds no subscription. Include CPU,
 retention, snapshots, independent downloads and other-project headroom in final billing.
 Workers Standard service-binding calls add CPU/D1 work but not another request fee;
 do not bill each fence RPC as a separate inbound request. No Workers Cache change assumed.
