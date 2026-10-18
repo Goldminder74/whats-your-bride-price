@@ -11,7 +11,8 @@ import { loadMigrationPlan, applyMigrationPlan } from '../../scripts/data-migrat
 import { D1Authority } from '../../scripts/authority-runtime.mjs';
 import { authoritySnapshot } from '../../worker/authoritySnapshot.mjs';
 import { recoveryHash } from '../../scripts/recovery-crypto.mjs';
-import { materializeWorkerSnapshot } from '../../scripts/worker-snapshot-restore.mjs';
+import { materializeWorkerSnapshot,materializeSegmentedSnapshot } from '../../scripts/worker-snapshot-restore.mjs';
+import {segmentedSnapshot} from '../../worker/segmentedSnapshot.mjs';
 import { providerRestorePlan, verifyProviderRestore, restorePages, finishRestore, recoveryAccess } from '../../scripts/d1-operational-recovery.mjs';
 function adapter(sql){return {async query(s,p=[]){return sql.prepare(s).all(...p);},async batch(rows){sql.exec('BEGIN IMMEDIATE');try{const out=rows.map(r=>sql.prepare(r.sql).all(...r.params));sql.exec('COMMIT');return out;}catch(e){sql.exec('ROLLBACK');throw e;}}};}
 
@@ -57,4 +58,28 @@ test('actual encrypted Worker pages restore accounting, closed wallets, holds an
   assert.equal(target.prepare('SELECT COUNT(*) n FROM commerce_orders').get().n,1);
   const removed=delivered.body.files[0];files.delete(removed.name);await assert.rejects(materializeWorkerSnapshot(custody,key,'populated-worker',delivered.receipt),/snapshot_file_gap/);
  }finally{materialized?.database.close();c.database.close();target.close();}
+});
+
+test('segmented populated accounting capture materialises with closure, hold and suppression protections intact',async()=>{
+ const {populatedRecoveryFixture}=await import('../helpers/populatedRecovery.mjs');
+ const c=await populatedRecoveryFixture(),target=new DatabaseSync(':memory:'),key=randomBytes(32),files=new Map();
+ const custody={get:async n=>files.get(n)||null,put:async(n,b)=>{if(files.has(n))assert.deepEqual(files.get(n),b);files.set(n,b);return recoveryHash(b);}};
+ try{
+  const db=adapter(c.database),authority=new D1Authority(db,custody,key);await authority.initialise();const head=await authority.freeze('synthetic_segmented_accounting');
+  let previous=null,result;
+  do{result=await segmentedSnapshot(db,custody,key,{pageSize:5,pagesPerStep:2})(head,previous);previous=result.pointer;}while(!result.complete);
+  const restored=await materializeSegmentedSnapshot(custody,key,previous,target);
+  assert.equal(restored.runtimeAccess,'blocked_pending_fresh_receipt');assert.ok(restored.pages>25);
+  assert.equal(target.prepare('SELECT COUNT(*) n FROM commerce_orders').get().n,1);
+  assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_holds WHERE released_at IS NULL').get().n,1);
+  assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_closures').get().n,1);
+  assert.equal(target.prepare("SELECT COUNT(*) n FROM retention_suppression").get().n,3);
+  assert.deepEqual(target.prepare('SELECT * FROM retention_suppression ORDER BY scope,subject_id').all(),c.database.prepare('SELECT * FROM retention_suppression ORDER BY scope,subject_id').all());
+  assert.equal(target.prepare('SELECT state FROM cowrie_wallets').get().state,'deleted');
+  assert.throws(()=>target.exec("UPDATE cowrie_wallets SET state='active'"),/cannot reopen/);
+  assert.throws(()=>target.exec('UPDATE cowrie_wallets SET purchased_balance=99'),/cache mismatch/);
+  assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);
+  assert.deepEqual(target.prepare('PRAGMA foreign_key_check').all(),[]);
+  await assert.rejects(materializeSegmentedSnapshot(custody,key,previous,target),/invalid/);
+ }finally{target.close();c.database.close();}
 });

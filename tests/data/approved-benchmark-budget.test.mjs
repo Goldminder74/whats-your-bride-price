@@ -6,9 +6,29 @@ import {resolve,join,sep} from 'node:path';
 import {ApprovedBenchmarkBudget,BENCHMARK_PHASES,verifyBenchmarkPreflight,assertBenchmarkResource,peakHourSchedule,executeBudgetedAction,benchmarkTrafficMicrocredits} from '../../scripts/approved-benchmark-budget.mjs';
 
 const at=Date.UTC(2026,9,15);
-const facts=()=>({reviewAvailable:true,verifiedAt:at,evidenceSha256:'a'.repeat(64),account:'b6b22a9a87b5758725e5c499782160af',netlifyTeam:'goldminder74',autoTopups:false,standardPaidQuoted:true,standardPaidConfirmed:true,workerCpuLimitMs:100,usageGBPPerUSD:.96,subscriptionGBP:4.8,maximumUsageGBP:2,currentWholeAccountGBP:9,otherSubscriptionsKnown:true,netlifyCreditsAvailable:400,includedWritesAvailable:5100000,includedReadsAvailable:71000000,includedStorageBytesAvailable:250*1024*1024});
+const facts=()=>({reviewAvailable:true,verifiedAt:at,evidenceSha256:'a'.repeat(64),account:'b6b22a9a87b5758725e5c499782160af',netlifyTeam:'goldminder74',autoTopups:false,standardPaidQuoted:true,standardPaidConfirmed:true,workerCpuLimitMs:100,usageGBPPerUSD:.96,subscriptionGBP:4.8,maximumUsageGBP:2.6,currentWholeAccountGBP:9,otherSubscriptionsKnown:true,netlifyCreditsAvailable:400,includedWritesAvailable:5100000,includedReadsAvailable:71000000,includedStorageBytesAvailable:250*1024*1024});
 const vector=(overrides={})=>({...Object.fromEntries(Object.keys(BENCHMARK_PHASES.A.caps).map(key=>[key,0])),...overrides});
 const receipt='b'.repeat(64);
+
+test('new B/C preparation preserves all usage and starts its measured clock only once',()=>{
+ const db=new DatabaseSync(':memory:');let clock=at;
+ const options={runId:'synthetic_prepared',phase:'B',preflight:facts(),now:()=>clock,preparing:true};
+ try{
+  const budget=new ApprovedBenchmarkBudget(db,options),upper=vector({external:1,writes:20});
+  assert.throws(()=>budget.reserve('start',upper),/stopped/);
+  assert.throws(()=>budget.reserve('not_setup',upper,{preparation:true}),/preparation_scope/);
+  const ticket=budget.reserve('setup_commission',upper,{preparation:true});
+  assert.throws(()=>budget.beginMeasurement(),/start_blocked/);
+  budget.settle(ticket.ticket,upper,receipt);clock+=120000;
+  assert.equal(budget.beginMeasurement(),clock);assert.equal(budget.receipt().used.writes,20);
+  const started=clock;clock+=1000;assert.equal(budget.beginMeasurement(),started);
+  const resumed=new ApprovedBenchmarkBudget(db,{...options,preflight:{...facts(),verifiedAt:clock}});
+  assert.equal(resumed.beginMeasurement(),started);assert.equal(resumed.receipt().used.external,1);
+  assert.throws(()=>resumed.reserve('setup_again',upper,{preparation:true}),/preparation_scope/);
+  clock+=3600000;assert.throws(()=>resumed.reserve('game_after_deadline',upper),/duration_stop/);
+  assert.throws(()=>new ApprovedBenchmarkBudget(db,{...options,phase:'A',preflight:{...facts(),verifiedAt:clock}}),/preparation_scope/);
+ }finally{db.close();}
+});
 test('traffic credits include compute and reserve across phases and replacement instances',()=>{
  assert.equal(benchmarkTrafficMicrocredits({external:10000,transferBytes:1000000000,computeGbMs:3600000}),32000000);
  assert.throws(()=>benchmarkTrafficMicrocredits({external:1,transferBytes:0}),/credit_unknown/);
@@ -16,15 +36,16 @@ test('traffic credits include compute and reserve across phases and replacement 
  const options={runId:'synthetic_credit',preflight:facts(),now:()=>clock};
  try{
   const b=new ApprovedBenchmarkBudget(db,{...options,phase:'B'});
-  // Stay below every individual phase limit, but reserve most global credit budget.
-  const upper=vector({transferBytes:700000000,computeGbMs:2800000});
-  b.reserve('credit_b',upper);
+  // Model a paced multi-request action, below individual phase limits, whose
+  // reservation combines with C to exceed the shared credit admission threshold.
+  const upper=vector({external:60000,transferBytes:700000000,computeGbMs:2800000});
+  b.reserve('credit_b',upper,{pacedExternal:true});
   clock+=1000;
   const c=new ApprovedBenchmarkBudget(db,{...options,phase:'C',preflight:{...facts(),verifiedAt:clock}});
-  assert.throws(()=>c.reserve('credit_c',vector({transferBytes:150000000,computeGbMs:1400000})),/traffic_credit_stop/);
+  assert.throws(()=>c.reserve('credit_c',vector({external:20000,transferBytes:150000000,computeGbMs:2800000}),{pacedExternal:true}),/traffic_credit_stop/);
   assert.equal(c.receipt().used.transferBytes,0);
   const replacement=new ApprovedBenchmarkBudget(db,{...options,phase:'B',preflight:{...facts(),verifiedAt:clock}});
-  assert.equal(replacement.reserve('credit_b',upper).execute,false);
+  assert.equal(replacement.reserve('credit_b',upper,{pacedExternal:true}).execute,false);
   assert.throws(()=>replacement.reserve('more',vector({computeGbMs:1000000})),/limit_computeGbMs|traffic_credit_stop/);
  }finally{db.close();}
 });
@@ -35,11 +56,11 @@ function fixture(phase='B'){
 }
 
 test('pre-purchase headroom rejects unavailable review, unknown costs, old facts and both spending ceilings',()=>{
- const base=facts();assert.equal(verifyBenchmarkPreflight({...base,standardPaidConfirmed:false},at).incrementalMaximumGBP,6.8);
+ const base=facts();assert.equal(verifyBenchmarkPreflight({...base,standardPaidConfirmed:false},at).incrementalMaximumGBP,7.4);
  assert.throws(()=>verifyBenchmarkPreflight({...base,standardPaidConfirmed:false},at,{execution:true}),/account_configuration/);
  assert.throws(()=>verifyBenchmarkPreflight({...base,workerCpuLimitMs:30000},at,{execution:true}),/account_configuration/);
  assert.throws(()=>verifyBenchmarkPreflight({...base,maximumUsageGBP:0},at),/cost_understated/);
- for(const [change,reason] of [[{reviewAvailable:false},'review_unavailable'],[{otherSubscriptionsKnown:false},'cost_unknown'],[{subscriptionGBP:7},'cost_ceiling'],[{currentWholeAccountGBP:44},'cost_ceiling'],[{netlifyCreditsAvailable:344},'headroom_shortfall'],[{includedWritesAvailable:5099999},'headroom_shortfall'],[{autoTopups:true},'account_configuration'],[{verifiedAt:at-3600001},'headroom_unverified']])
+ for(const [change,reason] of [[{reviewAvailable:false},'review_unavailable'],[{otherSubscriptionsKnown:false},'cost_unknown'],[{subscriptionGBP:7},'cost_ceiling'],[{currentWholeAccountGBP:44},'cost_ceiling'],[{netlifyCreditsAvailable:369},'headroom_shortfall'],[{includedWritesAvailable:5099999},'headroom_shortfall'],[{autoTopups:true},'account_configuration'],[{verifiedAt:at-3600001},'headroom_unverified']])
   assert.throws(()=>verifyBenchmarkPreflight({...base,...change},at),new RegExp(reason));
 });
 
@@ -159,3 +180,5 @@ test('fresh preflight evidence can resume an existing stopped run without resett
   assert.throws(()=>resumed.reserve('two',vector({writes:1})),/stopped/);
  }finally{f.db.close();}
 });
+
+ test("approved C revision leaves B and integrity reserve unchanged",()=>{assert.equal(BENCHMARK_PHASES.C.caps.driveBytes,250000000);assert.equal(BENCHMARK_PHASES.C.caps.transferBytes,750000000);assert.equal(BENCHMARK_PHASES.C.caps.external,100000);assert.equal(BENCHMARK_PHASES.C.caps.internal,500000);assert.equal(BENCHMARK_PHASES.B.caps.driveBytes,100000000);assert.equal(BENCHMARK_PHASES.C.caps.driveObjects,6000);assert.equal(BENCHMARK_PHASES.C.durationMs,3600000);});

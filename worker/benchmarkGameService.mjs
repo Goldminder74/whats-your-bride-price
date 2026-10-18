@@ -18,7 +18,7 @@ const unavailable=()=>{throw Error('benchmark_game_unavailable');};
  * Fixtures exercise internal free-play services; customer commerce stays OFF.
  * HTTP/RPC/provider metering and the deployment adapter remain separate duties.
  */
-export function benchmarkGameService({binding,authority,syntheticKey,databaseResource,runId,now=Date.now,verifyAssets}) {
+export function benchmarkGameService({binding,authority,syntheticKey,databaseResource,runId,now=Date.now,verifyAssets,verifySharing=async()=>false}) {
  assertBenchmarkResource('database',databaseResource);
  if(!/^synthetic_[a-zA-Z0-9_-]{1,48}$/.test(runId||'')
   ||!Buffer.isBuffer(syntheticKey)||syntheticKey.length!==32||typeof verifyAssets!=='function')unavailable();
@@ -61,7 +61,7 @@ export function benchmarkGameService({binding,authority,syntheticKey,databaseRes
     await wallets.createOrGet({anonymousSessionCredential:credential});
     await wallets.startQuickPlay({region:command.region,anonymousSessionCredential:credential,idempotencyKey:'benchmark-start-'+identity(command.identity)});
     const ctx=await context(command.identity),view=await projection(ctx);
-    return {selectionHash:view.selectionHash,ownerHash:hash(ctx.owner),attemptHash:view.attemptHash,questionCount:view.selection.questions.length};
+    return {selectionHash:view.selectionHash,ownerHash:hash(ctx.owner),attemptHash:view.attemptHash,questionCount:view.selection.questions.length,answerPlan:view.selection.questions.map(q=>({questionRef:q.questionRef,selectedOptionIds:[q.options[0].id],assetRefs:q.kind==='image'?[...q.imageAssets]:[]}))};
    }
    const ctx=await context(command.identity);
    if(command.kind==='complete'){
@@ -75,18 +75,23 @@ export function benchmarkGameService({binding,authority,syntheticKey,databaseRes
    }
    if(command.kind==='result'){
     const receipt=await completed(ctx);
-    if(await verifyAssets(command.identity)!==true)unavailable();
-    // Public sharing remains disabled; only the owned result projection is read.
-    return {resultVerified:receipt.persisted,assetsVerified:true,sharingVerified:false};
+    const result=(await db.prepare('SELECT qe.edition_key FROM results r JOIN quiz_attempts qa ON qa.id=r.attempt_id JOIN quiz_editions qe ON qe.id=r.edition_id WHERE qa.id=?1 AND qa.anonymous_subject_hash=?2 AND r.state=\'active\'').bind(ctx.attempt.id,ctx.owner).all()).results;
+    if(result.length!==1)unavailable();
+    if(await verifyAssets(result[0].edition_key)!==true)unavailable();
+    // Generic sharing uses the real safe projection/copy helpers without making
+    // the private result public or disclosing synthetic owner credentials.
+    const sharingVerified=await verifySharing(result[0].edition_key)===true;
+    return {resultVerified:receipt.persisted,assetsVerified:true,sharingVerified};
    }
-   const view=await projection(ctx);
    if(command.kind==='answer'){
     if(!Number.isInteger(command.question)||command.question<1||command.question>12)unavailable();
-    const question=view.selection.questions[command.question-1];
-    await questions.answer({attemptId:ctx.attempt.id,anonymousSessionCredential:credential,questionRef:question.questionRef,selectedOptionIds:[question.options[0].id]});
-    return {accepted:true,question:command.question,attemptHash:view.attemptHash};
+    // The real browser retains its visible selection. Do not add a second
+    // server-side resume merely to choose a synthetic option for every answer.
+    await questions.answer({attemptId:ctx.attempt.id,anonymousSessionCredential:credential,questionRef:command.questionRef,selectedOptionIds:command.selectedOptionIds});
+    return {accepted:true,question:command.question,attemptHash:hash(ctx.attempt.id)};
    }
    if(command.kind==='recover'){
+    const view=await projection(ctx);
     // These answers are the deterministic synthetic client's previous choices,
     // not invented server-persisted answer rows. Rejudge read-only, as recovery does.
     for(const question of view.selection.questions.slice(0,7))await questions.answer({attemptId:ctx.attempt.id,anonymousSessionCredential:credential,questionRef:question.questionRef,selectedOptionIds:[question.options[0].id]});

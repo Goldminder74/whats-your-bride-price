@@ -5,7 +5,9 @@ Requirement remains 5,000 completions/day, 500/hour and a 48-hour outage allowan
 within £50/month excluding separately funded Drive and Namecheap Private Email.
 The owner approved these capped phases and conditional Workers Standard Paid purchase,
 subject to£8 incremental/£50 total, fresh headroom and no top-ups. No purchase or
-execution has occurred. See [execution status](approved-benchmark-status.md).
+execution had occurred at approval. On18October the owner confirmed checkout terms;
+one activation succeeded, verified by Paid/Current plan on Workers plans. No hosted
+benchmark execution yet. See the latest [handover](current-handoff.md) for evidence.
 
 ## Preconditions and resources
 
@@ -41,7 +43,7 @@ test/production Workers under this approval. Recovery receipts pin actual folder
 |---|---|---|
 | A: corrected baseline | 30 min; at most 22 more completed games, so 25 cumulative including the original three; 1 external request/sec | 1,000 external/provider HTTP, 10,000 billed writes, 100,000 reads, 10MB D1 growth, 100MB transfer, 100 Drive objects/10MB. New counters/window need approval; no reset of old receipts. |
 | B: peak hour | 60 min; exactly 500 successful completions sought, at most 215 incomplete starts, 100 refresh recoveries, representative results/sharing and signed synthetic financial/hold/closure fixtures | 80,000 external/client/provider HTTP plus 600,000 separately counted internal RPC invocations; 2m billed writes, 10m reads, 100MB D1, 1GB external transfer, 6,000 Drive objects/100MB. At most 40 external HTTP/sec for one 60-sec interval, otherwise 10/sec. Internal RPC has an independent 500/sec cap. |
-| C: outage/retention | 60 min measured drain; at most 150,000 aged answer rows plus at most 10,000 dependent/held/financial fixture rows; at most 2,000 purge passes of 100 rows and 2,000 journal flushes of 25 events | 3m writes, 60m reads, 250MB D1, 200MB transfer, 40,000 external/provider HTTP, 100,000 internal RPC, 6,000 Drive objects/100MB. Include fixture writes and journal/index costs. No 48-hour real service outage is induced. |
+| C: outage/retention | 60 min measured drain; at most 150,000 aged answer rows plus at most 10,000 dependent/held/financial fixture rows; at most 2,000 purge passes of 100 rows and 2,000 journal flushes of 25 events | 3m writes, 60m reads, 250MB D1, 750MB transfer, 100,000 external/provider HTTP, 500,000 internal counted operations, 6,000 Drive objects/250MB. Include fixture writes and journal/index costs. No 48-hour real service outage is induced. |
 
 Stop admissions before 80% of any metered resource cap; completion targets are goals,
 not permission to exceed caps. Reserve the remaining 20% for readback and cleanup.
@@ -50,6 +52,13 @@ privacy or ingress failure, unresolved recovery fence, increasing undrainable ba
 repeated unexplained errors, insufficient shared headroom or cost forecast above budget.
 Do not keep rerunning failed phases. Capture sanitised evidence, diagnose locally,
 and request a revised scope if the cap prevents the intended sample.
+
+Implementation clarification: B/C each have one measured60-minute workload window
+after protected setup. Setup/retries remain charged to the same immutable resource
+and shared-credit counters. A one-way preparation transition cannot restart an
+active/stopped window or the expired A baseline. Fresh headroom is required before
+measurement. C also reserves all retained B Drive objects/bytes before new work;
+phase changes do not reset physical storage. No production schedule is installed.
 
 Local limits remain material: a snapshot invocation has 1,000 data pages at default
 50 rows/page; a full boundary has at most 10,000 outbox events; inventory defaults to
@@ -67,16 +76,16 @@ Before purchase verify actual GBP total and sufficient remaining monthly allowan
 stop if £8 or the £50 whole-account ceiling cannot be met. No Netlify plan change,
 duplicate subscription, automatic recharge, top-up, R2 or paid monitor is included.
 
-Use at most 60 existing publication credits (four publications) plus 35 traffic credits;
+Use at most 60 existing publication credits (four publications) plus 60 traffic credits;
 if measured traffic/compute would exceed that, stop. Existing projects keep their reserve.
 Use a 100ms per-invocation CPU ceiling for the entire isolated Worker, including
 its operator RPC, with fixed request/RPC/row counters. These and admission cutoffs
 bound the experiment; they are **not a provider-enforced £50 monetary cap**.
 If complete cost cannot be bounded before a phase, do not start that phase.
 Preflight must leave at least5.1m included D1 writes,71m reads and250MB included
-storage for the entire test/cleanup. Maximum821,000 metered invocations at100ms
-represent at most82.1m CPU-ms; budget even if the included CPU is already consumed.
-At the published $0.02/million CPU-ms this adds about$1.65 before tax/FX, plus the$5
+storage for the entire test/cleanup. Maximum1,281,000 metered invocations at100ms
+represent at most128.1m CPU-ms; budget even if the included CPU is already consumed.
+At the published $0.02/million CPU-ms this adds about$2.57 before tax/FX, plus the$5
 minimum and bounded ingress request overage. Verify actual billing model and GBP
 charges before purchase; do not assume internal RPC is free of CPU or D1 costs.
 Paid subscription renewal/cancellation must be reviewed before the next cycle;
@@ -150,3 +159,5 @@ production-configuration, operating-schedule or live-payment approval.
 Prices checked 15 October:
 [Netlify tiers](https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/credit-based-pricing-plans/),
 [Workers/D1 and service-binding billing](https://developers.cloudflare.com/workers/platform/pricing/).
+
+18 October owner-approved bounded revision: only C storage/transfer/request caps and shared traffic allowance above changed. The measured 36,000-answer fixture produced 84,996,768 encrypted bytes across 1,323 objects locally, before snapshot/inventory and retained B data. The same 60-minute window, resources, D1/object limits, 80% admission reserve, GBP8 incremental and GBP50 operating ceilings remain. Conservative tax/FX forecast about GBP7.40 is an estimate, not a provider hard cap. This is not approval or evidence of full 30-day recovery.

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {performance} from 'node:perf_hooks';
-import {productionCapacity,workloadPlan} from '../../scripts/production-capacity.mjs';
+import {productionCapacity,workloadPlan,retentionSchedulePlan} from '../../scripts/production-capacity.mjs';
 import {setup,credential} from '../helpers/cowrieCommerce.mjs';
 import {D1QuestionSelectionRepository} from '../../db/questionSelection.ts';
 import {deriveAnonymousSubjectHash} from '../../app/anonymousSession.ts';
@@ -29,10 +29,20 @@ test('retained 5k target preserves deferred scale arithmetic and separates aband
   assert.equal(plan.answers,12*plan.completions+4*plan.incomplete);
   assert.equal(plan.recoveryRequests,plan.recoveries*8);
   assert.ok(plan.retryRequests>0 && plan.rejectedAbuseRequests>0);
-  assert.equal(plan.outageAnswerBacklog,plan.answers*2);
+  assert.equal(plan.storedAnswerRows,12*plan.completions);
+  assert.equal(plan.outageAnswerBacklog,plan.storedAnswerRows*2);
+  assert.equal(small.outageAnswerBacklog,120000);
+  assert.equal(small.hourlyPeakCompletions,500);
+  assert.equal(productionCapacity().burstPerHour,500);
   assert.equal(plan.installedPurgeRowsPerSecondAt50PercentAvailability,plan.purgeRowsPerSecondFor24hCatchup*2);
   assert.ok(Math.abs(plan.apiRequests/small.apiRequests-100)<1e-10);
   assert.throws(()=>workloadPlan(0));assert.throws(()=>workloadPlan(1.5));
+});
+
+test('retention proposal includes ongoing arrivals, a 48-hour backlog and 50% unsuccessful passes',()=>{
+ const old=retentionSchedulePlan({intervalSeconds:60});assert.equal(old.effectiveAnswersPerDay,72000);assert.equal(old.catchupDays,10);assert.equal(old.answerDeadlineFeasible,false);
+ const proposed=retentionSchedulePlan();assert.equal(proposed.effectiveAnswersPerDay,144000);assert.equal(proposed.catchupDays,10/7);assert.equal(proposed.remainingDeadlineDays,5);assert.equal(proposed.answerDeadlineFeasible,true);
+ assert.throws(()=>retentionSchedulePlan({successfulFraction:0}));assert.throws(()=>retentionSchedulePlan({intervalSeconds:0}));
 });
 
 test('full existing maintenance path makes bounded progress at representative answer volume',async()=>{

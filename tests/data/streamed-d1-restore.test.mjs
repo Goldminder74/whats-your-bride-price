@@ -1,0 +1,87 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {DatabaseSync} from 'node:sqlite';
+import {randomBytes} from 'node:crypto';
+import {prepareStreamedRestore,importStreamedRestore,verifyStreamedRestore,auditStreamedSourceStep,clearAuditedSyntheticTarget} from '../../scripts/streamed-d1-restore.mjs';
+import {populatedRecoveryFixture} from '../helpers/populatedRecovery.mjs';
+import {loadMigrationPlan,applyMigrationPlan} from '../../scripts/data-migrations.mjs';
+import {recoveryHash} from '../../scripts/recovery-crypto.mjs';
+const resource={name:'wybp-capacity-d1-r002',id:'11111111-1111-4111-8111-111111111111',account:'b6b22a9a87b5758725e5c499782160af'};
+function adapter(database){return {query:async(s,p=[])=>database.prepare(s).all(...p),batch:async statements=>{database.exec('PRAGMA foreign_keys=ON; BEGIN IMMEDIATE');try{const results=statements.map(s=>database.prepare(s.sql).all(...(s.params||[])));database.exec('COMMIT');return results;}catch(e){database.exec('ROLLBACK');throw e;}}};}
+
+test('nullable primary keys fail explicitly rather than silently skipping rows on keyset resume',async()=>{
+ const source=new DatabaseSync(':memory:'),files=new Map();
+ try{source.exec('CREATE TABLE synthetic_nullable(id TEXT PRIMARY KEY,value TEXT); INSERT INTO synthetic_nullable VALUES(NULL,\'synthetic\')');
+  const custody={get:async n=>files.get(n)||null,put:async(n,b)=>{files.set(n,b);return recoveryHash(b);}};
+  await assert.rejects(prepareStreamedRestore(source,custody,randomBytes(32),'synthetic_null'),/unavailable/);
+ }finally{source.close();}
+});
+
+test('text with embedded NUL is explicitly rejected rather than verified using a truncated quote',async()=>{
+ const source=new DatabaseSync(':memory:'),files=new Map();
+ try{source.exec('CREATE TABLE synthetic_text(id TEXT PRIMARY KEY,value TEXT)');source.prepare('INSERT INTO synthetic_text VALUES(?,?)').run('synthetic','before\0after');
+  const custody={get:async n=>files.get(n)||null,put:async(n,b)=>{files.set(n,b);return recoveryHash(b);}};
+  await assert.rejects(prepareStreamedRestore(source,custody,randomBytes(32),'synthetic_nul'),/unavailable/);
+  assert.equal(files.has('synthetic_nul.restore.manifest.enc'),false);
+ }finally{source.close();}
+});
+
+test('populated source audit resumes only under the same fence and never grants access',async()=>{
+ const c=await populatedRecoveryFixture(),key=randomBytes(32),files=new Map();
+ const custody={get:async n=>files.get(n)||null,put:async(n,b)=>{files.set(n,b);return recoveryHash(b);}};
+ try{
+  const pointer=await prepareStreamedRestore(c.database,custody,key,'synthetic_audit_plan');
+  const db=adapter(c.database),before=c.database.prepare('SELECT * FROM cowrie_ledger ORDER BY 1').all();let fence='a'.repeat(64);
+  const options={resource,job:'synthetic_source',maxPages:1,assertFrozen:async()=>fence};
+  assert.equal((await auditStreamedSourceStep(db,custody,key,pointer,options)).verified,false);
+  fence='b'.repeat(64);await assert.rejects(auditStreamedSourceStep(db,custody,key,pointer,options),/unavailable/);
+  fence='a'.repeat(64);let result;do{result=await auditStreamedSourceStep(db,custody,key,pointer,options);}while(!result.verified);
+  assert.deepEqual(c.database.prepare('SELECT * FROM cowrie_ledger ORDER BY 1').all(),before);
+  assert.equal(c.database.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);
+  assert.equal(result.sourceFenceSha256,fence);
+  await assert.rejects(importStreamedRestore(db,custody,key,pointer,{resource,job:'synthetic_target'}));
+  fence='b'.repeat(64);await assert.rejects(clearAuditedSyntheticTarget(db,custody,key,pointer,options),/unavailable/);
+  assert.deepEqual(c.database.prepare('SELECT * FROM cowrie_ledger ORDER BY 1').all(),before);fence='a'.repeat(64);
+  await assert.rejects((async()=>{for(;;)await clearAuditedSyntheticTarget(db,custody,key,pointer,{...options,fault:stage=>{if(stage==='clear_committed')throw Error('synthetic_lost_response');}});})(),/synthetic_lost_response/);
+  assert.equal(c.database.prepare('SELECT COUNT(*) n FROM cowrie_ledger').get().n,0);
+  await importStreamedRestore(db,custody,key,pointer,{resource,job:'synthetic_target',maxPages:1});
+  const checkpoint=c.database.prepare('SELECT cursor FROM operational_recovery_checkpoints WHERE id=?').get('synthetic_target');
+  assert.equal((await clearAuditedSyntheticTarget(db,custody,key,pointer,options)).replayed,true);
+  assert.deepEqual(c.database.prepare('SELECT cursor FROM operational_recovery_checkpoints WHERE id=?').get('synthetic_target'),checkpoint);
+ }finally{c.database.close();}
+});
+test('streamed encrypted plan imports accounting dependencies with bounded resume, original clocks and no access grant',async()=>{
+ const c=await populatedRecoveryFixture(),target=new DatabaseSync(':memory:'),key=randomBytes(32),files=new Map(),job='synthetic_stream';
+ const custody={get:async n=>files.get(n)||null,put:async(n,b)=>{if(files.has(n))assert.deepEqual(files.get(n),b);files.set(n,b);return recoveryHash(b);}};
+ try{
+  const at=Math.floor(Date.now()/60000)*60000;
+  c.database.exec('BEGIN');
+  const insert=c.database.prepare('INSERT INTO daily_operation_limits(id,rate_key_hash,action,window_started_at,request_count,expires_at,created_at,updated_at) VALUES(?,?,?, ?,1,?,?,?)');
+  for(let i=0;i<51003;i++)insert.run('synthetic_stock_'+i,i.toString(16).padStart(64,'0'),'start',at,at+86400000,at,at);
+  c.database.exec('COMMIT');
+  applyMigrationPlan(target,await loadMigrationPlan());
+  const typeSchema='CREATE TABLE synthetic_types(id TEXT PRIMARY KEY,whole REAL,fraction REAL,bytes BLOB,label TEXT)';
+  c.database.exec(typeSchema);target.exec(typeSchema);
+  c.database.prepare('INSERT INTO synthetic_types VALUES(?,?,?,?,?)').run('synthetic_types',1,1.125,Buffer.from([0,255,13]),'Àṣà: discovery');
+  const pointer=await prepareStreamedRestore(c.database,custody,key,'synthetic_plan',{pageSize:5});
+  assert.deepEqual(await prepareStreamedRestore(c.database,custody,key,'synthetic_plan',{pageSize:5,now:Date.now()+1000}),pointer);
+  const db=adapter(target);let interrupted=false;
+  await assert.rejects(importStreamedRestore(db,custody,key,pointer,{resource,job,maxPages:10,fault:(_stage,cursor)=>{if(cursor===3){interrupted=true;throw Error('synthetic_interrupt');}}}),/synthetic_interrupt/);
+  assert.equal(interrupted,true);assert.equal(target.prepare('SELECT cursor FROM operational_recovery_checkpoints WHERE id=?').get(job).cursor,3);
+  assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);
+  assert.equal(target.prepare("SELECT COUNT(*) n FROM daily_operation_limits WHERE id LIKE 'synthetic_stock_%'").get().n,0);
+  await assert.rejects(verifyStreamedRestore(db,custody,key,pointer,{job}),/unavailable/);
+  let result;do{result=await importStreamedRestore(db,custody,key,pointer,{resource,job,maxPages:10});assert.ok(result.runtimeAccess.startsWith('blocked_'));}while(!result.imported);
+  assert.deepEqual(await verifyStreamedRestore(db,custody,key,pointer,{job}),{verified:true,runtimeAccess:'blocked_pending_authority_suppression_receipt'});
+  assert.equal((await verifyStreamedRestore(db,custody,key,pointer,{job})).verified,true);
+  assert.equal((await importStreamedRestore(db,custody,key,pointer,{resource,job})).imported,true);
+  assert.equal(target.prepare("SELECT COUNT(*) n FROM daily_operation_limits WHERE id LIKE 'synthetic_stock_%'").get().n,51003);
+  assert.deepEqual(target.prepare('SELECT *,typeof(whole) whole_type,typeof(fraction) fraction_type FROM synthetic_types').all(),c.database.prepare('SELECT *,typeof(whole) whole_type,typeof(fraction) fraction_type FROM synthetic_types').all());
+  for(const table of ['cowrie_wallets','cowrie_ledger','commerce_orders','stripe_webhook_events','retention_holds','retention_closures','retention_suppression'])assert.deepEqual(target.prepare('SELECT * FROM '+table+' ORDER BY 1').all(),c.database.prepare('SELECT * FROM '+table+' ORDER BY 1').all());
+  assert.throws(()=>target.exec("UPDATE cowrie_wallets SET state='active'"),/cannot reopen/);
+  assert.throws(()=>target.exec('UPDATE cowrie_wallets SET purchased_balance=99'),/cache mismatch/);
+  assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);
+  await assert.rejects(importStreamedRestore(db,custody,key,pointer,{resource:{...resource,id:'1a268b28-e6d5-4431-8f84-a886df9369f1'},job}),/scope/);
+  await assert.rejects(importStreamedRestore(db,custody,key,pointer,{resource,job:'synthetic_other'}));
+ }finally{c.database.close();target.close();}
+});

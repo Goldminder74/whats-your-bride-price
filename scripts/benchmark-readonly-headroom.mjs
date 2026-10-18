@@ -15,7 +15,8 @@ try{
   const result=await get(`https://api.cloudflare.com/client/v4/accounts/${account}/${route}`,token);
   console.log(JSON.stringify({provider:'cloudflare',operation:route,status:result.status,success:result.data?.success===true,
    ...(route==='subscriptions'&&Array.isArray(result.data?.result)?{plans:result.data.result.map(x=>({name:x.rate_plan?.public_name||x.rate_plan?.id,price:x.price,currency:x.currency,state:x.state}))}:{}),
-   ...(route==='d1/database'&&Array.isArray(result.data?.result)?{databaseCount:result.data.result.length,benchmarkMatches:result.data.result.filter(x=>x.name==='wybp-capacity-d1-r002').length}:{}),
+   ...(route==='d1/database'&&Array.isArray(result.data?.result)?{databaseCount:result.data.result.length,benchmarkMatches:result.data.result.filter(x=>x.name==='wybp-capacity-d1-r002').length,
+    totalDatabaseBytes:result.data.result.every(x=>Number.isSafeInteger(x.file_size)&&x.file_size>=0)?result.data.result.reduce((n,x)=>n+x.file_size,0):'unknown'}:{}),
   }));
  }
 }catch{console.log(JSON.stringify({provider:'cloudflare',status:'read_unavailable'}));}

@@ -9,12 +9,12 @@ export function benchmarkTrafficMicrocredits(value) {
  const credits=value.external*200+Math.ceil(value.transferBytes/50)+Math.ceil(value.computeGbMs*25/9);
  if(!Number.isSafeInteger(credits))throw Error('benchmark_credit_unknown');return credits;
 }
-const TRAFFIC_MICROCREDITS=35000000;
+const TRAFFIC_MICROCREDITS=60000000;
 const freezePhase=phase=>Object.freeze({...phase,caps:Object.freeze({...phase.caps,computeGbMs:3600000})});
 export const BENCHMARK_PHASES=Object.freeze({
  A:freezePhase({durationMs:30*60000,externalPerSecond:1,internalPerSecond:1,completedGames:22,caps:{external:1000,internal:0,writes:10000,reads:100000,storageBytes:10*MB,transferBytes:100*MB,driveObjects:100,driveBytes:10*MB}}),
  B:freezePhase({durationMs:60*60000,externalPerSecond:10,internalPerSecond:500,completedGames:500,caps:{external:80000,internal:600000,writes:2000000,reads:10000000,storageBytes:100*MB,transferBytes:1000*MB,driveObjects:6000,driveBytes:100*MB}}),
- C:freezePhase({durationMs:60*60000,externalPerSecond:10,internalPerSecond:500,completedGames:0,caps:{external:40000,internal:100000,writes:3000000,reads:60000000,storageBytes:250*MB,transferBytes:200*MB,driveObjects:6000,driveBytes:100*MB}}),
+ C:freezePhase({durationMs:60*60000,externalPerSecond:10,internalPerSecond:500,completedGames:0,caps:{external:100000,internal:500000,writes:3000000,reads:60000000,storageBytes:250*MB,transferBytes:750*MB,driveObjects:6000,driveBytes:250*MB}}),
 });
 export const BENCHMARK_RESOURCE_NAMES=Object.freeze(['wybp-capacity-private-r002','wybp-capacity-worker-r002','wybp-capacity-d1-r002']);
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
@@ -41,7 +41,7 @@ export function verifyBenchmarkPreflight(facts,now=Date.now(),{execution=false}=
  if(facts.maximumUsageGBP<worstUsageGBP||facts.subscriptionGBP+1e-9<5*facts.usageGBPPerUSD)reject('benchmark_cost_understated');
  const incremental=facts.subscriptionGBP+facts.maximumUsageGBP;
  if(incremental>8||facts.currentWholeAccountGBP+incremental>50)reject('benchmark_cost_ceiling');
- if(!nonnegative(facts.netlifyCreditsAvailable)||facts.netlifyCreditsAvailable<345
+ if(!nonnegative(facts.netlifyCreditsAvailable)||facts.netlifyCreditsAvailable<370
   ||!nonnegative(facts.includedWritesAvailable)||facts.includedWritesAvailable<5100000
   ||!nonnegative(facts.includedReadsAvailable)||facts.includedReadsAvailable<71000000
   ||!nonnegative(facts.includedStorageBytesAvailable)||facts.includedStorageBytesAvailable<250*MB)reject('benchmark_headroom_shortfall');
@@ -69,8 +69,9 @@ function vector(value) {
  * The caller must meter provider fetches and internal RPC, not just browser traffic.
  */
 export class ApprovedBenchmarkBudget {
- constructor(database,{runId,phase,preflight,now=Date.now}={}) {
+ constructor(database,{runId,phase,preflight,now=Date.now,preparing=false}={}) {
   if(!database?.prepare||!database?.exec||!/^[a-zA-Z0-9_-]{1,64}$/.test(runId||'')||!BENCHMARK_PHASES[phase])reject('benchmark_budget_configuration');
+  if(typeof preparing!=='boolean'||preparing&&phase==='A')reject('benchmark_preparation_scope');
   this.db=database;this.now=now;this.phase=BENCHMARK_PHASES[phase];this.id=runId+':'+phase;
   const approved=verifyBenchmarkPreflight(preflight,now(),{execution:true});
   const allowed=new Set(['benchmark_runs','benchmark_tickets','benchmark_rate','benchmark_preflights','benchmark_sessions']);
@@ -81,23 +82,38 @@ export class ApprovedBenchmarkBudget {
     CREATE TABLE IF NOT EXISTS benchmark_preflights(run_id TEXT NOT NULL,sha256 TEXT NOT NULL,verified_at INTEGER NOT NULL,PRIMARY KEY(run_id,sha256));
     CREATE TABLE IF NOT EXISTS benchmark_sessions(id TEXT PRIMARY KEY,state TEXT NOT NULL);`);
   this.session=runId;database.prepare("INSERT INTO benchmark_sessions VALUES(?1,'active') ON CONFLICT(id) DO NOTHING").run(runId);
-  database.prepare("INSERT INTO benchmark_runs VALUES(?1,?2,1,'active',?3,0,NULL,?4) ON CONFLICT(id) DO NOTHING").run(this.id,now(),JSON.stringify(zero()),approved.evidenceSha256);
+  database.prepare("INSERT INTO benchmark_runs VALUES(?1,?2,1,?5,?3,0,NULL,?4) ON CONFLICT(id) DO NOTHING").run(this.id,now(),JSON.stringify(zero()),approved.evidenceSha256,preparing?'preparing':'active');
   const latest=database.prepare('SELECT MAX(verified_at) at FROM benchmark_preflights WHERE run_id=?1').get(this.id).at;
   if(latest!==null&&approved.verifiedAt<latest)reject('benchmark_resume_evidence_stale');
   database.prepare('INSERT INTO benchmark_preflights VALUES(?1,?2,?3) ON CONFLICT(run_id,sha256) DO NOTHING').run(this.id,approved.evidenceSha256,approved.verifiedAt);
  }
  row(){const row=this.db.prepare('SELECT * FROM benchmark_runs WHERE id=?1').get(this.id);if(!row)reject('benchmark_run_missing');return row;}
+ beginMeasurement(){
+  // A one-way transition for a NEW B/C run, never a timer reset. Preparation
+  // tickets and their resource/credit reservations remain charged in full.
+  return this.transaction(()=>{
+   const row=this.row();
+   if(row.state==='active')return row.started_at;
+   if(row.state!=='preparing'||this.id.endsWith(':A')||this.db.prepare('SELECT state FROM benchmark_sessions WHERE id=?1').get(this.session).state!=='active'
+    ||this.db.prepare("SELECT COUNT(*) n FROM benchmark_tickets WHERE run_id=?1 AND state!='settled'").get(this.id).n)reject('benchmark_measurement_start_blocked');
+   const at=this.now(),fresh=this.db.prepare('SELECT MAX(verified_at) at FROM benchmark_preflights WHERE run_id=?1').get(this.id).at;
+   if(at<row.started_at||at-fresh>3600000)reject('benchmark_measurement_start_blocked');
+   this.db.prepare("UPDATE benchmark_runs SET state='active',started_at=?2,version=version+1 WHERE id=?1 AND state='preparing'").run(this.id,at);return at;
+  });
+ }
  transaction(work){this.db.exec('BEGIN IMMEDIATE');try{const result=work();this.db.exec('COMMIT');return result;}catch(error){this.db.exec('ROLLBACK');throw error;}}
- reserve(actionId,upper,{cleanup=false,burst=false}={}) {
-  if(typeof cleanup!=='boolean'||typeof burst!=='boolean')reject('benchmark_action_options');
+ reserve(actionId,upper,{cleanup=false,burst=false,pacedExternal=false,preparation=false}={}) {
+  if(typeof cleanup!=='boolean'||typeof burst!=='boolean'||typeof pacedExternal!=='boolean'||typeof preparation!=='boolean')reject('benchmark_action_options');
   vector(upper);if(!/^[a-zA-Z0-9_-]{1,100}$/.test(actionId||''))reject('benchmark_action_identity');
   return this.transaction(()=>{
    const existing=this.db.prepare('SELECT * FROM benchmark_tickets WHERE run_id=?1 AND action_id=?2').get(this.id,actionId);
    if(existing){if(existing.reserved!==JSON.stringify(upper))reject('benchmark_retry_conflict');return {ticket:existing.ticket,state:existing.state,execute:false};}
    const row=this.row(),at=this.now();
    if(cleanup&&!/^cleanup_(delete|verify|reconcile)_/.test(actionId))reject('benchmark_cleanup_scope');
-   if((row.state!=='active'||this.db.prepare('SELECT state FROM benchmark_sessions WHERE id=?1').get(this.session).state!=='active')&&!cleanup)reject('benchmark_stopped');
-   if(at<row.started_at||at-row.started_at>=this.phase.durationMs){if(!cleanup)reject('benchmark_duration_stop');}
+   if(preparation&&(!/^setup_[a-zA-Z0-9_-]+$/.test(actionId)||row.state!=='preparing'||burst))reject('benchmark_preparation_scope');
+   if(preparation&&at-this.db.prepare('SELECT MAX(verified_at) at FROM benchmark_preflights WHERE run_id=?1').get(this.id).at>3600000)reject('benchmark_headroom_unverified');
+   if((row.state!==(preparation?'preparing':'active')||this.db.prepare('SELECT state FROM benchmark_sessions WHERE id=?1').get(this.session).state!=='active')&&!cleanup)reject('benchmark_stopped');
+   if(at<row.started_at||!preparation&&at-row.started_at>=this.phase.durationMs){if(!cleanup)reject('benchmark_duration_stop');}
    const used=JSON.parse(row.used),threshold=cleanup?1:0.8;
    for(const key of keys){
     const projected=key==='storageBytes'?Math.max(used[key],upper[key]):used[key]+upper[key];
@@ -111,8 +127,12 @@ export class ApprovedBenchmarkBudget {
    if(burst){if(!this.id.endsWith(':B'))reject('benchmark_burst_scope');burstAt??=at;if(at-burstAt>=60000)reject('benchmark_burst_expired');}
    const second=Math.floor(at/1000),rate=this.db.prepare('SELECT * FROM benchmark_rate WHERE run_id=?1 AND second=?2').get(this.id,second)||{external:0,internal:0};
    const extLimit=burst?40:this.phase.externalPerSecond;
-   if(rate.external+upper.external>extLimit||rate.internal+upper.internal>this.phase.internalPerSecond)reject('benchmark_rate_stop');
-   this.db.prepare('INSERT INTO benchmark_rate VALUES(?1,?2,?3,?4) ON CONFLICT(run_id,second) DO UPDATE SET external=excluded.external,internal=excluded.internal').run(this.id,second,rate.external+upper.external,rate.internal+upper.internal);
+   // A verified private adapter spaces EVERY provider fetch and the controller
+   // serialises whole invocations plus a final interval. Its total reservation
+   // can span multiple seconds; this does not authorise a single-second burst.
+   const immediateExternal=pacedExternal?0:upper.external;
+   if(rate.external+immediateExternal>extLimit||rate.internal+upper.internal>this.phase.internalPerSecond)reject('benchmark_rate_stop');
+   this.db.prepare('INSERT INTO benchmark_rate VALUES(?1,?2,?3,?4) ON CONFLICT(run_id,second) DO UPDATE SET external=excluded.external,internal=excluded.internal').run(this.id,second,rate.external+immediateExternal,rate.internal+upper.internal);
    this.db.prepare('DELETE FROM benchmark_rate WHERE run_id=?1 AND second<?2').run(this.id,second-1);
    const ticket=randomUUID();
    this.db.prepare("INSERT INTO benchmark_tickets VALUES(?1,?2,?3,?4,NULL,'reserved',NULL,?5)").run(this.id,actionId,ticket,JSON.stringify(upper),at);

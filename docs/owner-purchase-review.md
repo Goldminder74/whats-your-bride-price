@@ -6,11 +6,27 @@ Previously approved retention rules and completed Stripe setup are not being reo
 
 ## Decisions requested
 
+### Owner responses recorded 18 October 2026
+
+- The owner will name additional paid-sales countries; the actual country list is
+  still needed. Neither UK-only nor worldwide sales is approved by that answer.
+- The purchase/refund draft is approved for final review, not legal sign-off.
+- Complaint escalation must say **Classes for Culture**, not the operator's
+  personal name. This does not remove legally required seller identity details.
+- Saveable order-specific confirmation **plus transactional email** is selected.
+  Delivery, retry safety, email retention and cost still require implementation
+  and verification before live sales.
+- The owner delegated the audience recommendation. Proposed initial wording:
+  “Free play and purchases are for adults aged 18 or over.” This remains a draft;
+  an adult label alone does not establish effective age assurance or exclude
+  children's privacy obligations. Complete the audience/risk assessment before
+  presenting this as an implemented safeguard.
+
 | Decision | Proposal | Owner response needed |
 |---|---|---|
 | Paid territories | UK consumers initially. Enforce eligibility before checkout; language, currency and IP alone are not evidence of residence. | UK-only, or list specific additional countries for tax/consumer review. Worldwide is not assumed. |
 | Products/refunds | Approve or revise the draft below, with consumer-law review of Cowrie credits versus future services. | Accept/revise; record any professional advice separately. |
-| Support | team@classesforculture.com; acknowledge within two working days as a proposed service target. Escalate payment, privacy and complaint cases to Ayodele Ayeni. | Approve a target you can actually meet and the complaint route. This is not an existing promise. |
+| Support | team@classesforculture.com; acknowledge within two working days as a proposed service target. Escalate payment, privacy and complaint cases to Classes for Culture. | Owner requested the organisation name for escalation; confirm operational readiness before publishing the service target. |
 | Seller details | Actual geographical establishment/contact address, complaints address if different, and available/required telephone contact. | Install securely as described below; never paste them into chat. |
 
 Free-game territories remain a separate decision. Confirm any genuinely unresolved
@@ -84,13 +100,18 @@ approve legal pages or activate commerce. Do not install the real address in ops
 1. Save the exact public seller details in your password manager under
    “Classes for Culture — public seller details”. No identity documents or bank data.
 2. Do not change Stripe again merely for this task: its setup is owner-confirmed complete.
-3. Website installation is still pending. `app/legalConfig.ts` currently contains null
-   placeholders; there is no verified working address Secret/form that populates it.
-   The earlier shorthand “secure runtime mechanism” was a proposal, not a completed route.
-4. Before installation, Codex must prepare a private runtime-only configuration route
-   and name the exact fields. Enter details directly in that provider's protected UI,
-   not chat, Git, logs or build variables. A Secret prevents accidental build/Git exposure;
-   the intended seller address will be visible on the eventual legal pages.
+3. Website installation is still pending. The local runtime reader/parser exists;
+   no real address is verified as installed. Static builds deliberately receive none.
+4. In the eventual protected production application Worker's Secret UI, install
+   `WYBP_PUBLIC_SELLER_DETAILS_JSON`, containing only `version` (1), `legalName`,
+   `tradingName`, `geographicalAddress`, `complaintsAddress` (or null), `telephone`
+   (or null), `supportEmail` and `privacyEmail`. Do not install it in the benchmark,
+   private test or operational Worker. The current parser expects the recorded
+   individual seller trading as Classes for Culture; confirm that legal identity
+   before installation, or correct the parser if a different verified entity sells.
+   Enter values directly in the protected UI, not chat, Git, logs or build variables.
+   This protects installation/build custody; the intended seller address will be
+   visible on the eventual legal pages.
 5. Review those pages behind private access. Approve publication separately with launch.
 
 UK requirements checked 15 October:

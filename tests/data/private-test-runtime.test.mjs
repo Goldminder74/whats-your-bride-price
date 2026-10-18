@@ -233,6 +233,7 @@ test("build inputs reject runtime secrets and non-isolated database profiles",as
   try{
     await assertSecretFreeBuild(root,{});
     await assert.rejects(assertSecretFreeBuild(root,{WYBP_NETLIFY_PROXY_SECRET:"synthetic-only"}),/runtime/);
+    for(const name of ['WYBP_AUTHORITY_KEY_BASE64','WYBP_BENCHMARK_KEY_BASE64','WYBP_RECOVERY_KEY_CHECK_BASE64','WYBP_BENCHMARK_ACCESS','WYBP_PUBLIC_SELLER_DETAILS_JSON'])await assert.rejects(assertSecretFreeBuild(root,{[name]:'synthetic-only'}),/runtime/);
     await writeFile(join(root,".env.production"),"STRIPE_WEBHOOK_SIGNING_SECRET=whsec_synthetic_test_only\n");
     await assert.rejects(assertSecretFreeBuild(root,{}),/environment file/);
     const environment={WYBP_PRIVATE_TEST_PROFILE:"data",WYBP_TEST_D1_DATABASE_ID:"11111111-2222-4333-8444-555555555555",

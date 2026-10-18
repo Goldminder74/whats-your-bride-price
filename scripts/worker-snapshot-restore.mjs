@@ -3,6 +3,7 @@
 import { DatabaseSync } from 'node:sqlite';
 import { readBoundary } from './authority-runtime.mjs';
 import { decryptRecord, recoveryHash } from './recovery-crypto.mjs';
+import {segmentedSnapshotPages} from '../worker/segmentedSnapshot.mjs';
 const quote=value=>'"'+value.replaceAll('"','""')+'"';
 const fail=()=>{throw Error('worker_snapshot_invalid');};
 export async function materializeWorkerSnapshot(custody,key,id,receipt){
@@ -39,4 +40,43 @@ export async function materializeWorkerSnapshot(custody,key,id,receipt){
   database.exec('COMMIT; PRAGMA foreign_keys=ON');
   return {database,receipt,runtimeAccess:'blocked_pending_fresh_receipt'};
  }catch{database.close();throw Error('worker_snapshot_invalid');}
+}
+
+/** Streams a segmented capture into an explicit offline database. The caller owns
+ * secure disk custody; no hosted target, application gate or recovery receipt is
+ * changed. Supply a fresh database; existing tables/data are never overwritten.
+ */
+export async function materializeSegmentedSnapshot(custody,key,pointer,database){
+ if(!database?.prepare||!database?.exec||database.prepare("SELECT name FROM sqlite_schema WHERE type='table' AND name NOT LIKE 'sqlite_%'").all().length)fail();
+ let schema,rows=0,pages=0;const inserts=new Map();
+ try{
+  database.exec('PRAGMA foreign_keys=OFF; BEGIN IMMEDIATE');
+  for await(const item of segmentedSnapshotPages(custody,key,pointer)){
+   if(item.kind==='schema'){
+    if(schema||!Array.isArray(item.schema)||item.schema.some(s=>!['table','index','trigger','view'].includes(s.type)||typeof s.name!=='string'||typeof s.sql!=='string'||/\b(ATTACH|DETACH|load_extension|writable_schema)\b/i.test(s.sql)))fail();
+    schema=item.schema;
+    for(const table of schema.filter(s=>s.type==='table')){
+     database.exec(table.sql);const columns=database.prepare('PRAGMA table_info('+quote(table.name)+')').all().map(c=>c.name);
+     inserts.set(table.name,{columns,insert:database.prepare('INSERT INTO '+quote(table.name)+'('+columns.map(quote).join(',')+') VALUES('+columns.map(()=>'?').join(',')+')')});
+    }
+   }else if(item.kind==='page'){
+    const plan=inserts.get(item.table);if(!plan)fail();
+    for(const row of item.rows){
+     if(Object.keys(row).length!==plan.columns.length||plan.columns.some(c=>!Object.hasOwn(row,c)))fail();
+     plan.insert.run(...plan.columns.map(c=>{
+      const value=row[c];if(value&&typeof value==='object'){
+       if(Object.keys(value).length!==1||typeof value.binary!=='string')fail();
+       const bytes=Buffer.from(value.binary,'base64');if(bytes.toString('base64')!==value.binary)fail();return bytes;
+      }if(value!==null&&typeof value!=='string'&&!(typeof value==='number'&&Number.isSafeInteger(value)))fail();return value;
+     }));rows++;
+    }pages++;
+   }else fail();
+  }
+  if(!schema)fail();
+  for(const entry of schema.filter(s=>s.type==='index'))database.exec(entry.sql);
+  if(database.prepare('PRAGMA foreign_key_check').all().length)fail();
+  for(const entry of schema.filter(s=>s.type==='trigger'||s.type==='view'))database.exec(entry.sql);
+  database.exec('COMMIT; PRAGMA foreign_keys=ON');
+  return {rows,pages,sourceReceipt:pointer.sha256,runtimeAccess:'blocked_pending_fresh_receipt'};
+ }catch{try{database.exec('ROLLBACK; PRAGMA foreign_keys=ON');}catch{/* Do not expose database values. */}throw Error('worker_snapshot_invalid');}
 }

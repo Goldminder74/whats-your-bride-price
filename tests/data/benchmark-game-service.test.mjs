@@ -29,10 +29,12 @@ test('actual fenced repositories complete twelve answers once and preserve anoth
   const before=f.c.database.prepare('SELECT * FROM cowrie_wallets').all();
   const command={identity:'game_1',region:'west'},started=await f.service.execute({...command,kind:'start'});
   assert.equal(started.questionCount,12);
+  assert.ok(started.answerPlan.every(q=>Array.isArray(q.assetRefs)));
+  assert.ok(started.answerPlan.flatMap(q=>q.assetRefs).length>=4);
   assert.deepEqual(await f.service.execute({...command,kind:'start'}),started);
   for(let question=1;question<=12;question++){
-   const result=await f.service.execute({...command,kind:'answer',question});assert.equal(result.accepted,true);
-   if(question===7){const recovery=await benchmarkGameService(f.options).execute({...command,kind:'recover'});assert.equal(recovery.selectionHash,started.selectionHash);assert.equal(recovery.additionalAttempts,0);assert.equal(recovery.chargeCount,0);}
+   const result=await f.service.execute({...command,kind:'answer',question,...started.answerPlan[question-1]});assert.equal(result.accepted,true);
+   if(question===7){assert.equal(f.c.database.prepare('SELECT COUNT(*) n FROM answers').get().n,0);const recovery=await benchmarkGameService(f.options).execute({...command,kind:'recover'});assert.equal(recovery.selectionHash,started.selectionHash);assert.equal(recovery.additionalAttempts,0);assert.equal(recovery.chargeCount,0);assert.equal(f.c.database.prepare('SELECT COUNT(*) n FROM answers').get().n,0);}
   }
   const completed=await f.service.execute({...command,kind:'complete'});
   assert.equal(completed.persisted,true);assert.equal(completed.answerCount,12);
@@ -53,6 +55,8 @@ test('isolated target, unknown attempt and invalid question fail closed without 
   await assert.rejects(f.service.execute({identity:'missing',kind:'complete'}),/^Error: benchmark_game_unavailable$/);
   await f.service.execute({identity:'game_2',region:'east',kind:'start'});
   await assert.rejects(f.service.execute({identity:'game_2',kind:'answer',question:13}),/^Error: benchmark_game_unavailable$/);
+  await assert.rejects(f.service.execute({identity:'game_2',kind:'answer',question:1,questionRef:'unowned_question',selectedOptionIds:['invented_option']}),/^Error: benchmark_game_unavailable$/);
+  assert.equal(f.c.database.prepare('SELECT COUNT(*) n FROM answers').get().n,0);
   assert.equal(f.c.database.prepare('SELECT COUNT(*) n FROM results').get().n,0);
  }finally{f.c.database.close();}
 });
