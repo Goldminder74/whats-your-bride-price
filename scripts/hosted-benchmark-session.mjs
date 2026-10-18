@@ -71,8 +71,15 @@ export async function createHostedBenchmarkSession({phase,preflight,resources,ma
     };
     driver=new ApprovedBenchmarkDriver({budget,adapter,resources,now,...(phase==='C'?{recover:recovery}:{})});
     const drained=phase==='C'?await read(drainedPath,'outage-drained'):null;let result;
-    if(drained){if(drained.run!==budget.id||budget.row().state!=='active')fail();await recovery();result={...drained.receipt,budget:budget.receipt(),resumedRecovery:true};}
-    else result=phase==='B'?await driver.runGames():await driver.runOutage();
+    try{
+     if(drained){if(drained.run!==budget.id||budget.row().state!=='active')fail();await recovery();result={...drained.receipt,budget:budget.receipt(),resumedRecovery:true};}
+     else result=phase==='B'?await driver.runGames():await driver.runOutage();
+    }catch{
+     // Preserve sanitised observations on a stopped run as well as on success.
+     // Never persist provider bodies, thrown errors or in-memory player plans.
+     budget.stop();await persist('phase-'+phase+'-failure.json',{failed:true,code:'benchmark_phase_failed_readback_required',...driver.receipt()});
+     fail('benchmark_phase_failed_readback_required');
+    }
     if(result.budget.elapsedMs>=BENCHMARK_PHASES[phase].durationMs)fail('benchmark_duration_stop');
     return persist('phase-'+phase+'-result.json',result);
    },

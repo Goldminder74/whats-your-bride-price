@@ -16,6 +16,18 @@ test('exact hosted session checks credentials/configuration before access and pr
   await assert.rejects(createHostedBenchmarkSession({...options,resources:{...resources,database:{...resources.database,name:'wybp-prod-d1-r001'}}}));assert.equal(platforms,0);
   const first=await createHostedBenchmarkSession(options),folders=await first.prepareDrive();await first.close();
   const second=await createHostedBenchmarkSession(options);assert.deepEqual(await second.prepareDrive(),folders);assert.equal(effects,1);assert.equal(second.budget.receipt().state,'preparing');await assert.rejects(second.run(),/commissioning/);await second.close();
+  const previousFetch=globalThis.fetch;let requests=0,third;
+  try{
+   globalThis.fetch=async()=>{requests++;return new Response('private-provider-body-never-store',{status:503});};
+   third=await createHostedBenchmarkSession({...options,hosted:{...hosted,folderCount:16,restoreReceiptPresent:true}});
+   await assert.rejects(third.run(),/phase_failed_readback_required/);
+   const saved=await readFile(join(directory,'phase-B-failure.json'),'utf8'),failure=JSON.parse(saved);
+   assert.equal(failure.failed,true);assert.equal(failure.budget.state,'stopped');assert.equal(failure.budget.uncertainActions,1);
+   assert.equal(failure.budget.completedGames,0);assert.ok(failure.budget.used.external>0);
+   assert.equal(saved.includes('private-provider-body-never-store'),false);
+   for(const secret of Object.values(secrets))assert.equal(saved.includes(secret),false);
+   const observed=requests;await assert.rejects(third.run());assert.equal(requests,observed);
+  }finally{globalThis.fetch=previousFetch;await third?.close();}
  }finally{await rm(directory,{recursive:true,force:true});}
 });
 

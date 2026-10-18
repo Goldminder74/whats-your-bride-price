@@ -18,6 +18,7 @@ import {assertRestoreReceipt} from '../db/retention.ts';
 import {D1QuestionSelectionRepository} from '../db/questionSelection.ts';
 import {genericShareProjection,isSafeShareProjection} from '../app/shareProjection.ts';
 import {buildShareCopy} from '../app/shareCopy.ts';
+import {cleanupBenchmarkDrive} from '../scripts/benchmark-drive-cleanup.mjs';
 import {validatePublicAppOrigin} from '../app/publicAppOrigin.ts';
 const fail=()=>{throw Error('benchmark_runtime_unavailable');};
 export const BENCHMARK_ORIGIN='https://wybp-capacity-private-r002.netlify.app';
@@ -192,5 +193,11 @@ export function benchmarkRuntime(env,upper,{now=Date.now,pause,request}={}){
    return {result,usage:meter.receipt(),billingKnown:true,receiptSha256:recoveryHash(Buffer.from(JSON.stringify(result)))};
   }catch(error){const code=error.message==='drive_oauth_refresh'&&['invalid_grant','invalid_client','unauthorized_client','invalid_scope'].includes(error.cause)?'benchmark_drive_'+error.cause:'benchmark_operation_unavailable';return {result:{failed:true,code},usage:meter.observed(),billingKnown:meter.billingKnown(),receiptSha256:recoveryHash(Buffer.from(code))};}
  }
- return {run,service,meter,config,custody,db};
+ async function cleanup(stopped){
+  await service.ready();
+  const result=await cleanupBenchmarkDrive({root:env.WYBP_DRIVE_FOLDER_ID,folders:config.folders,runId:config.runId,stopped,
+   request:(...args)=>root.request(...args),indexLookup:(folder,name)=>custody.all.find(c=>c.folderId===folder)?.index.get(name)});
+  return {result,usage:meter.receipt(),billingKnown:true};
+ }
+ return {run,service,meter,config,custody,db,cleanup};
 }

@@ -27,6 +27,7 @@ export class BenchmarkPlayer extends WorkerEntrypoint {
 }
 export class BenchmarkOperator extends WorkerEntrypoint {
  async provision(upper){return provisionBenchmarkFolders(this.env,upper);}
+ async cleanup(stopped,upper){const runtime=benchmarkRuntime(this.env,upper);runtime.meter.add('internal',1);return runtime.cleanup(stopped);}
  async execute(command,upper){const runtime=benchmarkRuntime(this.env,upper);runtime.meter.add('internal',1);return runtime.run(command);}
  fetch(){return deny();}
 }

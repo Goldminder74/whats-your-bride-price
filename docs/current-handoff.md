@@ -15,7 +15,76 @@ no hosted benchmark execution has occurred.
 
 ## Latest continuation — 18 October, read first
 
+### Latest result — stopped experiment, cleanup complete
+
+This result supersedes the pending B/blocker/resource notes below. The explicit
+benchmark-only regular-variable exception succeeded; it did not apply to production.
+Netlify deployment `6ad43154be115fa5241127e0` matched the isolated Worker. Private
+signed ingress, anonymous401/direct404 and assets passed. The sole B clock ran
+about288 seconds before new admissions were stopped for increasing harness queue
+delay and a missed first completion deadline.15 setup/workload actions settled:
+11 synthetic starts, one accepted answer, zero completed games. Phase C did not run.
+No clock, reservation, wallet or authority fence was reset, and no uncertain mutation
+was replayed. Shutdown produced Windows WSARecv warnings after stopping/disposal;
+do not mislabel those as the original latency cause.
+
+Confirmed limitation: `ApprovedBenchmarkDriver.action` serialises entire responses,
+including read-only answers, to keep all client/provider I/O within the shared
+rate cap. Queued start-admission intervals were approximately26–28 seconds;
+starts used90 counted internal operations and23–24 external/client/provider requests.
+Those are not separate fence/Drive/CPU timings or a measured application concurrency
+ceiling.500/hour,5,000/day, whole-account launch costs and48h recovery remain NO-GO/
+unverified. Removing serialisation without replacing aggregate pacing is unsafe.
+See [concurrency decision](benchmark-concurrency-decision.md) for the smallest proposed
+new resource/window scope; no coordinator or replacement test is authorised/created.
+
+Read-only aggregate reconciliation found11 attempts/wallets, zero balance, ledger,
+orders, results, stored answers or holds, and idle journal/writer fences. A first
+read used a nonexistent balance column and received400; its conservative cleanup
+reservation stays reserved rather than inventing zero billing. The corrected read
+used purchased_balance+bonus_balance,35 reads and zero writes. This was synthetic
+r002 only, not any existing wallet. Workload observations before cleanup/setup-inclusive:
+419 external,1,025 counted internal,512 writes,8,341 reads,5,043,169 transferred bytes;
+57 created objects including folders and513,204 uploaded encrypted bytes. No CPU
+throughput/currency charge is inferred from the Netlify compute-zero counter.
+
+Cleanup was tested locally against complete pagination, foreign contents, unknown
+index mappings and an unconfirmed stop. The private operator then verified every
+child before deleting only its recorded disposable root:17 folders/40 files removed,
+approved parent preserved, root absence confirmed. Only then were the exact recorded
+Netlify site, Worker and D1 deleted, with identity and absence checks. All three
+are confirmed absent; no schedules, public game, DNS or live payments were enabled.
+Cleanup-only Worker version `9f3ed33c-f986-447b-862e-e4019b315afc` is now deleted.
+The disposable proxy variable was removed with its site. Existing game/ops resources,
+backups, catalogue and wallets were not modified. One Netlify publication15 credits;
+traffic stayed small. The already approved Workers Paid subscription remains active;
+no other plan/service was purchased. GBP7.40 remains a conservative original-scope
+forecast including that month, not a verified5k/day operating cost or actual invoice.
+
+Sanitised evidence (ignored authority-preparation): `20261018-r002-{b-stop,
+reconciled,drive-cleanup,resource-cleanup}.json`, phase-b/cleanup logs. Encrypted local
+receipts/DPAPI remain outside Git. Stopped-run reporting now persists safe observations
+on failure too, with a regression preserving unknown reservations and preventing
+further requests. Focused9/9, cleanup/session3/3 and compiled Worker1/1 passed.
+Complete data363/363, full lint and diff gates passed for this final scoped correction.
+Evidence: ignored `20261018-{cleanup-data,cleanup-full-lint,cleanup-built,
+cleanup-evidence-tests,stopped-evidence-tests}.log`. Unchanged application UI/typecheck/
+release evidence is reused. Do not repeat passed Google/key/alert/payment/UI checks.
+Resolve this continuation's commit with `git log -1`; only source, tests and documentation
+are committed. No further hosted work follows without the new resource/window decision.
+
 ### Latest bounded revision and secure-storage blocker
+
+**Later18October owner exception supersedes the blocker below:** explicitly approved
+regular Netlify environment-variable storage for the disposable r002 signed-proxy
+credential only. It is encrypted at rest but readable by authorised account/API users;
+this is not write-only Secrets Controller storage and grants no production exception.
+Installation succeeded without displaying the value or buying an upgrade. New site
+has no Git/build/functions. One15-credit publication produced Netlify deployment
+`6ad43154be115fa5241127e0`, matching the r002 Worker bundle below. The immutable
+durable Phase B clock has now started; do not reset it or rerun effects after a lost
+response. Results are pending, not evidence of500/hour yet. Only the isolated endpoint
+`https://wybp-capacity-private-r002.netlify.app` was published; no existing site changed.
 
 Owner explicitly approved C-only caps of250MB Drive,750MB transfer,100k external
 requests,500k counted internal operations, and60 shared traffic credits. All other
