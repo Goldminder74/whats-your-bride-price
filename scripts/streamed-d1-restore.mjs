@@ -59,17 +59,19 @@ async function read(custody,key,pointer){
  const bytes=await custody.get(pointer.name);if(!bytes||recoveryHash(bytes)!==pointer.sha256)fail();return decryptRecord(bytes,key,pointer.name);
 }
 async function put(custody,key,name,body){
+ if(Buffer.byteLength(JSON.stringify(body))>3500000)fail();
  const prior=await custody.get(name),bytes=prior||encryptRecord(body,key,name);
  if(prior&&JSON.stringify(decryptRecord(prior,key,name))!==JSON.stringify(body))fail();
  const sha256=await custody.put(name,bytes);if(recoveryHash(await custody.get(name))!==sha256)fail();return {name,sha256};
 }
-export async function prepareStreamedRestore(source,custody,key,id,{pageSize=25,now=Date.now()}={}){
+export async function prepareStreamedRestore(source,custody,key,id,{pageSize=25,packPages=false,now=Date.now()}={}){
+ if(typeof packPages!=='boolean')fail();
  if(!/^[a-zA-Z0-9_-]{1,70}$/.test(id)||!Number.isInteger(pageSize)||pageSize<1||pageSize>50)fail();
  const description=describe(source),segments=[];let files=[],count=0;
  const schemaHash=hash(description.schema);
  const startName=id+'.restore.start.enc',old=await custody.get(startName);
- const start=old?decryptRecord(old,key,startName):{schemaHash,tablesHash:hash(description.tables),pageSize,createdAt:now,expiresAt:now+windowMs};
- if(start.schemaHash!==schemaHash||start.tablesHash!==hash(description.tables)||start.pageSize!==pageSize||start.expiresAt<=now)fail();
+ const start=old?decryptRecord(old,key,startName):{schemaHash,tablesHash:hash(description.tables),pageSize,packPages,createdAt:now,expiresAt:now+windowMs};
+ if(start.schemaHash!==schemaHash||start.tablesHash!==hash(description.tables)||start.pageSize!==pageSize||(start.packPages===true)!==packPages||start.expiresAt<=now)fail();
  if(!old)await put(custody,key,startName,start);
  // Verification hashes are packed into bounded encrypted blocks, rather than
  // one Drive object per100 rows or a full in-memory target comparison.
@@ -86,17 +88,17 @@ export async function prepareStreamedRestore(source,custody,key,id,{pageSize=25,
   if(rows)leaves.push({rows,sha256:sha.digest('hex'),lastCursor});if(leaves.length)await write();
  }
  for(const page of pages(source,description,pageSize)){
-  if(count>=250000)fail();files.push(await put(custody,key,id+'.restore.page'+count+'.enc',{index:count,statements:page}));count++;
-  if(files.length===25){segments.push(await put(custody,key,id+'.restore.segment'+segments.length+'.enc',{files}));files=[];}
+  if(count>=250000)fail();files.push(packPages?{index:count,statements:page}:await put(custody,key,id+'.restore.page'+count+'.enc',{index:count,statements:page}));count++;
+  if(files.length===25){segments.push(await put(custody,key,id+'.restore.segment'+segments.length+'.enc',packPages?{pages:files}:{files}));files=[];}
  }
- if(files.length)segments.push(await put(custody,key,id+'.restore.segment'+segments.length+'.enc',{files}));
- return put(custody,key,id+'.restore.manifest.enc',{version:1,id,pageSize,pages:count,segments,...description,schemaHash,createdAt:start.createdAt,expiresAt:start.expiresAt});
+ if(files.length)segments.push(await put(custody,key,id+'.restore.segment'+segments.length+'.enc',packPages?{pages:files}:{files}));
+ return put(custody,key,id+'.restore.manifest.enc',{version:packPages?2:1,id,pageSize,pages:count,segments,...description,schemaHash,createdAt:start.createdAt,expiresAt:start.expiresAt});
 }
 export async function importStreamedRestore(target,custody,key,pointer,{resource,job,maxPages=10,now=Date.now(),fault=()=>{}}){
  assertBenchmarkResource('database',resource);
  if(!/^synthetic_[a-zA-Z0-9_-]{1,70}$/.test(job)||!Number.isInteger(maxPages)||maxPages<1||maxPages>25)fail();
  const manifest=await read(custody,key,pointer);
- if(manifest.version!==1||manifest.expiresAt<=now||manifest.expiresAt-manifest.createdAt!==windowMs||manifest.segments.length>10000||manifest.pages>250000)fail();
+ if(![1,2].includes(manifest.version)||manifest.expiresAt<=now||manifest.expiresAt-manifest.createdAt!==windowMs||manifest.segments.length>10000||manifest.pages>250000)fail();
  let checkpoint=(await target.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[job]))[0];
  if(!checkpoint){
   if(hash(normalSchema(await target.query(schemaSql)))!==manifest.schemaHash)fail();
@@ -112,8 +114,8 @@ export async function importStreamedRestore(target,custody,key,pointer,{resource
  while(cursor<manifest.pages&&processed<maxPages){
   const nextSegment=Math.floor(cursor/25);
   if(nextSegment!==segmentNumber){segment=await read(custody,key,manifest.segments[nextSegment]);segmentNumber=nextSegment;}
-  const page=await read(custody,key,segment.files[cursor%25]);
-  if(page.index!==cursor||!Array.isArray(page.statements)||!page.statements.length||page.statements.length>50||page.statements.some(s=>/operational_|retention_restore/i.test(s.sql)))fail();
+  const page=manifest.version===2?segment.pages?.[cursor%25]:await read(custody,key,segment.files[cursor%25]);
+  if(!page||page.index!==cursor||!Array.isArray(page.statements)||!page.statements.length||page.statements.length>50||page.statements.some(s=>/operational_|retention_restore/i.test(s.sql)))fail();
   await target.batch([{sql:"SELECT CASE WHEN EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id=?1 AND cursor=?2 AND state='importing' AND manifest_hash=?3 AND expires_at>?4) THEN 1 ELSE json('restore_cursor_conflict') END",params:[job,cursor,pointer.sha256,now]},...page.statements,{sql:'UPDATE operational_recovery_checkpoints SET cursor=cursor+1,version=version+1 WHERE id=?1 AND cursor=?2',params:[job,cursor]}]);
   cursor++;processed++;await fault('page_committed',cursor);
  }

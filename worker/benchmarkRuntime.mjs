@@ -19,6 +19,7 @@ import {D1QuestionSelectionRepository} from '../db/questionSelection.ts';
 import {genericShareProjection,isSafeShareProjection} from '../app/shareProjection.ts';
 import {buildShareCopy} from '../app/shareCopy.ts';
 import {cleanupBenchmarkDrive} from '../scripts/benchmark-drive-cleanup.mjs';
+import {sharedBenchmarkRequest} from './benchmarkPacingBridge.mjs';
 import {validatePublicAppOrigin} from '../app/publicAppOrigin.ts';
 const fail=()=>{throw Error('benchmark_runtime_unavailable');};
 export const BENCHMARK_ORIGIN='https://wybp-capacity-private-r002.netlify.app';
@@ -34,7 +35,9 @@ export function benchmarkConfiguration(env,{requireFolders=true}={}){
  return {resource,key,folders,phase:env.WYBP_BENCHMARK_PHASE,runId:env.WYBP_BENCHMARK_RUN_ID};
 }
 export async function provisionBenchmarkFolders(env,upper,{now=Date.now,pause,request}={}){
- const config=benchmarkConfiguration(env,{requireFolders:false}),meter=benchmarkMeter({phase:config.phase,upper,now,pause,request});
+ const config=benchmarkConfiguration(env,{requireFolders:false});let meter;
+ const paced=async(...args)=>(sharedBenchmarkRequest(env,meter)||request||fetch)(...args);
+ meter=benchmarkMeter({phase:config.phase,upper,now,pause,request:paced});
  const accessToken=driveAccessToken({clientId:env.WYBP_DRIVE_CLIENT_ID,clientSecret:env.WYBP_DRIVE_CLIENT_SECRET,refreshToken:env.WYBP_DRIVE_REFRESH_TOKEN,fetcher:meter.fetcher,now});
  const parent='1-fO04arPlwSpuWQ7T2--yzTS5pHEXyxr';
  async function call(url,init={}){const token=await accessToken();const response=await meter.fetcher(url,{...init,headers:{...init.headers,Authorization:'Bearer '+token}});if(!response.ok)fail();return response.json();}
@@ -58,7 +61,10 @@ export async function provisionBenchmarkFolders(env,upper,{now=Date.now,pause,re
  }catch{return {result:{failed:true,code:'benchmark_drive_provisioning_unavailable'},usage:meter.observed(),billingKnown:meter.billingKnown(),receiptSha256:recoveryHash(Buffer.from('benchmark_drive_provisioning_unavailable'))};}
 }
 export function benchmarkRuntime(env,upper,{now=Date.now,pause,request}={}){
- const config=benchmarkConfiguration(env),meter=benchmarkMeter({phase:config.phase,upper,now,pause,request}),binding=meter.database(env.DB),db=d1AuthorityAdapter(binding);
+ const config=benchmarkConfiguration(env);let meter;
+ const paced=async(...args)=>(sharedBenchmarkRequest(env,meter)||request||fetch)(...args);
+ meter=benchmarkMeter({phase:config.phase,upper,now,pause,request:paced});
+ const binding=meter.database(env.DB),db=d1AuthorityAdapter(binding);
  const accessToken=driveAccessToken({clientId:env.WYBP_DRIVE_CLIENT_ID,clientSecret:env.WYBP_DRIVE_CLIENT_SECRET,refreshToken:env.WYBP_DRIVE_REFRESH_TOKEN,fetcher:meter.fetcher,now});
  const make=folderId=>new DriveCustody({folderId,index:new D1DriveIndex(db,folderId,{now}),accessToken,fetcher:meter.fetcher,pageSize:10});
  const root=make(env.WYBP_DRIVE_FOLDER_ID),children=config.folders.map(make);
@@ -69,8 +75,8 @@ export function benchmarkRuntime(env,upper,{now=Date.now,pause,request}={}){
   meter.add('internal',1);
   if(env.BENCHMARK_AUTHORITY){
    const remaining=Object.fromEntries(Object.entries(upper).map(([k,v])=>[k,k==='storageBytes'?v:v-meter.observed()[k]]));
-   let result;try{result=await env.BENCHMARK_AUTHORITY.invoke(method,args,remaining);}catch{meter.markUncertain();fail();}
-   if(result?.billingKnown!==true||!result.usage){meter.markUncertain();fail();}meter.merge(result.usage);
+   let result;const began=now();try{result=await env.BENCHMARK_AUTHORITY.invoke(method,args,remaining);}catch{meter.markUncertain();fail();}finally{meter.authorityTime(Math.max(0,now()-began));}
+   if(result?.billingKnown!==true||!result.usage){meter.markUncertain();fail();}meter.merge(result.usage);if(result.timing)meter.mergeTiming(result.timing);
    if(result.failed)fail();return result.value;
   }
   // Only local compiled fixtures may omit the binding; hosted readiness below
@@ -190,7 +196,7 @@ export function benchmarkRuntime(env,upper,{now=Date.now,pause,request}={}){
    else if(command?.kind==='restore-verify')result=await verifyStreamedRestoreStep(db,custody,config.key,command.pointer,{job:command.job,maxPages:5,now:now()});
    else if(['start','answer','recover','complete','result'].includes(command?.kind))result=await game.execute(command);
    else fail();
-   return {result,usage:meter.receipt(),billingKnown:true,receiptSha256:recoveryHash(Buffer.from(JSON.stringify(result)))};
+   return {result,usage:meter.receipt(),timing:meter.timing(),billingKnown:true,receiptSha256:recoveryHash(Buffer.from(JSON.stringify(result)))};
   }catch(error){const code=error.message==='drive_oauth_refresh'&&['invalid_grant','invalid_client','unauthorized_client','invalid_scope'].includes(error.cause)?'benchmark_drive_'+error.cause:'benchmark_operation_unavailable';return {result:{failed:true,code},usage:meter.observed(),billingKnown:meter.billingKnown(),receiptSha256:recoveryHash(Buffer.from(code))};}
  }
  async function cleanup(stopped){

@@ -1,3 +1,5 @@
+import {productionPurchasePolicy,REQUESTED_SALES_COUNTRIES,type ConfirmationAuthority} from './purchaseConfirmationPolicy.ts';
+import {sellerDetailsFromRuntime} from './sellerDetails.ts';
 import { deriveCommerceOwnerHash, validateCommerceConfiguration, type CommerceConfiguration } from "../db/commerceContracts.ts";
 import { CommerceService, D1CommerceRepository, InMemoryCommerceRateLimiter, InMemoryCommerceRepository, createReviewCommerceConfig } from "../db/commerce.ts";
 import { D1ResultCompletionRepository, ResultCompletionService } from "../db/resultCompletion.ts";
@@ -18,6 +20,7 @@ export type CommerceRuntime = Readonly<{
   service: CommerceService;
   resultCompletionService: ResultCompletionService | null;
   config: CommerceConfiguration;
+  confirmationInfo?:Readonly<{seller:NonNullable<ReturnType<typeof sellerDetailsFromRuntime>>;countries:readonly string[]}>;
 }>;
 let reviewRuntimePromise: Promise<CommerceRuntime> | null = null;
 
@@ -52,8 +55,15 @@ export async function getCommerceRuntime(): Promise<CommerceRuntime | null> {
   if (!runtime.DB || !config) return null;
   const database = applicationAuthorityDatabase(runtime, privateTestProfile !== "off");
   if (!database) return null;
+  let confirmations,confirmationInfo;
+  if(privateTestProfile==='off'){
+    const seller=sellerDetailsFromRuntime(runtime);let countries:unknown;try{countries=JSON.parse(String(runtime.WYBP_APPROVED_SALES_TERRITORIES_JSON||''));}catch{return null;}
+    if(!seller||!Array.isArray(countries)||countries.slice().sort().join()!==REQUESTED_SALES_COUNTRIES.slice().sort().join())return null;
+    try{confirmations=productionPurchasePolicy(seller,runtime.AUTHORITY as ConfirmationAuthority,countries);confirmationInfo={seller,countries};}catch{return null;}
+  }
   return Object.freeze({
-    service:new CommerceService(new D1CommerceRepository(database),runtimeCommerceRateLimiter(runtime.DB,privateTestProfile,runtime.WYBP_AUTHORITY_ROLE,runtime.AUTHORITY),config,Date.now,{cowriePurchasesEnabled:activeFeatureFlags.cowrie_economy && activeFeatureFlags.random_quick_play}),
+    ...(confirmationInfo?{confirmationInfo}:{}),
+    service:new CommerceService(new D1CommerceRepository(database),runtimeCommerceRateLimiter(runtime.DB,privateTestProfile,runtime.WYBP_AUTHORITY_ROLE,runtime.AUTHORITY),config,Date.now,{cowriePurchasesEnabled:activeFeatureFlags.cowrie_economy && activeFeatureFlags.random_quick_play,confirmations}),
     resultCompletionService:new ResultCompletionService(new D1ResultCompletionRepository(database)),
     config,
   });

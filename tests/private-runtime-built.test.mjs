@@ -70,7 +70,8 @@ try{
         assert.equal(request.headers.get("origin"),origin);assert.equal(request.headers.get("sec-fetch-site"),"same-origin");assert.equal(request.headers.get("sec-fetch-mode"),"cors");posts.push(url.pathname);
         if(url.pathname==="/cowries/complete"&&failCompletion){failCompletion=false;return Response.json({completed:false},{status:503});}
       }
-      return proxy(url.pathname+url.search,{method:request.method,headers:Object.fromEntries(request.headers),body:request.method==="POST"?Buffer.from(await request.arrayBuffer()):undefined});
+      const response=await proxy(url.pathname+url.search,{method:request.method,headers:Object.fromEntries(request.headers),body:request.method==="POST"?Buffer.from(await request.arrayBuffer()):undefined});
+      return response;
     });
     const browser=await browserType.launch({headless:true,proxy:{server:local.server},...(channel?{channel}:{})});
     try{
@@ -79,7 +80,15 @@ try{
       const page=await context.newPage();const errors=[];
       // As in compiled-navigation.mjs, finish Link prefetches before intentionally
       // replacing the document: WebKit reports aborted prefetches as CORS failures.
-      const direct=async url=>{await page.waitForLoadState("networkidle");await page.goto(url);};
+      const pendingRequests=new Map();
+      page.on("request",request=>{const url=new URL(request.url());pendingRequests.set(request,{origin:url.origin,path:url.pathname,method:request.method()});});
+      const finished=request=>pendingRequests.delete(request);
+      page.on("requestfinished",finished);page.on("requestfailed",finished);
+      const direct=async url=>{
+        try{await page.waitForLoadState("networkidle");}
+        catch(error){console.error(JSON.stringify({stage:"before_direct_navigation",browser:browserType.name(),origin:new URL(page.url()).origin,pending:[...pendingRequests.values()]}));throw error;}
+        await page.goto(url);
+      };
       page.setDefaultNavigationTimeout(30000);
       page.setDefaultTimeout(30000);
       page.on("pageerror",error=>errors.push(error.message));

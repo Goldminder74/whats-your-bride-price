@@ -52,3 +52,15 @@ test('interrupted upload retries immutable pages, changed fence and corrupted pr
   await assert.rejects(segmentedSnapshot(f.db,f.custody,f.key,{pagesPerStep:1})(f.head,first.pointer),/invalid/);
  }finally{f.database.close();}
 });
+
+test('packed full-stock capture preserves all 1.8 million synthetic rows in bounded objects and resumes immutable steps',async()=>{
+ const f=fixture(1800000),target=new DatabaseSync(':memory:');try{
+  const step=segmentedSnapshot(f.db,f.custody,f.key,{packPages:true});let previous=null,done=false,steps=0;
+  while(!done){const result=await step(f.head,previous);if(steps===4)assert.deepEqual(await step(f.head,previous),result);previous=result.pointer;done=result.complete;steps++;}
+  assert.equal(steps,1440);assert.equal(f.files.size,1441);
+  const {materializeSegmentedSnapshot}=await import('../../scripts/worker-snapshot-restore.mjs');const restored=await materializeSegmentedSnapshot(f.custody,f.key,previous,target);
+  assert.equal(restored.rows,1800000);assert.equal(restored.pages,36000);assert.equal(target.prepare('SELECT COUNT(*) n FROM answers').get().n,1800000);assert.equal(restored.runtimeAccess,'blocked_pending_fresh_receipt');
+  const last=decryptRecord(f.files.get(previous.name),f.key,previous.name);assert.equal(last.format,'wybp-d1-segment-v2');
+  const saved=f.files.get(last.previous.name);f.files.delete(last.previous.name);await assert.rejects(async()=>{for await(const page of segmentedSnapshotPages(f.custody,f.key,previous))assert.ok(page);},/invalid/);f.files.set(last.previous.name,saved);
+ }finally{f.database.close();target.close();}
+});

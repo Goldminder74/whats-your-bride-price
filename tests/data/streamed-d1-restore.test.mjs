@@ -85,3 +85,20 @@ test('streamed encrypted plan imports accounting dependencies with bounded resum
   await assert.rejects(importStreamedRestore(db,custody,key,pointer,{resource,job:'synthetic_other'}));
  }finally{c.database.close();target.close();}
 });
+
+test('packed import plans resume a committed page without duplicates and preserve accounting and suppression',async()=>{
+ const c=await populatedRecoveryFixture(),target=new DatabaseSync(':memory:'),key=randomBytes(32),files=new Map();
+ const custody={get:async n=>files.get(n)||null,put:async(n,b)=>{if(files.has(n))assert.deepEqual(files.get(n),b);files.set(n,b);return recoveryHash(b);}};
+ try{
+  applyMigrationPlan(target,await loadMigrationPlan());const pointer=await prepareStreamedRestore(c.database,custody,key,'synthetic_packed',{pageSize:5,packPages:true});
+  assert.deepEqual(await prepareStreamedRestore(c.database,custody,key,'synthetic_packed',{pageSize:5,packPages:true}),pointer);
+  await assert.rejects(prepareStreamedRestore(c.database,custody,key,'synthetic_packed',{pageSize:5,packPages:false}),/unavailable/);
+  assert.equal([...files.keys()].some(n=>n.includes('.restore.page')),false);
+  const db=adapter(target),job='synthetic_packed_import';
+  await assert.rejects(importStreamedRestore(db,custody,key,pointer,{resource,job,maxPages:1,fault:()=>{throw Error('synthetic_interruption');}}),/synthetic_interruption/);
+  let result;do{result=await importStreamedRestore(db,custody,key,pointer,{resource,job,maxPages:5});}while(!result.imported);
+  assert.equal((await verifyStreamedRestore(db,custody,key,pointer,{job})).verified,true);
+  for(const table of ['cowrie_wallets','cowrie_ledger','commerce_orders','retention_holds','retention_closures','retention_suppression'])assert.deepEqual(target.prepare('SELECT * FROM '+table+' ORDER BY 1').all(),c.database.prepare('SELECT * FROM '+table+' ORDER BY 1').all());
+  assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);assert.equal((await importStreamedRestore(db,custody,key,pointer,{resource,job})).imported,true);
+ }finally{c.database.close();target.close();}
+});

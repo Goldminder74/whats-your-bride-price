@@ -250,3 +250,17 @@ test('missing recovery suppression blocks repository reads and writes before dur
     assert.equal(c.database.prepare('SELECT state FROM cowrie_wallets').get().state,'active');
   }finally{c.database.close();}
 });
+
+test('purchase email claim is independently journalled before SMTP and a post-send crash cannot resend across instances',async()=>{
+ const {PurchaseConfirmations,confirmationDraft}=await import('../../db/purchaseConfirmations.mjs');const {productionPurchasePolicy,PURCHASE_TERMS_VERSION}=await import('../../app/purchaseConfirmationPolicy.ts');const {decryptRecord}=await import('../../scripts/recovery-crypto.mjs');
+ const c=await fixture(),key=c.options.key;let sends=0;
+ const seller={version:1,legalName:'Ayodele Ayeni',tradingName:'Classes for Culture',geographicalAddress:'Synthetic address only',complaintsAddress:null,telephone:null,supportEmail:'team@classesforculture.com',privacyEmail:'team@classesforculture.com'};
+ try{
+  const store=new PurchaseConfirmations(c.journaled,key),policy=productionPurchasePolicy(seller,{preparePurchaseConfirmation:async input=>confirmationDraft(input,key),checkPendingPurchaseConfirmation:(...a)=>store.pendingMatches(...a),purchaseConfirmation:(...a)=>store.owned(...a),cancelPurchaseConfirmation:id=>store.cancelForOrder(id,now),deliverPurchaseConfirmation:async()=>({state:'pending'})},['GB']);
+  const service=new CommerceService(new D1CommerceRepository(c.journaled),new InMemoryCommerceRateLimiter(),config,()=>now,{cowriePurchasesEnabled:true,confirmations:policy});
+  const order=await service.startOrder({...request(c),confirmation:{email:'synthetic@example.invalid',residenceCountry:'GB',termsVersion:PURCHASE_TERMS_VERSION,adultPurchase:true}});await service.webhook(await verified('checkout.session.completed',checkout(order)));const id=c.database.prepare('SELECT id FROM commerce_orders').get().id;await store.ready(id,now);
+  const crashing={prepare(sql){const statement=c.journaled.prepare(sql);if(sql.startsWith('UPDATE purchase_confirmations SET state=?3'))return {bind(){return {async run(){throw Error('synthetic crash after SMTP');}};}};return statement;}};
+  await assert.rejects(new PurchaseConfirmations(crashing,key).deliver(id,async()=>{sends++;assert.equal(c.database.prepare('SELECT state FROM purchase_confirmations').get().state,'sending');const intents=[...c.files].filter(([name])=>name.endsWith('.intent')).map(([name,bytes])=>decryptRecord(bytes,key,name));assert.ok(intents.some(event=>event.statements.some(s=>s.sql.includes("state='sending'"))));return {accepted:true};},()=>now),/synthetic crash/);
+  const resumed=await new PurchaseConfirmations(c.journaled,key).deliver(id,async()=>{sends++;return {accepted:true};},()=>now);assert.equal(resumed.state,'sending');assert.equal(resumed.sent,false);assert.equal(sends,1);assert.deepEqual(balance(c),{purchased_balance:5,bonus_balance:0});
+ }finally{c.database.close();}
+});

@@ -4,6 +4,17 @@ import {DatabaseSync} from 'node:sqlite';
 import {ApprovedBenchmarkBudget,BENCHMARK_PHASES} from '../../scripts/approved-benchmark-budget.mjs';
 import {ApprovedBenchmarkDriver} from '../../scripts/approved-benchmark-driver.mjs';
 const hash='a'.repeat(64);
+test('verified shared pacing permits overlapping actions rather than serialising response latency',async()=>{
+ const f=fixture(),resolvers=[];f.adapter.sharedPacing=true;let active=0,peak=0;
+ f.adapter.execute=async()=>{active++;peak=Math.max(peak,active);await new Promise(resolve=>resolvers.push(resolve));active--;return {usage:{...Object.fromEntries(Object.keys(BENCHMARK_PHASES.B.caps).map(k=>[k,0])),external:1},receiptSha256:hash,result:{ok:true}};};
+ try{
+  const actions=Array.from({length:10},(_,i)=>f.driver.action({id:'parallel_'+i,kind:'result'}));
+  for(let i=0;i<50;i++)await Promise.resolve();assert.equal(peak,8);assert.equal(resolvers.length,8);
+  for(const resolve of resolvers.splice(0))resolve();for(let i=0;i<50;i++)await Promise.resolve();
+  for(const resolve of resolvers.splice(0))resolve();await Promise.all(actions);
+  assert.equal(f.driver.receipt().observedActions,10);assert.equal(f.budget.receipt().used.external,10);
+ }finally{f.db.close();}
+});
 function fixture(phase='B'){
  let at=Date.UTC(2026,9,15),calls=0;
  const db=new DatabaseSync(':memory:');

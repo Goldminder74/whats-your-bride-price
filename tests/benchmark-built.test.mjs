@@ -8,6 +8,7 @@ import {SignJWT} from 'jose';
 import {loadMigrationPlan} from '../scripts/data-migrations.mjs';
 import {setup} from './helpers/cowrieCommerce.mjs';
 import {BENCHMARK_PHASES} from '../scripts/approved-benchmark-budget.mjs';
+import {benchmarkOperationBounds} from '../scripts/benchmark-operation-bounds.mjs';
 const origin='https://wybp-capacity-private-r002.netlify.app';
 test('compiled isolated harness enforces private ingress and meters actual D1/authority game with recovery and retry',async()=>{
  const config=JSON.parse(await readFile('outputs/netlify-worker/benchmark-package/wrangler.json','utf8'));
@@ -95,5 +96,60 @@ test('compiled isolated harness enforces private ingress and meters actual D1/au
   const independentFiles=files.size;
   const busyCapture=await replay({kind:'capture',captureId:'synthetic_busy_capture'});assert.equal(busyCapture.result.failed,true);assert.equal(busyCapture.billingKnown,true);assert.equal(files.size,independentFiles);
   assert.equal((await db.prepare("SELECT state FROM operational_recovery_checkpoints WHERE id='journal'").first()).state,'idle');
+ }finally{c.database.close();await mf.dispose();}
+});
+
+test('compiled shared pacing uses real Durable Object SQL metadata and overlapping provider fetches',async()=>{
+ const config=JSON.parse(await readFile('outputs/netlify-worker/benchmark-package/wrangler.json','utf8'));
+ const starts=[],ends=[];let peak=0,active=0;
+ const mf=new Miniflare({workers:[
+  {name:config.name,modules:true,scriptPath:config.main,compatibilityDate:config.compatibility_date,compatibilityFlags:config.compatibility_flags,bindings:config.vars,durableObjects:{BENCHMARK_PACING:{className:'BenchmarkPacing',useSQLite:true}},outboundService:async()=>{starts.push(Date.now());peak=Math.max(peak,++active);await new Promise(r=>setTimeout(r,350));active--;ends.push(Date.now());return Response.json({synthetic:true});}},
+  {name:'pacing-caller',modules:true,compatibilityDate:config.compatibility_date,serviceBindings:{OP:{name:config.name,entrypoint:'BenchmarkOperator'}},script:'export default {async fetch(request,env){const packets=await request.json();return Response.json(await Promise.all(packets.map(p=>env.OP.dispatchHttp(p))));}}'}
+ ]});
+ try{
+  const caller=await mf.getWorker('pacing-caller'),packets=[1,2,3].map(i=>({id:i.toString(16).padStart(64,'0'),phase:'B',url:'https://www.googleapis.com/drive/v3/files/synthetic',method:'GET',headers:{},body:null}));
+  const responses=await Promise.all(packets.map(packet=>caller.fetch('http://localhost/',{method:'POST',body:JSON.stringify([packet])})));assert.ok(responses.every(r=>r.status===200));const results=(await Promise.all(responses.map(r=>r.json()))).flat();
+  assert.equal(peak,3);assert.ok(starts[2]<ends[0]);assert.ok(starts[1]-starts[0]>=80);assert.ok(starts[2]-starts[1]>=80);
+  assert.ok(results.every(r=>r.billingKnown===true&&r.counters.reads>0&&r.counters.writes>0&&r.counters.storageBytes>0));
+  assert.ok(results[2].timing.pacingWaitMs>=150);assert.equal((await (await mf.getWorker(config.name)).fetch('https://example.invalid/')).status,404);
+ }finally{await mf.dispose();}
+});
+
+test('compiled commissioning traverses all empty partitions and verifies an actual encrypted baseline through shared pacing',async()=>{
+ const config=JSON.parse(await readFile('outputs/netlify-worker/benchmark-package/wrangler.json','utf8'));
+ const root='synthetic_commission_root',children=Array.from({length:16},(_,i)=>'synthetic_commission_child_'+i),files=new Map();let next=0;
+ const bindings={...config.vars,WYBP_BENCHMARK_KEY_BASE64:Buffer.alloc(32,9).toString('base64'),WYBP_DRIVE_CLIENT_ID:'synthetic-client',WYBP_DRIVE_CLIENT_SECRET:'synthetic-secret',WYBP_DRIVE_REFRESH_TOKEN:'synthetic-refresh',WYBP_DRIVE_FOLDER_ID:root,WYBP_DRIVE_SHARD_FOLDER_IDS:JSON.stringify(children)};
+ const provider=async request=>{
+  const url=new URL(request.url);
+  if(url.hostname==='oauth2.googleapis.com')return Response.json({access_token:'synthetic-access',token_type:'Bearer',expires_in:3600,scope:'https://www.googleapis.com/auth/drive.file'});
+  assert.equal(url.hostname,'www.googleapis.com');
+  if(url.pathname.endsWith('/generateIds'))return Response.json({ids:['synthetic_commission_file_'+next++]});
+  if(url.pathname.startsWith('/upload/')){
+   const bytes=Buffer.from(await request.arrayBuffer()),metadata=JSON.parse(bytes.toString().split('\r\n\r\n')[1].split('\r\n--')[0]);
+   const marker=Buffer.from('Content-Type: application/octet-stream\r\n\r\n'),start=bytes.indexOf(marker)+marker.length,end=bytes.lastIndexOf(Buffer.from('\r\n--'));
+   if(files.has(metadata.id))return new Response(null,{status:409});files.set(metadata.id,{...metadata,bytes:bytes.subarray(start,end)});return Response.json({id:metadata.id});
+  }
+  if(url.pathname==='/drive/v3/files'){
+   const folder=/^'([^']+)' in parents/.exec(url.searchParams.get('q')||'')?.[1];assert.ok([root,...children].includes(folder));
+   return Response.json({incompleteSearch:false,files:[...files.values()].filter(f=>f.parents.includes(folder)).map(f=>({id:f.id,name:f.name}))});
+  }
+  const id=url.pathname.split('/').at(-1);
+  if(children.includes(id))return Response.json({id,mimeType:'application/vnd.google-apps.folder',parents:[root],trashed:false});
+  const file=files.get(id);if(!file)return new Response(null,{status:404});
+  return url.searchParams.has('alt')?new Response(file.bytes):Response.json({id,name:file.name,parents:file.parents,trashed:false});
+ };
+ const mf=new Miniflare({workers:[
+  {name:config.name,modules:true,scriptPath:config.main,compatibilityDate:config.compatibility_date,compatibilityFlags:config.compatibility_flags,bindings,d1Databases:{DB:'synthetic-commission-d1'},durableObjects:{BENCHMARK_PACING:{className:'BenchmarkPacing',useSQLite:true}},outboundService:provider},
+  {name:'commission-caller',modules:true,compatibilityDate:config.compatibility_date,serviceBindings:{OP:{name:config.name,entrypoint:'BenchmarkOperator'}},script:'export default {async fetch(request,env){return Response.json(await env.OP.execute({kind:"commission"},await request.json()));}}'}
+ ]});
+ const c=await setup();
+ try{
+  const db=await mf.getD1Database('DB');for(const migration of (await loadMigrationPlan()).slice(0,14))await db.batch(migration.statements.map(sql=>db.prepare(sql)));
+  for(const table of ['quiz_editions','questions']){const rows=c.database.prepare('SELECT * FROM '+table).all(),columns=Object.keys(rows[0]);for(let i=0;i<rows.length;i+=25)await db.batch(rows.slice(i,i+25).map(row=>db.prepare('INSERT INTO '+table+'('+columns.map(x=>'"'+x+'"').join(',')+') VALUES('+columns.map(()=>'?').join(',')+')').bind(...columns.map(x=>row[x]))));}
+  const upper=benchmarkOperationBounds({phase:'B',storageBytes:1036288,assets:{},sharedPacing:true})({kind:'commission'});upper.external-=8;upper.transferBytes-=4000000;
+  const response=await (await mf.getWorker('commission-caller')).fetch('http://localhost/',{method:'POST',body:JSON.stringify(upper)}),outcome=await response.json();
+  assert.equal(outcome.billingKnown,true,JSON.stringify(outcome));assert.equal(outcome.result.verified,true,JSON.stringify(outcome));assert.match(outcome.result.receipt,/^[a-f0-9]{64}$/);assert.ok(files.size>0);
+  assert.equal((await db.prepare('SELECT COUNT(*) n FROM retention_restore').first()).n,1);assert.equal((await db.prepare("SELECT state FROM operational_recovery_checkpoints WHERE id='journal'").first()).state,'idle');
+  assert.equal((await db.prepare('SELECT COUNT(*) n FROM cowrie_wallets').first()).n,0);
  }finally{c.database.close();await mf.dispose();}
 });

@@ -1,5 +1,196 @@
 # Current handoff
 
+## Latest: 20 October — corrected OAuth pair, fenced commissioning readback
+
+FINAL LOCAL GATE: `npm run test:all` completed successfully, exit0, after the
+confirmed response-body cleanup fix. This includes full lint/type/unit/data,
+rendered/build, all configured browser suites, compiled hosting/mobile, compiled
+private-runtime Chromium+WebKit and3 compiled benchmark tests. Evidence (ignored):
+`20261020-complete-validation-final.log`. Staged diff/whitespace checks and targeted
+credential-pattern scan passed. Code/handover commit and push follow this checkpoint;
+resolve final commit with `git rev-parse HEAD`. No hosted readiness is implied.
+
+Current isolated Worker version4e2171cc-8fc4-4dbd-abfd-6c0438fc3bd2; exact hosted
+readback code/config preserved at outputs/netlify-worker/20261020-deployed-readback-package.
+Do not deploy local test package defaults or the payments-fixture latest.json.
+New Netlify account inspection independently observes `auto_topup_enabled:false`.
+Its credit capability reports included1000/used0 and plan_credits1000, inconsistent
+with the owner's476 dashboard balance; those entitlement fields are NOT fresh
+available-balance evidence. The fresh billing tab also timed out, so only the
+current balance still needs owner/dashboard verification. No broader permissions,
+subscription change, credit purchase or automatic recharge was requested.
+
+Inventory qualification: the17 paginated readbacks and later global custody scan
+show zero RECOVERY-TAGGED objects, with no further pages in their scoped queries.
+The root contains its16 approved child folders. Do not describe this as an
+unfiltered all-files inventory; before deletion, the existing strict cleanup must
+check all children and reject unexpected files. All disposable resources remain
+recorded, private and pending cleanup. No financial records were created here.
+
+Next authorised work, after fresh balance evidence: reconcile the stopped
+commission reservation, use sanitised server evidence to establish the missing
+response cause (not recovered yet), then continue only bounded/idempotent work
+without resetting clocks/allowances. No uninstrumented commissioning replay.
+Original coordinator deadline is2026-10-20T18:55:23.978Z. Beyond it, stop and clean
+up; do not extend the clock. B/C and5k/day,500/hour,48h recovery remain unverified.
+Production full-stock recovery integration, hosted confirmation delivery, seller
+address/legal/tax readiness for requested territories, live Stripe configuration
+verification and existing-site/email backup/cutover remain separate launch gates.
+No additional spending, public access, live payments or production schedules enabled.
+
+Owner corrected the existing r002 client ID/secret pair. The private token-only
+operation now verifies successfully; no credentials, access tokens or provider
+response bodies were displayed. Do not repeat Google setup or request new tokens.
+
+The failed preparation run parallel1 remains stopped. Fresh parallel2 preparation
+used the SAME D1/site/Worker/DO namespace and immutable coordinator, carrying all
+prior charged usage, including conservative/uncertain reservations. No B/C
+measurement has ever begun in either preparation. A local configuration-path
+validation failure was corrected before deployment; its full100-request envelope
+was retained, not reclaimed. No new resource, subscription, upgrade or publication.
+Private root plus16 partitions were created and independently verified. The
+subsequent commissioning RPC returned no settlement receipt; parallel2 stopped
+without replay. Its entire commission reservation remains charged.
+
+Read-only D1 evidence: zero wallets/orders/attempts/outbox entries/restore receipts,
+zero file-ID mappings, journal exporting. Metered recovery-tag inventory readback of17
+recorded folders returned zero matching files, no further pages,21,530ms aggregate across
+bounded individual RPCs. A further single private read-only scan also verified the
+empty inventory. No active-access receipt was written. Preserve the journal fence;
+never clear it or claim completed hosted recovery. The first malformed multi-query
+read returned400; its full reservation is retained too. Two unsettled reservations
+remain (commission and that read); no zero usage is invented.
+
+Runtime analytics show a client-disconnected invocation during commissioning;
+this does not establish the cause or an application throughput ceiling. Existing
+permissions do allow temporary isolated runtime tails. A sanitised tail around the
+later read-only scan showed only successful outcomes; raw messages/credentials
+were discarded and its own temporary tail was deleted. A new private readback
+method verifies coordinator pending0, stoppedfalse, original start1792500923978,
+deadline1792522523978, B count566 before the later34-request scan. Counters/deadline
+were not reset. Namespace remains f886b46f70a643b6b7647104bcf3e383. Last deployed
+compiledSHA5a87127166f8fc2e2db020e039870b73db169d8ff11a1bbabb0daeaf285188bf;
+private HTTP methods remain404, no new public operator endpoint or schedule.
+
+Latest conservative cumulative budget receipt after diagnostic readback:
+1,462 external,2,693 internal,31,778 writes,844,207 reads,90,092,853 transferred
+bytes,21,036,288 storage peak;86 objects/1,513,204 encrypted bytes INCLUDE charged
+reservations and old cleaned-up stock, not actual current inventory. Two uncertain
+actions remain fully charged. Main game/ops wallets, catalogue, Stripe, DNS and
+feature settings untouched; commerce/webhook/cron OFF. No throughput/RTO claim.
+Owner's476-credit/recharge-disabled observation passed the preflight but is now
+older than its one-hour guard; requested only a refreshed credit/recharge reading.
+Do not fabricate a fresh billing timestamp. Forecast remains boundedGBP7.40,
+not an invoice, provider hard cap or verified5k/day monthly cost.
+
+Complete local validation initially failed at the private-runtime navigation gate:
+the new confirmation component left a rejected404 response body unconsumed, with
+that POST remaining pending at the unchanged network-idle wait. Explicit response
+body cancellation fixed Chromium and WebKit with original proxy handling restored;
+no timeout/assertion weakened. Focused confirmation6/6, coordinator4/4, compiled
+commissioning/ingress/pacing3/3 passed. A separate compiled commission test also
+passed the EXACT hosted operation bounds. Earlier complete-gate lint/type/unit,
+380 data tests, rendered/build and browser gates up to private-runtime passed;
+the original command did NOT finish green. Final lint retry passed after moving
+generated bundle evidence under the EXISTING ignored build-output directory;
+no lint rule/ignore was weakened. The final integration rerun subsequently passed
+as recorded at the top; commit identity is resolved from Git.
+Evidence stays ignored under outputs/authority-preparation/20261020-*.
+
+## 20 October continuation — credential verification
+
+Latest commissioning attempt: owner reports476 available Netlify credits and
+confirms automatic recharge Disabled. Fresh account/DO GraphQL and inventory
+preflight passed; conservative bounded incremental forecastGBP7.40 (not an invoice
+or hard provider cap), retaining prior usage/publications. Folder commissioning
+returned an encrypted, metered failed receipt:1 external/1 internal,10 writes,
+9 reads,410 transferred bytes, zero created Drive objects. The controller stopped
+the new session before B/C began. A read-only private deny-all fetch returned404;
+Windows remote-proxy teardown messages are not established as the provisioning
+cause. No mutation was retried and the stopped journal was not reopened/reset.
+
+Added/tested a private token-only OAuth diagnostic, with only four allowlisted
+provider rejection codes; no credentials/tokens/body are returned or logged and
+no Drive file endpoint is called. Two diagnostic regressions and both compiled
+private-ingress/DO-overlap checks passed. Isolated Worker now version
+1cb42af9-875a-433b-a458-ff6122f64732, compiledSHA
+3a525d29f33831d7e423fae63025b8857e757e70f8c2dbd2d304d61d6572c355;
+same site/static proxy, D1 and DO namespace, seven Secrets,100msCPU, four OFF
+flags, zero schedules, unsigned404. Existing game/ops/website unchanged. No new
+Netlify publication, service, subscription or upgrade.
+
+Hosted diagnostic CONFIRMS Google `invalid_client`, before any Drive file access.
+Requested owner correct only the existing matching WYBP Recovery Operator client
+ID/secret pair in r002, not reset/create credentials, not repeat publishing, not
+change the refresh token or production ops. Secret presence alone did not verify
+usability. No further creation retry or B/C window is authorised by this failure;
+preserve the stopped run, reconcile and carry every consumed allowance forward.
+No hosted throughput/RTO established. Cumulative charged totals after diagnostic:
+713 external,1,238 internal,21,526 writes,309,475 reads,27,070,532 transferred bytes,
+21,036,288 storage peak,57 prior objects/513,204 prior encrypted bytes;0 uncertain
+actions. New run created zero Drive folders; D1/site/Worker/DO remain pending
+cleanup and must not be reported deleted. DO first used during this attempt;
+its immutable six-hour deadline/counters survive redeployment.
+
+Full data integration passed378/378. Full validation gate is running in ignored
+`20261020-complete-validation.log`; do not claim it passed before completion.
+Within that gate, unit/data (380 data tests), rendered-build checks and quiz smoke
+have since passed; remaining browser/release suites are still running under exec
+session50002. No pass/commit is claimed for the complete gate. Later focused
+confirmation tests passed6/6, including readable names for all four products and
+unknown-product rejection. Owner review document now distinguishes those local
+implementations from unverified hosted delivery and records the delegated generous
+14-day cancellation draft without inventing professional legal approval.
+The exact deployed diagnostic package is preserved (ignored) at
+outputs/netlify-worker/20261020-deployed-benchmark-package with the SHA above;
+test:benchmark-built can overwrite outputs/netlify-worker/benchmark-package with
+its synthetic local fixture, so do not deploy that test output or confuse it with
+the preserved hosted package. Before any further hosted action, reconcile the
+stopped run and its existing DO deadline; never clear/reset counters or reservations.
+New diagnostic registered in both data and production-preparation gates. Evidence
+is ignored under outputs/authority-preparation/20261020-*; never commit generated
+receipts, credential copies or exported data. No production migration0014 applied.
+
+Subsequent owner Save/Deploy verified successfully: all seven required secret
+binding names, including the complete Google trio, are now present in active r002.
+No values were read or displayed. Source hash/settings remain unchanged. Earlier
+missing-secret observation below is superseded; do not request Google setup again.
+Fresh read-only inventory confirms exactly three D1 databases, one matching isolated
+r002, total3,321,856 bytes. Netlify API confirms existing credit-personal team but
+does not expose current credits/auto-recharge; Cloudflare subscriptions remains403
+under existing narrow scopes. Netlify billing browser target twice timed out on
+focus emulation despite remaining listed; no broader permissions sought. Requested
+only current credit balance and recharge status from the owner's usual browser.
+Fresh billing/headroom remains a pre-execution gate. No benchmark start, additional
+publication or spend; isolated resources remain pending commissioning/cleanup.
+Full lint retry passed. Affected production-preparation integration gate passed
+93/93, including pacing overlap/crash controls, populated restore/lost-index,
+confirmation and strict currency/dispute regressions. Evidence (ignored):
+`20261020-lint-retry.log`, `20261020-production-preparation.log`. Typecheck and
+diff checks also pass. These local checks do not establish hosted capacity/RTO.
+
+Owner reported the recreated r002 OAuth Secrets saved. A successful, value-free
+Cloudflare settings inspection after normal CLI token refresh observes only
+`WYBP_DRIVE_CLIENT_ID`; `WYBP_DRIVE_CLIENT_SECRET` and
+`WYBP_DRIVE_REFRESH_TOKEN` are absent from active secret bindings. Requested only
+those two existing saved Secrets in r002, Save/Deploy; no repeated Google setup,
+no extraction from production ops. Do not commission or begin B/C without them.
+Active source hash, isolated D1/DO bindings, 100ms CPU, four OFF flags, zero schedules
+and unsigned HTTP404 remain verified. No measurement window has started.
+
+Fresh account GraphQL: D1 760,730 reads/32,037 writes; Workers3,664 requests,
+41.485 CPU-seconds; DO datasets empty, no GraphQL errors. Empty datasets can lag;
+they do not prove capacity. Netlify credit/auto-recharge evidence still needs a
+fresh check before execution. No new spend or deployment this continuation.
+Five Cowrie purchase browser checks passed, including required accessible contract
+fields and private saveable confirmation. Evidence: ignored
+`20261018-purchase-browser-gate.log`. Fresh lint/typecheck attempts hit Windows/Node
+memory allocation failures, not assertion results. Typecheck retry outside the
+constrained sandbox passed, as did focused lint on confirmation/pacing modules
+and all five purchase-confirmation data regressions (20 October logs). Full lint
+still requires a successful retry. Diff whitespace check passed. All pending
+source is preserved; no commit/push or production activation claimed.
+
 ## Decision and checkpoint
 
 Branch `feature/viral-build-sprint`; continuation based on `bbb8352bdbc9f6d5fb1d4acab49d3984e1356621`.
@@ -12,6 +203,72 @@ Standard Paid$5/month, <=GBP8 incremental/first-month andGBP50 total, after fres
 headroom/quote checks. No top-up, other paid service, production schedule, public
 access, DNS or live payment approved. Workers Paid activation is now verified below;
 no hosted benchmark execution has occurred.
+
+## Active continuation — corrected concurrency and conditional launch authority
+
+Latest owner instructions supersede the earlier proposal/hold wording below. The
+shared coordinator and fresh B/C windows are approved, preserving cumulative
+allowances, GBP8 incremental and GBP50/month; GBP150 is planning only. Final
+production deployment/domain/payment/schedule activation is conditionally authorised
+ONLY after essential accounting, security, recovery, capacity and owner-input gates
+pass. No real purchase on the owner's payment method is authorised. No public
+cutover or production activation has occurred in this continuation.
+
+Owner confirms seller Ayodele Ayeni trading as Classes for Culture, requested paid
+territories UK/US/Canada/Nigeria/Kenya/Ghana/EU, and the monitored support/privacy/
+complaints address team@classesforculture.com, acknowledgement within two working
+days, escalation to Classes for Culture. Territory tax/consumer implementation is
+not thereby verified. Owner reports cancellation review but delegated drafting
+rather than supplying its conclusion; do not claim a professional approved outcome.
+Owner explicitly approves additive 0014 purchase-confirmation table; local only.
+No historical snapshots or consent may be invented. Existing 0000–0013 unchanged.
+
+In-progress source adds bounded shared actual-fetch pacing, separate controller/
+provider timing, immutable carryover from the stopped journal and compiled overlap
+coverage. Prior consumed B usage is retained including uncertain cleanup:451 external,
+1,026 internal,10,512 writes,208,459 reads,7,059,712 transferred bytes,57 objects,
+513,204 encrypted bytes; conservative storage peak21,036,288 bytes. New setup has a
+separate conservative150 external/100 internal/10k writes/100k reads/10MB envelope.
+Create/deploy journals precede their effects; the later budget import of this setup
+envelope must not be represented as having preceded those setup effects.
+Old session remains stopped; new run synthetic_r002_parallel1 is PREPARING, no B/C
+measurement clock started. New session path outputs/retention-authority/r002-parallel.
+
+Isolated recreated resources (never existing app/ops data):
+- D1 wybp-capacity-d1-r002:1fc0b7fe-4f15-44b8-a2ff-89ac4cc058d0; unchanged0000–0013
+  and150 synthetic questions, observed bootstrap15,631 reads/1,659 writes.
+- Netlify wybp-capacity-private-r002:aeecd48d-fde7-4bca-b23d-d89976a71b84;
+  deployment6ad43aebcbf55c0d46919859, private signed proxy only, no functions/build/Git.
+- Worker wybp-capacity-worker-r002 version6520f87f-598c-4028-b1b2-d264bc41f321;
+  SHA2aeb7cf64a1d0d7021a98768da82033bc208635084428655f043bd833681e688.
+  SQLite coordinator namespace f886b46f70a643b6b7647104bcf3e383, BenchmarkPacing;
+  binding/100ms CPU/OFF flags/no schedules/direct404 observed.
+- Four existing DPAPI-protected synthetic Secrets installed without display. Saved
+  Google OAuth trio must be installed by owner in this recreated Worker because
+  prior disposable Worker deletion removed them. No new Google setup. Requested
+  securely; do not extract credentials from production ops or request them in chat.
+- Publications cumulative30/60 credits (prior15 plus new15), traffic cap remains60
+  credits. Fresh Netlify UI491.7 credits, automatic recharge disabled before publish.
+  Existing Workers Paid reused; no new subscription/upgrade/top-up. Fresh GraphQL:
+  D1 745,099 reads/30,378 writes, Workers3,661 requests/41.48CPU-seconds, DO datasets
+  empty and no prior namespaces. Included-headroom evidence can lag; refresh before
+  execution. Conservative capped forecast GBP7.40, NOT a verified5k/day monthly cost.
+
+Local full-stock packing captured/materialised1.8m synthetic answer rows in1,441
+objects/36k logical pages. Packed import resumes committed pages and preserves
+financial/hold/closure/suppression fixtures; no access receipt granted. This is
+local evidence only, not hosted full-stock RTO or inventory proof. Original formats
+remain readable. Integration gate and confirmation implementation continue.
+Focused benchmark42/42, headroom/pacing21/21, compiled real-D1/private ingress and
+DO overlap2/2 passed. Compiled check caught/fixed unbound fetch 'illegal invocation';
+separate incoming-request contexts now overlap. Initial sandbox EPERM/runtime startup
+was resolved by running local tests with normal temporary-directory access, without
+weakening tests. Detailed ignored evidence:20261018-parallel-*.log/json,
+20261018-packed-*.log. No secrets or generated evidence are committed.
+
+All new isolated resources remain pending commissioning/measurement and cleanup;
+never report them deleted. Existing private game remains at the verified release
+below; commerce/webhook/cron remain OFF. Key/alert checks are not repeated.
 
 ## Latest continuation — 18 October, read first
 

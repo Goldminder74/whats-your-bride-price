@@ -142,3 +142,12 @@ test('operational configuration binds only the approved isolated database and ha
   assert.match(source,/ON CONFLICT\(id\) DO NOTHING RETURNING id/);
   assert.match(source,/fetch\(\).*status:404/);
 });
+
+test('shared TLS transport rejects header injection before connecting and preserves UTF-8 purchase text',async()=>{
+ const {privateEmailTransport}=await import('../../worker/authorityMail.mjs');let opened=0;
+ const rejected=privateEmailTransport(env,()=>{opened++;throw Error();});
+ await assert.rejects(rejected({to:'synthetic@example.invalid\r\nBcc:other@example.invalid',subject:'Purchase',body:'test'}),/mail_content/);
+ await assert.rejects(rejected({to:'synthetic@example.invalid',subject:'Purchase\r\nBcc:other',body:'test'}),/mail_content/);assert.equal(opened,0);
+ const f=smtp();assert.equal((await privateEmailTransport(env,f.connect)({to:'synthetic@example.invalid',subject:'Synthetic purchase confirmation',body:'GBP1.99 — terms and cancellation rights'})).accepted,true);
+ const raw=f.commands.find(s=>s.startsWith('From:')),encoded=raw.split('\r\n\r\n')[1].split('\r\n.')[0].replaceAll('\r\n','');assert.equal(Buffer.from(encoded,'base64').toString(),'GBP1.99 — terms and cancellation rights');
+});

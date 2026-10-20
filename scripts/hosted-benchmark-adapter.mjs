@@ -1,23 +1,32 @@
 // Fixed isolated endpoints only. Credentials are supplied in memory by the
 // secure operator process; this module never loads, prints or persists them.
-import {createHash,createHmac} from 'node:crypto';
+import {createHash,createHmac,randomUUID} from 'node:crypto';
 import {BENCHMARK_PHASES} from './approved-benchmark-budget.mjs';
 const origin='https://wybp-capacity-private-r002.netlify.app';
 const fail=()=>{throw Error('hosted_benchmark_adapter_unavailable');};
 const hash=value=>createHash('sha256').update(value).digest('hex');
 const gameKinds=new Set(['start','answer','recover','complete','result']);
 
-export function hostedBenchmarkAdapter({phase,operator,access,controllerSecret,workerOrigin,sourceSha256,assets,bounds,now=Date.now,pause=ms=>new Promise(r=>setTimeout(r,ms)),request=fetch}){
+export function hostedBenchmarkAdapter({phase,operator,access,controllerSecret,workerOrigin,sourceSha256,assets,bounds,sharedPacing=false,now=Date.now,pause=ms=>new Promise(r=>setTimeout(r,ms)),request=fetch}){
  const limits=BENCHMARK_PHASES[phase];
  if(!limits||typeof operator?.execute!=='function'||typeof access!=='string'||access.length<32||typeof controllerSecret!=='string'||controllerSecret.length<32||!/^https:\/\/wybp-capacity-worker-r002\.[a-z0-9-]+\.workers\.dev$/.test(workerOrigin||'')||!/^[a-f0-9]{64}$/.test(sourceSha256||'')||!assets||typeof bounds!=='function')fail();
- const keys=Object.keys(limits.caps),zero=()=>Object.fromEntries(keys.map(k=>[k,0]));
+ const keys=Object.keys(limits.caps),profiles=new WeakMap(),zero=()=>{const usage=Object.fromEntries(keys.map(k=>[k,0]));profiles.set(usage,{clientPacingMs:0,clientFetchMs:0,databaseMs:0,providerPacingMs:0,providerFetchMs:0,authorityRpcMs:0});return usage;};
+ function timing(usage,value){const target=profiles.get(usage);if(!value||Object.keys(value).some(k=>!Object.hasOwn(target,k)||!Number.isSafeInteger(value[k])||value[k]<0))fail();for(const [k,n] of Object.entries(value))target[k]+=n;}
+ if(sharedPacing&&typeof operator.dispatchHttp!=='function')fail();
  let nextRequest=now();const plans=new Map(),regions=new Map();
  async function http(url,{authenticated=false,method='GET',body,headers={}}={},usage){
-  const delay=nextRequest-now();if(delay>0)await pause(delay);
+  const delay=sharedPacing?0:nextRequest-now();if(delay>0)await pause(delay);
   nextRequest=now()+1000/limits.externalPerSecond;
   usage.external++;
   if(body)usage.transferBytes+=Buffer.byteLength(body);
-  const response=await request(url,{method,body,headers:{...headers,...(authenticated?{authorization:'Basic '+access}:{})},redirect:'manual',signal:AbortSignal.timeout(30000)});
+  const sentHeaders={...headers,...(authenticated?{authorization:'Basic '+access}:{})};let response;
+  if(sharedPacing){
+   const result=await operator.dispatchHttp({id:hash(Buffer.from(randomUUID())),phase,url,method,headers:sentHeaders,body:body?new TextEncoder().encode(body):null});
+   if(result.billingKnown!==true||!result.counters||['reads','writes','storageBytes'].some(k=>!Number.isSafeInteger(result.counters[k])||result.counters[k]<0))fail();
+   timing(usage,{clientPacingMs:result.timing?.pacingWaitMs,clientFetchMs:result.timing?.fetchMs});
+   usage.internal++;usage.reads+=result.counters.reads;usage.writes+=result.counters.writes;usage.storageBytes=Math.max(usage.storageBytes,result.counters.storageBytes);
+   response=new Response(result.body.length?result.body:null,{status:result.status,headers:result.headers});
+  }else response=await request(url,{method,body,headers:sentHeaders,redirect:'manual',signal:AbortSignal.timeout(30000)});
   const parts=[];let length=0;const reader=response.body?.getReader();
   try{if(reader)for(;;){const part=await reader.read();if(part.done)break;length+=part.value.byteLength;usage.transferBytes+=part.value.byteLength;if(length>4000000)fail();parts.push(part.value);}}catch{await reader?.cancel().catch(()=>{});fail();}
   return {status:response.status,bytes:Buffer.concat(parts.map(p=>Buffer.from(p)))};
@@ -40,7 +49,7 @@ export function hostedBenchmarkAdapter({phase,operator,access,controllerSecret,w
    if(response.status!==200)fail();try{outcome=JSON.parse(response.bytes.toString());}catch{fail();}
   }else outcome=command.kind==='provision'?await operator.provision(remote):await operator.execute(command,remote);
   if(outcome?.billingKnown!==true)fail();
-  merge(usage,outcome.usage);
+  merge(usage,outcome.usage);if(outcome.timing)timing(usage,outcome.timing);
   nextRequest=Math.max(nextRequest,now()+1000/limits.externalPerSecond);
   if(!outcome?.result||!/^[a-f0-9]{64}$/.test(outcome.receiptSha256||''))fail();
   if(!outcome.result.failed&&hash(Buffer.from(JSON.stringify(outcome.result)))!==outcome.receiptSha256)fail();
@@ -51,8 +60,8 @@ export function hostedBenchmarkAdapter({phase,operator,access,controllerSecret,w
   const response=await http(origin+path,{authenticated:true},usage);
   if(response.status!==200||response.bytes.length!==expected.bytes||hash(response.bytes)!==expected.sha256)fail();
  }
- function receipt(result,usage){return {result,usage,receiptSha256:hash(Buffer.from(JSON.stringify({result,usage})))};}
- return {phase,pacedExternal:true,upperBound,
+ function receipt(result,usage){return {result,usage,timing:{...profiles.get(usage)},receiptSha256:hash(Buffer.from(JSON.stringify({result,usage})))};}
+ return {phase,pacedExternal:true,sharedPacing,upperBound,
   async verifyInventory(){
    const usage=zero();
    if((await http(origin+'/',{},usage)).status!==401||(await http(workerOrigin+'/',{},usage)).status!==404||(await http(origin+'/',{authenticated:true},usage)).status!==200)fail();

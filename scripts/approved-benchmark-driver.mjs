@@ -27,6 +27,8 @@ export class ApprovedBenchmarkDriver {
   if(recover!==undefined&&typeof recover!=='function')fail();
   this.budget=budget;this.adapter=adapter;this.now=now;this.pause=pause;this.recover=recover;
   this.started=budget.row().started_at;this.pending=new Map();this.samples=[];this.queue=Promise.resolve();this.nextAdmission=0;this.abort=new AbortController();
+  this.activeParallel=0;this.slots=[];this.internalAdmissions=[];
+  this.abort.signal.addEventListener('abort',()=>{for(const slot of this.slots.splice(0))slot.reject(Error('benchmark_driver_phase_stopped'));});
   // The approved schedule has500 completions plus215 incomplete clients. Their
   // pending timers share one cancellation signal; keep its bound explicit.
   setMaxListeners(720,this.abort.signal);
@@ -40,6 +42,7 @@ export class ApprovedBenchmarkDriver {
   });
  }
  async action(command,verify=()=>{}){
+  if(this.adapter.sharedPacing===true)return this.parallelAction(command,verify);
   // Re-entrant identical actions share one in-flight effect. Across processes the
   // durable budget rejects a reserved action, requiring readback, never replay.
   if(this.pending.has(command.id))return this.pending.get(command.id);
@@ -71,6 +74,36 @@ export class ApprovedBenchmarkDriver {
   this.queue=work.catch(()=>{});
   this.pending.set(command.id,work);
   return work;
+ }
+ parallelAction(command,verify){
+  if(this.pending.has(command.id))return this.pending.get(command.id);
+  const enqueued=this.now();
+  const work=(async()=>{
+   if(this.abort.signal.aborted)throw Error('benchmark_driver_phase_stopped');
+   if(this.activeParallel>=8)await new Promise((resolve,reject)=>this.slots.push({resolve,reject}));
+   this.activeParallel++;
+   try{
+    const grant=this.queue.then(async()=>{
+     if(this.abort.signal.aborted||this.budget.row().state!=='active')throw Error('benchmark_driver_phase_stopped');
+     const upper=this.adapter.upperBound(command),phase=BENCHMARK_PHASES[this.adapter.phase];
+     if(upper.internal>phase.internalPerSecond)fail();
+     for(;;){const at=this.now();this.internalAdmissions=this.internalAdmissions.filter(x=>x.at>at-1000);if(this.internalAdmissions.reduce((sum,x)=>sum+x.units,0)+upper.internal<=phase.internalPerSecond)break;await this.pause(Math.max(1,this.internalAdmissions[0].at+1000-at),this.abort.signal);}
+     this.internalAdmissions.push({at:this.now(),units:upper.internal});
+     const admitted=this.now();
+     const effect=executeBudgetedAction(this.budget,command.id,upper,async()=>{
+      const outcome=command.kind==='inventory'?await this.adapter.verifyInventory():await this.adapter.execute(command);
+      if(!validHash(outcome?.receiptSha256))fail();
+      this.samples.push({kind:command.kind,queueMs:admitted-enqueued,timing:outcome.timing,elapsedMs:Math.max(0,this.now()-admitted)});return outcome;
+     },{pacedExternal:true});
+     return {effect};
+    });
+    this.queue=grant.then(()=>{},()=>{});
+    const {effect}=await grant,result=await effect;
+    if(result.state!=='settled'||!Object.hasOwn(result,'result'))throw Error('benchmark_driver_readback_required');
+    verify(result.result);return result.result;
+   }catch(error){this.budget.stop();this.abort.abort();throw error;}
+   finally{this.activeParallel--;this.slots.shift()?.resolve();}
+  })();this.pending.set(command.id,work);return work;
  }
  async wait(afterMs){
   if(this.abort.signal.aborted||this.budget.row().state!=='active')throw Error('benchmark_driver_phase_stopped');
@@ -159,6 +192,9 @@ export class ApprovedBenchmarkDriver {
   const latencies=this.samples.map(x=>x.elapsedMs).sort((a,b)=>a-b);
   const percentile=p=>latencies.length?latencies[Math.ceil(latencies.length*p)-1]:null;
   const result={budget:this.budget.receipt(),observedActions:this.samples.length,p50:percentile(.5),p95:percentile(.95),p99:percentile(.99)};
+  const values=this.samples.map(x=>x.queueMs||0).sort((a,b)=>a-b);result.controllerQueueMs={p50:values.length?values[Math.ceil(values.length*.5)-1]:null,p95:values.length?values[Math.ceil(values.length*.95)-1]:null,max:values.at(-1)??null};
+  result.observedRpcTimingTotals=this.samples.reduce((sum,x)=>{for(const [k,n] of Object.entries(x.timing||{}))sum[k]=(sum[k]||0)+n;return sum;},{});
+  result.latencyMeaning='elapsedMs includes provider pacing and transport; RPC timings overlap and are not exclusive application latency';
   return {...result,sha256:digest(result)};
  }
 }

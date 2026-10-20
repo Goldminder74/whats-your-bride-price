@@ -24,6 +24,6 @@ test('pinned hosted rehearsal resumes committed pages, blocks premature completi
   const repeated=await make().step();assert.equal(repeated.imported,true);assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_cases').get().n,123);
   do{step=await make().step({cleanup:true});assert.equal(step.accessBlocked,true);}while(!step.imported);
   do{verified=await make().finish(true);}while(!verified.verified);assert.equal(target.prepare('SELECT COUNT(*) n FROM cowrie_wallets').get().n,0);
-  assert.equal(target.prepare('SELECT COUNT(*) n FROM schema_migrations').get().n,14);assert.deepEqual(target.prepare('PRAGMA foreign_key_check').all(),[]);
+  assert.equal(target.prepare('SELECT COUNT(*) n FROM schema_migrations').get().n,15);assert.deepEqual(target.prepare('PRAGMA foreign_key_check').all(),[]);
  }finally{c.database.close();target.close();}
 });

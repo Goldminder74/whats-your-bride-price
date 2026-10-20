@@ -38,7 +38,7 @@ function insertChallenge(database, overrides = {}) {
 
 test("0002 remains the approved additive challenge-security migration", async () => {
   const plan = await loadMigrationPlan();
-  assert.equal(plan.length, 14);
+  assert.equal(plan.length, 15);
   assert.equal(plan[2].id, "0002_little_inertia");
   assert.equal(plan[2].checksum, "16750df69b0f23cc2f6c2b2e8c55689fd6a2473d7a0c4665a8b2ee4f7e1f64a7");
   assert.equal(plan[2].statements.length, 4);
@@ -70,6 +70,7 @@ test("0002 remains the approved additive challenge-security migration", async ()
     "0011_useful_wendell_vaughn.sql": "729a57db96851c507e74d705efd669407a1a1f5785f2b61aa85551ac15222f33",
     "0012_retention_authority.sql": "d9be0683f51232ab55a08ce093d72ad1c3cec9b57d9f170e09cef325f6741ec2",
     "0013_operational_recovery.sql": "9cc74ee4cd863d2fbde55fcaf8b855547defc88ac5508708e54f6c3d128dc4dd",
+    "0014_purchase_confirmations.sql": "0efc06a74bace2f0b90c778f590785fa19c50c4332c6faf8bb77bc524a09944a",
   });
   for (const [name, expected] of Object.entries(checksums)) {
     const bytes = await readFile(new URL(`../../drizzle/${name}`, import.meta.url));

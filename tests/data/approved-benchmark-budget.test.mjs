@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {mkdirSync,mkdtempSync,realpathSync,unlinkSync,rmdirSync} from 'node:fs';
 import {resolve,join,sep} from 'node:path';
-import {ApprovedBenchmarkBudget,BENCHMARK_PHASES,verifyBenchmarkPreflight,assertBenchmarkResource,peakHourSchedule,executeBudgetedAction,benchmarkTrafficMicrocredits} from '../../scripts/approved-benchmark-budget.mjs';
+import {ApprovedBenchmarkBudget,BENCHMARK_PHASES,verifyBenchmarkPreflight,verifySharedPacingHeadroom,assertBenchmarkResource,peakHourSchedule,executeBudgetedAction,benchmarkTrafficMicrocredits} from '../../scripts/approved-benchmark-budget.mjs';
 
 const at=Date.UTC(2026,9,15);
 const facts=()=>({reviewAvailable:true,verifiedAt:at,evidenceSha256:'a'.repeat(64),account:'b6b22a9a87b5758725e5c499782160af',netlifyTeam:'goldminder74',autoTopups:false,standardPaidQuoted:true,standardPaidConfirmed:true,workerCpuLimitMs:100,usageGBPPerUSD:.96,subscriptionGBP:4.8,maximumUsageGBP:2.6,currentWholeAccountGBP:9,otherSubscriptionsKnown:true,netlifyCreditsAvailable:400,includedWritesAvailable:5100000,includedReadsAvailable:71000000,includedStorageBytesAvailable:250*1024*1024});
@@ -182,3 +182,18 @@ test('fresh preflight evidence can resume an existing stopped run without resett
 });
 
  test("approved C revision leaves B and integrity reserve unchanged",()=>{assert.equal(BENCHMARK_PHASES.C.caps.driveBytes,250000000);assert.equal(BENCHMARK_PHASES.C.caps.transferBytes,750000000);assert.equal(BENCHMARK_PHASES.C.caps.external,100000);assert.equal(BENCHMARK_PHASES.C.caps.internal,500000);assert.equal(BENCHMARK_PHASES.B.caps.driveBytes,100000000);assert.equal(BENCHMARK_PHASES.C.caps.driveObjects,6000);assert.equal(BENCHMARK_PHASES.C.durationMs,3600000);});
+
+test('replacement windows retain old settled and uncertain reservations and reject changed carryover',()=>{
+ const db=new DatabaseSync(':memory:');const used={B:vector({external:63000,writes:5000,transferBytes:1000000})};
+ const options={runId:'synthetic_new_window',phase:'B',preflight:facts(),now:()=>at,carryover:{sourceSha256:'c'.repeat(64),used}};
+ try{
+  const budget=new ApprovedBenchmarkBudget(db,options);assert.equal(budget.receipt().used.external,63000);assert.equal(budget.receipt().windowUsed.external,0);
+  const reservation=budget.reserve('uncertain',vector({external:9,writes:10}),{pacedExternal:true});assert.ok(reservation.ticket);
+  const replacement=new ApprovedBenchmarkBudget(db,options);assert.equal(replacement.receipt().used.external,63009);
+  assert.throws(()=>replacement.reserve('too_much',vector({external:1000}),{pacedExternal:true}),/limit_external/);
+  assert.throws(()=>new ApprovedBenchmarkBudget(db,{...options,carryover:{sourceSha256:'d'.repeat(64),used}}),/carryover_conflict/);
+  assert.equal(replacement.receipt().used.writes,5010);
+ }finally{db.close();}
+});
+
+test('coordinator headroom is mandatory and cannot rely on unknown or stale included allocations',()=>{const value={...facts(),durableObjectsVerifiedAt:at,durableObjectsComplete:true,durableObjectRequestsAvailable:150000,durableObjectGbSecondsAvailable:4000,durableObjectWritesAvailable:1000000,durableObjectReadsAvailable:2000000,durableObjectBytesAvailable:64000000};assert.equal(verifySharedPacingHeadroom(value,at).incrementalMaximumGBP,7.4);for(const key of ['durableObjectRequestsAvailable','durableObjectGbSecondsAvailable','durableObjectWritesAvailable','durableObjectReadsAvailable','durableObjectBytesAvailable'])assert.throws(()=>verifySharedPacingHeadroom({...value,[key]:value[key]-1},at),/coordinator_headroom/);assert.throws(()=>verifySharedPacingHeadroom({...value,durableObjectsVerifiedAt:at-3600001},at),/coordinator_headroom/);});

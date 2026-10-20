@@ -12,6 +12,9 @@ import { D1DriveIndex } from '../scripts/d1-drive-index.mjs';
 import { DriveCustody } from '../scripts/drive-custody.mjs';
 import { D1Authority } from '../scripts/authority-runtime.mjs';
 import { restoreSuppressionPlan } from '../db/retention.ts';
+import {confirmationDraft,PurchaseConfirmations} from '../db/purchaseConfirmations.mjs';
+import {createJournaledDatabase} from './authorityDatabase.mjs';
+import {purchaseConfirmationMail} from './purchaseConfirmationMail.mjs';
 import { hostedSyntheticRecovery } from './hostedSyntheticRecovery.mjs';
 
 function runtime(env) {
@@ -26,6 +29,28 @@ function runtime(env) {
 // Only private service bindings expose RPC. There is no HTTP management endpoint,
 // secret-selected URL, scheduled handler, automatic initialisation or restore bypass.
 export class ApplicationAuthority extends WorkerEntrypoint {
+  async preparePurchaseConfirmation(input) {
+    try {await runtime(this.env).service.ready();return confirmationDraft(input,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'));}
+    catch {throw Error('purchase_confirmation_unavailable');}
+  }
+  async checkPendingPurchaseConfirmation(orderId,ownerHash,details) {
+    try {const service=runtime(this.env).service,db=createJournaledDatabase(this.env.DB,service);await service.ready();return new PurchaseConfirmations(db,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64')).pendingMatches(orderId,ownerHash,details);}
+    catch {throw Error('purchase_confirmation_unavailable');}
+  }
+  async purchaseConfirmation(orderId,ownerHash) {
+    try {const service=runtime(this.env).service,db=createJournaledDatabase(this.env.DB,service);await service.ready();return new PurchaseConfirmations(db,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64')).owned(orderId,ownerHash);}
+    catch {throw Error('purchase_confirmation_unavailable');}
+  }
+  async cancelPurchaseConfirmation(orderId) {
+    try {const service=runtime(this.env).service,db=createJournaledDatabase(this.env.DB,service);await service.ready();return new PurchaseConfirmations(db,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64')).cancelForOrder(orderId,Date.now());}
+    catch {throw Error('purchase_confirmation_unavailable');}
+  }
+  async deliverPurchaseConfirmation(orderId,ownerHash) {
+    if(this.env.WYBP_PURCHASE_CONFIRMATIONS_ENABLED!=='true')throw Error('purchase_confirmation_delivery_disabled');
+    try {const service=runtime(this.env).service,db=createJournaledDatabase(this.env.DB,service),contracts=new PurchaseConfirmations(db,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'));await service.ready();await contracts.owned(orderId,ownerHash);await contracts.ready(orderId,Date.now());return contracts.deliver(orderId,purchaseConfirmationMail(this.env,connect));}
+    catch {throw Error('purchase_confirmation_unavailable');}
+  }
+
   async transact(operationId, statements) {
     try { return await runtime(this.env).service.transact(operationId,statements); }
     catch { throw Error('authority_operation_unavailable'); }

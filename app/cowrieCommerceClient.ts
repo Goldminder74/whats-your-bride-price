@@ -1,3 +1,4 @@
+import type {ConfirmationDetails} from './purchaseConfirmationPolicy.ts';
 import { cowrieProducts,isCowrieProduct,COWRIE_DELIVERY_NOTICE_VERSION,type CowrieProductKey } from "../db/cowrieProducts.ts";
 import { privatePostOptions } from "./privatePost.ts";
 export const COWRIE_PENDING_ORDER_KEY="wybp-cowrie-pending-order-v1";
@@ -17,9 +18,9 @@ export async function readCowrieOffer(walletReference:string,anonymousSessionCre
  for(const [index,key] of (Object.keys(cowrieProducts) as CowrieProductKey[]).entries()){const actual=value.bundles[index];const expected=cowrieProducts[key];if(!actual||actual.productKey!==key||actual.quantity!==expected.quantity||actual.displayPrice!==expected.displayPrice)throw new Error("unavailable");}
  return true;
 }
-export async function createCowriePurchase(input:Readonly<{productKey:CowrieProductKey;walletReference:string;anonymousSessionCredential:string;consent:boolean;idempotencyKey:string}>){
+export async function createCowriePurchase(input:Readonly<{productKey:CowrieProductKey;walletReference:string;anonymousSessionCredential:string;consent:boolean;idempotencyKey:string;confirmation?:ConfirmationDetails}>){
  if(input.consent!==true||!isCowrieProduct(input.productKey))throw new Error("consent required");
- const value=await post("/commerce/orders",{productKey:input.productKey,walletReference:input.walletReference,anonymousSessionCredential:input.anonymousSessionCredential,idempotencyKey:input.idempotencyKey,immediateDeliveryConsent:true,consentNoticeVersion:COWRIE_DELIVERY_NOTICE_VERSION});
+ const value=await post("/commerce/orders",{productKey:input.productKey,walletReference:input.walletReference,anonymousSessionCredential:input.anonymousSessionCredential,idempotencyKey:input.idempotencyKey,immediateDeliveryConsent:true,consentNoticeVersion:COWRIE_DELIVERY_NOTICE_VERSION,...(input.confirmation?{confirmation:input.confirmation}:{})});
  const expected=cowrieProducts[input.productKey];
  if(typeof value.publicOrderReference!=="string"||!referencePattern.test(value.publicOrderReference)||value.productKey!==input.productKey||value.quantity!==expected.quantity||value.displayPrice!==expected.displayPrice||value.state!=="pending"||!Number.isSafeInteger(value.pendingExpiresAt)||Number(value.pendingExpiresAt)<=Date.now()||typeof value.paymentLinkUrl!=="string")throw new Error("unavailable");
  const link=new URL(value.paymentLinkUrl);if(link.origin!=="https://buy.stripe.com"||link.username||link.password||link.hash||!/^\/[0-9A-Za-z_-]+$/.test(link.pathname)||link.searchParams.get("client_reference_id")!==value.publicOrderReference||[...link.searchParams].length!==1)throw new Error("unavailable");

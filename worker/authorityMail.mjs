@@ -3,10 +3,11 @@ import { prepareAuthorityAlert } from './driveOAuth.mjs';
 /** Fixed provider/recipient, TLS from the first byte. No provider response, password,
  * SQL or operation identity is returned. Email delivery is not exactly once: an
  * ambiguous final acknowledgement must be reconciled, never blindly retried. */
-export function authorityMail(env, connect, { timeoutMs = 15000 } = {}) {
+export function authorityMail(env,connect,options){const send=privateEmailTransport(env,connect,options);return event=>send(prepareAuthorityAlert(event));}
+export function privateEmailTransport(env, connect, { timeoutMs = 15000 } = {}) {
   if (env.WYBP_ALERT_SENDER !== 'noreply@classesforculture.com' || env.WYBP_SMTP_USERNAME !== env.WYBP_ALERT_SENDER || typeof env.WYBP_SMTP_PASSWORD !== 'string' || !env.WYBP_SMTP_PASSWORD) throw Error('alert_transport_configuration');
-  return async event => {
-    const mail = prepareAuthorityAlert(event);
+  return async mail => {
+    if(typeof mail?.to!=='string'||mail.to.length>254||!/^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$/.test(mail.to)||typeof mail.subject!=='string'||!/^[\x20-\x7e]{1,160}$/.test(mail.subject)||typeof mail.body!=='string'||!mail.body||Buffer.byteLength(mail.body)>65536)throw Error('mail_content_unavailable');
     let socket, reader, writer, timer, accepted = false;
     try {
       socket = connect({ hostname: 'mail.privateemail.com', port: 465 }, { secureTransport: 'on' });
@@ -37,7 +38,7 @@ export function authorityMail(env, connect, { timeoutMs = 15000 } = {}) {
         await command('MAIL FROM:<'+env.WYBP_ALERT_SENDER+'>',250);
         await command('RCPT TO:<'+mail.to+'>',250);
         await command('DATA',354);
-        const body = 'From: '+env.WYBP_ALERT_SENDER+'\r\nTo: '+mail.to+'\r\nSubject: '+mail.subject+'\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\n'+mail.body+'\r\n.\r\n';
+        const body = 'From: '+env.WYBP_ALERT_SENDER+'\r\nTo: '+mail.to+'\r\nSubject: '+mail.subject+'\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n'+Buffer.from(mail.body).toString('base64').match(/.{1,76}/g).join('\r\n')+'\r\n.\r\n';
         await writer.write(new TextEncoder().encode(body));
         accepted = true; // After DATA, a disconnect/timeout is an uncertain send.
         await reply(250);

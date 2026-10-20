@@ -1,3 +1,5 @@
+import type {ConfirmationDraft,ConfirmationDetails,PurchaseConfirmationPolicy} from '../app/purchaseConfirmationPolicy.ts';
+import {purchaseConfirmationInsert} from './purchaseConfirmations.mjs';
 import type { RegionKey } from "../app/gameData.ts";
 import { calculateResultTier } from "../app/gameLogic.ts";
 import { RESULT_TIER_TITLES } from "../app/productSafeguards.ts";
@@ -48,7 +50,7 @@ export interface CommerceRepository {
   readonly storageAvailable: boolean;
   getOwnedCompletedResult(publicSlug: string): Promise<CommerceOwnedResult | null>;
   getOrderByIdempotencyHash(hash: string): Promise<CommerceOrder | null>;
-  createPendingOrder(input: Readonly<{ id: string; publicOrderReference: string; result: CommerceOwnedResult; ownerHash: string; idempotencyHash: string; paymentLinkId: string; now: number }>): Promise<CommerceOrder>;
+  createPendingOrder(input: Readonly<{ id: string; publicOrderReference: string; result: CommerceOwnedResult; ownerHash: string; idempotencyHash: string; paymentLinkId: string; now: number; confirmation?: ConfirmationDraft }>): Promise<CommerceOrder>;
   getOrderByReference(reference: string): Promise<CommerceOrder | null>;
   getActiveEntitlement(resultSlug: string, ownerHash: string, now: number): Promise<EntitlementProjection | null>;
   processVerifiedWebhook(event: VerifiedStripeEvent, now: number): Promise<Readonly<{ replay: boolean; state: CommerceOrderState }>>;
@@ -56,7 +58,8 @@ export interface CommerceRepository {
   getWalletByReference?(reference: string): Promise<CommerceOwnedWallet | null>;
   getWalletById?(id: string): Promise<CommerceOwnedWallet | null>;
   getEligibleRegionCounts?(now: number): Promise<Readonly<Record<RegionKey, number>>>;
-  createPendingCowrieOrder?(input: Readonly<{ id: string; publicOrderReference: string; wallet: CommerceOwnedWallet; ownerHash: string; idempotencyHash: string; paymentLinkId: string; productKey: CowrieProductKey; now: number }>): Promise<CommerceOrder>;
+  createPendingCowrieOrder?(input: Readonly<{ id: string; publicOrderReference: string; wallet: CommerceOwnedWallet; ownerHash: string; idempotencyHash: string; paymentLinkId: string; productKey: CowrieProductKey; now: number; confirmation?: ConfirmationDraft }>): Promise<CommerceOrder>;
+  getOrderByPaymentIntentHash?(hash:string):Promise<CommerceOrder|null>;
   getLegacyPaymentIntentReference?(raw: string): Promise<string | null>;
 }
 
@@ -85,13 +88,14 @@ export class CommerceService {
   private readonly rateLimiter: CommerceRateLimiter;
   private readonly now: () => number;
   private readonly cowriePurchasesEnabled: boolean;
-  constructor(repository: CommerceRepository, rateLimiter: CommerceRateLimiter, config: unknown, now: () => number = Date.now, options: Readonly<{ cowriePurchasesEnabled?: boolean }> = {}) {
+  constructor(repository: CommerceRepository, rateLimiter: CommerceRateLimiter, config: unknown, now: () => number = Date.now, options: Readonly<{ cowriePurchasesEnabled?: boolean; confirmations?: PurchaseConfirmationPolicy }> = {}) {
     this.repository = repository;
     this.rateLimiter = rateLimiter;
     this.now = now;
     this.config = validateCommerceConfiguration(config);
-    this.cowriePurchasesEnabled = options.cowriePurchasesEnabled === true;
+    this.cowriePurchasesEnabled = options.cowriePurchasesEnabled === true;this.confirmations=options.confirmations;
   }
+  private readonly confirmations?:PurchaseConfirmationPolicy;
   private async authorize(rawCredential: unknown): Promise<Readonly<{ ownerHash: string; now: number }>> {
     if (!this.repository.storageAvailable) return fail("commerce_storage_unavailable");
     const ownerHash = await deriveCommerceOwnerHash(rawCredential); const now = this.now(); const decision = await this.rateLimiter.consume(ownerHash, now);
@@ -99,8 +103,9 @@ export class CommerceService {
     return Object.freeze({ ownerHash, now });
   }
   async startOrder(value: unknown): Promise<Readonly<{ publicOrderReference: string; paymentLinkUrl: string; productKey: CommerceProductKey; displayPrice: string; quantity?: number; pendingExpiresAt: number; state?: "pending" }>> {
-    const request = validateStartOrderRequest(value);
-    if (request.productKey !== ROYAL_REVEAL_PRODUCT_KEY) return this.startCowrieOrder(request);
+    const confirmation=this.confirmations?.parse(value);
+    const request = validateStartOrderRequest(confirmation?confirmation.request:value);
+    if (request.productKey !== ROYAL_REVEAL_PRODUCT_KEY) return this.startCowrieOrder(request,confirmation?.details);
     const { ownerHash, now } = await this.authorize(request.anonymousSessionCredential);
     const result = await this.repository.getOwnedCompletedResult(request.resultSlug); if (!validResult(result, request.resultSlug, ownerHash, now)) return fail("result_unavailable");
     const idempotencyHash = await deriveOrderIdempotencyHash({ rawKey: request.idempotencyKey, ownerHash, resultId: result.id });
@@ -108,10 +113,12 @@ export class CommerceService {
     let order: CommerceOrder;
     if (previous) {
       if (!constantTimeOwnerMatch(previous.anonymousOwnerHash, ownerHash) || previous.resultId !== result.id || previous.state !== "pending" || previous.pendingExpiresAt <= now) return fail("order_conflict");
+      if(this.confirmations)await this.confirmations.checkPending(previous.id,ownerHash,confirmation!.details);
       order = previous;
     } else {
       const reference = securePublicOrderReference();
-      order = await this.repository.createPendingOrder({ id: internalId("commerce_order", reference), publicOrderReference: reference, result, ownerHash, idempotencyHash, paymentLinkId: this.config.expectedPaymentLinkId, now });
+      const draft=this.confirmations?await this.confirmations.prepare({orderId:internalId('commerce_order',reference),publicOrderReference:reference,productKey:ROYAL_REVEAL_PRODUCT_KEY,amountMinor:ROYAL_REVEAL_AMOUNT_MINOR,currency:'GBP',createdAt:now,consentAt:now,details:confirmation!.details}):undefined;
+      order = await this.repository.createPendingOrder({ confirmation:draft,id: internalId("commerce_order", reference), publicOrderReference: reference, result, ownerHash, idempotencyHash, paymentLinkId: this.config.expectedPaymentLinkId, now });
     }
     return Object.freeze({ publicOrderReference: order.publicOrderReference, paymentLinkUrl: constructPaymentLinkUrl(this.config.publicPaymentLinkUrl, order.clientReferenceId), productKey: ROYAL_REVEAL_PRODUCT_KEY, displayPrice: ROYAL_REVEAL_DISPLAY_PRICE, pendingExpiresAt: order.pendingExpiresAt });
   }
@@ -130,15 +137,22 @@ export class CommerceService {
     const {ownerHash,now} = await this.authorize(request.anonymousSessionCredential); const wallet = await this.purchaseWallet(request.walletReference,ownerHash,now);
     return Object.freeze({available:true,bundles:cowrieProductKeys.map(productKey=>Object.freeze({productKey,...cowrieProducts[productKey]})),wallet:Object.freeze({purchasedBalance:wallet.purchasedBalance,bonusBalance:wallet.bonusBalance,totalBalance:wallet.purchasedBalance+wallet.bonusBalance})});
   }
-  private async startCowrieOrder(request: CowrieStartOrderRequest) {
+  private async startCowrieOrder(request: CowrieStartOrderRequest,details?:ConfirmationDetails) {
     const {ownerHash,now} = await this.authorize(request.anonymousSessionCredential); const wallet = await this.purchaseWallet(request.walletReference,ownerHash,now);
     if (!this.repository.createPendingCowrieOrder) return fail("cowrie_purchase_unavailable");
     const bundle = this.config.cowrieBundles![request.productKey]; const product = cowrieProducts[request.productKey];
     const idempotencyHash = await deriveCowrieOrderIdempotencyHash({rawKey:request.idempotencyKey,ownerHash,walletId:wallet.id,productKey:request.productKey});
     let order = await this.repository.getOrderByIdempotencyHash(idempotencyHash);
     if (order && (order.cowrieWalletId !== wallet.id || order.productKey !== request.productKey || order.state !== "pending" || order.pendingExpiresAt <= now || !constantTimeOwnerMatch(order.anonymousOwnerHash,ownerHash))) return fail("order_conflict");
-    if (!order) {const reference = securePublicOrderReference(); order = await this.repository.createPendingCowrieOrder({id:internalId("commerce_order",reference),publicOrderReference:reference,wallet,ownerHash,idempotencyHash,paymentLinkId:bundle.expectedPaymentLinkId,productKey:request.productKey,now});}
+    if(order&&this.confirmations)await this.confirmations.checkPending(order.id,ownerHash,details!);
+    if (!order) {const reference = securePublicOrderReference();const draft=this.confirmations?await this.confirmations.prepare({orderId:internalId('commerce_order',reference),publicOrderReference:reference,productKey:request.productKey,amountMinor:product.amountMinor,currency:'GBP',createdAt:now,consentAt:now,details:details!}):undefined;order = await this.repository.createPendingCowrieOrder({confirmation:draft,id:internalId("commerce_order",reference),publicOrderReference:reference,wallet,ownerHash,idempotencyHash,paymentLinkId:bundle.expectedPaymentLinkId,productKey:request.productKey,now});}
     return Object.freeze({publicOrderReference:order.publicOrderReference,productKey:request.productKey,quantity:product.quantity,displayPrice:product.displayPrice,paymentLinkUrl:constructPaymentLinkUrl(bundle.publicPaymentLinkUrl,order.clientReferenceId),pendingExpiresAt:order.pendingExpiresAt,state:"pending" as const});
+  }
+  async purchaseConfirmation(value:unknown):Promise<unknown> {
+    if(!this.confirmations||!value||typeof value!=='object'||Array.isArray(value))return fail('purchase_confirmation_unavailable');
+    const request=value as Record<string,unknown>;if(Object.keys(request).sort().join()!=='anonymousSessionCredential,publicOrderReference'||typeof request.publicOrderReference!=='string'||!/^rr_[0-9a-f]{32}$/.test(request.publicOrderReference))return fail('order_unavailable');
+    const {ownerHash}=await this.authorize(request.anonymousSessionCredential),order=await this.repository.getOrderByReference(request.publicOrderReference);
+    if(!order||!constantTimeOwnerMatch(order.anonymousOwnerHash,ownerHash))return fail('order_unavailable');return this.confirmations.read(order.id,ownerHash);
   }
   async resolveLegacyPaymentIntent(raw: string) { return this.repository.getLegacyPaymentIntentReference?.(raw) ?? null; }
   async orderStatus(value: unknown): Promise<Readonly<{ state: CommerceOrderState; entitlementActive: boolean; productKey: CommerceProductKey; entitlement?: EntitlementProjection; quantity?: number; settlementCause?: "refund" | "dispute"; wallet?: Readonly<{ purchasedBalance: number; bonusBalance: number; totalBalance: number }> }>> {
@@ -166,7 +180,11 @@ export class CommerceService {
   async webhook(event: VerifiedStripeEvent): Promise<Readonly<{ received: true; replay: boolean }>> {
     requireVerifiedStripeEvent(event);
     if (!this.repository.storageAvailable) return fail("commerce_storage_unavailable");
-    const outcome = await this.repository.processVerifiedWebhook(event, this.now()); return Object.freeze({ received: true, replay: outcome.replay });
+    const outcome = await this.repository.processVerifiedWebhook(event, this.now());
+    const confirmationOrder=this.confirmations?(event.clientReferenceId?await this.repository.getOrderByReference(event.clientReferenceId):event.paymentIntentHash?await this.repository.getOrderByPaymentIntentHash?.(event.paymentIntentHash):null):null;
+    if(this.confirmations&&confirmationOrder&&outcome.state==='fulfilled')await this.confirmations.deliver(confirmationOrder.id,confirmationOrder.anonymousOwnerHash);
+    if(this.confirmations&&confirmationOrder&&['failed','expired','refunded','disputed','deleted'].includes(outcome.state))await this.confirmations.cancel(confirmationOrder.id);
+    return Object.freeze({ received: true, replay: outcome.replay });
   }
 }
 
@@ -181,7 +199,7 @@ export class InMemoryCommerceRepository implements CommerceRepository {
   async getOwnedCompletedResult(slug: string) { return this.results.get(slug) || null; }
   async getOwnedCompletedResultById(id: string) { return [...this.results.values()].find((result) => result.id === id) || null; }
   async getOrderByIdempotencyHash(hash: string) { const id = this.idempotency.get(hash); return id ? this.orders.get(id) || null : null; }
-  async createPendingOrder(input: Readonly<{ id: string; publicOrderReference: string; result: CommerceOwnedResult; ownerHash: string; idempotencyHash: string; paymentLinkId: string; now: number }>) {
+  async createPendingOrder(input: Readonly<{ id: string; publicOrderReference: string; result: CommerceOwnedResult; ownerHash: string; idempotencyHash: string; paymentLinkId: string; now: number; confirmation?: ConfirmationDraft }>) {
     const order = Object.freeze({ id: input.id, publicOrderReference: input.publicOrderReference, resultId: input.result.id, anonymousOwnerHash: input.ownerHash, state: "pending" as const, clientReferenceId: input.publicOrderReference, stripePaymentLinkId: input.paymentLinkId, stripeCheckoutSessionId: null, stripePaymentIntentId: null, pendingExpiresAt: input.now + PENDING_ORDER_LIFETIME_MS, paidAt: null, fulfilledAt: null, refundedAt: null, disputedAt: null });
     this.orders.set(order.id, order); this.idempotency.set(input.idempotencyHash, order.id); return order;
   }
@@ -194,7 +212,7 @@ export class InMemoryCommerceRepository implements CommerceRepository {
   async getWalletByReference(reference: string) { return [...this.wallets.values()].find(wallet=>wallet.publicReference===reference)||null; }
   async getWalletById(id: string) { return this.wallets.get(id)||null; }
   async getEligibleRegionCounts() { return this.eligibleRegionCounts; }
-  async createPendingCowrieOrder(input: Readonly<{ id:string;publicOrderReference:string;wallet:CommerceOwnedWallet;ownerHash:string;idempotencyHash:string;paymentLinkId:string;productKey:CowrieProductKey;now:number }>) {
+  async createPendingCowrieOrder(input: Readonly<{ id:string;publicOrderReference:string;wallet:CommerceOwnedWallet;ownerHash:string;idempotencyHash:string;paymentLinkId:string;productKey:CowrieProductKey;now:number;confirmation?:ConfirmationDraft }>) {
     const existing=await this.getOrderByIdempotencyHash(input.idempotencyHash);if(existing)return existing;
     const order: CommerceOrder = Object.freeze({id:input.id,publicOrderReference:input.publicOrderReference,resultId:null,cowrieWalletId:input.wallet.id,productKey:input.productKey,amountMinor:cowrieProducts[input.productKey].amountMinor,anonymousOwnerHash:input.ownerHash,state:'pending',clientReferenceId:input.publicOrderReference,stripePaymentLinkId:input.paymentLinkId,stripeCheckoutSessionId:null,stripePaymentIntentId:null,stripePaymentIntentHash:null,pendingExpiresAt:input.now+PENDING_ORDER_LIFETIME_MS,paidAt:null,fulfilledAt:null,refundedAt:null,disputedAt:null});this.orders.set(order.id,order);this.idempotency.set(input.idempotencyHash,order.id);return order;
   }
@@ -241,8 +259,8 @@ export class D1CommerceRepository implements CommerceRepository {
   private async order(query: string, value: string) { const row = await this.database.prepare(query).bind(value).first<OrderRow>(); return row ? orderFromRow(row) : null; }
   async getOrderByIdempotencyHash(hash: string) { return this.order("SELECT * FROM commerce_orders WHERE idempotency_hash=?1 LIMIT 1", hash); }
   async getOrderByReference(reference: string) { return this.order("SELECT * FROM commerce_orders WHERE public_order_reference=?1 LIMIT 1", reference); }
-  async createPendingOrder(input: Readonly<{ id: string; publicOrderReference: string; result: CommerceOwnedResult; ownerHash: string; idempotencyHash: string; paymentLinkId: string; now: number }>) {
-    await this.database.prepare(`INSERT INTO commerce_orders (id,public_order_reference,product_key,result_id,anonymous_owner_hash,currency,amount_minor,state,client_reference_id,stripe_payment_link_id,consent_notice_version,immediate_delivery_consent_at,pending_expires_at,retention_expires_at,idempotency_hash,version,created_at,updated_at) VALUES (?1,?2,?3,?4,?5,?6,?7,'pending',?2,?8,?9,?10,?11,?12,?13,1,?10,?10)`).bind(input.id,input.publicOrderReference,ROYAL_REVEAL_PRODUCT_KEY,input.result.id,input.ownerHash,ROYAL_REVEAL_CURRENCY,ROYAL_REVEAL_AMOUNT_MINOR,input.paymentLinkId,ROYAL_REVEAL_CONSENT_NOTICE_VERSION,input.now,input.now+PENDING_ORDER_LIFETIME_MS,input.now+COMMERCE_RETENTION_MS,input.idempotencyHash).run();
+  async createPendingOrder(input: Readonly<{ id: string; publicOrderReference: string; result: CommerceOwnedResult; ownerHash: string; idempotencyHash: string; paymentLinkId: string; now: number; confirmation?: ConfirmationDraft }>) {
+    const insertion=this.database.prepare(`INSERT INTO commerce_orders (id,public_order_reference,product_key,result_id,anonymous_owner_hash,currency,amount_minor,state,client_reference_id,stripe_payment_link_id,consent_notice_version,immediate_delivery_consent_at,pending_expires_at,retention_expires_at,idempotency_hash,version,created_at,updated_at) VALUES (?1,?2,?3,?4,?5,?6,?7,'pending',?2,?8,?9,?10,?11,?12,?13,1,?10,?10)`).bind(input.id,input.publicOrderReference,ROYAL_REVEAL_PRODUCT_KEY,input.result.id,input.ownerHash,ROYAL_REVEAL_CURRENCY,ROYAL_REVEAL_AMOUNT_MINOR,input.paymentLinkId,ROYAL_REVEAL_CONSENT_NOTICE_VERSION,input.now,input.now+PENDING_ORDER_LIFETIME_MS,input.now+COMMERCE_RETENTION_MS,input.idempotencyHash);if(input.confirmation&&(input.confirmation.orderId!==input.id||input.confirmation.createdAt!==input.now))return fail('purchase_confirmation_unavailable');if(input.confirmation)await this.database.batch([insertion,purchaseConfirmationInsert(this.database,input.confirmation)]);else await insertion.run();
     const order = await this.getOrderByReference(input.publicOrderReference); if (!order) return fail("order_persistence_failed"); return order;
   }
   async getWalletByReference(reference: string): Promise<CommerceOwnedWallet|null> {
@@ -253,9 +271,10 @@ export class D1CommerceRepository implements CommerceRepository {
   async getEligibleRegionCounts(now:number):Promise<Readonly<Record<RegionKey,number>>> {
     const selection=new D1QuestionSelectionRepository(this.database);const counts={} as Record<RegionKey,number>;for(const region of ['west','east','north','central','south'] as const){const candidates=await selection.getCandidates(region,now);counts[region]=new Set(candidates.map(question=>question.stableId)).size;}return counts;
   }
+  async getOrderByPaymentIntentHash(hash:string){if(!/^[a-f0-9]{64}$/.test(hash))return null;return this.order("SELECT * FROM commerce_orders WHERE stripe_payment_intent_hash=?1 LIMIT 1",hash);}
   async getLegacyPaymentIntentReference(raw:string) {const row=await this.database.prepare('SELECT public_order_reference FROM commerce_orders WHERE stripe_payment_intent_id=?1').bind(raw).first<{public_order_reference:string}>();return row?.public_order_reference||null;}
-  async createPendingCowrieOrder(input: Readonly<{ id:string;publicOrderReference:string;wallet:CommerceOwnedWallet;ownerHash:string;idempotencyHash:string;paymentLinkId:string;productKey:CowrieProductKey;now:number }>) {
-    await this.database.prepare("INSERT INTO commerce_orders(id,public_order_reference,product_key,cowrie_wallet_id,anonymous_owner_hash,currency,amount_minor,state,client_reference_id,stripe_payment_link_id,consent_notice_version,immediate_delivery_consent_at,pending_expires_at,retention_expires_at,idempotency_hash,version,created_at,updated_at) VALUES(?1,?2,?3,?4,?5,'GBP',?6,'pending',?2,?7,?8,?9,?10,?11,?12,1,?9,?9) ON CONFLICT(idempotency_hash) DO NOTHING").bind(input.id,input.publicOrderReference,input.productKey,input.wallet.id,input.ownerHash,cowrieProducts[input.productKey].amountMinor,input.paymentLinkId,COWRIE_DELIVERY_NOTICE_VERSION,input.now,input.now+PENDING_ORDER_LIFETIME_MS,input.now+COMMERCE_RETENTION_MS,input.idempotencyHash).run();const order=await this.getOrderByIdempotencyHash(input.idempotencyHash);if(!order)return fail('order_persistence_failed');return order;
+  async createPendingCowrieOrder(input: Readonly<{ id:string;publicOrderReference:string;wallet:CommerceOwnedWallet;ownerHash:string;idempotencyHash:string;paymentLinkId:string;productKey:CowrieProductKey;now:number;confirmation?:ConfirmationDraft }>) {
+    const insertion=this.database.prepare("INSERT INTO commerce_orders(id,public_order_reference,product_key,cowrie_wallet_id,anonymous_owner_hash,currency,amount_minor,state,client_reference_id,stripe_payment_link_id,consent_notice_version,immediate_delivery_consent_at,pending_expires_at,retention_expires_at,idempotency_hash,version,created_at,updated_at) VALUES(?1,?2,?3,?4,?5,'GBP',?6,'pending',?2,?7,?8,?9,?10,?11,?12,1,?9,?9) ON CONFLICT(idempotency_hash) DO NOTHING").bind(input.id,input.publicOrderReference,input.productKey,input.wallet.id,input.ownerHash,cowrieProducts[input.productKey].amountMinor,input.paymentLinkId,COWRIE_DELIVERY_NOTICE_VERSION,input.now,input.now+PENDING_ORDER_LIFETIME_MS,input.now+COMMERCE_RETENTION_MS,input.idempotencyHash);if(input.confirmation)await this.database.batch([insertion,purchaseConfirmationInsert(this.database,input.confirmation)]);else await insertion.run();const order=await this.getOrderByIdempotencyHash(input.idempotencyHash);if(!order)return fail('order_persistence_failed');return order;
   }
   async getActiveEntitlement(resultSlug: string, ownerHash: string, now: number): Promise<EntitlementProjection | null> {
     const row = await this.database.prepare(`SELECT ce.result_id FROM commerce_entitlements ce JOIN results r ON r.id=ce.result_id WHERE r.public_slug=?1 AND ce.anonymous_owner_hash=?2 AND ce.product_key='royal_reveal_v1' AND ce.state='active' AND ce.deleted_at IS NULL AND (ce.expires_at IS NULL OR ce.expires_at>?3) LIMIT 1`).bind(resultSlug,ownerHash,now).first<{ result_id: string }>();

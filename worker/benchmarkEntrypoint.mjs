@@ -1,7 +1,9 @@
 import {WorkerEntrypoint} from 'cloudflare:workers';
 import {createHash,createHmac,timingSafeEqual} from 'node:crypto';
-import {benchmarkRuntime,BENCHMARK_ORIGIN,provisionBenchmarkFolders} from './benchmarkRuntime.mjs';
+import {benchmarkRuntime,benchmarkConfiguration,BENCHMARK_ORIGIN,provisionBenchmarkFolders} from './benchmarkRuntime.mjs';
+import {benchmarkDriveProbe} from './benchmarkDriveProbe.mjs';
 import {netlifyIngress} from './netlifyIngress.ts';
+export {BenchmarkPacing} from './benchmarkPacing.mjs';
 const deny=()=>new Response(null,{status:404,headers:{'cache-control':'private, no-store'}});
 const allowed=new Set(['start','answer','recover','complete','result']);
 const equal=(a,b)=>timingSafeEqual(createHash('sha256').update(a).digest(),createHash('sha256').update(b).digest());
@@ -13,7 +15,7 @@ export class BenchmarkAuthority extends WorkerEntrypoint {
   const runtime=benchmarkRuntime(this.env,upper);
   try{
    if(!['transact','readFence','flush','ready'].includes(method)||!Array.isArray(args))throw Error();
-   const value=await runtime.service[method](...args);return {value,usage:runtime.meter.receipt(),billingKnown:true};
+   const value=await runtime.service[method](...args);return {value,usage:runtime.meter.receipt(),timing:runtime.meter.timing(),billingKnown:true};
   }catch{return {failed:true,usage:runtime.meter.observed(),billingKnown:runtime.meter.billingKnown()};}
  }
  fetch(){return deny();}
@@ -26,6 +28,14 @@ export class BenchmarkPlayer extends WorkerEntrypoint {
  fetch(){return deny();}
 }
 export class BenchmarkOperator extends WorkerEntrypoint {
+ async coordinatorReadback(){if(!this.env.BENCHMARK_PACING)throw Error('benchmark_shared_pacing_required');return this.env.BENCHMARK_PACING.getByName('synthetic_r002_shared').readback();}
+ async probeInventory(upper){
+  const runtime=benchmarkRuntime(this.env,upper);
+  try{return {result:{verified:true,count:(await runtime.custody.list()).length},usage:runtime.meter.receipt(),billingKnown:true};}
+  catch(error){const category=['drive_transport','drive_inventory','drive_partition_scope','benchmark_meter_unavailable','benchmark_pacing_unavailable'].includes(error.message)?error.message:'unavailable';return {result:{verified:false,category},usage:runtime.meter.observed(),billingKnown:runtime.meter.billingKnown()};}
+ }
+ async probeDrive(upper){benchmarkConfiguration(this.env,{requireFolders:false});return benchmarkDriveProbe(this.env,upper);}
+ async dispatchHttp(packet){if(!this.env.BENCHMARK_PACING)throw Error('benchmark_shared_pacing_required');return this.env.BENCHMARK_PACING.getByName('synthetic_r002_shared').dispatch(packet);}
  async provision(upper){return provisionBenchmarkFolders(this.env,upper);}
  async cleanup(stopped,upper){const runtime=benchmarkRuntime(this.env,upper);runtime.meter.add('internal',1);return runtime.cleanup(stopped);}
  async execute(command,upper){const runtime=benchmarkRuntime(this.env,upper);runtime.meter.add('internal',1);return runtime.run(command);}

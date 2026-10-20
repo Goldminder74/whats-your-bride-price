@@ -8,8 +8,16 @@ Previously approved retention rules and completed Stripe setup are not being reo
 
 ### Owner responses recorded 18 October 2026
 
-- The owner will name additional paid-sales countries; the actual country list is
-  still needed. Neither UK-only nor worldwide sales is approved by that answer.
+- Requested paid-sales territories are UK, US, Canada, Nigeria, Kenya, Ghana and
+  EU member states. This records the owner decision; tax/consumer readiness for
+  each remains to be verified. Do not silently substitute UK-only.
+- Seller confirmed: Ayodele Ayeni trading as Classes for Culture.
+- Support/privacy/complaints mailbox and two-working-day acknowledgement target
+  are owner-confirmed; escalation to Classes for Culture.
+- Owner reports cancellation review and delegates proposed wording selection; no
+  actual reviewed classification/rule was supplied. Do not invent that conclusion.
+- Additive migration0014 is explicitly approved for encrypted immutable contracts
+  and retry-safe email progress, with existing order/hold retention and no backfill.
 - The purchase/refund draft is approved for final review, not legal sign-off.
 - Complaint escalation must say **Classes for Culture**, not the operator's
   personal name. This does not remove legally required seller identity details.
@@ -22,11 +30,14 @@ Previously approved retention rules and completed Stripe setup are not being reo
   children's privacy obligations. Complete the audience/risk assessment before
   presenting this as an implemented safeguard.
 
-| Decision | Proposal | Owner response needed |
+The territory, seller identity and support decisions above are settled. The older
+proposal table below is superseded; do not ask the owner to answer them again.
+
+| Decision | Proposal | Recorded disposition / remaining input |
 |---|---|---|
-| Paid territories | UK consumers initially. Enforce eligibility before checkout; language, currency and IP alone are not evidence of residence. | UK-only, or list specific additional countries for tax/consumer review. Worldwide is not assumed. |
-| Products/refunds | Approve or revise the draft below, with consumer-law review of Cowrie credits versus future services. | Accept/revise; record any professional advice separately. |
-| Support | team@classesforculture.com; acknowledge within two working days as a proposed service target. Escalate payment, privacy and complaint cases to Classes for Culture. | Owner requested the organisation name for escalation; confirm operational readiness before publishing the service target. |
+| Paid territories | Requested UK/US/Canada/Nigeria/Kenya/Ghana/EU; enforce eligibility before checkout. Language, currency and IP alone are not residence evidence. | Owner selection recorded. Verify jurisdiction/tax readiness and actual eligibility controls; no silent UK-only substitution. |
+| Products/refunds | Generous Cowrie cancellation wording below, without a blanket waiver. | Draft selection delegated to the implementer; professional review conclusion has not been supplied and must not be invented. |
+| Support | team@classesforculture.com; acknowledge within two working days. Escalate payment, privacy and complaint cases to Classes for Culture. | Owner confirmed mailbox, service target and organisation escalation. |
 | Seller details | Actual geographical establishment/contact address, complaints address if different, and available/required telephone contact. | Install securely as described below; never paste them into chat. |
 
 Free-game territories remain a separate decision. Confirm any genuinely unresolved
@@ -66,6 +77,20 @@ appropriate service/credit cancellation wording remain a review decision.
 Keep exact original GBP product/price validation alongside permitted converted
 presentment. Unreconciled adverse amounts stay review-required.
 
+### Delegated Cowrie wording selected for local implementation (20 October)
+
+“Contact team@classesforculture.com within 14 days of purchase to cancel your Cowrie
+bundle. We will provide a full refund, including if you have used some credits.
+Remaining credits from that purchase will be withdrawn; we will not create a debt
+or remove unrelated purchased value. Refunds use the original payment method.
+Your statutory rights, including rights for faulty or misdescribed services, are
+unaffected.” This commercial draft supersedes any implication above that using a
+credit automatically removes cancellation rights. Used/partial refunds retain
+manual accounting review; that review must not silently deny the stated policy.
+Selection under owner delegation is not professional legal sign-off or verification
+of every requested territory. The actual legal pages remain draft and must be
+aligned before activation.
+
 ## Durable confirmation: procedure to implement before live sales
 
 1. Before checkout, show seller details, product, total price, delivery scope,
@@ -81,11 +106,16 @@ presentment. Unreconciled adverse amounts stay review-required.
 5. Test refunds/revocation against that order. A Stripe receipt alone is sufficient
    only if it actually contains the required contract and consent information.
 
-This procedure is proposed, not installed or verified. Existing sandbox purchases
-did not demonstrate durable contract emails. Selecting email would require secure
+Local implementation and regression coverage now exist: encrypted immutable
+order-linked snapshot in the same pending-order transaction, owner-authorised
+saveable confirmation, one delivery claim across writers, and uncertain-send
+review without automatic resend or duplicate fulfilment. All four product names
+are readable in the generated confirmation. This is not hosted production delivery
+evidence. Existing sandbox purchases did not demonstrate durable contract emails.
+Deployment still requires secure
 customer-email handling and a compatible transactional sender, separately assessed
 against budget and retention; the operational alert mailbox is not assumed to be
-a customer receipt service. No new migration is authorised by this document.
+a customer receipt service. Migration0014 is subsequently owner-authorised; implementation/validation and production gating remain necessary.
 
 ## Secure seller-address steps
 

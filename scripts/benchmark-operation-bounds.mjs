@@ -25,7 +25,7 @@ const profiles={
  'restore-import':{external:60,internal:450,reads:30000,writes:30000},
  'restore-verify':{external:60,internal:300,reads:30000,writes:200},
 };
-export function benchmarkOperationBounds({phase,storageBytes,assets}){
+export function benchmarkOperationBounds({phase,storageBytes,assets,sharedPacing=false}){
  if(!['B','C'].includes(phase)||!Number.isSafeInteger(storageBytes)||storageBytes<0)fail();
  const limits=BENCHMARK_PHASES[phase],game=phase==='B'?benchmarkGameBounds({phase,storageBytes,assets}):null;
  return command=>{
@@ -33,6 +33,7 @@ export function benchmarkOperationBounds({phase,storageBytes,assets}){
   if(phase==='C'&&command?.kind==='inventory')return {...Object.fromEntries(Object.keys(limits.caps).map(k=>[k,0])),external:40,internal:200,reads:20000,writes:100,storageBytes:Math.max(storageBytes,100000000),transferBytes:12000000};
   const profile=profiles[command?.kind];if(!profile||phase==='B'&&!['provision','commission'].includes(command.kind))fail();
   const value={...Object.fromEntries(Object.keys(limits.caps).map(k=>[k,0])),...profile,storageBytes:Math.max(storageBytes,phase==='B'?20000000:100000000),transferBytes:12000000};
+  if(sharedPacing){value.internal=Math.max(value.internal,value.external+1);value.reads+=value.external*8;value.writes+=value.external*6;}
   if(Object.entries(value).some(([k,n])=>!Number.isSafeInteger(n)||n<0||n>limits.caps[k])||value.internal>limits.internalPerSecond||value.storageBytes>=limits.caps.storageBytes*.8)fail();return value;
  };
 }

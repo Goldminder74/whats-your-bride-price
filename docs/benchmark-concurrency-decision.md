@@ -1,6 +1,6 @@
 # Stopped r002 run: decision required
 
-18 October 2026. Proposal only; no new resource or measurement window is approved.
+18 October 2026. Owner subsequently approved this exact coordinator and fresh B/C windows. Cumulative allowances and all cost/security conditions below remain binding. See current handover for the recreated resource identities and execution status.
 
 ## Observed result
 

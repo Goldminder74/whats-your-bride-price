@@ -6,7 +6,8 @@ import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import {assertBenchmarkResource} from './approved-benchmark-budget.mjs';
 import {assertSecretFreeBuild} from './secret-free-build.mjs';
-export async function packageBenchmark({databaseId,siteId,workerOrigin,synthetic=true}){
+export async function packageBenchmark({databaseId,siteId,workerOrigin,synthetic=true,sharedPacing=false,runId='synthetic_r002',carry={B:0,C:0}}){
+ if(!/^[a-zA-Z0-9_-]{1,64}$/.test(runId)||!carry||Object.keys(carry).sort().join(',')!=='B,C'||Object.values(carry).some(n=>!Number.isSafeInteger(n)||n<0))throw Error('benchmark_package_scope');
  const account='b6b22a9a87b5758725e5c499782160af';
  assertBenchmarkResource('database',{name:'wybp-capacity-d1-r002',id:databaseId,account});
  assertBenchmarkResource('site',{name:'wybp-capacity-private-r002',id:siteId,teamSlug:'goldminder74'});
@@ -20,7 +21,8 @@ export async function packageBenchmark({databaseId,siteId,workerOrigin,synthetic
    const bytes=await readFile(resolve('public',directory,name));await copyFile(resolve('public',directory,name),join(root,'assets',directory,name));assetFiles['/'+directory+'/'+name]={bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')};
   }
  }
- const config={name:'wybp-capacity-worker-r002',account_id:account,main:resolve('worker/benchmarkEntrypoint.mjs'),compatibility_date:'2026-05-15',compatibility_flags:['nodejs_compat'],workers_dev:true,preview_urls:false,observability:{enabled:false},limits:{cpu_ms:100},assets:{directory:join(root,'assets'),binding:'ASSETS',run_worker_first:true},d1_databases:[{binding:'DB',database_name:'wybp-capacity-d1-r002',database_id:databaseId}],services:[{binding:'BENCHMARK_AUTHORITY',service:'wybp-capacity-worker-r002',entrypoint:'BenchmarkAuthority'},{binding:'BENCHMARK_PLAYER',service:'wybp-capacity-worker-r002',entrypoint:'BenchmarkPlayer'}],vars:{CLOUDFLARE_ACCOUNT_ID:account,WYBP_AUTHORITY_ROLE:'benchmark-ops',WYBP_WORKER_NAME:'wybp-capacity-worker-r002',WYBP_BENCHMARK_DATABASE_NAME:'wybp-capacity-d1-r002',WYBP_BENCHMARK_DATABASE_ID:databaseId,PUBLIC_APP_ORIGIN:'https://wybp-capacity-private-r002.netlify.app',WYBP_BENCHMARK_PHASE:'B',WYBP_BENCHMARK_RUN_ID:'synthetic_r002',WYBP_BENCHMARK_SOURCE_SHA256:'0'.repeat(64),WYBP_NETLIFY_PROJECT_ID:siteId,WYBP_NETLIFY_CONTEXT:'production',WYBP_NETLIFY_SITE_URL:'https://wybp-capacity-private-r002.netlify.app',WYBP_OPERATIONS_ENABLED:'false',WYBP_TEST_WEBHOOK_ENABLED:'false',WYBP_TEST_RETENTION_ENABLED:'false',WYBP_HOSTED_REHEARSAL_ENABLED:'false'}};
+ const config={name:'wybp-capacity-worker-r002',account_id:account,main:resolve('worker/benchmarkEntrypoint.mjs'),compatibility_date:'2026-05-15',compatibility_flags:['nodejs_compat'],workers_dev:true,preview_urls:false,observability:{enabled:false},limits:{cpu_ms:100},assets:{directory:join(root,'assets'),binding:'ASSETS',run_worker_first:true},d1_databases:[{binding:'DB',database_name:'wybp-capacity-d1-r002',database_id:databaseId}],services:[{binding:'BENCHMARK_AUTHORITY',service:'wybp-capacity-worker-r002',entrypoint:'BenchmarkAuthority'},{binding:'BENCHMARK_PLAYER',service:'wybp-capacity-worker-r002',entrypoint:'BenchmarkPlayer'}],vars:{CLOUDFLARE_ACCOUNT_ID:account,WYBP_AUTHORITY_ROLE:'benchmark-ops',WYBP_WORKER_NAME:'wybp-capacity-worker-r002',WYBP_BENCHMARK_DATABASE_NAME:'wybp-capacity-d1-r002',WYBP_BENCHMARK_DATABASE_ID:databaseId,PUBLIC_APP_ORIGIN:'https://wybp-capacity-private-r002.netlify.app',WYBP_BENCHMARK_PHASE:'B',WYBP_BENCHMARK_RUN_ID:runId,WYBP_BENCHMARK_SOURCE_SHA256:'0'.repeat(64),WYBP_NETLIFY_PROJECT_ID:siteId,WYBP_NETLIFY_CONTEXT:'production',WYBP_NETLIFY_SITE_URL:'https://wybp-capacity-private-r002.netlify.app',WYBP_OPERATIONS_ENABLED:'false',WYBP_TEST_WEBHOOK_ENABLED:'false',WYBP_TEST_RETENTION_ENABLED:'false',WYBP_HOSTED_REHEARSAL_ENABLED:'false'}};
+ if(sharedPacing){config.durable_objects={bindings:[{name:'BENCHMARK_PACING',class_name:'BenchmarkPacing'}]};config.migrations=[{tag:'benchmark-pacing-r001',new_sqlite_classes:['BenchmarkPacing']}];config.vars.WYBP_BENCHMARK_PACING_CARRY=JSON.stringify(carry);}
  const configuration=join(root,'wrangler.json');await writeFile(configuration,JSON.stringify(config,null,2)+'\n');
  const environment={...process.env,WRANGLER_SEND_METRICS:'false',WRANGLER_WRITE_LOGS:'false'};
  await assertSecretFreeBuild(process.cwd(),environment);
@@ -33,7 +35,7 @@ export async function packageBenchmark({databaseId,siteId,workerOrigin,synthetic
  await writeFile(configuration,JSON.stringify(config,null,2)+'\n');
  await writeFile(join(root,'netlify.toml'),'[build]\npublish="client"\n[[redirects]]\nfrom="/*"\nto="'+workerOrigin+'/:splat"\nstatus=200\nforce=true\nsigned="WYBP_NETLIFY_PROXY_SECRET"\n');
  await writeFile(join(root,'client','index.html'),'<!doctype html><title>Private synthetic benchmark</title>');
- const manifest={version:1,synthetic,databaseId,siteId,workerOrigin,sourceSha256,assetFiles,operatorHttpExposed:false,scheduled:false,commerce:false};await writeFile(join(root,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
+ const manifest={version:1,synthetic,sharedPacing,runId,pacingCarry:carry,databaseId,siteId,workerOrigin,sourceSha256,assetFiles,operatorHttpExposed:false,scheduled:false,commerce:false};await writeFile(join(root,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
  return {root,sourceSha256,assetCount:Object.keys(assetFiles).length,synthetic};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){

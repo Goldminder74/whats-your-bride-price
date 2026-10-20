@@ -10,12 +10,13 @@ const integer=n=>Number.isSafeInteger(n)&&n>=0;
 export function benchmarkMeter({phase,upper,now=Date.now,pause=ms=>new Promise(r=>setTimeout(r,ms)),request=(input,init)=>globalThis.fetch(input,init)}){
  const limits=BENCHMARK_PHASES[phase],keys=Object.keys(limits?.caps||{});
  if(!limits||!upper||keys.length!==Object.keys(upper).length||keys.some(k=>!integer(upper[k])||upper[k]>limits.caps[k]))failure();
- const used=Object.fromEntries(keys.map(k=>[k,0]));let failed=false,nextFetch=now()+1000/limits.externalPerSecond,queue=Promise.resolve();
+ const used=Object.fromEntries(keys.map(k=>[k,0]));let failed=false,nextFetch=now()+1000/limits.externalPerSecond,queue=Promise.resolve(),databaseSize=0,coordinatorSize=0;
+ const timing={databaseMs:0,providerPacingMs:0,providerFetchMs:0,authorityRpcMs:0};
  function add(key,n){if(failed||!integer(n)||!Object.hasOwn(used,key))failure();used[key]=key==='storageBytes'?Math.max(used[key],n):used[key]+n;if(!integer(used[key])||used[key]>upper[key]){failed=true;failure();}}
  function observe(result){
   const rows=Array.isArray(result)?result:[result];
   for(const row of rows){if(row?.success!==true||!integer(row.meta?.rows_read)||!integer(row.meta?.rows_written)||!integer(row.meta?.size_after)){failed=true;failure();}
-   add('reads',row.meta.rows_read);add('writes',row.meta.rows_written);add('storageBytes',row.meta.size_after);
+   add('reads',row.meta.rows_read);add('writes',row.meta.rows_written);databaseSize=Math.max(databaseSize,row.meta.size_after);add('storageBytes',databaseSize+coordinatorSize);
   }return result;
  }
  function database(binding){
@@ -28,7 +29,7 @@ export function benchmarkMeter({phase,upper,now=Date.now,pause=ms=>new Promise(r
   }
   return {prepare,async batch(statements){if(!Array.isArray(statements)||statements.some(s=>!plans.has(s)))failure();return observedCall(()=>binding.batch(statements.map(s=>plans.get(s))));}};
  }
- async function observedCall(work){try{return observe(await work());}catch{failed=true;failure();}}
+ async function observedCall(work){const began=now();try{return observe(await work());}catch{failed=true;failure();}finally{timing.databaseMs+=Math.max(0,now()-began);}}
  async function fetcher(input,init={}){
   // Serial provider requests share an invocation's rate clock. The controller
   // must serialize reservations across invocations; do not assume this is global.
@@ -56,5 +57,7 @@ export function benchmarkMeter({phase,upper,now=Date.now,pause=ms=>new Promise(r
  }
  function authority(service){return Object.fromEntries(['transact','readFence','flush','ready','mutate'].filter(k=>typeof service[k]==='function').map(k=>[k,async(...args)=>{add('internal',1);return service[k](...args);} ]));}
  function merge(value){if(!value||Object.keys(value).length!==keys.length||keys.some(k=>!integer(value[k]))){failed=true;failure();}for(const k of keys)add(k,value[k]);}
- return {database,fetcher,authority,add,merge,observed:()=>({...used}),billingKnown:()=>!failed,markUncertain:()=>{failed=true;},receipt(){if(failed)failure();return {...used};}};
+ function mergeTiming(value){if(!value||Object.keys(timing).some(k=>!integer(value[k])))failure();for(const k of Object.keys(timing))timing[k]+=value[k];}
+ function coordinator(counters,profile){if(!counters||!integer(counters.reads)||!integer(counters.writes)||!integer(counters.storageBytes)||!profile||!integer(profile.pacingWaitMs)||!integer(profile.fetchMs)){failed=true;failure();}add('internal',1);add('reads',counters.reads);add('writes',counters.writes);coordinatorSize=Math.max(coordinatorSize,counters.storageBytes);add('storageBytes',databaseSize+coordinatorSize);timing.providerPacingMs+=profile.pacingWaitMs;timing.providerFetchMs+=profile.fetchMs;}
+ return {database,fetcher,authority,add,merge,mergeTiming,coordinator,timing:()=>({...timing}),authorityTime:ms=>{if(!integer(ms))failure();timing.authorityRpcMs+=ms;},observed:()=>({...used}),billingKnown:()=>!failed,markUncertain:()=>{failed=true;},receipt(){if(failed)failure();return {...used};}};
 }

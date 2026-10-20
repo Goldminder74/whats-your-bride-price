@@ -4,7 +4,7 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {join} from 'node:path';
 import {DatabaseSync} from 'node:sqlite';
 import {getPlatformProxy} from 'wrangler';
-import {ApprovedBenchmarkBudget,assertBenchmarkResource,BENCHMARK_PHASES} from './approved-benchmark-budget.mjs';
+import {ApprovedBenchmarkBudget,assertBenchmarkResource,BENCHMARK_PHASES,verifySharedPacingHeadroom} from './approved-benchmark-budget.mjs';
 import {ApprovedBenchmarkDriver} from './approved-benchmark-driver.mjs';
 import {hostedBenchmarkAdapter} from './hosted-benchmark-adapter.mjs';
 import {benchmarkOperationBounds} from './benchmark-operation-bounds.mjs';
@@ -12,10 +12,15 @@ import {meteredBenchmarkController} from './benchmark-metered-controller.mjs';
 import {runBenchmarkRecovery} from './benchmark-recovery-controller.mjs';
 import {privatePath} from './operational-backup.mjs';
 import {recoveryHash,encryptRecord,decryptRecord} from './recovery-crypto.mjs';
+import {stoppedBenchmarkCarryover} from './stopped-benchmark-carryover.mjs';
 const fail=code=>{throw Error(code||'benchmark_session_unavailable');};
 const account='b6b22a9a87b5758725e5c499782160af';
-export async function createHostedBenchmarkSession({phase,preflight,resources,manifest,hosted,secrets,directory,now=Date.now,platform=getPlatformProxy}){
+export async function createHostedBenchmarkSession({phase,preflight,resources,manifest,hosted,secrets,directory,carryoverPath,now=Date.now,platform=getPlatformProxy}){
  if(!['B','C'].includes(phase)||hosted?.phase!==phase||manifest?.synthetic!==false||hosted?.cpuMs!==100||hosted?.schedules!==0||hosted?.offFlags!==true||hosted?.unsignedStatus!==404||hosted.sourceSha256!==manifest.sourceSha256||!Number.isSafeInteger(hosted.verifiedAt)||now()-hosted.verifiedAt>3600000||hosted.verifiedAt>now())fail();
+ let carryover;
+ const sharedPacing=manifest.sharedPacing===true,runId=manifest.runId||'synthetic_r002';
+ if(sharedPacing){verifySharedPacingHeadroom(preflight,now());if(typeof carryoverPath!=='string'||runId==='synthetic_r002')fail('benchmark_carryover_unverified');carryover=await stoppedBenchmarkCarryover(carryoverPath);if(manifest.pacingCarry?.B!==carryover.used.B.external||manifest.pacingCarry?.C!==carryover.used.C.external)fail('benchmark_carryover_unverified');}
+ if(sharedPacing&&(!carryover?.sourceSha256||hosted.pacingClass!=='BenchmarkPacing'||hosted.pacingCpuMs!==100))fail('benchmark_shared_pacing_unverified');
  for(const kind of ['site','worker','database'])assertBenchmarkResource(kind,resources?.[kind]);
  if(manifest.databaseId!==resources.database.id||manifest.siteId!==resources.site.id||hosted.databaseIds?.length!==1||hosted.databaseIds[0]!==resources.database.id)fail();
  const required=['WYBP_DRIVE_CLIENT_ID','WYBP_DRIVE_CLIENT_SECRET','WYBP_DRIVE_REFRESH_TOKEN','WYBP_BENCHMARK_KEY_BASE64','WYBP_BENCHMARK_ACCESS','WYBP_BENCHMARK_CONTROLLER_SECRET','WYBP_NETLIFY_PROXY_SECRET'];
@@ -27,19 +32,19 @@ export async function createHostedBenchmarkSession({phase,preflight,resources,ma
  const database=new DatabaseSync(join(directory,'budget.sqlite'));
  let proxy;
  try{
-  const budget=new ApprovedBenchmarkBudget(database,{runId:'synthetic_r002',phase,preflight,now,preparing:true});
+  const budget=new ApprovedBenchmarkBudget(database,{runId,phase,preflight,now,preparing:true,carryover});
   if(phase==='C'){
-   const previous=database.prepare("SELECT used FROM benchmark_runs WHERE id='synthetic_r002:B'").get();
-   if(!previous||database.prepare("SELECT COUNT(*) n FROM benchmark_tickets WHERE run_id='synthetic_r002:B' AND state!='settled'").get().n)fail('benchmark_prior_stock_unverified');
+   const previous=database.prepare('SELECT used FROM benchmark_runs WHERE id=?1').get(runId+':B');
+   if(!previous||database.prepare("SELECT COUNT(*) n FROM benchmark_tickets WHERE run_id=?1 AND state!='settled'").get(runId+':B').n)fail('benchmark_prior_stock_unverified');
    // Retained B files still occupy the same private folders. Charge their
    // conservative uploaded bytes/object count before admitting any C work;
    // changing phase must not reset the physical storage allowance.
    const stock=JSON.parse(previous.used),upper=Object.fromEntries(Object.keys(BENCHMARK_PHASES.C.caps).map(k=>[k,0]));upper.driveBytes=stock.driveBytes;upper.driveObjects=stock.driveObjects;
    const reservation=budget.reserve('setup_existing_drive_stock',upper,{preparation:true,pacedExternal:true});
-   budget.settle(reservation.ticket,upper,recoveryHash(Buffer.from(JSON.stringify({source:'synthetic_r002:B',upper}))));
+   budget.settle(reservation.ticket,upper,recoveryHash(Buffer.from(JSON.stringify({source:runId+':B',upper}))));
   }
   proxy=await platform({configPath:proxyPath,persist:false,envFiles:[]});
-  const adapter=hostedBenchmarkAdapter({phase,operator:proxy.env.OP,access:secrets.WYBP_BENCHMARK_ACCESS,controllerSecret:secrets.WYBP_BENCHMARK_CONTROLLER_SECRET,workerOrigin:manifest.workerOrigin,sourceSha256:manifest.sourceSha256,assets:manifest.assetFiles,bounds:benchmarkOperationBounds({phase,storageBytes:hosted.storageBytes,assets:manifest.assetFiles}),now});
+  const adapter=hostedBenchmarkAdapter({phase,operator:proxy.env.OP,access:secrets.WYBP_BENCHMARK_ACCESS,controllerSecret:secrets.WYBP_BENCHMARK_CONTROLLER_SECRET,workerOrigin:manifest.workerOrigin,sourceSha256:manifest.sourceSha256,sharedPacing,assets:manifest.assetFiles,bounds:benchmarkOperationBounds({phase,sharedPacing,storageBytes:hosted.storageBytes,assets:manifest.assetFiles}),now});
   const action=await meteredBenchmarkController({budget,adapter,key,directory:join(directory,'receipts')});
   const checkReady=()=>{if(hosted.folderCount!==16||hosted.restoreReceiptPresent!==true)fail('benchmark_commissioning_required');};
   const persist=async(name,value)=>{await writeFile(join(directory,name),JSON.stringify(value,null,2)+'\n');return value;};
