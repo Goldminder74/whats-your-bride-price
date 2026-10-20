@@ -20,11 +20,21 @@ export async function meteredBenchmarkController({budget,adapter,key,directory})
    if(receipt.outcome.result.failed)fail();return receipt.outcome.result;
   }
   if(!admission.execute){budget.stop();fail();}
+  let settlementRecorded=false;
   try{
    const outcome=command.kind==='inventory'?await adapter.verifyInventory():await adapter.execute(command);
    if(outcome.receiptSha256!==hash({result:outcome.result,usage:outcome.usage}))fail();
    const staged=path+'.writing';await writeFile(staged,encryptRecord({commandHash:hash(command),outcome},key,aad),{mode:0o600});await rename(staged,path);
-   if(budget.settle(admission.ticket,outcome.usage,outcome.receiptSha256)?.stopped||outcome.result.failed)fail();return outcome.result;
-  }catch{budget.stop();fail();}
+   const settled=budget.settle(admission.ticket,outcome.usage,outcome.receiptSha256);settlementRecorded=true;
+   if(settled?.stopped||outcome.result.failed)fail();return outcome.result;
+  }catch(error){
+   budget.stop();
+   // Keep unknown reservations charged. An encrypted failure observation is
+   // deliberately separate from the settled receipt used for replay recovery.
+   const category=error?.benchmarkFailure==='unknown_billing'?'unknown_billing':'operation_unavailable';
+   const staged=path+'.failure.writing';
+   await writeFile(staged,encryptRecord({commandHash:hash(command),category,fullReservationRetained:!settlementRecorded},key,aad+':failure'),{mode:0o600});
+   await rename(staged,path+'.failure.enc');fail();
+  }
  };
 }

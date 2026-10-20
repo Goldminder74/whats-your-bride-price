@@ -48,7 +48,12 @@ export function hostedBenchmarkAdapter({phase,operator,access,controllerSecret,w
    const response=await http(origin+'/game',{authenticated:true,method:'POST',body,headers:{origin,'content-type':'application/json','x-wybp-benchmark-time':at,'x-wybp-benchmark-signature':createHmac('sha256',controllerSecret).update(at+'\n'+body).digest('hex')}},usage);
    if(response.status!==200)fail();try{outcome=JSON.parse(response.bytes.toString());}catch{fail();}
   }else outcome=command.kind==='provision'?await operator.provision(remote):await operator.execute(command,remote);
-  if(outcome?.billingKnown!==true)fail();
+  if(outcome?.billingKnown!==true){
+   // This is diagnostic evidence, never a settlement or permission to retry.
+   // Do not propagate arbitrary provider messages, bodies or partial counters.
+   const error=Error('hosted_benchmark_adapter_unavailable');
+   error.benchmarkFailure='unknown_billing';throw error;
+  }
   merge(usage,outcome.usage);if(outcome.timing)timing(usage,outcome.timing);
   nextRequest=Math.max(nextRequest,now()+1000/limits.externalPerSecond);
   if(!outcome?.result||!/^[a-f0-9]{64}$/.test(outcome.receiptSha256||''))fail();

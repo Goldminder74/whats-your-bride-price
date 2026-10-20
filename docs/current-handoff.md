@@ -1,5 +1,121 @@
 # Current handoff
 
+## Latest: 21 October — expired window, complete isolated cleanup
+
+The original coordinator deadline passed. No measurement window was restarted,
+no allowance reset and no new resource/subscription purchased. Owner reconfirmed
+475 Netlify credits/recharge Disabled. Do not repeatedly request this observation
+for unchanged work: a genuinely new hosted run or spending decision needs fresh
+evidence; completed setup does not. The previous observation is not an invoice.
+
+Confirmed cleanup defect: benchmarkRuntime.cleanup required service.ready(),
+which cannot pass after failed commissioning, and shared pacing had expired.
+Added a separate cleanup-only private entrypoint/runtime: requires confirmed stop,
+valid isolated configuration and no unresolved writer; uses the existing bounded,
+serial provider meter; checks EVERY child, exact root ownership and durable file
+IDs before deletion. It has no provisioning/commissioning/game method and public
+fetch always404. It neither clears a fence nor issues a restore receipt.
+
+Hosted cleanup-only release99902f46-1d60-42c3-9f4a-60a962eddcae,
+SHA0b18374234729cad22364166d34d6da39bb0c2a27d2387df1aba3433f415d637:
+complete inventory verified17 folders and ONE indexed synthetic encrypted file.
+Deleted that disposable root; verified404; approved parent preserved. This
+reconciles the earlier partial file reservation without claiming recovery success.
+Supported class deletion migration retired ONLY BenchmarkPacing's disposable DO
+namespace; verified absence. Subsequent identity-checked deletion verified absence
+of r002 D1 database, Netlify site and Worker. No disposable resources remain from
+this run. Workers Paid subscription remains; no application D1 migration applied.
+Private game anonymous denial freshly verified401; existing game/ops releases,
+wallets, catalogue, Google credentials, Stripe and OFF settings unchanged.
+
+Final cumulative conservative journal charges (includes old/unknown envelopes):
+2,034 external/3,743 internal operations,36,678 writes/1,135,412 reads,
+21,036,288-byte storage peak,142,099,970 transfer bytes,98 admitted objects and
+2,513,204 admitted Drive bytes. Actual cleanup found ONE file, not98. Every prior
+unknown remains charged; local diagnostic settlement never proves commissioning.
+Publications remain30/60; no new Netlify publication. B/C measured games0.
+Fresh provider usage remains comfortably inside existing included allocations;
+GBP7.40 experiment forecast remains a conservative estimate, not a new charge or
+5k/day monthly proof. GBP50 ceiling remains; GBP150 is planning only.
+
+Validation: complete data/operational gate384/384, typecheck, focused cleanup4/4,
+cleanup package build and exact compiled anonymous404 smoke pass. Full lint found
+three unused symbols in ignored operator helpers; removed narrowly, full rerun PASS.
+Final settlement-evidence refinement then passed12 affected tests: unknown billing
+retains its whole reservation; a known failed operation retains its verified
+settlement and is not falsely reported as unresolved or replayed. These changes
+are operator-only; final scoped lint/diff and commit/push follow.
+No assertion, timeout, lint rule or security gate weakened. Failure-observation
+change below remains included. Reuse earlier complete application/browser release
+gate for unchanged application code. Evidence is ignored under authority-preparation:
+20261021-scoped-data-validation.log, cleanup-drive-result.json,
+cleanup-retire-result.json, cleanup-resources-result.json, cleanup-compiled-smoke.json.
+
+Capacity/recovery readiness remains NO-GO. The traced commissioning cancellation
+cause is not established; this cleanup fixes teardown, not that failure. Next local
+engineering is bounded/resumable commissioning and production full-stock boundary,
+inventory/import integration. Another hosted measurement needs a newly approved
+time window AFTER those changes are reviewable/tested; never revive the expired
+coordinator. Keep cumulative caps and cost envelope; do not infer5,000/day from
+the earlier baseline. Other essential gates remain secure actual seller details,
+requested-territory tax/consumer readiness, hosted durable confirmations/actual
+converted totals, live Stripe read-only readiness, and existing-site/email backup,
+verified production configuration, cutover/rollback. No public launch is claimed.
+
+## Latest: 20 October — fresh headroom and single approved diagnostic
+
+Owner reports475 available Netlify credits and automatic recharge still Disabled.
+The earlier476 observation remains historical; do not attribute the difference to
+this run without billing evidence. Existing CLI session refreshed normally without
+new scopes. Fresh account analytics:760,759 D1 reads/32,040 writes;3,749 Worker
+requests/42.261 CPU seconds;150 DO requests/22.786 GB-seconds,1,097 reads/602 writes,
+65,536 stored bytes. Conservative capped-experiment forecast remains GBP7.40
+incremental/GBP16.04 whole-account; this is neither an invoice nor a verified
+5,000-game/day monthly operating cost. No purchase, publication or new resource.
+
+Automatic review rejected the proposed commissioning diagnostic because a prior
+reservation was unresolved. The owner then explicitly approved ONE traced retry.
+That retry also lost its RPC response: successful subrequests followed by a
+cancelled invocation; provider/internal references were not retained in Git.
+This establishes cancellation, NOT its cause or an application throughput limit.
+Do not rerun it blindly or describe it as a successful recovery.
+
+New stopped local journal: r002-parallel3/session/budget.sqlite, carrying the entire
+immutable parallel2 journal (including older conservative/unknown reservations).
+The diagnostic envelope is fully charged, not measured provider usage; its settled
+diagnostic observation does not resolve the missing commissioning receipt. Latest
+cumulative conservative charges:1,713 external/3,443 internal operations,36,678
+writes/1,075,410 reads,21,036,288-byte storage peak,112,093,769 transfer bytes,
+98 objects/2,513,204 Drive bytes. These are admissions, NOT actual inventory.
+No B/C measurement started; completed benchmark games0. Publications remain30/60.
+The coordinator deadline is unchanged:2026-10-20T18:55:23.978Z. Readback shows639 B
+provider requests,0 C,0 pending and81,920 stored bytes. Local runs stay stopped.
+
+Read-only D1 reconciliation now shows ONE durable file-ID reservation, but zero
+wallets/orders/attempts/outbox entries/restore receipts. Journal remains exporting;
+access remains blocked. Provider file existence/completeness is not yet reconciled.
+Root/16 folders and isolated site/Worker/D1/DO remain pending strict cleanup; never
+delete from the earlier zero-tagged-file observation. Preserve the approved parent.
+Evidence (ignored):20261020-trace-commission-diagnostic-result.json,
+20261020-parallel3-commission-d1-readback.json,
+20261020-trace-post-diagnostic-result.json and owner-billing-observation-475.json.
+
+Local correction: unknown-billing failures now persist a separate encrypted,
+allowlisted failure observation before returning failure. They never become settled
+operation receipts, release reservations, replay effects or reopen a stopped run.
+No raw provider error/body/counters enter this observation. Affected budget,
+controller, adapter and session tests25/25 and typecheck pass. Full previous release
+gate remains recorded below; no application/Worker runtime source changed here.
+Lint/diff and scoped commit/push follow this checkpoint. Private game, production
+operations, Google setup, monitoring, Stripe and OFF feature settings unchanged.
+
+Next technical work: bound commissioning/recovery across resumable invocations and
+reconcile the partial file reservation before another hosted attempt. Full-stock
+production integration and capacity proof remain unfinished engineering work, not
+missing Google setup. Public launch remains NO-GO pending those checks, hosted
+confirmation delivery, secure seller details, territory/tax/legal readiness, live
+Stripe verification and verified existing-site/email backup/cutover/rollback.
+
 ## Latest: 20 October — corrected OAuth pair, fenced commissioning readback
 
 FINAL LOCAL GATE: `npm run test:all` completed successfully, exit0, after the

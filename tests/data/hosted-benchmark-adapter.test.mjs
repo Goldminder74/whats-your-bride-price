@@ -39,5 +39,5 @@ test('adapter cannot target another Worker or accept a malformed billing bound',
 test('unknown RPC billing is never accepted as a complete numeric observation',async()=>{
  const upper={...BENCHMARK_PHASES.B.caps};
  const adapter=hostedBenchmarkAdapter({phase:'B',operator:{execute:async()=>({result:{failed:true},usage:Object.fromEntries(Object.keys(upper).map(k=>[k,0])),billingKnown:false,receiptSha256:'a'.repeat(64)})},access:'a'.repeat(32),controllerSecret:'s'.repeat(32),workerOrigin:'https://wybp-capacity-worker-r002.synthetic.workers.dev',sourceSha256:'a'.repeat(64),assets:{},bounds:()=>upper});
- await assert.rejects(adapter.execute({kind:'inventory'}),/unavailable/);
+ await assert.rejects(adapter.execute({kind:'inventory'}),error=>error.message==='hosted_benchmark_adapter_unavailable'&&error.benchmarkFailure==='unknown_billing');
 });
