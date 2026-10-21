@@ -28,7 +28,7 @@ export async function runBenchmarkRecovery({action,key,directory,id,now=Date.now
  const custody={get:async name=>{const r=await call({kind:'custody-get',name});return r.ciphertext===null?null:Buffer.from(r.ciphertext,'base64');},
   put:async(name,bytes,retention)=>(await call({kind:'custody-put',name,ciphertext:Buffer.from(bytes).toString('base64'),retention})).sha256};
  if(state.step===0){
-  while(!state.snapshot?.complete){const r=await call({kind:'capture',captureId:id+'_snapshot',previous:state.snapshot?.pointer||null});state.snapshot=r;await save();await fault('capture_checkpointed');}
+  while(!state.snapshot?.complete){const r=await call({kind:'capture-bounded',captureId:id+'_snapshot',progress:state.snapshot?.progress||null});state.snapshot=r;await save();await fault('capture_checkpointed');}
   state.step=1;await save();
  }
  if(state.step===1){
@@ -42,7 +42,7 @@ export async function runBenchmarkRecovery({action,key,directory,id,now=Date.now
    const activeSuppression=count("SELECT COUNT(*) n FROM retention_suppression s WHERE (scope='wallet' AND EXISTS(SELECT 1 FROM cowrie_wallets w WHERE w.id=s.subject_id AND w.state='active')) OR (scope='attempt' AND EXISTS(SELECT 1 FROM quiz_attempts a WHERE a.id=s.subject_id AND a.status IN ('completed','in_progress'))) OR (scope='result' AND EXISTS(SELECT 1 FROM results r WHERE r.id=s.subject_id AND r.state='active'))");
    if(badBalances||activeClosures||activeSuppression||!count('SELECT COUNT(*) n FROM retention_closures')||!count('SELECT COUNT(*) n FROM retention_holds WHERE released_at IS NULL')||!count('SELECT COUNT(*) n FROM retention_suppression'))fail();
    state.protectionFacts={accountingVerified:true,holdsVerified:true,closedWalletsBlocked:true,deletionsSuppressed:true,accountingRows:{wallets:count('SELECT COUNT(*) n FROM cowrie_wallets'),ledger:count('SELECT COUNT(*) n FROM cowrie_ledger'),orders:count('SELECT COUNT(*) n FROM commerce_orders')}};
-   state.restore=await prepareStreamedRestore(source,custody,key,id+'_plan',{pageSize:50,now:now()});
+   state.restore=await prepareStreamedRestore(source,custody,key,id+'_plan',{pageSize:50,packPages:true,now:now()});
   }finally{source.close();}
   state.step=2;await save();
  }

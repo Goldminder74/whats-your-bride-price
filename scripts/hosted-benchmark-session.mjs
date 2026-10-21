@@ -1,6 +1,6 @@
 // Exact r002 session. Creating a session does not start traffic or create hosted
 // resources. Protected setup, B and C are explicit separately journalled calls.
-import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,rename} from 'node:fs/promises';
 import {join} from 'node:path';
 import {DatabaseSync} from 'node:sqlite';
 import {getPlatformProxy} from 'wrangler';
@@ -51,7 +51,20 @@ export async function createHostedBenchmarkSession({phase,preflight,resources,ma
   return {
    budget,
    async prepareDrive(){if(phase!=='B')fail();return action({id:'setup_drive_folders',kind:'provision'},{preparation:true});},
-   async commission(){if(phase!=='B'||hosted.folderCount!==16)fail();return action({id:'setup_commission',kind:'commission'},{preparation:true});},
+   async commission(){
+    if(phase!=='B'||hosted.folderCount!==16)fail();
+    const path=join(directory,'commission-progress.enc'),aad=budget.id+':commission';let state={run:budget.id,step:0,progress:null};
+    try{state=decryptRecord(await readFile(path),key,aad);}catch(error){if(error.code!=='ENOENT')fail('benchmark_checkpoint_invalid');}
+    if(state.run!==budget.id||!Number.isInteger(state.step)||state.step<0||state.step>100)fail('benchmark_checkpoint_invalid');
+    while(!state.result?.complete){
+     if(state.step>=100)fail('benchmark_commission_step_limit');
+     const result=await action({id:'setup_commission_step_'+state.step,kind:'commission-step',progress:state.progress},{preparation:true});
+     if(result.complete!==true&&typeof result.progress!=='string')fail();
+     state={...state,step:state.step+1,progress:result.progress||null,result};
+     await writeFile(path+'.writing',encryptRecord(state,key,aad),{mode:0o600});await rename(path+'.writing',path);
+    }
+    return state.result;
+   },
    async prepareOutage(){
     if(phase!=='C')fail();checkReady();
     for(let step=0;step<600;step++){const result=await action({id:'setup_fixture_'+step,kind:'fixture-step',step},{preparation:true});if(result.games!==5||result.answers!==60)fail();}

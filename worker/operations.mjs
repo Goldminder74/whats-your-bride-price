@@ -3,6 +3,8 @@ import { connect } from 'cloudflare:sockets';
 import { configuredAuthorityService, d1AuthorityAdapter, authorityDeliveryTick, purgeThroughAuthority } from './authorityService.mjs';
 import { operationalMaintenance, operationalHeartbeat } from './operationalMaintenance.mjs';
 import { authoritySnapshot, assertEmptyOperationalSource } from './authoritySnapshot.mjs';
+import {boundedSnapshotStep} from './boundedSnapshot.mjs';
+import {D1WriterFence} from './d1WriterFence.mjs';
 import { authorityMail } from './authorityMail.mjs';
 import { readBoundary } from '../scripts/authority-runtime.mjs';
 import { RETENTION_POLICY, RETENTION_DAY } from '../db/retentionPolicy.ts';
@@ -63,6 +65,15 @@ export class ApplicationAuthority extends WorkerEntrypoint {
 }
 
 export class RecoveryOperator extends ApplicationAuthority {
+  async snapshotStep(boundaryId,progress=null) {
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
+    try {
+      const configured=runtime(this.env),db=d1AuthorityAdapter(this.env.DB),writer=new D1WriterFence(db);
+      await writer.ready();const head=await new D1Authority(db,configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64')).freeze(boundaryId);
+      const result=await boundedSnapshotStep(db,configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),head,progress);
+      await writer.ready();return result;
+    }catch{throw Error('operational_snapshot_step_unavailable');}
+  }
   async snapshot(boundaryId) {
     if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
     return authorityDeliveryTick(runtime(this.env).service,boundaryId,operationalHeartbeat(this.env));

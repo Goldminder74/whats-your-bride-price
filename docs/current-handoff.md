@@ -1,5 +1,68 @@
 # Current handoff
 
+## Latest: 21 October — bounded local repair; single launch decision
+
+See [launch completion plan](launch-completion-plan.md) for the remaining gates,
+one proposed replacement window, the concrete serving-path alternative, grouped
+owner questions and effort estimate. Existing conditional launch authority remains;
+the expired coordinator is NOT reopened. No hosted changes or spending this turn.
+The private game, all existing data/OFF settings and prior cleanup remain intact.
+
+Implemented bounded initial commission: one folder check or capture/verification
+step per RPC, encrypted durable progress, immutable retry/readback and a guarded
+final D1 receipt batch. Empty financial source only; populated wallets/orders/holds/
+closures/outbox reject this path. Lost upload and final-batch crash tests cannot
+grant early access or create another baseline. No migration added.
+
+Implemented bounded packed snapshot capture plus independent reverse-chain proof;
+connected the isolated populated recovery controller and added a private OFF-gated
+snapshotStep RPC. Local actual SQLite1.8m simple-row capture/materialisation passes
+in2,880 bounded calls/1,440 verified segments. This is NOT hosted production stock,
+byte size, latest-authority release or24h RTO evidence. The source remains fenced.
+Fixed a confirmed integration defect: the recovery controller now creates packed
+v2 import plans and the source audit accepts v2 with unchanged clock/schema/hash/
+row protections; previously it rejected valid packed plans as v1-only.
+
+Production authority release still has a global inventory/10k-event bound. This
+is unfinished engineering, not a missing Google credential. A snapshot proof must
+NEVER be treated as an authority release. Full retained-stock closure/deletion/
+hold/financial verification and hosted24h RTO are not complete. Do not increase
+the guards or claim the36k-answer proposed measurement proves the full target.
+The earlier hosted commissioning cancellation's cause remains unproven; the new
+bounded path avoids its monolithic work, but only hosted evidence can confirm it.
+
+Local evidence under ignored outputs/authority-preparation:
+20261021-bounded-full-stock-final.log10/10 (including populated accounting, holds,
+closed-wallet/deletion suppression, interrupted import and full lost-index fixture);
+20261021-bounded-ops-built.log16/16 including compiled HTTP denial and snapshot OFF;
+20261021-bounded-typecheck.log PASS. Final full lint PASS. Initial test:all passed
+lint/typecheck,316 unit,389 data,34 rendered checks, build/e2e/fast-entry/challenge,
+then stopped on an unchanged nomination button click timeout after reload. The
+unchanged entire nomination suite rerun passed7/7 with its original assertions and
+timeouts; the intermittent observation's cause is not established. Remaining ALL
+configured stages passed in20261021-complete-gate-continuation-access.log: Share
+Centre, dynamic results, Story video, analytics, commerce, owner, privacy, Cowries,
+Cowrie commerce, compiled hosting, private runtime (Chromium/WebKit) and compiled
+benchmark3/3. Thus every configured stage passed across those runs; the original
+single test:all command did NOT exit0. Do not hide that distinction. Generated
+build-directory deletion initially hit the sandbox deny ACL; normal filesystem
+access resolved it without changing a test or packaging rule. No global ACL change.
+Final diff check PASS; local carryover source SHA remains unchanged.
+
+Current unchanged architecture remains NO-GO at5k/day: model4,020–15,270 Netlify
+credits/month before other projects vs1,000 included, and bounded production
+authority release is not yet integrated. Proposed single alternative is direct
+Cloudflare Worker static/API serving, existing D1 and bounded existing Drive custody;
+no R2/new subscription. Estimated GBP24–39/month including current Netlify9USD and
+Workers5USD, tax/FX/operational allowance and contingency; NOT a measured invoice
+or enforceable cap. GBP50 remains binding, Drive/email/Stripe excluded as settled.
+
+Owner dependencies are grouped in the plan: serving-path scope decision; ONE new
+6h benchmark clock with every cumulative charge retained; actual seller details
+through production-app Secret only; requested-market tax/consumer facts and final
+customer wording; working read-only live Stripe access. Do not repeat OAuth,
+key/alert checks, onboarding or billing observations for unchanged work.
+
 ## Latest: 21 October — expired window, complete isolated cleanup
 
 The original coordinator deadline passed. No measurement window was restarted,

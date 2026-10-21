@@ -9,7 +9,9 @@ import {benchmarkRetentionService} from './benchmarkRetentionService.mjs';
 import {D1WriterFence} from './d1WriterFence.mjs';
 import {authoritySnapshot} from './authoritySnapshot.mjs';
 import {segmentedSnapshot} from './segmentedSnapshot.mjs';
-import {D1Authority,readBoundary} from '../scripts/authority-runtime.mjs';
+import {D1Authority} from '../scripts/authority-runtime.mjs';
+import {boundedCommissionStep} from './boundedCommission.mjs';
+import {boundedSnapshotStep} from './boundedSnapshot.mjs';
 import {recoveryHash,decryptRecord} from '../scripts/recovery-crypto.mjs';
 import {importStreamedRestore,verifyStreamedRestoreStep,auditStreamedSourceStep,clearAuditedSyntheticTarget} from '../scripts/streamed-d1-restore.mjs';
 import {recoverPinnedInventory,readPinnedInventoryFile} from '../scripts/segmented-drive-inventory.mjs';
@@ -103,17 +105,6 @@ export function benchmarkRuntime(env,upper,{now=Date.now,pause,request}={}){
   if(eligiblePerRegion.some(n=>n!==30))fail();
   return {syntheticOnly:true,commerce:false,webhook:false,cron:false,cpuLimitMs:100,partitionCount:16,eligiblePerRegion,sourceSha256:env.WYBP_BENCHMARK_SOURCE_SHA256};
  }
- async function commission(){
-  // First-time commissioning accepts the synthetic catalogue only. Never infer
-  // an empty-wallet baseline from an existing journal or reset financial state.
-  for(const table of ['cowrie_wallets','commerce_orders','quiz_attempts','results','cowrie_ledger','retention_holds','retention_closures'])if((await db.query('SELECT COUNT(*) n FROM "'+table+'"'))[0]?.n!==0)fail();
-  const authority=new D1Authority(db,custody,config.key,{now});const existing=await authority.head();if(existing&&existing.sequence!==0)fail();
-  await authority.initialise();const id='synthetic_benchmark_initial';
-  const delivered=await authority.deliver(id,authoritySnapshot(db,custody,config.key));
-  await readBoundary(custody,config.key,id,delivered.receipt,now());
-  await db.batch([{sql:"INSERT INTO retention_restore(id,receipt_hash,verified_at) VALUES('active',?1,?2) ON CONFLICT(id) DO NOTHING",params:[delivered.receipt,now()]}]);
-  await assertRestoreReceipt(binding,delivered.receipt);return {verified:true,receipt:delivered.receipt};
- }
  async function captureStep(id,previous){
   if(!/^synthetic_[a-zA-Z0-9_-]{1,65}$/.test(id))fail();
   const writer=new D1WriterFence(db,{now});await writer.ready();
@@ -125,13 +116,17 @@ export function benchmarkRuntime(env,upper,{now=Date.now,pause,request}={}){
  async function run(command){
   let result;
   try{
-   if(command?.kind==='commission')result=await commission();
+   if(command?.kind==='commission-step')result=await boundedCommissionStep(db,custody,config.key,command.progress||null,{now});
    else if(['fixture-step','fixture','purge','arrivals'].includes(command?.kind)){
     if(config.phase!=='C')fail();
     result=await benchmarkRetentionService({binding,db,authority,key:config.key,resource:config.resource,now}).execute(command);
    }
    else if(command?.kind==='inventory')result=await inventory();
    else if(command?.kind==='capture')result=await captureStep(command.captureId||command.id,command.previous||null);
+   else if(command?.kind==='capture-bounded'){
+    const writer=new D1WriterFence(db,{now});await writer.ready();const head=await new D1Authority(db,custody,config.key,{now}).freeze(command.captureId||command.id);
+    const captured=await boundedSnapshotStep(db,custody,config.key,head,command.progress||null,{now});await writer.ready();result={...captured,pointer:captured.snapshot};
+   }
    else if(command?.kind==='inspect-fence'){
     const head=await new D1Authority(db,custody,config.key,{now}).head();if(head?.state!=='exporting'||head.expires_at<=now())fail();
     result={fenceSha256:recoveryHash(Buffer.from(JSON.stringify(head))),expiresAt:head.expires_at};

@@ -30,7 +30,7 @@ test('populated source audit resumes only under the same fence and never grants 
  const c=await populatedRecoveryFixture(),key=randomBytes(32),files=new Map();
  const custody={get:async n=>files.get(n)||null,put:async(n,b)=>{files.set(n,b);return recoveryHash(b);}};
  try{
-  const pointer=await prepareStreamedRestore(c.database,custody,key,'synthetic_audit_plan');
+  const pointer=await prepareStreamedRestore(c.database,custody,key,'synthetic_audit_plan',{packPages:true});
   const db=adapter(c.database),before=c.database.prepare('SELECT * FROM cowrie_ledger ORDER BY 1').all();let fence='a'.repeat(64);
   const options={resource,job:'synthetic_source',maxPages:1,assertFrozen:async()=>fence};
   assert.equal((await auditStreamedSourceStep(db,custody,key,pointer,options)).verified,false);

@@ -168,7 +168,7 @@ export async function auditStreamedSourceStep(target,custody,key,pointer,{resour
  if(typeof assertFrozen!=='function'||!/^synthetic_[a-zA-Z0-9_-]{1,60}$/.test(job))fail();
  const fence=await assertFrozen();if(typeof fence!=='string'||!/^[a-f0-9]{64}$/.test(fence))fail();
  const manifest=await read(custody,key,pointer),auditJob=job+'_audit';
- if(manifest.version!==1||manifest.expiresAt<=now||manifest.expiresAt-manifest.createdAt!==windowMs||hash(normalSchema(await target.query(schemaSql)))!==manifest.schemaHash)fail();
+ if(![1,2].includes(manifest.version)||manifest.expiresAt<=now||manifest.expiresAt-manifest.createdAt!==windowMs||hash(normalSchema(await target.query(schemaSql)))!==manifest.schemaHash)fail();
  const pinJob=job+'_fence';
  await target.batch([{sql:"INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES(?1,'restore',?2,0,?3,0,'importing',1,?4,?5) ON CONFLICT(id) DO NOTHING",params:[pinJob,pointer.sha256,fence,manifest.createdAt,manifest.expiresAt]}]);
  const pin=(await target.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[pinJob]))[0];

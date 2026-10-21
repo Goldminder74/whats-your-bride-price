@@ -6,7 +6,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {populatedRecoveryFixture} from '../helpers/populatedRecovery.mjs';
 import {runBenchmarkRecovery} from '../../scripts/benchmark-recovery-controller.mjs';
-import {segmentedSnapshot} from '../../worker/segmentedSnapshot.mjs';
+import {boundedSnapshotStep} from '../../worker/boundedSnapshot.mjs';
 import {D1Authority} from '../../scripts/authority-runtime.mjs';
 import {D1DriveIndex} from '../../scripts/d1-drive-index.mjs';
 import {DriveCustody} from '../../scripts/drive-custody.mjs';
@@ -29,7 +29,7 @@ test('integrated controller resumes populated restore and complete lost-index re
   const old=receipts.get(command.id);if(old){assert.deepEqual(old.command,command);return old.result;}
   let result;
   switch(command.kind){
-   case 'capture':result=await segmentedSnapshot(db,custody,key,{pagesPerStep:5})(await authority.freeze(command.captureId),command.previous);break;
+   case 'capture-bounded':{const r=await boundedSnapshotStep(db,custody,key,await authority.freeze(command.captureId),command.progress);result={...r,pointer:r.snapshot};break;}
    case 'custody-get':case 'root-get':{const bytes=await custody.get(command.name);result={ciphertext:bytes?bytes.toString('base64'):null};break;}
    case 'custody-put':case 'root-put':{const bytes=Buffer.from(command.ciphertext,'base64'),sha256=await custody.put(command.name,bytes,command.retention),target=choose(command.name);result={sha256,id:await target.index.get(command.name),...await target.index.recoveryRecord(command.name)};break;}
    case 'inspect-fence':result={fenceSha256:await frozen()};break;
@@ -48,7 +48,7 @@ test('integrated controller resumes populated restore and complete lost-index re
  const options={action,key,directory,id:'synthetic_joined'};
  try{
   let lost=false;
-  await assert.rejects(runBenchmarkRecovery({...options,action:async command=>{const result=await action(command);if(command.kind==='capture'&&!lost){lost=true;throw Error('synthetic_lost_capture_response');}return result;}}),/synthetic_lost_capture_response/);
+  await assert.rejects(runBenchmarkRecovery({...options,action:async command=>{const result=await action(command);if(command.kind==='capture-bounded'&&!lost){lost=true;throw Error('synthetic_lost_capture_response');}return result;}}),/synthetic_lost_capture_response/);
   // The adapter's durable readback returns the same saved result for that action
   // ID. The controller does not change the command or blindly issue it anew.
   await assert.rejects(runBenchmarkRecovery({...options,fault:stage=>{if(stage==='index_removed')throw Error('synthetic_index_interruption');}}),/synthetic_index_interruption/);

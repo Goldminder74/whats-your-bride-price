@@ -140,14 +140,14 @@ test('compiled commissioning traverses all empty partitions and verifies an actu
  };
  const mf=new Miniflare({workers:[
   {name:config.name,modules:true,scriptPath:config.main,compatibilityDate:config.compatibility_date,compatibilityFlags:config.compatibility_flags,bindings,d1Databases:{DB:'synthetic-commission-d1'},durableObjects:{BENCHMARK_PACING:{className:'BenchmarkPacing',useSQLite:true}},outboundService:provider},
-  {name:'commission-caller',modules:true,compatibilityDate:config.compatibility_date,serviceBindings:{OP:{name:config.name,entrypoint:'BenchmarkOperator'}},script:'export default {async fetch(request,env){return Response.json(await env.OP.execute({kind:"commission"},await request.json()));}}'}
+  {name:'commission-caller',modules:true,compatibilityDate:config.compatibility_date,serviceBindings:{OP:{name:config.name,entrypoint:'BenchmarkOperator'}},script:'export default {async fetch(request,env){return Response.json(await request.json().then(({command,upper})=>env.OP.execute(command,upper)));}}'}
  ]});
  const c=await setup();
  try{
   const db=await mf.getD1Database('DB');for(const migration of (await loadMigrationPlan()).slice(0,14))await db.batch(migration.statements.map(sql=>db.prepare(sql)));
   for(const table of ['quiz_editions','questions']){const rows=c.database.prepare('SELECT * FROM '+table).all(),columns=Object.keys(rows[0]);for(let i=0;i<rows.length;i+=25)await db.batch(rows.slice(i,i+25).map(row=>db.prepare('INSERT INTO '+table+'('+columns.map(x=>'"'+x+'"').join(',')+') VALUES('+columns.map(()=>'?').join(',')+')').bind(...columns.map(x=>row[x]))));}
-  const upper=benchmarkOperationBounds({phase:'B',storageBytes:1036288,assets:{},sharedPacing:true})({kind:'commission'});upper.external-=8;upper.transferBytes-=4000000;
-  const response=await (await mf.getWorker('commission-caller')).fetch('http://localhost/',{method:'POST',body:JSON.stringify(upper)}),outcome=await response.json();
+  const upper=benchmarkOperationBounds({phase:'B',storageBytes:1036288,assets:{},sharedPacing:true})({kind:'commission-step'});upper.external-=8;upper.transferBytes-=4000000;
+  let outcome,progress=null,calls=0;do{const response=await (await mf.getWorker('commission-caller')).fetch('http://localhost/',{method:'POST',body:JSON.stringify({command:{kind:'commission-step',progress},upper})});outcome=await response.json();assert.equal(outcome.billingKnown,true,JSON.stringify(outcome));assert.ok(outcome.usage.external<40);assert.notEqual(outcome.result.failed,true,JSON.stringify(outcome));if(!outcome.result.complete){assert.equal((await db.prepare('SELECT COUNT(*) n FROM retention_restore').first()).n,0);progress=outcome.result.progress;}assert.ok(++calls<50);}while(!outcome.result.complete);assert.ok(calls>=19);
   assert.equal(outcome.billingKnown,true,JSON.stringify(outcome));assert.equal(outcome.result.verified,true,JSON.stringify(outcome));assert.match(outcome.result.receipt,/^[a-f0-9]{64}$/);assert.ok(files.size>0);
   assert.equal((await db.prepare('SELECT COUNT(*) n FROM retention_restore').first()).n,1);assert.equal((await db.prepare("SELECT state FROM operational_recovery_checkpoints WHERE id='journal'").first()).state,'idle');
   assert.equal((await db.prepare('SELECT COUNT(*) n FROM cowrie_wallets').first()).n,0);
