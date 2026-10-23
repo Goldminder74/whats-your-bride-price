@@ -1,5 +1,11 @@
 # Protected preparation — 23 October 2026
 
+Later seller-configuration correction: the owner HAS installed
+`WYBP_PUBLIC_SELLER_DETAILS_JSON` as a Secret on production ops. Name/type-only
+inspection verifies presence. Application wiring/content verification remains
+engineering work; do not repeat older installation requests in this checkpoint.
+See the current handover's owner-correction section. No value was displayed.
+
 This supersedes the unfinished-work/owner-input descriptions at the top of the
 21 October completion plan. It is an evidence checkpoint, not a launch declaration.
 5,000 completions/day, 500/hour and 48h outage allowance remain required. GBP50/month

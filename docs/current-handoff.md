@@ -1,5 +1,27 @@
 # Current handoff
 
+### Owner correction — seller Secret is already installed
+
+The owner explicitly reports repeatedly completing seller-address installation.
+Fresh authenticated NAME/TYPE-ONLY Cloudflare inventory confirms
+`WYBP_PUBLIC_SELLER_DETAILS_JSON` exists as `secret_text` on
+`wybp-prod-ops-r001`. No value was read, displayed, copied or changed.
+The production application currently reads it from its own environment;
+`wybp-prod-app-r001` has no seller binding in its latest deployed version
+`d4e3b278-7b2d-43de-90f2-b95a39005ebb`, and no newer saved version was observed.
+This is a confirmed Worker-placement/runtime-wiring mismatch, NOT an uncompleted
+owner setup task. The previous repeated request was the agent's error: stale
+handover status was used instead of checking both approved Workers.
+
+DO NOT ask the owner to re-enter the JSON/address, repeat Google setup or move/
+replace the existing Secret. Remove seller installation from owner action lists.
+Engineer-owned next step: securely connect the production application/confirmation
+path to the existing operational configuration, with validation and narrow private
+service boundaries; verify successful operation without printing the address or
+other environment values. Secret presence alone does not verify its JSON/content
+or that application wiring works. No runtime code, deployment, settings, feature
+flags or schedules changed during this diagnostic. Existing launch gates remain.
+
 ### Continuation from0d7d526 — 23 October: local stock evidence and email continuity
 
 Read [actual-schema stock result](local-stock-recovery-2026-10-23.md),
@@ -46,14 +68,15 @@ subscription, top-up or attempt to reset consumed allowances. GBP8 cumulative
 benchmark/first-month and GBP50/month remain; Drive/email funded separately.
 
 Seller identity/contact and commercial approval facts now appear in the legal
-configuration, while public address remains absent and overall legal approval
-explicitly false. Owner received exact8-field Secret installation instructions for
-wybp-prod-app-r001; no installation confirmation has arrived. Do not ask settled
+configuration, while the application's address binding remains absent and overall
+legal approval explicitly false. The owner HAS installed the Secret on production
+ops, as confirmed by the newer correction above; connecting it is engineering work.
+Do not ask settled
 territories, identity, support, age or refund questions again. ICO status and
 substantiated controller/privacy/processor review remain, not invented clearance.
 Draft privacy pages now show the settled mailbox and actual Cloudflare/Netlify/
 Drive/Private Email/Stripe providers, not obsolete Sites text or a falsely missing
-contact route. Public geographical address and overall review remain pending.
+contact route. Application wiring and overall review remain pending.
 
 Existing hosted payment evidence is reused:40Cowries and Royal Reveal original-GBP
 and converted presentment, fulfilment/refund, signed retries and unresolved dispute
@@ -98,7 +121,8 @@ unchanged. Current technical blockers, not owner homework: latest post-archive
 authority/release proof, full90day stock/fence/storage design, measured sustained
 capacity/purge/RTO/cost, production confirmation/schema/Stripe configuration and
 legacy callback/domain rollback verification. Owner-only actions are the exact
-window renewal, secure geographical-address input and private ICO status decision;
+window renewal and private ICO status decision; seller input is already installed
+on ops and must not be requested again. The
 final privacy wording can be reviewed once its remaining provider facts are substantiated.
 
 ### Connected Netlify access and bounded scratch cleanup — 23 October

@@ -8,13 +8,13 @@ income, identity document, banking detail or address belongs in chat.
 
 ## Secure input
 
-Existing Worker `wybp-prod-app-r001` → Settings → Variables and Secrets → add
-Secret `WYBP_PUBLIC_SELLER_DETAILS_JSON`. Exact eight-field example is at the top
-of owner-purchase-review.md. Replace only the address placeholder in Cloudflare,
-including postcode/country, and optionally a public telephone. Complaints address
-null means the same address. Save/Deploy without changing flags. Reply only
-“seller details installed”. The parser rejects the placeholder; no real address
-is assumed installed. Do not put it in ops/test/benchmark/build variables or Git.
+COMPLETED BY OWNER: name/type-only inspection confirms the existing
+`WYBP_PUBLIC_SELLER_DETAILS_JSON` Secret on `wybp-prod-ops-r001`. The application
+currently expects a different Worker-local binding. Resolve that wiring as
+engineering work; do not ask for re-entry, movement, replacement or an address in
+chat. The template in owner-purchase-review.md is reference only. Actual JSON
+validity/application consumption still require a value-suppressed operational
+check after the private integration is ready. Presence is not content validation.
 
 ## ICO status — only unavoidable private declaration
 

@@ -1,5 +1,16 @@
 # Owner review: purchases, refunds and seller details
 
+## Seller input already completed — supersedes installation requests below
+
+Owner confirms installation; authenticated name/type-only Cloudflare inspection
+finds `WYBP_PUBLIC_SELLER_DETAILS_JSON` as a Secret on `wybp-prod-ops-r001`.
+The app currently expects its own binding on `wybp-prod-app-r001`. This mismatch
+is engineer-owned runtime wiring, not missing owner information. Do not ask for
+the address/JSON again or instruct the owner to move/replace the existing Secret.
+The eight-field template below is reference only. No value/content validity or
+successful application read has yet been verified; never expose values in chat,
+Git, builds or logs while completing that verification.
+
 ## Superseding decisions — 23 October 2026
 
 Owner approves the18+ free/paid audience and voluntary14-day full refunds including
@@ -17,8 +28,9 @@ Private HMRC applicability checks and future VAT monitoring are separate from th
 Stripe observation. No financial amounts or identifiers should be requested in chat.
 
 Seller identity, support/privacy/complaints and saveable-plus-email confirmation
-choices remain settled. The actual public seller address is still a secure input.
-Cloudflare has ONE Secret Value box: its8 fields are JSON, not8 separate controls:
+choices remain settled. Seller configuration is already installed on production
+ops; runtime wiring/validation is engineer-owned. The following is a FORMAT
+REFERENCE ONLY, not a request to enter it again. Cloudflare uses one JSON Value box:
 
 ```json
 {
@@ -33,12 +45,12 @@ Cloudflare has ONE Secret Value box: its8 fields are JSON, not8 separate control
 }
 ```
 
-Replace the address with the intended public geographical address including postcode
-and country, directly in wybp-prod-app-r001 → Settings → Variables and Secrets →
-Secret WYBP_PUBLIC_SELLER_DETAILS_JSON. Use a quoted public telephone if available;
-complaintsAddress null means the same address. Save/Deploy without changing flags.
-Do not send completed JSON/address in chat or commit it. Placeholder values reject;
-no real address is assumed installed merely because this example exists.
+In this reference format, the address includes postcode/country, telephone is a
+quoted public number or null and complaintsAddress null means the same address.
+The owner has already saved the configuration on production ops: do not repeat
+installation instructions for production app. Never send completed JSON/address
+in chat or commit it. Placeholder values reject; existence of the reference example
+does not itself prove valid runtime content.
 
 Older proposal sections below are history, not renewed questions or approved waivers.
 
