@@ -1,5 +1,68 @@
 # Current handoff
 
+### Immediate-launch audit and archive blocker reduction — 23 October
+
+Public paid launch remains NO-GO. Current public domain GET200 is the existing
+website, not a verified WYBP production launch. Fresh anonymous checks of the
+normal private game and protected production-preparation Worker both return401.
+No deployment, DNS, Stripe, email, Secret, database or schedule changed in this
+continuation. Seller address/Google/key/alert setup remains complete; do not ask
+the owner to repeat it. Existing conditional cutover authority remains valid only
+after readiness passes, and does not renew a stopped benchmark or raise its caps.
+Also corrected confirmed stale legal-page source: a strictly validated runtime
+seller now removes the address from the remaining-input checklist; the recorded
+owner-reported ICO exemption is no longer listed as missing. Privacy copy no
+longer unconditionally claims the address is pending. All genuinely outstanding
+lawful-basis/children/processor/rights reviews and the draft/activation gate remain.
+These source corrections are committed-only, not an installed public/legal release.
+
+Completed an essential local archive/storage optimisation: bounded gzip before
+AES-GCM for snapshot and restore-plan objects only, with authenticated codec and
+the unchanged3.5MB decompression bound. Legacy archives/progress and ordinary
+authority/confirmation ciphertext remain supported. Existing objects are reused
+without rewriting or extending original clocks. No migration or required setting.
+
+Actual-schema45k-game/540k-answer LOCAL restore passed index loss, interrupted
+import, full hashes/FKs, accounting, holds, closed wallets and deletion suppression.
+Stored archive bytes824,131,204 ->20,910,112; counted transfer5,401,398,144 ->
+263,333,571. This repeated-row/one-historical-wallet fixture is only nine days of
+physical gameplay stock. No full90-day, retained-authority, financial-history,
+hosted throughput, RTO or access-release claim. Object/read/call counts are
+unchanged, so compression alone does not fix the historical census/fence bottleneck.
+See local-stock-recovery-2026-10-23.md for exact results/limitations.
+
+Validation:421 data checks covered across the broad run and affected-file
+continuations (397 initially passed;24 were blocked by sandbox localhost/rename
+restrictions, then all affected files passed with ordinary local permissions).
+Compiled private ops4/4 and actual Worker archive codec/bounds1/1 pass; typecheck,
+affected lint and diff checks pass. No guard/assertion/timeout weakened. Prior
+unchanged player-facing browser/release evidence is reused; no new UI release.
+All generated evidence, synthetic archives and logs remain outside Git.
+Final protected direct package41c7d2426e7120e6009fb2af03d9122b72a3e8f54464b9eb05068d30329674d0
+build/dry-run and exact package smoke PASS, including configured synthetic seller
+rendering, correct remaining checklist and disabled HTTP routes. Privacy/seller
+unit16/16 and normal-review rendered privacy5/5 PASS. An initial rendered command
+incorrectly used the direct protected build, which correctly denied localhost;
+reran only those checks against their normal review build, with no assertion or
+host/access guard change. No deployment. Additional ignored logs:
+20261023-owner-gates-unit.log,20261023-archive-{direct-build,release-smoke}.log,
+20261023-legal-{review-build,rendered}.log and20261023-launch-link-status.jsonl.
+
+Remaining critical path: complete independently verified latest-authority tail
+and retained-stock/fence integration; reconcile the transport cancellation; secure
+ONE physically viable replacement hosted measurement authority with all prior
+reservations retained; then verify target capacity/retention/cost and protected
+durable purchase confirmations/production configuration. Existing B reservation
+is80MB at its ordinary stop threshold; original six-hour run is stopped/cleaned.
+Do not rerun it, invent a lower capacity, or treat a small passing sample as5k/day.
+Final controller/privacy facts and preserved legacy callback/domain/rollback diff
+remain gating. These are engineering/readiness gaps, not missing seller input.
+
+No extra subscription/spending or new benchmark clock. GBP50/month and cumulative
+GBP8 benchmark/first-month limit remain. Existing USD5 Workers plan must not be
+repurchased; Drive/email separately funded. No valid measured5k/day monthly bill
+yet; the historical GBP24–39 direct-serving sensitivity is not verified capacity.
+
 ### Seller address RESOLVED — Stripe reuse authorised and verified, 23 October
 
 Owner clarified that the address had not been entered, then explicitly instructed

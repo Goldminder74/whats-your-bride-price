@@ -3,7 +3,7 @@ import { readFile, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import test from "node:test";
 import { activeFeatureFlags } from "../../app/featureFlags.ts";
-import { legalInformation, missingLegalActivationDetails } from "../../app/legalConfig.ts";
+import { legalInformation, missingLegalActivationDetails, remainingLegalActivationDetails } from "../../app/legalConfig.ts";
 import { retentionSchedule } from "../../app/retentionSchedule.ts";
 import { clearApplicationLocalData, localStorageAllowlist, sessionStorageAllowlist, sessionStoragePrefixAllowlist, storageInventory, STORAGE_NOTICE_VERSION } from "../../app/storageInventory.ts";
 import { RESULT_COMPLETION_RETENTION_MS } from "../../db/resultCompletion.ts";
@@ -64,8 +64,18 @@ test("retention and draft legal configuration stay honest",()=>{
   const results=retentionSchedule.find((item)=>item.category.startsWith("Completed attempts"));const published=retentionSchedule.find((item)=>item.category.startsWith("Published results"));
   assert.match(results.maximum,/Exactly 90 days from completion/);assert.match(published.maximum,/publication never extends, restarts or removes expiry/i);
   assert.equal(legalInformation.approvedForProduction,false);assert.equal(legalInformation.controllerLegalName,"Ayodele Ayeni");assert.equal(legalInformation.tradingName,"Classes for Culture");assert.equal(legalInformation.privacyContact,"team@classesforculture.com");assert.equal(legalInformation.postalAddress,null);assert.equal(legalInformation.commercialPolicyApprovedAt,"2026-10-23");
-  assert.deepEqual(missingLegalActivationDetails,["Required geographical seller address installed securely at runtime","ICO registration or fee decision","Final lawful-basis assessment","Children’s Code applicability and proportionate age-assurance assessment","Processor and international-transfer review","Remaining privacy and legal publication review beyond the approved commercial policy","Operational retention and rights-request readiness"]);
+  assert.deepEqual(missingLegalActivationDetails,["Required geographical seller address installed securely at runtime","Final lawful-basis assessment","Children’s Code applicability and proportionate age-assurance assessment","Processor and international-transfer review","Remaining privacy and legal publication review beyond the approved commercial policy","Operational retention and rights-request readiness"]);
   const streaks=retentionSchedule.find((item)=>item.category==="Daily streaks");assert.match(streaks.maximum,/Exactly 180 days/);assert.match(streaks.deletion,/within seven days/);
+});
+
+test("completed owner decisions do not reappear as missing inputs, while genuine legal gates remain",()=>{
+  assert.equal(legalInformation.icoRegistrationOrFeeDecision,"Owner-reported exemption following ICO self-assessment, 2026-10-23");
+  assert.deepEqual(remainingLegalActivationDetails(false),missingLegalActivationDetails);
+  const configured=remainingLegalActivationDetails(true);
+  assert.equal(configured.length,missingLegalActivationDetails.length-1);
+  assert.equal(configured.some(item=>/seller address|ICO registration or fee/.test(item)),false);
+  for(const item of ["Final lawful-basis assessment","Children’s Code applicability and proportionate age-assurance assessment","Processor and international-transfer review","Operational retention and rights-request readiness"])assert.ok(configured.includes(item));
+  assert.equal(legalInformation.approvedForProduction,false);
 });
 
 test("repository contains no inaccurate permanent-result promise and exactly one Prompt 22 migration",async()=>{

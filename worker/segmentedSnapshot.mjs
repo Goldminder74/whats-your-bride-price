@@ -1,4 +1,4 @@
-import {encryptRecord,decryptRecord,recoveryHash} from '../scripts/recovery-crypto.mjs';
+import {encryptArchiveRecord,decryptRecord,recoveryHash} from '../scripts/recovery-crypto.mjs';
 const quote=s=>'"'+s.replaceAll('"','""')+'"';
 const reserved=new Set(['operational_authority_outbox','operational_recovery_checkpoints','retention_restore']);
 const encode=v=>v instanceof Uint8Array?{binary:Buffer.from(v).toString('base64')}:v;
@@ -15,7 +15,7 @@ export function segmentedSnapshot(db,custody,key,{pageSize=50,pagesPerStep=25,pa
  if(!Number.isInteger(pageSize)||pageSize<1||pageSize>100||!Number.isInteger(pagesPerStep)||pagesPerStep<1||pagesPerStep>25)fail();
  async function put(name,body){
   if(Buffer.byteLength(JSON.stringify(body))>3500000)fail();
-  const prior=await custody.get(name),bytes=prior||encryptRecord(body,key,name);
+  const prior=await custody.get(name),bytes=prior||encryptArchiveRecord(body,key,name);
   if(prior&&JSON.stringify(decryptRecord(prior,key,name))!==JSON.stringify(body))fail();
   const sha256=await custody.put(name,bytes),copy=await custody.get(name);
   if(!copy||recoveryHash(copy)!==sha256||JSON.stringify(decryptRecord(copy,key,name))!==JSON.stringify(body))fail();

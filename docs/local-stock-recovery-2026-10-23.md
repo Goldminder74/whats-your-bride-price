@@ -4,6 +4,53 @@ No hosted call, credential, payment, deployment or benchmark allowance was used.
 This is a local SQLite/disk-custody rehearsal, not a provider capacity or RTO result.
 The unchanged protected application and production access gates remain OFF.
 
+## Bounded compression follow-up — locally verified, not deployed
+
+New snapshot/restore-plan archive objects use gzip level1 before AES-GCM when it
+saves bytes. The codec is authenticated with the object identity; decompression
+occurs only after authentication and is limited to the existing3,500,000-byte
+plaintext bound. Old archives, hashes, progress and ordinary authority/confirmation
+records retain their formats. Retries reuse original ciphertext; there is no
+migration, new setting, retention change or new provider.
+Before any hosted compressed write, deploy/retain the matching decoder for the
+operational Worker AND offline recovery operator. Once new archives exist, an
+application rollback must retain that recovery decoder; older code cannot read
+the new encoding. No hosted compressed archive has been written by this change.
+
+The same45,000-game/540,000-answer actual-schema LOCAL lower-bound fixture passed
+full table/FK/accounting/hold/closed-wallet/suppression checks, complete index loss
+and interrupted import. Temporary databases/ciphertext were removed by the existing
+scoped helper. The synthetic fixture repeats one historical wallet and gaming row
+shapes; its compression ratio must not be assumed for arbitrary production data.
+
+| Quantity | Previous packed archive | Compressed packed archive |
+|---|---:|---:|
+| Source SQLite bytes |245,944,320|245,944,320|
+| Snapshot ciphertext bytes |379,679,396|9,594,958|
+| All archive/restore-plan ciphertext bytes |824,131,204|20,910,112|
+| Counted local ciphertext transfer bytes |5,401,398,144|263,333,571|
+| Objects / custody reads |1,045 /10,404|1,045 /10,404|
+| Capture / import / verify calls |1,068 /505 /254|1,068 /505 /254|
+| Local elapsed milliseconds |387,167|310,515|
+
+These are separate local runs with uncontrolled cache/background load, not hosted
+latency, billing or an attributed speedup. Compression does not reduce inventory
+requests, source fencing or the historical authority census. Source D1 still
+exceeds Phase C's200MB ordinary threshold; the full90-day and latest-authority
+recovery gates remain unresolved. No access receipt or hosted authority is created.
+
+The actual Worker runtime separately passes compressed/legacy round trips and
+rejects authenticated oversized decompression. Mixed legacy schema/new packed
+segments, retry ciphertext identity, tampering, wrong key/name, unrecognised codec
+and existing interrupted/hash-verification regressions pass. Ignored evidence:
+local-schema-recovery-45000-compressed.json,20261023-archive-{focus,
+recovery-regressions,worker,stock,ops-built,data-gate,data-resume,
+retention-worker,lint,typecheck}.log. Initial broad data checks hit local Windows
+sandbox localhost/rename restrictions; only the affected files were rerun with
+normal local permissions. No assertion, timeout or security bound was weakened.
+Cloudflare documents [node:zlib support](https://developers.cloudflare.com/workers/runtime-apis/nodejs/zlib/);
+this change was also verified in the configured local Worker compatibility runtime.
+
 ## Verified workload and corrections
 
 45,000 completed-game records and540,000 answer records represent a nine-day

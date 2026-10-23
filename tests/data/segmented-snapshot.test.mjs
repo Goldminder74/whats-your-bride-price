@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {randomBytes} from 'node:crypto';
 import {segmentedSnapshot,segmentedSnapshotPages} from '../../worker/segmentedSnapshot.mjs';
-import {recoveryHash,decryptRecord} from '../../scripts/recovery-crypto.mjs';
+import {recoveryHash,decryptRecord,encryptRecord} from '../../scripts/recovery-crypto.mjs';
 
 function fixture(count=51003){
  const database=new DatabaseSync(':memory:'),files=new Map(),key=randomBytes(32);
@@ -50,6 +50,20 @@ test('interrupted upload retries immutable pages, changed fence and corrupted pr
   await assert.rejects(segmentedSnapshot(f.db,f.custody,f.key,{pagesPerStep:1})(f.head,{...first.pointer,sha256:'a'.repeat(64)}),/invalid/);
   f.database.exec("UPDATE operational_recovery_checkpoints SET head_hash='changed'");
   await assert.rejects(segmentedSnapshot(f.db,f.custody,f.key,{pagesPerStep:1})(f.head,first.pointer),/invalid/);
+ }finally{f.database.close();}
+});
+
+test('compressed capture reuses a legacy schema without rewriting it or extending its fence',async()=>{
+ const f=fixture(1300);try{
+  const schema=await f.db.query("SELECT type,name,tbl_name,sql FROM sqlite_schema WHERE sql IS NOT NULL AND name NOT LIKE 'sqlite_%' AND name NOT LIKE '_cf_%' ORDER BY type,name");
+  const name=f.head.manifest_hash+'.schema.enc',legacy=encryptRecord({version:1,schema},f.key,name);f.files.set(name,legacy);
+  const step=segmentedSnapshot(f.db,f.custody,f.key,{packPages:true}),first=await step(f.head);
+  assert.deepEqual(f.files.get(name),legacy);assert.equal(JSON.parse(legacy).codec,undefined);
+  assert.equal(JSON.parse(f.files.get(first.pointer.name)).codec,'gzip-json-v1');
+  assert.deepEqual(await step(f.head),first,'lost response preserves original ciphertext and pointer');
+  const second=await step(f.head,first.pointer);assert.equal(second.complete,true);
+  let rows=0;for await(const page of segmentedSnapshotPages(f.custody,f.key,second.pointer))if(page.kind==='page')rows+=page.rows.length;
+  assert.equal(rows,1300);assert.equal(f.database.prepare("SELECT expires_at FROM operational_recovery_checkpoints WHERE id='journal'").get().expires_at,f.head.expires_at);
  }finally{f.database.close();}
 });
 

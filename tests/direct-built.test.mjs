@@ -5,12 +5,16 @@ test('exact direct Worker package keeps HTML/assets private, renders with privat
  const pointer=JSON.parse(await readFile('outputs/cloudflare-direct/latest.json','utf8')),manifest=await verifyDirectRelease(pointer.directory),config=JSON.parse(await readFile(resolve(pointer.directory,'wrangler.json'),'utf8')),secret='s'.repeat(43),origin=manifest.configuration.origin;
  assert.equal(Object.values(JSON.parse(await readFile(resolve(pointer.directory,'direct-build.json'),'utf8')).flags).some(Boolean),false);
  const paths=Object.keys(manifest.files).filter(p=>p.startsWith('server/')).sort((a,b)=>a==='server/index.js'?-1:b==='server/index.js'?1:a.localeCompare(b));
- const mf=new Miniflare({modules:paths.map(p=>({type:'ESModule',path:resolve(pointer.directory,p)})),modulesRoot:resolve(pointer.directory,'server'),compatibilityDate:config.compatibility_date,compatibilityFlags:config.compatibility_flags,bindings:{...config.vars,WYBP_PRIVATE_ACCESS_TOKEN:secret},assets:{directory:resolve(pointer.directory,'client'),binding:'ASSETS',routerConfig:{has_user_worker:true,invoke_user_worker_ahead_of_assets:true}},outboundService:()=>{throw Error('Hosted services forbidden');}});
+ const seller={version:1,legalName:'Ayodele Ayeni',tradingName:'Classes for Culture',geographicalAddress:'Synthetic seller address only',complaintsAddress:null,telephone:null,supportEmail:'team@classesforculture.com',privacyEmail:'team@classesforculture.com'};
+ const mf=new Miniflare({modules:paths.map(p=>({type:'ESModule',path:resolve(pointer.directory,p)})),modulesRoot:resolve(pointer.directory,'server'),compatibilityDate:config.compatibility_date,compatibilityFlags:config.compatibility_flags,bindings:{...config.vars,WYBP_PRIVATE_ACCESS_TOKEN:secret,WYBP_PUBLIC_SELLER_DETAILS_JSON:JSON.stringify(seller)},assets:{directory:resolve(pointer.directory,'client'),binding:'ASSETS',routerConfig:{has_user_worker:true,invoke_user_worker_ahead_of_assets:true}},outboundService:()=>{throw Error('Hosted services forbidden');}});
  try{
   const asset='/'+Object.keys(manifest.files).find(p=>p.startsWith('client/')&&p.endsWith('.svg')).slice(7);
   for(const path of ['/',asset])assert.equal((await mf.dispatchFetch(origin+path)).status,401);
   const auth={authorization:'Bearer '+secret};const response=await mf.dispatchFetch(origin,{headers:auth});assert.equal(response.status,200);assert.match(await response.text(),/What.s Your Bride Price|bride price/i);
   assert.equal((await mf.dispatchFetch(origin+asset,{headers:auth})).status,200);
+  const privacy=await(await mf.dispatchFetch(origin+'/privacy',{headers:auth})).text();
+  assert.match(privacy,/Synthetic seller address only/);assert.match(privacy,/Final lawful-basis assessment/);assert.match(privacy,/Draft — not approved for production/);
+  assert.doesNotMatch(privacy,/Required geographical seller address installed securely at runtime|ICO registration or fee decision|geographical seller address and remaining production reviews are still pending/);
   for(const path of ['/owner','/commerce/stripe-webhook','/commerce/stripe-test-webhook'])assert.equal((await mf.dispatchFetch(origin+path,{method:'POST',headers:auth})).status,404);
   assert.equal((await mf.dispatchFetch('https://attacker.example/',{headers:auth})).status,404);
  }finally{await mf.dispose();}

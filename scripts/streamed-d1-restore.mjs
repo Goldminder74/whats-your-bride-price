@@ -1,7 +1,7 @@
 // Offline plan construction and bounded import. No credential loading, provider
 // calls, schema migration, target deletion or application-access grant occurs here.
 import {createHash} from 'node:crypto';
-import {encryptRecord,decryptRecord,recoveryHash} from './recovery-crypto.mjs';
+import {encryptRecord,encryptArchiveRecord,decryptRecord,recoveryHash} from './recovery-crypto.mjs';
 import {RETENTION_POLICY,RETENTION_DAY} from '../db/retentionPolicy.ts';
 import {assertBenchmarkResource} from './approved-benchmark-budget.mjs';
 const windowMs=RETENTION_POLICY.backupDays*RETENTION_DAY;
@@ -60,7 +60,7 @@ async function read(custody,key,pointer){
 }
 async function put(custody,key,name,body){
  if(Buffer.byteLength(JSON.stringify(body))>3500000)fail();
- const prior=await custody.get(name),bytes=prior||encryptRecord(body,key,name);
+ const prior=await custody.get(name),bytes=prior||encryptArchiveRecord(body,key,name);
  if(prior&&JSON.stringify(decryptRecord(prior,key,name))!==JSON.stringify(body))fail();
  const sha256=await custody.put(name,bytes);if(recoveryHash(await custody.get(name))!==sha256)fail();return {name,sha256};
 }
