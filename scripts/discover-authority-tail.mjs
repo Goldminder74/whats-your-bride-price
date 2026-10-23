@@ -32,7 +32,7 @@ export async function recoverSignedDriveIndex({custody,key,maxFiles=100000,maxPa
  */
 export async function discoverLatestAuthority({database,custody,key,snapshot,id,writersStopped,maxFiles=100000,maxPages=20000,now=Date.now,fault=()=>{}}){
  if(writersStopped!==true||!Buffer.isBuffer(key)||key.length!==32||!/^[a-zA-Z0-9_-]{1,65}$/.test(id||'')||!Number.isSafeInteger(maxFiles)||maxFiles<1||maxFiles>1000000||!Number.isSafeInteger(maxPages)||maxPages<1||maxPages>100000)fail();
- const root=await read(custody,key,snapshot),at=now();if(root.version!==2||root.format!=='wybp-authority-boundary-v2'||snapshot.name!==root.id+'.boundary'||root.expiresAt<=at||root.createdAt>at)fail();
+ const root=await read(custody,key,snapshot),at=now();if(![2,4].includes(root.version)||root.format!=='wybp-authority-boundary-v'+root.version||snapshot.name!==root.id+'.boundary'||root.expiresAt<=at||root.createdAt>at)fail();
  if(custody.supportsCommitHead!==true||typeof custody.readLatestCommitHead!=='function')fail();
  const latest=await custody.readLatestCommitHead();if(!latest||latest.createdAt>at||latest.expiresAt<=at||latest.sequence<root.sequence)fail();
  const all=custody.all||[custody];if(!all.length||all.length>17||new Set(all.map(c=>c.folderId)).size!==all.length)fail();

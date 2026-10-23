@@ -57,3 +57,19 @@ export function retentionSchedulePlan({completionsPerDay=5000,intervalSeconds=30
  const incoming=completionsPerDay*12,backlog=incoming*outageHours/24,passesPerDay=Math.floor(86400/intervalSeconds),effective=passesPerDay*batch*successfulFraction,surplus=effective-incoming,catchupDays=surplus>0?backlog/surplus:Infinity;
  return {incomingAnswersPerDay:incoming,outageAnswerBacklog:backlog,passesPerDay,effectiveAnswersPerDay:effective,catchupDays,remainingDeadlineDays:deadlineDays-outageHours/24,answerDeadlineFeasible:catchupDays<=deadlineDays-outageHours/24,qualification:'Arithmetic proposal only; includes ongoing arrivals and unsuccessful passes. Other tables, holds, journal delivery, snapshots, repeated outages and provider timing/cost remain independent gates. No schedule activated.'};
 }
+
+/** Whole-account arithmetic, not telemetry or a spending cap. All usage across
+ * projects must be supplied; unknown usage must not become a zero estimate.
+ * Rates checked 24 October 2026. GBP inputs already include their own tax.
+ * DO compute overage rounds UP to a million units, even for one excess GB-s. */
+export function directOperatingEstimate(facts){
+ const keys=['workersRequests','workerCpuMs','d1Reads','d1Writes','d1Gb','doRequests','doGbSeconds','doReads','doWrites','doGb','otherCloudflareUSD','netlifyUSD','businessCustodyGBP','otherOperationsGBP','gbpPerUSD','taxRate'];
+ if(!facts||keys.some(k=>!Number.isFinite(facts[k])||facts[k]<0)||['workersRequests','workerCpuMs','d1Reads','d1Writes','doRequests','doReads','doWrites'].some(k=>!Number.isSafeInteger(facts[k]))||facts.gbpPerUSD===0||facts.taxRate>1)throw Error('whole_account_cost_unknown');
+ const over=(n,included,unit,rate)=>Math.max(0,n-included)/unit*rate;
+ const rounded=(n,included,unit,rate)=>Math.ceil(Math.max(0,n-included)/unit)*rate;
+ const usd={workersMinimum:5,workersRequests:over(facts.workersRequests,10000000,1000000,.3),workerCpu:over(facts.workerCpuMs,30000000,1000000,.02),d1Reads:over(facts.d1Reads,25000000000,1000000,.001),d1Writes:over(facts.d1Writes,50000000,1000000,1),d1Storage:over(facts.d1Gb,5,1,.75),doRequests:rounded(facts.doRequests,1000000,1000000,.15),doDuration:rounded(facts.doGbSeconds,400000,1000000,12.5),doReads:rounded(facts.doReads,25000000000,1000000,.001),doWrites:rounded(facts.doWrites,50000000,1000000,1),doStorage:over(facts.doGb,5,1,.2),otherCloudflare:facts.otherCloudflareUSD,netlify:facts.netlifyUSD};
+ const gbp=Object.fromEntries(Object.entries(usd).map(([k,v])=>[k,Math.ceil((v*facts.gbpPerUSD*(1+facts.taxRate)-1e-9)*100)/100]));
+ gbp.businessCustody=facts.businessCustodyGBP;gbp.otherOperations=facts.otherOperationsGBP;
+ const totalGBP=Math.ceil((Object.values(gbp).reduce((a,b)=>a+b,0)-1e-9)*100)/100;
+ return {usd,gbp,totalGBP,within50PlanningOnly:totalGBP<=50,qualification:'Supplied whole-account usage assumptions, not measured capacity, an invoice, account headroom or an enforceable cap. Existing separately funded consumer Drive/email and Stripe fees are excluded; new business custody is included. Recheck rates, tax, FX and billing periods before spending.'};
+}

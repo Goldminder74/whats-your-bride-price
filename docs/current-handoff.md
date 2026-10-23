@@ -1,5 +1,94 @@
 # Current handoff
 
+### Snapshot writer-availability correction and approved email — 24 October
+
+Continuation of31288ff. Validated SOURCE ONLY; private game and existing public
+site/data remain unchanged. No resource, deployment, migration, Secret, DNS, Stripe,
+schedule or spending change. Owner authorised local snapshot correction, one
+Namecheap contract/DKIM inquiry and ONE external synthetic confirmation. Both emails
+were sent; no further external send is implied. GBP175 benchmark/GBP200 month and
+new backup subscription remain NOT approved; old benchmark stopped/expired and all
+cumulative reservations retained. GBP8/50 active limits,5k/day,500/hour,48h outage
+requirement unchanged. No launch/throughput/RTO/cost readiness claim.
+
+**Implemented correction:** optional private journal-fed mirror, original event
+SQL/clocks, atomic business+outbox+cursor replay (<=25 events/call), authenticated
+pinned cuts, persistent crash-safe capture progress and v4 full snapshot boundary.
+Only mirror is frozen during capture. Routine mirror capture performs no historical
+census; independent full inventory/latest head are STILL mandatory on recovery.
+Source acknowledgement uses short <=25-row steps, with current independent-head
+and cut readback. No new schema, no mirror binding/resource/flag installed. The
+new four private ops RPCs reject missing/OFF configuration; key helper is #private,
+never RPC. Old source/legacy capture/verification guards unchanged. This supersedes
+the previous paragraph saying mirror/capture were unimplemented. Details:
+[mirror correction](recovery-mirror-2026-10-24.md).
+
+**Local evidence:** actual schema1,000 physical games/12,000 answers +10,000 signed
+historical objects.31 source writes completed DURING31 capture calls, source ready
+throughout,0 routine inventory calls and0 per-object census rows. Crash after business
+commit/lost capture-progress reply resume safely; partial cut, wrong identity,
+corrupt intent and forged publication fail closed. Total index loss/reconstruction,
+newer authority discovery/replay, protected row/FK equality, refund/settlement,
+holds/closed wallet/deletion suppression PASS. No access receipt installed. Synthetic
+historical stock is not measured completions. Reuse prior450k/5.4m90-day physical
+restore; do not call either result hosted99-day/30-day-history recovery.
+
+**Validation:** full data run409/433 PASS;24 blocked by sandbox temporary-file
+rename/lock or Miniflare localhostEACCES. Only eight affected files rerun with
+ordinary local permissions:62/62 PASS, assertions unchanged. All433 covered; new
+whole-account-cost test plus prior capacity checks5/5 PASS afterwards. Compiled
+ops/archive5/5 PASS with ordinary loopback permissions; full lint/typecheck and
+final affected lint/typecheck/diff PASS. Unchanged player/UI/private-host checks
+reused; no new player-facing release. Generated evidence remains ignored in
+outputs/authority-preparation/20261024-*.log; no data/key/log/archive belongs in Git.
+
+**Approved email:** signed-in noreply@classesforculture.com webmail used once for
+pesupport@namecheap.com (provider-documented Private Email support) and once for the
+owner's existing Gmail, subject “[TEST - synthetic data] WYBP purchase confirmation
+delivery”. Sent folder verified both; owner confirms external receipt. No customer
+record, real seller address, payment or wallet credit included. No old operational
+alert repeated. SPF/DKIM/DMARC header results and provider contract/UK transfer,
+processing/support-access locations/subprocessors/DKIM-selector answer still pending.
+Webmail transport is NOT the hosted order-linked immutable confirmation/retry gate.
+Sanitised Sent screenshot saved ignored:20261024-approved-email-sent.png.
+
+**Cost/package correction:** SIX read-only ledgers,101 distinct reservation UUIDs,
+6 unsettled,15 carryover rows; union reproduces prior B totals and immutable SHA.
+No unknown reservation refunded. Full provider/pacing/invoice allocation still
+needs reconciliation; do not infer exact GBP8 remainder from USD5 alone. Optional
+pure directOperatingEstimate now requires ALL whole-account inputs, includes
+source+mirror/index/purge/archive work and new business custody; DO duration overage
+rounds to a million units, so one excess GB-s can costUSD12.50. Under explicitly
+assumed other usage,50m/70m/105m writes implyGBP34.25/55.85/93.65. NOT measured bills;
+50GBP fit unproven. Existing separately funded consumer Drive/email and Stripe fees
+excluded as agreed; new business custody included. No new provider hard cap exists.
+
+[ONE proposed package](revised-hosted-verification-2026-10-23.md) now itemises112h as
+MAX48h setup +real24h5k-day/500-hour +<=24h recovery +<=16h cleanup.25 requests/sec
+means1.2m object upload+readback alone >=26h40m; deletion >=13h20m. These are arithmetic,
+not provider measurements. Source play must continue during capture; normal mirror
+lag<5min is reported separately from proposed <=2h capture+catch-up; archive age<=24h.
+No acceptance target is an installed guarantee or authority to enlarge limits.
+
+**Package NOT yet executable / no purchase request:** new retained-stock admission
+and orchestration still need wiring to the actual compiled direct app path; old
+six-hour B/C guards remain unchanged. Final account-specific backup quote is NOT
+obtained and Namecheap answer is pending. Verified Workspace public tariff isGBP7
+Flexible +20%VAT allowance =GBP8.40/month,30GB; not an accepted contract/final quote.
+No account/trial/subscription/ownership DNS change made. New mirror/hosted scope
+and GBP175/200 are unapproved. Before asking those purchases, finish those engineer-
+owned prerequisites and produce the final quote/terms and exact cost-admission fit.
+Do not hand technical wiring to the owner or run a known incomplete harness.
+
+[Complete privacy candidate](final-privacy-review.md) covers actual purposes,
+providers/roles/transfers, rights, record-specific retention,18+ and high-privacy
+defaults. It clearly identifies missing provider facts and controller/children-risk
+publication gates; it is not final verified wording/legal approval and no public
+policy flag changed. Seller address/OAuth/key/alert/settled commercial policy remain
+complete; NEVER repeat their installation. Conditional launch authority still
+requires capacity/recovery/confirmation/privacy and preserved legacy-email cutover
+checks; production and private commerce/webhook/cron remain OFF.
+
 ### Retained recovery, independent head and concrete capacity correction — 23 October
 
 Continuation from3ac33be. New work below is validated SOURCE ONLY. Public paid

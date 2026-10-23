@@ -17,7 +17,7 @@ export async function replayVerifiedAuthorityTail({database,custody,key,pointer,
  const body=await read(custody,key,pointer);
  if(body.version!==3||body.format!=='wybp-authority-boundary-v3'||body.expiresAt<=now())fail();
  const root=await read(custody,key,body.snapshotAnchor),job='offline-tail:'+pointer.sha256;
- if(root.version!==2||root.sequence!==body.base.sequence||root.head!==body.base.head||hash(root.snapshot)!==hash(body.snapshot)||root.expiresAt<body.expiresAt)fail();
+ if(![2,4].includes(root.version)||root.format!=='wybp-authority-boundary-v'+root.version||root.sequence!==body.base.sequence||root.head!==body.base.head||hash(root.snapshot)!==hash(body.snapshot)||root.expiresAt<body.expiresAt)fail();
  if(database.prepare('SELECT COUNT(*) n FROM retention_restore').get().n!==0)fail();
  database.exec('CREATE TEMP TABLE IF NOT EXISTS wybp_verified_tail(sequence INTEGER PRIMARY KEY,operation_id TEXT UNIQUE,event_hash TEXT,encrypted_event TEXT)');
  database.exec('DELETE FROM temp.wybp_verified_tail');

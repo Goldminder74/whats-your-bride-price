@@ -3,8 +3,10 @@ import {encryptRecord,decryptRecord,recoveryHash} from '../scripts/recovery-cryp
 import {RETENTION_POLICY,RETENTION_DAY} from '../db/retentionPolicy.ts';
 import {boundedSnapshotStep,verifySnapshotProofStep} from './boundedSnapshot.mjs';
 import {verifyDriveRecordHeader} from '../scripts/drive-record-header.mjs';
+import {assertMirrorIdentity} from './recoveryMirror.mjs';
 const WINDOW=RETENTION_POLICY.backupDays*RETENTION_DAY,ZERO='0'.repeat(64);
 const hash=v=>recoveryHash(Buffer.from(JSON.stringify(v))),fail=()=>{throw Error('bounded_authority_unavailable');};
+const validMirrorCut=b=>b.version!==4||(b.capture?.kind==='recovery-mirror'&&b.capture.sequence===b.sequence&&b.capture.head===b.head&&/^[a-f0-9]{64}$/.test(b.capture.target||'')&&/^[a-f0-9]{64}$/.test(b.capture.origin||'')&&b.inventory?.requiredOnRecovery===true);
 const headOf=h=>({id:h.manifest_hash,sequence:h.sequence,headHash:h.head_hash,expiresAt:h.expires_at});
 const checkpoint=(id,manifest,sequence,head,cursor,expires,kind='custody',state='complete')=>({sql:"INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES(?1,?2,?3,?4,?5,?6,?7,1,?8,?9) ON CONFLICT(id) DO NOTHING",params:[id,kind,manifest,sequence,head,cursor,state,expires-WINDOW,expires]});
 async function read(custody,key,pointer){if(!pointer||typeof pointer.name!=='string'||!/^[a-f0-9]{64}$/.test(pointer.sha256||''))fail();const bytes=await custody.get(pointer.name);if(!bytes||recoveryHash(bytes)!==pointer.sha256)fail();return decryptRecord(bytes,key,pointer.name);}
@@ -61,21 +63,29 @@ async function censusStep(db,custody,key,id,state,base,head,now){
  * segment, readback segment or provider page per invocation. This replaces no
  * migration and never materialises the retained inventory/events in memory.
  */
-export async function boundedAuthorityStep(db,custody,key,id,progress=null,{now=Date.now,snapshotBoundary=null}={}){
+export async function boundedAuthorityStep(db,custody,key,id,progress=null,{now=Date.now,snapshotBoundary=null,mirrorIdentity=null}={}){
  if(!/^[a-zA-Z0-9_-]{1,65}$/.test(id||'')||!Buffer.isBuffer(key)||key.length!==32)fail();
  const at=now(),authority=new D1Authority(db,custody,key,{now}),jobId='bounded-job:'+id,baseId='bounded-base:'+id;
+ const mirrorTarget=mirrorIdentity===null?null:assertMirrorIdentity(mirrorIdentity);
  const root=snapshotBoundary===null?null:await read(custody,key,snapshotBoundary);
+ let mirrorOrigin,mirrorSeal;
+ if(mirrorTarget){
+  if(root||(await db.query('SELECT id FROM retention_restore')).length)fail();
+  mirrorOrigin=(await db.query("SELECT * FROM operational_recovery_checkpoints WHERE id='mirror-origin'"))[0];mirrorSeal=(await db.query("SELECT * FROM operational_recovery_checkpoints WHERE id='mirror-seal'"))[0];
+  if(mirrorOrigin?.state!=='complete'||mirrorOrigin.head_hash!==mirrorTarget||mirrorSeal?.state!=='complete')fail();
+ }
  if(root){
-  if(root.version!==2||root.format!=='wybp-authority-boundary-v2'||snapshotBoundary.name!==root.id+'.boundary'||root.expiresAt<=at||root.createdAt>at)fail();
+  if(![2,4].includes(root.version)||!validMirrorCut(root)||root.format!=='wybp-authority-boundary-v'+root.version||snapshotBoundary.name!==root.id+'.boundary'||root.expiresAt<=at||root.createdAt>at)fail();
   const receipt=(await db.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',['bounded-receipt:'+root.id]))[0];
   if(!receipt||receipt.state!=='complete'||receipt.manifest_hash!==snapshotBoundary.sha256||receipt.sequence!==root.sequence||receipt.head_hash!==root.head||receipt.expires_at!==root.expiresAt)fail();
  }
  let job=(await db.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[jobId]))[0];
  if(job?.state==='complete'){
-  const done=(await db.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',['bounded-receipt:'+id]))[0];if(!done||done.expires_at<=at)fail();const stored=await read(custody,key,{name:id+'.boundary',sha256:done.manifest_hash});if(hash(stored.snapshotAnchor??null)!==hash(snapshotBoundary))fail();return {complete:true,receipt:done.manifest_hash,sequence:done.sequence};
+  const done=(await db.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',['bounded-receipt:'+id]))[0];if(!done||done.expires_at<=at)fail();const stored=await read(custody,key,{name:id+'.boundary',sha256:done.manifest_hash});if(hash(stored.snapshotAnchor??null)!==hash(snapshotBoundary)||(stored.version===4)!==Boolean(mirrorTarget))fail();return {complete:true,receipt:done.manifest_hash,sequence:done.sequence};
  }
  let head=await authority.freeze(id);
- const jobIdentity=hash(root?[id,head.sequence,head.head_hash,snapshotBoundary]:[id,head.sequence,head.head_hash]);
+ if(mirrorTarget&&(mirrorSeal.sequence!==head.sequence||mirrorSeal.head_hash!==head.head_hash))fail();
+ const jobIdentity=hash(mirrorTarget?[id,head.sequence,head.head_hash,mirrorTarget]:root?[id,head.sequence,head.head_hash,snapshotBoundary]:[id,head.sequence,head.head_hash]);
  if(job&&job.manifest_hash!==jobIdentity)fail();
  if(!job){
   const base=root?{sequence:root.sequence,head_hash:root.head,manifest_hash:snapshotBoundary.sha256}:(await db.query("SELECT * FROM operational_recovery_checkpoints WHERE id='baseline'"))[0]||{sequence:0,head_hash:ZERO,manifest_hash:ZERO};
@@ -114,12 +124,13 @@ export async function boundedAuthorityStep(db,custody,key,id,progress=null,{now=
    // A journal checkpoint is not another full-store snapshot/census. The shared
    // writer fence and independently read-back contiguous outbox establish this
    // source cut; recovery MUST still perform the full independent inventory.
-   s.phase=root?'publish':'inventory';if(!root)s.inventory={folder:0,cursor:null,expected:null,count:0,total:0,digest:ZERO,asOf:job.cursor,pages:0};
+   s.phase=root||mirrorTarget?'publish':'inventory';if(!root&&!mirrorTarget)s.inventory={folder:0,cursor:null,expected:null,count:0,total:0,digest:ZERO,asOf:job.cursor,pages:0};
   }
  }else if(s.phase==='inventory'){
   if(await censusStep(db,custody,key,id,s.inventory,base,fence,now()))s.phase='publish';
  }else if(s.phase==='publish'){
-  const body={version:root?3:2,format:root?'wybp-authority-boundary-v3':'wybp-authority-boundary-v2',id,createdAt:job.cursor,expiresAt:job.expires_at,sequence:head.sequence,head:head.head_hash,base:s.base,authority:s.auth,snapshot:s.snapshot,snapshotProof:s.snapshotProof,...(root?{snapshotAnchor:snapshotBoundary}:{}),inventory:root?{requiredOnRecovery:true}:{files:s.inventory.total,digest:s.inventory.digest}};
+  const version=root?3:mirrorTarget?4:2;
+  const body={version,format:'wybp-authority-boundary-v'+version,id,createdAt:job.cursor,expiresAt:job.expires_at,sequence:head.sequence,head:head.head_hash,base:s.base,authority:s.auth,snapshot:s.snapshot,snapshotProof:s.snapshotProof,...(root?{snapshotAnchor:snapshotBoundary}:{}),...(mirrorTarget?{capture:{kind:'recovery-mirror',target:mirrorTarget,origin:mirrorOrigin.manifest_hash,sequence:mirrorSeal.sequence,head:mirrorSeal.head_hash}}:{}),inventory:root||mirrorTarget?{requiredOnRecovery:true}:{files:s.inventory.total,digest:s.inventory.digest}};
   s.receipt=(await put(custody,key,id+'.boundary',body,job.expires_at)).sha256;s.ack=base.sequence;s.phase='ack';
  }else if(s.phase==='ack'){
   await read(custody,key,{name:id+'.boundary',sha256:s.receipt});
@@ -152,9 +163,10 @@ export async function boundedAuthorityStep(db,custody,key,id,progress=null,{now=
  */
 export async function verifyAuthorityBoundaryStep(db,custody,key,pointer,progress=null,{now=Date.now,legacySource=null}={}){
  if(!Buffer.isBuffer(key)||key.length!==32)fail();const body=await read(custody,key,pointer),at=now();
- if(![2,3].includes(body.version)||body.format!=='wybp-authority-boundary-v'+body.version||pointer.name!==body.id+'.boundary'||!/^[a-zA-Z0-9_-]{1,65}$/.test(body.id||'')||!Number.isSafeInteger(body.sequence)||body.sequence<0||!/^[a-f0-9]{64}$/.test(body.head||'')||!Number.isSafeInteger(body.createdAt)||body.createdAt>at||!Number.isSafeInteger(body.expiresAt)||body.expiresAt<=at||body.expiresAt-body.createdAt>WINDOW||!Number.isSafeInteger(body.base?.sequence)||body.base.sequence<0||body.base.sequence>body.sequence||!/^[a-f0-9]{64}$/.test(body.base.head||''))fail();
+ if(![2,3,4].includes(body.version)||body.format!=='wybp-authority-boundary-v'+body.version||pointer.name!==body.id+'.boundary'||!/^[a-zA-Z0-9_-]{1,65}$/.test(body.id||'')||!Number.isSafeInteger(body.sequence)||body.sequence<0||!/^[a-f0-9]{64}$/.test(body.head||'')||!Number.isSafeInteger(body.createdAt)||body.createdAt>at||!Number.isSafeInteger(body.expiresAt)||body.expiresAt<=at||body.expiresAt-body.createdAt>WINDOW||!Number.isSafeInteger(body.base?.sequence)||body.base.sequence<0||body.base.sequence>body.sequence||!/^[a-f0-9]{64}$/.test(body.base.head||''))fail();
+ if(!validMirrorCut(body))fail();
  const root=body.version===3?await read(custody,key,body.snapshotAnchor):null;
- if(root&&(root.version!==2||root.format!=='wybp-authority-boundary-v2'||body.snapshotAnchor.name!==root.id+'.boundary'||root.createdAt>body.createdAt||root.expiresAt<body.expiresAt||root.sequence!==body.base.sequence||root.head!==body.base.head||hash(root.snapshot)!==hash(body.snapshot)||hash(root.snapshotProof)!==hash(body.snapshotProof)||!Number.isSafeInteger(root.base?.sequence)||root.base.sequence<0||root.base.sequence>root.sequence||!/^[a-f0-9]{64}$/.test(root.base.head||'')))fail();
+ if(root&&(![2,4].includes(root.version)||!validMirrorCut(root)||root.format!=='wybp-authority-boundary-v'+root.version||body.snapshotAnchor.name!==root.id+'.boundary'||root.createdAt>body.createdAt||root.expiresAt<body.expiresAt||root.sequence!==body.base.sequence||root.head!==body.base.head||hash(root.snapshot)!==hash(body.snapshot)||hash(root.snapshotProof)!==hash(body.snapshotProof)||!Number.isSafeInteger(root.base?.sequence)||root.base.sequence<0||root.base.sequence>root.sequence||!/^[a-f0-9]{64}$/.test(root.base.head||'')))fail();
  const fence={id:body.id,sequence:body.sequence,headHash:body.head,expiresAt:body.expiresAt},aad='verify-authority:'+pointer.sha256;
  const independentHead=custody.supportsCommitHead===true?await custody.readLatestCommitHead():null;let legacyBootstrap=false;
  if(custody.supportsCommitHead===true){
@@ -196,7 +208,7 @@ export async function cleanupAuthoritySnapshotStep(db,custody,key,id,{now=Date.n
  const receipt=(await db.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[receiptId]))[0];
  if(!job||job.state!=='complete'||!receipt||receipt.state!=='complete'||job.expires_at<=now()||receipt.expires_at!==job.expires_at||receipt.sequence!==job.sequence||receipt.head_hash!==job.head_hash)fail();
  const body=await read(custody,key,{name:id+'.boundary',sha256:receipt.manifest_hash});
- if(![2,3].includes(body.version)||body.format!=='wybp-authority-boundary-v'+body.version||body.id!==id||body.sequence!==job.sequence||body.head!==job.head_hash||body.expiresAt!==job.expires_at)fail();
+ if(![2,3,4].includes(body.version)||body.format!=='wybp-authority-boundary-v'+body.version||body.id!==id||body.sequence!==job.sequence||body.head!==job.head_hash||body.expiresAt!==job.expires_at)fail();
  const prefixes=['bounded-op:'+id+':','bounded-page:'+id+':','bounded-seen:'+id+':'];
  const rows=[];
  for(const prefix of prefixes){

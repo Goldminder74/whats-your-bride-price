@@ -1,12 +1,23 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {performance} from 'node:perf_hooks';
-import {productionCapacity,workloadPlan,retentionSchedulePlan} from '../../scripts/production-capacity.mjs';
+import {productionCapacity,workloadPlan,retentionSchedulePlan,directOperatingEstimate} from '../../scripts/production-capacity.mjs';
 import {setup,credential} from '../helpers/cowrieCommerce.mjs';
 import {D1QuestionSelectionRepository} from '../../db/questionSelection.ts';
 import {deriveAnonymousSubjectHash} from '../../app/anonymousSession.ts';
 import {completeCowrieQuickPlay} from '../../db/cowrieCompletion.ts';
 import {runTestRetention} from '../../db/testRetention.ts';
+
+test('whole-account estimate rejects missing inputs and prices small DO duration overage conservatively',()=>{
+ const facts={workersRequests:10000000,workerCpuMs:30000000,d1Reads:25000000000,d1Writes:50000000,d1Gb:5,doRequests:1000000,doGbSeconds:400000,doReads:25000000000,doWrites:50000000,doGb:5,otherCloudflareUSD:0,netlifyUSD:9,businessCustodyGBP:8.4,otherOperationsGBP:0,gbpPerUSD:.9,taxRate:.2};
+ assert.equal(directOperatingEstimate(facts).totalGBP,23.52);
+ const duration=directOperatingEstimate({...facts,doGbSeconds:400001});assert.equal(duration.usd.doDuration,12.5);assert.equal(duration.totalGBP,37.02);
+ const row=directOperatingEstimate({...facts,d1Writes:70000000});assert.equal(row.usd.d1Writes,20);assert.equal(row.totalGBP,45.12);
+ assert.equal(directOperatingEstimate({...facts,otherOperationsGBP:10,d1Writes:70000000}).within50PlanningOnly,false);
+ assert.throws(()=>directOperatingEstimate({...facts,otherCloudflareUSD:undefined}),/whole_account_cost_unknown/);
+ assert.throws(()=>directOperatingEstimate({...facts,doWrites:.5}),/whole_account_cost_unknown/);
+ assert.throws(()=>directOperatingEstimate({...facts,gbpPerUSD:0}),/whole_account_cost_unknown/);
+});
 
 test('approved benchmark requires catch-up capacity after a 48-hour outage; old cadence fails',()=>{
   const old=productionCapacity({gamesPerDay:5000,limit:50,cadenceMinutes:5});

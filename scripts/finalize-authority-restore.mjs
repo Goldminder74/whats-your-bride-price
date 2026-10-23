@@ -11,7 +11,7 @@ async function read(custody,key,pointer){if(!pointer||typeof pointer.name!=='str
 export async function finalizeProductionAuthorityRestore(db,custody,key,plan,boundary,verification,{role,databaseName,databaseId,job,now=Date.now}={}){
  if(role!=='production-ops'||databaseName!=='wybp-prod-d1-r001'||databaseId!=='a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'||!/^recovery_[a-zA-Z0-9_-]{1,60}$/.test(job||''))fail();
  const manifest=await read(custody,key,plan),body=await read(custody,key,boundary),at=now();
- if(manifest.provenance?.boundarySha256!==boundary.sha256||manifest.provenance.snapshotSha256!==body.snapshot?.sha256||manifest.expiresAt!==body.expiresAt||manifest.expiresAt-manifest.createdAt!==WINDOW||manifest.expiresAt<=at||![2,3].includes(body.version)||body.format!=='wybp-authority-boundary-v'+body.version||boundary.name!==body.id+'.boundary')fail();
+ if(manifest.provenance?.boundarySha256!==boundary.sha256||manifest.provenance.snapshotSha256!==body.snapshot?.sha256||manifest.expiresAt!==body.expiresAt||manifest.expiresAt-manifest.createdAt!==WINDOW||manifest.expiresAt<=at||![2,3,4].includes(body.version)||body.format!=='wybp-authority-boundary-v'+body.version||boundary.name!==body.id+'.boundary')fail();
  if(typeof verification?.progress!=='string'||verification.progress.length>3000000)fail();
  const state=decryptRecord(Buffer.from(verification.progress,'base64'),key,'verify-authority:'+boundary.sha256);
  if(verification.verified!==true||state.version!==1||state.phase!=='complete'||state.receipt!==boundary.sha256||!Number.isSafeInteger(state.inventory?.asOf)||state.inventory.asOf>at||!Number.isSafeInteger(state.inventory.total)||!/^[a-f0-9]{64}$/.test(state.inventory.digest||''))fail();

@@ -24,6 +24,8 @@ import {recoverProductionPinnedInventory} from '../scripts/segmented-drive-inven
 import {parseSellerDetails,sellerConfigurationIssue,prepareSellerAddressUpdate} from '../app/sellerDetails.ts';
 import {finalizeProductionAuthorityRestore} from '../scripts/finalize-authority-restore.mjs';
 import {initialiseIndependentHead} from '../scripts/initialise-independent-head.mjs';
+import {initialiseRecoveryMirror,replayRecoveryMirrorStep,acknowledgeMirrorSnapshotStep,assertMirrorIdentity} from './recoveryMirror.mjs';
+import {advanceRecoveryMirrorSnapshot} from './recoveryMirrorCapture.mjs';
 
 function runtime(env) {
   const alert = authorityMail(env, connect);
@@ -94,6 +96,15 @@ export class ApplicationAuthority extends WorkerEntrypoint {
 }
 
 export class RecoveryOperator extends ApplicationAuthority {
+  #mirrorRuntime(){
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_RECOVERY_MIRROR_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||!this.env.MIRROR_DB)throw Error('recovery_mirror_disabled');
+    const identity={role:'recovery-mirror',name:this.env.WYBP_MIRROR_DATABASE_NAME,id:this.env.WYBP_MIRROR_DATABASE_ID};assertMirrorIdentity(identity);
+    return {...runtime(this.env),identity,mirror:d1AuthorityAdapter(this.env.MIRROR_DB),key:Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64')};
+  }
+  async initialiseMirror(plan,boundary,verification,job){const c=this.#mirrorRuntime();return initialiseRecoveryMirror(c.mirror,c.custody,c.key,plan,boundary,verification,{identity:c.identity,job});}
+  async replayMirror(){const c=this.#mirrorRuntime();return replayRecoveryMirrorStep(d1AuthorityAdapter(this.env.DB),c.mirror,c.custody,c.key,{identity:c.identity});}
+  async captureMirror(id){const c=this.#mirrorRuntime();return advanceRecoveryMirrorSnapshot(c.mirror,c.custody,c.key,id,{identity:c.identity});}
+  async acknowledgeMirror(pointer){const c=this.#mirrorRuntime();return acknowledgeMirrorSnapshotStep(d1AuthorityAdapter(this.env.DB),c.custody,c.key,pointer);}
   async finalizeRestore(plan,boundary,verification,job){
     if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001')throw Error('operational_restore_disabled');
     try{const configured=runtime(this.env);return await finalizeProductionAuthorityRestore(d1AuthorityAdapter(this.env.DB),configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),plan,boundary,verification,{job,role:'production-ops',databaseName:'wybp-prod-d1-r001',databaseId:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'});}catch{throw Error('operational_restore_release_unavailable');}

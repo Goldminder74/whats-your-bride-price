@@ -34,7 +34,14 @@ a draft until the controller approves its final publication and residual risks.
 | Healthchecks | Provider says it is controller for operator account/contact information and does not accept customer personal data or sign customer DPAs. | Send only the existing status heartbeat; no customer/order/SQL data in ping bodies. Existing alert receipt/paused-state evidence is reused. |
 | Netlify | Retained legacy/private/info sites, not the proposed direct game serving/data path. | Preserve provider-native deployment, stored archive custody and DNS. Do not claim a new game's customer database is hosted there. |
 
-Provider support contact is NOT yet sent. Specific requested communication approval:
+24October update: owner approved the inquiry and ONE external synthetic email.
+Both were sent from the signed-in noreply mailbox; owner confirmed external receipt.
+Namecheap's answer and SPF/DKIM/DMARC header results remain pending. Do not repeat
+approval/sign-in/send. The original inquiry draft is retained below as history.
+The complete notice candidate and precise publication gaps are now in
+[final privacy review](final-privacy-review.md); it remains unapproved/unpublished.
+
+Original communication scope:
 
 “May I send one support request to Namecheap about classesforculture.com Private
 Email: confirm its current DPA/UK transfer instrument, processing and support-access

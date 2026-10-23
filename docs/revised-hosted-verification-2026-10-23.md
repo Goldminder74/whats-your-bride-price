@@ -4,7 +4,31 @@
 another renewal of the stopped B/C window. No resource, spending or clock starts
 from this document. Existing GBP8/50 limits continue until explicitly replaced.
 
-## Exact decisions requested
+## 24 October execution status — no spending request yet
+
+The owner authorised LOCAL snapshot correction, one Namecheap inquiry and one
+external synthetic email, not GBP175/200, a mirror resource or a backup subscription.
+The correction now passes actual-schema concurrency/crash/latest-authority recovery
+and compiled private-Worker checks; it is SOURCE ONLY. See
+[local mirror evidence](recovery-mirror-2026-10-24.md).
+
+This is the ONE proposed validation package. It is **not yet execution-ready**:
+new retained-stock admission/orchestration must be connected to the compiled direct
+application path; the old six-hour B/C meter is deliberately unchanged and cannot
+execute this proposal. A final account-specific Workspace quote and Namecheap's
+current applicable processing/transfer response are also unavailable. Do not buy,
+start a trial, create a resource, reset a ledger, or ask for the proposed expenditure
+until those gates have passed. These are engineer/provider prerequisites, not a
+request to repeat seller, OAuth, key or mailbox setup.
+
+One approved inquiry was sent to pesupport@namecheap.com, the provider's documented
+Private Email support destination. One labelled synthetic confirmation was sent
+from noreply to the owner's existing Gmail; owner confirmed external receipt.
+SPF/DKIM/DMARC header results and the support answer remain unverified. No customer
+data, address or real payment was sent. Webmail delivery does NOT establish the
+hosted order-linked confirmation/persistence/uncertain-SMTP gate.
+
+### Proposed decisions, held until the execution prerequisites above pass
 
 1. Approve the named private mirror correction and ONE112h isolated experiment
    below, retaining all cumulative usage, with GBP175 experiment/first Workers-month
@@ -19,10 +43,9 @@ from this document. Existing GBP8/50 limits continue until explicitly replaced.
    it does not move Gmail/MX/email, cancel existing storage or recreate the existing
    OAuth project/client. Owner authentication/contract acceptance is needed only
    for the new approved business account, not repeated old credential setup.
-3. Approve the exact nonsensitive Namecheap support inquiry in
-   [controller review](remaining-controller-review.md), plus ONE of the two labelled
-   confirmation tests to the existing owner Gmail account for external receipt/header
-   verification? No service/DNS change or repeated operational alert is requested.
+3. Inquiry and ONE external synthetic message are already authorised and sent.
+   External receipt is confirmed. Do not request approval again or send another
+   external test under this instruction. Await the provider answer and header facts.
 4. Approve final publication of the purpose-specific privacy wording in that review
    once the named provider facts are verified, retaining high-privacy defaults for
    everyone and the already settled18+ commercial policy? This does not invent legal
@@ -36,7 +59,7 @@ before purge grace, outages, financial records or retained journal objects. The
 80MB cumulative reservation already exhausts its ordinary admission threshold.
 The corrected local overlapping-start test now passes, but does not renew B.
 
-Full capture still holds the application writer fence across over11,000 calls at
+The pre-correction full capture holds the application writer fence across over11,000 calls at
 the90-day minimum. Repeating this capture in a peak-hour benchmark would measure
 a known architectural obstruction, not correct it. D1's supported native export
 also blocks queries; Time Travel does not currently offer a supported clone API.
@@ -56,7 +79,7 @@ Use existing0000–0013 plus the already approved0014 on isolated targets; no ne
 migration. Protect the replay cursor, duplicates, hash gaps, holds and source cut.
 Ephemeral admission counters remain non-financial; do not invent authoritative
 history for them. Test a crash during mirror replay and a snapshot while source
-games continue. Local mirror/replay integration must pass before the hosted clock.
+games continue. Local mirror/replay integration now passes before any hosted clock; deployment and resource creation remain gated.
 
 Normal mirror snapshots must authenticate their complete snapshot/proof and pinned
 head without writing a per-object census of all30 days of unrelated archives.
@@ -64,7 +87,7 @@ Use an explicitly versioned capture contract that defers that census to recovery
 the independent recovery verifier must STILL enumerate every provider page and
 check the latest authority before release. At1.2m objects, daily seen-row insertion
 and deletion alone can exceed the operating budget. This correction is required
-alongside the mirror, not permission to remove recovery checks. It is not installed.
+alongside the mirror, not permission to remove recovery checks. Both are implemented and locally verified; neither is installed.
 
 Proposed production resource after all gates: `wybp-prod-recovery-d1-r001`, private
 ops binding only, no application/public binding or new subscription. Its storage
@@ -96,15 +119,16 @@ a concrete alternative; do not repeatedly renew or increase the harness window.
   are disposable benchmark jobs, never production cron or a replay of unknown work.
 - At most20 synthetic orders, including at most4 fresh application-linked Stripe
   SANDBOX checkouts if necessary for new confirmation proofs. Reuse already passed
-  converted fulfilment/refund/dispute evidence. At most30 signed webhook retries;
+  converted fulfilment/refund/dispute evidence. At most600 signed synthetic webhook deliveries, including30 retries;
   live links remain inactive and live credentials absent from the benchmark.
-- At most2 clearly labelled customer-confirmation test emails to the already
+- At most1 remaining clearly labelled hosted customer-confirmation test email to the already
   approved `noreply@classesforculture.com`. Reuse installed SMTP through a narrow
   private mail-only capability, with no production DB/recovery capability in the
   benchmark. No repeated operational alert. SMTP acceptance and inbox receipt are
   separate evidence. Owner receipt confirmation is requested only after sending.
-  Request permission for ONE of these two emails to go instead to the existing
-  owner Gmail account, for independent external delivery/header verification.
+  The separately approved ONE external webmail test is already sent and receipt
+  confirmed; it is not repeat authority. Actual hosted confirmation must be tested
+  through the application-linked order/confirmation persistence and retry path.
   Same-provider mailbox receipt alone cannot establish external DKIM delivery.
   Operational alerts keep their approved destination; no alert is repeated.
 
@@ -141,10 +165,23 @@ repeat exact operations. Require independent latest-head/chain verification.
 
 ## Hard cumulative limits and duration
 
-ONE112-hour maximum after local gates, credentials, contracts and fresh account
+ONE112-hour MAXIMUM, not a necessary fixed wait, after local gates, credentials, contracts and fresh account
 headroom pass: <=48h setup,24h measured workload,<=24h recovery,<=16h cleanup.
 The recovery stopwatch begins at the simulated incident; setup is not excluded
 from billing. The48h outage is a fixture, not48h of sleeping or service shutdown.
+
+Why these phase maxima: at25 provider requests/sec, uploading and reading back
+1.2m immutable objects alone needs at least26h40m, excluding setup/SQL/proofs and
+retries;48h setup reserves bounded headroom. The measured24h must be a real24h
+application window to establish5k/day and its500-completion hour. Recovery has
+its independent24h stopwatch because that is the owner objective, including
+complete lost-index enumeration/import/latest authority verification. Deleting
+1.2m disposable objects alone needs at least13h20m at that request rate;16h cleanup
+is a separate reserved phase, not an afterthought or an unmetered extension.
+These are request-rate arithmetic lower bounds, not measured provider performance.
+Finish earlier wherever possible. If the exact operation plan cannot fit phase
+budgets with retry/cleanup escrow, do not start. No phase extension or fresh window
+is implied. Exact discovery/import calls, rather than the nominal112h, decide fit.
 
 | Meter | Proposed hard cumulative maximum |
 |---|---:|
@@ -200,8 +237,13 @@ errors, no unresolved operation/accounting divergence and no early recovery acce
 Report service/queue/pacing/driver time separately; proposed interactive criteria:
 p95 answer/result response<=2s, start/completion<=10s, no unbounded queue.
 Snapshotting the mirror must not stop source play; measure source latency during it.
-Mirror replay lag must stay below5min normally, with an independently verified
-snapshot at most24h old. These are acceptance targets, not installed guarantees.
+Report normal replay lag separately from snapshot capture. Normal lag target is
+below5min; capture freezes ONLY the mirror, so that bound cannot be claimed during
+capture. Require capture plus catch-up within2h, while source games continue and
+independent financial/closure/deletion/hold delivery stays synchronous. If this
+fails, return NO-GO rather than weakening recovery. Independently verified snapshot
+age must remain at most24h. The2h capture allowance is a proposed acceptance rule,
+not a change to the24h recovery objective or an installed guarantee.
 
 Recover the tested retained stock within24h, without missing/duplicated accounting,
 reopened closed wallets, lost holds or deleted content reappearing. Latest acknowledged
@@ -227,11 +269,15 @@ business-custody subscription below is the only new recurring service proposed.
 Conservative calculation usesGBP0.90/USD plus20% tax allowance, NOT a current FX
 quote. Existing WorkersUSD5 is already active; do not buy it again. Require fresh
 at least40m included D1 writes,40m included DO SQL writes and500m included DO reads.
-Otherwise recompute and stop before creation if the approved maximum cannot hold.
+Also require the full64,000DO GB-s and3GB-month storage within remaining included DO allocations to avoid rounded overage. Otherwise recompute and stop before creation if the approved maximum cannot hold.
 Worst vectors: USD110 D1 write overage +26 CPU +1.50 Worker requests +0.50 reads
-+about1.50 storage +about12 coordinator +5 existing Workers minimum =aboutUSD156.50,
-orGBP169.02; retain the balance toGBP175 for reconciled uncertainty, including any
-subscription renewal crossed by the window. Do not rely
++USD2 storage +USD12 coordinator +USD5 existing Workers minimum =USD157,
+orGBP169.56; retain the balance toGBP175 for reconciled uncertainty, including previously consumed costs. A furtherUSD5 renewal would useGBP5.40
+of thatGBP5.44 reserve: do not span a renewal or billing allocation reset without
+an exact whole-account recomputation. Unknown prior charges cannot be assumed0.
+DO duration overage is rounded up in million GB-s units: just one excess GB-s
+can costUSD12.50. Requiring full included duration headroom is therefore essential.
+Do not describe the earlier approximate table as a provider-enforced ceiling. Do not rely
 on included CPU/requests to make this bound pass. SQL indexes and cleanup count.
 
 Existing NetlifyUSD9 is aboutGBP9.72 under that conservative conversion. The
@@ -296,3 +342,130 @@ Business-custody references:
 [GBP Flexible pricing](https://knowledge.workspace.google.com/admin/billing/compare-flexible-and-annual-fixed-term-payment-plans),
 [Workspace business storage](https://workspace.google.com/intl/en_gb/business/),
 [Workspace agreement/CDPA](https://workspace.google.com/terms/premier_terms/).
+
+
+## Itemised maximum and ongoing account model — 24 October revision
+
+These dollar maxima are within the proposed shared experiment caps, INCLUDING seed,
+source/mirror/recovery writes, retries, cleanup and carried usage; they are not
+additional allocations. Tax/FX reserve is0.90GBP/USD multiplied by1.20, not a spot
+exchange quote or a claim that a particular invoice has20% tax.
+
+| Validation Cloudflare item | Maximum USD | Maximum GBP at1.08 |
+|---|---:|---:|
+| Existing first Workers month, already activated |5|5.40|
+| D1 writes150m with at least40m included remaining |110|118.80|
+| CPU1.3b ms, conservatively no free CPU assumed |26|28.08|
+| Worker requests5m, conservatively all billable |1.50|1.62|
+| D1/coordinator reads allowance |0.50|0.54|
+| Source AND mirror/recovery storage,112h |2|2.16|
+| Coordinator requests/SQL/rounding reserve, duration included |12|12.96|
+| Cloudflare subtotal |157|169.56|
+| Prior cost/uncertainty/rounding residual to cumulative175 |—|5.44|
+
+Mirror writes/storage are included, not another monthly plan. Stock is never
+cleared by millions of charged DELETEs: only journalled disposable DB IDs may be
+deleted/recreated once as specified. Drive has no per-request fee proposed; its
+objects/bytes/transfer remain metered to avoid quota/resource exhaustion. Existing
+email funds the already authorised two sends; incremental email fee0. No paid
+monitoring, queue, subscription upgrade, Netlify publication or top-up. Cleanup is
+inside all caps and the112h limit; if its escrow no longer fits, ordinary admission
+must stop while cleanup capacity remains. Failed deletes remain charged/pending;
+do not mark them clean from a client timeout or extend time/cost automatically.
+
+Validation-month table: cumulative experiment175 + existing Netlify9.72 + proposed
+business custody8.40 =193.12GBP, leaving6.88 for all other account activity below200.
+No200 approval exists. Provider invoices/headroom and all other-project usage must
+fit that residual, otherwise this proposed request fails before purchase/execution.
+
+The ongoing calculation is executable LOCALLY using `directOperatingEstimate` in
+`scripts/production-capacity.mjs`; it makes no network request or configuration
+change. Model ALL account activity, not just game requests. The comparison assumes
+9m dynamic Worker requests,200m CPU-ms,1b D1 reads,10GB source+mirror storage, Netlify
+USD9, new custodyGBP8.40, GBP3 other-project/monitoring/operations contingency, and
+zero production coordinator usage (it is benchmark-only). The rows are:
+
+| D1 writes/month across account, incl mirror/purge/index | Whole account GBP | Fits50 arithmetically |
+|---:|---:|---|
+|50m|34.25|Yes, not evidence of readiness|
+|70m|55.85|No,5.85 shortfall|
+|105m|93.65|No,43.65 shortfall|
+
+About64.58m D1 writes/month is the50GBP crossing under these OTHER assumptions;
+CPU, stock, other sites and incidents can move it earlier. TheGBP3 line is an
+assumption, not an observation of other-project invoices. Retention, snapshots,
+archive-index rows, source and mirror writes, privacy/holds and outage replay must
+all be measured. Financial history and holds can grow beyond the99-day fixture;
+forecast and alert before either source or mirror approaches its storage bound.
+No50GBP guarantee or automatic scaling/cap exists. Separately funded consumer
+Drive and Namecheap email are excluded as agreed; the NEW business-custody service
+is included. Stripe processing/dispute fees remain separately reported at activation.
+
+### Actual prior usage and remaining authority
+
+Read-only audit of SIX saved budget databases found101 distinct reservation UUIDs,
+including6 unsettled tickets. Deduplicating copied ledgers by UUID, not by repeated
+action names, reproduces the recorded usage:5,163 external,6,619 internal,
+177,396 writes,2,747,826 reads,324,768,009 transferred bytes,128 objects,
+3,141,284 custody bytes and80MB conservative peak D1 reservation. Original SHA
+above is unchanged.15 carryover rows exist; auxiliary provider/pacing receipts and
+invoice allocation still require reconciliation before a new admission ledger.
+Do not refund an unknown ticket because an apparently similar action later passed.
+
+Against PROPOSED larger caps, fresh remaining quantities after this ticket union
+would be4,994,837 external,7,993,381 internal,149,822,604 writes,497,252,174 reads,
+59,675,231,991 transfer bytes,1,599,872 objects and17,996,858,716 custody bytes.
+These are NOT active allowances; other reconciled journals may reduce them. Old B
+ordinary D1 reservation threshold is already exhausted; old deadline is stopped.
+GBP8 remaining cash cannot be certified without actual first-month charges/tax/FX;
+the firstUSD5 subscription is observed, not an exact GBP8 remainder. Publication
+45/60 is consumed,15 left; this proposal requires0 new publication credits.
+
+### Enforceable controls, stop and cancellation
+
+Current old guards remain unchanged. Before a replacement can execute, its new
+meter must prove: persistent reservations before side effects; imported immutable
+old ledgers; exact resource IDs; counted index/SQL and provider I/O; full cleanup
+escrow; a112h immutable deadline; no ordinary admission beyond80% or the remaining
+cleanup budget;25 aggregate starts/sec and16 in flight;100ms CPU per invocation;
+separate queue/application time; crash resumption with uncertain effects blocked.
+Stop persists in shared custody/coordinator storage and removes further job alarms;
+no caller disconnection, process restart or new phase resets it. Read-only receipt
+reconciliation and already reserved cleanup may continue within their original caps.
+Provider request/DB metadata gaps fail closed. Application public access stays off.
+
+Provider billing is metered and account-wide; software cannot cancel an already
+accepted provider operation, roll back its bill, stop unrelated project usage, or
+enforce a combined GBP account cap. There is no hard provider spend ceiling.
+Deletion of disposable rows/objects and DO alarms/storage is verified by actual
+provider absence/empty state, with sanitised evidence retained outside Git. Removing
+bindings alone does not stop DO storage charges. The existing paid Workers plan
+is needed by production and is not silently cancelled; a future decision to cancel
+must first inventory other-project dependencies and end-cycle conditions.
+
+### Backup quote and contracts: exact current status
+
+Verified public GBP tariff: ONE Workspace Business Starter Flexible user,7GBP/month
+before tax; budget8.40 with20%VAT,30GB pooled storage. No annual commitment; flexible
+cancellation has no annual termination penalty, while accrued charges still apply.
+The existing consumer Drive plan and existing client/archives are preserved. A
+business account requires its own applicable Workspace agreement/CDPA and private
+folder ownership; do not assume consumer-owned files gain that agreement merely
+because a business user can access them. No MX/email migration is proposed.
+
+**Final personalised checkout quote: NOT OBTAINED.** No new account, trial,
+subscription, agreement or ownership DNS record was created/accepted to obtain it.
+Before a purchase request, obtain a non-binding one-user UK GBP quote showing tax,
+billing start, renewal/cancellation,30GB entitlement and current CDPA/UK transfer
+terms. If the provider requires account enrolment/terms before displaying it, that
+specific owner authentication/contract step is necessary; do not manufacture a
+final quote from the public tariff. One ownership TXT, if actually required, needs
+explicit authority and exact zone diff; preserve all email DNS. Free Essentials
+Starter has15GB rather than30GB: it has not been demonstrated to fit the proposed
+18GB hard custody envelope with safe recovery margin. This does NOT prove a paid
+account is the only possible solution or authorise its purchase.
+
+[Full proposed privacy notice and unresolved provider facts](final-privacy-review.md)
+form part of this package. Namecheap inquiry answer and account-specific business
+custody facts must be incorporated before it can be called final/verified or
+submitted for publication approval. No legal approval is inferred.
