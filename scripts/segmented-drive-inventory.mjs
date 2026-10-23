@@ -65,9 +65,14 @@ export async function readPinnedInventoryFile(custodies,key,pointer,at=Date.now(
  return decryptRecord(bytes,key,pointer.name);
 }
 
-export async function recoverPinnedInventory({db,custodies,key,pointer,resource,job,maxFiles=25,now=Date.now(),fault=()=>{}}){
- assertBenchmarkResource('database',resource);
- if(!/^synthetic_[a-zA-Z0-9_-]{1,70}$/.test(job)||!Number.isInteger(maxFiles)||maxFiles<1||maxFiles>25||!Array.isArray(custodies)||new Set(custodies.map(c=>c.folderId)).size!==custodies.length)fail();
+export async function recoverPinnedInventory(options){
+ assertBenchmarkResource('database',options?.resource);if(!/^synthetic_[a-zA-Z0-9_-]{1,70}$/.test(options.job||''))fail();return recoverInventory(options);
+}
+export async function recoverProductionPinnedInventory(options){
+ if(options?.role!=='production-ops'||options.databaseName!=='wybp-prod-d1-r001'||options.databaseId!=='a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'||!/^recovery_[a-zA-Z0-9_-]{1,60}$/.test(options.job||''))fail();return recoverInventory(options);
+}
+async function recoverInventory({db,custodies,key,pointer,job,maxFiles=25,now=Date.now(),fault=()=>{}}){
+ if(!Number.isInteger(maxFiles)||maxFiles<1||maxFiles>25||!Array.isArray(custodies)||new Set(custodies.map(c=>c.folderId)).size!==custodies.length)fail();
  const root=await readPinnedInventoryFile(custodies,key,pointer,now);
  if(root.version!==1||root.expiresAt<=now||!Number.isSafeInteger(root.count)||root.count<0||root.count>1600000||!Array.isArray(root.segments)||root.segments.length!==Math.ceil(root.count/100))fail();
  let checkpoint=(await db.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[job]))[0];

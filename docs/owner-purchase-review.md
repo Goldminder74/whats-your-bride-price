@@ -1,5 +1,47 @@
 # Owner review: purchases, refunds and seller details
 
+## Superseding decisions — 23 October 2026
+
+Owner approves the18+ free/paid audience and voluntary14-day full refunds including
+used Cowries/opened Royal Reveal, no debt or unrelated value removal, original
+payment method and preserved statutory rights. Both immediate-delivery requests
+are separate/unchecked and waive no cancellation rights. Implemented terms/notice
+versions are dated2026-10-23; historical contracts remain unchanged. Do not ask for
+this approval again. Overall privacy/audience applicability assessment still matters.
+
+Owner reports no foreign registrations and authorises UK-only sales if those
+markets remain blockers; UK-only now supersedes the earlier requested territories.
+Owner is not VAT registered and has no known UTR. Stripe Active/no outstanding
+tasks was observed; do not invent a tax number or mandatory onboarding failure.
+Private HMRC applicability checks and future VAT monitoring are separate from that
+Stripe observation. No financial amounts or identifiers should be requested in chat.
+
+Seller identity, support/privacy/complaints and saveable-plus-email confirmation
+choices remain settled. The actual public seller address is still a secure input.
+Cloudflare has ONE Secret Value box: its8 fields are JSON, not8 separate controls:
+
+```json
+{
+  "version": 1,
+  "legalName": "Ayodele Ayeni",
+  "tradingName": "Classes for Culture",
+  "geographicalAddress": "REPLACE_WITH_YOUR_PUBLIC_BUSINESS_ADDRESS",
+  "complaintsAddress": null,
+  "telephone": null,
+  "supportEmail": "team@classesforculture.com",
+  "privacyEmail": "team@classesforculture.com"
+}
+```
+
+Replace the address with the intended public geographical address including postcode
+and country, directly in wybp-prod-app-r001 → Settings → Variables and Secrets →
+Secret WYBP_PUBLIC_SELLER_DETAILS_JSON. Use a quoted public telephone if available;
+complaintsAddress null means the same address. Save/Deploy without changing flags.
+Do not send completed JSON/address in chat or commit it. Placeholder values reject;
+no real address is assumed installed merely because this example exists.
+
+Older proposal sections below are history, not renewed questions or approved waivers.
+
 15 October 2026. DRAFT — no public terms, Stripe setting or website changed.
 Owner approval is a product/business decision, not professional legal sign-off.
 Previously approved retention rules and completed Stripe setup are not being reopened.

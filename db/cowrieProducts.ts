@@ -9,4 +9,4 @@ export const cowrieProductKeys = Object.freeze(Object.keys(cowrieProducts) as Co
 export function isCowrieProduct(value: unknown): value is CowrieProductKey {
   return typeof value === "string" && Object.hasOwn(cowrieProducts, value);
 }
-export const COWRIE_DELIVERY_NOTICE_VERSION = "cowrie-immediate-delivery-draft-v1";
+export const COWRIE_DELIVERY_NOTICE_VERSION = "cowrie-immediate-delivery-2026-10-23";

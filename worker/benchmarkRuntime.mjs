@@ -124,8 +124,10 @@ export function benchmarkRuntime(env,upper,{now=Date.now,pause,request}={}){
    else if(command?.kind==='inventory')result=await inventory();
    else if(command?.kind==='capture')result=await captureStep(command.captureId||command.id,command.previous||null);
    else if(command?.kind==='capture-bounded'){
-    const writer=new D1WriterFence(db,{now});await writer.ready();const head=await new D1Authority(db,custody,config.key,{now}).freeze(command.captureId||command.id);
-    const captured=await boundedSnapshotStep(db,custody,config.key,head,command.progress||null,{now});await writer.ready();result={...captured,pointer:captured.snapshot};
+    const writer=new D1WriterFence(db,{now}),id=command.captureId||command.id,progress=command.progress||null;
+    const captured=await writer.run('snapshot:'+id+':'+recoveryHash(Buffer.from(progress||'')),JSON.stringify([id,progress]),async fenced=>{
+     const head=await new D1Authority(fenced,custody,config.key,{now}).freeze(id);return boundedSnapshotStep(fenced,custody,config.key,head,progress,{now});
+    });result={...captured,pointer:captured.snapshot};
    }
    else if(command?.kind==='inspect-fence'){
     const head=await new D1Authority(db,custody,config.key,{now}).head();if(head?.state!=='exporting'||head.expires_at<=now())fail();

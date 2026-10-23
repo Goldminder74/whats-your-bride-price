@@ -2,12 +2,35 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {randomBytes} from 'node:crypto';
-import {prepareStreamedRestore,importStreamedRestore,verifyStreamedRestore,auditStreamedSourceStep,clearAuditedSyntheticTarget} from '../../scripts/streamed-d1-restore.mjs';
+import {prepareStreamedRestore,importStreamedRestore,verifyStreamedRestore,auditStreamedSourceStep,clearAuditedSyntheticTarget,importProductionRestore,verifyProductionRestoreStep} from '../../scripts/streamed-d1-restore.mjs';
 import {populatedRecoveryFixture} from '../helpers/populatedRecovery.mjs';
 import {loadMigrationPlan,applyMigrationPlan} from '../../scripts/data-migrations.mjs';
 import {recoveryHash} from '../../scripts/recovery-crypto.mjs';
 const resource={name:'wybp-capacity-d1-r002',id:'11111111-1111-4111-8111-111111111111',account:'b6b22a9a87b5758725e5c499782160af'};
 function adapter(database){return {query:async(s,p=[])=>database.prepare(s).all(...p),batch:async statements=>{database.exec('PRAGMA foreign_keys=ON; BEGIN IMMEDIATE');try{const results=statements.map(s=>database.prepare(s.sql).all(...(s.params||[])));database.exec('COMMIT');return results;}catch(e){database.exec('ROLLBACK');throw e;}}};}
+
+test('private production import pins provenance and original expiry, resumes without duplicates and cannot grant access',async()=>{
+ const c=await populatedRecoveryFixture(),target=new DatabaseSync(':memory:'),key=randomBytes(32),files=new Map(),at=Date.now();
+ const custody={get:async n=>files.get(n)||null,put:async(n,b)=>{if(files.has(n))assert.deepEqual(files.get(n),b);files.set(n,b);return recoveryHash(b);}};
+ const provenance={boundarySha256:'a'.repeat(64),snapshotSha256:'b'.repeat(64),createdAt:at-86400000,expiresAt:at+29*86400000};
+ const options={role:'production-ops',databaseName:'wybp-prod-d1-r001',databaseId:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9',boundarySha256:provenance.boundarySha256,snapshotSha256:provenance.snapshotSha256,job:'recovery_synthetic_only',maxPages:1,now:at};
+ try{
+  applyMigrationPlan(target,await loadMigrationPlan());const db=adapter(target);
+  const plan=await prepareStreamedRestore(c.database,custody,key,'synthetic_production_plan',{packPages:true,now:at,provenance});
+  await assert.rejects(prepareStreamedRestore(c.database,custody,key,'synthetic_production_plan',{packPages:true,now:at,provenance:{...provenance,boundarySha256:'c'.repeat(64)}}));
+  for(const altered of [{role:'production-app'},{databaseName:'wybp-capacity-d1-r002'},{databaseId:resource.id},{boundarySha256:'c'.repeat(64)}])await assert.rejects(importProductionRestore(db,custody,key,plan,{...options,...altered}));
+  await assert.rejects(importStreamedRestore(db,custody,key,plan,{resource:{...resource,name:'wybp-prod-d1-r001'},job:'synthetic_illegal'}),/resource_scope/);
+  let crash=true;await assert.rejects(importProductionRestore(db,custody,key,plan,{...options,fault:()=>{if(crash){crash=false;throw Error('lost_page_reply');}}}),/lost_page_reply/);
+  let imported,calls=0;do{imported=await importProductionRestore(db,custody,key,plan,options);assert.ok(++calls<100);}while(!imported.imported);
+  let result;do{result=await verifyProductionRestoreStep(db,custody,key,plan,options);assert.equal(result.runtimeAccess,result.verified?'blocked_pending_authority_suppression_receipt':'blocked_pending_verification');assert.ok(++calls<200);}while(!result.verified);
+  assert.deepEqual(target.prepare('PRAGMA foreign_key_check').all(),[]);
+  for(const table of ['cowrie_ledger','cowrie_wallets','commerce_orders','retention_holds','retention_closures'])assert.deepEqual(target.prepare('SELECT * FROM '+table+' ORDER BY 1').all(),c.database.prepare('SELECT * FROM '+table+' ORDER BY 1').all());
+  assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);
+  assert.equal(target.prepare('SELECT expires_at FROM operational_recovery_checkpoints WHERE id=?').get(options.job).expires_at,provenance.expiresAt);
+  await assert.rejects(importProductionRestore(db,custody,key,plan,{...options,job:'recovery_populated_must_reject'}));
+  await assert.rejects(verifyProductionRestoreStep(db,custody,key,plan,{...options,now:provenance.expiresAt}));
+ }finally{c.database.close();target.close();}
+});
 
 test('nullable primary keys fail explicitly rather than silently skipping rows on keyset resume',async()=>{
  const source=new DatabaseSync(':memory:'),files=new Map();

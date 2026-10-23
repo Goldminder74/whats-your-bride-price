@@ -4,6 +4,7 @@ import { configuredAuthorityService, d1AuthorityAdapter, authorityDeliveryTick, 
 import { operationalMaintenance, operationalHeartbeat } from './operationalMaintenance.mjs';
 import { authoritySnapshot, assertEmptyOperationalSource } from './authoritySnapshot.mjs';
 import {boundedSnapshotStep} from './boundedSnapshot.mjs';
+import {verifyAuthorityBoundaryStep} from './boundedAuthority.mjs';
 import {D1WriterFence} from './d1WriterFence.mjs';
 import { authorityMail } from './authorityMail.mjs';
 import { readBoundary } from '../scripts/authority-runtime.mjs';
@@ -18,6 +19,8 @@ import {confirmationDraft,PurchaseConfirmations} from '../db/purchaseConfirmatio
 import {createJournaledDatabase} from './authorityDatabase.mjs';
 import {purchaseConfirmationMail} from './purchaseConfirmationMail.mjs';
 import { hostedSyntheticRecovery } from './hostedSyntheticRecovery.mjs';
+import {importProductionRestore,verifyProductionRestoreStep} from '../scripts/streamed-d1-restore.mjs';
+import {recoverProductionPinnedInventory} from '../scripts/segmented-drive-inventory.mjs';
 
 function runtime(env) {
   const alert = authorityMail(env, connect);
@@ -43,6 +46,10 @@ export class ApplicationAuthority extends WorkerEntrypoint {
     try {const service=runtime(this.env).service,db=createJournaledDatabase(this.env.DB,service);await service.ready();return new PurchaseConfirmations(db,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64')).owned(orderId,ownerHash);}
     catch {throw Error('purchase_confirmation_unavailable');}
   }
+  async recordPurchasePayment(orderId,ownerHash,proof) {
+    try {const service=runtime(this.env).service,db=createJournaledDatabase(this.env.DB,service);await service.ready();return new PurchaseConfirmations(db,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64')).recordPayment(orderId,ownerHash,proof,Date.now());}
+    catch {throw Error('purchase_confirmation_unavailable');}
+  }
   async cancelPurchaseConfirmation(orderId) {
     try {const service=runtime(this.env).service,db=createJournaledDatabase(this.env.DB,service);await service.ready();return new PurchaseConfirmations(db,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64')).cancelForOrder(orderId,Date.now());}
     catch {throw Error('purchase_confirmation_unavailable');}
@@ -65,13 +72,40 @@ export class ApplicationAuthority extends WorkerEntrypoint {
 }
 
 export class RecoveryOperator extends ApplicationAuthority {
+  async advanceSnapshot(boundaryId){
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
+    try{return await runtime(this.env).service.advanceSnapshot(boundaryId);}catch{throw Error('operational_snapshot_progress_unavailable');}
+  }
+  async recoverInventoryStep(pointer,job) {
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001')throw Error('operational_restore_disabled');
+    try {const configured=runtime(this.env);return await recoverProductionPinnedInventory({db:d1AuthorityAdapter(this.env.DB),custodies:configured.custody.all||[configured.custody],key:Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),pointer,job,maxFiles:10,role:'production-ops',databaseName:'wybp-prod-d1-r001',databaseId:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'});}
+    catch{throw Error('operational_inventory_recovery_unavailable');}
+  }
+  async importRestoreStep(action,pointer,input) {
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001')throw Error('operational_restore_disabled');
+    try {
+      const configured=runtime(this.env),options={job:input?.job,boundarySha256:input?.boundarySha256,snapshotSha256:input?.snapshotSha256,role:'production-ops',databaseName:'wybp-prod-d1-r001',databaseId:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9',now:Date.now(),maxPages:5};
+      const step=action==='import'?importProductionRestore:action==='verify'?verifyProductionRestoreStep:null;if(!step)throw Error('action');
+      return await step(d1AuthorityAdapter(this.env.DB),configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),pointer,options);
+    }catch{throw Error('operational_restore_step_unavailable');}
+  }
+  async verifyBoundaryStep(pointer,progress=null) {
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
+    try {const configured=runtime(this.env);return await verifyAuthorityBoundaryStep(d1AuthorityAdapter(this.env.DB),configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),pointer,progress);}
+    catch {throw Error('operational_boundary_verification_unavailable');}
+  }
+  async deliverStep(boundaryId,progress=null) {
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
+    try {return await runtime(this.env).service.deliverStep(boundaryId,progress);}catch{throw Error('operational_delivery_step_unavailable');}
+  }
   async snapshotStep(boundaryId,progress=null) {
     if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
     try {
       const configured=runtime(this.env),db=d1AuthorityAdapter(this.env.DB),writer=new D1WriterFence(db);
-      await writer.ready();const head=await new D1Authority(db,configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64')).freeze(boundaryId);
-      const result=await boundedSnapshotStep(db,configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),head,progress);
-      await writer.ready();return result;
+      return await writer.run('snapshot:'+boundaryId+':'+recoveryHash(Buffer.from(progress||'')),JSON.stringify([boundaryId,progress]),async fenced=>{
+        const head=await new D1Authority(fenced,configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64')).freeze(boundaryId);
+        return boundedSnapshotStep(fenced,configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),head,progress);
+      });
     }catch{throw Error('operational_snapshot_step_unavailable');}
   }
   async snapshot(boundaryId) {

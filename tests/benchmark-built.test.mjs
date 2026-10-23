@@ -30,7 +30,8 @@ test('compiled isolated harness enforces private ingress and meters actual D1/au
   const id=url.pathname.split('/').at(-1);
   if(id.startsWith('synthetic_child_'))return Response.json({id,mimeType:'application/vnd.google-apps.folder',parents:[bindings.WYBP_DRIVE_FOLDER_ID],trashed:false});
   const file=files.get(id);if(!file)return new Response(null,{status:404});
-  return url.searchParams.has('alt')?new Response(file.bytes):Response.json({id,name:file.name,parents:file.parents,trashed:false});
+  if(request.method==='PATCH'){const change=await request.json();assert.deepEqual(Object.keys(change),['appProperties']);file.appProperties={...file.appProperties,...change.appProperties};return Response.json({id});}
+  return url.searchParams.has('alt')?new Response(file.bytes):Response.json({id,name:file.name,parents:file.parents,trashed:false,appProperties:file.appProperties});
  };
  const mf=new Miniflare({workers:[
   {name:config.name,modules:true,scriptPath:resolve('outputs/netlify-worker/benchmark-package/worker/benchmarkEntrypoint.js'),compatibilityDate:config.compatibility_date,compatibilityFlags:config.compatibility_flags,bindings,d1Databases:{DB:'synthetic-benchmark-d1'},outboundService:provider,assets:{directory:resolve('outputs/netlify-worker/benchmark-package/assets'),binding:'ASSETS',routerConfig:{has_user_worker:true,invoke_user_worker_ahead_of_assets:true}},serviceBindings:{BENCHMARK_AUTHORITY:{name:config.name,entrypoint:'BenchmarkAuthority'},BENCHMARK_PLAYER:{name:config.name,entrypoint:'BenchmarkPlayer'}}},

@@ -1,5 +1,90 @@
 # Current handoff
 
+### Verified follow-up: 23 October
+
+Protected GB-only direct release is `d4e3b278-7b2d-43de-90f2-b95a39005ebb`,
+package `51d2c18734ec3486081ee1f14bdea6cf35826e9ce46748cb3e9d88dcfa24f4d1`.
+Post-deploy checks: anonymous root/assets401, authenticated root200, disabled webhook404;
+existing private game401. No public activation, hosted migration, ops deployment or
+schedule change. Secret-name-only inventory confirms private access installed and
+seller details NOT yet installed; no values read. The eight-field JSON instructions
+remain in owner-purchase-review.md. Do not ask settled policy/territory questions.
+
+Final local lint/typecheck PASS;321 unit and402 data tests PASS. Latest compiled
+operations16/16 PASS after adding durable snapshot progress. First operational run
+hit sandbox localhost EACCES; identical tests passed with normal loopback access.
+No assertion, timeout or security rule changed. Evidence logs:
+`outputs/authority-preparation/20261023-integrated-unit.log`,
+`20261023-integrated-data.log`, `20261023-durable-operations-final-access.log`,
+`20261023-final-lint.log`, `20261023-final-typecheck.log` and
+`20261023-direct-postdeploy-verification.json` (all ignored).
+
+Owner says Netlify signed in, but a fresh connected tab still returns Unauthorized
+for the pinned deployment, then Netlify login and GitHub sign-in. No credentials
+entered or new permissions requested. Connected Netlify login tab left for handoff;
+usual-browser login is not observed in this session. Supported site/function backup
+remains blocked by this specific authentication, not a reason to retry deployment.
+
+Public DNS read-only capture observes root NS/A/MX/TXT. AAAA, www CNAME, DMARC, CAA
+and DS were NOT observed; this is not authoritative proof of absence, and DKIM
+selectors/registrar configuration remain unverified. No DNS/email settings changed.
+Ignored inventory `outputs/authority-preparation/20261023-public-dns-inventory.json`
+SHA256 `849da8f240d1290ad013973b307e8358a0b7c3305b4a0339b4608edb1a06b198`.
+Full rollback still requires provider artifact/email-function backup and registrar
+record inventory. One renewed benchmark-window approval remains pending; all prior
+charges/deadlines remain unchanged and no resource was recreated for it.
+
+## Latest: 23 October — protected direct preparation; owner policy settled
+
+Read [protected preparation checkpoint](launch-preparation-checkpoint.md) first.
+It supersedes the21October owner-input/implementation descriptions below. Owner
+delegates ordinary technical preparation; keep that work with the engineer.
+UK-only paid sales replace the unassessed foreign markets. Owner approves the18+
+audience and14-day voluntary full refunds even for used Cowries/opened Royal Reveal,
+without a cancellation waiver. Owner not VAT registered/no known UTR; do not invent
+a Stripe identifier or failed onboarding. Seller/support/confirmation choices settled.
+Only actual public address is pending secure installation; exact8-field JSON example
+was provided. Placeholder addresses now reject. Overall privacy/legal/capacity gates
+remain; this commercial approval is not a fabricated professional assessment.
+
+New protected wybp-prod-app-r001 deployed with private HTML/assets, only
+ApplicationAuthority binding, all capabilities/public access/webhook/schedules OFF.
+Anonymous401/authenticated200/webhook404 observed; existing private game401 and
+all existing sites/data/OFF settings unchanged. Final GB-only release/version and
+verification are appended below. No hosted migration or production-ops update.
+
+Locally implemented bounded authority boundaries and independent verification above
+10k events; durable encrypted progress across instance/lost-write failure; proof-bound,
+original-clock production import and complete lost-index reconstruction. Accounting,
+holds, closure/deletion suppression and duplicates are tested. These paths remain
+private/OFF and NEVER install an access receipt. Final latest-authority release and
+hosted full-stock/RTO remain engineering gates; do not treat import as readiness.
+Mutation ACK now requires independent commit proof; Drive's authenticated metadata
+marker avoids duplicate objects, with legacy.event support and no cross-provider
+atomicity claim. Compiled sample now4 objects rather than8; full metric/evidence
+details and unchanged benchmark caps are in the checkpoint. No expired run restarted.
+
+Confirmation code now records encrypted verified original-GBP AND presentment total,
+with immutable proof/retry checks. Approved undeployed0014 alone extended; checksum
+5f094129b5c2df1ae28ec3c72947e57089848597d0fc1126c150aa2aca26e920.
+0000–0013 unchanged. Complete integration gate exited0 before the later owner policy;
+affected policy/recovery/payment/compiled checks pass as listed in the checkpoint.
+
+Stripe correct live account observed Active/no tasks; approved support email saved.
+Four live product/Payment Links copied WITHOUT billing settings and all verified
+Deactivated at exact prices. No link published/integrated/real charge. Return URLs
+still require engineer correction from private-test to production before activation;
+deactivated UI has no Edit. No activation workaround. No live webhook configured.
+Read-only existing website inventory pins ready deploy6844a06d30342e00087fbdf3 and
+emails digestdab19ca75101cf149d8eb77f5a77bda6499056a8e562c77296f6c2ddbdd90b89.
+Connected Netlify deploy-download UI Unauthorized; requested sign-in only. Actual
+function bundle backup remains unverified, not another failed publish attempt.
+
+Outstanding requests: secure seller details; ONE renewed6h benchmark session with
+all cumulative allowances/unknowns/GBP8/50 unchanged; unavoidable connected Netlify
+sign-in for supported backup/billing views. No repeated Google/key/alert setup,
+tax-ID disclosure, policy/territory question, upgrade or manual engineering handoff.
+
 ## Latest: 21 October — bounded local repair; single launch decision
 
 See [launch completion plan](launch-completion-plan.md) for the remaining gates,

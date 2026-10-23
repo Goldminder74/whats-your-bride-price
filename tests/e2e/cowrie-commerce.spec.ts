@@ -36,7 +36,7 @@ test("unavailable bank hides offers, 320/Android/iPhone/zoom/focus/reduced-motio
 });
 
 test('production-style confirmation fields are accessible, required and kept out of browser storage',async({page})=>{
- const email='synthetic@example.invalid';await fixtures(page,{required:true,termsVersion:'classes-for-culture-purchases-v1',terms:'Synthetic purchase terms. Your statutory rights remain.',countries:['GB','US'],seller:{legalName:'Ayodele Ayeni',tradingName:'Classes for Culture',geographicalAddress:'Synthetic address only'}});
+ const email='synthetic@example.invalid';await fixtures(page,{required:true,termsVersion:'classes-for-culture-purchases-v1',terms:'Synthetic purchase terms. Your statutory rights remain.',countries:['GB'],seller:{legalName:'Ayodele Ayeni',tradingName:'Classes for Culture',geographicalAddress:'Synthetic address only'}});
  await page.goto('/');await page.getByRole('button',{name:/Cowries 5/}).click();await page.getByRole('radio',{name:'5 Cowries, £1.99'}).check();await page.getByRole('checkbox',{name:/I request immediate access to the purchased Cowries/}).check();
  const buy=page.getByRole('button',{name:'Continue to Stripe · £1.99'});await expect(buy).toBeDisabled();await page.getByLabel('Email for your confirmation').fill(email);await page.getByLabel('Country of residence').selectOption('GB');await expect(buy).toBeDisabled();await page.getByRole('checkbox',{name:'I am 18 or over and agree to these purchase terms.'}).check();await expect(buy).toBeEnabled();
  await page.setViewportSize({width:320,height:720});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth)).toBe(true);await capture(page,'confirmation-fields-320');

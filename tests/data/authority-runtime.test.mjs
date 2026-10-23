@@ -20,6 +20,41 @@ async function fixture() {
   return {sql,options,files,alerts,at};
 }
 
+test('mutation acknowledgement waits for independent commit proof across every crash and readback boundary',async()=>{
+ for(const stage of ['intent_durable','d1_committed','commit_uploaded','commit_verified','missing_copy']){
+  const f=await fixture();try{
+   const {D1WriterFence}=await import('../../worker/d1WriterFence.mjs');const fence=new D1WriterFence(f.options.db,{now:()=>f.at});
+   const op=createOperationId(f.at),statements=[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['committed_once']}];let crash=true,uploaded=false;
+   const originalGet=f.options.custody.get,originalPut=f.options.custody.put;
+   f.options.custody.put=async(...args)=>{const result=await originalPut(...args);if(args[0].endsWith('.event'))uploaded=true;return result;};
+   f.options.custody.get=async name=>crash&&stage==='missing_copy'&&uploaded&&name.endsWith('.event')?null:originalGet(name);
+   const run=()=>fence.run(op,JSON.stringify(statements),db=>new D1Authority(db,f.options.custody,f.options.key,{now:()=>f.at,fault:s=>{if(crash&&s===stage)throw Error('synthetic_crash');}}).mutate(op,statements),{journalIdle:true});
+   await assert.rejects(run(),/synthetic_crash|authority_commit_readback/);await assert.rejects(fence.ready(),/unavailable/);
+   assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,stage==='intent_durable'?0:1);
+   crash=false;const receipt=await run();await fence.ready();assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,1);
+   assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM operational_authority_outbox').get().n,1);
+   assert.equal(recoveryHash(f.files.get(op+'.event')),receipt);assert.deepEqual(f.files.get(op+'.event'),f.files.get(op+'.intent'));
+   assert.equal(await run(),receipt);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,1);
+  }finally{f.sql.close();}
+ }
+});
+test('authenticated metadata commits reuse immutable intents and preserve fail-closed retry and legacy boundary verification',async()=>{
+ for(const stage of ['commit_uploaded','commit_verified','bad_marker','missing_marker']){
+  const f=await fixture(),markers=new Map();let crash=true;try{
+   f.options.custody.markCommitted=async(name,proof)=>{if(markers.has(name))assert.equal(markers.get(name),proof);markers.set(name,proof);};
+   f.options.custody.readCommit=async name=>crash&&stage==='bad_marker'?'f'.repeat(64):crash&&stage==='missing_marker'?null:markers.get(name)||null;
+   const op=createOperationId(f.at),statements=[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['metadata_committed']}];
+   const authority=new D1Authority(f.options.db,f.options.custody,f.options.key,{now:()=>f.at,fault:s=>{if(crash&&stage===s)throw Error('synthetic_crash');}});
+   await assert.rejects(authority.mutate(op,statements),/synthetic_crash|authority_commit_readback/);crash=false;
+   const hash=await authority.mutate(op,statements);assert.equal(hash,recoveryHash(f.files.get(op+'.intent')));assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,1);
+   assert.equal([...f.files.keys()].filter(n=>n.endsWith('.event')).length,0);assert.match(markers.get(op+'.intent'),/^[a-f0-9]{64}$/);
+   const service=createAuthorityService(f.options),receipt=await service.deliver('metadata_boundary');f.files.delete(op+'.event');
+   assert.equal((await readBoundary(f.options.custody,f.options.key,'metadata_boundary',receipt,f.at)).sequence,1);
+   markers.set(op+'.intent','e'.repeat(64));await assert.rejects(readBoundary(f.options.custody,f.options.key,'metadata_boundary',receipt,f.at),/undelivered_authority/);
+  }finally{f.sql.close();}
+ }
+});
+
 test('bounded chunks resume after each crash boundary without repeating financial mutations',async()=>{
  for(const stage of ['chunk_uploaded','chunk_verified','chunk_checkpointed']){
   const f=await fixture();try{
@@ -36,7 +71,8 @@ test('bounded chunks resume after each crash boundary without repeating financia
    assert.equal([...f.files.keys()].filter(n=>n.startsWith('journal-chunk_')).length,2);
    const receipt=await service.deliver('chunk_snapshot');
    assert.equal((await readBoundary(f.options.custody,f.options.key,'chunk_snapshot',receipt,f.at)).sequence,3);
-   assert.equal([...f.files.keys()].filter(n=>n.endsWith('.event')).length,0);
+   const commits=[...f.files.keys()].filter(n=>n.endsWith('.event'));assert.equal(commits.length,3);
+   for(const name of commits)assert.deepEqual(f.files.get(name),f.files.get(name.replace('.event','.intent')));
    const chunk=[...f.files.keys()].find(n=>n.startsWith('journal-chunk_')),saved=f.files.get(chunk);f.files.delete(chunk);
    await assert.rejects(readBoundary(f.options.custody,f.options.key,'chunk_snapshot',receipt,f.at),/chunk_readback/);
    f.files.set(chunk,saved);

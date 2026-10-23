@@ -64,14 +64,16 @@ async function put(custody,key,name,body){
  if(prior&&JSON.stringify(decryptRecord(prior,key,name))!==JSON.stringify(body))fail();
  const sha256=await custody.put(name,bytes);if(recoveryHash(await custody.get(name))!==sha256)fail();return {name,sha256};
 }
-export async function prepareStreamedRestore(source,custody,key,id,{pageSize=25,packPages=false,now=Date.now()}={}){
+export async function prepareStreamedRestore(source,custody,key,id,{pageSize=25,packPages=false,now=Date.now(),provenance=null}={}){
  if(typeof packPages!=='boolean')fail();
+ if(provenance!==null&&(!/^[a-f0-9]{64}$/.test(provenance.boundarySha256||'')||!/^[a-f0-9]{64}$/.test(provenance.snapshotSha256||'')||!Number.isSafeInteger(provenance.createdAt)||provenance.createdAt>now||provenance.expiresAt<=now||provenance.expiresAt-provenance.createdAt!==windowMs))fail();
  if(!/^[a-zA-Z0-9_-]{1,70}$/.test(id)||!Number.isInteger(pageSize)||pageSize<1||pageSize>50)fail();
  const description=describe(source),segments=[];let files=[],count=0;
  const schemaHash=hash(description.schema);
  const startName=id+'.restore.start.enc',old=await custody.get(startName);
- const start=old?decryptRecord(old,key,startName):{schemaHash,tablesHash:hash(description.tables),pageSize,packPages,createdAt:now,expiresAt:now+windowMs};
+ const start=old?decryptRecord(old,key,startName):{schemaHash,tablesHash:hash(description.tables),pageSize,packPages,...(provenance?{provenance}:{}),createdAt:provenance?.createdAt??now,expiresAt:provenance?.expiresAt??now+windowMs};
  if(start.schemaHash!==schemaHash||start.tablesHash!==hash(description.tables)||start.pageSize!==pageSize||(start.packPages===true)!==packPages||start.expiresAt<=now)fail();
+ if(hash(start.provenance??null)!==hash(provenance))fail();
  if(!old)await put(custody,key,startName,start);
  // Verification hashes are packed into bounded encrypted blocks, rather than
  // one Drive object per100 rows or a full in-memory target comparison.
@@ -92,11 +94,23 @@ export async function prepareStreamedRestore(source,custody,key,id,{pageSize=25,
   if(files.length===25){segments.push(await put(custody,key,id+'.restore.segment'+segments.length+'.enc',packPages?{pages:files}:{files}));files=[];}
  }
  if(files.length)segments.push(await put(custody,key,id+'.restore.segment'+segments.length+'.enc',packPages?{pages:files}:{files}));
- return put(custody,key,id+'.restore.manifest.enc',{version:packPages?2:1,id,pageSize,pages:count,segments,...description,schemaHash,createdAt:start.createdAt,expiresAt:start.expiresAt});
+ return put(custody,key,id+'.restore.manifest.enc',{version:packPages?2:1,id,pageSize,pages:count,segments,...description,schemaHash,...(provenance?{provenance}:{}),createdAt:start.createdAt,expiresAt:start.expiresAt});
 }
 export async function importStreamedRestore(target,custody,key,pointer,{resource,job,maxPages=10,now=Date.now(),fault=()=>{}}){
  assertBenchmarkResource('database',resource);
- if(!/^synthetic_[a-zA-Z0-9_-]{1,70}$/.test(job)||!Number.isInteger(maxPages)||maxPages<1||maxPages>25)fail();
+ if(!/^synthetic_[a-zA-Z0-9_-]{1,70}$/.test(job))fail();
+ return importRestore(target,custody,key,pointer,{job,maxPages,now,fault});
+}
+/** Private production recovery only, into an empty matching-schema target.
+ * This never deletes populated data, installs a receipt, migrates or grants access. */
+export async function importProductionRestore(target,custody,key,pointer,{role,databaseName,databaseId,boundarySha256,snapshotSha256,job,maxPages=10,now=Date.now(),fault=()=>{}}={}){
+ if(role!=='production-ops'||databaseName!=='wybp-prod-d1-r001'||databaseId!=='a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'||!/^recovery_[a-zA-Z0-9_-]{1,60}$/.test(job||'')||!/^[a-f0-9]{64}$/.test(boundarySha256||'')||!/^[a-f0-9]{64}$/.test(snapshotSha256||''))fail();
+ const manifest=await read(custody,key,pointer),p=manifest.provenance;
+ if(!p||p.boundarySha256!==boundarySha256||p.snapshotSha256!==snapshotSha256||p.createdAt!==manifest.createdAt||p.expiresAt!==manifest.expiresAt)fail();
+ return importRestore(target,custody,key,pointer,{job,maxPages,now,fault});
+}
+async function importRestore(target,custody,key,pointer,{job,maxPages,now,fault}){
+ if(!Number.isInteger(maxPages)||maxPages<1||maxPages>25)fail();
  const manifest=await read(custody,key,pointer);
  if(![1,2].includes(manifest.version)||manifest.expiresAt<=now||manifest.expiresAt-manifest.createdAt!==windowMs||manifest.segments.length>10000||manifest.pages>250000)fail();
  let checkpoint=(await target.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[job]))[0];
@@ -122,7 +136,18 @@ export async function importStreamedRestore(target,custody,key,pointer,{resource
  return {imported:cursor===manifest.pages,cursor,pages:manifest.pages,runtimeAccess:'blocked_pending_verification'};
 }
 export async function verifyStreamedRestoreStep(target,custody,key,pointer,{job,maxPages=5,now=Date.now()}={}){
- if(!/^synthetic_[a-zA-Z0-9_-]{1,70}$/.test(job)||!Number.isInteger(maxPages)||maxPages<1||maxPages>25)fail();
+ if(!/^synthetic_[a-zA-Z0-9_-]{1,70}$/.test(job))fail();
+ return verifyRestore(target,custody,key,pointer,{job,maxPages,now});
+}
+export async function verifyProductionRestoreStep(target,custody,key,pointer,options={}){
+ const {role,databaseName,databaseId,boundarySha256,snapshotSha256,job,maxPages=5,now=Date.now()}=options;
+ if(role!=='production-ops'||databaseName!=='wybp-prod-d1-r001'||databaseId!=='a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'||!/^recovery_[a-zA-Z0-9_-]{1,60}$/.test(job||'')||!/^[a-f0-9]{64}$/.test(boundarySha256||'')||!/^[a-f0-9]{64}$/.test(snapshotSha256||''))fail();
+ const manifest=await read(custody,key,pointer),p=manifest.provenance;
+ if(!p||p.boundarySha256!==boundarySha256||p.snapshotSha256!==snapshotSha256||p.createdAt!==manifest.createdAt||p.expiresAt!==manifest.expiresAt)fail();
+ return verifyRestore(target,custody,key,pointer,{job,maxPages,now});
+}
+async function verifyRestore(target,custody,key,pointer,{job,maxPages,now}){
+ if(!Number.isInteger(maxPages)||maxPages<1||maxPages>25)fail();
  const manifest=await read(custody,key,pointer),checkpoint=(await target.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[job]))[0];
  if(!checkpoint||checkpoint.manifest_hash!==pointer.sha256||checkpoint.cursor!==manifest.pages||checkpoint.expires_at<=now||!['importing','complete'].includes(checkpoint.state))fail();
  const progressId=job+'_verify';

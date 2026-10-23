@@ -23,6 +23,8 @@ export class PartitionedDriveCustody {
   }
   async get(name) {return (await this.existing(name)).get(name);}
   async put(name,bytes,retention) {return (await this.existing(name)).put(name,bytes,retention);}
+  async markCommitted(name,proof){return (await this.existing(name)).markCommitted(name,proof);}
+  async readCommit(name){return (await this.existing(name)).readCommit(name);}
   async remove(name) {return (await this.existing(name)).remove(name);}
   async *inventoryPages({maxPages=100,maxFiles=10000}={}) {
     if(!Number.isInteger(maxPages)||maxPages<1||!Number.isInteger(maxFiles)||maxFiles<1)throw Error('drive_inventory_bounds');

@@ -1,6 +1,8 @@
 import { sites } from "@openai/sites-vite-plugin";
 import vinext from "vinext";
 import { defineConfig } from "vite";
+import {readFileSync} from 'node:fs';
+import {productionBuildReadiness} from './app/productionReadiness.ts';
 import hostingConfig from "./.openai/hosting.json";
 import { validateHostingOrigin, type HostingOrigin } from "./app/hostingOrigin.ts";
 import { PRIVATE_TEST, validatePrivateTestProfile, validateTestDatabaseId, assertPrivateTestFlags } from "./app/privateTestProfile.ts";
@@ -52,13 +54,14 @@ const localBindingConfig = {
 
 export default defineConfig(async ({ mode }) => {
   const target = process.env.WYBP_DEPLOY_TARGET || "sites";
-  if (target !== "sites" && target !== "netlify-worker") throw new Error("Unknown deployment target");
+  if (!["sites","netlify-worker","cloudflare-direct"].includes(target)) throw new Error("Unknown deployment target");
   const netlifyWorker = target === "netlify-worker";
+  const directWorker=target==='cloudflare-direct',workerTarget=netlifyWorker||directWorker;
   let hostingOrigin: HostingOrigin | undefined;
-  if (netlifyWorker) {
+  if (workerTarget) {
     const environment = process.env.WYBP_HOSTING_ENVIRONMENT;
     if (environment !== "test" && environment !== "production") throw new Error("Explicit hosting environment required");
-    hostingOrigin = { environment, origin: process.env.PUBLIC_APP_ORIGIN || "" };
+    hostingOrigin = { environment, origin: process.env.PUBLIC_APP_ORIGIN || "",...(directWorker?{platform:'cloudflare-direct' as const}:{}) };
     validateHostingOrigin(hostingOrigin);
     if (process.env.WYBP_STAGING_APP_ORIGIN) throw new Error("Sites staging configuration cannot select the Netlify origin");
     if (Object.entries(process.env).some(([key, value]) => key.startsWith("WYBP_REVIEW_") && value && value !== "false")) {
@@ -67,6 +70,8 @@ export default defineConfig(async ({ mode }) => {
   }
   const featureFlags = resolveFeatureFlags(process.env);
   const testProfile = validatePrivateTestProfile(process.env.WYBP_PRIVATE_TEST_PROFILE);
+  if(directWorker&&testProfile!=='off')throw Error('Direct production serving cannot use a private test bypass');
+  const directReadiness=directWorker?productionBuildReadiness(process.env.WYBP_PRODUCTION_READINESS_FILE?JSON.parse(readFileSync(process.env.WYBP_PRODUCTION_READINESS_FILE,'utf8')):null,featureFlags,hostingOrigin!.origin):false;
   const testData = netlifyWorker && testProfile !== "off";
   if (!netlifyWorker && testProfile !== "off") throw new Error("Private data profile cannot target Sites");
   if (netlifyWorker) assertPrivateTestFlags(testProfile, featureFlags);
@@ -130,7 +135,7 @@ export default defineConfig(async ({ mode }) => {
   const reviewPrivacyFixtures = privacyFixturesRequested && diagnosticsApproved;
   const reviewRandomQuickPlayFixtures = randomQuickPlayFixturesRequested && diagnosticsApproved;
   const reviewCowrieFixtures = cowrieFixturesRequested && diagnosticsApproved;
-  if (!netlifyWorker) assertSitesCompatibleFeatureFlags(featureFlags, { authorisedReviewFixtures: reviewCommerceFixtures });
+  if (!workerTarget) assertSitesCompatibleFeatureFlags(featureFlags, { authorisedReviewFixtures: reviewCommerceFixtures });
   assertDynamicResultsStorage(featureFlags, {
     d1Configured: Boolean(d1),
     r2Configured: Boolean(r2),
@@ -141,10 +146,10 @@ export default defineConfig(async ({ mode }) => {
     authorisedReviewFixtures: reviewAnalyticsFixtures,
   });
   assertCommerceReadiness(featureFlags, {
-    d1Configured: testData || Boolean(d1),
+    d1Configured: testData || directReadiness || Boolean(d1),
     // This is a test-only code capability; runtime still validates real settings.
-    completeConfiguration: testData && testProfile === "payments",
-    approvedRateLimiter: testData,
+    completeConfiguration: (testData && testProfile === "payments")||directReadiness,
+    approvedRateLimiter: testData||directReadiness,
     authorisedReviewFixtures: reviewCommerceFixtures,
   });
   assertOwnerDashboardReadiness(featureFlags, {
@@ -157,13 +162,13 @@ export default defineConfig(async ({ mode }) => {
     serverSecretConfigured: Boolean(process.env.WYBP_DAILY_SECRET?.trim()),
   });
   assertRandomQuickPlayReadiness(featureFlags, {
-    d1Configured: testData || Boolean(d1),
+    d1Configured: testData || directReadiness || Boolean(d1),
     authorisedReviewFixtures: reviewRandomQuickPlayFixtures,
   });
   assertCowrieEconomyReadiness(featureFlags, {
-    d1Configured: testData || Boolean(d1),
+    d1Configured: testData || directReadiness || Boolean(d1),
     authorisedReviewFixtures: reviewCowrieFixtures && reviewRandomQuickPlayFixtures,
-    approvedOperationalReview: testData,
+    approvedOperationalReview: testData||directReadiness,
   });
   const reviewChallengeData = reviewChallengeFixtures
     ? [
@@ -264,10 +269,10 @@ export default defineConfig(async ({ mode }) => {
       : undefined,
     plugins: [
       vinext(),
-      ...(!netlifyWorker ? [sites()] : []),
+      ...(!workerTarget ? [sites()] : []),
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
-        ...(netlifyWorker ? { configPath: "wrangler.netlify.jsonc" } : { config: localBindingConfig }),
+        ...(directWorker?{configPath:'wrangler.direct.jsonc'}:netlifyWorker ? { configPath: "wrangler.netlify.jsonc" } : { config: localBindingConfig }),
       }),
     ],
   };

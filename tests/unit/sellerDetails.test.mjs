@@ -20,3 +20,6 @@ test('separate complaints address and telephone supported without modifying inpu
  assert.deepEqual(parseSellerDetails(JSON.stringify(details)),details);
  assert.equal(parseSellerDetails(JSON.stringify({...details,complaintsAddress:'a\nb'})),null);
 });
+test('the installation example cannot be mistaken for actual seller information',()=>{
+ assert.equal(parseSellerDetails(JSON.stringify({...synthetic(),geographicalAddress:'REPLACE_WITH_YOUR_PUBLIC_BUSINESS_ADDRESS'})),null);
+});

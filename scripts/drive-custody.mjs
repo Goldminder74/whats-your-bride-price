@@ -54,6 +54,19 @@ export class DriveCustody {
     if (!downloaded || recoveryHash(downloaded) !== recoveryHash(bytes)) throw Error('custody_conflict');
     return recoveryHash(bytes);
   }
+  async commitMetadata(name){
+    this.name(name);if(!/^op_\d{13}_[a-f0-9]{32}\.intent$/.test(name))throw Error('drive_commit_scope');
+    const id=await this.index.get(name);if(!valid(id))throw Error('drive_commit_scope');
+    const response=await this.request('https://www.googleapis.com/drive/v3/files/'+id+'?fields=id,name,parents,trashed,appProperties');if(!response.ok)throw Error('drive_commit_readback');
+    const metadata=await response.json();if(metadata.id!==id||metadata.name!==name||metadata.trashed||!metadata.parents?.includes(this.folderId)||metadata.appProperties?.wybpRecovery!=='1')throw Error('drive_commit_scope');return metadata;
+  }
+  async readCommit(name){const m=await this.commitMetadata(name),proof=m.appProperties.wybpCommitProof;if(proof!==undefined&&!/^[a-f0-9]{64}$/.test(proof))throw Error('drive_commit_conflict');return proof||null;}
+  async markCommitted(name,proof){
+    if(!/^[a-f0-9]{64}$/.test(proof||''))throw Error('drive_commit_scope');const m=await this.commitMetadata(name),prior=m.appProperties.wybpCommitProof;
+    if(prior&&prior!==proof)throw Error('drive_commit_conflict');if(prior===proof)return;
+    const response=await this.request('https://www.googleapis.com/drive/v3/files/'+m.id+'?fields=id',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({appProperties:{...m.appProperties,wybpCommitProof:proof}})});
+    if(!response.ok)throw Error('drive_commit_update');if(await this.readCommit(name)!==proof)throw Error('drive_commit_readback');
+  }
   async *inventoryPages({ maxPages = 100, maxFiles = 10000 } = {}) {
     if (!Number.isInteger(maxPages) || maxPages < 1 || maxPages > 10000 || !Number.isInteger(maxFiles) || maxFiles < 1 || maxFiles > 100000) throw Error('drive_inventory_bounds');
     const seen = new Set(), pages = new Set(); let page, count = 0;
@@ -78,6 +91,16 @@ export class DriveCustody {
       page = data.nextPageToken;
       yield data.files.map(file => ({ name: file.name, id: file.id }));
     } while (page);
+  }
+  /** One unfiltered parent page for a caller-persisted, fenced audit. A missing
+   * app marker must not hide an unknown object from recovery/cleanup. */
+  async auditPage({cursor=null,pageSize=10}={}) {
+    if(!Number.isInteger(pageSize)||pageSize<1||pageSize>25||(cursor!==null&&(typeof cursor!=='string'||!cursor||cursor.length>4096)))throw Error('drive_audit_bounds');
+    const query=new URLSearchParams({q:"'"+this.folderId+"' in parents and trashed=false",fields:'nextPageToken,incompleteSearch,files(id,name,mimeType,parents,appProperties)',pageSize:String(pageSize),orderBy:'name'});if(cursor)query.set('pageToken',cursor);
+    const response=await this.request('https://www.googleapis.com/drive/v3/files?'+query);if(!response.ok)throw Error('drive_audit_unavailable');
+    const page=await response.json();if(page.incompleteSearch||!Array.isArray(page.files)||page.files.length>pageSize||(page.nextPageToken!==undefined&&(typeof page.nextPageToken!=='string'||!page.nextPageToken||page.nextPageToken.length>4096||page.nextPageToken===cursor)))throw Error('drive_audit_incomplete');
+    for(const file of page.files)if(!valid(file.id)||typeof file.name!=='string'||!file.parents?.includes(this.folderId))throw Error('drive_audit_scope');
+    return {files:page.files,cursor:page.nextPageToken||null};
   }
   async list(bounds) {
     const names = [];

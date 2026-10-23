@@ -32,6 +32,11 @@ export class D1DriveIndex {
     return { ...row, fileId: id };
   }
   async get(name) { return (await this.row(name))?.fileId || null; }
+  async activeCount(at=this.now()) {
+    if(!Number.isSafeInteger(at))throw Error('drive_index_clock');
+    const row=(await this.db.query('SELECT COUNT(*) n FROM operational_recovery_checkpoints WHERE id>=?1 AND id<?2 AND expires_at>?3',[this.prefix,this.prefix+'~',at]))[0];
+    if(!Number.isSafeInteger(row?.n)||row.n<0)throw Error('drive_index_count');return row.n;
+  }
   async getMany(names) {
     if (!Array.isArray(names) || names.length > 1000 || new Set(names).size !== names.length) throw Error('drive_index_bounds');
     const result = new Map();

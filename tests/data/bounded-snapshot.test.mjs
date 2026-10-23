@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {randomBytes} from 'node:crypto';
-import {boundedSnapshotStep} from '../../worker/boundedSnapshot.mjs';
+import {boundedSnapshotStep,verifySnapshotProofStep} from '../../worker/boundedSnapshot.mjs';
 import {materializeSegmentedSnapshot} from '../../scripts/worker-snapshot-restore.mjs';
 import {recoveryHash,decryptRecord} from '../../scripts/recovery-crypto.mjs';
 function fixture(count=1800000){
@@ -39,4 +39,13 @@ test('missing segments, changed fences and expiry cannot produce a verified proo
    assert.equal(f.files.has('synthetic_bounded.snapshot-proof.enc'),false);
   }finally{f.sql.close();}
  }
+});
+test('independent snapshot verification resumes without source D1 and detects missing or changed archives',async()=>{
+ const f=fixture(2600);try{
+  let result,progress=null;do{result=await boundedSnapshotStep(f.db,f.custody,f.key,f.head,progress);progress=result.progress;}while(!result.complete);
+  let verified=null,calls=0,step;do{const prior=verified;step=await verifySnapshotProofStep(f.custody,f.key,result.proof,verified);verified=step.progress;assert.equal(step.runtimeAccess,'blocked_pending_authority_verification');if(calls===0)assert.equal((await verifySnapshotProofStep(f.custody,f.key,result.proof,prior)).verified,step.verified);assert.ok(++calls<10);}while(!step.verified);
+  assert.equal(calls,3);await assert.rejects(verifySnapshotProofStep(f.custody,f.key,result.proof,null,{now:()=>f.head.expires_at}));
+  const saved=f.files.get(result.snapshot.name);f.files.set(result.snapshot.name,Buffer.from('tampered'));await assert.rejects(verifySnapshotProofStep(f.custody,f.key,result.proof));f.files.set(result.snapshot.name,saved);
+  f.files.delete('synthetic_bounded.segment0.enc');await assert.rejects(async()=>{let progress=null;for(let i=0;i<4;i++){const next=await verifySnapshotProofStep(f.custody,f.key,result.proof,progress);progress=next.progress;if(next.verified)assert.fail('missing archive accepted');}});
+ }finally{f.sql.close();}
 });

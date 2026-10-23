@@ -1,3 +1,4 @@
+import {ROYAL_REVEAL_CONSENT_NOTICE_VERSION} from '../../db/commerceContracts.ts';
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
@@ -100,10 +101,10 @@ test("authoritative completion creates the durable owner-bound result used by th
     assert.equal(stored.score,12);assert.equal(stored.total,12);assert.equal(stored.visibility,"private");assert.equal(stored.state,"active");assert.equal(stored.status,"completed");assert.equal(stored.answer_count,12);
     assert.doesNotMatch(JSON.stringify(stored),new RegExp(rawCredential));
     const commerce=new CommerceService(new D1CommerceRepository(atomic),new InMemoryCommerceRateLimiter(),createReviewCommerceConfig(),()=>now);
-    const pending=await commerce.startOrder({productKey:"royal_reveal_v1",resultSlug:completed.resultSlug,anonymousSessionCredential:rawCredential,idempotencyKey:"a".repeat(32),immediateDeliveryConsent:true,consentNoticeVersion:"royal-reveal-immediate-delivery-v1"});
+    const pending=await commerce.startOrder({productKey:"royal_reveal_v1",resultSlug:completed.resultSlug,anonymousSessionCredential:rawCredential,idempotencyKey:"a".repeat(32),immediateDeliveryConsent:true,consentNoticeVersion:ROYAL_REVEAL_CONSENT_NOTICE_VERSION});
     const order=database.prepare("SELECT result_id,anonymous_owner_hash,client_reference_id,stripe_checkout_session_id FROM commerce_orders WHERE public_order_reference=?").get(pending.publicOrderReference);
     assert.equal(order.result_id,stored.id);assert.equal(order.anonymous_owner_hash,stored.anonymous_subject_hash);assert.equal(order.client_reference_id,pending.publicOrderReference);assert.equal(order.stripe_checkout_session_id,null);
-    await assert.rejects(()=>commerce.startOrder({productKey:"royal_reveal_v1",resultSlug:completed.resultSlug,anonymousSessionCredential:"02".repeat(16),idempotencyKey:"b".repeat(32),immediateDeliveryConsent:true,consentNoticeVersion:"royal-reveal-immediate-delivery-v1"}),/result_unavailable/);
+    await assert.rejects(()=>commerce.startOrder({productKey:"royal_reveal_v1",resultSlug:completed.resultSlug,anonymousSessionCredential:"02".repeat(16),idempotencyKey:"b".repeat(32),immediateDeliveryConsent:true,consentNoticeVersion:ROYAL_REVEAL_CONSENT_NOTICE_VERSION}),/result_unavailable/);
     assert.deepEqual(database.prepare("PRAGMA foreign_key_check").all(),[]);
   } finally { database.close(); }
 });

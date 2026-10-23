@@ -2,13 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {randomBytes} from 'node:crypto';
-import {capturePinnedInventory,recoverPinnedInventory,readPinnedInventoryFile} from '../../scripts/segmented-drive-inventory.mjs';
+import {capturePinnedInventory,recoverPinnedInventory,readPinnedInventoryFile,recoverProductionPinnedInventory} from '../../scripts/segmented-drive-inventory.mjs';
 import {D1DriveIndex} from '../../scripts/d1-drive-index.mjs';
 import {DriveCustody} from '../../scripts/drive-custody.mjs';
 import {loadMigrationPlan,applyMigrationPlan} from '../../scripts/data-migrations.mjs';
 import {encryptRecord,recoveryHash} from '../../scripts/recovery-crypto.mjs';
 const resource={name:'wybp-capacity-d1-r002',id:'11111111-1111-4111-8111-111111111111',account:'b6b22a9a87b5758725e5c499782160af'};
-test('all file IDs reconstruct from independent root after total index loss and interrupted mapping delivery',async()=>{
+for(const production of [false,true])test('all file IDs reconstruct from independent root after total index loss and interrupted mapping delivery: '+(production?'production guard':'isolated guard'),async()=>{
  const sql=new DatabaseSync(':memory:'),journal=new DatabaseSync(':memory:'),key=randomBytes(32),provider=new Map();let serial=0;
  applyMigrationPlan(sql,await loadMigrationPlan());
  const db={query:async(s,p=[])=>sql.prepare(s).all(...p),batch:async rows=>{sql.exec('BEGIN');try{const result=rows.map(r=>sql.prepare(r.sql).all(...r.params));sql.exec('COMMIT');return result;}catch(e){sql.exec('ROLLBACK');throw e;}}};
@@ -34,10 +34,11 @@ test('all file IDs reconstruct from independent root after total index loss and 
   sql.exec("DELETE FROM operational_recovery_checkpoints WHERE id LIKE 'drive_file:%'");
   assert.equal(await custodies[0].index.get(pointer.name),null);
   assert.equal((await readPinnedInventoryFile(custodies,key,pointer)).count,210);
-  const recovery={db,custodies,key,pointer,resource,job:'synthetic_lost_index',maxFiles:25};
-  await assert.rejects(recoverPinnedInventory({...recovery,fault:(_stage,cursor)=>{if(cursor===2)throw Error('synthetic_mapping_crash');}}),/synthetic_mapping_crash/);
+  const recovery={db,custodies,key,pointer,resource,job:production?'recovery_lost_index':'synthetic_lost_index',maxFiles:25,...(production?{role:'production-ops',databaseName:'wybp-prod-d1-r001',databaseId:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'}:{})},recover=production?recoverProductionPinnedInventory:recoverPinnedInventory;
+  if(production){await assert.rejects(recover({...recovery,role:'production-app'}));await assert.rejects(recover({...recovery,databaseId:resource.id}));}
+  await assert.rejects(recover({...recovery,fault:(_stage,cursor)=>{if(cursor===2)throw Error('synthetic_mapping_crash');}}),/synthetic_mapping_crash/);
   assert.equal(sql.prepare('SELECT cursor FROM operational_recovery_checkpoints WHERE id=?').get(recovery.job).cursor,2);
-  let restored;do{restored=await recoverPinnedInventory(recovery);assert.equal(restored.runtimeAccess,'blocked_pending_authority_suppression_receipt');}while(!restored.verified);
+  let restored;do{restored=await recover(recovery);assert.equal(restored.runtimeAccess,'blocked_pending_authority_suppression_receipt');}while(!restored.verified);
   assert.equal(restored.files,210);
   assert.deepEqual(sql.prepare("SELECT id,created_at,expires_at FROM operational_recovery_checkpoints WHERE id LIKE 'drive_file:%' ORDER BY id").all(),originalClocks);
   assert.equal(sql.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);

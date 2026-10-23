@@ -7,6 +7,7 @@ import { recoveryHash } from '../scripts/recovery-crypto.mjs';
 import { operatorRetentionPlan, runApprovedRetention, assertRestoreReceipt } from '../db/retention.ts';
 import { createJournaledDatabase } from './authorityDatabase.mjs';
 import { PartitionedDriveCustody } from '../scripts/partitioned-drive-custody.mjs';
+import {boundedAuthorityStep} from './boundedAuthority.mjs';
 
 /** Private service wiring only. There is deliberately no public HTTP or cron handler. */
 export function createAuthorityService({ db, custody, key, snapshot, alert, now = Date.now, recoveryReady = async () => {} }) {
@@ -42,7 +43,7 @@ export function createAuthorityService({ db, custody, key, snapshot, alert, now 
         // A replay has no trustworthy original changes()/RETURNING result. Never rerun
         // the financial batch just to reconstruct it, or invent affected-row counts.
         return outcome || null;
-      })).then(outcome => {
+      },{journalIdle:true})).then(outcome => {
         if (!outcome) throw Error('authority_result_recovery_required');
         return outcome;
       });
@@ -50,12 +51,12 @@ export function createAuthorityService({ db, custody, key, snapshot, alert, now 
     mutate(operationId, statements) {
       if (!Array.isArray(statements) || !statements.length || statements.length > 97) return Promise.reject(Error('authority_batch_bounds'));
       return exclusive(() => writer.run(operationId, JSON.stringify(statements), fenced =>
-        new D1Authority(fenced, custody, key, { now }).mutate(operationId, statements)));
+        new D1Authority(fenced, custody, key, { now }).mutate(operationId, statements),{journalIdle:true}));
     },
     flush(boundaryId, limit=25) {
       if (!/^[a-zA-Z0-9_-]{1,80}$/.test(boundaryId) || !Number.isInteger(limit) || limit<1 || limit>25) return Promise.reject(Error('journal_chunk_bounds'));
       return exclusive(() => writer.run('journal:' + boundaryId, JSON.stringify([boundaryId,limit]), async fenced =>
-        new D1Authority(fenced,custody,key,{now}).flush(limit)));
+        new D1Authority(fenced,custody,key,{now}).flush(limit),{journalIdle:true}));
     },
     deliver(boundaryId) { return exclusive(() => writer.run('delivery:' + boundaryId, boundaryId, async fenced => {
       const { receipt } = await new D1Authority(fenced, custody, key, { now }).deliver(boundaryId, snapshot);
@@ -64,6 +65,30 @@ export function createAuthorityService({ db, custody, key, snapshot, alert, now 
       if (!bytes || recoveryHash(bytes) !== receipt) throw Error('authority_delivery_readback');
       return receipt;
     })); },
+    deliverStep(boundaryId,progress=null){
+      const identity='delivery-step:'+boundaryId+':'+recoveryHash(Buffer.from(progress||''));
+      return exclusive(()=>writer.run(identity,JSON.stringify([boundaryId,progress]),db=>boundedAuthorityStep(db,custody,key,boundaryId,progress,{now})));
+    },
+    advanceSnapshot(boundaryId){
+      if(!/^[a-zA-Z0-9_-]{1,65}$/.test(boundaryId||''))return Promise.reject(Error('authority_boundary_id'));
+      // Stable job identity permits recovery of a lost final response. Progress
+      // is encrypted by boundedAuthorityStep and stored in existing D1 custody;
+      // no caller memory, new schema, public endpoint or schedule is required.
+      return exclusive(()=>writer.run('snapshot-job:'+boundaryId,boundaryId,async fenced=>{
+        const id='bounded-scheduler:'+boundaryId,prior=(await fenced.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[id]))[0];
+        const identity=recoveryHash(Buffer.from(boundaryId));if(prior&&(prior.manifest_hash!==identity||prior.expires_at<=now()))throw Error('authority_snapshot_progress');
+        if(prior?.state==='complete')return {complete:true,receipt:prior.head_hash,sequence:prior.sequence};
+        if(prior&&prior.state!=='exporting')throw Error('authority_snapshot_progress');
+        const result=await boundedAuthorityStep(fenced,custody,key,boundaryId,prior?.head_hash||null,{now});
+        const job=(await fenced.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',['bounded-job:'+boundaryId]))[0];
+        const value=result.complete?result.receipt:result.progress;if(typeof value!=='string'||value.length>131072||!job)throw Error('authority_snapshot_progress');
+        await fenced.batch([
+          {sql:"INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES(?1,'export',?2,?3,?4,0,?5,1,?6,?7) ON CONFLICT(id) DO UPDATE SET sequence=excluded.sequence,head_hash=excluded.head_hash,state=excluded.state,version=version+1 WHERE version=?8 AND manifest_hash=excluded.manifest_hash",params:[id,identity,result.complete?result.sequence:job.sequence,value,result.complete?'complete':'exporting',job.created_at,job.expires_at,prior?.version||0]},
+          {sql:"SELECT CASE WHEN EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id=?1 AND head_hash=?2 AND state=?3) THEN 1 ELSE json('snapshot_progress_conflict') END",params:[id,value,result.complete?'complete':'exporting']},
+        ]);
+        return result.complete?{complete:true,receipt:result.receipt,sequence:result.sequence}:{complete:false,runtimeAccess:'blocked_pending_verified_boundary'};
+      }));
+    },
     async ready() {
       await recoveryReady();
       await writer.ready();

@@ -22,6 +22,7 @@ export function parseSellerDetails(raw: unknown): PublicSellerDetails | null {
     const text = (entry: unknown, maximum: number): entry is string => typeof entry === "string" && entry.trim() === entry && entry.length > 0 && entry.length <= maximum && !/[<>]/.test(entry) && ![...entry].some(character => character.charCodeAt(0) < 32 || character.charCodeAt(0) === 127);
     if (value.legalName !== "Ayodele Ayeni" || value.tradingName !== "Classes for Culture"
       || !text(value.geographicalAddress, 1000)
+      || /^REPLACE_WITH_|^YOUR[_ ](?:PUBLIC|BUSINESS)/i.test(value.geographicalAddress)
       || (value.complaintsAddress !== null && !text(value.complaintsAddress, 1000))
       || (value.telephone !== null && (typeof value.telephone !== "string" || !/^\+?[0-9 ()-]{7,30}$/.test(value.telephone)))
       || value.supportEmail !== "team@classesforculture.com"

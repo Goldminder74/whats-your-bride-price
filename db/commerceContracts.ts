@@ -1,3 +1,4 @@
+import {ROYAL_IMMEDIATE_DELIVERY_NOTICE} from '../app/purchaseTerms.ts';
 import { deriveAnonymousSubjectHash } from "../app/anonymousSession.ts";
 import { constantTimeEqual } from "./deletionReadiness.ts";
 import { COWRIE_DELIVERY_NOTICE_VERSION, cowrieProducts, cowrieProductKeys, isCowrieProduct, type CowrieProductKey } from "./cowrieProducts.ts";
@@ -6,7 +7,7 @@ export const ROYAL_REVEAL_PRODUCT_KEY = "royal_reveal_v1" as const;
 export const ROYAL_REVEAL_CURRENCY = "GBP" as const;
 export const ROYAL_REVEAL_AMOUNT_MINOR = 199 as const;
 export const ROYAL_REVEAL_DISPLAY_PRICE = "£1.99" as const;
-export const ROYAL_REVEAL_CONSENT_NOTICE_VERSION = "royal-reveal-immediate-delivery-v1" as const;
+export const ROYAL_REVEAL_CONSENT_NOTICE_VERSION = ROYAL_IMMEDIATE_DELIVERY_NOTICE;
 export const COMMERCE_MAX_BODY_BYTES = 16_384;
 export const STRIPE_WEBHOOK_MAX_BODY_BYTES = 65_536;
 export const STRIPE_SIGNATURE_TOLERANCE_SECONDS = 300;
@@ -170,8 +171,14 @@ export type VerifiedStripeEvent = Readonly<{
   mode: string | null;
 }>;
 const verifiedStripeEvents = new WeakSet<object>();
+const verifiedStripeBodies=new WeakMap<object,string>();
 export function requireVerifiedStripeEvent(event: VerifiedStripeEvent): void {
   if (!verifiedStripeEvents.has(event)) return fail("stripe_event_unverified");
+}
+/** Transient private-service proof only. Never persist/log the raw provider body. */
+export function stripeConfirmationProof(event:VerifiedStripeEvent):Readonly<{eventId:string;rawBody:string}> {
+  requireVerifiedStripeEvent(event);const rawBody=verifiedStripeBodies.get(event);if(!rawBody||!event.eventType.startsWith('checkout.session.')||event.paymentStatus!=='paid')return fail('stripe_confirmation_unavailable');
+  return {eventId:event.stripeEventId,rawBody};
 }
 
 function parseSignatureHeader(header: string): Readonly<{ timestamp: number; signatures: readonly string[] }> {
@@ -234,5 +241,5 @@ export async function verifyStripeWebhook(input: Readonly<{ rawBody: string; sig
   if (!checkout && (normalized.currency !== "GBP" || (event.type === "charge.refunded" ? ![199,...Object.values(input.config.cowrieBundles || {}).map(bundle=>bundle.expectedAmountMinor)].includes(amount as number) : (amount as number) > (input.config.cowrieBundles ? 999 : 199)))) return fail("stripe_payment_mismatch");
   normalized.paymentIntentHash = paymentIntentId ? await derivePaymentIntentHash(paymentIntentId) : null;
   if (paymentIntentId && input.resolveLegacyPaymentIntent) {const legacy=await input.resolveLegacyPaymentIntent(paymentIntentId);if(checkout && legacy && legacy!==clientReferenceId)return fail("stripe_payment_mismatch");if(!checkout)normalized.clientReferenceId=legacy;}
-  const result = Object.freeze(normalized); verifiedStripeEvents.add(result); return result;
+  const result = Object.freeze(normalized); verifiedStripeEvents.add(result);verifiedStripeBodies.set(result,input.rawBody); return result;
 }

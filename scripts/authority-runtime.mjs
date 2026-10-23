@@ -1,9 +1,11 @@
 import { encryptRecord, decryptRecord, recoveryHash } from './recovery-crypto.mjs';
 import { runApprovedRetention } from '../db/retention.ts';
 import { RETENTION_POLICY, RETENTION_DAY } from '../db/retentionPolicy.ts';
+import {createHmac} from 'node:crypto';
 const WINDOW=RETENTION_POLICY.backupDays*RETENTION_DAY, ZERO='0'.repeat(64);
 const json=x=>Buffer.from(JSON.stringify(x));
 const reject=code=>{throw Error(code);};
+const commitSignature=(key,name,bytes,event)=>createHmac('sha256',key).update(JSON.stringify(['wybp-commit-v1',name,recoveryHash(bytes),event.createdAt,event.expiresAt])).digest('hex');
 export const createOperationId=(now=Date.now())=>'op_'+now+'_'+crypto.randomUUID().replaceAll('-','');
 export class D1Authority {
   constructor(db,custody,key,{now=()=>Date.now(),fault=()=>{}}={}){this.db=db;this.custody=custody;this.key=key;this.now=now;this.fault=fault;}
@@ -22,10 +24,28 @@ export class D1Authority {
       event={operationId,intentHash,sequence:head.sequence+1,previousHash:head.head_hash,createdAt:now,expiresAt:now+WINDOW,statements};bytes=encryptRecord(event,this.key,name);await this.custody.put(name,bytes);}
     this.fault('intent_durable');if(event.expiresAt<=this.now())reject('intent_expired');
     const prior=(await this.db.query('SELECT * FROM operational_authority_outbox WHERE operation_id=?1',[operationId]))[0];
-    if(prior){if(prior.intent_hash!==intentHash||prior.event_hash!==recoveryHash(bytes))reject('outbox_conflict');return prior.event_hash;}
+    if(prior){if(prior.intent_hash!==intentHash||prior.event_hash!==recoveryHash(bytes))reject('outbox_conflict');await this.commitProof(operationId,bytes,event);return prior.event_hash;}
     const hash=recoveryHash(bytes);
     await this.db.batch([{sql:'INSERT INTO operational_authority_outbox(sequence,operation_id,intent_hash,previous_hash,event_hash,encrypted_event,created_at,expires_at) VALUES(?1,?2,?3,?4,?5,?6,?7,?8)',params:[event.sequence,operationId,intentHash,event.previousHash,hash,bytes.toString(),event.createdAt,event.expiresAt]},...statements,{sql:"UPDATE operational_recovery_checkpoints SET sequence=?1,head_hash=?2,version=version+1 WHERE id='journal'",params:[event.sequence,hash]}]);
-    this.fault('d1_committed');return hash;
+    this.fault('d1_committed');await this.commitProof(operationId,bytes,event);return hash;
+  }
+  // D1 and independent custody are NOT atomic. A crash after the D1 batch is
+  // uncertain until this exact operation is retried. Never acknowledge success
+  // or release the writer before independent committed-byte readback succeeds.
+  async commitProof(operationId,bytes,event){
+    // The production Drive adapter attaches an authenticated commit marker to
+    // the existing immutable encrypted intent: no duplicate data object or clock.
+    // Older adapters/archives retain their independently verified .event format.
+    if(typeof this.custody.markCommitted==='function'&&typeof this.custody.readCommit==='function'){
+      const intent=operationId+'.intent',proof=commitSignature(this.key,intent,bytes,event);
+      await this.custody.markCommitted(intent,proof);this.fault('commit_uploaded');
+      const marker=await this.custody.readCommit(intent),copy=await this.custody.get(intent);
+      if(marker!==proof||!copy||recoveryHash(copy)!==recoveryHash(bytes))reject('authority_commit_readback');this.fault('commit_verified');return;
+    }
+    const name=operationId+'.event',sha256=recoveryHash(bytes),prior=await this.custody.get(name);
+    if(prior&&recoveryHash(prior)!==sha256)reject('authority_commit_conflict');
+    await this.custody.put(name,bytes,{createdAt:event.createdAt,expiresAt:event.expiresAt});this.fault('commit_uploaded');
+    const copy=await this.custody.get(name);if(!copy||recoveryHash(copy)!==sha256)reject('authority_commit_readback');this.fault('commit_verified');
   }
   async retention(operationId,at,limit=50){
     let plan;await runApprovedRetention({prepare(sql){return {bind(...params){return {sql,params};}};},async batch(statements){plan=statements;return [];}},at,limit);
@@ -143,7 +163,8 @@ export async function readBoundary(custody,key,id,expectedReceipt,now=Date.now()
     if(aborted){const abort=await custody.get(name.replace('.intent','.abort'));if(!abort||decryptRecord(abort,key,name.replace('.intent','.abort')).intentHash!==recoveryHash(intent))reject('abort_missing');continue;}
     const compact=compacted.get(name.replace('.intent',''));
     const proof=compact?null:await custody.get(name.replace('.intent','.event'));
-    if(recoveryHash(intent)!==(compact?.hash||(proof&&recoveryHash(proof))))reject('undelivered_authority');ordered.push({value:decryptRecord(intent,key,name),hash:recoveryHash(intent)});}
+    const value=decryptRecord(intent,key,name),metadataProof=!compact&&!proof&&typeof custody.readCommit==='function'?await custody.readCommit(name):null;
+    if(recoveryHash(intent)!==(compact?.hash||(proof&&recoveryHash(proof)))&&metadataProof!==commitSignature(key,name,intent,value))reject('undelivered_authority');ordered.push({value,hash:recoveryHash(intent)});}
   ordered.sort((a,c)=>a.value.sequence-c.value.sequence);for(const event of ordered){if(event.value.sequence!==++sequence||event.value.previousHash!==previous)reject('boundary_chain');previous=event.hash;}
   if(sequence!==b.sequence||previous!==b.head)reject('boundary_head');
   if(!Array.isArray(b.files)||!b.files.length)reject('snapshot_inventory_required');

@@ -20,6 +20,20 @@ function fixture() {
  const config={folderId:'synthetic_folder_001',accessToken:async()=> 'synthetic-token',index,fetcher};
  return {config,files,ids,get uploads(){return uploads;},loseNext(){lose=true;}};
 }
+test('Drive commit marker retries after a lost metadata response without another data upload or identity/clock change',async()=>{
+ const f=fixture(),name='op_1790000000000_'+'a'.repeat(32)+'.intent',proof='b'.repeat(64);let metadata,patches=0,lose=true;
+ const fetcher=async(url,options)=>{
+  if(url.includes('fields=id,name,parents,trashed,appProperties'))return Response.json(metadata);
+  if(options.method==='PATCH'){patches++;metadata.appProperties={...metadata.appProperties,...JSON.parse(options.body).appProperties};if(lose){lose=false;throw Error('synthetic_lost_ack');}return Response.json({id:metadata.id});}
+  return f.config.fetcher(url,options);
+ };
+ const c=new DriveCustody({...f.config,fetcher});await c.put(name,Buffer.from('encrypted synthetic intent'));
+ metadata={id:f.ids.get(name),name,parents:[f.config.folderId],trashed:false,appProperties:{wybpRecovery:'1'}};
+ await assert.rejects(c.markCommitted(name,proof),/drive_transport/);await new DriveCustody({...f.config,fetcher}).markCommitted(name,proof);
+ assert.equal(await c.readCommit(name),proof);assert.equal(patches,1);assert.equal(f.uploads,1);assert.equal(f.files.size,1);assert.equal(f.ids.get(name),metadata.id);
+ await assert.rejects(c.markCommitted(name,'c'.repeat(64)),/drive_commit_conflict/);
+ metadata.parents=['outside_folder_001'];await assert.rejects(c.markCommitted(name,proof),/drive_commit_scope/);
+});
 
 test('partitioned custody preserves legacy files, deterministic IDs, and resumable pinned lost-index recovery',async()=>{
  const children=Array.from({length:17},(_,i)=>{const f=fixture();f.config.folderId='synthetic_folder_'+String(i).padStart(3,'0');const original=f.config.fetcher;

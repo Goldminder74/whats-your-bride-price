@@ -3,6 +3,9 @@ CREATE TABLE purchase_confirmations (
  contract_hash TEXT NOT NULL CHECK(length(contract_hash)=64),
  encrypted_contract TEXT NOT NULL,
  encrypted_recipient TEXT,
+ payment_hash TEXT,
+ encrypted_payment TEXT,
+ payment_recorded_at INTEGER,
  state TEXT NOT NULL DEFAULT 'awaiting_payment' CHECK(state IN ('awaiting_payment','ready','sending','sent','uncertain','cancelled')),
  attempt_id TEXT UNIQUE,
  attempted_at INTEGER,
@@ -11,6 +14,8 @@ CREATE TABLE purchase_confirmations (
  created_at INTEGER NOT NULL,
  updated_at INTEGER NOT NULL,
  CHECK(updated_at>=created_at),
+ CHECK((payment_hash IS NULL AND encrypted_payment IS NULL AND payment_recorded_at IS NULL) OR (length(payment_hash)=64 AND encrypted_payment IS NOT NULL AND payment_recorded_at>=created_at)),
+ CHECK(state NOT IN ('ready','sending','uncertain','sent') OR encrypted_payment IS NOT NULL),
  CHECK((attempt_id IS NULL AND attempted_at IS NULL) OR (attempt_id IS NOT NULL AND attempted_at>=created_at)),
  CHECK((state='sent' AND delivered_at IS NOT NULL AND delivered_at>=attempted_at AND encrypted_recipient IS NULL) OR (state!='sent' AND delivered_at IS NULL)),
  CHECK(state NOT IN ('sending','uncertain','sent') OR attempt_id IS NOT NULL),
@@ -22,6 +27,10 @@ CREATE INDEX purchase_confirmation_delivery_idx ON purchase_confirmations(state,
 --> statement-breakpoint
 CREATE TRIGGER purchase_confirmation_immutable BEFORE UPDATE OF order_id,contract_hash,encrypted_contract,created_at ON purchase_confirmations BEGIN
  SELECT RAISE(ABORT,'purchase confirmation is immutable');
+END;
+--> statement-breakpoint
+CREATE TRIGGER purchase_confirmation_payment_immutable BEFORE UPDATE OF payment_hash,encrypted_payment,payment_recorded_at ON purchase_confirmations WHEN OLD.encrypted_payment IS NOT NULL BEGIN
+ SELECT RAISE(ABORT,'purchase confirmation payment is immutable');
 END;
 --> statement-breakpoint
 CREATE TRIGGER purchase_confirmation_transition BEFORE UPDATE ON purchase_confirmations BEGIN

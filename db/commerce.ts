@@ -22,6 +22,7 @@ import {
   deriveOrderIdempotencyHash,
   deriveCowrieOrderIdempotencyHash,
   requireVerifiedStripeEvent,
+  stripeConfirmationProof,
   securePublicOrderReference,
   validateCommerceConfiguration,
   validateStartOrderRequest,
@@ -182,7 +183,10 @@ export class CommerceService {
     if (!this.repository.storageAvailable) return fail("commerce_storage_unavailable");
     const outcome = await this.repository.processVerifiedWebhook(event, this.now());
     const confirmationOrder=this.confirmations?(event.clientReferenceId?await this.repository.getOrderByReference(event.clientReferenceId):event.paymentIntentHash?await this.repository.getOrderByPaymentIntentHash?.(event.paymentIntentHash):null):null;
-    if(this.confirmations&&confirmationOrder&&outcome.state==='fulfilled')await this.confirmations.deliver(confirmationOrder.id,confirmationOrder.anonymousOwnerHash);
+    if(this.confirmations&&confirmationOrder&&outcome.state==='fulfilled'){
+      if(event.eventType.startsWith('checkout.session.')&&event.paymentStatus==='paid')await this.confirmations.settle(confirmationOrder.id,confirmationOrder.anonymousOwnerHash,stripeConfirmationProof(event));
+      await this.confirmations.deliver(confirmationOrder.id,confirmationOrder.anonymousOwnerHash);
+    }
     if(this.confirmations&&confirmationOrder&&['failed','expired','refunded','disputed','deleted'].includes(outcome.state))await this.confirmations.cancel(confirmationOrder.id);
     return Object.freeze({ received: true, replay: outcome.replay });
   }
