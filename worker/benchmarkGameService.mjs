@@ -100,6 +100,9 @@ export function benchmarkGameService({binding,authority,syntheticKey,databaseRes
     return {selectionHash:view.selectionHash,attemptHash:view.attemptHash,answerCount:7,chargeCount:0,additionalAttempts:0};
    }
    unavailable();
-  }catch{unavailable();}
+  }catch(error){
+   const candidate=error?.cause||error?.message,diagnostic=['authority_read_changed','authority_writer_busy','authority_writer_unavailable','authority_result_recovery_required','drive_commit_head_gap','drive_commit_head_conflict','drive_commit_head_unavailable'].includes(candidate)?candidate:undefined;
+   throw Error('benchmark_game_unavailable',{cause:diagnostic});
+  }
  }};
 }

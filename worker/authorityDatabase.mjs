@@ -3,7 +3,7 @@ import { createOperationId } from '../scripts/authority-runtime.mjs';
 // Exact repository-owned SQL only. This admission counter cannot grant money,
 // an attempt, an entitlement or restore access. Arbitrary SQL stays journalled.
 const QUICK_PLAY_ADMISSION = 'INSERT INTO daily_operation_limits (id,rate_key_hash,action,window_started_at,request_count,expires_at,created_at,updated_at) VALUES (?1,?2,?3,?4,1,?5,?6,?6) ON CONFLICT(rate_key_hash,action,window_started_at) DO UPDATE SET request_count=request_count+1,updated_at=excluded.updated_at';
-function ephemeralAdmission(sql, params) {
+export function ephemeralAdmission(sql, params) {
   return sql.trim().replace(/\s+/g,' ') === QUICK_PLAY_ADMISSION && params.length === 6
     && /^quick_play_limit_[a-f0-9]{32}$/.test(params[0]) && /^[a-f0-9]{64}$/.test(params[1])
     && ['start','complete'].includes(params[2]) && Number.isSafeInteger(params[3])
@@ -26,6 +26,7 @@ export function createJournaledDatabase(database, authority, { now = Date.now } 
       bind(...values) { return prepare(sql, values); },
       async run() {
         if (ephemeralAdmission(sql,params)) {
+          if(typeof authority.admit==='function')return validate([await authority.admit(sql,params)],1)[0];
           const fence=await authority.readFence();
           if(typeof fence!=='string'||!fence)throw Error('authority_read_unavailable');
           const result=await database.prepare(sql).bind(...params).run();
@@ -39,6 +40,7 @@ export function createJournaledDatabase(database, authority, { now = Date.now } 
       async all() {
         // WITH/PRAGMA/RETURNING must not smuggle a mutation past the journal.
         if (!/^\s*SELECT\b/i.test(sql)) throw Error('authority_read_scope');
+        if(typeof authority.query==='function')return validate([await authority.query(sql,params)],1)[0];
         const fence = await authority.readFence();
         const result = await database.prepare(sql).bind(...params).all();
         if (!result.success) throw Error('authority_read_unavailable');

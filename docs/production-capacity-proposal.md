@@ -1,5 +1,17 @@
 # Current capacity decision and deferred proposal — 13 October 2026
 
+## Superseding evidence and decision — 23 October 2026
+
+Launch target remains5,000 completed games/day,500/hour and48h outage allowance.
+No stopped benchmark authority is reusable. The revised direct-serving, full-stock
+proposal is [here](revised-hosted-verification-2026-10-23.md); it is NOT authorised.
+It identifies the source-wide capture fence and daily historical-census writes as
+concrete architectural obstructions. A private recovery mirror and an explicit
+mirror-capture contract require implementation/validation before that hosted clock.
+Local90-day physical data is not a99-day/30-day-authority hosted recovery result.
+GBP50 operating/GBP8 cumulative benchmark limits remain until specifically changed.
+All older forecasts below are historical sensitivities, not measured readiness.
+
 ## Active decision: current architecture, 5,000/day, GBP50/month
 
 The owner's latest instruction supersedes the500k proposal below. Retain the current

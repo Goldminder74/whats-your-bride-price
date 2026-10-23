@@ -44,6 +44,9 @@ export class BenchmarkPacingSqlStore {
   this.transaction(()=>{
    this.exec(s,'CREATE TABLE IF NOT EXISTS pacing_state(id INTEGER PRIMARY KEY,started INTEGER,until_at INTEGER,next_at INTEGER,b INTEGER,c INTEGER,stopped INTEGER)');
    this.exec(s,'CREATE TABLE IF NOT EXISTS pacing_requests(id TEXT PRIMARY KEY,identity TEXT,state TEXT,status INTEGER,receipt TEXT)');
+   // Cold recovery must find an unresolved request by index, not scan every
+   // settled receipt accumulated in the authorised measurement window.
+   this.exec(s,'CREATE INDEX IF NOT EXISTS pacing_pending_idx ON pacing_requests(state)');
    this.exec(s,'INSERT INTO pacing_state VALUES(1,?1,?2,0,?3,?4,0) ON CONFLICT(id) DO NOTHING',at,at+6*3600000,carry.B||0,carry.C||0);
    if(this.exec(s,"SELECT id FROM pacing_requests WHERE state='pending' LIMIT 1").length)this.exec(s,'UPDATE pacing_state SET stopped=1 WHERE id=1');
   });

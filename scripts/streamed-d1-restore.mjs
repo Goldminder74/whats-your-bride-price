@@ -144,7 +144,12 @@ export async function verifyProductionRestoreStep(target,custody,key,pointer,opt
  if(role!=='production-ops'||databaseName!=='wybp-prod-d1-r001'||databaseId!=='a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'||!/^recovery_[a-zA-Z0-9_-]{1,60}$/.test(job||'')||!/^[a-f0-9]{64}$/.test(boundarySha256||'')||!/^[a-f0-9]{64}$/.test(snapshotSha256||''))fail();
  const manifest=await read(custody,key,pointer),p=manifest.provenance;
  if(!p||p.boundarySha256!==boundarySha256||p.snapshotSha256!==snapshotSha256||p.createdAt!==manifest.createdAt||p.expiresAt!==manifest.expiresAt)fail();
- return verifyRestore(target,custody,key,pointer,{job,maxPages,now});
+ const result=await verifyRestore(target,custody,key,pointer,{job,maxPages,now});
+ if(result.verified)await target.batch([
+  {sql:"INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES(?1,'restore',?2,?3,?4,?5,'complete',1,?6,?7) ON CONFLICT(id) DO NOTHING",params:[job+'_verified',pointer.sha256,manifest.pages,manifest.schemaHash,now,manifest.createdAt,manifest.expiresAt]},
+  {sql:"SELECT CASE WHEN EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id=?1 AND manifest_hash=?2 AND sequence=?3 AND head_hash=?4 AND expires_at=?5 AND state='complete') THEN 1 ELSE json('restore_verification_conflict') END",params:[job+'_verified',pointer.sha256,manifest.pages,manifest.schemaHash,manifest.expiresAt]},
+ ]);
+ return result;
 }
 async function verifyRestore(target,custody,key,pointer,{job,maxPages,now}){
  if(!Number.isInteger(maxPages)||maxPages<1||maxPages>25)fail();

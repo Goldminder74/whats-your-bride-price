@@ -1,16 +1,40 @@
 import { recoveryHash } from './recovery-crypto.mjs';
+import {decryptRecord} from './recovery-crypto.mjs';
+import {createDriveRecordHeader} from './drive-record-header.mjs';
+import {encodeCommitHead,decodeCommitHead} from './drive-commit-head.mjs';
 const valid = value => typeof value === 'string' && /^[a-zA-Z0-9_-]{10,160}$/.test(value);
 /** index.reserve(name, proposedId) must persist atomically and return the winning ID.
  * Its durable state must survive process loss. Never substitute an in-memory map in production.
  * Access tokens are obtained only at request time, never returned or logged. */
 export class DriveCustody {
-  constructor({ folderId, accessToken, index, fetcher = (input, init) => globalThis.fetch(input, init), pageSize=1000 }) {
+  #recordKey;
+  constructor({ folderId, accessToken, index, fetcher = (input, init) => globalThis.fetch(input, init), pageSize=1000,recordKey }) {
     if (!valid(folderId) || typeof accessToken !== 'function' || typeof index?.reserve !== 'function'
       || typeof index?.get !== 'function') throw Error('drive_custody_configuration');
     if(!Number.isInteger(pageSize)||pageSize<1||pageSize>1000)throw Error('drive_inventory_page_bounds');
+    if(recordKey!==undefined&&(!Buffer.isBuffer(recordKey)||recordKey.length!==32))throw Error('drive_custody_configuration');this.#recordKey=recordKey;
     Object.assign(this, { folderId, accessToken, index, fetcher, pageSize });
   }
   name(name) { if (!/^[a-zA-Z0-9_.-]{1,180}$/.test(name)) throw Error('custody_name'); return name; }
+  get supportsCommitHead(){return this.#recordKey!==undefined;}
+  async commitHeadMetadata(){
+    const response=await this.request('https://www.googleapis.com/drive/v3/files/'+this.folderId+'?fields=id,mimeType,trashed,appProperties');if(!response.ok)throw Error('drive_commit_head_unavailable');const m=await response.json();if(m.id!==this.folderId||m.trashed||m.mimeType!=='application/vnd.google-apps.folder')throw Error('drive_commit_head_unavailable');return m;
+  }
+  async readLatestCommitHead(){const m=await this.commitHeadMetadata();return decodeCommitHead(this.#recordKey,this.folderId,m.appProperties);}
+  async initialiseCommitHead(record){
+    const metadata=await this.commitHeadMetadata(),prior=decodeCommitHead(this.#recordKey,this.folderId,metadata.appProperties);
+    if(prior){if(prior.sequence!==record.sequence||prior.head!==record.head)throw Error('drive_commit_head_conflict');return prior;}
+    const response=await this.request('https://www.googleapis.com/drive/v3/files/'+this.folderId+'?fields=id',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({appProperties:{...metadata.appProperties,...encodeCommitHead(this.#recordKey,this.folderId,record)}})});
+    if(!response.ok||JSON.stringify(await this.readLatestCommitHead())!==JSON.stringify(record))throw Error('drive_commit_head_unavailable');return record;
+  }
+  async publishCommitHead(event,head,sourceHead){
+    const metadata=await this.commitHeadMetadata(),prior=decodeCommitHead(this.#recordKey,this.folderId,metadata.appProperties),record={sequence:event.sequence,head,createdAt:event.createdAt,expiresAt:event.expiresAt};
+    if(prior?.sequence>record.sequence){if(sourceHead?.sequence!==prior.sequence||sourceHead.head_hash!==prior.head)throw Error('drive_commit_head_conflict');return prior;} // never bless an older restored fork
+    if(prior?.sequence===record.sequence){if(prior.head!==record.head||prior.createdAt>record.createdAt||prior.expiresAt>record.expiresAt)throw Error('drive_commit_head_conflict');return prior;} // verified legacy adoption may retain an older expiry
+    if(prior?prior.sequence!==record.sequence-1||prior.head!==event.previousHash:record.sequence!==1||event.previousHash!=='0'.repeat(64))throw Error('drive_commit_head_gap');
+    const response=await this.request('https://www.googleapis.com/drive/v3/files/'+this.folderId+'?fields=id',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({appProperties:{...metadata.appProperties,...encodeCommitHead(this.#recordKey,this.folderId,record)}})});
+    if(!response.ok||JSON.stringify(await this.readLatestCommitHead())!==JSON.stringify(record))throw Error('drive_commit_head_unavailable');return record;
+  }
   async request(url, options = {}) {
     const token = await this.accessToken();
     if (typeof token !== 'string' || !token) throw Error('drive_authentication');
@@ -44,7 +68,13 @@ export class DriveCustody {
     const prior = await this.get(name);
     if (prior) { if (recoveryHash(prior) !== recoveryHash(bytes)) throw Error('custody_conflict'); return recoveryHash(bytes); }
     const boundary = 'wybp_' + crypto.randomUUID();
-    const metadata = { id, name, parents: [this.folderId], mimeType: 'application/octet-stream', appProperties: { wybpRecovery: '1' } };
+    let properties={wybpRecovery:'1'};
+    if(this.#recordKey){
+      const clocks=await this.index.recoveryRecord(name);if(!clocks)throw Error('drive_retention_index_required');
+      const event=name.endsWith('.intent')?decryptRecord(bytes,this.#recordKey,name):null;
+      properties=createDriveRecordHeader({key:this.#recordKey,folderId:this.folderId,fileId:id,name},{sha256:recoveryHash(bytes),...clocks,event});
+    }
+    const metadata = { id, name, parents: [this.folderId], mimeType: 'application/octet-stream', appProperties: properties };
     const body = Buffer.concat([Buffer.from('--' + boundary + '\r\nContent-Type: application/json\r\n\r\n' + JSON.stringify(metadata)
       + '\r\n--' + boundary + '\r\nContent-Type: application/octet-stream\r\n\r\n'), bytes, Buffer.from('\r\n--' + boundary + '--\r\n')]);
     const response = await this.request('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id',

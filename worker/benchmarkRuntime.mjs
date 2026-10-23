@@ -68,24 +68,24 @@ export function benchmarkRuntime(env,upper,{now=Date.now,pause,request}={}){
  meter=benchmarkMeter({phase:config.phase,upper,now,pause,request:paced});
  const binding=meter.database(env.DB),db=d1AuthorityAdapter(binding);
  const accessToken=driveAccessToken({clientId:env.WYBP_DRIVE_CLIENT_ID,clientSecret:env.WYBP_DRIVE_CLIENT_SECRET,refreshToken:env.WYBP_DRIVE_REFRESH_TOKEN,fetcher:meter.fetcher,now});
- const make=folderId=>new DriveCustody({folderId,index:new D1DriveIndex(db,folderId,{now}),accessToken,fetcher:meter.fetcher,pageSize:10});
+ const make=folderId=>new DriveCustody({folderId,index:new D1DriveIndex(db,folderId,{now}),accessToken,fetcher:meter.fetcher,pageSize:10,recordKey:config.key});
  const root=make(env.WYBP_DRIVE_FOLDER_ID),children=config.folders.map(make);
  const custody=new PartitionedDriveCustody(root,children,{async verifyFolder(id,parent){const response=await root.request('https://www.googleapis.com/drive/v3/files/'+id+'?fields=id,parents,mimeType,trashed');if(!response.ok)fail();const value=await response.json();return value.id===id&&!value.trashed&&value.mimeType==='application/vnd.google-apps.folder'&&value.parents?.includes(parent)===true;}});
- const service=createAuthorityService({db,custody,key:config.key,now,alert:async()=>{},snapshot:head=>authoritySnapshot(db,custody,config.key)(head),recoveryReady:()=>assertRestoreReceipt(binding,env.WYBP_RESTORE_RECEIPT_SHA256)});
+ const service=createAuthorityService({db,custody,key:config.key,now,alert:async()=>{},snapshot:head=>authoritySnapshot(db,custody,config.key)(head),expectedRestoreReceipt:env.WYBP_RESTORE_RECEIPT_SHA256||null,recoveryReady:()=>assertRestoreReceipt(binding,env.WYBP_RESTORE_RECEIPT_SHA256)});
  const invoke=async(method,args)=>{
-  if(!['transact','readFence','flush','ready'].includes(method))fail();
+  if(!['transact','readFence','flush','ready','query','admit'].includes(method))fail();
   meter.add('internal',1);
   if(env.BENCHMARK_AUTHORITY){
    const remaining=Object.fromEntries(Object.entries(upper).map(([k,v])=>[k,k==='storageBytes'?v:v-meter.observed()[k]]));
    let result;const began=now();try{result=await env.BENCHMARK_AUTHORITY.invoke(method,args,remaining);}catch{meter.markUncertain();fail();}finally{meter.authorityTime(Math.max(0,now()-began));}
    if(result?.billingKnown!==true||!result.usage){meter.markUncertain();fail();}meter.merge(result.usage);if(result.timing)meter.mergeTiming(result.timing);
-   if(result.failed)fail();return result.value;
+   if(result.failed)throw Error('benchmark_operation_unavailable',{cause:result.diagnostic});return result.value;
   }
   // Only local compiled fixtures may omit the binding; hosted readiness below
   // requires it, so single-instance execution cannot masquerade as a hosted test.
   if(env.WYBP_BENCHMARK_LOCAL_FIXTURE!=='true')fail();return service[method](...args);
  };
- const authority={transact:(...args)=>invoke('transact',args),readFence:(...args)=>invoke('readFence',args)};
+ const authority={transact:(...args)=>invoke('transact',args),readFence:(...args)=>invoke('readFence',args),query:(...args)=>invoke('query',args),admit:(...args)=>invoke('admit',args)};
  const origin=validatePublicAppOrigin(BENCHMARK_ORIGIN,'test',undefined,{environment:'test',origin:BENCHMARK_ORIGIN});
  const game=benchmarkGameService({binding,authority,syntheticKey:config.key,databaseResource:config.resource,runId:config.runId,now,
   async verifyAssets(region){
@@ -194,7 +194,7 @@ export function benchmarkRuntime(env,upper,{now=Date.now,pause,request}={}){
    else if(['start','answer','recover','complete','result'].includes(command?.kind))result=await game.execute(command);
    else fail();
    return {result,usage:meter.receipt(),timing:meter.timing(),billingKnown:true,receiptSha256:recoveryHash(Buffer.from(JSON.stringify(result)))};
-  }catch(error){const code=error.message==='drive_oauth_refresh'&&['invalid_grant','invalid_client','unauthorized_client','invalid_scope'].includes(error.cause)?'benchmark_drive_'+error.cause:'benchmark_operation_unavailable';return {result:{failed:true,code},usage:meter.observed(),billingKnown:meter.billingKnown(),receiptSha256:recoveryHash(Buffer.from(code))};}
+  }catch(error){const code=error.message==='drive_oauth_refresh'&&['invalid_grant','invalid_client','unauthorized_client','invalid_scope'].includes(error.cause)?'benchmark_drive_'+error.cause:'benchmark_operation_unavailable';const diagnostic=['authority_read_changed','authority_writer_busy','authority_writer_unavailable','authority_result_recovery_required','drive_commit_head_gap','drive_commit_head_conflict','drive_commit_head_unavailable'].includes(error.cause)?error.cause:null;return {result:{failed:true,code,...(diagnostic?{diagnostic}:{})},usage:meter.observed(),billingKnown:meter.billingKnown(),receiptSha256:recoveryHash(Buffer.from(JSON.stringify([code,diagnostic])))};}
  }
  async function cleanup(stopped){
   await service.ready();

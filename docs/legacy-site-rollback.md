@@ -1,5 +1,54 @@
 # Existing website custody and rollback — 23 October 2026
 
+## Latest read-only continuity check and local correction
+
+Authoritative Netlify account API returned the complete existing zone:9 records,
+including both MX records, root TXT records and the existing brideprice CNAME/
+verification records. Sanitised IDs/types/TTLs and an ignored exact record export
+are preserved; SHA256461203150a86c00b6c04f8db762594271ca1686061fc58cd6b9b901958dec0e2.
+NS remains dns1–4.p02.nsone.net. Public DoH returned NXDOMAIN for both documented
+Private Email selectors `privateemail._domainkey` and `default._domainkey`, and
+for `_dmarc`. DS/CAA responses had no answers. These are observations, not authority
+to add guessed keys/policies or a claim that every possible DKIM selector is known.
+Read the actual Private Email configuration before any verified DNS addition.
+
+The immutable provider homepage still returns200 with the pinned HTML hash, but
+all five actual authentication deep paths return404 there. Literal routes were
+independently read from the pinned deployed JavaScript without printing its
+contents. A source-only,
+OFF-by-default `WYBP_LEGACY_CONTINUITY_ENABLED` compatibility handler fixes these
+canonical paths by fetching the unchanged provider ROOT shell. Browser path/query/
+fragment remain for its existing router; callback tokens, cookies, credentials and
+client headers are not sent to the provider. Fixed `/assets/<filename>` requests
+use only that exact origin, with bounded bodies and no redirects. Other game/API
+paths and non-GET/HEAD methods do not fall through to a speculative email proxy.
+The verified legacy profile, verification/registration completion, class/tutor
+and booking-dashboard return routes use the same shell. New game/legal handlers
+are not replaced. This preserves existing legacy service journeys, not a new
+payment integration, charge or change to legacy provider settings.
+Private ingress protects this handler too. Nothing was deployed or enabled.
+
+Local security tests and the compiled exact package pass. Five read-only requests
+through this local handler each return the original2,658-byte HTML, SHA256
+6f500428dd41b5017b56077acf71e4cf207276c89fb5d928a30647801045ae7f.
+This verifies shell routing, not a sent legacy email or authenticated Supabase
+session. Canonical-origin callback execution and assets must be checked during
+the protected cutover rehearsal; no Supabase allowlist change is assumed necessary
+or made. The game still uses its own SMTP and does not depend on legacy email.
+
+Final domain plan: save exact registrar/zone state, translate Netlify pseudo-records
+only for the intended new apex/www serving, preserve EVERY mail/subdomain/verification
+record, establish the Cloudflare zone without changing nameservers, compare it,
+then use the existing conditional cutover authority only after all gates pass.
+Retain the original nameservers/provider deployment for rollback. Restore routing,
+never an old financial database; leave settlement/webhook processing intact when
+rolling back the front end. No DNS, existing deployment or email setting changed.
+
+Ignored evidence:20261023-email-dns-readonly.json,
+20261023-precutover-netlify-dns.json,20261023-precutover-public-dns.json,
+20261023-legacy-compatibility-readonly.json and20261023-final-direct-smoke-new.log.
+Existing archive/key/operational-alert checks were not repeated.
+
 This records read-only preparation. No existing site, function, email, domain,
 integration, subscription or publishing setting was changed. Conditional launch
 authority still depends on the essential readiness gates; this is not activation.

@@ -7,6 +7,13 @@ const json=x=>Buffer.from(JSON.stringify(x));
 const reject=code=>{throw Error(code);};
 const commitSignature=(key,name,bytes,event)=>createHmac('sha256',key).update(JSON.stringify(['wybp-commit-v1',name,recoveryHash(bytes),event.createdAt,event.expiresAt])).digest('hex');
 export const createOperationId=(now=Date.now())=>'op_'+now+'_'+crypto.randomUUID().replaceAll('-','');
+/** The identical SQL/payload boundary applies to original writes and offline
+ * replay. Recovery must never acquire broader statement privileges. */
+export function assertAuthorityStatements(statements){
+  if(!Array.isArray(statements)||!statements.length||statements.length>98)reject('authority_operation');
+  if(statements.some(s=>typeof s?.sql!=='string'||!/^PRAGMA defer_foreign_keys=(ON|OFF)$/i.test(s.sql.trim())&&(!/^(UPDATE|INSERT|DELETE|SELECT CASE)\b/i.test(s.sql.trim())||/operational_|retention_restore|\b(ATTACH|PRAGMA)\b/i.test(s.sql))))reject('authority_sql_scope');
+  if(json(statements).length>65536)reject('authority_payload_bounds');
+}
 export class D1Authority {
   constructor(db,custody,key,{now=()=>Date.now(),fault=()=>{}}={}){this.db=db;this.custody=custody;this.key=key;this.now=now;this.fault=fault;}
   async head(){return (await this.db.query("SELECT * FROM operational_recovery_checkpoints WHERE id='journal'"))[0];}
@@ -14,14 +21,13 @@ export class D1Authority {
   async mutate(operationId,statements){
     const identity=/^op_(\d{13})_[a-f0-9]{32}$/.exec(operationId),operationAt=Number(identity?.[1]);
     if(!identity||operationAt>this.now()||operationAt+WINDOW<=this.now()||!statements.length||statements.length>98)reject('authority_operation');
-    if(statements.some(s=>!/^PRAGMA defer_foreign_keys=(ON|OFF)$/i.test(s.sql.trim())&&(!/^(UPDATE|INSERT|DELETE|SELECT CASE)\b/i.test(s.sql.trim())||/operational_|retention_restore|\b(ATTACH|PRAGMA)\b/i.test(s.sql))))reject('authority_sql_scope');
+    assertAuthorityStatements(statements);
     if(await this.custody.get(operationId+'.abort'))reject('operation_aborted');
-    if(json(statements).length>65536)reject('authority_payload_bounds');
     const intentHash=recoveryHash(json(statements));const name=operationId+'.intent';let bytes=await this.custody.get(name), event;
     if(bytes){event=decryptRecord(bytes,this.key,name);if(event.intentHash!==intentHash)reject('operation_conflict');}
     else{if(this.now()-operationAt>900000)reject('new_operation_stale');
       const head=await this.head(),now=this.now();if(!head||head.state!=='idle'||head.expires_at<=this.now())reject('journal_unavailable');
-      event={operationId,intentHash,sequence:head.sequence+1,previousHash:head.head_hash,createdAt:now,expiresAt:now+WINDOW,statements};bytes=encryptRecord(event,this.key,name);await this.custody.put(name,bytes);}
+      event={operationId,intentHash,sequence:head.sequence+1,previousHash:head.head_hash,createdAt:now,expiresAt:now+WINDOW,statements};bytes=encryptRecord(event,this.key,name);await this.custody.put(name,bytes,{createdAt:event.createdAt,expiresAt:event.expiresAt});}
     this.fault('intent_durable');if(event.expiresAt<=this.now())reject('intent_expired');
     const prior=(await this.db.query('SELECT * FROM operational_authority_outbox WHERE operation_id=?1',[operationId]))[0];
     if(prior){if(prior.intent_hash!==intentHash||prior.event_hash!==recoveryHash(bytes))reject('outbox_conflict');await this.commitProof(operationId,bytes,event);return prior.event_hash;}
@@ -33,6 +39,14 @@ export class D1Authority {
   // uncertain until this exact operation is retried. Never acknowledge success
   // or release the writer before independent committed-byte readback succeeds.
   async commitProof(operationId,bytes,event){
+    if(this.custody.supportsCommitHead===true){
+      // The authenticated monotonic head commits the ENTIRE hash-linked prefix.
+      // It replaces redundant per-intent metadata round trips on new adapters;
+      // legacy per-intent/.event proofs below retain their original verification.
+      const source=await this.head(),verified=await this.custody.publishCommitHead(event,recoveryHash(bytes),source);this.fault('commit_uploaded');
+      if(verified?.sequence!==source.sequence||verified.head!==source.head_hash)reject('authority_commit_readback');
+      const copy=await this.custody.get(operationId+'.intent');if(!copy||recoveryHash(copy)!==recoveryHash(bytes))reject('authority_commit_readback');this.fault('commit_verified');return;
+    }
     // The production Drive adapter attaches an authenticated commit marker to
     // the existing immutable encrypted intent: no duplicate data object or clock.
     // Older adapters/archives retain their independently verified .event format.
@@ -40,7 +54,8 @@ export class D1Authority {
       const intent=operationId+'.intent',proof=commitSignature(this.key,intent,bytes,event);
       await this.custody.markCommitted(intent,proof);this.fault('commit_uploaded');
       const marker=await this.custody.readCommit(intent),copy=await this.custody.get(intent);
-      if(marker!==proof||!copy||recoveryHash(copy)!==recoveryHash(bytes))reject('authority_commit_readback');this.fault('commit_verified');return;
+      if(marker!==proof||!copy||recoveryHash(copy)!==recoveryHash(bytes))reject('authority_commit_readback');
+      this.fault('commit_verified');return;
     }
     const name=operationId+'.event',sha256=recoveryHash(bytes),prior=await this.custody.get(name);
     if(prior&&recoveryHash(prior)!==sha256)reject('authority_commit_conflict');

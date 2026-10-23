@@ -1,5 +1,71 @@
 # Only outstanding controller decisions — 23 October 2026
 
+## New verified processor/continuity findings
+
+No settled seller, territory, age, refund, address, Google client, key or alert
+decision is reopened. Read the proposed cost/resource decision in
+[revised hosted verification](revised-hosted-verification-2026-10-23.md).
+
+The technical purpose assessment is now prepared: minimise server data for
+requested free play/wallet continuity; rely on purpose-specific legitimate interests
+for that free service and proportionate security, with objection/support routes.
+Paid checkout/fulfilment/confirmation uses contract and applicable pre-contract
+steps; mandatory accounting uses legal obligations. Optional analytics remains OFF.
+Contract is not a blanket basis for every field. No inferred ethnicity, date of
+birth, identity document, uploaded photo, advertising or behavioural profile is
+needed. This is a proposed controller record, not invented owner/legal approval.
+
+Children may still reach a cultural quiz despite its settled18+ policy. Retain
+high-privacy defaults for everyone: no advertising, location or profiling; private
+results by default; no server photo/name upload; no new public-result/challenge
+activation; separate unchecked immediate-delivery requests and the approved
+generous refund. Adult purchase acknowledgement is not verified age assurance.
+This assessment does not assert that children are unlikely to access it or that
+all Children's Code obligations are thereby discharged. No new age-data service
+or identity collection is proposed. The existing privacy/rights wording remains
+a draft until the controller approves its final publication and residual risks.
+
+| Provider | Verified role/contract finding | Remaining concrete work |
+|---|---|---|
+| Cloudflare | Customer DPA v6.4 is part of the self-serve agreement; current text covers UK transfer safeguards. Application/D1 data and technical request records, not an assurance of UK-only processing. | Pin the applicable account agreement/subprocessor/transfer record with final configuration. No new plan. |
+| Consumer Google Drive | Google explicitly says consumer Gmail/Drive has no DPA and is not provided as a processor service. Paid consumer storage does not establish a Workspace agreement. | Obtain business custody before customer archives. Proposed single-user Business Starter Flexible isGBP8.40 incl20%VAT/month, subject to final quote/owner approval. Preserve existing archives/account/client and email. |
+| Namecheap Private Email | Published DPA covers hosted processing, but its public2021 text defines UK SCCs by2010/87/EU. This is not evidence of a current UK transfer instrument or the mailbox's actual processing/access locations. | Ask provider for the current applicable UK mechanism/location/subprocessors and inspect existing mailbox DKIM. Do not invent contractual acceptance, assume an unlawful transfer, or migrate email. |
+| Stripe | Current DPA distinguishes processor payment-service work from controller fraud/regulatory activities; business-user DPA is incorporated in its agreement. | Reuse correct-account Active/no-tasks evidence; finish inactive link return URLs, signed endpoint and confirmation proof checks without real charges. |
+| Healthchecks | Provider says it is controller for operator account/contact information and does not accept customer personal data or sign customer DPAs. | Send only the existing status heartbeat; no customer/order/SQL data in ping bodies. Existing alert receipt/paused-state evidence is reused. |
+| Netlify | Retained legacy/private/info sites, not the proposed direct game serving/data path. | Preserve provider-native deployment, stored archive custody and DNS. Do not claim a new game's customer database is hosted there. |
+
+Provider support contact is NOT yet sent. Specific requested communication approval:
+
+“May I send one support request to Namecheap about classesforculture.com Private
+Email: confirm its current DPA/UK transfer instrument, processing and support-access
+locations/subprocessors, and current DKIM selector/key availability? No credentials,
+customer data, address or financial information will be included, and no service
+or DNS change will be requested.” Recommended: approve; engineering handles it.
+
+Draft request: “Please confirm the current DPA and UK international-transfer
+mechanism applying to our Private Email service for classesforculture.com, including
+processing/support-access locations and subprocessors. The published DPA defines
+UK SCCs by2010/87/EU; please provide the currently applicable UK Addendum/IDTA or
+adequacy basis. Please also confirm where the account's current DKIM selector/public
+key can be viewed. Do not modify any service or DNS. Do not request SMTP credentials.”
+
+The final privacy wording below is the remaining publication question, NOT another
+commercial-policy decision. Add this purpose-specific free-play sentence:
+“For free play and wallet continuity we use the minimum information needed for the
+service, relying on our legitimate interests in providing and securing it. You can
+contact us to object or request help; accounting and protected purchased value are
+handled separately.” Retain the already drafted paid/security wording and accurate
+provider/rights/retention disclosures. Recommended: approve final wording after
+the named processor gaps are resolved; do not change approvedForProduction yet.
+
+Sources checked23October:
+[Google consumer DPA position](https://support.google.com/policies/answer/9581826?hl=en),
+[Workspace agreement](https://workspace.google.com/terms/premier_terms/),
+[Cloudflare DPA](https://www.cloudflare.com/cloudflare-customer-dpa/),
+[Namecheap DPA](https://www.namecheap.com/legal/universal/data-processing-addendum/),
+[Stripe DPA](https://stripe.com/gb/legal/dpa),
+[Healthchecks privacy/roles](https://healthchecks.io/faq/).
+
 Seller identity, UK-only sales,18+ free/paid audience, support contacts/target,
 saveable-plus-email confirmations and the voluntary14-day refund policy are settled.
 Do not request those decisions again. A blank Stripe tax-ID field is not a failed

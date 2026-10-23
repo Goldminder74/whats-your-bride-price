@@ -1,5 +1,16 @@
 # Private operational runtime
 
+## Source continuation — 23 October, NOT deployed
+
+See [recovery integration](recovery-integration-2026-10-23.md) for the compatible
+snapshot/tail decoder, independent committed-head protocol, atomic repository
+reads and private finalisation/adoption procedures. Existing production versions,
+database schema, Secret values and OFF gates have not changed in this continuation.
+Do not repeat seller-address, OAuth, independent-key or alert setup. Legacy
+nonzero journals require verified head adoption before this new writer is installed;
+the private operator cannot infer authority from a missing source or elapsed time.
+Any rollback after new compressed archives must retain the matching decoder.
+
 ## Current local integration — 23 October 2026
 
 Read current-handoff.md first; older sections below describe historical deployment

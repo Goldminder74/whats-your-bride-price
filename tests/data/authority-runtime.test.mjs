@@ -54,6 +54,15 @@ test('authenticated metadata commits reuse immutable intents and preserve fail-c
   }finally{f.sql.close();}
  }
 });
+test('independent high-water publication must settle before a financial mutation is acknowledged or its writer released',async()=>{
+ const f=await fixture(),markers=new Map();let lost=true,highWater=null;
+ try{
+  Object.assign(f.options.custody,{supportsCommitHead:true,markCommitted:async(n,p)=>markers.set(n,p),readCommit:async n=>markers.get(n),publishCommitHead:async(e,head)=>{highWater={sequence:e.sequence,head};if(lost){lost=false;throw Error('synthetic_head_response_lost');}return highWater;}});
+  const service=createAuthorityService(f.options),op=createOperationId(f.at),statements=[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['independently_protected']}];
+  await assert.rejects(service.mutate(op,statements),/synthetic_head_response_lost/);await assert.rejects(service.ready());assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,1);
+  const receipt=await service.mutate(op,statements);await service.ready();assert.deepEqual(highWater,{sequence:1,head:receipt});assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,1);assert.equal(await service.mutate(op,statements),receipt);
+ }finally{f.sql.close();}
+});
 
 test('bounded chunks resume after each crash boundary without repeating financial mutations',async()=>{
  for(const stage of ['chunk_uploaded','chunk_verified','chunk_checkpointed']){

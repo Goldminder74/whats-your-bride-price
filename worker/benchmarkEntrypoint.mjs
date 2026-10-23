@@ -14,9 +14,9 @@ export class BenchmarkAuthority extends WorkerEntrypoint {
  async invoke(method,args,upper){
   const runtime=benchmarkRuntime(this.env,upper);
   try{
-   if(!['transact','readFence','flush','ready'].includes(method)||!Array.isArray(args))throw Error();
+   if(!['transact','readFence','flush','ready','query','admit'].includes(method)||!Array.isArray(args))throw Error();
    const value=await runtime.service[method](...args);return {value,usage:runtime.meter.receipt(),timing:runtime.meter.timing(),billingKnown:true};
-  }catch{return {failed:true,usage:runtime.meter.observed(),billingKnown:runtime.meter.billingKnown()};}
+  }catch(error){const diagnostic=['authority_read_changed','authority_writer_busy','authority_writer_unavailable','authority_result_recovery_required','drive_commit_head_gap','drive_commit_head_conflict','drive_commit_head_unavailable'].includes(error.message)?error.message:undefined;return {failed:true,...(diagnostic?{diagnostic}:{}),usage:runtime.meter.observed(),billingKnown:runtime.meter.billingKnown()};}
  }
  fetch(){return deny();}
 }

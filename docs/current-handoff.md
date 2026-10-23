@@ -1,5 +1,110 @@
 # Current handoff
 
+### Retained recovery, independent head and concrete capacity correction — 23 October
+
+Continuation from3ac33be. New work below is validated SOURCE ONLY. Public paid
+launch remains NO-GO:5k/day,500/hour,48h outage recovery andGBP50 operation are not
+verified. No hosted deployment/schema/resource/Secret/DNS/email/Stripe/schedule or
+spending changed this turn. Do not revive the stopped B/C authority or request an
+identical renewal. GBP8 cumulative benchmark/GBP50 operating limits still apply;
+GBP150 remains planning only. Seller address, OAuth, key custody and alert receipt
+remain complete; no repeat owner setup is required.
+
+**New recovery evidence:** actual-schema LOCAL450,000-game/5,400,000-answer physical
+90-day fixture PASS. Complete file-ID loss/reconstruction, interrupted/resumed
+import, full target hashes/FKs, accounting, holds, closed-wallet protection and
+deletion suppression verified. Source2,796,285,952B; snapshot/proof5,406objects/
+232,140,214B; total10,946objects/486,335,487B; counted local transfer8,764,033,399B;
+capture/import/verify11,350/5,401/2,702calls; elapsed4,089,677ms. Access stayed blocked;
+temporary data removed and synthetic key cleared. This excludes7-day purge grace,
+48h backlog, incomplete stock, mature financial/hold growth and30-day archive
+inventory. NOT a hosted RTO/full99-day result. See
+[physical evidence](local-stock-recovery-2026-10-23.md).
+
+**Latest authority integration:** verified full snapshot plus v3 contiguous tail,
+exact original SQL/clocks, atomic restartable replay, independent post-import
+inventory and guarded finalisation pass real repository refund/settlement,
+closure, hold and deletion regressions. Lost responses cannot duplicate money or
+release access. New authenticated Drive identity metadata supports total index
+loss; a separate committed high-water mark detects a missing LAST event and older
+forks. Acknowledgement requires independent committed-byte/head readback. The new
+prefix proof avoids redundant per-intent marker writes; legacy proofs remain.
+Nonzero legacy journals require private verified adoption before new writers;
+missing source/time never supplies authority. See
+[integration/adoption/rollback](recovery-integration-2026-10-23.md).
+
+**Confirmed concurrency defect fixed:** split before/read/after fence checks could
+fail on unrelated writes. Configured protected SELECT/admission now verifies the
+exact restore receipt/readiness in one D1 transaction. Denied admission changes
+nothing; unknown provider outcomes do not retry. Existing overlap/closure/security
+assertions remain. Compiled overlapping starts PASS; one local fixture with refresh
+and completion replay observes44 external/435 internal/138 writes/2,835 reads.
+These are not hosted billing/throughput. The old32-second hosted cancellation is
+still unattributed, and no stopped operation was replayed.
+
+**Capacity correction required:** full source capture holds its writer fence across
+11,350 calls; normal daily whole-history census also writes/deletes excessive
+scratch rows. Compression alone cannot fix either. Proposed smallest change:
+ONE private journal-fed D1 recovery mirror plus explicit snapshot capture that
+defers unrelated historical census to recovery. Complete independent recovery
+enumeration, head/chain and accounting guards remain mandatory. Mirror resource
+and capture integration are NOT implemented/deployed; do not claim readiness.
+[One revised approval package](revised-hosted-verification-2026-10-23.md) proposes
+direct serving,99-day stock/30-day custody history,24h5k workload with500-game hour,
+bounded outage recovery and cleanup in ONE112h window. It preserves all prior
+usage/unknown reservations. No new Netlify publication. New proposed maxima:
+GBP175 cumulative experiment/first Workers month andGBP200 whole-account validation
+month, with ONE proposedGBP8.40/month business-custody subscription. NOT authorised;
+subsequent operating ceiling remainsGBP50 pending measured decision. These are
+conservative ceilings, not minimum/expected invoices or provider hard spending caps.
+
+**Production/continuity preparation:** fresh read-only app/ops versions, unchanged
+DB bindings/Secret NAMES, false public/live-webhook flags and zero schedules verified.
+App remains e8c81e52-c07f-41e9-90c0-6133333b8ec1; ops2277378a-8ed0-4042-9861-271d66db63b1.
+Normal private game remains at its prior matched pair. Saved exact9-record Netlify
+DNS zone and public NS/MX/TXT/DS/CAA observations, unchanged. Legacy immutable
+provider home200 but five auth deep links404; implemented OFF-default continuity
+for verified legacy account/booking paths and assets behind private ingress.
+Compiled checks preserve URL/token routing without forwarding credentials/query,
+rebuilding the old site or changing its email function. No authenticated old-site
+email flow has been sent/claimed. Standard DKIM selectors and DMARC returnNXDOMAIN;
+actual mailbox selector/contract facts still need provider confirmation.
+See [rollback/continuity](legacy-site-rollback.md).
+
+**Remaining hosted confirmation/payment work:** reuse converted original-GBP
+40Cowrie/Reveal fulfilment/refund/dispute/retry evidence and immutable-confirmation
+source checks. New hosted customer confirmation delivery/uncertain-SMTP proof,
+0014 application, GB-country path and final inactive live-link return/configuration
+checks remain pending. No customer email or repeated operational alert sent.
+Do not enable live payments or invent hosted confirmation evidence from local tests.
+
+**New genuine processor decisions:** consumer Drive has no business processor
+agreement; a separately funded consumer storage subscription is not a DPA. Proposed
+single-user Workspace business custody preserves old archives/client and Namecheap
+email, but requires explicit new cost/account/contract approval. Namecheap's public
+DPA leaves current UK mechanism/access location unverified; request permission for
+one nonsensitive support inquiry rather than inventing a conclusion or migrating.
+Final purpose-specific privacy publication wording/children-access assessment stays
+gated; settled seller/territory/commercial policy must not be reopened. Questions,
+draft wording and primary sources: [controller review](remaining-controller-review.md).
+
+**Validation:**430 data and329 unit checks PASS; affected latest-head/prefix tests
+24/24 plus final clock/header3/3; compiled benchmark3/3 with unchanged real overlap;
+final compiled ops/archive5/5; final direct package2/2; full lint/typecheck/diff PASS.
+Final private build7d59c0c030b1b0e8a4eed431ee0a2b16f2ec0d3b45dbccb4184bc34eb37e6aae,
+all access/webhook/schedule gates OFF, not deployed. Interim overlap failures drove
+the atomic-read/prefix correction; the final assertions were not relaxed. One final
+compiled attempt hit sandbox localhostEACCES; only those5 checks were resumed with
+normal local loopback permissions and passed. Unchanged browser/release stages reused.
+No credentials, address, generated archive/database/log/evidence file belongs in Git.
+
+Ignored evidence in outputs/authority-preparation:local-schema-recovery-450000.json,
+20261023-retained-90d.log,20261023-final-{data,unit}-new.log,
+20261023-{head-prefix-focus,head-clock-final,prefix-benchmark-final}.log,
+20261023-finish-{ops-tests-resume,direct-build,direct-tests,lint,typecheck}.log,
+20261023-production-config-readonly.json,20261023-precutover-{netlify-dns,public-dns}.json,
+20261023-legacy-compatibility-readonly.json,20261023-stock-index-write-model.json.
+
 ### Immediate-launch audit and archive blocker reduction — 23 October
 
 Public paid launch remains NO-GO. Current public domain GET200 is the existing

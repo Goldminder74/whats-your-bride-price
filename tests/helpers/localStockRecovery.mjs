@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import {DatabaseSync,backup} from 'node:sqlite';
 import {randomBytes,createHash} from 'node:crypto';
-import {mkdtempSync,mkdirSync,readFileSync,writeFileSync,rmSync,statSync} from 'node:fs';
+import {mkdtempSync,mkdirSync,readFileSync,writeFileSync,rmSync,statSync,statfsSync} from 'node:fs';
 import {join,resolve,relative,sep} from 'node:path';
 import {tmpdir} from 'node:os';
 import {populatedRecoveryFixture} from './populatedRecovery.mjs';
@@ -19,12 +19,15 @@ const DAY=86400000;
 const adapter=sql=>({query:async(s,p=[])=>sql.prepare(s).all(...p),batch:async rows=>{sql.exec('BEGIN');try{const result=rows.map(r=>sql.prepare(r.sql).all(...(r.params||[])));sql.exec('COMMIT');return result;}catch(error){sql.exec('ROLLBACK');throw error;}}});
 const digestTable=(sql,table)=>{const h=createHash('sha256');for(const row of sql.prepare('SELECT * FROM '+table+' ORDER BY 1').iterate())h.update(JSON.stringify(row)+'\n');return h.digest('hex');};
 
-export async function localStockRecovery({games=30,progress=()=>{}}={}){
- if(!Number.isSafeInteger(games)||games<1||games>45000||typeof progress!=='function')throw Error('local_stock_scope');
+export async function localStockRecovery({games=30,profile='sample',progress=()=>{}}={}){
+ const retained=profile==='retained-90d';
+ if(!['sample','retained-90d'].includes(profile)||!Number.isSafeInteger(games)||games<1||(retained?games!==450000:games>45000)||typeof progress!=='function')throw Error('local_stock_scope');
+ const space=()=>{const s=statfsSync(tmpdir());return Number(s.bavail)*Number(s.bsize);};
+ if(retained&&space()<12000000000)throw Error('local_stock_disk_headroom');
  const parent=resolve(tmpdir()),directory=mkdtempSync(join(parent,'wybp-local-schema-stock-')),key=randomBytes(32),at=Date.now(),started=performance.now();
  const inside=relative(parent,resolve(directory));if(!inside||inside.startsWith('..'+sep)||inside==='..'||!inside.startsWith('wybp-local-schema-stock-'))throw Error('local_cleanup_scope');
  let source,scratch,journal,target,provider,inventoryJournal,context;
- const report={engine:'local SQLite and synthetic disk custody; no hosted operations',games,answers:games*12,hostedRequests:0,sourceIndexLossVerified:false,importInterruptedAndResumed:false,runtimeAccess:'blocked_pending_latest_authority_and_suppression',qualification:'Physical gaming-row lower bound plus existing protected accounting examples. One historical wallet; not unique-player capacity, full90-day attempt/answer/result stock, long-lived financial stock,30-day authority-object inventory or hosted RTO.'};
+ const report={engine:'local SQLite and synthetic disk custody; no hosted operations',profile,games,answers:games*12,hostedRequests:0,sourceIndexLossVerified:false,importInterruptedAndResumed:false,runtimeAccess:'blocked_pending_latest_authority_and_suppression',qualification:retained?'Physical90-day completed-game stock, independent synthetic wallet identities and varied hashes/clocks, plus protected accounting examples. Excludes7-day purge grace,48h backlog, incomplete-game stock, long-lived financial/hold stock and30-day authority inventory; not hosted RTO.':'Physical gaming-row lower bound plus existing protected accounting examples. One historical wallet; not unique-player capacity, full90-day attempt/answer/result stock, long-lived financial stock,30-day authority-object inventory or hosted RTO.'};
  try{
   context=await populatedRecoveryFixture();await backup(context.database,join(directory,'source.sqlite'));context.database.close();context=null;
   source=new DatabaseSync(join(directory,'source.sqlite'),{enableForeignKeyConstraints:true});const db=adapter(source),migrations=await loadMigrationPlan();
@@ -32,8 +35,13 @@ export async function localStockRecovery({games=30,progress=()=>{}}={}){
   applyMigrationPlan(journal,migrations);applyMigrationPlan(target,migrations);
   const attempt={...source.prepare('SELECT * FROM quiz_attempts LIMIT 1').get()},result={...source.prepare('SELECT * FROM results LIMIT 1').get()},answers=source.prepare('SELECT * FROM answers').all();assert.equal(answers.length,12);
   const insert=(table,row)=>{const keys=Object.keys(row),s=source.prepare('INSERT INTO '+table+'('+keys.join(',')+') VALUES('+keys.map(()=>'?').join(',')+')');return v=>s.run(...keys.map(k=>v[k]));};
+  const wallet={...source.prepare('SELECT * FROM cowrie_wallets LIMIT 1').get()},addWallet=insert('cowrie_wallets',wallet);
   const addAttempt=insert('quiz_attempts',attempt),addResult=insert('results',result),addAnswer=insert('answers',answers[0]);source.exec('BEGIN');
-  try{for(let i=1;i<games;i++){const id='local_stock_attempt_'+i;addAttempt({...attempt,id,idempotency_key_hash:i.toString(16).padStart(64,'0')});addResult({...result,id:'local_stock_result_'+i,attempt_id:id,public_slug:i.toString(16).padStart(48,'0')});for(const[j,row]of answers.entries())addAnswer({...row,id:'local_stock_answer_'+i+'_'+j,attempt_id:id});}source.exec('COMMIT');}catch(error){source.exec('ROLLBACK');throw error;}
+  try{for(let i=1;i<games;i++){const id='local_stock_attempt_'+i,entropy=retained?randomBytes(32).toString('hex'):i.toString(16).padStart(64,'0'),clock=at-(retained?i%90:0)*DAY;
+   if(retained)addWallet({...wallet,id:'wallet_'+i.toString(16).padStart(32,'0'),public_reference:'cw_'+i.toString(16).padStart(32,'0'),anonymous_owner_hash:entropy,state:'active',purchased_balance:0,bonus_balance:0,free_quick_plays_consumed:1,recovery_credential_hash:randomBytes(32).toString('hex'),closed_at:null,ownership_minimized_at:null,retention_expires_at:null,deleted_at:null,frozen_at:null,created_at:clock,updated_at:clock});
+   addAttempt({...attempt,id,idempotency_key_hash:entropy,...(retained?{anonymous_subject_hash:entropy,created_at:clock,updated_at:clock,started_at:clock,completed_at:clock,deleted_at:null,anonymized_at:null}: {})});addResult({...result,id:'local_stock_result_'+i,attempt_id:id,public_slug:retained?randomBytes(24).toString('hex'):i.toString(16).padStart(48,'0'),...(retained?{created_at:clock,updated_at:clock,deleted_at:null,anonymized_at:null}: {})});for(const[j,row]of answers.entries())addAnswer({...row,id:'local_stock_answer_'+i+'_'+j,attempt_id:id,...(retained?{answered_at:clock,created_at:clock,updated_at:clock}: {})});
+   if(retained&&i%10000===0&&space()<3500000000)throw Error('local_stock_disk_stop');
+  }source.exec('COMMIT');}catch(error){source.exec('ROLLBACK');throw error;}
   assert.deepEqual(source.prepare('PRAGMA foreign_key_check').all(),[]);assert.equal(source.prepare('SELECT COUNT(*) n FROM answers').get().n,games*12);progress('physical-stock-seeded');
   report.sourceBytes=statSync(join(directory,'source.sqlite')).size;
   provider=new DatabaseSync(join(directory,'provider.sqlite'));provider.exec("CREATE TABLE files(serial INTEGER PRIMARY KEY,id TEXT UNIQUE,name TEXT UNIQUE,sha256 TEXT,created INTEGER,expires INTEGER,properties TEXT DEFAULT '{\"wybpRecovery\":\"1\"}')");mkdirSync(join(directory,'ciphertext'));
@@ -48,8 +56,9 @@ export async function localStockRecovery({games=30,progress=()=>{}}={}){
   custody.auditPage=async({cursor,pageSize})=>{reads++;const offset=Number(cursor||0),rows=provider.prepare('SELECT * FROM files ORDER BY name LIMIT ? OFFSET ?').all(pageSize,offset),count=provider.prepare('SELECT COUNT(*) n FROM files').get().n;return {files:rows.map(f=>({id:f.id,name:f.name,mimeType:'application/octet-stream',parents:[folderId],appProperties:{wybpRecovery:'1'}})),cursor:offset+rows.length<count?String(offset+rows.length):null};};
   const authority=new D1Authority(db,custody,key,{now:()=>at});await authority.initialise();await authority.mutate(createOperationId(at),[{sql:'UPDATE quiz_attempts SET id=id WHERE id=?1',params:[attempt.id]}]);
   const service=()=>createAuthorityService({db,custody,key,now:()=>at,alert:async()=>{},snapshot:async()=>assert.fail('monolithic capture forbidden')});let captured,calls=0;
-  do{captured=await service().advanceSnapshot('synthetic_local_stock');assert.ok(++calls<5000);if(calls%100===0)progress('bounded-capture-step-'+calls);}while(!captured.complete);report.captureCalls=calls;
-  let compacted;do{compacted=await service().cleanupSnapshotStep('synthetic_local_stock');assert.ok(++calls<7000);}while(!compacted.complete);progress('bounded-boundary-verified');
+  const captureLimit=retained?15000:5000,cleanupLimit=retained?22000:7000;
+  do{captured=await service().advanceSnapshot('synthetic_local_stock');assert.ok(++calls<captureLimit);if(calls%100===0){progress('bounded-capture-step-'+calls);if(retained&&space()<3500000000)throw Error('local_stock_disk_stop');}}while(!captured.complete);report.captureCalls=calls;
+  let compacted;do{compacted=await service().cleanupSnapshotStep('synthetic_local_stock');assert.ok(++calls<cleanupLimit);}while(!compacted.complete);progress('bounded-boundary-verified');
   const boundary={name:'synthetic_local_stock.boundary',sha256:captured.receipt},frozen=await authority.freeze('synthetic_inventory_fence'),fence=recoveryHash(Buffer.from(JSON.stringify([frozen.manifest_hash,frozen.sequence,frozen.head_hash]))),watermark=provider.prepare('SELECT MAX(serial) n FROM files').get().n;
   const inventoryRecords=async function*(){for(const row of provider.prepare('SELECT * FROM files WHERE serial<=? ORDER BY name').iterate(watermark))yield {name:row.name,id:row.id,folderId,sha256:row.sha256,createdAt:row.created,expiresAt:row.expires};};
   const pointer=await capturePinnedInventory({root:custody,key,id:'synthetic_stock_index',records:inventoryRecords(),expectedCount:watermark,journal:inventoryJournal,now:at,assertFrozen:async()=>{const h=await authority.head();assert.equal(h.state,'exporting');return recoveryHash(Buffer.from(JSON.stringify([h.manifest_hash,h.sequence,h.head_hash])));}});

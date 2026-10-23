@@ -1,5 +1,35 @@
 # Actual-schema recovery lower bound — 23 October 2026
 
+## New90-day physical rehearsal — PASS, local only
+
+The explicit `--local-retained-90d` profile completed450,000 games and5,400,000
+answers with independent synthetic wallet identities and varied hashes/clocks.
+Complete source file-ID loss, interrupted/resumed index reconstruction and import,
+all target table/proof hashes and foreign keys, accounting relationships, holds,
+closed wallets and deletion suppression PASS. Access stayed blocked. Temporary
+databases/ciphertext were deleted and the synthetic key cleared before the report
+was saved. No hosted resource/request, email, Secret or benchmark allowance used.
+
+| Observed quantity | Local90-day fixture |
+|---|---:|
+| Source SQLite bytes |2,796,285,952|
+| Snapshot/proof objects / ciphertext bytes |5,406 /232,140,214|
+| All snapshot/plan/control objects / bytes |10,946 /486,335,487|
+| Counted local custody reads / transferred bytes |110,109 /8,764,033,399|
+| Capture / import / verification calls |11,350 /5,401 /2,702|
+| Restore page size |50 rows|
+| Elapsed |4,089,677ms (about68.2min)|
+
+This is the90-day completed-game minimum, not the full99-day grace/outage stock.
+It excludes incomplete-game stock, full long-lived financial/hold growth and30-day
+authority-object history. It is NOT hosted RTO, normal serving capacity or evidence
+that a daily source fence of11,350 calls is acceptable. The separate latest-tail
+regressions exercise later financial/closure/deletion/hold changes and independent
+high-water protection; this physical run does not fabricate that historical volume.
+Older nine-day results below remain historical comparisons. Ignored evidence:
+`local-schema-recovery-450000.json`, `20261023-retained-90d.log` under
+outputs/authority-preparation. No generated report/database/archive is committed.
+
 No hosted call, credential, payment, deployment or benchmark allowance was used.
 This is a local SQLite/disk-custody rehearsal, not a provider capacity or RTO result.
 The unchanged protected application and production access gates remain OFF.

@@ -16,7 +16,7 @@ test('compiled isolated harness enforces private ingress and meters actual D1/au
  assert.equal(resolve(config.main),resolve('outputs/netlify-worker/benchmark-package/worker/benchmarkEntrypoint.js'));
  assert.equal(createHash('sha256').update(await readFile(config.main)).digest('hex'),config.vars.WYBP_BENCHMARK_SOURCE_SHA256);
  const bindings={...config.vars,WYBP_BENCHMARK_KEY_BASE64:Buffer.alloc(32,7).toString('base64'),WYBP_DRIVE_CLIENT_ID:'synthetic-client',WYBP_DRIVE_CLIENT_SECRET:'synthetic-secret',WYBP_DRIVE_REFRESH_TOKEN:'synthetic-refresh',WYBP_DRIVE_FOLDER_ID:'synthetic_root_folder',WYBP_DRIVE_SHARD_FOLDER_IDS:JSON.stringify(Array.from({length:16},(_,i)=>'synthetic_child_'+i)),WYBP_RESTORE_RECEIPT_SHA256:'d'.repeat(64),WYBP_NETLIFY_PROXY_SECRET:'synthetic-proxy-'.repeat(4),WYBP_BENCHMARK_ACCESS:Buffer.from('benchmark:synthetic-private-password-1234').toString('base64'),WYBP_BENCHMARK_CONTROLLER_SECRET:'synthetic-controller-'.repeat(4)};
- const files=new Map();let nextId=0;
+ const files=new Map();let nextId=0,rootProperties={};
  const provider=async request=>{
   const url=new URL(request.url);
   if(url.hostname==='oauth2.googleapis.com')return Response.json({access_token:'synthetic-access',token_type:'Bearer',expires_in:3600,scope:'https://www.googleapis.com/auth/drive.file'});
@@ -28,6 +28,7 @@ test('compiled isolated harness enforces private ingress and meters actual D1/au
    if(files.has(metadata.id))return new Response(null,{status:409});files.set(metadata.id,{...metadata,bytes:bytes.subarray(start,end)});return Response.json({id:metadata.id});
   }
   const id=url.pathname.split('/').at(-1);
+  if(id===bindings.WYBP_DRIVE_FOLDER_ID){if(request.method==='PATCH'){rootProperties=(await request.json()).appProperties;return Response.json({id});}return Response.json({id,mimeType:'application/vnd.google-apps.folder',trashed:false,appProperties:rootProperties});}
   if(id.startsWith('synthetic_child_'))return Response.json({id,mimeType:'application/vnd.google-apps.folder',parents:[bindings.WYBP_DRIVE_FOLDER_ID],trashed:false});
   const file=files.get(id);if(!file)return new Response(null,{status:404});
   if(request.method==='PATCH'){const change=await request.json();assert.deepEqual(Object.keys(change),['appProperties']);file.appProperties={...file.appProperties,...change.appProperties};return Response.json({id});}
@@ -90,7 +91,7 @@ test('compiled isolated harness enforces private ingress and meters actual D1/au
    peak=Math.max(peak,++concurrent);try{return await call({kind:'start',identity,region:'west'});}finally{concurrent--;}
   });
   const startedTogether=await Promise.all(arrivals);assert.equal(peak,2);
-  assert.ok(startedTogether.every(value=>value.result.questionCount===12));
+  assert.ok(startedTogether.every(value=>value.result.questionCount===12),JSON.stringify(startedTogether.map(value=>value.result)));
   assert.equal((await db.prepare('SELECT COUNT(*) n FROM quiz_attempts').first()).n,8);
   const mappingCount=(await db.prepare("SELECT COUNT(*) n FROM operational_recovery_checkpoints WHERE id LIKE 'drive_file:%'").first()).n;
   assert.ok(mappingCount>0);

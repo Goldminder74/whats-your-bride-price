@@ -23,6 +23,10 @@ export class PartitionedDriveCustody {
   }
   async get(name) {return (await this.existing(name)).get(name);}
   async put(name,bytes,retention) {return (await this.existing(name)).put(name,bytes,retention);}
+  get supportsCommitHead(){return this.root.supportsCommitHead===true;}
+  async publishCommitHead(event,head,sourceHead){return this.root.publishCommitHead(event,head,sourceHead);}
+  async readLatestCommitHead(){return this.root.readLatestCommitHead();}
+  async initialiseCommitHead(record){return this.root.initialiseCommitHead(record);}
   async markCommitted(name,proof){return (await this.existing(name)).markCommitted(name,proof);}
   async readCommit(name){return (await this.existing(name)).readCommit(name);}
   async remove(name) {return (await this.existing(name)).remove(name);}

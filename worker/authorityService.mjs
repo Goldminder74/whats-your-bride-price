@@ -5,14 +5,15 @@ import { D1WriterFence,AuthorityWriterAcquisitionBusy,AuthorityWriterPending } f
 import { D1Authority } from '../scripts/authority-runtime.mjs';
 import { recoveryHash } from '../scripts/recovery-crypto.mjs';
 import { operatorRetentionPlan, runApprovedRetention, assertRestoreReceipt } from '../db/retention.ts';
-import { createJournaledDatabase } from './authorityDatabase.mjs';
+import { createJournaledDatabase,ephemeralAdmission } from './authorityDatabase.mjs';
 import { PartitionedDriveCustody } from '../scripts/partitioned-drive-custody.mjs';
 import {boundedAuthorityStep,cleanupAuthoritySnapshotStep} from './boundedAuthority.mjs';
 
 /** Private service wiring only. There is deliberately no public HTTP or cron handler. */
-export function createAuthorityService({ db, custody, key, snapshot, alert, now = Date.now, recoveryReady = async () => {}, pause = ms=>new Promise(resolve=>setTimeout(resolve,ms)) }) {
+export function createAuthorityService({ db, custody, key, snapshot, alert, now = Date.now, recoveryReady = async () => {}, expectedRestoreReceipt=null, pause = ms=>new Promise(resolve=>setTimeout(resolve,ms)) }) {
   if (!db || !custody || !Buffer.isBuffer(key) || key.length !== 32
     || typeof snapshot !== 'function' || typeof alert !== 'function' || typeof recoveryReady !== 'function' || typeof pause !== 'function') throw Error('authority_configuration');
+  if(expectedRestoreReceipt!==null&&!/^[a-f0-9]{64}$/.test(expectedRestoreReceipt))throw Error('authority_configuration');
   const authority = new D1Authority(db, custody, key, { now });
   const writer = new D1WriterFence(db, { now });
   async function waitForWriter(work,Pending){
@@ -38,7 +39,23 @@ export function createAuthorityService({ db, custody, key, snapshot, alert, now 
       throw error;
     } finally { active = false; }
   }
+  // Atomic readiness predicates and repository SELECT share one D1 transaction.
+  // No persistent read lock; unrelated writes cannot split a read's verification.
+  // Only known denied readiness retries. Unknown/provider failures still stop.
+  async function guardedRepository(sql,params,admission){
+    if(typeof sql!=='string'||!Array.isArray(params)||params.length>100||(admission?!ephemeralAdmission(sql,params):!/^\s*SELECT\b/i.test(sql)))throw Error('authority_read_scope');
+    return waitForWriter(async()=>{
+      await recoveryReady();const at=now();if(!Number.isSafeInteger(at)||at<1)throw Error('authority_configuration');
+      const allowed="EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id='journal' AND state='idle' AND expires_at>"+at+") AND NOT EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id='authority-writer' AND (state!='idle' OR expires_at<="+at+")) AND EXISTS(SELECT 1 FROM retention_restore WHERE id='active' AND receipt_hash='"+expectedRestoreReceipt+"')";
+      const statement=admission?sql.replace('VALUES (?1,?2,?3,?4,1,?5,?6,?6)','SELECT ?1,?2,?3,?4,1,?5,?6,?6 WHERE ('+allowed+')'):sql;
+      if(admission&&statement===sql)throw Error('authority_admission_scope');
+      const result=await db.batch([{sql:'SELECT CASE WHEN ('+allowed+') THEN 1 ELSE 0 END permitted',params:[]},{sql:statement,params}]);
+      if(result[0]?.results?.[0]?.permitted!==1)throw new AuthorityWriterPending();
+      if(result.length!==2||result[1]?.success!==true||!Array.isArray(result[1].results))throw Error('authority_query');return result[1];
+    },AuthorityWriterPending);
+  }
   return {
+    ...(expectedRestoreReceipt?{query:(sql,params)=>guardedRepository(sql,params,false),admit:(sql,params)=>guardedRepository(sql,params,true)}:{}),
     transact(operationId, statements) {
       if (!Array.isArray(statements) || !statements.length || statements.length > 97) return Promise.reject(Error('authority_batch_bounds'));
       return exclusive(() => waitForWriter(()=>writer.run(operationId, JSON.stringify(statements), async fenced => {
@@ -102,6 +119,24 @@ export function createAuthorityService({ db, custody, key, snapshot, alert, now 
     cleanupSnapshotStep(boundaryId){
       if(!/^[a-zA-Z0-9_-]{1,65}$/.test(boundaryId||''))return Promise.reject(Error('authority_boundary_id'));
       return exclusive(()=>writer.run('snapshot-cleanup:'+boundaryId,boundaryId,fenced=>cleanupAuthoritySnapshotStep(fenced,custody,key,boundaryId,{now})));
+    },
+    advanceAuthorityTail(boundaryId,snapshotBoundary){
+      if(!/^[a-zA-Z0-9_-]{1,65}$/.test(boundaryId||'')||!snapshotBoundary||Object.keys(snapshotBoundary).sort().join(',')!=='name,sha256'||!/^[a-zA-Z0-9_-]{1,65}\.boundary$/.test(snapshotBoundary.name||'')||!/^[a-f0-9]{64}$/.test(snapshotBoundary.sha256||''))return Promise.reject(Error('authority_boundary_id'));
+      const identity=recoveryHash(Buffer.from(JSON.stringify([boundaryId,snapshotBoundary])));
+      return exclusive(()=>writer.run('tail-job:'+boundaryId,identity,async fenced=>{
+        const id='bounded-tail-scheduler:'+boundaryId,prior=(await fenced.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[id]))[0];
+        if(prior&&(prior.manifest_hash!==identity||prior.expires_at<=now()))throw Error('authority_snapshot_progress');
+        if(prior?.state==='complete'){const checked=await boundedAuthorityStep(fenced,custody,key,boundaryId,null,{now,snapshotBoundary});if(!checked.complete||checked.receipt!==prior.head_hash||checked.sequence!==prior.sequence)throw Error('authority_snapshot_progress');return checked;}
+        if(prior&&prior.state!=='exporting')throw Error('authority_snapshot_progress');
+        const result=await boundedAuthorityStep(fenced,custody,key,boundaryId,prior?.head_hash||null,{now,snapshotBoundary});
+        const job=(await fenced.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',['bounded-job:'+boundaryId]))[0];
+        const value=result.complete?result.receipt:result.progress;if(typeof value!=='string'||value.length>131072||!job)throw Error('authority_snapshot_progress');
+        await fenced.batch([
+          {sql:"INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES(?1,'export',?2,?3,?4,0,?5,1,?6,?7) ON CONFLICT(id) DO UPDATE SET sequence=excluded.sequence,head_hash=excluded.head_hash,state=excluded.state,version=version+1 WHERE version=?8 AND manifest_hash=excluded.manifest_hash",params:[id,identity,result.complete?result.sequence:job.sequence,value,result.complete?'complete':'exporting',job.created_at,job.expires_at,prior?.version||0]},
+          {sql:"SELECT CASE WHEN EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id=?1 AND head_hash=?2 AND state=?3) THEN 1 ELSE json('snapshot_progress_conflict') END",params:[id,value,result.complete?'complete':'exporting']},
+        ]);
+        return result.complete?{complete:true,receipt:result.receipt,sequence:result.sequence}:{complete:false,runtimeAccess:'blocked_pending_verified_boundary'};
+      }));
     },
     async ready() {
       return waitForWriter(async()=>{
@@ -173,12 +208,12 @@ export function configuredAuthorityService(env, { snapshot, alert, now = Date.no
   const db = d1AuthorityAdapter(env.DB);
   const index = new D1DriveIndex(db, env.WYBP_DRIVE_FOLDER_ID, { now });
   const accessToken = driveAccessToken({clientId:env.WYBP_DRIVE_CLIENT_ID,clientSecret:env.WYBP_DRIVE_CLIENT_SECRET,refreshToken:env.WYBP_DRIVE_REFRESH_TOKEN,fetcher,now});
-  const root = new DriveCustody({folderId:env.WYBP_DRIVE_FOLDER_ID,index,accessToken,fetcher});
+  const root = new DriveCustody({folderId:env.WYBP_DRIVE_FOLDER_ID,index,accessToken,fetcher,recordKey:key});
   let custody=root;
   if(env.WYBP_DRIVE_SHARD_FOLDER_IDS!==undefined){
     let folders;try{folders=JSON.parse(env.WYBP_DRIVE_SHARD_FOLDER_IDS);}catch{throw Error('drive_partition_configuration');}
     if(!Array.isArray(folders)||folders.length!==16||env.WYBP_HOSTED_REHEARSAL_ENABLED==='true')throw Error('drive_partition_configuration');
-    custody=new PartitionedDriveCustody(root,folders.map(folderId=>new DriveCustody({folderId,index:new D1DriveIndex(db,folderId,{now}),accessToken,fetcher})),{
+    custody=new PartitionedDriveCustody(root,folders.map(folderId=>new DriveCustody({folderId,index:new D1DriveIndex(db,folderId,{now}),accessToken,fetcher,recordKey:key})),{
       async verifyFolder(folderId,parent){
         const response=await root.request('https://www.googleapis.com/drive/v3/files/'+folderId+'?fields=id,parents,mimeType,trashed');
         if(!response.ok)throw Error('drive_partition_scope');
@@ -188,5 +223,5 @@ export function configuredAuthorityService(env, { snapshot, alert, now = Date.no
     });
   }
   const recoveryReady = () => assertRestoreReceipt(env.DB, env.WYBP_RESTORE_RECEIPT_SHA256);
-  return { service:createAuthorityService({db,custody,key,snapshot,alert,now,recoveryReady}), custody, index };
+  return { service:createAuthorityService({db,custody,key,snapshot,alert,now,recoveryReady,expectedRestoreReceipt:env.WYBP_RESTORE_RECEIPT_SHA256}), custody, index };
 }

@@ -22,6 +22,8 @@ import { hostedSyntheticRecovery } from './hostedSyntheticRecovery.mjs';
 import {importProductionRestore,verifyProductionRestoreStep} from '../scripts/streamed-d1-restore.mjs';
 import {recoverProductionPinnedInventory} from '../scripts/segmented-drive-inventory.mjs';
 import {parseSellerDetails,sellerConfigurationIssue,prepareSellerAddressUpdate} from '../app/sellerDetails.ts';
+import {finalizeProductionAuthorityRestore} from '../scripts/finalize-authority-restore.mjs';
+import {initialiseIndependentHead} from '../scripts/initialise-independent-head.mjs';
 
 function runtime(env) {
   const alert = authorityMail(env, connect);
@@ -35,6 +37,8 @@ function runtime(env) {
 // Only private service bindings expose RPC. There is no HTTP management endpoint,
 // secret-selected URL, scheduled handler, automatic initialisation or restore bypass.
 export class ApplicationAuthority extends WorkerEntrypoint {
+  async query(sql,params){try{return await runtime(this.env).service.query(sql,params);}catch{throw Error('authority_read_unavailable');}}
+  async admit(sql,params){try{return await runtime(this.env).service.admit(sql,params);}catch{throw Error('authority_read_unavailable');}}
   async prepareSellerAddressUpdate(address) {
     if(this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001')return null;
     // Existing private operator call, no HTTP endpoint, write or environment dump.
@@ -90,6 +94,22 @@ export class ApplicationAuthority extends WorkerEntrypoint {
 }
 
 export class RecoveryOperator extends ApplicationAuthority {
+  async finalizeRestore(plan,boundary,verification,job){
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001')throw Error('operational_restore_disabled');
+    try{const configured=runtime(this.env);return await finalizeProductionAuthorityRestore(d1AuthorityAdapter(this.env.DB),configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),plan,boundary,verification,{job,role:'production-ops',databaseName:'wybp-prod-d1-r001',databaseId:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'});}catch{throw Error('operational_restore_release_unavailable');}
+  }
+  async advanceAuthorityTail(boundaryId,snapshotBoundary){
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
+    try{return await runtime(this.env).service.advanceAuthorityTail(boundaryId,snapshotBoundary);}catch{throw Error('operational_snapshot_progress_unavailable');}
+  }
+  async initialiseIndependentHead(boundary,verification){
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001')throw Error('operational_snapshot_disabled');
+    const configured=runtime(this.env);return initialiseIndependentHead(d1AuthorityAdapter(this.env.DB),configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),boundary,verification);
+  }
+  async verifyLegacyHeadBootstrapStep(boundary,progress=null){
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001')throw Error('operational_snapshot_disabled');
+    const configured=runtime(this.env);return verifyAuthorityBoundaryStep(d1AuthorityAdapter(this.env.DB),configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),boundary,progress,{legacySource:d1AuthorityAdapter(this.env.DB)});
+  }
   async snapshotMaintenanceStep(boundaryId){
     if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
     const heartbeat=operationalHeartbeat(this.env),configured=runtime(this.env);
