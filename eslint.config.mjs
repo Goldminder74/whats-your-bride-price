@@ -13,6 +13,12 @@ const eslintConfig = defineConfig([
     "dist/**",
     "out/**",
     "build/**",
+    "work/**",
+    "outputs/netlify-worker/**",
+    // Immutable generated direct-Worker packages; source and package validators remain linted.
+    "outputs/cloudflare-direct/**",
+    // Wrangler emits temporary third-party bundles here, including nested operator runs.
+    "**/.wrangler/**",
     "next-env.d.ts",
   ]),
   eslint.configs.recommended,

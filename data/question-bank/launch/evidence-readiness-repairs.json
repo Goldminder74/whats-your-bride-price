@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "launch-evidence-readiness-repairs-v1",
+  "reviewedAt": "2026-10-08T14:13:03.681Z",
+  "priorPublicationManifestSha256": "a42ea07f7797075718c8694b931916579f88ebc5fe2a8545ee7375f7eab7e3d9",
+  "status": "proposed_requires_owner_manifest_approval",
+  "humanCulturalApproval": false,
+  "repairs": [
+    {
+      "stableId": "central_e_44f1869fb0a511125407badf",
+      "sourceId": "corroborating",
+      "source": {
+        "url": "https://impact.uwo.ca/impact-craters/map/?crater_id=6",
+        "title": "Impact Earth: Aorounga hypervelocity impact crater",
+        "institution": "Western University Impact Earth",
+        "sourceClass": "university",
+        "locator": "Country field: Chad; references to French 1992 field confirmation and 2005 petrography",
+        "upstreamIdentity": "western-impact-earth-aorounga-6",
+        "summary": "The university crater database assigns Aorounga to Chad.",
+        "independenceFinding": "Its field-geology compilation and country metadata are distinct from NASA radar image interpretation.",
+        "captureSha256": "a8683a69f01ad0f72f47f598515535913f821cfc65c2579fbbe6f616a85585a1"
+      }
+    },
+    {
+      "stableId": "central_e_75abe299c08c63e0e715e7e4",
+      "sourceId": "corroborating",
+      "source": {
+        "url": "https://www.bristol.ac.uk/news/2026/february/hunting-pressure-is-shrinking-safe-space-for-mandrills-in-equatorial-guinea.html",
+        "title": "Hunting pressure is shrinking safe space for mandrills in Equatorial Guinea",
+        "institution": "University of Bristol",
+        "sourceClass": "university",
+        "locator": "24 February 2026: research team, Monte Alen park location and 35 camera-trap study",
+        "upstreamIdentity": "ajp-70125-monte-alen-field-study",
+        "summary": "The university reports its own later field research in Monte Alen National Park in Equatorial Guinea.",
+        "independenceFinding": "This is the same 2026 study previously represented by DOI 70125, not an additional independent source; the other source is the separate 1994 survey.",
+        "captureSha256": "3762cafb48873e5be48cf325f13f42378a091556bc24e39a792b5ea5abe40c09"
+      }
+    },
+    {
+      "stableId": "south_e_705101d3cfef6f052efd5f3d",
+      "sourceId": "corroborating",
+      "source": {
+        "url": "https://science.nasa.gov/earth/earth-observatory/lesotho-highlands-water-project-6809/",
+        "title": "Lesotho Highlands Water Project",
+        "institution": "NASA Earth Observatory",
+        "sourceClass": "official_geography",
+        "locator": "Article paragraphs on the first project stage and Landsat 5/7 acquisition dates",
+        "upstreamIdentity": "nasa-landsat5-7-katse-1989-2001",
+        "summary": "NASA describes Katse Dam within the Lesotho Highlands Water Project and its reservoir in Lesotho.",
+        "independenceFinding": "NASA Landsat acquisitions and institutional image interpretation are separate from the project authority visitor record; no inconsistent ISS country field is relied on.",
+        "captureSha256": "1c7dd7882deea9bec0557fb8c8b320362ec40ded4a5285db8045b35fc82396ed"
+      }
+    },
+    {
+      "stableId": "south_e_3d6cdde615bb7e9002b8c757",
+      "sourceId": "primary",
+      "source": {
+        "url": "https://www.gov.za/news/media-statements/water-and-sanitation-water-storage-levels-free-state-dams-08-jan-2025",
+        "title": "Water and Sanitation on water storage levels in Free State dams",
+        "institution": "South African Department of Water and Sanitation",
+        "sourceClass": "official_geography",
+        "locator": "8 January 2025: Gariep Dam in the national water authority statement; geographic context only",
+        "upstreamIdentity": "south-africa-dws-statement-20250108",
+        "summary": "The South African water authority identifies Gariep Dam among its national dams.",
+        "independenceFinding": "This replaces a URL from the same national authority and counts once, independently of DGFI-TUM satellite target coordinates.",
+        "captureSha256": "6877132b88666d3292eaab301c1efe98b0b3e6df7a6dcbd68d8c214e2a8fbf87"
+      }
+    },
+    {
+      "stableId": "south_e_845321df75d3bf871324e2cd",
+      "sourceId": "primary",
+      "source": {
+        "url": "https://www.gov.za/news/media-statements/water-and-sanitation-water-storage-levels-free-state-dams-08-jan-2025",
+        "title": "Water and Sanitation on water storage levels in Free State dams",
+        "institution": "South African Department of Water and Sanitation",
+        "sourceClass": "official_geography",
+        "locator": "8 January 2025: Bloemhof Dam in the national water authority statement; geographic context only",
+        "upstreamIdentity": "south-africa-dws-statement-20250108",
+        "summary": "The South African water authority identifies Bloemhof Dam among its national dams.",
+        "independenceFinding": "This replaces a URL from the same national authority and counts once, independently of DGFI-TUM satellite target coordinates.",
+        "captureSha256": "6877132b88666d3292eaab301c1efe98b0b3e6df7a6dcbd68d8c214e2a8fbf87"
+      }
+    },
+    {
+      "stableId": "south_e_c79578125b79073aa3ba9780",
+      "sourceId": "primary",
+      "source": {
+        "url": "https://www.gov.za/news/media-statements/water-and-sanitation-water-storage-levels-free-state-dams-08-jan-2025",
+        "title": "Water and Sanitation on water storage levels in Free State dams",
+        "institution": "South African Department of Water and Sanitation",
+        "sourceClass": "official_geography",
+        "locator": "8 January 2025: Sterkfontein Dam in the national water authority statement; geographic context only",
+        "upstreamIdentity": "south-africa-dws-statement-20250108",
+        "summary": "The South African water authority identifies Sterkfontein Dam among its national dams.",
+        "independenceFinding": "This replaces a URL from the same national authority and counts once, independently of DGFI-TUM satellite target coordinates.",
+        "captureSha256": "6877132b88666d3292eaab301c1efe98b0b3e6df7a6dcbd68d8c214e2a8fbf87"
+      }
+    },
+    {
+      "stableId": "north_e_0f67ded63c5a886b76a15b40",
+      "sourceId": "primary",
+      "source": {
+        "url": "https://www.fspublishers.org/published_papers/46241_..pdf",
+        "title": "Plant Diversity Around Springs and Wells in Five Oases of the Western Desert, Egypt",
+        "institution": "Monier M. Abd El-Ghani and Ahmed M. Fawzy / International Journal of Agriculture and Biology",
+        "sourceClass": "peer_reviewed",
+        "locator": "PDF page 1 (printed 249), Abstract and Study Area; volume 8(2), 2006, pages 249-255",
+        "upstreamIdentity": "ijab-2006-el-ghani-fawzy-249-255",
+        "summary": "The authors' field-study paper directly identifies Siwa Oasis among the Western Desert oases of Egypt.",
+        "independenceFinding": "This is the exact publisher copy of the Cairo-hosted author paper, counted once. Its vegetation field work has different methods and authors from the Library of Congress country-study compilation.",
+        "captureSha256": "7d583a99b70412682bb3612c9dd1b8c5b45d1cfdf3c30db4c701189dea22666c"
+      }
+    },
+    {
+      "stableId": "north_e_3b9730643c18374a145365e1",
+      "sourceId": "primary",
+      "source": {
+        "url": "https://www.fspublishers.org/published_papers/46241_..pdf",
+        "title": "Plant Diversity Around Springs and Wells in Five Oases of the Western Desert, Egypt",
+        "institution": "Monier M. Abd El-Ghani and Ahmed M. Fawzy / International Journal of Agriculture and Biology",
+        "sourceClass": "peer_reviewed",
+        "locator": "PDF page 1 (printed 249), Abstract and Study Area; volume 8(2), 2006, pages 249-255",
+        "upstreamIdentity": "ijab-2006-el-ghani-fawzy-249-255",
+        "summary": "The authors' field-study paper directly identifies Kharga Oasis among the Western Desert oases of Egypt.",
+        "independenceFinding": "This is the exact publisher copy of the Cairo-hosted author paper, counted once. Its vegetation field work has different methods and authors from the Library of Congress country-study compilation.",
+        "captureSha256": "7d583a99b70412682bb3612c9dd1b8c5b45d1cfdf3c30db4c701189dea22666c"
+      }
+    },
+    {
+      "stableId": "north_e_61e404a89c5e2cc2cdb85a41",
+      "sourceId": "primary",
+      "source": {
+        "url": "https://www.fspublishers.org/published_papers/46241_..pdf",
+        "title": "Plant Diversity Around Springs and Wells in Five Oases of the Western Desert, Egypt",
+        "institution": "Monier M. Abd El-Ghani and Ahmed M. Fawzy / International Journal of Agriculture and Biology",
+        "sourceClass": "peer_reviewed",
+        "locator": "PDF page 1 (printed 249), Abstract and Study Area; volume 8(2), 2006, pages 249-255",
+        "upstreamIdentity": "ijab-2006-el-ghani-fawzy-249-255",
+        "summary": "The authors' field-study paper directly identifies Bahariya Oasis among the Western Desert oases of Egypt.",
+        "independenceFinding": "This is the exact publisher copy of the Cairo-hosted author paper, counted once. Its vegetation field work has different methods and authors from the Library of Congress country-study compilation.",
+        "captureSha256": "7d583a99b70412682bb3612c9dd1b8c5b45d1cfdf3c30db4c701189dea22666c"
+      }
+    },
+    {
+      "stableId": "north_e_74e7e8aac469f828a249e08e",
+      "sourceId": "primary",
+      "source": {
+        "url": "https://www.fspublishers.org/published_papers/46241_..pdf",
+        "title": "Plant Diversity Around Springs and Wells in Five Oases of the Western Desert, Egypt",
+        "institution": "Monier M. Abd El-Ghani and Ahmed M. Fawzy / International Journal of Agriculture and Biology",
+        "sourceClass": "peer_reviewed",
+        "locator": "PDF page 1 (printed 249), Abstract and Study Area; volume 8(2), 2006, pages 249-255",
+        "upstreamIdentity": "ijab-2006-el-ghani-fawzy-249-255",
+        "summary": "The authors' field-study paper directly identifies Farafra Oasis among the Western Desert oases of Egypt.",
+        "independenceFinding": "This is the exact publisher copy of the Cairo-hosted author paper, counted once. Its vegetation field work has different methods and authors from the Library of Congress country-study compilation.",
+        "captureSha256": "7d583a99b70412682bb3612c9dd1b8c5b45d1cfdf3c30db4c701189dea22666c"
+      }
+    },
+    {
+      "stableId": "north_e_e5eeafc81267f1eec0e6786b",
+      "sourceId": "primary",
+      "source": {
+        "url": "https://www.fspublishers.org/published_papers/46241_..pdf",
+        "title": "Plant Diversity Around Springs and Wells in Five Oases of the Western Desert, Egypt",
+        "institution": "Monier M. Abd El-Ghani and Ahmed M. Fawzy / International Journal of Agriculture and Biology",
+        "sourceClass": "peer_reviewed",
+        "locator": "PDF page 1 (printed 249), Abstract and Study Area; volume 8(2), 2006, pages 249-255",
+        "upstreamIdentity": "ijab-2006-el-ghani-fawzy-249-255",
+        "summary": "The authors' field-study paper directly identifies Dakhla Oasis among the Western Desert oases of Egypt.",
+        "independenceFinding": "This is the exact publisher copy of the Cairo-hosted author paper, counted once. Its vegetation field work has different methods and authors from the Library of Congress country-study compilation.",
+        "captureSha256": "7d583a99b70412682bb3612c9dd1b8c5b45d1cfdf3c30db4c701189dea22666c"
+      }
+    }
+  ],
+  "reserveSubstitutions": [
+    {
+      "region": "central",
+      "excluded": "central_e_e10f41bebdbd2418ff53f992",
+      "proposed": "central_e_eefe171be0c76dc5c5bd010c",
+      "reason": "Obo paper metadata needs correction and complete raw preservation remains blocked; Nzilo has two independently preserved authoritative records."
+    },
+    {
+      "region": "north",
+      "excluded": "north_e_d7c0e215bf88ac576e4bdc41",
+      "proposed": "north_e_e5eeafc81267f1eec0e6786b",
+      "reason": "The Smithsonian full raw capture remains blocked; Dakhla uses the recovered exact publisher paper and the preserved Library of Congress country study. The earlier Cairo HTTP 200 capture was an anti-bot page, not the paper."
+    }
+  ]
+}

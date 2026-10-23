@@ -1,0 +1,4214 @@
+{
+  "schemaVersion": "question-bank-v1",
+  "questions": [
+    {
+      "stableId": "east_ethiopia_gada_rotation",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia",
+      "subregionScope": "Oromia",
+      "communityScope": "Oromo communities",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How often does leadership rotate within the Gada system described by UNESCO?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Every eight years"
+        },
+        {
+          "id": "o2",
+          "text": "Every three years"
+        },
+        {
+          "id": "o3",
+          "text": "Every twelve years"
+        },
+        {
+          "id": "o4",
+          "text": "Only when a leader resigns"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO describes leadership passing from one Gada class to another on an eight-year rotation.",
+      "sources": [
+        {
+          "title": "Gada system, an indigenous democratic socio-political system of the Oromo",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/gada-system-an-indigenous-democratic-socio-political-system-of-the-oromo-01164",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Gada is an Oromo governance system with five classes, rotating leadership every eight years, oral teaching and responsibilities that include conflict resolution."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living governance or customary-law system: specialist community and legal-historical review is required; do not generalize it beyond the named communities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_ethiopia_gada_classes",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia",
+      "subregionScope": "Oromia",
+      "communityScope": "Oromo communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which description fits the Oromo Gada system?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A hereditary court has no rotating offices"
+        },
+        {
+          "id": "o2",
+          "text": "A single trade guild governs coastal ports"
+        },
+        {
+          "id": "o3",
+          "text": "Age groups meet only for athletic contests"
+        },
+        {
+          "id": "o4",
+          "text": "Five classes progress through grades, with one class serving in authority"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The public UNESCO account describes five classes, graded progression and one ruling class.",
+      "sources": [
+        {
+          "title": "Gada system, an indigenous democratic socio-political system of the Oromo",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/gada-system-an-indigenous-democratic-socio-political-system-of-the-oromo-01164",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Gada is an Oromo governance system with five classes, rotating leadership every eight years, oral teaching and responsibilities that include conflict resolution."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living governance or customary-law system: specialist community and legal-historical review is required; do not generalize it beyond the named communities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_ethiopia_fichee_food",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia",
+      "subregionScope": "Sidama Region",
+      "communityScope": "Sidama people",
+      "category": "FOOD",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which ingredients does UNESCO name in buurisame, shared during Fichee-Chambalaalla?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Millet, smoked beef and honey"
+        },
+        {
+          "id": "o2",
+          "text": "Wheat noodles, lentils and dates"
+        },
+        {
+          "id": "o3",
+          "text": "False banana, milk and butter"
+        },
+        {
+          "id": "o4",
+          "text": "Rice, fish and cassava"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Buurisame is described as a meal made from false banana, milk and butter and shared with neighbours.",
+      "sources": [
+        {
+          "title": "Fichee-Chambalaalla, New Year festival of the Sidama people",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/fichee-chambalaalla-new-year-festival-of-the-sidama-people-01054",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Sidama New Year date is determined through traditional calendrical knowledge, and buurisame combines false banana, milk and butter."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_ethiopia_fichee_date",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia",
+      "subregionScope": "Sidama Region",
+      "communityScope": "Sidama people",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How is the date of Fichee-Chambalaalla determined?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Visiting merchants select it after the harvest"
+        },
+        {
+          "id": "o2",
+          "text": "Astrologers use traditional calendrical knowledge before the date is announced to clans"
+        },
+        {
+          "id": "o3",
+          "text": "A fixed date is printed on every global calendar"
+        },
+        {
+          "id": "o4",
+          "text": "The oldest child in each household chooses it"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Sidama astrologers determine the appropriate date, which is then communicated to the clans.",
+      "sources": [
+        {
+          "title": "Fichee-Chambalaalla, New Year festival of the Sidama people",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/fichee-chambalaalla-new-year-festival-of-the-sidama-people-01054",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Sidama New Year date is determined through traditional calendrical knowledge, and buurisame combines false banana, milk and butter."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_ethiopia_epiphany_ketera",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia",
+      "subregionScope": null,
+      "communityScope": "Ethiopian Orthodox Christian communities",
+      "category": "TRADITION",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What does Ketera refer to in the Ethiopian Epiphany commemoration?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The eve on 18 January when parish tabots are escorted toward water"
+        },
+        {
+          "id": "o2",
+          "text": "A market held after the final procession"
+        },
+        {
+          "id": "o3",
+          "text": "A harvest dance performed only in Sidama"
+        },
+        {
+          "id": "o4",
+          "text": "A stone terrace maintenance day in Konso"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The UNESCO description calls 18 January Ketera, the eve when each parish tabot is taken to Timkete-Bahir.",
+      "sources": [
+        {
+          "title": "Ethiopian epiphany",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ethiopian-epiphany-01491",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Ethiopian Epiphany commemoration begins with Ketera on 18 January and includes escorting parish tabots to water before their return."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living religious practice: review by practitioners from the named community is required before progression beyond draft.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_ethiopia_epiphany_return",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia",
+      "subregionScope": null,
+      "communityScope": "Ethiopian Orthodox Christian communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What happens after the morning water ceremonies of Ethiopian Epiphany?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The tabots remain permanently beside the pool"
+        },
+        {
+          "id": "o2",
+          "text": "The congregation moves to a royal drum sanctuary"
+        },
+        {
+          "id": "o3",
+          "text": "The celebration transfers to the Konso terraces"
+        },
+        {
+          "id": "o4",
+          "text": "Each tabot returns in procession to its parish church"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "After the blessed-water ceremonies on 19 January, parish tabots return to their churches in procession.",
+      "sources": [
+        {
+          "title": "Ethiopian epiphany",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ethiopian-epiphany-01491",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Ethiopian Epiphany commemoration begins with Ketera on 18 January and includes escorting parish tabots to water before their return."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living religious practice: review by practitioners from the named community is required before progression beyond draft.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_ethiopia_shuwalid_duration",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia",
+      "subregionScope": "Harari Region",
+      "communityScope": "Harari people",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How long is the annual Shuwalid festival described by UNESCO?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Seven weeks"
+        },
+        {
+          "id": "o2",
+          "text": "Forty days"
+        },
+        {
+          "id": "o3",
+          "text": "Three days"
+        },
+        {
+          "id": "o4",
+          "text": "One evening"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Shuwalid is documented as an annual three-day Harari festival.",
+      "sources": [
+        {
+          "title": "Shuwalid festival",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/shuwalid-festival-01845",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Shuwalid is a three-day Harari festival marking the end of six compensatory fasting days, with public religious and cultural activities."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living religious practice: review by practitioners from the named community is required before progression beyond draft.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_ethiopia_shuwalid_context",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia",
+      "subregionScope": "Harar Jugol",
+      "communityScope": "Harari people",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which activities form part of the public description of Shuwalid?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Mask making followed by stone-wall building"
+        },
+        {
+          "id": "o2",
+          "text": "Supplications, spiritual songs, scripture reading, music and dance"
+        },
+        {
+          "id": "o3",
+          "text": "Canoe races, wrestling and horn carving"
+        },
+        {
+          "id": "o4",
+          "text": "Xylophone tuning followed by cattle herding"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO lists these religious and performing activities while locating the festival at shrines by Harar's main gates.",
+      "sources": [
+        {
+          "title": "Shuwalid festival",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/shuwalid-festival-01845",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Shuwalid is a three-day Harari festival marking the end of six compensatory fasting days, with public religious and cultural activities."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living religious practice: review by practitioners from the named community is required before progression beyond draft.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_ethiopia_konso_terraces",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia",
+      "subregionScope": "Konso highlands",
+      "communityScope": "Konso communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What do the dry-stone terraces of the Konso Cultural Landscape help do?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Retain soil, collect water and release excess water"
+        },
+        {
+          "id": "o2",
+          "text": "Channel seawater into coral houses"
+        },
+        {
+          "id": "o3",
+          "text": "Support floating gardens on a lake"
+        },
+        {
+          "id": "o4",
+          "text": "Mark routes for Indian Ocean ships"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The terraces adapt farming to a dry, rocky environment by managing soil and scarce water.",
+      "sources": [
+        {
+          "title": "Konso Cultural Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1333",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Konso landscape combines dry-stone agricultural terraces, fortified settlements, communal cultural spaces and generation-marking stones."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_ethiopia_konso_moras",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia",
+      "subregionScope": "Konso highlands",
+      "communityScope": "Konso communities",
+      "category": "ART & HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What are moras in the Konso Cultural Landscape?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Calabash resonators beneath xylophone keys"
+        },
+        {
+          "id": "o2",
+          "text": "Carved doors on Swahili houses"
+        },
+        {
+          "id": "o3",
+          "text": "Names added during a western Ugandan ceremony"
+        },
+        {
+          "id": "o4",
+          "text": "Central cultural spaces inside the walled towns"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "UNESCO identifies moras as spaces with an important communal role within fortified Konso settlements.",
+      "sources": [
+        {
+          "title": "Konso Cultural Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1333",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The Konso landscape combines dry-stone agricultural terraces, fortified settlements, communal cultural spaces and generation-marking stones."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_ethiopia_harar_counts",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia",
+      "subregionScope": "Harari Region",
+      "communityScope": "Harari communities",
+      "category": "ART & HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which pair matches UNESCO's count for Harar Jugol?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "102 mosques and 8 shrines"
+        },
+        {
+          "id": "o2",
+          "text": "5 mosques and 16 shrines"
+        },
+        {
+          "id": "o3",
+          "text": "82 mosques and 102 shrines"
+        },
+        {
+          "id": "o4",
+          "text": "12 mosques and 28 shrines"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The World Heritage record identifies 82 mosques and 102 shrines within Harar Jugol.",
+      "sources": [
+        {
+          "title": "Harar Jugol, the Fortified Historic Town",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1189",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Harar Jugol preserves a walled urban plan, mosques, shrines and distinctive Harari and Indian-influenced townhouses."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_ethiopia_harar_houses",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia",
+      "subregionScope": "Harari Region",
+      "communityScope": "Harari communities",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What later influence did Indian merchants add to Harar's townhouse landscape?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Underground homes entered through roof hatches"
+        },
+        {
+          "id": "o2",
+          "text": "Houses with wooden verandas"
+        },
+        {
+          "id": "o3",
+          "text": "Granaries raised on round timber piles"
+        },
+        {
+          "id": "o4",
+          "text": "Steel towers with revolving platforms"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Indian merchants built veranda houses in the late nineteenth century, contributing to combined Indian and Harari forms.",
+      "sources": [
+        {
+          "title": "Harar Jugol, the Fortified Historic Town",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1189",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Harar Jugol preserves a walled urban plan, mosques, shrines and distinctive Harari and Indian-influenced townhouses."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_horn_xeer_components",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia; Djibouti; Somalia",
+      "subregionScope": "Horn of Africa",
+      "communityScope": "Somali-Issa communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which set names the three main components of Xeer Ciise in UNESCO's description?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A political constitution, a penal code and a code of social conduct"
+        },
+        {
+          "id": "o2",
+          "text": "A farming calendar, a weaving code and a shipping register"
+        },
+        {
+          "id": "o3",
+          "text": "A royal genealogy, a tax ledger and a dance manual"
+        },
+        {
+          "id": "o4",
+          "text": "A school timetable, a trade licence and a building plan"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The source presents Xeer Ciise as a structured oral system addressing governance, reconciliation and social conduct.",
+      "sources": [
+        {
+          "title": "Xeer Ciise: Oral customary laws of Somali-Issa communities in Ethiopia, Djibouti and Somalia",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/xeer-ciise-oral-customary-laws-of-somali-issa-communities-in-ethiopia-djibouti-and-somalia-02087",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Xeer Ciise is a Somali-Issa oral customary-law system spanning Ethiopia, Djibouti and Somalia, with political, justice and social-conduct components."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living governance or customary-law system: specialist community and legal-historical review is required; do not generalize it beyond the named communities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_horn_xeer_transmission",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Ethiopia; Djibouti; Somalia",
+      "subregionScope": "Horn of Africa",
+      "communityScope": "Somali-Issa communities",
+      "category": "ORAL HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which forms help transmit Xeer Ciise?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only sealed court records"
+        },
+        {
+          "id": "o2",
+          "text": "Only imported textbooks"
+        },
+        {
+          "id": "o3",
+          "text": "Only architectural drawings"
+        },
+        {
+          "id": "o4",
+          "text": "Tales, proverbs, games, poetry and formal learning"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "UNESCO records both informal oral forms and formal educational and public-discussion channels.",
+      "sources": [
+        {
+          "title": "Xeer Ciise: Oral customary laws of Somali-Issa communities in Ethiopia, Djibouti and Somalia",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/xeer-ciise-oral-customary-laws-of-somali-issa-communities-in-ethiopia-djibouti-and-somalia-02087",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Xeer Ciise is a Somali-Issa oral customary-law system spanning Ethiopia, Djibouti and Somalia, with political, justice and social-conduct components."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living governance or customary-law system: specialist community and legal-historical review is required; do not generalize it beyond the named communities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_kenya_isukuti_drums",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Kenya",
+      "subregionScope": "Western Kenya",
+      "communityScope": "Isukha and Idakho communities",
+      "category": "MUSIC",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "How are the drums commonly grouped in Isukuti performance?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "As one drum without other instruments"
+        },
+        {
+          "id": "o2",
+          "text": "As two water drums and a bell tower"
+        },
+        {
+          "id": "o3",
+          "text": "As a set of big, medium and small drums"
+        },
+        {
+          "id": "o4",
+          "text": "As twelve identical frame drums"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The dance takes its name from drums played in a three-size set, often with horn and metal rattles.",
+      "sources": [
+        {
+          "title": "Isukuti dance of Isukha and Idakho communities of Western Kenya",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/isukuti-dance-of-isukha-and-idakho-communities-of-western-kenya-00981",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Isukuti is an Isukha and Idakho celebratory dance using three sizes of drums, singing, an antelope horn and metal rattles."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_kenya_isukuti_occasions",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Kenya",
+      "subregionScope": "Western Kenya",
+      "communityScope": "Isukha and Idakho communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which statement best describes the occasions for Isukuti?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It is a private practice with no public gatherings"
+        },
+        {
+          "id": "o2",
+          "text": "It appears across celebrations and life events, with context varying by occasion"
+        },
+        {
+          "id": "o3",
+          "text": "It is restricted to one annual state parade"
+        },
+        {
+          "id": "o4",
+          "text": "It is performed only for fishing competitions"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO lists childbirths, initiations, weddings, funerals, commemorations and other gatherings, so it should not be reduced to one use.",
+      "sources": [
+        {
+          "title": "Isukuti dance of Isukha and Idakho communities of Western Kenya",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/isukuti-dance-of-isukha-and-idakho-communities-of-western-kenya-00981",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Isukuti is an Isukha and Idakho celebratory dance using three sizes of drums, singing, an antelope horn and metal rattles."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_kenya_mijikenda_extent",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Kenya",
+      "subregionScope": "Coastal Kenya",
+      "communityScope": "Mijikenda communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What does the World Heritage property called the Sacred Mijikenda Kaya Forests comprise?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Ten forest sites spread along roughly 200 kilometres of coast"
+        },
+        {
+          "id": "o2",
+          "text": "One forest surrounding a single modern city"
+        },
+        {
+          "id": "o3",
+          "text": "Thirty islands in an inland lake"
+        },
+        {
+          "id": "o4",
+          "text": "Five desert oases linked by caravans"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The serial property contains ten separate forest sites along a long stretch of Kenya's coast.",
+      "sources": [
+        {
+          "title": "Sacred Mijikenda Kaya Forests",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1231",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ten forest sites along about 200 kilometres of Kenya's coast contain kaya settlement remains and remain sacred to Mijikenda communities."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_kenya_mijikenda_meaning",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Kenya",
+      "subregionScope": "Coastal Kenya",
+      "communityScope": "Mijikenda communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Why are the kaya forest sites treated with special care today?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "They are unused plantations managed only for export"
+        },
+        {
+          "id": "o2",
+          "text": "They contain the country's only modernist cinemas"
+        },
+        {
+          "id": "o3",
+          "text": "They are temporary camps rebuilt each year"
+        },
+        {
+          "id": "o4",
+          "text": "They are regarded as sacred ancestral places maintained through community custodianship"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The kayas moved from settlement use into a sacred and ancestral role, with elders and communities central to care.",
+      "sources": [
+        {
+          "title": "Sacred Mijikenda Kaya Forests",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1231",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ten forest sites along about 200 kilometres of Kenya's coast contain kaya settlement remains and remain sacred to Mijikenda communities."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_kenya_lamu_materials",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Kenya",
+      "subregionScope": "Lamu archipelago",
+      "communityScope": "Swahili communities of Lamu",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which materials characterize Lamu Old Town's traditional buildings?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Granite blocks and slate roofs"
+        },
+        {
+          "id": "o2",
+          "text": "Packed snow and whale bone"
+        },
+        {
+          "id": "o3",
+          "text": "Coral stone and mangrove timber"
+        },
+        {
+          "id": "o4",
+          "text": "Glazed steel and concrete panels"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "UNESCO highlights coral stone and mangrove timber in Lamu's retained Swahili building fabric.",
+      "sources": [
+        {
+          "title": "Lamu Old Town",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1055/",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lamu is a long-lived Swahili settlement built largely from coral stone and mangrove timber, with courtyards, verandas and carved doors."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_kenya_lamu_features",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Kenya",
+      "subregionScope": "Lamu archipelago",
+      "communityScope": "Swahili communities of Lamu",
+      "category": "ART",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which group contains architectural features associated with Lamu Old Town?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Glass domes, steel pylons and moving walkways"
+        },
+        {
+          "id": "o2",
+          "text": "Inner courtyards, verandas and carved wooden doors"
+        },
+        {
+          "id": "o3",
+          "text": "Flying buttresses, rose windows and gargoyles"
+        },
+        {
+          "id": "o4",
+          "text": "Step pyramids, ball courts and stelae"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Courtyards, verandas and elaborately carved doors enrich the town's relatively simple structural forms.",
+      "sources": [
+        {
+          "title": "Lamu Old Town",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1055/",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lamu is a long-lived Swahili settlement built largely from coral stone and mangrove timber, with courtyards, verandas and carved doors."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_kenya_foodways_plants",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Kenya",
+      "subregionScope": null,
+      "communityScope": "Participating Kenyan food-knowledge communities",
+      "category": "FOOD",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "About how many indigenous plants with local names were recorded in Kenya's traditional-food safeguarding initiative?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "About 850"
+        },
+        {
+          "id": "o2",
+          "text": "About 25"
+        },
+        {
+          "id": "o3",
+          "text": "About 80"
+        },
+        {
+          "id": "o4",
+          "text": "About 8,500"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The first initiative inventoried roughly 850 indigenous plants before documenting uses, recipes and related practices.",
+      "sources": [
+        {
+          "title": "Success story of promoting traditional foods and safeguarding traditional foodways in Kenya",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/BSP/success-story-of-promoting-traditional-foods-and-safeguarding-traditional-foodways-in-kenya-01409",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Kenyan community, museum and school partnerships documented local foodways, including about 850 indigenous plants with local names."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_kenya_foodways_youth",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Kenya",
+      "subregionScope": "Western and Rift Valley pilot communities",
+      "communityScope": "Isukha and East Pokot participants",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What role did schoolchildren have in the Kenyan foodways safeguarding work?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "They selected a single national recipe for every household"
+        },
+        {
+          "id": "o2",
+          "text": "They replaced community names with scientific codes"
+        },
+        {
+          "id": "o3",
+          "text": "They judged which food tradition was culturally superior"
+        },
+        {
+          "id": "o4",
+          "text": "They helped document community food knowledge through guided interviews and inventorying"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The participatory approach trained pupils to work with relatives, elders and community members rather than treating them as passive subjects.",
+      "sources": [
+        {
+          "title": "Success story of promoting traditional foods and safeguarding traditional foodways in Kenya",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/BSP/success-story-of-promoting-traditional-foods-and-safeguarding-traditional-foodways-in-kenya-01409",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Kenyan community, museum and school partnerships documented local foodways, including about 850 indigenous plants with local names."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_uganda_barkcloth_tree",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Uganda",
+      "subregionScope": "Buganda, southern Uganda",
+      "communityScope": "Baganda communities",
+      "category": "TEXTILES",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "From which tree does the Uganda barkcloth tradition take its inner bark?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The baobab tree"
+        },
+        {
+          "id": "o2",
+          "text": "The date palm"
+        },
+        {
+          "id": "o3",
+          "text": "The Mutuba tree (Ficus natalensis)"
+        },
+        {
+          "id": "o4",
+          "text": "The mwenje tree"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The inner bark of Mutuba is harvested and processed into the characteristic cloth.",
+      "sources": [
+        {
+          "title": "Barkcloth making in Uganda",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/barkcloth-making-in-uganda-00139",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Baganda barkcloth makers process the inner bark of the Mutuba tree with wooden mallets in a practice predating weaving."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_uganda_barkcloth_process",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Uganda",
+      "subregionScope": "Buganda, southern Uganda",
+      "communityScope": "Baganda barkcloth makers",
+      "category": "TEXTILES",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What is central to turning Mutuba bark into barkcloth?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Firing it in a pottery kiln"
+        },
+        {
+          "id": "o2",
+          "text": "Repeated beating with different wooden mallets"
+        },
+        {
+          "id": "o3",
+          "text": "Spinning it into yarn on a wheel"
+        },
+        {
+          "id": "o4",
+          "text": "Casting it in a metal mould"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Wooden mallets soften and refine the bark while an open shed helps prevent it drying too quickly.",
+      "sources": [
+        {
+          "title": "Barkcloth making in Uganda",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/barkcloth-making-in-uganda-00139",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Baganda barkcloth makers process the inner bark of the Mutuba tree with wooden mallets in a practice predating weaving."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_uganda_bigwala_hocket",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Uganda",
+      "subregionScope": "Busoga",
+      "communityScope": "Basoga communities",
+      "category": "MUSIC",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "How do Bigwala's monotone gourd trumpets form a melody?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Players interlock single tones in hocket"
+        },
+        {
+          "id": "o2",
+          "text": "One player sounds every pitch on one trumpet"
+        },
+        {
+          "id": "o3",
+          "text": "The trumpets are struck like xylophone keys"
+        },
+        {
+          "id": "o4",
+          "text": "A written keyboard controls them electronically"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Five or more single-tone trumpets contribute interlocking notes to make the melodic line.",
+      "sources": [
+        {
+          "title": "Bigwala, gourd trumpet music and dance of the Busoga Kingdom in Uganda",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/bigwala-gourd-trumpet-music-and-dance-of-the-busoga-kingdom-in-uganda-00749",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Basoga Bigwala uses five or more single-tone gourd trumpets played in hocket, joined in sequence by drums, song and dance."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_uganda_bigwala_sequence",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Uganda",
+      "subregionScope": "Busoga",
+      "communityScope": "Basoga communities",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which order reflects the typical build-up of a Bigwala performance?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Dancers, silence, one singer, then no instruments"
+        },
+        {
+          "id": "o2",
+          "text": "All performers stop before the first trumpet"
+        },
+        {
+          "id": "o3",
+          "text": "A choir performs alone before a string quartet"
+        },
+        {
+          "id": "o4",
+          "text": "One trumpet, more trumpets, then drummers, singers and dancers"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "UNESCO describes the layers entering in this sequence as the performance develops.",
+      "sources": [
+        {
+          "title": "Bigwala, gourd trumpet music and dance of the Busoga Kingdom in Uganda",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/bigwala-gourd-trumpet-music-and-dance-of-the-busoga-kingdom-in-uganda-00749",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Basoga Bigwala uses five or more single-tone gourd trumpets played in hocket, joined in sequence by drums, song and dance."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_uganda_empaako_count",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Uganda",
+      "subregionScope": "Western Uganda",
+      "communityScope": "Batooro, Banyoro, Batuku, Batagwenda and Banyabindi communities",
+      "category": "LANGUAGE",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How many shared Empaako names are used in addition to given and family names?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Twenty"
+        },
+        {
+          "id": "o2",
+          "text": "One hundred"
+        },
+        {
+          "id": "o3",
+          "text": "Twelve"
+        },
+        {
+          "id": "o4",
+          "text": "Five"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The naming system draws from twelve shared names across the named western Ugandan communities.",
+      "sources": [
+        {
+          "title": "Empaako tradition of the Batooro, Banyoro, Batuku, Batagwenda and Banyabindi of western Uganda",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/empaako-tradition-of-the-batooro-banyoro-batuku-batagwenda-and-banyabindi-of-western-uganda-00904",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Empaako adds one of twelve shared names to personal and family names and can affirm respect, affection, identity and reconciliation."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Language form and social context require review by fluent Kiswahili speakers from relevant East African communities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_uganda_empaako_social",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Uganda",
+      "subregionScope": "Western Uganda",
+      "communityScope": "Batooro, Banyoro, Batuku, Batagwenda and Banyabindi communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What can addressing someone by an Empaako communicate?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A claim that family names no longer matter"
+        },
+        {
+          "id": "o2",
+          "text": "Affection, respect or social connection"
+        },
+        {
+          "id": "o3",
+          "text": "A legal transfer of land"
+        },
+        {
+          "id": "o4",
+          "text": "A ban from all community events"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Using an Empaako can greet, honour or reassure someone and may help defuse tension.",
+      "sources": [
+        {
+          "title": "Empaako tradition of the Batooro, Banyoro, Batuku, Batagwenda and Banyabindi of western Uganda",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/empaako-tradition-of-the-batooro-banyoro-batuku-batagwenda-and-banyabindi-of-western-uganda-00904",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Empaako adds one of twelve shared names to personal and family names and can affirm respect, affection, identity and reconciliation."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Language form and social context require review by fluent Kiswahili speakers from relevant East African communities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_uganda_koogere_subject",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Uganda",
+      "subregionScope": "Kasese and historic Busongora",
+      "communityScope": "Basongora, Banyabindi and Batooro communities",
+      "category": "ORAL HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Who is at the centre of the Koogere oral tradition?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A female chief of Busongora remembered for wisdom and prosperity"
+        },
+        {
+          "id": "o2",
+          "text": "A Portuguese governor of an island port"
+        },
+        {
+          "id": "o3",
+          "text": "A fictional railway engineer in Asmara"
+        },
+        {
+          "id": "o4",
+          "text": "A royal drummer from Burundi"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The tradition's narratives focus on Koogere; the historical framing remains the community's oral account.",
+      "sources": [
+        {
+          "title": "Koogere oral tradition of the Basongora, Banyabindi and Batooro peoples",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/koogere-oral-tradition-of-the-basongora-banyabindi-and-batooro-peoples-00911",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Koogere narratives preserve collective memory of a female Busongora chief and are shared through storytelling, song and collective activity."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Oral historical tradition: community review is required and the narrative must not be reframed as independently verified chronology.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_uganda_koogere_settings",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Uganda",
+      "subregionScope": "Kasese and historic Busongora",
+      "communityScope": "Basongora, Banyabindi and Batooro communities",
+      "category": "ORAL HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Where has Koogere storytelling traditionally been shared?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only inside national courtrooms"
+        },
+        {
+          "id": "o2",
+          "text": "Only through printed examination papers"
+        },
+        {
+          "id": "o3",
+          "text": "Only during ocean voyages"
+        },
+        {
+          "id": "o4",
+          "text": "Around the fireplace and during work or travel"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "UNESCO names fireside settings and collective activities such as crafts, herding and long-distance travel.",
+      "sources": [
+        {
+          "title": "Koogere oral tradition of the Basongora, Banyabindi and Batooro peoples",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/koogere-oral-tradition-of-the-basongora-banyabindi-and-batooro-peoples-00911",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Koogere narratives preserve collective memory of a female Busongora chief and are shared through storytelling, song and collective activity."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Oral historical tradition: community review is required and the narrative must not be reframed as independently verified chronology.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_uganda_madi_occasions",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Uganda",
+      "subregionScope": "Ma'di areas",
+      "communityScope": "Ma'di communities",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which set includes documented contexts for Ma'di bowl-lyre music and dance?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only competitive fishing and boat races"
+        },
+        {
+          "id": "o2",
+          "text": "Only private instrument-making lessons"
+        },
+        {
+          "id": "o3",
+          "text": "Weddings, harvest celebrations, education, conflict resolution and mourning"
+        },
+        {
+          "id": "o4",
+          "text": "Only coronations and no other events"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The practice has multiple social purposes and should not be reduced to a single ceremony.",
+      "sources": [
+        {
+          "title": "Ma'di bowl lyre music and dance",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/ma-di-bowl-lyre-music-and-dance-01187",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ma'di bowl-lyre music and dance serves weddings, harvests, education, conflict resolution and mourning while supporting family and clan ties."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_uganda_madi_social_role",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Uganda",
+      "subregionScope": "Ma'di areas",
+      "communityScope": "Ma'di communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What community role does Ma'di bowl-lyre practice serve?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Restricting all music to professional theatres"
+        },
+        {
+          "id": "o2",
+          "text": "Strengthening family ties and clan unity while sharing history and values"
+        },
+        {
+          "id": "o3",
+          "text": "Replacing every spoken language in the community"
+        },
+        {
+          "id": "o4",
+          "text": "Ranking neighbouring communities by worth"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The UNESCO record links the practice with family, clan, education and community memory.",
+      "sources": [
+        {
+          "title": "Ma'di bowl lyre music and dance",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/ma-di-bowl-lyre-music-and-dance-01187",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ma'di bowl-lyre music and dance serves weddings, harvests, education, conflict resolution and mourning while supporting family and clan ties."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_tanzania_stone_town_location",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Tanzania",
+      "subregionScope": "Unguja, Zanzibar",
+      "communityScope": "Swahili communities of Zanzibar",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "On which island is Stone Town of Zanzibar located?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Unguja"
+        },
+        {
+          "id": "o2",
+          "text": "Rodrigues"
+        },
+        {
+          "id": "o3",
+          "text": "Santiago"
+        },
+        {
+          "id": "o4",
+          "text": "Madagascar"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Stone Town stands on a western promontory of Unguja in the Zanzibar archipelago.",
+      "sources": [
+        {
+          "title": "Stone Town of Zanzibar",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/173",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Stone Town on Unguja is a Swahili trading town whose built fabric reflects African, Arab, Indian and European cultural encounters."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_tanzania_stone_town_exchange",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Tanzania",
+      "subregionScope": "Unguja, Zanzibar",
+      "communityScope": "Swahili communities of Zanzibar",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which cultural encounters are visible in Stone Town's built heritage?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only Scandinavian and Andean"
+        },
+        {
+          "id": "o2",
+          "text": "Only Polynesian and Arctic"
+        },
+        {
+          "id": "o3",
+          "text": "Only Roman and Japanese"
+        },
+        {
+          "id": "o4",
+          "text": "African, Arab, Indian and European"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The town's Swahili fabric reflects long interaction among African, Arab, Indian and European influences.",
+      "sources": [
+        {
+          "title": "Stone Town of Zanzibar",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/173",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Stone Town on Unguja is a Swahili trading town whose built fabric reflects African, Arab, Indian and European cultural encounters."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_tanzania_kilwa_ports",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Tanzania",
+      "subregionScope": "Kilwa archipelago",
+      "communityScope": "Swahili coastal communities",
+      "category": "HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What were Kilwa Kisiwani and Songo Mnara?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Highland cattle markets without sea links"
+        },
+        {
+          "id": "o2",
+          "text": "Modern railway suburbs of Asmara"
+        },
+        {
+          "id": "o3",
+          "text": "Major Swahili island trading ports"
+        },
+        {
+          "id": "o4",
+          "text": "Inland royal-drum sanctuaries"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The two island settlements provide archaeological evidence of Swahili commerce and Indian Ocean connections.",
+      "sources": [
+        {
+          "title": "Ruins of Kilwa Kisiwani and Ruins of Songo Mnara",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/144",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The two island ports preserve coral-built evidence of Swahili culture and Indian Ocean trade linking East Africa with Arabia, India and China."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_tanzania_kilwa_trade",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Tanzania",
+      "subregionScope": "Kilwa archipelago",
+      "communityScope": "Swahili coastal communities",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which finds or goods demonstrate Kilwa's Indian Ocean trading connections?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Japanese newspapers and European aircraft"
+        },
+        {
+          "id": "o2",
+          "text": "Persian earthenware and Chinese porcelain alongside African exports"
+        },
+        {
+          "id": "o3",
+          "text": "Only locally made plastic and steel"
+        },
+        {
+          "id": "o4",
+          "text": "Andean textiles and Arctic ivory"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The UNESCO record connects gold and ivory from the hinterland with goods arriving from Arabia, India, Persia and China.",
+      "sources": [
+        {
+          "title": "Ruins of Kilwa Kisiwani and Ruins of Songo Mnara",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/144",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The two island ports preserve coral-built evidence of Swahili culture and Indian Ocean trade linking East Africa with Arabia, India and China."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_east_kiswahili_lingua_franca",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Burundi; Kenya; Malawi; Mozambique; Rwanda; Somalia; Tanzania; Uganda; Zambia",
+      "subregionScope": "Eastern Africa and neighbouring regions",
+      "communityScope": "Kiswahili-speaking communities",
+      "category": "LANGUAGE",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which statement best describes Kiswahili's regional role?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It is a first or additional language and a lingua franca across many communities"
+        },
+        {
+          "id": "o2",
+          "text": "It is used only on one island"
+        },
+        {
+          "id": "o3",
+          "text": "It has no written or teaching tradition"
+        },
+        {
+          "id": "o4",
+          "text": "Every East African speaks it as a first language"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The university resource describes wide regional use while avoiding the claim that every East African has the same language background.",
+      "sources": [
+        {
+          "title": "Kiswahili Lessons",
+          "organisationOrAuthor": "University of Kansas African & African-American Studies",
+          "urlOrReference": "https://kiswahili.ku.edu/lessons",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "academic",
+          "reviewStatus": "approved",
+          "relevantClaim": "The university resource documents Kiswahili as a regional lingua franca and provides greeting-and-response forms for contextual language learning."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Language form and social context require review by fluent Kiswahili speakers from relevant East African communities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_east_kiswahili_greeting",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Burundi; Kenya; Malawi; Mozambique; Rwanda; Somalia; Tanzania; Uganda; Zambia",
+      "subregionScope": "Eastern Africa and neighbouring regions",
+      "communityScope": "Kiswahili-speaking communities",
+      "category": "LANGUAGE",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which response pair appears in the University of Kansas Kiswahili greetings lesson?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Upo? — Káàárọ̀."
+        },
+        {
+          "id": "o2",
+          "text": "Jioni njema. — Buurisame."
+        },
+        {
+          "id": "o3",
+          "text": "Lala salama. — Empaako."
+        },
+        {
+          "id": "o4",
+          "text": "Upo? — Nipo."
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The lesson pairs Upo? ('Are you there?') with Nipo ('I am here'); usage still needs fluent-speaker review.",
+      "sources": [
+        {
+          "title": "Kiswahili Lessons",
+          "organisationOrAuthor": "University of Kansas African & African-American Studies",
+          "urlOrReference": "https://kiswahili.ku.edu/lessons",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "academic",
+          "reviewStatus": "approved",
+          "relevantClaim": "The university resource documents Kiswahili as a regional lingua franca and provides greeting-and-response forms for contextual language learning."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Language form and social context require review by fluent Kiswahili speakers from relevant East African communities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_rwanda_intore_formation",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Rwanda",
+      "subregionScope": null,
+      "communityScope": "Intore practitioners",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What does an Intore troupe's line formation evoke?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Woodworkers assembling a granary"
+        },
+        {
+          "id": "o2",
+          "text": "Farmers building dry-stone terraces"
+        },
+        {
+          "id": "o3",
+          "text": "Ranks of warriors in a stylized battle"
+        },
+        {
+          "id": "o4",
+          "text": "Fishing boats entering a harbour"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "UNESCO describes dancers in lines using spears, shields and movement to evoke an encounter with an invisible adversary.",
+      "sources": [
+        {
+          "title": "Intore",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/intore-02129",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Rwandan Intore troupes evoke ranked warriors through movement, shields, spears, drums, horns, song and poetry, with broad modern transmission."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Performance history and gendered or martial imagery require community review and must not be treated as a fixed social role.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_rwanda_intore_transmission",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Rwanda",
+      "subregionScope": null,
+      "communityScope": "Intore practitioners",
+      "category": "MODERN HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "How is Intore transmitted today?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only by reading archaeological inscriptions"
+        },
+        {
+          "id": "o2",
+          "text": "Through families, communities, troupes, schools and universities"
+        },
+        {
+          "id": "o3",
+          "text": "Only through a single hereditary household"
+        },
+        {
+          "id": "o4",
+          "text": "Only through foreign military academies"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Contemporary transmission includes organised education and community practice as well as the national ballet.",
+      "sources": [
+        {
+          "title": "Intore",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/intore-02129",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Rwandan Intore troupes evoke ranked warriors through movement, shields, spears, drums, horns, song and poetry, with broad modern transmission."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_burundi_royal_drum_layout",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Burundi",
+      "subregionScope": null,
+      "communityScope": "Royal-drum dance practitioners",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How are drums arranged for Burundi's ritual dance of the royal drum?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "An odd number in a semicircle around a central drum"
+        },
+        {
+          "id": "o2",
+          "text": "An even number hidden in separate rooms"
+        },
+        {
+          "id": "o3",
+          "text": "One drum suspended over the audience"
+        },
+        {
+          "id": "o4",
+          "text": "Three rows with no central instrument"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO describes at least about a dozen drums, always odd in number, arranged around the central drum.",
+      "sources": [
+        {
+          "title": "Ritual dance of the royal drum",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ritual-dance-of-the-royal-drum-00989",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Burundi's royal-drum dance combines synchronized drumming, dance, poetry and song, arranging an odd number of drums around a central drum."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_burundi_royal_drum_roles",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Burundi",
+      "subregionScope": null,
+      "communityScope": "Royal-drum dance practitioners",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which combination belongs to Burundi's royal-drum dance?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Silent weaving and stone carving"
+        },
+        {
+          "id": "o2",
+          "text": "Solo flute without movement or words"
+        },
+        {
+          "id": "o3",
+          "text": "Boat racing followed by metal casting"
+        },
+        {
+          "id": "o4",
+          "text": "Synchronized drumming, dance, heroic poetry and traditional song"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The performance brings these arts together at national or local feasts and welcomes.",
+      "sources": [
+        {
+          "title": "Ritual dance of the royal drum",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ritual-dance-of-the-royal-drum-00989",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Burundi's royal-drum dance combines synchronized drumming, dance, poetry and song, arranging an odd number of drums around a central drum."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_madagascar_zafimaniry_joinery",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Madagascar",
+      "subregionScope": "South-eastern highlands",
+      "communityScope": "Zafimaniry communities",
+      "category": "ART",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How are traditional Zafimaniry houses and tombs joined?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "With poured concrete alone"
+        },
+        {
+          "id": "o2",
+          "text": "With rope bridges between walls"
+        },
+        {
+          "id": "o3",
+          "text": "With mortise-and-tenon joints without nails or hinges"
+        },
+        {
+          "id": "o4",
+          "text": "With welded steel frames"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "UNESCO describes all-timber assemblies using traditional joinery rather than metal hardware.",
+      "sources": [
+        {
+          "title": "Woodcrafting knowledge of the Zafimaniry",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/woodcrafting-knowledge-of-the-zafimaniry-00080",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Zafimaniry buildings use mortise-and-tenon joinery without metal hardware, while codified geometric motifs express community meanings."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_madagascar_zafimaniry_motifs",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Madagascar",
+      "subregionScope": "South-eastern highlands",
+      "communityScope": "Zafimaniry communities",
+      "category": "ART",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What does the papintantely, or honeycomb, motif represent in UNESCO's public description?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A seasonal fishing ban"
+        },
+        {
+          "id": "o2",
+          "text": "Community life"
+        },
+        {
+          "id": "o3",
+          "text": "Ocean navigation"
+        },
+        {
+          "id": "o4",
+          "text": "Royal succession"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The public source links papintantely with community life, while fuller symbolic interpretation needs community review.",
+      "sources": [
+        {
+          "title": "Woodcrafting knowledge of the Zafimaniry",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/woodcrafting-knowledge-of-the-zafimaniry-00080",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Zafimaniry buildings use mortise-and-tenon joinery without metal hardware, while codified geometric motifs express community meanings."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Community symbolism and motif meanings require Zafimaniry specialist review before progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_madagascar_kabary_form",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Madagascar",
+      "subregionScope": null,
+      "communityScope": "Malagasy kabary practitioners",
+      "category": "PROVERBS",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which techniques characterize Malagasy kabary?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Proverbs, maxims, rhetorical figures and wordplay"
+        },
+        {
+          "id": "o2",
+          "text": "Only numerical tables and maps"
+        },
+        {
+          "id": "o3",
+          "text": "Silent gesture without speech"
+        },
+        {
+          "id": "o4",
+          "text": "Instrumental music without words"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Kabary is poeticized, highly structured speech using these verbal forms.",
+      "sources": [
+        {
+          "title": "Malagasy Kabary, the Malagasy oratorical art",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/malagasy-kabary-the-malagasy-oratorical-art-01741",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Malagasy kabary is structured public oratory using proverbs, maxims, rhetoric and wordplay, often as a dialogue between two speakers."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Language form and social context require review by fluent Kiswahili speakers from relevant East African communities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_madagascar_kabary_dialogue",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Madagascar",
+      "subregionScope": null,
+      "communityScope": "Malagasy kabary practitioners",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What is a common performance format for Malagasy kabary?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A private monologue recorded without listeners"
+        },
+        {
+          "id": "o2",
+          "text": "A dance for twelve masked xylophonists"
+        },
+        {
+          "id": "o3",
+          "text": "A written exam completed in silence"
+        },
+        {
+          "id": "o4",
+          "text": "A conventional dialogue between two orators before a gathering"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The source says kabary usually involves two mpikabary and can occur at festivities, funerals and public occasions.",
+      "sources": [
+        {
+          "title": "Malagasy Kabary, the Malagasy oratorical art",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/malagasy-kabary-the-malagasy-oratorical-art-01741",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Malagasy kabary is structured public oratory using proverbs, maxims, rhetoric and wordplay, often as a dialogue between two speakers."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_madagascar_hiragasy_elements",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Madagascar",
+      "subregionScope": "Central Highlands",
+      "communityScope": "Hiragasy troupes",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which three expressive forms make up hiragasy?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Sailing, fishing and diving"
+        },
+        {
+          "id": "o2",
+          "text": "Pottery, metalwork and masonry"
+        },
+        {
+          "id": "o3",
+          "text": "Song, dance and speech"
+        },
+        {
+          "id": "o4",
+          "text": "Painting, sculpture and weaving"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "UNESCO defines hiragasy as a performing art combining song, dance and speech.",
+      "sources": [
+        {
+          "title": "Hiragasy, a performing art of the Central Highlands of Madagascar",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/hiragasy-a-performing-art-of-the-central-highlands-of-madagascar-01740",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Hiragasy combines song, dance and speech in public performances that commonly involve two troupes and transmit moral, civic and cultural themes."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_madagascar_hiragasy_transmission",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Madagascar",
+      "subregionScope": "Central Highlands",
+      "communityScope": "Hiragasy troupes",
+      "category": "MODERN HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How is hiragasy often passed on within performing families?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Families avoid all public performances"
+        },
+        {
+          "id": "o2",
+          "text": "Children follow parents on tour and join performances"
+        },
+        {
+          "id": "o3",
+          "text": "Only retirees may observe rehearsals"
+        },
+        {
+          "id": "o4",
+          "text": "It is transmitted solely by imported recordings"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Informal family transmission remains important alongside the art's place in present-day cultural events.",
+      "sources": [
+        {
+          "title": "Hiragasy, a performing art of the Central Highlands of Madagascar",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/hiragasy-a-performing-art-of-the-central-highlands-of-madagascar-01740",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Hiragasy combines song, dance and speech in public performances that commonly involve two troupes and transmit moral, civic and cultural themes."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_malawi_nsima_component",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Malawi",
+      "subregionScope": null,
+      "communityScope": "Malawian culinary communities",
+      "category": "FOOD",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What is the food component called nsima?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A thick porridge made with maize flour"
+        },
+        {
+          "id": "o2",
+          "text": "A fermented fish sauce"
+        },
+        {
+          "id": "o3",
+          "text": "A flatbread made only from teff"
+        },
+        {
+          "id": "o4",
+          "text": "A sweet made from dates and almonds"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Nsima names the wider culinary tradition and a maize-flour porridge at its centre.",
+      "sources": [
+        {
+          "title": "Nsima, culinary tradition of Malawi",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/nsima-culinary-tradition-of-malawi-01292",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Nsima names both a Malawian culinary tradition and its thick maize-flour porridge component, prepared and eaten through communal practices."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_malawi_nsima_social",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Malawi",
+      "subregionScope": null,
+      "communityScope": "Malawian culinary communities",
+      "category": "FOOD",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "How does UNESCO characterize eating nsima in families?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "As a meal that must always be eaten alone"
+        },
+        {
+          "id": "o2",
+          "text": "As food reserved exclusively for state officials"
+        },
+        {
+          "id": "o3",
+          "text": "As a practice with one fixed accompaniment everywhere"
+        },
+        {
+          "id": "o4",
+          "text": "As a communal practice that can strengthen bonds"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The record emphasizes shared family meals and variable accompanying foods without prescribing a universal serving.",
+      "sources": [
+        {
+          "title": "Nsima, culinary tradition of Malawi",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/nsima-culinary-tradition-of-malawi-01292",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Nsima names both a Malawian culinary tradition and its thick maize-flour porridge component, prepared and eaten through communal practices."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_malawi_vimbuza_scope",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Malawi",
+      "subregionScope": "Northern Malawi",
+      "communityScope": "Tumbuka communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Among which community is Vimbuza especially documented?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Chopi people in southern Mozambique"
+        },
+        {
+          "id": "o2",
+          "text": "Basoga people in eastern Uganda"
+        },
+        {
+          "id": "o3",
+          "text": "Tumbuka people in northern Malawi"
+        },
+        {
+          "id": "o4",
+          "text": "Harari people in eastern Ethiopia"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The UNESCO inscription locates Vimbuza among Tumbuka communities of northern Malawi.",
+      "sources": [
+        {
+          "title": "Vimbuza healing dance",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/vimbuza-healing-dance-00158",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Vimbuza is a Tumbuka healing dance of northern Malawi combining community singing, spirit-specific drumming and therapeutic ritual."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living healing practice: health and community specialists must review the wording; it must not be presented as medical advice or a replacement for care.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_malawi_vimbuza_elements",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Malawi",
+      "subregionScope": "Northern Malawi",
+      "communityScope": "Tumbuka communities",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which elements combine in the public description of Vimbuza?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Xylophone tuning and ocean trade"
+        },
+        {
+          "id": "o2",
+          "text": "Healing ritual, community singing and spirit-specific drumming"
+        },
+        {
+          "id": "o3",
+          "text": "Coral masonry and carved doors"
+        },
+        {
+          "id": "o4",
+          "text": "Horse racing and leatherwork"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Vimbuza combines dance, songs and particular drum rhythms in a community therapeutic setting.",
+      "sources": [
+        {
+          "title": "Vimbuza healing dance",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/vimbuza-healing-dance-00158",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Vimbuza is a Tumbuka healing dance of northern Malawi combining community singing, spirit-specific drumming and therapeutic ritual."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living healing practice: health and community specialists must review the wording; it must not be presented as medical advice or a replacement for care.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_malawi_tchopa_drums",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Malawi",
+      "subregionScope": "Southern Malawi",
+      "communityScope": "Lhomwe communities",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How many different drum sizes does Tchopa use?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Three"
+        },
+        {
+          "id": "o2",
+          "text": "One"
+        },
+        {
+          "id": "o3",
+          "text": "Seven"
+        },
+        {
+          "id": "o4",
+          "text": "Twelve"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The UNESCO account specifies three sizes of drums accompanying the dance.",
+      "sources": [
+        {
+          "title": "Tchopa, sacrificial dance of the Lhomwe people of southern Malawi",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/tchopa-sacrificial-dance-of-the-lhomwe-people-of-southern-malawi-00999",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lhomwe Tchopa uses song, three drum sizes and circular dance at harvest celebrations and specified ceremonial occasions."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_malawi_tchopa_context",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Malawi",
+      "subregionScope": "Southern Malawi",
+      "communityScope": "Lhomwe communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which statement accurately scopes Tchopa?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It is the standard harvest dance of every East African community"
+        },
+        {
+          "id": "o2",
+          "text": "It is only a tourist show with no community role"
+        },
+        {
+          "id": "o3",
+          "text": "It belongs exclusively to a coastal Swahili port"
+        },
+        {
+          "id": "o4",
+          "text": "It is a Lhomwe practice of southern Malawi used at specified celebrations and ceremonial moments"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Tchopa is associated with Lhomwe communities and particular harvest, hunting and ancestral contexts.",
+      "sources": [
+        {
+          "title": "Tchopa, sacrificial dance of the Lhomwe people of southern Malawi",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/tchopa-sacrificial-dance-of-the-lhomwe-people-of-southern-malawi-00999",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lhomwe Tchopa uses song, three drum sizes and circular dance at harvest celebrations and specified ceremonial occasions."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_malawi_zimbabwe_mbira_build",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Malawi; Zimbabwe",
+      "subregionScope": null,
+      "communityScope": "Mbira/Sansi makers and players",
+      "category": "MUSIC",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What forms the basic Mbira or Sansi instrument?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "One hollow gourd blown like a trumpet"
+        },
+        {
+          "id": "o2",
+          "text": "Stone bars suspended over water"
+        },
+        {
+          "id": "o3",
+          "text": "Metal keys attached to a wooden board"
+        },
+        {
+          "id": "o4",
+          "text": "Strings stretched across a skin-covered bowl"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The metal keys are plucked and the board may be mounted on a calabash or wooden resonator.",
+      "sources": [
+        {
+          "title": "Art of crafting and playing Mbira/Sansi, the finger-plucking traditional musical instrument in Malawi and Zimbabwe",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/art-of-crafting-and-playing-mbira-sansi-the-finger-plucking-traditional-musical-instrument-in-malawi-and-zimbabwe-01541",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mbira/Sansi uses metal keys on a wooden board, sometimes with a resonator, and produces cyclical music with interwoven melodies."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_malawi_zimbabwe_mbira_music",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Malawi; Zimbabwe",
+      "subregionScope": null,
+      "communityScope": "Mbira/Sansi makers and players",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What musical structure is characteristic of Mbira or Sansi playing?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only unison singing without instruments"
+        },
+        {
+          "id": "o2",
+          "text": "Cyclical themes with small variations and interwoven melodies"
+        },
+        {
+          "id": "o3",
+          "text": "A single note repeated without variation"
+        },
+        {
+          "id": "o4",
+          "text": "Music that excludes rhythm"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO highlights repetition with variation and multiple interlocking melodic lines.",
+      "sources": [
+        {
+          "title": "Art of crafting and playing Mbira/Sansi, the finger-plucking traditional musical instrument in Malawi and Zimbabwe",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/art-of-crafting-and-playing-mbira-sansi-the-finger-plucking-traditional-musical-instrument-in-malawi-and-zimbabwe-01541",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mbira/Sansi uses metal keys on a wooden board, sometimes with a resonator, and produces cyclical music with interwoven melodies."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_zimbabwe_mbende_scope",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Zimbabwe",
+      "subregionScope": "Murewa and Uzumba-Maramba-Pfungwe districts",
+      "communityScope": "Zezuru Shona communities",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Among whom is Mbende Jerusarema especially practised?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Zezuru Shona communities of eastern Zimbabwe"
+        },
+        {
+          "id": "o2",
+          "text": "Mijikenda communities of coastal Kenya"
+        },
+        {
+          "id": "o3",
+          "text": "Harari communities of eastern Ethiopia"
+        },
+        {
+          "id": "o4",
+          "text": "Rodriguan communities of Mauritius"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The UNESCO record gives a precise eastern Zimbabwean community and district scope.",
+      "sources": [
+        {
+          "title": "Mbende Jerusarema dance",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mbende-jerusarema-dance-00169",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mbende Jerusarema is a Zezuru Shona dance of eastern Zimbabwe accompanied by one master drummer, clappers, handclaps, yodelling and whistles."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Performance history and gendered or martial imagery require community review and must not be treated as a fixed social role.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_zimbabwe_mbende_music",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Zimbabwe",
+      "subregionScope": "Murewa and Uzumba-Maramba-Pfungwe districts",
+      "communityScope": "Zezuru Shona communities",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What distinguishes Mbende Jerusarema's musical accompaniment in UNESCO's description?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Thirty xylophones with a large choir"
+        },
+        {
+          "id": "o2",
+          "text": "Five gourd trumpets with a central harp"
+        },
+        {
+          "id": "o3",
+          "text": "Only a string quartet reading notation"
+        },
+        {
+          "id": "o4",
+          "text": "One master drummer with clappers, handclaps, yodelling and whistles, but no song lyrics"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The account contrasts its one-drum polyrhythm and vocal sounds with dances using many drums or sung texts.",
+      "sources": [
+        {
+          "title": "Mbende Jerusarema dance",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mbende-jerusarema-dance-00169",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mbende Jerusarema is a Zezuru Shona dance of eastern Zimbabwe accompanied by one master drummer, clappers, handclaps, yodelling and whistles."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Performance history and gendered or martial imagery require community review and must not be treated as a fixed social role.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_zimbabwe_great_period",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Zimbabwe",
+      "subregionScope": "Masvingo Province",
+      "communityScope": "Shona cultural heritage",
+      "category": "HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which period is central to Great Zimbabwe's UNESCO description?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The seventeenth to nineteenth centuries only"
+        },
+        {
+          "id": "o2",
+          "text": "The mid-twentieth century"
+        },
+        {
+          "id": "o3",
+          "text": "The eleventh to fifteenth centuries"
+        },
+        {
+          "id": "o4",
+          "text": "The first to third centuries"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The monument is presented as major testimony to Shona civilisation between the eleventh and fifteenth centuries.",
+      "sources": [
+        {
+          "title": "Great Zimbabwe National Monument",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/364",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Great Zimbabwe covers nearly 80 hectares and bears testimony to Shona civilisation and an important trading centre between the eleventh and fifteenth centuries."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_zimbabwe_great_scale",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Zimbabwe",
+      "subregionScope": "Masvingo Province",
+      "communityScope": "Shona cultural heritage",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Approximately how large is the Great Zimbabwe archaeological city in UNESCO's summary?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "More than 8,000 square kilometres"
+        },
+        {
+          "id": "o2",
+          "text": "Nearly 80 hectares"
+        },
+        {
+          "id": "o3",
+          "text": "Less than one hectare"
+        },
+        {
+          "id": "o4",
+          "text": "About eight square metres"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO describes an extensive city of nearly 80 hectares that also served as an important trading centre.",
+      "sources": [
+        {
+          "title": "Great Zimbabwe National Monument",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/364",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Great Zimbabwe covers nearly 80 hectares and bears testimony to Shona civilisation and an important trading centre between the eleventh and fifteenth centuries."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_mozambique_timbila_orchestra",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Mozambique",
+      "subregionScope": "Southern Inhambane Province",
+      "communityScope": "Chopi communities",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How many wooden xylophones may form a Chopi timbila orchestra?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "About five to thirty"
+        },
+        {
+          "id": "o2",
+          "text": "Exactly one"
+        },
+        {
+          "id": "o3",
+          "text": "Exactly two hundred"
+        },
+        {
+          "id": "o4",
+          "text": "No instruments are used"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The source describes orchestras ranging from five to thirty timbila of different sizes and pitches.",
+      "sources": [
+        {
+          "title": "Chopi Timbila",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/chopi-timbila-00133",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Chopi orchestras in southern Mozambique use five to thirty tuned wooden timbila with calabash resonators and compose new pieces for community events."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_mozambique_timbila_resonator",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Mozambique",
+      "subregionScope": "Southern Inhambane Province",
+      "communityScope": "Chopi communities",
+      "category": "ART",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What is fastened beneath each wooden timbila slat as a resonator?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A steel cooking pot filled with water"
+        },
+        {
+          "id": "o2",
+          "text": "A glass bottle sealed with clay"
+        },
+        {
+          "id": "o3",
+          "text": "A leather bag filled with grain"
+        },
+        {
+          "id": "o4",
+          "text": "A calabash sealed with beeswax"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Calabash resonators, sealed with beeswax and treated with nkuso-fruit oil, help create the timbila sound.",
+      "sources": [
+        {
+          "title": "Chopi Timbila",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/chopi-timbila-00133",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Chopi orchestras in southern Mozambique use five to thirty tuned wooden timbila with calabash resonators and compose new pieces for community events."
+        }
+      ],
+      "reviewer": null,
+      "reviewDate": null,
+      "sensitivityNotes": null,
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_mozambique_mapiko_scope",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Mozambique",
+      "subregionScope": "Makonde areas",
+      "communityScope": "Makonde communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How should Ingoma Ya Mapiko be culturally scoped?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "As a Mauritian pre-wedding song tradition"
+        },
+        {
+          "id": "o2",
+          "text": "As a Swahili architectural method"
+        },
+        {
+          "id": "o3",
+          "text": "As a Makonde practice in Mozambique associated with initiation and other occasions"
+        },
+        {
+          "id": "o4",
+          "text": "As one universal coming-of-age practice for all Africans"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The UNESCO inscription identifies a Makonde practice and does not support generalizing it across Mozambique or East Africa.",
+      "sources": [
+        {
+          "title": "Ingoma Ya Mapiko",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/ingoma-ya-mapiko-01996",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Makonde Ingoma Ya Mapiko is a masked dance associated with initiation and other public occasions, accompanied by drums and a responsive choir."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Initiatory practice: specialist review by relevant community knowledge-holders is required; do not add or infer restricted details.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_mozambique_mapiko_performance",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Mozambique",
+      "subregionScope": "Makonde areas",
+      "communityScope": "Makonde communities",
+      "category": "ART",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which public performance elements belong to Ingoma Ya Mapiko?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Steel bells controlled by a keyboard"
+        },
+        {
+          "id": "o2",
+          "text": "Masks representing people or animals, drums and a responsive choir"
+        },
+        {
+          "id": "o3",
+          "text": "Carved doors, coral walls and silent processions"
+        },
+        {
+          "id": "o4",
+          "text": "Gourd trumpets with no dancers"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The public description presents masked solo or group dancing with drums and opposing choir groups.",
+      "sources": [
+        {
+          "title": "Ingoma Ya Mapiko",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/USL/ingoma-ya-mapiko-01996",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Makonde Ingoma Ya Mapiko is a masked dance associated with initiation and other public occasions, accompanied by drums and a responsive choir."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Initiatory practice: specialist review by relevant community knowledge-holders is required; do not add or infer restricted details.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_mauritius_geet_gawai_context",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Mauritius",
+      "subregionScope": null,
+      "communityScope": "Bhojpuri-speaking Mauritian communities",
+      "category": "TRADITION",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What is Geet-Gawai in Mauritius?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A pre-wedding practice combining ritual, prayer, song, music and dance"
+        },
+        {
+          "id": "o2",
+          "text": "A fortified hilltop settlement"
+        },
+        {
+          "id": "o3",
+          "text": "A fishing competition held after harvest"
+        },
+        {
+          "id": "o4",
+          "text": "A form of dry-stone agricultural terracing"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Geet-Gawai is specifically rooted in Bhojpuri-speaking Mauritian communities and varies with family practice.",
+      "sources": [
+        {
+          "title": "Bhojpuri folk songs in Mauritius, Geet-Gawai",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/bhojpuri-folk-songs-in-mauritius-geet-gawai-01178",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mauritian Geet-Gawai is a Bhojpuri-speaking community pre-wedding practice combining ritual, prayer, song, music and dance."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Wedding practice varies across families and communities: review by practitioners is required and the example must not be universalized.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_mauritius_geet_gawai_dholak",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Mauritius",
+      "subregionScope": null,
+      "communityScope": "Bhojpuri-speaking Mauritian communities",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which instrument does UNESCO identify as a two-headed drum in Geet-Gawai?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The timbila"
+        },
+        {
+          "id": "o2",
+          "text": "The bigwala"
+        },
+        {
+          "id": "o3",
+          "text": "The mbira"
+        },
+        {
+          "id": "o4",
+          "text": "The dholak"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The dholak is honoured with other instruments during the ceremony before uplifting songs and dancing.",
+      "sources": [
+        {
+          "title": "Bhojpuri folk songs in Mauritius, Geet-Gawai",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/bhojpuri-folk-songs-in-mauritius-geet-gawai-01178",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mauritian Geet-Gawai is a Bhojpuri-speaking community pre-wedding practice combining ritual, prayer, song, music and dance."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Wedding practice varies across families and communities: review by practitioners is required and the example must not be universalized.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_seychelles_moutya_drum",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Seychelles",
+      "subregionScope": null,
+      "communityScope": "Seychellois Moutya practitioners",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What instrument anchors traditional Moutya performance?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Five monotone gourd trumpets"
+        },
+        {
+          "id": "o2",
+          "text": "A metal-key board inside a calabash"
+        },
+        {
+          "id": "o3",
+          "text": "A goat-hide drum warmed near a bonfire"
+        },
+        {
+          "id": "o4",
+          "text": "A set of thirty wooden xylophones"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The dance's drum and bonfire setting are tied to a history of endurance and resistance among enslaved Africans.",
+      "sources": [
+        {
+          "title": "Moutya",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/moutya-01690",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Seychellois Moutya developed from the experience of enslaved Africans and uses a goat-hide drum traditionally heated near a bonfire."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonial violence, segregation or enslavement: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_eritrea_asmara_setting",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Eritrea",
+      "subregionScope": "Central highland plateau",
+      "communityScope": "Asmara residents and heritage custodians",
+      "category": "ART & HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which setting and development history characterize UNESCO-listed Asmara?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A dry-stone farming landscape with generation steles"
+        },
+        {
+          "id": "o2",
+          "text": "A capital above 2,000 metres shaped by planning between 1893 and 1941"
+        },
+        {
+          "id": "o3",
+          "text": "A coral-built island port below sea level"
+        },
+        {
+          "id": "o4",
+          "text": "A forest settlement abandoned in the 1940s"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Asmara developed on a highland plateau through successive colonial planning phases while retaining indigenous neighbourhoods.",
+      "sources": [
+        {
+          "title": "Asmara: A Modernist African City",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1550/",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Asmara preserves modernist urban planning and architecture developed during Italian colonial occupation alongside indigenous neighbourhoods and local adaptations."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonial violence, segregation or enslavement: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "east_eritrea_asmara_plan",
+      "version": 1,
+      "region": "east",
+      "countryScope": "Eritrea",
+      "subregionScope": "Central highland plateau",
+      "communityScope": "Asmara residents and heritage custodians",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What combination appears in Asmara's historic urban plan?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "An orthogonal grid joined with radial elements and locally adapted architecture"
+        },
+        {
+          "id": "o2",
+          "text": "Only circular villages without streets"
+        },
+        {
+          "id": "o3",
+          "text": "A canal grid built for ocean shipping"
+        },
+        {
+          "id": "o4",
+          "text": "One ceremonial courtyard without surrounding neighbourhoods"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The plan combined grid and radial patterns, modernist forms, local methods and a colonial zoning legacy.",
+      "sources": [
+        {
+          "title": "Asmara: A Modernist African City",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1550/",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Asmara preserves modernist urban planning and architecture developed during Italian colonial occupation alongside indigenous neighbourhoods and local adaptations."
+        }
+      ],
+      "reviewer": "East Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonial violence, segregation or enslavement: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    }
+  ]
+}

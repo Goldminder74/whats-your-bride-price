@@ -1,0 +1,5007 @@
+{
+  "schemaVersion": "question-bank-v1",
+  "questions": [
+    {
+      "stableId": "central_angola_sona_medium",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola",
+      "subregionScope": "Eastern Angola",
+      "communityScope": "Lunda Cokwe and neighbouring peoples",
+      "category": "ART",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What surface is central to traditional Sona drawing?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A smoothed layer of sand"
+        },
+        {
+          "id": "o2",
+          "text": "A glazed ceramic wall"
+        },
+        {
+          "id": "o3",
+          "text": "A sheet of hammered copper"
+        },
+        {
+          "id": "o4",
+          "text": "A woven wool carpet"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Practitioners mark reference points and trace lines on sand.",
+      "sources": [
+        {
+          "title": "Sona, drawings and geometric figures on sand",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/sona-drawings-and-geometric-figures-on-sand-01994",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lunda Cokwe and neighbouring peoples in eastern Angola make Sona sand drawings to transmit stories, knowledge and collective memory; the practice is also used in education and contemporary art."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_angola_sona_memory",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola",
+      "subregionScope": "Eastern Angola",
+      "communityScope": "Lunda Cokwe and neighbouring peoples",
+      "category": "ORAL HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What can Sona drawings transmit between generations?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only tax records"
+        },
+        {
+          "id": "o2",
+          "text": "Only shipping schedules"
+        },
+        {
+          "id": "o3",
+          "text": "Only musical notation"
+        },
+        {
+          "id": "o4",
+          "text": "Stories, knowledge and collective memory"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The drawings join visual form with narrated knowledge.",
+      "sources": [
+        {
+          "title": "Sona, drawings and geometric figures on sand",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/sona-drawings-and-geometric-figures-on-sand-01994",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lunda Cokwe and neighbouring peoples in eastern Angola make Sona sand drawings to transmit stories, knowledge and collective memory; the practice is also used in education and contemporary art."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_angola_sona_method",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola",
+      "subregionScope": "Eastern Angola",
+      "communityScope": "Lunda Cokwe and neighbouring peoples",
+      "category": "ART",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How does a Sona practitioner begin many figures?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "By carving letters into iron"
+        },
+        {
+          "id": "o2",
+          "text": "By projecting a photograph"
+        },
+        {
+          "id": "o3",
+          "text": "By marking reference points before tracing lines around them"
+        },
+        {
+          "id": "o4",
+          "text": "By firing clay tiles first"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "UNESCO describes a point-and-line construction process.",
+      "sources": [
+        {
+          "title": "Sona, drawings and geometric figures on sand",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/sona-drawings-and-geometric-figures-on-sand-01994",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lunda Cokwe and neighbouring peoples in eastern Angola make Sona sand drawings to transmit stories, knowledge and collective memory; the practice is also used in education and contemporary art."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_angola_sona_contemporary",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola",
+      "subregionScope": "Eastern Angola",
+      "communityScope": "Lunda Cokwe and neighbouring peoples",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Where has Sona also been used in recent decades?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only factories testing engines"
+        },
+        {
+          "id": "o2",
+          "text": "Educational institutes teaching mathematics and anthropology"
+        },
+        {
+          "id": "o3",
+          "text": "Only naval academies teaching navigation"
+        },
+        {
+          "id": "o4",
+          "text": "Only courts recording verdicts"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Educational and artistic use has supported reinvention and transmission.",
+      "sources": [
+        {
+          "title": "Sona, drawings and geometric figures on sand",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/sona-drawings-and-geometric-figures-on-sand-01994",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Lunda Cokwe and neighbouring peoples in eastern Angola make Sona sand drawings to transmit stories, knowledge and collective memory; the practice is also used in education and contemporary art."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_angola_mbanza_plateau",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola",
+      "subregionScope": "Zaire Province",
+      "communityScope": "Kongo heritage communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "On what kind of landform is Mbanza Kongo located?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A plateau"
+        },
+        {
+          "id": "o2",
+          "text": "A coral atoll"
+        },
+        {
+          "id": "o3",
+          "text": "A river delta below sea level"
+        },
+        {
+          "id": "o4",
+          "text": "A glacier"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO locates the city on a plateau about 570 metres high.",
+      "sources": [
+        {
+          "title": "Mbanza Kongo, Vestiges of the Capital of the former Kingdom of Kongo",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1511",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mbanza Kongo was the Kingdom of Kongo's political and spiritual centre; its landscape preserves customary, colonial and Christian layers and a 1624 Kikongo catechism."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_angola_mbanza_functions",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola",
+      "subregionScope": "Zaire Province",
+      "communityScope": "Kongo heritage communities",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which places shaped Mbanza Kongo's early political landscape?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Stock exchange, airport and railway depot"
+        },
+        {
+          "id": "o2",
+          "text": "Lighthouse, dry dock and canal locks"
+        },
+        {
+          "id": "o3",
+          "text": "Ski lodge, observatory and ice road"
+        },
+        {
+          "id": "o4",
+          "text": "Royal residence, customary court and royal burial places"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The historical area grew around political, judicial and spiritual places.",
+      "sources": [
+        {
+          "title": "Mbanza Kongo, Vestiges of the Capital of the former Kingdom of Kongo",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1511",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mbanza Kongo was the Kingdom of Kongo's political and spiritual centre; its landscape preserves customary, colonial and Christian layers and a 1624 Kikongo catechism."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_angola_mbanza_building_layers",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola",
+      "subregionScope": "Zaire Province",
+      "communityScope": "Kongo heritage communities",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What changed in Mbanza Kongo after Portuguese arrival in the fifteenth century?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "All local buildings disappeared immediately"
+        },
+        {
+          "id": "o2",
+          "text": "A railway replaced every road"
+        },
+        {
+          "id": "o3",
+          "text": "Stone buildings were added to an existing city built in local materials"
+        },
+        {
+          "id": "o4",
+          "text": "The city moved to an island"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The surviving landscape records change and continuity rather than a simple replacement.",
+      "sources": [
+        {
+          "title": "Mbanza Kongo, Vestiges of the Capital of the former Kingdom of Kongo",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1511",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mbanza Kongo was the Kingdom of Kongo's political and spiritual centre; its landscape preserves customary, colonial and Christian layers and a 1624 Kikongo catechism."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonialism, enslavement or violence: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_angola_mbanza_kikongo_text",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola",
+      "subregionScope": "Zaire Province",
+      "communityScope": "Kongo heritage communities",
+      "category": "LANGUAGE",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What language was used for a catechism written at Mbanza Kongo in 1624?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Tamazight"
+        },
+        {
+          "id": "o2",
+          "text": "Kikongo"
+        },
+        {
+          "id": "o3",
+          "text": "Amharic"
+        },
+        {
+          "id": "o4",
+          "text": "Wolof"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO identifies it as a Kikongo catechism used in the kingdom.",
+      "sources": [
+        {
+          "title": "Mbanza Kongo, Vestiges of the Capital of the former Kingdom of Kongo",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1511",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Mbanza Kongo was the Kingdom of Kongo's political and spiritual centre; its landscape preserves customary, colonial and Christian layers and a 1624 Kikongo catechism."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonialism, enslavement or violence: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_nguon_interval",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon",
+      "subregionScope": "West Region",
+      "communityScope": "Bamoun community",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How often is Nguon observed in UNESCO's account?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Every two years"
+        },
+        {
+          "id": "o2",
+          "text": "Every week"
+        },
+        {
+          "id": "o3",
+          "text": "Every ten years"
+        },
+        {
+          "id": "o4",
+          "text": "Only once"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The three-day observance takes place biennially in early December.",
+      "sources": [
+        {
+          "title": "Nguon, rituals of governance and associated expressions in the Bamoun community",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/nguon-rituals-of-governance-and-associated-expressions-in-the-bamoun-community-01955",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Bamoun Nguon is a three-day biennial governance practice involving consultation, public accountability, renewed mandate and celebration."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_nguon_consultation",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon",
+      "subregionScope": "West Region",
+      "communityScope": "Bamoun community",
+      "category": "TRADITION",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What do ritual chiefs gather before speaking with the Mfon during Nguon?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Votes from foreign parliaments"
+        },
+        {
+          "id": "o2",
+          "text": "Weather readings from satellites"
+        },
+        {
+          "id": "o3",
+          "text": "Prices from overseas markets"
+        },
+        {
+          "id": "o4",
+          "text": "Community views on the state of the kingdom"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Community consultation precedes the chiefs' meeting with the monarch.",
+      "sources": [
+        {
+          "title": "Nguon, rituals of governance and associated expressions in the Bamoun community",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/nguon-rituals-of-governance-and-associated-expressions-in-the-bamoun-community-01955",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Bamoun Nguon is a three-day biennial governance practice involving consultation, public accountability, renewed mandate and celebration."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_nguon_accountability",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon",
+      "subregionScope": "West Region",
+      "communityScope": "Bamoun community",
+      "category": "HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What is unusual about the Mfon's public role during Nguon?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "He selects a national currency"
+        },
+        {
+          "id": "o2",
+          "text": "He closes all community discussion"
+        },
+        {
+          "id": "o3",
+          "text": "His governance is publicly assessed and may be sanctioned"
+        },
+        {
+          "id": "o4",
+          "text": "He judges a foreign sports contest"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The ritual expresses accountability within a specific Bamoun institution.",
+      "sources": [
+        {
+          "title": "Nguon, rituals of governance and associated expressions in the Bamoun community",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/nguon-rituals-of-governance-and-associated-expressions-in-the-bamoun-community-01955",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Bamoun Nguon is a three-day biennial governance practice involving consultation, public accountability, renewed mandate and celebration."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_nguon_transmission",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon",
+      "subregionScope": "West Region",
+      "communityScope": "Bamoun community",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which channels help transmit knowledge of Nguon today?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only archaeological excavation"
+        },
+        {
+          "id": "o2",
+          "text": "Families, community groups, radio, schools and universities"
+        },
+        {
+          "id": "o3",
+          "text": "Only foreign museums"
+        },
+        {
+          "id": "o4",
+          "text": "Only private text messages"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Transmission combines informal community practice with contemporary media and education.",
+      "sources": [
+        {
+          "title": "Nguon, rituals of governance and associated expressions in the Bamoun community",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/nguon-rituals-of-governance-and-associated-expressions-in-the-bamoun-community-01955",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Bamoun Nguon is a three-day biennial governance practice involving consultation, public accountability, renewed mandate and celebration."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_ngondo_calendar",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon",
+      "subregionScope": "Wouri River and Sawa districts",
+      "communityScope": "Sawa communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "When does the annual Ngondo season culminate?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "On the first Sunday of December"
+        },
+        {
+          "id": "o2",
+          "text": "On the first Sunday of June"
+        },
+        {
+          "id": "o3",
+          "text": "At every full moon"
+        },
+        {
+          "id": "o4",
+          "text": "On an unfixed day once a decade"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO describes a season running from September to early December.",
+      "sources": [
+        {
+          "title": "Ngondo, worship of water oracles and associated cultural traditions among the Sawa",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ngondo-worship-of-water-oracles-and-associated-cultural-traditions-among-the-sawa-02140",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Sawa Ngondo runs from September to the first Sunday of December and includes public arts, sport and commerce as well as restricted sacred components."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_ngondo_public",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon",
+      "subregionScope": "Wouri River and Sawa districts",
+      "communityScope": "Sawa communities",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which activity belongs to the public festive side of Ngondo?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A closed initiation lesson"
+        },
+        {
+          "id": "o2",
+          "text": "A private court sentencing"
+        },
+        {
+          "id": "o3",
+          "text": "A military census"
+        },
+        {
+          "id": "o4",
+          "text": "A travelling caravan with arts, wrestling, crafts and commerce"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Public and restricted components should be distinguished.",
+      "sources": [
+        {
+          "title": "Ngondo, worship of water oracles and associated cultural traditions among the Sawa",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ngondo-worship-of-water-oracles-and-associated-cultural-traditions-among-the-sawa-02140",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Sawa Ngondo runs from September to the first Sunday of December and includes public arts, sport and commerce as well as restricted sacred components."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_ngondo_river",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon",
+      "subregionScope": "Wouri River and Sawa districts",
+      "communityScope": "Sawa communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which river is central to the public UNESCO account of Ngondo?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The Senegal River"
+        },
+        {
+          "id": "o2",
+          "text": "The Limpopo"
+        },
+        {
+          "id": "o3",
+          "text": "The Wouri River"
+        },
+        {
+          "id": "o4",
+          "text": "The Nile"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The culminating gathering occurs on the riverbank.",
+      "sources": [
+        {
+          "title": "Ngondo, worship of water oracles and associated cultural traditions among the Sawa",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ngondo-worship-of-water-oracles-and-associated-cultural-traditions-among-the-sawa-02140",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Sawa Ngondo runs from September to the first Sunday of December and includes public arts, sport and commerce as well as restricted sacred components."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_ngondo_transmission",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon",
+      "subregionScope": "Wouri River and Sawa districts",
+      "communityScope": "Sawa communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How are public and sacred Ngondo knowledge transmitted differently?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Sacred parts are posted as tourist instructions"
+        },
+        {
+          "id": "o2",
+          "text": "Public practices pass through families; sacred parts require initiation"
+        },
+        {
+          "id": "o3",
+          "text": "Both are learned only from textbooks"
+        },
+        {
+          "id": "o4",
+          "text": "Neither is taught within the community"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The distinction protects community disclosure boundaries.",
+      "sources": [
+        {
+          "title": "Ngondo, worship of water oracles and associated cultural traditions among the Sawa",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/ngondo-worship-of-water-oracles-and-associated-cultural-traditions-among-the-sawa-02140",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Sawa Ngondo runs from September to the first Sunday of December and includes public arts, sport and commerce as well as restricted sacred components."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_dja_boundary",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon",
+      "subregionScope": "Dja River basin",
+      "communityScope": "Communities around the Dja reserve",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What forms much of the natural boundary of the Dja Faunal Reserve?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The Dja River"
+        },
+        {
+          "id": "o2",
+          "text": "A coastal seawall"
+        },
+        {
+          "id": "o3",
+          "text": "A desert dune chain"
+        },
+        {
+          "id": "o4",
+          "text": "A national railway"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The river almost completely surrounds the reserve.",
+      "sources": [
+        {
+          "title": "Dja Faunal Reserve",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/407",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Cameroon's Dja reserve is a largely intact Congo Basin rainforest almost encircled by the Dja River and noted for biodiversity and primates."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_dja_intact",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon",
+      "subregionScope": "Dja River basin",
+      "communityScope": "Communities around the Dja reserve",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Approximately what share of Dja was described as undisturbed at inscription?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Ten percent"
+        },
+        {
+          "id": "o2",
+          "text": "Thirty percent"
+        },
+        {
+          "id": "o3",
+          "text": "One hundred percent"
+        },
+        {
+          "id": "o4",
+          "text": "Ninety percent"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "UNESCO describes Dja as one of Africa's largest and best-protected rainforests.",
+      "sources": [
+        {
+          "title": "Dja Faunal Reserve",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/407",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Cameroon's Dja reserve is a largely intact Congo Basin rainforest almost encircled by the Dja River and noted for biodiversity and primates."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_dja_primates",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon",
+      "subregionScope": "Dja River basin",
+      "communityScope": "Communities around the Dja reserve",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What kind of animal diversity is Dja especially noted for?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Arctic seals"
+        },
+        {
+          "id": "o2",
+          "text": "Kangaroos"
+        },
+        {
+          "id": "o3",
+          "text": "Primates"
+        },
+        {
+          "id": "o4",
+          "text": "Penguins"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The reserve includes many primate species alongside other threatened wildlife.",
+      "sources": [
+        {
+          "title": "Dja Faunal Reserve",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/407",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Cameroon's Dja reserve is a largely intact Congo Basin rainforest almost encircled by the Dja River and noted for biodiversity and primates."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_dja_basin",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon",
+      "subregionScope": "Dja River basin",
+      "communityScope": "Communities around the Dja reserve",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Dja's dense rainforest forms part of which larger ecological region?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The Atlas cedar zone"
+        },
+        {
+          "id": "o2",
+          "text": "The Congo Basin"
+        },
+        {
+          "id": "o3",
+          "text": "The Kalahari Basin"
+        },
+        {
+          "id": "o4",
+          "text": "The Nile Delta"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The reserve is part of the Congo Basin forest block.",
+      "sources": [
+        {
+          "title": "Dja Faunal Reserve",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/407",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Cameroon's Dja reserve is a largely intact Congo Basin rainforest almost encircled by the Dja River and noted for biodiversity and primates."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_car_aka_voices",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Central African Republic",
+      "subregionScope": "South-west",
+      "communityScope": "Aka communities",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How many interweaving voice parts does UNESCO highlight in Aka polyphony?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Four"
+        },
+        {
+          "id": "o2",
+          "text": "One"
+        },
+        {
+          "id": "o3",
+          "text": "Two"
+        },
+        {
+          "id": "o4",
+          "text": "Twelve fixed soloists"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The public description identifies complex four-voice contrapuntal polyphony.",
+      "sources": [
+        {
+          "title": "Polyphonic singing of the Aka Pygmies of Central Africa",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/polyphonic-singing-of-the-aka-pygmies-of-central-africa-00082",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Aka communities in south-west Central African Republic maintain a four-voice contrapuntal vocal practice with improvisation, music and dance."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_car_aka_improvisation",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Central African Republic",
+      "subregionScope": "South-west",
+      "communityScope": "Aka communities",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What allows Aka singers to vary a performance without written notation?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A mechanical player piano"
+        },
+        {
+          "id": "o2",
+          "text": "A fixed film soundtrack"
+        },
+        {
+          "id": "o3",
+          "text": "A conductor reading only orchestral scores"
+        },
+        {
+          "id": "o4",
+          "text": "Spontaneous expression and improvisation"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Improvisation is central to the described vocal practice.",
+      "sources": [
+        {
+          "title": "Polyphonic singing of the Aka Pygmies of Central Africa",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/polyphonic-singing-of-the-aka-pygmies-of-central-africa-00082",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Aka communities in south-west Central African Republic maintain a four-voice contrapuntal vocal practice with improvisation, music and dance."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_car_aka_participation",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Central African Republic",
+      "subregionScope": "South-west",
+      "communityScope": "Aka communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Who may master the vocal practice according to UNESCO's description?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only instrument makers"
+        },
+        {
+          "id": "o2",
+          "text": "Only one hereditary soloist"
+        },
+        {
+          "id": "o3",
+          "text": "Members across the Aka community"
+        },
+        {
+          "id": "o4",
+          "text": "Only visiting officials"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The source stresses broad community mastery, while individual roles still require local review.",
+      "sources": [
+        {
+          "title": "Polyphonic singing of the Aka Pygmies of Central Africa",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/polyphonic-singing-of-the-aka-pygmies-of-central-africa-00082",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Aka communities in south-west Central African Republic maintain a four-voice contrapuntal vocal practice with improvisation, music and dance."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_car_aka_contexts",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Central African Republic",
+      "subregionScope": "South-west",
+      "communityScope": "Aka communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which setting is among those linked with Aka music and dance?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "An alpine ski race"
+        },
+        {
+          "id": "o2",
+          "text": "The inauguration of a new encampment"
+        },
+        {
+          "id": "o3",
+          "text": "The opening of a stock exchange"
+        },
+        {
+          "id": "o4",
+          "text": "A Mediterranean naval launch"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO also names hunting-related and funerary ceremonies.",
+      "sources": [
+        {
+          "title": "Polyphonic singing of the Aka Pygmies of Central Africa",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/polyphonic-singing-of-the-aka-pygmies-of-central-africa-00082",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Aka communities in south-west Central African Republic maintain a four-voice contrapuntal vocal practice with improvisation, music and dance."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_sangha_countries",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon; Central African Republic; Congo",
+      "subregionScope": "North-west Congo Basin",
+      "communityScope": "Communities and custodians of the Sangha landscape",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which three countries share the Sangha Trinational property?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Cameroon, Central African Republic and Congo"
+        },
+        {
+          "id": "o2",
+          "text": "Angola, Namibia and Botswana"
+        },
+        {
+          "id": "o3",
+          "text": "Kenya, Uganda and Tanzania"
+        },
+        {
+          "id": "o4",
+          "text": "Morocco, Algeria and Tunisia"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The property meets where the three named states join.",
+      "sources": [
+        {
+          "title": "Sangha Trinational",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1380",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Sangha Trinational joins contiguous parks in Cameroon, Central African Republic and Congo within a wider transboundary forest landscape."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_sangha_parks",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon; Central African Republic; Congo",
+      "subregionScope": "North-west Congo Basin",
+      "communityScope": "Communities and custodians of the Sangha landscape",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What is the structure of the core Sangha Trinational property?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "One city with three districts"
+        },
+        {
+          "id": "o2",
+          "text": "Five disconnected islands"
+        },
+        {
+          "id": "o3",
+          "text": "Two archaeological museums"
+        },
+        {
+          "id": "o4",
+          "text": "Three contiguous national parks"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Lobéké, Dzanga-Ndoki and Nouabalé-Ndoki form the core.",
+      "sources": [
+        {
+          "title": "Sangha Trinational",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1380",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Sangha Trinational joins contiguous parks in Cameroon, Central African Republic and Congo within a wider transboundary forest landscape."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_sangha_clearings",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon; Central African Republic; Congo",
+      "subregionScope": "North-west Congo Basin",
+      "communityScope": "Communities and custodians of the Sangha landscape",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What ecological feature supports herbaceous plants within Sangha's forest?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Coral reefs"
+        },
+        {
+          "id": "o2",
+          "text": "Salt pans without vegetation"
+        },
+        {
+          "id": "o3",
+          "text": "Forest clearings"
+        },
+        {
+          "id": "o4",
+          "text": "Glacial ice shelves"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Forest clearings contribute to the landscape's habitat diversity.",
+      "sources": [
+        {
+          "title": "Sangha Trinational",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1380",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Sangha Trinational joins contiguous parks in Cameroon, Central African Republic and Congo within a wider transboundary forest landscape."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_sangha_buffer",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon; Central African Republic; Congo",
+      "subregionScope": "North-west Congo Basin",
+      "communityScope": "Communities and custodians of the Sangha landscape",
+      "category": "MODERN HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Why does Sangha have a much larger buffer landscape around its core parks?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "To replace forests with a single crop"
+        },
+        {
+          "id": "o2",
+          "text": "To recognize the wider landscape and its inhabitants as vital to the property's future"
+        },
+        {
+          "id": "o3",
+          "text": "To relocate every resident"
+        },
+        {
+          "id": "o4",
+          "text": "To create an international airport"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Conservation depends on the broader inhabited landscape, not park boundaries alone.",
+      "sources": [
+        {
+          "title": "Sangha Trinational",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1380",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Sangha Trinational joins contiguous parks in Cameroon, Central African Republic and Congo within a wider transboundary forest landscape."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_chad_ounianga_count",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Chad",
+      "subregionScope": "North-east Sahara",
+      "communityScope": "Ounianga communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How many lakes make up the Lakes of Ounianga property?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Eighteen"
+        },
+        {
+          "id": "o2",
+          "text": "Three"
+        },
+        {
+          "id": "o3",
+          "text": "Nine"
+        },
+        {
+          "id": "o4",
+          "text": "Fifty"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The lakes fall into two main groups.",
+      "sources": [
+        {
+          "title": "Lakes of Ounianga",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1400",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Eighteen lakes in two groups form a permanent freshwater system in Chad's hyperarid northeast, sustained by a distinctive hydrology."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_chad_ounianga_groups",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Chad",
+      "subregionScope": "North-east Sahara",
+      "communityScope": "Ounianga communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What are the two principal Ounianga lake groups called?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Lobéké and Nouabalé"
+        },
+        {
+          "id": "o2",
+          "text": "Kahuzi and Biega"
+        },
+        {
+          "id": "o3",
+          "text": "Meroe and Naqa"
+        },
+        {
+          "id": "o4",
+          "text": "Ounianga Kebir and Ounianga Serir"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "UNESCO distinguishes four lakes at Kebir and fourteen at Serir.",
+      "sources": [
+        {
+          "title": "Lakes of Ounianga",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1400",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Eighteen lakes in two groups form a permanent freshwater system in Chad's hyperarid northeast, sustained by a distinctive hydrology."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_chad_ounianga_climate",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Chad",
+      "subregionScope": "North-east Sahara",
+      "communityScope": "Ounianga communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Why is Ounianga's freshwater system unusual?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "They are all artificial harbour basins"
+        },
+        {
+          "id": "o2",
+          "text": "They receive monsoon rain every day"
+        },
+        {
+          "id": "o3",
+          "text": "Permanent lakes persist in a hyperarid desert"
+        },
+        {
+          "id": "o4",
+          "text": "The lakes float on polar ice"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The site receives extremely little annual rainfall.",
+      "sources": [
+        {
+          "title": "Lakes of Ounianga",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1400",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Eighteen lakes in two groups form a permanent freshwater system in Chad's hyperarid northeast, sustained by a distinctive hydrology."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_chad_ounianga_past",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Chad",
+      "subregionScope": "North-east Sahara",
+      "communityScope": "Ounianga communities",
+      "category": "HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What occupied the Ounianga basin less than 10,000 years ago?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A permanent glacier"
+        },
+        {
+          "id": "o2",
+          "text": "A much larger lake"
+        },
+        {
+          "id": "o3",
+          "text": "A modern capital city"
+        },
+        {
+          "id": "o4",
+          "text": "An ocean shipyard"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The present system records major environmental change.",
+      "sources": [
+        {
+          "title": "Lakes of Ounianga",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1400",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Eighteen lakes in two groups form a permanent freshwater system in Chad's hyperarid northeast, sustained by a distinctive hydrology."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_chad_ennedi_rock",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Chad",
+      "subregionScope": "North-east",
+      "communityScope": "Ennedi communities and heritage custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What kind of rock dominates the Ennedi Massif?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Sandstone"
+        },
+        {
+          "id": "o2",
+          "text": "Marble"
+        },
+        {
+          "id": "o3",
+          "text": "Basalt only"
+        },
+        {
+          "id": "o4",
+          "text": "Coral limestone"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Water and wind erosion shaped the sandstone plateau.",
+      "sources": [
+        {
+          "title": "Ennedi Massif: Natural and Cultural Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1475",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Water and wind shaped northeast Chad's sandstone massif into canyons, arches and cliffs; water sustains life and thousands of rock images document changing lifeways."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_chad_ennedi_forms",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Chad",
+      "subregionScope": "North-east",
+      "communityScope": "Ennedi communities and heritage custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which landforms characterize Ennedi?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Fjords, ice caps and tundra"
+        },
+        {
+          "id": "o2",
+          "text": "Coral lagoons and atolls"
+        },
+        {
+          "id": "o3",
+          "text": "Polders and sea dikes"
+        },
+        {
+          "id": "o4",
+          "text": "Canyons, cliffs, natural arches and rock towers"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The massif's sculpted landscape is central to its World Heritage value.",
+      "sources": [
+        {
+          "title": "Ennedi Massif: Natural and Cultural Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1475",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Water and wind shaped northeast Chad's sandstone massif into canyons, arches and cliffs; water sustains life and thousands of rock images document changing lifeways."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_chad_ennedi_water",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Chad",
+      "subregionScope": "North-east",
+      "communityScope": "Ennedi communities and heritage custodians",
+      "category": "TRADITION",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Why is permanent water in Ennedi's larger canyons important?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "It freezes the Sahara year-round"
+        },
+        {
+          "id": "o2",
+          "text": "It removes every need for careful water use"
+        },
+        {
+          "id": "o3",
+          "text": "It sustains plants, animals and human life"
+        },
+        {
+          "id": "o4",
+          "text": "It powers ocean tides"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Water links ecological and human history in this arid landscape.",
+      "sources": [
+        {
+          "title": "Ennedi Massif: Natural and Cultural Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1475",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Water and wind shaped northeast Chad's sandstone massif into canyons, arches and cliffs; water sustains life and thousands of rock images document changing lifeways."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_chad_ennedi_images",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Chad",
+      "subregionScope": "North-east",
+      "communityScope": "Ennedi communities and heritage custodians",
+      "category": "ART & HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Where are Ennedi's thousands of rock images found?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only on imported paper"
+        },
+        {
+          "id": "o2",
+          "text": "On caves, canyon walls and rock shelters"
+        },
+        {
+          "id": "o3",
+          "text": "Only on modern office towers"
+        },
+        {
+          "id": "o4",
+          "text": "Only under the sea"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Painted and carved images form one of the Sahara's largest rock-art ensembles.",
+      "sources": [
+        {
+          "title": "Ennedi Massif: Natural and Cultural Landscape",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1475",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Water and wind shaped northeast Chad's sandstone massif into canyons, arches and cliffs; water sustains life and thousands of rock images document changing lifeways."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_congo_rumba_name",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Democratic Republic of the Congo; Congo",
+      "subregionScope": "Urban centres",
+      "communityScope": "Congolese rumba practitioners and diaspora",
+      "category": "LANGUAGE",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What does the Kikongo word nkumba, cited in the history of Congolese rumba, mean?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Waist"
+        },
+        {
+          "id": "o2",
+          "text": "River"
+        },
+        {
+          "id": "o3",
+          "text": "Guitar"
+        },
+        {
+          "id": "o4",
+          "text": "Market"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "UNESCO links the modern form to an older dance named nkumba.",
+      "sources": [
+        {
+          "title": "Congolese rumba",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/congolese-rumba-01711",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Congolese rumba is a shared urban music and dance of DRC and Congo, used in varied social settings and transmitted through clubs, schools and community organisations."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_congo_rumba_contexts",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Democratic Republic of the Congo; Congo",
+      "subregionScope": "Urban centres",
+      "communityScope": "Congolese rumba practitioners and diaspora",
+      "category": "MUSIC",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "In which settings can Congolese rumba be performed?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only in recording studios"
+        },
+        {
+          "id": "o2",
+          "text": "Only at state ceremonies"
+        },
+        {
+          "id": "o3",
+          "text": "Only during sporting matches"
+        },
+        {
+          "id": "o4",
+          "text": "Celebration and mourning, in private, public and religious spaces"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The form has varied uses and cannot be reduced to nightlife.",
+      "sources": [
+        {
+          "title": "Congolese rumba",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/congolese-rumba-01711",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Congolese rumba is a shared urban music and dance of DRC and Congo, used in varied social settings and transmitted through clubs, schools and community organisations."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_congo_rumba_transmission",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Democratic Republic of the Congo; Congo",
+      "subregionScope": "Urban centres",
+      "communityScope": "Congolese rumba practitioners and diaspora",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How is Congolese rumba passed to younger artists?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only by reading archaeological inscriptions"
+        },
+        {
+          "id": "o2",
+          "text": "Only through anonymous online files"
+        },
+        {
+          "id": "o3",
+          "text": "Through neighbourhood clubs, schools, community groups and apprenticeships"
+        },
+        {
+          "id": "o4",
+          "text": "Only through foreign conservatories"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Transmission combines formal and informal networks.",
+      "sources": [
+        {
+          "title": "Congolese rumba",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/congolese-rumba-01711",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Congolese rumba is a shared urban music and dance of DRC and Congo, used in varied social settings and transmitted through clubs, schools and community organisations."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_congo_rumba_women",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Democratic Republic of the Congo; Congo",
+      "subregionScope": "Urban centres",
+      "communityScope": "Congolese rumba practitioners and diaspora",
+      "category": "MUSIC",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "In which styles does UNESCO highlight women's role in Congolese rumba?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Opera translation only"
+        },
+        {
+          "id": "o2",
+          "text": "Religious and romantic styles"
+        },
+        {
+          "id": "o3",
+          "text": "Military marches only"
+        },
+        {
+          "id": "o4",
+          "text": "Instrument repair only"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The source records a predominant role for women in these styles.",
+      "sources": [
+        {
+          "title": "Congolese rumba",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/congolese-rumba-01711",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Congolese rumba is a shared urban music and dance of DRC and Congo, used in varied social settings and transmitted through clubs, schools and community organisations."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Marriage and gender material: require locally grounded, gender-aware review and do not present one documented practice as universal or prescriptive.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_congo_odzala_process",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Congo",
+      "subregionScope": "Odzala-Kokoua",
+      "communityScope": "Local and Indigenous communities around Odzala-Kokoua",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which long-term ecological process is especially visible at Odzala-Kokoua?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Forest recolonizing savanna after glacial periods"
+        },
+        {
+          "id": "o2",
+          "text": "Coral reefs forming mountains"
+        },
+        {
+          "id": "o3",
+          "text": "Glaciers carving a coast"
+        },
+        {
+          "id": "o4",
+          "text": "Volcanic lava covering an island city"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The site contains forest at many stages of succession.",
+      "sources": [
+        {
+          "title": "Forest Massif of Odzala-Kokoua",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/692",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Odzala-Kokoua in Congo shows post-glacial forest recolonisation across converging forest and savanna ecosystems and has exceptional primate diversity."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_congo_odzala_ecosystems",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Congo",
+      "subregionScope": "Odzala-Kokoua",
+      "communityScope": "Local and Indigenous communities around Odzala-Kokoua",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which ecosystems converge at Odzala-Kokoua?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Tundra, taiga and polar desert"
+        },
+        {
+          "id": "o2",
+          "text": "Mediterranean scrub, glacier and coral reef"
+        },
+        {
+          "id": "o3",
+          "text": "Mangrove only"
+        },
+        {
+          "id": "o4",
+          "text": "Congolese forest, Lower Guinean forest and savanna"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The convergence contributes to the park's distinct ecology.",
+      "sources": [
+        {
+          "title": "Forest Massif of Odzala-Kokoua",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/692",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Odzala-Kokoua in Congo shows post-glacial forest recolonisation across converging forest and savanna ecosystems and has exceptional primate diversity."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_congo_odzala_primates",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Congo",
+      "subregionScope": "Odzala-Kokoua",
+      "communityScope": "Local and Indigenous communities around Odzala-Kokoua",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What regional biodiversity distinction does UNESCO give Odzala-Kokoua?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The only fish habitat in Congo"
+        },
+        {
+          "id": "o2",
+          "text": "The fewest mammal species in the region"
+        },
+        {
+          "id": "o3",
+          "text": "The richest primate diversity in Central Africa"
+        },
+        {
+          "id": "o4",
+          "text": "The largest penguin colony in Africa"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "It is also an important stronghold for forest elephants.",
+      "sources": [
+        {
+          "title": "Forest Massif of Odzala-Kokoua",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/692",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Odzala-Kokoua in Congo shows post-glacial forest recolonisation across converging forest and savanna ecosystems and has exceptional primate diversity."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_congo_odzala_consent",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Congo",
+      "subregionScope": "Odzala-Kokoua",
+      "communityScope": "Local and Indigenous communities around Odzala-Kokoua",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What principle should guide management affecting Indigenous Peoples at Odzala-Kokoua?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A ban on community mapping"
+        },
+        {
+          "id": "o2",
+          "text": "Free, prior and informed consent"
+        },
+        {
+          "id": "o3",
+          "text": "Automatic relocation without discussion"
+        },
+        {
+          "id": "o4",
+          "text": "Management by tourism companies alone"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO's management statement links conservation with rights and livelihoods.",
+      "sources": [
+        {
+          "title": "Forest Massif of Odzala-Kokoua",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/692",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Odzala-Kokoua in Congo shows post-glacial forest recolonisation across converging forest and savanna ecosystems and has exceptional primate diversity."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_drc_okapi_fraction",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Democratic Republic of the Congo",
+      "subregionScope": "Ituri forest",
+      "communityScope": "Mbuti, Efe and other Ituri communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "About how much of the Ituri forest lies in the Okapi Wildlife Reserve?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "One fifth"
+        },
+        {
+          "id": "o2",
+          "text": "One half"
+        },
+        {
+          "id": "o3",
+          "text": "One twentieth"
+        },
+        {
+          "id": "o4",
+          "text": "The entire forest"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The reserve covers a substantial but partial area of Ituri forest.",
+      "sources": [
+        {
+          "title": "Okapi Wildlife Reserve",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/718",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The reserve protects about one-fifth of DRC's Ituri forest, endemic and threatened wildlife, and landscapes important to Mbuti and Efe communities."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_drc_okapi_identity",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Democratic Republic of the Congo",
+      "subregionScope": "Ituri forest",
+      "communityScope": "Mbuti, Efe and other Ituri communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What kind of animal is an okapi?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A forest elephant"
+        },
+        {
+          "id": "o2",
+          "text": "A great ape"
+        },
+        {
+          "id": "o3",
+          "text": "A hornbill"
+        },
+        {
+          "id": "o4",
+          "text": "A forest giraffe"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Okapia johnstoni is endemic to DRC.",
+      "sources": [
+        {
+          "title": "Okapi Wildlife Reserve",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/718",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The reserve protects about one-fifth of DRC's Ituri forest, endemic and threatened wildlife, and landscapes important to Mbuti and Efe communities."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_drc_okapi_rivers",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Democratic Republic of the Congo",
+      "subregionScope": "Ituri forest",
+      "communityScope": "Mbuti, Efe and other Ituri communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which rivers create notable waterfalls in the Okapi Wildlife Reserve?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Senegal and Gambia"
+        },
+        {
+          "id": "o2",
+          "text": "Orange and Vaal"
+        },
+        {
+          "id": "o3",
+          "text": "Ituri and Epulu"
+        },
+        {
+          "id": "o4",
+          "text": "Nile and Atbara"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The reserve combines biodiversity with dramatic river scenery.",
+      "sources": [
+        {
+          "title": "Okapi Wildlife Reserve",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/718",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The reserve protects about one-fifth of DRC's Ituri forest, endemic and threatened wildlife, and landscapes important to Mbuti and Efe communities."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_drc_okapi_rights",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Democratic Republic of the Congo",
+      "subregionScope": "Ituri forest",
+      "communityScope": "Mbuti, Efe and other Ituri communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Why must conservation accounts of the Okapi Reserve include Mbuti and Efe perspectives?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The reserve is uninhabited"
+        },
+        {
+          "id": "o2",
+          "text": "Their cultural and material lives are connected to the forest"
+        },
+        {
+          "id": "o3",
+          "text": "They have no relationship to the area"
+        },
+        {
+          "id": "o4",
+          "text": "Only tourists use the forest"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Protected-area narratives require community-led review and rights-aware framing.",
+      "sources": [
+        {
+          "title": "Okapi Wildlife Reserve",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/718",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "The reserve protects about one-fifth of DRC's Ituri forest, endemic and threatened wildlife, and landscapes important to Mbuti and Efe communities."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_drc_kuba_state",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Democratic Republic of the Congo",
+      "subregionScope": "Kasai region",
+      "communityScope": "Kuba peoples",
+      "category": "HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How does The Met describe the historical Kuba kingdom?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A multiethnic state formed from several principalities"
+        },
+        {
+          "id": "o2",
+          "text": "A single coastal trading post"
+        },
+        {
+          "id": "o3",
+          "text": "A Roman colony"
+        },
+        {
+          "id": "o4",
+          "text": "A modern federal ministry"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The kingdom united communities of varied origins.",
+      "sources": [
+        {
+          "title": "Kingdoms of the Savanna: The Kuba Kingdom",
+          "organisationOrAuthor": "The Metropolitan Museum of Art",
+          "urlOrReference": "https://www.metmuseum.org/essays/kingdoms-of-the-savanna-the-kuba-kingdom",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "museum",
+          "reviewStatus": "approved",
+          "relevantClaim": "The multiethnic Kuba kingdom developed court arts, a title system, and idealised ndop royal portraits whose identifying emblem is the ibol."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_drc_kuba_founder",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Democratic Republic of the Congo",
+      "subregionScope": "Kasai region",
+      "communityScope": "Kuba peoples",
+      "category": "ORAL HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Who is remembered in Kuba oral histories as a major political architect?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Mansa Musa"
+        },
+        {
+          "id": "o2",
+          "text": "Ibrahim Njoya"
+        },
+        {
+          "id": "o3",
+          "text": "Septimius Severus"
+        },
+        {
+          "id": "o4",
+          "text": "Shyaam aMbul aNgoong"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The museum source presents oral history as a record requiring contextual review.",
+      "sources": [
+        {
+          "title": "Kingdoms of the Savanna: The Kuba Kingdom",
+          "organisationOrAuthor": "The Metropolitan Museum of Art",
+          "urlOrReference": "https://www.metmuseum.org/essays/kingdoms-of-the-savanna-the-kuba-kingdom",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "museum",
+          "reviewStatus": "approved",
+          "relevantClaim": "The multiethnic Kuba kingdom developed court arts, a title system, and idealised ndop royal portraits whose identifying emblem is the ibol."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_drc_kuba_ndop",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Democratic Republic of the Congo",
+      "subregionScope": "Kasai region",
+      "communityScope": "Kuba peoples",
+      "category": "ART",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What is an ndop in Kuba court art?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A rainwater channel"
+        },
+        {
+          "id": "o2",
+          "text": "A reed flute"
+        },
+        {
+          "id": "o3",
+          "text": "An idealized royal portrait sculpture"
+        },
+        {
+          "id": "o4",
+          "text": "A fishing net"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Each figure represented a ruler at the height of health and power.",
+      "sources": [
+        {
+          "title": "Kingdoms of the Savanna: The Kuba Kingdom",
+          "organisationOrAuthor": "The Metropolitan Museum of Art",
+          "urlOrReference": "https://www.metmuseum.org/essays/kingdoms-of-the-savanna-the-kuba-kingdom",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "museum",
+          "reviewStatus": "approved",
+          "relevantClaim": "The multiethnic Kuba kingdom developed court arts, a title system, and idealised ndop royal portraits whose identifying emblem is the ibol."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_drc_kuba_ibol",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Democratic Republic of the Congo",
+      "subregionScope": "Kasai region",
+      "communityScope": "Kuba peoples",
+      "category": "SYMBOLS",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How is a ruler identified on a Kuba ndop?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "By a Roman numeral on the base"
+        },
+        {
+          "id": "o2",
+          "text": "By a personal emblem called an ibol"
+        },
+        {
+          "id": "o3",
+          "text": "By a written passport"
+        },
+        {
+          "id": "o4",
+          "text": "By the colour of a museum wall"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The emblem distinguishes the idealized portrait's subject.",
+      "sources": [
+        {
+          "title": "Kingdoms of the Savanna: The Kuba Kingdom",
+          "organisationOrAuthor": "The Metropolitan Museum of Art",
+          "urlOrReference": "https://www.metmuseum.org/essays/kingdoms-of-the-savanna-the-kuba-kingdom",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "museum",
+          "reviewStatus": "approved",
+          "relevantClaim": "The multiethnic Kuba kingdom developed court arts, a title system, and idealised ndop royal portraits whose identifying emblem is the ibol."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_gabon_lope_interface",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Gabon",
+      "subregionScope": "Middle Ogooué valley",
+      "communityScope": "Lopé-Okanda communities and heritage custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which environments meet at Lopé-Okanda?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Tropical rainforest and relict savanna"
+        },
+        {
+          "id": "o2",
+          "text": "Polar ice and tundra"
+        },
+        {
+          "id": "o3",
+          "text": "Coral reef and open ocean"
+        },
+        {
+          "id": "o4",
+          "text": "Alpine glacier and steppe"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The interface preserves ecological responses to climate change.",
+      "sources": [
+        {
+          "title": "Ecosystem and Relict Cultural Landscape of Lopé-Okanda",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1147",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Gabonese Lopé-Okanda combines rainforest and savanna ecology with deep settlement evidence, ironworking and about 1,800 petroglyphs along the Ogooué valley."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_gabon_lope_petroglyphs",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Gabon",
+      "subregionScope": "Middle Ogooué valley",
+      "communityScope": "Lopé-Okanda communities and heritage custodians",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Approximately how many petroglyphs are recorded at Lopé-Okanda?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "About 18"
+        },
+        {
+          "id": "o2",
+          "text": "About 180"
+        },
+        {
+          "id": "o3",
+          "text": "About 18,000"
+        },
+        {
+          "id": "o4",
+          "text": "About 1,800"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The rock carvings accompany settlement and ironworking evidence.",
+      "sources": [
+        {
+          "title": "Ecosystem and Relict Cultural Landscape of Lopé-Okanda",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1147",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Gabonese Lopé-Okanda combines rainforest and savanna ecology with deep settlement evidence, ironworking and about 1,800 petroglyphs along the Ogooué valley."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_gabon_lope_timespan",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Gabon",
+      "subregionScope": "Middle Ogooué valley",
+      "communityScope": "Lopé-Okanda communities and heritage custodians",
+      "category": "HISTORY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "How far back does settlement evidence at Lopé-Okanda extend?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Roughly 4,000 years only"
+        },
+        {
+          "id": "o2",
+          "text": "Only to the twentieth century"
+        },
+        {
+          "id": "o3",
+          "text": "Roughly 400,000 years"
+        },
+        {
+          "id": "o4",
+          "text": "Roughly 400 years"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "UNESCO describes a very long archaeological sequence.",
+      "sources": [
+        {
+          "title": "Ecosystem and Relict Cultural Landscape of Lopé-Okanda",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1147",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Gabonese Lopé-Okanda combines rainforest and savanna ecology with deep settlement evidence, ironworking and about 1,800 petroglyphs along the Ogooué valley."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_gabon_lope_corridor",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Gabon",
+      "subregionScope": "Middle Ogooué valley",
+      "communityScope": "Lopé-Okanda communities and heritage custodians",
+      "category": "LANGUAGE",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which river valley helped movement of peoples and Bantu languages through Lopé-Okanda?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The Murray valley"
+        },
+        {
+          "id": "o2",
+          "text": "The Ogooué valley"
+        },
+        {
+          "id": "o3",
+          "text": "The Rhine valley"
+        },
+        {
+          "id": "o4",
+          "text": "The Indus valley"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The site provides evidence for movement without implying one uniform identity.",
+      "sources": [
+        {
+          "title": "Ecosystem and Relict Cultural Landscape of Lopé-Okanda",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1147",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Gabonese Lopé-Okanda combines rainforest and savanna ecology with deep settlement evidence, ironworking and about 1,800 petroglyphs along the Ogooué valley."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_gabon_ivindo_location",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Gabon",
+      "subregionScope": "Northern equatorial Gabon",
+      "communityScope": "Ivindo communities and conservation custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Where is Ivindo National Park situated?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "On the equator in northern Gabon"
+        },
+        {
+          "id": "o2",
+          "text": "On Chad's northern desert border"
+        },
+        {
+          "id": "o3",
+          "text": "On an Atlantic island"
+        },
+        {
+          "id": "o4",
+          "text": "In Morocco's Atlas Mountains"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Its equatorial setting supports a largely intact rainforest.",
+      "sources": [
+        {
+          "title": "Ivindo National Park",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1653",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Northern Gabon's Ivindo is an equatorial rainforest landscape of blackwater rivers, rapids and waterfalls with endemic aquatic life and old-growth forest."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_gabon_ivindo_waters",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Gabon",
+      "subregionScope": "Northern equatorial Gabon",
+      "communityScope": "Ivindo communities and conservation custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What gives Ivindo much of its distinctive landscape?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Glaciers and fjords"
+        },
+        {
+          "id": "o2",
+          "text": "Salt flats without rivers"
+        },
+        {
+          "id": "o3",
+          "text": "Artificial canals only"
+        },
+        {
+          "id": "o4",
+          "text": "Blackwater rivers, rapids and waterfalls"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Aquatic habitats are central to the park's biodiversity.",
+      "sources": [
+        {
+          "title": "Ivindo National Park",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1653",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Northern Gabon's Ivindo is an equatorial rainforest landscape of blackwater rivers, rapids and waterfalls with endemic aquatic life and old-growth forest."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_gabon_ivindo_plants",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Gabon",
+      "subregionScope": "Northern equatorial Gabon",
+      "communityScope": "Ivindo communities and conservation custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which plants have probable micro-endemic species around Ivindo's waterfalls?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Mangrove trees"
+        },
+        {
+          "id": "o2",
+          "text": "Alpine edelweiss"
+        },
+        {
+          "id": "o3",
+          "text": "Podostemaceae riverweeds"
+        },
+        {
+          "id": "o4",
+          "text": "Date palms"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "Each waterfall may hold locally unique aquatic flora.",
+      "sources": [
+        {
+          "title": "Ivindo National Park",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1653",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Northern Gabon's Ivindo is an equatorial rainforest landscape of blackwater rivers, rapids and waterfalls with endemic aquatic life and old-growth forest."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_gabon_ivindo_forest",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Gabon",
+      "subregionScope": "Northern equatorial Gabon",
+      "communityScope": "Ivindo communities and conservation custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What kind of forest is especially significant at Ivindo?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Mediterranean olive grove"
+        },
+        {
+          "id": "o2",
+          "text": "Old-growth Caesalpinioideae forest"
+        },
+        {
+          "id": "o3",
+          "text": "Temperate beech forest"
+        },
+        {
+          "id": "o4",
+          "text": "Boreal pine forest"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The old-growth forest supports exceptional species diversity.",
+      "sources": [
+        {
+          "title": "Ivindo National Park",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/list/1653",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Northern Gabon's Ivindo is an equatorial rainforest landscape of blackwater rivers, rapids and waterfalls with endemic aquatic life and old-growth forest."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_mvet_countries",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon; Congo; Gabon",
+      "subregionScope": "Cross-border Ekang cultural area",
+      "communityScope": "Ekang communities",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which three countries jointly nominated Mvet Oyeng to UNESCO?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Gabon, Cameroon and Congo"
+        },
+        {
+          "id": "o2",
+          "text": "Ghana, Togo and Benin"
+        },
+        {
+          "id": "o3",
+          "text": "Kenya, Tanzania and Uganda"
+        },
+        {
+          "id": "o4",
+          "text": "Egypt, Libya and Tunisia"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "The nomination reflects a cross-border Ekang practice.",
+      "sources": [
+        {
+          "title": "Mvet Oyeng, musical art, practices and skills associated with the Ekang community",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mvet-oyeng-musical-art-practices-and-skills-associated-with-the-ekang-community-02253",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ekang Mvet Oyeng in Gabon, Cameroon and Congo combines epic storytelling, music, dance and participatory performance in sacred and popular forms."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_mvet_audience",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon; Congo; Gabon",
+      "subregionScope": "Cross-border Ekang cultural area",
+      "communityScope": "Ekang communities",
+      "category": "MUSIC",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "How can an audience participate in Mvet Oyeng?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only by remaining silent"
+        },
+        {
+          "id": "o2",
+          "text": "Only by reading printed subtitles"
+        },
+        {
+          "id": "o3",
+          "text": "Only by judging a competition"
+        },
+        {
+          "id": "o4",
+          "text": "By clapping, singing, playing sticks and engaging with the storyteller"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The public performance is participatory rather than performer-only.",
+      "sources": [
+        {
+          "title": "Mvet Oyeng, musical art, practices and skills associated with the Ekang community",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mvet-oyeng-musical-art-practices-and-skills-associated-with-the-ekang-community-02253",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ekang Mvet Oyeng in Gabon, Cameroon and Congo combines epic storytelling, music, dance and participatory performance in sacred and popular forms."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_mvet_forms",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon; Congo; Gabon",
+      "subregionScope": "Cross-border Ekang cultural area",
+      "communityScope": "Ekang communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What distinction does UNESCO make within Mvet Oyeng?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Written and printed laws"
+        },
+        {
+          "id": "o2",
+          "text": "Winter and summer crops"
+        },
+        {
+          "id": "o3",
+          "text": "Sacred and popular forms"
+        },
+        {
+          "id": "o4",
+          "text": "Urban and rural currencies"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The sacred form has stricter initiation and disclosure boundaries.",
+      "sources": [
+        {
+          "title": "Mvet Oyeng, musical art, practices and skills associated with the Ekang community",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mvet-oyeng-musical-art-practices-and-skills-associated-with-the-ekang-community-02253",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ekang Mvet Oyeng in Gabon, Cameroon and Congo combines epic storytelling, music, dance and participatory performance in sacred and popular forms."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_mvet_values",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon; Congo; Gabon",
+      "subregionScope": "Cross-border Ekang cultural area",
+      "communityScope": "Ekang communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What can Mvet Oyeng transmit besides entertainment?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only foreign legal codes"
+        },
+        {
+          "id": "o2",
+          "text": "Local history, language and community values"
+        },
+        {
+          "id": "o3",
+          "text": "Only weather forecasts"
+        },
+        {
+          "id": "o4",
+          "text": "Only commercial prices"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "UNESCO also connects it with memory, social bonds and conflict resolution.",
+      "sources": [
+        {
+          "title": "Mvet Oyeng, musical art, practices and skills associated with the Ekang community",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/mvet-oyeng-musical-art-practices-and-skills-associated-with-the-ekang-community-02253",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Ekang Mvet Oyeng in Gabon, Cameroon and Congo combines epic storytelling, music, dance and participatory performance in sacred and popular forms."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_saotome_tchiloli_setting",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Sao Tome and Principe",
+      "subregionScope": "São Tomé island",
+      "communityScope": "Tchiloli groups and audiences",
+      "category": "ART",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Where is Tchiloli typically performed?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "In an open-air public space"
+        },
+        {
+          "id": "o2",
+          "text": "Only inside a cinema"
+        },
+        {
+          "id": "o3",
+          "text": "Only on a ship"
+        },
+        {
+          "id": "o4",
+          "text": "Only in a recording booth"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Actors, musicians and audience share a living performance space.",
+      "sources": [
+        {
+          "title": "Tchiloli, living theatre of Sao Tome and Principe in the quest of justice",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/tchiloli-living-theatre-of-sao-tome-and-principe-in-the-quest-of-justice-02309",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tchiloli is São Tomé and Príncipe open-air theatre involving actors, musicians and audience around a murder trial, with performances adapted across generations."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_saotome_tchiloli_story",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Sao Tome and Principe",
+      "subregionScope": "São Tomé island",
+      "communityScope": "Tchiloli groups and audiences",
+      "category": "ART & HISTORY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What kind of case drives the Tchiloli drama?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "A shipping auction"
+        },
+        {
+          "id": "o2",
+          "text": "A harvest census"
+        },
+        {
+          "id": "o3",
+          "text": "A football transfer"
+        },
+        {
+          "id": "o4",
+          "text": "A murder trial"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The performance explores justice through a long-adapted dramatic story.",
+      "sources": [
+        {
+          "title": "Tchiloli, living theatre of Sao Tome and Principe in the quest of justice",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/tchiloli-living-theatre-of-sao-tome-and-principe-in-the-quest-of-justice-02309",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tchiloli is São Tomé and Príncipe open-air theatre involving actors, musicians and audience around a murder trial, with performances adapted across generations."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_saotome_tchiloli_scale",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Sao Tome and Principe",
+      "subregionScope": "São Tomé island",
+      "communityScope": "Tchiloli groups and audiences",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "About how many actors can take part in a Tchiloli performance?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "More than five hundred"
+        },
+        {
+          "id": "o2",
+          "text": "No actors"
+        },
+        {
+          "id": "o3",
+          "text": "About thirty"
+        },
+        {
+          "id": "o4",
+          "text": "Exactly two"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The ensemble involves many roles alongside musicians and audience.",
+      "sources": [
+        {
+          "title": "Tchiloli, living theatre of Sao Tome and Principe in the quest of justice",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/tchiloli-living-theatre-of-sao-tome-and-principe-in-the-quest-of-justice-02309",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tchiloli is São Tomé and Príncipe open-air theatre involving actors, musicians and audience around a murder trial, with performances adapted across generations."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_saotome_tchiloli_opening",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Sao Tome and Principe",
+      "subregionScope": "São Tomé island",
+      "communityScope": "Tchiloli groups and audiences",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Who typically leads the ritual that begins Tchiloli?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only children"
+        },
+        {
+          "id": "o2",
+          "text": "Women"
+        },
+        {
+          "id": "o3",
+          "text": "Visiting judges"
+        },
+        {
+          "id": "o4",
+          "text": "Foreign soldiers"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "The UNESCO summary identifies a women-led opening ritual.",
+      "sources": [
+        {
+          "title": "Tchiloli, living theatre of Sao Tome and Principe in the quest of justice",
+          "organisationOrAuthor": "UNESCO Intangible Cultural Heritage",
+          "urlOrReference": "https://ich.unesco.org/en/RL/tchiloli-living-theatre-of-sao-tome-and-principe-in-the-quest-of-justice-02309",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Tchiloli is São Tomé and Príncipe open-air theatre involving actors, musicians and audience around a murder trial, with performances adapted across generations."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_equatorial_tentative_status",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Equatorial Guinea",
+      "subregionScope": null,
+      "communityScope": "Equatoguinean heritage communities and custodians",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What does placement on UNESCO's Tentative List mean?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The state may consider a property for future nomination"
+        },
+        {
+          "id": "o2",
+          "text": "The property is already inscribed World Heritage"
+        },
+        {
+          "id": "o3",
+          "text": "UNESCO owns the property"
+        },
+        {
+          "id": "o4",
+          "text": "Every listed place is open to tourism"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Tentative listing is a preliminary national step, not inscription.",
+      "sources": [
+        {
+          "title": "Equatorial Guinea Tentative List",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/tentativelists/?action=listtentative&state=gq",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Equatorial Guinea's 2026 Tentative List names six proposed properties; tentative status is preliminary and is not World Heritage inscription."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_equatorial_luba",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Equatorial Guinea",
+      "subregionScope": "Bioko",
+      "communityScope": "Communities and custodians around Luba Caldera",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Which proposed Equatorial Guinea property is named for a volcanic caldera?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Ivindo National Park"
+        },
+        {
+          "id": "o2",
+          "text": "Lakes of Ounianga"
+        },
+        {
+          "id": "o3",
+          "text": "Mbanza Kongo"
+        },
+        {
+          "id": "o4",
+          "text": "Luba Caldera Scientific Reserve"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The state included the reserve on its 2026 Tentative List.",
+      "sources": [
+        {
+          "title": "Equatorial Guinea Tentative List",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/tentativelists/?action=listtentative&state=gq",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Equatorial Guinea's 2026 Tentative List names six proposed properties; tentative status is preliminary and is not World Heritage inscription."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_equatorial_annobon",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Equatorial Guinea",
+      "subregionScope": "Annobón",
+      "communityScope": "Annobonese communities and heritage custodians",
+      "category": "GEOGRAPHY",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which island nature reserve appears on Equatorial Guinea's Tentative List?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Djerba"
+        },
+        {
+          "id": "o2",
+          "text": "Zanzibar Stone Town"
+        },
+        {
+          "id": "o3",
+          "text": "Annobón Nature Reserve"
+        },
+        {
+          "id": "o4",
+          "text": "Mukkawar Island"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "The question records tentative-list status only.",
+      "sources": [
+        {
+          "title": "Equatorial Guinea Tentative List",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/tentativelists/?action=listtentative&state=gq",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Equatorial Guinea's 2026 Tentative List names six proposed properties; tentative status is preliminary and is not World Heritage inscription."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_equatorial_batete",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Equatorial Guinea",
+      "subregionScope": "Bioko",
+      "communityScope": "Batete community and heritage custodians",
+      "category": "ART & HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which built site appears on Equatorial Guinea's 2026 Tentative List?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The theatre of Sabratha"
+        },
+        {
+          "id": "o2",
+          "text": "The neo-Gothic church of Batete"
+        },
+        {
+          "id": "o3",
+          "text": "The pyramids of Meroe"
+        },
+        {
+          "id": "o4",
+          "text": "The Medina of Fez"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Further locally authored research is required before any architectural interpretation.",
+      "sources": [
+        {
+          "title": "Equatorial Guinea Tentative List",
+          "organisationOrAuthor": "UNESCO World Heritage Centre",
+          "urlOrReference": "https://whc.unesco.org/en/tentativelists/?action=listtentative&state=gq",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "heritage",
+          "reviewStatus": "approved",
+          "relevantClaim": "Equatorial Guinea's 2026 Tentative List names six proposed properties; tentative status is preliminary and is not World Heritage inscription."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Colonialism, enslavement or violence: trauma-informed historical and community review is required.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_cassava_chickwangue",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola; Cameroon; Central African Republic; Congo; Democratic Republic of the Congo; Gabon",
+      "subregionScope": "Multiple local food systems",
+      "communityScope": "Cassava-growing communities",
+      "category": "FOOD",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "How does FAO describe chickwangue?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Steamed fermented cassava pulp wrapped in leaves"
+        },
+        {
+          "id": "o2",
+          "text": "Roasted millet mixed with dates"
+        },
+        {
+          "id": "o3",
+          "text": "Raw maize served with salt"
+        },
+        {
+          "id": "o4",
+          "text": "A fish dried without heat"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Names, ingredients and preparation still vary by place and household.",
+      "sources": [
+        {
+          "title": "An overview of traditional processing and utilization of cassava in Africa",
+          "organisationOrAuthor": "Food and Agriculture Organization of the United Nations",
+          "urlOrReference": "https://www.fao.org/4/x5458e/x5458e05.htm",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "other",
+          "reviewStatus": "approved",
+          "relevantClaim": "FAO documents multiple Central African cassava preparations and names, emphasizing that foods sharing a name can differ by place."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_cassava_leaves",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola; Cameroon; Central African Republic; Congo; Democratic Republic of the Congo; Gabon",
+      "subregionScope": "Multiple local food systems",
+      "communityScope": "Cassava-growing communities",
+      "category": "FOOD",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Which part of cassava is also prepared as a vegetable in many Central African cuisines?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Only the flowers"
+        },
+        {
+          "id": "o2",
+          "text": "Only the seeds"
+        },
+        {
+          "id": "o3",
+          "text": "Only the bark"
+        },
+        {
+          "id": "o4",
+          "text": "The leaves"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "FAO records local leaf-dish names across several countries.",
+      "sources": [
+        {
+          "title": "An overview of traditional processing and utilization of cassava in Africa",
+          "organisationOrAuthor": "Food and Agriculture Organization of the United Nations",
+          "urlOrReference": "https://www.fao.org/4/x5458e/x5458e05.htm",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "other",
+          "reviewStatus": "approved",
+          "relevantClaim": "FAO documents multiple Central African cassava preparations and names, emphasizing that foods sharing a name can differ by place."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_cassava_names",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola; Cameroon; Central African Republic; Congo; Democratic Republic of the Congo; Gabon",
+      "subregionScope": "Multiple local food systems",
+      "communityScope": "Cassava-growing communities",
+      "category": "LANGUAGE",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "Why should a quiz avoid treating fufu as one identical food everywhere?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Cassava grows in only one country"
+        },
+        {
+          "id": "o2",
+          "text": "Every household uses an official recipe"
+        },
+        {
+          "id": "o3",
+          "text": "The same name can refer to different preparations by place"
+        },
+        {
+          "id": "o4",
+          "text": "The word has no culinary meaning"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "FAO explicitly warns that shared food names can mask local variation.",
+      "sources": [
+        {
+          "title": "An overview of traditional processing and utilization of cassava in Africa",
+          "organisationOrAuthor": "Food and Agriculture Organization of the United Nations",
+          "urlOrReference": "https://www.fao.org/4/x5458e/x5458e05.htm",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "other",
+          "reviewStatus": "approved",
+          "relevantClaim": "FAO documents multiple Central African cassava preparations and names, emphasizing that foods sharing a name can differ by place."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_cassava_methods",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola; Cameroon; Central African Republic; Congo; Democratic Republic of the Congo; Gabon",
+      "subregionScope": "Multiple local food systems",
+      "communityScope": "Cassava-growing communities",
+      "category": "FOOD",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which processes appear in African cassava preparation?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Drying without any later cooking"
+        },
+        {
+          "id": "o2",
+          "text": "Boiling, steaming, roasting, fermenting and pounding"
+        },
+        {
+          "id": "o3",
+          "text": "Freezing only"
+        },
+        {
+          "id": "o4",
+          "text": "Distilling into fuel only"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Different products use different combinations of processes.",
+      "sources": [
+        {
+          "title": "An overview of traditional processing and utilization of cassava in Africa",
+          "organisationOrAuthor": "Food and Agriculture Organization of the United Nations",
+          "urlOrReference": "https://www.fao.org/4/x5458e/x5458e05.htm",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "other",
+          "reviewStatus": "approved",
+          "relevantClaim": "FAO documents multiple Central African cassava preparations and names, emphasizing that foods sharing a name can differ by place."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Living cultural practice: require review by practitioners from the named community and do not generalize beyond the documented scope.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_gnetum_species",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola; Cameroon; Central African Republic; Congo; Democratic Republic of the Congo; Gabon; Equatorial Guinea",
+      "subregionScope": "Humid tropical forests",
+      "communityScope": "Gnetum growers, harvesters and traders",
+      "category": "FOOD",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What part of African Gnetum is commonly eaten?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "The leaves"
+        },
+        {
+          "id": "o2",
+          "text": "The stones"
+        },
+        {
+          "id": "o3",
+          "text": "The bark only"
+        },
+        {
+          "id": "o4",
+          "text": "The flowers only"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "Gnetum africanum and G. buchholzianum are leafy forest vegetables.",
+      "sources": [
+        {
+          "title": "Gnetum domestication for livelihood improvement and conservation",
+          "organisationOrAuthor": "Food and Agriculture Organization of the United Nations",
+          "urlOrReference": "https://www.fao.org/4/XII/0671-B5.htm",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "other",
+          "reviewStatus": "approved",
+          "relevantClaim": "Edible Gnetum leaves occur across Central Africa under locally specific names, and domestication can support livelihoods while reducing pressure on wild plants."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_gnetum_names",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola; Cameroon; Central African Republic; Congo; Democratic Republic of the Congo; Gabon; Equatorial Guinea",
+      "subregionScope": "Humid tropical forests",
+      "communityScope": "Gnetum growers, harvesters and traders",
+      "category": "LANGUAGE",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "Which statement best reflects names for edible Gnetum in Central Africa?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "One official name is used in every language"
+        },
+        {
+          "id": "o2",
+          "text": "The plant has no local names"
+        },
+        {
+          "id": "o3",
+          "text": "Every name refers to a different continent"
+        },
+        {
+          "id": "o4",
+          "text": "Names vary, including eru, okok or koko in different places"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "Local naming is evidence of variation, not interchangeable identity.",
+      "sources": [
+        {
+          "title": "Gnetum domestication for livelihood improvement and conservation",
+          "organisationOrAuthor": "Food and Agriculture Organization of the United Nations",
+          "urlOrReference": "https://www.fao.org/4/XII/0671-B5.htm",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "other",
+          "reviewStatus": "approved",
+          "relevantClaim": "Edible Gnetum leaves occur across Central Africa under locally specific names, and domestication can support livelihoods while reducing pressure on wild plants."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_gnetum_domestication",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola; Cameroon; Central African Republic; Congo; Democratic Republic of the Congo; Gabon; Equatorial Guinea",
+      "subregionScope": "Humid tropical forests",
+      "communityScope": "Gnetum growers, harvesters and traders",
+      "category": "MODERN HISTORY",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "Why has Gnetum domestication been encouraged?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "To replace all other vegetables"
+        },
+        {
+          "id": "o2",
+          "text": "To restrict knowledge to laboratories"
+        },
+        {
+          "id": "o3",
+          "text": "To support livelihoods and reduce pressure on wild populations"
+        },
+        {
+          "id": "o4",
+          "text": "To eliminate every wild plant"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o3"
+        ]
+      ],
+      "explanation": "FAO frames cultivation as both livelihood and conservation work.",
+      "sources": [
+        {
+          "title": "Gnetum domestication for livelihood improvement and conservation",
+          "organisationOrAuthor": "Food and Agriculture Organization of the United Nations",
+          "urlOrReference": "https://www.fao.org/4/XII/0671-B5.htm",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "other",
+          "reviewStatus": "approved",
+          "relevantClaim": "Edible Gnetum leaves occur across Central Africa under locally specific names, and domestication can support livelihoods while reducing pressure on wild plants."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_regional_gnetum_habitat",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Angola; Cameroon; Central African Republic; Congo; Democratic Republic of the Congo; Gabon; Equatorial Guinea",
+      "subregionScope": "Humid tropical forests",
+      "communityScope": "Gnetum growers, harvesters and traders",
+      "category": "GEOGRAPHY",
+      "difficulty": "advanced",
+      "questionKind": "single",
+      "questionText": "What growth form does edible African Gnetum have?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "An alpine grass"
+        },
+        {
+          "id": "o2",
+          "text": "A climbing forest vine"
+        },
+        {
+          "id": "o3",
+          "text": "A desert cactus"
+        },
+        {
+          "id": "o4",
+          "text": "A floating seaweed"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o2"
+        ]
+      ],
+      "explanation": "Both documented species grow in West and Central African tropical forests.",
+      "sources": [
+        {
+          "title": "Gnetum domestication for livelihood improvement and conservation",
+          "organisationOrAuthor": "Food and Agriculture Organization of the United Nations",
+          "urlOrReference": "https://www.fao.org/4/XII/0671-B5.htm",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "other",
+          "reviewStatus": "approved",
+          "relevantClaim": "Edible Gnetum leaves occur across Central Africa under locally specific names, and domestication can support livelihoods while reducing pressure on wild plants."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Environmental knowledge and protected-area framing require local and Indigenous rights review alongside conservation evidence.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_kapsiki_marriages",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon; Nigeria",
+      "subregionScope": "Mandara Mountains and neighbouring areas",
+      "communityScope": "Kapsiki/Higi communities",
+      "category": "TRADITION",
+      "difficulty": "introductory",
+      "questionKind": "single",
+      "questionText": "What distinction does the study make within Kapsiki/Higi marriage rituals?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "Between first marriages and secondary marriages"
+        },
+        {
+          "id": "o2",
+          "text": "Between coastal and island marriages"
+        },
+        {
+          "id": "o3",
+          "text": "Between written and unwritten currencies"
+        },
+        {
+          "id": "o4",
+          "text": "Between harvest and fishing permits"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o1"
+        ]
+      ],
+      "explanation": "This is a study-specific distinction, not a rule for Cameroon or Nigeria generally.",
+      "sources": [
+        {
+          "title": "The Song of the Bride",
+          "organisationOrAuthor": "Oxford University Press",
+          "urlOrReference": "https://doi.org/10.1093/acprof:oso/9780199858149.003.0009",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "academic",
+          "reviewStatus": "approved",
+          "relevantClaim": "A study of Kapsiki/Higi marriage distinguishes first and secondary marriages and traces changing wedding feasts and a bridal song contest over four decades."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Marriage and gender material: require locally grounded, gender-aware review and do not present one documented practice as universal or prescriptive.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    },
+    {
+      "stableId": "central_cameroon_kapsiki_change",
+      "version": 1,
+      "region": "central",
+      "countryScope": "Cameroon; Nigeria",
+      "subregionScope": "Mandara Mountains and neighbouring areas",
+      "communityScope": "Kapsiki/Higi communities",
+      "category": "TRADITION",
+      "difficulty": "intermediate",
+      "questionKind": "single",
+      "questionText": "What changed in the wedding feasts observed over four decades?",
+      "answerOptions": [
+        {
+          "id": "o1",
+          "text": "They stopped involving relatives"
+        },
+        {
+          "id": "o2",
+          "text": "They became identical across all villages"
+        },
+        {
+          "id": "o3",
+          "text": "They moved entirely to courtrooms"
+        },
+        {
+          "id": "o4",
+          "text": "They grew from modest gift-giving into larger public displays"
+        }
+      ],
+      "acceptedAnswers": [
+        [
+          "o4"
+        ]
+      ],
+      "explanation": "The study emphasizes historical change within a specific community context.",
+      "sources": [
+        {
+          "title": "The Song of the Bride",
+          "organisationOrAuthor": "Oxford University Press",
+          "urlOrReference": "https://doi.org/10.1093/acprof:oso/9780199858149.003.0009",
+          "publicationDate": null,
+          "accessDate": "2026-09-06",
+          "sourceType": "academic",
+          "reviewStatus": "approved",
+          "relevantClaim": "A study of Kapsiki/Higi marriage distinguishes first and secondary marriages and traces changing wedding feasts and a bridal song contest over four decades."
+        }
+      ],
+      "reviewer": "Central Africa research triage (not cultural approval)",
+      "reviewDate": "2026-09-06",
+      "sensitivityNotes": "Marriage and gender material: require locally grounded, gender-aware review and do not present one documented practice as universal or prescriptive.",
+      "language": "en",
+      "locale": "en",
+      "lifecycleStatus": "draft",
+      "publishedAt": null,
+      "retiredAt": null,
+      "validFrom": null,
+      "validUntil": null,
+      "scoringWeight": 1,
+      "imageProvenance": [],
+      "audioProvenance": []
+    }
+  ]
+}
