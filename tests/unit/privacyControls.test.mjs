@@ -63,7 +63,8 @@ test("90 days from completion is authoritative and publication cannot mutate exp
 test("retention and draft legal configuration stay honest",()=>{
   const results=retentionSchedule.find((item)=>item.category.startsWith("Completed attempts"));const published=retentionSchedule.find((item)=>item.category.startsWith("Published results"));
   assert.match(results.maximum,/Exactly 90 days from completion/);assert.match(published.maximum,/publication never extends, restarts or removes expiry/i);
-  assert.equal(legalInformation.approvedForProduction,false);assert.equal(legalInformation.controllerLegalName,null);assert.equal(legalInformation.privacyContact,null);assert.ok(missingLegalActivationDetails.length>=10);
+  assert.equal(legalInformation.approvedForProduction,false);assert.equal(legalInformation.controllerLegalName,"Ayodele Ayeni");assert.equal(legalInformation.tradingName,"Classes for Culture");assert.equal(legalInformation.privacyContact,"team@classesforculture.com");assert.equal(legalInformation.postalAddress,null);assert.equal(legalInformation.commercialPolicyApprovedAt,"2026-10-23");
+  assert.deepEqual(missingLegalActivationDetails,["Required geographical seller address installed securely at runtime","ICO registration or fee decision","Final lawful-basis assessment","Children’s Code applicability and proportionate age-assurance assessment","Processor and international-transfer review","Remaining privacy and legal publication review beyond the approved commercial policy","Operational retention and rights-request readiness"]);
   const streaks=retentionSchedule.find((item)=>item.category==="Daily streaks");assert.match(streaks.maximum,/Exactly 180 days/);assert.match(streaks.deletion,/within seven days/);
 });
 

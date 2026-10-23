@@ -12,8 +12,8 @@ test("privacy choices and legal footer render site-wide while analytics stays of
 });
 
 test("legal routes fail safely without invented controller details",async()=>{
-  const privacy=await(await render("/privacy")).text();assert.match(privacy,/Controller legal identity/);assert.match(privacy,/do not send personal information/i);assert.doesNotMatch(privacy,/privacy@[a-z]|company number:\s*\w|ICO registration number:\s*\w/i);
-  const requests=await(await render("/privacy/requests")).text();assert.match(requests,/stores no request and contains no form/i);assert.doesNotMatch(requests,/<form|<input|<textarea/i);
+  const privacy=await(await render("/privacy")).text();assert.match(privacy,/Ayodele Ayeni/);assert.match(privacy,/Classes for Culture/);assert.match(privacy,/mailto:team@classesforculture\.com/);assert.match(privacy,/Required geographical seller address installed securely at runtime/);assert.match(privacy,/geographical seller address and remaining production reviews are still pending/i);for(const provider of ['Cloudflare','Netlify','Google Drive','Namecheap Private Email','Stripe'])assert.ok(privacy.includes(provider));assert.doesNotMatch(privacy,/OpenAI Sites|trusted dispatch|REPLACE_WITH_YOUR_PUBLIC_BUSINESS_ADDRESS|privacy@[a-z]|company number:\s*\w|ICO registration number:\s*\w/i);
+  const requests=await(await render("/privacy/requests")).text();assert.match(requests,/stores no request and contains no form/i);assert.match(requests,/mailto:team@classesforculture\.com/);assert.match(requests,/acknowledge enquiries within two working days/);assert.match(requests,/Unresolved complaints are escalated to Classes for Culture/);assert.doesNotMatch(requests,/<form|<input|<textarea|contact route is not configured/i);
 });
 
 test("storage notice and machine inventory stay synchronised",async()=>{

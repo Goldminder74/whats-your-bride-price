@@ -29,7 +29,9 @@ No archive, source content, template, credential or generated manifest is in Git
 
 The deployed archive's91 files match the deployment browser's total. ZIP entry
 counts include directories (93 deployed /351 source); do not call these file counts.
-These copies are independently readable locally, not an off-device custody claim.
+These copies were independently read locally, not an off-device custody claim.
+The source ZIP was subsequently found to contain apparent SMTP credentials; see
+the protected custody update below. Its original plaintext checksum remains pinned.
 
 ## Email function: preserve provider origin, no invented binary backup
 
@@ -44,7 +46,7 @@ Emails configuration currently displays no selected provider and provider API ke
 “Not set”, with directory `./emails`. These configuration observations do NOT
 prove that the deployed function can send, nor that its deployed environment is
 identical to the current configuration page. It was not invoked, rebuilt, disabled
-or configured. No message was sent and no email credential was read.
+or configured. No message was sent; no legacy credential was used or displayed.
 
 Netlify documents immutable deployed function versions and continued availability
 of the Email Integration for existing installations/older teams:
@@ -59,8 +61,55 @@ from the incomplete source copy. Final serving/domain routing must explicitly
 preserve any existing email-function route and its original origin; verify this
 before changing DNS. An independently downloadable function binary and a tested
 function restore remain unverified. Provider-native preservation is not represented
-as such a binary backup. Resolve the actual preservation/rollback requirement
-before launch; do not turn a source ZIP into a false completion claim.
+as such a binary backup. The caller audit below removes the generated function
+binary as a dependency of the new game, without claiming independent restoration
+of that binary or successful delivery by the legacy system.
+
+## Verified callers and provider-address preservation
+
+Read the matching source archive without executing it or printing file contents.
+`BookClassForm.tsx` invokes Supabase `send-booking-confirmation`; Supabase also
+handles legacy sign-up, verification and password-reset email. Its booking/test
+functions use SMTP configuration. No source caller of `/.netlify/functions/emails`,
+`@netlify/emails`, `NETLIFY_EMAILS_` or its plugin was found. This is a source audit,
+not proof that no external caller exists or that any legacy mailbox currently sends.
+
+The new game's authority alerts and purchase confirmations use its own private
+SMTP transport; they do not depend on this Netlify System function or Supabase.
+Do not rebuild the existing website or implement a speculative binary replacement.
+
+The original deployment's UI supplied this verified immutable provider permalink:
+[preserved legacy deployment](https://6844a06d30342e00087fbdf3--classes-4-culture-goldmindresourcery.netlify.app/).
+One anonymous HTTPS HTML request returned200,2,658 bytes; body SHA256
+`6f500428dd41b5017b56077acf71e4cf207276c89fb5d928a30647801045ae7f`.
+No scripts, function or email send were invoked. Keep the entire project, deployment,
+configuration, Supabase project and email DNS unchanged. A live provider-address
+copy is verified; end-to-end legacy email and independent function restore are not.
+
+Legacy authentication links include canonical-origin `/verify-email`, `/login`,
+`/forgot-password`, `/reset-password` and `/signup`. Before final domain cutover,
+inspect actual Supabase redirect allowlists and preserve these journeys at the
+legacy origin or through an explicitly tested compatibility route, including
+their assets and query strings. Do not assume changing an OAuth/SMTP redirect
+setting is unnecessary merely because the HTML permalink returns200. This remains
+an engineering verification task; no replacement deployment or DNS edit was made.
+
+## Protected source custody
+
+The source contains non-placeholder SMTP-password assignments in two legacy
+Supabase configuration files. Values were neither used nor displayed. Anonymous
+repository metadata returned404, which does not establish repository visibility
+or public credential exposure. No credential-validity test or rotation occurred.
+
+Both agent-downloaded plaintext source ZIP copies were encrypted with Windows
+CurrentUser DPAPI, decrypted in memory to verify the original pinned ZIP checksum,
+then only those two plaintext downloads were removed. The workspace custody copy
+is `outputs/authority-preparation/legacy-site-backup/source-6844a06d30342e00087fbdf3.zip.dpapi`;
+the separately downloaded copy is also now `.zip.dpapi`. These files and the
+sanitised custody/caller observations remain ignored, never in Git. DPAPI is tied
+to this Windows user; it is not an off-device or independent-user recovery promise.
+The deployed public-files ZIP remains intact. Preserve the original deployment;
+do not treat source-secret exposure as established or silently change its credentials.
 
 Rollback must restore the recorded previous website routing/deployment while
 preserving financial data and settlement/webhook handling. It must not restore an

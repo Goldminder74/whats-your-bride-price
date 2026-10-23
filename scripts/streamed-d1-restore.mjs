@@ -27,7 +27,7 @@ function describe(source){
   for(const name of ready){
    const info=source.prepare('PRAGMA table_info('+quote(name)+')').all(),columns=info.map(c=>c.name),primary=info.filter(c=>c.pk).sort((a,b)=>a.pk-b.pk).map(c=>c.name);
    if(!primary.length||columns.some(c=>c.startsWith('__wybp_cursor')))fail();
-   const canonical=projection(columns),order=primary.map(quote).join(',');
+   const canonical=projection(columns),order=primary.map(c=>quote(name)+'.'+quote(c)).join(',');
    const sha=createHash('sha256');let count=0;
    for(const row of source.prepare('SELECT '+canonical+' FROM '+quote(name)+' ORDER BY '+order).iterate()){sha.update(JSON.stringify(row)+'\n');count++;}
    tables.push({name,columns,primary,count,sha256:sha.digest('hex')});remaining.delete(name);
@@ -78,7 +78,7 @@ export async function prepareStreamedRestore(source,custody,key,id,{pageSize=25,
  // Verification hashes are packed into bounded encrypted blocks, rather than
  // one Drive object per100 rows or a full in-memory target comparison.
  for(const [tableIndex,table] of description.tables.entries()){
-  const canonical=projection(table.columns),order=table.primary.map(quote).join(',');
+  const canonical=projection(table.columns),order=table.primary.map(c=>quote(table.name)+'.'+quote(c)).join(',');
   const query=source.prepare('SELECT '+canonical+','+table.primary.map((c,i)=>quote(c)+' AS "__wybp_cursor'+i+'"').join(',')+' FROM '+quote(table.name)+' ORDER BY '+order);
   let sha=createHash('sha256'),rows=0,leaves=[],lastCursor;table.verification=[];
   const write=async()=>{table.verification.push(await put(custody,key,id+'.restore.verify.t'+tableIndex+'.b'+table.verification.length+'.enc',{leaves}));leaves=[];};
@@ -152,7 +152,7 @@ async function verifyRestore(target,custody,key,pointer,{job,maxPages,now}){
  if(!checkpoint||checkpoint.manifest_hash!==pointer.sha256||checkpoint.cursor!==manifest.pages||checkpoint.expires_at<=now||!['importing','complete'].includes(checkpoint.state))fail();
  const progressId=job+'_verify';
  await target.batch([{sql:"INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES(?1,'restore',?2,?3,?2,0,'importing',1,?4,?5) ON CONFLICT(id) DO NOTHING",params:[progressId,pointer.sha256,manifest.tables.length,manifest.createdAt,manifest.expiresAt]}]);
- let processed=0;
+ let processed=0,proofPointer=null,proofBlock=null;
  for(;;){
   const progress=(await target.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[progressId]))[0];
   if(progress.manifest_hash!==pointer.sha256||progress.expires_at<=now)fail();
@@ -164,14 +164,20 @@ async function verifyRestore(target,custody,key,pointer,{job,maxPages,now}){
   if(!row){await target.batch([{sql:"INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES(?1,'restore',?2,?3,?4,0,'importing',1,?5,?6) ON CONFLICT(id) DO NOTHING",params:[tableId,pointer.sha256,Math.ceil(table.count/100),encryptRecord({cursor:null},key,tableId).toString(),manifest.createdAt,manifest.expiresAt]}]);row=(await target.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[tableId]))[0];}
   if(row.manifest_hash!==pointer.sha256||row.expires_at<=now||row.sequence!==Math.ceil(table.count/100))fail();
   const state=decryptRecord(Buffer.from(row.head_hash),key,tableId),cursor=state.cursor;
-  const order=table.primary.map(quote).join(','),predicate=cursor?' WHERE ('+order+') > ('+cursor.map((_,i)=>'?'+(i+1)).join(',')+')':'';
+  const order=table.primary.map(c=>quote(table.name)+'.'+quote(c)).join(','),predicate=cursor?' WHERE ('+order+') > ('+cursor.map((_,i)=>'?'+(i+1)).join(',')+')':'';
   const canonical=projection(table.columns);
   const values=await target.query('SELECT '+canonical+','+table.primary.map((c,i)=>quote(c)+' AS "__wybp_cursor'+i+'"').join(',')+' FROM '+quote(table.name)+predicate+' ORDER BY '+order+' LIMIT 100',cursor||[]);
   if(row.cursor===row.sequence){
    if(values.length)fail();
    await target.batch([{sql:"SELECT CASE WHEN EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id=?1 AND cursor=?2 AND version=?3) THEN 1 ELSE json('verification_cursor_conflict') END",params:[progressId,tableIndex,progress.version]},{sql:"UPDATE operational_recovery_checkpoints SET state='complete',version=version+1 WHERE id=?1",params:[tableId]},{sql:'UPDATE operational_recovery_checkpoints SET cursor=cursor+1,version=version+1 WHERE id=?1',params:[progressId]}]);processed++;continue;
   }
-  const block=await read(custody,key,table.verification[Math.floor(row.cursor/1000)]),leaf=block.leaves[row.cursor%1000];
+  const blockNumber=Math.floor(row.cursor/1000),blockPointer=table.verification[blockNumber];
+  // Immutable, hash-pinned proof bytes may serve the bounded pages in THIS call.
+  // Keep only one block, and download/revalidate again on every resumed call.
+  // Otherwise a1000-leaf block was downloaded once for each100-row leaf.
+  if(!proofPointer||proofPointer.name!==blockPointer?.name||proofPointer.sha256!==blockPointer?.sha256){proofBlock=await read(custody,key,blockPointer);proofPointer=blockPointer;}
+  if(!Array.isArray(proofBlock.leaves)||proofBlock.leaves.length!==Math.min(1000,row.sequence-blockNumber*1000))fail();
+  const leaf=proofBlock.leaves[row.cursor%1000];
   if(!leaf||values.length!==leaf.rows)fail();const sha=createHash('sha256');
   for(const value of values)sha.update(JSON.stringify(Object.fromEntries(table.columns.map(c=>[c,value[c]])))+'\n');
   const lastCursor=table.primary.map((_,i)=>cursorValue(values.at(-1)['__wybp_cursor'+i]));

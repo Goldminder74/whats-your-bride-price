@@ -1,5 +1,106 @@
 # Current handoff
 
+### Continuation from0d7d526 — 23 October: local stock evidence and email continuity
+
+Read [actual-schema stock result](local-stock-recovery-2026-10-23.md),
+[exact expired-window renewal](benchmark-renewal-2026-10-23.md),
+[legacy preservation/custody](legacy-site-rollback.md) and
+[remaining controller review](remaining-controller-review.md). This section
+supersedes older login, email-backup dependency and repeated owner-decision notes.
+
+Connected Netlify login and completed archive/key/alert checks were reused, not
+repeated. Source caller audit traces legacy booking/auth emails to Supabase, not
+Netlify's generated System emails function; the new game uses its own SMTP.
+The original pinned provider permalink returns anonymous HTTPS200 and the entire
+legacy deployment/function remains intact. No verified function-binary backup is
+claimed. Preserve that project; canonical authentication callbacks/allowlists still
+need the final cutover compatibility check. No existing site/email/DNS was changed.
+Apparent SMTP credentials in legacy source were not used/displayed; both downloaded
+source ZIP copies are now CurrentUser-DPAPI protected and checksum-verified, with
+only their plaintext downloads removed. This is local Windows-user custody, not
+independent off-device recovery or a claim of public exposure.
+
+Actual-schema synthetic45,000-game/540,000-answer LOCAL capture, total index loss,
+interrupted reconstruction/import and complete hash/FK verification PASS.
+Accounting, holds, closed-wallet and deletion suppression records match; all access
+remains blocked. Corrected a numeric-key canonical ordering bug and repeated
+verification-proof reads without relaxing any guard or adding a migration.
+This is nine days of physical sample only: completed attempts AND answers retain
+90days;7days is the post-expiry purge deadline. At5k/day the ordinary90day minimum
+is450k completed attempts/results and5.4m answers, excluding all other stock.
+The previous25-row production-plan default would require at least252k data pages,
+above the unchanged250k guard. New plans select the already-supported50-row size
+(126k minimum pages);10 focused restore tests pass. Existing immutable25-row plans
+remain resumable. This arithmetic is not measured full-stock recovery.
+The final50-row run took387,167ms locally, used824,131,204 total ciphertext bytes
+and5,401,398,144 counted synthetic-transfer bytes (1,045 objects;505 import calls).
+This exceeds existing hosted
+Phase C limits even before retained authority/financial stock. No hosted throughput,
+RTO,5,000/day readiness or latest-authority access release is claimed.
+
+The old20October18:55:23.978UTC benchmark deadline remains expired. No resources
+were recreated; original budget ledger hash and consumed/unknown reservations
+remain unchanged. Exact ONE6h B/C renewal prepared; owner approval is still needed.
+Its original36k-answer scope cannot close the full-stock gate. No new spending,
+subscription, top-up or attempt to reset consumed allowances. GBP8 cumulative
+benchmark/first-month and GBP50/month remain; Drive/email funded separately.
+
+Seller identity/contact and commercial approval facts now appear in the legal
+configuration, while public address remains absent and overall legal approval
+explicitly false. Owner received exact8-field Secret installation instructions for
+wybp-prod-app-r001; no installation confirmation has arrived. Do not ask settled
+territories, identity, support, age or refund questions again. ICO status and
+substantiated controller/privacy/processor review remain, not invented clearance.
+Draft privacy pages now show the settled mailbox and actual Cloudflare/Netlify/
+Drive/Private Email/Stripe providers, not obsolete Sites text or a falsely missing
+contact route. Public geographical address and overall review remain pending.
+
+Existing hosted payment evidence is reused:40Cowries and Royal Reveal original-GBP
+and converted presentment, fulfilment/refund, signed retries and unresolved dispute
+amounts fail to review without duplicate value. New immutable confirmation source
+and0014 remain committed-only; hosted customer confirmation delivery and GB-country
+evidence/return URLs/live webhook configuration still need readiness-gated checks.
+No Stripe settings/links were activated or real charges made.
+
+Production Worker remains protected release d4e3b278-7b2d-43de-90f2-b95a39005ebb;
+private game unchanged, random replay ON, commerce/webhook/cron OFF. Production
+operations/new recovery code/0014 are not deployed. Monitoring stays paused1day/
+1hour after the passed controlled alert. Preserve data, settlements, email DNS and
+legacy provider deployment on rollback; never restore an old financial database.
+
+Validation PASS: full `npm run test:all` (321unit/408data, builds, raw HTML,
+browser/accessibility/privacy/commerce suites, compiled five-region desktop/mobile,
+Chromium/WebKit recovery, protected private-runtime and3 compiled benchmark tests).
+The final50-row selection additionally passes10 focused restore tests and the
+45k-game/540k-answer actual-schema run above. Compiled operations18/18 PASS;
+final affected lint/typecheck/diff PASS. Local direct package/dry upload and its
+private-ingress/tamper test PASS; it was NOT deployed. The first integration attempt
+caught a JSX typo and unsafe-finally lint finding; both fixed without suppressing
+rules. An unconfigured direct-package command correctly rejected missing origin;
+the documented non-secret protected-origin configuration then passed.
+Prepared-only protected direct package:
+`24620fbae6d96c2a56dab050128df24858cc78d0e0799c4f5a454124f5d3ab81`,145
+verified server modules, public access/webhook/schedules OFF. This does not replace
+the hosted d4e3b278 release or establish capacity/recovery activation evidence.
+
+Evidence under ignored outputs/authority-preparation:
+`20261023-launch-continuation-complete-gate-final.log`,
+`20261023-stock-operations-built.log`,
+`20261023-fifty-row-production-restore-focused.log`,
+`20261023-local-schema-540000-fifty-row.log`,
+`20261023-direct-final-stock-package-configured.log`,
+`20261023-final-stock-lint.log` and the legacy-site-backup sanitised observations.
+No generated archive, credential, local database or evidence export belongs in Git.
+Continuation work follows0d7d526 on feature/viral-build-sprint; the commit containing
+this section includes source/tests/docs only. Public/private hosted releases,
+financial data, existing email configuration and cumulative benchmark ledger remain
+unchanged. Current technical blockers, not owner homework: latest post-archive
+authority/release proof, full90day stock/fence/storage design, measured sustained
+capacity/purge/RTO/cost, production confirmation/schema/Stripe configuration and
+legacy callback/domain rollback verification. Owner-only actions are the exact
+window renewal, secure geographical-address input and private ICO status decision;
+final privacy wording can be reviewed once its remaining provider facts are substantiated.
+
 ### Connected Netlify access and bounded scratch cleanup — 23 October
 
 Netlify sign-in is now VERIFIED in the connected browser; do not ask again.

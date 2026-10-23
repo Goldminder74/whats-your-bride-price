@@ -5,7 +5,7 @@ import {D1Authority,createOperationId} from '../../scripts/authority-runtime.mjs
 import {boundedAuthorityStep,cleanupAuthoritySnapshotStep} from '../../worker/boundedAuthority.mjs';
 import {prepareAuthorityRestore} from '../../scripts/authority-restore-plan.mjs';
 import {importProductionRestore,verifyProductionRestoreStep} from '../../scripts/streamed-d1-restore.mjs';
-import {recoveryHash,encryptRecord} from '../../scripts/recovery-crypto.mjs';
+import {recoveryHash,encryptRecord,decryptRecord} from '../../scripts/recovery-crypto.mjs';
 const adapter=sql=>({query:async(s,p=[])=>sql.prepare(s).all(...p),batch:async rows=>{sql.exec('BEGIN');try{const result=rows.map(r=>sql.prepare(r.sql).all(...(r.params||[])));sql.exec('COMMIT');return result;}catch(e){sql.exec('ROLLBACK');throw e;}}});
 test('independent populated boundary feeds a provenance-pinned production import without reopening wallets or deletion-suppressed results',async()=>{
  const c=await populatedRecoveryFixture(),scratch=new DatabaseSync(':memory:'),journal=new DatabaseSync(':memory:'),target=new DatabaseSync(':memory:'),unused=new DatabaseSync(':memory:');
@@ -23,6 +23,8 @@ test('independent populated boundary feeds a provenance-pinned production import
   assert.equal(compacted.receipt,pointer.sha256);
   const prepared=await prepareAuthorityRestore({checkpointDatabase:adapter(journal),sourceDatabase:scratch,custody,key,boundary:pointer,id:'synthetic_production_restore',now:()=>at});
   assert.equal(prepared.runtimeAccess,'blocked_pending_verified_import_and_latest_authority');
+  const manifest=decryptRecord(files.get(prepared.plan.name),key,prepared.plan.name);assert.equal(manifest.pageSize,50);assert.ok(manifest.pages<=250000);
+  for(const part of manifest.segments){const segment=decryptRecord(files.get(part.name),key,part.name);assert.ok(segment.pages.length<=25);assert.ok(Buffer.byteLength(JSON.stringify(segment))<=3500000);for(const page of segment.pages)assert.ok(page.statements.length<=50);}
   const options={role:'production-ops',databaseName:'wybp-prod-d1-r001',databaseId:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9',boundarySha256:pointer.sha256,snapshotSha256:prepared.provenance.snapshotSha256,job:'recovery_populated_synthetic',maxPages:2,now:at};
   let imported;do{imported=await importProductionRestore(adapter(target),custody,key,prepared.plan,options);assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);assert.ok(++calls<200);}while(!imported.imported);
   let verified;do{verified=await verifyProductionRestoreStep(adapter(target),custody,key,prepared.plan,options);assert.ok(++calls<300);}while(!verified.verified);

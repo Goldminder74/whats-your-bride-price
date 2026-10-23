@@ -13,6 +13,9 @@ export async function prepareAuthorityRestore({checkpointDatabase,sourceDatabase
  const materialized=await materializeSegmentedSnapshot(custody,key,body.snapshot,sourceDatabase);
  if(materialized.sourceReceipt!==body.snapshot.sha256)throw Error('authority_restore_plan_unavailable');
  const provenance={boundarySha256:boundary.sha256,snapshotSha256:body.snapshot.sha256,createdAt:body.expiresAt-RETENTION_POLICY.backupDays*RETENTION_DAY,expiresAt:body.expiresAt};
- const plan=await prepareStreamedRestore(sourceDatabase,custody,key,id,{packPages:true,now:now(),provenance});
+ // Existing supported maximum; keep the250k-page/3.5MB segment guards intact.
+ // At5k completions/day,90-day answers+attempts+results alone need252k25-row
+ // pages, but126k50-row pages. This does not prove full-stock bytes or RTO.
+ const plan=await prepareStreamedRestore(sourceDatabase,custody,key,id,{pageSize:50,packPages:true,now:now(),provenance});
  return {plan,provenance,runtimeAccess:'blocked_pending_verified_import_and_latest_authority'};
 }

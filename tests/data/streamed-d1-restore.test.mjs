@@ -2,12 +2,29 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {randomBytes} from 'node:crypto';
-import {prepareStreamedRestore,importStreamedRestore,verifyStreamedRestore,auditStreamedSourceStep,clearAuditedSyntheticTarget,importProductionRestore,verifyProductionRestoreStep} from '../../scripts/streamed-d1-restore.mjs';
+import {prepareStreamedRestore,importStreamedRestore,verifyStreamedRestore,verifyStreamedRestoreStep,auditStreamedSourceStep,clearAuditedSyntheticTarget,importProductionRestore,verifyProductionRestoreStep} from '../../scripts/streamed-d1-restore.mjs';
 import {populatedRecoveryFixture} from '../helpers/populatedRecovery.mjs';
 import {loadMigrationPlan,applyMigrationPlan} from '../../scripts/data-migrations.mjs';
 import {recoveryHash} from '../../scripts/recovery-crypto.mjs';
 const resource={name:'wybp-capacity-d1-r002',id:'11111111-1111-4111-8111-111111111111',account:'b6b22a9a87b5758725e5c499782160af'};
 function adapter(database){return {query:async(s,p=[])=>database.prepare(s).all(...p),batch:async statements=>{database.exec('PRAGMA foreign_keys=ON; BEGIN IMMEDIATE');try{const results=statements.map(s=>database.prepare(s.sql).all(...(s.params||[])));database.exec('COMMIT');return results;}catch(e){database.exec('ROLLBACK');throw e;}}};}
+
+test('bounded verification reads each immutable proof block once per call and revalidates after restart',async()=>{
+ const source=new DatabaseSync(':memory:'),target=new DatabaseSync(':memory:'),files=new Map(),key=randomBytes(32);let reads=0,proofName;
+ const custody={get:async n=>{if(n.includes('.restore.verify.')){reads++;proofName=n;}return files.get(n)||null;},put:async(n,b)=>{files.set(n,b);return recoveryHash(b);}};
+ try{
+  const plan=await loadMigrationPlan();applyMigrationPlan(source,plan);applyMigrationPlan(target,plan);
+  for(const sql of [source,target])sql.exec('CREATE TABLE synthetic_proof_stock(id INTEGER PRIMARY KEY,value TEXT NOT NULL)');
+  source.exec('BEGIN');const insert=source.prepare('INSERT INTO synthetic_proof_stock VALUES(?,?)');for(let i=0;i<2600;i++)insert.run(i,'synthetic');source.exec('COMMIT');
+  const pointer=await prepareStreamedRestore(source,custody,key,'synthetic_proof_plan',{packPages:true}),db=adapter(target),options={resource,job:'synthetic_proof_import',maxPages:25};
+  let imported;do{imported=await importStreamedRestore(db,custody,key,pointer,options);}while(!imported.imported);reads=0;
+  let result;do{const before=reads;result=await verifyStreamedRestoreStep(db,custody,key,pointer,options);assert.ok(reads-before<=1);assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);}while(!reads);
+  assert.equal(result.verified,false);assert.equal(reads,1);const original=files.get(proofName);files.set(proofName,Buffer.from('synthetic corruption between calls'));
+  await assert.rejects(verifyStreamedRestoreStep(db,custody,key,pointer,options));assert.equal(reads,2);files.set(proofName,original);
+  do{const before=reads;result=await verifyStreamedRestoreStep(db,custody,key,pointer,options);assert.ok(reads-before<=1);}while(!result.verified);
+  assert.ok(reads<=4,'bounded calls must not redownload a block for every leaf');assert.equal(target.prepare('SELECT COUNT(*) n FROM synthetic_proof_stock').get().n,2600);assert.equal(result.runtimeAccess,'blocked_pending_authority_suppression_receipt');
+ }finally{source.close();target.close();}
+});
 
 test('private production import pins provenance and original expiry, resumes without duplicates and cannot grant access',async()=>{
  const c=await populatedRecoveryFixture(),target=new DatabaseSync(':memory:'),key=randomBytes(32),files=new Map(),at=Date.now();
