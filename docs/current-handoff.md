@@ -1,28 +1,44 @@
 # Current handoff
 
-### Owner disputes repeated address instructions — do not repeat them
+### Seller address RESOLVED — Stripe reuse authorised and verified, 23 October
 
-Owner reports correcting the seller address more than three times. Paused the
-replacement request and reconciled both Workers' active AND saved versions, rather
-than assuming another failed owner setup. Latest metadata shows ops dashboard saves
-at12:24/14:31UTC, followed by the scoped deployments below; no newer undeployed
-seller version exists. Production app has no seller Secret in any recorded version.
-The active private ops diagnostic still reports
-`invalid_field:geographicalAddress:placeholder`; this is the validator's placeholder
-PATTERN result, not a displayed/read-back copy of the owner's address. Do not
-claim to have inspected the actual address or assume the owner's saved copy is
-wrong. No Secret value has been changed by the agent.
+Owner clarified that the address had not been entered, then explicitly instructed
+reuse of the address in Stripe. Correct Classes for Culture account verified;
+read its existing Public details / Customer support address (UK street, town,
+postcode/country), not card/bank billing or another account's details. Stripe was
+read-only: closed its edit dialog with Cancel and changed no setting.
 
-Asked the owner only to inspect the geographicalAddress line in their saved JSON
-privately; do NOT ask for the address/JSON in chat or repeat the full installation.
-If their saved line contains a real address, investigate the exact configuration/
-validation mismatch or false positive before requesting another overwrite. Preserve
-the current Secret and all flags. Evidence: ignored
-20261023-seller-version-reconciliation.json and installed-seller-final.log.
+Transferred the address through an authenticated encrypted local envelope; the
+ephemeral private transport key was CurrentUser-DPAPI protected. No plaintext
+address appeared in chat, tool output, Git, builds or logs. A narrow private
+preparation RPC replaced only the confirmed placeholder, preserved every other
+installed seller field, and reused the unchanged strict parser. It cannot write
+settings, access the database or return unrelated Secrets. Then updated ONLY the
+existing WYBP_PUBLIC_SELLER_DETAILS_JSON Secret on production ops, with active
+version/concurrent-change checks and exact private readback. No new required
+setting, Secret name, public endpoint, subscription or schema.
+
+ACTIVE ops version `2277378a-8ed0-4042-9861-271d66db63b1`; app remains
+`e8c81e52-c07f-41e9-90c0-6133333b8ec1`. Authorised privacy AND terms GET200 now
+render the seller/contact section and address. Anonymous denial401, disabled
+webhook/owner POST404, all existing Secret names/vars/database IDs and zero
+schedules verified; private-game version remains unchanged. No public launch.
+DO NOT request the address, JSON, PowerShell prompt or another installation.
+
+Focused seller8/8 and compiled ops19/19, typecheck and affected lint passed;
+unchanged complete release-gate evidence below reused. Ignored evidence:
+20261023-stripe-address-installation.json,
+20261023-stripe-seller-legal-verification.json,
+20261023-address-input-tests.log and 20261023-seller-transfer-cleanup.json.
+Temporary encrypted address and ephemeral transport key removed after verification;
+actual authority/recovery keys untouched. Remote proxy teardown printed the known
+Windows transport warning AFTER settled verification; no successful capacity/RTO
+claim follows from this configuration check. Remaining launch gates below persist.
 
 ### Protected runtime release and final local validation — 23 October
 
-Scoped protected pair deployed and verified (not a public launch):
+Earlier scoped protected pair deployed and verified (not a public launch); its
+seller failure is superseded by the resolved Stripe-address section above:
 
 - Application `e8c81e52-c07f-41e9-90c0-6133333b8ec1`, direct package
   `4e6ddc5ddfa625cf8359b60256af41a254b24c37b1e750996ca858719542049f`.

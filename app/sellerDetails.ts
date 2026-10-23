@@ -62,6 +62,21 @@ export function sellerConfigurationIssue(raw: unknown): string | null {
   return "configuration_rejected";
 }
 
+/** Private operator preparation only. Replace the confirmed missing/placeholder
+ * address while preserving every other installed field, then run the SAME strict
+ * parser. A different already-valid address is not silently overwritten. No write. */
+export function prepareSellerAddressUpdate(raw: unknown, address: unknown): PublicSellerDetails | null {
+  const prior = parseSellerDetails(raw);
+  if (prior) return address === prior.geographicalAddress ? prior : null;
+  if (typeof raw !== "string" || raw.length > 4096 || typeof address !== "string") return null;
+  try {
+    const value = JSON.parse(raw) as Record<string, unknown>;
+    if (!value || Array.isArray(value) || typeof value !== "object"
+      || (value.geographicalAddress !== "" && !(typeof value.geographicalAddress === "string" && /^REPLACE_WITH_|^YOUR[_ ](?:PUBLIC|BUSINESS)/i.test(value.geographicalAddress)))) return null;
+    return parseSellerDetails(JSON.stringify({...value, geographicalAddress: address}));
+  } catch { return null; }
+}
+
 export function sellerDetailsFromRuntime(runtime: Readonly<Record<string, unknown>>): PublicSellerDetails | null {
   // Existing test/rehearsal resources must never receive or expose the real address.
   return runtime.WYBP_AUTHORITY_ROLE === "production-app"

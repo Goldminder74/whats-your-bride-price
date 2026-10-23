@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {parseSellerDetails,sellerConfigurationIssue,sellerDetailsFromRuntime,resolvePublicSellerDetails} from '../../app/sellerDetails.ts';
+import {parseSellerDetails,sellerConfigurationIssue,prepareSellerAddressUpdate,sellerDetailsFromRuntime,resolvePublicSellerDetails} from '../../app/sellerDetails.ts';
 import {legalInformation} from '../../app/legalConfig.ts';
 const synthetic=()=>({version:1,legalName:'Ayodele Ayeni',tradingName:'Classes for Culture',geographicalAddress:'Synthetic test address only',complaintsAddress:null,telephone:null,supportEmail:'team@classesforculture.com',privacyEmail:'team@classesforculture.com'});
 test('complete seller fields accepted only in production-app runtime without legal approval',()=>{
@@ -32,6 +32,18 @@ test('private configuration diagnosis returns only known field names and never s
  assert.equal(sellerConfigurationIssue(JSON.stringify({...synthetic(),telephone:'private-secret-input'})),'invalid_field:telephone');
  assert.equal(sellerConfigurationIssue(JSON.stringify({...synthetic(),'private-input-key':'private-value'})),'unexpected_fields');
  const missing=synthetic();delete missing.telephone;assert.equal(sellerConfigurationIssue(JSON.stringify(missing)),'missing_fields:telephone');
+});
+
+test('private address preparation preserves other installed public fields and never replaces an already valid different address',()=>{
+ const current={...synthetic(),geographicalAddress:'REPLACE_WITH_YOUR_PUBLIC_BUSINESS_ADDRESS',telephone:'+44 20 1234 5678',complaintsAddress:'Synthetic separate complaints address'};
+ const updated={...current,geographicalAddress:'Synthetic new address only'};
+ assert.deepEqual(prepareSellerAddressUpdate(JSON.stringify(current),updated.geographicalAddress),updated);
+ assert.deepEqual(prepareSellerAddressUpdate(JSON.stringify({...current,geographicalAddress:''}),updated.geographicalAddress),updated);
+ for(const raw of [undefined,'{','null','[]',JSON.stringify({...current,privateKey:'must-not-escape'}),JSON.stringify({...current,legalName:'Other seller'}),JSON.stringify({...current,supportEmail:'other@example.com'}),JSON.stringify(synthetic())])assert.equal(prepareSellerAddressUpdate(raw,updated.geographicalAddress),null);
+ for(const address of [undefined,'','REPLACE_WITH_YOUR_PUBLIC_BUSINESS_ADDRESS','<script>bad</script>','line\nbreak','x'.repeat(1001)])assert.equal(prepareSellerAddressUpdate(JSON.stringify(current),address),null);
+ assert.deepEqual(prepareSellerAddressUpdate(JSON.stringify(updated),updated.geographicalAddress),updated);
+ assert.equal(prepareSellerAddressUpdate(JSON.stringify(updated),'Another synthetic address'),null);
+ assert.equal(current.geographicalAddress,'REPLACE_WITH_YOUR_PUBLIC_BUSINESS_ADDRESS');
 });
 
 test('production app reuses validated public seller details through its existing private authority binding',async()=>{

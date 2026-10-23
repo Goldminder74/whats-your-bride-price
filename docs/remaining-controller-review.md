@@ -6,22 +6,19 @@ Do not request those decisions again. A blank Stripe tax-ID field is not a faile
 onboarding gate; owner is not VAT registered and has no known UTR. No identifier,
 income, identity document, banking detail or address belongs in chat.
 
-## Secure input
+## Secure seller input — completed and verified
 
-COMPLETED BY OWNER: name/type-only inspection confirms the existing
-`WYBP_PUBLIC_SELLER_DETAILS_JSON` Secret on `wybp-prod-ops-r001`. The application
-currently expects a different Worker-local binding. Resolve that wiring as
-engineering work; do not ask for re-entry, movement, replacement or an address in
-chat. The template in owner-purchase-review.md is reference only.
-
-The new private operational check on23October now returns the fixed diagnostic
-`invalid_field:geographicalAddress:placeholder`: the eight-field JSON is installed,
-but the field matches the validator's placeholder pattern. Owner reports already
-correcting it repeatedly. Do not repeat replacement/setup instructions: reconcile
-their existing saved line and the runtime/validation mismatch first, without
-requesting/displaying the address or JSON. Active/saved-version inspection found no
-newer undeployed seller version; the app still has no separate seller Secret.
-No other fields, Worker placement, credentials or feature flags should change.
+On23October the owner clarified the missing address and explicitly authorised
+reuse of their Classes for Culture Stripe business address. Correct account and
+customer-facing UK business address verified read-only; Stripe settings unchanged.
+The address was transferred encrypted and installed in the existing production-ops
+WYBP_PUBLIC_SELLER_DETAILS_JSON Secret while preserving all other seller fields.
+Private strict-parser readback and protected privacy/terms rendering now PASS.
+No address, JSON or credential was displayed/committed; temporary encrypted
+transport and its ephemeral key were removed. Actual recovery keys untouched.
+Do not request another address/JSON entry, local prompt, Secret movement or Google
+setup. The app consumes this validated record through its existing private binding.
+Public access, payments and schedules remain OFF; this is not legal sign-off.
 
 ## ICO status — owner self-assessment complete
 

@@ -2,24 +2,19 @@
 
 ## Seller input already completed — supersedes installation requests below
 
-Owner confirms installation; authenticated name/type-only Cloudflare inspection
-finds `WYBP_PUBLIC_SELLER_DETAILS_JSON` as a Secret on `wybp-prod-ops-r001`.
-The app currently expects its own binding on `wybp-prod-app-r001`. This mismatch
-is engineer-owned runtime wiring, not missing owner information. Do not ask for
-the address/JSON again or instruct the owner to move/replace the existing Secret.
-The eight-field template below is reference only. No value/content validity or
-successful application read has yet been verified; never expose values in chat,
-Git, builds or logs while completing that verification.
+On23October the owner clarified the missing address and explicitly authorised
+using their Classes for Culture Stripe business address. The correct account's
+public business/support address was read without changing Stripe, transferred
+encrypted and installed in the EXISTING production-ops seller Secret. All other
+installed seller fields remain unchanged. No address/JSON was displayed, logged,
+committed or put in build output; temporary encrypted transfer material removed.
 
-23October private validation now identifies the exact remaining issue:
-`invalid_field:geographicalAddress:placeholder`. The owner installed all eight
-fields but the geographical address matches the validator's placeholder pattern.
-Owner disputes that result and reports repeated correction: do NOT repeat the
-installation/overwrite request. Reconcile the existing saved address line and
-runtime/validation mismatch first; never ask for the address/JSON in chat. Active
-and saved versions have been inspected; no newer undeployed seller version was
-found. The protected private bridge is deployed, but successful seller rendering
-remains unverified until this check passes. No address was logged or committed.
+Strict private readback and actual protected privacy/terms seller rendering PASS.
+The app reuses the validated record through its existing private authority binding;
+no app-local seller Secret or new required setting is needed. DO NOT ask for
+another address/JSON entry, local prompt, installation or Google setup. This closes
+the earlier placeholder/placement issue, not the remaining legal/privacy approval
+or technical launch gates. The eight-field template below is historical reference.
 
 ## Superseding decisions — 23 October 2026
 

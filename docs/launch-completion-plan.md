@@ -27,13 +27,13 @@ cannot meet that gate. Repeated small renewals are not a substitute for this wor
 Owner inputs already settled: seller identity/configuration, UK-only paid sales,
 18+ audience, support, 14-day voluntary full refunds, saveable-plus-email
 confirmations and ICO self-assessment reported **exempt**. Existing seller Secret
-is on production ops; its application wiring is engineering-owned. Do not ask for
+is on production ops; wiring and protected legal rendering now PASS after the
+owner-authorised encrypted import of the existing Stripe business address. Do not ask for
 re-entry, Google setup, onboarding, foreign-market tax facts or ICO assessment again.
 The historical owner-input section below is superseded by
 remaining-controller-review.md and owner-purchase-review.md.
 
-Next engineering sequence: finish protected seller configuration verification;
-complete retained-stock/latest-authority recovery and confirmation delivery;
+Next engineering sequence: complete retained-stock/latest-authority recovery and confirmation delivery;
 prepare ONE physically viable, cumulatively metered hosted scope and cost request;
 measure target capacity/recovery; finish production/schema/catalogue/monitoring and
 legacy callback compatibility; then use the existing conditional cutover authority

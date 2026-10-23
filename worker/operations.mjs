@@ -21,7 +21,7 @@ import {purchaseConfirmationMail} from './purchaseConfirmationMail.mjs';
 import { hostedSyntheticRecovery } from './hostedSyntheticRecovery.mjs';
 import {importProductionRestore,verifyProductionRestoreStep} from '../scripts/streamed-d1-restore.mjs';
 import {recoverProductionPinnedInventory} from '../scripts/segmented-drive-inventory.mjs';
-import {parseSellerDetails,sellerConfigurationIssue} from '../app/sellerDetails.ts';
+import {parseSellerDetails,sellerConfigurationIssue,prepareSellerAddressUpdate} from '../app/sellerDetails.ts';
 
 function runtime(env) {
   const alert = authorityMail(env, connect);
@@ -35,6 +35,12 @@ function runtime(env) {
 // Only private service bindings expose RPC. There is no HTTP management endpoint,
 // secret-selected URL, scheduled handler, automatic initialisation or restore bypass.
 export class ApplicationAuthority extends WorkerEntrypoint {
+  async prepareSellerAddressUpdate(address) {
+    if(this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001')return null;
+    // Existing private operator call, no HTTP endpoint, write or environment dump.
+    // Only the strictly validated public seller record may leave this boundary.
+    return prepareSellerAddressUpdate(this.env.WYBP_PUBLIC_SELLER_DETAILS_JSON,address);
+  }
   async publicSellerDetailsStatus() {
     if(this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001')return {valid:false,issue:'role'};
     const issue=sellerConfigurationIssue(this.env.WYBP_PUBLIC_SELLER_DETAILS_JSON);
