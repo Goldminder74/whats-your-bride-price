@@ -7,7 +7,7 @@ import { recoveryHash } from '../scripts/recovery-crypto.mjs';
 import { operatorRetentionPlan, runApprovedRetention, assertRestoreReceipt } from '../db/retention.ts';
 import { createJournaledDatabase } from './authorityDatabase.mjs';
 import { PartitionedDriveCustody } from '../scripts/partitioned-drive-custody.mjs';
-import {boundedAuthorityStep} from './boundedAuthority.mjs';
+import {boundedAuthorityStep,cleanupAuthoritySnapshotStep} from './boundedAuthority.mjs';
 
 /** Private service wiring only. There is deliberately no public HTTP or cron handler. */
 export function createAuthorityService({ db, custody, key, snapshot, alert, now = Date.now, recoveryReady = async () => {} }) {
@@ -88,6 +88,10 @@ export function createAuthorityService({ db, custody, key, snapshot, alert, now 
         ]);
         return result.complete?{complete:true,receipt:result.receipt,sequence:result.sequence}:{complete:false,runtimeAccess:'blocked_pending_verified_boundary'};
       }));
+    },
+    cleanupSnapshotStep(boundaryId){
+      if(!/^[a-zA-Z0-9_-]{1,65}$/.test(boundaryId||''))return Promise.reject(Error('authority_boundary_id'));
+      return exclusive(()=>writer.run('snapshot-cleanup:'+boundaryId,boundaryId,fenced=>cleanupAuthoritySnapshotStep(fenced,custody,key,boundaryId,{now})));
     },
     async ready() {
       await recoveryReady();

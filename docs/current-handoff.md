@@ -1,5 +1,43 @@
 # Current handoff
 
+### Connected Netlify access and bounded scratch cleanup — 23 October
+
+Netlify sign-in is now VERIFIED in the connected browser; do not ask again.
+Read [existing website custody/rollback](legacy-site-rollback.md). Downloaded the
+published website91 files and matching source297 files using supported UI controls;
+read/hashed every regular file in ignored local custody. The generated System
+emails function is in NEITHER archive; its UI has no binary-download control.
+Current integration page shows provider unselected/API key Not set, not proof of
+deployed send capability. No email invocation/configuration/site deploy occurred.
+Keep the entire old Netlify project/deployment/function through final cutover;
+independent function binary restore and exact route preservation remain unverified.
+
+Fresh billing observed directly:473.7/1,000 credits remaining; Personal9USD/month;
+auto recharge Disabled;34 deployments510 credits,36,449 requests7.3 credits,
+bandwidth9 credits, total526.3. Credits expire30October. No new charge/upgrade.
+No owner billing check is needed during ongoing local work. The expired benchmark
+and cumulative reservations remain untouched; renewal approval is still pending.
+
+Implemented source-only bounded cleanup of completed snapshot census/chain scratch
+checkpoints: max25 rows/call, immutable boundary hash/decryption and completed-job
+guards before deletion, fixed job namespace, same-writer crash fencing and original
+job/receipt clocks retained. No migration, new retention period, archive/file-ID
+deletion, authority/outbox/financial/hold cleanup or access release. New private
+OFF-gated snapshotMaintenanceStep drives durable capture then this compaction;
+monitoring distinguishes snapshot/snapshot_cleanup/verified and cannot manufacture
+verified completion while progress or cleanup is pending. Purge ticks still never
+take snapshots. New code is local only; production operations/schedules unchanged.
+Affected checks PASS: bounded authority4/4 (including10,001 events, durable
+progress and lost-response compaction), operational/compiled18/18, final lint,
+typecheck and diff. Populated financial/hold/closure/suppression restore also runs
+after source scratch compaction; no authority or recovery-access assertion removed.
+Ignored evidence: `20261023-bounded-authority-compaction-regression.log`,
+`20261023-snapshot-compaction-operations-built.log`,
+`20261023-snapshot-compaction-populated.log`, `20261023-compaction-lint.log`,
+`20261023-compaction-typecheck.log`, under outputs/authority-preparation.
+Reuse prior321 unit/402 data and UI/package evidence for unchanged behaviour;
+these latest affected checks are not a new complete-suite run or hosted RTO proof.
+
 ### Verified follow-up: 23 October
 
 Protected GB-only direct release is `d4e3b278-7b2d-43de-90f2-b95a39005ebb`,

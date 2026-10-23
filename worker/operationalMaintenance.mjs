@@ -16,6 +16,23 @@ export async function operationalMaintenance(service, {purge, heartbeat, now=Dat
   }catch{throw Error('operational_maintenance_unavailable');}
 }
 
+/** Explicit bounded snapshot driver. Kept separate from frequent purge ticks:
+ * progress is durable in the authority service, and monitoring never reports a
+ * completed boundary while capture/verification or scratch compaction is pending.
+ * This function installs no timer, cron or recovery-access receipt. */
+export async function operationalSnapshotMaintenance(service,{heartbeat},boundaryId){
+ if(typeof heartbeat!=='function'||!/^[a-zA-Z0-9_-]{1,65}$/.test(boundaryId||''))throw Error('operational_configuration');
+ try{
+  const snapshot=await service.advanceSnapshot(boundaryId);
+  if(!snapshot.complete){await heartbeat({component:'authority',status:'snapshot'});return {verified:false,snapshotComplete:false,cleanupComplete:false};}
+  const cleanup=await service.cleanupSnapshotStep(boundaryId);
+  if(cleanup.receipt!==snapshot.receipt)throw Error('snapshot_receipt_conflict');
+  if(cleanup.complete)await service.ready();
+  await heartbeat({component:'authority',status:cleanup.complete?'verified':'snapshot_cleanup'});
+  return {verified:cleanup.complete,snapshotComplete:true,cleanupComplete:cleanup.complete,receipt:snapshot.receipt};
+ }catch{throw Error('operational_snapshot_maintenance_unavailable');}
+}
+
 /** URL may contain a provider credential: install as a Secret, never log it.
  * Exact host allowlisting, no redirects, bounded wait and minimal synthetic-safe payload. */
 export function operationalHeartbeat(env, fetcher=globalThis.fetch) {

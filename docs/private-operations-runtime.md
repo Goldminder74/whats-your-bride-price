@@ -1,5 +1,38 @@
 # Private operational runtime
 
+## Current local integration — 23 October 2026
+
+Read current-handoff.md first; older sections below describe historical deployment
+and setup. Completed OAuth/key/alert setup and the received missing-ping alert are
+not pending again. The monitor remains paused at1day/1hour and jobs remain OFF.
+
+`RecoveryOperator.maintain` is a bounded purge/journal-flush tick. It does NOT take
+a complete snapshot or scan Drive history. A flush/backlog heartbeat is not a new
+restore-boundary receipt. Original retention, financial dependencies and holds apply.
+
+New local `snapshotMaintenanceStep(boundaryId)` is the separate bounded snapshot
+driver. It requires production-ops role, operations enabled and a valid independent
+heartbeat configuration before constructing authority. Repeated calls with the
+SAME stable ID resume encrypted D1 progress through capture, authority verification,
+full paginated census and immutable boundary readback. The writer fence blocks
+application mutation while capture is incomplete; whole-stock fence time must be
+measured before selecting any production cadence.
+
+After completion it compacts only this job's temporary chain/census checkpoints,
+at most25 rows/call. It retains original-clock job/receipt records, authority events,
+file-ID custody, archives and financial/closure/deletion/hold data. Compaction is
+state-based removal of completed scratch, not a new retention period. A lost cleanup
+response stays fenced and retries the same job; no new archive or deadline is created.
+Monitoring reports `snapshot`, then `snapshot_cleanup`, then `verified` only after
+compaction and service readiness. No fresh recovery-access receipt is installed.
+
+The explicit `advanceSnapshot` and `cleanupSnapshotStep` RPCs remain private,
+operations-gated recovery tools. Only ApplicationAuthority is bound to the app.
+No new HTTP bridge, timer, cron, migration, dependency, subscription or credential.
+This code is locally validated but NOT deployed to the production operations Worker.
+Final latest-authority recovery release, retained-stock/RTO and hosted cadence are
+still gates; a completed snapshot/import cannot stand in for those proofs.
+
 ## Local continuation — 13 October 2026
 
 Current architecture/5,000 completed games/day/GBP50 ceiling retained;500k redesign

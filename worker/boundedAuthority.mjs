@@ -148,3 +148,32 @@ export async function verifyAuthorityBoundaryStep(db,custody,key,pointer,progres
  }else if(s.phase!=='complete')fail();
  return {verified:s.phase==='complete',receipt:pointer.sha256,sequence:body.sequence,progress:encryptRecord(s,key,aad).toString('base64'),runtimeAccess:'blocked_pending_verified_import_and_latest_authority'};
 }
+
+/** Source-only scratch compaction after immutable boundary readback. These rows
+ * are temporary census/chain work, not authority events, file-ID custody, holds
+ * or a recovery-access receipt. The existing original-clock job/receipt remains.
+ * Caller must hold the shared writer fence. No new retention period is created. */
+export async function cleanupAuthoritySnapshotStep(db,custody,key,id,{now=Date.now}={}){
+ if(!/^[a-zA-Z0-9_-]{1,65}$/.test(id||'')||!Buffer.isBuffer(key)||key.length!==32)fail();
+ const jobId='bounded-job:'+id,receiptId='bounded-receipt:'+id;
+ const job=(await db.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[jobId]))[0];
+ const receipt=(await db.query('SELECT * FROM operational_recovery_checkpoints WHERE id=?1',[receiptId]))[0];
+ if(!job||job.state!=='complete'||!receipt||receipt.state!=='complete'||job.expires_at<=now()||receipt.expires_at!==job.expires_at||receipt.sequence!==job.sequence||receipt.head_hash!==job.head_hash)fail();
+ const body=await read(custody,key,{name:id+'.boundary',sha256:receipt.manifest_hash});
+ if(body.format!=='wybp-authority-boundary-v2'||body.id!==id||body.sequence!==job.sequence||body.head!==job.head_hash||body.expiresAt!==job.expires_at)fail();
+ const prefixes=['bounded-op:'+id+':','bounded-page:'+id+':','bounded-seen:'+id+':'];
+ const rows=[];
+ for(const prefix of prefixes){
+  if(rows.length===25)break;
+  rows.push(...await db.query('SELECT id FROM operational_recovery_checkpoints WHERE id>=?1 AND id<?2 ORDER BY id LIMIT ?3',[prefix,prefix+'\uffff',25-rows.length]));
+ }
+ if(rows.length<25){const base=(await db.query('SELECT id FROM operational_recovery_checkpoints WHERE id=?1',['bounded-base:'+id]))[0];if(base)rows.push(base);}
+ if(rows.some(row=>row.id!=='bounded-base:'+id&&!prefixes.some(prefix=>row.id.startsWith(prefix))))fail();
+ if(rows.length)await db.batch([
+  {sql:"SELECT CASE WHEN EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id=?1 AND state='complete' AND sequence=?3 AND head_hash=?4 AND expires_at=?5) AND EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id=?2 AND manifest_hash=?6 AND state='complete') THEN 1 ELSE json('authority_cleanup_changed') END",params:[jobId,receiptId,job.sequence,job.head_hash,job.expires_at,receipt.manifest_hash]},
+  ...rows.map(row=>({sql:'DELETE FROM operational_recovery_checkpoints WHERE id=?1',params:[row.id]})),
+ ]);
+ // An empty call is the completion receipt. A lost response can only repeat a
+ // bounded deletion of this completed job's scratch, never its authority data.
+ return {complete:rows.length===0,deleted:rows.length,receipt:receipt.manifest_hash};
+}

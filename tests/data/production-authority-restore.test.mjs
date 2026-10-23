@@ -2,7 +2,7 @@ import test from 'node:test';import assert from 'node:assert/strict';import {Dat
 import {populatedRecoveryFixture} from '../helpers/populatedRecovery.mjs';
 import {loadMigrationPlan,applyMigrationPlan} from '../../scripts/data-migrations.mjs';
 import {D1Authority,createOperationId} from '../../scripts/authority-runtime.mjs';
-import {boundedAuthorityStep} from '../../worker/boundedAuthority.mjs';
+import {boundedAuthorityStep,cleanupAuthoritySnapshotStep} from '../../worker/boundedAuthority.mjs';
 import {prepareAuthorityRestore} from '../../scripts/authority-restore-plan.mjs';
 import {importProductionRestore,verifyProductionRestoreStep} from '../../scripts/streamed-d1-restore.mjs';
 import {recoveryHash,encryptRecord} from '../../scripts/recovery-crypto.mjs';
@@ -19,6 +19,8 @@ test('independent populated boundary feeds a provenance-pinned production import
   const authority=new D1Authority(db,custody,key,{now:()=>at});await authority.initialise();
   let boundary,progress=null,calls=0;do{boundary=await boundedAuthorityStep(db,custody,key,'synthetic_populated',progress,{now:()=>at});progress=boundary.progress;assert.ok(++calls<100);}while(!boundary.complete);
   const pointer={name:'synthetic_populated.boundary',sha256:boundary.receipt};
+  let compacted;do{compacted=await cleanupAuthoritySnapshotStep(db,custody,key,'synthetic_populated',{now:()=>at});assert.ok(compacted.deleted<=25);assert.ok(++calls<120);}while(!compacted.complete);
+  assert.equal(compacted.receipt,pointer.sha256);
   const prepared=await prepareAuthorityRestore({checkpointDatabase:adapter(journal),sourceDatabase:scratch,custody,key,boundary:pointer,id:'synthetic_production_restore',now:()=>at});
   assert.equal(prepared.runtimeAccess,'blocked_pending_verified_import_and_latest_authority');
   const options={role:'production-ops',databaseName:'wybp-prod-d1-r001',databaseId:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9',boundarySha256:pointer.sha256,snapshotSha256:prepared.provenance.snapshotSha256,job:'recovery_populated_synthetic',maxPages:2,now:at};

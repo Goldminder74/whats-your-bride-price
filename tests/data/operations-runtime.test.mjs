@@ -6,7 +6,28 @@ import { readFileSync } from 'node:fs';
 import { authoritySnapshot, assertEmptyOperationalSource } from '../../worker/authoritySnapshot.mjs';
 import { authorityMail } from '../../worker/authorityMail.mjs';
 import { decryptRecord, recoveryHash } from '../../scripts/recovery-crypto.mjs';
-import { operationalMaintenance,operationalHeartbeat } from '../../worker/operationalMaintenance.mjs';
+import { operationalMaintenance,operationalSnapshotMaintenance,operationalHeartbeat } from '../../worker/operationalMaintenance.mjs';
+
+test('bounded snapshot monitoring distinguishes capture, scratch cleanup and verified completion',async()=>{
+ const calls=[],status=[];let capture=false,compacted=false;
+ const service={async advanceSnapshot(id){assert.equal(id,'synthetic_boundary');calls.push('capture');return {complete:capture,receipt:'a'.repeat(64)};},async cleanupSnapshotStep(){calls.push('cleanup');return {complete:compacted,receipt:'a'.repeat(64)};},async ready(){calls.push('ready');}};
+ const deps={heartbeat:async event=>status.push(event.status)};
+ assert.deepEqual(await operationalSnapshotMaintenance(service,deps,'synthetic_boundary'),{verified:false,snapshotComplete:false,cleanupComplete:false});
+ assert.deepEqual(calls,['capture']);assert.deepEqual(status,['snapshot']);
+ capture=true;calls.length=0;const cleanup=await operationalSnapshotMaintenance(service,deps,'synthetic_boundary');assert.equal(cleanup.verified,false);assert.equal(cleanup.cleanupComplete,false);assert.deepEqual(calls,['capture','cleanup']);assert.equal(status.at(-1),'snapshot_cleanup');
+ compacted=true;calls.length=0;const done=await operationalSnapshotMaintenance(service,deps,'synthetic_boundary');assert.equal(done.verified,true);assert.deepEqual(calls,['capture','cleanup','ready']);assert.equal(status.at(-1),'verified');assert.equal(Object.hasOwn(done,'runtimeAccess'),false);
+});
+
+test('snapshot maintenance rejects absent monitoring, conflicting receipts and each failure without claiming completion',async()=>{
+ const statuses=[],service={async advanceSnapshot(){return {complete:true,receipt:'a'.repeat(64)};},async cleanupSnapshotStep(){return {complete:true,receipt:'a'.repeat(64)};},async ready(){}};
+ await assert.rejects(operationalSnapshotMaintenance({advanceSnapshot:()=>assert.fail('must validate monitor first')},{},'synthetic_boundary'),/operational_configuration/);
+ for(const stage of ['advanceSnapshot','cleanupSnapshotStep','ready']){
+  await assert.rejects(operationalSnapshotMaintenance({...service,[stage]:async()=>{throw Error('synthetic provider detail');}},{heartbeat:async e=>statuses.push(e.status)},'synthetic_boundary'),/^Error: operational_snapshot_maintenance_unavailable$/);
+ }
+ await assert.rejects(operationalSnapshotMaintenance({...service,cleanupSnapshotStep:async()=>({complete:true,receipt:'b'.repeat(64)})},{heartbeat:async e=>statuses.push(e.status)},'synthetic_boundary'),/^Error: operational_snapshot_maintenance_unavailable$/);
+ assert.deepEqual(statuses,[]);
+ await assert.rejects(operationalSnapshotMaintenance(service,{heartbeat:async()=>{throw Error('synthetic provider detail');}},'synthetic_boundary'),/^Error: operational_snapshot_maintenance_unavailable$/);
+});
 
 test('private maintenance orders recovery, bounded purge, verified delivery and independent heartbeat',async()=>{
   const calls=[];

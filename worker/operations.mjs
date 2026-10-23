@@ -1,7 +1,7 @@
 import { WorkerEntrypoint } from 'cloudflare:workers';
 import { connect } from 'cloudflare:sockets';
 import { configuredAuthorityService, d1AuthorityAdapter, authorityDeliveryTick, purgeThroughAuthority } from './authorityService.mjs';
-import { operationalMaintenance, operationalHeartbeat } from './operationalMaintenance.mjs';
+import { operationalMaintenance, operationalSnapshotMaintenance, operationalHeartbeat } from './operationalMaintenance.mjs';
 import { authoritySnapshot, assertEmptyOperationalSource } from './authoritySnapshot.mjs';
 import {boundedSnapshotStep} from './boundedSnapshot.mjs';
 import {verifyAuthorityBoundaryStep} from './boundedAuthority.mjs';
@@ -72,6 +72,15 @@ export class ApplicationAuthority extends WorkerEntrypoint {
 }
 
 export class RecoveryOperator extends ApplicationAuthority {
+  async snapshotMaintenanceStep(boundaryId){
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
+    const heartbeat=operationalHeartbeat(this.env),configured=runtime(this.env);
+    return operationalSnapshotMaintenance(configured.service,{heartbeat},boundaryId);
+  }
+  async cleanupSnapshotStep(boundaryId){
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
+    try{return await runtime(this.env).service.cleanupSnapshotStep(boundaryId);}catch{throw Error('operational_snapshot_cleanup_unavailable');}
+  }
   async advanceSnapshot(boundaryId){
     if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
     try{return await runtime(this.env).service.advanceSnapshot(boundaryId);}catch{throw Error('operational_snapshot_progress_unavailable');}
