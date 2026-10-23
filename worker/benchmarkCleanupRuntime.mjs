@@ -1,4 +1,4 @@
-import {benchmarkConfiguration} from './benchmarkRuntime.mjs';
+import {benchmarkConfiguration,benchmarkRuntime} from './benchmarkRuntime.mjs';
 import {benchmarkMeter} from './benchmarkMeter.mjs';
 import {d1AuthorityAdapter} from './authorityService.mjs';
 import {D1WriterFence} from './d1WriterFence.mjs';
@@ -6,6 +6,23 @@ import {driveAccessToken} from './driveOAuth.mjs';
 import {D1DriveIndex} from '../scripts/d1-drive-index.mjs';
 import {DriveCustody} from '../scripts/drive-custody.mjs';
 import {cleanupBenchmarkDrive} from '../scripts/benchmark-drive-cleanup.mjs';
+import {reconcileCommittedBenchmarkWriter,abortUncommittedBenchmarkWriter} from './benchmarkCommittedWriter.mjs';
+
+export async function benchmarkReconcileCommittedWriter(env,stopped,upper,options={}){
+ if(stopped!==true)throw Error('benchmark_cleanup_stop_required');
+ // Cleanup deployment exposes no game/provisioning endpoint. The stopped
+ // measurement coordinator is never used or revived for recovery traffic.
+ const runtime=benchmarkRuntime({...env,BENCHMARK_PACING:undefined},upper,options);
+ const result=await reconcileCommittedBenchmarkWriter({db:runtime.db,service:runtime.service,key:runtime.config.key,now:options.now||Date.now});
+ return {result,usage:runtime.meter.receipt(),billingKnown:true};
+}
+
+export async function benchmarkAbortUncommittedWriter(env,stopped,intentName,upper,options={}){
+ if(stopped!==true)throw Error('benchmark_cleanup_stop_required');
+ const runtime=benchmarkRuntime({...env,BENCHMARK_PACING:undefined},upper,options);
+ const result=await abortUncommittedBenchmarkWriter({db:runtime.db,custody:runtime.custody,key:runtime.config.key,intentName,now:options.now||Date.now});
+ return {result,usage:runtime.meter.receipt(),billingKnown:true};
+}
 
 /** Teardown only: never commission, renew a fence or admit benchmark traffic.
  * The expired measurement coordinator is intentionally not called. The operator
@@ -22,6 +39,7 @@ export async function benchmarkCleanupRuntime(env,stopped,upper,{now=Date.now,pa
  const accessToken=driveAccessToken({clientId:env.WYBP_DRIVE_CLIENT_ID,clientSecret:env.WYBP_DRIVE_CLIENT_SECRET,refreshToken:env.WYBP_DRIVE_REFRESH_TOKEN,fetcher:meter.fetcher,now});
  const root=new DriveCustody({folderId:env.WYBP_DRIVE_FOLDER_ID,index:new D1DriveIndex(db,env.WYBP_DRIVE_FOLDER_ID,{now}),accessToken,fetcher:meter.fetcher});
  const result=await cleanupBenchmarkDrive({root:root.folderId,folders:config.folders,runId:config.runId,stopped,
-  request:(...args)=>root.request(...args),indexLookup:(folder,name)=>new D1DriveIndex(db,folder,{now}).get(name)});
+  request:(...args)=>root.request(...args),indexLookup:(folder,name)=>new D1DriveIndex(db,folder,{now}).get(name),
+  indexLookupMany:(folder,names)=>new D1DriveIndex(db,folder,{now}).getMany(names)});
  return {result,usage:meter.receipt(),billingKnown:true};
 }

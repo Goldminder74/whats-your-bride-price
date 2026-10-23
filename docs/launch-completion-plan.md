@@ -1,5 +1,54 @@
 # Launch completion decision — 21 October 2026
 
+## Superseding observed status — 23 October
+
+Read current-handoff.md first. The six-hour renewal was approved and executed;
+initial encrypted hosted commissioning/readback passed. B then stopped after
+32.217 seconds, with zero completed games and one uncertain start. C did not run.
+The exact uncommitted intent was independently authenticated and durably aborted,
+without replaying its business statement or granting access. All disposable
+resources and synthetic Drive files/folders were removed; absence verified.
+
+Local repairs now cover typed bounded live-writer contention, immediate rejection
+of recovery/export blocks, original-expiry abort readback and batched cleanup ID
+validation. Two simultaneous starts pass through the compiled Worker. None of
+these is a hosted 500-game hour, an explanation of the cancellation, or a
+full-retained-stock recovery pass. Target remains 5,000/day, 500/hour and a
+48-hour outage allowance. Public activation is NO-GO pending those gates.
+
+The old benchmark journal remains immutable, with every consumed/unknown charge
+carried forward. A conservative cleanup reservation brought B's retained peak to
+80 MB, exactly its ordinary-admission stop threshold. Do not reduce that
+reservation, restart B/C, use the unused clock as retry authority, or enlarge
+physical limits without explicit approval. A full-stock scope must be designed
+and costed after the remaining archive/authority work; the 36k-answer sample
+cannot meet that gate. Repeated small renewals are not a substitute for this work.
+
+Owner inputs already settled: seller identity/configuration, UK-only paid sales,
+18+ audience, support, 14-day voluntary full refunds, saveable-plus-email
+confirmations and ICO self-assessment reported **exempt**. Existing seller Secret
+is on production ops; its application wiring is engineering-owned. Do not ask for
+re-entry, Google setup, onboarding, foreign-market tax facts or ICO assessment again.
+The historical owner-input section below is superseded by
+remaining-controller-review.md and owner-purchase-review.md.
+
+Next engineering sequence: finish protected seller configuration verification;
+complete retained-stock/latest-authority recovery and confirmation delivery;
+prepare ONE physically viable, cumulatively metered hosted scope and cost request;
+measure target capacity/recovery; finish production/schema/catalogue/monitoring and
+legacy callback compatibility; then use the existing conditional cutover authority
+only after evidence and final controller/policy facts pass. No public route,
+schedule, live customer link or real purchase has been activated by this work.
+
+Observed spend planning remains GBP7.80 maximum for the capped experiment/first
+Workers month and GBP16.80 whole-account capped-experiment forecast, using the
+conservative tax/FX allowance. Neither is a verified 5,000/day operating bill or
+provider hard cap. GBP50/month remains the actual operating authority; Drive,
+email and Stripe fees remain separate. No new paid service or top-up.
+
+The detailed 21 October sections below are retained as history, not fresh owner
+questions, active clocks or claims that their formerly incomplete steps remain so.
+
 Target: classesforculture.com;5,000 completed games/day,500/hour,48h outage allowance.
 Actual spending authority remains GBP50/month and GBP8 cumulative benchmark/first-month
 increment. GBP150 is planning only. Drive/email are separately funded; Stripe fees

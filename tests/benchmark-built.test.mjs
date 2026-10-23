@@ -83,6 +83,15 @@ test('compiled isolated harness enforces private ingress and meters actual D1/au
   const aged=await fixture(0);assert.equal(aged.billingKnown,true);assert.equal(aged.result.games,5);assert.equal(aged.result.answers,60);assert.ok(aged.usage.writes>70);assert.ok(aged.usage.reads>0);
   assert.equal((await fixture(0)).result.replayed,true);assert.equal((await db.prepare('SELECT COUNT(*) n FROM quiz_attempts').first()).n,6);assert.equal((await db.prepare('SELECT COUNT(*) n FROM answers').first()).n,72);
   assert.equal((await db.prepare("SELECT COUNT(*) n FROM cowrie_wallets w JOIN retention_closures c ON c.wallet_id=w.id WHERE w.state='deleted' AND w.closed_at=c.closed_at").first()).n,1);
+  // Exercise actual overlapping application arrivals, not just overlapping mock
+  // HTTP fetches. Shared writer/read fences must remain valid across instances.
+  let concurrent=0,peak=0;
+  const arrivals=['synthetic_parallel_one','synthetic_parallel_two'].map(async identity=>{
+   peak=Math.max(peak,++concurrent);try{return await call({kind:'start',identity,region:'west'});}finally{concurrent--;}
+  });
+  const startedTogether=await Promise.all(arrivals);assert.equal(peak,2);
+  assert.ok(startedTogether.every(value=>value.result.questionCount===12));
+  assert.equal((await db.prepare('SELECT COUNT(*) n FROM quiz_attempts').first()).n,8);
   const mappingCount=(await db.prepare("SELECT COUNT(*) n FROM operational_recovery_checkpoints WHERE id LIKE 'drive_file:%'").first()).n;
   assert.ok(mappingCount>0);
   await db.prepare("INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES('synthetic_loss_replay','restore',?,7,?,7,'complete',1,?,?)").bind('a'.repeat(64),'a'.repeat(64),Date.now(),Date.now()+2592000000).run();

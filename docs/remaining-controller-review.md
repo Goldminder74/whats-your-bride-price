@@ -12,16 +12,28 @@ COMPLETED BY OWNER: name/type-only inspection confirms the existing
 `WYBP_PUBLIC_SELLER_DETAILS_JSON` Secret on `wybp-prod-ops-r001`. The application
 currently expects a different Worker-local binding. Resolve that wiring as
 engineering work; do not ask for re-entry, movement, replacement or an address in
-chat. The template in owner-purchase-review.md is reference only. Actual JSON
-validity/application consumption still require a value-suppressed operational
-check after the private integration is ready. Presence is not content validation.
+chat. The template in owner-purchase-review.md is reference only.
 
-## ICO status — only unavoidable private declaration
+The new private operational check on23October now returns the fixed diagnostic
+`invalid_field:geographicalAddress:placeholder`: the eight-field JSON is installed,
+but the field matches the validator's placeholder pattern. Owner reports already
+correcting it repeatedly. Do not repeat replacement/setup instructions: reconcile
+their existing saved line and the runtime/validation mismatch first, without
+requesting/displaying the address or JSON. Active/saved-version inspection found no
+newer undeployed seller version; the app still has no separate seller Secret.
+No other fields, Worker placement, credentials or feature flags should change.
 
-Please complete the [ICO fee self-assessment](https://ico.org.uk/for-organisations/data-protection-fee/data-protection-fee-self-assessment/)
-using the organisation's facts directly there. Report only “exempt”, “registered”
-or “fee required”; no turnover, identifiers, address or payment details. No fee
-or exemption has been invented. If a fee is required, payment is a separate owner
+## ICO status — owner self-assessment complete
+
+On23October the owner reports the ICO self-assessment result **exempt**. Record
+that owner declaration; do not request it again or claim an independently audited
+exemption/overall privacy clearance. No fee was paid or spending authorised.
+The following official reference is retained for changed processing circumstances,
+not an outstanding owner setup instruction.
+
+The [ICO fee self-assessment](https://ico.org.uk/for-organisations/data-protection-fee/data-protection-fee-self-assessment/)
+uses the organisation's facts directly. No turnover, identifiers, address or
+payment details belong in chat. If future processing requires a fee, it is a separate owner
 action/approval: current tier1 fee is52GBP/year,47GBP by direct debit, subject to
 the actual assessed tier. No fee payment or new subscription was made.
 [Current fees](https://ico.org.uk/for-organisations/data-protection-fee/data-protection-fee/).

@@ -1,8 +1,23 @@
-# Exact replacement-window renewal — not active
+# Exact replacement-window renewal — executed, stopped and cleaned up
+
+Owner explicitly approved this exact document in chat on23October2026. ONE renewed
+session is authorised subject to its unchanged prerequisites/cumulative caps below.
+The single session began 2026-10-23T16:31:11.984Z, with absolute deadline
+22:31:11.984Z. Initial encrypted baseline/readback passed, then B stopped after
+32,217 ms with zero completions and an uncertain start. C did not run. The exact
+uncommitted writer was durably aborted with independent readback; no business
+statement replayed or recovery access released. All isolated resources and the
+synthetic Drive root/children were removed and absence verified. No repeated B/C,
+clock extension, reservation reset or full-stock expansion is authorised.
+
+Final cumulative B reserved peak is 80,000,000 bytes, a cleanup upper bound rather
+than observed D1 use. Ordinary admission must remain strictly below that 80% stop
+threshold, so a replacement test needs explicit authority/cap reconciliation.
+Publication is now 45/60 credits cumulative. See current-handoff.md for counters,
+sanitised evidence references, remaining engineering and capacity NO-GO.
 
 The previous absolute deadline (20 October18:55:23.978UTC) expired. Continuing
-engineering or signing in does not renew it. No resource was recreated or hosted
-measurement restarted. This request renews the recorded bounded B/C experiment,
+engineering or signing in does not renew it. This approved request renewed the recorded bounded B/C experiment,
 not permission to claim full retained-stock or5,000/day readiness from that sample.
 
 ## Approval text

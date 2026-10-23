@@ -54,8 +54,12 @@ export class D1Authority {
   async abortUncommitted(operationId,id){
     const head=await this.freeze(id),name=operationId+'.intent',bytes=await this.custody.get(name);if(!bytes)reject('intent_missing');
     if((await this.db.query('SELECT operation_id FROM operational_authority_outbox WHERE operation_id=?1',[operationId])).length)reject('committed_intent_cannot_abort');
-    const event=decryptRecord(bytes,this.key,name),abortName=operationId+'.abort',prior=await this.custody.get(abortName);
-    if(!prior)await this.custody.put(abortName,encryptRecord({operationId,intentHash:recoveryHash(bytes),sequence:head.sequence,head:head.head_hash,createdAt:event.createdAt,expiresAt:event.expiresAt},this.key,abortName));
+    const event=decryptRecord(bytes,this.key,name),abortName=operationId+'.abort';let prior=await this.custody.get(abortName);
+    if(event.operationId!==operationId||event.expiresAt-event.createdAt!==WINDOW||event.createdAt>this.now()||event.expiresAt<=this.now())reject('authority_abort_clock');
+    const expected={operationId,intentHash:recoveryHash(bytes),sequence:head.sequence,head:head.head_hash,createdAt:event.createdAt,expiresAt:event.expiresAt};
+    if(prior){const stored=decryptRecord(prior,this.key,abortName);if(Object.keys(stored).length!==Object.keys(expected).length||Object.entries(expected).some(([k,v])=>stored[k]!==v))reject('authority_abort_conflict');}
+    else{prior=encryptRecord(expected,this.key,abortName);await this.custody.put(abortName,prior,{createdAt:event.createdAt,expiresAt:event.expiresAt});}
+    const copy=await this.custody.get(abortName);if(!copy||recoveryHash(copy)!==recoveryHash(prior))reject('authority_abort_readback');
     this.fault('abort_durable');
     await this.db.batch([{sql:"UPDATE operational_recovery_checkpoints SET state='idle',version=version+1 WHERE id='journal' AND state='exporting' AND manifest_hash=?1",params:[id]}]);
   }

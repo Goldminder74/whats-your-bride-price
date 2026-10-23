@@ -1,7 +1,7 @@
 import { D1DriveIndex } from '../scripts/d1-drive-index.mjs';
 import { DriveCustody } from '../scripts/drive-custody.mjs';
 import { driveAccessToken } from './driveOAuth.mjs';
-import { D1WriterFence } from './d1WriterFence.mjs';
+import { D1WriterFence,AuthorityWriterAcquisitionBusy,AuthorityWriterPending } from './d1WriterFence.mjs';
 import { D1Authority } from '../scripts/authority-runtime.mjs';
 import { recoveryHash } from '../scripts/recovery-crypto.mjs';
 import { operatorRetentionPlan, runApprovedRetention, assertRestoreReceipt } from '../db/retention.ts';
@@ -10,11 +10,21 @@ import { PartitionedDriveCustody } from '../scripts/partitioned-drive-custody.mj
 import {boundedAuthorityStep,cleanupAuthoritySnapshotStep} from './boundedAuthority.mjs';
 
 /** Private service wiring only. There is deliberately no public HTTP or cron handler. */
-export function createAuthorityService({ db, custody, key, snapshot, alert, now = Date.now, recoveryReady = async () => {} }) {
+export function createAuthorityService({ db, custody, key, snapshot, alert, now = Date.now, recoveryReady = async () => {}, pause = ms=>new Promise(resolve=>setTimeout(resolve,ms)) }) {
   if (!db || !custody || !Buffer.isBuffer(key) || key.length !== 32
-    || typeof snapshot !== 'function' || typeof alert !== 'function' || typeof recoveryReady !== 'function') throw Error('authority_configuration');
+    || typeof snapshot !== 'function' || typeof alert !== 'function' || typeof recoveryReady !== 'function' || typeof pause !== 'function') throw Error('authority_configuration');
   const authority = new D1Authority(db, custody, key, { now });
   const writer = new D1WriterFence(db, { now });
+  async function waitForWriter(work,Pending){
+    const began=now();
+    for(let attempt=0;;attempt++)try{return await work();}catch(error){
+      // Retry only known local rejection BEFORE business work, or wholly read-only
+      // readiness. Unknown uploads/commits, generic/provider errors and expired
+      // fences propagate immediately. No lease expiry, unlock or new operation ID.
+      if(!(error instanceof Pending)||attempt>=19||now()-began>=5000)throw error;
+      await pause(250);
+    }
+  }
   let active = false;
   async function exclusive(work) {
     // This guard prevents overlap in one instance only; D1's journal fence remains authoritative.
@@ -31,7 +41,7 @@ export function createAuthorityService({ db, custody, key, snapshot, alert, now 
   return {
     transact(operationId, statements) {
       if (!Array.isArray(statements) || !statements.length || statements.length > 97) return Promise.reject(Error('authority_batch_bounds'));
-      return exclusive(() => writer.run(operationId, JSON.stringify(statements), async fenced => {
+      return exclusive(() => waitForWriter(()=>writer.run(operationId, JSON.stringify(statements), async fenced => {
         let outcome;
         const capturing = { query: fenced.query, async batch(rows) {
           const results = await fenced.batch(rows);
@@ -43,15 +53,15 @@ export function createAuthorityService({ db, custody, key, snapshot, alert, now 
         // A replay has no trustworthy original changes()/RETURNING result. Never rerun
         // the financial batch just to reconstruct it, or invent affected-row counts.
         return outcome || null;
-      },{journalIdle:true})).then(outcome => {
+      },{journalIdle:true}),AuthorityWriterAcquisitionBusy)).then(outcome => {
         if (!outcome) throw Error('authority_result_recovery_required');
         return outcome;
       });
     },
     mutate(operationId, statements) {
       if (!Array.isArray(statements) || !statements.length || statements.length > 97) return Promise.reject(Error('authority_batch_bounds'));
-      return exclusive(() => writer.run(operationId, JSON.stringify(statements), fenced =>
-        new D1Authority(fenced, custody, key, { now }).mutate(operationId, statements),{journalIdle:true}));
+      return exclusive(() => waitForWriter(()=>writer.run(operationId, JSON.stringify(statements), fenced =>
+        new D1Authority(fenced, custody, key, { now }).mutate(operationId, statements),{journalIdle:true}),AuthorityWriterAcquisitionBusy));
     },
     flush(boundaryId, limit=25) {
       if (!/^[a-zA-Z0-9_-]{1,80}$/.test(boundaryId) || !Number.isInteger(limit) || limit<1 || limit>25) return Promise.reject(Error('journal_chunk_bounds'));
@@ -94,19 +104,23 @@ export function createAuthorityService({ db, custody, key, snapshot, alert, now 
       return exclusive(()=>writer.run('snapshot-cleanup:'+boundaryId,boundaryId,fenced=>cleanupAuthoritySnapshotStep(fenced,custody,key,boundaryId,{now})));
     },
     async ready() {
+      return waitForWriter(async()=>{
       await recoveryReady();
       await writer.ready();
       const head = await authority.head();
       if (!head || head.state !== 'idle' || head.expires_at <= now()) throw Error('authority_unavailable');
       return true;
+      },AuthorityWriterPending);
     },
     async readFence() {
+      return waitForWriter(async()=>{
       await recoveryReady();
       await writer.ready();
       const head = await authority.head();
       if (!head || head.state !== 'idle' || head.expires_at <= now()) throw Error('authority_unavailable');
       await writer.ready();
       return `${head.version}:${head.sequence}:${head.head_hash}`;
+      },AuthorityWriterPending);
     },
   };
 }

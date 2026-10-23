@@ -183,3 +183,37 @@ test('a replacement generation fences a still-running previous instance even for
  assert.deepEqual(f.sql.prepare('SELECT id FROM synthetic_records').all().map(r=>r.id),['replacement']);
  }finally{f.sql.close();}
 });
+
+test('independent arrivals wait for a live writer without exposing data early or duplicating mutation',async()=>{
+ for(const method of ['mutate','ready','readFence']){const f=await fixture();try{
+  let entered,release,held=false,waits=0;const started=new Promise(r=>entered=r),put=f.options.custody.put;
+  f.options.custody.put=async(...args)=>{if(args[0].endsWith('.intent')&&!held){held=true;entered();await new Promise(r=>release=r);}return put(...args);};
+  const first=createAuthorityService(f.options).mutate(createOperationId(f.at),[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['first']}]);await started;
+  const second=createAuthorityService({...f.options,pause:async ms=>{assert.equal(ms,250);waits++;assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,0);release();await first;}});
+  if(method==='mutate')await second.mutate(createOperationId(f.at),[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['second']}]);else await second[method]();
+  assert.equal(waits,1);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,method==='mutate'?2:1);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM operational_authority_outbox').get().n,method==='mutate'?2:1);
+ }finally{f.sql.close();}}
+});
+
+test('bounded contention never unlocks a crashed writer or executes a competing operation',async()=>{
+ const f=await fixture();try{
+  const {D1WriterFence}=await import('../../worker/d1WriterFence.mjs'),op=createOperationId(f.at),plan=[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['not_committed']}];
+  await assert.rejects(new D1WriterFence(f.options.db,{now:()=>f.at}).run(op,JSON.stringify(plan),db=>new D1Authority(db,f.options.custody,f.options.key,{now:()=>f.at,fault:s=>{if(s==='intent_durable')throw Error('synthetic_crash');}}).mutate(op,plan),{journalIdle:true}));
+  const before=f.sql.prepare("SELECT * FROM operational_recovery_checkpoints WHERE id='authority-writer'").get();let waits=0;const service=createAuthorityService({...f.options,pause:async()=>{waits++;}});
+  await assert.rejects(service.mutate(createOperationId(f.at),[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['competitor']}]),/writer_busy/);assert.equal(waits,19);assert.deepEqual(f.sql.prepare("SELECT * FROM operational_recovery_checkpoints WHERE id='authority-writer'").get(),before);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,0);waits=0;await assert.rejects(service.ready(),/writer_unavailable/);assert.equal(waits,19);
+ }finally{f.sql.close();}
+});
+
+test('lost post-commit response is never retried merely because provider text says writer_busy',async()=>{
+ const f=await fixture();try{const original=f.options.db.batch;let lost=true,waits=0;f.options.db.batch=async rows=>{const result=await original(rows);if(lost&&rows.some(r=>r.sql.startsWith('INSERT INTO operational_authority_outbox'))){lost=false;throw Error('authority_writer_busy');}return result;};const service=createAuthorityService({...f.options,pause:async()=>{waits++;}}),op=createOperationId(f.at),plan=[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['committed_once']}];await assert.rejects(service.mutate(op,plan),/writer_busy/);assert.equal(waits,0);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,1);await service.mutate(op,plan);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,1);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM operational_authority_outbox').get().n,1);
+ }finally{f.sql.close();}
+});
+
+test('an exporting journal is an immediate recovery block, never a live-contention wait',async()=>{
+ const f=await fixture();try{let waits=0;
+  await f.options.db.batch([{sql:"UPDATE operational_recovery_checkpoints SET state='exporting' WHERE id='journal'",params:[]}]);
+  const service=createAuthorityService({...f.options,pause:async()=>{waits++;}});
+  await assert.rejects(service.mutate(createOperationId(f.at),[{sql:'INSERT INTO synthetic_records VALUES(?1)',params:['blocked']}]),/writer_busy/);
+  assert.equal(waits,0);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM synthetic_records').get().n,0);
+ }finally{f.sql.close();}
+});

@@ -11,6 +11,16 @@ The eight-field template below is reference only. No value/content validity or
 successful application read has yet been verified; never expose values in chat,
 Git, builds or logs while completing that verification.
 
+23October private validation now identifies the exact remaining issue:
+`invalid_field:geographicalAddress:placeholder`. The owner installed all eight
+fields but the geographical address matches the validator's placeholder pattern.
+Owner disputes that result and reports repeated correction: do NOT repeat the
+installation/overwrite request. Reconcile the existing saved address line and
+runtime/validation mismatch first; never ask for the address/JSON in chat. Active
+and saved versions have been inspected; no newer undeployed seller version was
+found. The protected private bridge is deployed, but successful seller rendering
+remains unverified until this check passes. No address was logged or committed.
+
 ## Superseding decisions — 23 October 2026
 
 Owner approves the18+ free/paid audience and voluntary14-day full refunds including

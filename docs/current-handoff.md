@@ -1,12 +1,185 @@
 # Current handoff
 
+### Owner disputes repeated address instructions — do not repeat them
+
+Owner reports correcting the seller address more than three times. Paused the
+replacement request and reconciled both Workers' active AND saved versions, rather
+than assuming another failed owner setup. Latest metadata shows ops dashboard saves
+at12:24/14:31UTC, followed by the scoped deployments below; no newer undeployed
+seller version exists. Production app has no seller Secret in any recorded version.
+The active private ops diagnostic still reports
+`invalid_field:geographicalAddress:placeholder`; this is the validator's placeholder
+PATTERN result, not a displayed/read-back copy of the owner's address. Do not
+claim to have inspected the actual address or assume the owner's saved copy is
+wrong. No Secret value has been changed by the agent.
+
+Asked the owner only to inspect the geographicalAddress line in their saved JSON
+privately; do NOT ask for the address/JSON in chat or repeat the full installation.
+If their saved line contains a real address, investigate the exact configuration/
+validation mismatch or false positive before requesting another overwrite. Preserve
+the current Secret and all flags. Evidence: ignored
+20261023-seller-version-reconciliation.json and installed-seller-final.log.
+
+### Protected runtime release and final local validation — 23 October
+
+Scoped protected pair deployed and verified (not a public launch):
+
+- Application `e8c81e52-c07f-41e9-90c0-6133333b8ec1`, direct package
+  `4e6ddc5ddfa625cf8359b60256af41a254b24c37b1e750996ca858719542049f`.
+- Operations `24ad6d00-a5b0-476f-b4ea-d2aaf49b2ab3`.
+- Protected preparation URL:
+  https://wybp-prod-app-r001.ayo-m-ayeni.workers.dev/ . Anonymous privacy GET401;
+  authorised privacy GET200. Seller section remains absent/fail-closed because
+  of the configuration issue above, so successful seller rendering is NOT claimed.
+- Production public/live-webhook flags remain false; both Workers have zero
+  schedules. Authorised POSTs to live/test webhooks and owner route return404.
+  All prior Secret NAMES and database IDs preserved; no Secret values changed.
+- Existing private game https://wybp-protected-test.netlify.app/ unchanged:
+  active Worker `1b76d3fd-6d42-478e-a172-36e6c648c05e`, profile data, webhook/
+  retention OFF, zero schedules. Recorded matched Netlify deploy
+  `6acb796444ae067fcc06f6c9` preserved. No public website, domain, DNS or email change.
+- Previous protected rollback pair retained: app
+  `d4e3b278-7b2d-43de-90f2-b95a39005ebb`, ops
+  `46b68a6c-f47e-4416-b3ce-698b6c997dc8`. No financial/schema rollback performed.
+
+All configured release-gate stages passed across the main run and stage
+continuations: lint/typecheck; 323 unit checks plus the updated 7-check seller
+file; 417 data; 34 rendered; 12 quiz and 22 fast-entry browser checks; remaining
+challenge/nomination/sharing/results/media/analytics/commerce/owner/privacy/Cowrie
+stages; compiled hosting/mobile, private Chromium/WebKit runtime; benchmark3/3
+(including two overlapping application starts); cleanup boundary1/1; ops19/19;
+exact direct package1/1. Existing assertions/guards unchanged. The first integration
+attempt exposed/fixed recovery-versus-contention classification; two subsequent
+Windows EPERM build-directory interruptions required resuming only unfinished
+stages. This is complete stage coverage, NOT one uninterrupted clean test:all run.
+An early new test fixture omitted params; fixed that fixture and reran its affected
+coverage. No known failed assertion is omitted from the final result.
+
+Ignored evidence: 20261023-final-scoped-integration-v2.log,
+20261023-integration-remaining.log, 20261023-integration-tail.log,
+20261023-seller-final-tests.log, 20261023-direct-final-build.log,
+20261023-final-{lint,typecheck}.log, 20261023-protected-seller-verification.json.
+No generated bundle, ciphertext, credential, owner address or provider log is in Git.
+
+Next launch gates remain hosted target throughput/cost, full retained-stock and
+latest-authority recovery, protected hosted purchase-confirmation/production
+configuration, final controller/privacy facts and cutover compatibility. Reuse
+passed converted-currency settlement/key/alert evidence; do not repeat owner setup.
+No new B/C window, cap expansion, subscription, schedule or public activation was
+authorised by these local repairs or protected deployments.
+
+### 23 October renewal — hosted baseline passed; measured B stopped, NO-GO
+
+ONE approved six-hour session began2026-10-23T16:31:11.984Z; absolute cleanup
+deadline22:31:11.984Z. No extension or second measurement is authorised. The
+original parallel3 journal remains immutable. A local PowerShell5 module failure
+preceded EVERY secret-install API call. Read-only reconciliation proved zero
+installed Secrets, zero coordinator objects and zero synthetic wallets. Its full
+reservation/stopped journal was preserved; a continuation journal carried ALL
+charges without changing the absolute clock, resource IDs or starting a measurement.
+The correct existing PowerShell runtime read both DPAPI vaults successfully. No
+owner credential, Google project, seller JSON or secret value was repeated/exposed.
+
+Fresh authenticated Netlify observation473.6credits/recharge Disabled, Workers
+Paid5USD already active, and conservative allocation reservations passed preflight:
+GBP7.80 capped experiment/first Workers month; GBP16.80 whole-account capped
+experiment forecast. Neither is a verified5k/day monthly cost or provider hard cap.
+No new subscription, upgrade or top-up. Drive/email separately funded.
+
+Isolated IDs: D1`3a01d660-9dfb-40ec-b1e4-36f7bf316ad0`, Netlify
+`52dc5d29-4250-40bf-bc04-041241eee221` (deploy`6adb8e0de15364a07e460ff9`),
+Worker`wybp-capacity-worker-r002`, namespace`6f5cf09f44754b3c9987a63d52f07454`.
+Unchanged0000–0013/150 synthetic questions only. Exact compiled source
+`1e763011c75d534cd924e64a91f703a0313d1eb90abe25aba765e4253b4fa000`.
+Anonymous404/CPU100ms/zero schedules/OFF flags and seven Secret NAMES verified.
+Private root/16 children and bounded encrypted initial baseline/readback passed;
+receipt`0c2e8d856600c628e6817b2e4a2a3a546e65bf8199c1bd44b4dd9483146bc673`.
+
+B then stopped after32,217ms: ZERO completions, two observed settled actions,
+one uncertain start reservation retained. No C fixture/drain/import was run and
+no measurement is restarted. Readback: one synthetic wallet, one attempt, zero
+answers/results/ledger entries; journal idle at sequence2, writer importing.
+One additional original encrypted intent authenticates at sequence3 and matches
+the held writer, but is NOT committed. The committed-only recovery guard correctly
+rejected it. This is not a capacity pass, measured application ceiling, proven
+root cause of the transport cancellation, or permission for public activation.
+Cleanup COMPLETE: the original encrypted uncommitted intent was authenticated,
+its original-clock abort independently downloaded/verified, and the normal matching
+writer released. No business mutation replayed and no recovery access released.
+Removed 8 synthetic files and 17 synthetic folders, preserving the approved parent.
+The exact isolated Netlify project, D1 database, Worker and coordinator namespace
+were deleted; absence verified. Existing environments and production custody intact.
+All old/unknown reservations remain charged; no measurement restart is authorised.
+
+Final cumulative B ledger (including prior runs and conservative reservations):
+5,163 external requests; 6,619 internal operations; 177,396 writes; 2,747,826 reads;
+324,768,009 transfer bytes; 128 objects; 3,141,284 Drive bytes; 80,000,000-byte
+reserved peak D1. The 80 MB is a cleanup upper-bound reservation, NOT measured
+physical use (metadata was about 1.044 MB). It cannot be reduced to recreate
+allowance: ordinary B admission requires strictly below 80% of the 100 MB cap.
+Thus another B run needs explicit replacement authority/cap reconciliation, even
+before the unresolved full-stock scope. Two uncertain local tickets stay charged.
+Publication used 15 more credits: 45/60 cumulative, 15 remaining. No top-up.
+
+Local contention repair distinguishes a known rejected writer acquisition from
+an uncertain post-acquisition failure. Only that typed rejection, or a wholly
+read-only pending-writer check, can wait up to 20 attempts/5 seconds using the SAME
+operation identity. No provider-text retry, expiry unlock or blind business replay.
+Crash, concurrent writer, lost response, accounting and original-expiry abort
+regressions pass. This is not yet a successful hosted throughput measurement or
+proof that the transport cancellation is fixed. Full-stock/latest-authority recovery
+remains a launch gate; the 36k-answer fixture cannot establish retained-stock RTO.
+Integration exposed a classification error: a journal exporting for recovery must
+reject immediately rather than wait like a live writer. Fixed by inspecting the
+failed acquisition's writer/journal state; expired/exporting blocks retain the
+original rejection, and only a live importing writer with an idle valid journal
+gets the typed bounded wait. A focused regression verifies zero waits/mutations.
+The compiled local Worker now also passes two genuinely overlapping application
+starts, in addition to actual DO/provider pacing overlap. This uses synthetic
+local D1/Drive only and does not explain or erase the prior hosted cancellation.
+
+Owner reports ICO self-assessment result **exempt** on23October. Do not ask again;
+this does not manufacture completed controller/processor/privacy review. Seller
+configuration reuse is locally tested and private ops wiring deployed. The
+value-suppressed private RPC verified the Secret but rejected its contents:
+`invalid_field:geographicalAddress:placeholder`. All eight fields are present;
+the address matches the parser's placeholder pattern. An initial request to correct
+that field was paused when the owner reported repeated correction. Reconcile the
+existing saved line/validation mismatch before any further overwrite request, as
+the latest owner-dispute section above instructs. Never display the address or move
+the Secret. No other field has been requested.
+The private diagnostic emits fixed codes/known field names only; no raw JSON,
+input keys, parser messages or values. Latest ops version
+`24ad6d00-a5b0-476f-b4ea-d2aaf49b2ab3` (includes the exact placeholder diagnosis).
+No database, flags or schedules changed. Active immutable
+test version1b76d3fd remains the normal restored version with webhook/retention OFF;
+the latest-upload settings endpoint showed an old payments profile, so always
+inspect ACTIVE version bindings before diagnosing a flag mismatch.
+
+Evidence (ignored):20261023-renewal-r002/{clock,resources,publication,hosted,
+B-commission-result,cleanup_reconcile_failure,cleanup_reconcile_intent_inventory,
+cleanup_reconcile_abort_intent,cleanup_delete_drive,cleanup_delete_namespace,
+cleanup_delete_resources}.json;
+session-continuation/phase-B-failure.json; stopped writer/cleanup tests and compiled
+boundary tests. No ciphertext/generated exports/credentials belong in Git.
+
+### Exact benchmark renewal approved — executed and stopped
+
+Owner approved [the exact ONE six-hour renewal](benchmark-renewal-2026-10-23.md)
+in chat. Do not request that approval again. Existing cumulative caps,20% cleanup
+reserve, GBP8 benchmark/first Workers month and GBP50/month remain. Old stopped
+ledger/deadline are never reopened; carry all consumed/unknown reservations forward.
+The single session started and B stopped as recorded above; its unused wall-clock
+time is not permission to repeat B/C after the stop. No larger/full90day benchmark
+is authorised. Current technical and owner-correction sections below still apply.
+
 ### Owner correction — seller Secret is already installed
 
 The owner explicitly reports repeatedly completing seller-address installation.
 Fresh authenticated NAME/TYPE-ONLY Cloudflare inventory confirms
 `WYBP_PUBLIC_SELLER_DETAILS_JSON` exists as `secret_text` on
 `wybp-prod-ops-r001`. No value was read, displayed, copied or changed.
-The production application currently reads it from its own environment;
+The production application originally read it from its own environment;
 `wybp-prod-app-r001` has no seller binding in its latest deployed version
 `d4e3b278-7b2d-43de-90f2-b95a39005ebb`, and no newer saved version was observed.
 This is a confirmed Worker-placement/runtime-wiring mismatch, NOT an uncompleted
@@ -15,12 +188,12 @@ handover status was used instead of checking both approved Workers.
 
 DO NOT ask the owner to re-enter the JSON/address, repeat Google setup or move/
 replace the existing Secret. Remove seller installation from owner action lists.
-Engineer-owned next step: securely connect the production application/confirmation
-path to the existing operational configuration, with validation and narrow private
-service boundaries; verify successful operation without printing the address or
-other environment values. Secret presence alone does not verify its JSON/content
-or that application wiring works. No runtime code, deployment, settings, feature
-flags or schedules changed during this diagnostic. Existing launch gates remain.
+Engineer-owned integration now reuses the validated public fields through the
+existing private ApplicationAuthority binding. The original placement diagnostic
+changed no hosted runtime. Subsequent authorised protected ops deployment and
+private validation are recorded above. Seller rendering remains blocked by the
+address-pattern rejection/dispute, which must be reconciled without repeated setup.
+Existing launch gates remain.
 
 ### Continuation from0d7d526 — 23 October: local stock evidence and email continuity
 

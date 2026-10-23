@@ -5,6 +5,17 @@ import { resolve } from 'node:path';
 
 // Run after the documented Wrangler dry-run. This exercises the deployment package,
 // not a source-only mock, including actual WorkerEntrypoint RPC boundaries.
+test('compiled private seller RPC returns only validated public fields from the installed ops Secret, with HTTP closed',async()=>{
+ const details={version:1,legalName:'Ayodele Ayeni',tradingName:'Classes for Culture',geographicalAddress:'Synthetic test address only',complaintsAddress:null,telephone:null,supportEmail:'team@classesforculture.com',privacyEmail:'team@classesforculture.com'};
+ for(const [role,raw,expected,issue]of [['production-ops',JSON.stringify(details),details,null],['test',JSON.stringify(details),null,'role'],['production-ops',JSON.stringify({...details,secret:'must-not-escape'}),null,'unexpected_fields'],['production-ops','invalid',null,'invalid_json']]){
+  const mf=new Miniflare({workers:[
+   {name:'ops',modules:true,scriptPath:resolve('outputs/netlify-worker/operations/operations.js'),compatibilityDate:'2026-05-15',compatibilityFlags:['nodejs_compat'],bindings:{WYBP_AUTHORITY_ROLE:role,WYBP_AUTHORITY_DATABASE_NAME:'wybp-prod-d1-r001',WYBP_PUBLIC_SELLER_DETAILS_JSON:raw,WYBP_DRIVE_CLIENT_SECRET:'synthetic-unrelated-secret'}},
+   {name:'caller',modules:true,compatibilityDate:'2026-05-15',serviceBindings:{APP:{name:'ops',entrypoint:'ApplicationAuthority'}},script:`export default {async fetch(request,env){return Response.json(await (new URL(request.url).pathname==='/status'?env.APP.publicSellerDetailsStatus():env.APP.publicSellerDetails()));}}`},
+  ]});
+  try{const caller=await mf.getWorker('caller');assert.deepEqual(await(await caller.fetch('https://synthetic.invalid/')).json(),expected);assert.deepEqual(await(await caller.fetch('https://synthetic.invalid/status')).json(),{valid:issue===null,issue});const ops=await mf.getWorker('ops');for(const path of ['publicSellerDetails','publicSellerDetailsStatus'])assert.equal((await ops.fetch('https://synthetic.invalid/'+path)).status,404);}finally{await mf.dispose();}
+ }
+});
+
 test('compiled operations Worker denies HTTP and missing configuration through private RPC',async()=>{
   const mf=new Miniflare({workers:[
     {name:'ops',modules:true,scriptPath:resolve('outputs/netlify-worker/operations/operations.js'),compatibilityDate:'2026-05-15',compatibilityFlags:['nodejs_compat'],bindings:{WYBP_TEST_ALERT_APPROVED:'false'}},

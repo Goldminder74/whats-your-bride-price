@@ -21,6 +21,7 @@ import {purchaseConfirmationMail} from './purchaseConfirmationMail.mjs';
 import { hostedSyntheticRecovery } from './hostedSyntheticRecovery.mjs';
 import {importProductionRestore,verifyProductionRestoreStep} from '../scripts/streamed-d1-restore.mjs';
 import {recoverProductionPinnedInventory} from '../scripts/segmented-drive-inventory.mjs';
+import {parseSellerDetails,sellerConfigurationIssue} from '../app/sellerDetails.ts';
 
 function runtime(env) {
   const alert = authorityMail(env, connect);
@@ -34,6 +35,17 @@ function runtime(env) {
 // Only private service bindings expose RPC. There is no HTTP management endpoint,
 // secret-selected URL, scheduled handler, automatic initialisation or restore bypass.
 export class ApplicationAuthority extends WorkerEntrypoint {
+  async publicSellerDetailsStatus() {
+    if(this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001')return {valid:false,issue:'role'};
+    const issue=sellerConfigurationIssue(this.env.WYBP_PUBLIC_SELLER_DETAILS_JSON);
+    return {valid:issue===null,issue};
+  }
+  async publicSellerDetails() {
+    if(this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001')return null;
+    // Only this validated, intentionally public record crosses the existing
+    // private binding. No other Secret, database operation or activation occurs.
+    return parseSellerDetails(this.env.WYBP_PUBLIC_SELLER_DETAILS_JSON);
+  }
   async preparePurchaseConfirmation(input) {
     try {await runtime(this.env).service.ready();return confirmationDraft(input,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'));}
     catch {throw Error('purchase_confirmation_unavailable');}
