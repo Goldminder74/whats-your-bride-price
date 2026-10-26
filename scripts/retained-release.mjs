@@ -2,7 +2,7 @@
 import {readFile,writeFile,readdir,mkdir,realpath,lstat} from 'node:fs/promises';import {resolve,dirname,sep} from 'node:path';import {createHash} from 'node:crypto';
 import {retainedIdentity,RETAINED_ORIGIN,RETAINED_ACCOUNT} from '../worker/retainedBenchmarkPolicy.mjs';
 const hash=b=>createHash('sha256').update(b).digest('hex'),fail=()=>{throw Error('retained_release_unavailable');};
-const safe=p=>typeof p==='string'&&/^(?:server|client)\/[A-Za-z0-9_./@-]+$/.test(p)&&!p.split('/').some(v=>!v||v==='..'||v.startsWith('.'))&&!p.endsWith('.map');
+const safe=p=>typeof p==='string'&&/^(?:server|client)\/[A-Za-z0-9_./@~-]+$/.test(p)&&!p.split('/').some(v=>!v||v==='..'||v.startsWith('.'))&&!p.endsWith('.map');
 export async function verifyRetainedRelease(directory){
  const root=await realpath(directory),manifest=JSON.parse(await readFile(resolve(root,'release.json'),'utf8'));
  if(manifest?.version!==1||manifest.synthetic!==true||manifest.origin!==RETAINED_ORIGIN||manifest.grantInstalled!==false||manifest.deployed!==false||!manifest.files||!manifest.files['server/index.js'])fail();

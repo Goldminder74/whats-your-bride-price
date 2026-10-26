@@ -2,7 +2,10 @@
 
 ### 26 October — retained recovery integration; hosted launch still held
 
-Continuation of92f3940 onfeature/viral-build-sprint. Scoped SOURCE ONLY: no hosted
+Runtime sourcec0bc716165d62eb7315c496337071ea30829d130 was committed/pushed on
+feature/viral-build-sprint, continuing92f3940. This successor records final release
+verification and accepts legitimate bundler tilde chunk names; traversal, hidden
+files, maps, unlisted files and hash guards remain. Scoped SOURCE ONLY: no hosted
 resource/deployment/Secret/migration/DNS/Stripe/schedule/mail/subscription/spend
 change. Public legacy site, private game and financial data preserved; commerce,
 webhook, public access and production schedules remain OFF. GBP8 old-benchmark /
@@ -142,9 +145,15 @@ outputs/retained-stock/latest.json records sourceArchived/sourceArchive; restore
 and verify that file before any reuse. Large-test temporary ciphertext/keys/DBs
 were cleaned by its finally block. No hosted disposable resource existed to delete.
 
-Remaining sequence: commit/push validated scoped SOURCE, build the inactive
-package from that clean committed source; no deployment implied. Obtain permitted
-nonbinding business quote/
+Clean-commit build and actual release validation PASS. The prior-source inactive
+package isd912849a1dd5657eee6866b77ecce8588f887deae28743f4d083b0974f95d9b8,
+pinned toc0bc716, sourceCommitted=true, grantInstalled=false/deployed=false, exact
+four SELF bindings and public/webhook/operations OFF. The validator originally
+rejected four legitimate framework~ chunk names; the corrected positive package
+and negative hidden/map/hash/binding checks2/2 PASS. No guard bypass. A final clean
+successor build is recorded in outputs/launch-20261025/retained-clean-commit-build.log
+and clean-commit-release-verification.json; consult their exact source/hash before
+future materialisation. No deployment implied. Obtain permitted nonbinding business quote/
 contract facts, Namecheap answer and exact mail-only approval; then one complete
 spending/validation decision. After authorised hosted5k/500/backlog/recovery and
 confirmation pass, finish measured production cadence/config,0014/mirror, live
