@@ -148,6 +148,40 @@ folder/name/MAC/readback and pacing guard. It is not implemented/approved yet.
 The old25-file cleanup leaves insufficient16-hour margin at this cardinality.
 Cleanup must have a verified phase deadline before admitting its first object.
 
+### Exact local preparation approval — GBP0, no hosted execution
+
+Automatic approval review rejected implementing the revised profile and concurrent
+cleanup because they expand future spending/deletion capability, even undeployed.
+Nothing was applied. This document is a reviewable proposal, not runnable code,
+an installed grant or permission to spend. A specific owner decision is needed
+before these source changes:
+
+- Replace only the INACTIVE retained experiment's obsolete175/200 proposal with
+  a version2 profile matching the225/250 ceilings and exact total caps above.
+  Reject signed v1 envelopes, including fresh ones; do not renew stopped clocks.
+  Keep full cumulative carryover/unknown reservations, original GBP8 authority,
+  GBP50 operation ceiling,80% stops and cleanup escrow. No production/bounded-run
+  policy is changed and no real approval envelope/key is generated or installed.
+- Require evidence of paid business custody, a non-trial account and exact quote/
+  processing-contract hashes before accepting any future signed v2 grant. A free
+  trial and its excluded DPA cannot silently satisfy this admission requirement.
+- Use the existing50-record unfiltered metadata window for cleanup. Authenticate
+  EVERY folder/name/parent/MAC before the first deletion; reject duplicates and
+  foreign objects. Two deletion lanes per job stay behind global25 starts/sec,
+  16 active and64 queued. Wait for in-flight lanes after failure, then retain the
+  full unknown reservation. Each next step lists a fresh first page, avoiding
+  skipped objects while deleting. Exact replay must not delete twice.
+- Run local synthetic tests for bounds, old/expired grants, trial-custody rejection,
+  carryover/crash/stop/escrow preservation, whole-page validation, genuine overlap,
+  failed/uncertain deletes and exact retries, then the affected compiled release.
+  Never call Drive, create resources, deploy, delete hosted data, enable a schedule,
+  make a purchase or run the larger benchmark under this LOCAL-ONLY decision.
+
+After that local work passes, finish the actual spending package and readiness
+preflight using the account quote below and Namecheap's written response. The
+225/250 experiment, business subscription and activation remain separate,
+unapproved decisions. No charge may occur merely because preparation is approved.
+
 ## Itemised maximum cost and cancellation
 
 Require fresh authenticated whole-account headroom: >=40m D1 and >=40m DO included
@@ -172,7 +206,7 @@ recharge Disabled. These are dated observations, not future guarantees.
 | Additional safety margin |—|15.68|
 | Proposed experiment/first Workers-month ceiling |—|225.00|
 
-Existing Netlify£9.72 +experiment ceiling£225 +provisional business custody£8.40
+Existing Netlify£9.72 +experiment ceiling£225 +business custody tax allowance£8.40
 =£243.12, leaving£6.88 within a proposed£250 WHOLE validation-month ceiling.
 These replace, not add to, old£175/200 or provisional£150 figures. Neither£225/250
 nor a new subscription is approved. Separately funded consumer Drive and email
@@ -194,20 +228,21 @@ commitment, top-up, extra service, renewal or over-limit cleanup is authorised.
 
 ## Provider, mail and final privacy prerequisites
 
-Google's signed-in UK page shows regular Starter Flexible£7/user/month before tax,
-with a temporary promotion deliberately ignored.£8.40 is aVAT allowance, NOT an
-account-specific final quote. There is no new account/trial/subscription/business
-contract. Consumer Drive has no verified business DPA. Need the final one-user
+Google's new account-specific Review and check out screen now confirms Business
+Starter MONTHLY: GBP0 today +tax, GBP3.50/month from9November2026, GBP7/month from
+9February2027; price per user EXCLUDES tax, cancellation at any time. Annual
+commitment is OFF. Ignore the promotion for the ongoing ceiling. GBP8.40 is the
+20% tax allowance, not a tax-inclusive invoice: Add name and address remains
+unfilled. Checkout is UNSUBMITTED; no billing/payment details, paid activation,
+archives, Gmail or MX changes. Owner reports the administrator account created;
+an active Workspace subscription/trial is not independently verified. Consumer
+Drive has no verified business DPA. Need the final one-user
 quote, processing terms, UK transfer mechanism, cancellation and retention terms
 before asking for that purchase. Do not enable Gmail/changeMX or repeat OAuth.
-A public tariff cannot be passed off as the final quote. Owner subsequently
-approved entering Classes for Culture, one person and United Kingdom solely for
-quote preparation. The existing-domain flow now reaches a blank username/password
-page: Agree and continue accepts Workspace/free-trial terms before any final
-account quote. It remains unsubmitted. A written nonbinding quote or separate
-account/trial authority is needed to cross that boundary; no new Google/OAuth
-setup or existing-email migration is requested. Any account/trial/contract/
-subscription step remains a distinct decision.
+A public tariff is no longer being substituted: this is the new account's actual
+review screen, after owner-created credentials and already approved quote-only
+agreements. Do not repeat that setup. Tax-inclusive billing, paid business custody,
+processing safeguards and any subscription acceptance remain unapproved gates.
 
 The official sales form was also inspected truthfully with1-19 employees: it
 removes the sales-request fields and offers self-service signup, not a written
@@ -222,9 +257,12 @@ cancellation must be checked against the actual final account before acceptance;
 the current generic terms page is a different12October2026 version. No legal
 approval is inferred from storage availability. Owner subsequently approved the
 GBP0 quote-only account/trial/contract boundary after reviewing the agreements.
-Direct owner entry of the new administrator password is pending; no account/trial
-creation is yet observed. No billing details, paid plan, archive/fixture uploads
-or Gmail/MX change is allowed. Earlier OAuth setup is not being repeated.
+Owner reports the new administrator account created and the quoted review screen
+is observed. Subscription/trial activation is not independently established by
+that screen. No billing details, paid plan, archive/fixture uploads or Gmail/MX
+change is allowed. Earlier OAuth setup is not being repeated. The later instruction
+to accept only if it brings immediate launch does not clear the remaining gates
+and is not treated as paid-checkout authority.
 
 Namecheap ticket NC-GME-4068 is forwarded to its specialist department; its current
 applicable UK processing/transfer answer is still missing. The provider explicitly
@@ -293,6 +331,10 @@ exists; do not ask for it again, and do not activate with known defects.
 Pricing checked26October against primary [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/), [D1 pricing](https://developers.cloudflare.com/d1/platform/pricing/) and [Durable Objects pricing](https://developers.cloudflare.com/durable-objects/platform/pricing/). These public rates do not replace account headroom or the missing business-account quote.
 
 ## Historical24 October execution status — lower proposal superseded above
+
+Everything below this heading is archived context, NOT a current spending request.
+The current225/250 proposal and local-preparation decision above govern; neither
+is approved. Do not revive any historical grant, budget or trial restriction.
 
 The owner authorised LOCAL snapshot correction, one Namecheap inquiry and one
 external synthetic email, not GBP175/200, a mirror resource or a backup subscription.

@@ -1,5 +1,42 @@
 # Current handoff
 
+### 26 October — account quote observed; local capability change needs approval
+
+Owner reports the backup-operator account created. Existing Google signup now
+shows Review and check out for Business Starter MONTHLY, with annual commitment
+OFF: today GBP0 +tax;9November2026 GBP3.50/month;9February2027 onwards GBP7/month.
+The account price details explicitly exclude tax and say cancel at any time.
+GBP8.40/month is the20% tax budget allowance, NOT a verified tax-inclusive invoice.
+The review page still asks Add name and address. Checkout is UNSUBMITTED; agent
+entered no billing/payment details, activated no paid service/Gmail and uploaded
+no files. Workspace plan/trial activation is not independently verified from this
+review screen. Quote-only authority remains; the owner's later 'accept if it leads
+to immediate launch' condition is not satisfied by these unresolved gates and
+does NOT authorise paid checkout. No repeated owner login/OAuth/address installation.
+Ignored account proof:workspace-account-plan-quote.png,workspace-account-offer-
+details.png,workspace-account-review-quote.png under outputs/launch-20261026-provider/.
+
+**Local scope block:** automatic approval review rejected preparing the revised
+GBP225/250 profile and concurrent50-file cleanup, even undeployed, because it
+expands future spending and destructive capability beyond recorded authority.
+No patch was applied: retained policy is still v1/GBP175/200/old caps; no
+retainedCleanup.mjs exists. Do not retry through another tool or indirect patch.
+The original stopped GBP8 ledger/reservations and GBP50 ceiling remain intact.
+The exact GBP0 LOCAL-ONLY approval needed is documented in the validation package:
+inactive v2 profile, reject old grants, preserve carryover/deadlines, require paid
+business custody/contract evidence, and50 authenticated files with two deletion
+lanes under existing global pacing. Only local synthetic tests; NO grant, remote
+deletion, resource, deployment, hosted benchmark, purchase or budget activation.
+This is distinct from approving GBP225/250 spending, which remains unapproved.
+
+**Independent work:** account quote captured; fresh public Namecheap DPA/privacy
+review still supplies no verified current UK-transfer answer. Targeted authorised
+Inbox case search finds the24October reply, no new specialist answer observed.
+Credential-free follow-up remains verified in Sent; no further email or alert.
+Namecheap mail session reopened without asking owner to sign in. Provider tab13
+is limited toNC-GME-4068 search. Private game/public legacy/data/flags unchanged.
+No application changes or repeated tests: rejected edits never changed source.
+
 ### 26 October — GBP0 quote-only trial approved; direct credential step pending
 
 Owner now explicitly approves crossing the new Workspace account/trial/contract

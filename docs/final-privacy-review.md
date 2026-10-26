@@ -146,8 +146,10 @@ communicated before they take effect and any necessary consent will be obtained.
 1. Replace the provider paragraph’s explicit pending statements ONLY from the actual
    Namecheap answer and approved business-account contract; keep this document a
    draft until then. Do not publish an unverified safeguard or UK-only claim.
-2. Final account-specific Google GBP/tax/start/renewal quote and business folder
-   custody are pending. Public tariff is not a final quote or accepted contract.
+2. Account-specific monthly quote now shows GBP7/user/month after promotion,
+   excluding tax, cancellation at any time. Checkout is unsubmitted; final tax,
+   paid processing agreement and business folder custody remain pending. Owner's
+   new administrator account does not establish a paid/active backup subscription.
    The signup-linked free-trial terms2.6 exclude the data-processing amendment
    and personal-data use; a trial cannot clear production custody. No backup or
    fixture uploads are allowed during quote preparation. Pin the exact account

@@ -87,8 +87,12 @@ Consumer Drive remains suitable only for the already authorised synthetic checks
 a separately funded consumer storage entitlement is not a business processor
 agreement. A proposed one-user Workspace account requires an account-specific
 quote/processing agreement and explicit subscription approval. Preserve existing
-email/MX records and the separately secured key copy. No account/trial or new
-subscription has been created here.
+email/MX records and the separately secured key copy. Owner has now created the
+backup administrator account under GBP0 quote-only authority. The observed
+Business Starter monthly review quotes GBP7/user/month after promotion, excluding
+tax, cancellation at any time. GBP8.40 is a20% tax allowance, not a final invoice.
+Checkout and Add name and address remain unsubmitted/unfilled; paid subscription
+or active trial is not independently verified. No archives or Gmail/MX changes.
 The exact signup-linked trial terms2.6 exclude the data-processing amendment and
 personal-data use. Do not upload backups/fixtures or treat a quote-only trial as
 production custody. Pin the actual paid agreement/CDPA/UK safeguards; do not
