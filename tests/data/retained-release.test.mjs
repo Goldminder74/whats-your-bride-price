@@ -21,6 +21,7 @@ test('only the explicitly approved mail-only binding can supplement SELF; no aut
  const root=await mkdtemp(join(tmpdir(),'wybp-mail-release-')),base=join(root,'base');
  try{
   const {config,save}=await syntheticRetainedRelease(base),approved={syntheticMailApproval:SYNTHETIC_MAIL_APPROVAL};
+  config.services=retainedServices();await save();assert.equal((await verifyRetainedRelease(base)).config.services.length,4);
   config.services=retainedServices(true);await save();await assert.rejects(verifyRetainedRelease(base));
   await save(approved);const verified=await verifyRetainedRelease(base);assert.equal(verified.config.services.length,5);assert.equal(verified.config.vars.WYBP_RETAINED_BENCHMARK_ENABLED,'false');assert.equal(verified.manifest.grantInstalled,false);
   const resources={inventoryComplete:true,journalled:true,account:RETAINED_ACCOUNT,sourceId:'33333333-3333-4333-8333-333333333333',mirrorId:'44444444-4444-4444-8444-444444444444'};

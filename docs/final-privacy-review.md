@@ -148,6 +148,10 @@ communicated before they take effect and any necessary consent will be obtained.
    draft until then. Do not publish an unverified safeguard or UK-only claim.
 2. Final account-specific Google GBP/tax/start/renewal quote and business folder
    custody are pending. Public tariff is not a final quote or accepted contract.
+   The signup-linked free-trial terms2.6 exclude the data-processing amendment
+   and personal-data use; a trial cannot clear production custody. No backup or
+   fixture uploads are allowed during quote preparation. Pin the exact account
+   agreement/paid CDPA/UK safeguards before approving customer-data processing.
 3. Verify actual provider request/log retention, rights-request procedure, final
    feature flags and bounded deletion/backup schedules. Generic website copy must
    not promise a seven-day purge or30-day backup limit before measurement supports it.

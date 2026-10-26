@@ -89,6 +89,10 @@ agreement. A proposed one-user Workspace account requires an account-specific
 quote/processing agreement and explicit subscription approval. Preserve existing
 email/MX records and the separately secured key copy. No account/trial or new
 subscription has been created here.
+The exact signup-linked trial terms2.6 exclude the data-processing amendment and
+personal-data use. Do not upload backups/fixtures or treat a quote-only trial as
+production custody. Pin the actual paid agreement/CDPA/UK safeguards; do not
+substitute a differently dated generic terms page for the signup-linked version.
 
 Final publication remains gated by verified provider facts, measured retention and
 recovery, working rights handling and controller approval. Keep
@@ -101,3 +105,7 @@ Primary sources: [ICO legitimate-interest assessment](https://ico.org.uk/for-org
 [Namecheap DKIM instructions](https://www.namecheap.com/support/knowledgebase/article.aspx/10383/2176/how-to-set-up-a-dkim-record-for-private-email/),
 [Workspace Flexible terms/pricing](https://knowledge.workspace.google.com/admin/billing/compare-flexible-and-annual-fixed-term-payment-plans),
 [Google business CDPA](https://cloud.google.com/terms/data-processing-addendum/).
+
+Exact quote-stage references inspected26October: [trial terms](https://admin.google.com/terms/apps/1/3/en-GB/supplemental_terms.html),
+[signup-linked agreement](https://admin.google.com/terms/workspace/1/10/en-GB/premier_terms.html),
+[EECC waiver](https://admin.google.com/terms/apps/1/3/en/eecc_waiver.html).

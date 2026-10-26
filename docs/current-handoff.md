@@ -43,20 +43,46 @@ local permissions, assertions unchanged. Logs:mail-capability-tests,retained-mai
 compiled,operations-checks,lint,typecheck under that ignored evidence directory.
 Physical99-day recovery evidence is reused, not rerun. The opt-in package is
 inactive, grantInstalled=false/deployed=false, public/webhook/operations OFF;
-pin its clean committed-source successor before materialisation. No stopped clock
-or allowance reset, hosted resource creation, schedule or payment change.
+clean source6647644120e5d60b93c10bc730cf00b391b52307 is pinned in package
+4af629a10d299dcdc3174d3fe08e07a13373fe13111fc17108716bdf2869b3dc. Complete
+hash/config verification:outputs/launch-20261026-provider/clean-commit-release-
+verification.json. No stopped clock/allowance reset, hosted resource creation,
+schedule or payment change. A further package regression verifies the ordinary
+default still builds exactly four bindings;2/2 PASS, no application change.
+
+Fresh authenticated Cloudflare headroom: displayed5.56k D1 writes,202 Worker
+requests,9.18k CPU-ms,58k reads; observed billable usage0USD for18-26October.
+Rounded/delayed counters, not a hard spending cap or monthly capacity proof.
+The current ops deployment is still2277378a, DB binding and all eight Secret
+names/types intact, rehearsal/test-alert flags false. Read-only synthetic mail
+claim query is empty: approval has NOT been consumed. Do not spend that one send
+on a stand-alone transport probe instead of the required hosted application
+confirmation. No repeat credentials/key/alert check. Existing public homepage
+also returned HTTPS200 with its legacy Classes for Culture title after TXT repair;
+this is not a callback/function backup or paid-game launch check.
 
 **Provider work:** owner signed into Namecheap; Private Email specialist joined
 existing-ticket inquiry. Existing username/PIN submitted ONLY through authenticated
-Namecheap embedded live support, never ordinary email/Git/logs. Await explicit
-verification/current processing and UK transfer answer; do not repeat sign-in or
-request credentials in chat. Browser support tab3. Approved nonbinding Workspace
+Namecheap embedded live support, never ordinary email/Git/logs. At20:14UTC the
+specialist confirmed prioritisation with Legal and Abuse, but no substantive
+processing/UK-transfer answer or ETA. At20:16 they were checking that verification
+was attached toNC-GME-4068; attachment ACK still pending at20:22. Do not repeat
+owner sign-in or request credentials in chat. Browser support tab3 stays open.
+Approved nonbinding Workspace
 fields Classes for Culture/one person/UK entered; existing-domain flow now stops
 at blank username/password/Agree and continue, which accepts account/free-trial
-terms BEFORE a final quote. Unsubmitted: no account/trial/contract. Obtain written
-nonbinding quote or separate authority for that boundary. Do not tell owner to
-create credentials or repeat Google/OAuth setup. All three Private Email mailboxes
-must remain unchanged.
+terms BEFORE a final quote. Its official sales form with truthful1-19 headcount
+also redirects to self-service signup; no one-person quote enquiry was submitted.
+The exact trial terms2.6 exclude the DPA/personal-data use;4.2 warns billing details
+trigger automatic conversion. Signup also requires an EECC waiver. Exact linked
+agreement renders1June2026, whereas the generic current page is12October2026: pin
+the actual contract, paid CDPA/UK safeguards and permitted internal backup use.
+Owner decision requested for GBP0 QUOTE-ONLY account/trial/contract boundary,
+with NO billing details, paid plan, uploads, Gmail or MX change. No approval reply
+yet; remains unsubmitted/no account/trial/contract. New administrator password
+would require direct owner entry after approval, never chat. Do not repeat OAuth,
+address, key or alert setup. All three Private Email mailboxes remain unchanged.
+Screenshots:workspace-account-boundary.png,workspace-small-team-quote-route.png.
 
 **Remaining gates:** final backup quote/business terms/subscription decision;
 Namecheap current processing/UK-transfer answer; hosted confirmation receipt/header

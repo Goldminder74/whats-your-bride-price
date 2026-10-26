@@ -209,6 +209,21 @@ account/trial authority is needed to cross that boundary; no new Google/OAuth
 setup or existing-email migration is requested. Any account/trial/contract/
 subscription step remains a distinct decision.
 
+The official sales form was also inspected truthfully with1-19 employees: it
+removes the sales-request fields and offers self-service signup, not a written
+one-person quote. No inflated headcount or sales enquiry was submitted. The exact
+signup links identify the Workspace agreement(rendered1June2026), supplemental
+free-trial terms and EECC waiver. The trial terms2.6 exclude the data-processing
+amendment and prohibit personal data;4.2 provides automatic conversion/charging if
+billing details were supplied. A quote-only trial is NOT approved business custody:
+no backup/fixture uploads, billing details, paid activation or MX/Gmail change.
+The displayed agreement/use restrictions, applicable paid CDPA/UK safeguards and
+cancellation must be checked against the actual final account before acceptance;
+the current generic terms page is a different12October2026 version. No legal
+approval is inferred from storage availability. Owner decision requested only for
+the new GBP0 account/trial/contract boundary; earlier quote-only permission and
+existing OAuth setup are not being repeated.
+
 Namecheap ticket NC-GME-4068 is forwarded to its specialist department; its current
 applicable UK processing/transfer answer is still missing. The provider explicitly
 requests account username/Support PIN verification in its trusted support channel;
@@ -222,6 +237,11 @@ probe was unavailable, not a contradictory DNS result. Old email receipt cannot
 prove later message authentication. The owner approved using the existing username
 and Support PIN only in authenticated Namecheap support for this ticket; never
 include those values in Git, ordinary email, logs or reports.
+At20:14UTC26October the live specialist said Legal and Abuse had been asked to
+prioritise this existing email; no ETA was given(legal cases can take longer than
+the ordinary response target). This is escalation evidence, not a processing or
+UK-transfer answer. Ownership-verification attachment confirmation was requested
+in that same authenticated chat; no further owner login is currently required.
 
 The26October owner approval explicitly permits only RETAINED_CONFIRMATION_MAIL ->
 wybp-prod-ops-r001 / SyntheticConfirmationMail, synthetic payload and fixed owner
