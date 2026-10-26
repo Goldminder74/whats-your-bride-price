@@ -1,0 +1,12 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {retainedValidationForecast,retainedMaximumCost,proposedRetainedCaps,priorRetainedUpper} from '../../scripts/retained-validation-forecast.mjs';
+import {RETAINED_CAPS} from '../../worker/retainedBenchmarkPolicy.mjs';
+test('proposal preserves old reservations and cleanup; existing runtime caps reject the complete phase graph',()=>{
+ const f=retainedValidationForecast({assetBytesPerSet:2500000});assert.equal(f.authorised,false);assert.equal(f.admissibleProjection,false);assert.ok(f.failures.some(r=>r.meter==='external'));assert.ok(f.failures.some(r=>r.meter==='doWrites'));assert.equal(f.total.external,6955163);assert.equal(f.prior.doWrites,1000000);assert.equal(f.total.storageBytes,6800000000);assert.equal(f.total.doStorageBytes,2300000000);assert.equal(RETAINED_CAPS.external,5000000);
+ const proposed=retainedValidationForecast({assetBytesPerSet:2500000,caps:proposedRetainedCaps});assert.equal(proposed.admissibleProjection,true);assert.equal(proposed.authorised,false);assert.equal(proposed.total.writes,118677396);assert.equal(proposed.total.doWrites,74000000);
+ assert.equal(RETAINED_CAPS.doGbMs,64000*1000,'GB-ms cap must be64k GB-seconds, never64 million GB-seconds');assert.equal(proposed.total.doGbMs,Math.ceil(112*3600000*.128)+4000*1000);assert.ok(proposed.total.doGbMs<RETAINED_CAPS.doGbMs);
+ const bad=retainedValidationForecast({assetBytesPerSet:40000000,caps:proposedRetainedCaps});assert.ok(bad.failures.some(r=>r.meter==='transferBytes'));assert.equal(retainedValidationForecast({assetBytesPerSet:2500000,caps:proposedRetainedCaps,prior:{...priorRetainedUpper,doWrites:6000000}}).admissibleProjection,false);
+});
+test('cost admits no missing included allowance and counts the paid month once plus all prior authority',()=>{
+ const c=retainedMaximumCost();assert.equal(c.usd.d1Writes,110);assert.equal(c.usd.coordinatorSqlWrites,40);assert.equal(c.usd.workerCpu,30);assert.equal(c.usd.existingWorkersMonth,5);assert.ok(Math.abs(c.subtotalUsd-191.4)<.001);assert.ok(Math.abs(c.knownAndReservedGbp-209.312)<.001);assert.ok(c.validationMonthReservedGbp<250);assert.throws(()=>retainedMaximumCost({remainingDoWrites:39000000}),/headroom/);assert.throws(()=>retainedMaximumCost({remainingD1Writes:0}),/headroom/);
+});

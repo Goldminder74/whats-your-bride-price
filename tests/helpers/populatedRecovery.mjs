@@ -3,8 +3,8 @@ import {D1QuestionSelectionRepository} from '../../db/questionSelection.ts';
 import {deriveAnonymousSubjectHash} from '../../app/anonymousSession.ts';
 import {completeCowrieQuickPlay} from '../../db/cowrieCompletion.ts';
 import {operatorRetentionPlan} from '../../db/retention.ts';
-export async function populatedRecoveryFixture(){
- const c=await setup(),now=Date.now(),at=Date.UTC(2026,8,12,12),proof='a'.repeat(64);
+export async function populatedRecoveryFixture(options){
+ const c=await setup(options),now=Date.now(),at=c.clock,proof='a'.repeat(64);
  try{
   const started=await c.walletService.startQuickPlay({region:'west',anonymousSessionCredential:credential,idempotencyKey:'hosted-synthetic-recovery'});
   const selected=await new D1QuestionSelectionRepository(c.adapter).getAttempt(started.selection.attemptId,await deriveAnonymousSubjectHash(credential),at);

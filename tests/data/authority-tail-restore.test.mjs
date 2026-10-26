@@ -14,9 +14,9 @@ import {prepareAuthorityRestore} from '../../scripts/authority-restore-plan.mjs'
 import {replayVerifiedAuthorityTail} from '../../scripts/authority-tail-restore.mjs';
 import {verifyAuthorityBoundaryStep} from '../../worker/boundedAuthority.mjs';
 import {materializeSegmentedSnapshot} from '../../scripts/worker-snapshot-restore.mjs';
-import {importProductionRestore,verifyProductionRestoreStep} from '../../scripts/streamed-d1-restore.mjs';
+import {importProductionRestore,verifyProductionRestoreStep,importMirrorRestore,verifyMirrorRestoreStep,importRetainedSourceRestore,verifyRetainedSourceRestoreStep} from '../../scripts/streamed-d1-restore.mjs';
 import {recoveryHash,encryptRecord,decryptRecord} from '../../scripts/recovery-crypto.mjs';
-import {finalizeProductionAuthorityRestore} from '../../scripts/finalize-authority-restore.mjs';
+import {finalizeProductionAuthorityRestore,finalizeMirrorAuthorityRestore,finalizeRetainedSourceAuthorityRestore} from '../../scripts/finalize-authority-restore.mjs';
 import {assertRestoreReceipt} from '../../db/retention.ts';
 import {Adapter} from '../helpers/cowrieCommerce.mjs';
 import {createDriveRecordHeader,verifyDriveRecordHeader} from '../../scripts/drive-record-header.mjs';
@@ -27,7 +27,9 @@ const adapter=sql=>({query:async(s,p=[])=>sql.prepare(s).all(...p),batch:async r
 
 const ordered=(sql,table)=>sql.prepare('SELECT * FROM '+table+' ORDER BY '+sql.prepare('PRAGMA table_info('+table+')').all().filter(c=>c.pk).sort((a,b)=>a.pk-b.pk).map(c=>'"'+c.name+'"').join(',')).all();
 
-test('snapshot plus latest independent tail restores real refund, hold, closure and deletion authority without recapturing data or replaying a committed effect',async()=>{
+for(const mode of ['production','retained-source','mirror'])test(mode+': snapshot plus latest independent tail restores refund, hold, closure and deletion without recapturing or duplicate effects',async()=>{
+ const restoreImport=mode==='production'?importProductionRestore:mode==='mirror'?importMirrorRestore:importRetainedSourceRestore,restoreVerify=mode==='production'?verifyProductionRestoreStep:mode==='mirror'?verifyMirrorRestoreStep:verifyRetainedSourceRestoreStep,restoreFinalize=mode==='production'?finalizeProductionAuthorityRestore:mode==='mirror'?finalizeMirrorAuthorityRestore:finalizeRetainedSourceAuthorityRestore;
+ const targetIdentity=mode==='production'?{role:'production-ops',databaseName:'wybp-prod-d1-r001',databaseId:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'}:mode==='mirror'?{identity:{role:'recovery-mirror',name:'wybp-capacity-recovery-d1-r002',id:'22222222-2222-4222-8222-222222222222'}}:{resource:{name:'wybp-capacity-d1-r002',id:'11111111-1111-4111-8111-111111111111',account:'b6b22a9a87b5758725e5c499782160af'}};
  const c=await populatedRecoveryFixture(),scratch=new DatabaseSync(':memory:'),journal=new DatabaseSync(':memory:'),target=new DatabaseSync(':memory:'),replay=new DatabaseSync(':memory:'),unused=new DatabaseSync(':memory:');
  const at=Date.now(),key=randomBytes(32),files=new Map(),clocks=new Map(),ids=new Map(),db=adapter(c.database),second='b'.repeat(32);
  const custody={folderId:'synthetic_tail_custody',index:{get:async n=>ids.get(n)||null,recoveryRecord:async n=>clocks.get(n),activeCount:async time=>[...clocks.values()].filter(c=>c.expiresAt>time).length},
@@ -73,24 +75,24 @@ test('snapshot plus latest independent tail restores real refund, hold, closure 
   await replayVerifiedAuthorityTail({database:replay,custody,key,pointer,verification:checked,now:()=>at});
   for(const table of tables)assert.deepEqual(ordered(replay,table),expected.get(table));
   const prepared=await prepareAuthorityRestore({checkpointDatabase:independent,sourceDatabase:scratch,custody,key,boundary:pointer,id:'synthetic_latest_import',now:()=>at});
-  const options={role:'production-ops',databaseName:'wybp-prod-d1-r001',databaseId:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9',boundarySha256:pointer.sha256,snapshotSha256:prepared.provenance.snapshotSha256,job:'recovery_latest_tail',maxPages:25,now:at};
-  await assert.rejects(importProductionRestore(adapter(target),custody,key,prepared.plan,{...options,fault:()=>{throw Error('synthetic_import_response_lost');}}),/synthetic_import_response_lost/);
-  let imported;do{imported=await importProductionRestore(adapter(target),custody,key,prepared.plan,options);assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);assert.ok(++calls<550);}while(!imported.imported);
-  let verifiedTarget;do{verifiedTarget=await verifyProductionRestoreStep(adapter(target),custody,key,prepared.plan,options);assert.ok(++calls<650);}while(!verifiedTarget.verified);
+  const options={...targetIdentity,boundarySha256:pointer.sha256,snapshotSha256:prepared.provenance.snapshotSha256,job:'recovery_latest_tail',maxPages:25,now:at};
+  await assert.rejects(restoreImport(adapter(target),custody,key,prepared.plan,{...options,fault:()=>{throw Error('synthetic_import_response_lost');}}),/synthetic_import_response_lost/);
+  let imported;do{imported=await restoreImport(adapter(target),custody,key,prepared.plan,options);assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);assert.ok(++calls<550);}while(!imported.imported);
+  let verifiedTarget;do{verifiedTarget=await restoreVerify(adapter(target),custody,key,prepared.plan,options);assert.ok(++calls<650);}while(!verifiedTarget.verified);
   for(const table of tables)assert.deepEqual(ordered(target,table),expected.get(table));
   assert.deepEqual(target.prepare('PRAGMA foreign_key_check').all(),[]);assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);
   const releaseOptions={...options,now:()=>at};
-  await assert.rejects(finalizeProductionAuthorityRestore(adapter(target),custody,key,prepared.plan,pointer,checked,releaseOptions),'pre-import inventory cannot release after new plan objects were added');
+  await assert.rejects(restoreFinalize(adapter(target),custody,key,prepared.plan,pointer,checked,releaseOptions),'pre-import inventory cannot release after new plan objects were added');
   assert.equal(target.prepare('SELECT COUNT(*) n FROM retention_restore').get().n,0);
   let fresh,freshProgress=null;do{fresh=await verifyAuthorityBoundaryStep(independent,custody,key,pointer,freshProgress,{now:()=>at});freshProgress=fresh.progress;assert.ok(++calls<750);}while(!fresh.verified);
-  await assert.rejects(finalizeProductionAuthorityRestore(adapter(target),custody,key,prepared.plan,pointer,fresh,{...releaseOptions,databaseId:'wrong'}));
+  await assert.rejects(restoreFinalize(adapter(target),custody,key,prepared.plan,pointer,fresh,{...releaseOptions,databaseId:'wrong',identity:{...targetIdentity.identity,id:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'},resource:{...targetIdentity.resource,id:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'}}));
   let lost=true;const lostResponse={...adapter(target),batch:async rows=>{const result=await adapter(target).batch(rows);if(lost&&rows.some(r=>r.sql.startsWith('INSERT INTO retention_restore'))){lost=false;throw Error('synthetic_release_response_lost');}return result;}};
-  await assert.rejects(finalizeProductionAuthorityRestore(lostResponse,custody,key,prepared.plan,pointer,fresh,releaseOptions),/synthetic_release_response_lost/);
+  await assert.rejects(restoreFinalize(lostResponse,custody,key,prepared.plan,pointer,fresh,releaseOptions),/synthetic_release_response_lost/);
   await assert.rejects(assertRestoreReceipt(new Adapter(target),'a'.repeat(64)));
-  const released=await finalizeProductionAuthorityRestore(adapter(target),custody,key,prepared.plan,pointer,fresh,releaseOptions);
+  const released=await restoreFinalize(adapter(target),custody,key,prepared.plan,pointer,fresh,releaseOptions);
   assert.equal(released.sequence,tail.sequence);assert.equal(released.runtimeAccess,'blocked_pending_runtime_receipt_configuration');
   await assertRestoreReceipt(new Adapter(target),released.receipt);
-  assert.deepEqual(await finalizeProductionAuthorityRestore(adapter(target),custody,key,prepared.plan,pointer,fresh,releaseOptions),released);
+  assert.deepEqual(await restoreFinalize(adapter(target),custody,key,prepared.plan,pointer,fresh,releaseOptions),released);
   for(const table of tables)assert.deepEqual(ordered(target,table),expected.get(table));
   const unknown=createOperationId(at),event={operationId:unknown,sequence:tail.sequence+1,previousHash:body.head,intentHash:'f'.repeat(64),statements:[],createdAt:at,expiresAt:at+2592000000};await custody.put(unknown+'.intent',encryptRecord(event,key,unknown+'.intent'));
   await assert.rejects(prepareAuthorityRestore({checkpointDatabase:independent,sourceDatabase:unused,custody,key,boundary:pointer,id:'synthetic_tail_stale',now:()=>at}));assert.equal(unused.prepare("SELECT COUNT(*) n FROM sqlite_schema WHERE type='table'").get().n,0);

@@ -1,5 +1,22 @@
 # Existing website custody and rollback — 23 October 2026
 
+## 26 October mail authentication — no DNS/settings change
+
+Actual Namecheap account ShowDKIM confirms `default._domainkey` and its public
+key. Authoritative DNS has no such selector and no `_dmarc` record; a DMARC-like
+string is misplaced at the root TXT alongside the valid SPF record. The already
+approved external synthetic message in the correct owner Gmail now shows SPF PASS,
+DKIM FAIL (no key for selector default), DMARC FAIL. No message was resent and no
+raw headers, IP addresses or public key are recorded here.
+
+Prepare the exact provider DKIM value and a correctly located initial `p=none`
+DMARC record from verified account facts; preserve existing MX, valid SPF, unrelated
+TXT/subdomains, current legacy deployment and every rollback record. Changing this
+DNS and verifying it is still gated by the recorded conditional activation scope.
+A new externally received hosted synthetic confirmation needs explicit further
+send/capability approval; the old message is historical evidence. Do not rotate
+credentials, migrate mail, start a new email subscription or claim DKIM passes.
+
 ## Latest read-only continuity check and local correction
 
 Authoritative Netlify account API returned the complete existing zone:9 records,

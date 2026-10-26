@@ -4,6 +4,7 @@ import {createHash} from 'node:crypto';
 import {encryptRecord,encryptArchiveRecord,decryptRecord,recoveryHash} from './recovery-crypto.mjs';
 import {RETENTION_POLICY,RETENTION_DAY} from '../db/retentionPolicy.ts';
 import {assertBenchmarkResource} from './approved-benchmark-budget.mjs';
+import {assertMirrorIdentity} from '../worker/recoveryMirror.mjs';
 const windowMs=RETENTION_POLICY.backupDays*RETENTION_DAY;
 const reserved=new Set(['schema_migrations','d1_migrations','operational_authority_outbox','operational_recovery_checkpoints','retention_restore']);
 const quote=s=>'"'+s.replaceAll('"','""')+'"';
@@ -101,6 +102,20 @@ export async function importStreamedRestore(target,custody,key,pointer,{resource
  if(!/^synthetic_[a-zA-Z0-9_-]{1,70}$/.test(job))fail();
  return importRestore(target,custody,key,pointer,{job,maxPages,now,fault});
 }
+/** Explicit private mirror target; never impersonates a production/source DB. */
+export async function importMirrorRestore(target,custody,key,pointer,options={}){
+ assertMirrorIdentity(options.identity);if(!/^recovery_[a-zA-Z0-9_-]{1,60}$/.test(options.job||''))fail();
+ await mirrorProvenance(custody,key,pointer,options);
+ return importRestore(target,custody,key,pointer,{maxPages:10,now:Date.now(),fault:()=>{},...options});
+}
+export async function importRetainedSourceRestore(target,custody,key,pointer,options={}){
+ assertBenchmarkResource('database',options.resource);if(!/^recovery_[a-zA-Z0-9_-]{1,60}$/.test(options.job||''))fail();
+ await mirrorProvenance(custody,key,pointer,options);return importRestore(target,custody,key,pointer,{maxPages:10,now:Date.now(),fault:()=>{},...options});
+}
+async function mirrorProvenance(custody,key,pointer,options){
+ const manifest=await read(custody,key,pointer),p=manifest.provenance;
+ if(!p||!/^[a-f0-9]{64}$/.test(options.boundarySha256||'')||!/^[a-f0-9]{64}$/.test(options.snapshotSha256||'')||p.boundarySha256!==options.boundarySha256||p.snapshotSha256!==options.snapshotSha256||p.createdAt!==manifest.createdAt||p.expiresAt!==manifest.expiresAt)fail();return manifest;
+}
 /** Private production recovery only, into an empty matching-schema target.
  * This never deletes populated data, installs a receipt, migrates or grants access. */
 export async function importProductionRestore(target,custody,key,pointer,{role,databaseName,databaseId,boundarySha256,snapshotSha256,job,maxPages=10,now=Date.now(),fault=()=>{}}={}){
@@ -150,6 +165,22 @@ export async function verifyProductionRestoreStep(target,custody,key,pointer,opt
   {sql:"SELECT CASE WHEN EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id=?1 AND manifest_hash=?2 AND sequence=?3 AND head_hash=?4 AND expires_at=?5 AND state='complete') THEN 1 ELSE json('restore_verification_conflict') END",params:[job+'_verified',pointer.sha256,manifest.pages,manifest.schemaHash,manifest.expiresAt]},
  ]);
  return result;
+}
+export async function verifyMirrorRestoreStep(target,custody,key,pointer,options={}){
+ assertMirrorIdentity(options.identity);if(!/^recovery_[a-zA-Z0-9_-]{1,60}$/.test(options.job||''))fail();
+ return verifyProvenanceRestore(target,custody,key,pointer,options);
+}
+export async function verifyRetainedSourceRestoreStep(target,custody,key,pointer,options={}){
+ assertBenchmarkResource('database',options.resource);if(!/^recovery_[a-zA-Z0-9_-]{1,60}$/.test(options.job||''))fail();
+ return verifyProvenanceRestore(target,custody,key,pointer,options);
+}
+async function verifyProvenanceRestore(target,custody,key,pointer,options){
+ const manifest=await mirrorProvenance(custody,key,pointer,options),at=options.now??Date.now();
+ const result=await verifyRestore(target,custody,key,pointer,{maxPages:5,...options,now:at});
+ if(result.verified)await target.batch([
+  {sql:"INSERT INTO operational_recovery_checkpoints(id,kind,manifest_hash,sequence,head_hash,cursor,state,version,created_at,expires_at) VALUES(?1,'restore',?2,?3,?4,?5,'complete',1,?6,?7) ON CONFLICT(id) DO NOTHING",params:[options.job+'_verified',pointer.sha256,manifest.pages,manifest.schemaHash,at,manifest.createdAt,manifest.expiresAt]},
+  {sql:"SELECT CASE WHEN EXISTS(SELECT 1 FROM operational_recovery_checkpoints WHERE id=?1 AND manifest_hash=?2 AND sequence=?3 AND head_hash=?4 AND expires_at=?5 AND state='complete') THEN 1 ELSE json('mirror_verification_conflict') END",params:[options.job+'_verified',pointer.sha256,manifest.pages,manifest.schemaHash,manifest.expiresAt]},
+ ]);return result;
 }
 async function verifyRestore(target,custody,key,pointer,{job,maxPages,now}){
  if(!Number.isInteger(maxPages)||maxPages<1||maxPages>25)fail();

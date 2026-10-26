@@ -20,6 +20,8 @@
     "WYBP_FULL_INVENTORY_RECEIPT": "7f6cc6ffd12fc7b5bb17ba94a7d799b0ff151d3921c0a1cc5dcc60e5974c2ecc",
     "WYBP_ALERT_SENDER": "noreply@classesforculture.com",
     "WYBP_TEST_ALERT_APPROVED": "false",
+    "WYBP_SYNTHETIC_CONFIRMATION_MAIL_ENABLED": "false",
+    "WYBP_RECOVERY_WINDOWS_ENABLED": "false",
     "WYBP_HOSTED_REHEARSAL_ENABLED": "false"
   }
 }

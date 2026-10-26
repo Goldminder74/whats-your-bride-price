@@ -1,5 +1,5 @@
 import {productionPurchasePolicy,REQUESTED_SALES_COUNTRIES,type ConfirmationAuthority} from './purchaseConfirmationPolicy.ts';
-import {sellerDetailsFromRuntime} from './sellerDetails.ts';
+import {resolvePublicSellerDetails,sellerDetailsFromRuntime} from './sellerDetails.ts';
 import { deriveCommerceOwnerHash, validateCommerceConfiguration, type CommerceConfiguration } from "../db/commerceContracts.ts";
 import { CommerceService, D1CommerceRepository, InMemoryCommerceRateLimiter, InMemoryCommerceRepository, createReviewCommerceConfig } from "../db/commerce.ts";
 import { D1ResultCompletionRepository, ResultCompletionService } from "../db/resultCompletion.ts";
@@ -57,7 +57,7 @@ export async function getCommerceRuntime(): Promise<CommerceRuntime | null> {
   if (!database) return null;
   let confirmations,confirmationInfo;
   if(privateTestProfile==='off'){
-    const seller=sellerDetailsFromRuntime(runtime);let countries:unknown;try{countries=JSON.parse(String(runtime.WYBP_APPROVED_SALES_TERRITORIES_JSON||''));}catch{return null;}
+    const seller=await resolvePublicSellerDetails(runtime);let countries:unknown;try{countries=JSON.parse(String(runtime.WYBP_APPROVED_SALES_TERRITORIES_JSON||''));}catch{return null;}
     if(!seller||!Array.isArray(countries)||countries.slice().sort().join()!==REQUESTED_SALES_COUNTRIES.slice().sort().join())return null;
     try{confirmations=productionPurchasePolicy(seller,runtime.AUTHORITY as ConfirmationAuthority,countries);confirmationInfo={seller,countries};}catch{return null;}
   }

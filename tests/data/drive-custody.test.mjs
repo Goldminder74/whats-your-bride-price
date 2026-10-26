@@ -75,10 +75,32 @@ test('uncertain upload resumes across process replacement using the durable rese
  assert.equal(f.uploads,1);assert.equal(f.files.size,1);assert.deepEqual(await c.list(),['one.intent']);
  await assert.rejects(c.put('one.intent',Buffer.from('different')),/custody_conflict/);
 });
+test('fresh IDs avoid the redundant missing-file read; reservation races and 409 conflicts still verify immutable bytes',async()=>{
+ const f=fixture(),bytes=Buffer.from('synthetic immutable bytes');let reads=0;
+ const original=f.config.fetcher,fetcher=async(url,options)=>{if(url.includes('alt=media'))reads++;return original(url,options);};
+ await new DriveCustody({...f.config,fetcher}).put('one.intent',bytes);assert.equal(reads,1);assert.equal(f.uploads,1);
+ // Two writers both read an empty index before either reserves. The loser must
+ // read the winning ID; even a provider returning 409 must not bless new bytes.
+ const g=fixture();g.files.set('synthetic_file_001',{name:'race.intent',bytes});
+ await assert.rejects(new DriveCustody(g.config).put('race.intent',Buffer.from('different')),/custody_conflict/);assert.equal(g.uploads,1);
+ const h=fixture();h.files.set('synthetic_winning_id',{name:'race.intent',bytes});
+ const race={...h.config,index:{get:async()=>h.ids.get('race.intent'),reserve:async()=>{h.ids.set('race.intent','synthetic_winning_id');return 'synthetic_winning_id';}}};
+ assert.equal(await new DriveCustody(race).put('race.intent',bytes),recoveryHash(bytes));assert.equal(h.uploads,0);
+});
 test('readback corruption and incomplete inventory fail closed',async()=>{
  const f=fixture(),c=new DriveCustody(f.config);await c.put('one.intent',Buffer.from('encrypted'));
  f.files.get('synthetic_file_001').bytes=Buffer.from('tampered');await assert.rejects(c.put('one.intent',Buffer.from('encrypted')),/custody_conflict/);
  const other=new DriveCustody({...f.config,fetcher:async()=>Response.json({incompleteSearch:true,files:[]})});await assert.rejects(other.list(),/drive_inventory_incomplete/);
+});
+test('bounded pre-reservation persists winning IDs; create-only POST never overwrites a conflict or skips download verification',async()=>{
+ const f=fixture(),clocks={createdAt:1,expiresAt:2592000001};let allocations=0,reads=0;const fetcher=async(url,o)=>{if(url.includes('generateIds'))allocations++;if(url.includes('alt=media'))reads++;return f.config.fetcher(url,o);};
+ const index={...f.config.index,async recoverReserve(n,id){return f.config.index.reserve(n,id);}},c=new DriveCustody({...f.config,index,fetcher});
+ assert.deepEqual(await c.reserveFiles([{name:'stock.enc',clocks}]),[{name:'stock.enc',id:'synthetic_file_001'}]);assert.equal(allocations,1);
+ await c.reserveFiles([{name:'stock.enc',clocks}]);assert.equal(allocations,1);
+ const bytes=Buffer.from('synthetic verified archive');await c.put('stock.enc',bytes,clocks,{createOnly:true});assert.equal(reads,1);
+ await new DriveCustody({...f.config,index,fetcher}).put('stock.enc',bytes,clocks,{createOnly:true});assert.equal(f.files.size,1);assert.equal(reads,2);
+ await assert.rejects(c.put('stock.enc',Buffer.from('different'),clocks,{createOnly:true}),/custody_conflict/);assert.deepEqual(f.files.get('synthetic_file_001').bytes,bytes);
+ await assert.rejects(c.reserveFiles(Array.from({length:26},(_,i)=>({name:'stock'+i,clocks}))),/reservation_bounds/);
 });
 test('missing identity, oversized pages and unsafe names reject before upload',async()=>{
  assert.throws(()=>new DriveCustody({}),/configuration/);const f=fixture(),c=new DriveCustody(f.config);

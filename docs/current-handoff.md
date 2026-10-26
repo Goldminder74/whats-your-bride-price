@@ -1,5 +1,159 @@
 # Current handoff
 
+### 26 October — retained recovery integration; hosted launch still held
+
+Continuation of92f3940 onfeature/viral-build-sprint. Scoped SOURCE ONLY: no hosted
+resource/deployment/Secret/migration/DNS/Stripe/schedule/mail/subscription/spend
+change. Public legacy site, private game and financial data preserved; commerce,
+webhook, public access and production schedules remain OFF. GBP8 old-benchmark /
+GBP50 operating authority remains binding. Stopped authority and all unknown
+reservations remain; no175/200/225/250 approval or business subscription exists.
+Do not repeat settled seller/address/UK-only/18+/refund/support, Google/client/key,
+alert or owner-mail receipt setup. The conditional paid-launch authority still
+applies ONLY after every essential gate passes.
+
+**Completed local recovery evidence:** ignored
+outputs/launch-20261025/full-retained-recovery.json. Physical99-day source
+3,056,300,032bytes:495k completions,5,940,012 answer rows including protected example,
+21.5k incomplete attempts and550k wallets. Lost IDs rebuilt, source CLOSED before
+import, interrupted150,055-page import resumed; all nine compared gameplay/
+accounting/hold/closure/suppression tables match, FK check clean. No runtime receipt
+or access released.12,614 capture calls,6,003 import calls,3,003 verification calls,
+6,008 snapshot objects/447,766,140 encrypted bytes;12,164 total objects/901,961,067
+bytes. Elapsed9,194,966ms (2h33m14.966s) LOCAL, not hosted RTO. This reused physical
+source predates canonical helper wiring; it is mechanical stock evidence, not an
+approved hosted catalogue artifact. Its initial offline capture was frozen;
+concurrent source availability is separate passed mirror evidence. No30-day full
+snapshot-content or six-year full-volume financial recovery claim.
+
+**Financial volume:** actual local15k application-created contracts, signed fixture
+webhooks and accounting relationships PASS,146,317,312SQLite bytes,0 hosted calls/
+external emails. Fake local SMTP acceptance is explicitly NOT delivered mail.
+At the fixture cut, no backdating before approved catalogue publication. Original
+protected refund/hold/closed/deleted prototypes remain unchanged.555k conservative
+physical table/index writes per copy (1.665m for three); not provider telemetry.
+Evidence retained-purchase-stock-15000.json and retained-purchase-index-model.json.
+This was separate from the large gameplay archive. Future combined canonical
+fixture counts535k ordinary +15k paid wallets plus the protected prototype, and
+uses the exact approved catalogue manifest4b6883d08e9efceb336ab333bab0e67e0219d107693ec85b99757170dff8c22d.
+
+**Runtime/controller corrections:** real direct application, private authority,
+persistent global25/sec pacing/16 active/64 queue, durable jobs and encrypted
+checkpoints now connect in an inactive retained package. Original IDs/clocks,
+latest head and both complete-inventory preflight gates remain. Signed ingress
+during recovery is counted/denied before any source adapter is constructed.
+Crash-unknown work stops; no budget/deadline refund/reset. Settled child traces
+compact only after durable parent settlement. Repeated asset/inventory reads keep
+receipts, not every response body; missing bodies require a NEW metered read.
+Financial/fulfilment responses retain exact replay.25 same-shard uploads require
+exactly53 provider calls including readbacks. Source duration cap TIGHTENED to
+64,000,000GB-ms =64,000GB-seconds; old code had a1000x units error. No deployed grant
+changed. Actual one-game local delta:143D1 writes/1,809 reads/50 provider requests/
+5 objects/20,340 encrypted bytes, before mirror/purge/snapshots; not monthly CPU or
+throughput telemetry. Record retained-final-compiled.log.
+
+The complete private inventory proof is authenticated and checked against current
+head/index counts before materialisation. Every new scan refetches its first page.
+A lost-import retry originally reused a completed census after plan files were
+created: it correctly failed closed. Recovery now pins its verified plan BEFORE
+import in the encrypted session; resume reconciles the pending reply, checks the
+same current independent head and resumes that exact import. It must STILL obtain
+a fresh full post-import inventory/head proof; changed head fails before release.
+Original incident time, resource identity and cumulative usage remain. The final pinned-plan regression PASSES, including restored contract decryption,
+changed-head rejection and wrong-fixture-key rejection before upload. Evidence:
+retained-plan-resume-final.log7/7. Hosted fixture generation must encrypt immutable
+contracts under its SAME private benchmark key; the mechanical CLI uses an explicit
+public test key and is marked notForHostedUse. Local fixture preparation is capped
+at4hours after the measured15k preparation exceeded its earlier20minute bound;
+this is not a hosted clock extension or authority increase.
+
+**Validation:** final data integration472/472 pass with the disk-heavy controller
+case deliberately scheduled separately; that final controller now passes too
+(473 data cases covered). Final affected proof/session/controller/forecast7/7 PASS. Actual compiled
+retained1/1, four overlapping provider calls, strict40ms spacing, autonomous jobs,
+converted40-Cowrie/Royal contracts, failed/unknown sends, signed webhook retries,
+cleanup retaining unknown reservations PASS. Ops dry-run/compiled19/19 plus archive
+1/1; protected direct package2/2; unit328 plus affected ordinary-permission key2/2
+(no owner key check repeated); typecheck/lint pass; final source/diff release gate is recorded with this commit. Reuse unchanged evidence. Long logs, archives,
+keys, DBs and bundles are ignored, never Git content.
+
+Read-only provider facts: actual Namecheap default._domainkey/public key verified;
+authoritative DKIM selector and _dmarc absent; root TXT has misplaced DMARC text
+alongside valid SPF. Correct owner's already received24October Gmail original:
+SPF PASS, DKIM FAIL(no default key), DMARC FAIL. No resend/DNS change. Ticket
+NC-GME-4068 is still forwarded to specialist department, no current UK transfer/
+processing answer; its reply explicitly requests account username/Support PIN.
+That verification must be completed directly in the provider channel, never chat. New game SMTP is independent of legacy authentication email;
+protected direct continuity shell tests pass, canonical callback rehearsal remains.
+Legacy deployment retained; no unrecoverable function binary called a verified backup.
+
+Cloudflare existing Paid5USD, one paid18October invoice, observed0USD overage,
+low account usage; only prod/test DBs and test/prod-app/prod-ops Workers remain.
+Netlify observed458/1000 credits, Personal9USD, recharge Disabled;35 publications
+525credits,38,683 requests7.7credits and9.3bandwidthcredits shared across projects.
+These dated read-only observations are not enforceable provider caps. Use the
+working authenticated portals for fresh checks; do not repeatedly ask the owner.
+
+Google signed-in UK tariff: regular Starter Flexible7GBP/user/month before tax;
+ignore promotion.8.40GBP is an allowance, NOT a final account-specific quote or
+business agreement. Signup cannot be advanced under current authority: automatic
+review rejected entering business information because it may provision an account/
+trial. The form remains BLANK/unsubmitted; no account/trial/contract exists.
+Screenshot: outputs/launch-20261025/workspace-quote-gate.png. No new owner login needed.
+Consumer Drive still lacks a verified business DPA. Existing storage/email funded
+separately are not the proposed new business-custody subscription.
+
+Automatic review also rejected RETAINED_CONFIRMATION_MAIL binding to production
+ops because it expands privileged cross-worker access. NOT added/bypassed. Exact
+proposed exception is SyntheticConfirmationMail only, fixed synthetic recipient/
+payload, no financial/recovery/authority methods, OFF after ONE hosted labelled
+confirmation to the already-used owner Gmail AFTER verified DNS repair. This
+replaces an additional internal-only test; the old external webmail-send authority
+was used. No repeated operational alert. Explicit new capability/send approval is
+required, and contract/receipt/SPF/DKIM/DMARC must then be verified independently.
+
+**One proposed package:** revised-hosted-verification-2026-10-23.md. Offline
+retained-validation-forecast.mjs proves the old caps reject the full graph. No code
+cap expansion is installed. Proposed8m external/10m internal/150m D1 writes/110GB
+transfer/1.5b CPU-ms/10m DO requests/80m SQL writes plus all original storage/read/
+object/time guards. Preserve original business usage and the full old coordinator
+reservation upper bounds where final receipts are unavailable. Current envelope
+(including cleanup/prior)6.955m requests/118.677m D1 writes/81.548GB transfer/
+9.45m DO requests/74m writes/55,609.6GB-s; these are PROJECTIONS. Mandatory exact
+fixture/control admission before any signed grant. Proposed50-file cleanup batch
+is not implemented/approved; old25-file cleanup lacks phase margin. No112h window
+started.48h setup +REAL24h day +<=24h recovery +16h cleanup is a maximum, not a fixed
+wait; upload alone >=28h16m at measured53calls/25files and25starts/sec.
+
+At fresh >=40m included D1/DO writes and included duration/storage, tax/FX maximum
+cost model209.312GBP including all old8GBP reserve and the Workers month counted
+ONCE. Draft225GBP experiment /250GBP whole validation month leaves bounded margin
+with Netlify9.72 and provisional business custody8.40. Neither is approved; final
+quote/terms, provider response and capability scope prevent a purchase request.
+Ongoing50GBP fit remains UNVERIFIED;34.25/55.85/93.65 sensitivities at50/70/105m D1
+writes are assumptions, not bills or accepted alternative capacity. No downgrading
+5k/day +500/hour +48h outage; no paid upgrade/top-up/new service.
+
+Local cleanup preserved every byte:10 obsolete synthetic build copies archived
+and all2,630 files checksum-verified; current/referenced builds retained. The closed
+3.056GB mechanical source is now a verified ZIP64 archive (1.013GB), with full
+source/archive SHA256 receipts; original bytes recoverable, no app data touched.
+outputs/retained-stock/latest.json records sourceArchived/sourceArchive; restore
+and verify that file before any reuse. Large-test temporary ciphertext/keys/DBs
+were cleaned by its finally block. No hosted disposable resource existed to delete.
+
+Remaining sequence: commit/push validated scoped SOURCE, build the inactive
+package from that clean committed source; no deployment implied. Obtain permitted
+nonbinding business quote/
+contract facts, Namecheap answer and exact mail-only approval; then one complete
+spending/validation decision. After authorised hosted5k/500/backlog/recovery and
+confirmation pass, finish measured production cadence/config,0014/mirror, live
+Stripe return/webhook checks without a charge, controller-approved final privacy,
+protected legacy callback/DNS rollback rehearsal, then use existing conditional
+paid cutover authority. Legal/controller/provider facts are not invented.
+[Complete privacy candidate](final-privacy-review.md) and
+[assessment](launch-privacy-assessment.md) remain draft; approvedForProduction=false.
+
 ### Snapshot writer-availability correction and approved email — 24 October
 
 Continuation of31288ff. Validated SOURCE ONLY; private game and existing public

@@ -23,14 +23,14 @@ export class Adapter {
   prepare(sql){return new Statement(this.database,sql);}
   async batch(statements){if(this.beforeBatch){const hook=this.beforeBatch;this.beforeBatch=null;await hook();}this.database.exec("BEGIN IMMEDIATE");try{const results=statements.map((statement,index)=>{if(index===this.failAt)throw new Error("injected transactional failure");try {if(this.beforeStatement)this.beforeStatement(statement,index);return statement.execute();} catch(error) {this.lastFailure={index,message:error.message};throw error;}});this.database.exec("COMMIT");return results;}catch(error){this.database.exec("ROLLBACK");throw error;}}
 }
-export async function setup({previous=false,ready=true}={}) {
+export async function setup({previous=false,ready=true,initialiseCatalogue,at=now}={}) {
   const database=createIsolatedDatabase();const plan=await loadMigrationPlan();applyMigrationPlan(database,previous?plan.slice(0,10):plan,{now});
-  for(const statement of developmentSeedStatements(await buildDevelopmentSeed()))database.prepare(statement.sql).run(...statement.params);
+  if(initialiseCatalogue)await initialiseCatalogue(database);else for(const statement of developmentSeedStatements(await buildDevelopmentSeed()))database.prepare(statement.sql).run(...statement.params);
   // Synthetic published extras model the genuine human-review route, not machine verification.
-  if(ready)for(const region of ["west","east","north","central","south"]){const prototype={...database.prepare("SELECT * FROM questions WHERE stable_id=?").get(`${region}_q01`)};const columns=Object.keys(prototype);const insert=database.prepare(`INSERT INTO questions(${columns.map(name=>`"${name}"`).join(",")}) VALUES(${columns.map(()=>"?").join(",")})`);for(let i=0;i<18;i++){const row={...prototype,id:`question_local_d_${region}_${i}`,stable_id:`${region}_d_extra_${i}`,reviewed_by:"synthetic_test_human_reviewer",reviewed_at:now};insert.run(...columns.map(name=>row[name]));}}
-  const adapter=new Adapter(database);const repository=new D1CommerceRepository(adapter);const service=new CommerceService(repository,new InMemoryCommerceRateLimiter(),config,()=>now,{cowriePurchasesEnabled:true});
-  const walletRepository=new D1CowrieWalletRepository(adapter,new D1QuestionSelectionRepository(adapter));let byte=1;const walletService=new CowrieWalletService(walletRepository,{now:()=>now,randomSource:bytes=>{bytes.fill(byte++);return bytes;}});const created=await walletService.createOrGet({anonymousSessionCredential:credential});
-  return{database,adapter,repository,service,walletRepository,walletService,created,plan};
+  if(ready&&!initialiseCatalogue)for(const region of ["west","east","north","central","south"]){const prototype={...database.prepare("SELECT * FROM questions WHERE stable_id=?").get(`${region}_q01`)};const columns=Object.keys(prototype);const insert=database.prepare(`INSERT INTO questions(${columns.map(name=>`"${name}"`).join(",")}) VALUES(${columns.map(()=>"?").join(",")})`);for(let i=0;i<18;i++){const row={...prototype,id:`question_local_d_${region}_${i}`,stable_id:`${region}_d_extra_${i}`,reviewed_by:"synthetic_test_human_reviewer",reviewed_at:now};insert.run(...columns.map(name=>row[name]));}}
+  const adapter=new Adapter(database);const repository=new D1CommerceRepository(adapter);const service=new CommerceService(repository,new InMemoryCommerceRateLimiter(),config,()=>at,{cowriePurchasesEnabled:true});
+  const walletRepository=new D1CowrieWalletRepository(adapter,new D1QuestionSelectionRepository(adapter));let byte=1;const walletService=new CowrieWalletService(walletRepository,{now:()=>at,randomSource:bytes=>{bytes.fill(byte++);return bytes;}});const created=await walletService.createOrGet({anonymousSessionCredential:credential});
+  return{database,adapter,repository,service,walletRepository,walletService,created,plan,clock:at};
 }
 export function request(context,key="cowrie_5_v1",id="1") {return{productKey:key,walletReference:context.created.wallet.walletReference,anonymousSessionCredential:credential,idempotencyKey:id.repeat(32),immediateDeliveryConsent:true,consentNoticeVersion:COWRIE_DELIVERY_NOTICE_VERSION};}
 let eventNumber=0;

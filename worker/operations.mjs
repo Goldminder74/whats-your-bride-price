@@ -26,6 +26,16 @@ import {finalizeProductionAuthorityRestore} from '../scripts/finalize-authority-
 import {initialiseIndependentHead} from '../scripts/initialise-independent-head.mjs';
 import {initialiseRecoveryMirror,replayRecoveryMirrorStep,acknowledgeMirrorSnapshotStep,assertMirrorIdentity} from './recoveryMirror.mjs';
 import {advanceRecoveryMirrorSnapshot} from './recoveryMirrorCapture.mjs';
+import {recoveryWindowCustody} from '../scripts/windowed-drive-audit.mjs';
+import {verifyDriveRecordHeader} from '../scripts/drive-record-header.mjs';
+import {syntheticConfirmationMail} from './syntheticConfirmationMail.mjs';
+
+// A benchmark binding to this entrypoint gets ONLY the fixed, one-use synthetic
+// mail capability; no application-authority, seller-secret or recovery RPC.
+export class SyntheticConfirmationMail extends WorkerEntrypoint {
+  send(input){return syntheticConfirmationMail(this.env,connect)(input);}
+  fetch(){return new Response(null,{status:404});}
+}
 
 function runtime(env) {
   const alert = authorityMail(env, connect);
@@ -147,9 +157,14 @@ export class RecoveryOperator extends ApplicationAuthority {
       return await step(d1AuthorityAdapter(this.env.DB),configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),pointer,options);
     }catch{throw Error('operational_restore_step_unavailable');}
   }
+  #recoveryWindowRuntime(){
+    if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops'||this.env.WYBP_AUTHORITY_DATABASE_NAME!=='wybp-prod-d1-r001'||this.env.WYBP_RECOVERY_WINDOWS_ENABLED!=='true'||this.env.WYBP_PUBLIC_ACCESS_ENABLED!=='false'||this.env.WYBP_LIVE_WEBHOOK_ENABLED!=='false')throw Error('operational_recovery_window_disabled');return runtime(this.env);
+  }
+  async recoveryMetadataWindow(folder,cursor=null){const c=this.#recoveryWindowRuntime(),all=c.custody.all||[c.custody],part=all[folder];if(!Number.isInteger(folder)||!part)throw Error('operational_recovery_window_scope');if(c.custody.check)await c.custody.check(part);return part.auditWindow({cursor});}
+  async recoverSignedIndexStep(folder,cursor=null){const c=this.#recoveryWindowRuntime(),all=c.custody.all||[c.custody],part=all[folder],key=Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64');if(!Number.isInteger(folder)||!part)throw Error('operational_recovery_window_scope');recoveryWindowCustody(c.custody,key);if(c.custody.check)await c.custody.check(part);let count=0;for(let i=0;i<2;i++){const page=await part.auditPage({cursor,pageSize:25});for(const f of page.files){if(f.mimeType==='application/vnd.google-apps.folder'){if(folder!==0||!all.slice(1).some(p=>p.folderId===f.id))throw Error('operational_recovery_window_scope');continue;}const header=verifyDriveRecordHeader({key,folderId:part.folderId,fileId:f.id,name:f.name},f.appProperties);if(!header||header.createdAt>Date.now())throw Error('operational_recovery_window_scope');if(header.expiresAt>Date.now())await part.index.recoverReserve(f.name,f.id,header);}count+=page.files.length;cursor=page.cursor;if(cursor===null)break;}return {cursor,complete:cursor===null,count,runtimeAccess:'blocked_pending_verified_import_and_latest_authority'};}
   async verifyBoundaryStep(pointer,progress=null) {
     if(this.env.WYBP_OPERATIONS_ENABLED!=='true'||this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('operational_snapshot_disabled');
-    try {const configured=runtime(this.env);return await verifyAuthorityBoundaryStep(d1AuthorityAdapter(this.env.DB),configured.custody,Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64'),pointer,progress);}
+    try {const windowed=this.env.WYBP_RECOVERY_WINDOWS_ENABLED==='true',configured=windowed?this.#recoveryWindowRuntime():runtime(this.env),key=Buffer.from(this.env.WYBP_AUTHORITY_KEY_BASE64,'base64');if(windowed)recoveryWindowCustody(configured.custody,key);let result;for(let i=0;i<(windowed?5:1);i++){result=await verifyAuthorityBoundaryStep(d1AuthorityAdapter(this.env.DB),configured.custody,key,pointer,progress);progress=result.progress;if(result.verified)break;}return result;}
     catch {throw Error('operational_boundary_verification_unavailable');}
   }
   async deliverStep(boundaryId,progress=null) {

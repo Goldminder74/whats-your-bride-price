@@ -1,0 +1,15 @@
+// Explicit offline fixture only. This command cannot load a runtime or token.
+import {mkdir,writeFile,stat} from 'node:fs/promises';import {statfsSync} from 'node:fs';import {resolve} from 'node:path';import {DatabaseSync,backup} from 'node:sqlite';import {randomUUID} from 'node:crypto';
+import {approvedRetainedFixture} from '../tests/helpers/approvedRetainedFixture.mjs';import {populateRetainedStock,populateRetainedPurchases} from './retained-stock-fixture.mjs';
+if(process.argv.slice(2).join()!=='--local-only')throw Error('Use --local-only; no hosted mode exists');
+const root=resolve('outputs/retained-stock'),directory=resolve(root,'synthetic-'+randomUUID()),free=()=>{const f=statfsSync(process.cwd());return Number(f.bavail)*Number(f.bsize);};
+if(!directory.startsWith(root+'\\')&&!directory.startsWith(root+'/')||free()<8000000000)throw Error('local_stock_disk_headroom');
+// Public test key for synthetic contract-volume fixtures only. No customer
+// address/credential is loaded and this cannot validate production key custody.
+await mkdir(directory,{recursive:true});let context,database;const key=Buffer.alloc(32,7),started=Date.now(),at=Date.now(),localPreparationMaxMs=4*3600000;
+try{
+ context=await approvedRetainedFixture({populated:true,at});const purchaseStock=await populateRetainedPurchases(context,{key,at,checkpoint:()=>{if(Date.now()-started>localPreparationMaxMs||free()<3000000000)throw Error('local_stock_time_or_disk_stop');}});await backup(context.database,resolve(directory,'source.sqlite'));context.database.close();context=null;database=new DatabaseSync(resolve(directory,'source.sqlite'),{enableForeignKeyConstraints:true});
+ const report=populateRetainedStock(database,{at,wallets:535000,checkpoint:p=>{if(Date.now()-started>localPreparationMaxMs||free()<3000000000)throw Error('local_stock_time_or_disk_stop');if(p.wallets%50000===0)console.log(JSON.stringify({localOnly:true,wallets:p.wallets,elapsedMs:Date.now()-started}));}});report.purchaseStock=purchaseStock;report.localPreparationMaxMs=localPreparationMaxMs;report.notForHostedUse=true;report.syntheticContractKeyId='public-local-fixture-07';report.qualification+=' Additional15,000 synthetic paid wallets/contracts use the actual offline purchase path; total550,000 plus protected prototype.';
+ report.sourceBytes=(await stat(resolve(directory,'source.sqlite'))).size;report.elapsedMs=Date.now()-started;report.overdueAnswersBeyondSevenDayGrace=database.prepare("SELECT COUNT(*) n FROM answers a JOIN quiz_attempts q ON q.id=a.attempt_id WHERE q.id GLOB 'retained_attempt_*' AND q.status='completed' AND q.expires_at<=?").get(at-7*86400000).n;report.hostedRequests=0;report.runtimeAccess='none: offline synthetic file';
+ await writeFile(resolve(directory,'report.json'),JSON.stringify(report,null,2)+'\n');await writeFile(resolve(root,'latest.json'),JSON.stringify({directory,at,synthetic:true})+'\n');console.log(JSON.stringify({directory,...report}));
+}finally{context?.database.close();database?.close();key.fill(0);}

@@ -1,10 +1,257 @@
-# Revised launch verification — PROPOSED, NOT AUTHORISED
+# Retained-stock validation package — proposal, NOT spending authority
 
-23 October2026. This is a different retained-stock/direct-serving experiment, not
-another renewal of the stopped B/C window. No resource, spending or clock starts
-from this document. Existing GBP8/50 limits continue until explicitly replaced.
+26 October 2026. This supersedes the earlier £175/£200 proposal. It does not
+renew any stopped benchmark. The binding authorisation is still £8 for the old
+benchmark and £50/month operations. No new resource, paid account, grant, clock,
+DNS record, mail send or deployment has been started by this package.
 
-## 24 October execution status — no spending request yet
+## Engineering evidence and limits
+
+The inactive retained build connects the actual application, private authority,
+persistent pacing/jobs/receipts, encrypted ID-preserving custody and full-stock
+import/verification controllers. Global provider pacing is25 starts/sec,16 active,
+64 queued. Source availability is protected by the journal-fed mirror; only that
+mirror freezes for snapshots. Recovery denies even signed application ingress
+before constructing the serving-source adapter. Routine capture has no historical
+inventory census. All original financial/closure/deletion/hold readbacks remain.
+
+Compiled local tests pass overlap, pacing, actual game/refresh/completion,
+converted40-Cowrie/Royal confirmation output, webhook retries, failed/uncertain
+mail handling and cleanup after unknown work. No external email was sent by these
+tests. One instrumented synthetic game uses143 D1 writes,1,809 reads,50 provider
+requests and5 new custody objects; this excludes mirror/purge/snapshots. Local
+metadata streaming is not hosted recovery. Full physical99-day local recovery now
+passes495k completions/5,940,012 answers, lost IDs, source loss, interrupted import,
+exact protected rows and FK reconciliation in2h33m14.966s. The6008-object snapshot
+is447,766,140 encrypted bytes;30 such snapshots alone project13.433GB before
+journal/financial growth and margins. Separately,15k actual local synthetic
+contracts/accounting records occupy146,317,312SQLite bytes and add at most1.665m
+physical index writes across three copies. They were NOT in that large archive;
+the future combined hosted fixture must include them. Pinned-plan resume and
+post-import inventory/current-head/contract-decryption checks pass locally. A
+wrong fixture-encryption key rejects BEFORE upload; the public-key mechanical
+CLI artifact cannot be substituted for a private-key hosted fixture. The large physical99-day restore and
+latest private controller results are recorded in current-handoff.md with their
+actual qualifications; do not substitute them for hosted evidence.
+
+The old5m external/6m coordinator/50m coordinator-write caps reject the complete
+phase graph. Immutable assets and metadata now retain receipts rather than every
+response body; a lost read is reissued under a NEW counted identity. Financial
+responses preserve exact replay. Duration units were corrected by TIGHTENING the
+source cap to64,000,000 GB-ms =64,000 GB-seconds, not64million GB-seconds. Nothing
+changes a deployed grant. Unknown reservations and original incident clocks remain.
+
+## Proposed isolated resources and duration
+
+Use only one disposable wybp-capacity-worker-r002 with actual compiled direct
+application/assets, one SQLite pacing namespace, source wybp-capacity-d1-r002 and
+mirror wybp-capacity-recovery-d1-r002. At most two DBs active and three DB creations:
+recreate ONLY the journalled disposable mirror once as an empty recovery target.
+ONE synthetic custody root with16 children; no production folder/database/secret
+read capability. Inventory before creation; adopt only exact journalled IDs.
+No Netlify project/publication, public route, custom domain, Git connection,
+production schedule or live Stripe credential.
+
+Maximum112 hours:48 setup +REAL24-hour measurement +at most24 recovery +16 cleanup.
+Finish phases earlier when possible; this is a ceiling, not a compulsory112-hour
+wait. At25 starts/sec,25-file uploads require53 provider calls including readbacks;
+1.2m objects therefore take at least28h16m before other work. The proposed2.9m
+setup-request envelope is32h14m;1.95m recovery is21h40m, leaving limited24-hour RTO
+margin. Those are feasibility bounds, NOT timing guarantees. A shorter6-hour or
+25-game sample cannot establish this same retained-stock/day/RTO evidence. A real
+48-hour outage is unnecessary:120k overdue answer rows and queued authority with
+original clocks model it while new arrivals continue.
+
+## Exact workload and pass criteria
+
+-5,000 successful completed games in a real24 hours,500 completing within one
+ 60-minute peak window, all five regions; last starts leave10minutes to complete.
+ At most7,350 distinct starts/5,100 completions; scheduled5,000 completions plus
+ 2,150 abandonments,12 answers per completion/four per abandonment,1,000 seven-answer
+ refreshes, deterministic3% exact retries,12k rejected abuse calls,24k image checks,
+ 3k extra documents and14k cold sets of12 manifest-pinned assets. Results render
+ through the actual completion/client path; optional public result/sharing remains
+ OFF. This is not a browser/device performance or public-sharing-feature claim.
+-Physical495k completed attempts/results,5.94m answers,21.5k incomplete attempts,
+ 550k wallets including15k paid wallets, plus protected financial/hold/closed/
+ deleted prototypes. The15k synthetic contracts are created with actual order,
+ encrypted confirmation and signed fixture-webhook code at the fixture cut,
+ never backdated before catalogue publication. Local fixture SMTP is NOT real
+ mail evidence; these are not measured sales or six years of paid-order volume.
+-Up to1.2m random encrypted pressure objects with original generated clocks.
+ These establish cardinality/bytes, NOT1.2m financial acknowledgements or30 distinct
+ fully populated daily snapshots. Recover the actual full stock, real snapshot
+ and latest financial/refund/settlement/closure/deletion/hold tail. Report30-day
+ storage forecast from actual snapshot bytes separately.
+-Lose all file IDs, enumerate every unfiltered provider page, interrupt/retry
+ index reconstruction and import, preserve duplicate/unknown handling, verify
+ balances/FKs/holds/closed wallets/deletion suppression and latest independent
+ head before AND after import. Source unavailable to recovery; access stays
+ blocked until verified reconciliation. Incident-to-verified recovery <=24h.
+-Measure p50/p95/p99 service, queue, provider wait and full request latency
+ separately. Proposed p95 answer/result <=2s, start/completion <=10s. No unexplained
+ errors, accounting divergence, missing inventory pages or premature access.
+-Snapshot the mirror while source games continue; measure writer/fence latency.
+ Drain the48-hour backlog while normal arrivals continue, including all eligible
+ record families and unsuccessful passes. No held records become eligible.
+-At most20 synthetic orders/600 signed webhook deliveries incl30 retries and,
+ only if necessary,4 application-linked SANDBOX checkouts. No real charge. Verify
+ actual converted totals, saveable contract, refund/dispute review and retry safety.
+ ONE proposed hosted external confirmation, described below, is not yet authorised.
+
+## Admission ledger and caps — projections, not observed bills
+
+The reproducible OFFLINE calculator is scripts/retained-validation-forecast.mjs.
+It cannot change runtime caps or install authority. Ignored evidence:
+outputs/launch-20261025/retained-phase-cost-forecast.json. The actual compiled
+manifest's twelve largest immutable assets total2,480,236bytes;14k cold sets need
+34.723304GB before documents/images/API/custody traffic. This conservative asset
+weight is not a measured browser request distribution.
+
+| Phase | Counted external | Internal | D1 writes | DO requests | DO writes |
+|---|---:|---:|---:|---:|---:|
+| Setup |2.9m|3.3m|72m|4m|35m|
+| Measured day/maintenance |0.7m|0.9m|3m|1m|8m|
+| Complete recovery |1.95m|2.1m|43m|2.5m|16m|
+| Cleanup |1.4m|1.6m|0.5m|1.8m|14m|
+
+Prior business ledger:5,163 external,6,619 internal,177,396 writes,2,747,826 reads,
+324,768,009 transfer bytes,128 objects,3,141,284 custody bytes and80MB peak D1.
+Six unknown tickets remain held;15 carryover rows are not added twice. Preserve
+original SHA7bf7305c6d5b8170dacae2e4e4ce2924c3957b4a41be4d85def5581803e3769c.
+The deleted old coordinator has no exact final SQL receipt. Conservatively carry
+its FULL upper reservation:150k calls,1m SQL writes,2m reads,64MB,4,000GB-s plus
+25m CPU-ms. These are charged planning bounds, NOT observed consumption or zeroed
+unknowns. Hold the entire old£8 cost authority, less the already included$5 base.
+45/60 publication credits stay consumed; this experiment needs ZERO new ones.
+
+Proposed hard TOTAL caps (not installed/approved):8m external,10m internal,
+150m D1 writes,500m D1 reads,8GB per DB/16GB combined,110GB transfer,1.6m objects/
+18GB custody,1.5b CPU-ms,10m DO requests/80m DO writes/500m DO reads/3GB storage/
+64,000GB-s. Ordinary work stops before80% AND reserves cleanup, whichever is
+stricter. With prior upper bounds included, this projection is6,955,163 external,
+7,906,619 internal,118,677,396 D1 writes,350,747,826 reads,81.548072009GB transfer,
+1,271,128 objects/13.803141284GB,1.285b CPU-ms,9.45m DO requests/74m SQL writes/
+412m reads,2.3GB peak recorder and55,609.6GB-s duration. Gauges are peak, not sums.
+Actual receipts can differ: exact catalogue/contract fixture, control and cleanup
+counts must replace the envelopes before signing a grant; any failed admission
+means DO NOT START. No silent cap increase or further window is implied.
+
+Only additional cleanup change proposed:50 verified synthetic files per call
+instead of25, using existing50-record metadata windows, while retaining every
+folder/name/MAC/readback and pacing guard. It is not implemented/approved yet.
+The old25-file cleanup leaves insufficient16-hour margin at this cardinality.
+Cleanup must have a verified phase deadline before admitting its first object.
+
+## Itemised maximum cost and cancellation
+
+Require fresh authenticated whole-account headroom: >=40m D1 and >=40m DO included
+writes remaining,500m included reads each,64kGB-s and3GB-month DO headroom, no
+18November billing-period crossing, no automatic top-up, prior charges reconciled.
+The account already has Workers Paid; NEVER buy a duplicate plan. Observed this
+turn: one$5 paid18October invoice,$0 metered overage, Netlify458/1000 credits and
+recharge Disabled. These are dated observations, not future guarantees.
+
+| Item | Maximum USD | GBP at0.90GBP/USD plus20% tax allowance |
+|---|---:|---:|
+| Existing Workers month, counted once |5|5.40|
+| D1 writes150m less40m remaining inclusion |110|118.80|
+| CPU1.5b ms, no free CPU credited |30|32.40|
+| Requests8m, conservatively all billable |2.40|2.60|
+| Read/rounding allowance |0.50|0.54|
+| Source and mirror storage112h |2|2.16|
+| Coordinator requests10m |1.50|1.62|
+| Coordinator SQL writes80m less40m inclusion |40|43.20|
+| Subtotal |191.40|206.72|
+| Preserve remaining old£8 authority above base |—|2.60|
+| Additional safety margin |—|15.68|
+| Proposed experiment/first Workers-month ceiling |—|225.00|
+
+Existing Netlify£9.72 +experiment ceiling£225 +provisional business custody£8.40
+=£243.12, leaving£6.88 within a proposed£250 WHOLE validation-month ceiling.
+These replace, not add to, old£175/200 or provisional£150 figures. Neither£225/250
+nor a new subscription is approved. Separately funded consumer Drive and email
+remain separate; Stripe processing/dispute fees separate; external synthetic mail
+has no new email subscription. Subsequent operation remains subject to£50.
+
+No provider hard spending cap exists: software reserves BEFORE effects;100ms CPU
+limits, global pacing, strict vector/byte/object limits, alarms with immutable
+end time and80% ordinary stops are enforceable locally. Unknown effects keep their
+full reservations and stop work. At stop, suspend ordinary jobs, keep private
+access, run ONLY signed synthetic cleanup within escrow/deadline, delete exact
+journalled disposable IDs after retaining sanitised receipts. Never delete the
+serving/financial DB or restore an old ledger for front-end rollback. Delete
+custody/DO data and source/mirror objects; disabling a Worker alone does not stop
+storage billing. Existing Workers$5 and Netlify$9 subscriptions remain. Any new
+Flexible custody subscription cancels via its actual contract, with no assumed
+refund; cancellation/data-export terms must be in the final quote. No paid annual
+commitment, top-up, extra service, renewal or over-limit cleanup is authorised.
+
+## Provider, mail and final privacy prerequisites
+
+Google's signed-in UK page shows regular Starter Flexible£7/user/month before tax,
+with a temporary promotion deliberately ignored.£8.40 is aVAT allowance, NOT an
+account-specific final quote. There is no new account/trial/subscription/business
+contract. Consumer Drive has no verified business DPA. Need the final one-user
+quote, processing terms, UK transfer mechanism, cancellation and retention terms
+before asking for that purchase. Do not enable Gmail/changeMX or repeat OAuth.
+A public tariff cannot be passed off as the final quote. Automatic approval review
+blocked entering business information/advancing signup because it could provision
+an account/trial; no fields were entered. Only the unsubmitted form was inspected.
+Obtain explicit authority for the nonbinding quote/onboarding stage, or a written
+provider quote without signup. Any account/trial/contract/subscription step remains
+a distinct decision; no purchase is requested before a final quote.
+
+Namecheap ticket NC-GME-4068 is forwarded to its specialist department; its current
+applicable UK processing/transfer answer is still missing. The provider explicitly
+requests account username/Support PIN verification in its trusted support channel;
+never request those credentials in chat. Actual account DKIM
+selector default._domainkey/public key is verified. The one delivered24October
+message shows SPF PASS, DKIM FAIL(no key for default), DMARC FAIL. Prepare that
+TXT and correctly located initial _dmarc p=none; preserve valid SPF/MX/unrelated
+records. No DNS changed and old receipt cannot prove a later correction.
+
+Automatic review REJECTED benchmark-to-production-ops mail binding because it
+expands a privileged cross-worker capability. No binding was added or bypassed.
+Smallest new approval is precisely RETAINED_CONFIRMATION_MAIL ->
+wybp-prod-ops-r001 / SyntheticConfirmationMail, synthetic payload/fixed recipient
+only, no financial/authority/recovery method, OFF after one send; ONE additional
+labelled hosted application confirmation to the owner's already-used Gmail AFTER
+DNS correction, INSTEAD OF another internal-only noreply test. The previous one
+external webmail send was used. Receipt and SPF/DKIM/DMARC must be independently
+verified, alongside immutable contract and no duplicate fulfilment. Never repeat
+operational alerts. Extend recipient allowlist only under that explicit approval.
+
+Complete customer-facing privacy candidate: final-privacy-review.md. Concrete
+purpose/necessity/balancing, rights handling and children-access/residual risks:
+launch-privacy-assessment.md. Neither is falsely approved/published. Final provider
+paragraph must name actual contracted accounts/transfer terms, not unverified
+promises. Seller/address/UK-only/18+/14-day refund/support decisions are SETTLED;
+do not ask again. The complete notice needs controller approval after those facts.
+
+## Ongoing£50 and the actual launch decision
+
+The compiled one-game cost is local evidence, not a whole-account monthly bill.
+Source-only143 indexed writes/game projects21.45m/month at150k games BEFORE
+incompletes, mirror, financial activity, purge, snapshot indexes and other projects.
+A complete real day must measure these and storage. Illustrative unchanged
+whole-account assumptions (9m requests,200m CPU-ms,1b reads,10GB D1, other operations
+£3, Netlify$9, business custody£8.40,1.08GBP/USD tax/FX factor) give£34.25 at50m
+D1 writes,£55.85 at70m and£93.65 at105m. These are sensitivities, NOT verified£50
+readiness or a new operating approval. Forecast separately funded Drive/email and
+Stripe fees separately. Known£50 fit remains unproven and launch stays NO-GO.
+
+After the new hosted evidence, either5k/day +500/hour +48h backlog +24h recovery
+AND accepted operating costs pass, or present ONE concrete architecture/budget
+choice. Never downgrade the paid launch silently. Only then install the verified
+production mirror/config, measured bounded schedules/heartbeat, live Stripe return/
+webhook configuration without a real charge, protected legacy callback rehearsal,
+exact DNS rollback and final public check. Conditional cutover authority already
+exists; do not ask for it again, and do not activate with known defects.
+
+Pricing checked26October against primary [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/), [D1 pricing](https://developers.cloudflare.com/d1/platform/pricing/) and [Durable Objects pricing](https://developers.cloudflare.com/durable-objects/platform/pricing/). These public rates do not replace account headroom or the missing business-account quote.
+
+## Historical24 October execution status — lower proposal superseded above
 
 The owner authorised LOCAL snapshot correction, one Namecheap inquiry and one
 external synthetic email, not GBP175/200, a mirror resource or a backup subscription.

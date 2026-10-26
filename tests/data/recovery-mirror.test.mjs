@@ -11,7 +11,7 @@ import {encryptRecord,decryptRecord,recoveryHash} from '../../scripts/recovery-c
 import {createDriveRecordHeader} from '../../scripts/drive-record-header.mjs';
 import {verifyAuthorityBoundaryStep,boundedAuthorityStep} from '../../worker/boundedAuthority.mjs';
 import {prepareAuthorityRestore} from '../../scripts/authority-restore-plan.mjs';
-import {importProductionRestore,verifyProductionRestoreStep} from '../../scripts/streamed-d1-restore.mjs';
+import {importMirrorRestore,verifyMirrorRestoreStep} from '../../scripts/streamed-d1-restore.mjs';
 import {initialiseRecoveryMirror,replayRecoveryMirrorStep,acknowledgeMirrorSnapshotStep} from '../../worker/recoveryMirror.mjs';
 import {advanceRecoveryMirrorSnapshot} from '../../worker/recoveryMirrorCapture.mjs';
 import {discoverLatestAuthority,recoverSignedDriveIndex} from '../../scripts/discover-authority-tail.mjs';
@@ -37,8 +37,8 @@ async function fixture(){
  c.database.exec('BEGIN');try{for(let i=1;i<1000;i++){const id='synthetic_mirror_stock_'+i;addAttempt({...original,id,idempotency_key_hash:randomBytes(32).toString('hex')});addResult({...result,id:'synthetic_mirror_result_'+i,attempt_id:id,public_slug:randomBytes(24).toString('hex')});for(const[j,a]of answers.entries())addAnswer({...a,id:'synthetic_mirror_answer_'+i+'_'+j,attempt_id:id});}c.database.exec('COMMIT');}catch(error){c.database.exec('ROLLBACK');throw error;}
  const order=await c.service.startOrder(request(c));await c.service.webhook(await verified('checkout.session.completed',checkout(order)));
  let captured;do{captured=await service().advanceSnapshot('synthetic_mirror_bootstrap');}while(!captured.complete);
- const baseline={name:'synthetic_mirror_bootstrap.boundary',sha256:captured.receipt},prepared=await prepareAuthorityRestore({checkpointDatabase:adapter(journal),sourceDatabase:stage,custody,key,boundary:baseline,id:'synthetic_mirror_import',now:()=>at}),options={role:'production-ops',databaseName:'wybp-prod-d1-r001',databaseId:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9',job:'recovery_mirror_seed',maxPages:25,boundarySha256:baseline.sha256,snapshotSha256:prepared.provenance.snapshotSha256,now:at};
- let imported;do{imported=await importProductionRestore(target,custody,key,prepared.plan,options);}while(!imported.imported);let checked;do{checked=await verifyProductionRestoreStep(target,custody,key,prepared.plan,options);}while(!checked.verified);
+ const baseline={name:'synthetic_mirror_bootstrap.boundary',sha256:captured.receipt},prepared=await prepareAuthorityRestore({checkpointDatabase:adapter(journal),sourceDatabase:stage,custody,key,boundary:baseline,id:'synthetic_mirror_import',now:()=>at}),options={identity,job:'recovery_mirror_seed',maxPages:25,boundarySha256:baseline.sha256,snapshotSha256:prepared.provenance.snapshotSha256,now:at};
+ let imported;do{imported=await importMirrorRestore(target,custody,key,prepared.plan,options);}while(!imported.imported);let checked;do{checked=await verifyMirrorRestoreStep(target,custody,key,prepared.plan,options);}while(!checked.verified);
  const verify=async pointer=>{let result,p=null,n=0;do{result=await verifyAuthorityBoundaryStep(adapter(journal),custody,key,pointer,p,{now:()=>at});p=result.progress;assert.ok(++n<5000);}while(!result.verified);return result;};
  await initialiseRecoveryMirror(target,custody,key,prepared.plan,baseline,await verify(baseline),{identity,job:options.job,now:()=>at});
  return {...c,source,target,mirror,stage,journal,recovered,key,custody,files,ids,clocks,authority,service,order,start,at,verify,audits:()=>audits,close(){for(const db of [c.database,mirror,stage,journal,recovered])db.close();key.fill(0);}};

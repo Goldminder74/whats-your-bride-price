@@ -51,10 +51,23 @@ export class DriveCustody {
     if (bytes.length > 4 * 1024 * 1024) throw Error('drive_file_bounds');
     return bytes;
   }
-  async put(name, bytes, retention) {
+  async reserveFiles(files) {
+    // Fixture/segmented archive preparation only. Winning IDs and original
+    // clocks persist before upload; a lost reply cannot create a second file.
+    if(!Array.isArray(files)||!files.length||files.length>25||new Set(files.map(f=>f.name)).size!==files.length||typeof this.index.recoverReserve!=='function')throw Error('drive_reservation_bounds');
+    const result=[],missing=[];
+    for(const f of files){this.name(f.name);if(!f.clocks)throw Error('drive_retention_index_required');const id=await this.index.get(f.name);if(id){if(!valid(id))throw Error('drive_file_identity');result.push({name:f.name,id:await this.index.recoverReserve(f.name,id,f.clocks)});}else missing.push(f);}
+    if(missing.length){const response=await this.request('https://www.googleapis.com/drive/v3/files/generateIds?count='+missing.length+'&space=drive&type=files');if(!response.ok)throw Error('drive_generate_id');const ids=(await response.json()).ids;
+      if(!Array.isArray(ids)||ids.length!==missing.length||ids.some(id=>!valid(id))||new Set(ids).size!==ids.length)throw Error('drive_file_identity');
+      for(const [i,f]of missing.entries())result.push({name:f.name,id:await this.index.recoverReserve(f.name,ids[i],f.clocks)});
+    }
+    return result;
+  }
+  async put(name, bytes, retention, {createOnly=false}={}) {
+    if(typeof createOnly!=='boolean')throw Error('drive_upload_scope');
     this.name(name); bytes = Buffer.from(bytes);
     if (!bytes.length || bytes.length > 4 * 1024 * 1024) throw Error('drive_file_bounds');
-    let id = await this.index.get(name);
+    let id = await this.index.get(name), newlyReserved = false;
     if (retention && typeof this.index.recoverReserve !== 'function') throw Error('drive_retention_index_required');
     const reserve = proposed => retention ? this.index.recoverReserve(name, proposed, retention) : this.index.reserve(name, proposed);
     if (id) id = await reserve(id);
@@ -63,9 +76,13 @@ export class DriveCustody {
       if (!response.ok) throw Error('drive_generate_id');
       const proposed = (await response.json()).ids?.[0]; if (!valid(proposed)) throw Error('drive_file_identity');
       id = await reserve(proposed);
+      newlyReserved = id === proposed;
     }
     if (!valid(id)) throw Error('drive_file_identity');
-    const prior = await this.get(name);
+    // A provider-generated ID won by this reservation has no prior file to read.
+    // A competing reservation or a process retry still checks the winning ID.
+    // POST conflicts and every successful upload STILL require byte readback.
+    const prior = newlyReserved || createOnly ? null : await this.get(name);
     if (prior) { if (recoveryHash(prior) !== recoveryHash(bytes)) throw Error('custody_conflict'); return recoveryHash(bytes); }
     const boundary = 'wybp_' + crypto.randomUUID();
     let properties={wybpRecovery:'1'};
@@ -125,7 +142,11 @@ export class DriveCustody {
   /** One unfiltered parent page for a caller-persisted, fenced audit. A missing
    * app marker must not hide an unknown object from recovery/cleanup. */
   async auditPage({cursor=null,pageSize=10}={}) {
-    if(!Number.isInteger(pageSize)||pageSize<1||pageSize>25||(cursor!==null&&(typeof cursor!=='string'||!cursor||cursor.length>4096)))throw Error('drive_audit_bounds');
+    return this.#audit({cursor,pageSize},25);
+  }
+  async auditWindow({cursor=null}={}) {return this.#audit({cursor,pageSize:50},50);}
+  async #audit({cursor,pageSize},maximum) {
+    if(!Number.isInteger(pageSize)||pageSize<1||pageSize>maximum||(cursor!==null&&(typeof cursor!=='string'||!cursor||cursor.length>4096)))throw Error('drive_audit_bounds');
     const query=new URLSearchParams({q:"'"+this.folderId+"' in parents and trashed=false",fields:'nextPageToken,incompleteSearch,files(id,name,mimeType,parents,appProperties)',pageSize:String(pageSize),orderBy:'name'});if(cursor)query.set('pageToken',cursor);
     const response=await this.request('https://www.googleapis.com/drive/v3/files?'+query);if(!response.ok)throw Error('drive_audit_unavailable');
     const page=await response.json();if(page.incompleteSearch||!Array.isArray(page.files)||page.files.length>pageSize||(page.nextPageToken!==undefined&&(typeof page.nextPageToken!=='string'||!page.nextPageToken||page.nextPageToken.length>4096||page.nextPageToken===cursor)))throw Error('drive_audit_incomplete');

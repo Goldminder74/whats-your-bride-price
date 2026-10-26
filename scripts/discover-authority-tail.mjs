@@ -6,10 +6,16 @@ import {assertAuthorityStatements} from './authority-runtime.mjs';
 import {RETENTION_POLICY,RETENTION_DAY} from '../db/retentionPolicy.ts';
 const WINDOW=RETENTION_POLICY.backupDays*RETENTION_DAY,ZERO='0'.repeat(64);
 const hash=x=>recoveryHash(Buffer.from(JSON.stringify(x))),fail=()=>{throw Error('authority_discovery_unavailable');};
+// The explicit 5k/day retained-stock layout can exceed1m objects (30 days of
+// intents plus daily snapshots). Only the existing root+16 verified partitions
+// may opt into the1.6m bound; defaults/single-folder bounds stay unchanged.
+function limits(custody,maxFiles,maxPages){
+ if(!Number.isSafeInteger(maxFiles)||maxFiles<1||maxFiles>1000000&&(maxFiles>1600000||custody.all?.length!==17||typeof custody.check!=='function')||!Number.isSafeInteger(maxPages)||maxPages<1||maxPages>100000)fail();
+}
 async function read(custody,key,pointer){const bytes=await custody.get(pointer.name);if(!bytes||recoveryHash(bytes)!==pointer.sha256)fail();return decryptRecord(bytes,key,pointer.name);}
 async function immutable(custody,key,name,body,expiresAt){const old=await custody.get(name),bytes=old||encryptRecord(body,key,name);if(old&&hash(decryptRecord(old,key,name))!==hash(body))fail();await custody.put(name,bytes,{createdAt:expiresAt-WINDOW,expiresAt});if(recoveryHash(await custody.get(name))!==recoveryHash(bytes))fail();return {name,sha256:recoveryHash(bytes)};}
 export async function recoverSignedDriveIndex({custody,key,maxFiles=100000,maxPages=20000,now=Date.now,fault=()=>{}}){
- if(!Buffer.isBuffer(key)||key.length!==32||!Number.isSafeInteger(maxFiles)||maxFiles<1||maxFiles>1000000||!Number.isSafeInteger(maxPages)||maxPages<1||maxPages>100000)fail();
+ if(!Buffer.isBuffer(key)||key.length!==32)fail();limits(custody,maxFiles,maxPages);
  // Caller supplies a disk-backed uniqueness journal; this routine deliberately
  // does not retain an entire provider listing or change any ciphertext/clock.
  const all=custody.all||[custody];if(!all.length||all.length>17||new Set(all.map(c=>c.folderId)).size!==all.length)fail();let files=0,pages=0;
@@ -31,7 +37,7 @@ export async function recoverSignedDriveIndex({custody,key,maxFiles=100000,maxPa
  * The resulting boundary STILL needs independent verifyAuthorityBoundaryStep.
  */
 export async function discoverLatestAuthority({database,custody,key,snapshot,id,writersStopped,maxFiles=100000,maxPages=20000,now=Date.now,fault=()=>{}}){
- if(writersStopped!==true||!Buffer.isBuffer(key)||key.length!==32||!/^[a-zA-Z0-9_-]{1,65}$/.test(id||'')||!Number.isSafeInteger(maxFiles)||maxFiles<1||maxFiles>1000000||!Number.isSafeInteger(maxPages)||maxPages<1||maxPages>100000)fail();
+ if(writersStopped!==true||!Buffer.isBuffer(key)||key.length!==32||!/^[a-zA-Z0-9_-]{1,65}$/.test(id||''))fail();limits(custody,maxFiles,maxPages);
  const root=await read(custody,key,snapshot),at=now();if(![2,4].includes(root.version)||root.format!=='wybp-authority-boundary-v'+root.version||snapshot.name!==root.id+'.boundary'||root.expiresAt<=at||root.createdAt>at)fail();
  if(custody.supportsCommitHead!==true||typeof custody.readLatestCommitHead!=='function')fail();
  const latest=await custody.readLatestCommitHead();if(!latest||latest.createdAt>at||latest.expiresAt<=at||latest.sequence<root.sequence)fail();
