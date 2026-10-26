@@ -72,13 +72,16 @@ configuration. This is not a claim that providers retain no technical/security
 records. Pin the actual applicable contracts, roles, subprocessors and transfer
 records; do not claim UK-only processing from database location alone.
 
-Namecheap ticketNC-GME-4068 is still with its specialist team. The actual account
-shows selector `default._domainkey`; authoritative DNS currently has no record
-there. The existing root TXT contains misplaced DMARC text, while `_dmarc` has no
-record. The already delivered external synthetic message now has observed Gmail results:
-SPF PASS, DKIM FAIL (no key for the default selector), DMARC FAIL. No message was
-resent. These require an exact verified DNS correction and authentication readback
-under the recorded conditional cutover authority. Email DNS has not changed.
+Namecheap ticketNC-GME-4068 remains a provider-answer gate. Under the26October
+narrow owner approval, the verified2048-bit default._domainkey TXT and correctly
+located _dmarc TXT(v=DMARC1; p=none) were published. All four authoritative servers
+and Google's public resolver match. All nine original records remain unchanged,
+including MX/SPF and the misplaced old root TXT; class@, noreply@ and team@
+mailboxes remain with Private Email. The24October delivered message had SPF PASS,
+DKIM FAIL(no key for the default selector), DMARC FAIL. Those historical results
+do not describe the repaired DNS. One new hosted synthetic confirmation is
+approved after applicable hosted prerequisites; later receipt/header facts are
+still pending. No operational alert is repeated.
 
 Consumer Drive remains suitable only for the already authorised synthetic checks;
 a separately funded consumer storage entitlement is not a business processor

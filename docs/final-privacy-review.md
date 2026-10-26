@@ -161,9 +161,17 @@ communicated before they take effect and any necessary consent will be obtained.
    Code is inapplicable. High-privacy defaults reduce risk but do not by themselves
    establish legal sufficiency. Do not add identity/age-verification services or
    collect birth dates without a separate justified decision.
-6. External synthetic email receipt is confirmed by owner. DKIM/SPF/DMARC header
-   facts remain unverified; no DNS change or repeated external send is approved.
-   Hosted immutable confirmation/SMTP retry validation is a separate technical gate.
+6. Owner confirmed receipt of the24October external synthetic email. Its original
+   showed SPF PASS, DKIM FAIL(no selector key), DMARC FAIL. Under the26October
+   narrow approval, default._domainkey and _dmarc p=none TXT records are now
+   published: all four authoritative servers and Google's public resolver match;
+   all nine pre-existing records, including Private Email MX/SPF, are unchanged.
+   This is DNS evidence, not a later delivered-message authentication result.
+   ONE further labelled hosted synthetic confirmation to the approved owner Gmail
+   is authorised after applicable hosted prerequisites, with the mail-only
+   capability disabled afterwards. That send, receipt and header verification
+   remain pending. Never repeat the passed operational alert. Hosted immutable
+   confirmation/SMTP retry validation is a separate technical gate.
 
 ## Verified primary references
 

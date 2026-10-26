@@ -1,5 +1,74 @@
 # Current handoff
 
+### 26 October — approved email DNS repair and narrow mail capability
+
+Continuation of060543d. Owner approved quote-only Workspace preparation,
+restricted Namecheap username/Support PIN verification forNC-GME-4068, exactly two
+email-authentication TXT additions and ONE hosted labelled synthetic confirmation
+to the existing owner Gmail after applicable hosted authority. These supersede
+earlier quote-entry/mail-capability refusals only within that scope. No new account,
+trial, contract, subscription, benchmark window or spending approval exists.
+Old stopped reservations/GBP8 authority and GBP50 operating ceiling remain intact.
+
+**Published/verified:** default._domainkey TXT(public2048-bit Namecheap key) and
+_dmarc TXT(v=DMARC1; p=none), TTL3600, IDs6adfacfa0d30d2a5d00f49f1 and
+6adfacfbe0a5c042219e067a. All four authoritative servers and Google's public resolver
+match; Cloudflare DoH was unavailable, not a disagreement. Fresh API comparison:
+9 original records to11, all nine originals unchanged, including MX/SPF, website
+and unrelated records; no nameserver change. Existing Private Email mailboxes
+class@, noreply@ and team@ are preserved. Workspace is proposed BACKUP custody
+only, not Gmail/MX migration. Ignored evidence:outputs/launch-20261026-provider/
+dns-change-evidence.json,dns-publication-verification.json,published-email-dns.png
+and published-email-dkim.png. No later message-authentication pass is claimed;
+24October headers remain historical SPF PASS/DKIM FAIL/DMARC FAIL.
+
+**Local implementation:** default retained package still has four SELF bindings.
+Explicit --with-approved-synthetic-mail adds ONLY RETAINED_CONFIRMATION_MAIL ->
+wybp-prod-ops-r001 / SyntheticConfirmationMail and owner-approved-2026-10-26
+manifest marker. Exact service/entrypoint/attributes are checked; missing marker,
+extra environment, duplicates, ApplicationAuthority or RecoveryOperator reject.
+Marker is not a hosted grant. Mail permits only approved owner Gmail, synthetic
+address, canonical terms/version/adult consent/prices and fixed test label.
+Existing one-use claim precedes SMTP and is never reset after failure/unknown.
+Concurrent success submits once and returns accepted=true/receiptVerified=false;
+no customer/financial record changes. Production flag remains OFF; no runtime
+deployed, external hosted email or repeated operational alert sent.
+
+**Affected validation:**8 mail/release/session cases PASS; compiled actual
+application1/1 PASS(converted40-Cowrie/Royal confirmations, signed-webhook retries,
+failed/uncertain sends, four overlapping provider calls, no duplicate fulfilment,
+0 external sends); operations dry-run/compiled19/19 plus archive1/1 PASS. Lint and
+typecheck PASS. Initial sandbox atomic checkpoint rename EPERM passed under normal
+local permissions, assertions unchanged. Logs:mail-capability-tests,retained-mail-
+compiled,operations-checks,lint,typecheck under that ignored evidence directory.
+Physical99-day recovery evidence is reused, not rerun. The opt-in package is
+inactive, grantInstalled=false/deployed=false, public/webhook/operations OFF;
+pin its clean committed-source successor before materialisation. No stopped clock
+or allowance reset, hosted resource creation, schedule or payment change.
+
+**Provider work:** owner signed into Namecheap; Private Email specialist joined
+existing-ticket inquiry. Existing username/PIN submitted ONLY through authenticated
+Namecheap embedded live support, never ordinary email/Git/logs. Await explicit
+verification/current processing and UK transfer answer; do not repeat sign-in or
+request credentials in chat. Browser support tab3. Approved nonbinding Workspace
+fields Classes for Culture/one person/UK entered; existing-domain flow now stops
+at blank username/password/Agree and continue, which accepts account/free-trial
+terms BEFORE a final quote. Unsubmitted: no account/trial/contract. Obtain written
+nonbinding quote or separate authority for that boundary. Do not tell owner to
+create credentials or repeat Google/OAuth setup. All three Private Email mailboxes
+must remain unchanged.
+
+**Remaining gates:** final backup quote/business terms/subscription decision;
+Namecheap current processing/UK-transfer answer; hosted confirmation receipt/header
+verification; newly approved executable retained-stock/5k-day/500-hour/outage test
+with cumulative metering and measured GBP50 viability.225/250 proposal is NOT
+approved and old authority remains stopped. Then production mirror/config/0014/
+measured schedules, final privacy/controller review, canonical legacy email
+callback/rollback and no-charge live Stripe return/webhook checks. Conditional
+paid-cutover authority applies ONLY after all essential gates; no public paid
+launch claim or activation. Provider/privacy documents reflect the new narrow
+approval without pretending final facts or hosted evidence exist.
+
 ### 26 October — retained recovery integration; hosted launch still held
 
 Runtime sourcec0bc716165d62eb7315c496337071ea30829d130 was committed/pushed on

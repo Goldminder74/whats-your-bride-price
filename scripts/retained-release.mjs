@@ -1,5 +1,6 @@
 // Offline release validation/materialisation only: no credentials or API client.
 import {readFile,writeFile,readdir,mkdir,realpath,lstat} from 'node:fs/promises';import {resolve,dirname,sep} from 'node:path';import {createHash} from 'node:crypto';
+import {assertRetainedServices} from './retained-mail-capability.mjs';
 import {retainedIdentity,RETAINED_ORIGIN,RETAINED_ACCOUNT} from '../worker/retainedBenchmarkPolicy.mjs';
 const hash=b=>createHash('sha256').update(b).digest('hex'),fail=()=>{throw Error('retained_release_unavailable');};
 const safe=p=>typeof p==='string'&&/^(?:server|client)\/[A-Za-z0-9_./@~-]+$/.test(p)&&!p.split('/').some(v=>!v||v==='..'||v.startsWith('.'))&&!p.endsWith('.map');
@@ -13,8 +14,8 @@ export async function verifyRetainedRelease(directory){
  const config=JSON.parse(await readFile(resolve(root,'wrangler.json'),'utf8'));retainedIdentity(config.vars);
  if(config.name!=='wybp-capacity-worker-r002'||config.account_id!==RETAINED_ACCOUNT||config.main!=='server/index.js'||config.no_bundle!==true||config.limits?.cpu_ms!==100||config.preview_urls!==false||config.observability?.enabled!==false||config.vars.WYBP_RETAINED_BENCHMARK_ENABLED!=='false'||config.triggers||config.routes||config.env||config.workflows||config.queues)fail();
  if(config.d1_databases?.map(v=>v.binding).sort().join()!=='DB,MIRROR_DB'||config.d1_databases.some(v=>v.database_id!==config.vars[v.binding==='DB'?'WYBP_BENCHMARK_DATABASE_ID':'WYBP_MIRROR_DATABASE_ID']||v.database_name!==config.vars[v.binding==='DB'?'WYBP_BENCHMARK_DATABASE_NAME':'WYBP_MIRROR_DATABASE_NAME']))fail();
- const expected={RETAINED_AUTHORITY:'RetainedAuthority',RETAINED_OPERATOR:'RetainedOperator',RETAINED_JOB_RUNNER:'RetainedJobRunner',RETAINED_APPLICATION:undefined};
- if(config.services?.length!==4||new Set(config.services.map(s=>s.binding)).size!==4||config.services.some(s=>!Object.hasOwn(expected,s.binding)||s.service!=='wybp-capacity-worker-r002'||s.entrypoint!==expected[s.binding])||JSON.stringify(config.durable_objects?.bindings)!==JSON.stringify([{name:'RETAINED_COORDINATOR',class_name:'RetainedCoordinator'}])||JSON.stringify(config.migrations)!==JSON.stringify([{tag:'retained-coordinator-r001',new_sqlite_classes:['RetainedCoordinator']}]))fail();
+ assertRetainedServices(config.services,manifest.syntheticMailApproval);
+ if(JSON.stringify(config.durable_objects?.bindings)!==JSON.stringify([{name:'RETAINED_COORDINATOR',class_name:'RetainedCoordinator'}])||JSON.stringify(config.migrations)!==JSON.stringify([{tag:'retained-coordinator-r001',new_sqlite_classes:['RetainedCoordinator']}]))fail();
  return {manifest,config,root};
 }
 export async function materializeRetainedRelease(directory,destination,resources){

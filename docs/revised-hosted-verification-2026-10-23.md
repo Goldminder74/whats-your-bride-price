@@ -3,7 +3,11 @@
 26 October 2026. This supersedes the earlier £175/£200 proposal. It does not
 renew any stopped benchmark. The binding authorisation is still £8 for the old
 benchmark and £50/month operations. No new resource, paid account, grant, clock,
-DNS record, mail send or deployment has been started by this package.
+mail send or deployment has been started by this package. Separate26October
+authority covers only two email-authentication TXT additions(now published),
+nonbinding backup quote preparation, restricted Namecheap ownership verification
+and one narrowly constrained synthetic mail test. It does not approve this larger
+benchmark, a new account/trial/contract/subscription or broader DNS changes.
 
 ## Engineering evidence and limits
 
@@ -97,7 +101,8 @@ original clocks model it while new arrivals continue.
 -At most20 synthetic orders/600 signed webhook deliveries incl30 retries and,
  only if necessary,4 application-linked SANDBOX checkouts. No real charge. Verify
  actual converted totals, saveable contract, refund/dispute review and retry safety.
- ONE proposed hosted external confirmation, described below, is not yet authorised.
+ ONE hosted external confirmation has separate26October mail-only approval,
+ described below; applicable hosted execution prerequisites still apply.
 
 ## Admission ledger and caps — projections, not observed bills
 
@@ -195,32 +200,41 @@ account-specific final quote. There is no new account/trial/subscription/busines
 contract. Consumer Drive has no verified business DPA. Need the final one-user
 quote, processing terms, UK transfer mechanism, cancellation and retention terms
 before asking for that purchase. Do not enable Gmail/changeMX or repeat OAuth.
-A public tariff cannot be passed off as the final quote. Automatic approval review
-blocked entering business information/advancing signup because it could provision
-an account/trial; no fields were entered. Only the unsubmitted form was inspected.
-Obtain explicit authority for the nonbinding quote/onboarding stage, or a written
-provider quote without signup. Any account/trial/contract/subscription step remains
-a distinct decision; no purchase is requested before a final quote.
+A public tariff cannot be passed off as the final quote. Owner subsequently
+approved entering Classes for Culture, one person and United Kingdom solely for
+quote preparation. The existing-domain flow now reaches a blank username/password
+page: Agree and continue accepts Workspace/free-trial terms before any final
+account quote. It remains unsubmitted. A written nonbinding quote or separate
+account/trial authority is needed to cross that boundary; no new Google/OAuth
+setup or existing-email migration is requested. Any account/trial/contract/
+subscription step remains a distinct decision.
 
 Namecheap ticket NC-GME-4068 is forwarded to its specialist department; its current
 applicable UK processing/transfer answer is still missing. The provider explicitly
 requests account username/Support PIN verification in its trusted support channel;
 never request those credentials in chat. Actual account DKIM
 selector default._domainkey/public key is verified. The one delivered24October
-message shows SPF PASS, DKIM FAIL(no key for default), DMARC FAIL. Prepare that
-TXT and correctly located initial _dmarc p=none; preserve valid SPF/MX/unrelated
-records. No DNS changed and old receipt cannot prove a later correction.
+message shows SPF PASS, DKIM FAIL(no key for default), DMARC FAIL. The DKIM
+TXT and correctly located initial _dmarc p=none were separately approved and
+published26October. All four authoritative servers and Google's public resolver
+match; all nine old records, including SPF/MX, remain unchanged. A Cloudflare DoH
+probe was unavailable, not a contradictory DNS result. Old email receipt cannot
+prove later message authentication. The owner approved using the existing username
+and Support PIN only in authenticated Namecheap support for this ticket; never
+include those values in Git, ordinary email, logs or reports.
 
-Automatic review REJECTED benchmark-to-production-ops mail binding because it
-expands a privileged cross-worker capability. No binding was added or bypassed.
-Smallest new approval is precisely RETAINED_CONFIRMATION_MAIL ->
-wybp-prod-ops-r001 / SyntheticConfirmationMail, synthetic payload/fixed recipient
-only, no financial/authority/recovery method, OFF after one send; ONE additional
-labelled hosted application confirmation to the owner's already-used Gmail AFTER
-DNS correction, INSTEAD OF another internal-only noreply test. The previous one
-external webmail send was used. Receipt and SPF/DKIM/DMARC must be independently
-verified, alongside immutable contract and no duplicate fulfilment. Never repeat
-operational alerts. Extend recipient allowlist only under that explicit approval.
+The26October owner approval explicitly permits only RETAINED_CONFIRMATION_MAIL ->
+wybp-prod-ops-r001 / SyntheticConfirmationMail, synthetic payload and fixed owner
+Gmail recipient, no financial/authority/recovery methods, OFF after ONE send.
+Source packaging now opts in only through --with-approved-synthetic-mail; the
+default retains four SELF bindings. The verifier requires the exact approval
+marker and exact fifth service/entrypoint with no extra environment/attributes.
+This offline package marker grants no hosted benchmark window. The one-use durable
+mail claim precedes SMTP; failure/unknown outcome cannot automatically resend.
+The previous external webmail send was used; this approved hosted confirmation
+replaces another internal-only noreply test. Actual send, receipt and SPF/DKIM/
+DMARC must be independently verified with immutable contract/no duplicate
+fulfilment. Never repeat operational alerts or use arbitrary recipients.
 
 Complete customer-facing privacy candidate: final-privacy-review.md. Concrete
 purpose/necessity/balancing, rights handling and children-access/residual risks:

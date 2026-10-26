@@ -1,10 +1,10 @@
 import {privateEmailTransport} from './authorityMail.mjs';import {purchaseConfirmationText} from './purchaseConfirmationMail.mjs';
-import {PURCHASE_TERMS,COWRIE_PURCHASE_CONSENT,ROYAL_PURCHASE_CONSENT} from '../app/purchaseTerms.ts';
+import {PURCHASE_TERMS,PURCHASE_TERMS_VERSION,COWRIE_PURCHASE_CONSENT,ROYAL_PURCHASE_CONSENT} from '../app/purchaseTerms.ts';
 const fail=()=>{throw Error('synthetic_confirmation_mail_unavailable');};
 export function syntheticConfirmationPayload(input){
  const c=input?.contract,s=c?.seller;
- if(input?.recipient!=='noreply@classesforculture.com'||!s||s.legalName!=='Ayodele Ayeni'||s.tradingName!=='Classes for Culture'||s.geographicalAddress!=='Synthetic seller address only'||s.complaintsAddress!==null||s.telephone!==null||s.supportEmail!=='team@classesforculture.com'||s.privacyEmail!=='team@classesforculture.com'||c.terms!==PURCHASE_TERMS||c.consent?.text!==(c.productKey==='royal_reveal_v1'?ROYAL_PURCHASE_CONSENT:COWRIE_PURCHASE_CONSENT)||c.originalAmountMinor!==({cowrie_5_v1:199,cowrie_15_v1:499,cowrie_40_v1:999,royal_reveal_v1:199})[c.productKey])fail();
- return {to:'noreply@classesforculture.com',subject:'[TEST - synthetic data] WYBP hosted purchase confirmation',body:purchaseConfirmationText(c)};
+ if(input?.recipient!=='ayo.m.ayeni@gmail.com'||!s||s.legalName!=='Ayodele Ayeni'||s.tradingName!=='Classes for Culture'||s.geographicalAddress!=='Synthetic seller address only'||s.complaintsAddress!==null||s.telephone!==null||s.supportEmail!=='team@classesforculture.com'||s.privacyEmail!=='team@classesforculture.com'||c.terms!==PURCHASE_TERMS||c.termsVersion!==PURCHASE_TERMS_VERSION||c.consent?.adultPurchase!==true||c.consent?.text!==(c.productKey==='royal_reveal_v1'?ROYAL_PURCHASE_CONSENT:COWRIE_PURCHASE_CONSENT)||c.originalAmountMinor!==({cowrie_5_v1:199,cowrie_15_v1:499,cowrie_40_v1:999,royal_reveal_v1:199})[c.productKey])fail();
+ return {to:'ayo.m.ayeni@gmail.com',subject:'[TEST - synthetic data] WYBP hosted purchase confirmation',body:'[TEST - synthetic data]\nNo real purchase or charge.\n\n'+purchaseConfirmationText(c)};
 }
 export function syntheticConfirmationMail(env,connect){
  return async input=>{
