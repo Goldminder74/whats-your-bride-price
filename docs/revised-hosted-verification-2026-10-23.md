@@ -220,9 +220,11 @@ no backup/fixture uploads, billing details, paid activation or MX/Gmail change.
 The displayed agreement/use restrictions, applicable paid CDPA/UK safeguards and
 cancellation must be checked against the actual final account before acceptance;
 the current generic terms page is a different12October2026 version. No legal
-approval is inferred from storage availability. Owner decision requested only for
-the new GBP0 account/trial/contract boundary; earlier quote-only permission and
-existing OAuth setup are not being repeated.
+approval is inferred from storage availability. Owner subsequently approved the
+GBP0 quote-only account/trial/contract boundary after reviewing the agreements.
+Direct owner entry of the new administrator password is pending; no account/trial
+creation is yet observed. No billing details, paid plan, archive/fixture uploads
+or Gmail/MX change is allowed. Earlier OAuth setup is not being repeated.
 
 Namecheap ticket NC-GME-4068 is forwarded to its specialist department; its current
 applicable UK processing/transfer answer is still missing. The provider explicitly
@@ -241,7 +243,12 @@ At20:14UTC26October the live specialist said Legal and Abuse had been asked to
 prioritise this existing email; no ETA was given(legal cases can take longer than
 the ordinary response target). This is escalation evidence, not a processing or
 UK-transfer answer. Ownership-verification attachment confirmation was requested
-in that same authenticated chat; no further owner login is currently required.
+in that same authenticated chat. At20:32 the agent recommended email verification,
+then the chat expired at20:47 without attachment confirmation. Username/PIN were
+NOT sent by ordinary email. A credential-free reply on the existing verified
+pesupport@namecheap.com thread asks for prior-chat verification or a secure route
+and the outstanding provider facts; its Sent copy is verified. No further owner
+login is currently required and no substantive legal/provider answer is implied.
 
 The26October owner approval explicitly permits only RETAINED_CONFIRMATION_MAIL ->
 wybp-prod-ops-r001 / SyntheticConfirmationMail, synthetic payload and fixed owner

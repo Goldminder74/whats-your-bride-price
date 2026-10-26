@@ -1,5 +1,42 @@
 # Current handoff
 
+### 26 October — GBP0 quote-only trial approved; direct credential step pending
+
+Owner now explicitly approves crossing the new Workspace account/trial/contract
+boundary after reviewing its agreements. This supersedes only the earlier
+quote-only restriction: NO billing details, paid plan, backup/fixture uploads,
+customer archives, Gmail activation or MX changes. No subscription or larger
+benchmark spending approval. The existing signup tab10 still shows Create a
+username; account/trial creation is NOT yet observed. Owner was guided to enter
+backup-operator and a new password directly in Google, save the login securely,
+click the already approved Agree and continue, then stop at the next screen and
+report only its heading. Never ask for the password or repeat Google project,
+OAuth, runtime Secret, seller-address, key or alert setup. After hand-back, inspect
+the actual next step and obtain the final quote within these unchanged limits;
+do not ask for the same trial/terms approval again. Trial terms2.6 still prohibit
+personal-data use and exclude the DPA; quote-stage account is not production custody.
+
+**Namecheap update:** live specialist recommended replying by email for
+verification at20:32, then ended the chat at20:47(displayed chat times). They did
+NOT confirm that chat verification was attached toNC-GME-4068. Owner's restriction
+still forbids sending username/PIN by ordinary email. One credential-free reply
+was therefore sent on the EXISTING thread to its verified pesupport@namecheap.com
+address: asks the provider to use the already supplied authenticated verification
+or offer a secure route, and answer the current processing/UK-transfer/subprocessor/
+retention questions. Sent-folder subject, recipient and complete new body verified;
+no credential included. No new ticket/service/email/DNS change or test confirmation.
+Ignored proof:namecheap-credential-free-followup-sent.png under the existing
+outputs/launch-20261026-provider/ directory. Legal and Abuse prioritisation remains
+observed, substantive provider answer and secure verification resolution pending.
+Do not ask owner to sign in again or send a PIN unless an actual unavoidable new
+provider requirement is established; never use ordinary email for credentials.
+
+No application source change or test repetition in this continuation; reuse the
+passed checks/package below. Private/public websites, data and held activation
+flags preserved. Remaining paid custody/benchmark decisions are unchanged and
+unapproved. The only immediate owner step is the newly approved account's direct
+password entry; provider response is independent waiting, not another setup task.
+
 ### 26 October — approved email DNS repair and narrow mail capability
 
 Continuation of060543d. Owner approved quote-only Workspace preparation,
