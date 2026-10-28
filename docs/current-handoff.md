@@ -1,5 +1,64 @@
 # Current handoff
 
+### 28 October16:53UTC — subscription/DNS approved; domain verified; Admin auth pending
+
+Owner explicitly APPROVES the displayed ONE Business Starter MONTHLY/Flexible
+Workspace agreement, trial supplement and EECC waiver, including early paid start
+only<=8.40GBP/month inclusive inside50, no annual term/extra seat. Do not repeat
+this approval unless actual price,terms or scope change. Owner entered/saved the
+payment method directly. First Checkout attempt returned OR_MIVEM_04(card could
+not be verified). NO blind retry. After owner reported 'verified', the page had
+ALREADY advanced to Add users; no second Checkout call was needed. Skipped extra
+users, preserved ONE seat. Trial/paid/billed status still requires Admin proof;
+do not infer paid custody or a charge from setup progress. No real game charge.
+
+Owner separately APPROVES exactly the Google ownership root TXT and Google-only
+mail.classesforculture.com MX/SPF/DKIM/DMARC, preserving ALL existing root records,
+Namecheap mailboxes/root MX,nameservers,website,one seat and cost. This additive
+scope is now authorised; do not ask for it again unless the actual change differs.
+The ONE root TXT was published in existing Netlify zone at16:47:59UTC,record
+6ae2273e1edab23eefa43c14,TTL3600. BEFORE11 records,AFTER12,all11 original objects
+unchanged; no delete,MX/SPF/website change or publication credit. Four NS1
+authoritative servers AND Google resolver confirm the exact TXT. Google UI now
+says 'Your domain is verified',all apps ready EXCEPT Gmail. The root 'Set up Gmail'
+wizard was LEFT UNTOUCHED: it would move existing root mail. Configure ONLY the
+new mail subdomain from Admin. No subdomain records,aliases or mail activation yet.
+Ignored proof:outputs/launch-20261028-package/google-ownership-{dns-evidence,
+public-dns}.json;google-domain-verified.png; idempotent one-TXT script/intent saved
+beside them. No grant/resource/deletion/load/production activation occurred.
+
+Google Admin tab22 is the CORRECT backup-operator@classesforculture.com account
+and requires password re-verification. Owner asked which password; directed to
+the password-manager entry created26October for that login, separately from Drive
+OAuth/client secrets or encryption keys. If unavailable, owner must complete
+Google's own Forgot password flow; NEVER reset it, retrieve a password, ask for
+values/codes or reuse a token/key as a password. Authentication pending; don't
+repeat account creation or old Google/key/seller checks. Working checkout is tab21;
+oldtab10 is stale. Keep root Gmail wizard untouched. Current specific owner action
+is Admin sign-in, not another budget/card/seller request.
+
+Source commit ed614291af58b9ad1bf268ca84d01f150e49684f is pushed and ls-remote
+matched. Final committed-source Google-profile artifact release
+1af56a4d603668729b97fcadc98b904715d2da990b7cce376640a657c00c8267 is verified,
+sourceCommitted=true,grantInstalled=false,deployed=false. Generated chunk IDs
+changed on committed packaging, so ONLY the affected compiled package check was
+repeated:PASS76.505seconds,actual routes/converted40+Royal,unknown-send/accounting/
+cleanup/pacing protections,externalSends0,hostedVerification=false. All prior local
+48 focused,332 unit coverage and4 compiled ops checks stand. Do not repeat large
+physical recovery,alerts,real key checks or settled setup.
+
+After Admin access:verify paid/non-trial status and exact contract/quote within
+approved ceiling; add only the approved mail subdomain/aliases; verify actual mail
+limits/storage; install a NEW supported mail credential securely (owner performs
+any credential-creation/security challenge). Drive's existing personal-account
+refresh token cannot prove business custody: use the EXISTING OAuth client and
+minimum drive.file consent for this BUSINESS account, then verify its identity/
+quota privately. No new Google project or broad Drive scope. Do not put customer
+or benchmark archives in a quote-only/trial account. Then finalise verified
+privacy/controller notice, fresh whole-account preflight and112h grant preserving
+all carryover, run approved hosted evidence/cleanup. Conditional paid cutover only
+after5k/day,500/hour,48h recovery,confirmation and ongoing50/month pass.
+
 ### 28 October — Google contact saved; final contract/payment action pending
 
 Owner approved Google quote/email preparation and opened the NEW checkout tab21

@@ -7,6 +7,17 @@ question. It does not approve an unknown contract or manufacture test evidence.
 The225 cumulative experiment INSIDE250 total is approved;50/month operations
 remains. No new recurring cost, second seat or domain purchase is authorised.
 
+**Subsequent28October approvals:** owner explicitly approves the displayed
+one-seat MONTHLY agreement/trial/EECC terms and early paid start<=8.40/month inside
+50, no annual/extra seat. Payment was entered/saved by owner; initial card
+verification declined OR_MIVEM_04,then owner verified it and setup advanced without
+an agent retry. Paid/non-trial status remains UNVERIFIED. Owner also approves the
+exact root Google ownership TXT plus only new mail-subdomain MX/SPF/DKIM/DMARC.
+Root TXT now verified by all4 authoritative servers,Google resolver AND Google's
+UI,with all11 pre-existing records unchanged(12 after). Root Gmail wizard untouched.
+Admin requires the saved backup-operator login password; owner is completing
+authentication. Do not repeat these approvals or any seller/key/OAuth setup.
+
 ## Smallest route
 
 Use the proposed ONE Google Workspace Business Starter monthly seat for its Drive

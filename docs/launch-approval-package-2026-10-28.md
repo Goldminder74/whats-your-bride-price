@@ -1,5 +1,13 @@
 # Paid-launch approval package — 28 October 2026
 
+**Latest:** the one-seat monthly Google agreement/trial/EECC and early paid-start
+authority<=8.40 inclusive inside50 are APPROVED. Owner payment verification has
+advanced setup; paid/non-trial status still needs Admin proof. Exact additive
+root verification TXT/new mail-subdomain DNS is APPROVED; root ownership is now
+verified with all original records preserved. Admin password challenge is the
+current owner action. Do not ask for the225/250,subscription or exact DNS scope
+again. See the current handoff for committed artifact/evidence and authentication.
+
 **Superseding email route:** owner directs that Namecheap's written answer must
 not delay launch and approves Google quote/email preparation on the same proposed
 seat. [Exact alternative and observed limitations](customer-email-alternative-2026-10-28.md).
