@@ -1,5 +1,63 @@
 # Current handoff
 
+### 28 October — approved GBP0 local preparation implemented and verified
+
+Owner explicitly approved "Approve local preparation only (£0)" for the exact
+section in revised-hosted-verification-2026-10-23.md. This supersedes the local
+scope rejection below only. The225/250 hosted proposal and backup subscription
+remain UNAPPROVED. No real grant/key, hosted call/deletion, resource, deployment,
+benchmark, purchase or new spending occurred. Original stopped GBP8 reservations,
+GBP50 ongoing ceiling and conditional launch gates remain; no clock was renewed.
+
+**Implemented locally:** inactive retained-direct-v2 profile uses the documented
+caps/225/250 proposal, rejects ALL signed v1 grants, and requires the complete
+recorded minimum carryover for EVERY meter. Paid/non-trial custody and exact
+quote/processing-contract hashes are required in both grant and preflight before
+any private operator connection/session can open. Public/app/operations runtime
+policies, schemas and deployed environments are unchanged. Ordinary80% stops,
+deadline, unknown-reservation retention and cleanup escrow are preserved.
+
+New retainedCleanup.mjs uses the existing unfiltered50-record metadata window.
+It authenticates the WHOLE page's parent/name/header/MAC and permitted known root
+directories before any delete, rejects foreign/duplicate objects, uses two lanes
+behind existing25 starts/sec/16 active/64 queued pacing, drains in-flight work
+after a lost acknowledgement, and lists afresh on the next step. No new fetch or
+provider bypass. The offline cost forecast shares the policy's caps/carryover
+constants; it still reports authorised=false. No signed real envelope was made.
+
+**Observed local evidence:**29 affected integration tests PASS; lint/typecheck
+PASS; opt-in inactive retained build PASS. Compiled Miniflare application test
+PASS(85.239s):50-file deletion takes53 fake-provider calls,2 deletion lanes;
+exact retry makes no provider calls/deletes; lost acknowledgement preserves the
+full reservation;17 folder jobs remove all synthetic files with BOTH deliberate
+unknown reservations still held. Four provider calls overlap with40ms global
+start spacing. Actual game, converted40-Cowrie/Royal confirmations, webhook retry,
+failed/uncertain mail, accounting/FK and private/stop protections also pass in that
+compiled scenario; externalSends=0,hostedVerification=false. Reused prior large
+physical recovery evidence; did NOT regenerate/retest the99-day fixture.
+
+**Diagnosed test failures:** encrypted cleanup replay returns the original cached
+outcome without an upload-only replay flag; assertions now verify exact receipt,
+value,usage and zero repeated effects. Concurrent cleanup initially exhausted the
+fixture's1MB transfer escrow; sanitised readback showed85,568bytes left against
+the next100KB reservation. The stop was correct. Fixture now reserves4MB for up
+to40 synthetic steps including overlap/unknown work; NO runtime cap, reservation
+check, pacing or accounting guard was relaxed. Corrected compiled run passes.
+
+Ignored logs:outputs/launch-20261028-local/{affected-integration,lint,typecheck,
+build-v2,compiled-v2-corrected-escrow}.log. Failed diagnostic logs are retained in
+that same directory, not committed evidence. Final packaged bytes/source metadata
+are in ignored outputs/retained-benchmark/latest.json and its release.json;
+grantInstalled=false,deployed=false. Only source/tests/docs belong in Git.
+
+**Next gates:** finish verified paid-custody quote/processing safeguards and
+NamecheapNC-GME-4068 processing/transfer response, then consolidate the executable
+spending decision.225/250 execution and the backup subscription still need explicit
+approval/fresh headroom. Hosted retained-history recovery, day/peak/outage capacity,
+the ONE authorised hosted external confirmation and its new DKIM/DMARC result
+remain unverified. Ongoing GBP50 fit is not proven. Privacy/cutover/activation stay
+gated. No repeated credentials,address,key,alerts or settled owner decisions.
+
 ### 26 October — account quote observed; local capability change needs approval
 
 Owner reports the backup-operator account created. Existing Google signup now

@@ -1,8 +1,9 @@
+// Public fabricated test authority only; never a hosted grant or real key.
 import {createHmac} from 'node:crypto';
-import {RETAINED_CAPS,RETAINED_ACCOUNT,RETAINED_ORIGIN,retainedZero} from '../../worker/retainedBenchmarkPolicy.mjs';
+import {RETAINED_CAPS,RETAINED_PRIOR_USAGE,RETAINED_ACCOUNT,RETAINED_ORIGIN} from '../../worker/retainedBenchmarkPolicy.mjs';
 export const syntheticRetainedKey='synthetic-approval-key-'.repeat(4);
 export function syntheticRetainedGrant(at=Date.now(),overrides={}){
- const value={version:1,kind:'retained-direct-v1',id:'retained_local_fixture',sourceRevision:'a'.repeat(40),approvalEvidenceSha256:'b'.repeat(64),preflightEvidenceSha256:'c'.repeat(64),caps:RETAINED_CAPS,startsAt:at,endsAt:at+112*3600000,maximumExperimentGBP:175,maximumValidationMonthGBP:200,operatingCeilingGBP:50,autoTopups:false,businessCustodyVerified:true,priorUsageReconciled:true,headroomVerified:true,carried:retainedZero(),...overrides};
+ const value={version:2,kind:'retained-direct-v2',id:'retained_local_fixture',sourceRevision:'a'.repeat(40),approvalEvidenceSha256:'b'.repeat(64),preflightEvidenceSha256:'c'.repeat(64),caps:RETAINED_CAPS,startsAt:at,endsAt:at+112*3600000,maximumExperimentGBP:225,maximumValidationMonthGBP:250,cleanupPageSize:50,cleanupConcurrency:2,operatingCeilingGBP:50,autoTopups:false,businessCustodyVerified:true,businessAccountPaid:true,businessTrial:false,custodyQuoteSha256:'d'.repeat(64),processingContractSha256:'e'.repeat(64),priorUsageReconciled:true,headroomVerified:true,carried:{...RETAINED_PRIOR_USAGE},...overrides};
  return {value,signature:createHmac('sha256',syntheticRetainedKey).update(JSON.stringify(value)).digest('hex')};
 }
 export function syntheticRetainedEnv(at=Date.now()){

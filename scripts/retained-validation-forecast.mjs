@@ -1,8 +1,8 @@
 // OFFLINE proposal arithmetic only. This module cannot install a grant, change
 // runtime caps, contact a provider, provision resources or approve expenditure.
-import {RETAINED_CAPS,RETAINED_GAUGES,retainedZero} from '../worker/retainedBenchmarkPolicy.mjs';
-export const proposedRetainedCaps=Object.freeze({...RETAINED_CAPS,external:8000000,internal:10000000,transferBytes:110000000000,workerCpuMs:1500000000,doRequests:10000000,doWrites:80000000});
-export const priorRetainedUpper=Object.freeze({...retainedZero(),external:5163,internal:6619,writes:177396,reads:2747826,storageBytes:80000000,transferBytes:324768009,driveObjects:128,driveBytes:3141284,workerCpuMs:25000000,doRequests:150000,doWrites:1000000,doReads:2000000,doStorageBytes:64000000,doGbMs:4000000});
+import {RETAINED_CAPS,RETAINED_PRIOR_USAGE,RETAINED_GAUGES,retainedZero} from '../worker/retainedBenchmarkPolicy.mjs';
+export const proposedRetainedCaps=RETAINED_CAPS;
+export const priorRetainedUpper=RETAINED_PRIOR_USAGE;
 // Old coordinator/CPU values are deliberately FULL reservation ceilings, not
 // observed bills or a refund of unknown outcomes. Six pending tickets stay held.
 export function retainedValidationForecast({assetBytesPerSet,caps=RETAINED_CAPS,prior=priorRetainedUpper}={}){

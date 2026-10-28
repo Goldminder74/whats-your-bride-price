@@ -4,10 +4,15 @@
 import {createHash,createHmac,timingSafeEqual} from 'node:crypto';
 export const RETAINED_ORIGIN='https://wybp-capacity-worker-r002.ayo-m-ayeni.workers.dev';
 export const RETAINED_ACCOUNT='b6b22a9a87b5758725e5c499782160af';
-export const RETAINED_CAPS=Object.freeze({external:5000000,internal:8000000,writes:150000000,reads:500000000,storageBytes:16000000000,transferBytes:60000000000,driveObjects:1600000,driveBytes:18000000000,workerCpuMs:1300000000,doRequests:6000000,doWrites:50000000,doReads:500000000,doStorageBytes:3000000000,doGbMs:64000000});
+// Inactive proposal only. No real grant exists; v1 can never revive old scope.
+export const PREVIOUS_RETAINED_CAPS=Object.freeze({external:5000000,internal:8000000,writes:150000000,reads:500000000,storageBytes:16000000000,transferBytes:60000000000,driveObjects:1600000,driveBytes:18000000000,workerCpuMs:1300000000,doRequests:6000000,doWrites:50000000,doReads:500000000,doStorageBytes:3000000000,doGbMs:64000000});
+export const RETAINED_CAPS=Object.freeze({...PREVIOUS_RETAINED_CAPS,external:8000000,internal:10000000,transferBytes:110000000000,workerCpuMs:1500000000,doRequests:10000000,doWrites:80000000});
+export const RETAINED_PROPOSAL=Object.freeze({version:2,kind:'retained-direct-v2',maximumExperimentGBP:225,maximumValidationMonthGBP:250,cleanupPageSize:50,cleanupConcurrency:2});
 export const RETAINED_GAUGES=Object.freeze(['storageBytes','doStorageBytes']);
 export const retainedHash=v=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 export const retainedZero=()=>Object.fromEntries(Object.keys(RETAINED_CAPS).map(k=>[k,0]));
+// Preserve the full recorded upper bounds where final receipts were lost.
+export const RETAINED_PRIOR_USAGE=Object.freeze({...retainedZero(),external:5163,internal:6619,writes:177396,reads:2747826,storageBytes:80000000,transferBytes:324768009,driveObjects:128,driveBytes:3141284,workerCpuMs:25000000,doRequests:150000,doWrites:1000000,doReads:2000000,doStorageBytes:64000000,doGbMs:4000000});
 const fail=()=>{throw Error('retained_benchmark_scope');};
 export function retainedVector(v){if(!v||Object.keys(v).length!==Object.keys(RETAINED_CAPS).length||Object.keys(RETAINED_CAPS).some(k=>!Number.isSafeInteger(v[k])||v[k]<0)||Object.keys(v).some(k=>!Object.hasOwn(RETAINED_CAPS,k)))fail();return v;}
 export function retainedIdentity(env){
@@ -20,10 +25,11 @@ export function verifyRetainedGrant(envelope,key,at=Date.now()){
  if(typeof key!=='string'||key.length<43||!envelope||typeof envelope!=='object'||typeof envelope.signature!=='string'||!/^[a-f0-9]{64}$/.test(envelope.signature))fail();
  const value=envelope.value,expected=createHmac('sha256',key).update(JSON.stringify(value)).digest();
  if(!timingSafeEqual(expected,Buffer.from(envelope.signature,'hex')))fail();
- if(value?.version!==1||value.kind!=='retained-direct-v1'||!/^retained_[a-zA-Z0-9_-]{1,48}$/.test(value.id||'')||!/^[a-f0-9]{40}$/.test(value.sourceRevision||'')||!/^[a-f0-9]{64}$/.test(value.approvalEvidenceSha256||'')||!/^[a-f0-9]{64}$/.test(value.preflightEvidenceSha256||'')||retainedHash(value.caps)!==retainedHash(RETAINED_CAPS)||!Number.isSafeInteger(value.startsAt)||!Number.isSafeInteger(value.endsAt)||value.endsAt-value.startsAt!==112*3600000||value.startsAt>at||value.endsAt<=at||value.maximumExperimentGBP!==175||value.maximumValidationMonthGBP!==200||value.operatingCeilingGBP!==50||value.autoTopups!==false||value.businessCustodyVerified!==true||value.priorUsageReconciled!==true||value.headroomVerified!==true)fail();
- retainedVector(value.carried);if(Object.keys(RETAINED_CAPS).some(k=>value.carried[k]>RETAINED_CAPS[k]))fail();
+ if(value?.version!==RETAINED_PROPOSAL.version||value.kind!==RETAINED_PROPOSAL.kind||!/^retained_[a-zA-Z0-9_-]{1,48}$/.test(value.id||'')||!/^[a-f0-9]{40}$/.test(value.sourceRevision||'')||!/^[a-f0-9]{64}$/.test(value.approvalEvidenceSha256||'')||!/^[a-f0-9]{64}$/.test(value.preflightEvidenceSha256||'')||retainedHash(value.caps)!==retainedHash(RETAINED_CAPS)||!Number.isSafeInteger(value.startsAt)||!Number.isSafeInteger(value.endsAt)||value.endsAt-value.startsAt!==112*3600000||value.startsAt>at||value.endsAt<=at||value.maximumExperimentGBP!==RETAINED_PROPOSAL.maximumExperimentGBP||value.maximumValidationMonthGBP!==RETAINED_PROPOSAL.maximumValidationMonthGBP||value.cleanupPageSize!==RETAINED_PROPOSAL.cleanupPageSize||value.cleanupConcurrency!==RETAINED_PROPOSAL.cleanupConcurrency||value.operatingCeilingGBP!==50||value.autoTopups!==false||value.businessCustodyVerified!==true||value.businessAccountPaid!==true||value.businessTrial!==false||!/^[a-f0-9]{64}$/.test(value.custodyQuoteSha256||'')||!/^[a-f0-9]{64}$/.test(value.processingContractSha256||'')||value.priorUsageReconciled!==true||value.headroomVerified!==true)fail();
+ retainedVector(value.carried);if(Object.keys(RETAINED_CAPS).some(k=>value.carried[k]>RETAINED_CAPS[k]||value.carried[k]<RETAINED_PRIOR_USAGE[k]))fail();
  return value;
 }
+export function retainedCustodyEvidence(preflight,grant){return preflight?.businessAccountPaid===true&&preflight.businessTrial===false&&preflight.custodyQuoteSha256===grant.custodyQuoteSha256&&preflight.processingContractSha256===grant.processingContractSha256;}
 export function installedRetainedGrant(env,at=Date.now()){
  retainedIdentity(env);if(env.WYBP_RETAINED_BENCHMARK_ENABLED!=='true')fail();
  let envelope;try{envelope=JSON.parse(env.WYBP_RETAINED_BENCHMARK_APPROVAL_JSON);}catch{fail();}

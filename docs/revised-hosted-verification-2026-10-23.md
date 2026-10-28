@@ -1,6 +1,6 @@
 # Retained-stock validation package — proposal, NOT spending authority
 
-26 October 2026. This supersedes the earlier £175/£200 proposal. It does not
+28 October 2026. This supersedes the earlier £175/£200 proposal. It does not
 renew any stopped benchmark. The binding authorisation is still £8 for the old
 benchmark and £50/month operations. No new resource, paid account, grant, clock,
 mail send or deployment has been started by this package. Separate26October
@@ -8,6 +8,11 @@ authority covers only two email-authentication TXT additions(now published),
 nonbinding backup quote preparation, restricted Namecheap ownership verification
 and one narrowly constrained synthetic mail test. It does not approve this larger
 benchmark, a new account/trial/contract/subscription or broader DNS changes.
+The subsequent quote-only account/trial approval and owner-created account are
+recorded below; they do not approve paid custody or a hosted workload. On28October
+the owner explicitly approved the exact GBP0 local preparation section below.
+Its inactive v2 source and synthetic tests may be completed and committed/pushed;
+the225/250 spending proposal, real grant and hosted execution remain unapproved.
 
 ## Engineering evidence and limits
 
@@ -142,19 +147,21 @@ Actual receipts can differ: exact catalogue/contract fixture, control and cleanu
 counts must replace the envelopes before signing a grant; any failed admission
 means DO NOT START. No silent cap increase or further window is implied.
 
-Only additional cleanup change proposed:50 verified synthetic files per call
+Only additional cleanup change:50 verified synthetic files per call
 instead of25, using existing50-record metadata windows, while retaining every
-folder/name/MAC/readback and pacing guard. It is not implemented/approved yet.
+folder/name/MAC/readback and pacing guard. This is now approved for LOCAL-ONLY
+implementation; no hosted cleanup or deployment is authorised by that approval.
 The old25-file cleanup leaves insufficient16-hour margin at this cardinality.
 Cleanup must have a verified phase deadline before admitting its first object.
 
 ### Exact local preparation approval — GBP0, no hosted execution
 
-Automatic approval review rejected implementing the revised profile and concurrent
-cleanup because they expand future spending/deletion capability, even undeployed.
-Nothing was applied. This document is a reviewable proposal, not runnable code,
-an installed grant or permission to spend. A specific owner decision is needed
-before these source changes:
+Automatic approval review previously rejected implementing the revised profile
+and concurrent cleanup because they expand future spending/deletion capability,
+even undeployed. The owner's explicit28October response, "Approve local
+preparation only (£0)", supersedes that LOCAL scope block. It does not approve
+225/250 spending, a paid subscription, a real grant or any hosted effect. The
+following is the exact approved local scope, not a new approval request:
 
 - Replace only the INACTIVE retained experiment's obsolete175/200 proposal with
   a version2 profile matching the225/250 ceilings and exact total caps above.
@@ -176,6 +183,22 @@ before these source changes:
   failed/uncertain deletes and exact retries, then the affected compiled release.
   Never call Drive, create resources, deploy, delete hosted data, enable a schedule,
   make a purchase or run the larger benchmark under this LOCAL-ONLY decision.
+
+**28October local completion:** inactive v2 source is implemented. Every carried
+meter must retain at least its recorded prior upper reservation; paid/non-trial
+and matching quote/contract evidence reject before opening a connection/session.
+The forecast shares those exact constants and still reports authorised=false.
+29 affected integration checks, lint/typecheck, inactive build and the actual
+compiled application scenario PASS. The compiled50-file batch uses53 synthetic
+provider calls and two concurrent deletion lanes; exact replay causes no further
+provider calls/deletes.17 folder jobs clear all synthetic files after two unknown
+operations while preserving BOTH reservations. Global pacing/overlap, actual game,
+converted confirmations/accounting and failed/uncertain mail remain covered.
+All of this is LOCAL with externalSends=0; no hosted capacity/RTO/email assertion.
+The fixture's original1MB cleanup escrow correctly stopped concurrent work when
+only85,568bytes remained for a100KB reservation. Reserving4MB for40 local synthetic
+steps fixes that fixture, with no policy/guard relaxation. Reuse the earlier
+large physical local recovery evidence; no large fixture was repeated.
 
 After that local work passes, finish the actual spending package and readiness
 preflight using the account quote below and Namecheap's written response. The

@@ -20,6 +20,7 @@ import {verifyDriveRecordHeader} from '../scripts/drive-record-header.mjs';
 import {parseSellerDetails} from '../app/sellerDetails.ts';
 import {recoveryWindowCustody} from '../scripts/windowed-drive-audit.mjs';
 import {retainedFixtureUpload} from './retainedFixtureUpload.mjs';
+import {cleanupRetainedBatch} from './retainedCleanup.mjs';
 const fail=()=>{throw Error('retained_operation_unavailable');};
 export function retainedRuntime(env,parent,upper,{recovery=false}={}){
  const grant=installedRetainedGrant(env);if(!/^[a-f0-9]{64}$/.test(parent||''))fail();
@@ -82,9 +83,7 @@ export class RetainedOperator extends WorkerEntrypoint {
     const folder=r.custody.all[command.folder];if(!folder)fail();await r.custody.check(folder);
     if(command.kind==='cleanup-page')value=await folder.auditPage({cursor:command.cursor||null,pageSize:25});
     else if(command.kind==='cleanup-batch'){
-     const page=await folder.auditPage({pageSize:25}),files=page.files.filter(f=>{if(f.mimeType==='application/vnd.google-apps.folder'){if(command.folder!==0||!r.custody.all.slice(1).some(c=>c.folderId===f.id))fail();return false;}if(!verifyDriveRecordHeader({key:r.key,folderId:folder.folderId,fileId:f.id,name:f.name},f.appProperties))fail();return true;});
-     for(const f of files){const deleted=await folder.request('https://www.googleapis.com/drive/v3/files/'+f.id,{method:'DELETE'});if(!deleted.ok&&deleted.status!==404)fail();}
-     value={deleted:files.length,complete:files.length===0&&!page.cursor};
+     value=await cleanupRetainedBatch({folder,folderIndex:command.folder,folders:r.custody.all,key:r.key});
     }else{
      if(!/^[a-zA-Z0-9_-]{10,160}$/.test(command.fileId||''))fail();
      const response=await folder.request('https://www.googleapis.com/drive/v3/files/'+command.fileId+'?fields=id,name,mimeType,parents,trashed,appProperties');

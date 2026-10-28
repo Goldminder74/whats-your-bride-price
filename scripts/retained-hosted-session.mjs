@@ -5,14 +5,14 @@ import {resolve,join,sep} from 'node:path';
 import {createHash} from 'node:crypto';
 import {tmpdir} from 'node:os';
 import {verifyRetainedRelease} from './retained-release.mjs';
-import {verifyRetainedGrant,retainedHash,retainedVector,RETAINED_ACCOUNT} from '../worker/retainedBenchmarkPolicy.mjs';
+import {verifyRetainedGrant,retainedCustodyEvidence,retainedHash,retainedVector,RETAINED_ACCOUNT} from '../worker/retainedBenchmarkPolicy.mjs';
 import {encryptRecord,decryptRecord} from './recovery-crypto.mjs';
 import {assertRetainedHeadroom} from './retained-headroom.mjs';
 const fail=()=>{throw Error('retained_session_requires_reconciliation');};
 export async function retainedHostedSession({directory,releaseDirectory,envelope,approvalKey,key,preflight,currentHeadroom=preflight,operator,now=Date.now,fault=async()=>{}}){
  const grant=verifyRetainedGrant(envelope,approvalKey,now()),release=await verifyRetainedRelease(releaseDirectory);
  assertRetainedHeadroom(currentHeadroom,now());
- if(!Buffer.isBuffer(key)||key.length!==32||release.manifest.sourceCommitted!==true||release.manifest.sourceRevision!==grant.sourceRevision||preflight?.account!==RETAINED_ACCOUNT||preflight.ownerApproved!==true||preflight.businessContractVerified!==true||preflight.completeInventory!==true||preflight.unknownPriorCharges!==false||preflight.noAutomaticTopups!==true||preflight.carryoverReconciled!==true||retainedHash(preflight)!==grant.preflightEvidenceSha256||!Number.isSafeInteger(preflight.observedAt)||preflight.observedAt>now()||typeof operator?.step!=='function'||typeof operator?.readback!=='function')fail();
+ if(!Buffer.isBuffer(key)||key.length!==32||release.manifest.sourceCommitted!==true||release.manifest.sourceRevision!==grant.sourceRevision||preflight?.account!==RETAINED_ACCOUNT||preflight.ownerApproved!==true||preflight.businessContractVerified!==true||!retainedCustodyEvidence(preflight,grant)||preflight.completeInventory!==true||preflight.unknownPriorCharges!==false||preflight.noAutomaticTopups!==true||preflight.carryoverReconciled!==true||retainedHash(preflight)!==grant.preflightEvidenceSha256||!Number.isSafeInteger(preflight.observedAt)||preflight.observedAt>now()||typeof operator?.step!=='function'||typeof operator?.readback!=='function')fail();
  // Synthetic recovery may use a fresh temporary local workspace. Never place
  // a future customer's plaintext recovery database in this OneDrive checkout.
  const temporary=await realpath(tmpdir()),root=resolve(directory);if(!root.startsWith(temporary+sep))fail();await mkdir(root,{recursive:true});if(!(await realpath(root)).startsWith(temporary+sep))fail();
