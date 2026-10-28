@@ -1,5 +1,11 @@
 # Retained-stock validation package — proposal, NOT spending authority
 
+**28October decision package:** [current cost, period, provider and execution
+details](launch-approval-package-2026-10-28.md). This clarifies cumulative225 inside
+250, includes cleanup and prior reservations, defines the validation accounting
+period, and records the exact external dependencies preventing execution. No new
+spending or hosted authority. Do not request paid approval until those facts pass.
+
 28 October 2026. This supersedes the earlier £175/£200 proposal. It does not
 renew any stopped benchmark. The binding authorisation is still £8 for the old
 benchmark and £50/month operations. No new resource, paid account, grant, clock,
@@ -114,9 +120,14 @@ original clocks model it while new arrivals continue.
 The reproducible OFFLINE calculator is scripts/retained-validation-forecast.mjs.
 It cannot change runtime caps or install authority. Ignored evidence:
 outputs/launch-20261025/retained-phase-cost-forecast.json. The actual compiled
-manifest's twelve largest immutable assets total2,480,236bytes;14k cold sets need
+manifest's twelve largest reviewed in-game WEBP/JS/CSS assets total2,480,236bytes;
+14k cold sets need
 34.723304GB before documents/images/API/custody traffic. This conservative asset
-weight is not a measured browser request distribution.
+weight is not a measured browser request distribution. It is not the twelve
+largest files of every type: root OG/PWA images were outside that reviewed set.
+The full all-file interpretation is a rejected165.24GB forecast and cannot be
+silently substituted. The current package pins the unchanged game set and reports
+social/PWA/browser-distribution limits explicitly; no data cap was increased.
 
 | Phase | Counted external | Internal | D1 writes | DO requests | DO writes |
 |---|---:|---:|---:|---:|---:|

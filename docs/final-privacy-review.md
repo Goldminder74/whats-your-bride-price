@@ -1,4 +1,4 @@
-# Complete privacy-notice candidate — 24 October 2026
+# Complete privacy-notice candidate — 28 October 2026
 
 **Not approved or published.** This is the complete proposed launch wording, not a
 claim that the unresolved provider facts below have been verified. The existing
@@ -108,10 +108,16 @@ applicable holds. Routine support/privacy case evidence is kept for12 months aft
 closure. Holds and unresolved financial cases can require longer protection;
 unrelated gameplay is not retained merely because another record is held.
 
-Encrypted operational backups and restore-suppression records have a maximum
-30-day window. If data is restored, current deletion/closure/suppression authority
-is checked before access is released. Necessary accounting and unresolved payment
-proof follow their separate longer rules. The protected confirmation delivery
+Our active operational archives and restore-suppression records have a30-day
+window. Expired archives are removed from active backup storage by our bounded
+deletion process. This is separate from the provider's deletion of underlying
+copies: Google's published business processing terms allow up to180 days for
+deletion from its systems, and an account-end recovery period of up to30 days
+before that deletion process. We do not treat those residual copies as available
+archives or reopen access from them. If data is restored, current deletion,
+closure and suppression authority is checked before access is released. Necessary
+accounting and unresolved payment proof follow their separate longer rules.
+The protected confirmation delivery
 address is removed from the delivery record after confirmed delivery or cancellation;
 correspondence or payment-provider records have their own applicable periods.
 Unknown email outcomes are held for review rather than retried blindly. Refer to
@@ -157,6 +163,10 @@ communicated before they take effect and any necessary consent will be obtained.
 3. Verify actual provider request/log retention, rights-request procedure, final
    feature flags and bounded deletion/backup schedules. Generic website copy must
    not promise a seven-day purge or30-day backup limit before measurement supports it.
+   The active archive window and provider residual-copy erasure are distinct:
+   Google's CDPA6.1/6.2 allows180 days and, after termination, up to30 days of
+   recovery first. The draft now says so; no30-day provider-erasure guarantee is
+   made. Confirm the actual paid agreement incorporates this CDPA before use.
 4. Record the legitimate-interest purpose/necessity/balancing assessment: request-
    limited free service/security, no advertising/sensitive inference, minimal fields,
    private defaults, objection/support, restricted access and finite retention.

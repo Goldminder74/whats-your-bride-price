@@ -1,5 +1,73 @@
 # Current handoff
 
+### 28 October — consolidated decision package; exact external prerequisites
+
+Continue from687288f. The current reviewable scope, cash/accounting period, phase
+bounds, pass criteria, cancellation and remaining decisions are consolidated in
+[launch-approval-package-2026-10-28.md](launch-approval-package-2026-10-28.md).
+Display its substance in the response; do not send the owner another bare link.
+This is NOT yet an executable paid request: final business custody tax/paid terms,
+Namecheap's answer and fresh Cloudflare headroom remain external prerequisites.
+No spending, subscription, grant, hosted resource/deletion, deployment, setting
+or benchmark was made. No expired/stopped clock or allowance was reset.
+
+**GBP0 work completed:** offline cost calculator now rejects NaN/infinite FX/tax,
+impossible>50m included-write headroom, invalid vectors and reduced prior carryover;
+reports cleanup22.27 INSIDE225, other-account margin6.88 and explicitly rejects a
+too-expensive forecast.4/4 affected cases, targeted ESLint and diff check PASS.
+Unchanged runtime/compiled/recovery evidence at687288f is reused, not repeated.
+The complete privacy candidate now distinguishes30-day ACTIVE archives from
+Google CDPA6.1/6.2 underlying deletion up to180days and post-termination recovery
+up to30days. Still draft/approvedForProduction=false. No controller approval invented.
+
+**Asset clarification:** original reviewed12-file game set (WEBP/JS/CSS) still
+totals2,480,236bytes and the81.548GB transfer forecast fits110GB. Selecting the12
+largest files of ALL types instead includes legacy OG/PWA images and projects
+165.239GB, which correctly FAILS. Both outcomes preserved locally; no cap raised,
+workload silently broadened or browser/social-traffic claim made. This definition
+is now explicit in the package. No hosted load was used to establish either result.
+
+**Fresh provider/account observations:** Workspace review still shows Monthly
+Business Starter,0today+tax,3.50from9November,7from9February, tax excluded/cancel
+any time. Checkout UNSUBMITTED and Add name/address empty. Existing quote-only
+boundary excludes billing details. Final tax needs narrow permission to use the
+already securely installed public seller details in Google's QUOTE/contact form,
+no payment/checkout; do not repeat address installation or ask for the value.
+Actual linked1June agreement, CDPA, trial2.6 and Flexible cancellation were read;
+trial excludes personal data/DPA and paid/non-trial custody is NOT established.
+No Google setup, saved key, operational alert or settled seller input repeated.
+
+NamecheapALL-mail ticket search shows only24October reply and26October follow-up;
+no specialist processing/UK-transfer answer observed. No new message/PIN sent.
+Netlify now456.9/1000 credits, recharge Disabled, PersonalUSD9, no team add-ons;
+543.1 used incl35deploys/525credits. Confirmed paid receipt30SeptemberUSD9; current
+period30September-29October. Therefore INCLUDE the forthcoming renewal rather
+than subtract the September receipt from the proposed18October-to-before18November
+validation period.225 is INSIDE250, never475. Under stated budget FX/tax only,
+244.60 further exposure=250-5.40 already-paid Workers allowance; this is NOT
+certified cash headroom. All other activity/actual FX/tax must be reconciled first.
+
+Raw Cloudflare API401; normal existing-scope Wrangler inventory also fails
+authentication10000. Logged-in user/profile output is not a successful D1/billing
+inventory. Browser stays at loading screen after ONE reload. No new/broader OAuth
+scope requested. A normal existing-permission auth refresh is an unavoidable
+access action when resumed; agent must do the inventory, not ask owner for another
+credit count.26October Cloudflare low usage remains historical evidence only.
+
+Recommended next decision is ONLY GBP0 quote/contact completion plus unavoidable
+existing-scope authentication; await Namecheap's already-escalated written answer.
+Do not request225/250 purchase/execution approval as if final terms/headroom exist.
+Once those are resolved, ONE consolidated approval should cover the exact dated
+test/cleanup, verified monthly custody and final notice/assessment. Existing
+conditional paid cutover authority is reused only after capacity/full-history/
+confirmations/50-operating-cost/production/legacy rollback gates pass. No public
+or live payment activation and no real charge. Earliest mechanical full-scope
+floor is66h24m PLUS fixture/recovery/delays;112h is the maximum, not mandatory wait.
+
+Ignored evidence:outputs/launch-20261028-package/{cost-regressions,lint}.log,
+offline-decision-model.json and sanitised provider-observations.json. The failed
+read-only CLI log is retained locally, not committed. All app data/sites preserved.
+
 ### 28 October — approved GBP0 local preparation implemented and verified
 
 Owner explicitly approved "Approve local preparation only (£0)" for the exact
