@@ -1,5 +1,41 @@
 # Current handoff
 
+### 28 October — signed-in Chrome found; real-confirmation provider guard repaired
+
+Owner screenshot and direct desktop accessibility prove backup-operator is signed
+in in their usual Chrome session(u/4). The separate connected IAB Admin tab22 still
+requires password verification(u/1); DO NOT say the owner is not signed in or ask
+them to recreate setup. Chrome has an existing Admin console tab. Desktop target
+selection returned the unique Chrome Domain setup window, but both the offscreen
+Admin-tab and visible-management-link inputs failed 'coordinate input geometry is
+unavailable'. A screenshot capture returned Codex instead of Chrome despite Chrome
+metadata, so native input STOPPED. Never automate the Codex UI or use stale indices.
+Owner is asked only to reply 'ready', then bring signed-in Chrome to the front
+and leave it visible for ONE safe target recheck. If capture still mismatches,
+report that concrete access limitation rather than repeated login/unsafe clicks.
+Root Gmail setup remains untouched. The account/one-seat/DNS/spending approvals
+below remain binding; no new authentication or credential value was disclosed.
+
+Parallel targeted audit found/fixed a real activation defect: real confirmation
+delivery previously chose a default legacy transport before seeing the contract.
+If OPS omitted the new provider setting, a Google-contact contract could have
+used Namecheap. It now requires the fixed Google provider when ANY immutable
+support/privacy contact or terms-version signal selects Google, before connection.
+Captured provider cannot be relabelled by later environment mutation. Historical
+contracts may use Google without rewriting snapshots; legacy private-game behavior
+is unchanged. No SQL/schema/accounting change.6 new routing regressions plus the
+existing focused mail/confirmation/ops set:41/41 PASS; targeted ESLint/diff PASS.
+New test registered in both data/production-preparation runners. Logs are ignored
+outputs/launch-20261028-package/routing-audit-*.log. No hosted effects.
+
+The prior1af56 artifact omitted the optional RETAINED_CONFIRMATION_MAIL binding.
+Before the authorised hosted single external confirmation, build the Google
+profile WITH --with-approved-synthetic-mail, verify the exact paired package and
+configure the Google transport on PRODUCTION OPS, not only r002. Its existing
+one-use durable claim/recipient and later disablement remain; no extra send
+allowance or production financial/recovery binding. Rebuild also includes the
+new routing guard; do not reuse the old artifact for activation.
+
 ### 28 October16:53UTC — subscription/DNS approved; domain verified; Admin auth pending
 
 Owner explicitly APPROVES the displayed ONE Business Starter MONTHLY/Flexible
