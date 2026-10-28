@@ -1,4 +1,4 @@
-import {privateEmailTransport} from './authorityMail.mjs';
+import {purchaseEmailTransport} from './authorityMail.mjs';
 import {stripeMoney} from '../db/stripeMoney.mjs';
 const fail=()=>{throw Error('purchase_confirmation_mail_unavailable');};
 export function purchaseConfirmationText(contract){
@@ -9,4 +9,4 @@ export function purchaseConfirmationText(contract){
  if(!p||p.version!==1||p.integrationCurrency!=='GBP'||p.integrationAmountMinor!==contract.originalAmountMinor)fail();
  return ['Classes for Culture — purchase confirmation','Order: '+contract.publicOrderReference,'Product: '+product,'Original GBP price: '+stripeMoney('GBP',contract.originalAmountMinor),'Customer payment: '+stripeMoney(p.presentmentCurrency,p.presentmentAmountMinor),'Seller: '+s.legalName+' trading as '+s.tradingName,'Business address: '+s.geographicalAddress,...(s.complaintsAddress?['Complaints address: '+s.complaintsAddress]:[]),...(s.telephone?['Telephone: '+s.telephone]:[]),'Support, privacy and complaints: '+s.supportEmail,'We aim to acknowledge enquiries within two working days. Unresolved complaints are escalated to Classes for Culture.','','Terms ('+contract.termsVersion+'):',contract.terms,'','Your recorded request:',contract.consent.text,'Accepted at: '+new Date(contract.consent.acceptedAt).toISOString(),'','Keep this confirmation. Your statutory rights remain.'].join('\n');
 }
-export function purchaseConfirmationMail(env,connect,options){const send=privateEmailTransport(env,connect,options);return async({recipient,contract})=>send({to:recipient,subject:'Your Classes for Culture purchase confirmation',body:purchaseConfirmationText(contract)});}
+export function purchaseConfirmationMail(env,connect,options){const send=purchaseEmailTransport(env,connect,options);return async({recipient,contract})=>send({to:recipient,subject:'Your Classes for Culture purchase confirmation',body:purchaseConfirmationText(contract)});}

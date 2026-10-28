@@ -1,5 +1,13 @@
 # Launch privacy assessment — 26 October 2026
 
+**28October superseding route:** owner directs an alternative to waiting for
+Namecheap and approves Google quote/email preparation on the same proposed seat.
+Use [the exact Google-only customer path](customer-email-alternative-2026-10-28.md).
+The old provider-answer dependency below is superseded for that path, NOT legally
+answered or waived. New support/refund/privacy contacts and paid Gmail/Drive terms
+must be verified before publishing; existing root email stays intact. Controller
+review remains distinct from ordinary delegated technical configuration.
+
 Engineering record for controller review. **Not legal approval or a published
 notice.** The seller, secure address, UK-only paid market,18+ policy, support
 contacts and voluntary14-day refund policy are already settled. No new identity,

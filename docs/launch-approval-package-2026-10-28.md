@@ -1,8 +1,21 @@
 # Paid-launch approval package — 28 October 2026
 
-**Not executable for purchase or hosted execution yet. No spending approval is
-requested by this document.** Three external prerequisites remain: final paid
-backup quote/contract, Namecheap's written answer, and fresh Cloudflare headroom.
+**Superseding email route:** owner directs that Namecheap's written answer must
+not delay launch and approves Google quote/email preparation on the same proposed
+seat. [Exact alternative and observed limitations](customer-email-alternative-2026-10-28.md).
+The game customer path must switch AND be verified; do not enable the old route
+by declaring its unanswered processing question resolved. The existing mailboxes
+stay intact. The earlier pending quote/contact permission is now APPROVED.
+Namecheap references below record the old route's investigation, not a dependency
+of the new Google-only game path. Final Google quote/paid terms and evidence remain.
+
+**Budget approved subsequently28October:** owner selected the public paid launch
+after gates and approved the increased spend. This means225 cumulative INSIDE250
+total for the displayed validation scope;50 ongoing remains. Do not request the
+same budget again. **Not executable for purchase or hosted execution yet:** final
+paid backup quote/contract and Namecheap's written answer remain prerequisites.
+Cloudflare existing-scope authentication and current whole-account headroom have
+since been verified; refresh their time-sensitive preflight before execution.
 The inactive source and local validation at687288f are reused. No resource, grant,
 clock, deployment, subscription or hosted deletion was made in this continuation.
 
@@ -84,14 +97,17 @@ usage remains payable. No annual plan, top-up or extra service is proposed.
 
 ## 3. Backup quote and provider facts
 
-Existing account review was observed again28October: one Business Starter seat,
-MONTHLY, GBP0 today+tax;3.50/month from9November;7/month from9February2027, excluding
-tax, cancel at any time.8.40 is the20% tax allowance for the regular price, NOT a
-final tax-inclusive quote. Add name/address is empty, Checkout UNSUBMITTED. The
-earlier quote-only boundary prohibits billing details; obtaining final tax needs
-a narrow permission to use the ALREADY securely installed public seller details
-in Google's quote/contact form, without payment or checkout. Do not ask for the
-address/Secret again or put it in chat/logs. No Gmail/MX migration is intended.
+Latest owner-opened account quote28October:one Business Starter seat,MONTHLY,
+GBP0 today+tax;3.50/month from11November;7/month from11February2027,excluding tax,
+cancel at any time. These dates supersede the earlier9November/9February screen.
+8.40 is the20% tax allowance/maximum proposed regular price, NOT a final inclusive
+invoice. Owner APPROVED use of the existing business record for the quote; it was
+filled privately from the narrowly scoped public Stripe card and owner saved it.
+Contact form closed and optional-tax/payment-method steps appeared. No unknown
+tax number entered. Payment method is missing; Checkout UNSUBMITTED. Owner is
+asked the specific agreement/paid-start<=8.40 approval and secure Google payment
+entry now. Do not repeat the quote permission, seller installation or budget.
+The proposed Gmail route uses only a new mail subdomain, not a root MX migration.
 
 The actual account-linked agreement renders1June2026. It describes Flexible daily
 usage/monthly billing and incorporates the CDPA; the published CDPA describes
@@ -117,11 +133,18 @@ post-repair DKIM/DMARC remains for the ONE authorised hosted confirmation.
 Fresh Netlify:456.9/1000 credits remaining, auto recharge Disabled, PersonalUSD9,
 543.1 credits consumed (35 deploys using525 credits,8.4 request credits and9.7
 bandwidth credits), no team add-ons.
-Raw Cloudflare API401; normal read-only Wrangler also fails authentication10000.
-Connected dashboard remains on its loading screen after one reload. No broader
-OAuth scopes were requested. The26October low-use counters are historical, not
-fresh headroom. Restore normal existing-scope authentication when execution needs
-it; owner need never send credentials or do the technical inventory themselves.
+The initial API401/CLI authentication failure is resolved through a normal refresh
+of the EXACT existing six OAuth scopes; no broader permission was requested.
+Read-only D1 inventory200 confirms two existing DBs,total2,285,568bytes,no r002.
+Authenticated whole-account billable usage,18October-17November, observed through
+28October:0USD metered overage (the paid5USD base is separate),D1 writes5.56k/reads
+58.01k,Workers211requests/9.45k CPU-ms,DO355requests/47.92GB-s/1.38k SQL writes/
+2.91k reads;both storage meters display0GB-month. Existing Workers Paid renews
+18November. These rounded/delayed counters are fresh headroom, not a spending
+cap or permission to discard old unknown reservations. The subscriptions API403
+was not bypassed; the authorised dashboard supplied the plan/usage evidence.
+Refresh time-sensitive headroom before the actual grant; the owner need not do
+technical inventory or repeat account setup.
 
 ## 4. Shortest justified test and pass gates
 
@@ -180,12 +203,13 @@ CPU/storage and3 other-operations allowance, with DO within inclusion. They are
 sensitivities, not hosted bills or guarantees. Whole-account write headroom under
 those assumptions ends around64.6m/month. Do not silently lower5k/day or raise50.
 
-The eventual ONE consolidated request will cover225 INSIDE250 for this dated
-window and cleanup, one verified Flexible backup seat at its final inclusive
-price (recommended maximum8.40/month INSIDE50), exact business-account-only minimum
-Drive authorisation/verification and the completed notice/controller assessment.
-Seller/address/UK-only/adult/refund/support/confirmation decisions are settled.
-Existing conditional paid cutover authority remains; no repeat launch approval.
+225 INSIDE250 for this dated window/cleanup is NOW APPROVED. Do not request it
+again. Remaining owner inputs concern the specific Google agreement/paid start
+at<=8.40/month INSIDE50, payment details entered directly in Google and any necessary
+new-account credential/authentication. The final notice/controller assessment is
+presented once actual contract/contact facts and evidence are ready. Seller,
+address,UK-only,adult,refund and confirmation decisions are settled; the new Google
+contact preparation is approved. Conditional paid cutover authority remains.
 
 After approval: recheck headroom/period/prices, establish paid custody and pin
 contract/quote hashes, create only journalled isolated resources, execute/clean

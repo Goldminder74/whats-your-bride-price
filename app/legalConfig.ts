@@ -1,11 +1,12 @@
+import {customerContact} from './customerContact.ts';
 export const legalInformation = Object.freeze({
   approvedForProduction: false,
   controllerLegalName: "Ayodele Ayeni",
   tradingName: "Classes for Culture",
   postalAddress: null as string | null,
   geographicContact: null as string | null,
-  privacyContact: "team@classesforculture.com",
-  communityContact: "team@classesforculture.com",
+  privacyContact: customerContact.email,
+  communityContact: customerContact.email,
   commercialPolicyApprovedAt: "2026-10-23",
   icoRegistrationOrFeeDecision: "Owner-reported exemption following ICO self-assessment, 2026-10-23",
   lawfulBasisAssessment: null as string | null,

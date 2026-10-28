@@ -2,6 +2,7 @@ import {type PublicSellerDetails,parseSellerDetails} from './sellerDetails.ts';
 import {COWRIE_DELIVERY_NOTICE_VERSION,cowrieProducts,type CommerceProductKey} from '../db/cowrieProducts.ts';
 import {ROYAL_REVEAL_CONSENT_NOTICE_VERSION} from '../db/commerceContracts.ts';
 import {PURCHASE_TERMS_VERSION,REQUESTED_SALES_COUNTRIES,PURCHASE_TERMS,COWRIE_PURCHASE_CONSENT,ROYAL_PURCHASE_CONSENT} from './purchaseTerms.ts';
+import {customerContact} from './customerContact.ts';
 export {PURCHASE_TERMS_VERSION,REQUESTED_SALES_COUNTRIES,PURCHASE_TERMS} from './purchaseTerms.ts';
 export type ConfirmationDetails=Readonly<{email:string;residenceCountry:string;termsVersion:typeof PURCHASE_TERMS_VERSION;adultPurchase:true}>;
 export type ConfirmationDraft=Readonly<{orderId:string;contractHash:string;encryptedContract:string;encryptedRecipient:string;createdAt:number}>;
@@ -18,6 +19,7 @@ export type PurchaseConfirmationPolicy=Readonly<{
 export type ConfirmationAuthority=Readonly<{preparePurchaseConfirmation:(input:unknown)=>Promise<ConfirmationDraft>;checkPendingPurchaseConfirmation:(orderId:string,ownerHash:string,details:ConfirmationDetails)=>Promise<boolean>;purchaseConfirmation:(orderId:string,ownerHash:string)=>Promise<unknown>;recordPurchasePayment:(orderId:string,ownerHash:string,proof:Readonly<{eventId:string;rawBody:string}>)=>Promise<unknown>;deliverPurchaseConfirmation:(orderId:string,ownerHash:string)=>Promise<unknown>;cancelPurchaseConfirmation:(orderId:string)=>Promise<unknown>}>;
 const fail=():never=>{throw Error('purchase_confirmation_unavailable');};
 export function productionPurchasePolicy(seller:PublicSellerDetails,authority:ConfirmationAuthority,countries:readonly string[]):PurchaseConfirmationPolicy {
+ if(seller?.supportEmail!==customerContact.email||seller?.privacyEmail!==customerContact.email)return fail();
  if(!parseSellerDetails(JSON.stringify(seller))||!Array.isArray(countries)||!countries.length||countries.some(c=>!REQUESTED_SALES_COUNTRIES.includes(c))||new Set(countries).size!==countries.length||['preparePurchaseConfirmation','checkPendingPurchaseConfirmation','purchaseConfirmation','recordPurchasePayment','deliverPurchaseConfirmation','cancelPurchaseConfirmation'].some(k=>typeof authority?.[k as keyof ConfirmationAuthority]!=='function'))return fail();
  const details=(value:unknown):ConfirmationDetails=>{if(!value||typeof value!=='object'||Array.isArray(value))return fail();const v=value as Record<string,unknown>;if(Object.keys(v).sort().join()!=='adultPurchase,email,residenceCountry,termsVersion'||v.adultPurchase!==true||v.termsVersion!==PURCHASE_TERMS_VERSION||typeof v.residenceCountry!=='string'||!countries.includes(v.residenceCountry)||typeof v.email!=='string'||v.email.length>254||!/^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$/.test(v.email))return fail();return Object.freeze(v as ConfirmationDetails);};
  return Object.freeze({parse(value){if(!value||typeof value!=='object'||Array.isArray(value))return fail();const {confirmation,...request}=value as Record<string,unknown>;return {request,details:details(confirmation)};},

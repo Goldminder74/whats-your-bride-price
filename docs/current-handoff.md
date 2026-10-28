@@ -1,5 +1,146 @@
 # Current handoff
 
+### 28 October — Google contact saved; final contract/payment action pending
+
+Owner approved Google quote/email preparation and opened the NEW checkout tab21
+(oldtab10 was stale). Engineer filled only the correct live Stripe PUBLIC support
+record, using the narrow visible Public details card, without displaying values.
+Google prefilled short legal name was corrected to the settled Ayodele Ayeni.
+Owner clicked Save because the embedded Google payments window permits field entry
+but rejects agent button/key activation. Contact form closed; payment-method and
+optional-tax steps appeared. Address/whole-form variables cleared afterwards.
+No seller reinstallation, Stripe mutation or unknown tax ID. Checkout unsubmitted.
+
+Fresh quote:one Business Starter MONTHLY seat,0GBP today+tax,3.50/month+tax from
+11November2026,7/month+tax from11February2027,cancel anytime. These new dates
+supersede old quote dates, not an activated trial/subscription. Final inclusive
+tax is still unverified.8.40 regular inclusive is an approval CEILING/allowance.
+Owner is now asked ONE combined contract/payment action: explicitly accept the
+displayed Workspace/trial/EECC agreements and optionally start paid service early
+only<=8.40/month/no annual/extra seat; add payment details directly in Google and
+stop before Checkout. Never request card/codes in chat. The approval is pending;
+do not infer it from generic 'approve all approvables' or the already-approved
+225/250 validation budget. No paid/non-trial custody or active mail claimed.
+
+Automatic approval review denied a full Stripe account GET because it would return
+financial/compliance data beyond the specific public address. NOT retried or
+bypassed. The materially narrower visible PUBLIC-details card supplied only the
+already-authorised address instead. Do not request broader Stripe access or dump
+the full account. No private financial values retained in reports/evidence.
+
+Final local alternative evidence:48 focused source tests PASS, lint/typecheck and
+Google-profile inactive Cloudflare build PASS. Corrected package now records its
+contact profile in hashed config; compiled actual application regression PASS in
+76.519seconds with Google contacts, converted40/Royal saveable confirmations,
+replay/uncertain send protections, real-code accounting, shared pacing and bounded
+cleanup.1 synthetic completion,322 fake provider calls,externalSends0; NOT hosted
+throughput/cost/RTO.4 compiled operations tests also pass. Full retained dataset
+source is unchanged; large recovery evidence at687288f reused. No hosted load,
+customer send, grant, spend, DNS, deployment or public activation. Logs stay ignored.
+Broader unit run:331/332 PASS initially; the remaining case could not CREATE its
+synthetic hard link under the Windows sandbox(EPERM). Only that2-test dummy-key
+file was rerun with normal local filesystem permission:2/2 PASS, including the
+blocked alias check. Thus every332 unit case has passing evidence; the initial
+failure log is retained, not relabelled. No real key/custody check was repeated.
+
+### 28 October — owner removes Namecheap dependency; Google alternative prepared
+
+Owner directs: do not wait for Namecheap's written processing answer; find an
+alternative, resolve ordinary technical decisions and keep essential checks.
+Owner then explicitly APPROVES Google quote/email preparation using the existing
+secure business record, proposed support@mail.classesforculture.com and
+receipts@mail.classesforculture.com on the SAME one-seat account, targeting at
+most8.40/month inside50. No second seat, root MX move or paid checkout was approved
+by that preparation reply. The prior pending quote-only question is SUPERSEDED;
+do not ask again.225 cumulative INSIDE250 remains approved. No self-approval of an
+unknown contract/controller declaration, expired grant reset or waived evidence.
+
+[Exact alternative](customer-email-alternative-2026-10-28.md): use paid Workspace
+Gmail plus Drive, additive mail subdomain, keep existing Namecheap mailboxes/root
+email records. New game customer confirmations AND support/privacy/refund contacts
+must use the verified Google route; merely changing outbound SMTP is insufficient.
+No forwarding player cases back to Namecheap. Existing operator-only alerts stay
+unchanged and contain no player/order data. Namecheap's answer is no longer a
+dependency for that alternative; the alternative's real operation/paid terms still
+need proof. Historical Namecheap correspondence is not claimed moved/deleted.
+
+LOCAL source now supports an opt-in Google customer contact build profile, fixed
+TLS SMTP relay and separate credentials, no provider fallback, new immutable terms
+version, consistent privacy/refund/retention contacts, and rejects mismatched seller
+contacts. Legacy default/private deployment is unchanged. No accounting/schema
+change; durable claims and unknown-send suppression retained.45 focused checks,
+lint/typecheck, inactive Google-profile Cloudflare build and4 compiled operations
+checks PASS. Default Sites build failed generated-output EPERM; first sandboxed
+compiled run failed loopback EACCES, then the normal local-permission run passed.
+No hosted send, DNS change, purchase, deployment, grant or customer-data transfer.
+Logs:outputs/launch-20261028-package/mail-alternative-*.log (ignored).
+
+Google's unsubmitted Add name/address widget rejects ordinary click, semantic
+click/Expand and focused keyboard activation, including after one reload. Owner
+has been asked only to OPEN that form and reply 'form open'; then engineer should
+fill the existing business details privately. No repeated address/Secret entry,
+password or Checkout. Pending narrow owner action, not another budget question.
+Final inclusive quote, action-time agreement, paid/non-trial status and secure new
+mail credential/subdomain verification remain. Do not infer them from0today.
+
+Namecheap specialist Olha K. reports the department is checking and will reply to
+NC-GME-4068, no ETA/substantive processing answer. Ticket kept open, no further
+wait made a launch gate. Existing PIN was NOT sent/regenerated; private username/
+PIN session variables cleared. No account/mail/DNS/subscription changes.
+
+Read-only correct LIVE Stripe account verified: exactly4 Payment Links, all
+inactive, GBP199/499/999 Cowries and GBP199 Royal prices match. All return to
+wybp-protected-test.netlify.app; live webhook inventory is EMPTY. These are
+activation tasks after evidence, not claims of live payment readiness. No setting
+changed, real charge, event replay or other Stripe account accessed. Preserve
+inactive links until matched production return and signed webhook are verified.
+
+### 28 October — increased validation spending approved; prerequisites still held
+
+Owner selected PUBLIC PAID launch after the remaining gates, then explicitly said
+"i approve the increased spend". Record this against the displayed package as
+GBP225 CUMULATIVE experiment INSIDE GBP250 total validation period, NOT475 or a
+fresh225 on top of the old8. Ongoing50/month remains; no top-up/annual/extra service.
+Do not ask for that same budget approval again. This does not invent final backup
+tax/contract, Namecheap's written answer, capacity/recovery evidence or final
+privacy/controller approval. Subscription/hosted effects still require the
+recorded prerequisite checks; no new grant, clock, resource, purchase or deletion
+has started. Conditional paid cutover authority is preserved.
+
+The separate narrow question about entering the already securely stored public
+seller details into Google's QUOTE/contact form is pending; never request address
+re-entry or expose the record. No paid checkout/contract acceptance is inferred
+from a quote-screen trial, and no trial may hold player data.
+
+Cloudflare existing-scope auth has now been refreshed successfully WITHOUT new
+permissions. Exact saved set remains user:read,offline_access,account:read,
+workers:write,workers_scripts:write,d1:write. Initial CLI invocation rejected
+offline_access as a selectable scope; local Wrangler code confirms it appends
+that scope automatically. Corrected normal login requested the original other
+five, and saved metadata confirms the same six. No scope-broadening workaround.
+Fresh read-only D1 inventory200:2 existing databases,total2,285,568bytes,no r002.
+Subscriptions API remains403; no wider OAuth scope requested. The normal
+dashboard now loads after refresh. Authenticated WHOLE-account billable usage for
+18October-17November, observed through28October: metered cost0USD (base separate),
+D1 writes5.56k,reads58.01k;Workers211requests/9.45k CPU-ms;DO355requests/47.92GB-s/
+1.38k SQL writes/2.91k reads;both storage meters display0GB-month. Required>=40m
+D1/DO writes,500m reads,64kGB-s and3GB-month remain within the displayed inclusion.
+Existing Workers Paid confirmed, renews18November; no duplicate upgrade. Counters
+are rounded/delayed and expire as preflight evidence; preserve all old reservations.
+Sanitised proof:outputs/launch-20261028-package/read-only-billing-after-reauth.json.
+The subscriptions read initially included contact/payment fields in tool output;
+the agent acknowledged that avoidable overbroad read, did not repeat/store those
+values and returned to usage. Future reads MUST select only plan/usage controls.
+
+Owner has now signed in to the separate Namecheap ACCOUNT again; webmail had
+remained signed in. Existing Support PIN read into private browser-session memory
+without display or regeneration. A credential-free authenticated chat follow-up
+onNC-GME-4068 was submitted through the official embedded support frame, requesting
+a human Private Email specialist and attachment of secure verification. Do not
+send a PIN in ordinary email. No provider answer/verification attachment is yet
+claimed; support chat is continuing. Clear private PIN/username variables after
+verification. No email/DNS/subscription change or repeated alert/confirmation.
+
 ### 28 October — consolidated decision package; exact external prerequisites
 
 Continue from687288f. The current reviewable scope, cash/accounting period, phase

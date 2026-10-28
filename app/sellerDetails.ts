@@ -25,8 +25,8 @@ export function parseSellerDetails(raw: unknown): PublicSellerDetails | null {
       || /^REPLACE_WITH_|^YOUR[_ ](?:PUBLIC|BUSINESS)/i.test(value.geographicalAddress)
       || (value.complaintsAddress !== null && !text(value.complaintsAddress, 1000))
       || (value.telephone !== null && (typeof value.telephone !== "string" || !/^\+?[0-9 ()-]{7,30}$/.test(value.telephone)))
-      || value.supportEmail !== "team@classesforculture.com"
-      || !text(value.privacyEmail, 254) || !/^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@classesforculture\.com$/.test(value.privacyEmail)) return null;
+      || !["team@classesforculture.com","support@mail.classesforculture.com"].includes(value.supportEmail as string)
+      || !text(value.privacyEmail, 254) || (!/^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@classesforculture\.com$/.test(value.privacyEmail) && value.privacyEmail !== "support@mail.classesforculture.com")) return null;
     return Object.freeze(value as unknown as PublicSellerDetails);
   } catch { return null; } // No raw configuration or parser errors in logs.
 }

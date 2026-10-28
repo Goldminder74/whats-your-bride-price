@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 import {readFileSync} from 'node:fs';
 import {productionBuildReadiness} from './app/productionReadiness.ts';
 import {retainedBuildReadiness} from './scripts/retained-build-readiness.mjs';
+import {resolveCustomerContact} from './app/customerContact.ts';
 import hostingConfig from "./.openai/hosting.json";
 import { validateHostingOrigin, type HostingOrigin } from "./app/hostingOrigin.ts";
 import { PRIVATE_TEST, validatePrivateTestProfile, validateTestDatabaseId, assertPrivateTestFlags } from "./app/privateTestProfile.ts";
@@ -58,6 +59,8 @@ export default defineConfig(async ({ mode }) => {
   if (!["sites","netlify-worker","cloudflare-direct","cloudflare-retained-benchmark"].includes(target)) throw new Error("Unknown deployment target");
   const netlifyWorker = target === "netlify-worker";
   const directWorker=target==='cloudflare-direct',retainedWorker=target==='cloudflare-retained-benchmark',workerTarget=netlifyWorker||directWorker||retainedWorker;
+  const customerContact=resolveCustomerContact(process.env.WYBP_CUSTOMER_CONTACT_PROFILE||'legacy');
+  if(customerContact.profile!=='legacy'&&!directWorker&&!retainedWorker)throw Error('Customer contact changes require the isolated/direct target');
   let hostingOrigin: HostingOrigin | undefined;
   if (workerTarget) {
     const environment = process.env.WYBP_HOSTING_ENVIRONMENT;
@@ -247,6 +250,7 @@ export default defineConfig(async ({ mode }) => {
       },
     },
     define: {
+      __WYBP_CUSTOMER_CONTACT_PROFILE__: JSON.stringify(customerContact.profile),
       __WYBP_FEATURE_FLAGS__: JSON.stringify(featureFlags),
       __WYBP_PUBLIC_APP_ORIGIN__: JSON.stringify(publicAppOrigin),
       __WYBP_STAGING_APP_ORIGIN__: JSON.stringify(process.env.WYBP_STAGING_APP_ORIGIN ?? null),

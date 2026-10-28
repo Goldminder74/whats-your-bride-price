@@ -5,13 +5,19 @@ claim that the unresolved provider facts below have been verified. The existing
 site remains unchanged and legalInformation.approvedForProduction remains false.
 The settled seller/address/age/territory/refund/support decisions are not reopened.
 
+**28October replacement:** owner directs that Namecheap's answer must not delay
+launch and approves same-seat Google quote/email preparation. This candidate now
+uses the proposed Google-only game customer path and new contact; these addresses
+must work before publication. [Implementation and remaining checks](customer-email-alternative-2026-10-28.md).
+No statement below asserts that the paid account, email or DNS is already active.
+
 ## Proposed customer-facing notice
 
 ### Who is responsible
 
 Ayodele Ayeni trading as Classes for Culture is responsible for the personal
 information used by What’s Your Bride Price?. Our business postal address appears
-in the seller/contact details on this website. Email team@classesforculture.com for
+in the seller/contact details on this website. Email support@mail.classesforculture.com for
 support, privacy requests or complaints. We aim to acknowledge enquiries within
 two working days; unresolved complaints are escalated to Classes for Culture.
 That acknowledgement target does not replace statutory response deadlines.
@@ -65,10 +71,13 @@ someone else has already downloaded, shared or cached.
 Cloudflare provides the production application, database and technical security
 services. Netlify continues to host the existing website, private test and separate
 recovery-information pages; it does not host the new production game database.
-Google Drive is the proposed location for independently encrypted recovery archives.
-The production archive account must have the approved business processing agreement
-before it receives customer records. Namecheap Private Email transports purchase
-confirmations and handles correspondence. Stripe provides payments, acting as a
+Google Workspace is the proposed business-email and encrypted-recovery provider.
+Its Gmail service will transport purchase confirmations and handle game support,
+privacy and refund correspondence; Drive will hold independently encrypted recovery
+archives. The paid non-trial agreement must cover both before customer processing.
+Existing Namecheap mailboxes continue separately, including operator-only status
+alerts without player/order data; new game confirmations and cases are not forwarded
+there. Historical correspondence is not claimed moved or erased. Stripe provides payments, acting as a
 processor for some services and an independent controller for fraud, regulatory
 and other purposes described in its own notice. Healthchecks.io receives operational
 status checks and operator contact details; we do not send player/order data in
@@ -76,10 +85,10 @@ those checks. No advertising or social-media tracker is installed by this game.
 
 These providers can process information outside the UK. Cloudflare’s published DPA
 includes UK transfer provisions; Stripe describes its roles and transfers in its
-DPA and privacy notice. The final Google business-account agreement and current
-Namecheap UK transfer details must be recorded before this paragraph is published.
+DPA and privacy notice. The final Google business-account agreement and working
+Google-only customer route must be recorded before this paragraph is published.
 We do not claim that a UK database location means all processing stays in the UK.
-Contact team@classesforculture.com for information about recipients and applicable
+Contact support@mail.classesforculture.com for information about recipients and applicable
 transfer safeguards. Provider notices are linked below.
 
 ### How long information is kept
@@ -132,7 +141,7 @@ Depending on the circumstances, you can request access, correction, erasure,
 restriction, portability, object to legitimate-interest processing, and withdraw
 consent. Some financial/legal records cannot be deleted immediately. We explain
 any relevant restriction and avoid deleting unrelated purchased value. Contact
-team@classesforculture.com; ownership proof may be needed, but never email a raw
+support@mail.classesforculture.com; ownership proof may be needed, but never email a raw
 wallet recovery key or password. You can complain to the UK Information
 Commissioner’s Office at ico.org.uk, including without contacting us first.
 
@@ -149,11 +158,13 @@ communicated before they take effect and any necessary consent will be obtained.
 
 ## Engineer/controller publication gates — not part of the public notice
 
-1. Replace the provider paragraph’s explicit pending statements ONLY from the actual
-   Namecheap answer and approved business-account contract; keep this document a
-   draft until then. Do not publish an unverified safeguard or UK-only claim.
+1. Replace the provider paragraph's pending statements ONLY after the approved
+   Google business contract and the replacement inbound/outbound customer route
+   are verified; keep this document a draft until then. Namecheap's written answer
+   no longer gates that route. Do not publish an unverified safeguard or UK-only claim.
 2. Account-specific monthly quote now shows GBP7/user/month after promotion,
-   excluding tax, cancellation at any time. Checkout is unsubmitted; final tax,
+   excluding tax, cancellation at any time. Contact was filled privately and owner
+   saved it28October; payment method/Checkout remain incomplete. Final tax,
    paid processing agreement and business folder custody remain pending. Owner's
    new administrator account does not establish a paid/active backup subscription.
    The signup-linked free-trial terms2.6 exclude the data-processing amendment

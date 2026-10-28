@@ -2,6 +2,7 @@
 import {readFile,writeFile,readdir,mkdir,realpath,lstat} from 'node:fs/promises';import {resolve,dirname,sep} from 'node:path';import {createHash} from 'node:crypto';
 import {assertRetainedServices} from './retained-mail-capability.mjs';
 import {retainedIdentity,RETAINED_ORIGIN,RETAINED_ACCOUNT} from '../worker/retainedBenchmarkPolicy.mjs';
+import {resolveCustomerContact} from '../app/customerContact.ts';
 const hash=b=>createHash('sha256').update(b).digest('hex'),fail=()=>{throw Error('retained_release_unavailable');};
 const safe=p=>typeof p==='string'&&/^(?:server|client)\/[A-Za-z0-9_./@~-]+$/.test(p)&&!p.split('/').some(v=>!v||v==='..'||v.startsWith('.'))&&!p.endsWith('.map');
 export async function verifyRetainedRelease(directory){
@@ -12,6 +13,7 @@ export async function verifyRetainedRelease(directory){
  for(const [p,sha]of Object.entries(manifest.files)){if(p!=='wrangler.json'&&!safe(p)||!/^[a-f0-9]{64}$/.test(sha)||hash(await readFile(resolve(root,p)))!==sha)fail();}
  if(hash(JSON.stringify(manifest.files))!==manifest.releaseId)fail();
  const config=JSON.parse(await readFile(resolve(root,'wrangler.json'),'utf8'));retainedIdentity(config.vars);
+ resolveCustomerContact(config.vars.WYBP_CUSTOMER_CONTACT_PROFILE||'legacy');
  if(config.name!=='wybp-capacity-worker-r002'||config.account_id!==RETAINED_ACCOUNT||config.main!=='server/index.js'||config.no_bundle!==true||config.limits?.cpu_ms!==100||config.preview_urls!==false||config.observability?.enabled!==false||config.vars.WYBP_RETAINED_BENCHMARK_ENABLED!=='false'||config.triggers||config.routes||config.env||config.workflows||config.queues)fail();
  if(config.d1_databases?.map(v=>v.binding).sort().join()!=='DB,MIRROR_DB'||config.d1_databases.some(v=>v.database_id!==config.vars[v.binding==='DB'?'WYBP_BENCHMARK_DATABASE_ID':'WYBP_MIRROR_DATABASE_ID']||v.database_name!==config.vars[v.binding==='DB'?'WYBP_BENCHMARK_DATABASE_NAME':'WYBP_MIRROR_DATABASE_NAME']))fail();
  assertRetainedServices(config.services,manifest.syntheticMailApproval);

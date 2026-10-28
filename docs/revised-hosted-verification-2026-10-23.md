@@ -1,4 +1,21 @@
-# Retained-stock validation package — proposal, NOT spending authority
+# Retained-stock validation package — budget approved, prerequisites held
+
+## Superseding owner decision — 28 October
+
+Later28October owner removes Namecheap-answer waiting as a launch dependency and
+approves same-seat Google quote/customer-mail preparation. Follow
+[the replacement route](customer-email-alternative-2026-10-28.md), including real
+inbound/outbound verification and new contacts, before activating customer mail.
+Earlier Namecheap-answer gates below apply only to the superseded transport.
+
+The owner selected public PAID launch after the gates and explicitly approved the
+increased spend: GBP225 CUMULATIVE experiment INSIDE GBP250 total validation period,
+not475 and not a fresh225 in addition to the old8. The50/month operating ceiling
+remains. Do not request the same budget approval again. The final backup quote/
+paid processing terms, provider answer, evidence-bound new grant and fresh
+preflight still gate effects. No expired clock or consumed allowance is renewed.
+Earlier statements below that call225/250 unapproved describe historical status
+and are superseded by this decision. Conditional cutover authority is unchanged.
 
 **28October decision package:** [current cost, period, provider and execution
 details](launch-approval-package-2026-10-28.md). This clarifies cumulative225 inside
