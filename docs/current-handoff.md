@@ -31,9 +31,18 @@ values match all4 authoritative NS1 servers and Google8.8.8.8. Admin now reports
 'Authenticating email with DKIM' for the selected MAIL subdomain. No externally
 delivered Google message/SPF-DKIM-DMARC message-header pass claimed. Google provided
 mail-only MX priority1 smtp.google.com; it is NOT published while trial/processing
-status remains unresolved. Aliases,relay credential,inbound delivery remain pending.
+status remains unresolved. support@mail.classesforculture.com and
+receipts@mail.classesforculture.com are now SAVED aliases on the existing user,
+not new mailboxes/users. Saved the 'WYBP authenticated application confirmations'
+relay rule with ONLY registered Apps users,SMTP Authentication REQUIRED,TLS REQUIRED,
+no IP allowlist; Admin readback says ENABLED/settings updated. This configures
+Google's route only,not a runtime credential,customer mail or production activation.
+Root incoming/outgoing gateways and existing routing rules unchanged. The supported
+new Google credential,inbound access and actual external delivery remain pending.
 Ignored evidence/scripts:outputs/launch-20261028-package/google-mail-auth-dns-*.json,
-google-mail-auth-public-dns.json,google-mail-dkim.png,google-billing-inquiry.png.
+google-mail-auth-public-dns.json,google-mail-{dkim,aliases,relay}.png,
+google-billing-inquiry.png. The billing representative acknowledged quote-only
+scope and is reviewing the account; no promised charge/tax answer yet.
 
 Local business custody preflight is complete:fixed read-only Drive about.get with
 existing drive.file permission checks ONLY backup-operator identity and bounded
@@ -65,9 +74,12 @@ for mail proof. These new OPS-only helper changes do not invalidate that matched
 application artifact. Reuse the recorded physical LOCAL full-stock recovery;
 hosted full-history/RTO,5k/day/500hour,48h backlog and50/month remain unverified.
 
+Source/helper/test/handoff changes committed and PUSHED as d02136fc82425d7634ecbda3e1760c21e18a8dc2;
+HEAD and remote-tracking branch matched. No hosted application/OPS deployment.
+
 Continue:finish the quote-only Google support case; establish paid/non-trial CDPA
-within<=8.40 before customer processing. Then same-seat support/receipts aliases,
-mail-only MX/relay,owner-created secure Google mail credential and new business
+within<=8.40 before customer processing. Then mail-only MX,inbound support access,
+owner-created secure Google mail credential and new business
 drive.file consent,identity/quota/private-folder verification. Final notice/controller
 review,fresh account preflight and NEW112h grant retain225cumulative INSIDE250,
 all carryover/unknown reservations and50ongoing. No clock started/no old grant

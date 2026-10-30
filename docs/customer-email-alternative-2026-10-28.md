@@ -9,8 +9,11 @@ authenticated billing inquiry; human representative Priti is handling it. Existi
 The mail subdomain is VERIFIED as a secondary domain,no second user. Its SPF,
 2048-bit Google DKIM and monitor-only DMARC TXT records are published and match all
 four authoritative servers plus Google resolver; Admin DKIM signing is enabled.
-All12 previous DNS objects remain unchanged. No mail-only MX,aliases,relay credential
-or customer email activation yet; root Namecheap email untouched. No new send used.
+All12 previous DNS objects remain unchanged. Both proposed aliases are now saved
+on the existing user at no extra seat cost. Google relay rule is saved/Enabled,
+restricted to registered users with SMTP authentication and TLS required,no IP
+allowlist. No runtime relay credential,mail-only MX,inbound/outbound proof or
+customer email activation yet; root Namecheap mail untouched. No new send used.
 
 New private read-only OPS identity/quota RPC and secure one-token local collector
 are validated locally; see current-handoff.md. Business-account consent/token,
