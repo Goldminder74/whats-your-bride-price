@@ -1,5 +1,13 @@
 # Paid-launch approval package — 28 October 2026
 
+**30October update:** Admin access restored,ONE Flexible seat still in trial with
+12days remaining. Exact inclusive early-start/proration and paid-CDPA timing are
+being obtained in the owner-approved single Google support inquiry. No unknown
+charge or paid-start bypass. Subscription<=8.40/month and225inside250 are already
+approved. mail.classesforculture.com is verified; its3authentication TXT records
+are published/root records intact; mail MX/customer transport held. The current
+handoff supersedes stale 'payment missing/authentication pending' history below.
+
 **Latest:** the one-seat monthly Google agreement/trial/EECC and early paid-start
 authority<=8.40 inclusive inside50 are APPROVED. Owner payment verification has
 advanced setup; paid/non-trial status still needs Admin proof. Exact additive

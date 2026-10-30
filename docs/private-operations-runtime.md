@@ -100,6 +100,19 @@ hosted checksum receipts match Git. No catalogue, wallets or application data im
 
 ## Secure installation — completed Google setup stays intact
 
+For the subsequent BUSINESS Workspace custody route, do not overwrite the old
+personal-account token or rerun an expired benchmark controller. The new private
+RecoveryOperator.verifyBusinessDriveIdentity RPC makes only a fixed read-only
+Drive about.get with existing drive.file scope. It checks the expected business
+identity and finite storage quota without returning an email/token; it ALWAYS
+returns paidStatusVerified=false. It needs no DB,key or activation and has no
+HTTP endpoint. Identity/quota alone cannot prove paid terms or sufficient space.
+The new prepare-business-drive-credentials.ps1 reuses the existing sealed client
+pair and collects only a masked BUSINESS-account refresh token into a distinct
+DPAPI file. This is pending new-account consent,not repeated project/client setup.
+Never enter the main Google password as an SMTP credential or display values.
+See customer-email-alternative-2026-10-28.md for the separately gated mail transport.
+
 Use the Cloudflare dashboard, account `b6b22a9a87b5758725e5c499782160af`, Workers &
 Pages → `wybp-prod-ops-r001` → Settings → Variables and Secrets. Add encrypted
 secrets directly there; do not send values to chat, terminal recordings or builds:

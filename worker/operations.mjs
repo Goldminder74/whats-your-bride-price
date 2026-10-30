@@ -29,6 +29,7 @@ import {advanceRecoveryMirrorSnapshot} from './recoveryMirrorCapture.mjs';
 import {recoveryWindowCustody} from '../scripts/windowed-drive-audit.mjs';
 import {verifyDriveRecordHeader} from '../scripts/drive-record-header.mjs';
 import {syntheticConfirmationMail} from './syntheticConfirmationMail.mjs';
+import {verifyBusinessDriveIdentity as checkBusinessDriveIdentity} from '../scripts/business-drive-identity.mjs';
 
 // A benchmark binding to this entrypoint gets ONLY the fixed, one-use synthetic
 // mail capability; no application-authority, seller-secret or recovery RPC.
@@ -289,6 +290,14 @@ export class RecoveryOperator extends ApplicationAuthority {
       await new DriveCustody({folderId,index:new D1DriveIndex(db,folderId),accessToken}).recoverIndex(files,receipt);
       return {verified:true,folderId,fileId:files[0].id,sha256,inventoryReceipt:receipt,indexRecoveryVerified:true,runtimeAccess:'blocked_pending_recovery_baseline'};
     }catch{throw Error('synthetic_custody_verification_failed');}
+  }
+  async verifyBusinessDriveIdentity() {
+    // Private read-only preflight: no database, authority key or runtime activation.
+    if(this.env.WYBP_AUTHORITY_ROLE!=='production-ops')throw Error('business_drive_identity_unavailable');
+    try {
+      const token=driveAccessToken({clientId:this.env.WYBP_DRIVE_CLIENT_ID,clientSecret:this.env.WYBP_DRIVE_CLIENT_SECRET,refreshToken:this.env.WYBP_DRIVE_REFRESH_TOKEN});
+      return await checkBusinessDriveIdentity({accessToken:await token()});
+    } catch {throw Error('business_drive_identity_unavailable');}
   }
   async verifyCredentials() {
     let stage='configuration';

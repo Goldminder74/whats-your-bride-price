@@ -1,5 +1,79 @@
 # Current handoff
 
+### 30 October — Admin restored; business-account preflight ready; mail DNS prepared
+
+This supersedes the older Admin-authentication/native-Chrome instructions below.
+Owner completed the connected Google Admin password verification on30October;
+correct backup-operator account is accessible. Do not repeat account creation,
+seller installation, OAuth project setup, recovery-key or alert checks. Native
+desktop input remains unnecessary and must not target Codex.
+
+28October authenticated Billing proved ONE Flexible Business Starter licence,
+but14 trial days remaining. The early-paid-start dialog omitted the exact
+prorated charge/tax. Automatic approval review REJECTED the final paid-start click
+before execution for that missing<=8.40 evidence; no bypass/retry via another API
+or extra users. Owner then selected DO IT LATER.30October Billing still shows
+ONE assigned and 'Paid service starts in12 days'. Active is not paid-status proof.
+Owner has explicitly approved ONE authenticated Google billing inquiry containing
+only service/quoted prices/UK non-VAT status/timing; quote only, no plan change,
+charge, address, tax identifier, card or customer data. The inquiry reached human
+representative Priti on30October; exact inclusive proration/CDPA answer pending.
+Use the existing chat, not a duplicate case. Ordinary account setup/subscription
+and additive Google-only DNS approvals remain recorded; don't ask them again.
+
+The approved mail.classesforculture.com was added as a SECONDARY domain and now
+shows VERIFIED, without another user/seat or root Gmail migration. Generated its
+Google2048-bit DKIM record and published ONLY three additive TXT records at
+17:23UTC30October:subdomain SPF,google._domainkey.mail DKIM,and_dmarc.mail p=none.
+API readback12->15 records proves every prior record object unchanged; no delete,
+MX/root record/nameserver/website change or publication credit. All three exact
+values match all4 authoritative NS1 servers and Google8.8.8.8. Admin now reports
+'Authenticating email with DKIM' for the selected MAIL subdomain. No externally
+delivered Google message/SPF-DKIM-DMARC message-header pass claimed. Google provided
+mail-only MX priority1 smtp.google.com; it is NOT published while trial/processing
+status remains unresolved. Aliases,relay credential,inbound delivery remain pending.
+Ignored evidence/scripts:outputs/launch-20261028-package/google-mail-auth-dns-*.json,
+google-mail-auth-public-dns.json,google-mail-dkim.png,google-billing-inquiry.png.
+
+Local business custody preflight is complete:fixed read-only Drive about.get with
+existing drive.file permission checks ONLY backup-operator identity and bounded
+whole-account quota. Private RecoveryOperator RPC checks production-ops role before
+network,needs no DB/key/activation and has NO HTTP route. Output contains controlled
+status/counters,never token/email/provider bodies;paidStatusVerified is ALWAYS false.
+Zero free bytes is NOT sufficient capacity.8 helper tests and6 compiled OPS tests
+PASS; dry-run build and focused lint PASS. Logs:business-drive-identity-tests.log,
+business-drive-ops-{build,compiled,lint}.log in the same ignored directory. No real
+business token/Drive operation or deployment occurred.
+
+NEW scripts/prepare-business-drive-credentials.ps1 reuses the existing sealed OAuth
+client pair and requests ONLY a masked NEW business-account refresh token. It
+writes a distinct business-workspace-20261030 DPAPI file,refuses existing/interrupted
+destinations,and preserves the old source/client ciphertext.20 synthetic Windows
+PowerShell checks PASS; ordinary unsigned-file execution was policy-blocked,then
+the test used a process-only execution-policy override. No real credentials read
+by tests. Do not directly rerun the OLD helper/expired r002 controllers or overwrite
+their saved tokens. New business-account consent is still pending; it is not a
+repeat of the completed personal-account project/client setup. No secrets in Git.
+
+The committed-source retained package WITH the one-use synthetic-mail binding is
+release ab6d3d5354e1ff4f21b1aed1347b8738765e1323cdc09081130bbc462b2acfdc,
+source3ed6fd255126d024310052aa95bd13e169ec5f2f,sourceCommitted=true.
+Google-profile compiled application PASS77.786s:converted40/Royal,saveable/replay/
+uncertain-mail/accounting/pacing/cleanup,1synthetic completion,323fake provider calls,
+externalSends0,hostedVerification=false. No grant or deployment. Don't use old1af56
+for mail proof. These new OPS-only helper changes do not invalidate that matched
+application artifact. Reuse the recorded physical LOCAL full-stock recovery;
+hosted full-history/RTO,5k/day/500hour,48h backlog and50/month remain unverified.
+
+Continue:finish the quote-only Google support case; establish paid/non-trial CDPA
+within<=8.40 before customer processing. Then same-seat support/receipts aliases,
+mail-only MX/relay,owner-created secure Google mail credential and new business
+drive.file consent,identity/quota/private-folder verification. Final notice/controller
+review,fresh account preflight and NEW112h grant retain225cumulative INSIDE250,
+all carryover/unknown reservations and50ongoing. No clock started/no old grant
+revived. Approved112h window must still end before17November; don't reset limits.
+Private game,commerce/webhook/production schedules and public cutover unchanged.
+
 ### 28 October — signed-in Chrome found; real-confirmation provider guard repaired
 
 Owner screenshot and direct desktop accessibility prove backup-operator is signed

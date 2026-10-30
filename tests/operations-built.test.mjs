@@ -52,3 +52,33 @@ test('compiled heartbeat probe needs no database or activation and returns no mo
  ]});
  try{const caller=await mf.getWorker('caller');const response=await caller.fetch('https://synthetic.invalid/');assert.deepEqual(await response.json(),{accepted:true,synthetic:true});agent.assertNoPendingInterceptors();}finally{await mf.dispose();await agent.close();}
 });
+
+test('compiled read-only business Drive probe verifies identity/quota without a database, key or paid-status inference',async()=>{
+ const empty={quotaVerified:false,limitBytes:null,usageBytes:null,freeBytes:null,paidStatusVerified:false};
+ const cases=[
+  [{user:{emailAddress:'backup-operator@classesforculture.com'},storageQuota:{limit:'30000000000',usage:'2000000000'}},{status:'verified',identityMatches:true,quotaVerified:true,limitBytes:30000000000,usageBytes:2000000000,freeBytes:28000000000,paidStatusVerified:false}],
+  [{user:{emailAddress:'ayo.m.ayeni@gmail.com'},storageQuota:{limit:'400000000000',usage:'0'}},{status:'identity_mismatch',identityMatches:false,...empty}],
+  [{user:{emailAddress:'backup-operator@classesforculture.com'},storageQuota:{usage:'0'}},{status:'quota_unverified',identityMatches:true,...empty}],
+ ];
+ for(const [about,expected]of cases){
+  const agent=createFetchMock();agent.disableNetConnect();
+  agent.get('https://oauth2.googleapis.com').intercept({path:'/token',method:'POST'}).reply(200,JSON.stringify({access_token:'synthetic-business-access',token_type:'Bearer',expires_in:3600,scope:'https://www.googleapis.com/auth/drive.file'}));
+  agent.get('https://www.googleapis.com').intercept({path:'/drive/v3/about?fields=user(emailAddress),storageQuota',method:'GET'}).reply(200,JSON.stringify(about));
+  const mf=new Miniflare({workers:[
+   {name:'ops',modules:true,scriptPath:resolve('outputs/netlify-worker/operations/operations.js'),compatibilityDate:'2026-05-15',compatibilityFlags:['nodejs_compat'],fetchMock:agent,bindings:{WYBP_AUTHORITY_ROLE:'production-ops',WYBP_DRIVE_CLIENT_ID:'synthetic-client',WYBP_DRIVE_CLIENT_SECRET:'synthetic-secret',WYBP_DRIVE_REFRESH_TOKEN:'synthetic-refresh'}},
+   {name:'caller',modules:true,compatibilityDate:'2026-05-15',serviceBindings:{OP:{name:'ops',entrypoint:'RecoveryOperator'}},script:`export default {async fetch(request,env){return Response.json(await env.OP.verifyBusinessDriveIdentity());}}`},
+  ]});
+  try{const caller=await mf.getWorker('caller'),response=await caller.fetch('https://synthetic.invalid/'),body=await response.json();assert.deepEqual(body,expected);const text=JSON.stringify(body);for(const value of ['synthetic-business-access','synthetic-client','synthetic-secret','synthetic-refresh',about.user.emailAddress])assert.equal(text.includes(value),false);const ops=await mf.getWorker('ops');assert.equal((await ops.fetch('https://synthetic.invalid/verifyBusinessDriveIdentity',{method:'POST'})).status,404);agent.assertNoPendingInterceptors();}finally{await mf.dispose();await agent.close();}
+ }
+});
+
+test('compiled business Drive probe rejects the wrong role before network and exposes no public endpoint',async()=>{
+ let networkCalls=0;const agent=createFetchMock();agent.disableNetConnect();
+ agent.get('https://oauth2.googleapis.com').intercept({path:'/token',method:'POST'}).reply(()=>{networkCalls++;return {statusCode:200,data:JSON.stringify({access_token:'synthetic-business-access',token_type:'Bearer',expires_in:3600,scope:'https://www.googleapis.com/auth/drive.file'})};});
+ agent.get('https://www.googleapis.com').intercept({path:'/drive/v3/about?fields=user(emailAddress),storageQuota',method:'GET'}).reply(()=>{networkCalls++;return {statusCode:200,data:JSON.stringify({user:{emailAddress:'backup-operator@classesforculture.com'},storageQuota:{limit:'30000000000',usage:'0'}})};});
+ const mf=new Miniflare({workers:[
+  {name:'ops',modules:true,scriptPath:resolve('outputs/netlify-worker/operations/operations.js'),compatibilityDate:'2026-05-15',compatibilityFlags:['nodejs_compat'],fetchMock:agent,bindings:{WYBP_AUTHORITY_ROLE:'production-app',WYBP_DRIVE_CLIENT_ID:'synthetic-client',WYBP_DRIVE_CLIENT_SECRET:'synthetic-secret',WYBP_DRIVE_REFRESH_TOKEN:'synthetic-refresh'}},
+  {name:'caller',modules:true,compatibilityDate:'2026-05-15',serviceBindings:{OP:{name:'ops',entrypoint:'RecoveryOperator'}},script:`export default {async fetch(request,env){try{return Response.json(await env.OP.verifyBusinessDriveIdentity());}catch{return new Response('business_drive_identity_unavailable',{status:503});}}}`},
+ ]});
+ try{const caller=await mf.getWorker('caller'),response=await caller.fetch('https://synthetic.invalid/');assert.equal(response.status,503);assert.equal(await response.text(),'business_drive_identity_unavailable');assert.equal(networkCalls,0);const ops=await mf.getWorker('ops');for(const method of ['GET','POST'])assert.equal((await ops.fetch('https://synthetic.invalid/verifyBusinessDriveIdentity',{method})).status,404);}finally{await mf.dispose();await agent.close();}
+});

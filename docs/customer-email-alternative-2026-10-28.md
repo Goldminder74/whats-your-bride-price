@@ -1,5 +1,22 @@
 # Google-only game email — inactive launch preparation
 
+**30October observed status, superseding setup steps below:** connected Admin
+access is restored; ONE Flexible licence remains in trial(12days to paid start).
+Early paid-start was blocked by automatic approval review because its dialog gave
+no exact tax/prorated charge. Owner selected DO IT LATER and approved a quote-only
+authenticated billing inquiry; human representative Priti is handling it. Existing
+<=8.40/month subscription approval stands,not proof that a paid charge occurred.
+The mail subdomain is VERIFIED as a secondary domain,no second user. Its SPF,
+2048-bit Google DKIM and monitor-only DMARC TXT records are published and match all
+four authoritative servers plus Google resolver; Admin DKIM signing is enabled.
+All12 previous DNS objects remain unchanged. No mail-only MX,aliases,relay credential
+or customer email activation yet; root Namecheap email untouched. No new send used.
+
+New private read-only OPS identity/quota RPC and secure one-token local collector
+are validated locally; see current-handoff.md. Business-account consent/token,
+paid-contract proof,actual quota/private folder,SMTP support and inbound/outbound
+delivery remain distinct gates. Do not repeat the old client/project/key setup.
+
 The owner explicitly directs28October that Namecheap's written processing answer
 must not be a launch dependency, and approves Google quote/email preparation using
 the already-installed business details. This replaces the pending quote-only
