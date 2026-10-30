@@ -45,13 +45,13 @@ import {purchaseConfirmationText,purchaseConfirmationMail} from '../../worker/pu
 import {stripeMoney} from '../../db/stripeMoney.mjs';
 
 test('Google confirmation delivery retains the durable claim, accounting and uncertain-send suppression',async()=>{
- for(const lost of [false,true]){
-  const c=await fixture();let connects=0,controller;
-  const connect=(address,options)=>{connects++;assert.deepEqual(address,{hostname:'smtp-relay.gmail.com',port:465});assert.equal(options.secureTransport,'on');assert.equal(c.database.prepare('SELECT state FROM purchase_confirmations').get().state,'sending');return {opened:Promise.resolve(),readable:new ReadableStream({start(v){controller=v;v.enqueue(new TextEncoder().encode('220 ready\r\n'));}}),writable:new WritableStream({write(bytes){const text=new TextDecoder().decode(bytes);if(lost&&text.startsWith('From:')){controller.close();return;}controller.enqueue(new TextEncoder().encode((text.startsWith('EHLO')?'250 ready':text.startsWith('AUTH')?'235 accepted':text==='DATA\r\n'?'354 ready':'250 accepted')+'\r\n'));}}),async close(){}};};
+ for(const failure of ['none','lost_ack','rejected_body_write']){
+  const lost=failure!=='none',c=await fixture();let connects=0,controller,bodyAttempts=0;
+  const connect=(address,options)=>{connects++;assert.deepEqual(address,{hostname:'smtp-relay.gmail.com',port:465});assert.equal(options.secureTransport,'on');assert.equal(c.database.prepare('SELECT state FROM purchase_confirmations').get().state,'sending');return {opened:Promise.resolve(),readable:new ReadableStream({start(v){controller=v;v.enqueue(new TextEncoder().encode('220 ready\r\n'));}}),writable:new WritableStream({write(bytes){const text=new TextDecoder().decode(bytes);if(text.startsWith('From:')){bodyAttempts++;assert.ok(text.endsWith('\r\n.\r\n'));if(failure==='rejected_body_write')throw Error('synthetic write failed after remote delivery');if(failure==='lost_ack'){controller.close();return;}}controller.enqueue(new TextEncoder().encode((text.startsWith('EHLO')?'250 ready':text.startsWith('AUTH')?'235 accepted':text==='DATA\r\n'?'354 ready':'250 accepted')+'\r\n'));}}),async close(){}};};
   try{
    await c.adapter.batch([purchaseConfirmationInsert(c.adapter,confirmationDraft(c.input,c.key))]);await complete(c);await c.confirmations.ready(c.row.id,now);
    const send=purchaseConfirmationMail({WYBP_PURCHASE_MAIL_PROVIDER:'google-workspace-relay',WYBP_PURCHASE_MAIL_SENDER:'receipts@mail.classesforculture.com',WYBP_PURCHASE_MAIL_USERNAME:'backup-operator@classesforculture.com',WYBP_PURCHASE_MAIL_PASSWORD:'synthetic-only'},connect);
-   assert.equal((await c.confirmations.deliver(c.row.id,send,()=>now)).state,lost?'uncertain':'sent');assert.equal((await c.confirmations.deliver(c.row.id,send,()=>now)).sent,false);assert.equal(connects,1);assert.deepEqual(balance(c),{purchased_balance:5,bonus_balance:0});assert.equal(c.database.prepare('PRAGMA foreign_key_check').all().length,0);
+   assert.equal((await c.confirmations.deliver(c.row.id,send,()=>now)).state,lost?'uncertain':'sent');assert.equal((await c.confirmations.deliver(c.row.id,send,()=>now)).sent,false);assert.equal(connects,1);assert.equal(bodyAttempts,1);assert.deepEqual(balance(c),{purchased_balance:5,bonus_balance:0});assert.equal(c.database.prepare('PRAGMA foreign_key_check').all().length,0);
    assert.equal(c.database.prepare('SELECT encrypted_recipient FROM purchase_confirmations').get().encrypted_recipient===null,!lost);
   }finally{c.database.close();}
  }

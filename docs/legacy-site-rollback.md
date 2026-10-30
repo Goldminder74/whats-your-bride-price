@@ -1,5 +1,32 @@
 # Existing website custody and rollback — 23 October 2026
 
+## 30October — exact legacy backend unavailable before cutover
+
+Owner restored Supabase dashboard sign-in for read-only callback inspection.
+Read ONLY public Supabase hostnames from the previously verified deployed-files
+ZIP in memory(no source credential decryption/extraction/execution). The pinned
+website references dsuyelfvdwrqokpaoajx.supabase.co. That exact project URL redirects
+the signed-in account to its organizations list; no project configuration is
+accessible. One public auth-health GET failed before HTTP with ENOTFOUND; an
+independent Google public DNS query returned Status3 NXDOMAIN,no answers,authority
+present at approximately17:40UTC30October. No login/booking emails were sent.
+
+This is an observed EXISTING backend-availability problem,not caused by new-game
+deployment or DNS cutover(which have not happened). It does not prove whether the
+project is paused,deleted or owned by another account. Owner is asked only for
+the owning-account/access status; no new project,restore,upgrade or deletion.
+Unrelated projects and their data/settings were not opened. New game does NOT
+depend on this Supabase backend. Keep the original website/function/deployment
+intact; don't claim working canonical legacy authentication/booking callbacks
+without backend/configuration access and successful evidence. Local compatibility
+shell/route tests remain valid but are not an authenticated end-to-end proof.
+Ignored sanitised evidence:outputs/launch-20261028-package/legacy-auth-access-20261030.json.
+
+Later approved root mail authentication/Google verification and mail-subdomain TXT
+additions supersede the older DNS snapshots below. Preserve the latest15-record
+zone at final cutover,not the historical9-record inventory. Root MX/Namecheap
+mailboxes and original Netlify serving record objects are unchanged.
+
 ## 26 October mail authentication — no DNS/settings change
 
 Actual Namecheap account ShowDKIM confirms `default._domainkey` and its public

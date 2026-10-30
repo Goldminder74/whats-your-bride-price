@@ -5,10 +5,10 @@ import {authorityMail,purchaseEmailTransport} from '../../worker/authorityMail.m
 const google={WYBP_PURCHASE_MAIL_PROVIDER:'google-workspace-relay',WYBP_PURCHASE_MAIL_SENDER:'receipts@mail.classesforculture.com',WYBP_PURCHASE_MAIL_USERNAME:'backup-operator@classesforculture.com',WYBP_PURCHASE_MAIL_PASSWORD:'synthetic-google-app-password'};
 const legacy={WYBP_ALERT_SENDER:'noreply@classesforculture.com',WYBP_SMTP_USERNAME:'noreply@classesforculture.com',WYBP_SMTP_PASSWORD:'synthetic-legacy-password'};
 const mail={to:'synthetic@example.invalid',subject:'Synthetic purchase confirmation',body:'Customer payment: EUR 12.34\nSynthetic terms — statutory rights remain.'};
-function smtp({hostname='smtp-relay.gmail.com',dropData=false,rejectAuth=false}={}){
+function smtp({hostname='smtp-relay.gmail.com',dropData=false,rejectAuth=false,rejectDataWrite=false,stallDataWrite=false,rejectDataCommand=false}={}){
  let controller,closed=false,calls=0;const commands=[];
  return {commands,closed:()=>closed,calls:()=>calls,connect(address,options){calls++;assert.deepEqual(address,{hostname,port:465});assert.deepEqual(options,{secureTransport:'on'});
-  return {opened:Promise.resolve(),readable:new ReadableStream({start(c){controller=c;c.enqueue(new TextEncoder().encode('220 ready\r\n'));}}),writable:new WritableStream({write(bytes){const value=new TextDecoder().decode(bytes);commands.push(value);if(dropData&&value.startsWith('From:')){controller.close();return;}const response=value.startsWith('EHLO')?'250-AUTH PLAIN\r\n250 ready':value.startsWith('AUTH')?(rejectAuth?'535 rejected':'235 accepted'):value==='DATA\r\n'?'354 ready':'250 accepted';controller.enqueue(new TextEncoder().encode(response+'\r\n'));}}),async close(){closed=true;}};
+  return {opened:Promise.resolve(),readable:new ReadableStream({start(c){controller=c;c.enqueue(new TextEncoder().encode('220 ready\r\n'));}}),writable:new WritableStream({write(bytes){const value=new TextDecoder().decode(bytes);commands.push(value);if(value.startsWith('From:')){if(rejectDataWrite){assert.ok(value.endsWith('\r\n.\r\n'));throw Error('private rejected write '+google.WYBP_PURCHASE_MAIL_PASSWORD);}if(stallDataWrite)return new Promise(()=>{});if(dropData){controller.close();return;}}const response=value.startsWith('EHLO')?'250-AUTH PLAIN\r\n250 ready':value.startsWith('AUTH')?(rejectAuth?'535 rejected':'235 accepted'):value==='DATA\r\n'?(rejectDataCommand?'554 rejected':'354 ready'):'250 accepted';controller.enqueue(new TextEncoder().encode(response+'\r\n'));}}),async close(){closed=true;}};
  }};
 }
 test('Google customer transport uses the fixed TLS relay and separate credentials without Namecheap fallback',async()=>{
@@ -31,6 +31,26 @@ test('unchanged legacy customer configuration keeps its existing transport',asyn
 });
 test('Google rejection and lost final acknowledgement stay sanitised with no transport retry or fallback',async()=>{
  for(const [options,error]of [[{rejectAuth:true},'alert_transport_unavailable'],[{dropData:true},'alert_delivery_uncertain']]){const f=smtp(options);await assert.rejects(purchaseEmailTransport({...legacy,...google},f.connect)(mail),new RegExp('^Error: '+error+'$'));assert.equal(f.calls(),1);assert.equal(f.closed(),true);}
+});
+
+test('rejected or stalled DATA body writes are uncertain even when the local write never resolves',async()=>{
+ for(const options of [{rejectDataWrite:true},{stallDataWrite:true}]){
+  const f=smtp(options);
+  await assert.rejects(purchaseEmailTransport({...legacy,...google},f.connect,{timeoutMs:100})(mail),/^Error: alert_delivery_uncertain$/);
+  assert.equal(f.calls(),1);assert.equal(f.commands.filter(value=>value.startsWith('From:')).length,1);assert.equal(f.closed(),true);
+ }
+});
+
+test('rejection before the DATA body stays unavailable and never attempts message content',async()=>{
+ const f=smtp({rejectDataCommand:true});
+ await assert.rejects(purchaseEmailTransport(google,f.connect)(mail),/^Error: alert_transport_unavailable$/);
+ assert.equal(f.commands.some(value=>value.startsWith('From:')),false);assert.equal(f.calls(),1);assert.equal(f.closed(),true);
+});
+
+test('legacy alert DATA write failure also stays uncertain without changing its provider or recipient',async()=>{
+ const f=smtp({hostname:'mail.privateemail.com',rejectDataWrite:true});
+ await assert.rejects(authorityMail(legacy,f.connect)({component:'authority',status:'verified',at:0,test:true}),/^Error: alert_delivery_uncertain$/);
+ assert.equal(f.calls(),1);assert.ok(f.commands.includes('RCPT TO:<noreply@classesforculture.com>\r\n'));assert.equal(f.closed(),true);
 });
 test('Google customer content and time bounds reject injection and close a stalled connection',async()=>{
  let calls=0;const send=purchaseEmailTransport(google,()=>{calls++;throw Error('must not connect');});

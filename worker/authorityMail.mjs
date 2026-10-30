@@ -23,7 +23,7 @@ function tlsSmtpTransport({sender,username,password,hostname,ehlo},connect,{time
   if(!Number.isSafeInteger(timeoutMs)||timeoutMs<1||timeoutMs>30000)throw Error('mail_transport_configuration');
   return async mail => {
     if(typeof mail?.to!=='string'||mail.to.length>254||!/^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$/.test(mail.to)||typeof mail.subject!=='string'||!/^[\x20-\x7e]{1,160}$/.test(mail.subject)||typeof mail.body!=='string'||!mail.body||Buffer.byteLength(mail.body)>65536)throw Error('mail_content_unavailable');
-    let socket, reader, writer, timer, accepted = false;
+    let socket, reader, writer, timer, dataAttempted = false;
     try {
       socket = connect({ hostname, port: 465 }, { secureTransport: 'on' });
       const work = async () => {
@@ -54,13 +54,15 @@ function tlsSmtpTransport({sender,username,password,hostname,ehlo},connect,{time
         await command('RCPT TO:<'+mail.to+'>',250);
         await command('DATA',354);
         const body = 'From: '+sender+'\r\nTo: '+mail.to+'\r\nSubject: '+mail.subject+'\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n'+Buffer.from(mail.body).toString('base64').match(/.{1,76}/g).join('\r\n')+'\r\n.\r\n';
+        // A rejected/partial write may already have delivered DATA's terminator.
+        // Mark ambiguity BEFORE writing, not only after the local promise resolves.
+        dataAttempted = true;
         await writer.write(new TextEncoder().encode(body));
-        accepted = true; // After DATA, a disconnect/timeout is an uncertain send.
         await reply(250);
         return { accepted: true, receiptVerified: false };
       };
       return await Promise.race([work(), new Promise((_,reject) => { timer=setTimeout(()=>reject(Error('alert_transport_timeout')),timeoutMs); })]);
-    } catch { throw Error(accepted ? 'alert_delivery_uncertain' : 'alert_transport_unavailable'); }
+    } catch { throw Error(dataAttempted ? 'alert_delivery_uncertain' : 'alert_transport_unavailable'); }
     finally { clearTimeout(timer); if(socket) await socket.close().catch(()=>{}); }
   };
 }

@@ -2,6 +2,30 @@
 
 ### 30 October — Admin restored; business-account preflight ready; mail DNS prepared
 
+**Subsequent30October source correction:** confirmed an SMTP ambiguity defect:
+the old transport marked DATA attempted only AFTER the local body-write promise
+resolved. A rejected/stalled write may already have delivered its terminator.
+It now marks uncertainty BEFORE attempting that write(after354); body-write errors
+cannot become retry-safe failures. Pre-DATA rejection stays unavailable/retryable.
+Real PurchaseConfirmations regression verifies one connection/body attempt,
+durable uncertain state,retained recipient ciphertext,no automatic resend,and
+unchanged fulfilled balance/FKs. Google/legacy routing,TLS and no fallback preserved.
+44/44 focused tests PASS1086.458ms; focused ESLint/diff PASS(tool results,no invented
+log files). Test command:node --experimental-strip-types --test plus
+tests/data/{purchase-mail-transport,purchase-confirmation-routing,purchase-confirmations,
+synthetic-confirmation-mail,operations-runtime}.test.mjs. Affected OPS dry-run build
+and all6 compiled tests PASS18.869s; ignored mail-write-ops-{build,compiled}.log.
+No deployment/send. Rebuild/pin the affected runtime package before hosted mail;
+don't use an older OPS bundle merely because the app package is unchanged.
+
+Google representative confirms the one-seat promotional3.50/regular7GBP base,
+monthly arrears and daily proration for the remaining days if converted now.
+Paid agreement/CDPA covers Gmail AND Drive immediately upon trial->paid transition.
+They cannot guarantee an inclusive tax amount; the exact UI preview route/current
+prorated base/no-other-fee clarification and case reference are still requested.
+No paid-start retry,charge,trial waiver or false paid-status claim. Full standard
+monthly8.40 remains an approved allowance/cap,not an inclusive invoice.
+
 This supersedes the older Admin-authentication/native-Chrome instructions below.
 Owner completed the connected Google Admin password verification on30October;
 correct backup-operator account is accessible. Do not repeat account creation,
@@ -76,6 +100,17 @@ hosted full-history/RTO,5k/day/500hour,48h backlog and50/month remain unverified
 
 Source/helper/test/handoff changes committed and PUSHED as d02136fc82425d7634ecbda3e1760c21e18a8dc2;
 HEAD and remote-tracking branch matched. No hosted application/OPS deployment.
+
+30October owner restored Supabase sign-in for read-only legacy callback inspection.
+Exact legacy project dsuyelfvdwrqokpaoajx,verified from public JS inside the pinned
+deployed ZIP,redirects this signed-in account to organizations. Its public auth
+health hostname returns ENOTFOUND; Google DNS independently returns NXDOMAIN3,
+no answers,authority present. Paused/deleted/other-owner cause is UNVERIFIED.
+This is pre-cutover availability,not a new-game dependency; do not recreate it,
+read unrelated project data,upgrade,change auth/routing or claim callback proof.
+Owner is asked which account/admin owns it(status only). See legacy-site-rollback.md
+and ignored legacy-auth-access-20261030.json. Existing local shell/callback guards
+remain passed; an authenticated old-site journey remains unverified.
 
 Continue:finish the quote-only Google support case; establish paid/non-trial CDPA
 within<=8.40 before customer processing. Then mail-only MX,inbound support access,
