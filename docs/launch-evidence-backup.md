@@ -1,0 +1,88 @@
+# Private evidence preservation — Drive archives verified; OneDrive pending
+
+5 October 2026 update. The Google Drive connector is now connected and verified as **ayo.m.ayeni@gmail.com**. All four files below were uploaded to My Drive (root; no folder-creation capability was used), then metadata readback verified `shared=false` and exactly the intended owner permission. They are uploaded and owner-only. Subsequent owner-provided downloads in `C:/Users/Admin/Downloads/` verified BOTH archive containers against unchanged trusted local checksum receipts, ZIP integrity, exact file inventory and all 363 original/15 supplement payload hashes. **Drive archive readback is verified.** Downloaded receipt copies were not supplied; no receipt was replaced. Raw connector fetches succeeded but their authenticated materialisation URLs returned HTTP 403 on local download, including a fresh retry. No download URL or credential is preserved in documentation. OneDrive remains unavailable/unverified.
+
+| Uploaded file | Google Drive file ID |
+|---|---|
+| launch-evidence-a42ea07f.zip | `1oad_ELFUbe_5uK3vJpfvGgMf9893tc0L` |
+| launch-evidence-a42ea07f.zip.sha256 | `1BcNqbCSyyqXIKDgSyVIlWQVrDmun2VCi` |
+| launch-evidence-recovery-20261005.zip | `1RA_P9XT323L6IJ7KP7idGzs4C6k-22fv` |
+| launch-evidence-recovery-20261005.zip.sha256 | `1ys5Gq_1NNvJ66ewjlW8gk_-OydhLFhJ3` |
+
+Private upload receipt is local ignored `outputs/activation-preparation/google-drive-upload-receipt.json`. Original local archives are unchanged. For Google Drive, **do not upload duplicates**: the two ZIP readbacks are complete; retain these exact files/IDs. Receipt readbacks can be checked separately if downloaded. Steps 1–3 remain the manual instructions for the still-missing OneDrive copy and any future organisation into a private folder.
+
+## Exact manual steps
+
+1. In a browser, open Google Drive directly and verify avatar account **ayo.m.ayeni@gmail.com**. My Drive → New → Folder: `WYBP private launch evidence 2026-10-05`. Set folder/file General access **Restricted**, no other users or public links. Do not buy storage; stop if quota is insufficient.
+2. New → File upload: select these FOUR files from local `outputs/activation-preparation/`: `launch-evidence-a42ea07f.zip`, `launch-evidence-a42ea07f.zip.sha256`, `launch-evidence-recovery-20261005.zip`, `launch-evidence-recovery-20261005.zip.sha256`. Preserve filenames; never replace original archive with the supplement. Save folder/file IDs privately.
+3. Open OneDrive directly, verify avatar **ayofella@yahoo.com**, create the same private folder, Upload → Files: the same four files. Manage access must show only owner; no sharing link. Stop if quota requires spending. This cloud copy must be uploaded to that account, not merely copied into an unverified local sync directory.
+4. Download all four files FROM EACH provider into separate fresh local folders (e.g. `$env:TEMP/wybp-gdrive-readback` and `$env:TEMP/wybp-onedrive-readback`). Verify both ZIP hashes against the trusted local values below AND ensure downloaded sidecars match the local sidecars. A successful upload/progress tick alone is insufficient.
+
+```powershell
+Get-FileHash -Algorithm SHA256 <downloaded-original.zip>
+Get-FileHash -Algorithm SHA256 <downloaded-supplement.zip>
+```
+
+Original ZIP SHA-256: `767030e3e12e017bcd13d5de1ab5f7ebd5726727c78bb3d24f2176718e6ac41a`.
+Supplement ZIP SHA-256: `40352a9d6b96fc0976441fc4ecd4afb54338b33eb9c4ac4fa1ff878f73a71b61`.
+
+5. Extract each downloaded original to a fresh directory and verify per-file hashes/unlisted files from the repository:
+
+```powershell
+node --input-type=module -e "import {verifyArchiveDirectory} from './scripts/archive-launch-evidence.mjs'; await verifyArchiveDirectory(process.argv[1]);" <extracted-original-directory>
+```
+
+The supplement `checksums.json` records each body's bytes/hash; verify every extracted file against it too. An exact trusted whole-ZIP hash already proves the downloaded container matches the locally payload-verified original/supplement. Do not edit either downloaded archive. Record provider account, private file ID, date, whole-ZIP and payload results outside Git. Only then mark that provider copy verified.
+
+## Preservation boundaries
+
+GitHub preserves source, original research inputs, structured records/builder, policy and publication manifest; raw/current source bodies and ZIPs are ignored local artefacts. Original archive remains unchanged and documents 119 captures/22 gaps; the separate supplement adds 13 useful current captures, one NASA error body and eight failed requests. Together nine gaps affect 13 proposed questions; see [reconciliation](launch-source-capture-reconciliation.md). No capture is represented as historical raw evidence or human cultural approval. Google Drive archive preservation is verified by owner-provided readback; OneDrive and historical-capture preservation remain unverified. Verification does not resolve the nine evidence gaps.
+
+## Owner-selected Google Drive only
+
+Owner chose the two verified Google Drive archives as the preservation destination; OneDrive is deferred and is no longer an activation gate requiring owner downloads. Do not claim a OneDrive backup exists or is verified. The original ZIPs/receipts remain immutable. New second-pass evidence is separately uploaded owner-only as Drive file `1Oe0jXujCjjDxHdM2AEi5Sh6j-AQcLgmZ` with receipt `1AdGvCpORe68Ax_GAAr1moTTci6VkeMB5`, SHA-256 `3c495c64cb23aa3fe964a1259bf091d296b6d054968f109db7d6390c7ae2d263`. Local ZIP and twelve listed payloads verified; this NEW supplement cloud readback remains unverified. Do not require another owner download to repeat verification of the two original archives.
+
+## 8 October independently verified readback
+
+Reuse of the existing second-pass archive succeeded: Drive ZIP
+`1Oe0jXujCjjDxHdM2AEi5Sh6j-AQcLgmZ` matches unchanged receipt
+`1AdGvCpORe68Ax_GAAr1moTTci6VkeMB5`, SHA-256
+`3c495c64cb23aa3fe964a1259bf091d296b6d054968f109db7d6390c7ae2d263`.
+ZIP integrity and all 12 payload checksums passed; the receipt text matches the
+trusted original. No duplicate or replacement upload was made.
+
+Two new, distinct archives and receipts were uploaded only after searching for
+existing copies. Metadata readback verified `shared=false` and the sole owner
+`ayo.m.ayeni@gmail.com` on all four. Each was independently downloaded with its
+receipt, compared with the unchanged local receipt, checked for exact inventory,
+ZIP integrity and every payload SHA-256.
+
+| File | Drive ID | SHA-256 / payloads |
+|---|---|---|
+| launch-evidence-readiness-4b6883d0.zip | `1pUD7yAMQpOYalhkcIfpbQiw9QaSefdKW` | `574ea7f5dc751f20fb4b9348c2940e58fb6b8309eb3849f039e20bd20a3cd16f`; 388 |
+| launch-evidence-readiness-4b6883d0.sha256.txt | `1UvyZIvuviPa6qooGv4lqM8Jt2me03x0I` | whole-container receipt |
+| retention-custody-rehearsal-20261008.zip | `1RvhLwSKNPXv4GupNPwQhZH_m-YTEnD0n` | `d94b1886f946fb871b0ba5726374efcbb81a18b1a8fe82c3db533faa56257c87`; 5 |
+| retention-custody-rehearsal-20261008.sha256.txt | `1dJkt_qdr2gKmFugXokvQZNqKoIxZtsIr` | whole-container receipt |
+
+The new question archive covers 90 proposed questions, 136 selected raw source
+bodies and zero missing selected bodies. From **downloaded** `source/`, the offline
+readiness generator reproduced all 12 evidence outputs byte for byte. The root
+archive filename `publication-manifest-v1.json` is legacy packaging terminology;
+its bytes match the proposed v2 hash. Both accurately named source manifests are
+included under `source/`. Archive `independentBackup: unverified` records the
+creation-time status; this separate readback receipt records subsequent verification.
+Structured question/source records and repair proposal are preserved in GitHub;
+raw bodies and ZIPs are intentionally outside Git in ignored preparation storage.
+Historical original capture custody remains unverified.
+
+The retention archive contains **synthetic data only**, with database snapshots,
+independent hold/case/closure/suppression authority and verified-event settlement
+fixture. Replaying the Drive-downloaded database and authority independently proved
+repeat-safe suppression, denied deleted/closed access, hold protection and intact
+ledger/order/allocation dependencies. It is not a customer backup, live D1 restore,
+or an automated rolling operational journal. Real operational custody and provider
+restore remain separate activation requirements. No secrets or user payment data
+were uploaded. Local download materialisation URLs were not retained.
+
+Owner accepts verified Google Drive custody; OneDrive is deferred and unverified.
+No further OneDrive action is needed for this agreed preparation milestone.

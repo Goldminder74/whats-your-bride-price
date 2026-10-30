@@ -1,0 +1,12 @@
+// No fetch, hosted binding, token or stored player data. Generated provider
+// metadata exercises the explicit partitioned cardinality bound with real MACs.
+import assert from 'node:assert/strict';import {recoverSignedDriveIndex} from '../../scripts/discover-authority-tail.mjs';import {createDriveRecordHeader} from '../../scripts/drive-record-header.mjs';
+export async function retainedInventoryPressure(count=1000){
+ if(!Number.isSafeInteger(count)||count<1||count>1200000)throw Error('local_inventory_scope');
+ const key=Buffer.alloc(32,7),at=Date.now(),started=Date.now();let recovered=0,pages=0,heap=0;
+ const folders=Array.from({length:17},(_,i)=>({folderId:'retained_pressure_folder_'+i,index:{async recoverReserve(name,id,clocks){assert.equal(clocks.createdAt,at);assert.equal(clocks.expiresAt,at+2592000000);assert.ok(name.startsWith('retained_pressure_'));recovered++;return id;},get:async()=>null,recoveryRecord:async()=>null},async auditPage({cursor,pageSize}){
+  assert.equal(pageSize,25);pages++;heap=Math.max(heap,process.memoryUsage().heapUsed);if(i===0)return {files:folders.slice(1).map(f=>({id:f.folderId,name:f.folderId,mimeType:'application/vnd.google-apps.folder',parents:[folders[0].folderId]})),cursor:null};
+  const n=Math.floor(count/16)+(i<=count%16?1:0),offset=Number(cursor||0),files=Array.from({length:Math.min(25,n-offset)},(_,j)=>{const serial=offset+j,id='retained_pressure_file_'+i+'_'+serial,name='retained_pressure_'+i+'_'+serial+'.enc';return {id,name,mimeType:'application/octet-stream',parents:[folders[i].folderId],appProperties:createDriveRecordHeader({key,folderId:folders[i].folderId,fileId:id,name},{sha256:'a'.repeat(64),createdAt:at,expiresAt:at+2592000000})};});return {files,cursor:offset+25<n?String(offset+25):null};
+ }})),custody={all:folders,check:async f=>assert.ok(folders.includes(f))};
+ try{await assert.rejects(recoverSignedDriveIndex({custody:{...custody,all:[folders[0]]},key,maxFiles:1000001}));await assert.rejects(recoverSignedDriveIndex({custody,key,maxFiles:1600001}));const result=await recoverSignedDriveIndex({custody,key,maxFiles:1600000,maxPages:100000,now:()=>at});assert.equal(recovered,count);assert.equal(result.files,count+16);return {localOnly:true,generatedSignedObjects:count,providerPages:pages,elapsedMs:Date.now()-started,peakHeapBytes:heap,hostedRequests:0,qualification:'Streaming authenticated metadata bound, not hosted index writes, archive availability, financial recovery or RTO.'};}finally{key.fill(0);}
+}
