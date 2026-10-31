@@ -19,8 +19,9 @@ present at approximately17:40UTC30October. No login/booking emails were sent.
 
 This is an observed EXISTING backend-availability problem,not caused by new-game
 deployment or DNS cutover(which have not happened). It does not prove whether the
-project is paused,deleted or owned by another account. Owner is asked only for
-the owning-account/access status; no new project,restore,upgrade or deletion.
+project is paused,deleted or owned by another account. Owner has already said
+they do not know the owning account; do not repeat that question. No new project,
+restore,upgrade or deletion is authorised by this observation.
 Unrelated projects and their data/settings were not opened. New game does NOT
 depend on this Supabase backend. Keep the original website/function/deployment
 intact; don't claim working canonical legacy authentication/booking callbacks
@@ -28,9 +29,11 @@ without backend/configuration access and successful evidence. Local compatibilit
 shell/route tests remain valid but are not an authenticated end-to-end proof.
 Ignored sanitised evidence:outputs/launch-20261028-package/legacy-auth-access-20261030.json.
 
-Later approved root mail authentication/Google verification and mail-subdomain TXT
-additions supersede the older DNS snapshots below. Preserve the latest15-record
-zone at final cutover,not the historical9-record inventory. Root MX/Namecheap
+Later approved root mail authentication/Google verification,mail-subdomain TXT
+and mail-only MX additions supersede the older DNS snapshots below. The last
+verified30October inventory contains16 records. Workspace cancellation did not
+remove those DNS records; refresh the full inventory before cutover and preserve
+it,not a historical9- or15-record snapshot. Root MX/Namecheap
 mailboxes and original Netlify serving record objects are unchanged.
 
 ## 26 October mail authentication — no DNS/settings change

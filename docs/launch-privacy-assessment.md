@@ -1,5 +1,18 @@
 # Launch privacy assessment — 26 October 2026
 
+## Current applicability — 31 October
+
+Google Workspace is cancelled and its email/backup route is retired. The earlier
+Google-only proposal below is historical, not evidence of a current processor or
+working contact. Reconcile the actual replacement providers before final approval
+or publication. Namecheap's written specialist letter is not an owner-mandated
+launch prerequisite; published contractual/transfer facts or a verified alternative
+still have to support the actual customer path. No legal conclusion is invented.
+
+The purpose/necessity and children-access assessment remains a controller-review
+draft. Settled seller, address, UK-only,18+, refund and consent decisions remain;
+do not ask for them again. [Current handoff](current-handoff.md) governs execution.
+
 **28October superseding route:** owner directs an alternative to waiting for
 Namecheap and approves Google quote/email preparation on the same proposed seat.
 Use [the exact Google-only customer path](customer-email-alternative-2026-10-28.md).

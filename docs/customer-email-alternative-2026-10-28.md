@@ -1,4 +1,21 @@
-# Google-only game email — inactive launch preparation
+# Retired Google Workspace email proposal
+
+## Current status — 31 October
+
+Google confirmed Business Starter cancellation. This route is discontinued; no
+new mailbox, password, OAuth permission, subscription, repurchase or support
+contact is pending. No customer mail or business archive was sent through it.
+Original Namecheap mailboxes/root MX and the private game remain intact.
+
+Customer confirmation delivery and replacement backup custody are still launch
+gates. Existing-service alternatives must be verified and costed before selection;
+this document does not authorise creating hosted resources or buying credits.
+Use [current handoff](current-handoff.md) for execution.
+
+## Historical preparation and cancellation record
+
+The observations below are retained as history, not renewed setup instructions or
+evidence that the cancelled account remains an approved launch dependency.
 
 **FINAL31October:** owner subsequently authorises the displayed cancellation
 conditions. Google now confirms Business Starter "Subscription cancelled".

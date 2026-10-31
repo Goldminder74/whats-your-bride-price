@@ -1,5 +1,19 @@
 # Private operational runtime
 
+## Current checkpoint — 31 October
+
+Read [current-handoff.md](current-handoff.md) before the historical implementation
+and setup records below. Google Workspace is cancelled; do not reuse its business
+custody preflight, request credentials or repeat passed key/alert/heartbeat checks.
+The original operational credentials/data remain protected. Production operations,
+cron and public access remain off; the missing-ping monitor remains paused at its
+recorded defaults. No new runtime deployment accompanies this documentation update.
+
+The local commissioning controller and replay/deadline corrections have focused
+and compiled evidence. Authenticated provider adapters, complete hosted execution,
+replacement custody and the required recovery/capacity/cost proof remain unfinished.
+Do not turn a local recovery receipt or stale deployment ID into production readiness.
+
 ## Source continuation — 23 October, NOT deployed
 
 See [recovery integration](recovery-integration-2026-10-23.md) for the compatible

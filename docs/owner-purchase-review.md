@@ -1,5 +1,17 @@
 # Owner review: purchases, refunds and seller details
 
+## Current decision record — 31 October
+
+The settled decisions below remain valid. No new seller address, Stripe onboarding,
+ICO declaration, refund/age/territory decision, recovery key or Google credential
+entry is requested. Google Workspace is cancelled; its mail-subdomain aliases were
+not activated as the customer route. Original team@classesforculture.com support/
+privacy and noreply@classesforculture.com operational-alert destinations remain.
+
+Only the final factually reconciled provider/privacy/controller review remains
+distinct from those commercial approvals. Delivery/retention readiness and final
+production configuration are engineering work. See [current handoff](current-handoff.md).
+
 ## Seller input already completed — supersedes installation requests below
 
 On23October the owner clarified the missing address and explicitly authorised

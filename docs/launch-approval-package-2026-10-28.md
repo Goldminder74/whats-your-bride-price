@@ -1,5 +1,24 @@
 # Paid-launch approval package — 28 October 2026
 
+## Current applicability — 31 October
+
+The budget approval is retained: £225 CUMULATIVE experiment INSIDE £250 total,
+with £50/month operation. All old consumed/unknown/reserved usage remains counted;
+there is no new spending allowance or clock reset. Workspace cancellation is
+COMPLETE and verified; its contract, token and £8.40 allowance cannot be reused as
+business-custody proof or permission to buy another service.
+
+This package is held until a replacement provider-specific scope/cost/preflight
+is established. No larger test, new store, credit pack or subscription has been
+activated. [Current handoff](current-handoff.md) lists the remaining launch gates
+and preserved evidence. The dated v2 window must still end before17November00UTC.
+
+## Historical package and provider observations
+
+All dated statements below are preserved history. Superseded login, cancellation,
+agreement and approval requests are not active instructions; current status above
+and the handoff take precedence. The detailed limits remain contractual constraints.
+
 **FINAL31October:** owner authorises the displayed cancellation conditions and
 Google confirms "Subscription cancelled" for Business Starter. No new paid plan,
 support communication or organisation deletion. Final accrued invoice unverified.

@@ -1,5 +1,21 @@
 # Launch completion decision — 21 October 2026
 
+## Current execution status — 31 October
+
+Use [current-handoff.md](current-handoff.md) as the execution checkpoint. The
+sections below are historical evidence, not active setup requests, clocks or cost
+authority. The owner has approved £225 cumulative validation INSIDE £250 total;
+£50/month operation and all carried/unknown usage still apply. Workspace was
+cancelled and verified; its Google-specific custody preflight cannot be reused.
+
+Remaining sequence: select/prove a replacement backup route with exact bounded
+scope, complete provider adapters and the hosted driver, verify existing-address
+customer mail, run full-history recovery and the measured 5k/day/500-hour/outage
+workload, then final privacy/controller review and protected production/cutover.
+Most remaining work is engineering. Seller/address, commercial decisions, Stripe
+onboarding, key/alert checks and conditional launch permission are already recorded.
+No new test, deployment or activation is claimed by this document update.
+
 ## Superseding observed status — 23 October
 
 Read current-handoff.md first. The six-hour renewal was approved and executed;

@@ -1,5 +1,24 @@
 # Retained-stock validation package — budget approved, prerequisites held
 
+## Current applicability — 31 October
+
+The increased £225 cumulative experiment INSIDE £250 validation-period budget is
+already approved; £50/month remains the operating ceiling. Preserve every previous
+reservation, unknown effect and consumed allowance. Earlier statements calling
+that increase unapproved are history, not a request for the same approval again.
+
+Google Workspace is CANCELLED and verified. Do not use its account, quote, token
+or contract as future business-custody evidence or restart its setup. The concrete
+provider-specific resource/adapter/cost scope must be revised after a replacement
+route passes a bounded check. Existing service candidates are not automatically
+approved new hosted resources. No expired grant or accounting period is renewed.
+
+The dated v2 guard requires an end before 17 November 00:00 UTC; a full112-hour
+window must start strictly before12November08:00UTC. Re-price/re-authorise if that
+cannot be met. No new window, resource or hosted test has started. Follow
+[current handoff](current-handoff.md) for passed evidence and exact remaining work;
+the historical design below is not independently executable launch authority.
+
 ## Superseding owner decision — 28 October
 
 Later28October owner removes Namecheap-answer waiting as a launch dependency and

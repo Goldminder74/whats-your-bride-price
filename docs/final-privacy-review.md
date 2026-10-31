@@ -1,5 +1,20 @@
 # Complete privacy-notice candidate — 28 October 2026
 
+## Frozen candidate — 31 October
+
+Google Workspace has been cancelled. The Google customer-contact and custody
+paragraphs below describe a retired proposal, not the selected live route. Do NOT
+publish this candidate, activate its aliases or request more Google setup. Original
+Private Email/root contacts remain; a replacement confirmation/backup path and
+applicable provider/transfer facts still require verification.
+
+Preserve the settled seller/address, UK-only, adult-audience, refund and consent
+decisions. Complete the engineering/provider/retention/children-access assessment,
+then present one factually reconciled notice for controller approval. Production
+legal approval stays false. Use [current handoff](current-handoff.md), not old
+payment/quote/credential requests below. No notice or provider setting is changed
+by this documentation update.
+
 **Not approved or published.** This is the complete proposed launch wording, not a
 claim that the unresolved provider facts below have been verified. The existing
 site remains unchanged and legalInformation.approvedForProduction remains false.

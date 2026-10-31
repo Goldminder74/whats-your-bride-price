@@ -1,5 +1,21 @@
 # Production preparation continuation — 11 October 2026
 
+## Current checkpoint — 31 October
+
+This is a historical continuation contract; use [current handoff](current-handoff.md)
+for the active checkpoint. Seller/address, UK-only,18+,refund/support, Stripe
+onboarding, independent key and alert checks are already settled. Do not repeat
+their old owner-action requests below. Workspace cancellation is verified; its
+customer-mail/business-custody proposal is retired.
+
+Launch still requires the complete hosted driver/replacement backup and customer
+mail integration,5,000 completed games/day/500-hour/48-hour-outage evidence,£50/month
+whole-account fit,final provider/privacy review and protected production/rollback
+configuration. The increased £225 cumulative INSIDE £250 validation budget and
+conditional paid cutover approval are recorded; do not re-ask generic approval.
+Changed hosted resources/provider scope or spending still need their exact review.
+No public access,live payment,schedule,DNS or deployment activation in this update.
+
 ## Current launch continuation — 13 October 2026
 
 Latest decision: current architecture,5,000 completed games/day,GBP50/month;
