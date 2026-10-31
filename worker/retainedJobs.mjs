@@ -42,8 +42,12 @@ export class RetainedJobs{
  next(){const r=this.ledger.row(),cleanup=r.phase==='cleanup';if(r.stopped&&!cleanup)return null;return this.db.prepare("SELECT MIN(due) n FROM retained_jobs WHERE phase=? AND state='waiting'").get(cleanup?'cleanup':'ordinary')?.n??null;}
  suspendOrdinary(){this.db.prepare("UPDATE retained_jobs SET state='suspended' WHERE phase='ordinary' AND state='waiting'").run();this.db.prepare("UPDATE retained_jobs SET state='uncertain' WHERE phase='ordinary' AND state='running'").run();}
  plan(definition){
-  const state=this.ledger.row();if(state.stopped||state.phase!=='measure'||definition?.startsAt!==state.measure_at||definition.startsAt<this.now()||definition.completed!==5000||definition.peakHour!==500||!definition.upper)fail();retainedVector(definition.upper);
+  const state=this.ledger.row(),at=this.now();if(state.stopped||at>=state.deadline||state.phase!=='measure'||definition?.startsAt!==state.measure_at||definition.completed!==5000||definition.peakHour!==500||!definition.upper)fail();retainedVector(definition.upper);
   const prior=this.db.prepare('SELECT identity FROM retained_job_plan WHERE id=1').get(),identity=retainedHash(definition);if(prior){if(prior.identity!==identity)fail();return {accepted:true,replay:true};}
+  // A lost acknowledgement may arrive after the scheduled start. Re-read the
+  // identical accepted plan without replacing its payload/cursor or clock;
+  // creating a previously unaccepted plan in the past remains forbidden.
+  if(definition.startsAt<at)fail();
   this.db.prepare('INSERT INTO retained_job_plan VALUES(1,?,?,0)').run(identity,this.seal('day-plan',definition));return {accepted:true};
  }
  fill(){

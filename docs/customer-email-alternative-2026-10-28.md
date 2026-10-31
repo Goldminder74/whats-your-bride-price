@@ -1,5 +1,29 @@
 # Google-only game email — inactive launch preparation
 
+**31October OWNER CANCELLATION:** the owner rejects the Google email route and
+explicitly chooses cancellation of the ENTIRE Workspace subscription,including
+Drive. This document is now historical/inactive; do not ask for app passwords or
+mail consent. Admin is restored,but Google now warns of permanent email/file deletion
+for one active user. Automatic approval review blocked continuation pending exact
+informed owner approval; no cancellation receipt yet.
+No Gmail API grant,mail send or customer archive upload
+occurred. Keep original Namecheap mailboxes/root MX and private game intact. The
+new business Drive identity/quota readback is historical,not future custody approval.
+Replacement business backup/customer-mail readiness must be established before
+hosted launch validation; no new subscription or personal-account fallback assumed.
+
+**30October18:00UTC superseding result:** paid conversion completed using the
+existing approval after case77061503 confirmed daily prorated one-seat cost,no
+extra fees,and immediate paid-CDPA coverage of Gmail/Drive(trial2.6 ceases).
+3.50promo/7regular excluding tax;4.20/8.40 with20% UK VAT are estimates,not invoice.
+ONE Flexible seat. Google now verifies the MAIL subdomain,Gmail ready,DKIM active.
+Exact mail-only MX added; all15 preceding records preserved(16 total),root Namecheap
+MX unchanged on4authoritative servers plus Google. Aliases and strict authenticated
+TLS relay saved. No migration,extra user,customer send or production activation.
+Remaining:owner-created mail app credential and exact new BUSINESS drive.file
+consent,secure installation,identity/quota/custody and real delivery verification.
+Do not repeat paid start,old OAuth project,keys,address or alerts. See current handoff.
+
 **30October observed status, superseding setup steps below:** connected Admin
 access is restored; ONE Flexible licence remains in trial(12days to paid start).
 Early paid-start was blocked by automatic approval review because its dialog gave

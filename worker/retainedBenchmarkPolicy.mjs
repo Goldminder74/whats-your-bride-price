@@ -8,6 +8,10 @@ export const RETAINED_ACCOUNT='b6b22a9a87b5758725e5c499782160af';
 export const PREVIOUS_RETAINED_CAPS=Object.freeze({external:5000000,internal:8000000,writes:150000000,reads:500000000,storageBytes:16000000000,transferBytes:60000000000,driveObjects:1600000,driveBytes:18000000000,workerCpuMs:1300000000,doRequests:6000000,doWrites:50000000,doReads:500000000,doStorageBytes:3000000000,doGbMs:64000000});
 export const RETAINED_CAPS=Object.freeze({...PREVIOUS_RETAINED_CAPS,external:8000000,internal:10000000,transferBytes:110000000000,workerCpuMs:1500000000,doRequests:10000000,doWrites:80000000});
 export const RETAINED_PROPOSAL=Object.freeze({version:2,kind:'retained-direct-v2',maximumExperimentGBP:225,maximumValidationMonthGBP:250,cleanupPageSize:50,cleanupConcurrency:2});
+// This dated approval must finish before the next accounting period. A fresh
+// signature or later preflight cannot extend the owner's calendar boundary.
+export const RETAINED_WINDOW_LATEST_START=Date.UTC(2026,10,12,8);
+export const RETAINED_WINDOW_END_EXCLUSIVE=Date.UTC(2026,10,17);
 export const RETAINED_GAUGES=Object.freeze(['storageBytes','doStorageBytes']);
 export const retainedHash=v=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 export const retainedZero=()=>Object.fromEntries(Object.keys(RETAINED_CAPS).map(k=>[k,0]));
@@ -26,6 +30,7 @@ export function verifyRetainedGrant(envelope,key,at=Date.now()){
  const value=envelope.value,expected=createHmac('sha256',key).update(JSON.stringify(value)).digest();
  if(!timingSafeEqual(expected,Buffer.from(envelope.signature,'hex')))fail();
  if(value?.version!==RETAINED_PROPOSAL.version||value.kind!==RETAINED_PROPOSAL.kind||!/^retained_[a-zA-Z0-9_-]{1,48}$/.test(value.id||'')||!/^[a-f0-9]{40}$/.test(value.sourceRevision||'')||!/^[a-f0-9]{64}$/.test(value.approvalEvidenceSha256||'')||!/^[a-f0-9]{64}$/.test(value.preflightEvidenceSha256||'')||retainedHash(value.caps)!==retainedHash(RETAINED_CAPS)||!Number.isSafeInteger(value.startsAt)||!Number.isSafeInteger(value.endsAt)||value.endsAt-value.startsAt!==112*3600000||value.startsAt>at||value.endsAt<=at||value.maximumExperimentGBP!==RETAINED_PROPOSAL.maximumExperimentGBP||value.maximumValidationMonthGBP!==RETAINED_PROPOSAL.maximumValidationMonthGBP||value.cleanupPageSize!==RETAINED_PROPOSAL.cleanupPageSize||value.cleanupConcurrency!==RETAINED_PROPOSAL.cleanupConcurrency||value.operatingCeilingGBP!==50||value.autoTopups!==false||value.businessCustodyVerified!==true||value.businessAccountPaid!==true||value.businessTrial!==false||!/^[a-f0-9]{64}$/.test(value.custodyQuoteSha256||'')||!/^[a-f0-9]{64}$/.test(value.processingContractSha256||'')||value.priorUsageReconciled!==true||value.headroomVerified!==true)fail();
+ if(value.startsAt>RETAINED_WINDOW_LATEST_START||value.endsAt>=RETAINED_WINDOW_END_EXCLUSIVE)fail();
  retainedVector(value.carried);if(Object.keys(RETAINED_CAPS).some(k=>value.carried[k]>RETAINED_CAPS[k]||value.carried[k]<RETAINED_PRIOR_USAGE[k]))fail();
  return value;
 }

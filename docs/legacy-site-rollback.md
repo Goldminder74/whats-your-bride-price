@@ -2,6 +2,12 @@
 
 ## 30October — exact legacy backend unavailable before cutover
 
+Owner subsequently says they do not know the owning account and think Lovable may
+have used it. That is a clue,not verified ownership. Do not repeat Supabase sign-in
+or restore/create a guessed backend. Preserve the original deployment and report
+the existing authentication/booking limitation separately from the independent new
+game; no old-site functionality or successful callback test is invented.
+
 Owner restored Supabase dashboard sign-in for read-only callback inspection.
 Read ONLY public Supabase hostnames from the previously verified deployed-files
 ZIP in memory(no source credential decryption/extraction/execution). The pinned

@@ -1,5 +1,29 @@
 # Paid-launch approval package — 28 October 2026
 
+**31October superseding cancellation:** owner now directs cancellation of the
+ENTIRE Google Workspace subscription(mail AND Drive). Do not execute this package
+using that custody assumption. Cancellation is authorised,Admin restored; Google's
+permanent mail/file-loss warning now requires specific informed owner confirmation.
+Automatic approval review blocked continuation; no cancellation receipt. Accrued
+paid charges are not erased. No Gmail scope/send,customer upload,
+grant or benchmark started.225 cumulative INSIDE250 and50ongoing remain unchanged;
+neither the unused8.40 subscription allowance nor any old reservation is a fresh
+spending allowance. Reconcile final cancellation charges and establish a verified
+replacement business backup/customer-mail route before preflight. Existing
+Namecheap/root records/private game remain untouched. Do not repeat settled seller,
+address,keys,alerts or owner commercial decisions. Later text records prior evidence.
+
+**30October18:00UTC:** the already-approved one-seat Flexible PAID service has
+started after Google case77061503 clarified one-seat pricing/proration/no extra
+fees and immediate paid-CDPA scope for Gmail/Drive. The standard8.40 inclusive
+figure remains a20% VAT budget estimate,not an invoice or provider cap. Current
+Admin shows estimated base bill3.50,one seat,next bill1November. The mail subdomain
+is Google-verified/Gmail ready/DKIM active; only its MX/authentication records were
+added,all root mail/website records intact. Secure new business-account credentials
+and hosted evidence still pending. Do not ask again for subscription approval.
+Fresh Netlify999.7credits/rechargeDisabled and Cloudflare0meteredoverage observed;
+ongoing5k/day50/month remains unverified. Prior budgets/carryover are NOT reset.
+
 **30October update:** Admin access restored,ONE Flexible seat still in trial with
 12days remaining. Exact inclusive early-start/proration and paid-CDPA timing are
 being obtained in the owner-approved single Google support inquiry. No unknown

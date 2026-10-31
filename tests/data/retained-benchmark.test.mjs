@@ -11,6 +11,22 @@ test('new experiment requires installed exact signed authority; old, expired, li
  for(const change of [{kind:'B'},{version:1,kind:'retained-direct-v1',maximumExperimentGBP:175,maximumValidationMonthGBP:200,caps:PREVIOUS_RETAINED_CAPS},{maximumExperimentGBP:226},{maximumValidationMonthGBP:251},{cleanupPageSize:51},{cleanupConcurrency:3},{businessAccountPaid:false},{businessTrial:true},{processingContractSha256:undefined},{custodyQuoteSha256:undefined},{carried:vector()},{priorUsageReconciled:false},{carried:vector({writes:150000001})},{caps:{...RETAINED_CAPS,writes:160000000}}])assert.throws(()=>verifyRetainedGrant(syntheticRetainedGrant(at,change),syntheticRetainedKey,at));
  for(const [meter,prior]of Object.entries(RETAINED_PRIOR_USAGE)){if(prior>0)assert.throws(()=>verifyRetainedGrant(syntheticRetainedGrant(at,{carried:{...RETAINED_PRIOR_USAGE,[meter]:prior-1}}),syntheticRetainedKey,at),meter+' must retain the complete prior reservation');}
 });
+
+test('dated v2 authority rejects freshly signed windows past its approved November cutoff',()=>{
+ const duration=112*3600000,latestStart=Date.UTC(2026,10,12,8),endExclusive=Date.UTC(2026,10,17);
+ for(const startsAt of [Date.UTC(2026,9,31),Date.UTC(2026,10,11),latestStart-1]){
+  const grant=syntheticRetainedGrant(startsAt);
+  assert.equal(verifyRetainedGrant(grant,syntheticRetainedKey,startsAt).endsAt,startsAt+duration);
+  assert.equal(installedRetainedGrant(syntheticRetainedEnv(startsAt),startsAt).startsAt,startsAt);
+ }
+ for(const startsAt of [latestStart,latestStart+1,endExclusive,Date.UTC(2027,0,1)]){
+  const grant=syntheticRetainedGrant(startsAt);
+  assert.equal(grant.value.endsAt-grant.value.startsAt,duration);
+  assert.ok(grant.value.endsAt>=endExclusive);
+  assert.throws(()=>verifyRetainedGrant(grant,syntheticRetainedKey,startsAt),/retained_benchmark_scope/);
+  assert.throws(()=>installedRetainedGrant(syntheticRetainedEnv(startsAt),startsAt),/retained_benchmark_scope/);
+ }
+});
 test('persistent admission retains consumed/unknown usage and deadline across crashes; duplicate reservations do not execute',()=>{
  const db=new DatabaseSync(':memory:');let at=1000000000000;const grant=syntheticRetainedGrant(at).value;
  try{

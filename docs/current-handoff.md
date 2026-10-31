@@ -1,5 +1,212 @@
 # Current handoff
 
+### 31 October — OWNER CANCELS ENTIRE GOOGLE WORKSPACE SUBSCRIPTION
+
+This supersedes every Google mail/paid-Drive activation instruction below.
+Owner first rejected any more mail/app-password setup,then explicitly selected
+"Cancel entire Workspace subscription",including Drive. Do not ask for Gmail
+permission,create another mailbox/password,activate Google customer processing,
+or start a benchmark whose business-custody preflight depends on this subscription.
+Do NOT delete the Google account,personal WYBP Recovery project,old operational
+credentials or existing production archives. Original Private Email/root MX,
+private game,data and existing paid services remain untouched.
+
+Subscription cancellation is AUTHORISED but NOT completed. Owner restored Admin
+access and the engineer opened Actions -> Cancel subscription. Google's next
+warning explicitly says permanent deletion of email/files for ONE active user.
+Automatic approval review REJECTED Continue to cancel before execution because
+subscription cancellation alone did not explicitly approve that irreversible
+data loss. Do not bypass/retry via another UI/API. A specific informed owner
+confirmation is pending; screenshot workspace-cancellation-warning.png is retained
+under ignored outputs/launch-20261030-package. Drive showed0usage/no upload by us;
+mailbox contents have NOT been audited. Preserve account/org/project and original
+mailboxes unless a specific later scope says otherwise. Prior accrued charges may
+remain payable; no cancellation/zero-cost claim without provider receipt.
+
+No Gmail API enablement,send-only grant,confirmation send,backup upload or hosted
+benchmark happened. The prepared mail/API tabs were CLOSED. The business Drive
+token saved under CurrentUser-DPAPI remains local,unused by any hosted runtime;
+the identity/quota readback below stands only as historical evidence. Do not use
+it for future hosted processing after cancellation. No personal-account fallback.
+
+Cancelled uncommitted API transport/tests(56 focused passes) were preserved
+verbatim under ignored outputs/launch-20261030-package/cancelled-workspace-api,
+with path/hash manifest,then only their eight affected tracked paths were restored
+to53c6a70 and three new source files archived. Own four unvalidated public-privacy/
+OAuth drafts were likewise preserved under cancelled-workspace-drafts,then those
+four originally clean paths restored byte-for-byte. No owner work discarded.
+Their Gmail candidate must not be shipped as the chosen route. Earlier inactive
+committed Google profile/SMTP support remains inactive,not authority to use it.
+
+Independent local retained commissioning and dated-grant protections are complete
+as SOURCE: new retained-commissioning.mjs sequences exact isolated resources,
+durable pre-effect intents,receipt-backed crash resume,prepaid control reservations,
+source/mirror import and fresh recovery sessions; unknown effects stop before retry.
+Private deployment/cleanup guards and public-key fixture rejection remain. Mirror
+initialisation now requires fresh post-import inventory; recovery cannot reuse its
+setup session/incident clock. It still REQUIRES an authenticated metered provider
+adapter,durable encrypted journal/private keyed combined fixture and measured
+route/day evidence; this is not a complete hosted driver or a capacity/RTO pass.
+27/27 focused commissioning/jobs/policy/session/release/full-recovery checks PASS
+2.334799s. Additional confirmed lost-day-plan-ack defect fixed: exact accepted plan
+may replay after start without resetting payload/cursor/clock,but changed/new past
+plans,stopped runs AND immutable-deadline expiry reject.21/21 affected checks PASS
+361.9916ms after that final correction;focused lint/diff PASS. New commissioning
+test registered in both data and production-preparation runners. No hosted effect.
+
+Hosted capacity/full recovery now additionally require a verified replacement
+business backup contract/custody route and working customer mail. Investigate
+existing-service options without purchasing/creating a replacement subscription.
+Namecheap's written response is still not an owner-mandated launch prerequisite;
+do not invent its processing/transfer facts or pretend cancelled Google solves it.
+5k/day,500/hour,48h recovery and50/month remain unverified; conditional paid launch
+authority remains,not permission to skip these gates or reset any experiment cap.
+
+Read-only replacement investigation: a SITE-WIDE Netlify Blobs store on the
+existing paid Personal team is the lowest-account-change candidate,not an approved
+or implemented replacement. It offers conditional/strong-read APIs but actual
+cross-writer CAS,billing mapping and independent recovery must be proven. No new
+store/adapter/probe/credit purchase was made. Shared-credit exhaustion can pause
+ALL team websites;110GB as entirely outbound would use2200credits before requests,
+so old Drive caps cannot just transfer. Manual500credit/$5packs exist but remain
+unapproved; no auto recharge. Official9June2026 Netlify DPA includes current UK
+transfer provisions. Namecheap publishedDPA still does not resolve the current UK
+instrument from the inspected facts; no conclusion of unlawfulness or invented
+specialist answer. A new provider-specific bounded scope/cost decision is needed.
+
+### 31 October — business Drive identity verified; existing-account mail API preparation
+
+Owner REFUSES further mailbox/app-password creation. Do not repeat that request.
+Use the SAME paid backup-operator account and existing WYBP client. New send-only
+Gmail API/basic verified-email consent is requested separately; it is NOT included
+in the already approved drive.file grant. Admin's existing-password session expired;
+one precise reauthentication question is pending, not another setup request.
+
+Owner APPROVED the business Drive-only consent. It completed using the existing
+client pair; the NEW business refresh token was saved directly to CurrentUser-DPAPI
+in outputs/retention-authority/business-workspace-20261030/drive-credentials.dpapi.json.
+No value displayed; old client source preserved.31October21:20UTC actual refresh+
+read-only about.get PASS: exact expected account,limit/free32,212,254,720bytes,
+usage0,above18GB benchmark cap. Paid status is established separately by Google's
+30October billing evidence,not inferred from identity/quota. Two provider calls,
+NO upload/folder/deployment/send/grant/window. Ignored sanitised evidence:
+outputs/launch-20261030-package/business-drive-observation.json. Local subprocess
+initially could not autoload Windows PowerShell Security; explicit standard-module
+import fixed it. Network sandbox required ordinary approval; no credential redo.
+
+New google-workspace-api transport reuses existing client pair with separate
+WYBP_PURCHASE_MAIL_REFRESH_TOKEN,requires exact gmail.send/openid/email and verified
+business identity,uses fixed endpoints,never SMTP/Namecheap fallback or mail reads.
+56/56 focused local checks PASS1365.3357ms; lint/diff PASS. Includes actual durable
+claim/accounting,one-use synthetic capability and uncertain-send suppression.
+No Gmail token,API enablement or actual email yet. The owner consent question is
+pending. Own unused SMTP collector+48-check test were preserved verbatim under
+ignored outputs/launch-20261030-package/superseded-smtp-collector; not requested,
+installed or included in source. Existing SMTP runtime remains for unchanged
+historical/operational use; new API route is explicit and inactive.
+
+Dated v2 grant guard now rejects starts after12November08UTC and ends at/after
+17November00UTC. Fresh signatures cannot extend the approved accounting period.
+18/18 focused policy/session/connection/forecast checks PASS396.1426ms;lint/diff PASS.
+Budgets/carryover remain unchanged; no expired grant reused or new clock started.
+
+Audit found a real remaining implementation gap: retained components have tests
+but no complete commissioning controller for new two-D1/direct-Cloudflare/private
+business-custody lifecycle. The old one-D1/Netlify provisioner is incompatible and
+must not be reused. A narrowly scoped durable controller is being implemented.
+Existing public-local-fixture-07 archives are explicitly notForHostedUse; do not
+upload them with a public key. Hosted fixture must use the private benchmark key.
+No 5k/day,500/hour,48h recovery or50/month readiness claim. Below remains historical
+evidence; this section supersedes the mail app-password/Drive-consent instructions.
+
+### 30October18:00UTC — paid Google processing and mail domain verified; two new credentials pending
+
+**NEXT ACTION:** owner is creating a NEW Google mail app password directly in the
+prepared security tab and has a separate exact consent question pending for the
+EXISTING WYBP client/drive.file/offline under the NEW business account. Do not repeat
+old project/client/key/address/alert setup or Supabase sign-in. Use the prepared
+business-account OAuth flow; encrypted existing client pair has already been
+reused privately in Google's official Playground. No client values/code/token
+were printed. Consent Continue has NOT been clicked; no new Drive token yet.
+Owner should never send the new mail password/token in chat. After mail password
+creation, use ONE masked local prompt in scripts/prepare-business-mail-credential.ps1
+and install it through authenticated API; don't hand routine configuration back.
+This is new account/credential work,not failed old credential installation.
+
+**Paid start is COMPLETE.** Human Google billing case77061503 confirmed one Flexible
+seat at3.50GBP/month until11February2027,then7 excluding tax,daily proration of
+remaining days,billed in arrears,and NO mandatory fees beyond licence+applicable UK
+tax. There is NO pre-activation invoice preview. They explicitly confirmed paid
+agreement/CDPA covers Gmail AND Drive immediately on conversion and trial2.6 ceases.
+Current GOV.UK standard VAT20% supports budget estimates4.20promo/8.40regular and
+under0.30 for the remaining October days,NOT an issued invoice/tax guarantee.
+With this new cost/contract evidence and fresh account headroom,the previously
+blocked paid-start action was reviewed again under the EXISTING<=8.40 approval
+and succeeded. This was not a bypass of the old rejection. Admin's trial countdown
+was replaced by estimated monthly bill3.50GBP,ONE licence/Flexible; next bill
+generated1November2026. No extra seat,annual term,pay-early click or customer charge.
+Ignored receipt:google-paid-start-evidence.json,google-paid-start-20261030.png,
+google-billing-case-77061503.md in outputs/launch-20261028-package. Do not request
+paid-start approval or tell the owner to click DO IT LATER again. No paid service
+price/tax invoice is invented; reconcile its actual first invoice when issued.
+
+After paid proof,published exactly ONE owner-approved mail-subdomain MX at17:58UTC:
+priority1 smtp.google.com.15->16 records,all15 prior record objects unchanged; no
+root/website/nameserver edits. All4 authoritative NS1 servers PLUS Google DNS
+confirm the new mail-only MX and both unchanged root Namecheap MX(priority10/20).
+Google's MAIL-subdomain wizard now says 'You're all set','You verified
+mail.classesforculture.com','Gmail is ready','DKIM is now activated'. Root Gmail
+migration/import/Get started remain untouched. Both support/receipts aliases and
+registered-user+SMTP-AUTH+TLS-only relay were already saved on the SAME user.
+One actual hosted synthetic confirmation and inbound receipt/header verification
+remain PENDING,not inferred from DNS or setup. No send allowance consumed here.
+Ignored proof:google-mail-mx-dns-{before,intent,evidence}.json,
+google-mail-mx-public-dns.json,google-mail-ready.png.
+
+Fresh whole-account headroom read directly30October:Netlify Personal9USD,
+999.7/1000 credits,0.3used,auto recharge DISABLED,new credits30October expire
+30November; no publication/compute/AI usage in current cycle. Cloudflare18Oct-
+17Nov cycle:metered overage0USD across displayed Workers/D1/DO categories through
+30October. Already paid Workers5USD is counted once. Fixed regular-cost allowance
+including new Google is23.52GBP at the conservative tax/FX assumptions; measured
+5k/day ongoing50 fit is STILL UNVERIFIED. Provider billing can lag; no hard-cap
+claim. Refresh preflight only when actually needed for the NEW benchmark grant,
+not repeated owner credit questions.112h/225INSIDE250/carryover/50 rules unchanged;
+no grant,clock,resources,load,deletion or production schedule started.
+
+Runtime retry correction53c6a705ed815d567866670bca412f3aa418b1a4 is PUSHED.
+The affected OPS dry-run bundle SHA256 is
+199d907b08c7d672ccd2bd1ffe0a5623588372854a2001873fefc5558727d636,
+6/6 compiled tests PASS18.869s. Fresh Google-profile retained package WITH exact
+one-use synthetic-mail binding is62faa8404959611bd97e508f4209c76f22c20ff8be4f64130165eb8ce28a4226,
+source53c6a70,sourceCommitted=true,grantInstalled=false,deployed=false.
+Its affected compiled actual-app check PASS77.065s; externalSends0/hostedVerificationfalse.
+Logs:google-mail-retry-release-{build,compiled}.log. Use this pair for future hosted
+mail,not an old OPS bundle. Source-only helper/docs changes do not require rerunning
+unchanged physical stock or application checks.
+
+NEW SMTP collector/tests:48 synthetic checks PASS,DPAPI-only storage/exclusive
+stage/non-overwrite move/grouped16-character normalisation/no plaintext or network.
+Initial test caught trailing-newline acceptance by .NET dollar-anchor; fixed with
+strict anchors and preserved failure log. Ignored outputs/launch-20261030-package/
+business-mail-collector-{initial-test,test}.log. No real mail credential collected
+or installed yet. Helper source is not a claim of successful SMTP authentication.
+
+Owner does NOT know the old Supabase project's owner and thinks Lovable may have
+used it. Record that only as a clue. Do not ask for the same sign-in again, recreate
+a guessed project,repair unrelated legacy infrastructure or claim its unavailable
+backend works. Preserve pinned website/function/data/configuration and compatibility
+routes. That pre-existing backend is NOT a new-game dependency; canonical old-site
+authenticated/booking journeys remain unverified. No Supabase settings/data changed.
+
+After the two new secure credential steps:verify business identity/quota/private
+app-created custody using existing client/minimum scope,install fixed Google mail
+transport privately with commerce/webhook/cron/public flags OFF,then perform the
+ONE authorised hosted labelled synthetic confirmation and protected backup evidence.
+Final privacy/controller review and NEW evidence-bound112h experiment still gate
+5k/day,500/hour,48h recovery and50/month conclusions. Conditional public paid launch
+remains; do not claim live or revive an expired grant. Old key/alert tests stand.
+
 ### 30 October — Admin restored; business-account preflight ready; mail DNS prepared
 
 **Subsequent30October source correction:** confirmed an SMTP ambiguity defect:

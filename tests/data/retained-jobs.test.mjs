@@ -19,6 +19,30 @@ test('day plan replenishes at most64 queued jobs and active-count reads use the 
   ledger.transition('cleanup',{});jobs.suspendOrdinary();assert.equal(db.prepare("SELECT COUNT(*) n FROM retained_jobs WHERE state IN ('waiting','running')").get().n,0);assert.equal(db.prepare('SELECT n FROM retained_job_count').get().n,5064);
  }finally{db.close();key.fill(0);}
 });
+
+test('lost day-plan acknowledgement replays after its start without resetting cursor or accepting a new past plan',()=>{
+ const db=new DatabaseSync(':memory:'),empty=new DatabaseSync(':memory:'),key=Buffer.alloc(32,7);let at=1000000000000;
+ const make=database=>{const ledger=new RetainedBenchmarkLedger(database,syntheticRetainedGrant(at).value,{now:()=>at}),jobs=new RetainedJobs(database,key,ledger,{now:()=>at});ledger.transition('measure',{receiptSha256:retainedHash('verified replay'),fullStockVerified:true,mirrorVerified:true,applicationRoutesVerified:true,measureStartsAt:at+1000});return {ledger,jobs};};
+ try{
+  const original=make(db),unaccepted=make(empty),definition={startsAt:at+1000,completed:5000,peakHour:500,incomplete:2150,recoveries:1000,upper:retainedZero()};original.jobs.plan(definition);original.jobs.fill();original.jobs.fill();
+  const before=db.prepare('SELECT * FROM retained_job_plan').get(),queued=db.prepare('SELECT COUNT(*) n FROM retained_jobs').get().n;assert.equal(before.cursor,16);at+=2000;
+  const resumed=new RetainedJobs(db,key,original.ledger,{now:()=>at,cold:true});assert.deepEqual(resumed.plan(definition),{accepted:true,replay:true});assert.deepEqual(db.prepare('SELECT * FROM retained_job_plan').get(),before);assert.equal(db.prepare('SELECT COUNT(*) n FROM retained_jobs').get().n,queued);
+  for(const changed of [{completed:4999},{peakHour:499},{recoveries:999},{startsAt:definition.startsAt+1},{upper:{...retainedZero(),external:1}}])assert.throws(()=>resumed.plan({...definition,...changed}));
+  assert.throws(()=>unaccepted.jobs.plan(definition));assert.equal(empty.prepare('SELECT COUNT(*) n FROM retained_job_plan').get().n,0);
+  original.ledger.stop();assert.throws(()=>resumed.plan(definition));assert.deepEqual(db.prepare('SELECT * FROM retained_job_plan').get(),before);
+ }finally{db.close();empty.close();key.fill(0);}
+});
+
+test('identical accepted day plan cannot acknowledge at or after its immutable deadline without a stop flag',()=>{
+ const db=new DatabaseSync(':memory:'),key=Buffer.alloc(32,7);let at=1000000000000;
+ const grant=syntheticRetainedGrant(at).value,ledger=new RetainedBenchmarkLedger(db,grant,{now:()=>at}),jobs=new RetainedJobs(db,key,ledger,{now:()=>at});
+ try{
+  ledger.transition('measure',{receiptSha256:retainedHash('deadline proof'),fullStockVerified:true,mirrorVerified:true,applicationRoutesVerified:true,measureStartsAt:at+1000});
+  const definition={startsAt:at+1000,completed:5000,peakHour:500,upper:retainedZero()};jobs.plan(definition);jobs.fill();const before=db.prepare('SELECT * FROM retained_job_plan').get();
+  at=grant.endsAt-1;assert.equal(jobs.plan(definition).replay,true);assert.equal(ledger.readback().stopped,false);
+  for(const expiredAt of [grant.endsAt,grant.endsAt+1]){at=expiredAt;assert.equal(ledger.readback().stopped,false);assert.throws(()=>jobs.plan(definition),/retained_job_stopped/);assert.deepEqual(db.prepare('SELECT * FROM retained_job_plan').get(),before);assert.equal(ledger.readback().deadlineAt,grant.endsAt);}
+ }finally{db.close();key.fill(0);}
+});
 test('job completion removes encrypted payload; queue, step and duration limits fail closed',()=>{
  const db=new DatabaseSync(':memory:'),key=Buffer.alloc(32,7),at=1000000000000,ledger=new RetainedBenchmarkLedger(db,syntheticRetainedGrant(at).value,{now:()=>at}),jobs=new RetainedJobs(db,key,ledger,{now:()=>at});
  try{
