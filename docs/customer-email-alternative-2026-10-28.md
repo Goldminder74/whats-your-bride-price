@@ -1,5 +1,10 @@
 # Google-only game email — inactive launch preparation
 
+**Superseding31October:** owner explicitly REFUSES contacting Google support as
+well as accepting any new agreement. No message or cancellation sent;last verified
+subscription ACTIVE. No pending permission request;do not ask the same questions
+again,activate this route or claim billing stopped. Current handoff governs.
+
 **Latest31October:** owner explicitly refuses ALL new agreements. No Cloud Identity
 acceptance or cancellation submission. Standard flow has no verified contract-free
 option; a narrowly scoped Google Billing Support cancellation request is prepared

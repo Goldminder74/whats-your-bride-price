@@ -1,5 +1,21 @@
 # Current handoff
 
+### 31 October — Google support contact explicitly REFUSED
+
+Owner answers the exact scoped cancellation-message request: "Do not contact support".
+No Google cancellation message or notice may be sent. Together with "accept nothing
+and cancel",this forbids the inspected new-agreement self-service submission AND
+the proposed support escalation. Do not re-ask these settled refusals or treat old
+quote-only support approval as cancellation authority. No pending permission question.
+No agreement accepted,support contacted,cancellation submitted or replacement bought.
+Last verified Business Starter status ACTIVE; no cancellation receipt. No supported
+route satisfying both restrictions has been verified; cancellation remains incomplete.
+Do not remove payment methods,force nonpayment,delete the organisation,use an
+undocumented API or change other services to work around these restrictions.
+Existing personal Google/project,Private Email,websites,game,data and OFF gates
+remain unchanged. Further cancellation needs an owner-completed provider action
+or a newly authorised supported route; do not claim recurring billing has stopped.
+
 ### 31 October — cancellation must accept NO new agreement
 
 Owner answers the free Cloud Identity question: "accept nothing and cancel".

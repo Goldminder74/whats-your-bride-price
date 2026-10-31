@@ -1,5 +1,11 @@
 # Paid-launch approval package — 28 October 2026
 
+**Superseding31October:** owner answers "Do not contact support" and already refuses
+new agreements. Both inspected cancellation routes are held;no message,agreement
+acceptance or cancellation. Last verified subscription ACTIVE;no receipt. No pending
+approval question;do not re-ask or bypass these restrictions. Existing spending
+limits and services remain unchanged;do not assume recurring billing has stopped.
+
 **Latest31October:** owner refuses any new Cloud Identity agreement: "accept nothing
 and cancel". Standard cancellation remains unsubmitted/last status ACTIVE. Seek
 only a supported cancellation under the existing agreement; any scoped support
