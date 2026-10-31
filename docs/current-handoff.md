@@ -17,7 +17,13 @@ warning explicitly says permanent deletion of email/files for ONE active user.
 Automatic approval review REJECTED Continue to cancel before execution because
 subscription cancellation alone did not explicitly approve that irreversible
 data loss. Do not bypass/retry via another UI/API. A specific informed owner
-confirmation is pending; screenshot workspace-cancellation-warning.png is retained
+confirmation was subsequently explicitly APPROVED. The resumed flow declined the
+paid Pause offer and reached final cancellation. Google confirms accrued2days
+(30-31October) on the next bill and introduces a linked Cloud Identity agreement
+for FREE Admin access after cancellation. That new contract has NOT been accepted;
+one precise action-time agreement question is now pending. Checkbox/admin-email/
+final Cancel my subscription remain untouched. No further data-loss approval is
+needed. Screenshots workspace-cancellation-{warning,final-review}.png are retained
 under ignored outputs/launch-20261030-package. Drive showed0usage/no upload by us;
 mailbox contents have NOT been audited. Preserve account/org/project and original
 mailboxes unless a specific later scope says otherwise. Prior accrued charges may
@@ -53,6 +59,15 @@ may replay after start without resetting payload/cursor/clock,but changed/new pa
 plans,stopped runs AND immutable-deadline expiry reject.21/21 affected checks PASS
 361.9916ms after that final correction;focused lint/diff PASS. New commissioning
 test registered in both data and production-preparation runners. No hosted effect.
+
+Validated source/handoff PUSHED as7b3e7ab on feature/viral-build-sprint. New default
+legacy-contact inactive retained build PASS,release
+d477a2f7a3eadea69f9773970dab7f7b43ae5be1422292cc5013e5f60a549e05,
+source7b3e7ab,sourceCommitted=true,grantInstalled=false,deployed=false. Affected
+actual compiled application regression PASS77.759s,including local game routes,
+converted40/Royal confirmations,signed replay,uncertain/no-resend,shared overlap4,
+global pacing and cleanup after unknown work. External sends0;NOT hosted evidence.
+Ignored commissioning-release-{build,compiled}.log;no need repeat unchanged test.
 
 Hosted capacity/full recovery now additionally require a verified replacement
 business backup contract/custody route and working customer mail. Investigate

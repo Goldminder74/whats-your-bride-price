@@ -5,7 +5,9 @@ explicitly chooses cancellation of the ENTIRE Workspace subscription,including
 Drive. This document is now historical/inactive; do not ask for app passwords or
 mail consent. Admin is restored,but Google now warns of permanent email/file deletion
 for one active user. Automatic approval review blocked continuation pending exact
-informed owner approval; no cancellation receipt yet.
+informed owner approval,which is now recorded. The final page additionally requires
+a FREE Cloud Identity Admin-access agreement;that specific confirmation is pending.
+No cancellation receipt yet;no repeated data-loss approval needed.
 No Gmail API grant,mail send or customer archive upload
 occurred. Keep original Namecheap mailboxes/root MX and private game intact. The
 new business Drive identity/quota readback is historical,not future custody approval.

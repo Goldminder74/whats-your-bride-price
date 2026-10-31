@@ -3,8 +3,10 @@
 **31October superseding cancellation:** owner now directs cancellation of the
 ENTIRE Google Workspace subscription(mail AND Drive). Do not execute this package
 using that custody assumption. Cancellation is authorised,Admin restored; Google's
-permanent mail/file-loss warning now requires specific informed owner confirmation.
-Automatic approval review blocked continuation; no cancellation receipt. Accrued
+permanent mail/file-loss warning was specifically APPROVED after automatic review
+blocked the first continuation. The final page introduces a FREE Cloud Identity
+Admin-access agreement;only that new contract decision is pending. No cancellation
+receipt. Accrued
 paid charges are not erased. No Gmail scope/send,customer upload,
 grant or benchmark started.225 cumulative INSIDE250 and50ongoing remain unchanged;
 neither the unused8.40 subscription allowance nor any old reservation is a fresh
