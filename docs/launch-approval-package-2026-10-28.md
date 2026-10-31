@@ -1,5 +1,11 @@
 # Paid-launch approval package — 28 October 2026
 
+**Latest31October:** owner refuses any new Cloud Identity agreement: "accept nothing
+and cancel". Standard cancellation remains unsubmitted/last status ACTIVE. Seek
+only a supported cancellation under the existing agreement; any scoped support
+communication needs its specific approval. No new agreement,pause,subscription or
+organisation deletion. Earlier agreement-question text is historical,not pending.
+
 **31October superseding cancellation:** owner now directs cancellation of the
 ENTIRE Google Workspace subscription(mail AND Drive). Do not execute this package
 using that custody assumption. Cancellation is authorised,Admin restored; Google's

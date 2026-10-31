@@ -1,5 +1,43 @@
 # Current handoff
 
+### 31 October — cancellation must accept NO new agreement
+
+Owner answers the free Cloud Identity question: "accept nothing and cancel".
+Do NOT ask for the same agreement approval again or submit the current standard
+cancellation acknowledgement: it includes an unapproved new Cloud Identity term.
+Existing data-loss/cancellation approval remains; it does not authorise a new
+agreement,paid pause,organisation deletion or changes to personal Google/project/
+Namecheap services. The final form was left unchecked/unsubmitted,then closed.
+Latest observed Business Starter status remains ACTIVE; cancellation is NOT done.
+
+Read-only official review found no documented self-service option which clearly
+avoids that agreement. The authenticated Admin support route is being prepared,
+but no human/AI support message or cancellation notice has been sent. Existing
+quote-only inquiry approval does not cover a new cancellation communication.
+Smallest new action: approve ONE scoped request to Google Workspace Billing Support
+to cancel ONLY this one-seat Flexible Business Starter under its existing agreement,
+without accepting Cloud Identity or ordering a replacement,preserving organisation/
+personal account/unrelated projects/external domain/mail. Require effective time
+and final accrued-charge confirmation; do not claim support can do it until answered.
+No legal-notices email or broad termination notice: it could affect unrelated orders.
+
+That exact communication question is now pending. Admin Support button did not
+open its widget; one ordinary refresh and a documented semantic-button alternative
+also left it closed. No extra tabs/widget/no browser error log explained the cause.
+Do not repeatedly click or invent a support case. Authenticated Admin access itself
+works; no repeated login request. Current subscription remains ACTIVE. No agreement,
+acknowledgement,request message,cancellation or account deletion occurred.
+
+Official references: knowledge.workspace.google.com/admin/billing/cancel-google-workspace,
+knowledge.workspace.google.com/admin/support/contact-google-workspace-support,and
+workspace.google.com/terms/premier_terms-20260601/. Archived agreement8.5/14.1 may
+support escalation but is not a guarantee of a manual no-new-contract route.
+Prior paid data-loss review rejection was resolved by the owner's specific approval;
+this current hold follows the owner's explicit contract refusal,not a fresh rejection.
+Transient browser.user API failure resolved by resetting the browser-control kernel;
+same retained tab reattached,no new login or provider-setting change. No tests
+repeated for this documentation-only checkpoint. Source/compiled evidence below stands.
+
 ### 31 October — OWNER CANCELS ENTIRE GOOGLE WORKSPACE SUBSCRIPTION
 
 This supersedes every Google mail/paid-Drive activation instruction below.

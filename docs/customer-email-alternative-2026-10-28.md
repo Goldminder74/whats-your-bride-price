@@ -1,5 +1,11 @@
 # Google-only game email — inactive launch preparation
 
+**Latest31October:** owner explicitly refuses ALL new agreements. No Cloud Identity
+acceptance or cancellation submission. Standard flow has no verified contract-free
+option; a narrowly scoped Google Billing Support cancellation request is prepared
+for specific communication approval. Business Starter last observed ACTIVE; no
+cancellation receipt. Do not re-ask agreement approval or activate this email route.
+
 **31October OWNER CANCELLATION:** the owner rejects the Google email route and
 explicitly chooses cancellation of the ENTIRE Workspace subscription,including
 Drive. This document is now historical/inactive; do not ask for app passwords or
