@@ -1,0 +1,36 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {mkdtemp,mkdir,writeFile,readFile,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';import {createHash} from 'node:crypto';
+import {verifyRetainedRelease,materializeRetainedRelease} from '../../scripts/retained-release.mjs';import {syntheticRetainedEnv} from '../helpers/retainedBenchmark.mjs';import {RETAINED_ACCOUNT,RETAINED_ORIGIN} from '../../worker/retainedBenchmarkPolicy.mjs';
+import {syntheticRetainedRelease} from '../helpers/retainedRelease.mjs';import {retainedServices,SYNTHETIC_MAIL_APPROVAL} from '../../scripts/retained-mail-capability.mjs';
+const hash=b=>createHash('sha256').update(b).digest('hex');
+test('offline release checks exact bytes, private bindings and inactive flags; only journalled isolated IDs can be materialised',async()=>{
+ const root=await mkdtemp(join(tmpdir(),'wybp-retained-release-')),base=join(root,'base');await mkdir(join(base,'server/_next/static'),{recursive:true});
+ const vars={...syntheticRetainedEnv(),WYBP_RETAINED_BENCHMARK_ENABLED:'false'};delete vars.WYBP_RETAINED_BENCHMARK_APPROVAL_JSON;delete vars.WYBP_RETAINED_BENCHMARK_APPROVAL_KEY;
+ const config={name:'wybp-capacity-worker-r002',account_id:RETAINED_ACCOUNT,main:'server/index.js',no_bundle:true,limits:{cpu_ms:100},preview_urls:false,observability:{enabled:false},vars,d1_databases:[{binding:'DB',database_name:vars.WYBP_BENCHMARK_DATABASE_NAME,database_id:vars.WYBP_BENCHMARK_DATABASE_ID},{binding:'MIRROR_DB',database_name:vars.WYBP_MIRROR_DATABASE_NAME,database_id:vars.WYBP_MIRROR_DATABASE_ID}],services:[['RETAINED_AUTHORITY','RetainedAuthority'],['RETAINED_OPERATOR','RetainedOperator'],['RETAINED_JOB_RUNNER','RetainedJobRunner'],['RETAINED_APPLICATION',undefined]].map(([binding,entrypoint])=>({binding,service:'wybp-capacity-worker-r002',entrypoint})),durable_objects:{bindings:[{name:'RETAINED_COORDINATOR',class_name:'RetainedCoordinator'}]},migrations:[{tag:'retained-coordinator-r001',new_sqlite_classes:['RetainedCoordinator']}]};
+ const save=async()=>{const js='export default {fetch:()=>new Response(null,{status:404})};',cfg=JSON.stringify(config),chunk='export const synthetic=true;',files={'server/index.js':hash(js),'server/_next/static/framework~index.js':hash(chunk),'wrangler.json':hash(cfg)};await writeFile(join(base,'server/index.js'),js);await writeFile(join(base,'server/_next/static/framework~index.js'),chunk);await writeFile(join(base,'wrangler.json'),cfg);await writeFile(join(base,'release.json'),JSON.stringify({version:1,synthetic:true,origin:RETAINED_ORIGIN,deployed:false,grantInstalled:false,sourceCommitted:true,sourceRevision:'a'.repeat(40),releaseId:hash(JSON.stringify(files)),files}));};
+ try{
+  await save();await verifyRetainedRelease(base);const resources={inventoryComplete:true,journalled:true,account:RETAINED_ACCOUNT,sourceId:'33333333-3333-4333-8333-333333333333',mirrorId:'44444444-4444-4444-8444-444444444444'};
+  await assert.rejects(materializeRetainedRelease(base,join(root,'bad'),{...resources,sourceId:'a5b2b409-ed08-48c9-ac1d-36699fc6c4b9'}));await assert.rejects(materializeRetainedRelease(base,join(root,'bad'),{...resources,journalled:false}));
+  await materializeRetainedRelease(base,join(root,'copy'),resources);const copy=await verifyRetainedRelease(join(root,'copy'));assert.equal(copy.config.vars.WYBP_BENCHMARK_DATABASE_ID,resources.sourceId);assert.equal(copy.config.vars.WYBP_RETAINED_BENCHMARK_ENABLED,'false');
+  await writeFile(join(base,'server/unlisted.js'),'extra');await assert.rejects(verifyRetainedRelease(base));await rm(join(base,'server/unlisted.js'));
+  config.vars.WYBP_PUBLIC_ACCESS_ENABLED='true';await save();await assert.rejects(verifyRetainedRelease(base));config.vars.WYBP_PUBLIC_ACCESS_ENABLED='false';config.triggers={crons:['* * * * *']};await save();await assert.rejects(verifyRetainedRelease(base));delete config.triggers;
+  await save();await writeFile(join(base,'server/index.js'),(await readFile(join(base,'server/index.js'),'utf8'))+'changed');await assert.rejects(verifyRetainedRelease(base));
+  for(const badPath of ['server/unsafe~debug.js.map','server/.unsafe~chunk.js']){await save();const bytes='synthetic unsafe package member';await writeFile(join(base,badPath),bytes);const manifest=JSON.parse(await readFile(join(base,'release.json'),'utf8'));manifest.files[badPath]=hash(bytes);manifest.releaseId=hash(JSON.stringify(manifest.files));await writeFile(join(base,'release.json'),JSON.stringify(manifest));await assert.rejects(verifyRetainedRelease(base));await rm(join(base,badPath));}
+ }finally{await rm(root,{recursive:true,force:true});}
+});
+test('only the explicitly approved mail-only binding can supplement SELF; no authority entrypoint or environment expansion',async()=>{
+ const root=await mkdtemp(join(tmpdir(),'wybp-mail-release-')),base=join(root,'base');
+ try{
+  const {config,save}=await syntheticRetainedRelease(base),approved={syntheticMailApproval:SYNTHETIC_MAIL_APPROVAL};
+  config.services=retainedServices();await save();assert.equal((await verifyRetainedRelease(base)).config.services.length,4);
+  config.services=retainedServices(true);await save();await assert.rejects(verifyRetainedRelease(base));
+  await save(approved);const verified=await verifyRetainedRelease(base);assert.equal(verified.config.services.length,5);assert.equal(verified.config.vars.WYBP_RETAINED_BENCHMARK_ENABLED,'false');assert.equal(verified.manifest.grantInstalled,false);
+  const resources={inventoryComplete:true,journalled:true,account:RETAINED_ACCOUNT,sourceId:'33333333-3333-4333-8333-333333333333',mirrorId:'44444444-4444-4444-8444-444444444444'};
+  await materializeRetainedRelease(base,join(root,'copy'),resources);assert.equal((await verifyRetainedRelease(join(root,'copy'))).manifest.syntheticMailApproval,SYNTHETIC_MAIL_APPROVAL);
+  for(const bad of [{entrypoint:'ApplicationAuthority'},{entrypoint:'RecoveryOperator'},{service:'wybp-prod-app-r001'},{environment:'production'},{binding:'UNAPPROVED_MAIL'}]){
+   config.services=retainedServices(true);Object.assign(config.services.at(-1),bad);await save(approved);await assert.rejects(verifyRetainedRelease(base));
+  }
+  config.services=retainedServices(true);config.services.push({...config.services.at(-1)});await save(approved);await assert.rejects(verifyRetainedRelease(base));
+  config.services=retainedServices(false);await save(approved);await assert.rejects(verifyRetainedRelease(base));
+  config.services=retainedServices(true);await save({syntheticMailApproval:'unapproved'});await assert.rejects(verifyRetainedRelease(base));
+ }finally{await rm(root,{recursive:true,force:true});}
+});

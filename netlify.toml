@@ -1,0 +1,15 @@
+# Fail closed until a paired release is generated and independently authorised.
+# Use the generated release's netlify.toml for a future manual test deployment.
+[build]
+command = "npm run build:netlify-worker"
+publish = "outputs/netlify-worker/current/client"
+
+[build.environment]
+NODE_VERSION = "24.16.0"
+
+[[redirects]]
+from = "/*"
+to = "https://deployment-not-configured.invalid/:splat"
+status = 200
+force = true
+signed = "WYBP_NETLIFY_PROXY_SECRET"

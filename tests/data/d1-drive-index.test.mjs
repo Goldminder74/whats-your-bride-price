@@ -1,0 +1,117 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { DatabaseSync } from 'node:sqlite';
+import { loadMigrationPlan, applyMigrationPlan } from '../../scripts/data-migrations.mjs';
+import { D1DriveIndex } from '../../scripts/d1-drive-index.mjs';
+import { DriveCustody } from '../../scripts/drive-custody.mjs';
+async function fixture(){
+ const sql=new DatabaseSync(':memory:');applyMigrationPlan(sql,await loadMigrationPlan());
+ const db={async query(s,p=[]){return sql.prepare(s).all(...p);},async batch(rows){sql.exec('BEGIN');try{const result=rows.map(r=>sql.prepare(r.sql).all(...r.params));sql.exec('COMMIT');return result;}catch(e){sql.exec('ROLLBACK');throw e;}}};
+ return {sql,db};
+}
+
+test('bulk inventory identity checks use bounded queries and reject corrupted reservations',async()=>{
+ const {sql,db}=await fixture();try{
+  const index=new D1DriveIndex(db,'synthetic_folder_001');
+  for(let i=0;i<95;i++)await index.reserve('record_'+i+'.intent','synthetic_file_'+String(i).padStart(3,'0'));
+  let queries=0;const counted=new D1DriveIndex({...db,async query(...args){queries++;return db.query(...args);}},'synthetic_folder_001');
+  const names=Array.from({length:95},(_,i)=>'record_'+i+'.intent');assert.equal((await counted.getMany(names)).size,95);assert.equal(queries,3);
+  const prefix=index.prefix+index.identity(names[0])+':';
+  const plan=sql.prepare('EXPLAIN QUERY PLAN SELECT * FROM operational_recovery_checkpoints WHERE id>=?1 AND id<?2').all(prefix,prefix+'~').map(row=>row.detail).join(' ');
+  assert.match(plan,/SEARCH .* USING INDEX .*\(id>\? AND id<\?\)/);assert.doesNotMatch(plan,/\bSCAN\b/);
+  await assert.rejects(counted.getMany([names[0],names[0]]),/bounds/);
+  sql.exec("UPDATE operational_recovery_checkpoints SET head_hash='corrupt' WHERE id LIKE 'drive_file:%'");
+  await assert.rejects(counted.getMany([names[0]]),/corrupt/);
+ }finally{sql.close();}
+});
+test('independent index instances reserve exactly one durable ID and retries do not renew retention',async()=>{
+ const {sql,db}=await fixture();try{let now=Date.now();const a=new D1DriveIndex(db,'synthetic_folder_001',{now:()=>now}),b=new D1DriveIndex(db,'synthetic_folder_001',{now:()=>now});
+ const ids=await Promise.all([a.reserve('one.intent','synthetic_file_001'),b.reserve('one.intent','synthetic_file_002')]);assert.equal(ids[0],ids[1]);
+ const before=sql.prepare("SELECT created_at,expires_at FROM operational_recovery_checkpoints WHERE id LIKE 'drive_file:%'").get();now+=86400000;
+ assert.equal(await new D1DriveIndex(db,'synthetic_folder_001').get('one.intent'),ids[0]);await a.reserve('one.intent','synthetic_file_003');
+ assert.deepEqual(sql.prepare("SELECT created_at,expires_at FROM operational_recovery_checkpoints WHERE id LIKE 'drive_file:%'").get(),before);
+ now=before.expires_at;await assert.rejects(a.reserve('one.intent','synthetic_file_004'),/drive_reservation_expired/);
+ assert.equal((await a.expired()).length,1);
+ }finally{sql.close();}
+});
+test('failed provider deletion preserves reservation; acknowledged deletion permits bounded cleanup',async()=>{
+ const {sql,db}=await fixture();try{let now=Date.now();const index=new D1DriveIndex(db,'synthetic_folder_001',{now:()=>now});await index.reserve('one.intent','synthetic_file_001');now+=30*86400000;
+ let fail=true;const c=new DriveCustody({folderId:'synthetic_folder_001',accessToken:async()=> 'synthetic',index,fetcher:async(_url,o)=>{assert.equal(o.method,'DELETE');return new Response(null,{status:fail?503:204});}});
+ await assert.rejects(c.cleanupTemporary(now,1),/drive_delete/);assert.equal(await index.get('one.intent'),'synthetic_file_001');fail=false;
+ assert.equal(await c.cleanupTemporary(now,1),1);assert.equal(await index.get('one.intent'),null);assert.equal(await c.cleanupTemporary(now,1),0);
+ }finally{sql.close();}
+});
+
+test('lost D1 mappings rebuild only from a pinned inventory and verified private-folder bytes',async()=>{
+ const {recoveryHash}=await import('../../scripts/recovery-crypto.mjs');const {sql,db}=await fixture();try{
+ const index=new D1DriveIndex(db,'synthetic_folder_001'),bytes=Buffer.from('encrypted-synthetic'),files=[{name:'one.intent',id:'synthetic_file_001',sha256:recoveryHash(bytes)}];
+ const createdAt=Date.now()-86400000;Object.assign(files[0],{createdAt,expiresAt:createdAt+30*86400000});const receipt=recoveryHash(Buffer.from(JSON.stringify(files)));let wrongFolder=false;
+ const c=new DriveCustody({folderId:'synthetic_folder_001',index,accessToken:async()=> 'synthetic',fetcher:async url=>url.includes('alt=media')?new Response(bytes):Response.json({id:files[0].id,name:files[0].name,parents:[wrongFolder?'another_folder_001':'synthetic_folder_001'],trashed:false})});
+ await assert.rejects(c.recoverIndex(files,'0'.repeat(64)),/drive_inventory_receipt/);assert.equal(await index.get('one.intent'),null);
+ wrongFolder=true;await assert.rejects(c.recoverIndex(files,receipt),/drive_recovery_scope/);assert.equal(await index.get('one.intent'),null);
+ wrongFolder=false;assert.equal(await c.recoverIndex(files,receipt),1);assert.equal(await c.recoverIndex(files,receipt),1);assert.equal(await index.get('one.intent'),files[0].id);assert.deepEqual(await index.recoveryRecord('one.intent'),{createdAt:files[0].createdAt,expiresAt:files[0].expiresAt});
+ }finally{sql.close();}
+});
+
+test('lost delete acknowledgement retries with the same ID; unexpired reservations are never purged',async()=>{
+ const {sql,db}=await fixture();try{let now=Date.now(),calls=0;const index=new D1DriveIndex(db,'synthetic_folder_001',{now:()=>now});await index.reserve('one.intent','synthetic_file_001');
+ const c=new DriveCustody({folderId:'synthetic_folder_001',accessToken:async()=> 'synthetic',index,fetcher:async()=>{calls++;if(calls===1)throw Error('lost_after_delete');return new Response(null,{status:404});}});
+ assert.equal(await c.cleanupTemporary(now,1),0);assert.equal(calls,0);now+=30*86400000;
+ await assert.rejects(c.cleanupTemporary(now,1),/drive_transport/);assert.equal(await index.get('one.intent'),'synthetic_file_001');
+ assert.equal(await c.cleanupTemporary(now,1),1);assert.equal(await index.get('one.intent'),null);
+ }finally{sql.close();}
+});
+
+test('lost mapping reconstruction preserves the original clock and rejects missing, conflicting or expired clocks',async()=>{
+ const {sql,db}=await fixture();try{
+  let now=Date.now();const index=new D1DriveIndex(db,'synthetic_folder_001',{now:()=>now});
+  await index.reserve('clock.enc','synthetic_file_001');const clock=await index.recoveryRecord('clock.enc');
+  sql.exec("DELETE FROM operational_recovery_checkpoints WHERE id LIKE 'drive_file:%'");now+=86400000;
+  await assert.rejects(index.recoverReserve('clock.enc','synthetic_file_001',{}),/drive_recovery_window/);
+  await index.recoverReserve('clock.enc','synthetic_file_001',clock);await index.recoverReserve('clock.enc','synthetic_file_001',clock);
+  assert.deepEqual(await index.recoveryRecord('clock.enc'),clock);assert.equal(sql.prepare("SELECT COUNT(*) n FROM operational_recovery_checkpoints WHERE id LIKE 'drive_file:%'").get().n,1);
+  await assert.rejects(index.recoverReserve('clock.enc','synthetic_file_002',clock),/drive_recovery_conflict/);
+  now=clock.expiresAt;await assert.rejects(index.recoverReserve('clock.enc','synthetic_file_001',clock),/drive_recovery_window/);
+ }finally{sql.close();}
+});
+
+test('bounded expiry supports D1 50-byte LIKE limits and cannot cross folder scopes',async()=>{
+ const {sql,db}=await fixture();try{
+  let now=Date.now();const provider={...db,async query(statement,params=[]){if(/LIKE\s+\?/i.test(statement)&&params.some(p=>typeof p==='string'&&p.length>50))throw Error('LIKE pattern too complex');return db.query(statement,params);}};
+  const first=new D1DriveIndex(provider,'synthetic_folder_001',{now:()=>now}),second=new D1DriveIndex(provider,'synthetic_folder_002',{now:()=>now});
+  await first.reserve('one.enc','synthetic_file_001');await second.reserve('two.enc','synthetic_file_002');now+=30*86400000;
+  const rows=await first.expired(1);assert.equal(rows.length,1);assert.equal(rows[0].fileId,'synthetic_file_001');
+  await first.releaseExpired(rows[0].checkpoint);assert.equal(await second.get('two.enc'),'synthetic_file_002');
+ }finally{sql.close();}
+});
+
+
+test('encrypted delivery survives database/process reopen and a lost provider acknowledgement',async()=>{
+ const {mkdtemp,rm}=await import('node:fs/promises'),{tmpdir}=await import('node:os'),{join}=await import('node:path');
+ const {randomBytes}=await import('node:crypto'),{encryptRecord,decryptRecord,recoveryHash}=await import('../../scripts/recovery-crypto.mjs');
+ const directory=await mkdtemp(join(tmpdir(),'wybp-drive-synthetic-')),path=join(directory,'index.sqlite');let sql;
+ try{
+ sql=new DatabaseSync(path);applyMigrationPlan(sql,await loadMigrationPlan());
+ const db={async query(s,p=[]){return sql.prepare(s).all(...p);},async batch(rows){sql.exec('BEGIN');try{const result=rows.map(r=>sql.prepare(r.sql).all(...r.params));sql.exec('COMMIT');return result;}catch(e){sql.exec('ROLLBACK');throw e;}}};
+ const key=randomBytes(32),plain={synthetic:'recovery-only',sequence:1},aad='synthetic-delivery',bytes=encryptRecord(plain,key,aad),files=new Map();let uploads=0,generated=0;
+ const fetcher=async(url,options)=>{
+  assert.equal(options.redirect,'manual');
+  if(url.includes('generateIds')){generated++;return Response.json({ids:['synthetic_file_001']});}
+  if(url.includes('/upload/')){uploads++;const body=Buffer.from(options.body),text=body.toString(),metadata=JSON.parse(text.split('\r\n\r\n')[1].split('\r\n--')[0]);
+   const marker=Buffer.from('Content-Type: application/octet-stream\r\n\r\n'),start=body.indexOf(marker)+marker.length,end=body.lastIndexOf(Buffer.from('\r\n--'));
+   const stored=body.subarray(start,end);assert.equal(stored.includes(Buffer.from('recovery-only')),false);assert.deepEqual(stored,bytes);files.set(metadata.id,stored);
+   throw Error('lost-upload-acknowledgement');
+  }
+  if(url.includes('alt=media')){const id=url.split('/files/')[1].split('?')[0];return files.has(id)?new Response(files.get(id)):new Response(null,{status:404});}
+  throw Error('unexpected_synthetic_request');
+ };
+ const make=()=>new DriveCustody({folderId:'synthetic_folder_001',index:new D1DriveIndex(db,'synthetic_folder_001'),accessToken:async()=> 'synthetic',fetcher});
+ await assert.rejects(make().put('encrypted-check.enc',bytes),/^Error: drive_transport$/);
+ sql.close();sql=new DatabaseSync(path);
+ const restarted=make();assert.equal(await restarted.put('encrypted-check.enc',bytes),recoveryHash(bytes));assert.equal(uploads,1);assert.equal(generated,1);
+ assert.equal(await new D1DriveIndex(db,'synthetic_folder_001').get('encrypted-check.enc'),'synthetic_file_001');
+ const downloaded=await restarted.get('encrypted-check.enc');assert.equal(recoveryHash(downloaded),recoveryHash(bytes));assert.deepEqual(decryptRecord(downloaded,key,aad),plain);
+ assert.throws(()=>decryptRecord(downloaded,randomBytes(32),aad));files.set('synthetic_file_001',Buffer.from('tampered'));
+ await assert.rejects(restarted.put('encrypted-check.enc',bytes),/custody_conflict/);
+ }finally{sql?.close();await rm(directory,{recursive:true,force:true});}
+});

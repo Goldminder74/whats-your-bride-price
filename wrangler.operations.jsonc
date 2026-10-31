@@ -1,0 +1,27 @@
+{
+  // Private operational Worker; application/recovery access remains receipt-gated.
+  "name": "wybp-prod-ops-r001",
+  "account_id": "b6b22a9a87b5758725e5c499782160af",
+  "main": "worker/operations.mjs",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "observability": {"enabled": false},
+  "d1_databases": [{"binding":"DB","database_name":"wybp-prod-d1-r001","database_id":"a5b2b409-ed08-48c9-ac1d-36699fc6c4b9"}],
+  "vars": {
+    "WYBP_AUTHORITY_ROLE": "production-ops",
+    "WYBP_HEARTBEAT_HOST": "hc-ping.com",
+    "WYBP_AUTHORITY_DATABASE_NAME": "wybp-prod-d1-r001",
+    "WYBP_DRIVE_FOLDER_ID": "1-fO04arPlwSpuWQ7T2--yzTS5pHEXyxr",
+    "WYBP_RESTORE_RECEIPT_SHA256": "2860bffa5489697ce3828b40549ee10ef6972bebd3bf4f6092513571550834f0",
+    "WYBP_SYNTHETIC_RECOVERY_RECEIPT": "705351dcb06bd11cc42ac784173c7c33468707a0255d4c1342e5b6cd6ee5363a",
+    "WYBP_SYNTHETIC_RESTORE_PLAN_SHA256": "7124b17522a6d2028b3a615a30ab3646807f61161a2aadb1d8fc144cdfe383c6",
+    "WYBP_FULL_INVENTORY_RECEIPT": "7f6cc6ffd12fc7b5bb17ba94a7d799b0ff151d3921c0a1cc5dcc60e5974c2ecc",
+    "WYBP_ALERT_SENDER": "noreply@classesforculture.com",
+    "WYBP_TEST_ALERT_APPROVED": "false",
+    "WYBP_SYNTHETIC_CONFIRMATION_MAIL_ENABLED": "false",
+    "WYBP_RECOVERY_WINDOWS_ENABLED": "false",
+    "WYBP_HOSTED_REHEARSAL_ENABLED": "false"
+  }
+}
