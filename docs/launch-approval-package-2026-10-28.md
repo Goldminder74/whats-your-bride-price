@@ -1,5 +1,13 @@
 # Paid-launch approval package — 28 October 2026
 
+**FINAL31October:** owner authorises the displayed cancellation conditions and
+Google confirms "Subscription cancelled" for Business Starter. No new paid plan,
+support communication or organisation deletion. Final accrued invoice unverified.
+Do not use this package's cancelled Google custody assumption,repurchase or repeat
+setup. Replace that provider-specific prerequisite/scope before hosted execution;
+225inside250,all carryover/unknown reservations and50ongoing remain unchanged.
+Source/compiled tests stand;existing websites,mail and private game unchanged.
+
 **Superseding31October:** owner answers "Do not contact support" and already refuses
 new agreements. Both inspected cancellation routes are held;no message,agreement
 acceptance or cancellation. Last verified subscription ACTIVE;no receipt. No pending

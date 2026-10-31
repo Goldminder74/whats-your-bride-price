@@ -1,5 +1,34 @@
 # Current handoff
 
+### 31 October — GOOGLE WORKSPACE SUBSCRIPTION CANCELLED AND VERIFIED
+
+Owner reiterates cancellation priority,then explicitly responds to the displayed
+final conditions: "whatever conditions i dont care as far as the subscription is
+cancelled". This supersedes the earlier refusal ONLY for Google's known final
+Business Starter cancellation acknowledgement/free Cloud Identity Admin-access
+condition and already-approved Workspace data loss. No new paid service,pause,
+organisation deletion or support communication is authorised/performed.
+The engineer checked the existing acknowledgement,entered the admin email directly
+in Google and clicked Cancel my subscription ONCE. Google's asynchronous response
+now explicitly confirms "Subscription cancelled" / "You've cancelled the following
+subscription: Google Workspace Business Starter". Cancellation is COMPLETE; do not
+repeat it,ask for agreement approval,contact support or repurchase/reactivate.
+Google will send a final invoice for any outstanding balance; actual amount is
+not yet observed. It also displays a possible re-purchase/data-recovery window
+until21December2026;this is not a claim data was already erased or permission to
+restore. The organisation/account were NOT deleted. No replacement paid plan,
+new service,website change,root-mail/DNS change or private-game mutation.
+Ignored evidence in outputs/launch-20261030-package:
+workspace-subscription-cancelled.png and workspace-cancellation-receipt.json.
+Final success tab retained as deliverable; no further Google setup is needed.
+
+Return to the paid quiz. Do not treat cancellation as launch readiness or reuse
+the cancelled Workspace business-custody preflight. Replacement backup/customer-
+mail route,provider-specific adapter and approved isolated scope remain necessary
+before hosted retained-history/capacity validation. Existing budgets/carryover and
+conditional launch gates remain. No stopped benchmark has restarted. Passed local
+source/compiled evidence below is reused; no code tests needed for this record.
+
 ### 31 October — Google support contact explicitly REFUSED
 
 Owner answers the exact scoped cancellation-message request: "Do not contact support".

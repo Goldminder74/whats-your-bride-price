@@ -1,5 +1,12 @@
 # Google-only game email — inactive launch preparation
 
+**FINAL31October:** owner subsequently authorises the displayed cancellation
+conditions. Google now confirms Business Starter "Subscription cancelled".
+No support contact,replacement paid plan,organisation deletion,website/root-mail
+or private-game change. Final outstanding invoice amount unverified. This Google
+route is discontinued;do not request setup,repurchase or use it as backup preflight.
+Sanitised provider receipt/screenshot recorded in current-handoff.md.
+
 **Superseding31October:** owner explicitly REFUSES contacting Google support as
 well as accepting any new agreement. No message or cancellation sent;last verified
 subscription ACTIVE. No pending permission request;do not ask the same questions
