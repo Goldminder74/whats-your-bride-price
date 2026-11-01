@@ -253,6 +253,112 @@ test("Stripe session requests enable Adaptive Pricing and Tax, and Paystack stay
   assert.equal((await body(paystack)).error, "paystack_not_enabled");
 });
 
+test("grant and revoke rewrite the Cowrie cache from D1 under duplicates and a missed write", async () => {
+  const playerId = "player_balance_test_01";
+  const kv = memoryKv();
+  let interruptCowrieZero = true;
+  const innerPut = kv.put.bind(kv);
+  kv.put = async (key, value) => {
+    if (interruptCowrieZero && key === `cowrie:${playerId}` && value === "0") {
+      interruptCowrieZero = false;
+      throw new Error("kv_write_interrupted");
+    }
+    await innerPut(key, value);
+  };
+  const app = services({ kv });
+  const checkout = await body(await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "balance-order" },
+    body: JSON.stringify({ productKey: "cowrie_5_v1", email: "buyer@example.com", country: "NG", playerId, adult: true }),
+  }), app));
+  assert.equal((await servePaid(request("/api/paid/mock-pay", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ orderId: checkout.orderId }),
+  }), app)).status, 200);
+  assert.equal(kv.map.get(`cowrie:${playerId}`), "5");
+
+  const completed = {
+    id: "evt_completed_again_0001",
+    type: "checkout.session.completed",
+    livemode: false,
+    data: { object: {
+      id: `cs_test_mock_${checkout.orderId.slice(4)}`,
+      client_reference_id: checkout.orderId,
+      payment_status: "paid",
+      amount_total: 199,
+      currency: "gbp",
+      payment_intent: `pi_mock_${checkout.orderId.slice(4)}`,
+      metadata: { order_id: checkout.orderId },
+    } },
+  };
+  async function postEvent(event) {
+    const raw = JSON.stringify(event);
+    const timestamp = Math.floor(now / 1000);
+    const signature = createHmac("sha256", webhookSecret).update(`${timestamp}.${raw}`).digest("hex");
+    return servePaid(request("/api/paid/webhook", {
+      method: "POST",
+      headers: { "stripe-signature": `t=${timestamp},v1=${signature}` },
+      body: raw,
+    }), app);
+  }
+  assert.equal((await postEvent(completed)).status, 200);
+  assert.equal((await postEvent(completed)).status, 200);
+  assert.equal(kv.map.get(`cowrie:${playerId}`), "5");
+  assert.equal((await body(await servePaid(request(`/api/paid/orders/${checkout.orderId}`), app))).entitlement.remaining, 5);
+
+  const refund = {
+    id: "evt_balance_refund_0001",
+    type: "charge.refunded",
+    livemode: false,
+    data: { object: { amount: 199, amount_refunded: 199, refunded: true, currency: "gbp", payment_intent: `pi_mock_${checkout.orderId.slice(4)}` } },
+  };
+  const interrupted = await postEvent(refund);
+  assert.equal(interrupted.status, 500);
+  assert.equal((await body(await servePaid(request(`/api/paid/orders/${checkout.orderId}`), app))).state, "refunded");
+  assert.equal(kv.map.get(`cowrie:${playerId}`), "5");
+  assert.equal((await postEvent(refund)).status, 200);
+  assert.equal(kv.map.get(`cowrie:${playerId}`), "0");
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 0);
+
+  const replay = { ...refund, id: "evt_balance_refund_0002" };
+  const concurrent = await Promise.all([postEvent(refund), postEvent(replay), postEvent(replay)]);
+  assert.deepEqual(concurrent.map((response) => response.status), [200, 200, 200]);
+  assert.equal(kv.map.get(`cowrie:${playerId}`), "0");
+  const ledger = await body(await servePaid(request(`/api/paid/orders/${checkout.orderId}`), app));
+  assert.equal(ledger.entitlement.state, "revoked");
+  assert.equal(ledger.entitlement.remaining, 0);
+});
+
+test("checkout logs the Stripe error without returning it or a secret", async () => {
+  const lines = [];
+  const original = console.error;
+  console.error = (line) => { lines.push(String(line)); };
+  try {
+    const app = services({
+      config: { stripeMode: "test", stripeSecretKey: "sk_test_example", webhookSecret, publicOrigin: CANONICAL_ORIGIN },
+      stripeFetch: async () => new Response(JSON.stringify({
+        error: { type: "invalid_request_error", code: "tax_id_invalid", message: "Stripe Tax is not active. sk_test_secret should not leak" },
+      }), { status: 400 }),
+    });
+    const response = await servePaid(request("/api/paid/checkout", {
+      method: "POST",
+      headers: { "content-type": "application/json", "idempotency-key": "stripe-error-log" },
+      body: JSON.stringify({ productKey: "cowrie_5_v1", email: "buyer@example.com", country: "US", playerId: "player_stripe_log_01", adult: true }),
+    }), app);
+    assert.equal(response.status, 502);
+    const payload = await body(response);
+    assert.equal(payload.error, "stripe_checkout_unavailable");
+    assert.equal(JSON.stringify(payload).includes("tax_id_invalid"), false);
+    const logged = lines.join("\n");
+    assert.match(logged, /tax_id_invalid/);
+    assert.match(logged, /Stripe Tax is not active/);
+    assert.equal(logged.includes("sk_test_secret"), false);
+  } finally {
+    console.error = original;
+  }
+});
+
 test("webhook signatures match Stripe HMAC and reject stale headers", async () => {
   const raw = "{\"id\":\"evt_test\"}";
   const timestamp = Math.floor(now / 1000);

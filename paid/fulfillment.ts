@@ -11,19 +11,29 @@ function underpaid(order: PaidOrder, event: NormalizedStripeEvent): boolean {
   return false;
 }
 
-async function syncAccess(kv: KvStore, order: PaidOrder, direction: "grant" | "revoke"): Promise<void> {
-  const marker = `${direction}:${order.id}`;
-  if (await kv.get(marker)) return;
-  await kv.put(marker, "1");
-  const product = products[order.productKey];
-  if (product.kind === "royal_reveal") {
-    await kv.put(`royal:${order.playerId}`, direction === "grant" ? "1" : "0");
-    return;
+/** Rewrite the hot-path cache from the D1 entitlement rows. Safe to repeat. */
+export async function projectAccess(kv: KvStore, repository: PaidRepository, playerId: string): Promise<{ cowries: number; royal: boolean }> {
+  const access = await repository.accessForPlayer(playerId);
+  await kv.put(`cowrie:${playerId}`, String(access.cowries));
+  await kv.put(`royal:${playerId}`, access.royal ? "1" : "0");
+  return access;
+}
+
+async function projectOrder(kv: KvStore, repository: PaidRepository, order: PaidOrder | null): Promise<void> {
+  if (order) await projectAccess(kv, repository, order.playerId);
+}
+
+async function orderForEvent(repository: PaidRepository, event: NormalizedStripeEvent): Promise<PaidOrder | null> {
+  if (event.orderId) {
+    const byId = await repository.getById(event.orderId);
+    if (byId) return byId;
   }
-  const current = Number(await kv.get(`cowrie:${order.playerId}`) || "0");
-  const safe = Number.isSafeInteger(current) && current > 0 ? current : 0;
-  const next = direction === "grant" ? safe + product.quantity : Math.max(0, safe - product.quantity);
-  await kv.put(`cowrie:${order.playerId}`, String(next));
+  if (event.sessionId) {
+    const bySession = await repository.getBySession(event.sessionId);
+    if (bySession) return bySession;
+  }
+  if (event.paymentIntentId) return repository.getByPaymentIntent(event.paymentIntentId);
+  return null;
 }
 
 export function receiptText(order: PaidOrder): string {
@@ -55,7 +65,10 @@ export async function applyStripeEvent(input: {
   const { event, repository, kv, email, now } = input;
   if (event.livemode) throw new PaidError("stripe_live_event_rejected", 400);
   const claimed = await repository.claimEvent(event.id, event.type, event.orderId, now);
-  if (!claimed) return { duplicate: true, ignored: false };
+  if (!claimed) {
+    await projectOrder(kv, repository, await orderForEvent(repository, event));
+    return { duplicate: true, ignored: false };
+  }
   try {
     if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
       if (event.paymentStatus !== "paid" || !event.sessionId || !event.paymentIntentId) {
@@ -71,9 +84,9 @@ export async function applyStripeEvent(input: {
         amountMinor: event.amountTotal || order.baseAmountMinor,
         at: now,
       });
-      if (entitlement && entitlement.state === "active") await syncAccess(kv, order, "grant");
+      await projectOrder(kv, repository, order);
       const paid = await repository.getById(order.id);
-      if (paid && paid.receiptStatus !== "sent") {
+      if (entitlement?.state === "active" && paid && paid.receiptStatus !== "sent") {
         try {
           const receipt = await email.send({
             to: paid.email,
@@ -99,13 +112,12 @@ export async function applyStripeEvent(input: {
       const full = event.type === "charge.refunded" && (event.fullyRefunded || (event.amountRefunded !== null && event.amountTotal !== null && event.amountRefunded >= event.amountTotal));
       if (event.type === "charge.dispute.created") {
         await repository.markReview(order.id, now, true);
-        await syncAccess(kv, order, "revoke");
       } else if (full) {
         await repository.refundFull(order.id, now);
-        await syncAccess(kv, order, "revoke");
       } else {
         await repository.markReview(order.id, now, false);
       }
+      await projectOrder(kv, repository, order);
       return { duplicate: false, ignored: false };
     }
     return { duplicate: false, ignored: true };

@@ -170,9 +170,10 @@ Confirm `wrangler whoami` is the intended account first. The dry run is
 
 ## Risks
 
-- KV counters are sharded and approximate. They are not the financial ledger.
-  D1 is the ledger for orders and entitlements. A crash between a KV marker
-  and a balance update can under-count Cowries. It should not double-grant.
+- KV game counters are sharded and approximate. They are not the financial ledger.
+  Cowrie and Royal Reveal balances are summed from D1 entitlement rows. KV only
+  caches that sum and is rewritten after each paid, refunded, or duplicate webhook.
+  A failed cache write is repaired when Stripe delivers the event again.
 - Adaptive Pricing means the captured currency may not be GBP. The Worker
   accepts a non-GBP total that Stripe signed, and rejects a GBP total below
   the base price. Tax can make a GBP total higher than the shelf price.

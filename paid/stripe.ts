@@ -173,9 +173,26 @@ export async function createStripeSession(
     },
     body: params.toString(),
   });
-  const payload = await response.json().catch(() => null) as { id?: unknown; url?: unknown } | null;
+  const payload = await response.json().catch(() => null) as { id?: unknown; url?: unknown; error?: unknown } | null;
   if (!response.ok || !payload || typeof payload.id !== "string" || !SESSION_ID.test(payload.id) || typeof payload.url !== "string" || !payload.url.startsWith("https://")) {
+    logStripeCheckoutFailure(response.status, payload);
     throw new PaidError("stripe_checkout_unavailable", 502);
   }
   return { id: payload.id, url: payload.url };
+}
+
+function redactSecrets(value: string): string {
+  return value
+    .replace(/sk_(?:test|live)_[A-Za-z0-9]+/g, "[redacted]")
+    .replace(/whsec_[A-Za-z0-9]+/g, "[redacted]")
+    .replace(/rk_(?:test|live)_[A-Za-z0-9]+/g, "[redacted]")
+    .slice(0, 300);
+}
+
+function logStripeCheckoutFailure(status: number, payload: { error?: unknown } | null): void {
+  const error = payload?.error && typeof payload.error === "object" ? payload.error as Record<string, unknown> : {};
+  const code = typeof error.code === "string" ? redactSecrets(error.code) : "";
+  const type = typeof error.type === "string" ? redactSecrets(error.type) : "";
+  const message = typeof error.message === "string" ? redactSecrets(error.message) : "";
+  console.error(JSON.stringify({ level: "error", event: "stripe_checkout_unavailable", status, code, type, message }));
 }

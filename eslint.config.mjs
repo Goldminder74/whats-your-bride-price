@@ -18,6 +18,7 @@ const eslintConfig = defineConfig([
     // Immutable generated direct-Worker packages; source and package validators remain linted.
     "outputs/cloudflare-direct/**",
     "outputs/retained-benchmark/**",
+    "outputs/paid-worker/**",
     // Wrangler emits temporary third-party bundles here, including nested operator runs.
     "**/.wrangler/**",
     "next-env.d.ts",

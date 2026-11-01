@@ -54,6 +54,8 @@ export interface PaidRepository {
   markReview(orderId: string, at: number, revoke: boolean): Promise<PaidOrder | null>;
   failPending(orderId: string, at: number): Promise<void>;
   entitlementForOrder(orderId: string): Promise<PaidEntitlement | null>;
+  /** Active Cowries and Royal Reveal for a player. This is the balance ledger. */
+  accessForPlayer(playerId: string): Promise<{ cowries: number; royal: boolean }>;
 }
 
 function sameRequest(existing: PaidOrder, incoming: PaidOrder): boolean {
@@ -189,6 +191,17 @@ export function createMemoryRepository(): PaidRepository {
     async entitlementForOrder(orderId) {
       const entitlement = entitlements.get(orderId);
       return entitlement ? { ...entitlement } : null;
+    },
+    async accessForPlayer(playerId) {
+      let cowries = 0;
+      let royal = false;
+      for (const entitlement of entitlements.values()) {
+        if (entitlement.playerId !== playerId || entitlement.state !== "active") continue;
+        const product = products[entitlement.productKey];
+        if (product.kind === "cowries") cowries += entitlement.remaining;
+        if (product.kind === "royal_reveal" && entitlement.remaining > 0) royal = true;
+      }
+      return { cowries, royal };
     },
   };
 }

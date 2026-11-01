@@ -190,5 +190,17 @@ export function createD1Repository(database: D1Database): PaidRepository {
       const row = await database.prepare("SELECT id,order_id,player_id,product_key,quantity,remaining,state,created_at,updated_at FROM paid_entitlements WHERE order_id=?1").bind(orderId).first<EntitlementRow>();
       return row ? entitlementFromRow(row) : null;
     },
+    async accessForPlayer(playerId) {
+      const rows = await database.prepare("SELECT product_key, remaining FROM paid_entitlements WHERE player_id = ?1 AND state = 'active'").bind(playerId).all<{ product_key: string; remaining: number }>();
+      let cowries = 0;
+      let royal = false;
+      for (const row of rows.results) {
+        if (!isProductKey(row.product_key) || !Number.isSafeInteger(row.remaining) || row.remaining < 0) continue;
+        const product = products[row.product_key];
+        if (product.kind === "cowries") cowries += row.remaining;
+        if (product.kind === "royal_reveal" && row.remaining > 0) royal = true;
+      }
+      return { cowries, royal };
+    },
   };
 }
