@@ -26,6 +26,7 @@ export type NormalizedStripeEvent = Readonly<{
   currency: string | null;
   amountTotal: number | null;
   amountRefunded: number | null;
+  amountTax: number | null;
   fullyRefunded: boolean;
 }>;
 
@@ -139,6 +140,7 @@ export function parseStripeEvent(rawBody: string): NormalizedStripeEvent {
   if (checkout && typeof object.id === "string" && object.id.startsWith("cs_live_")) {
     throw new PaidError("stripe_live_event_rejected", 400);
   }
+  const totalDetails = object.total_details && typeof object.total_details === "object" ? object.total_details as Record<string, unknown> : null;
   const metadata = object.metadata && typeof object.metadata === "object" ? object.metadata as Record<string, unknown> : {};
   const orderFromMetadata = typeof metadata.order_id === "string" ? metadata.order_id : null;
   const clientReference = typeof object.client_reference_id === "string" ? object.client_reference_id : null;
@@ -153,6 +155,7 @@ export function parseStripeEvent(rawBody: string): NormalizedStripeEvent {
     currency: typeof object.currency === "string" ? object.currency.toLowerCase() : null,
     amountTotal: integerAmount(checkout ? object.amount_total : object.amount),
     amountRefunded: integerAmount(object.amount_refunded),
+    amountTax: integerAmount(totalDetails?.amount_tax),
     fullyRefunded: object.refunded === true,
   });
 }

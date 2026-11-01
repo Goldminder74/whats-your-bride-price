@@ -5,5 +5,6 @@ STRIPE_SECRET_KEY=sk_test_mock_local_only
 STRIPE_WEBHOOK_SECRET=whsec_local_test_secret_value
 EMAIL_PROVIDER=mock
 EMAIL_API_KEY=
-EMAIL_FROM=receipts@mail.classesforculture.com
+EMAIL_FROM=What's Your Bride Price? <noreply@mail.classesforculture.com>
+EMAIL_REPLY_TO=team@classesforculture.com
 PUBLIC_APP_ORIGIN=https://brideprice.classesforculture.com

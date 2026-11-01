@@ -1,5 +1,6 @@
 import { createD1Repository } from "../paid/d1Repository.ts";
-import { createTransactionalEmail, type TransactionalEmail } from "../paid/email.ts";
+import { assertReplyTo, createTransactionalEmail, type TransactionalEmail } from "../paid/email.ts";
+import { SUPPORT_EMAIL } from "../paid/receipt.ts";
 import { isPaidError, PaidError } from "../paid/errors.ts";
 import { paidSchemaSql } from "../paid/schemaSql.ts";
 import { readPaidConfig, servePaid, type PaidConfig, type PaidServices } from "../paid/serve.ts";
@@ -15,6 +16,7 @@ interface PaidEnv {
   EMAIL_PROVIDER?: string;
   EMAIL_API_KEY?: string;
   EMAIL_FROM?: string;
+  EMAIL_REPLY_TO?: string;
   PUBLIC_APP_ORIGIN?: string;
 }
 
@@ -45,10 +47,19 @@ function loadConfig(env: PaidEnv): PaidConfig | null {
 
 function loadEmail(env: PaidEnv): TransactionalEmail {
   try {
-    return createTransactionalEmail(env.EMAIL_PROVIDER || "mock", env.EMAIL_API_KEY || "", env.EMAIL_FROM || "");
+    return createTransactionalEmail(env.EMAIL_PROVIDER || "mock", env.EMAIL_API_KEY || "", env.EMAIL_FROM || "", env.EMAIL_REPLY_TO || SUPPORT_EMAIL);
   } catch (error) {
     if (!isPaidError(error)) throw error;
     return { async send() { throw new PaidError("email_not_configured", 503); } };
+  }
+}
+
+function loadReplyTo(env: PaidEnv): string {
+  try {
+    return assertReplyTo(env.EMAIL_REPLY_TO || SUPPORT_EMAIL);
+  } catch (error) {
+    if (!isPaidError(error)) throw error;
+    return SUPPORT_EMAIL;
   }
 }
 
@@ -58,6 +69,7 @@ function services(env: PaidEnv, ctx: ExecutionContext): PaidServices {
     repository: createD1Repository(env.DB),
     kv: kvStore(env.GAME_KV),
     email: loadEmail(env),
+    replyTo: loadReplyTo(env),
     config: loadConfig(env),
     assets: env.ASSETS,
     ensureSchema: () => {

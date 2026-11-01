@@ -87,7 +87,8 @@ Non-secret vars already in `wrangler.jsonc`:
 
 - `STRIPE_API_MODE=test`
 - `PUBLIC_APP_ORIGIN=https://brideprice.classesforculture.com`
-- `EMAIL_FROM=receipts@mail.classesforculture.com`
+- `EMAIL_FROM=What's Your Bride Price? <noreply@mail.classesforculture.com>`
+- `EMAIL_REPLY_TO=team@classesforculture.com`
 - `EMAIL_PROVIDER=resend` (change to `postmark` if you choose Postmark)
 
 Run one test purchase with card `4242 4242 4242 4242`. Confirm the order
@@ -110,8 +111,9 @@ Pick one:
 - Postmark: verify the same kind of subdomain and set
   `EMAIL_PROVIDER=postmark`. Secret: `EMAIL_API_KEY` (server token).
 
-`EMAIL_FROM` must be an address on a subdomain, for example
-`receipts@mail.classesforculture.com`. The apex is rejected.
+`EMAIL_FROM` must use an address on a subdomain. A display name is allowed, for example
+`What's Your Bride Price? <noreply@mail.classesforculture.com>`. The apex is rejected.
+`EMAIL_REPLY_TO` is the human support address, `team@classesforculture.com`.
 
 Human mail for `team@classesforculture.com` stays on PrivateMail. This app
 does not configure it.

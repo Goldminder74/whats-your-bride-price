@@ -13,6 +13,7 @@ import {
 import { assertReceiptFrom, type TransactionalEmail } from "./email.ts";
 import { PaidError, isPaidError } from "./errors.ts";
 import { applyStripeEvent, projectAccess } from "./fulfillment.ts";
+import { SUPPORT_EMAIL } from "./receipt.ts";
 import { completeGame, editions, isEdition, publicQuestions, type KvStore } from "./games.ts";
 import { legalPage, mockCheckoutHtml, playPageHtml, returnHtml } from "./pages.ts";
 import { paystackSeam } from "./paystack.ts";
@@ -38,6 +39,7 @@ export type PaidServices = Readonly<{
   repository: PaidRepository;
   kv: KvStore;
   email: TransactionalEmail;
+  replyTo?: string;
   config: PaidConfig | null;
   assets?: { fetch(request: Request): Promise<Response> };
   stripeFetch?: typeof fetch;
@@ -232,6 +234,7 @@ async function handleWebhook(request: Request, services: PaidServices): Promise<
     kv: services.kv,
     email: services.email,
     now: services.now(),
+    replyTo: services.replyTo || SUPPORT_EMAIL,
   });
   return json({ received: true, ...result });
 }
@@ -271,7 +274,7 @@ async function handleMockPay(request: Request, services: PaidServices): Promise<
   const timestamp = Math.floor(services.now() / 1000);
   const signature = await hmacSha256Hex(config.webhookSecret, `${timestamp}.${raw}`);
   await verifyStripeSignature(raw, `t=${timestamp},v1=${signature}`, config.webhookSecret, services.now());
-  await applyStripeEvent({ event: parseStripeEvent(raw), repository: services.repository, kv: services.kv, email: services.email, now: services.now() });
+  await applyStripeEvent({ event: parseStripeEvent(raw), repository: services.repository, kv: services.kv, email: services.email, now: services.now(), replyTo: services.replyTo || SUPPORT_EMAIL });
   if (contentType.includes("application/json")) return json({ ok: true, orderId: order.id });
   return Response.redirect(new URL(`/checkout/return?order=${order.id}`, request.url), 303);
 }

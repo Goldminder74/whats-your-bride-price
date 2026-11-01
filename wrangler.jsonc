@@ -16,7 +16,8 @@
   "vars": {
     "STRIPE_API_MODE": "test",
     "EMAIL_PROVIDER": "resend",
-    "EMAIL_FROM": "receipts@mail.classesforculture.com",
+    "EMAIL_FROM": "What's Your Bride Price? <noreply@mail.classesforculture.com>",
+    "EMAIL_REPLY_TO": "team@classesforculture.com",
     "PUBLIC_APP_ORIGIN": "https://brideprice.classesforculture.com"
   },
   "assets": {

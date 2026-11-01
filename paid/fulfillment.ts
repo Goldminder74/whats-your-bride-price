@@ -1,9 +1,9 @@
-import { products } from "./catalog.ts";
 import { PaidError } from "./errors.ts";
 import type { KvStore } from "./games.ts";
 import type { PaidOrder, PaidRepository } from "./repository.ts";
 import type { NormalizedStripeEvent } from "./stripe.ts";
 import type { TransactionalEmail } from "./email.ts";
+import { purchaseReceipt, refundReceipt, SUPPORT_EMAIL } from "./receipt.ts";
 
 function underpaid(order: PaidOrder, event: NormalizedStripeEvent): boolean {
   if (event.amountTotal === null || event.amountTotal <= 0 || !event.currency) return true;
@@ -36,33 +36,16 @@ async function orderForEvent(repository: PaidRepository, event: NormalizedStripe
   return null;
 }
 
-export function receiptText(order: PaidOrder): string {
-  const product = products[order.productKey];
-  const charged = order.presentmentAmountMinor === null || !order.presentmentCurrency
-    ? product.displayPrice
-    : `${order.presentmentCurrency.toUpperCase()} ${(order.presentmentAmountMinor / 100).toFixed(2)}`;
-  return [
-    "What’s Your Bride Price? purchase receipt",
-    "",
-    "PLACEHOLDER: receipt wording is waiting for owner approval.",
-    `Order: ${order.id}`,
-    `Product: ${product.name}`,
-    `Charged by Stripe: ${charged}`,
-    `Base price before local currency and tax: ${product.displayPrice}`,
-    order.waiverVersion ? `Instant digital supply consent: ${order.waiverVersion}` : "Instant digital supply consent: not required for this residence country",
-    "Card details stay with Stripe. This mailbox sends receipts only.",
-    "Support: team@classesforculture.com",
-  ].join("\n");
-}
-
 export async function applyStripeEvent(input: {
   event: NormalizedStripeEvent;
   repository: PaidRepository;
   kv: KvStore;
   email: TransactionalEmail;
   now: number;
+  replyTo?: string;
 }): Promise<{ duplicate: boolean; ignored: boolean }> {
   const { event, repository, kv, email, now } = input;
+  const replyTo = input.replyTo || SUPPORT_EMAIL;
   if (event.livemode) throw new PaidError("stripe_live_event_rejected", 400);
   const claimed = await repository.claimEvent(event.id, event.type, event.orderId, now);
   if (!claimed) {
@@ -88,12 +71,14 @@ export async function applyStripeEvent(input: {
       const paid = await repository.getById(order.id);
       if (entitlement?.state === "active" && paid && paid.receiptStatus !== "sent") {
         try {
-          const receipt = await email.send({
-            to: paid.email,
-            subject: `Receipt ${paid.id}`,
-            text: receiptText(paid),
-            idempotencyKey: paid.id,
-          });
+          const receipt = await email.send(purchaseReceipt({
+            order: paid,
+            amountMinor: event.amountTotal ?? paid.presentmentAmountMinor ?? paid.baseAmountMinor,
+            currency: event.currency ?? paid.presentmentCurrency ?? paid.baseCurrency,
+            taxMinor: event.amountTax,
+            at: now,
+            replyTo,
+          }));
           await repository.markReceipt(paid.id, "sent", receipt.id);
         } catch {
           await repository.markReceipt(paid.id, "failed", null);
@@ -109,6 +94,7 @@ export async function applyStripeEvent(input: {
       if (!event.paymentIntentId) throw new PaidError("stripe_order_unavailable", 400);
       const order = await repository.getByPaymentIntent(event.paymentIntentId);
       if (!order) throw new PaidError("stripe_order_unavailable", 400);
+      const before = order.state;
       const full = event.type === "charge.refunded" && (event.fullyRefunded || (event.amountRefunded !== null && event.amountTotal !== null && event.amountRefunded >= event.amountTotal));
       if (event.type === "charge.dispute.created") {
         await repository.markReview(order.id, now, true);
@@ -118,6 +104,22 @@ export async function applyStripeEvent(input: {
         await repository.markReview(order.id, now, false);
       }
       await projectOrder(kv, repository, order);
+      if (full && before !== "refunded") {
+        const refunded = await repository.getById(order.id);
+        if (refunded?.state === "refunded") {
+          try {
+            await email.send(refundReceipt({
+              order: refunded,
+              amountMinor: event.amountRefunded ?? event.amountTotal ?? refunded.presentmentAmountMinor ?? refunded.baseAmountMinor,
+              currency: event.currency ?? refunded.presentmentCurrency ?? refunded.baseCurrency,
+              at: now,
+              replyTo,
+            }));
+          } catch (error) {
+            console.error(JSON.stringify({ level: "error", event: "refund_receipt_failed", code: error instanceof PaidError ? error.code : "unavailable" }));
+          }
+        }
+      }
       return { duplicate: false, ignored: false };
     }
     return { duplicate: false, ignored: true };

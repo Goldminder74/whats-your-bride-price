@@ -4,7 +4,9 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { regions } from "../../app/gameData.ts";
 import { CANONICAL_ORIGIN, WAIVER_TEXT } from "../../paid/catalog.ts";
-import { createMockEmail, createResendEmail } from "../../paid/email.ts";
+import { createMockEmail, createResendEmail, parseReceiptFrom } from "../../paid/email.ts";
+import { formatMoney, purchaseReceipt, refundReceipt } from "../../paid/receipt.ts";
+import { WAIVER_VERSION } from "../../paid/catalog.ts";
 import { paidSchemaSql } from "../../paid/schemaSql.ts";
 import { createMemoryRepository } from "../../paid/repository.ts";
 import { servePaid } from "../../paid/serve.ts";
@@ -143,7 +145,10 @@ test("checkout requires the UK withdrawal acknowledgement and stays in test mode
   assert.equal(order.entitlement.remaining, 5);
   assert.equal(order.receiptStatus, "sent");
   assert.equal(email.sent.length, 1);
-  assert.match(email.sent[0].text, /PLACEHOLDER/);
+  assert.match(email.sent[0].subject, /receipt – 5 Cowries \([0-9A-F]{8}\)/);
+  assert.match(email.sent[0].text, /£1\.99/);
+  assert.match(email.sent[0].html, /What's Your Bride Price\?/);
+  assert.equal(email.sent[0].replyTo, "team@classesforculture.com");
   const access = await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app));
   assert.equal(access.cowries, 5);
 
@@ -431,15 +436,75 @@ test("webhook signatures match Stripe HMAC and reject stale headers", async () =
   await assert.rejects(() => verifyStripeSignature(raw, `t=${timestamp - 301},v1=${signature}`, webhookSecret, now), /stripe_signature_expired/);
 });
 
-test("receipts use Resend or Postmark from a subdomain", async () => {
+test("receipt headers, currency formatting and escaping", async () => {
+  const from = "What's Your Bride Price? <noreply@mail.classesforculture.com>";
+  assert.equal(parseReceiptFrom(from).header, from);
+  assert.equal(parseReceiptFrom(from).address, "noreply@mail.classesforculture.com");
+  assert.throws(() => parseReceiptFrom("What's Your Bride Price? <noreply@classesforculture.com>"), /email_from_must_be_subdomain/);
+  assert.equal(formatMoney(199, "gbp"), "£1.99");
+  assert.equal(formatMoney(199, "usd"), "US$1.99");
+  assert.equal(formatMoney(1234, "eur"), "€12.34");
+  assert.equal(formatMoney(199, "cad"), "CA$1.99");
+  assert.match(formatMoney(500000, "ngn"), /NGN\s5,000\.00/);
+  assert.match(formatMoney(25000, "kes"), /KES\s250\.00/);
+  assert.match(formatMoney(1500, "ghs"), /GHS\s15\.00/);
+
+  const order = {
+    id: `ord_${"ab".repeat(16)}`,
+    idempotencyKey: "receipt-order",
+    productKey: "cowrie_15_v1",
+    playerId: "player_receipt_test_1",
+    email: "buyer<script>@example.com",
+    residenceCountry: "GB",
+    baseCurrency: "gbp",
+    baseAmountMinor: 499,
+    waiverVersion: WAIVER_VERSION,
+    waiverAcceptedAt: 1700000000000,
+    adultConfirmed: true,
+    state: "fulfilled",
+    checkoutSessionId: "cs_test_mock_receipt",
+    checkoutUrl: null,
+    paymentIntentId: "pi_mock_receipt",
+    presentmentCurrency: "eur",
+    presentmentAmountMinor: 1599,
+    receiptStatus: "pending",
+    receiptId: null,
+    createdAt: 1700000000000,
+    updatedAt: 1700000000000,
+  };
+  const purchase = purchaseReceipt({ order, amountMinor: 1599, currency: "eur", taxMinor: 200, at: 1700000000000, replyTo: "team@classesforculture.com" });
+  assert.equal(purchase.subject, "Your What's Your Bride Price? receipt – 15 Cowries (ABABABAB)");
+  assert.equal(purchase.replyTo, "team@classesforculture.com");
+  assert.match(purchase.text, /€15\.99/);
+  assert.match(purchase.text, /Tax: €2\.00/);
+  assert.match(purchase.text, /14 November 2023/);
+  assert.match(purchase.text, /https:\/\/brideprice\.classesforculture\.com\/refunds/);
+  assert.match(purchase.html, /What's Your Bride Price\?/);
+  assert.match(purchase.html, /buyer&lt;script&gt;@example\.com/);
+  assert.equal(purchase.html.includes("<script>"), false);
+  assert.match(purchase.html, /PLACEHOLDER for owner approval/);
+  const refund = refundReceipt({ order, amountMinor: 500000, currency: "ngn", at: 1700000000000, replyTo: "team@classesforculture.com" });
+  assert.match(refund.subject, /refund – 15 Cowries \(ABABABAB\)/);
+  assert.match(refund.html, /buyer&lt;script&gt;@example\.com/);
+  assert.match(refund.text, /NGN\s5,000\.00/);
+  assert.equal(refund.html.includes("<script>"), false);
+
   const calls = [];
-  const resend = createResendEmail("re_test", "receipts@mail.classesforculture.com", async (url, init) => {
-    calls.push({ url, body: JSON.parse(String(init.body)) });
-    return new Response(JSON.stringify({ id: "re_123" }), { status: 200 });
+  const resend = createResendEmail({
+    apiKey: "re_test",
+    from,
+    replyTo: "team@classesforculture.com",
+    fetchImpl: async (url, init) => {
+      calls.push({ url, body: JSON.parse(String(init.body)) });
+      return new Response(JSON.stringify({ id: "re_123" }), { status: 200 });
+    },
   });
-  const sent = await resend.send({ to: "buyer@example.com", subject: "Receipt", text: "thanks", idempotencyKey: "ord_1" });
+  const sent = await resend.send(purchase);
   assert.equal(sent.provider, "resend");
   assert.equal(calls[0].url, "https://api.resend.com/emails");
-  assert.equal(calls[0].body.from, "receipts@mail.classesforculture.com");
-  assert.throws(() => createResendEmail("re_test", "receipts@classesforculture.com"), /email_from_must_be_subdomain/);
+  assert.equal(calls[0].body.from, from);
+  assert.equal(calls[0].body.reply_to, "team@classesforculture.com");
+  assert.equal(calls[0].body.subject, purchase.subject);
+  assert.match(calls[0].body.html, /buyer&lt;script&gt;@example\.com/);
+  assert.equal(String(calls[0].body.html).includes("<script>"), false);
 });
