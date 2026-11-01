@@ -13,7 +13,14 @@ export type CheckoutParamsInput = Readonly<{
   cancelUrl: string;
   customerEmail: string;
   waiverText: string | null;
+  /** When omitted or false, Checkout is not asked to calculate tax. */
+  automaticTax?: boolean;
 }>;
+
+/** Only an explicit on/true/1 enables Stripe Tax. Unset and `off` stay off. */
+export function automaticTaxEnabled(value: string | undefined): boolean {
+  return ["1", "on", "true"].includes((value || "").trim().toLowerCase());
+}
 
 export type NormalizedStripeEvent = Readonly<{
   id: string;
@@ -52,11 +59,14 @@ export function checkoutSessionParams(input: CheckoutParamsInput): URLSearchPara
   params.set("cancel_url", input.cancelUrl);
   params.set("billing_address_collection", "required");
   params.set("adaptive_pricing[enabled]", "true");
-  params.set("automatic_tax[enabled]", "true");
   params.set("line_items[0][quantity]", "1");
   params.set("line_items[0][price_data][currency]", "gbp");
   params.set("line_items[0][price_data][unit_amount]", String(input.amountMinor));
-  params.set("line_items[0][price_data][tax_behavior]", "exclusive");
+  if (input.automaticTax) {
+    params.set("automatic_tax[enabled]", "true");
+    params.set("tax_id_collection[enabled]", "true");
+    params.set("line_items[0][price_data][tax_behavior]", "exclusive");
+  }
   params.set("line_items[0][price_data][product_data][name]", input.productName);
   params.set("metadata[order_id]", input.orderId);
   params.set("payment_intent_data[metadata][order_id]", input.orderId);

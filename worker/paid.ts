@@ -14,6 +14,7 @@ interface PaidEnv {
   STRIPE_API_MODE?: string;
   STRIPE_SECRET_KEY?: string;
   STRIPE_WEBHOOK_SECRET?: string;
+  STRIPE_AUTOMATIC_TAX?: string;
   EMAIL_PROVIDER?: string;
   EMAIL_API_KEY?: string;
   EMAIL_FROM?: string;

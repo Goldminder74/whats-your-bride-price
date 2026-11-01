@@ -60,11 +60,12 @@ In the Stripe dashboard for Classes for Culture:
 
 1. Stay in **test mode**.
 2. Turn on [Adaptive Pricing](https://docs.stripe.com/payments/currencies/localize-prices/adaptive-pricing).
-3. Turn on [Stripe Tax](https://docs.stripe.com/tax) and set the business
-   address and the UK/EU VAT behaviour you want. The Worker sends
-   `automatic_tax[enabled]=true` and a GBP base price. Tax and local currency
-   are added by Stripe, so charged totals will not always equal £1.99, £4.99,
-   or £9.99.
+3. Leave Stripe Tax off. The seller is not VAT registered, and EU purchases
+   are blocked. `STRIPE_AUTOMATIC_TAX` stays `off`, so Checkout is not asked
+   to calculate tax. Prices shown are the final price. Adaptive Pricing may
+   still present that price in the buyer's currency. Turn tax on only after
+   VAT registration, by setting `STRIPE_AUTOMATIC_TAX=on` and enabling Stripe
+   Tax in the dashboard.
 4. Create a webhook endpoint for the test Worker URL
    `https://<host>/api/paid/webhook`.
 5. Send these events: `checkout.session.completed`,
@@ -86,6 +87,7 @@ The Worker rejects `sk_live_` and events with `livemode: true`.
 Non-secret vars already in `wrangler.jsonc`:
 
 - `STRIPE_API_MODE=test`
+- `STRIPE_AUTOMATIC_TAX=off`
 - `PUBLIC_APP_ORIGIN=https://brideprice.classesforculture.com`
 - `EMAIL_FROM=What's Your Bride Price? <noreply@mail.classesforculture.com>`
 - `EMAIL_REPLY_TO=team@classesforculture.com`
@@ -179,11 +181,11 @@ Confirm `wrangler whoami` is the intended account first. The dry run is
   visible. KV is only rewritten as a hint. Game completion does not read or write D1.
 - Adaptive Pricing means the captured currency may not be GBP. The Worker
   accepts a non-GBP total that Stripe signed, and rejects a GBP total below
-  the base price. Tax can make a GBP total higher than the shelf price.
-- Stripe Tax does nothing until it is enabled and the origin address is set
-  in Stripe. Checkout creation will fail from Stripe’s side until then if
-  `automatic_tax` is rejected. Fix that in the dashboard, not by removing the
-  flag, unless you explicitly decide to launch without tax.
+  the base price. With tax off, Checkout is not asked to add tax on top.
+- Setting `STRIPE_AUTOMATIC_TAX=on` before Stripe Tax is configured in the
+  dashboard can make Checkout creation fail. Leave it `off` until VAT
+  registration. Billing address country is still collected so a blocked EU
+  or EEA billing country can be refunded.
 - The older Google Drive, SMTP, and benchmark code is still in the repository
   for the previous test suite. Do not deploy `worker/operations.mjs`,
   `wrangler.operations.jsonc`, or the retained benchmark.

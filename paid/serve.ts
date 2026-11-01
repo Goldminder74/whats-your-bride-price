@@ -23,6 +23,7 @@ import { paystackSeam } from "./paystack.ts";
 import { assertSpendCount, type PaidOrder, type PaidRepository } from "./repository.ts";
 import {
   assertStripeTestConfiguration,
+  automaticTaxEnabled,
   checkoutSessionParams,
   createStripeRefund,
   createStripeSession,
@@ -36,6 +37,7 @@ export type PaidConfig = Readonly<{
   stripeSecretKey: string;
   webhookSecret: string;
   publicOrigin: string;
+  automaticTax: boolean;
 }>;
 
 export type PaidServices = Readonly<{
@@ -63,6 +65,7 @@ export type PaidEnvConfig = {
   STRIPE_WEBHOOK_SECRET?: string;
   EMAIL_FROM?: string;
   PUBLIC_APP_ORIGIN?: string;
+  STRIPE_AUTOMATIC_TAX?: string;
 };
 
 export function readPaidConfig(env: PaidEnvConfig): PaidConfig {
@@ -84,7 +87,7 @@ export function readPaidConfig(env: PaidEnvConfig): PaidConfig {
   const local = (url.hostname === "localhost" || url.hostname === "127.0.0.1") && url.protocol === "http:";
   if (url.origin !== CANONICAL_ORIGIN && !local) throw new PaidError("public_origin_rejected", 503);
   if (url.origin !== origin || url.pathname !== "/" || url.search || url.hash) throw new PaidError("public_origin_rejected", 503);
-  return { stripeMode: mode, stripeSecretKey: secret, webhookSecret, publicOrigin: url.origin };
+  return { stripeMode: mode, stripeSecretKey: secret, webhookSecret, publicOrigin: url.origin, automaticTax: automaticTaxEnabled(env.STRIPE_AUTOMATIC_TAX) };
 }
 
 function json(body: unknown, status = 200, extra?: HeadersInit): Response {
@@ -224,6 +227,7 @@ async function handleCheckout(request: Request, services: PaidServices): Promise
     cancelUrl: `${requestOrigin}/?checkout=cancelled`,
     customerEmail: order.email,
     waiverText: waiver ? WAIVER_TEXT : null,
+    automaticTax: config.automaticTax === true,
   });
   const session = config.stripeMode === "mock"
     ? { id: `cs_test_mock_${order.id.slice(4)}`, url: `${requestOrigin}/checkout/mock?order=${order.id}` }

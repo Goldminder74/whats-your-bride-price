@@ -1,7 +1,7 @@
 /**
  * Base prices are GBP minor units, matching the published one-off prices.
- * Stripe Adaptive Pricing presents local currency. Stripe Tax adds VAT where
- * it is enabled in the Stripe dashboard. Do not treat these figures as tax-inclusive.
+ * Stripe Adaptive Pricing may present the same price in another currency.
+ * Stripe Tax is off unless STRIPE_AUTOMATIC_TAX=on. The price shown is the final price.
  */
 export const products = Object.freeze({
   cowrie_5_v1: Object.freeze({ name: "5 Cowries", amountMinor: 199, quantity: 5, kind: "cowries" as const, displayPrice: "£1.99" }),

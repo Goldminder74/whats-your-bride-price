@@ -10,7 +10,7 @@ import { WAIVER_VERSION } from "../../paid/catalog.ts";
 import { paidSchemaSql } from "../../paid/schemaSql.ts";
 import { createMemoryRepository } from "../../paid/repository.ts";
 import { servePaid } from "../../paid/serve.ts";
-import { checkoutSessionParams, verifyStripeSignature } from "../../paid/stripe.ts";
+import { automaticTaxEnabled, checkoutSessionParams, verifyStripeSignature } from "../../paid/stripe.ts";
 
 const webhookSecret = "whsec_local_test_secret_value";
 const now = 1_700_000_000_000;
@@ -223,8 +223,11 @@ test("signed refunds revoke only that purchase and partial refunds wait for revi
   assert.equal(tampered.status, 400);
 });
 
-test("Stripe session requests enable Adaptive Pricing and Tax, and Paystack stays unwired", async () => {
-  const params = checkoutSessionParams({
+test("Stripe session requests keep Adaptive Pricing and leave tax off unless asked", async () => {
+  assert.equal(automaticTaxEnabled(undefined), false);
+  assert.equal(automaticTaxEnabled("off"), false);
+  assert.equal(automaticTaxEnabled("on"), true);
+  const shared = {
     orderId: "ord_" + "ab".repeat(16),
     productName: "Royal Reveal",
     amountMinor: 199,
@@ -232,14 +235,23 @@ test("Stripe session requests enable Adaptive Pricing and Tax, and Paystack stay
     cancelUrl: "https://brideprice.classesforculture.com/",
     customerEmail: "buyer@example.com",
     waiverText: WAIVER_TEXT,
-  });
+  };
+  const params = checkoutSessionParams(shared);
   assert.equal(params.get("adaptive_pricing[enabled]"), "true");
-  assert.equal(params.get("automatic_tax[enabled]"), "true");
+  assert.equal(params.get("billing_address_collection"), "required");
+  assert.equal(params.get("automatic_tax[enabled]"), null);
+  assert.equal(params.get("tax_id_collection[enabled]"), null);
+  assert.equal(params.get("line_items[0][price_data][tax_behavior]"), null);
   assert.equal(params.get("line_items[0][price_data][currency]"), "gbp");
   assert.equal(params.get("line_items[0][price_data][unit_amount]"), "199");
+  const taxed = checkoutSessionParams({ ...shared, automaticTax: true });
+  assert.equal(taxed.get("automatic_tax[enabled]"), "true");
+  assert.equal(taxed.get("tax_id_collection[enabled]"), "true");
+  assert.equal(taxed.get("line_items[0][price_data][tax_behavior]"), "exclusive");
+  assert.equal(taxed.get("adaptive_pricing[enabled]"), "true");
   let recorded = "";
   const app = services({
-    config: { stripeMode: "test", stripeSecretKey: "sk_test_example", webhookSecret, publicOrigin: CANONICAL_ORIGIN },
+    config: { stripeMode: "test", stripeSecretKey: "sk_test_example", webhookSecret, publicOrigin: CANONICAL_ORIGIN, automaticTax: false },
     stripeFetch: async (_url, init) => {
       recorded = String(init.body);
       return new Response(JSON.stringify({ id: "cs_test_live_shape", url: "https://checkout.stripe.com/c/pay/cs_test_live_shape" }), { status: 200 });
@@ -252,7 +264,25 @@ test("Stripe session requests enable Adaptive Pricing and Tax, and Paystack stay
   }), app);
   assert.equal(response.status, 200);
   assert.match(recorded, /adaptive_pricing(?:%5B|\[)enabled(?:%5D|\])=true/);
+  assert.doesNotMatch(recorded, /automatic_tax|tax_id_collection|tax_behavior/);
+  recorded = "";
+  const taxedApp = services({
+    config: { stripeMode: "test", stripeSecretKey: "sk_test_example", webhookSecret, publicOrigin: CANONICAL_ORIGIN, automaticTax: true },
+    stripeFetch: async (_url, init) => {
+      recorded = String(init.body);
+      return new Response(JSON.stringify({ id: "cs_test_tax_shape", url: "https://checkout.stripe.com/c/pay/cs_test_tax_shape" }), { status: 200 });
+    },
+  });
+  const taxedResponse = await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "stripe-shape-tax" },
+    body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "KE", playerId: "player_shape_test_01", adult: true }),
+  }), taxedApp);
+  assert.equal(taxedResponse.status, 200);
   assert.match(recorded, /automatic_tax(?:%5B|\[)enabled(?:%5D|\])=true/);
+  const terms = await (await servePaid(request("/terms"), services())).text();
+  assert.match(terms, /Prices shown are the final price/);
+  assert.doesNotMatch(terms, /may add tax/);
   const paystack = await servePaid(request("/api/paid/checkout", {
     method: "POST",
     headers: { "content-type": "application/json", "idempotency-key": "paystack-later" },
