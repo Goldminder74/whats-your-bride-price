@@ -3,6 +3,7 @@ import type { KvStore } from "./games.ts";
 import type { PaidOrder, PaidRepository } from "./repository.ts";
 import type { NormalizedStripeEvent } from "./stripe.ts";
 import type { TransactionalEmail } from "./email.ts";
+import { blockedPurchaseCountries, isCountryCode } from "./catalog.ts";
 import { purchaseReceipt, refundReceipt, SUPPORT_EMAIL } from "./receipt.ts";
 
 function underpaid(order: PaidOrder, event: NormalizedStripeEvent): boolean {
@@ -43,9 +44,12 @@ export async function applyStripeEvent(input: {
   email: TransactionalEmail;
   now: number;
   replyTo?: string;
+  blockedCountries?: ReadonlySet<string>;
+  refundBlockedPayment?: (paymentIntentId: string) => Promise<void>;
 }): Promise<{ duplicate: boolean; ignored: boolean }> {
   const { event, repository, kv, email, now } = input;
   const replyTo = input.replyTo || SUPPORT_EMAIL;
+  const blocked = input.blockedCountries ?? blockedPurchaseCountries(undefined);
   if (event.livemode) throw new PaidError("stripe_live_event_rejected", 400);
   const claimed = await repository.claimEvent(event.id, event.type, event.orderId, now);
   if (!claimed) {
@@ -60,6 +64,17 @@ export async function applyStripeEvent(input: {
       }
       const order = event.orderId ? await repository.getById(event.orderId) : await repository.getBySession(event.sessionId);
       if (!order || order.checkoutSessionId !== event.sessionId) throw new PaidError("stripe_order_unavailable", 400);
+      if (isCountryCode(event.billingCountry) && blocked.has(event.billingCountry)) {
+        if (!event.paymentIntentId) throw new PaidError("stripe_order_unavailable", 400);
+        if (input.refundBlockedPayment) await input.refundBlockedPayment(event.paymentIntentId);
+        if (order.state === "fulfilled") {
+          await repository.refundFull(order.id, now);
+          await projectOrder(kv, repository, order);
+        } else if (order.state === "pending") {
+          await repository.refundUnfulfilled(order.id, now);
+        }
+        return { duplicate: false, ignored: false };
+      }
       if (underpaid(order, event)) throw new PaidError("stripe_amount_rejected", 400);
       const entitlement = await repository.fulfill(order.id, {
         paymentIntentId: event.paymentIntentId,

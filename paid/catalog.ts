@@ -17,7 +17,7 @@ export function isProductKey(value: unknown): value is ProductKey {
   return typeof value === "string" && Object.hasOwn(products, value);
 }
 
-/** Markets called out for launch. Checkout still accepts any ISO country so a buyer is not blocked. */
+/** Markets called out for launch. Paid checkout refuses the blocked-country list below. */
 export const priorityCountries = Object.freeze([
   ["NG", "Nigeria", "NGN"],
   ["GH", "Ghana", "GHS"],
@@ -63,4 +63,29 @@ export function requiresWithdrawalWaiver(country: string): boolean {
 
 export function isCountryCode(value: unknown): value is string {
   return typeof value === "string" && /^[A-Z]{2}$/.test(value);
+}
+
+/** EU27 plus EEA members Iceland, Liechtenstein and Norway. The UK is not in this list. */
+export const DEFAULT_PAID_BLOCKED_COUNTRIES = Object.freeze([
+  "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT",
+  "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "IS", "LI", "NO",
+]);
+
+export const PURCHASES_UNAVAILABLE_MESSAGE = "Purchases aren't available in your country yet. You can still play for free!";
+
+/** Blank uses the default. `none` allows every country. Any other value replaces the default. */
+export function blockedPurchaseCountries(value: string | undefined): ReadonlySet<string> {
+  if (value === undefined || value.trim() === "") return new Set(DEFAULT_PAID_BLOCKED_COUNTRIES);
+  if (value.trim().toLowerCase() === "none") return new Set();
+  const codes = value.split(",").map((code) => code.trim().toUpperCase()).filter(Boolean);
+  if (codes.length === 0 || codes.some((code) => !isCountryCode(code))) {
+    return new Set(DEFAULT_PAID_BLOCKED_COUNTRIES);
+  }
+  return new Set(codes);
+}
+
+export function requestCountry(request: Request): string | null {
+  const cf = (request as Request & { cf?: { country?: string } }).cf;
+  const country = typeof cf?.country === "string" ? cf.country.toUpperCase() : "";
+  return isCountryCode(country) ? country : null;
 }

@@ -19,9 +19,9 @@ export function legalPage(kind: "privacy" | "terms" | "refunds"): string {
     return page("Draft Privacy Notice | What’s Your Bride Price?", `${shared}<h1>Privacy notice</h1><p>This draft describes the paid Cloudflare game. It is not an approved privacy notice.</p><h2>What the game stores</h2><ul><li>Play happens in your browser. A completed game writes a score summary and a sharded counter to Cloudflare KV. Ordinary play does not write to the database.</li><li>Purchases store an email address, country, order, Stripe reference and entitlement in Cloudflare D1 so a receipt can be sent and access can be unlocked or removed.</li><li>Card numbers stay with Stripe. This app does not store them.</li></ul><h2>Who processes data</h2><p>Cloudflare Workers serves the game and caches static assets at the edge. Stripe Checkout, Adaptive Pricing and Stripe Tax handle payment. Receipts are sent by Resend or Postmark from a mail subdomain. Human support mail stays on Namecheap Private Email and is outside this application. Google Workspace, Google Drive and ChatGPT Sites are not part of this paid hosting path.</p><h2>Retention and rights</h2><p>Game summaries in KV are operational records for the party game. Orders are kept so refunds, disputes and statutory requests can be handled. UK and EU data-protection rights may include access, erasure and complaint to the ICO. Final retention periods and lawful bases are not approved in this draft.</p>`, false, "/privacy");
   }
   if (kind === "terms") {
-    return page("Draft Terms | What’s Your Bride Price?", `${shared}<h1>Terms of use</h1><p>What’s Your Bride Price? is a culture quiz for adults aged 18 and over. The score is playful and is not a measure of a person.</p><h2>Free play and paid extras</h2><p>Completing a round is free. Cowrie bundles and Royal Reveal are one-off digital purchases. Base prices are shown in GBP. Stripe may present another currency and may add tax.</p><h2>Instant digital content</h2><p>${WAIVER_TEXT}</p><p>That sentence is shown at checkout for UK, EU and EEA buyers and must be accepted before a Checkout Session is created. It is placeholder copy.</p><h2>Acceptable use</h2><p>Do not misuse the service, attempt to break payment checks, or present the score as a judgement of a person.</p>`, false, "/terms");
+    return page("Draft Terms | What’s Your Bride Price?", `${shared}<h1>Terms of use</h1><p>What’s Your Bride Price? is a culture quiz for adults aged 18 and over. The score is playful and is not a measure of a person.</p><h2>Free play and paid extras</h2><p>Completing a round is free everywhere. Cowrie bundles and Royal Reveal are one-off digital purchases and are not offered in the EU or in Iceland, Liechtenstein, or Norway yet. Base prices are shown in GBP. Stripe may present another currency and may add tax.</p><h2>Instant digital content</h2><p>${WAIVER_TEXT}</p><p>That sentence is shown at checkout for UK, EU and EEA buyers and must be accepted before a Checkout Session is created. It is placeholder copy.</p><h2>Acceptable use</h2><p>Do not misuse the service, attempt to break payment checks, or present the score as a judgement of a person.</p>`, false, "/terms");
   }
-  return page("Draft Refunds | What’s Your Bride Price?", `${shared}<h1>Refunds</h1><p>This refund page is placeholder copy for owner approval. It is not a live refund promise.</p><h2>Statutory withdrawal</h2><p>For UK, EU and EEA buyers, instant digital supply requires the checkout acknowledgement that the 14-day withdrawal right ends when supply starts. Faulty or misdescribed content still has its statutory remedies.</p><h2>Voluntary refunds</h2><p>A separate voluntary refund policy is not activated. If the owner later approves one, a full refund of a Cowrie bundle or Royal Reveal would return the amount Stripe charged, to the original payment method, and would remove the remaining value of that purchase without creating a debt or taking unrelated purchases.</p><h2>How to ask</h2><p>Email <a href="mailto:team@classesforculture.com">team@classesforculture.com</a> with the order reference from your receipt. The draft target is to acknowledge the request within two working days. Stripe refunds and disputes also update access automatically when the signed webhook arrives.</p>`, false, "/refunds");
+  return page("Draft Refunds | What’s Your Bride Price?", `${shared}<h1>Refunds</h1><p>This refund page is placeholder copy for owner approval. It is not a live refund promise.</p><h2>Statutory withdrawal</h2><p>For UK, EU and EEA buyers, instant digital supply requires the checkout acknowledgement that the 14-day withdrawal right ends when supply starts. Faulty or misdescribed content still has its statutory remedies.</p><h2>Voluntary refunds</h2><p>A separate voluntary refund policy is not activated. If the owner later approves one, a full refund of a Cowrie bundle or Royal Reveal would return the amount Stripe charged, to the original payment method, and would remove the remaining value of that purchase without creating a debt or taking unrelated purchases.</p><h2>How to ask</h2><p>Paid purchases are not offered in the EU or in Iceland, Liechtenstein, or Norway yet. If a payment is taken for one of those countries, it is refunded to the original payment method and no pack is supplied. Email <a href="mailto:team@classesforculture.com">team@classesforculture.com</a> with the order reference from your receipt. The draft target is to acknowledge the request within two working days. Stripe refunds and disputes also update access automatically when the signed webhook arrives.</p>`, false, "/refunds");
 }
 
 export function playPageHtml(): string {
@@ -39,9 +39,20 @@ async function start(){
   catalog.countries.forEach(item=>{const option=document.createElement("option");option.value=item.code;option.textContent=item.name;country.append(option);});
   document.querySelector("#waiver-text").textContent=catalog.waiverText;
   const waiverCountries=new Set(catalog.waiverCountries);
+  const blockedCountries=new Set(catalog.blockedCountries||[]);
+  const blockedMessage=catalog.purchaseBlockedMessage||"Purchases aren't available in your country yet. You can still play for free!";
   const waiverLabel=document.querySelector("#waiver-label");
-  country.addEventListener("change",()=>{waiverLabel.hidden=!waiverCountries.has(country.value);});
-  country.dispatchEvent(new Event("change"));
+  const submit=document.querySelector("#checkout button[type=submit]");
+  const status=document.querySelector("#shop-status");
+  function updatePurchaseAvailability(){
+    const blocked=Boolean(catalog.purchasesBlocked)||blockedCountries.has(country.value);
+    submit.disabled=blocked;
+    waiverLabel.hidden=blocked||!waiverCountries.has(country.value);
+    if(blocked) status.textContent=blockedMessage;
+    else if(status.textContent===blockedMessage) status.textContent="";
+  }
+  country.addEventListener("change",updatePurchaseAvailability);
+  updatePurchaseAvailability();
   play.innerHTML="<h2>Choose a region</h2>"+catalog.editions.map(item=>'<button type="button" data-edition="'+item.key+'">'+item.name+"</button>").join(" ");
   play.querySelectorAll("[data-edition]").forEach(button=>button.addEventListener("click",()=>round(button.dataset.edition)));
   document.querySelector("#checkout").addEventListener("submit",submitCheckout);
@@ -87,7 +98,7 @@ async function submitCheckout(event){
   status.textContent="Opening checkout…";
   const response=await fetch("/api/paid/checkout",{method:"POST",headers:{"content-type":"application/json","idempotency-key":crypto.randomUUID()},body:JSON.stringify({productKey:data.get("product"),email:data.get("email"),country:data.get("country"),playerId:player,adult:data.get("adult")==="yes",waiver:data.get("waiver")==="yes"})});
   const payload=await response.json();
-  if(!response.ok){status.textContent=payload.error||"Checkout is unavailable.";return;}
+  if(!response.ok){status.textContent=payload.message||"Checkout is unavailable.";return;}
   location.href=payload.url;
 }
 start();

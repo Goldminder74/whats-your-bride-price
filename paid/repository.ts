@@ -58,6 +58,8 @@ export interface PaidRepository {
   accessForPlayer(playerId: string): Promise<{ cowries: number; royal: boolean }>;
   /** Remove Cowries from active entitlements. Returns null when D1 has too few. */
   spendCowries(playerId: string, count: number, at: number): Promise<{ cowries: number; royal: boolean } | null>;
+  /** Close a pending order without creating an entitlement, after the charge is refunded. */
+  refundUnfulfilled(orderId: string, at: number): Promise<PaidOrder | null>;
 }
 
 function sameRequest(existing: PaidOrder, incoming: PaidOrder): boolean {
@@ -213,6 +215,14 @@ export function createMemoryRepository(): PaidRepository {
         if (left === 0) break;
       }
       return accessFromEntitlements([...entitlements.values()].filter((entitlement) => entitlement.playerId === playerId));
+    },
+    async refundUnfulfilled(orderId, at) {
+      const order = must(orderId);
+      if (order.state === "refunded") return { ...order };
+      if (order.state !== "pending") return null;
+      order.state = "refunded";
+      order.updatedAt = at;
+      return { ...order };
     },
   };
 }

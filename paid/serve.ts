@@ -9,6 +9,9 @@ import {
   WAIVER_TEXT,
   WAIVER_VERSION,
   withdrawalCountries,
+  blockedPurchaseCountries,
+  PURCHASES_UNAVAILABLE_MESSAGE,
+  requestCountry,
 } from "./catalog.ts";
 import { assertReceiptFrom, type TransactionalEmail } from "./email.ts";
 import { PaidError, isPaidError } from "./errors.ts";
@@ -21,6 +24,7 @@ import { assertSpendCount, type PaidOrder, type PaidRepository } from "./reposit
 import {
   assertStripeTestConfiguration,
   checkoutSessionParams,
+  createStripeRefund,
   createStripeSession,
   parseStripeEvent,
   verifyStripeSignature,
@@ -40,6 +44,8 @@ export type PaidServices = Readonly<{
   kv: KvStore;
   email: TransactionalEmail;
   replyTo?: string;
+  blockedCountries?: ReadonlySet<string>;
+  refundBlockedPayment?: (paymentIntentId: string) => Promise<void>;
   config: PaidConfig | null;
   assets?: { fetch(request: Request): Promise<Response> };
   stripeFetch?: typeof fetch;
@@ -175,6 +181,11 @@ async function handleCheckout(request: Request, services: PaidServices): Promise
   if (!isCountryCode(body.country)) throw new PaidError("country_invalid", 400);
   if (typeof body.playerId !== "string" || !PLAYER_ID.test(body.playerId)) throw new PaidError("player_invalid", 400);
   if (body.adult !== true) throw new PaidError("adult_confirmation_required", 400);
+  const blocked = services.blockedCountries ?? blockedPurchaseCountries(undefined);
+  const edgeCountry = requestCountry(request);
+  if (blocked.has(body.country) || (edgeCountry !== null && blocked.has(edgeCountry))) {
+    throw new PaidError("purchases_unavailable_in_country", 403);
+  }
   const waiver = body.waiver === true;
   if (requiresWithdrawalWaiver(body.country) && !waiver) throw new PaidError("withdrawal_waiver_required", 400);
   const product = products[body.productKey];
@@ -235,6 +246,11 @@ async function handleWebhook(request: Request, services: PaidServices): Promise<
     email: services.email,
     now: services.now(),
     replyTo: services.replyTo || SUPPORT_EMAIL,
+    blockedCountries: services.blockedCountries ?? blockedPurchaseCountries(undefined),
+    refundBlockedPayment: services.refundBlockedPayment ?? (async (paymentIntentId: string) => {
+      if (config.stripeMode === "mock") return;
+      await createStripeRefund(config.stripeSecretKey, paymentIntentId, services.stripeFetch ?? fetch);
+    }),
   });
   return json({ received: true, ...result });
 }
@@ -303,6 +319,9 @@ export async function servePaid(request: Request, services: PaidServices): Promi
         waiverVersion: WAIVER_VERSION,
         canonical: CANONICAL_ORIGIN,
         paystack: { enabled: false, markets: paystackSeam.markets },
+        blockedCountries: [...(services.blockedCountries ?? blockedPurchaseCountries(undefined))].sort(),
+        purchasesBlocked: requestCountry(request) !== null && (services.blockedCountries ?? blockedPurchaseCountries(undefined)).has(requestCountry(request) as string),
+        purchaseBlockedMessage: PURCHASES_UNAVAILABLE_MESSAGE,
       });
     }
     if (request.method === "GET" && url.pathname === "/api/paid/questions") {
@@ -373,7 +392,11 @@ export async function servePaid(request: Request, services: PaidServices): Promi
     }
     return json({ error: "not_found" }, 404);
   } catch (error) {
-    if (isPaidError(error)) return json({ error: error.code }, error.status);
+    if (isPaidError(error)) {
+      return json(error.code === "purchases_unavailable_in_country"
+        ? { error: error.code, message: PURCHASES_UNAVAILABLE_MESSAGE }
+        : { error: error.code }, error.status);
+    }
     const message = error instanceof Error ? error.message.slice(0, 300) : "unknown";
     console.error(JSON.stringify({ level: "error", event: "paid_unhandled", message }));
     return json({ error: "unavailable" }, 500);

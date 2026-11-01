@@ -17,6 +17,6 @@ export default function RefundsPage() {
     <h2>Voluntary refunds</h2>
     <p>A separate voluntary refund policy is not activated. If it is later approved, a full refund would go back to the original payment method through Stripe and would remove the remaining value of that purchase only. It would not create a debt or remove an unrelated purchase.</p>
     <h2>How to ask</h2>
-    <p>Email <a href="mailto:team@classesforculture.com">team@classesforculture.com</a> with the order reference from the receipt. The draft target is an acknowledgement within two working days. Signed Stripe refund and dispute notifications update access when the paid Worker is configured. Read the <a href="/terms">terms</a> and <a href="/privacy">privacy notice</a>, which are also drafts.</p>
+    <p>Paid purchases are not offered in the EU or in Iceland, Liechtenstein, or Norway yet. If a payment is taken for one of those countries, it is refunded to the original payment method and no pack is supplied. Email <a href="mailto:team@classesforculture.com">team@classesforculture.com</a> with the order reference from the receipt. The draft target is an acknowledgement within two working days. Signed Stripe refund and dispute notifications update access when the paid Worker is configured. Read the <a href="/terms">terms</a> and <a href="/privacy">privacy notice</a>, which are also drafts.</p>
   </LegalPage>;
 }

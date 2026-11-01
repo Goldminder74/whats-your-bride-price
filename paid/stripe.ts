@@ -27,6 +27,7 @@ export type NormalizedStripeEvent = Readonly<{
   amountTotal: number | null;
   amountRefunded: number | null;
   amountTax: number | null;
+  billingCountry: string | null;
   fullyRefunded: boolean;
 }>;
 
@@ -140,6 +141,9 @@ export function parseStripeEvent(rawBody: string): NormalizedStripeEvent {
   if (checkout && typeof object.id === "string" && object.id.startsWith("cs_live_")) {
     throw new PaidError("stripe_live_event_rejected", 400);
   }
+  const customerDetails = object.customer_details && typeof object.customer_details === "object" ? object.customer_details as Record<string, unknown> : null;
+  const address = customerDetails?.address && typeof customerDetails.address === "object" ? customerDetails.address as Record<string, unknown> : null;
+  const billingCountry = typeof address?.country === "string" && /^[A-Za-z]{2}$/.test(address.country) ? address.country.toUpperCase() : null;
   const totalDetails = object.total_details && typeof object.total_details === "object" ? object.total_details as Record<string, unknown> : null;
   const metadata = object.metadata && typeof object.metadata === "object" ? object.metadata as Record<string, unknown> : {};
   const orderFromMetadata = typeof metadata.order_id === "string" ? metadata.order_id : null;
@@ -156,6 +160,7 @@ export function parseStripeEvent(rawBody: string): NormalizedStripeEvent {
     amountTotal: integerAmount(checkout ? object.amount_total : object.amount),
     amountRefunded: integerAmount(object.amount_refunded),
     amountTax: integerAmount(totalDetails?.amount_tax),
+    billingCountry,
     fullyRefunded: object.refunded === true,
   });
 }
@@ -182,6 +187,31 @@ export async function createStripeSession(
     throw new PaidError("stripe_checkout_unavailable", 502);
   }
   return { id: payload.id, url: payload.url };
+}
+
+/** Refund a captured test-mode payment. `charge_already_refunded` is success. */
+export async function createStripeRefund(
+  secretKey: string,
+  paymentIntentId: string,
+  fetchImpl: typeof fetch = fetch,
+): Promise<void> {
+  assertStripeTestConfiguration("test", secretKey);
+  const response = await fetchImpl("https://api.stripe.com/v1/refunds", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${secretKey}`,
+      "content-type": "application/x-www-form-urlencoded",
+      "idempotency-key": `blocked_country_${paymentIntentId}`,
+    },
+    body: new URLSearchParams({ payment_intent: paymentIntentId }).toString(),
+  });
+  const payload = await response.json().catch(() => null) as { error?: { code?: unknown; message?: unknown; type?: unknown } } | null;
+  if (response.ok) return;
+  const code = typeof payload?.error?.code === "string" ? payload.error.code : "";
+  if (code === "charge_already_refunded") return;
+  const message = typeof payload?.error?.message === "string" ? redactSecrets(payload.error.message) : "";
+  console.error(JSON.stringify({ level: "error", event: "stripe_refund_unavailable", status: response.status, code, message }));
+  throw new PaidError("stripe_refund_unavailable", 502);
 }
 
 function redactSecrets(value: string): string {

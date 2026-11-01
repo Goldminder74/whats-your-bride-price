@@ -89,6 +89,7 @@ Non-secret vars already in `wrangler.jsonc`:
 - `PUBLIC_APP_ORIGIN=https://brideprice.classesforculture.com`
 - `EMAIL_FROM=What's Your Bride Price? <noreply@mail.classesforculture.com>`
 - `EMAIL_REPLY_TO=team@classesforculture.com`
+- `PAID_BLOCKED_COUNTRIES` defaults to the EU27 plus Iceland, Liechtenstein and Norway. Free play is not affected. Set it to `none` only after EU VAT (non-Union OSS) registration. The UK is not in the default list.
 - `EMAIL_PROVIDER=resend` (change to `postmark` if you choose Postmark)
 
 Run one test purchase with card `4242 4242 4242 4242`. Confirm the order

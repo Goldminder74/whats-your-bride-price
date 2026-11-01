@@ -3,6 +3,7 @@ import { assertReplyTo, createTransactionalEmail, type TransactionalEmail } from
 import { SUPPORT_EMAIL } from "../paid/receipt.ts";
 import { isPaidError, PaidError } from "../paid/errors.ts";
 import { paidSchemaSql } from "../paid/schemaSql.ts";
+import { blockedPurchaseCountries } from "../paid/catalog.ts";
 import { readPaidConfig, servePaid, type PaidConfig, type PaidServices } from "../paid/serve.ts";
 import type { KvStore } from "../paid/games.ts";
 
@@ -17,6 +18,7 @@ interface PaidEnv {
   EMAIL_API_KEY?: string;
   EMAIL_FROM?: string;
   EMAIL_REPLY_TO?: string;
+  PAID_BLOCKED_COUNTRIES?: string;
   PUBLIC_APP_ORIGIN?: string;
 }
 
@@ -70,6 +72,7 @@ function services(env: PaidEnv, ctx: ExecutionContext): PaidServices {
     kv: kvStore(env.GAME_KV),
     email: loadEmail(env),
     replyTo: loadReplyTo(env),
+    blockedCountries: blockedPurchaseCountries(env.PAID_BLOCKED_COUNTRIES),
     config: loadConfig(env),
     assets: env.ASSETS,
     ensureSchema: () => {

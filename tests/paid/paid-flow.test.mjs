@@ -3,7 +3,7 @@ import { createHmac } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { regions } from "../../app/gameData.ts";
-import { CANONICAL_ORIGIN, WAIVER_TEXT } from "../../paid/catalog.ts";
+import { CANONICAL_ORIGIN, DEFAULT_PAID_BLOCKED_COUNTRIES, PURCHASES_UNAVAILABLE_MESSAGE, WAIVER_TEXT, blockedPurchaseCountries } from "../../paid/catalog.ts";
 import { createMockEmail, createResendEmail, parseReceiptFrom } from "../../paid/email.ts";
 import { formatMoney, purchaseReceipt, refundReceipt } from "../../paid/receipt.ts";
 import { WAIVER_VERSION } from "../../paid/catalog.ts";
@@ -39,11 +39,15 @@ function services(overrides = {}) {
     } : overrides.config,
     stripeFetch: overrides.stripeFetch,
     ensureSchema: overrides.ensureSchema,
+    blockedCountries: overrides.blockedCountries,
+    refundBlockedPayment: overrides.refundBlockedPayment,
   };
 }
 
-function request(path, init = {}) {
-  return new Request(`https://brideprice.classesforculture.com${path}`, init);
+function request(path, init = {}, country) {
+  const req = new Request(`https://brideprice.classesforculture.com${path}`, init);
+  if (country) Object.defineProperty(req, "cf", { value: { country } });
+  return req;
 }
 
 async function body(response) {
@@ -434,6 +438,94 @@ test("webhook signatures match Stripe HMAC and reject stale headers", async () =
   const signature = createHmac("sha256", webhookSecret).update(`${timestamp}.${raw}`).digest("hex");
   await verifyStripeSignature(raw, `t=${timestamp},v1=${signature}`, webhookSecret, now);
   await assert.rejects(() => verifyStripeSignature(raw, `t=${timestamp - 301},v1=${signature}`, webhookSecret, now), /stripe_signature_expired/);
+});
+
+test("paid checkout blocks the EU and EEA while free play stays open", async () => {
+  assert.equal(DEFAULT_PAID_BLOCKED_COUNTRIES.length, 30);
+  assert.equal(DEFAULT_PAID_BLOCKED_COUNTRIES.includes("DE"), true);
+  assert.equal(DEFAULT_PAID_BLOCKED_COUNTRIES.includes("IS"), true);
+  assert.equal(DEFAULT_PAID_BLOCKED_COUNTRIES.includes("LI"), true);
+  assert.equal(DEFAULT_PAID_BLOCKED_COUNTRIES.includes("NO"), true);
+  assert.equal(DEFAULT_PAID_BLOCKED_COUNTRIES.includes("GB"), false);
+  assert.equal(blockedPurchaseCountries(undefined).has("FR"), true);
+  assert.equal(blockedPurchaseCountries("none").size, 0);
+  assert.equal(blockedPurchaseCountries("US,NG").has("DE"), false);
+  assert.equal(blockedPurchaseCountries("not-a-country").has("DE"), true);
+
+  const refundsCalled = [];
+  const app = services({ refundBlockedPayment: async (id) => { refundsCalled.push(id); } });
+  const home = await (await servePaid(request("/"), app)).text();
+  assert.match(home, /Purchases aren't available in your country yet\. You can still play for free!/);
+  const terms = await (await servePaid(request("/terms"), app)).text();
+  assert.match(terms, /not offered in the EU/);
+  const refunds = await (await servePaid(request("/refunds"), app)).text();
+  assert.match(refunds, /Iceland, Liechtenstein, or Norway/);
+  const catalog = await body(await servePaid(request("/api/paid/catalog", {}, "DE"), app));
+  assert.equal(catalog.purchasesBlocked, true);
+  assert.equal(catalog.blockedCountries.includes("GB"), false);
+  assert.equal(catalog.purchaseBlockedMessage, PURCHASES_UNAVAILABLE_MESSAGE);
+
+  const playerId = "player_country_block_1";
+  const checkoutBody = (country, waiver) => JSON.stringify({
+    productKey: "cowrie_5_v1", email: "buyer@example.com", country, playerId, adult: true, waiver,
+  });
+  const headers = { "content-type": "application/json", "idempotency-key": "country-block-de" };
+  const edgeBlocked = await servePaid(request("/api/paid/checkout", { method: "POST", headers, body: checkoutBody("US", false) }, "DE"), app);
+  assert.equal(edgeBlocked.status, 403);
+  assert.equal((await body(edgeBlocked)).message, PURCHASES_UNAVAILABLE_MESSAGE);
+  const selectedBlocked = await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { ...headers, "idempotency-key": "country-block-fr" },
+    body: checkoutBody("FR", true),
+  }), app);
+  assert.equal(selectedBlocked.status, 403);
+  const answers = regions.west.questions.map((question) => [...question.correct]);
+  const played = await servePaid(request("/api/paid/games/complete", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ edition: "west", answers }),
+  }, "DE"), app);
+  assert.equal(played.status, 200);
+
+  const allowed = await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { ...headers, "idempotency-key": "country-block-us" },
+    body: checkoutBody("US", false),
+  }), app);
+  assert.equal(allowed.status, 200);
+  const checkout = await body(allowed);
+  const order = await app.repository.getById(checkout.orderId);
+  assert.ok(order);
+  const rawEvent = {
+    id: "evt_blocked_billing_de",
+    type: "checkout.session.completed",
+    livemode: false,
+    data: { object: {
+      id: order.checkoutSessionId,
+      client_reference_id: order.id,
+      payment_status: "paid",
+      amount_total: 199,
+      currency: "gbp",
+      payment_intent: `pi_blocked_${order.id.slice(4)}`,
+      customer_details: { address: { country: "DE" } },
+      metadata: { order_id: order.id },
+    } },
+  };
+  const raw = JSON.stringify(rawEvent);
+  const timestamp = Math.floor(now / 1000);
+  const signature = createHmac("sha256", webhookSecret).update(`${timestamp}.${raw}`).digest("hex");
+  const webhook = await servePaid(request("/api/paid/webhook", {
+    method: "POST",
+    headers: { "stripe-signature": `t=${timestamp},v1=${signature}` },
+    body: raw,
+  }), app);
+  assert.equal(webhook.status, 200);
+  assert.deepEqual(refundsCalled, [`pi_blocked_${order.id.slice(4)}`]);
+  const closed = await body(await servePaid(request(`/api/paid/orders/${order.id}`), app));
+  assert.equal(closed.state, "refunded");
+  assert.equal(closed.entitlement, null);
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 0);
+  assert.equal(app.email.sent.length, 0);
 });
 
 test("receipt headers, currency formatting and escaping", async () => {

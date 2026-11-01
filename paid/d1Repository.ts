@@ -241,5 +241,10 @@ export function createD1Repository(database: D1Database): PaidRepository {
       if ((result.meta.changes ?? 0) < 1) return null;
       return this.accessForPlayer(playerId);
     },
+    async refundUnfulfilled(orderId, at) {
+      const result = await database.prepare("UPDATE paid_orders SET state='refunded', updated_at=?1 WHERE id=?2 AND state='pending'").bind(at, orderId).run();
+      if ((result.meta.changes ?? 0) < 1) return oneOrder(`${selectOrder} WHERE id=?1`, orderId);
+      return oneOrder(`${selectOrder} WHERE id=?1`, orderId);
+    },
   };
 }
