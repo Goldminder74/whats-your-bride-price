@@ -85,8 +85,8 @@ function view(facts: ReceiptFacts) {
     waiver,
     headline: facts.kind === "purchase" ? "Your receipt" : "Your refund",
     intro: facts.kind === "purchase"
-      ? "Thank you for your purchase. This confirms the digital pack Stripe charged."
-      : "This confirms the refund Stripe sent back to the original payment method. The pack from this order is no longer available on the game.",
+      ? "Thanks for your purchase! Here's your receipt."
+      : "Here's your refund.",
   };
 }
 
@@ -129,7 +129,7 @@ function plainText(facts: ReceiptFacts, details: ReturnType<typeof view>): strin
     "",
     facts.kind === "purchase"
       ? "Open the game in the browser profile you used to buy. Your Cowries or Royal Reveal are on that profile."
-      : "Any remaining value from this purchase has been removed.",
+      : "The amount goes back to the original payment method. Any remaining value from this purchase has been removed.",
     `Play: ${GAME_URL}`,
     `Refunds: ${REFUND_URL}`,
     `Support: ${SUPPORT_EMAIL}`,
@@ -140,34 +140,39 @@ function plainText(facts: ReceiptFacts, details: ReturnType<typeof view>): strin
 }
 
 function htmlReceipt(facts: ReceiptFacts, details: ReturnType<typeof view>): string {
+  const label = "padding:10px 0;color:#5c534c;font-size:16px;line-height:1.4;border-bottom:1px solid #e6e6e6;";
+  const value = "padding:10px 0;color:#1a1a1a;font-size:16px;line-height:1.4;text-align:right;border-bottom:1px solid #e6e6e6;";
   const taxRow = details.tax
-    ? `<tr><td style="padding:8px 0;color:#d9c7b2;">Tax</td><td style="padding:8px 0;text-align:right;">${escapeHtml(details.tax)}</td></tr>`
+    ? `<tr><td style="${label}">Tax</td><td style="${value}">${escapeHtml(details.tax)}</td></tr>`
     : "";
   const waiver = details.waiver
-    ? `<p style="margin:16px 0 0;font-size:14px;line-height:1.5;color:#d9c7b2;">${escapeHtml(details.waiver)}</p>`
+    ? `<p style="margin:16px 0 0;font-size:14px;line-height:1.5;color:#1a1a1a;">${escapeHtml(details.waiver)}</p>`
     : "";
   const access = facts.kind === "purchase"
     ? "Open the game in the browser profile you used to buy. Your Cowries or Royal Reveal are on that profile."
-    : "Any remaining value from this purchase has been removed.";
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${escapeHtml(details.headline)}</title></head>
-<body style="margin:0;padding:0;background:#1d120b;color:#f6efe4;font-family:Georgia,serif;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#1d120b;"><tr><td align="center" style="padding:24px 12px;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#2a1b12;border:1px solid #6b4a32;border-radius:16px;">
-<tr><td style="padding:28px 24px;">
-<p style="margin:0;letter-spacing:.08em;text-transform:uppercase;color:#f0a11a;font-size:13px;">What's Your Bride Price?</p>
-<h1 style="margin:8px 0 0;font-size:28px;line-height:1.2;">${escapeHtml(details.headline)}</h1>
-<p style="margin:12px 0 0;font-size:16px;line-height:1.5;">${escapeHtml(details.intro)}</p>
-<table role="presentation" width="100%" style="margin-top:20px;border-top:1px solid #6b4a32;font-size:16px;">
-<tr><td style="padding:8px 0;color:#d9c7b2;">Pack</td><td style="padding:8px 0;text-align:right;">${escapeHtml(details.productName)}</td></tr>
-<tr><td style="padding:8px 0;color:#d9c7b2;">Amount paid</td><td style="padding:8px 0;text-align:right;">${escapeHtml(details.amount)}</td></tr>
+    : "The amount goes back to the original payment method. Any remaining value from this purchase has been removed.";
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light"><title>${escapeHtml(details.headline)}</title></head>
+<body bgcolor="#f7f4ef" style="margin:0;padding:0;background-color:#f7f4ef;color:#1a1a1a;font-family:Georgia,serif;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#f7f4ef" style="background-color:#f7f4ef;"><tr><td align="center" bgcolor="#f7f4ef" style="padding:24px 12px;background-color:#f7f4ef;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="max-width:560px;background-color:#ffffff;border:1px solid #e6e6e6;border-radius:16px;">
+<tr><td bgcolor="#ffffff" style="padding:28px 24px;background-color:#ffffff;color:#1a1a1a;">
+<p style="margin:0;letter-spacing:.08em;text-transform:uppercase;color:#8a5a12;font-size:13px;font-weight:bold;">What's Your Bride Price?</p>
+<h1 style="margin:8px 0 0;font-size:28px;line-height:1.2;color:#1a1a1a;">${escapeHtml(details.headline)}</h1>
+<p style="margin:12px 0 0;font-size:16px;line-height:1.5;color:#1a1a1a;">${escapeHtml(details.intro)}</p>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:20px;border-top:1px solid #e6e6e6;">
+<tr><td style="${label}">Pack</td><td style="${value}">${escapeHtml(details.productName)}</td></tr>
+<tr><td style="${label}">Amount paid</td><td style="${value}">${escapeHtml(details.amount)}</td></tr>
 ${taxRow}
-<tr><td style="padding:8px 0;color:#d9c7b2;">Date</td><td style="padding:8px 0;text-align:right;">${escapeHtml(details.date)}</td></tr>
-<tr><td style="padding:8px 0;color:#d9c7b2;">Order reference</td><td style="padding:8px 0;text-align:right;">${escapeHtml(details.shortRef)}</td></tr>
+<tr><td style="${label}">Date</td><td style="${value}">${escapeHtml(details.date)}</td></tr>
+<tr><td style="${label}">Order reference</td><td style="${value}">${escapeHtml(details.shortRef)}</td></tr>
 </table>
-<p style="margin:20px 0 0;font-size:16px;line-height:1.5;">${escapeHtml(access)}</p>
-<p style="margin:16px 0 0;"><a href="${GAME_URL}" style="display:inline-block;background:#f0a11a;color:#1d120b;text-decoration:none;border-radius:999px;padding:12px 18px;font-weight:bold;">Back to the game</a></p>
+<p style="margin:20px 0 0;font-size:16px;line-height:1.5;color:#1a1a1a;">${escapeHtml(access)}</p>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:16px;"><tr>
+<td bgcolor="#f0a11a" style="background-color:#f0a11a;border-radius:999px;">
+<a href="${GAME_URL}" style="display:inline-block;padding:12px 18px;background-color:#f0a11a;color:#1a1a1a;text-decoration:none;border-radius:999px;font-weight:bold;">Back to the game</a>
+</td></tr></table>
 ${waiver}
-<p style="margin:20px 0 0;font-size:14px;line-height:1.5;color:#d9c7b2;">Support: <a href="mailto:${SUPPORT_EMAIL}" style="color:#f0a11a;">${escapeHtml(SUPPORT_EMAIL)}</a><br>Refunds: <a href="${REFUND_URL}" style="color:#f0a11a;">${escapeHtml(REFUND_URL)}</a><br>Sent to ${escapeHtml(facts.order.email)}</p>
-<p style="margin:12px 0 0;font-size:12px;line-height:1.4;color:#b5a18e;">Card details stay with Stripe. This mailbox sends receipts only. Full order id: ${escapeHtml(facts.order.id)}</p>
+<p style="margin:20px 0 0;font-size:14px;line-height:1.5;color:#1a1a1a;">Support: <a href="mailto:${SUPPORT_EMAIL}" style="color:#8a5a12;text-decoration:underline;">${escapeHtml(SUPPORT_EMAIL)}</a><br>Refunds: <a href="${REFUND_URL}" style="color:#8a5a12;text-decoration:underline;">${escapeHtml(REFUND_URL)}</a><br>Sent to ${escapeHtml(facts.order.email)}</p>
+<p style="margin:12px 0 0;font-size:12px;line-height:1.4;color:#5c534c;">Card details stay with Stripe. This mailbox sends receipts only. Full order id: ${escapeHtml(facts.order.id)}</p>
 </td></tr></table></td></tr></table></body></html>`;
 }
