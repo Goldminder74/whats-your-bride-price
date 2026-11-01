@@ -1,0 +1,10 @@
+{
+ // Local build template only. No bindings, routes, credentials or schedules.
+ "name":"wybp-local-direct-fixture",
+ "main":"worker/direct.ts",
+ "compatibility_date":"2026-05-15",
+ "compatibility_flags":["nodejs_compat"],
+ "workers_dev":false,"preview_urls":false,
+ "assets":{"binding":"ASSETS","run_worker_first":true},
+ "images":{"binding":"IMAGES"},"observability":{"enabled":false}
+}

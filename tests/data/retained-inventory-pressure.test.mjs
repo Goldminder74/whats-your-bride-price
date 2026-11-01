@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {retainedInventoryPressure} from '../helpers/retainedInventoryPressure.mjs';
+test('extended retained-stock bound requires17 distinct verified folders, preserves clocks and rejects over-cap input',async()=>{const r=await retainedInventoryPressure(1000);assert.equal(r.generatedSignedObjects,1000);assert.equal(r.hostedRequests,0);});

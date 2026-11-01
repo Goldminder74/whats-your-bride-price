@@ -2,6 +2,7 @@ export type RegionKey = "west" | "east" | "central" | "north" | "south";
 export type QuestionKind = "single" | "multi" | "complete" | "image";
 export type Question = { kind: QuestionKind; prompt: string; options: string[]; correct: number[]; explanation: string; topic: string; visualStart?: number };
 export type Region = { name: string; short: string; place: string; mark: string; hello: string; palette: string[]; drops: string[]; questions: Question[] };
+export type AvatarChoice = { id: string; name: string; src: string; vibe: string };
 
 const q = (kind: QuestionKind, prompt: string, options: string[], correct: number[], explanation: string, topic: string, visualStart?: number): Question =>
   ({ kind, prompt, options, correct, explanation, topic, visualStart });
@@ -100,13 +101,13 @@ export const regions: Record<RegionKey, Region> = {
 };
 
 export const regionOrder: RegionKey[] = ["west", "east", "central", "north", "south"];
-export const avatarChoices = [
-  { name: "Amara", src: "/avatars/amara.webp", vibe: "The Radiant One" }, { name: "Zuri", src: "/avatars/zuri.webp", vibe: "The Wild Card" },
-  { name: "Nia", src: "/avatars/nia.webp", vibe: "The Story Charmer" }, { name: "Lindi", src: "/avatars/lindi.webp", vibe: "The Joy Bringer" },
-  { name: "Imara", src: "/avatars/imara.webp", vibe: "The Power Move" }, { name: "Aya", src: "/avatars/aya.webp", vibe: "The Golden Hour" },
-  { name: "Adjoa", src: "/avatars/adjoa-v2.webp", vibe: "The Wise Spark" }, { name: "Samira", src: "/avatars/samira-v2.webp", vibe: "The Desert Star" },
-  { name: "Wanjiku", src: "/avatars/wanjiku-v2.webp", vibe: "The Bright Horizon" }, { name: "Mbali", src: "/avatars/mbali-v2.webp", vibe: "The Purple Reign" },
-  { name: "Efe", src: "/avatars/efe-v2.webp", vibe: "The Coral Flame" }, { name: "Malaika", src: "/avatars/malaika-v2.webp", vibe: "The Clever Glow" },
+export const avatarChoices: AvatarChoice[] = [
+  { id: "amara", name: "Amara", src: "/avatars/amara.webp", vibe: "The Radiant One" }, { id: "zuri", name: "Zuri", src: "/avatars/zuri.webp", vibe: "The Wild Card" },
+  { id: "nia", name: "Nia", src: "/avatars/nia.webp", vibe: "The Story Charmer" }, { id: "lindi", name: "Lindi", src: "/avatars/lindi.webp", vibe: "The Joy Bringer" },
+  { id: "imara", name: "Imara", src: "/avatars/imara.webp", vibe: "The Power Move" }, { id: "aya", name: "Aya", src: "/avatars/aya.webp", vibe: "The Golden Hour" },
+  { id: "adjoa", name: "Adjoa", src: "/avatars/adjoa-v2.webp", vibe: "The Wise Spark" }, { id: "samira", name: "Samira", src: "/avatars/samira-v2.webp", vibe: "The Desert Star" },
+  { id: "wanjiku", name: "Wanjiku", src: "/avatars/wanjiku-v2.webp", vibe: "The Bright Horizon" }, { id: "mbali", name: "Mbali", src: "/avatars/mbali-v2.webp", vibe: "The Purple Reign" },
+  { id: "efe", name: "Efe", src: "/avatars/efe-v2.webp", vibe: "The Coral Flame" }, { id: "malaika", name: "Malaika", src: "/avatars/malaika-v2.webp", vibe: "The Clever Glow" },
 ];
 
 export const sourceCollections = [

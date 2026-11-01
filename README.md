@@ -1,100 +1,69 @@
-# vinext-starter
+# What’s Your Bride Price?
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+Paid party quiz for Classes for Culture. The free game already runs at
+[brideprice.classesforculture.com](https://brideprice.classesforculture.com).
+This branch is the paid Cloudflare Workers version: Stripe Checkout in test
+mode, entitlements, refunds, and receipt email. Nothing here is deployed.
 
-## Prerequisites
+Canonical and social metadata use `https://brideprice.classesforculture.com`.
 
-- Node.js `>=22.13.0`
-
-## Quick Start
+## Run the paid Worker locally
 
 ```bash
-npm install
-npm run dev
-npm run build
+npm ci
+cp .dev.vars.example .dev.vars
+npm run dev:worker
 ```
 
-This starter does not use `wrangler.jsonc`.
+Open the printed local URL. Finish a round, then buy Cowries or Royal Reveal.
+Mock mode does not call Stripe and does not create a charge. The test card
+button signs a webhook and unlocks the purchase.
 
-## Included Shape
+With a real Stripe test secret (`sk_test_...`), set `STRIPE_API_MODE=test` in
+`.dev.vars` and put the secret and webhook signing secret there. Never commit
+that file.
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+## Checks
 
-## Workspace Auth Headers
-
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
-
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+npm run lint
+npm run typecheck
+npm run test:unit
+npm run test:paid
+npm test
+npm run build:worker
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+`npm test` builds the existing quiz UI. `npm run test:paid` covers Checkout,
+webhooks, refunds, and a local Worker. `build:worker` is a dry run. It does
+not create Cloudflare resources.
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+Load shape for a staging URL only:
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+```bash
+k6 run -e STAGING_URL=https://your-staging-host load/k6-games.js
+```
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+100,000 completed games a day is about 2 requests a second in that script.
+The peak scenario then holds 100 completions a second for 30 seconds.
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+## What is deployed later
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+The paid entry point is `worker/paid.ts` with `wrangler.jsonc`. Static files
+in `public/` are served from the edge asset binding. Completed games write to
+KV. Orders, webhook idempotency, and entitlements write to D1. Play does not
+touch D1.
 
-## Useful Commands
+Google Workspace, SMTP, and Drive are not on this path. ChatGPT Sites config
+has been removed. Older recovery code remains in the tree so existing quiz
+tests still run. It is not the paid deploy.
 
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
+Go-live steps, secrets, and the owner checklist are in
+[docs/cloudflare-deploy.md](docs/cloudflare-deploy.md).
 
-## Learn More
+## Legal pages
 
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+`/privacy`, `/terms`, and `/refunds` are routed in the Worker and in the quiz
+app. The copy is marked placeholder and needs Ayodele Ayeni’s approval before
+publication. UK, EU, and EEA checkout asks for an express acknowledgement that
+immediate digital supply ends the 14-day withdrawal right.
