@@ -12,11 +12,11 @@ import {
 } from "./catalog.ts";
 import { assertReceiptFrom, type TransactionalEmail } from "./email.ts";
 import { PaidError, isPaidError } from "./errors.ts";
-import { applyStripeEvent } from "./fulfillment.ts";
+import { applyStripeEvent, projectAccess } from "./fulfillment.ts";
 import { completeGame, editions, isEdition, publicQuestions, type KvStore } from "./games.ts";
 import { legalPage, mockCheckoutHtml, playPageHtml, returnHtml } from "./pages.ts";
 import { paystackSeam } from "./paystack.ts";
-import type { PaidOrder, PaidRepository } from "./repository.ts";
+import { assertSpendCount, type PaidOrder, type PaidRepository } from "./repository.ts";
 import {
   assertStripeTestConfiguration,
   checkoutSessionParams,
@@ -316,11 +316,28 @@ export async function servePaid(request: Request, services: PaidServices): Promi
       return json(result);
     }
     if (request.method === "GET" && url.pathname === "/api/paid/access") {
+      await ready(services);
       const player = url.searchParams.get("player") || "";
       if (!PLAYER_ID.test(player)) throw new PaidError("player_invalid", 400);
-      const cowries = Number(await services.kv.get(`cowrie:${player}`) || "0");
-      const royal = (await services.kv.get(`royal:${player}`)) === "1";
-      return json({ cowries: Number.isSafeInteger(cowries) && cowries > 0 ? cowries : 0, royal });
+      const access = await services.repository.accessForPlayer(player);
+      return json({ cowries: access.cowries, royal: access.royal, source: "d1" });
+    }
+    if (request.method === "POST" && url.pathname === "/api/paid/cowries/spend") {
+      sameOrigin(request);
+      await ready(services);
+      const body = await readJson(request, 2_000) as Record<string, unknown>;
+      if (typeof body.playerId !== "string" || !PLAYER_ID.test(body.playerId)) throw new PaidError("player_invalid", 400);
+      const count = body.count === undefined ? 1 : body.count;
+      if (typeof count !== "number") throw new PaidError("spend_invalid", 400);
+      assertSpendCount(count);
+      const spent = await services.repository.spendCowries(body.playerId, count, services.now());
+      if (!spent) return json({ error: "insufficient_cowries" }, 409);
+      try {
+        await projectAccess(services.kv, services.repository, body.playerId);
+      } catch {
+        // The cache is optional. The next access read uses D1.
+      }
+      return json({ cowries: spent.cowries, royal: spent.royal, source: "d1" });
     }
     if (request.method === "POST" && url.pathname === "/api/paid/checkout") return await handleCheckout(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/webhook") return await handleWebhook(request, services);

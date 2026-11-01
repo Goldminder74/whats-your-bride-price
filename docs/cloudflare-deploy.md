@@ -171,9 +171,9 @@ Confirm `wrangler whoami` is the intended account first. The dry run is
 ## Risks
 
 - KV game counters are sharded and approximate. They are not the financial ledger.
-  Cowrie and Royal Reveal balances are summed from D1 entitlement rows. KV only
-  caches that sum and is rewritten after each paid, refunded, or duplicate webhook.
-  A failed cache write is repaired when Stripe delivers the event again.
+  Cowrie and Royal Reveal balances are summed from D1 entitlement rows. `/api/paid/access`
+  and Cowrie spends read that D1 sum, so a stale KV cache cannot keep a refunded balance
+  visible. KV is only rewritten as a hint. Game completion does not read or write D1.
 - Adaptive Pricing means the captured currency may not be GBP. The Worker
   accepts a non-GBP total that Stripe signed, and rejects a GBP total below
   the base price. Tax can make a GBP total higher than the shelf price.

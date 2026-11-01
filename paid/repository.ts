@@ -56,6 +56,8 @@ export interface PaidRepository {
   entitlementForOrder(orderId: string): Promise<PaidEntitlement | null>;
   /** Active Cowries and Royal Reveal for a player. This is the balance ledger. */
   accessForPlayer(playerId: string): Promise<{ cowries: number; royal: boolean }>;
+  /** Remove Cowries from active entitlements. Returns null when D1 has too few. */
+  spendCowries(playerId: string, count: number, at: number): Promise<{ cowries: number; royal: boolean } | null>;
 }
 
 function sameRequest(existing: PaidOrder, incoming: PaidOrder): boolean {
@@ -193,15 +195,40 @@ export function createMemoryRepository(): PaidRepository {
       return entitlement ? { ...entitlement } : null;
     },
     async accessForPlayer(playerId) {
-      let cowries = 0;
-      let royal = false;
-      for (const entitlement of entitlements.values()) {
-        if (entitlement.playerId !== playerId || entitlement.state !== "active") continue;
-        const product = products[entitlement.productKey];
-        if (product.kind === "cowries") cowries += entitlement.remaining;
-        if (product.kind === "royal_reveal" && entitlement.remaining > 0) royal = true;
+      return accessFromEntitlements([...entitlements.values()].filter((entitlement) => entitlement.playerId === playerId));
+    },
+    async spendCowries(playerId, count, at) {
+      assertSpendCount(count);
+      const rows = [...entitlements.values()]
+        .filter((entitlement) => entitlement.playerId === playerId && entitlement.state === "active" && products[entitlement.productKey].kind === "cowries" && entitlement.remaining > 0)
+        .sort((left, right) => left.createdAt - right.createdAt || left.id.localeCompare(right.id));
+      const total = rows.reduce((sum, entitlement) => sum + entitlement.remaining, 0);
+      if (total < count) return null;
+      let left = count;
+      for (const entitlement of rows) {
+        const take = Math.min(entitlement.remaining, left);
+        entitlement.remaining -= take;
+        entitlement.updatedAt = at;
+        left -= take;
+        if (left === 0) break;
       }
-      return { cowries, royal };
+      return accessFromEntitlements([...entitlements.values()].filter((entitlement) => entitlement.playerId === playerId));
     },
   };
+}
+
+export function assertSpendCount(count: number): void {
+  if (!Number.isSafeInteger(count) || count < 1 || count > 40) throw new PaidError("spend_invalid", 400);
+}
+
+export function accessFromEntitlements(rows: readonly PaidEntitlement[]): { cowries: number; royal: boolean } {
+  let cowries = 0;
+  let royal = false;
+  for (const entitlement of rows) {
+    if (entitlement.state !== "active") continue;
+    const product = products[entitlement.productKey];
+    if (product.kind === "cowries") cowries += entitlement.remaining;
+    if (product.kind === "royal_reveal" && entitlement.remaining > 0) royal = true;
+  }
+  return { cowries, royal };
 }

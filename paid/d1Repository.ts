@@ -1,6 +1,6 @@
 import { isProductKey, products, type ProductKey } from "./catalog.ts";
 import { PaidError } from "./errors.ts";
-import type { PaidEntitlement, PaidOrder, PaidRepository, ReceiptStatus, OrderState } from "./repository.ts";
+import { assertSpendCount, type PaidEntitlement, type PaidOrder, type PaidRepository, type ReceiptStatus, type OrderState } from "./repository.ts";
 
 type OrderRow = {
   id: string;
@@ -81,8 +81,41 @@ function entitlementFromRow(row: EntitlementRow): PaidEntitlement {
 
 const ORDER_COLUMNS = "id,idempotency_key,product_key,player_id,email,residence_country,base_currency,base_amount_minor,waiver_version,waiver_accepted_at,state,checkout_session_id,checkout_url,payment_intent_id,presentment_currency,presentment_amount_minor,receipt_status,receipt_id,created_at,updated_at";
 
+const COWRIE_SPEND_SQL = `
+WITH ordered AS (
+  SELECT id, remaining, SUM(remaining) OVER (ORDER BY created_at, id) AS running
+  FROM paid_entitlements
+  WHERE player_id = ?1 AND state = 'active'
+    AND product_key IN ('cowrie_5_v1','cowrie_15_v1','cowrie_40_v1')
+),
+total AS (SELECT COALESCE(SUM(remaining), 0) AS n FROM ordered),
+plan AS (
+  SELECT id,
+    CASE
+      WHEN running <= ?2 THEN 0
+      WHEN running - remaining >= ?2 THEN remaining
+      ELSE running - ?2
+    END AS next_remaining
+  FROM ordered
+)
+UPDATE paid_entitlements
+SET remaining = (SELECT next_remaining FROM plan WHERE plan.id = paid_entitlements.id),
+    updated_at = ?3
+WHERE id IN (SELECT id FROM plan)
+  AND (SELECT n FROM total) >= ?2
+`;
+
+function ledger(database: D1Database): D1DatabaseSession | D1Database {
+  try {
+    return database.withSession("first-primary");
+  } catch {
+    return database;
+  }
+}
+
 export function createD1Repository(database: D1Database): PaidRepository {
   const selectOrder = `SELECT ${ORDER_COLUMNS} FROM paid_orders`;
+  const primary = () => ledger(database);
 
   async function oneOrder(sql: string, ...binds: unknown[]): Promise<PaidOrder | null> {
     const row = await database.prepare(sql).bind(...binds).first<OrderRow>();
@@ -191,7 +224,7 @@ export function createD1Repository(database: D1Database): PaidRepository {
       return row ? entitlementFromRow(row) : null;
     },
     async accessForPlayer(playerId) {
-      const rows = await database.prepare("SELECT product_key, remaining FROM paid_entitlements WHERE player_id = ?1 AND state = 'active'").bind(playerId).all<{ product_key: string; remaining: number }>();
+      const rows = await primary().prepare("SELECT product_key, remaining, state FROM paid_entitlements WHERE player_id = ?1 AND state = 'active'").bind(playerId).all<{ product_key: string; remaining: number; state: "active" }>();
       let cowries = 0;
       let royal = false;
       for (const row of rows.results) {
@@ -201,6 +234,12 @@ export function createD1Repository(database: D1Database): PaidRepository {
         if (product.kind === "royal_reveal" && row.remaining > 0) royal = true;
       }
       return { cowries, royal };
+    },
+    async spendCowries(playerId, count, at) {
+      assertSpendCount(count);
+      const result = await primary().prepare(COWRIE_SPEND_SQL).bind(playerId, count, at).run();
+      if ((result.meta.changes ?? 0) < 1) return null;
+      return this.accessForPlayer(playerId);
     },
   };
 }

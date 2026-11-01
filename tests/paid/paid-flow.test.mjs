@@ -330,6 +330,70 @@ test("grant and revoke rewrite the Cowrie cache from D1 under duplicates and a m
   assert.equal(ledger.entitlement.remaining, 0);
 });
 
+test("access and spend follow D1 when KV still shows a refunded balance", async () => {
+  const playerId = "player_d1_access_01";
+  const kv = memoryKv();
+  const app = services({ kv });
+  const checkout = await body(await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "d1-access-order" },
+    body: JSON.stringify({ productKey: "cowrie_5_v1", email: "buyer@example.com", country: "KE", playerId, adult: true }),
+  }), app));
+  assert.equal((await servePaid(request("/api/paid/mock-pay", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ orderId: checkout.orderId }),
+  }), app)).status, 200);
+  await kv.put(`cowrie:${playerId}`, "99");
+  await kv.put(`royal:${playerId}`, "1");
+  const granted = await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app));
+  assert.equal(granted.source, "d1");
+  assert.equal(granted.cowries, 5);
+  assert.equal(granted.royal, false);
+  const spent = await body(await servePaid(request("/api/paid/cowries/spend", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ playerId, count: 2 }),
+  }), app));
+  assert.equal(spent.cowries, 3);
+  await kv.put(`cowrie:${playerId}`, "99");
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 3);
+  const overspend = await servePaid(request("/api/paid/cowries/spend", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ playerId, count: 4 }),
+  }), app);
+  assert.equal(overspend.status, 409);
+  assert.equal((await body(overspend)).error, "insufficient_cowries");
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 3);
+
+  const refund = {
+    id: "evt_d1_access_refund",
+    type: "charge.refunded",
+    livemode: false,
+    data: { object: { amount: 199, amount_refunded: 199, refunded: true, currency: "gbp", payment_intent: `pi_mock_${checkout.orderId.slice(4)}` } },
+  };
+  const raw = JSON.stringify(refund);
+  const timestamp = Math.floor(now / 1000);
+  const signature = createHmac("sha256", webhookSecret).update(`${timestamp}.${raw}`).digest("hex");
+  assert.equal((await servePaid(request("/api/paid/webhook", {
+    method: "POST",
+    headers: { "stripe-signature": `t=${timestamp},v1=${signature}` },
+    body: raw,
+  }), app)).status, 200);
+  await kv.put(`cowrie:${playerId}`, "5");
+  const after = await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app));
+  assert.equal(after.cowries, 0);
+  assert.equal(after.source, "d1");
+  const blocked = await servePaid(request("/api/paid/cowries/spend", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ playerId, count: 1 }),
+  }), app);
+  assert.equal(blocked.status, 409);
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 0);
+});
+
 test("checkout logs the Stripe error without returning it or a secret", async () => {
   const lines = [];
   const original = console.error;
