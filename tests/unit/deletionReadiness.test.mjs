@@ -60,9 +60,10 @@ test("synthetic anonymisation is idempotent and returns one sanitised unavailabl
   assert.equal(deletionEndpointActive, false);
 });
 
-test("keeps deletion endpoints and durable bindings inactive", async () => {
+test("keeps deletion endpoints inactive and does not ship ChatGPT Sites bindings", async () => {
   const worker = await readFile(new URL("../../worker/index.ts", import.meta.url), "utf8");
-  const hosting = JSON.parse(await readFile(new URL("../../.openai/hosting.json", import.meta.url), "utf8"));
-  assert.deepEqual({ d1: hosting.d1, r2: hosting.r2 }, { d1: null, r2: null });
   assert.doesNotMatch(worker, /\/delete|\/anonymi[sz]e|deletion-token|bearer/i);
+  await assert.rejects(readFile(new URL("../../.openai/hosting.json", import.meta.url), "utf8"));
+  const paid = await readFile(new URL("../../worker/paid.ts", import.meta.url), "utf8");
+  assert.doesNotMatch(paid, /sk_live_|whsec_[A-Za-z0-9]{8,}/);
 });

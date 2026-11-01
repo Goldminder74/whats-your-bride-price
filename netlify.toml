@@ -1,3 +1,5 @@
+# Paid hosting is Cloudflare Workers (wrangler.jsonc). This file fails closed
+# so a Netlify build cannot publish the game by accident.
 # Fail closed until a paired release is generated and independently authorised.
 # Use the generated release's netlify.toml for a future manual test deployment.
 [build]

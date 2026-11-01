@@ -5,7 +5,6 @@ import {readFileSync} from 'node:fs';
 import {productionBuildReadiness} from './app/productionReadiness.ts';
 import {retainedBuildReadiness} from './scripts/retained-build-readiness.mjs';
 import {resolveCustomerContact} from './app/customerContact.ts';
-import hostingConfig from "./.openai/hosting.json";
 import { validateHostingOrigin, type HostingOrigin } from "./app/hostingOrigin.ts";
 import { PRIVATE_TEST, validatePrivateTestProfile, validateTestDatabaseId, assertPrivateTestFlags } from "./app/privateTestProfile.ts";
 import {
@@ -27,7 +26,9 @@ import {
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
 
-const { d1, r2 } = hostingConfig;
+// ChatGPT Sites no longer supplies D1 or R2. The paid Worker config is wrangler.jsonc.
+const d1 = null;
+const r2 = null;
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
@@ -55,8 +56,9 @@ const localBindingConfig = {
 };
 
 export default defineConfig(async ({ mode }) => {
-  const target = process.env.WYBP_DEPLOY_TARGET || "sites";
-  if (!["sites","netlify-worker","cloudflare-direct","cloudflare-retained-benchmark"].includes(target)) throw new Error("Unknown deployment target");
+  const target = process.env.WYBP_DEPLOY_TARGET || "cloudflare-paid";
+  if (!["sites","cloudflare-paid","netlify-worker","cloudflare-direct","cloudflare-retained-benchmark"].includes(target)) throw new Error("Unknown deployment target");
+  const sitesTarget = target === "sites";
   const netlifyWorker = target === "netlify-worker";
   const directWorker=target==='cloudflare-direct',retainedWorker=target==='cloudflare-retained-benchmark',workerTarget=netlifyWorker||directWorker||retainedWorker;
   const customerContact=resolveCustomerContact(process.env.WYBP_CUSTOMER_CONTACT_PROFILE||'legacy');
@@ -275,7 +277,7 @@ export default defineConfig(async ({ mode }) => {
       : undefined,
     plugins: [
       vinext(),
-      ...(!workerTarget ? [sites()] : []),
+      ...(sitesTarget ? [sites()] : []),
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
         ...(retainedWorker?{configPath:'wrangler.retained.jsonc'}:directWorker?{configPath:'wrangler.direct.jsonc'}:netlifyWorker ? { configPath: "wrangler.netlify.jsonc" } : { config: localBindingConfig }),

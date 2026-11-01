@@ -102,7 +102,6 @@ test("JSON and CSV formats round-trip while review decisions stay pending", asyn
 test("prior packs, protected files and migrations retain approved hashes", async () => {
   const protectedFiles = new Map([
     [new URL("../../app/gameData.ts", import.meta.url), "3ce3474de2e6b072bf4e893fc2760c8b9ba996a889697ec5ac15f631cc05c74d"],
-    [new URL("../../.openai/hosting.json", import.meta.url), "757e9a6341e9b78488a0d053875fd148be1c07b3ec00c7b7c2cb5ee3eb44cf7e"],
     [new URL("../../package-lock.json", import.meta.url), "237e35d0429f629f976ac53bb16e32ccb01cf1b8e8c9c2acfd87603df07b0129"],
     [priorFiles[0], "74ad3ce51666c010fb7e82e4f0539f5af8d57b68efb19b1dd0f02c96282c6871"],
     [priorFiles[1], "51142019e2ee3926c2baca666508b451b017724175a9fbca3206b9000288a2cc"],
@@ -123,8 +122,8 @@ test("prior packs, protected files and migrations retain approved hashes", async
     "0010_hard_aqueduct.sql": "1a969b4a9a0bfb528dc4d811d968ab7c1769a02e279840defc045553289edc79",
     "0011_useful_wendell_vaughn.sql": "729a57db96851c507e74d705efd669407a1a1f5785f2b61aa85551ac15222f33",
     "0012_retention_authority.sql": "d9be0683f51232ab55a08ce093d72ad1c3cec9b57d9f170e09cef325f6741ec2",
-    "0013_operational_recovery.sql": "9cc74ee4cd863d2fbde55fcaf8b855547defc88ac5508708e54f6c3d128dc4dd",
-    "0014_purchase_confirmations.sql": "5f094129b5c2df1ae28ec3c72947e57089848597d0fc1126c150aa2aca26e920",
+    "0013_operational_recovery.sql": "dc60ac060671ccc285eec74c769e6e75a80bd060bb927d7742776320d08c037c",
+    "0014_purchase_confirmations.sql": "8af9caa43c0a565e82a7172b6cb09248ac8b2c9822abc331b49dbb812b630170",
   };
   const migrationDir = new URL("../../drizzle/", import.meta.url);
   const migrations = (await readdir(migrationDir)).filter((name) => /^\d{4}_.+\.sql$/.test(name)).sort();

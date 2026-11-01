@@ -467,8 +467,7 @@ test("incompatible scoring versions remain explicit rather than silently compare
   }
 });
 
-test("binding readiness is honest and hosting configuration still has no D1 or R2", async () => {
-  const hosting = JSON.parse(await readFile(new URL("../../.openai/hosting.json", import.meta.url), "utf8"));
+test("legacy data-layer readiness stays inactive and the paid Worker does not use ChatGPT Sites", async () => {
   assert.deepEqual(durableStorageReadiness, {
     hostingTarget: "chatgpt-sites",
     d1Configured: false,
@@ -477,8 +476,10 @@ test("binding readiness is honest and hosting configuration still has no D1 or R
     proposedD1Binding: "DB",
     proposedR2Binding: "MEDIA",
   });
-  assert.equal(hosting.d1, null);
-  assert.equal(hosting.r2, null);
+  await assert.rejects(readFile(new URL("../../.openai/hosting.json", import.meta.url), "utf8"));
+  const wrangler = await readFile(new URL("../../wrangler.jsonc", import.meta.url), "utf8");
+  assert.match(wrangler, /wybp-paid/);
+  assert.doesNotMatch(wrangler, /wybp-prod-app-r001|wybp-prod-ops-r001|wybp-test-r001/);
 });
 
 test("data-layer commerce schema excludes private media, secrets and financial instruments", async () => {

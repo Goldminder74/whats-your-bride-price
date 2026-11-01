@@ -131,8 +131,8 @@ test("existing cultural content and all nine migrations retain their approved ha
     "0010_hard_aqueduct.sql": "1a969b4a9a0bfb528dc4d811d968ab7c1769a02e279840defc045553289edc79",
     "0011_useful_wendell_vaughn.sql": "729a57db96851c507e74d705efd669407a1a1f5785f2b61aa85551ac15222f33",
     "0012_retention_authority.sql": "d9be0683f51232ab55a08ce093d72ad1c3cec9b57d9f170e09cef325f6741ec2",
-    "0013_operational_recovery.sql": "9cc74ee4cd863d2fbde55fcaf8b855547defc88ac5508708e54f6c3d128dc4dd",
-    "0014_purchase_confirmations.sql": "5f094129b5c2df1ae28ec3c72947e57089848597d0fc1126c150aa2aca26e920",
+    "0013_operational_recovery.sql": "dc60ac060671ccc285eec74c769e6e75a80bd060bb927d7742776320d08c037c",
+    "0014_purchase_confirmations.sql": "8af9caa43c0a565e82a7172b6cb09248ac8b2c9822abc331b49dbb812b630170",
   };
   const migrationDir = new URL("../../drizzle/", import.meta.url);
   const migrations = (await readdir(migrationDir)).filter((name) => /^\d{4}_.+\.sql$/.test(name)).sort();

@@ -286,7 +286,7 @@ async function deflate(bytes: Uint8Array): Promise<Uint8Array> {
   const compressed = new CompressionStream("deflate");
   const output = new Response(compressed.readable).arrayBuffer();
   const writer = compressed.writable.getWriter();
-  await writer.write(bytes.slice().buffer);
+  await writer.write(bytes.slice());
   await writer.close();
   return new Uint8Array(await output);
 }

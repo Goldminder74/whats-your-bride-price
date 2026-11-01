@@ -1,3 +1,13 @@
+# Superseding direction — 1 November 2026
+
+Ayo is taking the paid game onto Cloudflare Workers with Stripe Checkout in
+test mode. The deployable entry is `worker/paid.ts` and `wrangler.jsonc`.
+Google Workspace, SMTP, and Drive are not part of that path. ChatGPT Sites
+hosting config has been removed. Do not deploy, create Cloudflare resources,
+change DNS, or take a live charge from this tree. The sequence below is the
+31 October checkpoint and does not authorise those steps. See `README.md` and
+`docs/cloudflare-deploy.md`.
+
 # Current handoff — 31 October 2026
 
 This is the current execution checkpoint. Earlier observations and superseded
