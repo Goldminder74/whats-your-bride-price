@@ -49,6 +49,9 @@ test("ships sixty educational questions, varied play modes, privacy copy and bro
   assert.match(source, /Private\. Never leaves your device\./);
   assert.match(source, /avatarChoices/);
   assert.match(data, /"image"/);
+  assert.match(source, /Photo for question \$\{index \+ 1\}, choice \$\{choiceLetter\}/);
+  assert.doesNotMatch(source, /alt=\{option\}/);
+  assert.match(source, /question\.kind === "image" \? null : <b>\{option\}<\/b>/);
   assert.match(data, /"multi"/);
   assert.match(data, /"complete"/);
   assert.match(source, /NOW YOU KNOW/);

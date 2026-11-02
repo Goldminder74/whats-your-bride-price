@@ -542,9 +542,11 @@ export default function BridePriceGame() {
               {question.options.map((option, optionIndex) => {
                 const slot = (question.visualStart || 0) + optionIndex;
                 const classes = [selected.includes(optionIndex) ? "selected" : "", feedbackOpen && question.correct.includes(optionIndex) ? "correct" : "", feedbackOpen && selected.includes(optionIndex) && !question.correct.includes(optionIndex) ? "wrong" : ""].filter(Boolean).join(" ");
-                return <button key={option} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen}>
-                  {question.kind === "image" && <img className="answer-image" src={`/quiz-art/${regionKey}-${slot}.webp`} alt={option} />}
-                  <span className="answer-letter">{String.fromCharCode(65 + optionIndex)}</span><b>{option}</b><i>{question.kind === "multi" ? selected.includes(optionIndex) ? "✓" : "+" : "↗"}</i>
+                const choiceLetter = String.fromCharCode(65 + optionIndex);
+                const photoAlt = `Photo for question ${index + 1}, choice ${choiceLetter}`;
+                return <button key={option} className={classes} onClick={() => chooseAnswer(optionIndex)} disabled={feedbackOpen} aria-label={question.kind === "image" ? photoAlt : undefined}>
+                  {question.kind === "image" && <img className="answer-image" src={`/quiz-art/${regionKey}-${slot}.webp`} alt={photoAlt} />}
+                  <span className="answer-letter">{choiceLetter}</span>{question.kind === "image" ? null : <b>{option}</b>}<i>{question.kind === "multi" ? selected.includes(optionIndex) ? "✓" : "+" : "↗"}</i>
                 </button>
               })}
             </div>

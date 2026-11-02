@@ -90,6 +90,16 @@ test("question payloads omit answer keys and completions stay off the order data
   const questions = await body(await servePaid(request("/api/paid/questions?edition=west"), app));
   assert.equal(questions.length, regions.west.questions.length);
   assert.equal("correct" in questions[0], false);
+  const pictured = questions.filter((question) => question.kind === "image");
+  assert.equal(pictured.length, 2);
+  for (const question of pictured) {
+    assert.equal(question.images.length, question.options.length);
+    assert.equal(question.images.some((src) => question.options.some((label) => src.toLowerCase().includes(label.toLowerCase().split(" ")[0]))), false);
+  }
+  const home = await (await servePaid(request("/"), app)).text();
+  assert.match(home, /Photo for question/);
+  assert.match(home, /question\.kind==="image"/);
+  assert.doesNotMatch(home, /alt="'\+escapeHtml\(label\)/);
   const answers = regions.west.questions.map((question) => [...question.correct]);
   const completed = await servePaid(request("/api/paid/games/complete", {
     method: "POST",
