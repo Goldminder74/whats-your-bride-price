@@ -28,6 +28,7 @@ interface PaidEnv {
   RANDOM_BANK?: string;
   EARN_PATHS?: string;
   SHARE_CARDS?: string;
+  DAILY_CHALLENGE?: string;
 }
 
 let schemaReady: Promise<void> | null = null;
@@ -102,6 +103,7 @@ function services(env: PaidEnv, ctx: ExecutionContext): PaidServices {
     randomBank: ["1", "true", "on", "yes"].includes((env.RANDOM_BANK || "").toLowerCase()),
     earnPaths: envFlagOn(env.EARN_PATHS),
     shareCards: envFlagOn(env.SHARE_CARDS),
+    dailyChallenge: envFlagOn(env.DAILY_CHALLENGE),
   };
 }
 

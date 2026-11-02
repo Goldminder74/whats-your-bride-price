@@ -8,6 +8,7 @@ import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRe
 import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, finishGame, readPlayerId, recordArrival, type PaidFeatures } from "./paidClient";
 import { paidCommerceEnabled, randomBankEnabled } from "./paidFlags";
 import { finishRound, playRandomRound, readSavedRound, writeSavedRound } from "../question-bank/clientRound.ts";
+import { friendChallengeLine } from "../paid/friendLine.ts";
 import { challengeUrl, shareBlurb } from "../paid/shareCard.ts";
 import { PaidDesk } from "./PaidDesk";
 import { reportAppError } from "./errors";
@@ -200,17 +201,21 @@ export default function BridePriceGame() {
   const [allAfricaJustUnlocked, setAllAfricaJustUnlocked] = useState(false);
   const [revealAura, setRevealAura] = useState(0);
   const [bankRound, setBankRound] = useState<PlayQuestion[] | null>(null);
-  const [paidFeatures, setPaidFeatures] = useState<PaidFeatures>({ earnPaths: false, shareCards: false });
+  const [paidFeatures, setPaidFeatures] = useState<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false });
   const [referralCode, setReferralCode] = useState<string | null>(null);
   const [referralUrl, setReferralUrl] = useState<string | null>(null);
   const [perfectNote, setPerfectNote] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
-  const paidFeaturesRef = useRef<PaidFeatures>({ earnPaths: false, shareCards: false });
+  const paidFeaturesRef = useRef<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false });
+  const dailyMode = useRef(false);
+  const [friendScore, setFriendScore] = useState<number | null>(null);
+  const [dailyNote, setDailyNote] = useState("");
+  const [dailyBoard, setDailyBoard] = useState<{ nickname: string; score: number; durationMs: number }[]>([]);
   const choiceLog = useRef<number[][]>([]);
   const roundIdRef = useRef<string | null>(null);
   const audioRef = useRef<AudioContext | null>(null);
   const region = regions[regionKey];
-  const activeQuestions = randomBankEnabled() ? (bankRound ?? []) : region.questions;
+  const activeQuestions = bankRound ?? (randomBankEnabled() ? [] : region.questions);
   const question = activeQuestions[index];
   const portrait = photo || avatar;
   const correctCount = answers.reduce((sum, answer) => sum + answer, 0);
@@ -244,11 +249,14 @@ export default function BridePriceGame() {
 
   useEffect(() => {
     setHydrated(true);
-    const edition = new URLSearchParams(window.location.search).get("edition") as RegionKey | null;
+    const params = new URLSearchParams(window.location.search);
+    const edition = params.get("edition") as RegionKey | null;
+    const linkedScore = Number(params.get("score"));
     if (edition && regions[edition]) {
       setRegionKey(edition);
       setScreen("setup");
     }
+    if (Number.isInteger(linkedScore) && linkedScore >= 0 && linkedScore <= 12) setFriendScore(linkedScore);
     try {
       const saved = JSON.parse(localStorage.getItem("wybp-region-scores") || "{}") as Partial<Record<RegionKey, number>>;
       setBestScores(Object.fromEntries(Object.entries(saved).filter(([key, value]) => regions[key as RegionKey] && typeof value === "number")) as Partial<Record<RegionKey, number>>);
@@ -332,7 +340,41 @@ export default function BridePriceGame() {
     reader.readAsDataURL(file);
   };
 
+  const startDaily = () => {
+    setSelected([]);
+    setFeedbackOpen(false);
+    void (async () => {
+      const response = await fetch("/api/paid/daily/begin", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ playerId: readPlayerId(), edition: regionKey, nickname: name.trim() || undefined }),
+      });
+      const payload = await response.json() as { status?: string; questions?: PlayQuestion[]; score?: number; streak?: number; countdownMs?: number; error?: string };
+      if (!response.ok) {
+        if (payload.error === "nickname_invalid" || payload.error === "nickname_rejected") {
+          setDailyNote("Use a nickname of 2–16 letters. No email, link, or profanity.");
+        }
+        return;
+      }
+      if (payload.status === "finished") {
+        const hours = Math.floor((payload.countdownMs ?? 0) / 3_600_000);
+        setDailyNote(`You already played today's ${region.name} challenge (${payload.score ?? 0}/12). Streak ${payload.streak ?? 0}. Come back tomorrow, in about ${hours}h.`);
+        return;
+      }
+      if (!payload.questions || payload.questions.length !== 12) return;
+      dailyMode.current = true;
+      setAttemptId(null);
+      setBankRound(payload.questions);
+      setIndex(0);
+      setAnswers([]);
+      choiceLog.current = [];
+      setScreen("quiz");
+      window.scrollTo(0, 0);
+    })();
+  };
+
   const beginQuiz = () => {
+    dailyMode.current = false;
     setSelected([]);
     setFeedbackOpen(false);
     void (async () => {
@@ -442,6 +484,27 @@ export default function BridePriceGame() {
       const roundId = roundIdRef.current;
       const edition = regionKey;
       setScreen("result"); setDropOpen(false); playTone(720, true);
+      if (dailyMode.current) {
+        dailyMode.current = false;
+        void fetch("/api/paid/daily/finish", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ playerId: readPlayerId(), edition, answers: choices }),
+        }).then(async (response) => {
+          if (!response.ok) return;
+          const done = await response.json() as { streak?: number; countdownMs?: number; bonus?: number; score?: number };
+          const hours = Math.floor((done.countdownMs ?? 0) / 3_600_000);
+          const minutes = Math.floor(((done.countdownMs ?? 0) % 3_600_000) / 60_000);
+          setDailyNote(`Daily score ${done.score ?? correctCount}/12. Streak ${done.streak ?? 0}. ${done.bonus ? "+1 Cowrie. " : ""}Come back tomorrow. Next challenge in ${hours}h ${minutes}m.`);
+          const board = await fetch(`/api/paid/daily/board?player=${readPlayerId()}&edition=${edition}`);
+          if (board.ok) {
+            const listed = await board.json() as { top?: { nickname: string; score: number; durationMs: number }[]; rank?: number | null };
+            setDailyBoard(listed.top ?? []);
+            if (listed.rank) setDailyNote((current) => `${current} Your rank: ${listed.rank}.`);
+          }
+        });
+        return;
+      }
       if (paidCommerceEnabled() && currentAttempt) {
         void (async () => {
           const done = await finishGame(currentAttempt);
@@ -644,6 +707,7 @@ export default function BridePriceGame() {
           <div className="regional-backdrop"><img src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" /><span>{region.mark}</span></div>
           <button className="back-link" onClick={() => setScreen("home")}>← All editions</button>
           <div className="setup-copy">
+            {paidFeatures.dailyChallenge && friendScore !== null ? <p className="friend-banner">{friendChallengeLine(friendScore)}</p> : null}
             <p className="eyebrow">{region.place}</p>
             <h1>{region.name}<br /><i>Edition</i></h1>
             <p>{region.hello}</p>
@@ -664,6 +728,8 @@ export default function BridePriceGame() {
             <label htmlFor="player-name">What should we call you?</label>
             <input id="player-name" value={name} onChange={(e) => setName(e.target.value.slice(0, 30))} placeholder="Your name (optional)" />
             <button className="big-action" onClick={beginQuiz}>Enter Region 0{regionOrder.indexOf(regionKey) + 1} <span>▶</span></button>
+            {paidFeatures.dailyChallenge ? <button className="outline-action" onClick={startDaily}>{"Today's free challenge"}</button> : null}
+            {dailyNote ? <p>{dailyNote}</p> : null}
           </div>
         </section>
       )}
@@ -755,6 +821,8 @@ export default function BridePriceGame() {
               <div className="result-aura"><span>Final aura</span><b>{revealAura.toLocaleString()}</b><i>+500 reveal bonus</i></div>
               <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
               {perfectNote ? <p className="result-description">{perfectNote}</p> : null}
+              {dailyNote ? <p className="result-description">{dailyNote}</p> : null}
+              {dailyBoard.length > 0 ? <ol className="daily-board">{dailyBoard.map((row, rowIndex) => <li key={`${rowIndex}-${row.nickname}-${row.score}`}><b>{row.nickname}</b> {row.score}/12 <small>{Math.round(row.durationMs / 1000)}s</small></li>)}</ol> : null}
               {paidFeatures.earnPaths && referralUrl ? <p className="result-description">Your referral link: <a href={referralUrl}>{referralUrl}</a>. A new player who finishes their first game through it earns you 2 Cowries.</p> : null}
               {paidFeatures.shareCards ? <div className="share-preview"><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}`} alt={`Result card, ${correctCount} of 12, ${tierTitles[tier]}`} /><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}&frame=story`} alt="Story result card" /></div> : null}
               <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>

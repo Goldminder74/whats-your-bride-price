@@ -1,4 +1,5 @@
 import { isProductKey, products, FREE_COMPLETED_GAMES, GAME_COST_COWRIES, WELCOME_BONUS_COWRIES, WELCOME_BONUS_MS, type ProductKey } from "./catalog.ts";
+import { createD1Daily } from "./dailyStore.ts";
 import { earnDay, NEW_PLAYER_BONUS, newReferralCode, PERFECT_BONUS, PERFECT_DAILY_CAP, REFERRAL_DAILY_CAP, REFERRER_BONUS, SHARE_BONUS } from "./earn.ts";
 import { PaidError } from "./errors.ts";
 import { assertSpendCount, accessFromEntitlements, type EarnDecision, type GameAttempt, type PaidEntitlement, type PaidOrder, type PaidRepository, type ReceiptStatus, type OrderState } from "./repository.ts";
@@ -450,6 +451,7 @@ export function createD1Repository(database: D1Database): PaidRepository {
         at,
       });
     },
+    daily: createD1Daily(database),
   };
 }
 

@@ -64,7 +64,9 @@ test("schema file matches the Worker bootstrap SQL", async () => {
   const legacy = await readFile(new URL("../../migrations/0001_paid_orders.sql", import.meta.url), "utf8");
   const phase = await readFile(new URL("../../migrations/0002_paid_phase0.sql", import.meta.url), "utf8");
   const earn = await readFile(new URL("../../migrations/0003_paid_earn.sql", import.meta.url), "utf8");
-  assert.equal(`${legacy.trim()}\n${phase.trim()}\n${earn.trim()}`, paidSchemaSql.trim());
+  const daily = await readFile(new URL("../../migrations/0004_paid_daily.sql", import.meta.url), "utf8");
+  assert.equal(`${legacy.trim()}\n${phase.trim()}\n${earn.trim()}\n${daily.trim()}`, paidSchemaSql.trim());
+  assert.doesNotMatch(daily, /DROP TABLE|DELETE FROM/i);
   assert.match(paidSchemaSql, /paid_orders/);
   assert.match(paidSchemaSql, /paid_attempts/);
   assert.match(paidSchemaSql, /paid_stats_daily/);

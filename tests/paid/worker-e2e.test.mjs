@@ -21,6 +21,7 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
       RANDOM_BANK: "on",
       EARN_PATHS: "off",
       SHARE_CARDS: "off",
+      DAILY_CHALLENGE: "off",
     },
     experimental: { disableExperimentalWarning: true, forceLocal: true, disableDevRegistry: true },
   });
@@ -140,6 +141,11 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
     const health = await (await worker.fetch("http://127.0.0.1/api/paid/health")).json();
     assert.equal(health.earnPaths, false);
     assert.equal(health.shareCards, false);
+    assert.equal(health.dailyChallenge, false);
+    assert.equal((await worker.fetch("http://127.0.0.1/api/paid/daily/begin", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId: "worker_daily_off_0001", edition: "west" }),
+    })).status, 404);
     assert.equal((await worker.fetch("http://127.0.0.1/api/paid/earn/perfect", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" })).status, 404);
     assert.equal((await worker.fetch("http://127.0.0.1/api/paid/share-card.svg?edition=west&score=12")).status, 404);
   } finally {
@@ -162,6 +168,7 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
       RANDOM_BANK: "on",
       EARN_PATHS: "on",
       SHARE_CARDS: "on",
+      DAILY_CHALLENGE: "on",
     },
     experimental: { disableExperimentalWarning: true, forceLocal: true, disableDevRegistry: true },
   });
@@ -169,6 +176,7 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
     const health = await (await earnWorker.fetch("http://127.0.0.1/api/paid/health")).json();
     assert.equal(health.earnPaths, true);
     assert.equal(health.shareCards, true);
+    assert.equal(health.dailyChallenge, true);
     const owner = "earn_worker_owner_01";
     const attemptId = "attempt_earn_worker_01";
     assert.equal((await earnWorker.fetch("http://127.0.0.1/api/paid/games/begin", {
@@ -265,6 +273,54 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
     assert.equal(finished.referral.player.cowries, 1);
     assert.equal((await (await earnWorker.fetch(`http://127.0.0.1/api/paid/access?player=${newbie}`)).json()).cowries, 1);
     assert.equal((await (await earnWorker.fetch("http://127.0.0.1/api/paid/access?player=earn_worker_refer_01")).json()).cowries, 2);
+
+    const dailyA = "daily_worker_player_a";
+    const dailyB = "daily_worker_player_b";
+    const firstDaily = await (await earnWorker.fetch("http://127.0.0.1/api/paid/daily/begin", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId: dailyA, edition: "west", nickname: "Ayo" }),
+    })).json();
+    const secondDaily = await (await earnWorker.fetch("http://127.0.0.1/api/paid/daily/begin", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId: dailyB, edition: "west", nickname: "Zuri" }),
+    })).json();
+    assert.deepEqual(secondDaily.questions.map((question) => question.id), firstDaily.questions.map((question) => question.id));
+    const forged = await (await earnWorker.fetch("http://127.0.0.1/api/paid/daily/finish", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        playerId: dailyA, edition: "west", score: 12,
+        answers: firstDaily.questions.map((question) => [question.correct[0] === 0 ? 1 : 0]),
+      }),
+    })).json();
+    assert.equal(forged.score, 0);
+    assert.equal(forged.already, false);
+    const wallet = await (await earnWorker.fetch(`http://127.0.0.1/api/paid/access?player=${dailyA}`)).json();
+    assert.equal(wallet.cowries, 0);
+    assert.equal(wallet.completedGames, 0);
+    assert.equal(wallet.freeGamesLeft, 2);
+    await new Promise((resolve) => setTimeout(resolve, 8_500));
+    const ranked = await (await earnWorker.fetch("http://127.0.0.1/api/paid/daily/finish", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        playerId: dailyB, edition: "west",
+        answers: secondDaily.questions.map((question) => question.correct),
+      }),
+    })).json();
+    assert.equal(ranked.score, 12);
+    const board = await (await earnWorker.fetch(`http://127.0.0.1/api/paid/daily/board?player=${dailyB}&edition=west`)).json();
+    assert.equal(board.top[0].nickname, "Zuri");
+    assert.equal(board.top[0].score, 12);
+    assert.equal(board.rank, 1);
+    assert.equal(JSON.stringify(board).includes(dailyB), false);
+    const repeatDaily = await (await earnWorker.fetch("http://127.0.0.1/api/paid/daily/finish", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        playerId: dailyB, edition: "west",
+        answers: secondDaily.questions.map((question) => question.correct),
+      }),
+    })).json();
+    assert.equal(repeatDaily.already, true);
+    assert.equal(repeatDaily.score, 12);
   } finally {
     await earnWorker.stop();
   }
