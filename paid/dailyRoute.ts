@@ -140,7 +140,8 @@ export async function handleDailyFinish(request: Request, services: PaidServices
   }
   if (!result.already) await services.repository.recordStat("daily_play", body.edition, services.now());
   if (result.bonus > 0) await services.repository.recordStat("streak_bonus", String(result.milestone), services.now());
-  return json({ ...result, day, countdownMs: countdownToNextUtcDay(services.now()), roundId: round.id });
+  const nickname = await services.repository.daily.nickname(player);
+  return json({ ...result, day, countdownMs: countdownToNextUtcDay(services.now()), roundId: round.id, nickname });
 }
 
 export async function handleDailyBoard(url: URL, services: PaidServices): Promise<Response> {

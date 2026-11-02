@@ -8,6 +8,7 @@ export type DailyApi = {
   finish(input: { playerId: string; edition: string; day: string; score: number; at: number }): Promise<DailyFinish>;
   status(playerId: string, day: string): Promise<DailyStreak>;
   setNickname(playerId: string, nickname: string, at: number): Promise<void>;
+  nickname(playerId: string): Promise<string | null>;
   board(input: { edition: string; day: string; playerId: string }): Promise<{ top: BoardRow[]; rank: number | null; total: number }>;
 };
 
@@ -61,6 +62,9 @@ export function createMemoryDaily(grant: (playerId: string, grantId: string, cow
     },
     async setNickname(playerId, nickname) {
       names.set(playerId, nickname);
+    },
+    async nickname(playerId) {
+      return names.get(playerId) ?? null;
     },
     async board({ edition, day, playerId }) {
       const rows = [...plays.values()]
@@ -138,6 +142,10 @@ export function createD1Daily(database: D1Database): DailyApi {
       await database.prepare(
         "INSERT INTO paid_nicknames (player_id, nickname, updated_at) VALUES (?1,?2,?3) ON CONFLICT(player_id) DO UPDATE SET nickname=?2, updated_at=?3",
       ).bind(playerId, nickname, at).run();
+    },
+    async nickname(playerId) {
+      const row = await database.prepare("SELECT nickname FROM paid_nicknames WHERE player_id=?1").bind(playerId).first<{ nickname: string }>();
+      return row?.nickname ?? null;
     },
     async board({ edition, day, playerId }) {
       const rows = await database.prepare(

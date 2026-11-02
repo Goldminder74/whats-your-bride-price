@@ -294,6 +294,7 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
     })).json();
     assert.equal(forged.score, 0);
     assert.equal(forged.already, false);
+    assert.equal(forged.nickname, "Ayo");
     const wallet = await (await earnWorker.fetch(`http://127.0.0.1/api/paid/access?player=${dailyA}`)).json();
     assert.equal(wallet.cowries, 0);
     assert.equal(wallet.completedGames, 0);
@@ -307,11 +308,14 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
       }),
     })).json();
     assert.equal(ranked.score, 12);
+    assert.equal(ranked.nickname, "Zuri");
     const board = await (await earnWorker.fetch(`http://127.0.0.1/api/paid/daily/board?player=${dailyB}&edition=west`)).json();
     assert.equal(board.top[0].nickname, "Zuri");
     assert.equal(board.top[0].score, 12);
+    assert.equal(board.top[0].you, true);
     assert.equal(board.rank, 1);
     assert.equal(JSON.stringify(board).includes(dailyB), false);
+    assert.equal(JSON.stringify(board).includes("Anonymous"), false);
     const repeatDaily = await (await earnWorker.fetch("http://127.0.0.1/api/paid/daily/finish", {
       method: "POST", headers: { "content-type": "application/json" },
       body: JSON.stringify({

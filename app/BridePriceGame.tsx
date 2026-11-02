@@ -180,6 +180,19 @@ function fillPercussionNoise(channel: Float32Array<ArrayBufferLike>): void {
   }
 }
 
+function formatCountdown(ms: number): string {
+  const hours = Math.floor(ms / 3_600_000);
+  const minutes = Math.floor((ms % 3_600_000) / 60_000);
+  return `${hours}h ${minutes}m`;
+}
+
+function formatDuration(ms: number): string {
+  const seconds = Math.max(0, Math.round(ms / 1000));
+  const minutes = Math.floor(seconds / 60);
+  const rest = seconds % 60;
+  return minutes > 0 ? `${minutes}m ${String(rest).padStart(2, "0")}s` : `${seconds}s`;
+}
+
 export default function BridePriceGame() {
   const [hydrated, setHydrated] = useState(false);
   const [screen, setScreen] = useState<Screen>("home");
@@ -210,7 +223,11 @@ export default function BridePriceGame() {
   const dailyMode = useRef(false);
   const [friendScore, setFriendScore] = useState<number | null>(null);
   const [dailyNote, setDailyNote] = useState("");
-  const [dailyBoard, setDailyBoard] = useState<{ nickname: string; score: number; durationMs: number }[]>([]);
+  const [dailyBoard, setDailyBoard] = useState<{ nickname: string; score: number; durationMs: number; you?: boolean }[]>([]);
+  const [dailyResult, setDailyResult] = useState<{ score: number; streak: number; countdownMs: number; bonus: number; rank: number | null; needsNickname: boolean } | null>(null);
+  const [nicknameDraft, setNicknameDraft] = useState("");
+  const [nicknameError, setNicknameError] = useState("");
+  const [inviteCopied, setInviteCopied] = useState(false);
   const choiceLog = useRef<number[][]>([]);
   const roundIdRef = useRef<string | null>(null);
   const audioRef = useRef<AudioContext | null>(null);
@@ -375,6 +392,8 @@ export default function BridePriceGame() {
 
   const beginQuiz = () => {
     dailyMode.current = false;
+    setDailyResult(null);
+    setDailyBoard([]);
     setSelected([]);
     setFeedbackOpen(false);
     void (async () => {
@@ -486,25 +505,35 @@ export default function BridePriceGame() {
       setScreen("result"); setDropOpen(false); playTone(720, true);
       if (dailyMode.current) {
         dailyMode.current = false;
+        setDailyResult(null);
+        setDailyBoard([]);
+        setNicknameError("");
         void fetch("/api/paid/daily/finish", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ playerId: readPlayerId(), edition, answers: choices }),
         }).then(async (response) => {
           if (!response.ok) return;
-          const done = await response.json() as { streak?: number; countdownMs?: number; bonus?: number; score?: number };
-          const hours = Math.floor((done.countdownMs ?? 0) / 3_600_000);
-          const minutes = Math.floor(((done.countdownMs ?? 0) % 3_600_000) / 60_000);
-          setDailyNote(`Daily score ${done.score ?? correctCount}/12. Streak ${done.streak ?? 0}. ${done.bonus ? "+1 Cowrie. " : ""}Come back tomorrow. Next challenge in ${hours}h ${minutes}m.`);
+          const done = await response.json() as { streak?: number; countdownMs?: number; bonus?: number; score?: number; nickname?: string | null; already?: boolean };
+          setDailyResult({
+            score: done.score ?? correctCount,
+            streak: done.streak ?? 0,
+            countdownMs: done.countdownMs ?? 0,
+            bonus: done.bonus ?? 0,
+            rank: null,
+            needsNickname: !done.nickname,
+          });
           const board = await fetch(`/api/paid/daily/board?player=${readPlayerId()}&edition=${edition}`);
           if (board.ok) {
-            const listed = await board.json() as { top?: { nickname: string; score: number; durationMs: number }[]; rank?: number | null };
+            const listed = await board.json() as { top?: { nickname: string; score: number; durationMs: number; you?: boolean }[]; rank?: number | null };
             setDailyBoard(listed.top ?? []);
-            if (listed.rank) setDailyNote((current) => `${current} Your rank: ${listed.rank}.`);
+            setDailyResult((current) => current ? { ...current, rank: listed.rank ?? null } : current);
           }
         });
         return;
       }
+      setDailyResult(null);
+      setDailyBoard([]);
       if (paidCommerceEnabled() && currentAttempt) {
         void (async () => {
           const done = await finishGame(currentAttempt);
@@ -522,8 +551,38 @@ export default function BridePriceGame() {
     }
   };
 
+  const copyInvite = () => {
+    if (!referralUrl) return;
+    void navigator.clipboard.writeText(referralUrl).then(() => setInviteCopied(true)).catch(() => setInviteCopied(false));
+  };
+
+  const saveDailyNickname = () => {
+    setNicknameError("");
+    void (async () => {
+      const response = await fetch("/api/paid/daily/nickname", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ playerId: readPlayerId(), nickname: nicknameDraft }),
+      });
+      const payload = await response.json().catch(() => ({})) as { error?: string; nickname?: string };
+      if (!response.ok) {
+        setNicknameError(payload.error === "nickname_rejected" ? "That name is not allowed." : "Use 2–16 letters, with no email or link.");
+        return;
+      }
+      setDailyResult((current) => current ? { ...current, needsNickname: false } : current);
+      setNicknameDraft("");
+      const board = await fetch(`/api/paid/daily/board?player=${readPlayerId()}&edition=${regionKey}`);
+      if (board.ok) {
+        const listed = await board.json() as { top?: { nickname: string; score: number; durationMs: number; you?: boolean }[]; rank?: number | null };
+        setDailyBoard(listed.top ?? []);
+        setDailyResult((current) => current ? { ...current, rank: listed.rank ?? null, needsNickname: false } : current);
+      }
+    })();
+  };
+
   const restart = () => {
     setScreen("home"); setBankRound(null); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null); setAllAfricaJustUnlocked(false);
+    setDailyResult(null); setDailyBoard([]); setNicknameError(""); setInviteCopied(false);
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
 
@@ -821,9 +880,31 @@ export default function BridePriceGame() {
               <div className="result-aura"><span>Final aura</span><b>{revealAura.toLocaleString()}</b><i>+500 reveal bonus</i></div>
               <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
               {perfectNote ? <p className="result-description">{perfectNote}</p> : null}
-              {dailyNote ? <p className="result-description">{dailyNote}</p> : null}
-              {dailyBoard.length > 0 ? <ol className="daily-board">{dailyBoard.map((row, rowIndex) => <li key={`${rowIndex}-${row.nickname}-${row.score}`}><b>{row.nickname}</b> {row.score}/12 <small>{Math.round(row.durationMs / 1000)}s</small></li>)}</ol> : null}
-              {paidFeatures.earnPaths && referralUrl ? <p className="result-description">Your referral link: <a href={referralUrl}>{referralUrl}</a>. A new player who finishes their first game through it earns you 2 Cowries.</p> : null}
+              {dailyResult ? <section className="daily-card" aria-label="Daily challenge">
+                <div className="daily-meta">
+                  <span className="streak-badge"><span aria-hidden="true">🔥</span> {dailyResult.streak}-day streak</span>
+                  <span className="countdown-pill">Next challenge in {formatCountdown(dailyResult.countdownMs)}</span>
+                </div>
+                <p className="daily-score">Today {dailyResult.score}/12{dailyResult.bonus ? " · +1 Cowrie" : ""}</p>
+                <p className="your-rank">Your rank: {dailyResult.rank ?? "—"}</p>
+                {dailyBoard.length > 0 ? <table className="leaderboard">
+                  <thead><tr><th scope="col">Rank</th><th scope="col">Nickname</th><th scope="col">Score</th><th scope="col">Time</th></tr></thead>
+                  <tbody>{dailyBoard.map((row, rowIndex) => <tr key={`${rowIndex}-${row.nickname}-${row.score}`} className={row.you ? "is-you" : undefined}><td>{rowIndex + 1}</td><td>{row.nickname}</td><td>{row.score}/12</td><td>{formatDuration(row.durationMs)}</td></tr>)}</tbody>
+                </table> : null}
+                {dailyResult.needsNickname ? <form className="nickname-prompt" onSubmit={(event) => { event.preventDefault(); saveDailyNickname(); }}>
+                  <p>Pick a nickname for the leaderboard.</p>
+                  <input value={nicknameDraft} maxLength={16} onChange={(event) => setNicknameDraft(event.target.value)} aria-label="Nickname" placeholder="Your nickname" />
+                  <button type="submit">Save nickname</button>
+                  {nicknameError ? <small role="alert">{nicknameError}</small> : null}
+                </form> : null}
+              </section> : null}
+              {paidFeatures.earnPaths && referralUrl ? <section className="invite-card">
+                <h3>Invite a friend, you get 2 Cowries, they get 1</h3>
+                <div className="invite-actions">
+                  <button type="button" onClick={copyInvite}>{inviteCopied ? "Copied" : "Copy link"}</button>
+                  <a href={`https://wa.me/?text=${encodeURIComponent(`Play What’s Your Bride Price? with me. You get 1 Cowrie when you finish your first game, and I get 2. ${referralUrl}`)}`} target="_blank" rel="noreferrer">WhatsApp</a>
+                </div>
+              </section> : null}
               {paidFeatures.shareCards ? <div className="share-preview"><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}`} alt={`Result card, ${correctCount} of 12, ${tierTitles[tier]}`} /><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}&frame=story`} alt="Story result card" /></div> : null}
               <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>
               {paidFeatures.shareCards || paidFeatures.earnPaths ? <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`${shareBlurb(correctCount)} ${challengeUrl(regionKey, correctCount, paidFeatures.earnPaths ? referralCode : null)}`)}`} target="_blank" rel="noreferrer" onClick={() => { if (paidFeatures.earnPaths) void claimShareReward(); }}>Share my result on WhatsApp ↗</a> : null}

@@ -4,6 +4,7 @@ import test from "node:test";
 import { friendChallengeLine } from "../../paid/friendLine.ts";
 import { createMemoryRepository } from "../../paid/repository.ts";
 import { servePaid } from "../../paid/serve.ts";
+import { guestNickname } from "../../paid/daily.ts";
 import { dailySeed } from "../../question-bank/daily.ts";
 import { CANONICAL_ORIGIN } from "../../paid/catalog.ts";
 import { createMockEmail } from "../../paid/email.ts";
@@ -112,7 +113,10 @@ test("one shared daily set is free, scored on the server, and ranked by score th
   assert.equal(board.top[0].nickname, "Zuri");
   assert.equal(board.top[0].score, 12);
   assert.equal(board.top[1].nickname, "Ayo");
+  assert.equal(board.top[1].you, true);
+  assert.equal(board.top[0].you, false);
   assert.equal(board.rank, 2);
+  assert.equal(forged.nickname, "Ayo");
   assert.equal(JSON.stringify(board).includes(player), false);
   assert.equal(JSON.stringify(board).includes("correct"), false);
 
@@ -137,9 +141,27 @@ test("one shared daily set is free, scored on the server, and ranked by score th
   assert.equal(guarded.top.some((row) => row.nickname === "Bot"), false);
   assert.equal(guarded.rank, null);
 
+  const guest = "player_daily_guest_0001";
+  now = day;
+  const guestStart = await body(await servePaid(post("/api/paid/daily/begin", { playerId: guest, edition: "west" }), app));
+  now = day + 25_000;
+  const guestDone = await body(await servePaid(post("/api/paid/daily/finish", {
+    playerId: guest, edition: "west", answers: rightAnswers(guestStart.questions),
+  }), app));
+  assert.equal(guestDone.nickname, null);
+  const generated = guestNickname(guest);
+  assert.match(generated, /^[A-Za-z]+ [A-Za-z]+ \d{3}$/);
+  assert.equal(generated.includes(guest), false);
+  assert.equal(guestNickname(guest), generated);
+  const guestBoard = await body(await servePaid(request(`/api/paid/daily/board?player=${guest}&edition=west`), app));
+  assert.equal(guestBoard.top.find((row) => row.you).nickname, generated);
+  assert.equal(guestBoard.top.filter((row) => row.you).length, 1);
+  assert.equal(JSON.stringify(guestBoard).includes("Anonymous"), false);
+  assert.equal(JSON.stringify(guestBoard).includes(guest), false);
+
   const stats = (await body(await servePaid(request("/api/paid/owner/stats", { headers: { "x-owner-stats-token": "owner-token-value" } }), app))).days;
   assert.equal(stats.some((row) => row.event === "daily_play"), true);
-  assert.equal(stats.filter((row) => row.event === "daily_play").reduce((sum, row) => sum + row.count, 0), 4);
+  assert.equal(stats.filter((row) => row.event === "daily_play").reduce((sum, row) => sum + row.count, 0), 5);
   assert.equal(stats.some((row) => row.event === "leaderboard_views"), true);
 });
 
