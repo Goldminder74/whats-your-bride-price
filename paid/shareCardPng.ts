@@ -35,10 +35,11 @@ async function antonFont(): Promise<Uint8Array> {
   return font;
 }
 
-export async function renderShareCardPng(svg: string): Promise<Uint8Array> {
+export async function renderShareCardPng(svg: string, width?: number): Promise<Uint8Array> {
   await ensureWasm();
+  const fitTo = width && width > 0 ? { mode: "width" as const, value: width } : { mode: "original" as const };
   const resvg = new Resvg(svg, {
-    fitTo: { mode: "original" },
+    fitTo,
     font: {
       fontBuffers: [await antonFont()],
       defaultFontFamily: "Anton",

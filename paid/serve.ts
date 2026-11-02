@@ -31,6 +31,7 @@ import { handleDailyBegin, handleDailyBoard, handleDailyFinish, handleDailyNickn
 import { claimReferralIfFirstGame, handlePerfect, handleReferralArrive, handleReferralGet, handleShareCard, handleShareReward } from "./earnRoute.ts";
 import { applyChallengeMeta, challengeUrl, shareBlurb, shareCardImageUrl } from "./shareCard.ts";
 import { revealHoldFromPurchase, writeRevealHold } from "./royalReveal.ts";
+import { handleDecreePreview } from "./decreePreview.ts";
 import { handleRoyalClaim, handleRoyalFile } from "./royalRevealRoute.ts";
 import { isReferralCode } from "./earn.ts";
 import { handleQuestionComplete, handleQuestionGet } from "./questionRoute.ts";
@@ -451,6 +452,9 @@ export async function servePaid(request: Request, services: PaidServices): Promi
       sameOrigin(request);
       await ready(services);
       return await handleRoyalClaim(await readJson(request, 4_000) as Record<string, unknown>, services);
+    }
+    if (request.method === "GET" && url.pathname === "/api/paid/decree-preview.png") {
+      return await handleDecreePreview(url, services);
     }
     if (request.method === "GET" && (url.pathname === "/api/paid/share-card.svg" || url.pathname === "/api/paid/share-card.png")) {
       return await handleShareCard(url, services, url.pathname.endsWith(".png") ? "png" : "svg");

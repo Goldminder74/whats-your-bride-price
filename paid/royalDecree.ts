@@ -28,6 +28,8 @@ export type DecreeInput = {
   frame?: ShareFrame;
   artwork?: string | null;
   issuedAt?: number;
+  /** Low-resolution sheet preview. Never a paid certificate. */
+  preview?: boolean;
 };
 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -212,11 +214,14 @@ export function royalDecreeSvg(input: DecreeInput): string {
   <text x="540" y="${y.price + (story ? 40 : 34)}" fill="#1d120b" font-family="Anton, Impact, Arial Black, sans-serif" font-size="16" letter-spacing="5" text-anchor="middle">BRIDE PRICE</text>
   <text x="540" y="${y.price + (story ? 86 : 74)}" fill="#1d120b" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${story ? 42 : 36}" text-anchor="middle">${tier.cowries} COWRIES</text>
   ${waxSeal(540, y.seal, sealR, input.score)}
-  <text x="540" y="${y.cert}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="24" letter-spacing="3" text-anchor="middle">CERTIFICATE ${xml(input.certificate)}</text>
+  <text x="540" y="${y.cert}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="24" letter-spacing="3" text-anchor="middle">${input.preview ? "SAMPLE" : `CERTIFICATE ${xml(input.certificate)}`}</text>
   <text x="540" y="${y.date}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="18" letter-spacing="2" text-anchor="middle">ISSUED ${xml(issued.toUpperCase())}</text>
   <text x="540" y="${y.note}" fill="#fff6d8" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${story ? 20 : 18}" text-anchor="middle">A playful culture score. Not a measure of a person.</text>
   <line x1="340" y1="${y.sign}" x2="740" y2="${y.sign}" stroke="#f0a11a" stroke-width="1.4"/>
   <text x="540" y="${y.byline}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="16" letter-spacing="1.5" text-anchor="middle">Issued by Classes for Culture</text>
+  ${input.preview ? `<g transform="rotate(-22 540 ${Math.round(height / 2)})" opacity="0.9">
+    <text x="540" y="${Math.round(height / 2)}" fill="#fff6d8" font-family="Anton, Impact, Arial Black, sans-serif" font-size="150" letter-spacing="18" text-anchor="middle">PREVIEW</text>
+  </g>` : ""}
 </svg>`;
 }
 

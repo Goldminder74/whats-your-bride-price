@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { DEFAULT_PURCHASE_COUNTRY, ROYAL_WAIVER_TEXT } from "../paid/catalog.ts";
+import { DECREE_PREVIEW_NAME, decreePreviewUrl, previewDisplayName } from "../paid/decreePreviewName.ts";
 import { readPlayerId } from "./paidClient";
 
 type Fact = { id: string; category: string; answer: string; quote: string };
@@ -37,6 +38,12 @@ export function RoyalRevealOffer({ resultId, defaultName, edition, score }: { re
   const [waiver, setWaiver] = useState(false);
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
+  const [previewName, setPreviewName] = useState(() => previewDisplayName(defaultName));
+
+  useEffect(() => {
+    const handle = window.setTimeout(() => setPreviewName(previewDisplayName(name)), 180);
+    return () => window.clearTimeout(handle);
+  }, [name]);
 
   useEffect(() => {
     let cancelled = false;
@@ -95,8 +102,7 @@ export function RoyalRevealOffer({ resultId, defaultName, edition, score }: { re
       <p className="eyebrow">One result</p>
       <h2>ROYAL REVEAL<br /><i>£1.99</i></h2>
       <p>A personal Royal Decree for this result: two certificate images, a PDF, and three to five notes quoted from the published question bank. One purchase, this result only.</p>
-      {/* eslint-disable-next-line @next/next/no-img-element -- result preview uses the public share-card renderer */}
-      <img className="royal-thumb" src={`/api/paid/share-card.png?edition=${edition}&score=${score}`} alt={`Preview of a ${score} of 12 result card`} width="240" height="300" />
+      <DecreePreview edition={edition} score={score} name={previewName} />
       <form onSubmit={buy}>
         <label className="paid-field">Name on the decree
           <input value={name} onChange={(event) => setName(event.target.value)} maxLength={32} autoComplete="name" required />
@@ -119,6 +125,28 @@ export function RoyalRevealOffer({ resultId, defaultName, edition, score }: { re
         <p role="status">{status}</p>
       </form>
     </section>
+  );
+}
+
+function DecreePreview({ edition, score, name }: { edition: string; score: number; name: string }) {
+  const src = decreePreviewUrl(edition, score, name);
+  const [shown, setShown] = useState("");
+  const pending = shown !== src;
+  return (
+    <div className="royal-thumb-frame">
+      {pending ? <div className="royal-thumb-skeleton" aria-hidden="true" /> : null}
+      {/* eslint-disable-next-line @next/next/no-img-element -- low-res watermarked decree PNG, not a static asset */}
+      <img
+        className={pending ? "is-pending" : undefined}
+        src={src}
+        alt={name === DECREE_PREVIEW_NAME ? `Decree preview, ${score} of 12` : `Decree preview for ${name}, ${score} of 12`}
+        width="360"
+        height="450"
+        loading="lazy"
+        decoding="async"
+        onLoad={(event) => { if (event.currentTarget.getAttribute("src") === src) setShown(src); }}
+      />
+    </div>
   );
 }
 

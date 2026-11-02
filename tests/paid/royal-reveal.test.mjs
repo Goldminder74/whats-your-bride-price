@@ -8,6 +8,7 @@ import { validateDisplayName } from "../../paid/nickname.ts";
 import { buildRevealRecording } from "../../paid/revealOffer.ts";
 import { createMemoryRepository } from "../../paid/repository.ts";
 import { servePaid } from "../../paid/serve.ts";
+import { DECREE_PREVIEW_HEIGHT, DECREE_PREVIEW_NAME, DECREE_PREVIEW_WIDTH, previewDisplayName } from "../../paid/decreePreviewName.ts";
 import { royalDecreeSvg } from "../../paid/royalDecree.ts";
 import { pngSize } from "../../paid/shareCardPng.ts";
 import { loadPublished } from "../../question-bank/loader.ts";
@@ -205,6 +206,40 @@ test("decree names keep Yoruba and Igbo marks, and Royal checkout matches Cowrie
     body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "GB", playerId, adult: true, waiver: true, resultId: scored.id, displayName: "Ada" }),
   }), app);
   assert.equal(britain.status, 200);
+});
+
+test("the purchase preview is a small watermarked decree and never the full card", async () => {
+  assert.equal(previewDisplayName(""), DECREE_PREVIEW_NAME);
+  assert.equal(previewDisplayName("x dot com"), DECREE_PREVIEW_NAME);
+  assert.equal(previewDisplayName("Ángela"), "Ángela");
+  const paid = royalDecreeSvg({ edition: "west", score: 9, displayName: "Ángela", certificate: "RR-TEST" });
+  assert.equal(paid.includes(">PREVIEW<"), false);
+  const marked = royalDecreeSvg({ edition: "west", score: 9, displayName: "Ángela", certificate: "PREVIEW", preview: true });
+  assert.match(marked, />PREVIEW</);
+  assert.match(marked, /WEST AFRICA EDITION/);
+  assert.match(marked, /Ángela/);
+  assert.match(marked, /ROYALTY/);
+
+  const hidden = await servePaid(request("/api/paid/decree-preview.png?edition=west&score=9&name=Ada"), services());
+  assert.equal(hidden.status, 404);
+  const app = services({ kv: memoryKv(), royalRevealEnabled: true });
+  const first = await servePaid(request(`/api/paid/decree-preview.png?edition=west&score=9&name=${encodeURIComponent("Ángela")}`), app);
+  assert.equal(first.status, 200);
+  assert.equal(first.headers.get("content-type"), "image/png");
+  assert.equal(first.headers.get("x-decree-preview-cache"), "miss");
+  const bytes = new Uint8Array(await first.arrayBuffer());
+  assert.deepEqual(pngSize(bytes), { width: DECREE_PREVIEW_WIDTH, height: DECREE_PREVIEW_HEIGHT });
+  const warm = await servePaid(request(`/api/paid/decree-preview.png?edition=west&score=9&name=${encodeURIComponent("Ángela")}`), app);
+  assert.equal(warm.headers.get("x-decree-preview-cache"), "hit");
+  const unsafe = await servePaid(request("/api/paid/decree-preview.png?edition=west&score=9&name=x%20dot%20com"), app);
+  const blank = await servePaid(request("/api/paid/decree-preview.png?edition=west&score=9"), app);
+  assert.equal(unsafe.headers.get("x-decree-preview-cache"), "miss");
+  assert.equal(blank.headers.get("x-decree-preview-cache"), "hit");
+  const unsafeBytes = new Uint8Array(await unsafe.arrayBuffer());
+  const blankBytes = new Uint8Array(await blank.arrayBuffer());
+  assert.equal(Buffer.from(unsafeBytes).equals(Buffer.from(blankBytes)), true);
+  assert.equal(pngSize(unsafeBytes).width, DECREE_PREVIEW_WIDTH);
+  assert.notEqual(Buffer.from(bytes).equals(Buffer.from(blankBytes)), true);
 });
 
 test("a paid result mints a private decree bundle and a refund removes it", async () => {
