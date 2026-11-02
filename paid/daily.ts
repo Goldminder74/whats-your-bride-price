@@ -26,7 +26,31 @@ export type DailyFinish = {
   milestone: 3 | 7 | null;
 };
 
-export type BoardRow = { nickname: string; score: number; durationMs: number };
+export type BoardRow = { nickname: string; score: number; durationMs: number; you: boolean };
+
+const GUEST_TITLES = [
+  "Cowrie Seeker",
+  "Kente Walker",
+  "Gold Weaver",
+  "Baobab Guest",
+  "Drum Keeper",
+  "Market Poet",
+  "Coral Diver",
+  "Sahel Story",
+  "Indigo Hand",
+  "Palm Keeper",
+] as const;
+
+/** Stable public name for a board row that has no chosen nickname. It does not contain the player id. */
+export function guestNickname(playerId: string): string {
+  let hash = 2166136261;
+  for (let index = 0; index < playerId.length; index += 1) {
+    hash ^= playerId.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  const mixed = hash >>> 0;
+  return `${GUEST_TITLES[mixed % GUEST_TITLES.length]} ${String(mixed % 1000).padStart(3, "0")}`;
+}
 
 export function previousUtcDay(day: string): string {
   const [year, month, date] = day.split("-").map(Number);
@@ -55,7 +79,12 @@ export function rankBoard(rows: readonly { playerId: string; nickname: string | 
   const ordered = [...rows].sort((left, right) => right.score - left.score || left.durationMs - right.durationMs || left.playerId.localeCompare(right.playerId));
   const mine = ordered.findIndex((row) => row.playerId === playerId);
   return {
-    top: ordered.slice(0, 20).map((row) => ({ nickname: row.nickname || "Anonymous", score: row.score, durationMs: row.durationMs })),
+    top: ordered.slice(0, 20).map((row) => ({
+      nickname: row.nickname || guestNickname(row.playerId),
+      score: row.score,
+      durationMs: row.durationMs,
+      you: row.playerId === playerId,
+    })),
     rank: mine === -1 ? null : mine + 1,
     total: ordered.length,
   };
