@@ -37,7 +37,8 @@
     "PUBLIC_APP_ORIGIN": "https://brideprice.classesforculture.com",
     "RANDOM_BANK": "on",
     "EARN_PATHS": "on",
-    "SHARE_CARDS": "on"
+    "SHARE_CARDS": "on",
+    "DAILY_CHALLENGE": "off"
   },
   "assets": {
     "directory": "./outputs/paid-assets",

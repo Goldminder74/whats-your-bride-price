@@ -1,4 +1,5 @@
 import { isProductKey, products, FREE_COMPLETED_GAMES, GAME_COST_COWRIES, WELCOME_BONUS_COWRIES, WELCOME_BONUS_MS, type ProductKey } from "./catalog.ts";
+import { createMemoryDaily, type DailyApi } from "./dailyStore.ts";
 import { earnDay, NEW_PLAYER_BONUS, newReferralCode, PERFECT_BONUS, PERFECT_DAILY_CAP, REFERRAL_DAILY_CAP, REFERRER_BONUS, SHARE_BONUS } from "./earn.ts";
 import { PaidError } from "./errors.ts";
 
@@ -113,6 +114,7 @@ export interface PaidRepository {
   /** +1 for a result share. Once per day, and only after at least one completed game. */
   grantShare(input: { playerId: string; at: number }): Promise<EarnDecision>;
   findReferralCode(code: string): Promise<string | null>;
+  daily: DailyApi;
 }
 
 function sameRequest(existing: PaidOrder, incoming: PaidOrder): boolean {
@@ -521,6 +523,7 @@ export function createMemoryRepository(): PaidRepository {
       if (!inserted) return { ok: false, reason: "repeat", cowries: 0 };
       return { ok: true, reason: "granted", cowries: SHARE_BONUS };
     },
+    daily: createMemoryDaily((playerId, grantId, cowries, at) => creditEarn(playerId, grantId, cowries, at)),
   };
 }
 
