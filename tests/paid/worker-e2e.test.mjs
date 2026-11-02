@@ -19,6 +19,8 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
       EMAIL_REPLY_TO: "team@classesforculture.com",
       PUBLIC_APP_ORIGIN: "https://brideprice.classesforculture.com",
       RANDOM_BANK: "on",
+      EARN_PATHS: "off",
+      SHARE_CARDS: "off",
     },
     experimental: { disableExperimentalWarning: true, forceLocal: true, disableDevRegistry: true },
   });
@@ -220,11 +222,20 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
     const cardSvg = await card.text();
     assert.match(cardSvg, /Can you beat my score\?/);
     assert.doesNotMatch(cardSvg, /\?edition=|wa\.me/);
-    const png = await earnWorker.fetch("http://127.0.0.1/api/paid/share-card.png?edition=west&score=8");
+    const coldStart = Date.now();
+    const png = await earnWorker.fetch("http://127.0.0.1/api/paid/share-card.png?edition=west&score=8&utm=cold");
+    const coldMs = Date.now() - coldStart;
     assert.equal(png.status, 200);
+    assert.equal(png.headers.get("x-share-card-cache"), "miss");
     assert.match(png.headers.get("content-type") || "", /image\/png/);
     const pngBytes = new Uint8Array(await png.arrayBuffer());
     assert.equal(pngBytes[0], 137);
+    const warmStart = Date.now();
+    const warm = await earnWorker.fetch("http://127.0.0.1/api/paid/share-card.png?score=8&edition=west&frame=card&ref=abcdefgh");
+    const warmMs = Date.now() - warmStart;
+    assert.equal(warm.headers.get("x-share-card-cache"), "hit");
+    assert.ok(warmMs < 200, `warm worker share-card took ${warmMs}ms`);
+    console.log(`worker share-card png cold ${coldMs}ms warm ${warmMs}ms`);
     const story = await earnWorker.fetch("http://127.0.0.1/api/paid/share-card.png?edition=east&score=8&frame=story");
     const storyBytes = new Uint8Array(await story.arrayBuffer());
     assert.equal(story.status, 200);

@@ -36,8 +36,8 @@
     "PAID_BLOCKED_COUNTRIES": "AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,GR,HU,IE,IT,LV,LT,LU,MT,NL,PL,PT,RO,SK,SI,ES,SE,IS,LI,NO",
     "PUBLIC_APP_ORIGIN": "https://brideprice.classesforculture.com",
     "RANDOM_BANK": "on",
-    "EARN_PATHS": "off",
-    "SHARE_CARDS": "off"
+    "EARN_PATHS": "on",
+    "SHARE_CARDS": "on"
   },
   "assets": {
     "directory": "./outputs/paid-assets",
