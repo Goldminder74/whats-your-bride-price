@@ -8,7 +8,7 @@ import { validateDisplayName } from "../../paid/nickname.ts";
 import { buildRevealRecording } from "../../paid/revealOffer.ts";
 import { createMemoryRepository } from "../../paid/repository.ts";
 import { servePaid } from "../../paid/serve.ts";
-import { DECREE_PREVIEW_HEIGHT, DECREE_PREVIEW_NAME, DECREE_PREVIEW_WIDTH, previewDisplayName } from "../../paid/decreePreviewName.ts";
+import { DECREE_PREVIEW_HEIGHT, DECREE_PREVIEW_NAME, DECREE_PREVIEW_WIDTH, decreeNamePrefill, previewDisplayName } from "../../paid/decreePreviewName.ts";
 import { royalDecreeSvg } from "../../paid/royalDecree.ts";
 import { pngSize } from "../../paid/shareCardPng.ts";
 import { loadPublished } from "../../question-bank/loader.ts";
@@ -206,6 +206,21 @@ test("decree names keep Yoruba and Igbo marks, and Royal checkout matches Cowrie
     body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "GB", playerId, adult: true, waiver: true, resultId: scored.id, displayName: "Ada" }),
   }), app);
   assert.equal(britain.status, 200);
+});
+
+test("the decree field starts from a saved nickname, not the result title", async () => {
+  assert.equal(decreeNamePrefill("A Most Excellent Human"), "");
+  assert.equal(decreeNamePrefill(null), "");
+  assert.equal(decreeNamePrefill("Ayo"), "Ayo");
+  assert.equal(previewDisplayName(""), DECREE_PREVIEW_NAME);
+  assert.equal(previewDisplayName("Ayo"), "Ayo");
+  const app = services();
+  const missing = await body(await servePaid(request(`/api/paid/nickname?player=${playerId}`), app));
+  assert.equal(missing.nickname, null);
+  await app.repository.daily.setNickname(playerId, "Ayo", now);
+  const saved = await body(await servePaid(request(`/api/paid/nickname?player=${playerId}`), app));
+  assert.equal(saved.nickname, "Ayo");
+  assert.equal(decreeNamePrefill(saved.nickname), "Ayo");
 });
 
 test("the purchase preview is a small watermarked decree and never the full card", async () => {

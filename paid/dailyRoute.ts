@@ -156,6 +156,14 @@ export async function handleDailyBoard(url: URL, services: PaidServices): Promis
   return json({ day, countdownMs: countdownToNextUtcDay(services.now()), ...board });
 }
 
+export async function handleNicknameRead(url: URL, services: PaidServices): Promise<Response> {
+  const player = playerId(url.searchParams.get("player"));
+  await services.ensureSchema?.();
+  const saved = await services.repository.daily.nickname(player);
+  const nickname = saved && saved.trim() ? saved : null;
+  return json({ nickname });
+}
+
 export async function handleDailyNickname(request: Request, services: PaidServices): Promise<Response> {
   sameOrigin(request);
   requireDaily(services);

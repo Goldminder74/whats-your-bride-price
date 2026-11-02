@@ -1,8 +1,8 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { DEFAULT_PURCHASE_COUNTRY, ROYAL_WAIVER_TEXT } from "../paid/catalog.ts";
-import { DECREE_PREVIEW_NAME, decreePreviewUrl, previewDisplayName } from "../paid/decreePreviewName.ts";
+import { DECREE_PREVIEW_NAME, decreeNamePrefill, decreePreviewUrl, previewDisplayName } from "../paid/decreePreviewName.ts";
 import { readPlayerId } from "./paidClient";
 
 type Fact = { id: string; category: string; answer: string; quote: string };
@@ -29,21 +29,34 @@ type Catalog = {
   royalReveal?: boolean;
 };
 
-export function RoyalRevealOffer({ resultId, defaultName, edition, score }: { resultId: string; defaultName: string; edition: string; score: number }) {
+export function RoyalRevealOffer({ resultId, edition, score }: { resultId: string; edition: string; score: number }) {
   const [catalog, setCatalog] = useState<Catalog | null>(null);
-  const [name, setName] = useState(defaultName);
+  const [name, setName] = useState("");
+  const nameTouched = useRef(false);
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState(DEFAULT_PURCHASE_COUNTRY);
   const [adult, setAdult] = useState(false);
   const [waiver, setWaiver] = useState(false);
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
-  const [previewName, setPreviewName] = useState(() => previewDisplayName(defaultName));
+  const [previewName, setPreviewName] = useState(DECREE_PREVIEW_NAME);
 
   useEffect(() => {
     const handle = window.setTimeout(() => setPreviewName(previewDisplayName(name)), 180);
     return () => window.clearTimeout(handle);
   }, [name]);
+
+  useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      const response = await fetch(`/api/paid/nickname?player=${readPlayerId()}`);
+      if (!response.ok || cancelled || nameTouched.current) return;
+      const body = await response.json() as { nickname?: unknown };
+      const saved = decreeNamePrefill(body.nickname);
+      if (!cancelled && saved && !nameTouched.current) setName(saved);
+    })();
+    return () => { cancelled = true; };
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -105,7 +118,7 @@ export function RoyalRevealOffer({ resultId, defaultName, edition, score }: { re
       <DecreePreview edition={edition} score={score} name={previewName} />
       <form onSubmit={buy}>
         <label className="paid-field">Name on the decree
-          <input value={name} onChange={(event) => setName(event.target.value)} maxLength={32} autoComplete="name" required />
+          <input value={name} onChange={(event) => { nameTouched.current = true; setName(event.target.value); }} maxLength={32} autoComplete="name" placeholder="Your name" required />
         </label>
         <label className="paid-field">Email address
           <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" required maxLength={200} />

@@ -1,4 +1,4 @@
-import { assertSafePublicName } from "./nickname.ts";
+import { assertSafePublicName, validateNickname } from "./nickname.ts";
 
 /** Card frame scaled to a third of the 1080px deliverable. */
 export const DECREE_PREVIEW_WIDTH = 360;
@@ -10,6 +10,16 @@ function graphemes(value: string): string[] {
     return [...new Intl.Segmenter(undefined, { granularity: "grapheme" }).segment(value)].map((part) => part.segment);
   }
   return [...value];
+}
+
+/** A saved leaderboard nickname can start the decree field. A result title cannot. */
+export function decreeNamePrefill(savedNickname: unknown): string {
+  if (typeof savedNickname !== "string" || savedNickname.trim() === "") return "";
+  try {
+    return validateNickname(savedNickname);
+  } catch {
+    return "";
+  }
 }
 
 /** Blank, unsafe, or unfinished names stay on the sample line. A typed name shows as it is. */

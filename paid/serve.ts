@@ -27,7 +27,7 @@ import { DISPLAY_NAME_MESSAGE } from "./nickname.ts";
 import { applyStripeEvent, projectAccess } from "./fulfillment.ts";
 import { SUPPORT_EMAIL } from "./receipt.ts";
 import { editions, isEdition, type KvStore } from "./games.ts";
-import { handleDailyBegin, handleDailyBoard, handleDailyFinish, handleDailyNickname, handleDailyStatus } from "./dailyRoute.ts";
+import { handleDailyBegin, handleDailyBoard, handleDailyFinish, handleDailyNickname, handleDailyStatus, handleNicknameRead } from "./dailyRoute.ts";
 import { claimReferralIfFirstGame, handlePerfect, handleReferralArrive, handleReferralGet, handleShareCard, handleShareReward } from "./earnRoute.ts";
 import { applyChallengeMeta, challengeUrl, shareBlurb, shareCardImageUrl } from "./shareCard.ts";
 import { revealHoldFromPurchase, writeRevealHold } from "./royalReveal.ts";
@@ -561,6 +561,7 @@ export async function servePaid(request: Request, services: PaidServices): Promi
     if (request.method === "POST" && url.pathname === "/api/paid/daily/begin") return await handleDailyBegin(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/daily/finish") return await handleDailyFinish(request, services);
     if (request.method === "GET" && url.pathname === "/api/paid/daily/board") return await handleDailyBoard(url, services);
+    if (request.method === "GET" && url.pathname === "/api/paid/nickname") return await handleNicknameRead(url, services);
     if (request.method === "POST" && url.pathname === "/api/paid/daily/nickname") return await handleDailyNickname(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/earn/perfect") return await handlePerfect(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/earn/share") return await handleShareReward(request, services);
