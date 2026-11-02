@@ -2960,57 +2960,6 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_grow_foumban",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "GEOGRAPHY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which city in Cameroon, also called Fumban, lies north east of Bafoussam?",
-      "options": [
-        "Foumban",
-        "Brazzaville",
-        "Douala",
-        "Lubumbashi"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Foumban, also called Fumban, is a city in Cameroon north east of Bafoussam.",
-      "sources": [
-        {
-          "title": "Foumban",
-          "url": "https://en.wikipedia.org/wiki/Foumban",
-          "claim": "Foumban, also called Fumban, is a city in Cameroon north east of Bafoussam.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Foumban Foumban or Fumban is a city in Cameroon, lying north east of Bafoussam.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_grow_goma",
       "region": "central",
       "country": "DR Congo",
@@ -3221,7 +3170,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which port city is the capital of the North Region of Cameroon, lying on the Benue River?",
+      "prompt": "Which port city on the Benue River is the capital of Cameroon’s North Region?",
       "options": [
         "Garoua",
         "Brazzaville",
@@ -3317,64 +3266,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_grow_lobito",
-      "region": "central",
-      "country": "Angola",
-      "category": "GEOGRAPHY",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Which municipality in Angola lies on the Atlantic coast in Benguela Province?",
-      "options": [
-        "Lobito",
-        "Brazzaville",
-        "Douala",
-        "Lubumbashi"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Lobito is a municipality on the Atlantic coast in Angola's Benguela Province.",
-      "sources": [
-        {
-          "title": "Lobito",
-          "url": "https://en.wikipedia.org/wiki/Lobito",
-          "claim": "Lobito is a municipality on the Atlantic coast in Angola's Benguela Province.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Lobito Lobito is a municipality in Angola. It is located in Benguela Province, on the Atlantic Coast north of the Catumbela Estuary.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_grow_mbanza",
       "region": "central",
       "country": "Angola",
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which capital of Angola's northwestern Zaire Province was known as Sao Salvador from 1570 to 1976?",
+      "prompt": "Which Angolan city, once called São Salvador, is the capital of Zaire Province?",
       "options": [
         "Mbanza Kongo",
         "Brazzaville",
@@ -3425,7 +3323,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which capital and largest city has a Portuguese name for Saint Thomas?",
+      "prompt": "Which city is the capital and largest city of the Central African island country?",
       "options": [
         "São Tomé",
         "Brazzaville",
@@ -3476,12 +3374,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which active stratovolcano stands next to the city of Buea?",
+      "prompt": "Which active volcano stands next to the city of Buea?",
       "options": [
         "Mount Cameroon",
         "Nyiragongo",
-        "Ogooué",
-        "Lopé"
+        "Mount Nyamuragira",
+        "Mount Kenya"
       ],
       "correct": [
         0
@@ -3527,12 +3425,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which active stratovolcano inside Virunga National Park stands about 12 km north of Goma?",
+      "prompt": "Which active volcano inside Virunga National Park rises about 12 km north of Goma?",
       "options": [
         "Nyiragongo",
         "Mount Cameroon",
-        "Ogooué",
-        "Lopé"
+        "Mount Nyamuragira",
+        "Mount Kenya"
       ],
       "correct": [
         0
@@ -3581,9 +3479,9 @@
       "prompt": "Which river, also called the Nazareth, is the principal river of Gabon?",
       "options": [
         "Ogooué",
-        "Mount Cameroon",
-        "Nyiragongo",
-        "Lopé"
+        "Congo River",
+        "Ubangi",
+        "Kasai"
       ],
       "correct": [
         0
@@ -3632,9 +3530,9 @@
       "prompt": "Which national park in central Gabon is bordered by the Ogooué River to the north?",
       "options": [
         "Lopé",
-        "Mount Cameroon",
-        "Nyiragongo",
-        "Congo River"
+        "Virunga",
+        "Kahuzi-Biega",
+        "Loango"
       ],
       "correct": [
         0
@@ -3935,12 +3833,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which fast hip-swaying dance music from the Democratic Republic of the Congo came from soukous in the 1990s?",
+      "prompt": "Which fast, hip-swaying Congolese dance music grew out of soukous in the 1990s?",
       "options": [
         "Ndombolo",
         "Makossa",
         "Bikutsi",
-        "Mbilia Bel"
+        "Soukous"
       ],
       "correct": [
         0
@@ -4088,12 +3986,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which Congolese singer and songwriter is also called Marie-Claire Mboyo Moseka?",
+      "prompt": "Which Congolese singer was born Marie-Claire Mboyo Moseka?",
       "options": [
         "Mbilia Bel",
-        "Soukous",
-        "Ndombolo",
-        "Makossa"
+        "Tabu Ley Rochereau",
+        "Pépé Kallé",
+        "Awilo Longomba"
       ],
       "correct": [
         0
@@ -4142,9 +4040,9 @@
       "prompt": "Which Congolese singer and bandleader was born Pascal-Emmanuel Sinamoyi?",
       "options": [
         "Tabu Ley Rochereau",
-        "Soukous",
-        "Ndombolo",
-        "Makossa"
+        "Mbilia Bel",
+        "Pépé Kallé",
+        "Awilo Longomba"
       ],
       "correct": [
         0
@@ -4193,9 +4091,9 @@
       "prompt": "Which Congolese singer-songwriter was born Jean-Baptiste Kabasele Yampanya?",
       "options": [
         "Pépé Kallé",
-        "Soukous",
-        "Ndombolo",
-        "Makossa"
+        "Tabu Ley Rochereau",
+        "Mbilia Bel",
+        "Awilo Longomba"
       ],
       "correct": [
         0
@@ -4241,17 +4139,17 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which Congolese rumba band was formed in Kinshasa in December 1969?",
+      "prompt": "Which Congolese rumba band was formed in Kinshasa in 1969?",
       "options": [
         "Zaïko Langa Langa",
-        "Soukous",
-        "Ndombolo",
-        "Makossa"
+        "OK Jazz",
+        "African Jazz",
+        "Wenge Musica"
       ],
       "correct": [
         0
       ],
-      "explanation": "Zaïko Langa Langa is a Congolese rumba band formed in Kinshasa in December 1969.",
+      "explanation": "Zaïko Langa Langa formed in Kinshasa in December 1969.",
       "sources": [
         {
           "title": "Zaïko Langa Langa",
@@ -4292,12 +4190,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which Congolese soukous singer, drummer, and producer was born on 5 May 1962?",
+      "prompt": "Which Congolese soukous singer, drummer, and producer was born Louis Albert William?",
       "options": [
         "Awilo Longomba",
-        "Ndombolo",
-        "Makossa",
-        "Bikutsi"
+        "Nyboma",
+        "Sam Mangwana",
+        "Pépé Kallé"
       ],
       "correct": [
         0
@@ -4343,12 +4241,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which Cameroonian musicologist, writer, composer, and broadcaster came from Douala?",
+      "prompt": "Which Cameroonian musicologist, writer, and composer came from Douala?",
       "options": [
         "Francis Bebey",
-        "Soukous",
-        "Ndombolo",
-        "Makossa"
+        "Manu Dibango",
+        "Petit Pays",
+        "Richard Bona"
       ],
       "correct": [
         0
@@ -4496,7 +4394,7 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which Congolese writer was Prime Minister of Congo-Brazzaville from 1973 to 1975?",
+      "prompt": "Which Congolese writer also served as Prime Minister of Congo-Brazzaville in the 1970s?",
       "options": [
         "Henri Lopes",
         "Mongo Beti",
@@ -4541,74 +4439,23 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_grow_aboubakar",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "SPORT",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which footballer began a career at Coton Sport and moved to Europe in 2010?",
-      "options": [
-        "Aboubakar",
-        "Pierre-Emerick Aubameyang",
-        "Samuel Eto'o",
-        "Rigobert Song"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Aboubakar is a footballer who began at Coton Sport and moved to Europe in 2010.",
-      "sources": [
-        {
-          "title": "Vincent Aboubakar",
-          "url": "https://en.wikipedia.org/wiki/Vincent_Aboubakar",
-          "claim": "",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Aboubakar began his career at Coton Sport and moved to Europe in 2010, playing for Ligue 1 clubs Valenciennes and Lorient, totalling 109 appearances and 26 goals in France's top division.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_grow_auba",
       "region": "central",
       "country": "Gabon",
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which striker was born in France and has played for Gabon?",
+      "prompt": "Which France-born striker has played for the Gabon national team?",
       "options": [
         "Pierre-Emerick Aubameyang",
-        "Aboubakar",
+        "Vincent Aboubakar",
         "Samuel Eto'o",
         "Rigobert Song"
       ],
       "correct": [
         0
       ],
-      "explanation": "Pierre-Emerick Aubameyang is a striker who was born in France and has played for Gabon.",
+      "explanation": "Pierre-Emerick Aubameyang was born in France and has represented Gabon.",
       "sources": [
         {
           "title": "Pierre-Emerick Aubameyang",
@@ -4853,17 +4700,17 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which palm-leaf fiber from the Democratic Republic of the Congo is cut to form pile surfaces resembling velvet?",
+      "prompt": "Which Congolese raffia cloth is cut into a pile surface that looks like velvet?",
       "options": [
         "Kuba textiles",
-        "Liputa",
-        "Abacost",
-        "La Sape"
+        "Kente cloth",
+        "Bogolan",
+        "Aso oke"
       ],
       "correct": [
         0
       ],
-      "explanation": "Kuba textiles are palm-leaf fiber from the Democratic Republic of the Congo, cut into pile surfaces that resemble velvet.",
+      "explanation": "Kuba textiles are raffia cloths with cut pile surfaces resembling velvet.",
       "sources": [
         {
           "title": "Kuba textiles",
@@ -5162,9 +5009,9 @@
       "prompt": "Which Congolese-born singer was born to Angolan parents?",
       "options": [
         "Sam Mangwana",
-        "Soukous",
-        "Ndombolo",
-        "Makossa"
+        "Nyboma",
+        "Awilo Longomba",
+        "Pépé Kallé"
       ],
       "correct": [
         0
@@ -5213,9 +5060,9 @@
       "prompt": "Which Congolese soukous tenor was a leading member of Orchestre Bella Bella?",
       "options": [
         "Nyboma",
-        "Ndombolo",
-        "Makossa",
-        "Bikutsi"
+        "Sam Mangwana",
+        "Awilo Longomba",
+        "Pépé Kallé"
       ],
       "correct": [
         0

@@ -12744,6 +12744,174 @@
       "holdReasons": [
         "answer_leak"
       ]
+    },
+    {
+      "id": "central_grow_foumban",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city in Cameroon, also called Fumban, lies north east of Bafoussam?",
+      "options": [
+        "Foumban",
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Foumban, also called Fumban, is a city in Cameroon north east of Bafoussam.",
+      "sources": [
+        {
+          "title": "Foumban",
+          "url": "https://en.wikipedia.org/wiki/Foumban",
+          "claim": "Foumban, also called Fumban, is a city in Cameroon north east of Bafoussam.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Foumban Foumban or Fumban is a city in Cameroon, lying north east of Bafoussam.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "central_grow_lobito",
+      "region": "central",
+      "country": "Angola",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which municipality in Angola lies on the Atlantic coast in Benguela Province?",
+      "options": [
+        "Lobito",
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lobito is a municipality on the Atlantic coast in Angola's Benguela Province.",
+      "sources": [
+        {
+          "title": "Lobito",
+          "url": "https://en.wikipedia.org/wiki/Lobito",
+          "claim": "Lobito is a municipality on the Atlantic coast in Angola's Benguela Province.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Lobito Lobito is a municipality in Angola. It is located in Benguela Province, on the Atlantic Coast north of the Catumbela Estuary.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "central_grow_aboubakar",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which footballer began a career at Coton Sport and moved to Europe in 2010?",
+      "options": [
+        "Aboubakar",
+        "Pierre-Emerick Aubameyang",
+        "Samuel Eto'o",
+        "Rigobert Song"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Aboubakar is a footballer who began at Coton Sport and moved to Europe in 2010.",
+      "sources": [
+        {
+          "title": "Vincent Aboubakar",
+          "url": "https://en.wikipedia.org/wiki/Vincent_Aboubakar",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Aboubakar began his career at Coton Sport and moved to Europe in 2010, playing for Ligue 1 clubs Valenciennes and Lorient, totalling 109 appearances and 26 goals in France's top division.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
     }
   ]
 }

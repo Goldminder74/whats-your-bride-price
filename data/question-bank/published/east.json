@@ -4547,7 +4547,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which Ugandan city lies on a Lake Victoria peninsula about 36 kilometres southwest of Kampala?",
+      "prompt": "Which Ugandan city sits on a Lake Victoria peninsula southwest of Kampala?",
       "options": [
         "Entebbe",
         "Mombasa",
@@ -4598,7 +4598,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which town in the Tigray Region of Ethiopia is the site of a historic capital?",
+      "prompt": "Which Tigray town in Ethiopia was the historic capital of the Aksumite Empire?",
       "options": [
         "Axum",
         "Mombasa",
@@ -4649,12 +4649,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which lake is Africa's largest by surface area?",
+      "prompt": "Which lake is Africa’s largest by surface area?",
       "options": [
         "Lake Victoria",
         "Lake Tanganyika",
         "Lake Tana",
-        "Mount Kenya"
+        "Lake Malawi"
       ],
       "correct": [
         0
@@ -4700,12 +4700,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which African Great Lake is the world's second-largest freshwater lake by volume?",
+      "prompt": "Which African Great Lake is the world’s second-largest freshwater lake by volume?",
       "options": [
         "Lake Tanganyika",
         "Lake Victoria",
         "Lake Tana",
-        "Mount Kenya"
+        "Lake Malawi"
       ],
       "correct": [
         0
@@ -4756,7 +4756,7 @@
         "Lake Tana",
         "Lake Victoria",
         "Lake Tanganyika",
-        "Mount Kenya"
+        "Lake Malawi"
       ],
       "correct": [
         0
@@ -4802,12 +4802,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which peak is the second highest in Africa, about 150 km north-northeast of Nairobi?",
+      "prompt": "Which peak is Africa’s second-highest mountain and stands north-northeast of Nairobi?",
       "options": [
         "Mount Kenya",
-        "Lake Victoria",
-        "Lake Tanganyika",
-        "Lake Tana"
+        "Mount Kilimanjaro",
+        "Rwenzori",
+        "Simien"
       ],
       "correct": [
         0
@@ -4853,12 +4853,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which range of mountains is located on the border between Uganda and the Democratic Republic of the Congo?",
+      "prompt": "Which mountain range runs along the border between Uganda and the Democratic Republic of the Congo?",
       "options": [
         "Rwenzori",
-        "Lake Victoria",
-        "Lake Tanganyika",
-        "Lake Tana"
+        "Mount Kenya",
+        "Simien",
+        "Mount Kilimanjaro"
       ],
       "correct": [
         0
@@ -4904,12 +4904,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which highlands in northern Ethiopia stand northeast of Gondar?",
+      "prompt": "Which highland range in northern Ethiopia stands northeast of Gondar?",
       "options": [
         "Simien",
-        "Lake Victoria",
-        "Lake Tanganyika",
-        "Lake Tana"
+        "Mount Kenya",
+        "Rwenzori",
+        "Mount Kilimanjaro"
       ],
       "correct": [
         0
@@ -4958,14 +4958,14 @@
       "prompt": "Which national park in southwestern Uganda sits along the border with the Democratic Republic of the Congo?",
       "options": [
         "Bwindi",
-        "Lake Victoria",
-        "Lake Tanganyika",
-        "Lake Tana"
+        "Serengeti",
+        "Ngorongoro",
+        "Tsavo"
       ],
       "correct": [
         0
       ],
-      "explanation": "Bwindi is a national park in southwestern Uganda along the border with the Democratic Republic of the Congo.",
+      "explanation": "Bwindi Impenetrable National Park sits in southwestern Uganda on the DRC border.",
       "sources": [
         {
           "title": "Bwindi Impenetrable National Park",
@@ -5465,17 +5465,17 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which Kenyan man first set the marathon world record in 2003?",
+      "prompt": "Which Kenyan man first set the marathon world record, in 2003?",
       "options": [
         "Paul Tergat",
-        "Faith Kipyegon",
-        "Tirunesh Dibaba",
-        "Kenenisa Bekele"
+        "Kenenisa Bekele",
+        "Eliud Kipchoge",
+        "Samuel Wanjiru"
       ],
       "correct": [
         0
       ],
-      "explanation": "Paul Tergat was the first Kenyan man to set the marathon world record, in 2003.",
+      "explanation": "Paul Tergat became the first Kenyan man to set the marathon world record in 2003.",
       "sources": [
         {
           "title": "Paul Tergat",

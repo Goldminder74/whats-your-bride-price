@@ -2,8 +2,8 @@
   "generatedAt": "2026-11-02",
   "summary": {
     "west": {
-      "published": 119,
-      "held": 186,
+      "published": 118,
+      "held": 187,
       "generated": 220,
       "drafts": 67,
       "byCategory": {
@@ -13,7 +13,7 @@
         "HISTORY": 6,
         "LANGUAGE": 15,
         "MUSIC": 11,
-        "FESTIVALS": 4,
+        "FESTIVALS": 3,
         "PEOPLE": 11,
         "POP": 12,
         "PROVERBS": 1,
@@ -21,11 +21,11 @@
       },
       "byDifficulty": {
         "easy": 42,
-        "medium": 61,
+        "medium": 60,
         "hard": 16
       },
       "byKind": {
-        "single": 118,
+        "single": 117,
         "complete": 1
       },
       "holdReasons": {
@@ -44,7 +44,7 @@
         "region_country": 7,
         "sensitivity_sacred": 2,
         "options_type": 1,
-        "editorial_drop": 17
+        "editorial_drop": 18
       }
     },
     "east": {
@@ -95,28 +95,28 @@
       }
     },
     "central": {
-      "published": 103,
-      "held": 216,
+      "published": 100,
+      "held": 219,
       "generated": 189,
       "drafts": 82,
       "byCategory": {
         "FASHION": 5,
         "FOOD": 6,
-        "GEOGRAPHY": 28,
+        "GEOGRAPHY": 26,
         "HISTORY": 5,
         "LANGUAGE": 14,
         "MUSIC": 25,
         "PEOPLE": 11,
         "POP": 3,
-        "SPORT": 6
+        "SPORT": 5
       },
       "byDifficulty": {
-        "medium": 50,
-        "hard": 33,
+        "medium": 48,
+        "hard": 32,
         "easy": 20
       },
       "byKind": {
-        "single": 103
+        "single": 100
       },
       "holdReasons": {
         "duplicate_prompt": 4,
@@ -133,34 +133,34 @@
         "sensitivity_initiation": 3,
         "options_nested": 1,
         "region_country": 2,
-        "editorial_drop": 20
+        "editorial_drop": 23
       }
     },
     "north": {
-      "published": 111,
-      "held": 203,
+      "published": 107,
+      "held": 207,
       "generated": 198,
       "drafts": 66,
       "byCategory": {
         "FASHION": 4,
         "FOOD": 18,
-        "GEOGRAPHY": 30,
+        "GEOGRAPHY": 29,
         "HISTORY": 9,
         "LANGUAGE": 10,
         "MUSIC": 12,
         "PEOPLE": 12,
         "POP": 2,
-        "SPORT": 12,
+        "SPORT": 9,
         "WEDDINGS": 1,
         "FESTIVALS": 1
       },
       "byDifficulty": {
         "easy": 30,
-        "medium": 57,
-        "hard": 24
+        "medium": 54,
+        "hard": 23
       },
       "byKind": {
-        "single": 111
+        "single": 107
       },
       "holdReasons": {
         "source_support": 127,
@@ -178,7 +178,7 @@
         "options_nested": 1,
         "sensitivity_sacred": 6,
         "sensitivity_trauma": 1,
-        "editorial_drop": 19
+        "editorial_drop": 23
       }
     },
     "south": {

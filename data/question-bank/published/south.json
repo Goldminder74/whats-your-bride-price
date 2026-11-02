@@ -3986,12 +3986,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which national park in South Africa's northeast covers Limpopo and Mpumalanga?",
+      "prompt": "Which national park in northeastern South Africa covers parts of Limpopo and Mpumalanga?",
       "options": [
         "Kruger",
-        "Okavango",
-        "Victoria Falls",
-        "Etosha"
+        "Etosha",
+        "Hwange",
+        "Chobe"
       ],
       "correct": [
         0
@@ -4040,9 +4040,9 @@
       "prompt": "Which vast inland delta in Botswana does not flow into a sea or ocean?",
       "options": [
         "Okavango",
-        "Kruger",
-        "Victoria Falls",
-        "Etosha"
+        "Nile Delta",
+        "Niger Delta",
+        "Zambezi Delta"
       ],
       "correct": [
         0
@@ -4088,12 +4088,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place on the Zambezi River is located on the border between Zambia and Zimbabwe and is called Mosi-oa-Tunya in Lozi?",
+      "prompt": "Which waterfall on the Zambezi, on the border between Zambia and Zimbabwe, is called Mosi-oa-Tunya in Lozi?",
       "options": [
         "Victoria Falls",
-        "Kruger",
-        "Okavango",
-        "Etosha"
+        "Tugela Falls",
+        "Kalambo Falls",
+        "Augrabies Falls"
       ],
       "correct": [
         0
@@ -4139,17 +4139,17 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which national park in northwestern Namibia was proclaimed a game reserve in 1907?",
+      "prompt": "Which national park in northwestern Namibia is one of the largest in Africa?",
       "options": [
         "Etosha",
         "Kruger",
-        "Okavango",
-        "Victoria Falls"
+        "Hwange",
+        "Chobe"
       ],
       "correct": [
         0
       ],
-      "explanation": "Etosha National Park is in northwestern Namibia and was proclaimed a game reserve in 1907.",
+      "explanation": "Etosha National Park is in northwestern Namibia and is one of the largest national parks in Africa.",
       "sources": [
         {
           "title": "Etosha National Park",
@@ -4190,12 +4190,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which eastern portion of the Great Escarpment is called uKhahlamba in Zulu?",
+      "prompt": "Which eastern stretch of the Great Escarpment is called uKhahlamba in Zulu?",
       "options": [
         "Drakensberg",
-        "Kruger",
-        "Okavango",
-        "Victoria Falls"
+        "Table Mountain",
+        "Waterberg",
+        "Magaliesberg"
       ],
       "correct": [
         0
@@ -4241,12 +4241,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which flat-topped landmark overlooking Cape Town stands in South Africa?",
+      "prompt": "Which flat-topped mountain overlooking Cape Town is a famous South African landmark?",
       "options": [
         "Table Mountain",
-        "Kruger",
-        "Okavango",
-        "Victoria Falls"
+        "Drakensberg",
+        "Lion’s Head",
+        "Signal Hill"
       ],
       "correct": [
         0
@@ -4292,17 +4292,17 @@
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which city was founded in 1892 as the main harbour for German South West Africa?",
+      "prompt": "Which Namibian beach city is known for its 19th-century German colonial architecture?",
       "options": [
         "Swakopmund",
         "Cape Town",
-        "Johannesburg",
-        "Durban"
+        "Durban",
+        "Walvis Bay"
       ],
       "correct": [
         0
       ],
-      "explanation": "Swakopmund was founded in 1892 as the main harbour for German South West Africa.",
+      "explanation": "Swakopmund is a Namibian beach resort known for 19th-century German colonial architecture.",
       "sources": [
         {
           "title": "Swakopmund",
@@ -4397,9 +4397,9 @@
       "prompt": "Which city is the second largest in Zimbabwe and the largest in Matabeleland?",
       "options": [
         "Bulawayo",
-        "Cape Town",
-        "Johannesburg",
-        "Durban"
+        "Harare",
+        "Gweru",
+        "Mutare"
       ],
       "correct": [
         0
@@ -4496,12 +4496,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which township of Johannesburg borders the city's mining belt in the south?",
+      "prompt": "Which Johannesburg township borders the city’s mining belt in the south?",
       "options": [
         "Soweto",
-        "Cape Town",
-        "Durban",
-        "Pretoria"
+        "Alexandra",
+        "Tembisa",
+        "Mamelodi"
       ],
       "correct": [
         0
@@ -4547,12 +4547,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which city served as a capital from the 13th century and is the largest stone structure in precolonial Southern Africa?",
+      "prompt": "Which city was a capital from the 13th century and is the largest stone structure in precolonial Southern Africa?",
       "options": [
         "Great Zimbabwe",
         "Mapungubwe",
-        "Mutapa",
-        "Moshoeshoe I"
+        "Thulamela",
+        "Khami"
       ],
       "correct": [
         0
@@ -4598,11 +4598,11 @@
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which ancient state was located at the confluence of the Shashe and Limpopo rivers in present-day South Africa?",
+      "prompt": "Which ancient state stood at the confluence of the Shashe and Limpopo rivers in present-day South Africa?",
       "options": [
         "Mapungubwe",
         "Mutapa",
-        "Moshoeshoe I",
+        "Great Zimbabwe",
         "Thulamela"
       ],
       "correct": [
@@ -4654,7 +4654,7 @@
         "Mutapa",
         "Great Zimbabwe",
         "Mapungubwe",
-        "Moshoeshoe I"
+        "Rozvi"
       ],
       "correct": [
         0
@@ -4700,12 +4700,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person was the first king of Lesotho?",
+      "prompt": "Who was the first king of Lesotho?",
       "options": [
         "Moshoeshoe I",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "Mutapa"
+        "Shaka",
+        "Lobengula",
+        "Khama III"
       ],
       "correct": [
         0
@@ -4751,12 +4751,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which spot in Table Bay, north of Cape Town, takes its name from the Dutch word for seals?",
+      "prompt": "Which island in Table Bay, north of Cape Town, takes its name from the Dutch word for seals?",
       "options": [
         "Robben Island",
-        "Kruger",
-        "Okavango",
-        "Victoria Falls"
+        "Dassen Island",
+        "Seal Island",
+        "Penguin Island"
       ],
       "correct": [
         0
@@ -4802,17 +4802,17 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which printed cotton fabric, often dyed indigo with geometric patterns, is widely used for Basotho clothing?",
+      "prompt": "Which indigo-printed cotton fabric with geometric patterns is widely used for Basotho clothing?",
       "options": [
         "Seshoeshoe",
         "Capulana",
-        "Mokorotlo",
+        "Ankara",
         "Kente cloth"
       ],
       "correct": [
         0
       ],
-      "explanation": "Seshoeshoe is a printed cotton fabric, often dyed indigo with geometric patterns, widely used for Basotho clothing.",
+      "explanation": "Seshoeshoe (seshweshwe) is a printed cotton fabric widely used for Basotho clothing.",
       "sources": [
         {
           "title": "Seshoeshoe",
@@ -4856,9 +4856,9 @@
       "prompt": "Which South African cricketer played for the national team from 2004 to 2019?",
       "options": [
         "Hashim Amla",
-        "Habana",
         "Graeme Smith",
-        "Lucas Radebe"
+        "AB de Villiers",
+        "Jacques Kallis"
       ],
       "correct": [
         0
@@ -4904,17 +4904,17 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which South African player was part of the team that won the 2007 Rugby World Cup and scored eight tries in that tournament?",
+      "prompt": "Which South African wing scored eight tries at the 2007 Rugby World Cup?",
       "options": [
         "Habana",
-        "Hashim Amla",
-        "Graeme Smith",
-        "Lucas Radebe"
+        "Kolbe",
+        "Mapimpi",
+        "Pietersen"
       ],
       "correct": [
         0
       ],
-      "explanation": "Habana was part of the South Africa team that won the 2007 Rugby World Cup, scoring eight tries in the tournament.",
+      "explanation": "Habana (Bryan Habana) scored eight tries for South Africa at the 2007 Rugby World Cup.",
       "sources": [
         {
           "title": "Bryan Habana",
@@ -4959,8 +4959,8 @@
       "options": [
         "Graeme Smith",
         "Hashim Amla",
-        "Habana",
-        "Lucas Radebe"
+        "AB de Villiers",
+        "Jacques Kallis"
       ],
       "correct": [
         0
@@ -5006,12 +5006,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which South African novelist is the recipient of the 2003 Nobel Prize in Literature?",
+      "prompt": "Which South African novelist won the 2003 Nobel Prize in Literature?",
       "options": [
         "J. M. Coetzee",
         "Bessie Head",
         "Dambudzo Marechera",
-        "Steve Biko"
+        "Nadine Gordimer"
       ],
       "correct": [
         0

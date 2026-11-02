@@ -5159,7 +5159,7 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which ancient western Sahel empire was based in the southeast of Mauritania and western Mali?",
+      "prompt": "Which ancient Sahel empire, also called the Ghana Empire, was based in today’s Mauritania and western Mali?",
       "options": [
         "Wagadu",
         "Asante",
@@ -5169,7 +5169,7 @@
       "correct": [
         0
       ],
-      "explanation": "Wagadu, also called the Ghana Empire, was an ancient western Sahel empire based in today's southeast Mauritania and western Mali.",
+      "explanation": "Wagadu, also known as the Ghana Empire, was based in today's southeast Mauritania and western Mali.",
       "sources": [
         {
           "title": "Ghana Empire",
@@ -5210,7 +5210,7 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which Akan state lasted from 1701 to 1902 in what is now Ghana?",
+      "prompt": "Which Akan empire in what is now Ghana was also known as the Ashanti Empire?",
       "options": [
         "Asante",
         "Wagadu",
@@ -5220,7 +5220,7 @@
       "correct": [
         0
       ],
-      "explanation": "Asante was an Akan state from 1701 to 1902 in what is now Ghana.",
+      "explanation": "Asante (Ashanti) was an Akan state in what is now Ghana.",
       "sources": [
         {
           "title": "Asante Empire",
@@ -5261,7 +5261,7 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which West African kingdom in the present-day Republic of Benin existed until 1904?",
+      "prompt": "Which West African kingdom stood in what is now the Republic of Benin?",
       "options": [
         "Dahomey",
         "Wagadu",
@@ -5271,7 +5271,7 @@
       "correct": [
         0
       ],
-      "explanation": "Dahomey was a West African kingdom in today's Republic of Benin that existed until 1904.",
+      "explanation": "Dahomey was a kingdom in present-day Benin.",
       "sources": [
         {
           "title": "Dahomey",
@@ -5312,7 +5312,7 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which West African power from 1235 to 1610 was founded by Sundiata Keita?",
+      "prompt": "Which West African empire did Sundiata Keita found?",
       "options": [
         "Mali Empire",
         "Wagadu",
@@ -5322,7 +5322,7 @@
       "correct": [
         0
       ],
-      "explanation": "The Mali Empire was a West African power from about 1235 to 1610, founded by Sundiata Keita.",
+      "explanation": "Sundiata Keita founded the Mali Empire.",
       "sources": [
         {
           "title": "Mali Empire",
@@ -5459,69 +5459,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "west_grow_argungu",
-      "region": "west",
-      "country": "Nigeria",
-      "category": "FESTIVALS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which annual festival in Kebbi State centres on catching fish from the Sokoto River?",
-      "options": [
-        "Argungu",
-        "Homowo",
-        "Hogbetsotso",
-        "Calabar Carnival"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Argungu is an annual festival in Kebbi State centred on catching fish from the Sokoto River.",
-      "sources": [
-        {
-          "title": "Argungu Fishing Festival",
-          "url": "https://en.wikipedia.org/wiki/Argungu_Fishing_Festival",
-          "claim": "",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Argungu Fishing Festival The Argungu Fishing Festival or Argungu Dance Festival is an annual four-day festival fishing and cultural festival in Argungu, Kebbi State. The festival is usually a four-day cultural event which main purpose involves fishermen from different part of the country trying to catch the biggest fish from the Sokoto River.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "west_grow_banku",
       "region": "west",
       "country": "Ghana",
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which Ghanaian staple is a slightly fermented ball of maize and cassava dough, served with soup or pepper sauce and fish?",
+      "prompt": "Which Ghanaian staple is a slightly fermented maize-and-cassava dough ball, often served with soup or pepper sauce and fish?",
       "options": [
         "Banku",
         "Kenkey",
-        "Egusi",
-        "Thieboudienne"
+        "Fufu",
+        "Eba"
       ],
       "correct": [
         0
@@ -5567,12 +5516,12 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which staple swallow from Ga and Fante regions of West Africa is usually served with fried fish or soup?",
+      "prompt": "Which Ga and Fante swallow dumpling is usually served with fried fish or soup?",
       "options": [
         "Kenkey",
         "Banku",
-        "Egusi",
-        "Thieboudienne"
+        "Fufu",
+        "Eba"
       ],
       "correct": [
         0
@@ -5618,12 +5567,12 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which protein-rich seeds of melon-family plants are used in West African cuisine?",
+      "prompt": "Which protein-rich melon-family seeds are ground into many West African soups and stews?",
       "options": [
         "Egusi",
-        "Banku",
-        "Kenkey",
-        "Thieboudienne"
+        "Palm nuts",
+        "Sesame",
+        "Groundnuts"
       ],
       "correct": [
         0
@@ -5720,12 +5669,12 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which West African swallow is made from dried grated cassava flour known as garri?",
+      "prompt": "Which West African swallow is made by stirring garri (dried grated cassava flour) into hot water?",
       "options": [
         "Eba",
         "Banku",
         "Kenkey",
-        "Egusi"
+        "Fufu"
       ],
       "correct": [
         0
@@ -5771,12 +5720,12 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which fritter made from cowpeas or black-eyed peas originated in Yorubaland?",
+      "prompt": "Which fritter of black-eyed peas (cowpeas) originated in Yorubaland?",
       "options": [
         "Akara",
-        "Banku",
-        "Kenkey",
-        "Egusi"
+        "Kuli-kuli",
+        "Puff-puff",
+        "Mandazi"
       ],
       "correct": [
         0
@@ -5825,9 +5774,9 @@
       "prompt": "Which Senegalese peanut stew is also known as groundnut stew?",
       "options": [
         "Maafe",
-        "Banku",
-        "Kenkey",
-        "Egusi"
+        "Kedjenou",
+        "Egusi soup",
+        "Thieboudienne"
       ],
       "correct": [
         0
@@ -5873,12 +5822,12 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which Nigerian peanut snack was first made by the Nupe people?",
+      "prompt": "Which crunchy Nigerian peanut snack was first made by the Nupe people?",
       "options": [
         "Kuli-kuli",
-        "Banku",
-        "Kenkey",
-        "Egusi"
+        "Akara",
+        "Chin chin",
+        "Puff-puff"
       ],
       "correct": [
         0
@@ -5924,17 +5873,17 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which spicy stew is slow-cooked in a sealed terra-cotta pot?",
+      "prompt": "Which Ivorian spicy stew is slow-cooked in a sealed terra-cotta pot?",
       "options": [
         "Kedjenou",
-        "Banku",
-        "Kenkey",
-        "Egusi"
+        "Maafe",
+        "Thieboudienne",
+        "Egusi soup"
       ],
       "correct": [
         0
       ],
-      "explanation": "Kedjenou is a spicy stew slow-cooked in a sealed terra-cotta pot.",
+      "explanation": "Kedjenou is a spicy stew slow-cooked in a sealed canari (terra-cotta pot).",
       "sources": [
         {
           "title": "Kedjenou",

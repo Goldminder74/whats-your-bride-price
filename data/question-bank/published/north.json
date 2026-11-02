@@ -3119,12 +3119,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which city in northern inland Morocco is the capital of an administrative region?",
+      "prompt": "Which city in northern inland Morocco is the capital of the administrative region paired with Meknes?",
       "options": [
         "Fez",
         "Tunis",
         "Oran",
-        "Jemaa el-Fnaa"
+        "Tangier"
       ],
       "correct": [
         0
@@ -3224,9 +3224,9 @@
       "prompt": "Which urban oasis in Egypt sits between the Qattara Depression and the Great Sand Sea?",
       "options": [
         "Siwa",
-        "Sahara",
-        "Atlas",
-        "Nile"
+        "Bahariya",
+        "Dakhla",
+        "Kharga"
       ],
       "correct": [
         0
@@ -3272,12 +3272,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which square and market place remains the main square of the Marrakesh medina?",
+      "prompt": "Which square remains the main square of the Marrakesh medina?",
       "options": [
         "Jemaa el-Fnaa",
-        "Tunis",
-        "Fez",
-        "Oran"
+        "Place des Martyrs",
+        "Tahrir Square",
+        "Kasbah Square"
       ],
       "correct": [
         0
@@ -3476,12 +3476,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which major port city in Tunisia lies southeast of Tunis and was founded in 849?",
+      "prompt": "Which major Tunisian port city lies southeast of Tunis?",
       "options": [
         "Sfax",
         "Fez",
         "Oran",
-        "Jemaa el-Fnaa"
+        "Sousse"
       ],
       "correct": [
         0
@@ -3532,7 +3532,7 @@
         "Sousse",
         "Fez",
         "Oran",
-        "Jemaa el-Fnaa"
+        "Sfax"
       ],
       "correct": [
         0
@@ -3776,57 +3776,6 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "north_grow_ouarzazate",
-      "region": "north",
-      "country": "Morocco",
-      "category": "GEOGRAPHY",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Which city is the capital of a province in the Draa-Tafilalet region of south-central Morocco?",
-      "options": [
-        "Ouarzazate",
-        "Tunis",
-        "Fez",
-        "Oran"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Ouarzazate is a provincial capital in the Draa-Tafilalet region of south-central Morocco.",
-      "sources": [
-        {
-          "title": "Ouarzazate",
-          "url": "https://en.wikipedia.org/wiki/Ouarzazate",
-          "claim": "",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Ouarzazate Ouarzazate (; Standard Moroccan Tamazight: ⵡⴰⵔⵣⴰⵣⴰⵜ Arabic: ورزازات, romanized: Warzāzāt, IPA: [warzaːˈzaːt]) is a city and capital of Ouarzazate Province in the region of Drâa-Tafilalet, south-central Morocco.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "north_grow_sahara",
       "region": "north",
       "country": "North Africa",
@@ -3884,12 +3833,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which mountain range in the Maghreb stretches through Morocco, Algeria, and Tunisia?",
+      "prompt": "Which mountain range stretches through Morocco, Algeria, and Tunisia?",
       "options": [
         "Atlas",
-        "Siwa",
-        "Nile",
-        "Qattara"
+        "Ahaggar",
+        "Tibesti",
+        "Rif"
       ],
       "correct": [
         0
@@ -3938,9 +3887,9 @@
       "prompt": "Which major river flows north through northeast Africa and empties into the Mediterranean Sea?",
       "options": [
         "Nile",
-        "Siwa",
-        "Sahara",
-        "Atlas"
+        "Niger",
+        "Congo River",
+        "Senegal River"
       ],
       "correct": [
         0
@@ -3990,8 +3939,8 @@
       "options": [
         "Qattara",
         "Siwa",
-        "Sahara",
-        "Atlas"
+        "Faiyum",
+        "Bahariya"
       ],
       "correct": [
         0
@@ -4394,11 +4343,11 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which Algerian rai musician, born Hadj Ibrahim, began recording as a teenager under a cheb stage name?",
+      "prompt": "Which Algerian raï star, born Hadj Ibrahim, first recorded as Cheb?",
       "options": [
         "Khaled",
-        "Raï",
         "Cheb Mami",
+        "Cheb Hasni",
         "Warda Al-Jazairia"
       ],
       "correct": [
@@ -4445,17 +4394,17 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which Algerian singer, born Mohammed Ftouki, was well known for Egyptian Arabic songs?",
+      "prompt": "Which Algerian singer, known as the Algerian Rose, was famous for Egyptian Arabic songs?",
       "options": [
         "Warda Al-Jazairia",
-        "Raï",
         "Khaled",
-        "Cheb Mami"
+        "Cheb Mami",
+        "Cheikha Rimitti"
       ],
       "correct": [
         0
       ],
-      "explanation": "Warda Al-Jazairia, born Warda Mohammed Ftouki, was an Algerian singer known for Egyptian Arabic songs.",
+      "explanation": "Warda Al-Jazairia was an Algerian singer well known for Egyptian Arabic songs.",
       "sources": [
         {
           "title": "Warda Al-Jazairia",
@@ -4496,12 +4445,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which Algerian rai singer was born Chakroun in February 1968?",
+      "prompt": "Which Algerian raï singer was born Chakroun?",
       "options": [
         "Cheb Hasni",
-        "Raï",
         "Khaled",
-        "Cheb Mami"
+        "Cheb Mami",
+        "Cheikha Rimitti"
       ],
       "correct": [
         0
@@ -4547,12 +4496,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which Algerian rai singer was born Saadia El Ghizania?",
+      "prompt": "Which Algerian raï singer was born Saadia El Ghizania?",
       "options": [
         "Cheikha Rimitti",
-        "Raï",
         "Khaled",
-        "Cheb Mami"
+        "Cheb Mami",
+        "Cheb Hasni"
       ],
       "correct": [
         0
@@ -4598,12 +4547,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which Tunisian popular music uses a darbouka and a bagpipe called a mizwad, often at weddings and parties?",
+      "prompt": "Which Tunisian popular music uses darbouka and a mizwad bagpipe, often at weddings?",
       "options": [
         "Mezwed",
         "Raï",
-        "Khaled",
-        "Cheb Mami"
+        "Gnawa",
+        "Chaabi"
       ],
       "correct": [
         0
@@ -4633,57 +4582,6 @@
         "region": "pass",
         "reasons": [],
         "evidenceQuote": "Mezwed Mezwed (Arabic: مزود) is a genre of popular traditional music based on Tunisian scale rhythms. It incorporates traditional North African drums called Darbouka and a kind of bagpipe called a mizwad with a bag made from ewe's leather.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "north_grow_esperance",
-      "region": "north",
-      "country": "Tunisia",
-      "category": "SPORT",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which Tunisian sports club was founded on 15 January 1919 in the Bab Souika neighborhood of Tunis?",
-      "options": [
-        "Espérance",
-        "Al Ahly",
-        "JS Kabylie",
-        "Wydad"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Espérance is a Tunisian sports club founded on 15 January 1919 in Bab Souika, Tunis.",
-      "sources": [
-        {
-          "title": "Espérance Sportive de Tunis",
-          "url": "https://en.wikipedia.org/wiki/Esp%C3%A9rance_Sportive_de_Tunis",
-          "claim": "Espérance is a Tunisian sports club founded on 15 January 1919 in Bab Souika, Tunis.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Espérance Sportive de Tunis Espérance Sportive de Tunis (EST, French pronunciation: [ɛs.pe.ʁɑ̃s spɔʁ.tiv də ty.nis] ) and in Arabic: الترجي الرياضي التونسي, romanized: (Attaraji ar-Riyāḍi Attūnisī ), or simply as Attaraji, is a Tunisian professional sports club founded on 15 January 1919 in the Bab Souika neighborhood of Tunis.",
         "editorial": {
           "clarity": 5,
           "fun": 5,
@@ -4745,120 +4643,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "north_grow_wydad",
-      "region": "north",
-      "country": "Morocco",
-      "category": "SPORT",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which Moroccan football club was founded on 8 May 1937?",
-      "options": [
-        "Wydad",
-        "Al Ahly",
-        "Espérance",
-        "JS Kabylie"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Wydad is a Moroccan football club founded on 8 May 1937.",
-      "sources": [
-        {
-          "title": "Wydad AC",
-          "url": "https://en.wikipedia.org/wiki/Wydad_AC",
-          "claim": "Wydad is a Moroccan football club founded on 8 May 1937.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Wydad AC is best known for its professional football team that competes in Botola Pro, the top tier of the Moroccan football league system. It was founded on 8 May 1937 by seven Moroccans belonging to the national movement for independence, led by Ihab Hajnaoui Ihab, who also created the football section of the club in June 1939.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "north_grow_raja",
-      "region": "north",
-      "country": "Morocco",
-      "category": "SPORT",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which football club from the Derb Sultan district of Casablanca was founded in March 1949?",
-      "options": [
-        "Raja",
-        "Al Ahly",
-        "Espérance",
-        "JS Kabylie"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Raja is a football club from the Derb Sultan district of Casablanca, founded in March 1949.",
-      "sources": [
-        {
-          "title": "Raja CA",
-          "url": "https://en.wikipedia.org/wiki/Raja_CA",
-          "claim": "Raja is a football club from the Derb Sultan district of Casablanca, founded in March 1949.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Raja CA Raja Club Athletic (Arabic: نادي الرجاء الرياضي), widely known as Raja Casablanca, Raja CA or simply Raja, is a football club based in Casablanca, Morocco, that competes in Botola Pro, the top flight of Moroccan football. Founded on 20 March 1949 in the district of Derb Sultan, the club has traditionally worn a green home kit since inception.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "north_grow_makhloufi",
       "region": "north",
       "country": "Algeria",
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which Algerian athlete won the 1500 metres at the 2012 Summer Olympics in London?",
+      "prompt": "Which Algerian athlete won the 1500 metres at the 2012 London Olympics?",
       "options": [
         "Taoufik Makhloufi",
-        "Achraf Hakimi",
-        "Riyad Mahrez",
-        "Ons Jabeur"
+        "Noureddine Morceli",
+        "Hassiba Boulmerka",
+        "Djamel Bouras"
       ],
       "correct": [
         0
@@ -5363,12 +5159,12 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dormant Afroasiatic language represents the most recent developments of Egyptian and was spoken from the third century AD?",
+      "prompt": "Which language is the latest stage of Egyptian and was spoken from about the third century AD?",
       "options": [
         "Coptic",
-        "Hieroglyphs",
         "Hassaniya",
-        "Siwi"
+        "Siwi",
+        "Tarifit"
       ],
       "correct": [
         0
@@ -5414,12 +5210,12 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which variety of Maghrebi Arabic is spoken by Mauritanian Arabs and Sahrawis?",
+      "prompt": "Which Maghrebi Arabic variety is spoken by Mauritanian Arabs and Sahrawis?",
       "options": [
         "Hassaniya",
-        "Hieroglyphs",
-        "Coptic",
-        "Siwi"
+        "Darija",
+        "Egyptian Arabic",
+        "Libyan Arabic"
       ],
       "correct": [
         0
@@ -5465,11 +5261,11 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which Berber language is spoken in the Egyptian oases of Siwa and Gara?",
+      "prompt": "Which Berber language is spoken in Egypt’s Siwa and Gara oases?",
       "options": [
         "Siwi",
-        "Hieroglyphs",
-        "Coptic",
+        "Tarifit",
+        "Kabyle",
         "Hassaniya"
       ],
       "correct": [
@@ -5516,11 +5312,11 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which Zenati Berber language is spoken in the Rif region of northern Morocco?",
+      "prompt": "Which Zenati Berber language is spoken in the Rif of northern Morocco?",
       "options": [
         "Tarifit",
-        "Hieroglyphs",
-        "Coptic",
+        "Kabyle",
+        "Siwi",
         "Hassaniya"
       ],
       "correct": [
@@ -5567,11 +5363,11 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which Berber language is spoken primarily in Kabylia, in the north and northeast of Algeria?",
+      "prompt": "Which Berber language is spoken primarily in Kabylia in northern Algeria?",
       "options": [
         "Kabyle",
-        "Hieroglyphs",
-        "Coptic",
+        "Tarifit",
+        "Siwi",
         "Hassaniya"
       ],
       "correct": [

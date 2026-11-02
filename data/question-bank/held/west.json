@@ -11026,6 +11026,62 @@
       "holdReasons": [
         "editorial_drop"
       ]
+    },
+    {
+      "id": "west_grow_argungu",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which annual festival in Kebbi State centres on catching fish from the Sokoto River?",
+      "options": [
+        "Argungu",
+        "Homowo",
+        "Hogbetsotso",
+        "Calabar Carnival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Argungu is an annual festival in Kebbi State centred on catching fish from the Sokoto River.",
+      "sources": [
+        {
+          "title": "Argungu Fishing Festival",
+          "url": "https://en.wikipedia.org/wiki/Argungu_Fishing_Festival",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Argungu Fishing Festival The Argungu Fishing Festival or Argungu Dance Festival is an annual four-day festival fishing and cultural festival in Argungu, Kebbi State. The festival is usually a four-day cultural event which main purpose involves fishermen from different part of the country trying to catch the biggest fish from the Sokoto River.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
     }
   ]
 }

@@ -11978,6 +11978,230 @@
       "holdReasons": [
         "answer_leak"
       ]
+    },
+    {
+      "id": "north_grow_ouarzazate",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which city is the capital of a province in the Draa-Tafilalet region of south-central Morocco?",
+      "options": [
+        "Ouarzazate",
+        "Tunis",
+        "Fez",
+        "Oran"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ouarzazate is a provincial capital in the Draa-Tafilalet region of south-central Morocco.",
+      "sources": [
+        {
+          "title": "Ouarzazate",
+          "url": "https://en.wikipedia.org/wiki/Ouarzazate",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Ouarzazate Ouarzazate (; Standard Moroccan Tamazight: ⵡⴰⵔⵣⴰⵣⴰⵜ Arabic: ورزازات, romanized: Warzāzāt, IPA: [warzaːˈzaːt]) is a city and capital of Ouarzazate Province in the region of Drâa-Tafilalet, south-central Morocco.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "north_grow_esperance",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Tunisian sports club was founded on 15 January 1919 in the Bab Souika neighborhood of Tunis?",
+      "options": [
+        "Espérance",
+        "Al Ahly",
+        "JS Kabylie",
+        "Wydad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Espérance is a Tunisian sports club founded on 15 January 1919 in Bab Souika, Tunis.",
+      "sources": [
+        {
+          "title": "Espérance Sportive de Tunis",
+          "url": "https://en.wikipedia.org/wiki/Esp%C3%A9rance_Sportive_de_Tunis",
+          "claim": "Espérance is a Tunisian sports club founded on 15 January 1919 in Bab Souika, Tunis.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Espérance Sportive de Tunis Espérance Sportive de Tunis (EST, French pronunciation: [ɛs.pe.ʁɑ̃s spɔʁ.tiv də ty.nis] ) and in Arabic: الترجي الرياضي التونسي, romanized: (Attaraji ar-Riyāḍi Attūnisī ), or simply as Attaraji, is a Tunisian professional sports club founded on 15 January 1919 in the Bab Souika neighborhood of Tunis.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "north_grow_wydad",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Moroccan football club was founded on 8 May 1937?",
+      "options": [
+        "Wydad",
+        "Al Ahly",
+        "Espérance",
+        "JS Kabylie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wydad is a Moroccan football club founded on 8 May 1937.",
+      "sources": [
+        {
+          "title": "Wydad AC",
+          "url": "https://en.wikipedia.org/wiki/Wydad_AC",
+          "claim": "Wydad is a Moroccan football club founded on 8 May 1937.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Wydad AC is best known for its professional football team that competes in Botola Pro, the top tier of the Moroccan football league system. It was founded on 8 May 1937 by seven Moroccans belonging to the national movement for independence, led by Ihab Hajnaoui Ihab, who also created the football section of the club in June 1939.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "north_grow_raja",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which football club from the Derb Sultan district of Casablanca was founded in March 1949?",
+      "options": [
+        "Raja",
+        "Al Ahly",
+        "Espérance",
+        "JS Kabylie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Raja is a football club from the Derb Sultan district of Casablanca, founded in March 1949.",
+      "sources": [
+        {
+          "title": "Raja CA",
+          "url": "https://en.wikipedia.org/wiki/Raja_CA",
+          "claim": "Raja is a football club from the Derb Sultan district of Casablanca, founded in March 1949.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Raja CA Raja Club Athletic (Arabic: نادي الرجاء الرياضي), widely known as Raja Casablanca, Raja CA or simply Raja, is a football club based in Casablanca, Morocco, that competes in Botola Pro, the top flight of Moroccan football. Founded on 20 March 1949 in the district of Derb Sultan, the club has traditionally worn a green home kit since inception.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
     }
   ]
 }
