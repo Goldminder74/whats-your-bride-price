@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://whats-your-bride-price.ayo43077.chatgpt.site"),
+  metadataBase: new URL("https://brideprice.classesforculture.com"),
   title: "What’s Your Bride Price? | The Pan-African Party Game",
   description:
     "Five regions. Sixty questions. One unforgettable, entirely playful reveal.",

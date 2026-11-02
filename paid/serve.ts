@@ -307,6 +307,17 @@ async function handleMockPay(request: Request, services: PaidServices): Promise<
   return Response.redirect(new URL(`/checkout/return?order=${order.id}`, request.url), 303);
 }
 
+async function gameShell(request: Request, services: PaidServices): Promise<Response | null> {
+  if (!services.assets) return null;
+  const asset = await services.assets.fetch(new Request(new URL("/index.html", request.url), { headers: request.headers }));
+  if (!asset.ok) return null;
+  const headers = new Headers(asset.headers);
+  headers.set("content-type", "text/html; charset=utf-8");
+  headers.set("cache-control", "no-store");
+  headers.set("x-content-type-options", "nosniff");
+  return new Response(asset.body, { status: 200, headers });
+}
+
 export async function servePaid(request: Request, services: PaidServices): Promise<Response> {
   const url = new URL(request.url);
   try {
@@ -314,7 +325,9 @@ export async function servePaid(request: Request, services: PaidServices): Promi
       if (!services.assets) return json({ error: "not_found" }, 404);
       return services.assets.fetch(request);
     }
-    if (request.method === "GET" && (url.pathname === "/" || url.pathname === "")) return html(playPageHtml());
+    if (request.method === "GET" && (url.pathname === "/" || url.pathname === "")) {
+      return await gameShell(request, services) ?? html(playPageHtml());
+    }
     if (request.method === "GET" && (url.pathname === "/privacy" || url.pathname === "/terms" || url.pathname === "/refunds")) {
       return html(legalPage(url.pathname.slice(1) as "privacy" | "terms" | "refunds"));
     }
@@ -383,6 +396,8 @@ export async function servePaid(request: Request, services: PaidServices): Promi
       return html(mockCheckoutHtml(id));
     }
     if (request.method === "GET" && url.pathname === "/checkout/return") {
+      const shell = await gameShell(request, services);
+      if (shell) return shell;
       await ready(services);
       const id = url.searchParams.get("order") || "";
       if (!ORDER_ID.test(id)) throw new PaidError("order_unavailable", 404);
