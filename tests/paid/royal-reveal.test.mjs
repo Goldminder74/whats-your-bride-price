@@ -2,9 +2,10 @@ import assert from "node:assert/strict";
 import { createHmac } from "node:crypto";
 import test from "node:test";
 import { regions } from "../../app/gameData.ts";
-import { CANONICAL_ORIGIN, ROYAL_WAIVER_TEXT, ROYAL_WAIVER_VERSION, WAIVER_TEXT, WAIVER_VERSION } from "../../paid/catalog.ts";
+import { CANONICAL_ORIGIN, DEFAULT_PURCHASE_COUNTRY, ROYAL_WAIVER_TEXT, ROYAL_WAIVER_VERSION, WAIVER_TEXT, WAIVER_VERSION } from "../../paid/catalog.ts";
 import { createMockEmail } from "../../paid/email.ts";
 import { validateDisplayName } from "../../paid/nickname.ts";
+import { buildRevealRecording } from "../../paid/revealOffer.ts";
 import { createMemoryRepository } from "../../paid/repository.ts";
 import { servePaid } from "../../paid/serve.ts";
 import { royalDecreeSvg } from "../../paid/royalDecree.ts";
@@ -41,8 +42,10 @@ function services(overrides = {}) {
   };
 }
 
-function request(path, init = {}) {
-  return new Request(`https://brideprice.classesforculture.com${path}`, init);
+function request(path, init = {}, country) {
+  const req = new Request(`https://brideprice.classesforculture.com${path}`, init);
+  if (country) Object.defineProperty(req, "cf", { value: { country } });
+  return req;
 }
 
 async function body(response) {
@@ -155,6 +158,53 @@ test("Royal Reveal consent names the pack, and decree names use the public-name 
   assert.match(terms, /I want my Royal Reveal Pack straight away/);
   assert.match(refunds, /I want my Royal Reveal Pack straight away/);
   assert.match(refunds, /removes that result's decree download/);
+});
+
+test("decree names keep Yoruba and Igbo marks, and Royal checkout matches Cowrie country rules", async () => {
+  assert.equal(DEFAULT_PURCHASE_COUNTRY, "GB");
+  for (const name of ["Adébáyọ̀ O'Neil-Smith", "Chínwẹ́", "Ọládélé"]) {
+    assert.equal(validateDisplayName(name.normalize("NFD")), name.normalize("NFC"));
+  }
+  const choices = Array.from({ length: 12 }, () => [0]);
+  const ids = Array.from({ length: 12 }, (_, index) => `west_q_${index}`);
+  assert.equal(buildRevealRecording({ royalOn: false, edition: "west", playerId, choices, questionIds: ids }), null);
+  const freePlay = buildRevealRecording({ royalOn: true, edition: "west", playerId, choices, questionIds: ids });
+  const dailyPlay = buildRevealRecording({ royalOn: true, edition: "east", playerId, choices, questionIds: ids });
+  const paidPlay = buildRevealRecording({ royalOn: true, edition: "west", playerId, choices, roundId: "ab".repeat(16), questionIds: ids });
+  assert.equal(freePlay.roundId, undefined);
+  assert.equal(dailyPlay.questionIds.length, 12);
+  assert.equal(paidPlay.roundId, "ab".repeat(16));
+
+  const pool = await loadPublished("west");
+  const questions = pool.slice(0, 12);
+  const answers = questions.map((question) => [...question.correct]);
+  const kv = memoryKv();
+  const app = services({ kv, royalRevealEnabled: true });
+  const scored = await body(await servePaid(request("/api/paid/games/complete", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ edition: "west", answers, playerId, questionIds: questions.map((question) => question.id) }),
+  }), app));
+  assert.equal(scored.score, 12);
+  assert.match(scored.id, /^[a-f0-9]{32}$/);
+  const france = await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "royal-fr" },
+    body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "FR", playerId, adult: true, waiver: true, resultId: scored.id, displayName: "Ada" }),
+  }), app);
+  assert.equal(france.status, 403);
+  const edge = await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "royal-edge-de" },
+    body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "GB", playerId, adult: true, waiver: true, resultId: scored.id, displayName: "Ada" }),
+  }, "DE"), app);
+  assert.equal(edge.status, 403);
+  const britain = await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "royal-gb-open" },
+    body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "GB", playerId, adult: true, waiver: true, resultId: scored.id, displayName: "Ada" }),
+  }), app);
+  assert.equal(britain.status, 200);
 });
 
 test("a paid result mints a private decree bundle and a refund removes it", async () => {

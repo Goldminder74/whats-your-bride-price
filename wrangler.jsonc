@@ -29,7 +29,7 @@
     "WYBP_FEATURE_OWNER_DASHBOARD": "false",
     "WYBP_FEATURE_STORY_VIDEO": "true",
     "WYBP_REVIEW_FIXTURES": "off",
-    "ROYAL_REVEAL_ENABLED": "off",
+    "ROYAL_REVEAL_ENABLED": "on",
     "EMAIL_PROVIDER": "resend",
     "EMAIL_FROM": "What's Your Bride Price? <noreply@mail.classesforculture.com>",
     "EMAIL_REPLY_TO": "team@classesforculture.com",

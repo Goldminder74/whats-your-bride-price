@@ -5,6 +5,7 @@
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type Question as PlayQuestion } from "./gameData";
+import { buildRevealRecording } from "../paid/revealOffer.ts";
 import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, finishGame, readPlayerId, recordArrival, recordServerResult, type PaidFeatures } from "./paidClient";
 import { paidCommerceEnabled, randomBankEnabled } from "./paidFlags";
 import { finishRound, playRandomRound, readSavedRound, writeSavedRound } from "../question-bank/clientRound.ts";
@@ -232,6 +233,7 @@ export default function BridePriceGame() {
   const [inviteCopied, setInviteCopied] = useState(false);
   const choiceLog = useRef<number[][]>([]);
   const roundIdRef = useRef<string | null>(null);
+  const questionsRef = useRef<PlayQuestion[]>([]);
   const audioRef = useRef<AudioContext | null>(null);
   const region = regions[regionKey];
   const activeQuestions = bankRound ?? (randomBankEnabled() ? [] : region.questions);
@@ -473,6 +475,38 @@ export default function BridePriceGame() {
     })();
   };
 
+  const ensureRevealResult = async (edition: RegionKey, choices: number[][], roundId: string | null) => {
+    const features = paidFeaturesRef.current.royalReveal ? paidFeaturesRef.current : await fetchPaidFeatures();
+    paidFeaturesRef.current = features;
+    const questionIds = questionsRef.current.map((question) => question.id).filter((id): id is string => typeof id === "string" && id.length > 0);
+    const recording = buildRevealRecording({
+      royalOn: features.royalReveal,
+      edition,
+      playerId: readPlayerId(),
+      choices,
+      roundId,
+      questionIds,
+    });
+    if (!recording) return;
+    const scored = await recordServerResult({
+      edition: recording.edition,
+      answers: recording.answers,
+      roundId: recording.roundId,
+      questionIds: recording.questionIds,
+    });
+    if (scored) setServerResultId((current) => current ?? scored);
+  };
+
+  useEffect(() => {
+    questionsRef.current = activeQuestions;
+  });
+
+  useEffect(() => {
+    if (screen !== "result" || serverResultId) return;
+    const choices = choiceLog.current.map((choice) => [...(choice ?? [])]);
+    void ensureRevealResult(regionKey, choices, roundIdRef.current);
+  }, [screen, serverResultId, regionKey]);
+
   useEffect(() => {
     if (!randomBankEnabled() || !bankRound) return;
     if (screen === "result") finishRound(regionKey);
@@ -505,6 +539,7 @@ export default function BridePriceGame() {
       const roundId = roundIdRef.current;
       const edition = regionKey;
       setScreen("result"); setDropOpen(false); playTone(720, true);
+      void ensureRevealResult(edition, choices, roundId);
       if (dailyMode.current) {
         dailyMode.current = false;
         setDailyResult(null);
@@ -540,12 +575,6 @@ export default function BridePriceGame() {
         void (async () => {
           const done = await finishGame(currentAttempt);
           if (done.showPaywall) setPaywall(true);
-          const features = paidFeaturesRef.current.royalReveal ? paidFeaturesRef.current : await fetchPaidFeatures();
-          const bankRoundReady = !randomBankEnabled() || Boolean(roundId);
-          if (features.royalReveal && bankRoundReady && choices.length === 12 && choices.every((choice) => choice.length > 0)) {
-            const scored = await recordServerResult({ edition, answers: choices, roundId: randomBankEnabled() ? roundId : null });
-            if (scored) setServerResultId(scored);
-          }
           if (!done.ok || !paidFeaturesRef.current.earnPaths) return;
           if (randomBankEnabled() && !roundId) return;
           if (choices.length !== 12 || choices.some((choice) => choice.length < 1)) return;
@@ -915,7 +944,7 @@ export default function BridePriceGame() {
               </section> : null}
               {paidFeatures.shareCards ? <div className="share-preview"><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}`} alt={`Result card, ${correctCount} of 12, ${tierTitles[tier]}`} /><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}&frame=story`} alt="Story result card" /></div> : null}
               <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>
-              {serverResultId ? <RoyalRevealOffer resultId={serverResultId} defaultName={name || "A Most Excellent Human"} /> : null}
+              {serverResultId ? <RoyalRevealOffer resultId={serverResultId} defaultName={name || "A Most Excellent Human"} edition={regionKey} score={correctCount} /> : null}
               {paidFeatures.shareCards || paidFeatures.earnPaths ? <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`${shareBlurb(correctCount)} ${challengeUrl(regionKey, correctCount, paidFeatures.earnPaths ? referralCode : null)}`)}`} target="_blank" rel="noreferrer" onClick={() => { if (paidFeatures.earnPaths) void claimShareReward(); }}>Share my result on WhatsApp ↗</a> : null}
               <button className="nominate-action" onClick={nominate}><span>＋</span><b>Nominate a friend</b><small>Sends them straight to the {region.short} edition</small><i>→</i></button>
               <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`I nominate you for the ${region.name} edition of What’s Your Bride Price? ${nominationUrl}`)}`} target="_blank" rel="noreferrer">Send nomination on WhatsApp ↗</a>

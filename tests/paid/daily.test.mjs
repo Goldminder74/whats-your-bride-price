@@ -59,7 +59,7 @@ function rightAnswers(questions) {
 test("the daily flag stays on in wrangler, and a Worker with it off does nothing", async () => {
   const config = await readFile(new URL("../../wrangler.jsonc", import.meta.url), "utf8");
   assert.match(config, /"DAILY_CHALLENGE": "on"/);
-  assert.match(config, /"ROYAL_REVEAL_ENABLED": "off"/);
+  assert.match(config, /"ROYAL_REVEAL_ENABLED": "on"/);
   assert.match(config, /"EARN_PATHS": "on"/);
   assert.match(config, /"SHARE_CARDS": "on"/);
   const kv = memoryKv();

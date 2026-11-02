@@ -235,11 +235,11 @@ Verify on the test Worker, with the flag on:
 
 ## Royal Reveal Pack
 
-`ROYAL_REVEAL_ENABLED` stays `off` in `wrangler.jsonc`. That file is the config for both `wybp-paid-test` and `wybp-live`, so a deploy does not offer the pack. `GET /api/paid/health` reports `royalReveal`. Migration `migrations/0005_paid_reveal.sql` adds `paid_reveals`. Apply it after `0004_paid_daily.sql`. Apply it before any Worker that has this code, on `wybp-paid-test` and `wybp-live`. It does not change existing balances.
+`ROYAL_REVEAL_ENABLED` is `on` in `wrangler.jsonc`, matching the live override, so a deploy keeps the pack on. `GET /api/paid/health` reports `royalReveal`. Migration `migrations/0005_paid_reveal.sql` adds `paid_reveals`. Apply it after `0004_paid_daily.sql`. Apply it before any Worker that has this code, on `wybp-paid-test` and `wybp-live`. It does not change existing balances.
 
 The pack is a £1.99 one-off for one server-scored result. Checkout needs that result id and a display name. Stripe fulfilment writes one decree row. The buyer, on the same browser profile, claims it and receives signed file URLs. A refund revokes the entitlement and those URLs stop working. The files are a 1080×1350 decree, a 1080×1920 story decree, a PDF, and a zip of those three. The PDF and the claim include three to five passages copied from the published question bank for that region.
 
-Verify on the test Worker only after setting `ROYAL_REVEAL_ENABLED=on` for that Worker and applying migration `0004`. Leave live off. Use Stripe test mode (`STRIPE_MODE=test` and a `sk_test_` key), not live keys.
+Verify on the test Worker with Stripe test mode (`STRIPE_MODE=test` and a `sk_test_` key), not live keys. Live already serves the pack. `wrangler.jsonc` keeps `ROYAL_REVEAL_ENABLED` on so the next deploy matches that.
 
 1. `POST /api/paid/games/complete` with `edition`, `playerId`, and the 12 answer arrays. The response `id` is the result.
 2. `POST /api/paid/checkout` with `productKey: "royal_reveal_v1"`, that `resultId`, `displayName`, the same `playerId`, email, a country that is not blocked, and `adult: true`. Open the returned Checkout URL and pay with Stripe test card `4242 4242 4242 4242`.

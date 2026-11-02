@@ -1,4 +1,5 @@
 import type { RegionKey } from "../app/gameData.ts";
+import { answersMatch } from "../app/gameLogic.ts";
 import { loadEligible } from "../question-bank/loader.ts";
 import { toPublicQuestion } from "../question-bank/present.ts";
 import { attemptRoundKey, completeStoredRound, readRound, recentKey, roundKey, type StoredRound } from "../question-bank/scoreRound.ts";
@@ -115,6 +116,45 @@ export async function handleQuestionComplete(request: Request, services: PaidSer
       });
     });
     return Response.json(await completeStoredRound(services.kv, stored, answers, services.now()));
+  }
+  const questionIds = Array.isArray(record?.questionIds) ? record.questionIds.filter((id): id is string => typeof id === "string") : [];
+  if (isEdition(record?.edition) && questionIds.length === 12 && new Set(questionIds).size === 12) {
+    if (!Array.isArray(record?.answers)) throw new PaidError("answers_incomplete", 400);
+    const answers = record.answers.map((answer) => {
+      if (!Array.isArray(answer) || answer.length < 1 || answer.length > 8) throw new PaidError("answers_invalid", 400);
+      return answer.map((choice) => {
+        if (typeof choice !== "number" || !Number.isInteger(choice) || choice < 0 || choice > 20) throw new PaidError("answers_invalid", 400);
+        return choice;
+      });
+    });
+    if (answers.length !== 12) throw new PaidError("answers_incomplete", 400);
+    const pool = await loadEligible(record.edition);
+    const byId = new Map(pool.map((question) => [question.id, question]));
+    const questions = questionIds.map((id) => byId.get(id));
+    if (questions.some((question) => !question)) throw new PaidError("round_not_found", 404);
+    const explanations = questions.map((question, index) => ({
+      index,
+      correct: answersMatch(answers[index], question?.correct ?? []),
+      explanation: question?.explanation ?? "",
+    }));
+    const score = explanations.filter((item) => item.correct).length;
+    const id = [...crypto.getRandomValues(new Uint8Array(16))].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+    const player = typeof record.playerId === "string" && PLAYER_ID.test(record.playerId) ? record.playerId : null;
+    await services.kv.put(`result:${id}`, JSON.stringify({
+      edition: record.edition,
+      score,
+      total: 12,
+      player,
+      at: services.now(),
+    }));
+    return Response.json({
+      id,
+      edition: record.edition,
+      editionName: record.edition,
+      score,
+      total: 12,
+      explanations,
+    });
   }
   return Response.json(await completeGame(services.kv, body, services.now()));
 }

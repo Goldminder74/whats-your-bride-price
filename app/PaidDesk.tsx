@@ -3,6 +3,7 @@
 /* eslint-disable react-hooks/set-state-in-effect -- the desk loads access and a return order once */
 
 import { FormEvent, useEffect, useId, useState } from "react";
+import { DEFAULT_PURCHASE_COUNTRY } from "../paid/catalog.ts";
 import { fetchWallet, readPlayerId } from "./paidClient";
 import { RoyalRevealDownloads } from "./RoyalReveal";
 
@@ -40,7 +41,7 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
   const [catalog, setCatalog] = useState<Catalog | null>(null);
   const [productKey, setProductKey] = useState("");
   const [email, setEmail] = useState("");
-  const [country, setCountry] = useState("GB");
+  const [country, setCountry] = useState(DEFAULT_PURCHASE_COUNTRY);
   const [adult, setAdult] = useState(false);
   const [waiver, setWaiver] = useState(false);
   const [status, setStatus] = useState("");

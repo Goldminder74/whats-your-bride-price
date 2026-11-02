@@ -64,7 +64,7 @@ export async function fetchPaidFeatures(): Promise<PaidFeatures> {
   }
 }
 
-export async function recordServerResult(input: { edition: string; answers: number[][]; roundId?: string | null }): Promise<string | null> {
+export async function recordServerResult(input: { edition: string; answers: number[][]; roundId?: string | null; questionIds?: string[] }): Promise<string | null> {
   const response = await fetch("/api/paid/games/complete", {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -73,6 +73,7 @@ export async function recordServerResult(input: { edition: string; answers: numb
       answers: input.answers,
       playerId: readPlayerId(),
       roundId: input.roundId || undefined,
+      questionIds: input.questionIds && input.questionIds.length === 12 ? input.questionIds : undefined,
     }),
   });
   if (!response.ok) return null;
