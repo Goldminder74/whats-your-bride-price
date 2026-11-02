@@ -6,6 +6,7 @@ import { CANONICAL_ORIGIN } from "../../paid/catalog.ts";
 import { createMockEmail } from "../../paid/email.ts";
 import { createMemoryRepository } from "../../paid/repository.ts";
 import { servePaid } from "../../paid/serve.ts";
+import { royalDecreeSvg } from "../../paid/royalDecree.ts";
 import { pngSize } from "../../paid/shareCardPng.ts";
 import { loadPublished } from "../../question-bank/loader.ts";
 
@@ -49,6 +50,18 @@ async function body(response) {
 test("Royal Reveal stays hidden and terms still say it is not offered", async () => {
   const app = services();
   const catalog = await body(await servePaid(request("/api/paid/catalog"), app));
+  const decree = royalDecreeSvg({
+    edition: "west",
+    score: 9,
+    displayName: "Ayo Ayeni",
+    certificate: "RR-TEST0001",
+    issuedAt: now,
+    artwork: "data:image/jpeg;base64,AAAA",
+  });
+  assert.match(decree, /data:image\/jpeg;base64,AAAA/);
+  assert.match(decree, /Issued by Classes for Culture/);
+  assert.match(decree, /A playful culture score\. Not a measure of a person\./);
+  assert.match(decree, /ellipse/);
   assert.equal(catalog.royalReveal, false);
   assert.equal(catalog.products.some((product) => product.kind === "royal_reveal"), false);
   const terms = await (await servePaid(request("/terms"), app)).text();

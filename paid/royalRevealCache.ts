@@ -19,11 +19,11 @@ function base64ToBytes(value: string): Uint8Array {
 }
 
 export function revealCacheKey(orderId: string, file: RevealFile): string {
-  return `royal-file:v1:${orderId}:${file}`;
+  return `royal-file:v2:${orderId}:${file}`;
 }
 
 export function revealCacheRequest(orderId: string, file: RevealFile): Request {
-  return new Request(`https://royal-reveal.wybp/v1/${orderId}/${file}`);
+  return new Request(`https://royal-reveal.wybp/v2/${orderId}/${file}`);
 }
 
 async function edgeCache(): Promise<Cache | null> {

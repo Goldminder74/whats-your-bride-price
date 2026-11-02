@@ -79,7 +79,16 @@ async function renderFile(services: RevealServices, reveal: RoyalRevealRecord, f
   if (facts.length < 3) throw new PaidError("reveal_unavailable", 503);
   let bytes: Uint8Array;
   if (file === "pdf") {
-    bytes = royalDecreePdf({ displayName: reveal.displayName, edition, score: reveal.score, certificate: reveal.certificate, facts });
+    const card = await renderFile(services, reveal, "card");
+    bytes = royalDecreePdf({
+      displayName: reveal.displayName,
+      edition,
+      score: reveal.score,
+      certificate: reveal.certificate,
+      facts,
+      decreePng: card.bytes,
+      issuedAt: reveal.createdAt,
+    });
   } else if (file === "zip") {
     const card = await renderFile(services, reveal, "card");
     const story = await renderFile(services, reveal, "story");
@@ -97,6 +106,7 @@ async function renderFile(services: RevealServices, reveal: RoyalRevealRecord, f
       certificate: reveal.certificate,
       frame: file === "story" ? "story" : "card",
       artwork: await artwork(services, edition),
+      issuedAt: reveal.createdAt,
     });
     bytes = await renderShareCardPng(svg);
   }

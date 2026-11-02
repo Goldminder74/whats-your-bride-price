@@ -1,3 +1,4 @@
+import { inflateSync, deflateSync } from "node:zlib";
 import { regions, type RegionKey } from "../app/gameData.ts";
 import { loadPublished } from "../question-bank/loader.ts";
 import type { BankQuestion } from "../question-bank/types.ts";
@@ -26,7 +27,15 @@ export type DecreeInput = {
   certificate: string;
   frame?: ShareFrame;
   artwork?: string | null;
+  issuedAt?: number;
 };
+
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+export function issueDateLabel(at: number): string {
+  const date = new Date(at);
+  return `${date.getUTCDate()} ${MONTHS[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+}
 
 function xml(value: string): string {
   return value.replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&apos;" })[char] ?? char);
@@ -96,7 +105,54 @@ export function tierExplanation(input: { displayName: string; edition: RegionKey
   return `${input.displayName}, this Royal Decree records your ${region} edition result. You scored ${input.score} out of 12. That band is ${tier.title}, a playful bride price of ${tier.cowries} cowries. The score is a culture quiz result. It is not a measure of a person, and it is not a wedding custom. The ${input.factCount} notes below are quoted from the published ${region} question bank. Each note is the source passage for a checked question. Nothing here is added beyond that passage.`;
 }
 
-/** Certificate card. Same poster sizes as the share card, with the buyer's decree instead of a public challenge. */
+function tierLines(title: string): [string, string] {
+  const words = title.toUpperCase().split(" ");
+  if (words.length < 2) return [words[0] ?? "", ""];
+  return [words.slice(0, -1).join(" "), words.at(-1) ?? ""];
+}
+
+function cowrieGlyph(x: number, y: number, tilt: number, scale = 1): string {
+  return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${tilt.toFixed(1)}) scale(${scale})">
+    <ellipse cx="0" cy="0" rx="34" ry="20" fill="#f0a11a"/>
+    <ellipse cx="0" cy="1" rx="20" ry="11" fill="#fff6d8"/>
+    <path d="M-12 3 Q0 16 12 3" fill="none" stroke="#7a3e12" stroke-width="3.2" stroke-linecap="round"/>
+  </g>`;
+}
+
+/** Cowries along a crown arc, richer than the free card's straight row. */
+function cowrieArc(centerY: number, radius: number, count: number, scale = 1): string {
+  const span = 1.05;
+  return Array.from({ length: count }, (_, index) => {
+    const t = -span / 2 + (span * index) / (count - 1);
+    const x = 540 + Math.sin(t) * radius;
+    const y = centerY + radius - Math.cos(t) * radius;
+    return cowrieGlyph(x, y, t * 46, scale);
+  }).join("");
+}
+
+function cornerFlourish(x: number, y: number, sx: number, sy: number): string {
+  return `<g transform="translate(${x} ${y}) scale(${sx} ${sy})" fill="none" stroke="#f0a11a" stroke-linecap="round">
+    <path d="M0 36 L0 8 Q0 0 8 0 L36 0" stroke-width="5"/>
+    <path d="M0 22 L0 12 Q0 8 6 8 L22 0" stroke-width="1.6" opacity="0.85"/>
+    <circle cx="16" cy="16" r="3.2" fill="#f0a11a" stroke="none"/>
+    <path d="M10 4 Q18 10 12 18" stroke-width="1.4"/>
+  </g>`;
+}
+
+function waxSeal(cx: number, cy: number, radius: number, score: number): string {
+  const scoreSize = Math.round(radius * 0.48);
+  return `<g>
+    <circle cx="${cx}" cy="${cy + 6}" r="${radius}" fill="#6a3a12" opacity="0.45"/>
+    <circle cx="${cx}" cy="${cy}" r="${radius}" fill="#c47812" stroke="#f0a11a" stroke-width="8"/>
+    <circle cx="${cx}" cy="${cy}" r="${radius - 16}" fill="#8a3d10" stroke="#fff6d8" stroke-width="2"/>
+    <circle cx="${cx}" cy="${cy}" r="${radius - 28}" fill="#5c240c"/>
+    <path d="M${cx - 22} ${cy - Math.round(radius * 0.58)} l7 10 5-8 5 12 5-12 5 8 7-10 -5 16 h-24 z" fill="#f0a11a"/>
+    <text x="${cx}" y="${cy + Math.round(radius * 0.28)}" fill="#fff6d8" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${scoreSize}" text-anchor="middle">${score}</text>
+    <text x="${cx}" y="${cy + Math.round(radius * 0.5)}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="15" letter-spacing="3" text-anchor="middle">OF 12</text>
+  </g>`;
+}
+
+/** Paid decree. Uses the same regional artwork, grain, and cowries as the free share card, with a seal and certificate. */
 export function royalDecreeSvg(input: DecreeInput): string {
   const frame = input.frame === "story" ? "story" : "card";
   const width = SHARE_CARD_WIDTH;
@@ -105,45 +161,62 @@ export function royalDecreeSvg(input: DecreeInput): string {
   const region = regions[input.edition];
   const [base, accent, dark] = region.palette;
   const tier = resultTier(input.score);
-  const nameSize = input.displayName.length > 18 ? 54 : 72;
+  const [lineA, lineB] = tierLines(tier.title);
+  const nameSize = input.displayName.length > 22 ? 46 : input.displayName.length > 16 ? 58 : 72;
+  const tierSize = lineA.length > 12 ? (story ? 78 : 68) : (story ? 96 : 84);
+  const issued = issueDateLabel(input.issuedAt ?? Date.now());
   const art = input.artwork
-    ? `<image href="${xml(input.artwork)}" x="0" y="0" width="${width}" height="${height}" preserveAspectRatio="xMidYMid slice" opacity="0.55"/>`
+    ? `<image href="${xml(input.artwork)}" x="0" y="0" width="${width}" height="${height}" preserveAspectRatio="xMidYMid slice" opacity="0.88"/>`
     : "";
-  const titleY = story ? 430 : 280;
-  const nameY = story ? 620 : 430;
-  const tierY = story ? 760 : 540;
-  const priceY = story ? 900 : 640;
-  const sealY = story ? 1240 : 860;
-  const certY = story ? 1560 : 1080;
-  const noteY = story ? 1700 : 1180;
-  const footY = story ? 1820 : 1270;
+  const y = story
+    ? { arc: 210, kicker: 360, edition: 408, name: 520, tier: 680, price: 900, seal: 1160, cert: 1408, date: 1456, note: 1660, sign: 1768, byline: 1824 }
+    : { arc: 132, kicker: 248, edition: 286, name: 372, tier: 490, price: 668, seal: 860, cert: 1048, date: 1090, note: 1168, sign: 1236, byline: 1284 };
+  const sealR = story ? 128 : 96;
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
   <defs>
+    <pattern id="grain" width="46" height="46" patternUnits="userSpaceOnUse" patternTransform="rotate(32)">
+      <line x1="0" y1="0" x2="0" y2="46" stroke="#f0a11a" stroke-width="1.6" opacity="0.28"/>
+    </pattern>
+    <radialGradient id="vignette" cx="50%" cy="42%" r="68%">
+      <stop offset="0" stop-color="${dark}" stop-opacity="0.18"/>
+      <stop offset="0.62" stop-color="${dark}" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#070403" stop-opacity="0.92"/>
+    </radialGradient>
     <linearGradient id="veil" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="${base}" stop-opacity="0.2"/>
-      <stop offset="0.45" stop-color="${dark}" stop-opacity="0.78"/>
-      <stop offset="1" stop-color="#120a07" stop-opacity="0.96"/>
+      <stop offset="0" stop-color="${base}" stop-opacity="0.08"/>
+      <stop offset="0.34" stop-color="${dark}" stop-opacity="0.42"/>
+      <stop offset="0.7" stop-color="#120a07" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="#070403" stop-opacity="0.94"/>
     </linearGradient>
   </defs>
   <rect width="${width}" height="${height}" fill="${dark}"/>
   ${art}
+  <rect width="${width}" height="${height}" fill="url(#vignette)"/>
   <rect width="${width}" height="${height}" fill="url(#veil)"/>
-  <rect x="36" y="36" width="${width - 72}" height="${height - 72}" fill="none" stroke="#f0a11a" stroke-width="8"/>
-  <rect x="54" y="54" width="${width - 108}" height="${height - 108}" fill="none" stroke="${accent}" stroke-width="2"/>
-  <text x="540" y="${story ? 180 : 140}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="28" letter-spacing="8" text-anchor="middle">ROYAL DECREE</text>
-  <text x="540" y="${story ? 230 : 184}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="20" letter-spacing="4" text-anchor="middle">${xml(region.name.toUpperCase())} EDITION</text>
-  <text x="540" y="${titleY}" fill="#fff6d8" font-family="Anton, Impact, Arial Black, sans-serif" font-size="22" letter-spacing="3" text-anchor="middle">THIS DECREE NAMES</text>
-  <text x="540" y="${nameY}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${nameSize}" text-anchor="middle">${xml(input.displayName.toUpperCase())}</text>
-  <text x="540" y="${tierY}" fill="#fff6d8" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${story ? 64 : 52}" text-anchor="middle">${xml(tier.title.toUpperCase())}</text>
-  <rect x="210" y="${priceY}" width="660" height="${story ? 120 : 100}" rx="16" fill="#f0a11a"/>
-  <text x="540" y="${priceY + (story ? 78 : 66)}" fill="#1d120b" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${story ? 42 : 36}" text-anchor="middle">BRIDE PRICE ${tier.cowries} COWRIES</text>
-  <circle cx="540" cy="${sealY}" r="${story ? 130 : 100}" fill="#1a0e09" stroke="#f0a11a" stroke-width="12"/>
-  <text x="540" y="${sealY + (story ? 18 : 14)}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${story ? 72 : 58}" text-anchor="middle">${input.score}</text>
-  <text x="540" y="${sealY + (story ? 58 : 48)}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="18" letter-spacing="3" text-anchor="middle">OUT OF 12</text>
-  <text x="540" y="${certY}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="28" letter-spacing="3" text-anchor="middle">CERTIFICATE ${xml(input.certificate)}</text>
-  <text x="540" y="${noteY}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="20" text-anchor="middle">A PLAYFUL CULTURE SCORE. NOT A MEASURE OF A PERSON.</text>
-  <text x="540" y="${footY}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="18" letter-spacing="2" text-anchor="middle">WHAT'S YOUR BRIDE PRICE?</text>
+  <rect width="${width}" height="${height}" fill="url(#grain)"/>
+  <rect x="26" y="26" width="${width - 52}" height="${height - 52}" fill="none" stroke="#f0a11a" stroke-width="7"/>
+  <rect x="42" y="42" width="${width - 84}" height="${height - 84}" fill="none" stroke="#fff6d8" stroke-width="1.4" opacity="0.8"/>
+  <rect x="50" y="50" width="${width - 100}" height="${height - 100}" fill="none" stroke="${accent}" stroke-width="1"/>
+  ${cornerFlourish(58, 58, 1, 1)}
+  ${cornerFlourish(width - 58, 58, -1, 1)}
+  ${cornerFlourish(58, height - 58, 1, -1)}
+  ${cornerFlourish(width - 58, height - 58, -1, -1)}
+  ${cowrieArc(y.arc, story ? 520 : 460, 7, story ? 1.05 : 0.92)}
+  <text x="540" y="${y.kicker}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${story ? 34 : 28}" letter-spacing="10" text-anchor="middle">ROYAL DECREE</text>
+  <text x="540" y="${y.edition}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="20" letter-spacing="6" text-anchor="middle">${xml(region.name.toUpperCase())} EDITION</text>
+  <text x="540" y="${y.name}" fill="#fff6d8" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${nameSize}" letter-spacing="2" text-anchor="middle">${xml(input.displayName)}</text>
+  <text x="540" y="${y.tier}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${tierSize}" text-anchor="middle">${xml(lineA)}</text>
+  <text x="540" y="${y.tier + tierSize - 8}" fill="#fff6d8" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${tierSize + 8}" text-anchor="middle">${xml(lineB)}</text>
+  <rect x="250" y="${y.price}" width="580" height="${story ? 108 : 92}" rx="8" fill="#f0a11a"/>
+  <text x="540" y="${y.price + (story ? 40 : 34)}" fill="#1d120b" font-family="Anton, Impact, Arial Black, sans-serif" font-size="16" letter-spacing="5" text-anchor="middle">BRIDE PRICE</text>
+  <text x="540" y="${y.price + (story ? 86 : 74)}" fill="#1d120b" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${story ? 42 : 36}" text-anchor="middle">${tier.cowries} COWRIES</text>
+  ${waxSeal(540, y.seal, sealR, input.score)}
+  <text x="540" y="${y.cert}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="24" letter-spacing="3" text-anchor="middle">CERTIFICATE ${xml(input.certificate)}</text>
+  <text x="540" y="${y.date}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="18" letter-spacing="2" text-anchor="middle">ISSUED ${xml(issued.toUpperCase())}</text>
+  <text x="540" y="${y.note}" fill="#fff6d8" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${story ? 20 : 18}" text-anchor="middle">A playful culture score. Not a measure of a person.</text>
+  <line x1="340" y1="${y.sign}" x2="740" y2="${y.sign}" stroke="#f0a11a" stroke-width="1.4"/>
+  <text x="540" y="${y.byline}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="16" letter-spacing="1.5" text-anchor="middle">Issued by Classes for Culture</text>
 </svg>`;
 }
 
@@ -168,75 +241,182 @@ function wrapLine(value: string, width: number): string[] {
   return lines.length ? lines : [""];
 }
 
-/** Text PDF of the decree and the quoted bank notes. Built-in Helvetica, no external font. */
+function latin1(value: string): Uint8Array {
+  const bytes = new Uint8Array(value.length);
+  for (let index = 0; index < value.length; index += 1) bytes[index] = value.charCodeAt(index) & 255;
+  return bytes;
+}
+
+function pngRgb(png: Uint8Array): { width: number; height: number; rgb: Uint8Array } {
+  let offset = 8;
+  let width = 0;
+  let height = 0;
+  let colorType = 2;
+  const parts: Uint8Array[] = [];
+  while (offset + 8 < png.length) {
+    const view = new DataView(png.buffer, png.byteOffset + offset, 8);
+    const length = view.getUint32(0);
+    const type = String.fromCharCode(png[offset + 4], png[offset + 5], png[offset + 6], png[offset + 7]);
+    const data = png.subarray(offset + 8, offset + 8 + length);
+    if (type === "IHDR") {
+      width = new DataView(data.buffer, data.byteOffset, 8).getUint32(0);
+      height = new DataView(data.buffer, data.byteOffset, 8).getUint32(4);
+      colorType = data[9];
+    } else if (type === "IDAT") {
+      parts.push(data);
+    } else if (type === "IEND") break;
+    offset += 12 + length;
+  }
+  const packed = new Uint8Array(parts.reduce((sum, part) => sum + part.length, 0));
+  let cursor = 0;
+  for (const part of parts) {
+    packed.set(part, cursor);
+    cursor += part.length;
+  }
+  const channels = colorType === 6 ? 4 : 3;
+  const inflated = inflateSync(packed);
+  const stride = width * channels;
+  const raw = new Uint8Array(height * stride);
+  let src = 0;
+  for (let y = 0; y < height; y += 1) {
+    const filter = inflated[src];
+    src += 1;
+    const row = y * stride;
+    for (let index = 0; index < stride; index += 1) {
+      const left = index >= channels ? raw[row + index - channels] : 0;
+      const up = y > 0 ? raw[row - stride + index] : 0;
+      const upLeft = y > 0 && index >= channels ? raw[row - stride + index - channels] : 0;
+      const value = inflated[src];
+      src += 1;
+      let next = value;
+      if (filter === 1) next = value + left;
+      else if (filter === 2) next = value + up;
+      else if (filter === 3) next = value + Math.floor((left + up) / 2);
+      else if (filter === 4) {
+        const estimate = left + up - upLeft;
+        const pa = Math.abs(estimate - left);
+        const pb = Math.abs(estimate - up);
+        const pc = Math.abs(estimate - upLeft);
+        const predicted = pa <= pb && pa <= pc ? left : pb <= pc ? up : upLeft;
+        next = value + predicted;
+      }
+      raw[row + index] = next & 255;
+    }
+  }
+  if (channels === 3) return { width, height, rgb: raw };
+  const rgb = new Uint8Array(width * height * 3);
+  for (let pixel = 0; pixel < width * height; pixel += 1) {
+    rgb[pixel * 3] = raw[pixel * 4];
+    rgb[pixel * 3 + 1] = raw[pixel * 4 + 1];
+    rgb[pixel * 3 + 2] = raw[pixel * 4 + 2];
+  }
+  return { width, height, rgb };
+}
+
+function pdfText(font: "F1" | "F2", size: number, x: number, y: number, text: string, color = "0.11 0.07 0.04"): string {
+  return `${color} rg BT /${font} ${size} Tf 1 0 0 1 ${x} ${y} Tm (${pdfEscape(text)}) Tj ET`;
+}
+
+/** Page 1 is the decree image. Page 2 is the tier note and the quoted bank facts. */
 export function royalDecreePdf(input: {
   displayName: string;
   edition: RegionKey;
   score: number;
   certificate: string;
   facts: readonly RoyalFact[];
+  decreePng: Uint8Array;
+  issuedAt?: number;
 }): Uint8Array {
   const tier = resultTier(input.score);
   const region = regions[input.edition].name;
-  const pages: string[][] = [];
-  const intro = wrapLine(tierExplanation({
+  const issued = issueDateLabel(input.issuedAt ?? Date.now());
+  const image = pngRgb(input.decreePng);
+  const imageBytes = deflateSync(image.rgb);
+  const imageWidth = 540;
+  const imageHeight = Math.round(imageWidth * (image.height / image.width));
+  const imageX = Math.round((612 - imageWidth) / 2);
+  const imageY = Math.round((792 - imageHeight) / 2);
+  const cover = [
+    "0.07 0.04 0.02 rg",
+    "0 0 612 792 re f",
+    "0.94 0.63 0.10 RG",
+    "2.2 w",
+    "24 24 564 744 re S",
+    "0.6 w",
+    "32 32 548 728 re S",
+    "q",
+    `${imageWidth} 0 0 ${imageHeight} ${imageX} ${imageY} cm`,
+    "/Im1 Do",
+    "Q",
+  ].join("\n");
+  const notes: string[] = [];
+  let cursorY = 742;
+  const write = (line: string, size: number, font: "F1" | "F2", gap: number, color?: string) => {
+    notes.push(pdfText(font, size, 54, cursorY, line, color));
+    cursorY -= gap;
+  };
+  write("ROYAL DECREE", 22, "F2", 28, "0.54 0.32 0.07");
+  write(input.displayName, 16, "F2", 20);
+  write(`${tier.title}  ·  ${tier.cowries} cowries  ·  ${input.score} of 12`, 12, "F1", 16);
+  write(`${region} edition  ·  ${input.certificate}  ·  ${issued}`, 11, "F1", 22, "0.35 0.25 0.16");
+  for (const line of wrapLine(tierExplanation({
     displayName: input.displayName,
     edition: input.edition,
     score: input.score,
     factCount: input.facts.length,
-  }), 86);
-  pages.push([
-    "ROYAL DECREE",
-    `${region} edition`,
-    input.displayName,
-    tier.title,
-    `Bride price: ${tier.cowries} cowries`,
-    `Score: ${input.score} out of 12`,
-    `Certificate ${input.certificate}`,
-    "",
-    ...intro,
-  ]);
-  const factLines: string[] = ["QUOTED NOTES FROM THE PUBLISHED QUESTION BANK", ""];
+  }), 88)) {
+    write(line, 11, "F1", 15);
+  }
+  cursorY -= 8;
+  write("Quoted from the published question bank", 12, "F2", 20, "0.54 0.32 0.07");
   input.facts.forEach((fact, index) => {
-    factLines.push(`${index + 1}. ${fact.answer} (${fact.category})`);
-    factLines.push(...wrapLine(fact.quote, 86));
-    factLines.push("");
+    write(`${index + 1}. ${fact.answer}  (${fact.category})`, 12, "F2", 16);
+    for (const line of wrapLine(fact.quote, 92)) write(line, 10, "F1", 13, "0.2 0.14 0.1");
+    cursorY -= 6;
   });
-  for (let index = 0; index < factLines.length; index += 42) pages.push(factLines.slice(index, index + 42));
-  return buildPdf(pages);
-}
-
-function buildPdf(pages: string[][]): Uint8Array {
-  const objects: string[] = [];
-  const pageIds: number[] = [];
-  let next = 3;
-  const fontId = 3 + pages.length * 2;
-  for (const lines of pages) {
-    const contentId = next;
-    const pageId = next + 1;
-    next += 2;
-    pageIds.push(pageId);
-    const commands = ["BT", "/F1 12 Tf", "54 760 Td", "16 TL"];
-    for (const line of lines.slice(0, 44)) commands.push(`(${pdfEscape(line)}) Tj`, "T*");
-    commands.push("ET");
-    const stream = commands.join("\n");
-    objects[contentId] = `<< /Length ${stream.length} >>\nstream\n${stream}\nendstream`;
-    objects[pageId] = `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents ${contentId} 0 R /Resources << /Font << /F1 ${fontId} 0 R >> >> >>`;
+  const noteStream = notes.join("\n");
+  const imageId = 5;
+  const coverId = 6;
+  const noteId = 7;
+  const coverPageId = 3;
+  const notePageId = 4;
+  const fontId = 8;
+  const boldId = 9;
+  const catalog = "1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n";
+  const pages = `2 0 obj\n<< /Type /Pages /Count 2 /Kids [3 0 R 4 0 R] >>\nendobj\n`;
+  const coverPage = `3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents ${coverId} 0 R /Resources << /XObject << /Im1 ${imageId} 0 R >> >> >>\nendobj\n`;
+  const notePage = `4 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents ${noteId} 0 R /Resources << /Font << /F1 ${fontId} 0 R /F2 ${boldId} 0 R >> >> >>\nendobj\n`;
+  const imageDict = `5 0 obj\n<< /Type /XObject /Subtype /Image /Width ${image.width} /Height ${image.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /FlateDecode /Length ${imageBytes.length} >>\nstream\n`;
+  const coverDict = `6 0 obj\n<< /Length ${latin1(cover).length} >>\nstream\n${cover}\nendstream\nendobj\n`;
+  const noteDict = `7 0 obj\n<< /Length ${latin1(noteStream).length} >>\nstream\n${noteStream}\nendstream\nendobj\n`;
+  const fonts = "8 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n9 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>\nendobj\n";
+  const chunks: Uint8Array[] = [latin1("%PDF-1.4\n")];
+  const offsets = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  const add = (id: number, bytes: Uint8Array) => {
+    offsets[id] = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
+    chunks.push(latin1(`${id} 0 obj\n`), bytes, id === imageId ? latin1("\nendstream\nendobj\n") : latin1(""));
+  };
+  add(1, latin1(catalog.replace(/^1 0 obj\n/, "")));
+  add(2, latin1(pages.replace(/^2 0 obj\n/, "")));
+  add(coverPageId, latin1(coverPage.replace(/^3 0 obj\n/, "")));
+  add(notePageId, latin1(notePage.replace(/^4 0 obj\n/, "")));
+  offsets[imageId] = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
+  chunks.push(latin1(imageDict), imageBytes, latin1("\nendstream\nendobj\n"));
+  add(coverId, latin1(coverDict.replace(/^6 0 obj\n/, "")));
+  add(noteId, latin1(noteDict.replace(/^7 0 obj\n/, "")));
+  add(fontId, latin1(fonts.split("9 0 obj")[0].replace(/^8 0 obj\n/, "")));
+  add(boldId, latin1(`<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>\nendobj\n`));
+  const xrefAt = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
+  let xref = `xref\n0 10\n0000000000 65535 f \n`;
+  for (let id = 1; id <= 9; id += 1) xref += `${String(offsets[id]).padStart(10, "0")} 00000 n \n`;
+  chunks.push(latin1(`${xref}trailer\n<< /Size 10 /Root 1 0 R >>\nstartxref\n${xrefAt}\n%%EOF`));
+  const out = new Uint8Array(chunks.reduce((sum, chunk) => sum + chunk.length, 0));
+  let writeAt = 0;
+  for (const chunk of chunks) {
+    out.set(chunk, writeAt);
+    writeAt += chunk.length;
   }
-  objects[1] = `<< /Type /Catalog /Pages 2 0 R >>`;
-  objects[2] = `<< /Type /Pages /Count ${pageIds.length} /Kids [${pageIds.map((id) => `${id} 0 R`).join(" ")}] >>`;
-  objects[fontId] = `<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>`;
-  let body = "%PDF-1.4\n";
-  const offsets = [0];
-  for (let id = 1; id <= fontId; id += 1) {
-    offsets[id] = body.length;
-    body += `${id} 0 obj\n${objects[id]}\nendobj\n`;
-  }
-  const xref = body.length;
-  let table = `xref\n0 ${fontId + 1}\n0000000000 65535 f \n`;
-  for (let id = 1; id <= fontId; id += 1) table += `${String(offsets[id]).padStart(10, "0")} 00000 n \n`;
-  body += `${table}trailer\n<< /Size ${fontId + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`;
-  return new TextEncoder().encode(body);
+  return out;
 }
 
 const CRC_TABLE = (() => {
