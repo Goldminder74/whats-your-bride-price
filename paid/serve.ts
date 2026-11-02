@@ -23,6 +23,7 @@ import { PaidError, isPaidError } from "./errors.ts";
 import { applyStripeEvent, projectAccess } from "./fulfillment.ts";
 import { SUPPORT_EMAIL } from "./receipt.ts";
 import { editions, isEdition, type KvStore } from "./games.ts";
+import { claimReferralIfFirstGame, handlePerfect, handleReferralArrive, handleReferralGet, handleShareCard, handleShareReward } from "./earnRoute.ts";
 import { handleQuestionComplete, handleQuestionGet } from "./questionRoute.ts";
 import { legalPage, mockCheckoutHtml, playPageHtml, returnHtml } from "./pages.ts";
 import { paystackSeam } from "./paystack.ts";
@@ -65,6 +66,10 @@ export type PaidServices = Readonly<{
   waitUntil?: (promise: Promise<unknown>) => void;
   /** When true, regional rounds are drawn from the published question bank. */
   randomBank?: boolean;
+  /** Perfect-score, share, and referral Cowries. Off unless EARN_PATHS is on. */
+  earnPaths?: boolean;
+  /** WhatsApp result card. Off unless SHARE_CARDS is on. */
+  shareCards?: boolean;
 }>;
 
 const PLAYER_ID = /^[A-Za-z0-9_-]{16,64}$/;
@@ -362,7 +367,8 @@ async function handleFinish(request: Request, services: PaidServices): Promise<R
   const result = await services.repository.finishAttempt({ playerId: body.playerId, attemptId: body.attemptId, at: services.now() });
   if (!result.already) await services.repository.recordStat("game_complete", "", services.now());
   if (result.showPaywall) await services.repository.recordStat("paywall_view", "after_free", services.now());
-  return json(result);
+  const referral = await claimReferralIfFirstGame(services, body.playerId, result.wallet.completedGames, result.already);
+  return json(referral ? { ...result, referral } : result);
 }
 
 async function handleOwnerStats(request: Request, services: PaidServices): Promise<Response> {
@@ -400,6 +406,9 @@ async function serveBankChunk(request: Request, services: PaidServices): Promise
 export async function servePaid(request: Request, services: PaidServices): Promise<Response> {
   const url = new URL(request.url);
   try {
+    if (request.method === "GET" && url.pathname === "/api/paid/share-card.svg") {
+      return await handleShareCard(url, services);
+    }
     if (request.method === "GET" && isQuestionBankChunk(url.pathname)) {
       return await serveBankChunk(request, services);
     }
@@ -416,7 +425,14 @@ export async function servePaid(request: Request, services: PaidServices): Promi
       return html(legalPage(url.pathname.slice(1) as "privacy" | "terms" | "refunds"));
     }
     if (request.method === "GET" && url.pathname === "/api/paid/health") {
-      return json({ ok: true, stripeMode: services.config?.stripeMode ?? "unconfigured", canonical: CANONICAL_ORIGIN, hotPath: "kv" });
+      return json({
+        ok: true,
+        stripeMode: services.config?.stripeMode ?? "unconfigured",
+        canonical: CANONICAL_ORIGIN,
+        hotPath: "kv",
+        earnPaths: services.earnPaths === true,
+        shareCards: services.shareCards === true,
+      });
     }
     if (request.method === "GET" && url.pathname === "/api/paid/catalog") {
       return json({
@@ -437,6 +453,8 @@ export async function servePaid(request: Request, services: PaidServices): Promi
         blockedCountries: [...(services.blockedCountries ?? blockedPurchaseCountries(undefined))].sort(),
         purchasesBlocked: requestCountry(request) !== null && (services.blockedCountries ?? blockedPurchaseCountries(undefined)).has(requestCountry(request) as string),
         purchaseBlockedMessage: PURCHASES_UNAVAILABLE_MESSAGE,
+        earnPaths: services.earnPaths === true,
+        shareCards: services.shareCards === true,
       });
     }
     if (request.method === "GET" && url.pathname === "/api/paid/questions") {
@@ -479,6 +497,10 @@ export async function servePaid(request: Request, services: PaidServices): Promi
     }
     if (request.method === "POST" && url.pathname === "/api/paid/games/begin") return await handleBegin(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/games/finish") return await handleFinish(request, services);
+    if (request.method === "POST" && url.pathname === "/api/paid/earn/perfect") return await handlePerfect(request, services);
+    if (request.method === "POST" && url.pathname === "/api/paid/earn/share") return await handleShareReward(request, services);
+    if (request.method === "GET" && url.pathname === "/api/paid/referral") return await handleReferralGet(url, services);
+    if (request.method === "POST" && url.pathname === "/api/paid/referral/arrive") return await handleReferralArrive(request, services);
     if (request.method === "GET" && url.pathname === "/api/paid/owner/stats") return await handleOwnerStats(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/checkout") return await handleCheckout(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/webhook") return await handleWebhook(request, services);

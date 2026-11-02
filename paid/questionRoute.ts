@@ -1,7 +1,7 @@
 import type { RegionKey } from "../app/gameData.ts";
 import { loadEligible } from "../question-bank/loader.ts";
 import { toPublicQuestion } from "../question-bank/present.ts";
-import { completeStoredRound, readRound, recentKey, roundKey, type StoredRound } from "../question-bank/scoreRound.ts";
+import { attemptRoundKey, completeStoredRound, readRound, recentKey, roundKey, type StoredRound } from "../question-bank/scoreRound.ts";
 import { selectRound } from "../question-bank/select.ts";
 import { RECENT_AVOID, RECENT_KEEP } from "../question-bank/types.ts";
 import { PaidError } from "./errors.ts";
@@ -10,6 +10,19 @@ import type { PaidServices } from "./serve.ts";
 
 const ROUND_ID = /^[a-f0-9]{32}$/;
 const PLAYER_ID = /^[A-Za-z0-9_-]{16,64}$/;
+const ATTEMPT_ID = /^[A-Za-z0-9_-]{16,80}$/;
+
+function playableRound(stored: StoredRound) {
+  return {
+    roundId: stored.id,
+    questions: stored.questions.map((question, index) => ({
+      ...toPublicQuestion(question, index, stored.edition),
+      correct: [...question.correct],
+      explanation: question.explanation,
+      visualStart: question.visualStart,
+    })),
+  };
+}
 
 function randomBankOn(services: PaidServices): boolean {
   return services.randomBank === true;
@@ -53,6 +66,27 @@ export async function handleQuestionGet(url: URL, services: PaidServices): Promi
   }
   const playerParam = url.searchParams.get("player");
   const player = playerParam && PLAYER_ID.test(playerParam) ? playerParam : null;
+  const attemptParam = url.searchParams.get("attempt");
+  if (services.earnPaths && attemptParam) {
+    if (!ATTEMPT_ID.test(attemptParam)) throw new PaidError("attempt_invalid", 400);
+    if (!player) throw new PaidError("player_invalid", 400);
+    const wallet = await services.repository.wallet(player, services.now());
+    if (!wallet.openAttempt || wallet.openAttempt.attemptId !== attemptParam || wallet.openAttempt.edition !== edition) {
+      throw new PaidError("attempt_unavailable", 404);
+    }
+    const bound = await services.kv.get(attemptRoundKey(attemptParam));
+    if (bound && ROUND_ID.test(bound)) {
+      const stored = await readRound(services.kv, bound);
+      if (stored && stored.edition === edition && stored.player === player) return Response.json(playableRound(stored), { headers: { "cache-control": "no-store" } });
+    }
+    const pool = await loadEligible(edition);
+    const round = selectRound({ pool, region: edition, recentIds: await recentIds(services.kv, player, edition) });
+    const stored: StoredRound = { id: newId(), edition, player, questions: round.questions, createdAt: services.now(), attemptId: attemptParam };
+    await services.kv.put(roundKey(stored.id), JSON.stringify(stored));
+    await services.kv.put(attemptRoundKey(attemptParam), stored.id);
+    await remember(services.kv, player, edition, round.questions.map((question) => question.id));
+    return Response.json(playableRound(stored), { headers: { "cache-control": "no-store" } });
+  }
   const pool = await loadEligible(edition);
   const round = selectRound({ pool, region: edition, recentIds: await recentIds(services.kv, player, edition) });
   const stored: StoredRound = { id: newId(), edition, player, questions: round.questions, createdAt: services.now() };

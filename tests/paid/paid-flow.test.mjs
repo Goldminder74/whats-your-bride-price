@@ -45,6 +45,8 @@ function services(overrides = {}) {
     royalRevealEnabled: overrides.royalRevealEnabled,
     ownerStatsToken: overrides.ownerStatsToken,
     randomBank: overrides.randomBank,
+    earnPaths: overrides.earnPaths,
+    shareCards: overrides.shareCards,
   };
 }
 
@@ -61,12 +63,15 @@ async function body(response) {
 test("schema file matches the Worker bootstrap SQL", async () => {
   const legacy = await readFile(new URL("../../migrations/0001_paid_orders.sql", import.meta.url), "utf8");
   const phase = await readFile(new URL("../../migrations/0002_paid_phase0.sql", import.meta.url), "utf8");
-  assert.equal(`${legacy.trim()}\n${phase.trim()}`, paidSchemaSql.trim());
+  const earn = await readFile(new URL("../../migrations/0003_paid_earn.sql", import.meta.url), "utf8");
+  assert.equal(`${legacy.trim()}\n${phase.trim()}\n${earn.trim()}`, paidSchemaSql.trim());
   assert.match(paidSchemaSql, /paid_orders/);
   assert.match(paidSchemaSql, /paid_attempts/);
   assert.match(paidSchemaSql, /paid_stats_daily/);
+  assert.match(paidSchemaSql, /paid_earn_grants/);
   assert.match(phase, /ADD COLUMN expires_at/);
   assert.doesNotMatch(phase, /DROP TABLE|DELETE FROM paid_entitlements/i);
+  assert.doesNotMatch(earn, /DROP TABLE|DELETE FROM/i);
 });
 
 test("canonical pages use the public game origin", async () => {

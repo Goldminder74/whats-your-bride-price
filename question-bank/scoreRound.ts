@@ -11,7 +11,12 @@ export type StoredRound = {
   player: string | null;
   questions: PlayQuestion[];
   createdAt: number;
+  attemptId?: string | null;
 };
+
+export function attemptRoundKey(attemptId: string) {
+  return `attempt-round:${attemptId}`;
+}
 
 const SHARDS = 256;
 
