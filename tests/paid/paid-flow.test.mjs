@@ -9,8 +9,8 @@ import { formatMoney, purchaseReceipt, refundReceipt } from "../../paid/receipt.
 import { WAIVER_VERSION } from "../../paid/catalog.ts";
 import { paidSchemaSql } from "../../paid/schemaSql.ts";
 import { createMemoryRepository } from "../../paid/repository.ts";
-import { servePaid } from "../../paid/serve.ts";
-import { automaticTaxEnabled, checkoutSessionParams, verifyStripeSignature } from "../../paid/stripe.ts";
+import { readPaidConfig, servePaid } from "../../paid/serve.ts";
+import { automaticTaxEnabled, checkoutSessionParams, createStripeRefund, createStripeSession, verifyStripeSignature } from "../../paid/stripe.ts";
 
 const webhookSecret = "whsec_local_test_secret_value";
 const now = 1_700_000_000_000;
@@ -249,6 +249,9 @@ test("Stripe session requests keep Adaptive Pricing and leave tax off unless ask
   assert.equal(params.get("line_items[0][price_data][tax_behavior]"), null);
   assert.equal(params.get("line_items[0][price_data][currency]"), "gbp");
   assert.equal(params.get("line_items[0][price_data][unit_amount]"), "199");
+  assert.equal(params.get("consent_collection[terms_of_service]"), "required");
+  assert.match(params.get("custom_text[terms_of_service_acceptance][message]"), /\[Terms of Service\]\(https:\/\/brideprice\.classesforculture\.com\/terms\)/);
+  assert.match(params.get("custom_text[after_submit][message]"), /mailto:team@classesforculture\.com/);
   const taxed = checkoutSessionParams({ ...shared, automaticTax: true });
   assert.equal(taxed.get("automatic_tax[enabled]"), "true");
   assert.equal(taxed.get("tax_id_collection[enabled]"), "true");
@@ -649,4 +652,114 @@ test("receipt headers, currency formatting and escaping", async () => {
   assert.equal(calls[0].body.subject, purchase.subject);
   assert.match(calls[0].body.html, /buyer&lt;script&gt;@example\.com/);
   assert.equal(String(calls[0].body.html).includes("<script>"), false);
+});
+
+test("STRIPE_MODE defaults to test and live mode accepts only a matching key, session, and webhook", async () => {
+  const from = "What's Your Bride Price? <noreply@mail.classesforculture.com>";
+  const env = {
+    STRIPE_API_MODE: "test",
+    STRIPE_WEBHOOK_SECRET: webhookSecret,
+    EMAIL_FROM: from,
+    PUBLIC_APP_ORIGIN: CANONICAL_ORIGIN,
+  };
+  const testConfig = readPaidConfig({ ...env, STRIPE_SECRET_KEY: "sk_test_example" });
+  assert.equal(testConfig.stripeMode, "test");
+  assert.throws(() => readPaidConfig({ ...env, STRIPE_SECRET_KEY: "rk_live_restricted" }), (error) => error.code === "stripe_live_key_rejected");
+  assert.throws(() => readPaidConfig({ ...env, STRIPE_SECRET_KEY: "sk_live_secret" }), (error) => error.code === "stripe_live_key_rejected");
+  assert.equal(readPaidConfig({ ...env, STRIPE_MODE: "live", STRIPE_SECRET_KEY: "rk_live_restricted" }).stripeMode, "live");
+  assert.equal(readPaidConfig({ ...env, STRIPE_MODE: "live", STRIPE_SECRET_KEY: "sk_live_secret" }).stripeMode, "live");
+  assert.throws(() => readPaidConfig({ ...env, STRIPE_MODE: "live", STRIPE_SECRET_KEY: "sk_test_example" }), (error) => error.code === "stripe_test_key_rejected");
+  assert.throws(() => readPaidConfig({ ...env, STRIPE_MODE: "live", STRIPE_SECRET_KEY: "rk_test_restricted" }), (error) => error.code === "stripe_test_key_rejected");
+  assert.throws(() => readPaidConfig({ ...env, STRIPE_MODE: "live", STRIPE_API_MODE: "mock", STRIPE_SECRET_KEY: "rk_live_restricted" }), (error) => error.code === "stripe_mode_mismatch");
+
+  assert.equal((await body(await servePaid(request("/api/paid/health"), services()))).stripeMode, "mock");
+  const liveConfig = { stripeMode: "live", stripeSecretKey: "rk_live_restricted", webhookSecret, publicOrigin: CANONICAL_ORIGIN, automaticTax: false };
+  assert.equal((await body(await servePaid(request("/api/paid/health"), services({ config: liveConfig })))).stripeMode, "live");
+  const testRuntime = { stripeMode: "test", stripeSecretKey: "sk_test_example", webhookSecret, publicOrigin: CANONICAL_ORIGIN, automaticTax: false };
+  assert.equal((await body(await servePaid(request("/api/paid/health"), services({ config: testRuntime })))).stripeMode, "test");
+
+  let recorded = null;
+  const liveApp = services({
+    config: liveConfig,
+    stripeFetch: async (url, init) => {
+      recorded = { url: String(url), authorization: init.headers.authorization, body: String(init.body) };
+      return new Response(JSON.stringify({ id: "cs_live_restricted_key", url: "https://checkout.stripe.com/c/pay/cs_live_restricted_key", livemode: true }), { status: 200 });
+    },
+  });
+  const created = await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "live-rk-checkout" },
+    body: JSON.stringify({ productKey: "cowrie_5_v1", email: "buyer@example.com", country: "US", playerId: "player_live_mode_01", adult: true }),
+  }), liveApp);
+  assert.equal(created.status, 200, JSON.stringify(await created.clone().json()));
+  const checkout = await body(created);
+  assert.equal(recorded.url, "https://api.stripe.com/v1/checkout/sessions");
+  assert.equal(recorded.authorization, "Bearer rk_live_restricted");
+  assert.match(recorded.body, /consent_collection(?:%5B|\[)terms_of_service(?:%5D|\])=required/);
+  assert.match(recorded.body, /brideprice\.classesforculture\.com(?:%2F|\/)terms/);
+  assert.match(recorded.body, /mailto(?:%3A|:)team(?:%40|@)classesforculture\.com/);
+
+  async function postEvent(app, event) {
+    const raw = JSON.stringify(event);
+    const timestamp = Math.floor(now / 1000);
+    const signature = createHmac("sha256", webhookSecret).update(`${timestamp}.${raw}`).digest("hex");
+    return servePaid(request("/api/paid/webhook", {
+      method: "POST",
+      headers: { "stripe-signature": `t=${timestamp},v1=${signature}` },
+      body: raw,
+    }), app);
+  }
+
+  const testEvent = await postEvent(liveApp, {
+    id: "evt_live_rejects_test_0001",
+    type: "checkout.session.completed",
+    livemode: false,
+    data: { object: { id: "cs_test_should_not_mix", client_reference_id: checkout.orderId, payment_status: "paid", amount_total: 199, currency: "gbp", payment_intent: "pi_test_mix" } },
+  });
+  assert.equal(testEvent.status, 400);
+  assert.equal((await body(testEvent)).error, "stripe_mode_mismatch");
+
+  const liveSessionOnTest = await postEvent(services({ config: testRuntime }), {
+    id: "evt_test_rejects_live_0001",
+    type: "checkout.session.completed",
+    livemode: true,
+    data: { object: { id: "cs_live_should_not_mix", client_reference_id: checkout.orderId, payment_status: "paid", amount_total: 199, currency: "gbp", payment_intent: "pi_live_mix" } },
+  });
+  assert.equal(liveSessionOnTest.status, 400);
+  assert.equal((await body(liveSessionOnTest)).error, "stripe_live_event_rejected");
+
+  const paid = await postEvent(liveApp, {
+    id: "evt_live_paid_0001",
+    type: "checkout.session.completed",
+    livemode: true,
+    data: { object: {
+      id: "cs_live_restricted_key",
+      client_reference_id: checkout.orderId,
+      payment_status: "paid",
+      amount_total: 199,
+      currency: "gbp",
+      payment_intent: "pi_live_restricted",
+      metadata: { order_id: checkout.orderId },
+    } },
+  });
+  assert.equal(paid.status, 200);
+  assert.equal((await body(await servePaid(request(`/api/paid/orders/${checkout.orderId}`), liveApp))).state, "fulfilled");
+
+  const calls = [];
+  await createStripeRefund("rk_live_restricted", "pi_live_restricted", "live", async (url, init) => {
+    calls.push({ url: String(url), authorization: init.headers.authorization, body: String(init.body) });
+    return new Response(JSON.stringify({ id: "re_live_1", livemode: true }), { status: 200 });
+  });
+  assert.equal(calls[0].url, "https://api.stripe.com/v1/refunds");
+  assert.equal(calls[0].authorization, "Bearer rk_live_restricted");
+  assert.match(calls[0].body, /payment_intent=pi_live_restricted/);
+  await assert.rejects(createStripeRefund("sk_test_example", "pi_live_restricted", "live", async () => {
+    throw new Error("fetch should not run");
+  }), (error) => error.code === "stripe_test_key_rejected");
+  await assert.rejects(createStripeRefund("rk_live_restricted", "pi_test_restricted", "test", async () => {
+    throw new Error("fetch should not run");
+  }), (error) => error.code === "stripe_live_key_rejected");
+  await assert.rejects(createStripeSession("rk_live_restricted", new URLSearchParams(), "idem-live", "live", async () => {
+    return new Response(JSON.stringify({ id: "cs_test_wrong_mode", url: "https://checkout.stripe.com/c/pay/cs_test_wrong_mode", livemode: false }), { status: 200 });
+  }), (error) => error.code === "stripe_mode_mismatch");
 });

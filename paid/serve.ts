@@ -22,7 +22,8 @@ import { legalPage, mockCheckoutHtml, playPageHtml, returnHtml } from "./pages.t
 import { paystackSeam } from "./paystack.ts";
 import { assertSpendCount, type PaidOrder, type PaidRepository } from "./repository.ts";
 import {
-  assertStripeTestConfiguration,
+  assertStripeConfiguration,
+  assertStripeEventMode,
   automaticTaxEnabled,
   checkoutSessionParams,
   createStripeRefund,
@@ -30,10 +31,11 @@ import {
   parseStripeEvent,
   verifyStripeSignature,
   hmacSha256Hex,
+  type StripeRuntimeMode,
 } from "./stripe.ts";
 
 export type PaidConfig = Readonly<{
-  stripeMode: "mock" | "test";
+  stripeMode: StripeRuntimeMode;
   stripeSecretKey: string;
   webhookSecret: string;
   publicOrigin: string;
@@ -60,6 +62,7 @@ const IDEMPOTENCY = /^[A-Za-z0-9_-]{8,80}$/;
 const ORDER_ID = /^ord_[a-f0-9]{32}$/;
 
 export type PaidEnvConfig = {
+  STRIPE_MODE?: string;
   STRIPE_API_MODE?: string;
   STRIPE_SECRET_KEY?: string;
   STRIPE_WEBHOOK_SECRET?: string;
@@ -69,13 +72,16 @@ export type PaidEnvConfig = {
 };
 
 export function readPaidConfig(env: PaidEnvConfig): PaidConfig {
-  const mode = env.STRIPE_API_MODE || "";
+  const requested = (env.STRIPE_MODE || "test").trim().toLowerCase();
+  if (requested !== "test" && requested !== "live") throw new PaidError("stripe_not_configured", 503);
+  const apiMode = env.STRIPE_API_MODE || "";
+  if (apiMode !== "mock" && apiMode !== "test") throw new PaidError("stripe_not_configured", 503);
+  if (requested === "live" && apiMode !== "test") throw new PaidError("stripe_mode_mismatch", 503);
+  const mode: StripeRuntimeMode = requested === "live" ? "live" : apiMode;
   const secret = env.STRIPE_SECRET_KEY || "";
   const webhookSecret = env.STRIPE_WEBHOOK_SECRET || "";
-  if ((mode !== "mock" && mode !== "test") || webhookSecret.length < 16) {
-    throw new PaidError("stripe_not_configured", 503);
-  }
-  assertStripeTestConfiguration(mode, secret);
+  if (webhookSecret.length < 16) throw new PaidError("stripe_not_configured", 503);
+  assertStripeConfiguration(mode, secret);
   assertReceiptFrom(env.EMAIL_FROM || "");
   const origin = env.PUBLIC_APP_ORIGIN || CANONICAL_ORIGIN;
   let url: URL;
@@ -169,7 +175,7 @@ function publicOrder(order: PaidOrder, entitlement: { state: string; remaining: 
 
 async function handleCheckout(request: Request, services: PaidServices): Promise<Response> {
   const config = requireConfig(services);
-  assertStripeTestConfiguration(config.stripeMode, config.stripeSecretKey);
+  assertStripeConfiguration(config.stripeMode, config.stripeSecretKey);
   sameOrigin(request);
   await rateLimit(services, request);
   await ready(services);
@@ -231,7 +237,7 @@ async function handleCheckout(request: Request, services: PaidServices): Promise
   });
   const session = config.stripeMode === "mock"
     ? { id: `cs_test_mock_${order.id.slice(4)}`, url: `${requestOrigin}/checkout/mock?order=${order.id}` }
-    : await createStripeSession(config.stripeSecretKey, params, idempotencyKey, services.stripeFetch ?? fetch);
+    : await createStripeSession(config.stripeSecretKey, params, idempotencyKey, config.stripeMode === "live" ? "live" : "test", services.stripeFetch ?? fetch);
   await services.repository.attachSession(order.id, session.id, session.url);
   return json({ url: session.url, orderId: order.id, replay: false });
 }
@@ -243,8 +249,10 @@ async function handleWebhook(request: Request, services: PaidServices): Promise<
   if (raw.length > 65_536) throw new PaidError("body_too_large", 413);
   await verifyStripeSignature(raw, request.headers.get("stripe-signature"), config.webhookSecret, services.now());
   const event = parseStripeEvent(raw);
+  assertStripeEventMode(event, config.stripeMode);
   const result = await applyStripeEvent({
     event,
+    stripeMode: config.stripeMode,
     repository: services.repository,
     kv: services.kv,
     email: services.email,
@@ -253,7 +261,7 @@ async function handleWebhook(request: Request, services: PaidServices): Promise<
     blockedCountries: services.blockedCountries ?? blockedPurchaseCountries(undefined),
     refundBlockedPayment: services.refundBlockedPayment ?? (async (paymentIntentId: string) => {
       if (config.stripeMode === "mock") return;
-      await createStripeRefund(config.stripeSecretKey, paymentIntentId, services.stripeFetch ?? fetch);
+      await createStripeRefund(config.stripeSecretKey, paymentIntentId, config.stripeMode === "live" ? "live" : "test", services.stripeFetch ?? fetch);
     }),
   });
   return json({ received: true, ...result });
@@ -294,7 +302,7 @@ async function handleMockPay(request: Request, services: PaidServices): Promise<
   const timestamp = Math.floor(services.now() / 1000);
   const signature = await hmacSha256Hex(config.webhookSecret, `${timestamp}.${raw}`);
   await verifyStripeSignature(raw, `t=${timestamp},v1=${signature}`, config.webhookSecret, services.now());
-  await applyStripeEvent({ event: parseStripeEvent(raw), repository: services.repository, kv: services.kv, email: services.email, now: services.now(), replyTo: services.replyTo || SUPPORT_EMAIL });
+  await applyStripeEvent({ event: parseStripeEvent(raw), stripeMode: "mock", repository: services.repository, kv: services.kv, email: services.email, now: services.now(), replyTo: services.replyTo || SUPPORT_EMAIL });
   if (contentType.includes("application/json")) return json({ ok: true, orderId: order.id });
   return Response.redirect(new URL(`/checkout/return?order=${order.id}`, request.url), 303);
 }

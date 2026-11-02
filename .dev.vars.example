@@ -1,6 +1,7 @@
 # Copy to .dev.vars for local wrangler dev. .dev.vars is gitignored.
 # Mock mode does not call Stripe and cannot charge a card.
 STRIPE_API_MODE=mock
+STRIPE_MODE=test
 STRIPE_AUTOMATIC_TAX=off
 STRIPE_SECRET_KEY=sk_test_mock_local_only
 STRIPE_WEBHOOK_SECRET=whsec_local_test_secret_value

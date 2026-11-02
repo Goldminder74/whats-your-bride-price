@@ -15,6 +15,7 @@
   // Placeholder ids fail a real deploy until Ayo replaces them. They do not create cloud resources.
   "vars": {
     "STRIPE_API_MODE": "test",
+    "STRIPE_MODE": "test",
     "STRIPE_AUTOMATIC_TAX": "off",
     "EMAIL_PROVIDER": "resend",
     "EMAIL_FROM": "What's Your Bride Price? <noreply@mail.classesforculture.com>",

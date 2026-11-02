@@ -81,12 +81,55 @@ npx wrangler secret put STRIPE_SECRET_KEY
 npx wrangler secret put STRIPE_WEBHOOK_SECRET
 ```
 
-`STRIPE_SECRET_KEY` must be `sk_test_...` until you deliberately switch to live.
-The Worker rejects `sk_live_` and events with `livemode: true`.
+`STRIPE_SECRET_KEY` stays a test key until the live Worker is switched on purpose.
+The committed config sets `STRIPE_MODE=test`. Test mode rejects `sk_live_`,
+`rk_live_`, `cs_live_` sessions, and events with `livemode: true`.
+
+Live payments are a separate switch on the deployed Worker, not a change to
+this file's default:
+
+- Set the var `STRIPE_MODE=live`. Leave `STRIPE_API_MODE=test` so the Worker
+  calls Stripe rather than the local mock. `STRIPE_MODE=live` with
+  `STRIPE_API_MODE=mock` is rejected.
+- Put a restricted live key in the `STRIPE_SECRET_KEY` secret. The key in use
+  is `rk_live_...` with Stripe's "full access except sensitive operations"
+  preset. `sk_live_...` is also accepted. Test keys are rejected in live mode.
+- Create the live webhook endpoint at `https://<host>/api/paid/webhook` and
+  store that endpoint's signing secret. A live key with a test-mode event, or
+  a test key with a live event, is rejected even when the signature matches.
+- `GET /api/paid/health` reports `stripeMode` as `live` or `test`. Local mock
+  mode reports `mock`.
+
+The restricted key is sent as `Authorization: Bearer`. The Worker calls only:
+
+- `POST /v1/checkout/sessions` (create). The returned id must be `cs_live_` in
+  live mode and `cs_test_` in test mode.
+- `POST /v1/refunds` with `payment_intent`, for a blocked-country refund.
+
+It does not retrieve charges, PaymentIntents, sessions, or events. Those reads
+are covered by the same preset if Stripe later requires them. Webhook delivery
+uses the signing secret, not the restricted key. The Worker does not call
+sensitive resources such as raw card data, identity documents, or bank account
+numbers. `payment_intent_data[metadata]` is part of the Checkout Session
+create, which that preset allows.
+
+Checkout has no session field for a support URL. The session sets the
+supported terms agreement and a support link in custom text:
+
+- `consent_collection[terms_of_service]=required`
+- `custom_text[terms_of_service_acceptance][message]` linking to
+  `https://brideprice.classesforculture.com/terms`
+- `custom_text[after_submit][message]` linking to `team@classesforculture.com`
+
+Before the first Checkout Session, set the same terms URL in Stripe public
+details. Stripe refuses the terms checkbox when that URL is missing. Support
+email, phone, and the footer policy links are the public-details settings, not
+a session parameter.
 
 Non-secret vars already in `wrangler.jsonc`:
 
 - `STRIPE_API_MODE=test`
+- `STRIPE_MODE=test`
 - `STRIPE_AUTOMATIC_TAX=off`
 - `PUBLIC_APP_ORIGIN=https://brideprice.classesforculture.com`
 - `EMAIL_FROM=What's Your Bride Price? <noreply@mail.classesforculture.com>`
@@ -100,10 +143,9 @@ webhook does not add a second entitlement, and a test refund removes it.
 Then repeat a partial refund and a dispute in the Stripe test dashboard and
 confirm partial refunds stay in `review_required`.
 
-Do not create a live webhook or put an `sk_live_` key in the Worker. The
-current code rejects live keys and live events. A later change can allow
-`STRIPE_API_MODE=live` after this test purchase and the legal pages are
-approved.
+Do not point this branch's `wrangler.jsonc` at live. Set `STRIPE_MODE=live`,
+the `rk_live_` secret, and the live webhook secret only on the Worker that
+should take real charges, and only after the test purchase above.
 
 ## 3. Email
 
@@ -189,7 +231,8 @@ Confirm `wrangler whoami` is the intended account first. The dry run is
   or EEA billing country can be refunded.
 - Deploy only `worker/paid.ts` through `wrangler.jsonc`. The vinext quiz in
   `app/` is not the paid host.
-- Live keys are refused on purpose. A live launch is a separate change after
-  the test purchase.
+- Live charges stay off until `STRIPE_MODE=live` is set on that Worker together
+  with an `rk_live_` or `sk_live_` key and the matching live webhook secret.
+  The committed default is test, which still refuses live keys and live events.
 - Placeholder legal copy must not be treated as advice or as an approved
   consumer contract.

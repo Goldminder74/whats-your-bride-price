@@ -5,6 +5,7 @@ import type { NormalizedStripeEvent } from "./stripe.ts";
 import type { TransactionalEmail } from "./email.ts";
 import { blockedPurchaseCountries, isCountryCode } from "./catalog.ts";
 import { purchaseReceipt, refundReceipt, SUPPORT_EMAIL } from "./receipt.ts";
+import { assertStripeEventMode, type StripeRuntimeMode } from "./stripe.ts";
 
 function underpaid(order: PaidOrder, event: NormalizedStripeEvent): boolean {
   if (event.amountTotal === null || event.amountTotal <= 0 || !event.currency) return true;
@@ -39,6 +40,7 @@ async function orderForEvent(repository: PaidRepository, event: NormalizedStripe
 
 export async function applyStripeEvent(input: {
   event: NormalizedStripeEvent;
+  stripeMode: StripeRuntimeMode;
   repository: PaidRepository;
   kv: KvStore;
   email: TransactionalEmail;
@@ -50,7 +52,7 @@ export async function applyStripeEvent(input: {
   const { event, repository, kv, email, now } = input;
   const replyTo = input.replyTo || SUPPORT_EMAIL;
   const blocked = input.blockedCountries ?? blockedPurchaseCountries(undefined);
-  if (event.livemode) throw new PaidError("stripe_live_event_rejected", 400);
+  assertStripeEventMode(event, input.stripeMode);
   const claimed = await repository.claimEvent(event.id, event.type, event.orderId, now);
   if (!claimed) {
     await projectOrder(kv, repository, await orderForEvent(repository, event));

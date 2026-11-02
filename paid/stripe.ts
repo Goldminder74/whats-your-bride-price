@@ -1,9 +1,13 @@
+import { CANONICAL_ORIGIN } from "./catalog.ts";
 import { PaidError } from "./errors.ts";
+import { SUPPORT_EMAIL } from "./receipt.ts";
 
 const TOLERANCE_SECONDS = 300;
-const SESSION_ID = /^cs_test_[A-Za-z0-9_]+$/;
+const SESSION_ID = /^cs_(?:test|live)_[A-Za-z0-9_]+$/;
 const EVENT_ID = /^evt_[A-Za-z0-9_]+$/;
 const PAYMENT_INTENT_ID = /^pi_[A-Za-z0-9_]+$/;
+
+export type StripeRuntimeMode = "mock" | "test" | "live";
 
 export type CheckoutParamsInput = Readonly<{
   orderId: string;
@@ -38,14 +42,42 @@ export type NormalizedStripeEvent = Readonly<{
   fullyRefunded: boolean;
 }>;
 
-export function assertStripeTestConfiguration(mode: string, secretKey: string): void {
-  if (secretKey.startsWith("sk_live_") || secretKey.startsWith("rk_live_")) {
-    throw new PaidError("stripe_live_key_rejected", 503);
+function liveKey(secretKey: string): boolean {
+  return secretKey.startsWith("sk_live_") || secretKey.startsWith("rk_live_");
+}
+
+function testKey(secretKey: string): boolean {
+  return secretKey.startsWith("sk_test_") || secretKey.startsWith("rk_test_");
+}
+
+/**
+ * Test and mock reject live keys. Live accepts only sk_live_ or rk_live_.
+ * A restricted rk_live_ key is sent as a Bearer token, the same way as a secret key.
+ */
+export function assertStripeConfiguration(mode: StripeRuntimeMode, secretKey: string): void {
+  if (mode === "mock") {
+    if (liveKey(secretKey)) throw new PaidError("stripe_live_key_rejected", 503);
+    return;
   }
-  if (mode === "mock") return;
-  if (mode !== "test" || !secretKey.startsWith("sk_test_")) {
-    throw new PaidError("stripe_test_mode_required", 503);
+  if (mode === "test") {
+    if (liveKey(secretKey)) throw new PaidError("stripe_live_key_rejected", 503);
+    if (!secretKey.startsWith("sk_test_")) throw new PaidError("stripe_test_mode_required", 503);
+    return;
   }
+  if (mode === "live") {
+    if (testKey(secretKey)) throw new PaidError("stripe_test_key_rejected", 503);
+    if (!liveKey(secretKey)) throw new PaidError("stripe_live_key_required", 503);
+    return;
+  }
+  throw new PaidError("stripe_not_configured", 503);
+}
+
+/** Reject a signed event whose livemode or Checkout Session id does not match the Worker mode. */
+export function assertStripeEventMode(event: NormalizedStripeEvent, mode: StripeRuntimeMode): void {
+  const expectLive = mode === "live";
+  const code = expectLive ? "stripe_mode_mismatch" : "stripe_live_event_rejected";
+  if (event.livemode !== expectLive) throw new PaidError(code, 400);
+  if (event.sessionId && event.sessionId.startsWith("cs_live_") !== expectLive) throw new PaidError(code, 400);
 }
 
 /** Stripe signs `timestamp.body` with the webhook secret as a UTF-8 HMAC key. */
@@ -71,6 +103,10 @@ export function checkoutSessionParams(input: CheckoutParamsInput): URLSearchPara
   params.set("metadata[order_id]", input.orderId);
   params.set("payment_intent_data[metadata][order_id]", input.orderId);
   if (input.waiverText) params.set("custom_text[submit][message]", input.waiverText.slice(0, 1200));
+  const termsUrl = `${CANONICAL_ORIGIN}/terms`;
+  params.set("consent_collection[terms_of_service]", "required");
+  params.set("custom_text[terms_of_service_acceptance][message]", `I agree to the [Terms of Service](${termsUrl})`.slice(0, 1200));
+  params.set("custom_text[after_submit][message]", `Support: [${SUPPORT_EMAIL}](mailto:${SUPPORT_EMAIL}). [Terms](${termsUrl}).`.slice(0, 1200));
   return params;
 }
 
@@ -148,8 +184,8 @@ export function parseStripeEvent(rawBody: string): NormalizedStripeEvent {
   }
   const checkout = event.type.startsWith("checkout.session.");
   const sessionId = checkout && typeof object.id === "string" && SESSION_ID.test(object.id) ? object.id : null;
-  if (checkout && typeof object.id === "string" && object.id.startsWith("cs_live_")) {
-    throw new PaidError("stripe_live_event_rejected", 400);
+  if (checkout && typeof object.id === "string" && object.id.startsWith("cs_") && !sessionId) {
+    throw new PaidError("stripe_event_invalid", 400);
   }
   const customerDetails = object.customer_details && typeof object.customer_details === "object" ? object.customer_details as Record<string, unknown> : null;
   const address = customerDetails?.address && typeof customerDetails.address === "object" ? customerDetails.address as Record<string, unknown> : null;
@@ -175,13 +211,18 @@ export function parseStripeEvent(rawBody: string): NormalizedStripeEvent {
   });
 }
 
+function livemodeMatches(payload: { livemode?: unknown } | null, mode: "test" | "live"): boolean {
+  return typeof payload?.livemode !== "boolean" || payload.livemode === (mode === "live");
+}
+
 export async function createStripeSession(
   secretKey: string,
   params: URLSearchParams,
   idempotencyKey: string,
+  mode: "test" | "live",
   fetchImpl: typeof fetch = fetch,
 ): Promise<{ id: string; url: string }> {
-  assertStripeTestConfiguration("test", secretKey);
+  assertStripeConfiguration(mode, secretKey);
   const response = await fetchImpl("https://api.stripe.com/v1/checkout/sessions", {
     method: "POST",
     headers: {
@@ -191,21 +232,26 @@ export async function createStripeSession(
     },
     body: params.toString(),
   });
-  const payload = await response.json().catch(() => null) as { id?: unknown; url?: unknown; error?: unknown } | null;
+  const payload = await response.json().catch(() => null) as { id?: unknown; url?: unknown; livemode?: unknown; error?: unknown } | null;
   if (!response.ok || !payload || typeof payload.id !== "string" || !SESSION_ID.test(payload.id) || typeof payload.url !== "string" || !payload.url.startsWith("https://")) {
     logStripeCheckoutFailure(response.status, payload);
     throw new PaidError("stripe_checkout_unavailable", 502);
   }
+  const prefix = mode === "live" ? "cs_live_" : "cs_test_";
+  if (!payload.id.startsWith(prefix) || !livemodeMatches(payload, mode)) {
+    throw new PaidError("stripe_mode_mismatch", 502);
+  }
   return { id: payload.id, url: payload.url };
 }
 
-/** Refund a captured test-mode payment. `charge_already_refunded` is success. */
+/** Refund a captured payment in the same mode as the key. `charge_already_refunded` is success. */
 export async function createStripeRefund(
   secretKey: string,
   paymentIntentId: string,
+  mode: "test" | "live",
   fetchImpl: typeof fetch = fetch,
 ): Promise<void> {
-  assertStripeTestConfiguration("test", secretKey);
+  assertStripeConfiguration(mode, secretKey);
   const response = await fetchImpl("https://api.stripe.com/v1/refunds", {
     method: "POST",
     headers: {
@@ -215,8 +261,11 @@ export async function createStripeRefund(
     },
     body: new URLSearchParams({ payment_intent: paymentIntentId }).toString(),
   });
-  const payload = await response.json().catch(() => null) as { error?: { code?: unknown; message?: unknown; type?: unknown } } | null;
-  if (response.ok) return;
+  const payload = await response.json().catch(() => null) as { livemode?: unknown; error?: { code?: unknown; message?: unknown; type?: unknown } } | null;
+  if (response.ok) {
+    if (!livemodeMatches(payload, mode)) throw new PaidError("stripe_mode_mismatch", 502);
+    return;
+  }
   const code = typeof payload?.error?.code === "string" ? payload.error.code : "";
   if (code === "charge_already_refunded") return;
   const message = typeof payload?.error?.message === "string" ? redactSecrets(payload.error.message) : "";

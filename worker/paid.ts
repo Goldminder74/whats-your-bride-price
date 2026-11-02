@@ -11,6 +11,7 @@ interface PaidEnv {
   DB: D1Database;
   GAME_KV: KVNamespace;
   ASSETS: Fetcher;
+  STRIPE_MODE?: string;
   STRIPE_API_MODE?: string;
   STRIPE_SECRET_KEY?: string;
   STRIPE_WEBHOOK_SECRET?: string;
