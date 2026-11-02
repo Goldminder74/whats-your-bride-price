@@ -3774,6 +3774,1332 @@
         }
       },
       "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_cape_town",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the legislative capital of South Africa and the seat of Parliament?",
+      "options": [
+        "Cape Town",
+        "Johannesburg",
+        "Durban",
+        "Pretoria"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cape Town is the legislative capital of South Africa and the seat of Parliament.",
+      "sources": [
+        {
+          "title": "Cape Town",
+          "url": "https://en.wikipedia.org/wiki/Cape_Town",
+          "claim": "Cape Town is the legislative capital of South Africa and the seat of Parliament.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Cape Town Cape Town is the legislative capital of South Africa. It is the country's oldest city and the seat of the Parliament of South Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_joburg",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city, colloquially called the City of Gold, is the largest in South Africa?",
+      "options": [
+        "Johannesburg",
+        "Cape Town",
+        "Durban",
+        "Pretoria"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Johannesburg, colloquially called the City of Gold, is the largest city in South Africa.",
+      "sources": [
+        {
+          "title": "Johannesburg",
+          "url": "https://en.wikipedia.org/wiki/Johannesburg",
+          "claim": "Johannesburg, colloquially called the City of Gold, is the largest city in South Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Johannesburg Johannesburg ( joh-HAN-iss-burg, US also -⁠HAHN-, Afrikaans: [jʊəˈɦanəsbœrχ] ; Xhosa: eGoli [ɛˈɡɔːli]; Zulu: iGoli [îˈɡóːli]), colloquially known as Jozi, Joburg, or \"the City of Gold\", is the capital city of the province of Gauteng and the largest city in South Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_durban",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which South African city on the Indian Ocean was formerly named Port Natal?",
+      "options": [
+        "Durban",
+        "Cape Town",
+        "Johannesburg",
+        "Pretoria"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Durban is a South African city on the Indian Ocean that was formerly named Port Natal.",
+      "sources": [
+        {
+          "title": "Durban",
+          "url": "https://en.wikipedia.org/wiki/Durban",
+          "claim": "Durban is a South African city on the Indian Ocean that was formerly named Port Natal.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Situated on the east coast of South Africa, on the Natal Bay of the Indian Ocean, Durban is the busiest port city in sub-Saharan Africa and was formerly named Port Natal.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_pretoria",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the executive capital of South Africa?",
+      "options": [
+        "Pretoria",
+        "Cape Town",
+        "Johannesburg",
+        "Durban"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pretoria is the executive capital of South Africa.",
+      "sources": [
+        {
+          "title": "Pretoria",
+          "url": "https://en.wikipedia.org/wiki/Pretoria",
+          "claim": "Pretoria is the executive capital of South Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Pretoria Pretoria ( prih-TOR-ee-ə, pree-; Afrikaans: [prəˈtʉəria] ) is the executive capital of South Africa, serving as the seat of the executive branch of government, and as the host to all foreign embassies to the country.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_kruger",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which national park in South Africa's northeast covers Limpopo and Mpumalanga?",
+      "options": [
+        "Kruger",
+        "Okavango",
+        "Victoria Falls",
+        "Etosha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kruger National Park is in northeastern South Africa, in Limpopo and Mpumalanga.",
+      "sources": [
+        {
+          "title": "Kruger National Park",
+          "url": "https://en.wikipedia.org/wiki/Kruger_National_Park",
+          "claim": "Kruger National Park is in northeastern South Africa, in Limpopo and Mpumalanga.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kruger National Park Kruger National Park (Afrikaans: [ˈkry.(j)ər]) is a national park in South Africa covering an area of 19,623 km2 (7,576 sq mi) in the provinces of Limpopo and Mpumalanga in the country's northeast.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_okavango",
+      "region": "south",
+      "country": "Botswana",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which vast inland delta in Botswana does not flow into a sea or ocean?",
+      "options": [
+        "Okavango",
+        "Kruger",
+        "Victoria Falls",
+        "Etosha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Okavango is a vast inland delta in Botswana that does not flow into a sea or ocean.",
+      "sources": [
+        {
+          "title": "Okavango Delta",
+          "url": "https://en.wikipedia.org/wiki/Okavango_Delta",
+          "claim": "The Okavango is a vast inland delta in Botswana that does not flow into a sea or ocean.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Okavango Delta The Okavango Delta or Okavango Grassland is a vast inland delta in Botswana formed where the Okavango River reaches a tectonic trough at an elevation of 930–1,000 m (3,050–3,280 ft) in the central part of the endorheic basin of the Kalahari Desert. It is a UNESCO World Heritage Site as one of the few interior delta systems that do not flow into a sea or ocean, with a wetland system that is largely intact.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_falls",
+      "region": "south",
+      "country": "Zambia",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which place on the Zambezi River is located on the border between Zambia and Zimbabwe and is called Mosi-oa-Tunya in Lozi?",
+      "options": [
+        "Victoria Falls",
+        "Kruger",
+        "Okavango",
+        "Etosha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Victoria Falls is on the Zambezi River between Zambia and Zimbabwe, and is called Mosi-oa-Tunya in Lozi.",
+      "sources": [
+        {
+          "title": "Victoria Falls",
+          "url": "https://en.wikipedia.org/wiki/Victoria_Falls",
+          "claim": "Victoria Falls is on the Zambezi River between Zambia and Zimbabwe, and is called Mosi-oa-Tunya in Lozi.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Victoria Falls Victoria Falls (Lozi: Mosi-oa-Tunya, \"Thundering Smoke/Smoke that Rises\"; Tonga: Shungu Namutitima, \"Boiling Water\") is a waterfall on the Zambezi River, located on the border between Zambia and Zimbabwe.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_etosha",
+      "region": "south",
+      "country": "Namibia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which national park in northwestern Namibia was proclaimed a game reserve in 1907?",
+      "options": [
+        "Etosha",
+        "Kruger",
+        "Okavango",
+        "Victoria Falls"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Etosha National Park is in northwestern Namibia and was proclaimed a game reserve in 1907.",
+      "sources": [
+        {
+          "title": "Etosha National Park",
+          "url": "https://en.wikipedia.org/wiki/Etosha_National_Park",
+          "claim": "Etosha National Park is in northwestern Namibia and was proclaimed a game reserve in 1907.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Etosha National Park Etosha National Park is a national park in northwestern Namibia and one of the largest national parks in Africa. It was proclaimed a game reserve in March 1907 in Ordinance 88 by the Governor of German South West Africa, Friedrich von Lindequist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_drakensberg",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which eastern portion of the Great Escarpment is called uKhahlamba in Zulu?",
+      "options": [
+        "Drakensberg",
+        "Kruger",
+        "Okavango",
+        "Victoria Falls"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Drakensberg is the eastern portion of the Great Escarpment, called uKhahlamba in Zulu.",
+      "sources": [
+        {
+          "title": "Drakensberg",
+          "url": "https://en.wikipedia.org/wiki/Drakensberg",
+          "claim": "The Drakensberg is the eastern portion of the Great Escarpment, called uKhahlamba in Zulu.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Drakensberg The Drakensberg (Zulu: uKhahlamba; Sotho: Maloti; Afrikaans: Drakensberge) is the eastern portion of the Great Escarpment, which encloses the central Southern African plateau.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_table",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which flat-topped landmark overlooking Cape Town stands in South Africa?",
+      "options": [
+        "Table Mountain",
+        "Kruger",
+        "Okavango",
+        "Victoria Falls"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Table Mountain is a flat-topped landmark overlooking Cape Town in South Africa.",
+      "sources": [
+        {
+          "title": "Table Mountain",
+          "url": "https://en.wikipedia.org/wiki/Table_Mountain",
+          "claim": "Table Mountain is a flat-topped landmark overlooking Cape Town in South Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Table Mountain Table Mountain (Khoekhoe: Huriǂoaxa, lit. 'sea-emerging'; Afrikaans: Tafelberg) is a flat-topped mountain forming a prominent landmark overlooking the city of Cape Town in South Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_swakop",
+      "region": "south",
+      "country": "Namibia",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which city was founded in 1892 as the main harbour for German South West Africa?",
+      "options": [
+        "Swakopmund",
+        "Cape Town",
+        "Johannesburg",
+        "Durban"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Swakopmund was founded in 1892 as the main harbour for German South West Africa.",
+      "sources": [
+        {
+          "title": "Swakopmund",
+          "url": "https://en.wikipedia.org/wiki/Swakopmund",
+          "claim": "Swakopmund was founded in 1892 as the main harbour for German South West Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Swakopmund is a popular beach resort and characterized by 19th century German colonial architecture. The city was founded in 1892 as the main harbour for German South West Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_walvis",
+      "region": "south",
+      "country": "Namibia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is Namibia's second largest and its largest coastal city?",
+      "options": [
+        "Walvis Bay",
+        "Cape Town",
+        "Johannesburg",
+        "Durban"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Walvis Bay is Namibia's second largest city and its largest coastal city.",
+      "sources": [
+        {
+          "title": "Walvis Bay",
+          "url": "https://en.wikipedia.org/wiki/Walvis_Bay",
+          "claim": "Walvis Bay is Namibia's second largest city and its largest coastal city.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Walvis Bay Walvis Bay (Afrikaans: Walvisbaai; German: Walfischbucht or Walfischbai) is a city in Namibia and the name of the bay on which it lies. It is the second largest city in Namibia and the largest coastal city in the country.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_bulawayo",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the second largest in Zimbabwe and the largest in Matabeleland?",
+      "options": [
+        "Bulawayo",
+        "Cape Town",
+        "Johannesburg",
+        "Durban"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bulawayo is the second largest city in Zimbabwe and the largest in Matabeleland.",
+      "sources": [
+        {
+          "title": "Bulawayo",
+          "url": "https://en.wikipedia.org/wiki/Bulawayo",
+          "claim": "Bulawayo is the second largest city in Zimbabwe and the largest in Matabeleland.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Bulawayo Bulawayo (, ; Northern Ndebele: Bulawayo) is the second largest city in Zimbabwe, and the largest city in the country's Matabeleland region.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_gqeberha",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city was founded in 1820 as Port Elizabeth?",
+      "options": [
+        "Gqeberha",
+        "Cape Town",
+        "Johannesburg",
+        "Durban"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gqeberha was founded in 1820 as Port Elizabeth.",
+      "sources": [
+        {
+          "title": "Gqeberha",
+          "url": "https://en.wikipedia.org/wiki/Gqeberha",
+          "claim": "Gqeberha was founded in 1820 as Port Elizabeth.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Gqeberha was founded in 1820 as Port Elizabeth by Sir Rufane Donkin, who was the governor of the Cape at the time.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_soweto",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which township of Johannesburg borders the city's mining belt in the south?",
+      "options": [
+        "Soweto",
+        "Cape Town",
+        "Durban",
+        "Pretoria"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Soweto is a Johannesburg township bordering the city's mining belt in the south.",
+      "sources": [
+        {
+          "title": "Soweto",
+          "url": "https://en.wikipedia.org/wiki/Soweto",
+          "claim": "Soweto is a Johannesburg township bordering the city's mining belt in the south.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Soweto Soweto () is a township of the City of Johannesburg Metropolitan Municipality in Gauteng, South Africa and one of the suburbs of Johannesburg, bordering the city's mining belt in the south.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_zimbabwe",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city served as a capital from the 13th century and is the largest stone structure in precolonial Southern Africa?",
+      "options": [
+        "Great Zimbabwe",
+        "Mapungubwe",
+        "Mutapa",
+        "Moshoeshoe I"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Great Zimbabwe served as a capital from the 13th century and is the largest stone structure in precolonial Southern Africa.",
+      "sources": [
+        {
+          "title": "Great Zimbabwe",
+          "url": "https://en.wikipedia.org/wiki/Great_Zimbabwe",
+          "claim": "Great Zimbabwe served as a capital from the 13th century and is the largest stone structure in precolonial Southern Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "It was settled from around 1000 AD, and served as the capital of the Kingdom of Great Zimbabwe from the 13th century. It is the largest stone structure in precolonial Southern Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_mapungubwe",
+      "region": "south",
+      "country": "South Africa",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which ancient state was located at the confluence of the Shashe and Limpopo rivers in present-day South Africa?",
+      "options": [
+        "Mapungubwe",
+        "Mutapa",
+        "Moshoeshoe I",
+        "Thulamela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mapungubwe was an ancient state at the confluence of the Shashe and Limpopo rivers in present-day South Africa.",
+      "sources": [
+        {
+          "title": "Kingdom of Mapungubwe",
+          "url": "https://en.wikipedia.org/wiki/Kingdom_of_Mapungubwe",
+          "claim": "Mapungubwe was an ancient state at the confluence of the Shashe and Limpopo rivers in present-day South Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kingdom of Mapungubwe The Kingdom of Mapungubwe (pronounced mah-POON-goob-weh) was an ancient state located at the confluence of the Shashe and Limpopo rivers in present day South Africa, south of Great Zimbabwe.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_mutapa",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Shona empire lay in the north of the Zimbabwean Plateau?",
+      "options": [
+        "Mutapa",
+        "Great Zimbabwe",
+        "Mapungubwe",
+        "Moshoeshoe I"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mutapa was a Shona empire in the north of the Zimbabwean Plateau.",
+      "sources": [
+        {
+          "title": "Mutapa Empire",
+          "url": "https://en.wikipedia.org/wiki/Mutapa_Empire",
+          "claim": "Mutapa was a Shona empire in the north of the Zimbabwean Plateau.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mutapa Empire The Mutapa Empire – also referred to as Mwenemutapa or Munhumutapa (Shona: Mwene we Mutapa, Portuguese: Monomotapa) – was a Shona empire in the north of the Zimbabwean Plateau.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_moshoeshoe",
+      "region": "south",
+      "country": "Lesotho",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which person was the first king of Lesotho?",
+      "options": [
+        "Moshoeshoe I",
+        "Great Zimbabwe",
+        "Mapungubwe",
+        "Mutapa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Moshoeshoe I was the first king of Lesotho.",
+      "sources": [
+        {
+          "title": "Moshoeshoe I",
+          "url": "https://en.wikipedia.org/wiki/Moshoeshoe_I",
+          "claim": "Moshoeshoe I was the first king of Lesotho.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Moshoeshoe I Moshoeshoe I () (circa 1786 – 11 March 1870) was the first king of Lesotho.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_robben",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which spot in Table Bay, north of Cape Town, takes its name from the Dutch word for seals?",
+      "options": [
+        "Robben Island",
+        "Kruger",
+        "Okavango",
+        "Victoria Falls"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Robben Island lies in Table Bay, north of Cape Town, and takes its name from the Dutch word for seals.",
+      "sources": [
+        {
+          "title": "Robben Island",
+          "url": "https://en.wikipedia.org/wiki/Robben_Island",
+          "claim": "Robben Island lies in Table Bay, north of Cape Town, and takes its name from the Dutch word for seals.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Robben Island Robben Island (Dutch: Robbeneiland) is an island in Table Bay, 6.9 kilometers (4.3 mi) west of the coast of Bloubergstrand, north of Cape Town, South Africa. It takes its name from the archaic Dutch word for seals (robben).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_seshoeshoe",
+      "region": "south",
+      "country": "Lesotho",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which printed cotton fabric, often dyed indigo with geometric patterns, is widely used for Basotho clothing?",
+      "options": [
+        "Seshoeshoe",
+        "Capulana",
+        "Mokorotlo",
+        "Kente cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Seshoeshoe is a printed cotton fabric, often dyed indigo with geometric patterns, widely used for Basotho clothing.",
+      "sources": [
+        {
+          "title": "Seshoeshoe",
+          "url": "https://en.wikipedia.org/wiki/Seshoeshoe",
+          "claim": "Seshoeshoe is a printed cotton fabric, often dyed indigo with geometric patterns, widely used for Basotho clothing.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Seshoeshoe Seshweshwe () (also known as Seshoeshoe) is a printed dyed cotton fabric widely used for traditional Southern African Basotho clothing. Originally dyed indigo, the fabric is manufactured in a variety of colours and printing designs characterised by intricate geometric patterns.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_amla",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which South African cricketer played for the national team from 2004 to 2019?",
+      "options": [
+        "Hashim Amla",
+        "Habana",
+        "Graeme Smith",
+        "Lucas Radebe"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hashim Amla is a South African cricketer who played for the national team from 2004 to 2019.",
+      "sources": [
+        {
+          "title": "Hashim Amla",
+          "url": "https://en.wikipedia.org/wiki/Hashim_Amla",
+          "claim": "Hashim Amla is a South African cricketer who played for the national team from 2004 to 2019.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Hashim Amla Hashim Mahomed Amla (born 31 March 1983) is a South African former cricketer who played for the national team from 2004 to 2019.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_habana",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which South African player was part of the team that won the 2007 Rugby World Cup and scored eight tries in that tournament?",
+      "options": [
+        "Habana",
+        "Hashim Amla",
+        "Graeme Smith",
+        "Lucas Radebe"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Habana was part of the South Africa team that won the 2007 Rugby World Cup, scoring eight tries in the tournament.",
+      "sources": [
+        {
+          "title": "Bryan Habana",
+          "url": "https://en.wikipedia.org/wiki/Bryan_Habana",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Habana was part of the South Africa team that won the 2007 Rugby World Cup and was one of the stars of the tournament, his eight tries equalling the record for a single tournament set by Jonah Lomu in 1999.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_smith",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which South African cricketer was appointed national captain in 2003?",
+      "options": [
+        "Graeme Smith",
+        "Hashim Amla",
+        "Habana",
+        "Lucas Radebe"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Graeme Smith is a South African cricketer who was appointed national captain in 2003.",
+      "sources": [
+        {
+          "title": "Graeme Smith",
+          "url": "https://en.wikipedia.org/wiki/Graeme_Smith",
+          "claim": "Graeme Smith is a South African cricketer who was appointed national captain in 2003.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Graeme Smith Graeme Craig Smith (born 1 February 1981) is a South African cricket commentator and former cricketer who played for South Africa in all formats. In 2003, he was appointed captain of the national team, taking over from Shaun Pollock.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_coetzee",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which South African novelist is the recipient of the 2003 Nobel Prize in Literature?",
+      "options": [
+        "J. M. Coetzee",
+        "Bessie Head",
+        "Dambudzo Marechera",
+        "Steve Biko"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "J. M. Coetzee is a South African novelist and the recipient of the 2003 Nobel Prize in Literature.",
+      "sources": [
+        {
+          "title": "J. M. Coetzee",
+          "url": "https://en.wikipedia.org/wiki/J._M._Coetzee",
+          "claim": "J. M. Coetzee is a South African novelist and the recipient of the 2003 Nobel Prize in Literature.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Coetzee John Maxwell Coetzee (born 9 February 1940) is a South African and Australian novelist, essayist, and translator. The recipient of the 2003 Nobel Prize in Literature, Coetzee is one of the most critically acclaimed and decorated authors in the English language.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_grow_biko",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which South African activist was at the forefront of the Black Consciousness Movement?",
+      "options": [
+        "Steve Biko",
+        "J. M. Coetzee",
+        "Bessie Head",
+        "Dambudzo Marechera"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Steve Biko was a South African anti-apartheid activist at the forefront of the Black Consciousness Movement.",
+      "sources": [
+        {
+          "title": "Steve Biko",
+          "url": "https://en.wikipedia.org/wiki/Steve_Biko",
+          "claim": "Steve Biko was a South African anti-apartheid activist at the forefront of the Black Consciousness Movement.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Steve Biko Bantu Stephen Biko OMSG (18 December 1946 – 12 September 1977) was a South African anti-apartheid activist. Ideologically an African nationalist and African socialist, he was at the forefront of a grassroots anti-apartheid campaign known as the Black Consciousness Movement during the late 1960s and 1970s.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
     }
   ]
 }

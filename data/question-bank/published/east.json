@@ -4335,6 +4335,1179 @@
         }
       },
       "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_mombasa",
+      "region": "east",
+      "country": "Kenya",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which coastal Kenyan city on the Indian Ocean was the first capital of British East Africa, before Nairobi?",
+      "options": [
+        "Mombasa",
+        "Dar es Salaam",
+        "Bujumbura",
+        "Gondar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mombasa is a coastal Kenyan city on the Indian Ocean and was the first capital of British East Africa, before Nairobi.",
+      "sources": [
+        {
+          "title": "Mombasa",
+          "url": "https://en.wikipedia.org/wiki/Mombasa",
+          "claim": "Mombasa is a coastal Kenyan city on the Indian Ocean and was the first capital of British East Africa, before Nairobi.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mombasa Mombasa ( mom-BASS-ə; also US: -⁠BAH-sə) is a coastal city in southeastern Kenya along the Indian Ocean. It was the first capital of British East Africa, before Nairobi was elevated to capital status in 1907.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_dar",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the largest in Tanzania and the country's financial hub on the Swahili coast?",
+      "options": [
+        "Dar es Salaam",
+        "Mombasa",
+        "Bujumbura",
+        "Gondar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dar es Salaam is Tanzania's largest city and its financial hub on the Swahili coast.",
+      "sources": [
+        {
+          "title": "Dar es Salaam",
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "claim": "Dar es Salaam is Tanzania's largest city and its financial hub on the Swahili coast.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "'Abode of Peace') is the largest city and financial hub of Tanzania and capital of the Dar es Salaam Region. It is located on the Swahili coast.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_bujumbura",
+      "region": "east",
+      "country": "Burundi",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the economic capital and main port of Burundi?",
+      "options": [
+        "Bujumbura",
+        "Mombasa",
+        "Dar es Salaam",
+        "Gondar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bujumbura is the economic capital and main port of Burundi.",
+      "sources": [
+        {
+          "title": "Bujumbura",
+          "url": "https://en.wikipedia.org/wiki/Bujumbura",
+          "claim": "Bujumbura is the economic capital and main port of Burundi.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Bujumbura Bujumbura (French pronunciation: [buʒumbuʁa]; Kirundi pronunciation: [buʒuᵐbuɾa]), formerly Usumbura, is the economic capital, former political capital, largest city and main port of Burundi.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_gondar",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city previously served as the capital of the Ethiopian Empire?",
+      "options": [
+        "Gondar",
+        "Mombasa",
+        "Dar es Salaam",
+        "Bujumbura"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gondar previously served as the capital of the Ethiopian Empire.",
+      "sources": [
+        {
+          "title": "Gondar",
+          "url": "https://en.wikipedia.org/wiki/Gondar",
+          "claim": "Gondar previously served as the capital of the Ethiopian Empire.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Gondar previously served as the capital of both the Ethiopian Empire and the subsequent Begemder Province.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_entebbe",
+      "region": "east",
+      "country": "Uganda",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Ugandan city lies on a Lake Victoria peninsula about 36 kilometres southwest of Kampala?",
+      "options": [
+        "Entebbe",
+        "Mombasa",
+        "Dar es Salaam",
+        "Bujumbura"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Entebbe is a Ugandan city on a Lake Victoria peninsula, about 36 kilometres southwest of Kampala.",
+      "sources": [
+        {
+          "title": "Entebbe",
+          "url": "https://en.wikipedia.org/wiki/Entebbe",
+          "claim": "Entebbe is a Ugandan city on a Lake Victoria peninsula, about 36 kilometres southwest of Kampala.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Entebbe Entebbe is a city in Central Uganda which is located on Lake Victoria peninsula, approximately 36 kilometres (22 mi) southwest of the Ugandan capital city, Kampala.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_axum",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which town in the Tigray Region of Ethiopia is the site of a historic capital?",
+      "options": [
+        "Axum",
+        "Mombasa",
+        "Dar es Salaam",
+        "Bujumbura"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Axum is a town in Ethiopia's Tigray Region and the site of a historic capital.",
+      "sources": [
+        {
+          "title": "Axum",
+          "url": "https://en.wikipedia.org/wiki/Axum",
+          "claim": "Axum is a town in Ethiopia's Tigray Region and the site of a historic capital.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Axum Axum, also spelled Aksum ( ), is a town in the Tigray Region of Ethiopia with a population of 66,900 residents (as of 2015). It is the site of the historic capital of the Aksumite Empire.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_victoria",
+      "region": "east",
+      "country": "East Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which lake is Africa's largest by surface area?",
+      "options": [
+        "Lake Victoria",
+        "Lake Tanganyika",
+        "Lake Tana",
+        "Mount Kenya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lake Victoria is Africa's largest lake by surface area.",
+      "sources": [
+        {
+          "title": "Lake Victoria",
+          "url": "https://en.wikipedia.org/wiki/Lake_Victoria",
+          "claim": "Lake Victoria is Africa's largest lake by surface area.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "With a surface area of approximately 59,947 km2 (23,146 sq mi), Lake Victoria is Africa's largest lake by area, the world's largest tropical lake, and the world's second-largest fresh water lake by surface area after Lake Superior in North America.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_tanganyika",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which African Great Lake is the world's second-largest freshwater lake by volume?",
+      "options": [
+        "Lake Tanganyika",
+        "Lake Victoria",
+        "Lake Tana",
+        "Mount Kenya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lake Tanganyika is an African Great Lake and the world's second-largest freshwater lake by volume.",
+      "sources": [
+        {
+          "title": "Lake Tanganyika",
+          "url": "https://en.wikipedia.org/wiki/Lake_Tanganyika",
+          "claim": "Lake Tanganyika is an African Great Lake and the world's second-largest freshwater lake by volume.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lake Tanganyika Lake Tanganyika ( TANG-gən-YEE-kə, -⁠gan-; Kirundi: Ikiyaga ca Tanganyika) is an African Great Lake. It is the world's second-largest freshwater lake by volume and the second deepest, in both cases after Lake Baikal in Siberia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_tana",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which lake is the largest in Ethiopia and a source of the Blue Nile?",
+      "options": [
+        "Lake Tana",
+        "Lake Victoria",
+        "Lake Tanganyika",
+        "Mount Kenya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lake Tana is the largest lake in Ethiopia and a source of the Blue Nile.",
+      "sources": [
+        {
+          "title": "Lake Tana",
+          "url": "https://en.wikipedia.org/wiki/Lake_Tana",
+          "claim": "Lake Tana is the largest lake in Ethiopia and a source of the Blue Nile.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lake Tana Lake Tana (Amharic: ጣና ሐይቅ, romanized: T’ana ḥāyik’i; previously transcribed Tsana) is the largest lake in Ethiopia and a source of the Blue Nile.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_kenya",
+      "region": "east",
+      "country": "Kenya",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which peak is the second highest in Africa, about 150 km north-northeast of Nairobi?",
+      "options": [
+        "Mount Kenya",
+        "Lake Victoria",
+        "Lake Tanganyika",
+        "Lake Tana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mount Kenya is the second highest mountain in Africa, about 150 km north-northeast of Nairobi.",
+      "sources": [
+        {
+          "title": "Mount Kenya",
+          "url": "https://en.wikipedia.org/wiki/Mount_Kenya",
+          "claim": "Mount Kenya is the second highest mountain in Africa, about 150 km north-northeast of Nairobi.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mount Kenya Mount Kenya (Meru: Kĩrĩmaara, Kikuyu: Kĩrĩmanyaga, or \"Kīrī-nyaga\", Kamba: Ki nyaa, Embu: Kĩ nyaga, or \"Kirinyaga\") is the second highest mountain in Africa and the namesake of the country Kenya. Located about 150 km (90 mi) north-northeast of the capital of Nairobi and just 16.5 kilometres (10.3 miles) south of the equator, the mountain's highest peaks are Batian (5,199 m), Nelion (5,188 m), and Point Lenana (4,985 m).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_rwenzori",
+      "region": "east",
+      "country": "Uganda",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which range of mountains is located on the border between Uganda and the Democratic Republic of the Congo?",
+      "options": [
+        "Rwenzori",
+        "Lake Victoria",
+        "Lake Tanganyika",
+        "Lake Tana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Rwenzori are a mountain range on the border between Uganda and the Democratic Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Rwenzori Mountains",
+          "url": "https://en.wikipedia.org/wiki/Rwenzori_Mountains",
+          "claim": "The Rwenzori are a mountain range on the border between Uganda and the Democratic Republic of the Congo.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Rwenzori Mountains The Rwenzori (also known as the Ruwenzori, Rwenzururu or Rwenjura) are a range of mountains in eastern equatorial Africa, located on the border between Uganda and the Democratic Republic of the Congo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_simien",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which highlands in northern Ethiopia stand northeast of Gondar?",
+      "options": [
+        "Simien",
+        "Lake Victoria",
+        "Lake Tanganyika",
+        "Lake Tana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Simien highlands are in northern Ethiopia, northeast of Gondar.",
+      "sources": [
+        {
+          "title": "Simien Mountains",
+          "url": "https://en.wikipedia.org/wiki/Simien_Mountains",
+          "claim": "The Simien highlands are in northern Ethiopia, northeast of Gondar.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Simien Mountains The Simien Mountains (Amharic: ሰሜን ተራራው, romanized: Semēn, lit. 'north mountain'; also spelled Semain, Simeon and Semien), in northern Ethiopia, northeast of Gondar in Amhara Region, are part of the Ethiopian Highlands.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_bwindi",
+      "region": "east",
+      "country": "Uganda",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which national park in southwestern Uganda sits along the border with the Democratic Republic of the Congo?",
+      "options": [
+        "Bwindi",
+        "Lake Victoria",
+        "Lake Tanganyika",
+        "Lake Tana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bwindi is a national park in southwestern Uganda along the border with the Democratic Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Bwindi Impenetrable National Park",
+          "url": "https://en.wikipedia.org/wiki/Bwindi_Impenetrable_National_Park",
+          "claim": "Bwindi is a national park in southwestern Uganda along the border with the Democratic Republic of the Congo.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Bwindi Impenetrable National Park Bwindi Impenetrable National Park is a national park in southwestern Uganda. It is part of the Bwindi Impenetrable Forest and is situated along the Democratic Republic of the Congo border next to the Virunga National Park and on the edge of the Albertine Rift.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_lamu",
+      "region": "east",
+      "country": "Kenya",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which small town sits on an island northeast of Mombasa?",
+      "options": [
+        "Lamu",
+        "Dar es Salaam",
+        "Bujumbura",
+        "Gondar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lamu is a small town on an island northeast of Mombasa.",
+      "sources": [
+        {
+          "title": "Lamu",
+          "url": "https://en.wikipedia.org/wiki/Lamu",
+          "claim": "Lamu is a small town on an island northeast of Mombasa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lamu Lamu or Lamu Town is a small town on Lamu Island, which in turn is a part of the Lamu Archipelago in Kenya on the continent of Africa. Situated 341 kilometres (212 mi) by road northeast of Mombasa that ends at Mokowe Jetty, from where the sea channel has to be crossed to reach Lamu Island, it is the headquarter of Lamu County and a UNESCO World Heritage Site.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_kanga",
+      "region": "east",
+      "country": "East Africa",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which colourful fabric is lighter than kitenge and worn throughout the African Great Lakes region?",
+      "options": [
+        "Kanga",
+        "Kikoi",
+        "Kanzu",
+        "Kofia"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kanga is a colourful fabric, lighter than kitenge, worn throughout the African Great Lakes region.",
+      "sources": [
+        {
+          "title": "Kanga (garment)",
+          "url": "https://en.wikipedia.org/wiki/Kanga_(garment)",
+          "claim": "The kanga is a colourful fabric, lighter than kitenge, worn throughout the African Great Lakes region.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kanga (garment) The kanga (in some areas known as leso) is a colourful fabric similar to kitenge, but lighter, worn by women and occasionally by men throughout the African Great Lakes region.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_kikoi",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which traditional rectangle of woven cloth is considered part of Swahili culture?",
+      "options": [
+        "Kikoi",
+        "Kanga",
+        "Kitenge",
+        "Kanzu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A kikoi is a traditional rectangle of woven cloth considered part of Swahili culture.",
+      "sources": [
+        {
+          "title": "Kikoi",
+          "url": "https://en.wikipedia.org/wiki/Kikoi",
+          "claim": "A kikoi is a traditional rectangle of woven cloth considered part of Swahili culture.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kikoi A kikoi is a traditional rectangle of woven cloth originating from Africa. Considered a part of Swahili culture, the kikoi is mostly worn by the coastal people, but now also includes the Maasai people of Kenya and men from Tanzania and Zanzibar.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_kitenge",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which East African fabric is often worn wrapped around the chest or waist?",
+      "options": [
+        "Kitenge",
+        "Kanga",
+        "Kikoi",
+        "Kanzu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A kitenge is an East African fabric often worn wrapped around the chest or waist.",
+      "sources": [
+        {
+          "title": "Kitenge",
+          "url": "https://en.wikipedia.org/wiki/Kitenge",
+          "claim": "A kitenge is an East African fabric often worn wrapped around the chest or waist.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kitenge A kitenge or chitenge (pl. vitenge Swahili; zitenge in Tonga) is an East African, West African and Central African piece of fabric similar to a sarong, often worn by women and wrapped around the chest or waist, over the head as a headscarf, or as a baby sling.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_enkutatash",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What name is given to the Ethiopian New Year?",
+      "options": [
+        "Enkutatash",
+        "Meskel",
+        "Timkat",
+        "Irreechaa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Enkutatash is the name given to the Ethiopian New Year.",
+      "sources": [
+        {
+          "title": "Enkutatash",
+          "url": "https://en.wikipedia.org/wiki/Enkutatash",
+          "claim": "Enkutatash is the name given to the Ethiopian New Year.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Enkutatash Enkutatash (Amharic: እንቁጣጣሽ) is the name given to the Ethiopian New Year, a holiday celebrated to usher in the new year in Ethiopia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_meskel",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Ethiopian and Eritrean Orthodox holiday commemorates the discovery of the True Cross?",
+      "options": [
+        "Meskel",
+        "Enkutatash",
+        "Timkat",
+        "Irreechaa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Meskel is an Ethiopian and Eritrean Orthodox holiday commemorating the discovery of the True Cross.",
+      "sources": [
+        {
+          "title": "Meskel",
+          "url": "https://en.wikipedia.org/wiki/Meskel",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Meskel Meskel (Ge'ez: መስቀል, romanized: Mesk'el) is an Ethiopian and Eritrean Orthodox Tewahedo Church holiday that commemorates the discovery of the True Cross by the Roman Empress Saint Helena of Constantinople in the fourth century.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_timkat",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Ethiopian and Eritrean Orthodox celebration marks Epiphany?",
+      "options": [
+        "Timkat",
+        "Enkutatash",
+        "Meskel",
+        "Irreechaa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Timkat is an Ethiopian and Eritrean Orthodox celebration of Epiphany.",
+      "sources": [
+        {
+          "title": "Timkat",
+          "url": "https://en.wikipedia.org/wiki/Timkat",
+          "claim": "Timkat is an Ethiopian and Eritrean Orthodox celebration of Epiphany.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Timkat Timkat (Ge'ez: ጥምቀት T’əmqät) is an Ethiopian Orthodox Tewahedo Church and Eritrean Orthodox Tewahedo Church celebration of Epiphany.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_irreechaa",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Thanksgiving holiday celebrating the end of winter is held in Ethiopia's Oromia Region?",
+      "options": [
+        "Irreechaa",
+        "Enkutatash",
+        "Meskel",
+        "Timkat"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Irreechaa is a Thanksgiving holiday in Ethiopia's Oromia Region celebrating the end of winter.",
+      "sources": [
+        {
+          "title": "Irreechaa",
+          "url": "https://en.wikipedia.org/wiki/Irreechaa",
+          "claim": "Irreechaa is a Thanksgiving holiday in Ethiopia's Oromia Region celebrating the end of winter.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Irreechaa Irreecha (also called Irreessa or Dhibaayyuu), is a Thanksgiving holiday celebrating the end of the winter in Oromia Region, Ethiopia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_tirunesh",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Ethiopian long-distance runner has won three Olympic track gold medals?",
+      "options": [
+        "Tirunesh Dibaba",
+        "Faith Kipyegon",
+        "Kenenisa Bekele",
+        "Paul Tergat"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tirunesh Dibaba is an Ethiopian long-distance runner who has won three Olympic track gold medals.",
+      "sources": [
+        {
+          "title": "Tirunesh Dibaba",
+          "url": "https://en.wikipedia.org/wiki/Tirunesh_Dibaba",
+          "claim": "Tirunesh Dibaba is an Ethiopian long-distance runner who has won three Olympic track gold medals.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tirunesh Dibaba Tirunesh Dibaba (Oromo: Xirunesh Dibaabaa, Amharic: ጥሩነሽ ዲባባ ቀነኒ; born 1 June 1985) is an Ethiopian long-distance runner athlete who competes in long-distance track events and international road races. She has won three Olympic track gold medals, five World Championship track gold medals, four individual World Cross Country (WCC) adult titles, and one individual WCC junior title.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_grow_tergat",
+      "region": "east",
+      "country": "Kenya",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Kenyan man first set the marathon world record in 2003?",
+      "options": [
+        "Paul Tergat",
+        "Faith Kipyegon",
+        "Tirunesh Dibaba",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Paul Tergat was the first Kenyan man to set the marathon world record, in 2003.",
+      "sources": [
+        {
+          "title": "Paul Tergat",
+          "url": "https://en.wikipedia.org/wiki/Paul_Tergat",
+          "claim": "Paul Tergat was the first Kenyan man to set the marathon world record, in 2003.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Paul Tergat Paul Kibii Tergat (born 17 June 1969) is a Kenyan former professional long-distance runner. He became the first Kenyan man to set the world record in the marathon in 2003, with a time of 2:04:55, and is regarded as one of the most accomplished long-distance runners of all time.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
     }
   ]
 }

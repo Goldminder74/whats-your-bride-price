@@ -3111,6 +3111,2556 @@
         }
       },
       "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_fez",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city in northern inland Morocco is the capital of an administrative region?",
+      "options": [
+        "Fez",
+        "Tunis",
+        "Oran",
+        "Jemaa el-Fnaa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fez is a city in northern inland Morocco and the capital of an administrative region.",
+      "sources": [
+        {
+          "title": "Fez, Morocco",
+          "url": "https://en.wikipedia.org/wiki/Fez%2C_Morocco",
+          "claim": "Fez is a city in northern inland Morocco and the capital of an administrative region.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Fez, Morocco Fez () or Fes () is a city in northern inland Morocco and the capital of the Fez-Meknes administrative region.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_oran",
+      "region": "north",
+      "country": "Algeria",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which major coastal city is located in the northwest of Algeria?",
+      "options": [
+        "Oran",
+        "Tunis",
+        "Fez",
+        "Jemaa el-Fnaa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Oran is a major coastal city in the northwest of Algeria.",
+      "sources": [
+        {
+          "title": "Oran",
+          "url": "https://en.wikipedia.org/wiki/Oran",
+          "claim": "Oran is a major coastal city in the northwest of Algeria.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Oran Oran (Arabic: وهران, romanized: Wahrān; Tamazight: ⵡⴰⵀⵔⴻⵏ, romanized: Wahṛen, or ⵡⴰⵀⵔⴰⵏ, Wahṛan) is a major coastal city located in the northwest of Algeria, 432 km (268 mi) west-southwest from the capital, Algiers.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_siwa",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which urban oasis in Egypt sits between the Qattara Depression and the Great Sand Sea?",
+      "options": [
+        "Siwa",
+        "Sahara",
+        "Atlas",
+        "Nile"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Siwa is an urban oasis in Egypt between the Qattara Depression and the Great Sand Sea.",
+      "sources": [
+        {
+          "title": "Siwa Oasis",
+          "url": "https://en.wikipedia.org/wiki/Siwa_Oasis",
+          "claim": "Siwa is an urban oasis in Egypt between the Qattara Depression and the Great Sand Sea.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Siwa Oasis The Siwa Oasis (Arabic: واحة سيوة Wāḥat Sīwah [ˈwæːħet ˈsiːwæ]) is an urban oasis in Egypt. It is situated between the Qattara Depression and the Great Sand Sea in the Western Desert, 50 kilometres (31 mi) east of the Egypt–Libya border and 560 kilometres (350 mi) from the Egyptian capital city of Cairo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_jemaa",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which square and market place remains the main square of the Marrakesh medina?",
+      "options": [
+        "Jemaa el-Fnaa",
+        "Tunis",
+        "Fez",
+        "Oran"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jemaa el-Fnaa is a square and market place that remains the main square of the Marrakesh medina.",
+      "sources": [
+        {
+          "title": "Jemaa el-Fnaa",
+          "url": "https://en.wikipedia.org/wiki/Jemaa_el-Fnaa",
+          "claim": "Jemaa el-Fnaa is a square and market place that remains the main square of the Marrakesh medina.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Jemaa el-Fnaa Jemaa el-Fnaa (Arabic: ساحة جامع الفناء, romanized: Sāḥat Jāmiʿ al-Fanāʾ; Standard Moroccan Tamazight: ⵊⴰⵎⵄ ⵍⴼⵏⴰ, romanized: Jamɛ Lfna), also Jemaa el-Fna, Djema el-Fna or Djemaa el-Fnaa, is a square and market place in the medina quarter (old city) of Marrakesh, Morocco. It remains the main square of Marrakesh, used by locals and tourists.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_tripoli",
+      "region": "north",
+      "country": "Libya",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital and largest city of Libya?",
+      "options": [
+        "Tripoli",
+        "Tunis",
+        "Fez",
+        "Oran"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tripoli is the capital and largest city of Libya.",
+      "sources": [
+        {
+          "title": "Tripoli, Libya",
+          "url": "https://en.wikipedia.org/wiki/Tripoli%2C_Libya",
+          "claim": "Tripoli is the capital and largest city of Libya.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tripoli, Libya Tripoli, historically known as Tripoli-of-the-West, is the capital and largest city of Libya, with a population of about 3.246 million people in 2021.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_alexandria",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which major city in Egypt is the country's principal seaport?",
+      "options": [
+        "Alexandria",
+        "Tunis",
+        "Fez",
+        "Oran"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Alexandria is a major Egyptian city and the country's principal seaport.",
+      "sources": [
+        {
+          "title": "Alexandria",
+          "url": "https://en.wikipedia.org/wiki/Alexandria",
+          "claim": "Alexandria is a major Egyptian city and the country's principal seaport.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "It is Egypt's principal seaport, the second largest city after Cairo, and the largest city on the Mediterranean coast. Founded in 331 BC by Alexander the Great, Alexandria was one of the largest and most important cities of antiquity and a leading hub for science, culture, and scholarship.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_tangier",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Moroccan city sits on the coasts of both the Mediterranean Sea and the Atlantic Ocean?",
+      "options": [
+        "Tangier",
+        "Tunis",
+        "Fez",
+        "Oran"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tangier is a Moroccan city on the coasts of both the Mediterranean Sea and the Atlantic Ocean.",
+      "sources": [
+        {
+          "title": "Tangier",
+          "url": "https://en.wikipedia.org/wiki/Tangier",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tangier Tangier, also called Tangiers, is a city in northwestern Morocco, on the coasts of the Mediterranean Sea and the Atlantic Ocean.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_sfax",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which major port city in Tunisia lies southeast of Tunis and was founded in 849?",
+      "options": [
+        "Sfax",
+        "Fez",
+        "Oran",
+        "Jemaa el-Fnaa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sfax is a major Tunisian port city southeast of Tunis, founded in 849.",
+      "sources": [
+        {
+          "title": "Sfax",
+          "url": "https://en.wikipedia.org/wiki/Sfax",
+          "claim": "Sfax is a major Tunisian port city southeast of Tunis, founded in 849.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Sfax Sfax ( s(ə-)FAKS; Arabic: صفاقس, romanized: Ṣafāqis, Tunisian Arabic pronunciation: [ˈsˤfɛːqəs] ) is a major port city in Tunisia, located 270 km (170 mi) southeast of Tunis. The city, founded in AD 849 on the ruins of Taparura, is the capital of the Sfax Governorate (about 955,421 inhabitants in 2014), and a Mediterranean port.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_sousse",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Tunisian city on the Gulf of Hammamet lies south of Tunis?",
+      "options": [
+        "Sousse",
+        "Fez",
+        "Oran",
+        "Jemaa el-Fnaa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sousse is a Tunisian city on the Gulf of Hammamet, south of Tunis.",
+      "sources": [
+        {
+          "title": "Sousse",
+          "url": "https://en.wikipedia.org/wiki/Sousse",
+          "claim": "Sousse is a Tunisian city on the Gulf of Hammamet, south of Tunis.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Located 140 km (87 mi) south of the capital Tunis, the city has 271,428 inhabitants (2014). Sousse is in the central-east of the country, on the Gulf of Hammamet, which is a part of the Mediterranean Sea.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_constantine",
+      "region": "north",
+      "country": "Algeria",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city in northeastern Algeria was called Cirta in Roman times?",
+      "options": [
+        "Constantine",
+        "Tunis",
+        "Fez",
+        "Oran"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Constantine, in northeastern Algeria, was called Cirta in Roman times.",
+      "sources": [
+        {
+          "title": "Constantine, Algeria",
+          "url": "https://en.wikipedia.org/wiki/Constantine%2C_Algeria",
+          "claim": "Constantine, in northeastern Algeria, was called Cirta in Roman times.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Constantine, Algeria Constantine (Arabic: قسنطينة, romanized: Qusanṭīnah, Tamazight: ⵇⵙⵏⵟⵉⵏⴰ, romanized: Qsnṭina), also spelled Qacentina or Kasantina, is the capital of Constantine Province in northeastern Algeria. During Roman times it was called Cirta and was renamed \"Constantina\" in honour of Emperor Constantine the Great.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_benghazi",
+      "region": "north",
+      "country": "Libya",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the second-largest in Libya and the largest in Cyrenaica?",
+      "options": [
+        "Benghazi",
+        "Tunis",
+        "Fez",
+        "Oran"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Benghazi is the second-largest city in Libya and the largest in Cyrenaica.",
+      "sources": [
+        {
+          "title": "Benghazi",
+          "url": "https://en.wikipedia.org/wiki/Benghazi",
+          "claim": "Benghazi is the second-largest city in Libya and the largest in Cyrenaica.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "'Son of Ghazi') is the second-largest city in Libya as well as the largest city in Cyrenaica, with an estimated population of 859,000 in 2023. Located on the Gulf of Sidra in the Mediterranean, Benghazi is also a major seaport.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_agadir",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which major Moroccan city on the Atlantic lies near the foot of the Atlas Mountains?",
+      "options": [
+        "Agadir",
+        "Tunis",
+        "Fez",
+        "Oran"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Agadir is a major Moroccan city on the Atlantic near the foot of the Atlas Mountains.",
+      "sources": [
+        {
+          "title": "Agadir",
+          "url": "https://en.wikipedia.org/wiki/Agadir",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Agadir Agadir (Arabic: أكادير or أڭادير, romanized: ʾagādīr, pronounced [ʔaɡaːdiːr]; Tachelhit: ⴰⴳⴰⴷⵉⵔ) is a major city in Morocco, on the shore of the Atlantic Ocean near the foot of the Atlas Mountains, just north of the point where the Souss River flows into the ocean, and 509 kilometres (316 mi) south of Casablanca.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_essaouira",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Atlantic port city in western Morocco was known as Mogador until the 1960s?",
+      "options": [
+        "Essaouira",
+        "Tunis",
+        "Fez",
+        "Oran"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Essaouira is an Atlantic port city in western Morocco, known as Mogador until the 1960s.",
+      "sources": [
+        {
+          "title": "Essaouira",
+          "url": "https://en.wikipedia.org/wiki/Essaouira",
+          "claim": "Essaouira is an Atlantic port city in western Morocco, known as Mogador until the 1960s.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Essaouira Essaouira ( ESS-ə-WEER-ə; Arabic: الصويرة, romanized: aṣ-Ṣawīra, Standard Moroccan Tamazight: ⵜⴰⵚⵚⵓⵔⵜ, romanized: taṣṣurt), known until the 1960s as Mogador (Arabic: موغادور, romanized: Mūghādūr, or موݣادور, Mūgādūr), is a port city on the Atlantic coast in western Morocco.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_ouarzazate",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which city is the capital of a province in the Draa-Tafilalet region of south-central Morocco?",
+      "options": [
+        "Ouarzazate",
+        "Tunis",
+        "Fez",
+        "Oran"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ouarzazate is a provincial capital in the Draa-Tafilalet region of south-central Morocco.",
+      "sources": [
+        {
+          "title": "Ouarzazate",
+          "url": "https://en.wikipedia.org/wiki/Ouarzazate",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ouarzazate Ouarzazate (; Standard Moroccan Tamazight: ⵡⴰⵔⵣⴰⵣⴰⵜ Arabic: ورزازات, romanized: Warzāzāt, IPA: [warzaːˈzaːt]) is a city and capital of Ouarzazate Province in the region of Drâa-Tafilalet, south-central Morocco.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_sahara",
+      "region": "north",
+      "country": "North Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which desert spanning North Africa is the largest hot desert in the world?",
+      "options": [
+        "Sahara",
+        "Siwa",
+        "Atlas",
+        "Nile"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Sahara is a desert spanning North Africa and the largest hot desert in the world.",
+      "sources": [
+        {
+          "title": "Sahara",
+          "url": "https://en.wikipedia.org/wiki/Sahara",
+          "claim": "The Sahara is a desert spanning North Africa and the largest hot desert in the world.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Sahara The Sahara (, ) is a desert spanning North Africa. With an area of 9,200,000 square kilometres (3,600,000 sq mi), it is the largest hot desert in the world and the third-largest desert overall, smaller only than the deserts of Antarctica and the northern Arctic.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_atlas",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which mountain range in the Maghreb stretches through Morocco, Algeria, and Tunisia?",
+      "options": [
+        "Atlas",
+        "Siwa",
+        "Nile",
+        "Qattara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Atlas is a mountain range in the Maghreb that stretches through Morocco, Algeria, and Tunisia.",
+      "sources": [
+        {
+          "title": "Atlas Mountains",
+          "url": "https://en.wikipedia.org/wiki/Atlas_Mountains",
+          "claim": "The Atlas is a mountain range in the Maghreb that stretches through Morocco, Algeria, and Tunisia.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Atlas Mountains The Atlas Mountains are a mountain range in the Maghreb in North Africa. They separate the Sahara from the Mediterranean Sea and the Atlantic Ocean; the mountain range stretches around 2,500 km (1,600 mi) through Morocco, Algeria and Tunisia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_nile",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which major river flows north through northeast Africa and empties into the Mediterranean Sea?",
+      "options": [
+        "Nile",
+        "Siwa",
+        "Sahara",
+        "Atlas"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Nile is a major north-flowing river in northeast Africa that empties into the Mediterranean Sea.",
+      "sources": [
+        {
+          "title": "Nile",
+          "url": "https://en.wikipedia.org/wiki/Nile",
+          "claim": "The Nile is a major north-flowing river in northeast Africa that empties into the Mediterranean Sea.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nile The Nile is a major north-flowing river in northeast Africa which empties into the Mediterranean Sea.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_qattara",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which depression in northwestern Egypt is part of the Western Desert?",
+      "options": [
+        "Qattara",
+        "Siwa",
+        "Sahara",
+        "Atlas"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Qattara Depression is in northwestern Egypt and is part of the Western Desert.",
+      "sources": [
+        {
+          "title": "Qattara Depression",
+          "url": "https://en.wikipedia.org/wiki/Qattara_Depression",
+          "claim": "The Qattara Depression is in northwestern Egypt and is part of the Western Desert.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Qattara Depression The Qattara Depression (Arabic: منخفض القطارة, romanized: Munḫafaḍ al-Qaṭṭārah) is a depression in northwestern Egypt, specifically in the Matruh Governorate. The depression is part of the Western Desert of Egypt.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_shakshouka",
+      "region": "north",
+      "country": "North Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which Maghrebi dish poaches eggs in a sauce of tomatoes, olive oil, peppers, onion, and garlic?",
+      "options": [
+        "Shakshouka",
+        "Baghrir",
+        "Harissa",
+        "Msemmen"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shakshouka is a Maghrebi dish of eggs poached in a sauce of tomatoes, olive oil, peppers, onion, and garlic.",
+      "sources": [
+        {
+          "title": "Shakshouka",
+          "url": "https://en.wikipedia.org/wiki/Shakshouka",
+          "claim": "Shakshouka is a Maghrebi dish of eggs poached in a sauce of tomatoes, olive oil, peppers, onion, and garlic.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Shakshouka Shakshouka is a Maghrebi dish of eggs poached in a sauce of tomatoes, olive oil, peppers, onion, and garlic, commonly spiced with cumin, paprika, and cayenne pepper.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_baghrir",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which spongy semolina pancake, full of tiny holes, is eaten in Algeria, Morocco, and Tunisia?",
+      "options": [
+        "Baghrir",
+        "Shakshouka",
+        "Harissa",
+        "Msemmen"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Baghrir is a spongy semolina pancake full of tiny holes, eaten in Algeria, Morocco, and Tunisia.",
+      "sources": [
+        {
+          "title": "Baghrir",
+          "url": "https://en.wikipedia.org/wiki/Baghrir",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Baghrir Baghrir or beghrir (Arabic:البغرير), also known as ghrayef or mchahda, is a pancake consumed in Algeria, Morocco and Tunisia. They are small, spongy, and made with semolina or flour; when cooked correctly, they are riddled with tiny holes (which soak up whatever sauce they are served with).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_harissa",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which paste from Tunisia is made with roasted red peppers, garlic, caraway, coriander, and cumin?",
+      "options": [
+        "Harissa",
+        "Shakshouka",
+        "Baghrir",
+        "Msemmen"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Harissa is a paste from Tunisia made with roasted red peppers, garlic, caraway, coriander, and cumin.",
+      "sources": [
+        {
+          "title": "Harissa",
+          "url": "https://en.wikipedia.org/wiki/Harissa",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "The main ingredients are roasted red peppers, Baklouti peppers, spices and herbs such as garlic paste, caraway seeds, coriander seeds, cumin and olive oil to carry the oil-soluble flavors. Tunisia is the biggest exporter of prepared harissa and UNESCO lists it as part of Tunisia's Intangible Cultural Heritage.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_msemmen",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which layered flatbread from the Maghreb is cooked on a griddle and often served with honey?",
+      "options": [
+        "Msemmen",
+        "Shakshouka",
+        "Baghrir",
+        "Harissa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Msemmen is a layered Maghrebi flatbread cooked on a griddle and often served with honey.",
+      "sources": [
+        {
+          "title": "Msemmen",
+          "url": "https://en.wikipedia.org/wiki/Msemmen",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Msemmen Msemmen (Arabic: مسمن, romanized: musamman, msamman) or rghaif (رغايف), is a traditional flatbread originally from the Maghreb, commonly found in Algeria and Morocco, It is folded into square pancakes with multiple internal layers and cooked on a griddle, usually served with honey or a cup of aromatic morning mint tea or coffee.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_molokhia",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Egyptian dish is made from the leaves of a jute plant?",
+      "options": [
+        "Mulukhiyah",
+        "Shakshouka",
+        "Baghrir",
+        "Harissa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mulukhiyah is an Egyptian dish made from the leaves of a jute plant.",
+      "sources": [
+        {
+          "title": "Mulukhiyah",
+          "url": "https://en.wikipedia.org/wiki/Mulukhiyah",
+          "claim": "Mulukhiyah is an Egyptian dish made from the leaves of a jute plant.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mulukhiyah Mulukhiyah (Arabic: مُلُوخِيَّة, romanized: mulūḫiyya), also known as mulukhiyya, molokhiyya, melokhiyya, molohiya or ewédú, is a type of jute plant whose leaves are used to prepare a traditional Egyptian and Arab dish.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_mechoui",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Maghrebi dish roasts a whole sheep or lamb on a spit?",
+      "options": [
+        "Méchoui",
+        "Shakshouka",
+        "Baghrir",
+        "Harissa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Méchoui is a Maghrebi dish of a whole sheep or lamb roasted on a spit.",
+      "sources": [
+        {
+          "title": "Méchoui",
+          "url": "https://en.wikipedia.org/wiki/M%C3%A9choui",
+          "claim": "Méchoui is a Maghrebi dish of a whole sheep or lamb roasted on a spit.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Méchoui Méchoui (Arabic: مشوي) or meshwi is a whole sheep or lamb spit-roasted on a barbecue in Maghrebi cuisine.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_hawawshi",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Egyptian dish is a pita stuffed with minced meat, onions, pepper, and parsley?",
+      "options": [
+        "Hawawshi",
+        "Shakshouka",
+        "Baghrir",
+        "Harissa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hawawshi is an Egyptian dish of pita stuffed with minced meat, onions, pepper, and parsley.",
+      "sources": [
+        {
+          "title": "Hawawshi",
+          "url": "https://en.wikipedia.org/wiki/Hawawshi",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Hawawshi Hawawshi (sometimes spelled hawwaoshi; Egyptian Arabic: حواوشى, IPA: [ħæˈwæwʃi]) is a traditional Egyptian dish. It is a pita stuffed with minced meat and spiced with onions, pepper, parsley, and occasionally chilies.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_khaled",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Algerian rai musician, born Hadj Ibrahim, began recording as a teenager under a cheb stage name?",
+      "options": [
+        "Khaled",
+        "Raï",
+        "Cheb Mami",
+        "Warda Al-Jazairia"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Khaled, born Khaled Hadj Ibrahim, is an Algerian rai musician who first recorded as Cheb Khaled.",
+      "sources": [
+        {
+          "title": "Khaled (musician)",
+          "url": "https://en.wikipedia.org/wiki/Khaled_(musician)",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Khaled (musician) Khaled Hadj Ibrahim (Arabic: خالد حاج إبرهيم, pronounced [ˈxaːlɪd ħaːdʒ ʔɪbraːˈhiːm]; born 29 February 1960), better known by his mononym Khaled (Arabic: خالد), is an Algerian raï musician. He began recording in his early teens under the name Cheb Khaled (شاب خالد, Arabic for \"Young\" Khaled, with \"Cheb\" as a common title for male raï singers).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_warda",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Algerian singer, born Mohammed Ftouki, was well known for Egyptian Arabic songs?",
+      "options": [
+        "Warda Al-Jazairia",
+        "Raï",
+        "Khaled",
+        "Cheb Mami"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Warda Al-Jazairia, born Warda Mohammed Ftouki, was an Algerian singer known for Egyptian Arabic songs.",
+      "sources": [
+        {
+          "title": "Warda Al-Jazairia",
+          "url": "https://en.wikipedia.org/wiki/Warda_Al-Jazairia",
+          "claim": "Warda Al-Jazairia, born Warda Mohammed Ftouki, was an Algerian singer known for Egyptian Arabic songs.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Warda Al-Jazairia Warda Mohammed Ftouki (Arabic: وردة محمد فتوكي; 22 July 1939 – 17 May 2012), known professionally as Warda Al-Jazairia (وردة الجزائرية, 'Rose, the Algerian' or 'the Algerian Rose', pronounced [ˈwɑrdæ l(d)ʒæzæːʔɪˈrɪjjæ]), was an Algerian singer. She was well known for her Egyptian Arabic songs and music.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_hasni",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Algerian rai singer was born Chakroun in February 1968?",
+      "options": [
+        "Cheb Hasni",
+        "Raï",
+        "Khaled",
+        "Cheb Mami"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cheb Hasni, born Hasni Chakroun in February 1968, was an Algerian rai singer.",
+      "sources": [
+        {
+          "title": "Cheb Hasni",
+          "url": "https://en.wikipedia.org/wiki/Cheb_Hasni",
+          "claim": "Cheb Hasni, born Hasni Chakroun in February 1968, was an Algerian rai singer.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Cheb Hasni Cheb Hasni (Arabic: الشاب حسني), born Hasni Chakroun (Arabic: حسني شقرون), (1 February 1968 – 29 September 1994), was an Algerian raï singer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_rimitti",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Algerian rai singer was born Saadia El Ghizania?",
+      "options": [
+        "Cheikha Rimitti",
+        "Raï",
+        "Khaled",
+        "Cheb Mami"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cheikha Rimitti, born Saadia El Ghizania, was an Algerian rai singer.",
+      "sources": [
+        {
+          "title": "Cheikha Rimitti",
+          "url": "https://en.wikipedia.org/wiki/Cheikha_Rimitti",
+          "claim": "Cheikha Rimitti, born Saadia El Ghizania, was an Algerian rai singer.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Cheikha Rimitti Cheikha Rimitti (Arabic: شيخة ريميتي; 8 May 1923 – 15 May 2006), born Saadia El Ghizania (سعدية الغيزانية), was an Algerian raï female singer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_mezwed",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Tunisian popular music uses a darbouka and a bagpipe called a mizwad, often at weddings and parties?",
+      "options": [
+        "Mezwed",
+        "Raï",
+        "Khaled",
+        "Cheb Mami"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mezwed is Tunisian popular music played with a darbouka and a mizwad bagpipe, often at weddings and parties.",
+      "sources": [
+        {
+          "title": "Mezwed",
+          "url": "https://en.wikipedia.org/wiki/Mezwed",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mezwed Mezwed (Arabic: مزود) is a genre of popular traditional music based on Tunisian scale rhythms. It incorporates traditional North African drums called Darbouka and a kind of bagpipe called a mizwad with a bag made from ewe's leather.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_esperance",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Tunisian sports club was founded on 15 January 1919 in the Bab Souika neighborhood of Tunis?",
+      "options": [
+        "Espérance",
+        "Al Ahly",
+        "JS Kabylie",
+        "Wydad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Espérance is a Tunisian sports club founded on 15 January 1919 in Bab Souika, Tunis.",
+      "sources": [
+        {
+          "title": "Espérance Sportive de Tunis",
+          "url": "https://en.wikipedia.org/wiki/Esp%C3%A9rance_Sportive_de_Tunis",
+          "claim": "Espérance is a Tunisian sports club founded on 15 January 1919 in Bab Souika, Tunis.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Espérance Sportive de Tunis Espérance Sportive de Tunis (EST, French pronunciation: [ɛs.pe.ʁɑ̃s spɔʁ.tiv də ty.nis] ) and in Arabic: الترجي الرياضي التونسي, romanized: (Attaraji ar-Riyāḍi Attūnisī ), or simply as Attaraji, is a Tunisian professional sports club founded on 15 January 1919 in the Bab Souika neighborhood of Tunis.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_jsk",
+      "region": "north",
+      "country": "Algeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Algerian football club is based in Tizi Ouzou?",
+      "options": [
+        "JS Kabylie",
+        "Al Ahly",
+        "Espérance",
+        "Wydad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "JS Kabylie is an Algerian football club based in Tizi Ouzou.",
+      "sources": [
+        {
+          "title": "JS Kabylie",
+          "url": "https://en.wikipedia.org/wiki/JS_Kabylie",
+          "claim": "JS Kabylie is an Algerian football club based in Tizi Ouzou.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "JS Kabylie Jeunesse Sportive de Kabylie (Kabyle: Ilemẓiyen inaddalen n leqvayel; Tamazight: ⵉⵍⵎⵣⵢⵏ ⵉⵏⴰⴷⴰⵍⵏ ⵏ ⵍⵇⵠⴰⵢⵍ; Arabic: شبيبة القبائل), known as JS Kabylie or simply JSK, is an Algerian professional football club based in Tizi Ouzou, Kabylia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_wydad",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Moroccan football club was founded on 8 May 1937?",
+      "options": [
+        "Wydad",
+        "Al Ahly",
+        "Espérance",
+        "JS Kabylie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wydad is a Moroccan football club founded on 8 May 1937.",
+      "sources": [
+        {
+          "title": "Wydad AC",
+          "url": "https://en.wikipedia.org/wiki/Wydad_AC",
+          "claim": "Wydad is a Moroccan football club founded on 8 May 1937.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Wydad AC is best known for its professional football team that competes in Botola Pro, the top tier of the Moroccan football league system. It was founded on 8 May 1937 by seven Moroccans belonging to the national movement for independence, led by Ihab Hajnaoui Ihab, who also created the football section of the club in June 1939.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_raja",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which football club from the Derb Sultan district of Casablanca was founded in March 1949?",
+      "options": [
+        "Raja",
+        "Al Ahly",
+        "Espérance",
+        "JS Kabylie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Raja is a football club from the Derb Sultan district of Casablanca, founded in March 1949.",
+      "sources": [
+        {
+          "title": "Raja CA",
+          "url": "https://en.wikipedia.org/wiki/Raja_CA",
+          "claim": "Raja is a football club from the Derb Sultan district of Casablanca, founded in March 1949.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Raja CA Raja Club Athletic (Arabic: نادي الرجاء الرياضي), widely known as Raja Casablanca, Raja CA or simply Raja, is a football club based in Casablanca, Morocco, that competes in Botola Pro, the top flight of Moroccan football. Founded on 20 March 1949 in the district of Derb Sultan, the club has traditionally worn a green home kit since inception.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_makhloufi",
+      "region": "north",
+      "country": "Algeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Algerian athlete won the 1500 metres at the 2012 Summer Olympics in London?",
+      "options": [
+        "Taoufik Makhloufi",
+        "Achraf Hakimi",
+        "Riyad Mahrez",
+        "Ons Jabeur"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Taoufik Makhloufi is an Algerian athlete who won the 1500 metres at the 2012 Summer Olympics in London.",
+      "sources": [
+        {
+          "title": "Taoufik Makhloufi",
+          "url": "https://en.wikipedia.org/wiki/Taoufik_Makhloufi",
+          "claim": "Taoufik Makhloufi is an Algerian athlete who won the 1500 metres at the 2012 Summer Olympics in London.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Taoufik Makhloufi Taoufik Makhloufi (Arabic: توفيق مخلوفي; born 29 April 1988) is an Algerian athlete who specialises in middle-distance running. He became the 1500 metres Olympic champion at the 2012 Summer Olympics in London, England.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_djebar",
+      "region": "north",
+      "country": "Algeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Algerian novelist, translator, and filmmaker was born Fatima-Zohra Imalayen?",
+      "options": [
+        "Assia Djebar",
+        "Fatima al-Fihri",
+        "Kateb Yacine",
+        "Taha Hussein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Assia Djebar, born Fatima-Zohra Imalayen, was an Algerian novelist, translator, and filmmaker.",
+      "sources": [
+        {
+          "title": "Assia Djebar",
+          "url": "https://en.wikipedia.org/wiki/Assia_Djebar",
+          "claim": "Assia Djebar, born Fatima-Zohra Imalayen, was an Algerian novelist, translator, and filmmaker.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Assia Djebar Fatima-Zohra Imalayen (Arabic: فاطمة الزهراء إيمالاين‎; 30 June 1936 – 6 February 2015), known by her pen name Assia Djebar (Arabic: آسيا جبار), was an Algerian novelist, translator and filmmaker.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_fihri",
+      "region": "north",
+      "country": "Morocco",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which woman is credited with founding the Qarawiyyin Mosque in Fez in 857?",
+      "options": [
+        "Fatima al-Fihri",
+        "Assia Djebar",
+        "Kateb Yacine",
+        "Taha Hussein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fatima al-Fihri is credited with founding the al-Qarawiyyin Mosque in Fez in 857.",
+      "sources": [
+        {
+          "title": "Fatima al-Fihriya",
+          "url": "https://en.wikipedia.org/wiki/Fatima_al-Fihriya",
+          "claim": "Fatima al-Fihri is credited with founding the al-Qarawiyyin Mosque in Fez in 857.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Fatima al-Fihriya Fatima bint Muhammad al-Fihriya al-Qurashiyya (Arabic: فاطمة بنت محمد الفهرية القرشية), known in shorter form as Fatima al-Fihriya or Fatima al-Fihri, was an Arab woman who is credited with founding the al-Qarawiyyin Mosque in 857–859 CE in Fez, Morocco.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_kateb",
+      "region": "north",
+      "country": "Algeria",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Algerian writer produced novels and plays in both French and Algerian Arabic?",
+      "options": [
+        "Kateb Yacine",
+        "Assia Djebar",
+        "Fatima al-Fihri",
+        "Taha Hussein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kateb Yacine was an Algerian writer of novels and plays in French and Algerian Arabic.",
+      "sources": [
+        {
+          "title": "Kateb Yacine",
+          "url": "https://en.wikipedia.org/wiki/Kateb_Yacine",
+          "claim": "Kateb Yacine was an Algerian writer of novels and plays in French and Algerian Arabic.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kateb Yacine Kateb Yacine (Arabic pronunciation: [kæːtb jæːsiːn]; 2 August 1929 or 6 August 1929 – 28 October 1989) was an Algerian writer notable for his novels and plays, both in French and Algerian Arabic, and his advocacy of the Berber cause.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_taha",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Egyptian writer was nicknamed the Dean of Arabic Literature?",
+      "options": [
+        "Taha Hussein",
+        "Assia Djebar",
+        "Fatima al-Fihri",
+        "Kateb Yacine"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Taha Hussein was an Egyptian writer nicknamed the Dean of Arabic Literature.",
+      "sources": [
+        {
+          "title": "Taha Hussein",
+          "url": "https://en.wikipedia.org/wiki/Taha_Hussein",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Taha Hussein Taha Hussein (Arabic: طه حسين, romanized: Ṭāhā Ḥusayn, Egyptian Arabic: [ˈtˤɑːhɑ ħ(e)ˈseːn]; November 14, 1889 – October 28, 1973) was among the most influential 20th-century Egyptian writers and intellectuals, and a leading figure of the Arab Renaissance and the modernist movement in the Arab world. His sobriquet was \"The Dean of Arabic Literature\" (Arabic: عميد الأدب العربي, romanized: ʿAmīd al-Adab al-ʿArabī).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_almohad",
+      "region": "north",
+      "country": "North Africa",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Berber dynasty ruled a North African empire from 1130 to 1269 and at its height held the Maghreb and al-Andalus?",
+      "options": [
+        "Almohads",
+        "Numidia",
+        "Marinids",
+        "Fatimids"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Almohads were a Berber dynasty whose North African empire, from 1130 to 1269, held the Maghreb and al-Andalus at its height.",
+      "sources": [
+        {
+          "title": "Almohad Caliphate",
+          "url": "https://en.wikipedia.org/wiki/Almohad_Caliphate",
+          "claim": "The Almohads were a Berber dynasty whose North African empire, from 1130 to 1269, held the Maghreb and al-Andalus at its height.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Almohad Caliphate The Almohad Caliphate or Almohad Empire was a North African Muslim empire ruled by a Berber dynasty from 1130 to 1269 (AH 524–667), which at its height controlled much of the Maghreb and the Iberian Peninsula (al-Andalus).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_marinid",
+      "region": "north",
+      "country": "Morocco",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Berber Zenata dynasty ruled chiefly in present-day Morocco from the mid-13th century to the 15th century?",
+      "options": [
+        "Marinids",
+        "Numidia",
+        "Almohads",
+        "Fatimids"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Marinids were a Berber Zenata dynasty that ruled chiefly in present-day Morocco from the mid-13th century to the 15th century.",
+      "sources": [
+        {
+          "title": "Marinid dynasty",
+          "url": "https://en.wikipedia.org/wiki/Marinid_dynasty",
+          "claim": "The Marinids were a Berber Zenata dynasty that ruled chiefly in present-day Morocco from the mid-13th century to the 15th century.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Marinid dynasty The Marinid dynasty (Arabic: المرينيون, romanized: al-Marīniyyūn) was a Berber Zenata dynasty that ruled much of the Maghreb, chiefly present-day Morocco, from the mid-13th to the 15th century.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_fatimid",
+      "region": "north",
+      "country": "North Africa",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which dynasty ruled a North African caliphate from the tenth to the twelfth centuries, from the western Mediterranean toward the Red Sea?",
+      "options": [
+        "Fatimids",
+        "Numidia",
+        "Almohads",
+        "Marinids"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Fatimids ruled a North African caliphate from the tenth to the twelfth centuries, reaching from the western Mediterranean toward the Red Sea.",
+      "sources": [
+        {
+          "title": "Fatimid Caliphate",
+          "url": "https://en.wikipedia.org/wiki/Fatimid_Caliphate",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Fatimid Caliphate The Fatimid Caliphate (; Arabic: الخلافة الفاطمیّة, romanised: al-Khilāfa al-Fāṭimiyya), also known as the Fatimid Empire, was a caliphate that existed from the tenth to the twelfth centuries CE under the rule of the Fatimids, an Isma'ili Shi'a dynasty. Spanning a large area of North Africa and West Asia, it extended from the western Mediterranean in the west to the Red Sea in the east.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_idrisid",
+      "region": "north",
+      "country": "Morocco",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Arab Muslim dynasty ruled most of present-day Morocco from 788 to 974?",
+      "options": [
+        "Idrisids",
+        "Numidia",
+        "Almohads",
+        "Marinids"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Idrisids were an Arab Muslim dynasty that ruled most of present-day Morocco from 788 to 974.",
+      "sources": [
+        {
+          "title": "Idrisid dynasty",
+          "url": "https://en.wikipedia.org/wiki/Idrisid_dynasty",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Idrisid dynasty The Idrisid dynasty or Idrisids (Arabic: الأدارسة al-Adārisah) were an Arab Muslim dynasty from 788 to 974, ruling most of present-day Morocco and parts of present-day western Algeria.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_hieroglyphs",
+      "region": "north",
+      "country": "Egypt",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which formal writing system was used in Ancient Egypt for the Egyptian language?",
+      "options": [
+        "Hieroglyphs",
+        "Coptic",
+        "Hassaniya",
+        "Siwi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hieroglyphs were the formal writing system used in Ancient Egypt for the Egyptian language.",
+      "sources": [
+        {
+          "title": "Egyptian hieroglyphs",
+          "url": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
+          "claim": "Hieroglyphs were the formal writing system used in Ancient Egypt for the Egyptian language.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Egyptian hieroglyphs Ancient Egyptian hieroglyphs (, HY-roh-glifs) or hieroglyphics were the formal writing system used in Ancient Egypt for writing the Egyptian language.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_coptic",
+      "region": "north",
+      "country": "Egypt",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dormant Afroasiatic language represents the most recent developments of Egyptian and was spoken from the third century AD?",
+      "options": [
+        "Coptic",
+        "Hieroglyphs",
+        "Hassaniya",
+        "Siwi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Coptic is a dormant Afroasiatic language, the most recent stage of Egyptian, spoken from the third century AD.",
+      "sources": [
+        {
+          "title": "Coptic language",
+          "url": "https://en.wikipedia.org/wiki/Coptic_language",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Coptic language Coptic (Bohairic Coptic: ϯⲙⲉⲧⲣⲉⲙⲛ̀ⲭⲏⲙⲓ, romanized: Timetremənkʰēmi) is a dormant Afroasiatic language. It is a group of closely related Egyptian dialects, representing the most recent developments of the Egyptian language, and historically spoken by the Egyptians, starting from the third century AD in Roman Egypt.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_hassaniya",
+      "region": "north",
+      "country": "Mauritania",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which variety of Maghrebi Arabic is spoken by Mauritanian Arabs and Sahrawis?",
+      "options": [
+        "Hassaniya",
+        "Hieroglyphs",
+        "Coptic",
+        "Siwi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hassaniya is a variety of Maghrebi Arabic spoken by Mauritanian Arabs and Sahrawis.",
+      "sources": [
+        {
+          "title": "Hassaniya Arabic",
+          "url": "https://en.wikipedia.org/wiki/Hassaniya_Arabic",
+          "claim": "Hassaniya is a variety of Maghrebi Arabic spoken by Mauritanian Arabs and Sahrawis.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Hassaniya Arabic Hassaniya Arabic (Arabic: حسانية, romanized: Ḥassāniyya; also known as Hassaniyya, Klam El Bithan, Hassani, Hassaniya, and Maure) is a variety of Maghrebi Arabic spoken by Mauritanian Arabs, Malian Arabs and the Sahrawis.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_siwi",
+      "region": "north",
+      "country": "Egypt",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Berber language is spoken in the Egyptian oases of Siwa and Gara?",
+      "options": [
+        "Siwi",
+        "Hieroglyphs",
+        "Coptic",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Siwi is a Berber language spoken in the Egyptian oases of Siwa and Gara.",
+      "sources": [
+        {
+          "title": "Siwi language",
+          "url": "https://en.wikipedia.org/wiki/Siwi_language",
+          "claim": "Siwi is a Berber language spoken in the Egyptian oases of Siwa and Gara.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Siwi language Siwi (also known as Siwan or Siwa Berber; endonym: Jlan n isiwan) is the easternmost Berber language, spoken in the western Egyptian desert by an estimated 15,000 to 20,000 people in the oases of Siwa and Gara, near the Libyan border.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_tarifit",
+      "region": "north",
+      "country": "Morocco",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Zenati Berber language is spoken in the Rif region of northern Morocco?",
+      "options": [
+        "Tarifit",
+        "Hieroglyphs",
+        "Coptic",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tarifit is a Zenati Berber language spoken in the Rif region of northern Morocco.",
+      "sources": [
+        {
+          "title": "Tarifit",
+          "url": "https://en.wikipedia.org/wiki/Tarifit",
+          "claim": "Tarifit is a Zenati Berber language spoken in the Rif region of northern Morocco.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tarifit Tarifit (also known as Riffian; endonym: Tmaziɣt or Tarifit/Tarifect) is a Zenati Berber language spoken in the Rif region in northern Morocco.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_kabyle",
+      "region": "north",
+      "country": "Algeria",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Berber language is spoken primarily in Kabylia, in the north and northeast of Algeria?",
+      "options": [
+        "Kabyle",
+        "Hieroglyphs",
+        "Coptic",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kabyle is a Berber language spoken primarily in Kabylia, in northern and northeastern Algeria.",
+      "sources": [
+        {
+          "title": "Kabyle language",
+          "url": "https://en.wikipedia.org/wiki/Kabyle_language",
+          "claim": "Kabyle is a Berber language spoken primarily in Kabylia, in northern and northeastern Algeria.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kabyle language Kabyle () or Kabylian (; native name: Taqbaylit [θɐqβæjlɪθ] ) is a Berber language spoken by the Kabyle people in the north and northeast of Algeria. It is spoken primarily in Kabylia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_grow_fantasia",
+      "region": "north",
+      "country": "North Africa",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which traditional exhibition of horsemanship in the Maghreb is performed at cultural festivals and wedding celebrations?",
+      "options": [
+        "Fantasia",
+        "Imilchil Moussem",
+        "Tan-Tan Moussem",
+        "Sefrou cherry festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fantasia is a traditional Maghrebi exhibition of horsemanship, performed at cultural festivals and wedding celebrations.",
+      "sources": [
+        {
+          "title": "Fantasia (performance)",
+          "url": "https://en.wikipedia.org/wiki/Fantasia_(performance)",
+          "claim": "Fantasia is a traditional Maghrebi exhibition of horsemanship, performed at cultural festivals and wedding celebrations.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Fantasia (performance) Fantasia (Arabic: الفانتازيا) is a traditional exhibition of horsemanship in the Maghreb performed during cultural festivals and for Maghrebi wedding celebrations.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
     }
   ]
 }

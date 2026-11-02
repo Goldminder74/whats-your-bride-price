@@ -2805,6 +2805,2454 @@
         }
       },
       "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_brazzaville",
+      "region": "central",
+      "country": "Republic of the Congo",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital and largest city of the Republic of the Congo?",
+      "options": [
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi",
+        "Foumban"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Brazzaville is the capital and largest city of the Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Brazzaville",
+          "url": "https://en.wikipedia.org/wiki/Brazzaville",
+          "claim": "Brazzaville is the capital and largest city of the Republic of the Congo.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Brazzaville Brazzaville (French pronunciation: [bʁazavil]) is the capital and largest city of the Republic of the Congo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_douala",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the largest in Cameroon and its economic capital?",
+      "options": [
+        "Douala",
+        "Brazzaville",
+        "Lubumbashi",
+        "Foumban"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Douala is the largest city in Cameroon and its economic capital.",
+      "sources": [
+        {
+          "title": "Douala",
+          "url": "https://en.wikipedia.org/wiki/Douala",
+          "claim": "Douala is the largest city in Cameroon and its economic capital.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Douala Douala is the largest city in Cameroon and its economic capital.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_lubumbashi",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city, formerly Elisabethville, is the second-largest in the Democratic Republic of the Congo?",
+      "options": [
+        "Lubumbashi",
+        "Brazzaville",
+        "Douala",
+        "Foumban"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lubumbashi, formerly Elisabethville, is the second-largest city in the Democratic Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Lubumbashi",
+          "url": "https://en.wikipedia.org/wiki/Lubumbashi",
+          "claim": "Lubumbashi, formerly Elisabethville, is the second-largest city in the Democratic Republic of the Congo.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lubumbashi Lubumbashi (UK: LOO-buum-BASH-ee, US: LOO-boom-BAH-shee), formerly Élisabethville (French: [elizabɛtvil]; Dutch: Elisabethstad [eːˈlisaːbɛtstɑt] ), is the second-largest city in the Democratic Republic of the Congo, located in the southeasternmost part of the country, near the border with Zambia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_foumban",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city in Cameroon, also called Fumban, lies north east of Bafoussam?",
+      "options": [
+        "Foumban",
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Foumban, also called Fumban, is a city in Cameroon north east of Bafoussam.",
+      "sources": [
+        {
+          "title": "Foumban",
+          "url": "https://en.wikipedia.org/wiki/Foumban",
+          "claim": "Foumban, also called Fumban, is a city in Cameroon north east of Bafoussam.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Foumban Foumban or Fumban is a city in Cameroon, lying north east of Bafoussam.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_goma",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of North Kivu, on the northern shore of Lake Kivu?",
+      "options": [
+        "Goma",
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Goma is the capital of North Kivu, on the northern shore of Lake Kivu.",
+      "sources": [
+        {
+          "title": "Goma",
+          "url": "https://en.wikipedia.org/wiki/Goma",
+          "claim": "Goma is the capital of North Kivu, on the northern shore of Lake Kivu.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Goma Goma is the capital and largest city of the North Kivu province of the Democratic Republic of the Congo. It is located in the east of the country on the northern shore of Lake Kivu and shares borders with the Bukumu Chiefdom to the north, Rwanda to the east and the Masisi Territory to the west.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_kisangani",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city, formerly Stanleyville, is the capital of Tshopo on the Congo River?",
+      "options": [
+        "Kisangani",
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kisangani, formerly Stanleyville, is the capital of Tshopo on the Congo River.",
+      "sources": [
+        {
+          "title": "Kisangani",
+          "url": "https://en.wikipedia.org/wiki/Kisangani",
+          "claim": "Kisangani, formerly Stanleyville, is the capital of Tshopo on the Congo River.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kisangani Kisangani (), formerly Stanleyville (Dutch: Stanleystad), is the capital of Tshopo Province, located on the Congo River in the eastern part of the central Congo Basin in the Democratic Republic of the Congo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_pointe_noire",
+      "region": "central",
+      "country": "Republic of the Congo",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the second largest and the main economic centre in the Republic of the Congo?",
+      "options": [
+        "Pointe-Noire",
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pointe-Noire is the second largest city and the main economic centre in the Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Pointe-Noire",
+          "url": "https://en.wikipedia.org/wiki/Pointe-Noire",
+          "claim": "Pointe-Noire is the second largest city and the main economic centre in the Republic of the Congo.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Pointe-Noire Pointe-Noire (French pronunciation: [pwɛ̃t.nwaʁ]; Kongo: Njinji, French: Ndjindji with the letter d following French spelling standards) is the second largest city and main economic centre in the Republic of the Congo, with a population of 1,420,612 inhabitants in 2023.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_buea",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of the Southwest Region of Cameroon?",
+      "options": [
+        "Buea",
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Buea is the capital of the Southwest Region of Cameroon.",
+      "sources": [
+        {
+          "title": "Buea",
+          "url": "https://en.wikipedia.org/wiki/Buea",
+          "claim": "Buea is the capital of the Southwest Region of Cameroon.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Buea Buea is the capital of the Southwest Region of Cameroon.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_garoua",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which port city is the capital of the North Region of Cameroon, lying on the Benue River?",
+      "options": [
+        "Garoua",
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Garoua is a port city and the capital of Cameroon's North Region, on the Benue River.",
+      "sources": [
+        {
+          "title": "Garoua",
+          "url": "https://en.wikipedia.org/wiki/Garoua",
+          "claim": "Garoua is a port city and the capital of Cameroon's North Region, on the Benue River.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Garoua Garoua (also Garua; Fula: 𞤺𞤢𞤪𞤱𞤢, Garwa) is a port city and the capital of the North Region of Cameroon, lying on the Benue River.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_port_gentil",
+      "region": "central",
+      "country": "Gabon",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the second-largest in Gabon?",
+      "options": [
+        "Port-Gentil",
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Port-Gentil is the second-largest city of Gabon.",
+      "sources": [
+        {
+          "title": "Port-Gentil",
+          "url": "https://en.wikipedia.org/wiki/Port-Gentil",
+          "claim": "Port-Gentil is the second-largest city of Gabon.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Port-Gentil Port-Gentil (French pronunciation: [pɔʁ ʒɑ̃ti]) or Mandji is the second-largest city of Gabon, and a leading seaport.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_lobito",
+      "region": "central",
+      "country": "Angola",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which municipality in Angola lies on the Atlantic coast in Benguela Province?",
+      "options": [
+        "Lobito",
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lobito is a municipality on the Atlantic coast in Angola's Benguela Province.",
+      "sources": [
+        {
+          "title": "Lobito",
+          "url": "https://en.wikipedia.org/wiki/Lobito",
+          "claim": "Lobito is a municipality on the Atlantic coast in Angola's Benguela Province.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lobito Lobito is a municipality in Angola. It is located in Benguela Province, on the Atlantic Coast north of the Catumbela Estuary.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_mbanza",
+      "region": "central",
+      "country": "Angola",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which capital of Angola's northwestern Zaire Province was known as Sao Salvador from 1570 to 1976?",
+      "options": [
+        "Mbanza Kongo",
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mbanza Kongo, capital of Angola's Zaire Province, was known as Sao Salvador from 1570 to 1976.",
+      "sources": [
+        {
+          "title": "M'banza-Kongo",
+          "url": "https://en.wikipedia.org/wiki/M'banza-Kongo",
+          "claim": "Mbanza Kongo, capital of Angola's Zaire Province, was known as Sao Salvador from 1570 to 1976.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "M'banza-Kongo Mbanza Kongo (Portuguese pronunciation: [ɐ̃ˈbɐ̃zɐ], [ĩˈbɐ̃zɐ], [mɨˈβɐ̃zɐ] or [miˈβɐ̃zɐ ˈkõɡu], known as São Salvador in Portuguese from 1570 to 1976; Kongo: Mbânza Kôngo) is the capital of Angola's northwestern Zaire Province with a population of 221,141 in 2024.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_sao_tome",
+      "region": "central",
+      "country": "Sao Tome and Principe",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which capital and largest city has a Portuguese name for Saint Thomas?",
+      "options": [
+        "São Tomé",
+        "Brazzaville",
+        "Douala",
+        "Lubumbashi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "São Tomé is the capital and largest city of São Tomé and Príncipe, and its name is Portuguese for Saint Thomas.",
+      "sources": [
+        {
+          "title": "São Tomé",
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "claim": "São Tomé is the capital and largest city of São Tomé and Príncipe, and its name is Portuguese for Saint Thomas.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "São Tomé São Tomé is the capital and largest city of the Central African island country of São Tomé and Príncipe. Its name is Portuguese for \"Saint Thomas\".",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_mt_cameroon",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which active stratovolcano stands next to the city of Buea?",
+      "options": [
+        "Mount Cameroon",
+        "Nyiragongo",
+        "Ogooué",
+        "Lopé"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mount Cameroon is an active stratovolcano next to the city of Buea.",
+      "sources": [
+        {
+          "title": "Mount Cameroon",
+          "url": "https://en.wikipedia.org/wiki/Mount_Cameroon",
+          "claim": "Mount Cameroon is an active stratovolcano next to the city of Buea.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mount Cameroon Mount Cameroon is an active stratovolcano in the Southwest Region of Cameroon next to the city of Buea near the Gulf of Guinea.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_nyiragongo",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which active stratovolcano inside Virunga National Park stands about 12 km north of Goma?",
+      "options": [
+        "Nyiragongo",
+        "Mount Cameroon",
+        "Ogooué",
+        "Lopé"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nyiragongo is an active stratovolcano inside Virunga National Park, about 12 km north of Goma.",
+      "sources": [
+        {
+          "title": "Mount Nyiragongo",
+          "url": "https://en.wikipedia.org/wiki/Mount_Nyiragongo",
+          "claim": "Nyiragongo is an active stratovolcano inside Virunga National Park, about 12 km north of Goma.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mount Nyiragongo Mount Nyiragongo ( neer-ə-GONG-go) is an active stratovolcano with an elevation of 3,470 m (11,385 ft) in the Virunga Mountains associated with the Albertine Rift. It is located inside Virunga National Park, in the North Kivu province in the Democratic Republic of the Congo, about 12 km (7.5 mi) north of the town of Goma and Lake Kivu and just 9.8 km (6.1mi) west of the border with Rwanda.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_ogooue",
+      "region": "central",
+      "country": "Gabon",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which river, also called the Nazareth, is the principal river of Gabon?",
+      "options": [
+        "Ogooué",
+        "Mount Cameroon",
+        "Nyiragongo",
+        "Lopé"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Ogooué, also called the Nazareth, is the principal river of Gabon.",
+      "sources": [
+        {
+          "title": "Ogooué River",
+          "url": "https://en.wikipedia.org/wiki/Ogoou%C3%A9_River",
+          "claim": "The Ogooué, also called the Nazareth, is the principal river of Gabon.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ogooué River The Ogooué (or Ogowe), also known as the Nazareth River, some 1,200 km (750 mi) long, is the principal river of Gabon in west-central Africa and the fourth largest river in Africa by volume of discharge.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_lope",
+      "region": "central",
+      "country": "Gabon",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which national park in central Gabon is bordered by the Ogooué River to the north?",
+      "options": [
+        "Lopé",
+        "Mount Cameroon",
+        "Nyiragongo",
+        "Congo River"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lopé National Park is a national park in central Gabon, bordered by the Ogooué River to the north.",
+      "sources": [
+        {
+          "title": "Lopé National Park",
+          "url": "https://en.wikipedia.org/wiki/Lop%C3%A9_National_Park",
+          "claim": "Lopé National Park is a national park in central Gabon, bordered by the Ogooué River to the north.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lopé National Park Lopé National Park (French: Parc national de la Lopé) is a national park in central Gabon. Bordered by the Ogooué River to the north and the Chaillu Massif to the south, the park has an area of 4,912 km2 (1,897 sq mi).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_chikwangue",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which fermented cassava staple, also called kwanga in Lingala and bobolo in Cameroon, is eaten across Central Africa?",
+      "options": [
+        "Chikwangue",
+        "Moambe",
+        "Eru",
+        "Saka saka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chikwangue is a fermented cassava staple eaten across Central Africa, also called kwanga in Lingala and bobolo in Cameroon.",
+      "sources": [
+        {
+          "title": "Chikwangue",
+          "url": "https://en.wikipedia.org/wiki/Chikwangue",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Chikwangue Chikwangue, also known in Cameroon as bobolo and in the Congo River basin language of Lingala as kwanga, is a starchy, fermented-cassava product that is a staple food across Central Africa: the Democratic Republic of Congo (DRC), the Republic of Congo (RotC), Gabon, Cameroon and Equatorial Guinea.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_moambe",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which ingredient, also called nyembwe, is made from palm nuts but not the seeds?",
+      "options": [
+        "Moambe",
+        "Chikwangue",
+        "Eru",
+        "Saka saka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Moambe, also called nyembwe, is made from palm nuts but not the seeds.",
+      "sources": [
+        {
+          "title": "Moambe",
+          "url": "https://en.wikipedia.org/wiki/Moambe",
+          "claim": "Moambe, also called nyembwe, is made from palm nuts but not the seeds.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Moambe Palm butter or palm cream, frequently known as moambe, mwambe or nyembwe, is an ingredient made from the pericarp (not the seeds) of palm nuts, the fruit of the African oil palm (Elaeis guineensis) tree.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_eru",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which vegetable from Cameroon is a specialty of the Bayangi people?",
+      "options": [
+        "Eru",
+        "Chikwangue",
+        "Moambe",
+        "Saka saka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Eru is a vegetable from Cameroon and a specialty of the Bayangi people.",
+      "sources": [
+        {
+          "title": "Eru (soup)",
+          "url": "https://en.wikipedia.org/wiki/Eru_(soup)",
+          "claim": "Eru is a vegetable from Cameroon and a specialty of the Bayangi people.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Eru (soup) Eru is a vegetable from Cameroon. It is a specialty of the Bayangi people, of the Manyu departement in southwestern Cameroon.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_saka",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish made from pounded and boiled cassava leaves is eaten in Central Africa?",
+      "options": [
+        "Saka saka",
+        "Chikwangue",
+        "Moambe",
+        "Eru"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Saka saka is a Central African dish of cassava leaves that are pounded and then boiled.",
+      "sources": [
+        {
+          "title": "Saka saka",
+          "url": "https://en.wikipedia.org/wiki/Saka_saka",
+          "claim": "Saka saka is a Central African dish of cassava leaves that are pounded and then boiled.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Saka saka Saka saka is a dish from Central Africa, West Africa, and the Comoros (East Africa) made from cassava leaves that are pounded and then boiled.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_soukous",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which dance music from both Congos grew out of rumba in the 1960s with faster rhythms?",
+      "options": [
+        "Soukous",
+        "Ndombolo",
+        "Makossa",
+        "Bikutsi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Soukous is dance music from both Congos that grew out of rumba in the 1960s with faster rhythms.",
+      "sources": [
+        {
+          "title": "Soukous",
+          "url": "https://en.wikipedia.org/wiki/Soukous",
+          "claim": "Soukous is dance music from both Congos that grew out of rumba in the 1960s with faster rhythms.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Soukous Soukous (from French secousse, \"shock, jolt, jerk\") is a genre of dance music originating from the Democratic Republic of the Congo (formerly Zaire) and the Republic of the Congo (formerly French Congo and the People's Republic of the Congo). It derived from Congolese rumba in the 1960s, with faster dance rhythms and bright, intricate guitar improvisation, and gained popularity in the 1980s in France.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_ndombolo",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which fast hip-swaying dance music from the Democratic Republic of the Congo came from soukous in the 1990s?",
+      "options": [
+        "Ndombolo",
+        "Makossa",
+        "Bikutsi",
+        "Mbilia Bel"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ndombolo is fast hip-swaying dance music from the Democratic Republic of the Congo, drawn from soukous in the 1990s.",
+      "sources": [
+        {
+          "title": "Ndombolo",
+          "url": "https://en.wikipedia.org/wiki/Ndombolo",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ndombolo Ndombolo, also known as dombolo, is a genre of dance music originating in the Democratic Republic of the Congo. Derived from soukous in the 1990s, with fast-paced hip-swaying dance rhythms, often accompanied by upbeat, percussion-driven music, the style became widespread in the mid-1990s and the subsequent decade, dominating dancefloors in central, eastern, and western Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_makossa",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music genre from Douala uses strong electric bass rhythms and prominent brass?",
+      "options": [
+        "Makossa",
+        "Soukous",
+        "Ndombolo",
+        "Bikutsi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Makossa is a music genre from Douala that uses strong electric bass rhythms and prominent brass.",
+      "sources": [
+        {
+          "title": "Makossa",
+          "url": "https://en.wikipedia.org/wiki/Makossa",
+          "claim": "Makossa is a music genre from Douala that uses strong electric bass rhythms and prominent brass.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Makossa Makossa is a music genre originating in Douala, Littoral Region, Cameroon in the late 20th century. Like much other music of Sub-Saharan Africa, it uses strong electric bass rhythms and prominent brass.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_bikutsi",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Cameroonian musical genre developed from Beti, or Ewondo, styles around Yaounde?",
+      "options": [
+        "Bikutsi",
+        "Soukous",
+        "Ndombolo",
+        "Makossa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bikutsi is a Cameroonian musical genre that developed from Beti, or Ewondo, styles around Yaounde.",
+      "sources": [
+        {
+          "title": "Bikutsi",
+          "url": "https://en.wikipedia.org/wiki/Bikutsi",
+          "claim": "Bikutsi is a Cameroonian musical genre that developed from Beti, or Ewondo, styles around Yaounde.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Bikutsi Bikutsi is a musical genre from Cameroon. It developed from the traditional styles of the Beti, or Ewondo, people, who live around the city of Yaoundé.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_mbilia",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Congolese singer and songwriter is also called Marie-Claire Mboyo Moseka?",
+      "options": [
+        "Mbilia Bel",
+        "Soukous",
+        "Ndombolo",
+        "Makossa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mbilia Bel is the stage name of Congolese singer and songwriter Marie-Claire Mboyo Moseka.",
+      "sources": [
+        {
+          "title": "Mbilia Bel",
+          "url": "https://en.wikipedia.org/wiki/Mbilia_Bel",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mbilia Bel Marie-Claire Mboyo Moseka (born 10 January 1959), known professionally as Mbilia Bel, is a Congolese singer and songwriter.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_tabu",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Congolese singer and bandleader was born Pascal-Emmanuel Sinamoyi?",
+      "options": [
+        "Tabu Ley Rochereau",
+        "Soukous",
+        "Ndombolo",
+        "Makossa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tabu Ley Rochereau, born Pascal-Emmanuel Sinamoyi, was a Congolese singer and bandleader.",
+      "sources": [
+        {
+          "title": "Tabu Ley Rochereau",
+          "url": "https://en.wikipedia.org/wiki/Tabu_Ley_Rochereau",
+          "claim": "Tabu Ley Rochereau, born Pascal-Emmanuel Sinamoyi, was a Congolese singer and bandleader.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tabu Ley Rochereau Pascal-Emmanuel Sinamoyi Tabu (13 November 1940 – 30 November 2013), known professionally as Tabu Ley Rochereau, was a Congolese singer-songwriter, record executive, and bandleader who became one of the most influential figures in Congolese rumba.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_pepe",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Congolese singer-songwriter was born Jean-Baptiste Kabasele Yampanya?",
+      "options": [
+        "Pépé Kallé",
+        "Soukous",
+        "Ndombolo",
+        "Makossa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pépé Kallé, born Jean-Baptiste Kabasele Yampanya, was a Congolese singer-songwriter.",
+      "sources": [
+        {
+          "title": "Pépé Kallé",
+          "url": "https://en.wikipedia.org/wiki/P%C3%A9p%C3%A9_Kall%C3%A9",
+          "claim": "Pépé Kallé, born Jean-Baptiste Kabasele Yampanya, was a Congolese singer-songwriter.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Pépé Kallé Jean-Baptiste Kabasele Yampanya wa ba Mulanga (30 November 1951 – 29 November 1998), known professionally as Pépé Kallé, was a Congolese singer-songwriter, bandleader, and performer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_zaiko",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Congolese rumba band was formed in Kinshasa in December 1969?",
+      "options": [
+        "Zaïko Langa Langa",
+        "Soukous",
+        "Ndombolo",
+        "Makossa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zaïko Langa Langa is a Congolese rumba band formed in Kinshasa in December 1969.",
+      "sources": [
+        {
+          "title": "Zaïko Langa Langa",
+          "url": "https://en.wikipedia.org/wiki/Za%C3%AFko_Langa_Langa",
+          "claim": "Zaïko Langa Langa is a Congolese rumba band formed in Kinshasa in December 1969.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Zaïko Langa Langa Zaïko Langa Langa, also known as Zaïko Langa Langa Nkolo Mboka, is a Congolese rumba band formed in Kinshasa in December 1969.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_awilo",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Congolese soukous singer, drummer, and producer was born on 5 May 1962?",
+      "options": [
+        "Awilo Longomba",
+        "Ndombolo",
+        "Makossa",
+        "Bikutsi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Awilo Longomba is a Congolese soukous singer, drummer, and producer born on 5 May 1962.",
+      "sources": [
+        {
+          "title": "Awilo Longomba",
+          "url": "https://en.wikipedia.org/wiki/Awilo_Longomba",
+          "claim": "Awilo Longomba is a Congolese soukous singer, drummer, and producer born on 5 May 1962.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Awilo Longomba Louis Albert William Longomba (born 5 May 1962), known professionally as Awilo Longomba, is a Congolese soukous singer, drummer, songwriter, dancer, and producer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_bebey",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Cameroonian musicologist, writer, composer, and broadcaster came from Douala?",
+      "options": [
+        "Francis Bebey",
+        "Soukous",
+        "Ndombolo",
+        "Makossa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Francis Bebey was a Cameroonian musicologist, writer, composer, and broadcaster from Douala.",
+      "sources": [
+        {
+          "title": "Francis Bebey",
+          "url": "https://en.wikipedia.org/wiki/Francis_Bebey",
+          "claim": "Francis Bebey was a Cameroonian musicologist, writer, composer, and broadcaster from Douala.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Francis Bebey Francis Bebey (French: [bəbɛ], 15 July 1929 in Douala, Cameroon – 28 May 2001 in Paris, France) was a Cameroonian musicologist, writer, composer, and broadcaster.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_mongo",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Cameroonian author, also called Eza Boto, was born Alexandre Biyidi Awala?",
+      "options": [
+        "Mongo Beti",
+        "Sony Lab'ou Tansi",
+        "Henri Lopes",
+        "Alain Mabanckou"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mongo Beti, also called Eza Boto, was the Cameroonian author Alexandre Biyidi Awala.",
+      "sources": [
+        {
+          "title": "Mongo Beti",
+          "url": "https://en.wikipedia.org/wiki/Mongo_Beti",
+          "claim": "Mongo Beti, also called Eza Boto, was the Cameroonian author Alexandre Biyidi Awala.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mongo Beti Alexandre Biyidi Awala (30 June 1932 – 8 October 2001), known as Mongo Beti or Eza Boto, was a Cameroonian author and polemicist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_sony",
+      "region": "central",
+      "country": "Republic of the Congo",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Congolese novelist, playwright, and poet was born Marcel Ntsoni?",
+      "options": [
+        "Sony Lab'ou Tansi",
+        "Mongo Beti",
+        "Henri Lopes",
+        "Alain Mabanckou"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sony Lab'ou Tansi, born Marcel Ntsoni, was a Congolese novelist, playwright, and poet.",
+      "sources": [
+        {
+          "title": "Sony Lab'ou Tansi",
+          "url": "https://en.wikipedia.org/wiki/Sony_Lab'ou_Tansi",
+          "claim": "Sony Lab'ou Tansi, born Marcel Ntsoni, was a Congolese novelist, playwright, and poet.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Sony Lab'ou Tansi Sony Lab'ou Tansi (5 July 1947 – 14 June 1995), born Marcel Ntsoni, was a Congolese novelist, short-story writer, playwright, and poet in French language.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_lopes",
+      "region": "central",
+      "country": "Republic of the Congo",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Congolese writer was Prime Minister of Congo-Brazzaville from 1973 to 1975?",
+      "options": [
+        "Henri Lopes",
+        "Mongo Beti",
+        "Sony Lab'ou Tansi",
+        "Alain Mabanckou"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Henri Lopes was a Congolese writer and Prime Minister of Congo-Brazzaville from 1973 to 1975.",
+      "sources": [
+        {
+          "title": "Henri Lopes",
+          "url": "https://en.wikipedia.org/wiki/Henri_Lopes",
+          "claim": "Henri Lopes was a Congolese writer and Prime Minister of Congo-Brazzaville from 1973 to 1975.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Henri Lopes Henri Lopes (12 September 1937 – 2 November 2023) was a Congolese writer, diplomat, and politician. He was Prime Minister of Congo-Brazzaville from 1973 to 1975, and served as Congo-Brazzaville's Ambassador to France from 1998 to 2016.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_aboubakar",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which footballer began a career at Coton Sport and moved to Europe in 2010?",
+      "options": [
+        "Aboubakar",
+        "Pierre-Emerick Aubameyang",
+        "Samuel Eto'o",
+        "Rigobert Song"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Aboubakar is a footballer who began at Coton Sport and moved to Europe in 2010.",
+      "sources": [
+        {
+          "title": "Vincent Aboubakar",
+          "url": "https://en.wikipedia.org/wiki/Vincent_Aboubakar",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Aboubakar began his career at Coton Sport and moved to Europe in 2010, playing for Ligue 1 clubs Valenciennes and Lorient, totalling 109 appearances and 26 goals in France's top division.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_auba",
+      "region": "central",
+      "country": "Gabon",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which striker was born in France and has played for Gabon?",
+      "options": [
+        "Pierre-Emerick Aubameyang",
+        "Aboubakar",
+        "Samuel Eto'o",
+        "Rigobert Song"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pierre-Emerick Aubameyang is a striker who was born in France and has played for Gabon.",
+      "sources": [
+        {
+          "title": "Pierre-Emerick Aubameyang",
+          "url": "https://en.wikipedia.org/wiki/Pierre-Emerick_Aubameyang",
+          "claim": "Pierre-Emerick Aubameyang is a striker who was born in France and has played for Gabon.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Pierre-Emerick Aubameyang Pierre-Emerick Emiliano François Aubameyang (born 18 June 1989) is a professional footballer who plays as a striker for La Liga club Deportivo A Coruña. Born in France, he played for the Gabon national team.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_kituba",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which widely used lingua franca in Central Africa is a creole based on Kikongo?",
+      "options": [
+        "Kituba",
+        "Umbundu",
+        "Duala",
+        "Gbaya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kituba is a widely used lingua franca in Central Africa and a creole based on Kikongo.",
+      "sources": [
+        {
+          "title": "Kituba language",
+          "url": "https://en.wikipedia.org/wiki/Kituba_language",
+          "claim": "Kituba is a widely used lingua franca in Central Africa and a creole based on Kikongo.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kituba language Kituba (endonyms: Kituba, Kikongo ya leta) is a widely used lingua franca in Central Africa. It is a creole language based on Kikongo, a Bantu language.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_umbundu",
+      "region": "central",
+      "country": "Angola",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which language of Angola is spoken by the Ovimbundu in the Central Highlands?",
+      "options": [
+        "Umbundu",
+        "Kituba",
+        "Duala",
+        "Gbaya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Umbundu is a language of Angola spoken by the Ovimbundu, whose homeland includes the Central Highlands.",
+      "sources": [
+        {
+          "title": "Umbundu",
+          "url": "https://en.wikipedia.org/wiki/Umbundu",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Umbundu Umbundu, also known as Angolan, South Mbundu (autonym úmbúndú), one of many Bantu languages, is the most widely-spoken autochthonous language of Angola. Its speakers are known as Ovimbundu, an ethnic group that constitutes a third of Angola's population and whose homeland is the Central Highlands of Angola and the coastal region west of the highlands, including the cities of Benguela and Lobito.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_duala",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Bantu language is spoken by the Mungo people of Cameroon?",
+      "options": [
+        "Duala",
+        "Kituba",
+        "Umbundu",
+        "Gbaya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Duala is a Bantu language spoken by the Duala and Mungo peoples of Cameroon.",
+      "sources": [
+        {
+          "title": "Duala language",
+          "url": "https://en.wikipedia.org/wiki/Duala_language",
+          "claim": "Duala is a Bantu language spoken by the Duala and Mungo peoples of Cameroon.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Duala language Duala (native name: Duálá) is a dialect cluster spoken by the Duala and Mungo peoples of Cameroon. Duala belongs to the Bantu language family, in a subgroup called Sawabantu.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_gbaya",
+      "region": "central",
+      "country": "Central African Republic",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which language family is spoken mainly in the western Central African Republic and across the border in Cameroon?",
+      "options": [
+        "Gbaya",
+        "Kituba",
+        "Umbundu",
+        "Duala"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Gbaya languages are spoken mainly in the western Central African Republic and across the border in Cameroon.",
+      "sources": [
+        {
+          "title": "Gbaya languages",
+          "url": "https://en.wikipedia.org/wiki/Gbaya_languages",
+          "claim": "The Gbaya languages are spoken mainly in the western Central African Republic and across the border in Cameroon.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Gbaya languages The Gbaya languages, also known as Gbaya–Manza–Ngbaka, are a family of perhaps a dozen languages spoken mainly in the western Central African Republic and across the border in Cameroon, with one language (Ngbaka) in the Democratic Republic of the Congo, and several languages with few speakers in the Republic of the Congo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_kuba_cloth",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which palm-leaf fiber from the Democratic Republic of the Congo is cut to form pile surfaces resembling velvet?",
+      "options": [
+        "Kuba textiles",
+        "Liputa",
+        "Abacost",
+        "La Sape"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kuba textiles are palm-leaf fiber from the Democratic Republic of the Congo, cut into pile surfaces that resemble velvet.",
+      "sources": [
+        {
+          "title": "Kuba textiles",
+          "url": "https://en.wikipedia.org/wiki/Kuba_textiles",
+          "claim": "",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kuba textiles Kuba textiles are a type of raffia cloth unique to the Democratic Republic of the Congo, formerly Zaire, and noted for their elaboration and complexity of design and surface decoration. Most textiles are a variation on rectangular or square pieces of woven palm leaf fiber enhanced by geometric designs executed in linear embroidery and other stitches, which are cut to form pile surfaces resembling velvet.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_liputa",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which style of wearing modern fashion is used by women in the Democratic Republic of the Congo and the Republic of the Congo?",
+      "options": [
+        "Liputa",
+        "Kuba textiles",
+        "Abacost",
+        "La Sape"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Liputa is a style of wearing modern fashion used by women in the Democratic Republic of the Congo and the Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Liputa",
+          "url": "https://en.wikipedia.org/wiki/Liputa",
+          "claim": "Liputa is a style of wearing modern fashion used by women in the Democratic Republic of the Congo and the Republic of the Congo.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Liputa Liputa is a style of wearing modern fashion by women in Democratic Republic of the Congo and the Republic of Congo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_kanem",
+      "region": "central",
+      "country": "Chad",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which empire based around Lake Chad was sustained by trans-Saharan trade?",
+      "options": [
+        "Kanem-Bornu",
+        "Bamun",
+        "Luba",
+        "Lunda"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Kanem-Bornu Empire was based around Lake Chad and sustained by trans-Saharan trade.",
+      "sources": [
+        {
+          "title": "Kanem–Bornu Empire",
+          "url": "https://en.wikipedia.org/wiki/Kanem%E2%80%93Bornu_Empire",
+          "claim": "The Kanem-Bornu Empire was based around Lake Chad and sustained by trans-Saharan trade.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kanem–Bornu Empire The Kanem–Bornu Empire was an empire based around Lake Chad that once ruled areas which are now part of Nigeria, Niger, Cameroon, Libya, Algeria, Sudan, and Chad. The empire was sustained by the prosperous trans-Saharan trade and was one of the oldest and longest-lived empires in world history and especially in African history.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_bamoun",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which state in what is now northwest Cameroon was founded by people from the northeast of that country?",
+      "options": [
+        "Bamun",
+        "Kanem-Bornu",
+        "Luba",
+        "Lunda"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bamun was a state in what is now northwest Cameroon, founded by people from the northeast of Cameroon.",
+      "sources": [
+        {
+          "title": "Kingdom of Bamum",
+          "url": "https://en.wikipedia.org/wiki/Kingdom_of_Bamum",
+          "claim": "Bamun was a state in what is now northwest Cameroon, founded by people from the northeast of Cameroon.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kingdom of Bamum The Kingdom of Bamoun (also spelled Bamoum, Bamun, Bamoun, or Mum) was a state in central Africa, part of what is now northwest Cameroon. It was founded by the Bamun, an ethnic group from northeast Cameroon.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_luba",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which pre-colonial state arose in the Upemba Depression in what is now the southern Democratic Republic of the Congo?",
+      "options": [
+        "Luba",
+        "Kanem-Bornu",
+        "Bamun",
+        "Lunda"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Luba was a pre-colonial state in the Upemba Depression, in what is now the southern Democratic Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Luba Empire",
+          "url": "https://en.wikipedia.org/wiki/Luba_Empire",
+          "claim": "Luba was a pre-colonial state in the Upemba Depression, in what is now the southern Democratic Republic of the Congo.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Luba Empire The Luba Empire or Kingdom of Luba was a pre-colonial Central African state that arose in the marshy grasslands of the Upemba Depression in what is now southern Democratic Republic of the Congo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_lunda",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which confederation of states covered parts of the Democratic Republic of Congo, Angola, and Zambia?",
+      "options": [
+        "Lunda",
+        "Kanem-Bornu",
+        "Bamun",
+        "Luba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lunda was a confederation of states in what is now the Democratic Republic of Congo, Angola, and Zambia.",
+      "sources": [
+        {
+          "title": "Lunda Empire",
+          "url": "https://en.wikipedia.org/wiki/Lunda_Empire",
+          "claim": "Lunda was a confederation of states in what is now the Democratic Republic of Congo, Angola, and Zambia.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lunda Empire The Lunda Empire or Lunda Commonwealth was a confederation or commonwealth of states in what is now the Democratic Republic of Congo, north-eastern Angola, and north-western Zambia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_mangwana",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Congolese-born singer was born to Angolan parents?",
+      "options": [
+        "Sam Mangwana",
+        "Soukous",
+        "Ndombolo",
+        "Makossa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sam Mangwana is a Congolese-born singer, born to Angolan parents.",
+      "sources": [
+        {
+          "title": "Sam Mangwana",
+          "url": "https://en.wikipedia.org/wiki/Sam_Mangwana",
+          "claim": "Sam Mangwana is a Congolese-born singer, born to Angolan parents.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Sam Mangwana Samuel Domingos Mangwana (born 21 February 1945), known professionally as Sam Mangwana, is a Congolese-born singer, born to Angolan parents.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_grow_nyboma",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Congolese soukous tenor was a leading member of Orchestre Bella Bella?",
+      "options": [
+        "Nyboma",
+        "Ndombolo",
+        "Makossa",
+        "Bikutsi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nyboma is a Congolese soukous tenor who was a leading member of Orchestre Bella Bella.",
+      "sources": [
+        {
+          "title": "Nyboma",
+          "url": "https://en.wikipedia.org/wiki/Nyboma",
+          "claim": "Nyboma is a Congolese soukous tenor who was a leading member of Orchestre Bella Bella.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nyboma Nyboma Mwan'dido (or Muan'dido), often simply Nyboma (born 1952), a prominent Congolese soukous tenor vocalist, has been over a fifty-year span a leading member of several outstanding bands, including Orchestre Bella Bella, Orchestre Lipua Lipua, Orchestre Kamale, Les Quatre Étoiles, and Kékélé, in addition to performing and recording as a solo artist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
     }
   ]
 }
