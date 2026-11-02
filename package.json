@@ -17,7 +17,7 @@
     "dev:worker": "wrangler dev --config wrangler.jsonc --local",
     "build:shell": "node scripts/assemble-paid-assets.mjs",
     "build:worker": "npm run build:shell && wrangler deploy --dry-run --outdir outputs/paid-worker --config wrangler.jsonc",
-    "test:e2e": "npm run build && playwright test",
+    "test:e2e": "WYBP_FEATURE_RANDOM_BANK=true npm run build && playwright test",
     "test:all": "npm run lint && npm run typecheck && npm run test:unit && npm test && npm run test:e2e",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "typecheck": "tsc --noEmit --incremental false",

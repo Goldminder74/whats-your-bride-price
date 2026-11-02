@@ -34,7 +34,7 @@ ROWS = [
     s("medium", "FESTIVALS", "Mali", "Festival au Désert", "a desert music festival that began in Mali", "Festival au Désert", "Festival au Désert was a music festival in Mali"),
     s("easy", "FESTIVALS", "Ghana", "Independence Day", "Ghana's national day on 6 March", "Public holidays in Ghana", "Ghana Independence Day is celebrated on 6 March"),
     s("easy", "FESTIVALS", "Nigeria", "Independence Day", "Nigeria's national day on 1 October", "Public holidays in Nigeria", "Nigeria Independence Day is on 1 October"),
-    s("hard", "FESTIVALS", "Ghana", "Damba", "a festival celebrated in northern Ghana", "Damba festival", "Damba is a festival in Ghana"),
+    s("hard", "FESTIVALS", "Ghana", "Damba", "held in northern Ghana by Dagomba communities", "Damba festival", "Damba is a festival in northern Ghana"),
     s("medium", "FESTIVALS", "Senegal", "Dakar Biennale", "a major contemporary art biennale in Dakar", "Dakar Biennale", "The Dakar Biennale is an art festival in Senegal"),
     s("easy", "WEDDINGS", "Nigeria", "Aso ebi", "matching family outfits worn at Nigerian weddings and parties", "Aso ebi", "Aso ebi is matching clothing worn at Nigerian celebrations"),
     s("medium", "WEDDINGS", "Nigeria", "Money spraying", "the party custom of tossing or pressing cash onto dancers", "Nigerian wedding", "Spraying money is part of Nigerian wedding celebrations"),

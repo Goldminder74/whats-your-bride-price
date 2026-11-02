@@ -65,7 +65,7 @@ ROWS = [
     s("hard", "MUSIC", "Côte d'Ivoire", "Coupé-décalé", "a dance music from Côte d'Ivoire that filled clubs in the 2000s", "Coupé-décalé", "Coupé-décalé is a music and dance genre from Côte d'Ivoire"),
     s("hard", "MUSIC", "Senegal", "Sabar", "a Senegalese drum and dance tradition", "Sabar", "Sabar is a drum from Senegal"),
     s("hard", "MUSIC", "Nigeria", "Apala", "a Yoruba percussion genre that predates fuji", "Apala", "Apala is a genre of Nigerian Yoruba music"),
-    s("medium", "MUSIC", "Sierra Leone", "Palm-wine music", "a guitar style named for the palm-wine bars where it was played", "Palm-wine music", "Palm-wine music is a West African guitar style"),
+    s("medium", "MUSIC", "Sierra Leone", "Palm-wine music", "a West African guitar style named for palm wine", "Palm-wine music", "Palm-wine music is a West African guitar style"),
     s("medium", "MUSIC", "Mali", "Griot", "a hereditary praise singer and historian in Mande societies, also called a jeli", "Griot", "A griot is a West African historian and musician"),
     # FASHION
     s("easy", "FASHION", "Ghana", "Kente", "the brightly strip-woven cloth of Akan and Ewe weavers in Ghana", "Kente cloth", "Kente is a Ghanaian textile made of woven strips"),

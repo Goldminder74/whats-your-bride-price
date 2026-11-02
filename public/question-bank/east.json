@@ -1,0 +1,5615 @@
+{
+  "region": "east",
+  "questions": [
+    {
+      "id": "east_fash_habesha_kemis",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is an Amharic term used by Amhara people to refer to their traditional women's attire?",
+      "options": [
+        "Habesha kemis",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The habesha kemis is a dress from Ethiopia.",
+      "sources": [
+        {
+          "title": "Habesha kemis",
+          "url": "https://en.wikipedia.org/wiki/Habesha_kemis",
+          "claim": "Habesha kemis Habesha kemis (Amharic: ቀሚስ, meaning \"Dress\" in Amharic) is an Amharic term used by Amhara people to refer to their traditional women's attire.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Habesha kemis Habesha kemis (Amharic: ቀሚስ, meaning \"Dress\" in Amharic) is an Amharic term used by Amhara people to refer to their traditional women's attire.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_fash_kanzu",
+      "region": "east",
+      "country": "Uganda",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a white or cream coloured robe worn by men in the African Great Lakes region?",
+      "options": [
+        "Kanzu",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kanzu is a robe worn in Uganda.",
+      "sources": [
+        {
+          "title": "Kanzu",
+          "url": "https://en.wikipedia.org/wiki/Kanzu",
+          "claim": "Kanzu A kanzu is a white or cream coloured robe worn by men in the African Great Lakes region.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kanzu A kanzu is a white or cream coloured robe worn by men in the African Great Lakes region.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_fash_kikoi",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a traditional rectangle of woven cloth originating from Africa?",
+      "options": [
+        "Kikoi",
+        "Kanga",
+        "Kitenge",
+        "Habesha kemis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kikoi is a cloth from East Africa.",
+      "sources": [
+        {
+          "title": "Kikoi",
+          "url": "https://en.wikipedia.org/wiki/Kikoi",
+          "claim": "Kikoi A kikoi is a traditional rectangle of woven cloth originating from Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kikoi A kikoi is a traditional rectangle of woven cloth originating from Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_fash_kofia_hat",
+      "region": "east",
+      "country": "East Africa",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a type of brimless cylindrical headwear with a flat top?",
+      "options": [
+        "Kofia",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kofia is a cap worn in East Africa.",
+      "sources": [
+        {
+          "title": "Kofia (hat)",
+          "url": "https://en.wikipedia.org/wiki/Kofia_(hat)",
+          "claim": "Kofia (hat) The kofia is a type of brimless cylindrical headwear with a flat top, widely worn by Muslim men in East Africa, and the horn of Africa including Somalia.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kofia (hat) The kofia is a type of brimless cylindrical headwear with a flat top, widely worn by Muslim men in East Africa, and the horn of Africa including Somalia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_fash_lamba_garment",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the wrap cloth of Madagascar?",
+      "options": [
+        "Lamba",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The lamba is a garment from Madagascar.",
+      "sources": [
+        {
+          "title": "Lamba (garment)",
+          "url": "https://en.wikipedia.org/wiki/Lamba_(garment)",
+          "claim": "The lamba is a garment from Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lamba (garment) A lamba is the traditional garment of Madagascar: a rectangular length of cloth wrapped around the body, worn by both men and women.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_fash_netela",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the most common textile in the northern and central highlands?",
+      "options": [
+        "Netela",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The netela is a shawl from Ethiopia.",
+      "sources": [
+        {
+          "title": "Netela",
+          "url": "https://en.wikipedia.org/wiki/Netela",
+          "claim": "Hand-woven cotton cloth, or shemma, is the most common textile in the northern and central highlands, where it is used for the Habesha kemis and for shawls such as the netela, kuta and gabi.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Hand-woven cotton cloth, or shemma, is the most common textile in the northern and central highlands, where it is used for the Habesha kemis and for shawls such as the netela, kuta and gabi.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_berbere",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call a spice mixture whose constituent elements usually include chili peppers?",
+      "options": [
+        "Berbere",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Berbere is a spice mixture from Ethiopia.",
+      "sources": [
+        {
+          "title": "Berbere",
+          "url": "https://en.wikipedia.org/wiki/Berbere",
+          "claim": "Berbere Berbere (Amharic: በርበሬ bärbäre, Tigrinya: በርበረ bärbärä) is a spice mixture whose constituent elements usually include chili peppers, coriander, garlic, ginger, Ethiopian holy basil (besobela) seeds, korarima, rue, ajwain or radhuni, nigella, and fenugreek.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Berbere Berbere (Amharic: በርበሬ bärbäre, Tigrinya: በርበረ bärbärä) is a spice mixture whose constituent elements usually include chili peppers, coriander, garlic, ginger, Ethiopian holy basil (besobela) seeds, korarima, rue, ajwain or radhuni, nigella, and fenugreek.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_chapati",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call an unleavened flatbread originating from the Indian subcontinent?",
+      "options": [
+        "Chapati",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chapati is eaten in Kenya.",
+      "sources": [
+        {
+          "title": "Chapati",
+          "url": "https://en.wikipedia.org/wiki/Chapati",
+          "claim": "Chapati Chapati is an unleavened flatbread originating from the Indian subcontinent.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Chapati Chapati is an unleavened flatbread originating from the Indian subcontinent.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_injera",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a sour fermented pancake-like flatbread with a slightly spongy texture?",
+      "options": [
+        "Injera",
+        "Doro wat",
+        "Nyama choma",
+        "Ugali"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Injera is a sourdough flatbread from Ethiopia.",
+      "sources": [
+        {
+          "title": "Injera",
+          "url": "https://en.wikipedia.org/wiki/Injera",
+          "claim": "Injera Injera, also known as taita (Amharic: እንጀራ, romanized: ənǧära, [ɨnd͡ʒəra]; Tigrinya: ጣይታ, romanized: ṭayta; Oromo: buddeena), is a sour fermented pancake-like flatbread with a slightly spongy texture, traditionally made of teff flour.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Injera Injera, also known as taita (Amharic: እንጀራ, romanized: ənǧära, [ɨnd͡ʒəra]; Tigrinya: ጣይታ, romanized: ṭayta; Oromo: buddeena), is a sour fermented pancake-like flatbread with a slightly spongy texture, traditionally made of teff flour.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_kitfo",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call minced beef seasoned with mitmita and kibbeh?",
+      "options": [
+        "Kitfo",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kitfo is a raw beef dish from Ethiopia.",
+      "sources": [
+        {
+          "title": "Kitfo",
+          "url": "https://en.wikipedia.org/wiki/Kitfo",
+          "claim": "Kitfo is a raw beef dish from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kitfo Kitfo (Amharic: ክትፎ, IPA: [kɨtfo]) is an Ethiopian traditional dish that originated among the Gurage people. It consists of minced raw beef, marinated in mitmita (a chili-based spice powder) and niter kibbeh (a clarified butter infused with herbs and spices).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_mandazi",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a form of fried bread that originated on the Swahili coast of East Africa?",
+      "options": [
+        "Mandazi",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mandazi is a fried bread from East Africa.",
+      "sources": [
+        {
+          "title": "Mandazi",
+          "url": "https://en.wikipedia.org/wiki/Mandazi",
+          "claim": "Mandazi Mandazi (Swahili: mandazi, maandazi) is a form of fried bread that originated on the Swahili coast of East Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mandazi Mandazi (Swahili: mandazi, maandazi) is a form of fried bread that originated on the Swahili coast of East Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_matoke",
+      "region": "east",
+      "country": "Uganda",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call steamed green banana, a staple in Uganda?",
+      "options": [
+        "Matoke",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Matoke is a banana dish from Uganda.",
+      "sources": [
+        {
+          "title": "Matoke",
+          "url": "https://en.wikipedia.org/wiki/Matoke",
+          "claim": "Matoke is a banana dish from Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Matoke bananas are a staple food crop in Uganda, Kenya, Tanzania and other Great Lakes countries.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_nyama_choma",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call grilled meat, a beloved Kenyan celebration dish?",
+      "options": [
+        "Nyama choma",
+        "Injera",
+        "Doro wat",
+        "Ugali"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nyama choma is grilled meat in Kenya.",
+      "sources": [
+        {
+          "title": "Nyama choma",
+          "url": "https://en.wikipedia.org/wiki/Nyama_choma",
+          "claim": "Nyama choma is grilled meat in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Coco Wiseman, « Nyama choma (Kenyan grilled meat) », in African Cookbook: Coco Cooks Kenya, Springwood emedia ISBN 9781301841554.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_pilau",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a rice dish, or in some regions, a wheat dish, whose recipe usually involves cooking in stock or broth, adding spices, and other?",
+      "options": [
+        "Pilau",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pilau is a spiced rice dish.",
+      "sources": [
+        {
+          "title": "Pilau",
+          "url": "https://en.wikipedia.org/wiki/Pilau",
+          "claim": "Pilaf Pilaf (US: or pilau UK: ) is a rice dish, or in some regions, a wheat dish, whose recipe usually involves cooking in stock or broth, adding spices, and other ingredients such as vegetables and meat, and employing some technique for achieving cooked grains that do not adhere.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Pilaf Pilaf (US: or pilau UK: ) is a rice dish, or in some regions, a wheat dish, whose recipe usually involves cooking in stock or broth, adding spices, and other ingredients such as vegetables and meat, and employing some technique for achieving cooked grains that do not adhere.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_rolex_food",
+      "region": "east",
+      "country": "Uganda",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call a popular food item in Uganda prepared by combining an egg omelette and vegetables wrapped in a chapati?",
+      "options": [
+        "Rolex",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rolex is a street food in Uganda.",
+      "sources": [
+        {
+          "title": "Rolex (food)",
+          "url": "https://en.wikipedia.org/wiki/Rolex_(food)",
+          "claim": "Rolex (food) Ugandan Rolex, commonly referred to as Rolex, is a popular food item in Uganda prepared by combining an egg omelette and vegetables wrapped in a chapati.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Rolex (food) Ugandan Rolex, commonly referred to as Rolex, is a popular food item in Uganda prepared by combining an egg omelette and vegetables wrapped in a chapati.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_romazava",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call a meat and greens stew considered a national dish of Madagascar?",
+      "options": [
+        "Romazava",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Romazava is a dish from Madagascar.",
+      "sources": [
+        {
+          "title": "Romazava",
+          "url": "https://en.wikipedia.org/wiki/Romazava",
+          "claim": "Romazava is a dish from Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Romazava Romazava ([rumaˈzavə̥]) is the national dish of Madagascar, consisting of greens, zebu meat, tomatoes, and onions, typically accompanied by a portion of rice.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_sukuma_wiki",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call an East African dish made with collard greens?",
+      "options": [
+        "Sukuma wiki",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sukuma wiki is a vegetable dish in Kenya.",
+      "sources": [
+        {
+          "title": "Sukuma wiki",
+          "url": "https://en.wikipedia.org/wiki/Sukuma_wiki",
+          "claim": "Sukuma wiki Sukuma wiki is an East African dish made with collard greens, known as sukuma, cooked with onions and spices.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Sukuma wiki Sukuma wiki is an East African dish made with collard greens, known as sukuma, cooked with onions and spices.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_ugali",
+      "region": "east",
+      "country": "East Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a type of corn meal made from maize or corn or mahindi flour in several African countries?",
+      "options": [
+        "Ugali",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ugali is a maize porridge eaten in East Africa.",
+      "sources": [
+        {
+          "title": "Ugali",
+          "url": "https://en.wikipedia.org/wiki/Ugali",
+          "claim": "Ugali Ugali, also known as posho, nsima, papa, pap, bogobe, sadza, isitshwala, akume, amawe, ewokple, akple, and other names, is a type of corn meal made from maize or corn or mahindi flour in several African countries: Kenya, Uganda, South Sudan, Tanzania, Zimbabwe, Zambia, Lesotho, Eswatini, Angola, Mozambique, Namibia, Democratic Republic of the Congo,",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ugali Ugali, also known as posho, nsima, papa, pap, bogobe, sadza, isitshwala, akume, amawe, ewokple, akple, and other names, is a type of corn meal made from maize or corn or mahindi flour in several African countries: Kenya, Uganda, South Sudan, Tanzania, Zimbabwe, Zambia, Lesotho, Eswatini, Angola, Mozambique, Namibia, Democratic Republic of the Congo, Rwanda, Malawi, Botswana and South Africa, and in West Africa by the Ewes of Togo, Ghana, Benin, Nigeria and Ivory Coast.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_food_zigni",
+      "region": "east",
+      "country": "Eritrea",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a spicy meat stew of Eritrean cooking?",
+      "options": [
+        "Zigni",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zigni is a stew from Eritrea.",
+      "sources": [
+        {
+          "title": "Zigni",
+          "url": "https://en.wikipedia.org/wiki/Zigni",
+          "claim": "Zigni is a stew from Eritrea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Zigni Zigni (Tigrinya: ዝግኒ), kaih tsebhi (Tigrinya: ቀይሕ ጸብሒ) or kai wat (Amharic: ቀይ ወጥ) is a popular Eritrean and Ethiopian stew (tsebhi or wat) made from meat, tomatoes, red onions and Berbere spices.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_addis_ababa",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Ethiopia?",
+      "options": [
+        "Addis Ababa",
+        "Nairobi",
+        "Kampala",
+        "Asmara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Addis Ababa is the capital of Ethiopia.",
+      "sources": [
+        {
+          "title": "Addis Ababa",
+          "url": "https://en.wikipedia.org/wiki/Addis_Ababa",
+          "claim": "Addis Ababa is the capital of Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "At an elevation of 2,355 metres (7,726 ft), it is the fourth-highest capital city in the world and the highest capital in Africa. Addis Ababa is a highly developed and important cultural, artistic, financial and administrative center of Ethiopia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_antananarivo",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Madagascar?",
+      "options": [
+        "Antananarivo",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Antananarivo is the capital of Madagascar.",
+      "sources": [
+        {
+          "title": "Antananarivo",
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "claim": "Antananarivo is the capital of Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Antananarivo Antananarivo (Malagasy: [antananaˈrivʷ]; French: Tananarive, pronounced [tananaʁiv]), also known by its colonial shorthand form Tana (pronounced [tana]), is the capital and largest city of Madagascar.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_asmara",
+      "region": "east",
+      "country": "Eritrea",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Eritrea?",
+      "options": [
+        "Asmara",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Asmara is the capital of Eritrea.",
+      "sources": [
+        {
+          "title": "Asmara",
+          "url": "https://en.wikipedia.org/wiki/Asmara",
+          "claim": "Asmara is the capital of Eritrea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Asmara Asmara ( əs-MAHR-ə), or Asmera, is the capital and most populous city of Eritrea, in the country's Central Region.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_dodoma",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the official capital of Tanzania?",
+      "options": [
+        "Dodoma",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dodoma is the capital of Tanzania.",
+      "sources": [
+        {
+          "title": "Dodoma",
+          "url": "https://en.wikipedia.org/wiki/Dodoma",
+          "claim": "Dodoma is the capital of Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "'It has sunk' in Gogo), officially Dodoma City (Jiji Kuu la Dodoma, in Swahili), is the capital city of Tanzania.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_gitega",
+      "region": "east",
+      "country": "Burundi",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which city is the capital of Burundi?",
+      "options": [
+        "Gitega",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gitega is the capital of Burundi.",
+      "sources": [
+        {
+          "title": "Gitega",
+          "url": "https://en.wikipedia.org/wiki/Gitega",
+          "claim": "Gitega is the capital of Burundi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Gitega Gitega (French pronunciation: [ɡiteɡa]), formerly Kitega, is the political capital of Burundi.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_juba",
+      "region": "east",
+      "country": "South Sudan",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of South Sudan?",
+      "options": [
+        "Juba",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Juba is the capital of South Sudan.",
+      "sources": [
+        {
+          "title": "Juba",
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "claim": "Juba is the capital of South Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Juba Juba is the capital and largest city of South Sudan.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_kampala",
+      "region": "east",
+      "country": "Uganda",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Uganda?",
+      "options": [
+        "Kampala",
+        "Nairobi",
+        "Addis Ababa",
+        "Asmara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kampala is the capital of Uganda.",
+      "sources": [
+        {
+          "title": "Kampala",
+          "url": "https://en.wikipedia.org/wiki/Kampala",
+          "claim": "Kampala is the capital of Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kampala Kampala (UK: , US: ) is the capital and largest city of Uganda.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_kigali",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Rwanda?",
+      "options": [
+        "Kigali",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kigali is the capital of Rwanda.",
+      "sources": [
+        {
+          "title": "Kigali",
+          "url": "https://en.wikipedia.org/wiki/Kigali",
+          "claim": "Kigali is the capital of Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kigali Kigali (Kinyarwanda pronunciation: [ki.ɡɑ́.ɾi]), officially the City of Kigali also known as Kigali City (abbreviated as KGL), is the capital, largest city, and a province-level administrative unit of Rwanda.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_mogadishu",
+      "region": "east",
+      "country": "Somalia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Somalia?",
+      "options": [
+        "Mogadishu",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mogadishu is the capital of Somalia.",
+      "sources": [
+        {
+          "title": "Mogadishu",
+          "url": "https://en.wikipedia.org/wiki/Mogadishu",
+          "claim": "Mogadishu is the capital of Somalia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mogadishu Mogadishu, locally known as Xamar or Hamar, is the capital and most populous city of Somalia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_moroni_comoros",
+      "region": "east",
+      "country": "Comoros",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which city is the capital of the Comoros?",
+      "options": [
+        "Moroni",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Moroni is the capital of the Comoros.",
+      "sources": [
+        {
+          "title": "Moroni, Comoros",
+          "url": "https://en.wikipedia.org/wiki/Moroni,_Comoros",
+          "claim": "Moroni is the capital of the Comoros",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Moroni, Comoros Moroni (French pronunciation: [mɔʁɔni] ; Arabic: موروني, romanized: Mūrūnī) is the largest city, national capital, and seat of the government of the Union of the Comoros, a sovereign archipelago nation in the Indian Ocean.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_mount_kilimanjaro",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Where is a large dormant stratovolcano in Tanzania?",
+      "options": [
+        "Mount Kilimanjaro",
+        "Zanzibar",
+        "Kenya",
+        "Lake Victoria"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mount Kilimanjaro is the highest mountain in Africa.",
+      "sources": [
+        {
+          "title": "Mount Kilimanjaro",
+          "url": "https://en.wikipedia.org/wiki/Mount_Kilimanjaro",
+          "claim": "Mount Kilimanjaro Mount Kilimanjaro () is a large dormant stratovolcano in Tanzania.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mount Kilimanjaro Mount Kilimanjaro () is a large dormant stratovolcano in Tanzania.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_nairobi",
+      "region": "east",
+      "country": "Kenya",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Kenya?",
+      "options": [
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa",
+        "Asmara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nairobi is the capital of Kenya.",
+      "sources": [
+        {
+          "title": "Nairobi",
+          "url": "https://en.wikipedia.org/wiki/Nairobi",
+          "claim": "Nairobi is the capital of Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nairobi Nairobi ( ny-ROH-bee) (Jiji kuu la Nairobi, in Swahili) is the capital and largest city of Kenya, located in the south-central part of the country.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_ngorongoro_conservation_area",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is a conservation area with a famous volcanic crater in Tanzania?",
+      "options": [
+        "Ngorongoro",
+        "Serengeti",
+        "Maasai Mara",
+        "Stone Town"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ngorongoro is a conservation area in Tanzania.",
+      "sources": [
+        {
+          "title": "Ngorongoro Conservation Area",
+          "url": "https://en.wikipedia.org/wiki/Ngorongoro_Conservation_Area",
+          "claim": "Ngorongoro is a conservation area in Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ngorongoro Conservation Area Ngorongoro Conservation Area (UK: , US: ) is a protected area and a UNESCO World Heritage Site located in Ngorongoro District, 180 km (110 mi) west of Arusha City in Arusha Region, within the Crater Highlands geological area of northeastern Tanzania.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_port_louis",
+      "region": "east",
+      "country": "Mauritius",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Mauritius?",
+      "options": [
+        "Port Louis",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Port Louis is the capital of Mauritius.",
+      "sources": [
+        {
+          "title": "Port Louis",
+          "url": "https://en.wikipedia.org/wiki/Port_Louis",
+          "claim": "Port Louis is the capital of Mauritius",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Port Louis Port Louis (French: Port-Louis, [pɔʁ lwi] ; Mauritian Creole: Porlwi, [poːlwi]) is the capital and most populous city of Mauritius, mainly located in the Port Louis District, with a small western part in the Black River District.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_serengeti",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is a geographical region in Africa, spanning the Mara and Arusha Regions of Tanzania and extending to southwestern Kenya?",
+      "options": [
+        "Serengeti",
+        "Maasai Mara",
+        "Ngorongoro",
+        "Stone Town"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Serengeti is a region in Tanzania.",
+      "sources": [
+        {
+          "title": "Serengeti",
+          "url": "https://en.wikipedia.org/wiki/Serengeti",
+          "claim": "Serengeti The Serengeti ( SERR-ən-GHET-ee) is a geographical region in Africa, spanning the Mara and Arusha Regions of Tanzania and extending to southwestern Kenya.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Serengeti The Serengeti ( SERR-ən-GHET-ee) is a geographical region in Africa, spanning the Mara and Arusha Regions of Tanzania and extending to southwestern Kenya.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_stone_town",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the old part of Zanzibar City?",
+      "options": [
+        "Stone Town",
+        "Serengeti",
+        "Maasai Mara",
+        "Ngorongoro"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Stone Town is the old quarter of Zanzibar.",
+      "sources": [
+        {
+          "title": "Stone Town",
+          "url": "https://en.wikipedia.org/wiki/Stone_Town",
+          "claim": "Stone Town The Stone Town of Zanzibar (Arabic: مدينة زنجبار الحجرية, romanized: madīnat Zanjibār al-ḥajariyya), also known as Mji Mkongwe (Swahili for 'old town'), is the old part of Zanzibar City, the main city of Zanzibar, in Tanzania.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Stone Town The Stone Town of Zanzibar (Arabic: مدينة زنجبار الحجرية, romanized: madīnat Zanjibār al-ḥajariyya), also known as Mji Mkongwe (Swahili for 'old town'), is the old part of Zanzibar City, the main city of Zanzibar, in Tanzania.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_victoria_seychelles",
+      "region": "east",
+      "country": "Seychelles",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which city is the capital of Seychelles?",
+      "options": [
+        "Victoria",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Victoria is the capital of Seychelles.",
+      "sources": [
+        {
+          "title": "Victoria, Seychelles",
+          "url": "https://en.wikipedia.org/wiki/Victoria,_Seychelles",
+          "claim": "Victoria is the capital of Seychelles",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Victoria, Seychelles Victoria is the capital and largest city of Seychelles, situated on the north-eastern side of Mahé, the archipelago's main island.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_geog_zanzibar",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Where is the spice island of Tanzania?",
+      "options": [
+        "Zanzibar",
+        "Mount Kilimanjaro",
+        "Kenya",
+        "Lake Victoria"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zanzibar is an island of Tanzania.",
+      "sources": [
+        {
+          "title": "Zanzibar",
+          "url": "https://en.wikipedia.org/wiki/Zanzibar",
+          "claim": "Zanzibar is an island of Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Zanzibar Zanzibar is a Tanzanian semi-autonomous region off the coast of East Africa. It is located in the Indian Ocean, and consists of many small islands and two large ones: Unguja Island (the main island, referred to informally as Zanzibar Island) and Pemba Island.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_hist_adulis",
+      "region": "east",
+      "country": "Eritrea",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is an ancient city along the Red Sea in the Gulf of Zula?",
+      "options": [
+        "Adulis",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Adulis was an ancient port in Eritrea.",
+      "sources": [
+        {
+          "title": "Adulis",
+          "url": "https://en.wikipedia.org/wiki/Adulis",
+          "claim": "Adulis Adulis (Sabaean: ‎𐩱 𐩵 𐩡 𐩪, Ge'ez: ኣዱሊስ, Ancient Greek: Ἄδουλις) was an ancient city along the Red Sea in the Gulf of Zula, about 40 kilometers (25 mi) south of Massawa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Adulis Adulis (Sabaean: ‎𐩱 𐩵 𐩡 𐩪, Ge'ez: ኣዱሊስ, Ancient Greek: Ἄδουλις) was an ancient city along the Red Sea in the Gulf of Zula, about 40 kilometers (25 mi) south of Massawa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_hist_fasil_ghebbi",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a fortress located in Gondar, Amhara Region, Ethiopia?",
+      "options": [
+        "Fasil Ghebbi",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fasil Ghebbi is the royal enclosure in Gondar, Ethiopia.",
+      "sources": [
+        {
+          "title": "Fasil Ghebbi",
+          "url": "https://en.wikipedia.org/wiki/Fasil_Ghebbi",
+          "claim": "Fasil Ghebbi The Fasil Ghebbi (Amharic: ፋሲል ግቢ) is a fortress located in Gondar, Amhara Region, Ethiopia.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Fasil Ghebbi The Fasil Ghebbi (Amharic: ፋሲል ግቢ) is a fortress located in Gondar, Amhara Region, Ethiopia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_hist_fort_jesus",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is an example of Renaissance architecture, the masonry techniques, building materials, and labor are believed to have been provided?",
+      "options": [
+        "Fort Jesus",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fort Jesus is a fort in Mombasa, Kenya.",
+      "sources": [
+        {
+          "title": "Fort Jesus",
+          "url": "https://en.wikipedia.org/wiki/Fort_Jesus",
+          "claim": "Although the design of Fort Jesus is an example of Renaissance architecture, the masonry techniques, building materials, and labor are believed to have been provided by the local Swahili people.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Although the design of Fort Jesus is an example of Renaissance architecture, the masonry techniques, building materials, and labor are believed to have been provided by the local Swahili people.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_hist_harar",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the walled Islamic city in eastern Ethiopia?",
+      "options": [
+        "Harar",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Harar is a walled city in Ethiopia.",
+      "sources": [
+        {
+          "title": "Harar",
+          "url": "https://en.wikipedia.org/wiki/Harar",
+          "claim": "Harar is a walled city in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Harar Harar (Harari: ሀረር / Old Harari: هَرَرْ; Amharic: ሐረር; Oromo: Adare Biyyo; Somali: Harar; Arabic: هرر), known historically by the indigenous as Harar-Gey or simply Gey (Harari: ጌይ, Old Harari: ݘٛىيْ, romanized: Gēy, lit. 'the city'), is a walled city in eastern Ethiopia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_hist_kasubi_tombs",
+      "region": "east",
+      "country": "Uganda",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the royal burial site of Buganda kings?",
+      "options": [
+        "Kasubi Tombs",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Kasubi Tombs are a royal site in Uganda.",
+      "sources": [
+        {
+          "title": "Kasubi Tombs",
+          "url": "https://en.wikipedia.org/wiki/Kasubi_Tombs",
+          "claim": "The Kasubi Tombs are a royal site in Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kasubi Tombs The Kasubi Tombs in Kampala, Uganda, is the site of the burial grounds for four kabakas (kings of Buganda) and other members of the Baganda royal family.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_hist_lalibela",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the town of rock-hewn churches in Ethiopia?",
+      "options": [
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy",
+        "Adulis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lalibela is famous for rock-hewn churches in Ethiopia.",
+      "sources": [
+        {
+          "title": "Lalibela",
+          "url": "https://en.wikipedia.org/wiki/Lalibela",
+          "claim": "Lalibela is famous for rock-hewn churches in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lalibela Lalibela (Amharic: ላሊበላ, romanized: Lalibäla) is a town in the Amhara Region of Ethiopia. Located in the Lasta district and North Wollo Zone, it is a tourist site for its famous rock-cut monolithic churches designed in contrast to the earlier monolithic churches in Ethiopia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_hist_olduvai_gorge",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the gorge in Tanzania famous for early human fossils?",
+      "options": [
+        "Olduvai",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Olduvai Gorge is in Tanzania.",
+      "sources": [
+        {
+          "title": "Olduvai Gorge",
+          "url": "https://en.wikipedia.org/wiki/Olduvai_Gorge",
+          "claim": "Olduvai Gorge is in Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Olduvai Gorge The Olduvai Gorge or Oldupai Gorge is a paleoanthropological site in northern Tanzania. Many sites exposed by the gorge have proven invaluable in furthering understanding of early human evolution.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_afar_language",
+      "region": "east",
+      "country": "Djibouti",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a language of Djibouti, Eritrea, and Ethiopia?",
+      "options": [
+        "Afar",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Afar is a language spoken in Djibouti.",
+      "sources": [
+        {
+          "title": "Afar language",
+          "url": "https://en.wikipedia.org/wiki/Afar_language",
+          "claim": "Afar is a language spoken in Djibouti",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Afar language Afar, also known as ’Afar af, Qafar af, or عَفَر أَف, is an Afroasiatic language belonging to the Cushitic branch, primarily spoken by the Afar people, native to parts of Djibouti, Eritrea and Ethiopia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_amharic",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the official working language of Ethiopia?",
+      "options": [
+        "Amharic",
+        "Swahili",
+        "Oromo",
+        "Tigrinya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Amharic is a language of Ethiopia.",
+      "sources": [
+        {
+          "title": "Amharic",
+          "url": "https://en.wikipedia.org/wiki/Amharic",
+          "claim": "Amharic is a language of Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Amharic is the largest, most widely spoken language in Ethiopia, and the most spoken mother-tongue in Ethiopia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_amharic3",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name an Ethio-Semitic language, which is a subgrouping within the Semitic branch of the Afroasiatic languages?",
+      "options": [
+        "Amharic",
+        "Swahili",
+        "Oromo",
+        "Tigrinya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Amharic is a language of Ethiopia.",
+      "sources": [
+        {
+          "title": "Amharic",
+          "url": "https://en.wikipedia.org/wiki/Amharic",
+          "claim": "Amharic Amharic is an Ethio-Semitic language, which is a subgrouping within the Semitic branch of the Afroasiatic languages.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Amharic Amharic is an Ethio-Semitic language, which is a subgrouping within the Semitic branch of the Afroasiatic languages.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_dinka_language",
+      "region": "east",
+      "country": "South Sudan",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name a major Nilotic language of South Sudan?",
+      "options": [
+        "Dinka",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dinka is a language of South Sudan.",
+      "sources": [
+        {
+          "title": "Dinka language",
+          "url": "https://en.wikipedia.org/wiki/Dinka_language",
+          "claim": "Dinka is a language of South Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Dinka language Dinka (natively Thuɔŋjäŋ, Thuɔŋ ë Jiɛ̈ɛ̈ŋ or simply Jiɛ̈ɛ̈ŋ) is a Nilotic dialect cluster spoken by the Dinka people, a major ethnic group of South Sudan.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_ge_ez",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name the ancient liturgical language of Ethiopian and Eritrean churches?",
+      "options": [
+        "Ge'ez",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ge'ez is a liturgical language of Ethiopia.",
+      "sources": [
+        {
+          "title": "Ge'ez",
+          "url": "https://en.wikipedia.org/wiki/Ge'ez",
+          "claim": "Ge'ez is a liturgical language of Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "As of today, Geʽez is used as the main liturgical language of the Ethiopian Orthodox Tewahedo Church, the Eritrean Orthodox Tewahedo Church, the Ethiopian Catholic Church, the Eritrean Catholic Church, and the Beta Israel Jewish community.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_kikuyu_language",
+      "region": "east",
+      "country": "Kenya",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name the largest ethnic language of central Kenya?",
+      "options": [
+        "Kikuyu",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kikuyu is a language spoken in Kenya.",
+      "sources": [
+        {
+          "title": "Kikuyu language",
+          "url": "https://en.wikipedia.org/wiki/Kikuyu_language",
+          "claim": "Kikuyu is a language spoken in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kikuyu language Kikuyu or Gikuyu (Gikuyu: Gĩkũyũ [ɣekòjó]) (also known as Gĩgĩkũyũ) is a Bantu language spoken by the Gĩkũyũ (Agĩkũyũ) of Kenya. Kikuyu is mainly spoken in the area encompassing the former Central Province (between Nyeri, Kirinyaga, Kiambu, Murang'a and Nyahururu) and surrounding areas like Nairobi, Nakuru and Laikipia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_kinyarwanda",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the national language of Rwanda?",
+      "options": [
+        "Kinyarwanda",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kinyarwanda is the national language of Rwanda.",
+      "sources": [
+        {
+          "title": "Kinyarwanda",
+          "url": "https://en.wikipedia.org/wiki/Kinyarwanda",
+          "claim": "Kinyarwanda is the national language of Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kinyarwanda Kinyarwanda, officially known as Ikinyarwanda, is a Bantu language and the national language of Rwanda.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_kirundi",
+      "region": "east",
+      "country": "Burundi",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the national language of Burundi?",
+      "options": [
+        "Kirundi",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kirundi is the language of Burundi.",
+      "sources": [
+        {
+          "title": "Kirundi",
+          "url": "https://en.wikipedia.org/wiki/Kirundi",
+          "claim": "Kirundi is the language of Burundi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kirundi Kirundi (), officially known as Ikirundi (also known as Rundi), is a Bantu language and the national language of Burundi.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_luganda",
+      "region": "east",
+      "country": "Uganda",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the widely spoken language of the Baganda in Uganda?",
+      "options": [
+        "Luganda",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Luganda is a language of Uganda.",
+      "sources": [
+        {
+          "title": "Luganda",
+          "url": "https://en.wikipedia.org/wiki/Luganda",
+          "claim": "Luganda is a language of Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Luganda is Uganda's de facto language of national identity as it is the most widely spoken Ugandan language used mostly in trade in urban areas.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_malagasy_language",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the national language of Madagascar?",
+      "options": [
+        "Malagasy",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Malagasy is the language of Madagascar.",
+      "sources": [
+        {
+          "title": "Malagasy language",
+          "url": "https://en.wikipedia.org/wiki/Malagasy_language",
+          "claim": "Malagasy is the language of Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Malagasy language Malagasy ( MAL-ə-GASS-ee; Malagasy pronunciation: [malaˈɡasʲ]; Sorabe: مَلَغَسِ) is an Austronesian language and dialect continuum spoken in Madagascar.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_malagasy_language2",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name an Austronesian language and dialect continuum spoken in Madagascar?",
+      "options": [
+        "Malagasy",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Malagasy is the national language of Madagascar.",
+      "sources": [
+        {
+          "title": "Malagasy language",
+          "url": "https://en.wikipedia.org/wiki/Malagasy_language",
+          "claim": "Malagasy language Malagasy ( MAL-ə-GASS-ee; Malagasy pronunciation: [malaˈɡasʲ]; Sorabe: مَلَغَسِ) is an Austronesian language and dialect continuum spoken in Madagascar.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Malagasy language Malagasy ( MAL-ə-GASS-ee; Malagasy pronunciation: [malaˈɡasʲ]; Sorabe: مَلَغَسِ) is an Austronesian language and dialect continuum spoken in Madagascar.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_nkore_language",
+      "region": "east",
+      "country": "Uganda",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a Bantu language of southwestern Uganda?",
+      "options": [
+        "Runyankole",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Runyankole is a language of Uganda.",
+      "sources": [
+        {
+          "title": "Nkore language",
+          "url": "https://en.wikipedia.org/wiki/Nkore_language",
+          "claim": "Runyankole is a language of Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nkore language Nkore (also called Nkole, Nyankore, Nyankole, Orunyankore, Orunyankole, Runyankore and Runyankole) is a Bantu language spoken by the Nkore (\"Banyankore\") of south-western Uganda in the former province of Ankole, as well as in Tanzania, the DR Congo, Rwanda and Burundi.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_oromo_language",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the most widely spoken language of Ethiopia?",
+      "options": [
+        "Oromo",
+        "Swahili",
+        "Amharic",
+        "Tigrinya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Oromo is a language spoken in Ethiopia.",
+      "sources": [
+        {
+          "title": "Oromo language",
+          "url": "https://en.wikipedia.org/wiki/Oromo_language",
+          "claim": "Oromo is a language spoken in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Oromo language Oromo is an Afroasiatic language belonging to the Cushitic branch, primarily spoken by the Oromo people, native to northern Kenya and the Ethiopian state of Oromia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_somali_language",
+      "region": "east",
+      "country": "Somalia",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a Cushitic language belonging to wider Afroasiatic language family?",
+      "options": [
+        "Somali",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Somali is the language of Somalia.",
+      "sources": [
+        {
+          "title": "Somali language",
+          "url": "https://en.wikipedia.org/wiki/Somali_language",
+          "claim": "Somali language Somali ( sə-MAH-lee, soh-; Latin script: Af Soomaali, Wadaad: اف صومالِ, Osmanya: 𐒖𐒍 𐒈𐒝𐒑𐒛𐒐𐒘 [af soːmaːli]) is a Cushitic language belonging to wider Afroasiatic language family.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Somali language Somali ( sə-MAH-lee, soh-; Latin script: Af Soomaali, Wadaad: اف صومالِ, Osmanya: 𐒖𐒍 𐒈𐒝𐒑𐒛𐒐𐒘 [af soːmaːli]) is a Cushitic language belonging to wider Afroasiatic language family.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_swahili_language",
+      "region": "east",
+      "country": "East Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the Bantu lingua franca of the East African coast and beyond?",
+      "options": [
+        "Swahili",
+        "Amharic",
+        "Oromo",
+        "Tigrinya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Swahili is a Bantu language of East Africa.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Swahili is a Bantu language of East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "The Arabic loanwords date from the era of contact between Arab slave traders and the Bantu inhabitants of the east coast of Africa, which was also the time period when Swahili emerged as a lingua franca in the region. Due to concerted efforts by the governments of Tanzania and Kenya, Swahili is one of three official languages (alongside English and French) of the East African Community (EAC) countries, which are Kenya, Tanzania, Burundi, the Democratic Republic of the Congo, Rwanda, Somalia, South Sudan, and Uganda.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_lang_tigrinya_language",
+      "region": "east",
+      "country": "Eritrea",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a major language of Eritrea and northern Ethiopia?",
+      "options": [
+        "Tigrinya",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tigrinya is a language of Eritrea.",
+      "sources": [
+        {
+          "title": "Tigrinya language",
+          "url": "https://en.wikipedia.org/wiki/Tigrinya_language",
+          "claim": "Tigrinya is a language of Eritrea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tigrinya (along with Arabic) was one of Eritrea's official languages during its short-lived federation with Ethiopia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_adungu",
+      "region": "east",
+      "country": "Uganda",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a harp of the Alur people of Uganda?",
+      "options": [
+        "Adungu",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The adungu is a harp from Uganda.",
+      "sources": [
+        {
+          "title": "Adungu",
+          "url": "https://en.wikipedia.org/wiki/Adungu",
+          "claim": "The adungu is a harp from Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Adungu The Adungu, also called the Endongo or Ennanga or Bow harp in English, is a traditional stringed musical instrument of the Acholi people of Northern Uganda and the Alur people of northwestern Uganda.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_benga_music",
+      "region": "east",
+      "country": "Kenya",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a genre of Kenyan popular music?",
+      "options": [
+        "Benga",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Benga is a genre of Kenyan popular music.",
+      "sources": [
+        {
+          "title": "Benga music",
+          "url": "https://en.wikipedia.org/wiki/Benga_music",
+          "claim": "Benga music Benga is a genre of Kenyan popular music.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Benga music Benga is a genre of Kenyan popular music.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_bongo_flava",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a nickname for Tanzanian music?",
+      "options": [
+        "Bongo flava",
+        "Taarab",
+        "Ethio-jazz",
+        "Gengetone"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bongo flava is a music genre from Tanzania.",
+      "sources": [
+        {
+          "title": "Bongo flava",
+          "url": "https://en.wikipedia.org/wiki/Bongo_flava",
+          "claim": "Bongo Flava Bongo Flava is a nickname for Tanzanian music.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Bongo Flava Bongo Flava is a nickname for Tanzanian music.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_chakacha",
+      "region": "east",
+      "country": "Kenya",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a traditional music and dance style of the Swahili people of coastal Kenya and Tanzania?",
+      "options": [
+        "Chakacha",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chakacha is a dance from the Kenyan coast.",
+      "sources": [
+        {
+          "title": "Chakacha",
+          "url": "https://en.wikipedia.org/wiki/Chakacha",
+          "claim": "Chakacha Chakacha is a traditional music and dance style (a ngoma performance) of the Swahili people of coastal Kenya and Tanzania, originally associated with weddings and performed and watched only by women.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Chakacha Chakacha is a traditional music and dance style (a ngoma performance) of the Swahili people of coastal Kenya and Tanzania, originally associated with weddings and performed and watched only by women.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_eskista",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the shoulder dance of the Ethiopian highlands?",
+      "options": [
+        "Eskista",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Eskista is a dance from Ethiopia.",
+      "sources": [
+        {
+          "title": "Eskista",
+          "url": "https://en.wikipedia.org/wiki/Eskista",
+          "claim": "Eskista is a dance from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "There are various rhythmic, regional, and stylistic varieties of the eskista dance, all of which have their own historical and unique origins, although most are based on the hard life of the average farmer in the Amhara Highlands of Ethiopia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_genge",
+      "region": "east",
+      "country": "Kenya",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a genre of hip-hop music influenced by dancehall?",
+      "options": [
+        "Genge",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Genge is a Kenyan music genre.",
+      "sources": [
+        {
+          "title": "Genge",
+          "url": "https://en.wikipedia.org/wiki/Genge",
+          "claim": "Genge Genge music is a genre of hip-hop music influenced by dancehall, originating from Nairobi, Kenya in the 1990s.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Genge Genge music is a genre of hip-hop music influenced by dancehall, originating from Nairobi, Kenya in the 1990s.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_intore",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the warrior dance tradition performed in Rwanda?",
+      "options": [
+        "Intore",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Intore is a dance from Rwanda.",
+      "sources": [
+        {
+          "title": "Intore",
+          "url": "https://en.wikipedia.org/wiki/Intore",
+          "claim": "Intore is a dance from Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Intore Intore, sometimes called the Dance of Heroes, is a traditional dance performed by men in Rwanda and Burundi; women are not allowed to do so.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_kidandali",
+      "region": "east",
+      "country": "Uganda",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a stylistic music genre featuring the use of native sounds and samples from Uganda?",
+      "options": [
+        "Kidandali",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kidandali is a music genre from Uganda.",
+      "sources": [
+        {
+          "title": "Kidandali",
+          "url": "https://en.wikipedia.org/wiki/Kidandali",
+          "claim": "Kidandali Kidandali is a stylistic music genre featuring the use of native sounds and samples from Uganda.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kidandali Kidandali is a stylistic music genre featuring the use of native sounds and samples from Uganda.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_krar",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a bowl lyre of Ethiopia and Eritrea?",
+      "options": [
+        "Krar",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The krar is a lyre from Ethiopia.",
+      "sources": [
+        {
+          "title": "Krar",
+          "url": "https://en.wikipedia.org/wiki/Krar",
+          "claim": "The krar is a lyre from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Krar The krar (Geʽez: ክራር) is a five-or-six stringed bowl-shaped lyre from Ethiopia and Eritrea.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_masenqo",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a single-stringed bowed lute commonly found in the musical traditions of Eritrea and Ethiopia?",
+      "options": [
+        "Masenqo",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The masenqo is a fiddle from Ethiopia.",
+      "sources": [
+        {
+          "title": "Masenqo",
+          "url": "https://en.wikipedia.org/wiki/Masenqo",
+          "claim": "Masenqo The masenqo (Amharic: ማሲንቆ; Tigrinya: ጭራ-ዋጣ (ዋጣ), also known as masinko or mesenko, is a single-stringed bowed lute commonly found in the musical traditions of Eritrea and Ethiopia.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Masenqo The masenqo (Amharic: ማሲንቆ; Tigrinya: ጭራ-ዋጣ (ዋጣ), also known as masinko or mesenko, is a single-stringed bowed lute commonly found in the musical traditions of Eritrea and Ethiopia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_nyatiti",
+      "region": "east",
+      "country": "Kenya",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a five to eight-stringed plucked bowl yoke lute from Kenya?",
+      "options": [
+        "Nyatiti",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The nyatiti is a lyre from Kenya.",
+      "sources": [
+        {
+          "title": "Nyatiti",
+          "url": "https://en.wikipedia.org/wiki/Nyatiti",
+          "claim": "Nyatiti The nyatiti is a five to eight-stringed plucked bowl yoke lute from Kenya.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nyatiti The nyatiti is a five to eight-stringed plucked bowl yoke lute from Kenya.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_ohangla",
+      "region": "east",
+      "country": "Kenya",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a traditional dance among the Luo community?",
+      "options": [
+        "Ohangla",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ohangla is a music genre from Kenya.",
+      "sources": [
+        {
+          "title": "Ohangla",
+          "url": "https://en.wikipedia.org/wiki/Ohangla",
+          "claim": "Ohangla Ohangla is a traditional dance among the Luo community.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ohangla Ohangla is a traditional dance among the Luo community.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_salegy",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a popular music genre from Madagascar?",
+      "options": [
+        "Salegy",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Salegy is a music genre from Madagascar.",
+      "sources": [
+        {
+          "title": "Salegy",
+          "url": "https://en.wikipedia.org/wiki/Salegy",
+          "claim": "Salegy Salegy (Malagasy pronunciation: [ˈsaleɡʲ]) is a popular music genre from Madagascar.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Salegy Salegy (Malagasy pronunciation: [ˈsaleɡʲ]) is a popular music genre from Madagascar.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_singeli",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a Tanzanian music genre that originated with the Zaramo in the Mtogole neighborhood of the Tandale ward in Kinondoni District of Dar?",
+      "options": [
+        "Singeli",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Singeli is a music genre from Tanzania.",
+      "sources": [
+        {
+          "title": "Singeli",
+          "url": "https://en.wikipedia.org/wiki/Singeli",
+          "claim": "Singeli Singeli or sometimes called Sengeli is a Tanzanian music genre that originated with the Zaramo in the Mtogole neighborhood of the Tandale ward in Kinondoni District of Dar es Salaam Region around the mid-2000s.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Singeli Singeli or sometimes called Sengeli is a Tanzanian music genre that originated with the Zaramo in the Mtogole neighborhood of the Tandale ward in Kinondoni District of Dar es Salaam Region around the mid-2000s.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_taarab",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a music genre popular in Tanzania and Kenya?",
+      "options": [
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz",
+        "Gengetone"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Taarab is a music genre from the Swahili coast.",
+      "sources": [
+        {
+          "title": "Taarab",
+          "url": "https://en.wikipedia.org/wiki/Taarab",
+          "claim": "Taarab Taarab is a music genre popular in Tanzania and Kenya, and the wider Swahilisphere.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Taarab Taarab is a music genre popular in Tanzania and Kenya, and the wider Swahilisphere.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_musi_taarab3",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is Swahili coast music of poetry, strings, and voice?",
+      "options": [
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz",
+        "Gengetone"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Taarab is a music of the Swahili coast.",
+      "sources": [
+        {
+          "title": "Taarab",
+          "url": "https://en.wikipedia.org/wiki/Taarab",
+          "claim": "Taarab is a music of the Swahili coast",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Taarab music is a fusion of Swahili poetry sung in rhythmic poetic style, performed by male or female singers and taarab ensembles comprising numerous musicians. Taarab forms a part of the social life of the Swahili people along the coastal areas, especially in Zanzibar, Tanga and even further in Mombasa and Malindi along the Kenya coast.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_peop_abdulrazak_gurnah",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Tanzanian novelist and academic of Yemeni origin?",
+      "options": [
+        "Abdulrazak Gurnah",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Abdulrazak Gurnah is a Tanzanian-born novelist.",
+      "sources": [
+        {
+          "title": "Abdulrazak Gurnah",
+          "url": "https://en.wikipedia.org/wiki/Abdulrazak_Gurnah",
+          "claim": "Abdulrazak Gurnah Abdulrazak Gurnah (born 20 December 1948) is a Tanzanian novelist and academic of Yemeni origin.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Abdulrazak Gurnah Abdulrazak Gurnah (born 20 December 1948) is a Tanzanian novelist and academic of Yemeni origin.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_peop_abebe_bikila",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Ethiopian runner who won the 1960 Olympic marathon?",
+      "options": [
+        "Abebe Bikila",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Abebe Bikila was an Ethiopian marathon runner.",
+      "sources": [
+        {
+          "title": "Abebe Bikila",
+          "url": "https://en.wikipedia.org/wiki/Abebe_Bikila",
+          "claim": "Abebe Bikila was an Ethiopian marathon runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Abebe Bikila Shambel Abebe Bikila (Amharic: ሻምበል አበበ ቢቂላ; August 7, 1932 – October 25, 1973) was an Ethiopian marathon runner who was a back-to-back Olympic marathon champion. He was the first Ethiopian Olympic gold medalist, winning his first gold medal at the 1960 Summer Olympics in Rome while running barefoot.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_peop_binyavanga_wainaina",
+      "region": "east",
+      "country": "Kenya",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Kenyan author, journalist and 2002 winner of the Caine Prize for African Writing?",
+      "options": [
+        "Binyavanga Wainaina",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Binyavanga Wainaina was a Kenyan writer.",
+      "sources": [
+        {
+          "title": "Binyavanga Wainaina",
+          "url": "https://en.wikipedia.org/wiki/Binyavanga_Wainaina",
+          "claim": "Binyavanga Wainaina Kenneth Binyavanga Wainaina (18 January 1971 – 21 May 2019) was a Kenyan author, journalist and 2002 winner of the Caine Prize for African Writing.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Binyavanga Wainaina Kenneth Binyavanga Wainaina (18 January 1971 – 21 May 2019) was a Kenyan author, journalist and 2002 winner of the Caine Prize for African Writing.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_peop_eliud_kipchoge",
+      "region": "east",
+      "country": "Kenya",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Kenyan long-distance runner who competes in the marathon and formerly specialized in the 5000 metres?",
+      "options": [
+        "Eliud Kipchoge",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Eliud Kipchoge is a Kenyan marathon runner.",
+      "sources": [
+        {
+          "title": "Eliud Kipchoge",
+          "url": "https://en.wikipedia.org/wiki/Eliud_Kipchoge",
+          "claim": "Eliud Kipchoge Eliud Kipchoge (English: ELL-ih-yood kip-CHOH-gay; born 5 November 1984) is a Kenyan long-distance runner who competes in the marathon and formerly specialized in the 5000 metres.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Eliud Kipchoge Eliud Kipchoge (English: ELL-ih-yood kip-CHOH-gay; born 5 November 1984) is a Kenyan long-distance runner who competes in the marathon and formerly specialized in the 5000 metres.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_peop_haile_gebrselassie",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Ethiopian former long-distance track, road running athlete, and businessman?",
+      "options": [
+        "Haile Gebrselassie",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Haile Gebrselassie is an Ethiopian long-distance runner.",
+      "sources": [
+        {
+          "title": "Haile Gebrselassie",
+          "url": "https://en.wikipedia.org/wiki/Haile_Gebrselassie",
+          "claim": "Haile Gebrselassie Haile Gebrselassie (Amharic: ኀይሌ ገብረ ሥላሴ, romanized: Haylē Gebre Silassē; born 18 April 1973) is an Ethiopian former long-distance track, road running athlete, and businessman.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Haile Gebrselassie Haile Gebrselassie (Amharic: ኀይሌ ገብረ ሥላሴ, romanized: Haylē Gebre Silassē; born 18 April 1973) is an Ethiopian former long-distance track, road running athlete, and businessman.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_peop_julius_nyerere",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the first president of Tanzania?",
+      "options": [
+        "Julius Nyerere",
+        "Wangari Maathai",
+        "Jomo Kenyatta",
+        "Ngugi wa Thiong'o"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Julius Nyerere was the first president of Tanzania.",
+      "sources": [
+        {
+          "title": "Julius Nyerere",
+          "url": "https://en.wikipedia.org/wiki/Julius_Nyerere",
+          "claim": "Julius Nyerere was the first president of Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Julius Nyerere Julius Kambarage Nyerere (Swahili: [ˈdʒulius kɑᵐbɑˈɾɑɠɛ ɲɛˈɾɛɾɛ]; 13 April 1922 – 14 October 1999) was a Tanzanian politician, anti-colonial activist, revolutionary and political theorist. He governed Tanganyika as prime minister from 1961 to 1962 and then as president from 1962 to 1964, after which he led its successor state, Tanzania, as president from 1964 to 1985.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_peop_lupita_nyong_o",
+      "region": "east",
+      "country": "Kenya",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is an actress who has received various accolades?",
+      "options": [
+        "Lupita Nyong'o",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lupita Nyong'o is a Kenyan-Mexican actress.",
+      "sources": [
+        {
+          "title": "Lupita Nyong'o",
+          "url": "https://en.wikipedia.org/wiki/Lupita_Nyong'o",
+          "claim": "Lupita Nyong'o Lupita Amondi Nyong'o (born 1 March 1983) is an actress who has received various accolades, including an Academy Award, an Actor Award and a Daytime Emmy Award, as well as nominations for two British Academy Film Awards, a Golden Globe Award and a Tony Award.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lupita Nyong'o Lupita Amondi Nyong'o (born 1 March 1983) is an actress who has received various accolades, including an Academy Award, an Actor Award and a Daytime Emmy Award, as well as nominations for two British Academy Film Awards, a Golden Globe Award and a Tony Award.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_peop_mahmood_mamdani",
+      "region": "east",
+      "country": "Uganda",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Ugandan anthropologist, academic, and political commentator?",
+      "options": [
+        "Mahmood Mamdani",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mahmood Mamdani is a Ugandan academic.",
+      "sources": [
+        {
+          "title": "Mahmood Mamdani",
+          "url": "https://en.wikipedia.org/wiki/Mahmood_Mamdani",
+          "claim": "Mahmood Mamdani Mahmood Mamdani (born 23 April 1946) is a Ugandan anthropologist, academic, and political commentator.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mahmood Mamdani Mahmood Mamdani (born 23 April 1946) is a Ugandan anthropologist, academic, and political commentator.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_peop_ngugi_wa_thiong_o",
+      "region": "east",
+      "country": "Kenya",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Kenyan author and academic, who has been described as East Africa's leading novelist and an important figure in modern African?",
+      "options": [
+        "Ngugi wa Thiong'o",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ngũgĩ wa Thiong'o is a Kenyan writer.",
+      "sources": [
+        {
+          "title": "Ngũgĩ wa Thiong'o",
+          "url": "https://en.wikipedia.org/wiki/Ng%C5%A9g%C4%A9_wa_Thiong'o",
+          "claim": "Ngũgĩ wa Thiong'o Ngũgĩ wa Thiong'o (Gikuyu: [ᵑɡoɣe wá ðiɔŋɔ]; born James Ngugi; 5 January 1938 – 28 May 2025) was a Kenyan author and academic, who has been described as East Africa's leading novelist and an important figure in modern African literature.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ngũgĩ wa Thiong'o Ngũgĩ wa Thiong'o (Gikuyu: [ᵑɡoɣe wá ðiɔŋɔ]; born James Ngugi; 5 January 1938 – 28 May 2025) was a Kenyan author and academic, who has been described as East Africa's leading novelist and an important figure in modern African literature.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_peop_okot_p_bitek",
+      "region": "east",
+      "country": "Uganda",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Ugandan poet of Song of Lawino?",
+      "options": [
+        "Okot p'Bitek",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Okot p'Bitek was a Ugandan poet.",
+      "sources": [
+        {
+          "title": "Okot p'Bitek",
+          "url": "https://en.wikipedia.org/wiki/Okot_p'Bitek",
+          "claim": "Okot p'Bitek was a Ugandan poet",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Okot p'Bitek Okot p'Bitek (7 June 1931 – 19 July 1982) was a Ugandan poet, who achieved wide international recognition for Song of Lawino, a long poem dealing with the tribulations of a rural African wife whose husband has taken up urban life and wishes everything to be westernised.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_peop_scholastique_mukasonga",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a French-Rwandan author born in the former Gikongoro province of Rwanda?",
+      "options": [
+        "Scholastique Mukasonga",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Scholastique Mukasonga is a Rwandan writer.",
+      "sources": [
+        {
+          "title": "Scholastique Mukasonga",
+          "url": "https://en.wikipedia.org/wiki/Scholastique_Mukasonga",
+          "claim": "Scholastique Mukasonga Scholastique Mukasonga (born 1956) is a French-Rwandan author born in the former Gikongoro province of Rwanda.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Scholastique Mukasonga Scholastique Mukasonga (born 1956) is a French-Rwandan author born in the former Gikongoro province of Rwanda.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_peop_wangari_maathai",
+      "region": "east",
+      "country": "Kenya",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Kenyan social, environmental, and political activist who founded the Green Belt Movement, an environmental non-governmental?",
+      "options": [
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta",
+        "Ngugi wa Thiong'o"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wangari Maathai was a Kenyan environmentalist.",
+      "sources": [
+        {
+          "title": "Wangari Maathai",
+          "url": "https://en.wikipedia.org/wiki/Wangari_Maathai",
+          "claim": "Wangarĩ Maathai Wangarĩ Maathai (; 1 April 1940 – 25 September 2011) was a Kenyan social, environmental, and political activist who founded the Green Belt Movement, an environmental non-governmental organization focused on planting trees, environmental conservation, and women's rights.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Wangarĩ Maathai Wangarĩ Maathai (; 1 April 1940 – 25 September 2011) was a Kenyan social, environmental, and political activist who founded the Green Belt Movement, an environmental non-governmental organization focused on planting trees, environmental conservation, and women's rights.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_alikiba",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Tanzanian bongo flava singer and actor?",
+      "options": [
+        "Alikiba",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Alikiba is a Tanzanian musician.",
+      "sources": [
+        {
+          "title": "Alikiba",
+          "url": "https://en.wikipedia.org/wiki/Alikiba",
+          "claim": "Alikiba is a Tanzanian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Under the label, Alikiba released many hit songs including Chekecha Cheketua, Lupela, Mvumo Wa Radi and Aje, a Bongo Flava love song that was ranked number 3 by Notjustok on their list of Best 100 Tanzanian songs of the decade ranging from 2012 to 2022 In May 2016, Alikiba signed to Sony Music, being the first East African to be signed by the recording company.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_bensoul",
+      "region": "east",
+      "country": "Kenya",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Kenyan singer of Nairobi?",
+      "options": [
+        "Bensoul",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bensoul is a Kenyan singer.",
+      "sources": [
+        {
+          "title": "Bensoul",
+          "url": "https://en.wikipedia.org/wiki/Bensoul",
+          "claim": "Bensoul is a Kenyan singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Bensoul Benson Mutua (born March 4, 1996) professionally known as Bensoul, is a Kenyan singer, songwriter and multi-instrumentalist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_bien_aime_baraza",
+      "region": "east",
+      "country": "Kenya",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Kenyan musician and music executive?",
+      "options": [
+        "Bien",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bien is a Kenyan musician from Sauti Sol.",
+      "sources": [
+        {
+          "title": "Bien-Aimé Baraza",
+          "url": "https://en.wikipedia.org/wiki/Bien-Aim%C3%A9_Baraza",
+          "claim": "Bien-Aimé Baraza Bien-Aimé Alusa Baraza, popularly known as Bien, is a Kenyan musician and music executive.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Bien-Aimé Baraza Bien-Aimé Alusa Baraza, popularly known as Bien, is a Kenyan musician and music executive.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_diamond_platnumz",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Tanzanian bongo flava recording artist?",
+      "options": [
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo",
+        "Mulatu Astatke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Diamond Platnumz is a Tanzanian singer.",
+      "sources": [
+        {
+          "title": "Diamond Platnumz",
+          "url": "https://en.wikipedia.org/wiki/Diamond_Platnumz",
+          "claim": "Diamond Platnumz Naseeb Abdul Juma Issack, professionally known as Diamond Platnumz, is a Tanzanian bongo flava recording artist, dancer, philanthropist and businessman.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Diamond Platnumz Naseeb Abdul Juma Issack, professionally known as Diamond Platnumz, is a Tanzanian bongo flava recording artist, dancer, philanthropist and businessman.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_eddy_kenzo",
+      "region": "east",
+      "country": "Uganda",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Ugandan singer, music executive, and president and founder of the Uganda National Musicians Federation and a member of Big Talent?",
+      "options": [
+        "Eddy Kenzo",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Mulatu Astatke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Eddy Kenzo is a Ugandan singer.",
+      "sources": [
+        {
+          "title": "Eddy Kenzo",
+          "url": "https://en.wikipedia.org/wiki/Eddy_Kenzo",
+          "claim": "Eddy Kenzo Edrisah Kenzo Musuuzah, professionally known as Eddy Kenzo, is a Ugandan singer, music executive, and president and founder of the Uganda National Musicians Federation and a member of Big Talent Entertainment.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Eddy Kenzo Edrisah Kenzo Musuuzah, professionally known as Eddy Kenzo, is a Ugandan singer, music executive, and president and founder of the Uganda National Musicians Federation and a member of Big Talent Entertainment.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_mulatu_astatke",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the father of Ethio-jazz?",
+      "options": [
+        "Mulatu Astatke",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mulatu Astatke is an Ethiopian musician.",
+      "sources": [
+        {
+          "title": "Mulatu Astatke",
+          "url": "https://en.wikipedia.org/wiki/Mulatu_Astatke",
+          "claim": "Mulatu Astatke is an Ethiopian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mulatu Astatke Mulatu Astatke (Amharic: ሙላቱ አስታጥቄ, romanized: Mulatu Ästaṭḳe; French transliteration: Astatqé; born 19 December 1943) is an Ethiopian musician and arranger considered the father of \"Ethio-jazz\".",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_nandy_singer",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Tanzanian singer Faustina Charles?",
+      "options": [
+        "Nandy",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nandy is a Tanzanian singer.",
+      "sources": [
+        {
+          "title": "Nandy (singer)",
+          "url": "https://en.wikipedia.org/wiki/Nandy_(singer)",
+          "claim": "Nandy is a Tanzanian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nandy (singer) Faustina Charles Mfinanga (born November 9, 1992), popularly known by her stage name Nandy is a Tanzanian singer, songwriter, and actress.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_nyashinski",
+      "region": "east",
+      "country": "Kenya",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Kenyan rapper formerly of Kleptomaniax?",
+      "options": [
+        "Nyashinski",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nyashinski is a Kenyan rapper.",
+      "sources": [
+        {
+          "title": "Nyashinski",
+          "url": "https://en.wikipedia.org/wiki/Nyashinski",
+          "claim": "Nyashinski is a Kenyan rapper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nyashinski Nyamari Ongegu (born Inyatta Nyamari Ongegu; 8 April 1984), known professionally as Nyashinski, is a Kenyan rapper, singer and songwriter. He is a co-founding member of the hip-hop trio Kleptomaniax before successfully launching his solo career during the 2010s.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_sauti_sol",
+      "region": "east",
+      "country": "Kenya",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Kenyan afropop band formed in Nairobi in 2005 by vocalists Bien-Aimé Baraza?",
+      "options": [
+        "Sauti Sol",
+        "Diamond Platnumz",
+        "Eddy Kenzo",
+        "Mulatu Astatke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sauti Sol is a Kenyan band.",
+      "sources": [
+        {
+          "title": "Sauti Sol",
+          "url": "https://en.wikipedia.org/wiki/Sauti_Sol",
+          "claim": "Sauti Sol Sauti Sol is a Kenyan afropop band formed in Nairobi in 2005 by vocalists Bien-Aimé Baraza, Willis Chimano, and Savara Mudigi.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Sauti Sol Sauti Sol is a Kenyan afropop band formed in Nairobi in 2005 by vocalists Bien-Aimé Baraza, Willis Chimano, and Savara Mudigi.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_sauti_sol2",
+      "region": "east",
+      "country": "Kenya",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Kenyan band known for close-harmony afropop?",
+      "options": [
+        "Sauti Sol",
+        "Diamond Platnumz",
+        "Eddy Kenzo",
+        "Mulatu Astatke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sauti Sol is a Kenyan band.",
+      "sources": [
+        {
+          "title": "Sauti Sol",
+          "url": "https://en.wikipedia.org/wiki/Sauti_Sol",
+          "claim": "Sauti Sol is a Kenyan band",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Sauti Sol Sauti Sol is a Kenyan afropop band formed in Nairobi in 2005 by vocalists Bien-Aimé Baraza, Willis Chimano, and Savara Mudigi.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_sheebah_karungi",
+      "region": "east",
+      "country": "Uganda",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Ugandan musician, dancer, actress and feminist activist?",
+      "options": [
+        "Sheebah",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sheebah Karungi is a Ugandan singer.",
+      "sources": [
+        {
+          "title": "Sheebah Karungi",
+          "url": "https://en.wikipedia.org/wiki/Sheebah_Karungi",
+          "claim": "Sheebah Karungi Sheebah Karungi (born on 11 November, 1989), Commonly known as \"Queen Karma\", and Sheebah, is a Ugandan musician, dancer, actress and feminist activist.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Sheebah Karungi Sheebah Karungi (born on 11 November, 1989), Commonly known as \"Queen Karma\", and Sheebah, is a Ugandan musician, dancer, actress and feminist activist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_teddy_afro",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the popular Ethiopian singer Tewodros Kassahun?",
+      "options": [
+        "Teddy Afro",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Teddy Afro is an Ethiopian singer.",
+      "sources": [
+        {
+          "title": "Teddy Afro",
+          "url": "https://en.wikipedia.org/wiki/Teddy_Afro",
+          "claim": "Teddy Afro is an Ethiopian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Teddy Afro Tewodros Kassahun Germamo (Amharic: ቴዎድሮስ ካሳሁን ገርማሞ; born 14 July 1976), known professionally as Teddy Afro, is an Ethiopian singer-songwriter.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_popc_zuchu",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Tanzanian singer and songwriter, in Zanzibar?",
+      "options": [
+        "Zuchu",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zuchu is a Tanzanian singer.",
+      "sources": [
+        {
+          "title": "Zuchu",
+          "url": "https://en.wikipedia.org/wiki/Zuchu",
+          "claim": "Zuchu Zuhura Othman Soud, better known by her stage name Zuchu (born 22 November 1993), is a Tanzanian singer and songwriter, in Zanzibar.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Zuchu Zuhura Othman Soud, better known by her stage name Zuchu (born 22 November 1993), is a Tanzanian singer and songwriter, in Zanzibar.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_spor_abebe_bikila",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the barefoot Olympic marathon champion of 1960?",
+      "options": [
+        "Abebe Bikila",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Abebe Bikila won the Olympic marathon.",
+      "sources": [
+        {
+          "title": "Abebe Bikila",
+          "url": "https://en.wikipedia.org/wiki/Abebe_Bikila",
+          "claim": "Abebe Bikila won the Olympic marathon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Niskanen entered Abebe Bikila and Abebe Wakgira in the marathon at the 1960 Rome Olympics, which would be run on September 10.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_spor_catherine_ndereba",
+      "region": "east",
+      "country": "Kenya",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a retired Kenyan marathon runner?",
+      "options": [
+        "Catherine Ndereba",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Catherine Ndereba is a Kenyan marathon runner.",
+      "sources": [
+        {
+          "title": "Catherine Ndereba",
+          "url": "https://en.wikipedia.org/wiki/Catherine_Ndereba",
+          "claim": "Catherine Ndereba Catherine Nyambura Ndereba (born 21 July 1972) is a retired Kenyan marathon runner.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Catherine Ndereba Catherine Nyambura Ndereba (born 21 July 1972) is a retired Kenyan marathon runner.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_spor_derartu_tulu",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the first Ethiopian woman to win Olympic gold?",
+      "options": [
+        "Derartu Tulu",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Derartu Tulu is an Ethiopian runner.",
+      "sources": [
+        {
+          "title": "Derartu Tulu",
+          "url": "https://en.wikipedia.org/wiki/Derartu_Tulu",
+          "claim": "Derartu Tulu is an Ethiopian runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Derartu Tulu Derartu Tulu NL COL (Oromo: Daraartuu Tulluu, Amharic: ደራርቱ ቱሉ; born 21 March 1972) is an Ethiopian former long-distance runner, who competed in track, cross country running, and road running up to the marathon distance. Derartu is the first Ethiopian woman and the first black African woman to win an Olympic gold medal.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_spor_faith_kipyegon",
+      "region": "east",
+      "country": "Kenya",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Kenyan middle and long-distance runner?",
+      "options": [
+        "Faith Kipyegon",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Faith Kipyegon is a Kenyan middle-distance runner.",
+      "sources": [
+        {
+          "title": "Faith Kipyegon",
+          "url": "https://en.wikipedia.org/wiki/Faith_Kipyegon",
+          "claim": "Faith Kipyegon Faith Chepngetich Kipyegon (born 10 January 1994) is a Kenyan middle and long-distance runner.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Faith Kipyegon Faith Chepngetich Kipyegon (born 10 January 1994) is a Kenyan middle and long-distance runner.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_spor_mbwana_samatta",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Tanzanian professional footballer who plays as a striker for Ligue 1 club Le Havre?",
+      "options": [
+        "Mbwana Samatta",
+        "Harambee Stars",
+        "Cranes",
+        "Walias"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mbwana Samatta is a Tanzanian footballer.",
+      "sources": [
+        {
+          "title": "Mbwana Samatta",
+          "url": "https://en.wikipedia.org/wiki/Mbwana_Samatta",
+          "claim": "Mbwana Samatta Mbwana Ally Samatta (born 23 December 1992) is a Tanzanian professional footballer who plays as a striker for Ligue 1 club Le Havre.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mbwana Samatta Mbwana Ally Samatta (born 23 December 1992) is a Tanzanian professional footballer who plays as a striker for Ligue 1 club Le Havre.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_spor_stephen_kiprotich",
+      "region": "east",
+      "country": "Uganda",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the Ugandan who won the 2012 Olympic marathon?",
+      "options": [
+        "Stephen Kiprotich",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Stephen Kiprotich is a Ugandan marathon runner.",
+      "sources": [
+        {
+          "title": "Stephen Kiprotich",
+          "url": "https://en.wikipedia.org/wiki/Stephen_Kiprotich",
+          "claim": "Stephen Kiprotich is a Ugandan marathon runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Stephen Kiprotich Stephen Kiprotich (\"KIP-roh-tich\", born 27 February 1989) is a Ugandan long-distance runner. He is an Olympic marathon champion, having won the gold medal at the 2012 London Olympics.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_spor_tirunesh_dibaba",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Ethiopian long-distance runner athlete who competes in long-distance track events and international road races?",
+      "options": [
+        "Tirunesh Dibaba",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tirunesh Dibaba is an Ethiopian long-distance runner.",
+      "sources": [
+        {
+          "title": "Tirunesh Dibaba",
+          "url": "https://en.wikipedia.org/wiki/Tirunesh_Dibaba",
+          "claim": "Tirunesh Dibaba Tirunesh Dibaba (Oromo: Xirunesh Dibaabaa, Amharic: ጥሩነሽ ዲባባ ቀነኒ; born 1 June 1985) is an Ethiopian long-distance runner athlete who competes in long-distance track events and international road races.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tirunesh Dibaba Tirunesh Dibaba (Oromo: Xirunesh Dibaabaa, Amharic: ጥሩነሽ ዲባባ ቀነኒ; born 1 June 1985) is an Ethiopian long-distance runner athlete who competes in long-distance track events and international road races.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_spor_victor_wanyama",
+      "region": "east",
+      "country": "Kenya",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Kenyan midfielder who played in the Premier League?",
+      "options": [
+        "Victor Wanyama",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Victor Wanyama is a Kenyan footballer.",
+      "sources": [
+        {
+          "title": "Victor Wanyama",
+          "url": "https://en.wikipedia.org/wiki/Victor_Wanyama",
+          "claim": "Victor Wanyama is a Kenyan footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Victor Wanyama Victor Mugubi Wanyama (Kenyan English: [waˈɲama] ; born 25 June 1991) is a Kenyan former professional footballer who played as a defensive midfielder.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "east_wedd_kwanjula",
+      "region": "east",
+      "country": "Uganda",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call the Buganda introduction ceremony before marriage?",
+      "options": [
+        "Kwanjula",
+        "Habesha kemis",
+        "Ruracio",
+        "Harusi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kwanjula is an introduction ceremony in Buganda.",
+      "sources": [
+        {
+          "title": "Kwanjula",
+          "url": "https://en.wikipedia.org/wiki/Kwanjula",
+          "claim": "Kwanjula is an introduction ceremony in Buganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kwanjula Kwanjula (translated as \"introduction\") is a traditional marriage introduction ceremony practiced by the Baganda people of Buganda, a kingdom within modern-day Uganda.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    }
+  ]
+}

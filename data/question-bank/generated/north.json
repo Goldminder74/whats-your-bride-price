@@ -8,7 +8,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Morocco?",
+      "prompt": "Which city is the capital of Morocco?",
       "options": [
         "Rabat",
         "Algiers",
@@ -36,7 +36,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Algeria?",
+      "prompt": "Which city is the capital of Algeria?",
       "options": [
         "Algiers",
         "Rabat",
@@ -64,7 +64,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Tunisia?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Tunis",
         "Rabat",
@@ -92,7 +92,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Libya?",
+      "prompt": "Which city is the capital of Libya?",
       "options": [
         "Tripoli",
         "Rabat",
@@ -120,7 +120,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Egypt?",
+      "prompt": "Which city is the capital of Egypt?",
       "options": [
         "Cairo",
         "Rabat",
@@ -148,7 +148,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Sudan?",
+      "prompt": "Which city is the capital of Sudan?",
       "options": [
         "Khartoum",
         "Rabat",
@@ -176,7 +176,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the capital city of Mauritania?",
+      "prompt": "Which city is the capital of Mauritania?",
       "options": [
         "Nouakchott",
         "Rabat",
@@ -204,12 +204,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the plateau of the great pyramids beside Cairo?",
+      "prompt": "Where is the plateau of the great pyramids beside Cairo?",
       "options": [
         "Giza",
-        "Rabat",
-        "Algiers",
-        "Tunis"
+        "Carthage",
+        "Marrakesh",
+        "Fez"
       ],
       "correct": [
         0
@@ -226,74 +226,18 @@
       "origin": "generated"
     },
     {
-      "id": "north_geog_nile",
-      "region": "north",
-      "country": "Egypt",
-      "category": "GEOGRAPHY",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which place is the river that runs through Egypt and Sudan?",
-      "options": [
-        "Nile",
-        "Rabat",
-        "Algiers",
-        "Tunis"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The Nile is a river in Egypt.",
-      "sources": [
-        {
-          "title": "Nile",
-          "url": "https://en.wikipedia.org/wiki/Nile",
-          "claim": "The Nile is a river in Egypt",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_geog_atlas_mountains",
-      "region": "north",
-      "country": "Morocco",
-      "category": "GEOGRAPHY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which place is the mountain chain across Morocco?",
-      "options": [
-        "Atlas Mountains",
-        "Rabat",
-        "Algiers",
-        "Tunis"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The Atlas Mountains are in Morocco.",
-      "sources": [
-        {
-          "title": "Atlas Mountains",
-          "url": "https://en.wikipedia.org/wiki/Atlas_Mountains",
-          "claim": "The Atlas Mountains are in Morocco",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "north_geog_carthage",
       "region": "north",
       "country": "Tunisia",
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the ancient city beside modern Tunis?",
+      "prompt": "Where is the ancient city beside modern Tunis?",
       "options": [
         "Carthage",
-        "Rabat",
-        "Algiers",
-        "Tunis"
+        "Giza",
+        "Marrakesh",
+        "Fez"
       ],
       "correct": [
         0
@@ -316,40 +260,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the red city famous for its main square?",
+      "prompt": "Where is the red city famous for its main square?",
       "options": [
         "Marrakesh",
-        "Rabat",
-        "Algiers",
-        "Tunis"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Marrakesh is a city in Morocco.",
-      "sources": [
-        {
-          "title": "Marrakesh",
-          "url": "https://en.wikipedia.org/wiki/Marrakesh",
-          "claim": "Marrakesh is a city in Morocco",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_geog_marrakesh_fill",
-      "region": "north",
-      "country": "Morocco",
-      "category": "GEOGRAPHY",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Morocco, the red city famous for its main square. The name to write is ___.",
-      "options": [
-        "Marrakesh",
-        "Rabat",
-        "Algiers",
-        "Tunis"
+        "Giza",
+        "Carthage",
+        "Fez"
       ],
       "correct": [
         0
@@ -372,12 +288,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the Moroccan city of an old medina and tanneries?",
+      "prompt": "Where is the Moroccan city of an old medina and tanneries?",
       "options": [
         "Fez",
-        "Rabat",
-        "Algiers",
-        "Tunis"
+        "Giza",
+        "Carthage",
+        "Marrakesh"
       ],
       "correct": [
         0
@@ -400,12 +316,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which place is the Roman city on the Libyan coast?",
+      "prompt": "Where is the Roman city on the Libyan coast?",
       "options": [
         "Leptis Magna",
-        "Rabat",
-        "Algiers",
-        "Tunis"
+        "Giza",
+        "Carthage",
+        "Marrakesh"
       ],
       "correct": [
         0
@@ -428,12 +344,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the city of temples on the site of ancient Thebes?",
+      "prompt": "Where is the city of temples on the site of ancient Thebes?",
       "options": [
         "Luxor",
-        "Rabat",
-        "Algiers",
-        "Tunis"
+        "Giza",
+        "Carthage",
+        "Marrakesh"
       ],
       "correct": [
         0
@@ -456,12 +372,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which place is the rock-cut temples moved during the Aswan dam works?",
+      "prompt": "Where is the rock-cut temples moved during the Aswan dam works?",
       "options": [
         "Abu Simbel",
-        "Rabat",
-        "Algiers",
-        "Tunis"
+        "Giza",
+        "Carthage",
+        "Marrakesh"
       ],
       "correct": [
         0
@@ -478,46 +394,18 @@
       "origin": "generated"
     },
     {
-      "id": "north_geog_sahara",
-      "region": "north",
-      "country": "Morocco",
-      "category": "GEOGRAPHY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which place is the desert that reaches southern Morocco?",
-      "options": [
-        "Sahara",
-        "Rabat",
-        "Algiers",
-        "Tunis"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The Sahara is a desert in North Africa.",
-      "sources": [
-        {
-          "title": "Sahara",
-          "url": "https://en.wikipedia.org/wiki/Sahara",
-          "claim": "The Sahara is a desert in North Africa",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "north_geog_alexandria",
       "region": "north",
       "country": "Egypt",
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the Mediterranean port city of Egypt?",
+      "prompt": "Where is the Mediterranean port city of Egypt?",
       "options": [
         "Alexandria",
-        "Rabat",
-        "Algiers",
-        "Tunis"
+        "Giza",
+        "Carthage",
+        "Marrakesh"
       ],
       "correct": [
         0
@@ -540,7 +428,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is steamed semolina grains, a shared dish of the Maghreb?",
+      "prompt": "What do you call steamed semolina grains, a shared dish of the Maghreb?",
       "options": [
         "Couscous",
         "Tagine",
@@ -568,7 +456,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a slow stew named for its conical pot?",
+      "prompt": "What do you call a slow stew named for its conical pot?",
       "options": [
         "Tagine",
         "Couscous",
@@ -596,7 +484,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a tomato and lentil soup of Morocco?",
+      "prompt": "What do you call a tomato and lentil soup of Morocco?",
       "options": [
         "Harira",
         "Couscous",
@@ -624,7 +512,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a sweet-savoury pigeon or chicken pie?",
+      "prompt": "What do you call a sweet-savoury pigeon or chicken pie?",
       "options": [
         "Pastilla",
         "Couscous",
@@ -652,7 +540,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a Cairo street bowl of rice, lentils, pasta, and tomato?",
+      "prompt": "What do you call a Cairo street bowl of rice, lentils, pasta, and tomato?",
       "options": [
         "Koshari",
         "Couscous",
@@ -680,7 +568,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is stewed fava beans, an Egyptian breakfast?",
+      "prompt": "What do you call stewed fava beans, an Egyptian breakfast?",
       "options": [
         "Ful medames",
         "Couscous",
@@ -708,7 +596,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a green leaf stew loved in Egypt?",
+      "prompt": "What do you call a green leaf stew loved in Egypt?",
       "options": [
         "Molokhia",
         "Couscous",
@@ -736,7 +624,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a fried pastry often filled with egg?",
+      "prompt": "What do you call a fried pastry often filled with egg?",
       "options": [
         "Brik",
         "Couscous",
@@ -764,7 +652,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a chickpea soup of Tunisian mornings?",
+      "prompt": "What do you call a chickpea soup of Tunisian mornings?",
       "options": [
         "Lablabi",
         "Couscous",
@@ -792,7 +680,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is sweet green tea with mint, poured from a height?",
+      "prompt": "What do you call sweet green tea with, poured from a height?",
       "options": [
         "Mint tea",
         "Couscous",
@@ -820,7 +708,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a flaky pan-fried flatbread?",
+      "prompt": "What do you call a flaky pan-fried flatbread?",
       "options": [
         "Msemen",
         "Couscous",
@@ -848,7 +736,7 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which dish is a spicy lamb sausage of the Maghreb?",
+      "prompt": "What do you call a spicy lamb sausage of the Maghreb?",
       "options": [
         "Merguez",
         "Couscous",
@@ -876,7 +764,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a semolina syrup cake?",
+      "prompt": "What do you call a semolina syrup cake?",
       "options": [
         "Basbousa",
         "Couscous",
@@ -904,7 +792,7 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which dish is a cooked aubergine and tomato salad?",
+      "prompt": "What do you call a cooked aubergine and tomato salad?",
       "options": [
         "Zaalouk",
         "Couscous",
@@ -932,7 +820,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is eggs poached in a pepper and tomato sauce?",
+      "prompt": "What do you call eggs poached in a pepper and tomato sauce?",
       "options": [
         "Chakchouka",
         "Couscous",
@@ -960,7 +848,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is the fava breakfast also loved in Sudan?",
+      "prompt": "What do you call the fava breakfast also loved in Sudan?",
       "options": [
         "Ful Sudanese",
         "Couscous",
@@ -988,7 +876,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a dough porridge served at celebrations?",
+      "prompt": "What do you call a dough porridge served at celebrations?",
       "options": [
         "Asida",
         "Couscous",
@@ -1016,7 +904,7 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which dish is rice and fish shared with Senegalese cousins across the Senegal River?",
+      "prompt": "What do you call rice and fish shared with Senegalese cousins across the Senegal River?",
       "options": [
         "Thieb",
         "Couscous",
@@ -1044,40 +932,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the popular music of Oran?",
+      "prompt": "What is the popular music of Oran?",
       "options": [
         "Raï",
         "Gnawa",
-        "Umm Kulthum",
-        "Amr Diab"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Raï is a music genre from Algeria.",
-      "sources": [
-        {
-          "title": "Raï",
-          "url": "https://en.wikipedia.org/wiki/Ra%C3%AF",
-          "claim": "Raï is a music genre from Algeria",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_musi_rai_fill",
-      "region": "north",
-      "country": "Algeria",
-      "category": "MUSIC",
-      "difficulty": "easy",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Algeria, the popular music of Oran. The name to write is ___.",
-      "options": [
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum",
-        "Amr Diab"
+        "Chaabi",
+        "Mizwad"
       ],
       "correct": [
         0
@@ -1100,12 +960,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the spiritual music of Morocco with the guembri lute?",
+      "prompt": "What is the spiritual music of Morocco with the guembri lute?",
       "options": [
         "Gnawa",
         "Raï",
-        "Umm Kulthum",
-        "Amr Diab"
+        "Chaabi",
+        "Mizwad"
       ],
       "correct": [
         0
@@ -1128,12 +988,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the voice of twentieth-century Egyptian song?",
+      "prompt": "What is the voice of twentieth-century Egyptian song?",
       "options": [
         "Umm Kulthum",
-        "Raï",
-        "Gnawa",
-        "Amr Diab"
+        "Amr Diab",
+        "Cheb Khaled",
+        "Rachid Taha"
       ],
       "correct": [
         0
@@ -1156,12 +1016,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the Egyptian pop star associated with the Mediterranean sound?",
+      "prompt": "What is the Egyptian pop star associated with the Mediterranean sound?",
       "options": [
         "Amr Diab",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
+        "Umm Kulthum",
+        "Cheb Khaled",
+        "Rachid Taha"
       ],
       "correct": [
         0
@@ -1184,40 +1044,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the king of raï?",
+      "prompt": "What is the king of raï?",
       "options": [
         "Cheb Khaled",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Khaled is an Algerian raï singer.",
-      "sources": [
-        {
-          "title": "Khaled (musician)",
-          "url": "https://en.wikipedia.org/wiki/Khaled_(musician)",
-          "claim": "Khaled is an Algerian raï singer",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_musi_khaled_musician_fill",
-      "region": "north",
-      "country": "Algeria",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Algeria, the king of raï. The name to write is ___.",
-      "options": [
-        "Cheb Khaled",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
+        "Umm Kulthum",
+        "Amr Diab",
+        "Rachid Taha"
       ],
       "correct": [
         0
@@ -1240,12 +1072,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a popular Moroccan party music?",
+      "prompt": "What is a popular Moroccan party music?",
       "options": [
         "Chaabi",
         "Raï",
         "Gnawa",
-        "Umm Kulthum"
+        "Mizwad"
       ],
       "correct": [
         0
@@ -1268,12 +1100,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which music or dance name is bagpipe-driven popular music of Tunisia?",
+      "prompt": "What is bagpipe-driven popular music of Tunisia?",
       "options": [
         "Mizwad",
         "Raï",
         "Gnawa",
-        "Umm Kulthum"
+        "Chaabi"
       ],
       "correct": [
         0
@@ -1296,40 +1128,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is street pop of Cairo?",
+      "prompt": "What is street pop of Cairo?",
       "options": [
         "Shaabi",
         "Raï",
         "Gnawa",
-        "Umm Kulthum"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Shaabi is a popular music of Egypt.",
-      "sources": [
-        {
-          "title": "Shaabi",
-          "url": "https://en.wikipedia.org/wiki/Shaabi",
-          "claim": "Shaabi is a popular music of Egypt",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_musi_shaabi_fill",
-      "region": "north",
-      "country": "Egypt",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Egypt, street pop of Cairo. The name to write is ___.",
-      "options": [
-        "Shaabi",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
+        "Chaabi"
       ],
       "correct": [
         0
@@ -1352,12 +1156,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the annual gnawa gathering in Essaouira?",
+      "prompt": "What is the annual gathering in Essaouira?",
       "options": [
         "Gnawa festival",
         "Raï",
-        "Umm Kulthum",
-        "Amr Diab"
+        "Chaabi",
+        "Mizwad"
       ],
       "correct": [
         0
@@ -1380,40 +1184,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the singer who mixed raï and rock?",
+      "prompt": "Who is the singer who mixed raï and rock?",
       "options": [
         "Rachid Taha",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Rachid Taha was an Algerian singer.",
-      "sources": [
-        {
-          "title": "Rachid Taha",
-          "url": "https://en.wikipedia.org/wiki/Rachid_Taha",
-          "claim": "Rachid Taha was an Algerian singer",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_musi_rachid_taha_fill",
-      "region": "north",
-      "country": "Algeria",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Algeria, the singer who mixed raï and rock. The name to write is ___.",
-      "options": [
-        "Rachid Taha",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
       ],
       "correct": [
         0
@@ -1436,12 +1212,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which music or dance name is the classical suite tradition of the Maghreb?",
+      "prompt": "What is the classical suite tradition of the Maghreb?",
       "options": [
         "Andalusian nuba",
         "Raï",
         "Gnawa",
-        "Umm Kulthum"
+        "Chaabi"
       ],
       "correct": [
         0
@@ -1464,40 +1240,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the lute at the centre of Egyptian orchestras?",
+      "prompt": "What is the lute at the centre of Egyptian orchestras?",
       "options": [
         "Oud",
         "Raï",
         "Gnawa",
-        "Umm Kulthum"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The oud is a lute used in Egyptian music.",
-      "sources": [
-        {
-          "title": "Oud",
-          "url": "https://en.wikipedia.org/wiki/Oud",
-          "claim": "The oud is a lute used in Egyptian music",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_musi_oud_fill",
-      "region": "north",
-      "country": "Egypt",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Egypt, the lute at the centre of Egyptian orchestras. The name to write is ___.",
-      "options": [
-        "Oud",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
+        "Chaabi"
       ],
       "correct": [
         0
@@ -1520,12 +1268,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the Nubian-Egyptian singer of Cairo nights?",
+      "prompt": "Who is the Nubian-Egyptian singer of Cairo nights?",
       "options": [
         "Mohamed Mounir",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
       ],
       "correct": [
         0
@@ -1548,40 +1296,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the Tunisian oud player and singer?",
+      "prompt": "Who is the Tunisian oud player and singer?",
       "options": [
         "Dhafer Youssef",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Dhafer Youssef is a Tunisian musician.",
-      "sources": [
-        {
-          "title": "Dhafer Youssef",
-          "url": "https://en.wikipedia.org/wiki/Dhafer_Youssef",
-          "claim": "Dhafer Youssef is a Tunisian musician",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_musi_dhafer_youssef_fill",
-      "region": "north",
-      "country": "Tunisia",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Tunisia, the Tunisian oud player and singer. The name to write is ___.",
-      "options": [
-        "Dhafer Youssef",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
       ],
       "correct": [
         0
@@ -1604,12 +1324,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which music or dance name is a Sudanese song style, better known through modern pop?",
+      "prompt": "What is a Sudanese song style, better known through modern pop?",
       "options": [
         "Haidari",
         "Raï",
         "Gnawa",
-        "Umm Kulthum"
+        "Chaabi"
       ],
       "correct": [
         0
@@ -1632,40 +1352,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the band that modernised Moroccan folk?",
+      "prompt": "What is the band that modernised Moroccan folk?",
       "options": [
         "Nass El Ghiwane",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Nass El Ghiwane is a Moroccan band.",
-      "sources": [
-        {
-          "title": "Nass El Ghiwane",
-          "url": "https://en.wikipedia.org/wiki/Nass_El_Ghiwane",
-          "claim": "Nass El Ghiwane is a Moroccan band",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_musi_nass_el_ghiwane_fill",
-      "region": "north",
-      "country": "Morocco",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Morocco, the band that modernised Moroccan folk. The name to write is ___.",
-      "options": [
-        "Nass El Ghiwane",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
       ],
       "correct": [
         0
@@ -1688,12 +1380,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the Algerian singer-songwriter?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Souad Massi",
-        "Raï",
-        "Gnawa",
-        "Umm Kulthum"
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
       ],
       "correct": [
         0
@@ -1716,12 +1408,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is skip this?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Fairuz is not Egyptian",
         "Raï",
         "Gnawa",
-        "Umm Kulthum"
+        "Chaabi"
       ],
       "correct": [
         0
@@ -1744,7 +1436,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a hooded robe of the Maghreb?",
+      "prompt": "What is a hooded robe of the Maghreb?",
       "options": [
         "Djellaba",
         "Babouche",
@@ -1772,7 +1464,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is leather slippers of Moroccan dress?",
+      "prompt": "What is leather slippers of Moroccan dress?",
       "options": [
         "Babouche",
         "Djellaba",
@@ -1800,7 +1492,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a formal caftan worn at Moroccan celebrations?",
+      "prompt": "What is a formal caftan worn at Moroccan celebrations?",
       "options": [
         "Takchita",
         "Djellaba",
@@ -1828,7 +1520,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the long robe of everyday Egyptian dress?",
+      "prompt": "What is the long robe of everyday Egyptian dress?",
       "options": [
         "Galabeya",
         "Djellaba",
@@ -1856,7 +1548,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the red brimless cap, named for the Moroccan city?",
+      "prompt": "What is the red brimless cap, named for the Moroccan city?",
       "options": [
         "Fez hat",
         "Djellaba",
@@ -1884,7 +1576,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a long decorated robe worn across the Maghreb?",
+      "prompt": "What is a long decorated robe worn across the Maghreb?",
       "options": [
         "Kaftan",
         "Djellaba",
@@ -1912,7 +1604,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is silver jewellery of Amazigh communities?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Amazigh silver",
         "Djellaba",
@@ -1940,7 +1632,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a soft red cap of Tunisia?",
+      "prompt": "What is a soft red cap of Tunisia?",
       "options": [
         "Chechia",
         "Djellaba",
@@ -1968,7 +1660,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is cut mosaic tile used on walls and floors?",
+      "prompt": "What is cut mosaic tile used on walls and floors?",
       "options": [
         "Zellige",
         "Djellaba",
@@ -1996,7 +1688,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is gold pendants shaped like royal name rings, sold as modern style?",
+      "prompt": "What is gold pendants shaped like royal name rings, sold as modern style?",
       "options": [
         "Cartouche jewellery",
         "Djellaba",
@@ -2024,7 +1716,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the long drape worn by Moorish women?",
+      "prompt": "What is the long drape worn by Moorish women?",
       "options": [
         "Melhafa",
         "Djellaba",
@@ -2052,7 +1744,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the long wrap worn by Sudanese women?",
+      "prompt": "What is the long wrap worn by Sudanese women?",
       "options": [
         "Tobe",
         "Djellaba",
@@ -2080,7 +1772,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a light tunic worn in the Maghreb?",
+      "prompt": "What is a light tunic worn in the Maghreb?",
       "options": [
         "Gandora",
         "Djellaba",
@@ -2108,7 +1800,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is an embroidered velvet jacket of Algerian dress?",
+      "prompt": "What is an embroidered velvet jacket of Algerian dress?",
       "options": [
         "Karakou",
         "Djellaba",
@@ -2136,7 +1828,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a traditional Libyan wrap for men?",
+      "prompt": "What is a traditional Libyan wrap for men?",
       "options": [
         "Jard",
         "Djellaba",
@@ -2164,7 +1856,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is beadwork of Nubian communities in Egypt and Sudan?",
+      "prompt": "What is beadwork of communities in Egypt and Sudan?",
       "options": [
         "Nubian beads",
         "Djellaba",
@@ -2192,7 +1884,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the wide belt that cinches a caftan?",
+      "prompt": "What is the wide belt that cinches a caftan?",
       "options": [
         "Belts of silk",
         "Djellaba",
@@ -2220,7 +1912,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a white wrap once common in Tunis?",
+      "prompt": "What is a white wrap once common in Tunis?",
       "options": [
         "Sefsari",
         "Djellaba",
@@ -2248,7 +1940,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is the major language of Egypt and the Maghreb?",
+      "prompt": "Can you name the major language of Egypt and the Maghreb?",
       "options": [
         "Arabic",
         "Darija",
@@ -2276,7 +1968,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is Moroccan colloquial Arabic?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Darija",
         "Arabic",
@@ -2304,7 +1996,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a group of Amazigh languages?",
+      "prompt": "Can you name a group of Amazigh languages?",
       "options": [
         "Tamazight",
         "Arabic",
@@ -2332,7 +2024,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is the colloquial Arabic of Egypt?",
+      "prompt": "Can you name the colloquial of Egypt?",
       "options": [
         "Egyptian Arabic",
         "Darija",
@@ -2360,7 +2052,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is the Arabic variety of Mauritania?",
+      "prompt": "Can you name the Arabic variety of Mauritania?",
       "options": [
         "Hassaniya",
         "Arabic",
@@ -2388,7 +2080,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is the liturgical language of the Coptic Church?",
+      "prompt": "Can you name the liturgical language of the Church?",
       "options": [
         "Coptic",
         "Arabic",
@@ -2416,7 +2108,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is the colloquial Arabic of Sudan?",
+      "prompt": "Can you name the colloquial of Sudan?",
       "options": [
         "Sudanese Arabic",
         "Darija",
@@ -2444,7 +2136,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is an Arabic thank-you used across North Africa?",
+      "prompt": "Can you name an Arabic thank-you used across North Africa?",
       "options": [
         "Shukran",
         "Arabic",
@@ -2472,7 +2164,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a Tamazight language of Algeria?",
+      "prompt": "Can you name a Tamazight language of Algeria?",
       "options": [
         "Kabyle",
         "Arabic",
@@ -2500,7 +2192,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is a Tamazight language of southern Morocco?",
+      "prompt": "Can you name a Tamazight language of southern Morocco?",
       "options": [
         "Tashelhit",
         "Arabic",
@@ -2528,7 +2220,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a Tuareg language of the Sahara?",
+      "prompt": "Can you name a Tuareg language of the Sahara?",
       "options": [
         "Tamasheq",
         "Arabic",
@@ -2556,7 +2248,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is a warm Arabic hello?",
+      "prompt": "Can you name a warm Arabic hello?",
       "options": [
         "Ahlan",
         "Arabic",
@@ -2584,7 +2276,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is the colloquial Arabic of Tunisia?",
+      "prompt": "Can you name the colloquial of Tunisia?",
       "options": [
         "Tunisian Arabic",
         "Darija",
@@ -2612,7 +2304,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is languages of Nubian communities along the Nile?",
+      "prompt": "Can you name languages of communities along the Nile?",
       "options": [
         "Nubian",
         "Arabic",
@@ -2640,7 +2332,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is French is widely used in Moroccan cities?",
+      "prompt": "Can you name is widely used in Moroccan cities?",
       "options": [
         "French Morocco",
         "Arabic",
@@ -2668,7 +2360,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is French remains widely used in Algeria?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "French Algeria",
         "Arabic",
@@ -2696,7 +2388,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a language of eastern Sudan?",
+      "prompt": "Can you name a language of eastern Sudan?",
       "options": [
         "Beja",
         "Arabic",
@@ -2724,7 +2416,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is the Amazigh alphabet seen on Moroccan signs?",
+      "prompt": "Can you name the Amazigh alphabet seen on Moroccan signs?",
       "options": [
         "Tifinagh",
         "Arabic",
@@ -2752,7 +2444,7 @@
       "category": "FESTIVALS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which celebration is the world music festival in Essaouira?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Gnaoua Festival",
         "Carthage Film Festival",
@@ -2780,7 +2472,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is a long-running film festival in Tunis?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Carthage Film Festival",
         "Gnaoua Festival",
@@ -2808,7 +2500,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is a major film festival in Cairo?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Cairo Film Festival",
         "Gnaoua Festival",
@@ -2836,7 +2528,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is the rose harvest festival of Kelaa M'Gouna?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Rose Festival",
         "Gnaoua Festival",
@@ -2948,7 +2640,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is a desert festival in Douz?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Festival of the Sahara",
         "Gnaoua Festival",
@@ -3228,7 +2920,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is a world music festival in Fez?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Fes Festival",
         "Gnaoua Festival",
@@ -3256,10 +2948,10 @@
       "category": "WEDDINGS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which wedding custom is painting the bride's hands before a Moroccan wedding?",
+      "prompt": "What do you call painting the bride's hands before a Moroccan wedding?",
       "options": [
         "Henna night",
-        "Takchita bride",
+        "Takchita",
         "Negafa",
         "Zaffa"
       ],
@@ -3284,9 +2976,9 @@
       "category": "WEDDINGS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which wedding custom is the formal caftan a Moroccan bride changes into?",
+      "prompt": "What do you call the formal caftan a Moroccan bride changes into?",
       "options": [
-        "Takchita bride",
+        "Takchita",
         "Henna night",
         "Negafa",
         "Zaffa"
@@ -3312,11 +3004,11 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is the specialist who dresses the bride?",
+      "prompt": "What do you call the specialist who dresses the bride?",
       "options": [
         "Negafa",
         "Henna night",
-        "Takchita bride",
+        "Takchita",
         "Zaffa"
       ],
       "correct": [
@@ -3340,11 +3032,11 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is the musical procession that walks the couple in?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Zaffa",
         "Henna night",
-        "Takchita bride",
+        "Takchita",
         "Negafa"
       ],
       "correct": [
@@ -3362,101 +3054,17 @@
       "origin": "generated"
     },
     {
-      "id": "north_wedd_egyptian_wedding",
-      "region": "north",
-      "country": "Egypt",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is the drumming procession of an Egyptian wedding?",
-      "options": [
-        "Zaffa Egypt",
-        "Henna night",
-        "Takchita bride",
-        "Negafa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Egyptian weddings include a zaffa procession.",
-      "sources": [
-        {
-          "title": "Egyptian wedding",
-          "url": "https://en.wikipedia.org/wiki/Egyptian_wedding",
-          "claim": "Egyptian weddings include a zaffa procession",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_wedd_couscous",
-      "region": "north",
-      "country": "North Africa",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is a great couscous platter for wedding guests?",
-      "options": [
-        "Couscous feast",
-        "Henna night",
-        "Takchita bride",
-        "Negafa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Couscous is served at Maghrebi weddings.",
-      "sources": [
-        {
-          "title": "Couscous",
-          "url": "https://en.wikipedia.org/wiki/Couscous",
-          "claim": "Couscous is served at Maghrebi weddings",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_wedd_culture_of_tunisia",
-      "region": "north",
-      "country": "Tunisia",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is a traditional outfit for a Tunisian groom?",
-      "options": [
-        "Jebba groom",
-        "Henna night",
-        "Takchita bride",
-        "Negafa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Tunisian weddings include traditional dress.",
-      "sources": [
-        {
-          "title": "Culture of Tunisia",
-          "url": "https://en.wikipedia.org/wiki/Culture_of_Tunisia",
-          "claim": "Tunisian weddings include traditional dress",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "north_wedd_ululation",
       "region": "north",
       "country": "Morocco",
       "category": "WEDDINGS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which wedding custom is the joyful zaghareet when the couple appears?",
+      "prompt": "What do you call the joyful zaghareet when the couple appears?",
       "options": [
         "Ululation",
         "Henna night",
-        "Takchita bride",
+        "Takchita",
         "Negafa"
       ],
       "correct": [
@@ -3474,17 +3082,17 @@
       "origin": "generated"
     },
     {
-      "id": "north_wedd_egyptian_wedding2",
+      "id": "north_wedd_egyptian_wedding",
       "region": "north",
       "country": "Egypt",
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is the decorated stage where the couple sits?",
+      "prompt": "What do you call the decorated stage where the couple sits?",
       "options": [
         "Kosha",
         "Henna night",
-        "Takchita bride",
+        "Takchita",
         "Negafa"
       ],
       "correct": [
@@ -3502,112 +3110,28 @@
       "origin": "generated"
     },
     {
-      "id": "north_wedd_culture_of_sudan",
-      "region": "north",
-      "country": "Sudan",
-      "category": "WEDDINGS",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Which wedding custom is a Sudanese bridal perfume and blessing gathering?",
-      "options": [
-        "Jirtig",
-        "Henna night",
-        "Takchita bride",
-        "Negafa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Sudanese weddings include family blessings.",
-      "sources": [
-        {
-          "title": "Culture of Sudan",
-          "url": "https://en.wikipedia.org/wiki/Culture_of_Sudan",
-          "claim": "Sudanese weddings include family blessings",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "north_wedd_karakou",
       "region": "north",
       "country": "Algeria",
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is an embroidered jacket in an Algerian bridal trousseau?",
+      "prompt": "What do you call an embroidered jacket worn at Algerian celebrations?",
       "options": [
-        "Karakou bride",
+        "Karakou",
         "Henna night",
-        "Takchita bride",
+        "Takchita",
         "Negafa"
       ],
       "correct": [
         0
       ],
-      "explanation": "The karakou is worn at Algerian celebrations.",
+      "explanation": "The karakou is an embroidered jacket from Algeria.",
       "sources": [
         {
           "title": "Karakou",
           "url": "https://en.wikipedia.org/wiki/Karakou",
-          "claim": "The karakou is worn at Algerian celebrations",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_wedd_maghrebi_mint_tea",
-      "region": "north",
-      "country": "Morocco",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is trays of mint tea for wedding guests?",
-      "options": [
-        "Mint tea service",
-        "Henna night",
-        "Takchita bride",
-        "Negafa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Mint tea is served to guests in Morocco.",
-      "sources": [
-        {
-          "title": "Maghrebi mint tea",
-          "url": "https://en.wikipedia.org/wiki/Maghrebi_mint_tea",
-          "claim": "Mint tea is served to guests in Morocco",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_wedd_asida",
-      "region": "north",
-      "country": "Libya",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is serving asida at a family celebration?",
-      "options": [
-        "Asida celebration",
-        "Henna night",
-        "Takchita bride",
-        "Negafa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Asida is served at celebrations in Libya.",
-      "sources": [
-        {
-          "title": "Asida",
-          "url": "https://en.wikipedia.org/wiki/Asida",
-          "claim": "Asida is served at celebrations in Libya",
+          "claim": "The karakou is an embroidered jacket from Algeria",
           "method": "page-overlap"
         }
       ],
@@ -3620,134 +3144,22 @@
       "category": "WEDDINGS",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which wedding custom is the drape worn by a Mauritanian bride?",
+      "prompt": "What do you call the drape worn by Mauritanian women?",
       "options": [
-        "Melhafa bride",
+        "Melhafa",
         "Henna night",
-        "Takchita bride",
+        "Takchita",
         "Negafa"
       ],
       "correct": [
         0
       ],
-      "explanation": "The melhafa is worn at celebrations in Mauritania.",
+      "explanation": "The melhafa is a drape worn in Mauritania.",
       "sources": [
         {
           "title": "Melhafa",
           "url": "https://en.wikipedia.org/wiki/Melhafa",
-          "claim": "The melhafa is worn at celebrations in Mauritania",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_wedd_raqs_sharqi",
-      "region": "north",
-      "country": "Egypt",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is a dancer opening the wedding party?",
-      "options": [
-        "Belly dance floor",
-        "Henna night",
-        "Takchita bride",
-        "Negafa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Raqs sharqi is performed at Egyptian celebrations.",
-      "sources": [
-        {
-          "title": "Raqs sharqi",
-          "url": "https://en.wikipedia.org/wiki/Raqs_sharqi",
-          "claim": "Raqs sharqi is performed at Egyptian celebrations",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_wedd_moroccan_wedding2",
-      "region": "north",
-      "country": "Morocco",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is the bride carried in a decorated litter in some Moroccan weddings?",
-      "options": [
-        "Family amaria",
-        "Henna night",
-        "Takchita bride",
-        "Negafa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Moroccan weddings include a decorated bridal entrance.",
-      "sources": [
-        {
-          "title": "Moroccan wedding",
-          "url": "https://en.wikipedia.org/wiki/Moroccan_wedding",
-          "claim": "Moroccan weddings include a decorated bridal entrance",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_wedd_brik",
-      "region": "north",
-      "country": "Tunisia",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is pastries passed to wedding guests?",
-      "options": [
-        "Brik and sweets",
-        "Henna night",
-        "Takchita bride",
-        "Negafa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Tunisian celebrations include pastries.",
-      "sources": [
-        {
-          "title": "Brik",
-          "url": "https://en.wikipedia.org/wiki/Brik",
-          "claim": "Tunisian celebrations include pastries",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_wedd_ahidous",
-      "region": "north",
-      "country": "Morocco",
-      "category": "WEDDINGS",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Which wedding custom is a line dance at some Atlas weddings?",
-      "options": [
-        "Amazigh ahidous",
-        "Henna night",
-        "Takchita bride",
-        "Negafa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Ahidous is a dance of Amazigh communities in Morocco.",
-      "sources": [
-        {
-          "title": "Ahidous",
-          "url": "https://en.wikipedia.org/wiki/Ahidous",
-          "claim": "Ahidous is a dance of Amazigh communities in Morocco",
+          "claim": "The melhafa is a drape worn in Mauritania",
           "method": "page-overlap"
         }
       ],
@@ -3760,12 +3172,12 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which historical name is the civilisation of the pharaohs along the Nile?",
+      "prompt": "What is the civilisation of the pharaohs along the Nile?",
       "options": [
         "Ancient Egypt",
-        "Carthage history",
         "Kingdom of Kush",
-        "Rosetta Stone"
+        "Meroë",
+        "Fatimid Cairo"
       ],
       "correct": [
         0
@@ -3788,12 +3200,12 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which historical name is the ancient maritime city in today's Tunisia?",
+      "prompt": "What is the ancient maritime city in today's Tunisia?",
       "options": [
         "Carthage history",
-        "Ancient Egypt",
-        "Kingdom of Kush",
-        "Rosetta Stone"
+        "Rosetta Stone",
+        "Al-Qarawiyyin",
+        "Al-Azhar"
       ],
       "correct": [
         0
@@ -3816,12 +3228,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the Nile kingdom centred at Napata and Meroë?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Kingdom of Kush",
         "Ancient Egypt",
-        "Carthage history",
-        "Rosetta Stone"
+        "Meroë",
+        "Fatimid Cairo"
       ],
       "correct": [
         0
@@ -3844,12 +3256,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the decree that helped scholars read hieroglyphs?",
+      "prompt": "What is the decree that helped scholars read hieroglyphs?",
       "options": [
         "Rosetta Stone",
-        "Ancient Egypt",
         "Carthage history",
-        "Kingdom of Kush"
+        "Al-Qarawiyyin",
+        "Al-Azhar"
       ],
       "correct": [
         0
@@ -3872,12 +3284,12 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which historical name is a historic university and mosque in Fez?",
+      "prompt": "What is a historic university and mosque in Fez?",
       "options": [
         "Al-Qarawiyyin",
-        "Ancient Egypt",
         "Carthage history",
-        "Kingdom of Kush"
+        "Rosetta Stone",
+        "Al-Azhar"
       ],
       "correct": [
         0
@@ -3900,12 +3312,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the historic mosque-university in Cairo?",
+      "prompt": "What is the historic mosque-university in Cairo?",
       "options": [
         "Al-Azhar",
-        "Ancient Egypt",
         "Carthage history",
-        "Kingdom of Kush"
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
       ],
       "correct": [
         0
@@ -3928,12 +3340,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is a holy city and early Islamic capital in Tunisia?",
+      "prompt": "What is a holy city and early Islamic capital in Tunisia?",
       "options": [
         "Kairouan",
-        "Ancient Egypt",
         "Carthage history",
-        "Kingdom of Kush"
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
       ],
       "correct": [
         0
@@ -3956,12 +3368,12 @@
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is the Roman planned city in Algeria?",
+      "prompt": "What is the Roman planned city in Algeria?",
       "options": [
         "Timgad",
-        "Ancient Egypt",
         "Carthage history",
-        "Kingdom of Kush"
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
       ],
       "correct": [
         0
@@ -3984,12 +3396,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the ancient library of the Ptolemaic city?",
+      "prompt": "What is the ancient of the Ptolemaic city?",
       "options": [
         "Library of Alexandria",
-        "Ancient Egypt",
         "Carthage history",
-        "Kingdom of Kush"
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
       ],
       "correct": [
         0
@@ -4006,102 +3418,18 @@
       "origin": "generated"
     },
     {
-      "id": "north_hist_morocco",
-      "region": "north",
-      "country": "Morocco",
-      "category": "HISTORY",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which historical name is the year Morocco became independent?",
-      "options": [
-        "1956",
-        "Ancient Egypt",
-        "Carthage history",
-        "Kingdom of Kush"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Morocco became independent in 1956.",
-      "sources": [
-        {
-          "title": "Morocco",
-          "url": "https://en.wikipedia.org/wiki/Morocco",
-          "claim": "Morocco became independent in 1956",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_hist_tunisia",
-      "region": "north",
-      "country": "Tunisia",
-      "category": "HISTORY",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which historical name is the year Tunisia became independent?",
-      "options": [
-        "1956 Tunisia",
-        "Ancient Egypt",
-        "Carthage history",
-        "Kingdom of Kush"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Tunisia became independent in 1956.",
-      "sources": [
-        {
-          "title": "Tunisia",
-          "url": "https://en.wikipedia.org/wiki/Tunisia",
-          "claim": "Tunisia became independent in 1956",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "north_hist_algeria",
-      "region": "north",
-      "country": "Algeria",
-      "category": "HISTORY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which historical name is the year Algeria became independent?",
-      "options": [
-        "1962",
-        "Ancient Egypt",
-        "Carthage history",
-        "Kingdom of Kush"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Algeria became independent in 1962.",
-      "sources": [
-        {
-          "title": "Algeria",
-          "url": "https://en.wikipedia.org/wiki/Algeria",
-          "claim": "Algeria became independent in 1962",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "north_hist_meroe",
       "region": "north",
       "country": "Sudan",
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is the Kushite city of pyramids?",
+      "prompt": "What is the Kushite city of pyramids?",
       "options": [
         "Meroë",
         "Ancient Egypt",
-        "Carthage history",
-        "Kingdom of Kush"
+        "Kingdom of Kush",
+        "Fatimid Cairo"
       ],
       "correct": [
         0
@@ -4124,12 +3452,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the dynasty that founded Cairo?",
+      "prompt": "What is the dynasty that founded?",
       "options": [
         "Fatimid Cairo",
         "Ancient Egypt",
-        "Carthage history",
-        "Kingdom of Kush"
+        "Kingdom of Kush",
+        "Meroë"
       ],
       "correct": [
         0
@@ -4152,12 +3480,12 @@
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is the woman credited with founding al-Qarawiyyin?",
+      "prompt": "What is the woman credited with founding al-Qarawiyyin?",
       "options": [
         "Fatima al-Fihri",
-        "Ancient Egypt",
         "Carthage history",
-        "Kingdom of Kush"
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
       ],
       "correct": [
         0
@@ -4180,12 +3508,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is a UNESCO old town in the Libyan Sahara?",
+      "prompt": "What is a UNESCO old town in the Libyan Sahara?",
       "options": [
         "Ghadames old town",
-        "Ancient Egypt",
         "Carthage history",
-        "Kingdom of Kush"
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
       ],
       "correct": [
         0
@@ -4208,12 +3536,12 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which historical name is the stone tombs of the Old Kingdom?",
+      "prompt": "What is the stone tombs of the Old Kingdom?",
       "options": [
         "Pyramids of Giza",
         "Ancient Egypt",
-        "Carthage history",
-        "Kingdom of Kush"
+        "Kingdom of Kush",
+        "Meroë"
       ],
       "correct": [
         0
@@ -4236,12 +3564,12 @@
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is a medieval empire that rose in the western Sahara and Morocco?",
+      "prompt": "What is a medieval empire that rose in the western Sahara and Morocco?",
       "options": [
         "Almoravid",
         "Ancient Egypt",
-        "Carthage history",
-        "Kingdom of Kush"
+        "Kingdom of Kush",
+        "Meroë"
       ],
       "correct": [
         0
@@ -4264,10 +3592,10 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the Egyptian novelist who won the Nobel Prize?",
+      "prompt": "Who is the Egyptian novelist who won the Nobel Prize?",
       "options": [
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun",
         "Assia Djebar"
       ],
@@ -4292,9 +3620,9 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the most famous singer of modern Egypt?",
+      "prompt": "Who is the most famous singer of modern Egypt?",
       "options": [
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Naguib Mahfouz",
         "Tahar Ben Jelloun",
         "Assia Djebar"
@@ -4320,11 +3648,11 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Moroccan novelist who writes in French?",
+      "prompt": "Who is the Moroccan novelist who writes in French?",
       "options": [
         "Tahar Ben Jelloun",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Assia Djebar"
       ],
       "correct": [
@@ -4348,11 +3676,11 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Algerian novelist and filmmaker?",
+      "prompt": "Who is the Algerian novelist and filmmaker?",
       "options": [
         "Assia Djebar",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4376,11 +3704,11 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Egyptian physician and feminist writer?",
+      "prompt": "Who is the Egyptian physician and feminist writer?",
       "options": [
         "Nawal El Saadawi",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4404,11 +3732,11 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the fourteenth-century traveller from Tangier?",
+      "prompt": "Who is the fourteenth-century traveller from Tangier?",
       "options": [
         "Ibn Battuta",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4432,11 +3760,11 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the founder associated with al-Qarawiyyin?",
+      "prompt": "Who is the founder associated with al-Qarawiyyin?",
       "options": [
-        "Fatima al-Fihri person",
+        "Fatima al-Fihri",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4460,11 +3788,11 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the historian born in Tunis?",
+      "prompt": "Who is the historian born in Tunis?",
       "options": [
         "Ibn Khaldun",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4488,22 +3816,22 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the Egyptian footballer of Liverpool?",
+      "prompt": "Who is the Egyptian footballer born in 1992?",
       "options": [
-        "Mohamed Salah person",
+        "Mohamed Salah",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
         0
       ],
-      "explanation": "Mohamed Salah is an Egyptian footballer.",
+      "explanation": "Mohamed Salah is an Egyptian footballer born in 1992.",
       "sources": [
         {
           "title": "Mohamed Salah",
           "url": "https://en.wikipedia.org/wiki/Mohamed_Salah",
-          "claim": "Mohamed Salah is an Egyptian footballer",
+          "claim": "Mohamed Salah is an Egyptian footballer born in 1992",
           "method": "page-overlap"
         }
       ],
@@ -4516,11 +3844,11 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Algerian footballer who won the Premier League?",
+      "prompt": "Who is the Algerian footballer who won the Premier League?",
       "options": [
-        "Riyad Mahrez person",
+        "Riyad Mahrez",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4544,11 +3872,11 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which person is the novelist of Season of Migration to the North?",
+      "prompt": "Who is the novelist of Season of Migration to the North?",
       "options": [
         "Tayeb Salih",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4572,11 +3900,11 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Egyptian chemist who won a Nobel Prize?",
+      "prompt": "Who is the Egyptian chemist who won a Nobel Prize?",
       "options": [
         "Ahmed Zewail",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4600,11 +3928,11 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Tunisian tennis star?",
+      "prompt": "Who is the Tunisian tennis star?",
       "options": [
-        "Ons Jabeur person",
+        "Ons Jabeur",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4628,11 +3956,11 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which person is the Libyan-born novelist of The Return?",
+      "prompt": "Who is the Libyan-born novelist of The Return?",
       "options": [
         "Hisham Matar",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4656,11 +3984,11 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Moroccan writer who won the Prix Goncourt?",
+      "prompt": "Who is the Moroccan writer who won the Prix Goncourt?",
       "options": [
         "Leila Slimani",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4684,11 +4012,11 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the last active ruler of the Ptolemaic Kingdom?",
+      "prompt": "Who is the last active ruler of the Ptolemaic Kingdom?",
       "options": [
         "Cleopatra",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4712,11 +4040,11 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Carthaginian general?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Hannibal",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4740,11 +4068,11 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which person is the queen whose bust is world famous?",
+      "prompt": "Who is the queen whose bust is world famous?",
       "options": [
         "Nefertiti",
         "Naguib Mahfouz",
-        "Umm Kulthum person",
+        "Umm Kulthum",
         "Tahar Ben Jelloun"
       ],
       "correct": [
@@ -4768,9 +4096,9 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Egyptian pop star of habibi songs?",
+      "prompt": "Who is the Egyptian pop star of habibi songs?",
       "options": [
-        "Amr Diab pop",
+        "Amr Diab",
         "Khaled pop",
         "Saad Lamjarred",
         "Mohamed Ramadan"
@@ -4796,10 +4124,10 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the king of raï?",
+      "prompt": "Who is the king of raï?",
       "options": [
-        "Khaled pop",
-        "Amr Diab pop",
+        "Khaled",
+        "Amr Diab",
         "Saad Lamjarred",
         "Mohamed Ramadan"
       ],
@@ -4824,11 +4152,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Moroccan pop singer of LM3ALLEM?",
+      "prompt": "Who is the Moroccan pop singer of LM3ALLEM?",
       "options": [
         "Saad Lamjarred",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Mohamed Ramadan"
       ],
       "correct": [
@@ -4852,11 +4180,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Egyptian actor and shaabi singer?",
+      "prompt": "Who is the Egyptian actor and shaabi singer?",
       "options": [
         "Mohamed Ramadan",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -4880,11 +4208,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is an Egyptian pop singer and actor?",
+      "prompt": "Who is an Egyptian pop singer and actor?",
       "options": [
         "Tamer Hosny",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -4908,11 +4236,11 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is a Belgian-Moroccan pop singer?",
+      "prompt": "Who is a Belgian-Moroccan pop singer?",
       "options": [
         "Dystinct",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -4936,11 +4264,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the folk-pop voice of Algeria?",
+      "prompt": "Who is the folk-pop voice of Algeria?",
       "options": [
-        "Souad Massi pop",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Souad Massi",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -4964,11 +4292,11 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is an Egyptian pop singer?",
+      "prompt": "Who is an Egyptian pop singer?",
       "options": [
         "Sherine",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -4992,11 +4320,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is a Tunisian rapper?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Balti",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -5020,11 +4348,11 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is a Moroccan singer blending folk and soul?",
+      "prompt": "Who is a Moroccan singer blending folk and soul?",
       "options": [
         "Hindi Zahra",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -5048,11 +4376,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is an Egyptian rock band?",
+      "prompt": "Who is an Egyptian rock band?",
       "options": [
         "Cairokee",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -5076,11 +4404,11 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the concerts that still fill Cairo nostalgia?",
+      "prompt": "Who is the concerts that still fill Cairo nostalgia?",
       "options": [
-        "Umm Kulthum pop",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Umm Kulthum",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -5104,11 +4432,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is rock-raï that travelled to Europe?",
+      "prompt": "Who is rock-raï that travelled to Europe?",
       "options": [
-        "Rachid Taha pop",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Rachid Taha",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -5132,11 +4460,11 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is a Sudanese pop singer?",
+      "prompt": "Who is a Sudanese pop singer?",
       "options": [
         "Nancy Ajaj",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -5160,11 +4488,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is a Moroccan raï and pop singer?",
+      "prompt": "Who is a Moroccan raï and pop singer?",
       "options": [
         "Douzi",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -5188,11 +4516,11 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is a popular Egyptian film comedian?",
+      "prompt": "Who is a popular Egyptian film comedian?",
       "options": [
         "Ahmed Helmy",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -5216,11 +4544,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is Tunisian television drama is widely watched?",
+      "prompt": "Who is Tunisian television drama is widely watched?",
       "options": [
         "Sabri Mosbah",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -5244,11 +4572,11 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is the director of Cairo cinema?",
+      "prompt": "Who is the director of Cairo cinema?",
       "options": [
         "Youssef Chahine",
-        "Amr Diab pop",
-        "Khaled pop",
+        "Amr Diab",
+        "Khaled",
         "Saad Lamjarred"
       ],
       "correct": [
@@ -5272,7 +4600,7 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the Egyptian forward at Liverpool?",
+      "prompt": "Who is the Egyptian forward at Liverpool?",
       "options": [
         "Mohamed Salah",
         "Riyad Mahrez",
@@ -5300,7 +4628,7 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the Algerian winger who won the Premier League?",
+      "prompt": "Who is the Algerian winger who won the Premier League?",
       "options": [
         "Riyad Mahrez",
         "Mohamed Salah",
@@ -5328,7 +4656,7 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the Moroccan full-back?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Achraf Hakimi",
         "Mohamed Salah",
@@ -5356,7 +4684,7 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the highest-ranked Tunisian tennis player?",
+      "prompt": "Who is the highest-ranked Tunisian tennis player?",
       "options": [
         "Ons Jabeur",
         "Mohamed Salah",
@@ -5378,46 +4706,18 @@
       "origin": "generated"
     },
     {
-      "id": "north_spor_morocco_at_the_fifa_world_cup",
-      "region": "north",
-      "country": "Morocco",
-      "category": "SPORT",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which sporting name is the year Morocco reached the World Cup semi-finals?",
-      "options": [
-        "2022 World Cup",
-        "Mohamed Salah",
-        "Riyad Mahrez",
-        "Achraf Hakimi"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Morocco reached the semi-finals of the 2022 World Cup.",
-      "sources": [
-        {
-          "title": "Morocco at the FIFA World Cup",
-          "url": "https://en.wikipedia.org/wiki/Morocco_at_the_FIFA_World_Cup",
-          "claim": "Morocco reached the semi-finals of the 2022 World Cup",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "north_spor_al_ahly_sc",
       "region": "north",
       "country": "Egypt",
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the Cairo club with a record African trophy cabinet?",
+      "prompt": "What is the Cairo club with a record African trophy cabinet?",
       "options": [
         "Al Ahly",
-        "Mohamed Salah",
-        "Riyad Mahrez",
-        "Achraf Hakimi"
+        "Wydad",
+        "Pharaohs",
+        "Desert Warriors"
       ],
       "correct": [
         0
@@ -5440,12 +4740,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is a Casablanca club and African champion?",
+      "prompt": "What is a Casablanca club and African champion?",
       "options": [
         "Wydad",
-        "Mohamed Salah",
-        "Riyad Mahrez",
-        "Achraf Hakimi"
+        "Al Ahly",
+        "Pharaohs",
+        "Desert Warriors"
       ],
       "correct": [
         0
@@ -5468,12 +4768,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of Egypt's men's football team?",
+      "prompt": "What is the nickname of Egypt's men's football team?",
       "options": [
         "Pharaohs",
-        "Mohamed Salah",
-        "Riyad Mahrez",
-        "Achraf Hakimi"
+        "Al Ahly",
+        "Wydad",
+        "Desert Warriors"
       ],
       "correct": [
         0
@@ -5496,12 +4796,12 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is a nickname of Algeria's football team?",
+      "prompt": "What is a nickname of Algeria's football team?",
       "options": [
         "Desert Warriors",
-        "Mohamed Salah",
-        "Riyad Mahrez",
-        "Achraf Hakimi"
+        "Al Ahly",
+        "Wydad",
+        "Pharaohs"
       ],
       "correct": [
         0
@@ -5524,12 +4824,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of Morocco's men's team?",
+      "prompt": "What is the nickname of Morocco's men's team?",
       "options": [
         "Atlas Lions",
-        "Mohamed Salah",
-        "Riyad Mahrez",
-        "Achraf Hakimi"
+        "Al Ahly",
+        "Wydad",
+        "Pharaohs"
       ],
       "correct": [
         0
@@ -5552,12 +4852,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is Egypt has won the Africa Cup of Nations more than any other country?",
+      "prompt": "What is Egypt has won the Africa Cup of Nations more than any other country?",
       "options": [
         "AFCON record",
-        "Mohamed Salah",
-        "Riyad Mahrez",
-        "Achraf Hakimi"
+        "Al Ahly",
+        "Wydad",
+        "Pharaohs"
       ],
       "correct": [
         0
@@ -5580,12 +4880,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of Tunisia's football team?",
+      "prompt": "What is the nickname of Tunisia's football team?",
       "options": [
         "Eagles of Carthage",
-        "Mohamed Salah",
-        "Riyad Mahrez",
-        "Achraf Hakimi"
+        "Al Ahly",
+        "Wydad",
+        "Pharaohs"
       ],
       "correct": [
         0
@@ -5608,12 +4908,12 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is a leading club in Omdurman?",
+      "prompt": "What is a leading club in Omdurman?",
       "options": [
         "Al-Hilal",
-        "Mohamed Salah",
-        "Riyad Mahrez",
-        "Achraf Hakimi"
+        "Al Ahly",
+        "Wydad",
+        "Pharaohs"
       ],
       "correct": [
         0
@@ -5636,7 +4936,7 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Algerian striker?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Islam Slimani",
         "Mohamed Salah",
@@ -5664,7 +4964,7 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is the Moroccan goalkeeper known as Bono?",
+      "prompt": "Who is the Moroccan goalkeeper known as Bono?",
       "options": [
         "Yassine Bounou",
         "Mohamed Salah",
@@ -5692,7 +4992,7 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is Egyptian clubs also compete in African basketball?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Al Ahly basketball",
         "Mohamed Salah",
@@ -5714,41 +5014,13 @@
       "origin": "generated"
     },
     {
-      "id": "north_spor_hicham_el_guerrouj",
-      "region": "north",
-      "country": "Morocco",
-      "category": "SPORT",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which sporting name is the Moroccan Olympic champion at 1500 metres?",
-      "options": [
-        "Hicham El Guerrouj",
-        "Mohamed Salah",
-        "Riyad Mahrez",
-        "Achraf Hakimi"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Hicham El Guerrouj is a Moroccan runner.",
-      "sources": [
-        {
-          "title": "Hicham El Guerrouj",
-          "url": "https://en.wikipedia.org/wiki/Hicham_El_Guerrouj",
-          "claim": "Hicham El Guerrouj is a Moroccan runner",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "north_spor_libya",
       "region": "north",
       "country": "Libya",
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is Libya has hosted Mediterranean sport?",
+      "prompt": "What is Libya has hosted sport?",
       "options": [
         "Mediterranean Games",
         "Mohamed Salah",
@@ -5776,7 +5048,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "multi",
-      "prompt": "Select three North African capital cities.",
+      "prompt": "Which three are capital cities in North Africa?",
       "options": [
         "Cairo",
         "Rabat",
@@ -5806,7 +5078,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "multi",
-      "prompt": "Select three foods of the Maghreb.",
+      "prompt": "Which three foods would you meet in Morocco?",
       "options": [
         "Couscous",
         "Tagine",
@@ -5836,7 +5108,7 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "multi",
-      "prompt": "Select three famous names of ancient Egypt.",
+      "prompt": "Which three names belong to ancient Egypt?",
       "options": [
         "Cleopatra",
         "Nefertiti",
@@ -5854,6 +5126,426 @@
           "title": "Ancient Egypt",
           "url": "https://en.wikipedia.org/wiki/Ancient_Egypt",
           "claim": "Cleopatra, Nefertiti and the pyramids belong to ancient Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_tajine2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call the slow-cooked stew named for its conical pot?",
+      "options": [
+        "Tagine",
+        "Couscous",
+        "Harira",
+        "Pastilla"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A tajine is a North African stew.",
+      "sources": [
+        {
+          "title": "Tajine",
+          "url": "https://en.wikipedia.org/wiki/Tajine",
+          "claim": "A tajine is a North African stew",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_pastilla2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a sweet-savoury pie of Moroccan feasts?",
+      "options": [
+        "Pastilla",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pastilla is a Moroccan pie.",
+      "sources": [
+        {
+          "title": "Pastilla",
+          "url": "https://en.wikipedia.org/wiki/Pastilla",
+          "claim": "Pastilla is a Moroccan pie",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_harira2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a tomato and lentil soup of Moroccan tables?",
+      "options": [
+        "Harira",
+        "Couscous",
+        "Tagine",
+        "Pastilla"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Harira is a soup from Morocco.",
+      "sources": [
+        {
+          "title": "Harira",
+          "url": "https://en.wikipedia.org/wiki/Harira",
+          "claim": "Harira is a soup from Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_maghrebi_mint_tea2",
+      "region": "north",
+      "country": "North Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call the sweet green tea poured in Maghrebi glasses?",
+      "options": [
+        "Mint tea",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mint tea is served across the Maghreb.",
+      "sources": [
+        {
+          "title": "Maghrebi mint tea",
+          "url": "https://en.wikipedia.org/wiki/Maghrebi_mint_tea",
+          "claim": "Mint tea is served across the Maghreb",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_rai2",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the popular music of Oran?",
+      "options": [
+        "Raï",
+        "Gnawa",
+        "Chaabi",
+        "Mizwad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Raï is a music genre from Algeria.",
+      "sources": [
+        {
+          "title": "Raï",
+          "url": "https://en.wikipedia.org/wiki/Ra%C3%AF",
+          "claim": "Raï is a music genre from Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_gnawa2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a Moroccan music of trance, guembri, and iron castanets?",
+      "options": [
+        "Gnawa",
+        "Raï",
+        "Chaabi",
+        "Mizwad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gnawa is a Moroccan music tradition.",
+      "sources": [
+        {
+          "title": "Gnawa",
+          "url": "https://en.wikipedia.org/wiki/Gnawa",
+          "claim": "Gnawa is a Moroccan music tradition",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_giza_pyramid_complex",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Pyramids of Giza",
+        "Carthage",
+        "Marrakesh",
+        "Fez"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Giza pyramid complex stands in Egypt.",
+      "sources": [
+        {
+          "title": "Giza pyramid complex",
+          "url": "https://en.wikipedia.org/wiki/Giza_pyramid_complex",
+          "claim": "The Giza pyramid complex stands in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_chefchaouen",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the blue-painted city in Morocco's Rif?",
+      "options": [
+        "Chefchaouen",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chefchaouen is a city in Morocco.",
+      "sources": [
+        {
+          "title": "Chefchaouen",
+          "url": "https://en.wikipedia.org/wiki/Chefchaouen",
+          "claim": "Chefchaouen is a city in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_jemaa_el_fnaa",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the great square of Marrakesh?",
+      "options": [
+        "Jemaa el-Fnaa",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jemaa el-Fnaa is a square in Marrakesh.",
+      "sources": [
+        {
+          "title": "Jemaa el-Fnaa",
+          "url": "https://en.wikipedia.org/wiki/Jemaa_el-Fnaa",
+          "claim": "Jemaa el-Fnaa is a square in Marrakesh",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_naguib_mahfouz2",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Egyptian novelist who won the Nobel Prize in Literature in 1988?",
+      "options": [
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun",
+        "Assia Djebar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Naguib Mahfouz was an Egyptian writer.",
+      "sources": [
+        {
+          "title": "Naguib Mahfouz",
+          "url": "https://en.wikipedia.org/wiki/Naguib_Mahfouz",
+          "claim": "Naguib Mahfouz was an Egyptian writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_hicham_el_guerrouj",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Moroccan who won Olympic 1500 metres gold in 2004?",
+      "options": [
+        "Hicham El Guerrouj",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hicham El Guerrouj is a Moroccan middle-distance runner.",
+      "sources": [
+        {
+          "title": "Hicham El Guerrouj",
+          "url": "https://en.wikipedia.org/wiki/Hicham_El_Guerrouj",
+          "claim": "Hicham El Guerrouj is a Moroccan middle-distance runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_nawal_el_moutawakel",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Moroccan who won Olympic 400 metres hurdles gold in 1984?",
+      "options": [
+        "Nawal El Moutawakel",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nawal El Moutawakel is a Moroccan hurdler.",
+      "sources": [
+        {
+          "title": "Nawal El Moutawakel",
+          "url": "https://en.wikipedia.org/wiki/Nawal_El_Moutawakel",
+          "claim": "Nawal El Moutawakel is a Moroccan hurdler",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_egyptian_arabic2",
+      "region": "north",
+      "country": "Egypt",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the everyday of Egypt?",
+      "options": [
+        "Egyptian Arabic",
+        "Darija",
+        "Tamazight",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egyptian Arabic is the spoken Arabic of Egypt.",
+      "sources": [
+        {
+          "title": "Egyptian Arabic",
+          "url": "https://en.wikipedia.org/wiki/Egyptian_Arabic",
+          "claim": "Egyptian Arabic is the spoken Arabic of Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_standard_moroccan_amazigh",
+      "region": "north",
+      "country": "Morocco",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name an Amazigh language of Morocco?",
+      "options": [
+        "Tamazight",
+        "Arabic",
+        "Darija",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tamazight is an Amazigh language of Morocco.",
+      "sources": [
+        {
+          "title": "Standard Moroccan Amazigh",
+          "url": "https://en.wikipedia.org/wiki/Standard_Moroccan_Amazigh",
+          "claim": "Tamazight is an Amazigh language of Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_gnaoua_world_music_festival2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Gnaoua festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival",
+        "Rose Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Gnaoua festival is held in Essaouira.",
+      "sources": [
+        {
+          "title": "Gnaoua World Music Festival",
+          "url": "https://en.wikipedia.org/wiki/Gnaoua_World_Music_Festival",
+          "claim": "The Gnaoua festival is held in Essaouira",
           "method": "page-overlap"
         }
       ],

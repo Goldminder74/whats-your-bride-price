@@ -8,7 +8,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the planned capital city of Nigeria?",
+      "prompt": "Which city is the capital of Nigeria?",
       "options": [
         "Abuja",
         "Accra",
@@ -36,7 +36,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the coastal capital city of Ghana?",
+      "prompt": "Which city is the capital of Ghana?",
       "options": [
         "Accra",
         "Abuja",
@@ -64,7 +64,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the Atlantic capital city of Senegal?",
+      "prompt": "Which city is the capital of Senegal?",
       "options": [
         "Dakar",
         "Abuja",
@@ -92,7 +92,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Mali on the Niger River?",
+      "prompt": "Which city is the capital of Mali on the Niger River?",
       "options": [
         "Bamako",
         "Abuja",
@@ -120,7 +120,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Guinea on the Atlantic?",
+      "prompt": "Which city is the capital of Guinea on the Atlantic?",
       "options": [
         "Conakry",
         "Abuja",
@@ -148,7 +148,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the capital city of Burkina Faso?",
+      "prompt": "Which city is the capital of Burkina Faso?",
       "options": [
         "Ouagadougou",
         "Abuja",
@@ -176,7 +176,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Niger beside the Niger River?",
+      "prompt": "Which city is the capital of Niger beside the Niger River?",
       "options": [
         "Niamey",
         "Abuja",
@@ -204,7 +204,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the capital city of Sierra Leone?",
+      "prompt": "Which city is the capital of Sierra Leone?",
       "options": [
         "Freetown",
         "Abuja",
@@ -232,7 +232,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the capital city of Liberia?",
+      "prompt": "Which city is the capital of Liberia?",
       "options": [
         "Monrovia",
         "Abuja",
@@ -260,7 +260,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the capital city of Togo on the Gulf of Guinea?",
+      "prompt": "Which city is the capital of Togo on the Gulf of Guinea?",
       "options": [
         "Lome",
         "Abuja",
@@ -288,7 +288,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the capital city of The Gambia?",
+      "prompt": "Which city is the capital of The Gambia?",
       "options": [
         "Banjul",
         "Abuja",
@@ -316,7 +316,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the capital city of Cape Verde?",
+      "prompt": "Which city is the capital of Cape Verde?",
       "options": [
         "Praia",
         "Abuja",
@@ -344,7 +344,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which place is the official capital city of Côte d'Ivoire?",
+      "prompt": "Which city is the official capital of Côte d'Ivoire?",
       "options": [
         "Yamoussoukro",
         "Abuja",
@@ -372,12 +372,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the largest city in Nigeria, on the Atlantic coast?",
+      "prompt": "Where is the largest city in Nigeria, on the Atlantic coast?",
       "options": [
         "Lagos",
-        "Abuja",
-        "Accra",
-        "Dakar"
+        "Timbuktu",
+        "Djenné",
+        "Ghana"
       ],
       "correct": [
         0
@@ -400,12 +400,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the historic Sahelian city of scholarship in Mali?",
+      "prompt": "Where is the historic Sahelian city of scholarship in Mali?",
       "options": [
         "Timbuktu",
-        "Abuja",
-        "Accra",
-        "Dakar"
+        "Lagos",
+        "Djenné",
+        "Ghana"
       ],
       "correct": [
         0
@@ -428,12 +428,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the Malian city famous for its great earthen mosque?",
+      "prompt": "Where is the Malian city famous for its great earthen mosque?",
       "options": [
         "Djenné",
-        "Abuja",
-        "Accra",
-        "Dakar"
+        "Lagos",
+        "Timbuktu",
+        "Ghana"
       ],
       "correct": [
         0
@@ -450,69 +450,13 @@
       "origin": "generated"
     },
     {
-      "id": "west_geog_lake_volta",
-      "region": "west",
-      "country": "Ghana",
-      "category": "GEOGRAPHY",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Which place is the very large reservoir lake in Ghana?",
-      "options": [
-        "Lake Volta",
-        "Abuja",
-        "Accra",
-        "Dakar"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Lake Volta is a large reservoir in Ghana.",
-      "sources": [
-        {
-          "title": "Lake Volta",
-          "url": "https://en.wikipedia.org/wiki/Lake_Volta",
-          "claim": "Lake Volta is a large reservoir in Ghana",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "west_geog_niger_river",
-      "region": "west",
-      "country": "Mali",
-      "category": "GEOGRAPHY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which place is the great West African river that bends through Mali?",
-      "options": [
-        "Niger River",
-        "Abuja",
-        "Accra",
-        "Dakar"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The Niger River is the main river of West Africa.",
-      "sources": [
-        {
-          "title": "Niger River",
-          "url": "https://en.wikipedia.org/wiki/Niger_River",
-          "claim": "The Niger River is the main river of West Africa",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "west_food_jollof_rice",
       "region": "west",
       "country": "Nigeria",
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a one-pot tomato rice loved at West African tables, with famous pots in Nigeria?",
+      "prompt": "What do you call a one-pot tomato rice loved at West African tables, with famous pots in Nigeria?",
       "options": [
         "Jollof rice",
         "Thieboudienne",
@@ -540,7 +484,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is the Senegalese rice and fish dish often called the national dish?",
+      "prompt": "What do you call the Senegalese rice and fish dish often called the national dish?",
       "options": [
         "Thieboudienne",
         "Jollof rice",
@@ -568,7 +512,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a spicy grilled meat skewer sold on Nigerian streets?",
+      "prompt": "What do you call a spicy grilled meat skewer sold on Nigerian streets?",
       "options": [
         "Suya",
         "Jollof rice",
@@ -596,7 +540,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a Nigerian soup thickened with melon seeds?",
+      "prompt": "What do you call a Nigerian soup thickened with melon seeds?",
       "options": [
         "Egusi soup",
         "Jollof rice",
@@ -624,7 +568,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is spicy fried ripe plantain cubes from Ghana?",
+      "prompt": "What do you call spicy fried ripe plantain cubes from Ghana?",
       "options": [
         "Kelewele",
         "Jollof rice",
@@ -652,7 +596,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is Ghanaian rice and beans cooked together?",
+      "prompt": "What do you call Ghanaian rice and beans cooked together?",
       "options": [
         "Waakye",
         "Jollof rice",
@@ -680,7 +624,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a couscous-like cassava side from Côte d'Ivoire?",
+      "prompt": "What do you call a couscous-like cassava side from Côte d'Ivoire?",
       "options": [
         "Attiéké",
         "Jollof rice",
@@ -708,7 +652,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a Senegalese onion and lemon sauce, often with chicken?",
+      "prompt": "What do you call a Senegalese onion and lemon sauce, often with chicken?",
       "options": [
         "Yassa",
         "Jollof rice",
@@ -736,7 +680,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a smooth pounded staple swallowed with soup across West Africa?",
+      "prompt": "What do you call a smooth pounded staple swallowed with soup across West Africa?",
       "options": [
         "Fufu",
         "Jollof rice",
@@ -764,7 +708,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a West African groundnut stew, widely loved in Mali and Senegal?",
+      "prompt": "What do you call a West African groundnut stew, widely loved in Mali and Senegal?",
       "options": [
         "Maafe",
         "Jollof rice",
@@ -792,7 +736,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is fried ripe plantain served as a street snack in Côte d'Ivoire?",
+      "prompt": "What do you call fried ripe plantain served as a street snack in Côte d'Ivoire?",
       "options": [
         "Alloco",
         "Jollof rice",
@@ -820,7 +764,7 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which dish is a dry spiced meat similar to jerky, associated with northern Nigeria?",
+      "prompt": "What do you call a dry spiced meat similar to jerky, associated with northern Nigeria?",
       "options": [
         "Kilishi",
         "Jollof rice",
@@ -848,7 +792,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a dark hot pepper sauce from Ghana?",
+      "prompt": "What do you call a dark hot pepper sauce from Ghana?",
       "options": [
         "Shito",
         "Jollof rice",
@@ -876,7 +820,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a Ghanaian bean stew often served with fried plantain?",
+      "prompt": "What do you call a Ghanaian bean stew often served with fried plantain?",
       "options": [
         "Red red",
         "Jollof rice",
@@ -904,7 +848,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a deep-fried dough ball sold as a Nigerian snack?",
+      "prompt": "What do you call a deep-fried dough ball sold as a Nigerian snack?",
       "options": [
         "Puff puff",
         "Jollof rice",
@@ -932,7 +876,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a crunchy fried pastry snack from Nigeria?",
+      "prompt": "What do you call a crunchy fried pastry snack from Nigeria?",
       "options": [
         "Chin chin",
         "Jollof rice",
@@ -960,7 +904,7 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which dish is a rich soup made from palm fruit, common in Ghana?",
+      "prompt": "What do you call a rich soup made from fruit, common in Ghana?",
       "options": [
         "Palm nut soup",
         "Jollof rice",
@@ -988,7 +932,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a dry granular cassava food eaten across coastal West Africa?",
+      "prompt": "What do you call a dry granular cassava food eaten across coastal West Africa?",
       "options": [
         "Gari",
         "Jollof rice",
@@ -1016,7 +960,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the guitar-and-horn dance music that grew famous in Ghana?",
+      "prompt": "What is the guitar-and-horn dance music that grew famous in Ghana?",
       "options": [
         "Highlife",
         "Afrobeat",
@@ -1044,7 +988,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the funk-and-jazz political dance music pioneered by Fela Kuti?",
+      "prompt": "What is the funk-and-jazz political dance music pioneered by Fela Kuti?",
       "options": [
         "Afrobeat",
         "Highlife",
@@ -1072,7 +1016,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the 21st-century Nigerian and Ghanaian pop sound heard worldwide?",
+      "prompt": "What is the 21st-century Nigerian and Ghanaian pop sound heard worldwide?",
       "options": [
         "Afrobeats",
         "Highlife",
@@ -1100,7 +1044,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a percussion-heavy Yoruba popular music from Nigeria?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Fuji music",
         "Highlife",
@@ -1128,7 +1072,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a Yoruba popular style built around guitar and talking drum?",
+      "prompt": "What is a Yoruba popular style built around guitar and talking drum?",
       "options": [
         "Jùjú music",
         "Highlife",
@@ -1156,7 +1100,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the Senegalese dance music associated with Youssou N'Dour?",
+      "prompt": "What is the Senegalese dance music associated with Youssou N'Dour?",
       "options": [
         "Mbalax",
         "Highlife",
@@ -1184,7 +1128,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the 21-string harp-lute of Mande griots?",
+      "prompt": "What is the 21-string harp-lute of Mande griots?",
       "options": [
         "Kora",
         "Highlife",
@@ -1212,7 +1156,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the goblet drum widely played across the Mande world?",
+      "prompt": "What is the goblet drum widely played across the Mande world?",
       "options": [
         "Djembe",
         "Highlife",
@@ -1240,7 +1184,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a wooden xylophone of the Mande musical world?",
+      "prompt": "What is a wooden xylophone of the Mande musical world?",
       "options": [
         "Balafon",
         "Highlife",
@@ -1268,7 +1212,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is an hourglass drum whose pitch can echo speech tones?",
+      "prompt": "What is an hourglass drum whose pitch can echo speech tones?",
       "options": [
         "Talking drum",
         "Highlife",
@@ -1296,7 +1240,7 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which music or dance name is a southern Malian music associated with strong women singers?",
+      "prompt": "What is a southern Malian music associated with strong women singers?",
       "options": [
         "Wassoulou",
         "Highlife",
@@ -1324,7 +1268,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a playful Ghanaian dance that spread with hiplife and afrobeats?",
+      "prompt": "What is a playful Ghanaian dance that spread with hiplife and afrobeats?",
       "options": [
         "Azonto",
         "Highlife",
@@ -1352,35 +1296,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a Ghanaian fusion of highlife and hip hop?",
-      "options": [
-        "Hiplife",
-        "Highlife",
-        "Afrobeat",
-        "Fuji music"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Hiplife is a Ghanaian music genre.",
-      "sources": [
-        {
-          "title": "Hiplife",
-          "url": "https://en.wikipedia.org/wiki/Hiplife",
-          "claim": "Hiplife is a Ghanaian music genre",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "west_musi_hiplife_fill",
-      "region": "west",
-      "country": "Ghana",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Ghana, a Ghanaian fusion of highlife and hip hop. The name to write is ___.",
+      "prompt": "What is a Ghanaian fusion of highlife and hip hop?",
       "options": [
         "Hiplife",
         "Highlife",
@@ -1408,7 +1324,7 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which music or dance name is a dance music from Côte d'Ivoire that filled clubs in the 2000s?",
+      "prompt": "What is a dance music from Côte d'Ivoire that filled clubs in the 2000s?",
       "options": [
         "Coupé-décalé",
         "Highlife",
@@ -1436,7 +1352,7 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which music or dance name is a Senegalese drum and dance tradition?",
+      "prompt": "What is a Senegalese drum and dance tradition?",
       "options": [
         "Sabar",
         "Highlife",
@@ -1464,7 +1380,7 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which music or dance name is a Yoruba percussion genre that predates fuji?",
+      "prompt": "What is a Yoruba percussion genre that predates fuji?",
       "options": [
         "Apala",
         "Highlife",
@@ -1492,7 +1408,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a guitar style named for the palm-wine bars where it was played?",
+      "prompt": "What is a West African guitar style named for palm wine?",
       "options": [
         "Palm-wine music",
         "Highlife",
@@ -1514,41 +1430,13 @@
       "origin": "generated"
     },
     {
-      "id": "west_musi_griot",
-      "region": "west",
-      "country": "Mali",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which music or dance name is a hereditary praise singer and historian in Mande societies, also called a jeli?",
-      "options": [
-        "Griot",
-        "Highlife",
-        "Afrobeat",
-        "Fuji music"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "A griot is a West African historian and musician.",
-      "sources": [
-        {
-          "title": "Griot",
-          "url": "https://en.wikipedia.org/wiki/Griot",
-          "claim": "A griot is a West African historian and musician",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "west_fash_kente_cloth",
       "region": "west",
       "country": "Ghana",
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the brightly strip-woven cloth of Akan and Ewe weavers in Ghana?",
+      "prompt": "What is the brightly strip-woven cloth of Akan and Ewe weavers in Ghana?",
       "options": [
         "Kente",
         "Adire",
@@ -1576,7 +1464,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is an indigo resist-dyed cloth of Yoruba makers?",
+      "prompt": "What is an indigo resist-dyed cloth of Yoruba makers?",
       "options": [
         "Adire",
         "Kente",
@@ -1604,7 +1492,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a hand-woven Yoruba prestige cloth?",
+      "prompt": "What is a hand-woven Yoruba prestige cloth?",
       "options": [
         "Aso oke",
         "Kente",
@@ -1632,7 +1520,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the colourful wax-print cotton worn across West Africa?",
+      "prompt": "What is the colourful wax-print cotton worn across West Africa?",
       "options": [
         "Ankara",
         "Kente",
@@ -1660,7 +1548,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a sculpted woman's headwrap worn for Nigerian celebrations?",
+      "prompt": "What is a sculpted woman's headwrap worn for Nigerian celebrations?",
       "options": [
         "Gele",
         "Kente",
@@ -1688,35 +1576,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a flowing embroidered robe worn by men in Nigeria?",
-      "options": [
-        "Agbada",
-        "Kente",
-        "Adire",
-        "Aso oke"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The agbada is a robe worn by men in West Africa.",
-      "sources": [
-        {
-          "title": "Agbada",
-          "url": "https://en.wikipedia.org/wiki/Agbada",
-          "claim": "The agbada is a robe worn by men in West Africa",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "west_fash_agbada_fill",
-      "region": "west",
-      "country": "Nigeria",
-      "category": "FASHION",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Nigeria, a flowing embroidered robe worn by men in Nigeria. The name to write is ___.",
+      "prompt": "What is a flowing embroidered robe worn by men in Nigeria?",
       "options": [
         "Agbada",
         "Kente",
@@ -1744,7 +1604,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the smock worn in northern Ghana, also called a batakari?",
+      "prompt": "What is the smock worn in northern Ghana, also called a batakari?",
       "options": [
         "Fugu",
         "Kente",
@@ -1772,35 +1632,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is mudcloth painted with fermented mud in Mali?",
-      "options": [
-        "Bogolan",
-        "Kente",
-        "Adire",
-        "Aso oke"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Bogolanfini is a handmade cotton fabric from Mali.",
-      "sources": [
-        {
-          "title": "Bogolanfini",
-          "url": "https://en.wikipedia.org/wiki/Bogolanfini",
-          "claim": "Bogolanfini is a handmade cotton fabric from Mali",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "west_fash_bogolanfini_fill",
-      "region": "west",
-      "country": "Mali",
-      "category": "FASHION",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Mali, mudcloth painted with fermented mud in Mali. The name to write is ___.",
+      "prompt": "What is mudcloth painted with fermented mud in Mali?",
       "options": [
         "Bogolan",
         "Kente",
@@ -1828,35 +1660,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a soft Yoruba cap worn by men?",
-      "options": [
-        "Fila",
-        "Kente",
-        "Adire",
-        "Aso oke"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The fila is a traditional cap of the Yoruba.",
-      "sources": [
-        {
-          "title": "Fila (hat)",
-          "url": "https://en.wikipedia.org/wiki/Fila_(hat)",
-          "claim": "The fila is a traditional cap of the Yoruba",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "west_fash_fila_hat_fill",
-      "region": "west",
-      "country": "Nigeria",
-      "category": "FASHION",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Nigeria, a soft Yoruba cap worn by men. The name to write is ___.",
+      "prompt": "What is a soft Yoruba cap worn by men?",
       "options": [
         "Fila",
         "Kente",
@@ -1884,7 +1688,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a loose colourful pullover shirt worn across West Africa?",
+      "prompt": "What is a loose colourful pullover shirt worn across West Africa?",
       "options": [
         "Dashiki",
         "Kente",
@@ -1912,7 +1716,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a shiny dyed cotton prestige cloth, also called getzner, loved in Mali?",
+      "prompt": "What is a shiny dyed cotton prestige cloth, also called getzner, loved in Mali?",
       "options": [
         "Bazin",
         "Kente",
@@ -1940,7 +1744,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a length of cloth tied as a skirt or gown in Nigeria?",
+      "prompt": "What is a length of cloth tied as a skirt or gown in Nigeria?",
       "options": [
         "Wrapper",
         "Kente",
@@ -1968,7 +1772,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is powder-glass beads made by Krobo communities in Ghana?",
+      "prompt": "What is powder-glass beads made by communities in Ghana?",
       "options": [
         "Krobo beads",
         "Kente",
@@ -1996,7 +1800,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a patterned Igbo men's shirt often worn for ceremonies?",
+      "prompt": "What is a patterned Igbo men's shirt often worn for ceremonies?",
       "options": [
         "Isiagu",
         "Kente",
@@ -2024,35 +1828,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a long flowing robe worn for celebrations in Senegal?",
-      "options": [
-        "Boubou",
-        "Kente",
-        "Adire",
-        "Aso oke"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The boubou is a flowing robe worn in West Africa.",
-      "sources": [
-        {
-          "title": "Boubou (clothing)",
-          "url": "https://en.wikipedia.org/wiki/Boubou_(clothing)",
-          "claim": "The boubou is a flowing robe worn in West Africa",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "west_fash_boubou_clothing_fill",
-      "region": "west",
-      "country": "Senegal",
-      "category": "FASHION",
-      "difficulty": "hard",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Senegal, a long flowing robe worn for celebrations in Senegal. The name to write is ___.",
+      "prompt": "What is a long flowing robe worn for celebrations in Senegal?",
       "options": [
         "Boubou",
         "Kente",
@@ -2080,7 +1856,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a tailored blouse and skirt set worn by Ghanaian women?",
+      "prompt": "What is a tailored blouse and skirt set worn by Ghanaian women?",
       "options": [
         "Kaba and slit",
         "Kente",
@@ -2108,7 +1884,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is red beads worn as prestige jewellery in Benin and Nigerian ceremonies?",
+      "prompt": "What is red beads worn as prestige jewellery in Benin and Nigerian ceremonies?",
       "options": [
         "Coral beads",
         "Kente",
@@ -2136,7 +1912,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is deep blue dyed cotton associated with Malian and Sahelian dress?",
+      "prompt": "What is deep blue dyed cotton associated with Malian and Sahelian dress?",
       "options": [
         "Indigo cloth",
         "Kente",
@@ -2164,7 +1940,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is a major language of southwestern Nigeria?",
+      "prompt": "Can you name a major language of southwestern Nigeria?",
       "options": [
         "Yoruba",
         "Igbo",
@@ -2192,7 +1968,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is a major language of southeastern Nigeria?",
+      "prompt": "Can you name a major language of southeastern Nigeria?",
       "options": [
         "Igbo",
         "Yoruba",
@@ -2220,7 +1996,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is a major language of northern Nigeria and the Sahel?",
+      "prompt": "Can you name a major language of northern Nigeria and the Sahel?",
       "options": [
         "Hausa",
         "Yoruba",
@@ -2248,7 +2024,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is a language family that includes Twi and Fante in Ghana?",
+      "prompt": "Can you name a language family that includes Twi and Fante in Ghana?",
       "options": [
         "Akan",
         "Yoruba",
@@ -2276,7 +2052,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a widely spoken Akan variety in Ghana?",
+      "prompt": "Can you name a widely spoken Akan variety in Ghana?",
       "options": [
         "Twi",
         "Yoruba",
@@ -2304,7 +2080,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is a main language of Senegal?",
+      "prompt": "Can you name a main language of Senegal?",
       "options": [
         "Wolof",
         "Yoruba",
@@ -2332,7 +2108,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a Manding lingua franca of Mali?",
+      "prompt": "Can you name a Manding lingua franca of Mali?",
       "options": [
         "Bambara",
         "Yoruba",
@@ -2360,7 +2136,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is an English-based creole of Sierra Leone?",
+      "prompt": "Can you name an English-based creole of Sierra Leone?",
       "options": [
         "Krio",
         "Yoruba",
@@ -2388,7 +2164,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is an English-based lingua franca used across Nigeria?",
+      "prompt": "Can you name an English-based lingua franca used across Nigeria?",
       "options": [
         "Nigerian Pidgin",
         "Yoruba",
@@ -2416,7 +2192,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a language of southeastern Ghana and southern Togo?",
+      "prompt": "Can you name a language of southeastern Ghana and southern Togo?",
       "options": [
         "Ewe",
         "Yoruba",
@@ -2444,7 +2220,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is the language of the Mossi people in Burkina Faso?",
+      "prompt": "Can you name the language of the Mossi people in Burkina Faso?",
       "options": [
         "Mooré",
         "Yoruba",
@@ -2472,7 +2248,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a major language of southern Benin?",
+      "prompt": "Can you name a major language of southern Benin?",
       "options": [
         "Fon",
         "Yoruba",
@@ -2500,7 +2276,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is a language of coastal Guinea?",
+      "prompt": "Can you name a language of coastal Guinea?",
       "options": [
         "Susu",
         "Yoruba",
@@ -2528,7 +2304,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a language of the Accra area in Ghana?",
+      "prompt": "Can you name a language of the Accra area in Ghana?",
       "options": [
         "Ga",
         "Yoruba",
@@ -2556,7 +2332,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a Manding trade language widely used in Côte d'Ivoire?",
+      "prompt": "Can you name a Manding trade language widely used in Côte d'Ivoire?",
       "options": [
         "Dyula",
         "Yoruba",
@@ -2584,7 +2360,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is a major language of northern Sierra Leone?",
+      "prompt": "Can you name a major language of northern Sierra Leone?",
       "options": [
         "Temne",
         "Yoruba",
@@ -2612,7 +2388,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is the language of Fulani communities across the West African Sahel?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Fula",
         "Yoruba",
@@ -2640,7 +2416,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is the official language of Ghana?",
+      "prompt": "Can you name the official language of Ghana?",
       "options": [
         "English",
         "Yoruba",
@@ -2668,7 +2444,7 @@
       "category": "FESTIVALS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which celebration is a huge street carnival held in Calabar, Nigeria?",
+      "prompt": "Which celebration is a huge street held in, Nigeria?",
       "options": [
         "Calabar Carnival",
         "Argungu Fishing Festival",
@@ -2696,7 +2472,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is a famous fishing festival on a river in Kebbi, Nigeria?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Argungu Fishing Festival",
         "Calabar Carnival",
@@ -3004,7 +2780,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is a desert music festival that began in Mali?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Festival au Désert",
         "Calabar Carnival",
@@ -3088,7 +2864,7 @@
       "category": "FESTIVALS",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which celebration is a festival celebrated in northern Ghana?",
+      "prompt": "Which celebration is held in northern Ghana by Dagomba communities?",
       "options": [
         "Damba",
         "Calabar Carnival",
@@ -3098,12 +2874,12 @@
       "correct": [
         0
       ],
-      "explanation": "Damba is a festival in Ghana.",
+      "explanation": "Damba is a festival in northern Ghana.",
       "sources": [
         {
           "title": "Damba festival",
           "url": "https://en.wikipedia.org/wiki/Damba_festival",
-          "claim": "Damba is a festival in Ghana",
+          "claim": "Damba is a festival in northern Ghana",
           "method": "page-overlap"
         }
       ],
@@ -3116,7 +2892,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is a major contemporary art biennale in Dakar?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Dakar Biennale",
         "Calabar Carnival",
@@ -3144,7 +2920,7 @@
       "category": "WEDDINGS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which wedding custom is matching family outfits worn at Nigerian weddings and parties?",
+      "prompt": "What do you call matching family outfits worn at Nigerian weddings and parties?",
       "options": [
         "Aso ebi",
         "Money spraying",
@@ -3172,7 +2948,7 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is the party custom of tossing or pressing cash onto dancers?",
+      "prompt": "What do you call the party custom of tossing or pressing cash onto dancers?",
       "options": [
         "Money spraying",
         "Aso ebi",
@@ -3200,7 +2976,7 @@
       "category": "WEDDINGS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which wedding custom is the sculpted headwrap worn by women at Nigerian weddings?",
+      "prompt": "What do you call the sculpted headwrap worn by women at Nigerian weddings?",
       "options": [
         "Gele",
         "Aso ebi",
@@ -3228,7 +3004,7 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is strip-woven cloth often worn by the couple at a Ghanaian wedding?",
+      "prompt": "What do you call strip-woven cloth often worn by the couple at a Ghanaian wedding?",
       "options": [
         "Kente",
         "Aso ebi",
@@ -3256,7 +3032,7 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is a family introduction visit before many Ghanaian weddings?",
+      "prompt": "What do you call a family introduction visit before many Ghanaian weddings?",
       "options": [
         "Knocking ceremony",
         "Aso ebi",
@@ -3284,7 +3060,7 @@
       "category": "WEDDINGS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which wedding custom is the family ceremony that often sits beside a later church or registry wedding?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Traditional wedding",
         "Aso ebi",
@@ -3312,7 +3088,7 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is hand-woven cloth used for Yoruba wedding outfits?",
+      "prompt": "What do you call hand-woven cloth used for Yoruba wedding outfits?",
       "options": [
         "Aso oke",
         "Aso ebi",
@@ -3340,7 +3116,7 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is the men's cap that completes many Yoruba wedding outfits?",
+      "prompt": "What do you call the men's cap that completes many Yoruba wedding outfits?",
       "options": [
         "Fila",
         "Aso ebi",
@@ -3368,7 +3144,7 @@
       "category": "WEDDINGS",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which wedding custom is dance music that often fills a Senegalese wedding party?",
+      "prompt": "What do you call dance music that often fills a Senegalese wedding party?",
       "options": [
         "Mbalax",
         "Aso ebi",
@@ -3396,7 +3172,7 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is the celebration rice almost always on a Nigerian wedding menu?",
+      "prompt": "What do you call the celebration rice almost always on a Nigerian wedding menu?",
       "options": [
         "Jollof rice",
         "Aso ebi",
@@ -3424,7 +3200,7 @@
       "category": "WEDDINGS",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which wedding custom is a strip of kente draped on graduates and also seen on wedding clothes?",
+      "prompt": "What do you call a strip of draped on graduates and also seen on wedding clothes?",
       "options": [
         "Kente stole",
         "Aso ebi",
@@ -3452,7 +3228,7 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is the Yoruba family meeting where the two families are formally presented?",
+      "prompt": "What do you call the Yoruba family meeting where the two families are formally presented?",
       "options": [
         "Introduction",
         "Aso ebi",
@@ -3480,7 +3256,7 @@
       "category": "WEDDINGS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which wedding custom is the relatives, food, and music that make a West African wedding a community party?",
+      "prompt": "What do you call the relatives, food, and music that make a West African wedding a community party?",
       "options": [
         "Family gathering",
         "Aso ebi",
@@ -3508,7 +3284,7 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is the cloth outfit many guests wear to a Beninese celebration?",
+      "prompt": "What do you call the cloth outfit many guests wear to a Beninese celebration?",
       "options": [
         "Wrapper",
         "Aso ebi",
@@ -3536,7 +3312,7 @@
       "category": "WEDDINGS",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which wedding custom is the shiny prestige cloth often sewn into Malian wedding outfits?",
+      "prompt": "What do you call the shiny prestige cloth often sewn into Malian wedding outfits?",
       "options": [
         "Bazin",
         "Aso ebi",
@@ -3564,7 +3340,7 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is the public family ceremony, sometimes called an engagement, before a Ghanaian church wedding?",
+      "prompt": "What do you call the public family ceremony, sometimes called an, before a Ghanaian church wedding?",
       "options": [
         "Engagement",
         "Aso ebi",
@@ -3592,7 +3368,7 @@
       "category": "WEDDINGS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which wedding custom is the lively Nigerian party style associated with weddings and aso ebi?",
+      "prompt": "What do you call the lively Nigerian party style associated with weddings and aso ebi?",
       "options": [
         "Owambe",
         "Aso ebi",
@@ -3620,7 +3396,7 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is the printed cloth guests wear to Ivorian weddings?",
+      "prompt": "What do you call the printed cloth guests wear to Ivorian weddings?",
       "options": [
         "Pagne",
         "Aso ebi",
@@ -3648,7 +3424,7 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which historical name is the medieval empire made famous by Mansa Musa?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Mali Empire",
         "Songhai Empire",
@@ -3676,7 +3452,7 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which historical name is the late medieval Sahelian empire with its city at Gao?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Songhai Empire",
         "Mali Empire",
@@ -3704,7 +3480,7 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the medieval Sahelian empire that predates modern Ghana?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Ghana Empire",
         "Mali Empire",
@@ -3732,7 +3508,7 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which historical name is the historic kingdom centred at Benin City in Nigeria?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Kingdom of Benin",
         "Mali Empire",
@@ -3760,7 +3536,7 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the Akan state centred at Kumasi?",
+      "prompt": "What is the Akan state centred at Kumasi?",
       "options": [
         "Ashanti Empire",
         "Mali Empire",
@@ -3788,7 +3564,7 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is a powerful Yoruba empire in what is now Nigeria?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Oyo Empire",
         "Mali Empire",
@@ -3816,12 +3592,12 @@
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is the ancient Yoruba city-state famous for its bronze and terracotta heads?",
+      "prompt": "What is the ancient Yoruba city-state famous for its bronze and terracotta heads?",
       "options": [
         "Kingdom of Ife",
-        "Mali Empire",
-        "Songhai Empire",
-        "Ghana Empire"
+        "Nok culture",
+        "Timbuktu manuscripts",
+        "Royal Palaces of Abomey"
       ],
       "correct": [
         0
@@ -3844,12 +3620,12 @@
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is the ancient Nigerian culture known for terracotta figures?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Nok culture",
-        "Mali Empire",
-        "Songhai Empire",
-        "Ghana Empire"
+        "Kingdom of Ife",
+        "Timbuktu manuscripts",
+        "Royal Palaces of Abomey"
       ],
       "correct": [
         0
@@ -3872,12 +3648,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the handwritten scholarly books preserved in Timbuktu?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Timbuktu manuscripts",
-        "Mali Empire",
-        "Songhai Empire",
-        "Ghana Empire"
+        "Kingdom of Ife",
+        "Nok culture",
+        "Royal Palaces of Abomey"
       ],
       "correct": [
         0
@@ -3900,12 +3676,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the earthen palace complex of the kings of Dahomey?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Royal Palaces of Abomey",
-        "Mali Empire",
-        "Songhai Empire",
-        "Ghana Empire"
+        "Kingdom of Ife",
+        "Nok culture",
+        "Timbuktu manuscripts"
       ],
       "correct": [
         0
@@ -3922,102 +3698,18 @@
       "origin": "generated"
     },
     {
-      "id": "west_hist_ghana",
-      "region": "west",
-      "country": "Ghana",
-      "category": "HISTORY",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which historical name is the year Ghana became independent?",
-      "options": [
-        "1957",
-        "Mali Empire",
-        "Songhai Empire",
-        "Ghana Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Ghana became independent in 1957.",
-      "sources": [
-        {
-          "title": "Ghana",
-          "url": "https://en.wikipedia.org/wiki/Ghana",
-          "claim": "Ghana became independent in 1957",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "west_hist_nigeria",
-      "region": "west",
-      "country": "Nigeria",
-      "category": "HISTORY",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which historical name is the year Nigeria became independent?",
-      "options": [
-        "1960",
-        "Mali Empire",
-        "Songhai Empire",
-        "Ghana Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Nigeria became independent in 1960.",
-      "sources": [
-        {
-          "title": "Nigeria",
-          "url": "https://en.wikipedia.org/wiki/Nigeria",
-          "claim": "Nigeria became independent in 1960",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "west_hist_senegal",
-      "region": "west",
-      "country": "Senegal",
-      "category": "HISTORY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which historical name is the year Senegal became independent?",
-      "options": [
-        "1960",
-        "Mali Empire",
-        "Songhai Empire",
-        "Ghana Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Senegal gained independence in 1960.",
-      "sources": [
-        {
-          "title": "Senegal",
-          "url": "https://en.wikipedia.org/wiki/Senegal",
-          "claim": "Senegal gained independence in 1960",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "west_hist_sankore_madrasah",
       "region": "west",
       "country": "Mali",
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is the historic learning centre in Timbuktu?",
+      "prompt": "What is the historic learning centre in Timbuktu?",
       "options": [
         "Sankore Madrasah",
-        "Mali Empire",
-        "Songhai Empire",
-        "Ghana Empire"
+        "Kingdom of Ife",
+        "Nok culture",
+        "Timbuktu manuscripts"
       ],
       "correct": [
         0
@@ -4040,12 +3732,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is an old Sudano-Sahelian mosque in northern Ghana?",
+      "prompt": "What is an old Sudano-Sahelian in northern Ghana?",
       "options": [
         "Larabanga Mosque",
-        "Mali Empire",
-        "Songhai Empire",
-        "Ghana Empire"
+        "Kingdom of Ife",
+        "Nok culture",
+        "Timbuktu manuscripts"
       ],
       "correct": [
         0
@@ -4068,12 +3760,12 @@
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is the historic earthworks that surrounded Benin City?",
+      "prompt": "What is the historic earthworks that surrounded City?",
       "options": [
         "Walls of Benin",
-        "Mali Empire",
-        "Songhai Empire",
-        "Ghana Empire"
+        "Kingdom of Ife",
+        "Nok culture",
+        "Timbuktu manuscripts"
       ],
       "correct": [
         0
@@ -4096,7 +3788,7 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the historic kingdom located in today's Benin?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Kingdom of Dahomey",
         "Mali Empire",
@@ -4124,7 +3816,7 @@
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is the historic city most associated with the Songhai Empire?",
+      "prompt": "What is the historic city most associated with the Songhai Empire?",
       "options": [
         "Gao",
         "Mali Empire",
@@ -4152,7 +3844,7 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the Mali Empire ruler famous for his wealth and his hajj?",
+      "prompt": "Who is the Mali Empire ruler famous for his wealth and his hajj?",
       "options": [
         "Mansa Musa",
         "Chinua Achebe",
@@ -4180,7 +3872,7 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the Nigerian novelist who wrote Things Fall Apart?",
+      "prompt": "Who is the Nigerian novelist who wrote Things Fall Apart?",
       "options": [
         "Chinua Achebe",
         "Mansa Musa",
@@ -4208,7 +3900,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Nigerian writer who won the Nobel Prize in Literature?",
+      "prompt": "Who is the Nigerian writer who won the Nobel Prize in Literature?",
       "options": [
         "Wole Soyinka",
         "Mansa Musa",
@@ -4236,7 +3928,7 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the Nigerian novelist of Half of a Yellow Sun and Americanah?",
+      "prompt": "Who is the Nigerian novelist of Half of a Yellow Sun and Americanah?",
       "options": [
         "Chimamanda Ngozi Adichie",
         "Mansa Musa",
@@ -4264,7 +3956,7 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is Ghana's independence leader and first prime minister?",
+      "prompt": "Who is Ghana's independence leader and first prime minister?",
       "options": [
         "Kwame Nkrumah",
         "Mansa Musa",
@@ -4292,7 +3984,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is Nigeria's first president?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Nnamdi Azikiwe",
         "Mansa Musa",
@@ -4320,7 +4012,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is Senegal's first president and a famous poet?",
+      "prompt": "Who is Senegal's first president and a famous poet?",
       "options": [
         "Léopold Sédar Senghor",
         "Mansa Musa",
@@ -4348,7 +4040,7 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the Nigerian musician who created afrobeat?",
+      "prompt": "Who is the Nigerian musician who created afrobeat?",
       "options": [
         "Fela Kuti",
         "Mansa Musa",
@@ -4376,7 +4068,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Ashanti queen mother who led resistance at the start of the twentieth century?",
+      "prompt": "Who is the Ashanti queen mother who led resistance at the start of the twentieth century?",
       "options": [
         "Yaa Asantewaa",
         "Mansa Musa",
@@ -4404,7 +4096,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the revolutionary president of Burkina Faso in the 1980s?",
+      "prompt": "Who is the revolutionary president of Burkina Faso in the 1980s?",
       "options": [
         "Thomas Sankara",
         "Mansa Musa",
@@ -4432,7 +4124,7 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the Ghanaian diplomat who served as UN Secretary-General?",
+      "prompt": "Who is the Ghanaian diplomat who served as UN Secretary-General?",
       "options": [
         "Kofi Annan",
         "Mansa Musa",
@@ -4460,7 +4152,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Liberian president and Nobel Peace Prize laureate?",
+      "prompt": "Who is the Liberian president and Nobel Peace Prize laureate?",
       "options": [
         "Ellen Johnson Sirleaf",
         "Mansa Musa",
@@ -4488,7 +4180,7 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the Nigerian industrialist known for cement and other businesses?",
+      "prompt": "Who is the Nigerian industrialist known for cement and other businesses?",
       "options": [
         "Aliko Dangote",
         "Mansa Musa",
@@ -4516,7 +4208,7 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which person is the Ghanaian writer of Anowa and Our Sister Killjoy?",
+      "prompt": "Who is the Ghanaian writer of Anowa and Our Sister Killjoy?",
       "options": [
         "Ama Ata Aidoo",
         "Mansa Musa",
@@ -4544,7 +4236,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Nigerian novelist of The Joys of Motherhood?",
+      "prompt": "Who is the Nigerian novelist of The Joys of Motherhood?",
       "options": [
         "Buchi Emecheta",
         "Mansa Musa",
@@ -4572,7 +4264,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Nigerian-American writer of Binti and Lagoon?",
+      "prompt": "Who is the Nigerian-American writer of Binti and Lagoon?",
       "options": [
         "Nnedi Okorafor",
         "Mansa Musa",
@@ -4600,7 +4292,7 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which person is the Nigerian educator and women's rights organiser?",
+      "prompt": "Who is the Nigerian educator and women's rights organiser?",
       "options": [
         "Funmilayo Ransome-Kuti",
         "Mansa Musa",
@@ -4628,7 +4320,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Nigerian economist who leads the World Trade Organization?",
+      "prompt": "Who is the Nigerian economist who leads the World Trade Organization?",
       "options": [
         "Ngozi Okonjo-Iweala",
         "Mansa Musa",
@@ -4656,7 +4348,7 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the popular Nigerian film industry?",
+      "prompt": "Who is the popular Nigerian film industry?",
       "options": [
         "Nollywood",
         "Burna Boy",
@@ -4684,7 +4376,7 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Nigerian afrobeats singer of African Giant?",
+      "prompt": "Who is the Nigerian afrobeats singer of African Giant?",
       "options": [
         "Burna Boy",
         "Nollywood",
@@ -4712,35 +4404,7 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Nigerian afrobeats star of Made in Lagos?",
-      "options": [
-        "Wizkid",
-        "Nollywood",
-        "Burna Boy",
-        "Davido"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Wizkid is a Nigerian singer.",
-      "sources": [
-        {
-          "title": "Wizkid",
-          "url": "https://en.wikipedia.org/wiki/Wizkid",
-          "claim": "Wizkid is a Nigerian singer",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "west_popc_wizkid_fill",
-      "region": "west",
-      "country": "Nigeria",
-      "category": "POP",
-      "difficulty": "easy",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Nigeria, the Nigerian afrobeats star of Made in Lagos. The name to write is ___.",
+      "prompt": "Who is the Nigerian afrobeats star of Made in Lagos?",
       "options": [
         "Wizkid",
         "Nollywood",
@@ -4768,7 +4432,7 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Nigerian afrobeats singer behind songs like Fall and Unavailable?",
+      "prompt": "Who is the Nigerian afrobeats singer behind songs like Fall and Unavailable?",
       "options": [
         "Davido",
         "Nollywood",
@@ -4796,7 +4460,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Nigerian singer who featured on Essence?",
+      "prompt": "Who is the Nigerian singer who featured on Essence?",
       "options": [
         "Tems",
         "Nollywood",
@@ -4824,7 +4488,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Nigerian singer often called a queen of afrobeats?",
+      "prompt": "Who is the Nigerian singer often called a queen of afrobeats?",
       "options": [
         "Tiwa Savage",
         "Nollywood",
@@ -4852,35 +4516,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Senegalese mbalax superstar?",
-      "options": [
-        "Youssou N'Dour",
-        "Nollywood",
-        "Burna Boy",
-        "Wizkid"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Youssou N'Dour is a Senegalese singer.",
-      "sources": [
-        {
-          "title": "Youssou N'Dour",
-          "url": "https://en.wikipedia.org/wiki/Youssou_N'Dour",
-          "claim": "Youssou N'Dour is a Senegalese singer",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "west_popc_youssou_n_dour_fill",
-      "region": "west",
-      "country": "Senegal",
-      "category": "POP",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Senegal, the Senegalese mbalax superstar. The name to write is ___.",
+      "prompt": "Who is the Senegalese mbalax superstar?",
       "options": [
         "Youssou N'Dour",
         "Nollywood",
@@ -4908,7 +4544,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Beninese singer and multiple Grammy winner?",
+      "prompt": "Who is the Beninese singer and multiple Grammy winner?",
       "options": [
         "Angélique Kidjo",
         "Nollywood",
@@ -4936,7 +4572,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Malian singer known as the golden voice of Africa?",
+      "prompt": "Who is the Malian singer known as the golden voice of Africa?",
       "options": [
         "Salif Keita",
         "Nollywood",
@@ -4964,35 +4600,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Ghanaian rapper who raps in Twi and English?",
-      "options": [
-        "Sarkodie",
-        "Nollywood",
-        "Burna Boy",
-        "Wizkid"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Sarkodie is a Ghanaian rapper.",
-      "sources": [
-        {
-          "title": "Sarkodie (rapper)",
-          "url": "https://en.wikipedia.org/wiki/Sarkodie_(rapper)",
-          "claim": "Sarkodie is a Ghanaian rapper",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "west_popc_sarkodie_rapper_fill",
-      "region": "west",
-      "country": "Ghana",
-      "category": "POP",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Ghana, the Ghanaian rapper who raps in Twi and English. The name to write is ___.",
+      "prompt": "Who is the Ghanaian rapper who raps in Twi and English?",
       "options": [
         "Sarkodie",
         "Nollywood",
@@ -5020,7 +4628,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Ghanaian dancehall and afrobeats artist?",
+      "prompt": "Who is the Ghanaian dancehall and afrobeats artist?",
       "options": [
         "Stonebwoy",
         "Nollywood",
@@ -5048,7 +4656,7 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Nigerian singer of Rush and Sability?",
+      "prompt": "Who is the Nigerian singer of Rush and Sability?",
       "options": [
         "Ayra Starr",
         "Nollywood",
@@ -5076,7 +4684,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Nigerian street-pop singer of Mr Money with the Vibe?",
+      "prompt": "Who is the Nigerian street-pop singer of Mr Money with the Vibe?",
       "options": [
         "Asake",
         "Nollywood",
@@ -5104,7 +4712,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Nollywood star who also directed Lionheart?",
+      "prompt": "Who is the Nollywood star who also directed Lionheart?",
       "options": [
         "Genevieve Nnaji",
         "Nollywood",
@@ -5132,7 +4740,7 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Ghanaian dancehall artist?",
+      "prompt": "Who is the Ghanaian dancehall artist?",
       "options": [
         "Shatta Wale",
         "Nollywood",
@@ -5160,7 +4768,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Nigerian rapper central to the YBNL scene?",
+      "prompt": "Who is the Nigerian rapper central to the YBNL scene?",
       "options": [
         "Olamide",
         "Nollywood",
@@ -5188,7 +4796,7 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Ghanaian singer of Kwaku the Traveller?",
+      "prompt": "Who is the Ghanaian singer of Kwaku the Traveller?",
       "options": [
         "Black Sherif",
         "Nollywood",
@@ -5216,7 +4824,7 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is the 1992 film often credited with launching modern Nollywood?",
+      "prompt": "Who is the 1992 film often credited with launching modern Nollywood?",
       "options": [
         "Living in Bondage",
         "Nollywood",
@@ -5244,7 +4852,7 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the Ivorian striker who starred for Chelsea and Côte d'Ivoire?",
+      "prompt": "Who is the Ivorian striker who starred for Chelsea and Côte d'Ivoire?",
       "options": [
         "Didier Drogba",
         "George Weah",
@@ -5272,7 +4880,7 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the Liberian footballer who won the Ballon d'Or in 1995?",
+      "prompt": "Who is the Liberian footballer who won the Ballon d'Or in 1995?",
       "options": [
         "George Weah",
         "Didier Drogba",
@@ -5300,7 +4908,7 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the Nigerian midfielder famous for his tricks?",
+      "prompt": "Who is the Nigerian midfielder famous for his tricks?",
       "options": [
         "Jay-Jay Okocha",
         "Didier Drogba",
@@ -5328,7 +4936,7 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Nigerian forward who won Olympic gold and the Champions League?",
+      "prompt": "Who is the Nigerian forward who won Olympic gold and the Champions League?",
       "options": [
         "Nwankwo Kanu",
         "Didier Drogba",
@@ -5356,12 +4964,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the Senegalese forward who won the Africa Cup of Nations and a Champions League?",
+      "prompt": "What is the Senegalese forward who won the Africa Cup of Nations and a Champions League?",
       "options": [
         "Sadio Mané",
-        "Didier Drogba",
-        "George Weah",
-        "Jay-Jay Okocha"
+        "Super Eagles",
+        "Black Stars",
+        "Lions of Teranga"
       ],
       "correct": [
         0
@@ -5384,7 +4992,7 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Nigerian striker and multiple African women's player of the year?",
+      "prompt": "Who is the Nigerian striker and multiple African women's player of the year?",
       "options": [
         "Asisat Oshoala",
         "Didier Drogba",
@@ -5412,12 +5020,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of Nigeria's men's football team?",
+      "prompt": "What is the nickname of Nigeria's men's football team?",
       "options": [
         "Super Eagles",
-        "Didier Drogba",
-        "George Weah",
-        "Jay-Jay Okocha"
+        "Sadio Mané",
+        "Black Stars",
+        "Lions of Teranga"
       ],
       "correct": [
         0
@@ -5440,12 +5048,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of Ghana's men's football team?",
+      "prompt": "What is the nickname of Ghana's men's football team?",
       "options": [
         "Black Stars",
-        "Didier Drogba",
-        "George Weah",
-        "Jay-Jay Okocha"
+        "Sadio Mané",
+        "Super Eagles",
+        "Lions of Teranga"
       ],
       "correct": [
         0
@@ -5468,12 +5076,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of Senegal's men's football team?",
+      "prompt": "What is the nickname of Senegal's men's football team?",
       "options": [
         "Lions of Teranga",
-        "Didier Drogba",
-        "George Weah",
-        "Jay-Jay Okocha"
+        "Sadio Mané",
+        "Super Eagles",
+        "Black Stars"
       ],
       "correct": [
         0
@@ -5496,7 +5104,7 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Nigerian-born basketball legend of the Houston Rockets?",
+      "prompt": "Who is the Nigerian-born basketball legend of the Houston Rockets?",
       "options": [
         "Hakeem Olajuwon",
         "Didier Drogba",
@@ -5524,7 +5132,7 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Ghanaian midfielder who starred for Chelsea?",
+      "prompt": "Who is the Ghanaian midfielder who starred for Chelsea?",
       "options": [
         "Michael Essien",
         "Didier Drogba",
@@ -5552,7 +5160,7 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Nigerian midfielder who won the Champions League with Chelsea?",
+      "prompt": "Who is the Nigerian midfielder who won the Champions League with Chelsea?",
       "options": [
         "John Obi Mikel",
         "Didier Drogba",
@@ -5580,7 +5188,7 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is the Ghanaian striker remembered for his Premier League goals?",
+      "prompt": "Who is the Ghanaian striker remembered for his Premier League goals?",
       "options": [
         "Tony Yeboah",
         "Didier Drogba",
@@ -5608,12 +5216,12 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is the Nigerian striker who scored the country's first World Cup goal?",
+      "prompt": "What is the Nigerian striker who scored the country's first World Cup goal?",
       "options": [
         "Rashidi Yekini",
-        "Didier Drogba",
-        "George Weah",
-        "Jay-Jay Okocha"
+        "Sadio Mané",
+        "Super Eagles",
+        "Black Stars"
       ],
       "correct": [
         0
@@ -5636,12 +5244,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of Nigeria's women's football team?",
+      "prompt": "What is the nickname of Nigeria's women's football team?",
       "options": [
         "Super Falcons",
-        "Didier Drogba",
-        "George Weah",
-        "Jay-Jay Okocha"
+        "Sadio Mané",
+        "Super Eagles",
+        "Black Stars"
       ],
       "correct": [
         0
@@ -5664,7 +5272,7 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Nigerian striker who won the African player of the year award?",
+      "prompt": "Who is the Nigerian striker who won the African player of the year award?",
       "options": [
         "Victor Osimhen",
         "Didier Drogba",
@@ -5692,7 +5300,7 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is the Ghanaian midfielder who plays in European leagues?",
+      "prompt": "Who is the Ghanaian midfielder who plays in European leagues?",
       "options": [
         "Mohammed Kudus",
         "Didier Drogba",
@@ -5720,7 +5328,7 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Ivorian midfielder who has played for Milan and Barcelona?",
+      "prompt": "Who is the Ivorian midfielder who has played for Milan and Barcelona?",
       "options": [
         "Franck Kessié",
         "Didier Drogba",
@@ -6268,12 +5876,12 @@
       "category": "PROVERBS",
       "difficulty": "easy",
       "kind": "complete",
-      "prompt": "Complete the Akan word Sankofa: go back and ___.",
+      "prompt": "The Akan idea of Sankofa means go back and what?",
       "options": [
-        "get it",
-        "sell it",
-        "hide it",
-        "burn it"
+        "get",
+        "sell",
+        "hide",
+        "burn"
       ],
       "correct": [
         0
@@ -6296,7 +5904,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "multi",
-      "prompt": "Select three West African dishes.",
+      "prompt": "Which three would you expect on a West African table?",
       "options": [
         "Jollof rice",
         "Egusi soup",
@@ -6326,7 +5934,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "multi",
-      "prompt": "Select three West African capital cities.",
+      "prompt": "Which three are capital cities in West Africa?",
       "options": [
         "Accra",
         "Dakar",
@@ -6344,6 +5952,230 @@
           "title": "West Africa",
           "url": "https://en.wikipedia.org/wiki/West_Africa",
           "claim": "Accra, Dakar and Bamako are West African capitals",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_sarkodie",
+      "region": "west",
+      "country": "Ghana",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Ghanaian rapper known for Twi and English bars?",
+      "options": [
+        "Sarkodie",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sarkodie is a Ghanaian rapper.",
+      "sources": [
+        {
+          "title": "Sarkodie",
+          "url": "https://en.wikipedia.org/wiki/Sarkodie",
+          "claim": "Sarkodie is a Ghanaian rapper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_banku",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a fermented corn and cassava dough from Ghana?",
+      "options": [
+        "Banku",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Banku is a Ghanaian dish of fermented corn and cassava.",
+      "sources": [
+        {
+          "title": "Banku",
+          "url": "https://en.wikipedia.org/wiki/Banku",
+          "claim": "Banku is a Ghanaian dish of fermented corn and cassava",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_adinkra_symbols",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is printed symbols of Akan philosophy on cloth?",
+      "options": [
+        "Adinkra",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Adinkra symbols are visual symbols from Ghana.",
+      "sources": [
+        {
+          "title": "Adinkra symbols",
+          "url": "https://en.wikipedia.org/wiki/Adinkra_symbols",
+          "claim": "Adinkra symbols are visual symbols from Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_hogbetsotso_festival",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is the Anlo festival that marks a historic migration?",
+      "options": [
+        "Hogbetsotso",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hogbetsotso is a festival of the Anlo people in Ghana.",
+      "sources": [
+        {
+          "title": "Hogbetsotso festival",
+          "url": "https://en.wikipedia.org/wiki/Hogbetsotso_festival",
+          "claim": "Hogbetsotso is a festival of the Anlo people in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_chimamanda_ngozi_adichie2",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Nigerian novelist of Half of a Yellow Sun?",
+      "options": [
+        "Chimamanda Ngozi Adichie",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chimamanda Ngozi Adichie is a Nigerian writer.",
+      "sources": [
+        {
+          "title": "Chimamanda Ngozi Adichie",
+          "url": "https://en.wikipedia.org/wiki/Chimamanda_Ngozi_Adichie",
+          "claim": "Chimamanda Ngozi Adichie is a Nigerian writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_chinua_achebe3",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Nigerian novelist of Things Fall Apart?",
+      "options": [
+        "Chinua Achebe",
+        "Mansa Musa",
+        "Wole Soyinka",
+        "Chimamanda Ngozi Adichie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chinua Achebe is a Nigerian novelist.",
+      "sources": [
+        {
+          "title": "Chinua Achebe",
+          "url": "https://en.wikipedia.org/wiki/Chinua_Achebe",
+          "claim": "Chinua Achebe is a Nigerian novelist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_angelique_kidjo2",
+      "region": "west",
+      "country": "Benin",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Beninese singer who blends Fon, Yoruba, and global pop?",
+      "options": [
+        "Angelique Kidjo",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Angélique Kidjo is a Beninese singer.",
+      "sources": [
+        {
+          "title": "Angélique Kidjo",
+          "url": "https://en.wikipedia.org/wiki/Ang%C3%A9lique_Kidjo",
+          "claim": "Angélique Kidjo is a Beninese singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_nwankwo_kanu2",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Nigerian forward who won Olympic gold in 1996?",
+      "options": [
+        "Nwankwo Kanu",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nwankwo Kanu is a Nigerian footballer.",
+      "sources": [
+        {
+          "title": "Nwankwo Kanu",
+          "url": "https://en.wikipedia.org/wiki/Nwankwo_Kanu",
+          "claim": "Nwankwo Kanu is a Nigerian footballer",
           "method": "page-overlap"
         }
       ],

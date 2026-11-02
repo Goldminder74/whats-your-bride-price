@@ -82,7 +82,7 @@ for item in [
     ("medium", "Kenya", "Kikoi", "the striped cotton sarong of the Swahili coast", "Kikoi", "The kikoi is a cloth from East Africa"),
     ("easy", "Ethiopia", "Habesha kemis", "the white cotton dress of Ethiopian and Eritrean celebrations", "Habesha kemis", "The habesha kemis is a dress from Ethiopia"),
     ("medium", "Ethiopia", "Netela", "a light white shawl worn with Ethiopian dress", "Netela", "The netela is a shawl from Ethiopia"),
-    ("medium", "Kenya", "Shúkà", "the red-checked cloth associated with Maasai dress", "Shúkà", "The shuka is a cloth worn by Maasai people"),
+    ("medium", "Kenya", "Shuka", "the red-checked cloth associated with Maasai dress", "Maasai people", "Maasai people wear a cloth called a shuka"),
     ("medium", "East Africa", "Kofia", "the embroidered cap worn by men on the Swahili coast", "Kofia (hat)", "The kofia is a cap worn in East Africa"),
     ("hard", "Uganda", "Gomesi", "the long colourful dress worn by Baganda women", "Gomesi", "The gomesi is a dress from Uganda"),
     ("hard", "Uganda", "Kanzu", "the long white robe worn by Baganda men", "Kanzu", "The kanzu is a robe worn in Uganda"),
@@ -143,24 +143,14 @@ for item in [
     R(s(item[0], "FESTIVALS", item[1], item[2], item[3], item[4], item[5]))
 
 for item in [
-    ("easy", "East Africa", "Kanga gift", "giving a proverb cloth as a wedding present on the Swahili coast", "Kanga (garment)", "Kanga cloth is given at celebrations in East Africa"),
-    ("easy", "Ethiopia", "Coffee ceremony", "roasting and pouring coffee for wedding guests in Ethiopia", "Coffee ceremony of Ethiopia and Eritrea", "The coffee ceremony is part of Ethiopian hospitality"),
-    ("medium", "Ethiopia", "Habesha dress", "the white gown worn by Ethiopian and Eritrean brides", "Habesha kemis", "The habesha kemis is worn at Ethiopian weddings"),
+    ("medium", "Ethiopia", "Habesha kemis", "the white gown worn by Ethiopian and Eritrean women", "Habesha kemis", "The habesha kemis is a dress worn in Ethiopia"),
     ("medium", "Kenya", "Ruracio", "the Kikuyu family introduction before a wedding", "Kikuyu people", "Ruracio is part of Kikuyu marriage negotiations"),
     ("medium", "Uganda", "Kwanjula", "the Buganda introduction ceremony before marriage", "Kwanjula", "Kwanjula is an introduction ceremony in Buganda"),
-    ("easy", "Tanzania", "Harusi", "the Swahili word for a wedding party", "Swahili language", "Harusi means wedding in Swahili"),
-    ("medium", "Tanzania", "Taarab night", "hiring a taarab group for a Zanzibar wedding", "Taarab", "Taarab is performed at weddings in Zanzibar"),
-    ("medium", "Kenya", "Nyama choma feast", "serving grilled meat to wedding guests in Kenya", "Nyama choma", "Nyama choma is served at Kenyan celebrations"),
+    ("easy", "Tanzania", "Harusi", "the Swahili word for a wedding", "Swahili language", "Harusi means wedding in Swahili"),
     ("hard", "Rwanda", "Gusaba", "the formal family visit that opens many Rwandan marriages", "Culture of Rwanda", "Gusaba is a marriage introduction in Rwanda"),
-    ("medium", "Uganda", "Gomesi bride", "the bride's gomesi at a Baganda introduction", "Gomesi", "The gomesi is worn at ceremonies in Uganda"),
-    ("easy", "East Africa", "Ululation", "the joyful high call guests give when the couple appears", "Ululation", "Ululation is a celebratory sound at weddings"),
-    ("medium", "Ethiopia", "Injera table", "sharing a platter of injera at an Ethiopian wedding feast", "Injera", "Injera is served at Ethiopian celebrations"),
-    ("hard", "Kenya", "Lessos layers", "gifting several kanga wraps to the couple's family", "Kanga (garment)", "Kanga cloth is exchanged at East African celebrations"),
+    ("medium", "Uganda", "Gomesi", "the formal dress worn at Baganda ceremonies", "Gomesi", "The gomesi is worn at ceremonies in Uganda"),
+    ("easy", "Tanzania", "Ululation", "a high celebratory call heard at weddings", "Ululation", "Ululation is a celebratory sound at weddings"),
     ("medium", "Tanzania", "Henna night", "painting the bride's hands before a coastal Muslim wedding", "Henna", "Henna is applied before weddings on the Swahili coast"),
-    ("easy", "Kenya", "Wedding cake and pilau", "the pilau pot that anchors many Kenyan wedding menus", "Pilau", "Pilau is served at celebrations in East Africa"),
-    ("medium", "Madagascar", "Vady", "family blessings that open a Malagasy marriage feast", "Culture of Madagascar", "Malagasy weddings are family celebrations"),
-    ("hard", "Somalia", "Shaash", "the bridal headscarf of a Somali wedding", "Dirac (garment)", "Somali brides wear special dress at weddings"),
-    ("medium", "Eritrea", "Coffee and popcorn", "serving coffee and popcorn to wedding guests", "Coffee ceremony of Ethiopia and Eritrea", "Coffee is served to guests at Eritrean celebrations"),
 ]:
     R(s(item[0], "WEDDINGS", item[1], item[2], item[3], item[4], item[5]))
 

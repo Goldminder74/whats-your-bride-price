@@ -1,0 +1,6074 @@
+{
+  "region": "west",
+  "questions": [
+    {
+      "id": "west_fash_adire_textile_art",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is an indigo resist-dyed cloth of Yoruba makers?",
+      "options": [
+        "Adire",
+        "Kente",
+        "Aso oke",
+        "Ankara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Adire is a textile art of the Yoruba people.",
+      "sources": [
+        {
+          "title": "Adire (textile art)",
+          "url": "https://en.wikipedia.org/wiki/Adire_(textile_art)",
+          "claim": "Adire is a textile art of the Yoruba people",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Adire (textile art) Adire (Yoruba: Àdìrẹ) textile is a type of dyed cloth traditionally made by Yoruba women, using a variety of resist-dyeing techniques.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_fash_agbada",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the flowing robe traditionally worn by the Yoruba people across West Africa?",
+      "options": [
+        "Agbada",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The agbada is a robe worn by men in West Africa.",
+      "sources": [
+        {
+          "title": "Agbada",
+          "url": "https://en.wikipedia.org/wiki/Agbada",
+          "claim": "Agbada Agbada (Yoruba: Agbádá) lit.: Gown, Garment, Robe, is the flowing robe traditionally worn by the Yoruba people across West Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Agbada Agbada (Yoruba: Agbádá) lit.: Gown, Garment, Robe, is the flowing robe traditionally worn by the Yoruba people across West Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_fash_aso_oke",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a hand-woven Yoruba prestige cloth?",
+      "options": [
+        "Aso oke",
+        "Kente",
+        "Adire",
+        "Ankara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Aso oke is a hand-woven cloth of the Yoruba.",
+      "sources": [
+        {
+          "title": "Aso oke",
+          "url": "https://en.wikipedia.org/wiki/Aso_oke",
+          "claim": "Aso oke is a hand-woven cloth of the Yoruba",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "'cloth of the loom', is a hand-woven cloth that originated among the Yoruba people of Yorubaland in Nigeria and beyond. Aso oke comes in hundreds of unique patterns, at least 150 distinct patterns were observed in a single year — 1978 just in the Ibadan and Lagos market alone, and new patters are constantly being developed based on cultural evolution and consumer requirements.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_fash_bazin_fabric",
+      "region": "west",
+      "country": "Mali",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a West African fabric with its origin in Europe?",
+      "options": [
+        "Bazin",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bazin is a dyed cotton fabric popular in West Africa.",
+      "sources": [
+        {
+          "title": "Bazin (fabric)",
+          "url": "https://en.wikipedia.org/wiki/Bazin_(fabric)",
+          "claim": "Bazin (fabric) Bazin (or basin) is a West African fabric with its origin in Europe, made from hand-dyed cotton, it is imported to African countries from Europe and is then hand-dyed resulting in a damask textile known for its stiffness and vibrant sheen.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Bazin (fabric) Bazin (or basin) is a West African fabric with its origin in Europe, made from hand-dyed cotton, it is imported to African countries from Europe and is then hand-dyed resulting in a damask textile known for its stiffness and vibrant sheen.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_fash_bogolanfini",
+      "region": "west",
+      "country": "Mali",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is mudcloth painted with fermented mud in Mali?",
+      "options": [
+        "Bogolan",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bogolanfini is a handmade cotton fabric from Mali.",
+      "sources": [
+        {
+          "title": "Bogolanfini",
+          "url": "https://en.wikipedia.org/wiki/Bogolanfini",
+          "claim": "Bogolanfini is a handmade cotton fabric from Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Bògòlanfini Bògòlanfini or bogolan (Bambara: bɔgɔlanfini; \"mud cloth\"; sometimes called mud-dyed cloth or mud-painted cloth in English) is a handmade Malian cotton fabric traditionally dyed with fermented mud.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_fash_boubou_clothing",
+      "region": "west",
+      "country": "Senegal",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a flowing, wide-sleeved robe worn across West Africa, and to a lesser extent in North Africa?",
+      "options": [
+        "Boubou",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The boubou is a flowing robe worn in West Africa.",
+      "sources": [
+        {
+          "title": "Boubou (clothing)",
+          "url": "https://en.wikipedia.org/wiki/Boubou_(clothing)",
+          "claim": "Boubou (clothing) The boubou, or grand boubou from Wolof mboubou, is a flowing, wide-sleeved robe worn across West Africa, and to a lesser extent in North Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Boubou (clothing) The boubou, or grand boubou from Wolof mboubou, is a flowing, wide-sleeved robe worn across West Africa, and to a lesser extent in North Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_fash_dashiki",
+      "region": "west",
+      "country": "West Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a colorful garment that covers the top half of the body?",
+      "options": [
+        "Dashiki",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The dashiki is a colourful garment from West Africa.",
+      "sources": [
+        {
+          "title": "Dashiki",
+          "url": "https://en.wikipedia.org/wiki/Dashiki",
+          "claim": "Dashiki The dashiki (, də-SHEE-kee, dah-) is a colorful garment that covers the top half of the body, worn mostly in West Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Dashiki The dashiki (, də-SHEE-kee, dah-) is a colorful garment that covers the top half of the body, worn mostly in West Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_fash_fila_hat",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a soft Yoruba cap worn by men?",
+      "options": [
+        "Fila",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The fila is a traditional cap of the Yoruba.",
+      "sources": [
+        {
+          "title": "Fila (hat)",
+          "url": "https://en.wikipedia.org/wiki/Fila_(hat)",
+          "claim": "The fila is a traditional cap of the Yoruba",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Fila (hat) A fila (fìlà; Yoruba pronunciation: [/fì.là/], lit. 'hat') is a soft hat traditionally worn by the Yoruba people of Western Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_fash_isiagu",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a patterned Igbo men's shirt often worn for ceremonies?",
+      "options": [
+        "Isiagu",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Isiagu is a shirt worn by Igbo men.",
+      "sources": [
+        {
+          "title": "Isiagu",
+          "url": "https://en.wikipedia.org/wiki/Isiagu",
+          "claim": "Isiagu is a shirt worn by Igbo men",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Traditionally, the Isiagu was given to a man when he received a chieftaincy title. The shirt is usually worn with a red hat called Okpu Ozo or the Igbo leopard cap.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_fash_kente_cloth",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a Ghanaian textile, officially recognised as a geographical indication of Ghana to safeguard its authenticity and origin?",
+      "options": [
+        "Kente",
+        "Adire",
+        "Aso oke",
+        "Ankara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kente is a Ghanaian textile made of woven strips.",
+      "sources": [
+        {
+          "title": "Kente cloth",
+          "url": "https://en.wikipedia.org/wiki/Kente_cloth",
+          "claim": "Kente cloth Kente is a Ghanaian textile, officially recognised as a geographical indication of Ghana to safeguard its authenticity and origin.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kente cloth Kente is a Ghanaian textile, officially recognised as a geographical indication of Ghana to safeguard its authenticity and origin.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_fash_wrapper_clothing",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a colorful garment widely worn in West Africa by both men and women?",
+      "options": [
+        "Wrapper",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A wrapper is a garment worn in West Africa.",
+      "sources": [
+        {
+          "title": "Wrapper (clothing)",
+          "url": "https://en.wikipedia.org/wiki/Wrapper_(clothing)",
+          "claim": "Wrapper (clothing) The wrapper, lappa, or pagne is a colorful garment widely worn in West Africa by both men and women.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Wrapper (clothing) The wrapper, lappa, or pagne is a colorful garment widely worn in West Africa by both men and women.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_alloco",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call fried ripe plantain served as a street snack in Côte d'Ivoire?",
+      "options": [
+        "Alloco",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Alloco is a dish of fried plantain in Côte d'Ivoire.",
+      "sources": [
+        {
+          "title": "Alloco",
+          "url": "https://en.wikipedia.org/wiki/Alloco",
+          "claim": "Alloco is a dish of fried plantain in Côte d'Ivoire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Gizdodo is a side dish in Nigeria containing fried plantain and grilled gizzard. Alloco is widely considered as fast-food and is sold on the streets of Côte d'Ivoire.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_attieke",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a dish made from cassava that is popular and traditional in the Côte d’Ivoire and Ghana?",
+      "options": [
+        "Attiéké",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Attiéké is a side dish made from cassava in Côte d'Ivoire.",
+      "sources": [
+        {
+          "title": "Attiéké",
+          "url": "https://en.wikipedia.org/wiki/Atti%C3%A9k%C3%A9",
+          "claim": "Acheke Acheke (Bambara: cɛkɛ) (Nzema; Akyɛkɛ) (correct spelling being attiéké (Ivory Coast) or akyeke (Ghana)), is a dish made from cassava that is popular and traditional in the Côte d’Ivoire and Ghana.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Acheke Acheke (Bambara: cɛkɛ) (Nzema; Akyɛkɛ) (correct spelling being attiéké (Ivory Coast) or akyeke (Ghana)), is a dish made from cassava that is popular and traditional in the Côte d’Ivoire and Ghana.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_chin_chin",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a crunchy fried pastry snack from Nigeria?",
+      "options": [
+        "Chin chin",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chin chin is a fried snack from Nigeria.",
+      "sources": [
+        {
+          "title": "Chin chin",
+          "url": "https://en.wikipedia.org/wiki/Chin_chin",
+          "claim": "Chin chin is a fried snack from Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Chin chin Chin chin is a fried snack from Nigeria.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_fufu",
+      "region": "west",
+      "country": "West Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a pounded meal found in West African cuisine originally made from boiled cassava?",
+      "options": [
+        "Fufu",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fufu is a staple food in West Africa.",
+      "sources": [
+        {
+          "title": "Fufu",
+          "url": "https://en.wikipedia.org/wiki/Fufu",
+          "claim": "Fufu Fufu (or fufuo, foofoo, foufou foo-foo ) is a pounded meal found in West African cuisine originally made from boiled cassava, plantains, and cocoyam.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Fufu Fufu (or fufuo, foofoo, foufou foo-foo ) is a pounded meal found in West African cuisine originally made from boiled cassava, plantains, and cocoyam.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_kelewele",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call spicy fried ripe plantain cubes from Ghana?",
+      "options": [
+        "Kelewele",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kelewele is a Ghanaian food made from fried plantains.",
+      "sources": [
+        {
+          "title": "Kelewele",
+          "url": "https://en.wikipedia.org/wiki/Kelewele",
+          "claim": "Kelewele is a Ghanaian food made from fried plantains",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kelewele is a fried spicy plantain typically served as a side dish for red red (African stewed black-eyed peas) and fish stew in Ghana.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_kilishi",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call a version of jerky that originates in Hausaland which consists of most of Southern Niger and Northern Nigeria?",
+      "options": [
+        "Kilishi",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kilishi is a dried meat from Nigeria.",
+      "sources": [
+        {
+          "title": "Kilishi",
+          "url": "https://en.wikipedia.org/wiki/Kilishi",
+          "claim": "Kilishi Kilishi is a version of jerky that originates in Hausaland which consists of most of Southern Niger and Northern Nigeria.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kilishi Kilishi is a version of jerky that originates in Hausaland which consists of most of Southern Niger and Northern Nigeria.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_maafe",
+      "region": "west",
+      "country": "Mali",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a staple food stew in Western Africa?",
+      "options": [
+        "Maafe",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Maafe is a stew made with peanut sauce.",
+      "sources": [
+        {
+          "title": "Maafe",
+          "url": "https://en.wikipedia.org/wiki/Maafe",
+          "claim": "Peanut stew Peanut stew or groundnut stew, also known as maafe (Wolof mafé, maffé, maffe), and pate d'arachide (French), is a staple food stew in Western Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Peanut stew Peanut stew or groundnut stew, also known as maafe (Wolof mafé, maffé, maffe), and pate d'arachide (French), is a staple food stew in Western Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_puff_puff",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a traditional snack made of fried dough and eaten across West and Central Africa?",
+      "options": [
+        "Puff puff",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Puff-puff is a deep-fried dough snack from Nigeria.",
+      "sources": [
+        {
+          "title": "Puff-puff",
+          "url": "https://en.wikipedia.org/wiki/Puff-puff",
+          "claim": "Puff-puff Puff-puff is a traditional snack made of fried dough and eaten across West and Central Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Puff-puff Puff-puff is a traditional snack made of fried dough and eaten across West and Central Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_red_red",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a Ghanaian dish composed of black-eyed peas?",
+      "options": [
+        "Red red",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Red red is a bean stew from Ghana.",
+      "sources": [
+        {
+          "title": "Red red",
+          "url": "https://en.wikipedia.org/wiki/Red_red",
+          "claim": "Red red Red red is a Ghanaian dish composed of black-eyed peas, cooked in palm oil or other vegetable oil with plantain.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Red red Red red is a Ghanaian dish composed of black-eyed peas, cooked in palm oil or other vegetable oil with plantain.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_shito",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a dark hot pepper sauce from Ghana?",
+      "options": [
+        "Shito",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shito is a hot pepper sauce from Ghana.",
+      "sources": [
+        {
+          "title": "Shito",
+          "url": "https://en.wikipedia.org/wiki/Shito",
+          "claim": "Shito is a hot pepper sauce from Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Shito Shito or shitor din (lit. 'black pepper') is a hot black pepper sauce ubiquitous in Ghanaian cuisine.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_suya",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a traditional Hausa smoke-grilled spiced meat on skewer?",
+      "options": [
+        "Suya",
+        "Jollof rice",
+        "Thieboudienne",
+        "Egusi soup"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Suya is a spicy meat skewer popular in Nigeria.",
+      "sources": [
+        {
+          "title": "Suya",
+          "url": "https://en.wikipedia.org/wiki/Suya",
+          "claim": "Suya Suya, also known as Tsire, is a traditional Hausa (Nigerian) smoke-grilled spiced meat on skewer.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Suya Suya, also known as Tsire, is a traditional Hausa (Nigerian) smoke-grilled spiced meat on skewer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_waakye",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call Ghanaian rice and beans cooked together?",
+      "options": [
+        "Waakye",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Waakye is a Ghanaian dish of rice and beans.",
+      "sources": [
+        {
+          "title": "Waakye",
+          "url": "https://en.wikipedia.org/wiki/Waakye",
+          "claim": "Waakye is a Ghanaian dish of rice and beans",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Waakye Waakye ( WAH-chay) is a Ghanaian dish of cooked rice and beans, commonly eaten for breakfast or lunch.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_food_yassa_food",
+      "region": "west",
+      "country": "Senegal",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a Senegalese onion and lemon sauce, often with chicken?",
+      "options": [
+        "Yassa",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Yassa is a dish from Senegal.",
+      "sources": [
+        {
+          "title": "Yassa (food)",
+          "url": "https://en.wikipedia.org/wiki/Yassa_(food)",
+          "claim": "Yassa is a dish from Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Yassa (food) Yassa is a spicy dish prepared with onions, lemon or mustard and marinated poultry, fish, or lamb. Originally from Senegal, it has become popular throughout West Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_abuja",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Nigeria?",
+      "options": [
+        "Abuja",
+        "Accra",
+        "Dakar",
+        "Bamako"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Abuja is the capital city of Nigeria.",
+      "sources": [
+        {
+          "title": "Abuja",
+          "url": "https://en.wikipedia.org/wiki/Abuja",
+          "claim": "Abuja is the capital city of Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Abuja Abuja () is the capital city of Nigeria, strategically situated at the geographic midpoint of the country within the Federal Capital Territory (FCT).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_accra",
+      "region": "west",
+      "country": "Ghana",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Ghana?",
+      "options": [
+        "Accra",
+        "Abuja",
+        "Dakar",
+        "Bamako"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Accra is the capital of Ghana.",
+      "sources": [
+        {
+          "title": "Accra",
+          "url": "https://en.wikipedia.org/wiki/Accra",
+          "claim": "Accra is the capital of Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Accra Accra () is the capital and largest city of Ghana, located on the southern coast at the Gulf of Guinea, which is part of the Atlantic Ocean.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_bamako",
+      "region": "west",
+      "country": "Mali",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Mali on the Niger River?",
+      "options": [
+        "Bamako",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bamako is the capital of Mali.",
+      "sources": [
+        {
+          "title": "Bamako",
+          "url": "https://en.wikipedia.org/wiki/Bamako",
+          "claim": "Bamako is the capital of Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Bamako Bamako is the capital and largest city of Mali with a 2022 population of 4,227,569.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_banjul",
+      "region": "west",
+      "country": "Gambia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of The Gambia?",
+      "options": [
+        "Banjul",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Banjul is the capital of the Gambia.",
+      "sources": [
+        {
+          "title": "Banjul",
+          "url": "https://en.wikipedia.org/wiki/Banjul",
+          "claim": "Banjul is the capital of the Gambia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Banjul Banjul (UK: , US: ), officially the City of Banjul, is the capital city of the Gambia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_conakry",
+      "region": "west",
+      "country": "Guinea",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Guinea on the Atlantic?",
+      "options": [
+        "Conakry",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Conakry is the capital of Guinea.",
+      "sources": [
+        {
+          "title": "Conakry",
+          "url": "https://en.wikipedia.org/wiki/Conakry",
+          "claim": "Conakry is the capital of Guinea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Conakry Conakry ( KON-ə-kree, French: [kɔnakʁi]; Susu: Kɔnakiri; N'Ko: ߞߐߣߊߞߙߌ߫, romanized: Kɔnakrí; Fula: 𞤑𞤮𞤲𞤢𞥄𞤳𞤭𞤪𞤭, romanized: Konaakiri) is the capital and largest city of Guinea.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_dakar",
+      "region": "west",
+      "country": "Senegal",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Senegal?",
+      "options": [
+        "Dakar",
+        "Abuja",
+        "Accra",
+        "Bamako"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dakar is the capital of Senegal.",
+      "sources": [
+        {
+          "title": "Dakar",
+          "url": "https://en.wikipedia.org/wiki/Dakar",
+          "claim": "Dakar is the capital of Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Dakar Dakar ( da(h)-KAR, UK also DAK-ar; French: [dakaʁ]; Wolof: Ndakaaru or ندَكَارُ/ڎَكَارُ) is the capital and largest city of Senegal.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_djenne",
+      "region": "west",
+      "country": "Mali",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is a town and urban commune in the Inland Niger Delta region of central Mali?",
+      "options": [
+        "Djenné",
+        "Lagos",
+        "Timbuktu",
+        "Ghana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Djenné is a town in Mali.",
+      "sources": [
+        {
+          "title": "Djenné",
+          "url": "https://en.wikipedia.org/wiki/Djenn%C3%A9",
+          "claim": "Djenné Djenné (Bambara: ߖߍ߬ߣߍ߫, romanized: Jɛ̀nɛ́; also known as Djénné, Jenné, and Jenne) is a town and urban commune in the Inland Niger Delta region of central Mali.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Djenné Djenné (Bambara: ߖߍ߬ߣߍ߫, romanized: Jɛ̀nɛ́; also known as Djénné, Jenné, and Jenne) is a town and urban commune in the Inland Niger Delta region of central Mali.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_freetown",
+      "region": "west",
+      "country": "Sierra Leone",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Sierra Leone?",
+      "options": [
+        "Freetown",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Freetown is the capital of Sierra Leone.",
+      "sources": [
+        {
+          "title": "Freetown",
+          "url": "https://en.wikipedia.org/wiki/Freetown",
+          "claim": "Freetown is the capital of Sierra Leone",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Freetown Freetown (Krio: Fritɔun) is the capital and largest city of Sierra Leone.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_lagos",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Where is the largest city in Nigeria, on the Atlantic coast?",
+      "options": [
+        "Lagos",
+        "Timbuktu",
+        "Djenné",
+        "Ghana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lagos is the largest city in Nigeria.",
+      "sources": [
+        {
+          "title": "Lagos",
+          "url": "https://en.wikipedia.org/wiki/Lagos",
+          "claim": "Lagos is the largest city in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "As of November 2025, the size of the city's population has been estimated to be between 17 and 21 million residents, making Lagos the largest city in Nigeria, the most populous urban area on the African continent, and one of the fastest-growing megacities in the world.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_lome",
+      "region": "west",
+      "country": "Togo",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Togo on the Gulf of Guinea?",
+      "options": [
+        "Lome",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lomé is the capital of Togo.",
+      "sources": [
+        {
+          "title": "Lomé",
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "claim": "Lomé is the capital of Togo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lomé Lomé (UK: LOH-may, US: loh-MAY) is the capital and largest city of Togo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_monrovia",
+      "region": "west",
+      "country": "Liberia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Liberia?",
+      "options": [
+        "Monrovia",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Monrovia is the capital of Liberia.",
+      "sources": [
+        {
+          "title": "Monrovia",
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "claim": "Monrovia is the capital of Liberia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Monrovia Monrovia is the capital and largest city of the African country of Liberia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_niamey",
+      "region": "west",
+      "country": "Niger",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Niger?",
+      "options": [
+        "Niamey",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Niamey is the capital of Niger.",
+      "sources": [
+        {
+          "title": "Niamey",
+          "url": "https://en.wikipedia.org/wiki/Niamey",
+          "claim": "Niamey Niamey is the capital and largest city of Niger.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Niamey Niamey is the capital and largest city of Niger.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_ouagadougou",
+      "region": "west",
+      "country": "Burkina Faso",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Burkina Faso?",
+      "options": [
+        "Ouagadougou",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ouagadougou is the capital of Burkina Faso.",
+      "sources": [
+        {
+          "title": "Ouagadougou",
+          "url": "https://en.wikipedia.org/wiki/Ouagadougou",
+          "claim": "Ouagadougou is the capital of Burkina Faso",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ouagadougou Ouagadougou or Wagadugu ( ; Mossi: Waogdgo, pronounced [ˈwɔɣədəɣʊ]; Dyula: Wagadugu; French: Ouagadougou, pronounced [waɡaduɡu]) is the capital and largest city of Burkina Faso, and the administrative, communications, cultural and economic centre of the nation.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_praia",
+      "region": "west",
+      "country": "Cape Verde",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Cape Verde?",
+      "options": [
+        "Praia",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Praia is the capital of Cape Verde.",
+      "sources": [
+        {
+          "title": "Praia",
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "claim": "Praia is the capital of Cape Verde",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Praia Praia (Portuguese pronunciation: [ˈpɾajɐ], Portuguese for \"beach\") is the capital and largest city of Cape Verde.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_timbuktu",
+      "region": "west",
+      "country": "Mali",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is a city in Mali, situated 20 kilometres north of the Niger River?",
+      "options": [
+        "Timbuktu",
+        "Lagos",
+        "Djenné",
+        "Ghana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Timbuktu is a city in Mali.",
+      "sources": [
+        {
+          "title": "Timbuktu",
+          "url": "https://en.wikipedia.org/wiki/Timbuktu",
+          "claim": "Timbuktu Timbuktu ( TIM-buk-TOO; French: Tombouctou; Koyra Chiini: Tunbutu; Tuareg: ⵜⵏⵀⵗⵜ, romanized: Tin Bukt) is a city in Mali, situated 20 kilometres (12 miles) north of the Niger River.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Timbuktu Timbuktu ( TIM-buk-TOO; French: Tombouctou; Koyra Chiini: Tunbutu; Tuareg: ⵜⵏⵀⵗⵜ, romanized: Tin Bukt) is a city in Mali, situated 20 kilometres (12 miles) north of the Niger River.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_geog_yamoussoukro",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which city is the capital of Ivory Coast?",
+      "options": [
+        "Yamoussoukro",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Yamoussoukro is the capital of Ivory Coast.",
+      "sources": [
+        {
+          "title": "Yamoussoukro",
+          "url": "https://en.wikipedia.org/wiki/Yamoussoukro",
+          "claim": "Yamoussoukro Yamoussoukro (; French pronunciation: [jamusukʁo] , locally [jamsokʁo]) is the capital city of Ivory Coast and an autonomous district.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Yamoussoukro Yamoussoukro (; French pronunciation: [jamusukʁo] , locally [jamsokʁo]) is the capital city of Ivory Coast and an autonomous district.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_hist_gao",
+      "region": "west",
+      "country": "Mali",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is an important commercial centre involved in the trans-Saharan trade?",
+      "options": [
+        "Gao",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gao was a capital of the Songhai Empire.",
+      "sources": [
+        {
+          "title": "Gao",
+          "url": "https://en.wikipedia.org/wiki/Gao",
+          "claim": "For much of its history, Gao was an important commercial centre involved in the trans-Saharan trade.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "For much of its history, Gao was an important commercial centre involved in the trans-Saharan trade.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_hist_nok_culture",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a population whose material remains are named after the Ham village of Nok in southern Kaduna State of Nigeria?",
+      "options": [
+        "Nok culture",
+        "Kingdom of Ife",
+        "Timbuktu manuscripts",
+        "Royal Palaces of Abomey"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Nok culture is an ancient culture of Nigeria.",
+      "sources": [
+        {
+          "title": "Nok culture",
+          "url": "https://en.wikipedia.org/wiki/Nok_culture",
+          "claim": "Nok culture The Nok culture is a population whose material remains are named after the Ham village of Nok in southern Kaduna State of Nigeria, where their terracotta sculptures were first discovered in 1928.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nok culture The Nok culture is a population whose material remains are named after the Ham village of Nok in southern Kaduna State of Nigeria, where their terracotta sculptures were first discovered in 1928.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_hist_songhai_empire",
+      "region": "west",
+      "country": "Mali",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a state located in the western part of the Sahel during the 15th and 16th centuries?",
+      "options": [
+        "Songhai Empire",
+        "Mali Empire",
+        "Ghana Empire",
+        "Kingdom of Benin"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Songhai Empire was a state in West Africa.",
+      "sources": [
+        {
+          "title": "Songhai Empire",
+          "url": "https://en.wikipedia.org/wiki/Songhai_Empire",
+          "claim": "Songhai Empire The Songhai Empire was a state located in the western part of the Sahel during the 15th and 16th centuries.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Songhai Empire The Songhai Empire was a state located in the western part of the Sahel during the 15th and 16th centuries.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_akan_language",
+      "region": "west",
+      "country": "Ghana",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a language family that includes Twi and Fante in Ghana?",
+      "options": [
+        "Akan",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Akan is a language of Ghana.",
+      "sources": [
+        {
+          "title": "Akan language",
+          "url": "https://en.wikipedia.org/wiki/Akan_language",
+          "claim": "Akan is a language of Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Twi-Fante language Twi-Fante, commonly referred to by its speakers as either Twi (pronounced ) or Fante () and academically and institutionally known by the broader term Akan (pronounced ), is a widely spoken language of Ghana and the main native language of the Akan people.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_bambara_language",
+      "region": "west",
+      "country": "Mali",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a Manding lingua franca of Mali?",
+      "options": [
+        "Bambara",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bambara is a language spoken in Mali.",
+      "sources": [
+        {
+          "title": "Bambara language",
+          "url": "https://en.wikipedia.org/wiki/Bambara_language",
+          "claim": "Bambara is a language spoken in Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Bambara language Bambara, also known as Malian, Bamana (N'Ko script: ߓߡߊߣߊ߲) or Bamanankan (N'Ko script: ߓߡߊߣߊ߲ߞߊ߲; Arabic script: بَمَنَنكَن), is a lingua franca and national language of Mali spoken by perhaps 14 million people, natively by 4.2 million Bambara people and about 10 million second-language users.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_dyula_language",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a language of the Mande language family spoken mainly in Burkina Faso?",
+      "options": [
+        "Dyula",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dyula is a language spoken in Ivory Coast.",
+      "sources": [
+        {
+          "title": "Dyula language",
+          "url": "https://en.wikipedia.org/wiki/Dyula_language",
+          "claim": "Dyula language Dyula, Jula, Juula or Dioula (Julakan ߖߎ߬ߟߊ߬ߞߊ߲) is a language of the Mande language family spoken mainly in Burkina Faso, Côte d'Ivoire and Mali, as well as other countries, including Ghana, Guinea and Guinea-Bissau.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Dyula language Dyula, Jula, Juula or Dioula (Julakan ߖߎ߬ߟߊ߬ߞߊ߲) is a language of the Mande language family spoken mainly in Burkina Faso, Côte d'Ivoire and Mali, as well as other countries, including Ghana, Guinea and Guinea-Bissau.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_ewe_language",
+      "region": "west",
+      "country": "Ghana",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a language of southeastern Ghana and southern Togo?",
+      "options": [
+        "Ewe",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ewe is a language spoken in Ghana and Togo.",
+      "sources": [
+        {
+          "title": "Ewe language",
+          "url": "https://en.wikipedia.org/wiki/Ewe_language",
+          "claim": "Ewe is a language spoken in Ghana and Togo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ewe language Ewe (endonym: Eʋe or Eʋegbe [ɛβɛɡ͡bɛ]) is a language spoken by approximately 5 million people in West Africa, mainly in Ghana and Togo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_fon_language",
+      "region": "west",
+      "country": "Benin",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a major language of southern Benin?",
+      "options": [
+        "Fon",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fon is a language spoken in Benin.",
+      "sources": [
+        {
+          "title": "Fon language",
+          "url": "https://en.wikipedia.org/wiki/Fon_language",
+          "claim": "Fon is a language spoken in Benin",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Standard Fon is the primary target of language planning efforts in Benin, although separate efforts exist for Gun, Gen, and other languages of the country.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_hausa_language",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a major language of northern Nigeria and the Sahel?",
+      "options": [
+        "Hausa",
+        "Yoruba",
+        "Igbo",
+        "Akan"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hausa is a language spoken in Nigeria.",
+      "sources": [
+        {
+          "title": "Hausa language",
+          "url": "https://en.wikipedia.org/wiki/Hausa_language",
+          "claim": "Hausa is a language spoken in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "It has replaced many other languages especially in the north-central and north-eastern part of Nigeria and continues to gain popularity in other parts of Africa as a result of Hausa movies and music which spread out throughout the region.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_igbo_language",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a major language of southeastern Nigeria?",
+      "options": [
+        "Igbo",
+        "Yoruba",
+        "Hausa",
+        "Akan"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Igbo is a language spoken in Nigeria.",
+      "sources": [
+        {
+          "title": "Igbo language",
+          "url": "https://en.wikipedia.org/wiki/Igbo_language",
+          "claim": "Igbo is a language spoken in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Igbo language Igbo (English: EE-boh, US also IG-boh; Standard Igbo: Ásụ̀sụ́ Ìgbò [ásʊ̀sʊ̀ ìɡ͡bò] ) is the principal native language of the Igbo people, an ethnicity in the Southeastern part of Nigeria.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_krio_language",
+      "region": "west",
+      "country": "Sierra Leone",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name an English-based creole of Sierra Leone?",
+      "options": [
+        "Krio",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Krio is a creole language of Sierra Leone.",
+      "sources": [
+        {
+          "title": "Krio language",
+          "url": "https://en.wikipedia.org/wiki/Krio_language",
+          "claim": "Krio is a creole language of Sierra Leone",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Krio language The Sierra Leonean Creole or Krio is an English-based creole language that is the lingua franca spoken throughout the West African nation of Sierra Leone and, like other varieties of West African Pidgin English originated as a language of contact between colonizing British and African slave traders for the transatlantic slave trade.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_mossi_language",
+      "region": "west",
+      "country": "Burkina Faso",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name the language of the Mossi people in Burkina Faso?",
+      "options": [
+        "Mooré",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mooré is a language spoken in Burkina Faso.",
+      "sources": [
+        {
+          "title": "Mossi language",
+          "url": "https://en.wikipedia.org/wiki/Mossi_language",
+          "claim": "Mooré is a language spoken in Burkina Faso",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mooré Mooré, also known as Mossi, is a Gur language of the Oti–Volta branch and one of the four official languages of Burkina Faso.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_nigerian_pidgin",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name an English-based lingua franca used across Nigeria?",
+      "options": [
+        "Nigerian Pidgin",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nigerian Pidgin is an English-based creole spoken in Nigeria.",
+      "sources": [
+        {
+          "title": "Nigerian Pidgin",
+          "url": "https://en.wikipedia.org/wiki/Nigerian_Pidgin",
+          "claim": "Nigerian Pidgin is an English-based creole spoken in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nigerian Pidgin Nigerian Pidgin or NPE, also known simply as Pidgin, Broken or as Naijá in scholarship, is an English-based creole language spoken as a lingua franca or vehicular language across Nigeria coming into existence during the 17th and 18th centuries as a result of contact between colonizing Britons and African slavers involved in the Atlantic slave trade.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_susu_language",
+      "region": "west",
+      "country": "Guinea",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name a language of coastal Guinea?",
+      "options": [
+        "Susu",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Susu is a language of Guinea.",
+      "sources": [
+        {
+          "title": "Susu language",
+          "url": "https://en.wikipedia.org/wiki/Susu_language",
+          "claim": "Susu is a language of Guinea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Susu language Susu (endonym: Susu: Sosoxui; French: Soussou) is the language of the Susu or Soso people of Guinea and Sierra Leone, West Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_temne_language",
+      "region": "west",
+      "country": "Sierra Leone",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name a major language of northern Sierra Leone?",
+      "options": [
+        "Temne",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Temne is a language of Sierra Leone.",
+      "sources": [
+        {
+          "title": "Temne language",
+          "url": "https://en.wikipedia.org/wiki/Temne_language",
+          "claim": "Temne is a language of Sierra Leone",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "In addition, Thomas's Specimens of Languages from Sierra Leone contains tables comparing Temne vocabulary to Kissi and other related languages.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_twi",
+      "region": "west",
+      "country": "Ghana",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a widely spoken language of Ghana and the main native language of the Akan people?",
+      "options": [
+        "Twi",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Twi is a dialect of Akan spoken in Ghana.",
+      "sources": [
+        {
+          "title": "Twi",
+          "url": "https://en.wikipedia.org/wiki/Twi",
+          "claim": "Twi-Fante language Twi-Fante, commonly referred to by its speakers as either Twi (pronounced ) or Fante () and academically and institutionally known by the broader term Akan (pronounced ), is a widely spoken language of Ghana and the main native language of the Akan people.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Twi-Fante language Twi-Fante, commonly referred to by its speakers as either Twi (pronounced ) or Fante () and academically and institutionally known by the broader term Akan (pronounced ), is a widely spoken language of Ghana and the main native language of the Akan people.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_wolof_language",
+      "region": "west",
+      "country": "Senegal",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a main language of Senegal?",
+      "options": [
+        "Wolof",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wolof is a language of Senegal.",
+      "sources": [
+        {
+          "title": "Wolof language",
+          "url": "https://en.wikipedia.org/wiki/Wolof_language",
+          "claim": "Wolof is a language of Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Wolof language Wolof ( WOH-lof; Wolof làkk, وࣷلࣷفْ لࣵکّ) is a Niger–Congo language spoken by the Wolof people in much of the West African subregion of Senegambia that is split between the countries of Senegal, the Gambia and Mauritania.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_lang_yoruba_language",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a major language of southwestern Nigeria?",
+      "options": [
+        "Yoruba",
+        "Igbo",
+        "Hausa",
+        "Akan"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Yoruba is a language spoken in Nigeria.",
+      "sources": [
+        {
+          "title": "Yoruba language",
+          "url": "https://en.wikipedia.org/wiki/Yoruba_language",
+          "claim": "Yoruba is a language spoken in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Èdè Yorùbá [èdè jōɾùbá]) is an Atlantic–Congo language that is spoken in West Africa, primarily in South West Nigeria, Benin, and parts of Togo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_musi_afrobeats",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is an umbrella term to describe popular music from West Africa and the diaspora that initially developed in Nigeria?",
+      "options": [
+        "Afrobeats",
+        "Highlife",
+        "Fuji music",
+        "Jùjú music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Afrobeats is a contemporary music genre from Nigeria and Ghana.",
+      "sources": [
+        {
+          "title": "Afrobeats",
+          "url": "https://en.wikipedia.org/wiki/Afrobeats",
+          "claim": "Afrobeats Afrobeats, not to be confused with Afrobeat or Afroswing, is an umbrella term to describe popular music from West Africa and the diaspora that initially developed in Nigeria, Ghana, and the UK in the 2000s and 2010s.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Afrobeats Afrobeats, not to be confused with Afrobeat or Afroswing, is an umbrella term to describe popular music from West Africa and the diaspora that initially developed in Nigeria, Ghana, and the UK in the 2000s and 2010s.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_musi_apala",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a Yoruba percussion genre that predates fuji?",
+      "options": [
+        "Apala",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Apala is a genre of Nigerian Yoruba music.",
+      "sources": [
+        {
+          "title": "Apala",
+          "url": "https://en.wikipedia.org/wiki/Apala",
+          "claim": "Apala is a genre of Nigerian Yoruba music",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Apala Apala (or akpala) is a music genre originally developed by the Yoruba people of Nigeria, during the country's history as a colony of the British Empire. It is a percussion-based style that originated in the late 1930s.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_musi_azonto",
+      "region": "west",
+      "country": "Ghana",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a playful Ghanaian dance that spread with hiplife and afrobeats?",
+      "options": [
+        "Azonto",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Azonto is a dance from Ghana.",
+      "sources": [
+        {
+          "title": "Azonto",
+          "url": "https://en.wikipedia.org/wiki/Azonto",
+          "claim": "Azonto is a dance from Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "In 2013, most Ghanaian music videos were full of Azonto dance and later spread to most African countries and other parts of the world. Popular music researcher Jesse Weaver Shipley claims that like hiplife, the popularity of Azonto is a direct result of its interactions in diaspora.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_musi_balafon",
+      "region": "west",
+      "country": "Mali",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a gourd-resonated xylophone, a type of struck idiophone?",
+      "options": [
+        "Balafon",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The balafon is a wooden xylophone from West Africa.",
+      "sources": [
+        {
+          "title": "Balafon",
+          "url": "https://en.wikipedia.org/wiki/Balafon",
+          "claim": "Balafon The balafon (pronounced , or, by analogy with xylophone etc., ) is a gourd-resonated xylophone, a type of struck idiophone.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Balafon The balafon (pronounced , or, by analogy with xylophone etc., ) is a gourd-resonated xylophone, a type of struck idiophone.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_musi_coupe_decale",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a type of popular dance music originating in Côte d'Ivoire?",
+      "options": [
+        "Coupé-décalé",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Coupé-décalé is a music and dance genre from Côte d'Ivoire.",
+      "sources": [
+        {
+          "title": "Coupé-décalé",
+          "url": "https://en.wikipedia.org/wiki/Coup%C3%A9-d%C3%A9cal%C3%A9",
+          "claim": "Coupé-décalé Coupé-décalé (French pronunciation: [kupe dekale]) is a type of popular dance music originating in Côte d'Ivoire.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Coupé-décalé Coupé-décalé (French pronunciation: [kupe dekale]) is a type of popular dance music originating in Côte d'Ivoire.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_musi_djembe",
+      "region": "west",
+      "country": "Guinea",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the goblet drum widely played across the Mande world?",
+      "options": [
+        "Djembe",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The djembe is a rope-tuned drum from West Africa.",
+      "sources": [
+        {
+          "title": "Djembe",
+          "url": "https://en.wikipedia.org/wiki/Djembe",
+          "claim": "The djembe is a rope-tuned drum from West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Djembe A djembe or jembe ( JEM-bay; from Malinke jembe [dʲẽbe], N'Ko: ߖߋ߲߰ߓߋ) is a rope-tuned, skin-covered goblet drum played with bare hands from the Sabar family, originally from Senegal that is widely used in West Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_musi_highlife",
+      "region": "west",
+      "country": "Ghana",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a Ghanaian music genre that originated along the coastal cities of present-day Ghana in the 19th century?",
+      "options": [
+        "Highlife",
+        "Afrobeat",
+        "Fuji music",
+        "Jùjú music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Highlife is a music genre that originated in Ghana.",
+      "sources": [
+        {
+          "title": "Highlife",
+          "url": "https://en.wikipedia.org/wiki/Highlife",
+          "claim": "Highlife Highlife is a Ghanaian music genre that originated along the coastal cities of present-day Ghana in the 19th century, during its history as a colony of the British and through its trade routes in coastal areas.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Highlife Highlife is a Ghanaian music genre that originated along the coastal cities of present-day Ghana in the 19th century, during its history as a colony of the British and through its trade routes in coastal areas.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_musi_hiplife",
+      "region": "west",
+      "country": "Ghana",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a Ghanaian musical style that fuses Ghanaian culture and hip hop?",
+      "options": [
+        "Hiplife",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hiplife is a Ghanaian music genre.",
+      "sources": [
+        {
+          "title": "Hiplife",
+          "url": "https://en.wikipedia.org/wiki/Hiplife",
+          "claim": "Hiplife Hiplife is a Ghanaian musical style that fuses Ghanaian culture and hip hop.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Hiplife Hiplife is a Ghanaian musical style that fuses Ghanaian culture and hip hop.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_musi_kora_instrument",
+      "region": "west",
+      "country": "Mali",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a stringed instrument used extensively in West Africa?",
+      "options": [
+        "Kora",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kora is a string instrument from West Africa.",
+      "sources": [
+        {
+          "title": "Kora (instrument)",
+          "url": "https://en.wikipedia.org/wiki/Kora_(instrument)",
+          "claim": "Kora (instrument) The kora (Manding languages: ߞߐߙߊ kɔra) is a stringed instrument used extensively in West Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kora (instrument) The kora (Manding languages: ߞߐߙߊ kɔra) is a stringed instrument used extensively in West Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_musi_mbalax",
+      "region": "west",
+      "country": "Senegal",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the urban dance music of Senegal?",
+      "options": [
+        "Mbalax",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mbalax is a popular music of Senegal.",
+      "sources": [
+        {
+          "title": "Mbalax",
+          "url": "https://en.wikipedia.org/wiki/Mbalax",
+          "claim": "Mbalax Mbalax (or mbalakh) is the urban dance music of Senegal, Mauritania and the Gambia.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mbalax Mbalax (or mbalakh) is the urban dance music of Senegal, Mauritania and the Gambia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_musi_sabar",
+      "region": "west",
+      "country": "Senegal",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a Senegalese drum and dance tradition?",
+      "options": [
+        "Sabar",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sabar is a drum from Senegal.",
+      "sources": [
+        {
+          "title": "Sabar",
+          "url": "https://en.wikipedia.org/wiki/Sabar",
+          "claim": "Sabar is a drum from Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Among its most renowned exponents was the Senegalese musician Doudou N'Diaye Rose. Sabar is also recognized as a type of dance and the style of music played while using this drum.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_nigeria_argungu_location",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Near which river is the Argungu International Fishing and Cultural Festival held?",
+      "options": [
+        "Matan Fada River",
+        "Senegal River",
+        "Volta River",
+        "Geba River"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The festival gathers communities near the Matan Fada River in north-western Nigeria.",
+      "sources": [
+        {
+          "title": "Argungu international fishing and cultural festival",
+          "url": "https://ich.unesco.org/en/RL/argungu-international-fishing-and-cultural-festival-00901",
+          "claim": "The Argungu festival is held near the Matan Fada River in north-western Nigeria and features water competitions such as hand fishing and canoe racing."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Inscribed in 2016 ( 11.COM ) on the Representative List of the Intangible Cultural Heritage of Humanity play_arrow © Federal Ministry of Tourism, Culture & National Orientation (Nigeria), 2015 Every year in the north-west of Nigeria, communities gather to participate in the Argungu International Fishing and Cultural Festival near the Matan Fada River. The four day festival, which runs between late February and March, features kabanci – a series of water competitions including hand fishing, canoe racing, wild duck catching – as well as other traditional practices, such as the local style of wrestling and boxing.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_nigeria_argungu_water_events",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which activities are part of Argungu’s kabanci water competitions?",
+      "options": [
+        "Horse dressage and archery",
+        "Mask carving and xylophone tuning",
+        "Stone quarrying and wall plastering",
+        "Hand fishing and canoe racing"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "Kabanci includes hand fishing, canoe racing and other water competitions alongside additional local sports.",
+      "sources": [
+        {
+          "title": "Argungu international fishing and cultural festival",
+          "url": "https://ich.unesco.org/en/RL/argungu-international-fishing-and-cultural-festival-00901",
+          "claim": "The Argungu festival is held near the Matan Fada River in north-western Nigeria and features water competitions such as hand fishing and canoe racing."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Inscribed in 2016 ( 11.COM ) on the Representative List of the Intangible Cultural Heritage of Humanity play_arrow © Federal Ministry of Tourism, Culture & National Orientation (Nigeria), 2015 Every year in the north-west of Nigeria, communities gather to participate in the Argungu International Fishing and Cultural Festival near the Matan Fada River. The four day festival, which runs between late February and March, features kabanci – a series of water competitions including hand fishing, canoe racing, wild duck catching – as well as other traditional practices, such as the local style of wrestling and boxing.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_ama_ata_aidoo",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Ghanaian author, poet, playwright, politician, and academician?",
+      "options": [
+        "Ama Ata Aidoo",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ama Ata Aidoo was a Ghanaian author.",
+      "sources": [
+        {
+          "title": "Ama Ata Aidoo",
+          "url": "https://en.wikipedia.org/wiki/Ama_Ata_Aidoo",
+          "claim": "Ama Ata Aidoo Ama Ata Aidoo (23 March 1942 – 31 May 2023) was a Ghanaian author, poet, playwright, politician, and academician.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ama Ata Aidoo Ama Ata Aidoo (23 March 1942 – 31 May 2023) was a Ghanaian author, poet, playwright, politician, and academician.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_buchi_emecheta",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian writer, whose work includes novels, plays, autobiography, and children's books?",
+      "options": [
+        "Buchi Emecheta",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Buchi Emecheta was a Nigerian novelist.",
+      "sources": [
+        {
+          "title": "Buchi Emecheta",
+          "url": "https://en.wikipedia.org/wiki/Buchi_Emecheta",
+          "claim": "Buchi Emecheta Buchi Emecheta ( ; born Florence Onyebuchi Emecheta; 21 July 1944 – 25 January 2017) was a Nigerian writer, whose work includes novels, plays, autobiography, and children's books.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Buchi Emecheta Buchi Emecheta ( ; born Florence Onyebuchi Emecheta; 21 July 1944 – 25 January 2017) was a Nigerian writer, whose work includes novels, plays, autobiography, and children's books.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_chimamanda_ngozi_adichie",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Nigerian writer, whose works include fiction, nonfiction, and lectures?",
+      "options": [
+        "Chimamanda Ngozi Adichie",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chimamanda Ngozi Adichie is a Nigerian writer.",
+      "sources": [
+        {
+          "title": "Chimamanda Ngozi Adichie",
+          "url": "https://en.wikipedia.org/wiki/Chimamanda_Ngozi_Adichie",
+          "claim": "Chimamanda Ngozi Adichie Chimamanda Ngozi Adichie (; born 15 September 1977) is a Nigerian writer, whose works include fiction, nonfiction, and lectures.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Chimamanda Ngozi Adichie Chimamanda Ngozi Adichie (; born 15 September 1977) is a Nigerian writer, whose works include fiction, nonfiction, and lectures.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_chinua_achebe",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Nigerian novelist who wrote Things Fall Apart?",
+      "options": [
+        "Chinua Achebe",
+        "Mansa Musa",
+        "Wole Soyinka",
+        "Chimamanda Ngozi Adichie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chinua Achebe was a Nigerian novelist.",
+      "sources": [
+        {
+          "title": "Chinua Achebe",
+          "url": "https://en.wikipedia.org/wiki/Chinua_Achebe",
+          "claim": "Chinua Achebe was a Nigerian novelist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Chinua Achebe Chinua Achebe ( ; born Albert Chinụalụmọgụ Achebe; 16 November 1930 – 21 March 2013) was a Nigerian novelist, poet, and critic who is regarded as a central figure of modern African literature. His first novel and magnum opus, Things Fall Apart (1958), occupies a pivotal place in African literature and remains the most widely studied, translated, and read African novel.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_chinua_achebe3",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Nigerian novelist, poet, and critic who is regarded as a central figure of modern African literature?",
+      "options": [
+        "Chinua Achebe",
+        "Mansa Musa",
+        "Wole Soyinka",
+        "Chimamanda Ngozi Adichie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chinua Achebe is a Nigerian novelist.",
+      "sources": [
+        {
+          "title": "Chinua Achebe",
+          "url": "https://en.wikipedia.org/wiki/Chinua_Achebe",
+          "claim": "Chinua Achebe Chinua Achebe ( ; born Albert Chinụalụmọgụ Achebe; 16 November 1930 – 21 March 2013) was a Nigerian novelist, poet, and critic who is regarded as a central figure of modern African literature.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Chinua Achebe Chinua Achebe ( ; born Albert Chinụalụmọgụ Achebe; 16 November 1930 – 21 March 2013) was a Nigerian novelist, poet, and critic who is regarded as a central figure of modern African literature.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_fela_kuti",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Nigerian musician who created afrobeat?",
+      "options": [
+        "Fela Kuti",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fela Kuti was a Nigerian musician.",
+      "sources": [
+        {
+          "title": "Fela Kuti",
+          "url": "https://en.wikipedia.org/wiki/Fela_Kuti",
+          "claim": "Fela Kuti was a Nigerian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Fela Kuti Fela Aníkúlápó Kútì ( FEH-lə KOO-tee; Yoruba: [fɛ̄lá āníkúlák͡pó kútì] ; born Olufela Olusegun Oludotun Ransome-Kuti; 15 October 1938 – 2 August 1997) was a Nigerian musician and political activist. He is regarded as the principal innovator of Afrobeat, a Nigerian music genre that combines West African music with American funk and jazz.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_funmilayo_ransome_kuti",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Nigerian educator, political organizer, and women's rights advocate who intellectually engaged with anti-imperialist?",
+      "options": [
+        "Funmilayo Ransome-Kuti",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Funmilayo Ransome-Kuti was a Nigerian activist.",
+      "sources": [
+        {
+          "title": "Funmilayo Ransome-Kuti",
+          "url": "https://en.wikipedia.org/wiki/Funmilayo_Ransome-Kuti",
+          "claim": "Funmilayo Ransome-Kuti Chief Funmilayo Ransome-Kuti (born Frances Abigail Olufunmilayo Olufela Folorunso Thomas; 25 October 1900 – 13 April 1978), also known as Funmilayo Aníkúlápó-Kuti, was a Nigerian educator, political organizer, and women's rights advocate who intellectually engaged with anti-imperialist, Pan-Africanist, and feminist ideologies.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Funmilayo Ransome-Kuti Chief Funmilayo Ransome-Kuti (born Frances Abigail Olufunmilayo Olufela Folorunso Thomas; 25 October 1900 – 13 April 1978), also known as Funmilayo Aníkúlápó-Kuti, was a Nigerian educator, political organizer, and women's rights advocate who intellectually engaged with anti-imperialist, Pan-Africanist, and feminist ideologies.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_kofi_annan",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Ghanaian diplomat who served as UN Secretary-General?",
+      "options": [
+        "Kofi Annan",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kofi Annan was a Ghanaian diplomat and Secretary-General of the United Nations.",
+      "sources": [
+        {
+          "title": "Kofi Annan",
+          "url": "https://en.wikipedia.org/wiki/Kofi_Annan",
+          "claim": "Kofi Annan was a Ghanaian diplomat and Secretary-General of the United Nations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kofi Annan Kofi Atta Annan (8 April 1938 – 18 August 2018) was a Ghanaian diplomat and statesman who served as the seventh secretary-general of the United Nations from 1997 to 2006.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_kwame_nkrumah",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is Ghana's independence leader and first prime minister?",
+      "options": [
+        "Kwame Nkrumah",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kwame Nkrumah was the first prime minister of Ghana.",
+      "sources": [
+        {
+          "title": "Kwame Nkrumah",
+          "url": "https://en.wikipedia.org/wiki/Kwame_Nkrumah",
+          "claim": "Kwame Nkrumah was the first prime minister of Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kwame Nkrumah Kwame Nkrumah (born Francis Nwia Kofi Nkrumah (ə)n-KROO-mə; 21 September 1909 – 27 April 1972) was a Ghanaian politician, political theorist and revolutionary. He served as Prime Minister of the Gold Coast from 1952 until 1957, when it gained independence from the United Kingdom.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_leopold_sedar_senghor",
+      "region": "west",
+      "country": "Senegal",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is Senegal's first president and a famous poet?",
+      "options": [
+        "Léopold Sédar Senghor",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Léopold Sédar Senghor was the first president of Senegal.",
+      "sources": [
+        {
+          "title": "Léopold Sédar Senghor",
+          "url": "https://en.wikipedia.org/wiki/L%C3%A9opold_S%C3%A9dar_Senghor",
+          "claim": "Léopold Sédar Senghor was the first president of Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Léopold Sédar Senghor Léopold Sédar Senghor ( song-GOR, French: [leɔpɔl sedaʁ sɑ̃ɡɔʁ], Wolof: Léwopóol Sedaar Seŋoor; 9 October 1906 – 20 December 2001) was a Senegalese politician, cultural theorist and poet who served as the first president of Senegal from 1960 to 1980.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_mansa_musa",
+      "region": "west",
+      "country": "Mali",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Mali Empire ruler famous for his wealth and his hajj?",
+      "options": [
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka",
+        "Chimamanda Ngozi Adichie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mansa Musa was the ruler of the Mali Empire.",
+      "sources": [
+        {
+          "title": "Mansa Musa",
+          "url": "https://en.wikipedia.org/wiki/Mansa_Musa",
+          "claim": "Mansa Musa was the ruler of the Mali Empire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mansa, 'ruler' or 'king' in Mandé, was the title of the ruler of the Mali Empire. In oral tradition and the Timbuktu Chronicles, Musa is further known as Kanku Musa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_ngozi_okonjo_iweala",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Nigerian economist who leads the World Trade Organization?",
+      "options": [
+        "Ngozi Okonjo-Iweala",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ngozi Okonjo-Iweala is a Nigerian economist.",
+      "sources": [
+        {
+          "title": "Ngozi Okonjo-Iweala",
+          "url": "https://en.wikipedia.org/wiki/Ngozi_Okonjo-Iweala",
+          "claim": "Ngozi Okonjo-Iweala is a Nigerian economist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ngozi Okonjo-Iweala Dr Ngozi Okonjo-Iweala (, Igbo pronunciation: [ŋ́gɔ́zí òkóꜜńdʒó ìwáàːlà] ; born 13 June 1954) is a Nigerian economist who has been serving as the director-general of the World Trade Organization since March 2021.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_nnamdi_azikiwe",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian politician, statesman, and revolutionary leader who served as the first native governor-general of Nigeria from 1960 to?",
+      "options": [
+        "Nnamdi Azikiwe",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nnamdi Azikiwe was the first president of Nigeria.",
+      "sources": [
+        {
+          "title": "Nnamdi Azikiwe",
+          "url": "https://en.wikipedia.org/wiki/Nnamdi_Azikiwe",
+          "claim": "Nnamdi Azikiwe Nnamdi Benjamin Azikiwe PC (; 16 November 1904 – 11 May 1996), commonly referred to as Zik of Africa, was a Nigerian politician, statesman, and revolutionary leader who served as the first native governor-general of Nigeria from 1960 to 1963 and the first president of Nigeria during the First Nigerian Republic (1963–1966).",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nnamdi Azikiwe Nnamdi Benjamin Azikiwe PC (; 16 November 1904 – 11 May 1996), commonly referred to as Zik of Africa, was a Nigerian politician, statesman, and revolutionary leader who served as the first native governor-general of Nigeria from 1960 to 1963 and the first president of Nigeria during the First Nigerian Republic (1963–1966).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_nnedi_okorafor",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Nigerian-American writer of Binti and Lagoon?",
+      "options": [
+        "Nnedi Okorafor",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nnedi Okorafor is a Nigerian-American writer.",
+      "sources": [
+        {
+          "title": "Nnedi Okorafor",
+          "url": "https://en.wikipedia.org/wiki/Nnedi_Okorafor",
+          "claim": "Nnedi Okorafor is a Nigerian-American writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nnedi Okorafor Nnedimma Nkemdili \"Nnedi\" Okorafor (formerly Okorafor-Mbachu; born April 8, 1974) is a Nigerian American writer of science fiction and fantasy for both children and adults.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_thomas_sankara",
+      "region": "west",
+      "country": "Burkina Faso",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the revolutionary president of Burkina Faso in the 1980s?",
+      "options": [
+        "Thomas Sankara",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Thomas Sankara was the president of Burkina Faso.",
+      "sources": [
+        {
+          "title": "Thomas Sankara",
+          "url": "https://en.wikipedia.org/wiki/Thomas_Sankara",
+          "claim": "Thomas Sankara was the president of Burkina Faso",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Thomas Sankara Thomas Isidore Noël Sankara (21 December 1949 – 15 October 1987) was a Burkinabé military officer, politician, Marxist and pan-Africanist revolutionary who served as the first president of Burkina Faso from 1983 until his assassination in 1987.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_peop_wole_soyinka",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian writer, playwright, and poet?",
+      "options": [
+        "Wole Soyinka",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Chimamanda Ngozi Adichie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wole Soyinka is a Nigerian writer.",
+      "sources": [
+        {
+          "title": "Wole Soyinka",
+          "url": "https://en.wikipedia.org/wiki/Wole_Soyinka",
+          "claim": "Wole Soyinka Akinwande Oluwole Babatunde Soyinka (; born 13 July 1934) is a Nigerian writer, playwright, and poet.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Wole Soyinka Akinwande Oluwole Babatunde Soyinka (; born 13 July 1934) is a Nigerian writer, playwright, and poet.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_angelique_kidjo",
+      "region": "west",
+      "country": "Benin",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a French-Beninese musician, actress, and activist?",
+      "options": [
+        "Angélique Kidjo",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Angélique Kidjo is a Beninese singer.",
+      "sources": [
+        {
+          "title": "Angélique Kidjo",
+          "url": "https://en.wikipedia.org/wiki/Ang%C3%A9lique_Kidjo",
+          "claim": "Angélique Kidjo Angélique Kpasseloko Hinto Hounsinou Kandjo Manta Zogbin Kidjo ( born 14 July 1960) is a French-Beninese musician, actress, and activist.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Angélique Kidjo Angélique Kpasseloko Hinto Hounsinou Kandjo Manta Zogbin Kidjo ( born 14 July 1960) is a French-Beninese musician, actress, and activist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_asake",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian singer, rapper, and songwriter?",
+      "options": [
+        "Asake",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Asake is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Asake",
+          "url": "https://en.wikipedia.org/wiki/Asake",
+          "claim": "Asake Ahmed Ololade (; born 13 January 1995), known professionally as Asake, is a Nigerian singer, rapper, and songwriter.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Asake Ahmed Ololade (; born 13 January 1995), known professionally as Asake, is a Nigerian singer, rapper, and songwriter.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_ayra_starr",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Beninese-born Nigerian singer-songwriter and producer?",
+      "options": [
+        "Ayra Starr",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ayra Starr is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Ayra Starr",
+          "url": "https://en.wikipedia.org/wiki/Ayra_Starr",
+          "claim": "Ayra Starr Oyinkansola Sarah Aderibigbe (; born 14 June 2002), known professionally as Ayra Starr ( EYE-rə-star), is a Beninese-born Nigerian singer-songwriter and producer.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ayra Starr Oyinkansola Sarah Aderibigbe (; born 14 June 2002), known professionally as Ayra Starr ( EYE-rə-star), is a Beninese-born Nigerian singer-songwriter and producer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_black_sherif",
+      "region": "west",
+      "country": "Ghana",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Ghanaian singer, rapper and fashion model?",
+      "options": [
+        "Black Sherif",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Black Sherif is a Ghanaian singer.",
+      "sources": [
+        {
+          "title": "Black Sherif",
+          "url": "https://en.wikipedia.org/wiki/Black_Sherif",
+          "claim": "Black Sherif Mohammed Ismail Sherif (born 9 January 2002), professionally known as Black Sherif and formerly Blacko, is a Ghanaian singer, rapper and fashion model.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Black Sherif Mohammed Ismail Sherif (born 9 January 2002), professionally known as Black Sherif and formerly Blacko, is a Ghanaian singer, rapper and fashion model.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_burna_boy",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Nigerian singer, songwriter, and record producer?",
+      "options": [
+        "Burna Boy",
+        "Nollywood",
+        "Wizkid",
+        "Davido"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Burna Boy is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Burna Boy",
+          "url": "https://en.wikipedia.org/wiki/Burna_Boy",
+          "claim": "Burna Boy Damini Ebunoluwa Ogulu (born 2 July 1991), known professionally as Burna Boy, is a Nigerian singer, songwriter, and record producer.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Burna Boy Damini Ebunoluwa Ogulu (born 2 July 1991), known professionally as Burna Boy, is a Nigerian singer, songwriter, and record producer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_genevieve_nnaji",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian actress, producer, and director?",
+      "options": [
+        "Genevieve Nnaji",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Genevieve Nnaji is a Nigerian actress.",
+      "sources": [
+        {
+          "title": "Genevieve Nnaji",
+          "url": "https://en.wikipedia.org/wiki/Genevieve_Nnaji",
+          "claim": "Genevieve Nnaji Genevieve Nnaji (; born 3 May 1979) is a Nigerian actress, producer, and director.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Genevieve Nnaji Genevieve Nnaji (; born 3 May 1979) is a Nigerian actress, producer, and director.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_nollywood",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the popular Nigerian film industry?",
+      "options": [
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid",
+        "Davido"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nollywood is the Nigerian film industry.",
+      "sources": [
+        {
+          "title": "Nollywood",
+          "url": "https://en.wikipedia.org/wiki/Nollywood",
+          "claim": "Nollywood is the Nigerian film industry",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nollywood Nollywood, a portmanteau of Nigeria and Hollywood, is a sobriquet that originally referred to the Nigerian film industry.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_olamide",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian rapper, singer, songwriter, and record executive?",
+      "options": [
+        "Olamide",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Olamide is a Nigerian rapper.",
+      "sources": [
+        {
+          "title": "Olamide",
+          "url": "https://en.wikipedia.org/wiki/Olamide",
+          "claim": "Olamide Olamide Gbenga Adedeji (; born 15 March 1989), known mononymously as Olamide, is a Nigerian rapper, singer, songwriter, and record executive.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Olamide Olamide Gbenga Adedeji (; born 15 March 1989), known mononymously as Olamide, is a Nigerian rapper, singer, songwriter, and record executive.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_salif_keita",
+      "region": "west",
+      "country": "Mali",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Malian singer known as the golden voice of Africa?",
+      "options": [
+        "Salif Keita",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Salif Keita is a Malian singer.",
+      "sources": [
+        {
+          "title": "Salif Keita",
+          "url": "https://en.wikipedia.org/wiki/Salif_Keita",
+          "claim": "Salif Keita is a Malian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Salif Keita Salif Keïta (IPA: [salif keita]) (born 25 August 1949) is a Malian singer-songwriter, referred to as the \"Golden Voice of Africa\".",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_sarkodie_rapper",
+      "region": "west",
+      "country": "Ghana",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Ghanaian rapper, songwriter, and entrepreneur from Tema?",
+      "options": [
+        "Sarkodie",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sarkodie is a Ghanaian rapper.",
+      "sources": [
+        {
+          "title": "Sarkodie (rapper)",
+          "url": "https://en.wikipedia.org/wiki/Sarkodie_(rapper)",
+          "claim": "Sarkodie (rapper) Michael Owusu Addo (born 10 July 1985), known professionally as Sarkodie (), is a Ghanaian rapper, songwriter, and entrepreneur from Tema.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Sarkodie (rapper) Michael Owusu Addo (born 10 July 1985), known professionally as Sarkodie (), is a Ghanaian rapper, songwriter, and entrepreneur from Tema.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_shatta_wale",
+      "region": "west",
+      "country": "Ghana",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the Ghanaian dancehall artist?",
+      "options": [
+        "Shatta Wale",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shatta Wale is a Ghanaian musician.",
+      "sources": [
+        {
+          "title": "Shatta Wale",
+          "url": "https://en.wikipedia.org/wiki/Shatta_Wale",
+          "claim": "Shatta Wale is a Ghanaian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "The beef escalated when Shatta Wale and his crew went up on stage to congratulate Stonebwoy after he won the Vodafone Ghana Music Awards for Dancehall Artiste of the Year.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_stonebwoy",
+      "region": "west",
+      "country": "Ghana",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Ghanaian reggae and dancehall musician from Ashaiman?",
+      "options": [
+        "Stonebwoy",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Stonebwoy is a Ghanaian musician.",
+      "sources": [
+        {
+          "title": "Stonebwoy",
+          "url": "https://en.wikipedia.org/wiki/Stonebwoy",
+          "claim": "Stonebwoy Livingstone Etse Satekla (born 5 March 1988), better known by his stage name Stonebwoy, is a Ghanaian reggae and dancehall musician from Ashaiman, Accra.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Stonebwoy Livingstone Etse Satekla (born 5 March 1988), better known by his stage name Stonebwoy, is a Ghanaian reggae and dancehall musician from Ashaiman, Accra.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_tems",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Nigerian singer who featured on Essence?",
+      "options": [
+        "Tems",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tems is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Tems",
+          "url": "https://en.wikipedia.org/wiki/Tems",
+          "claim": "Tems is a Nigerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "On 23 April 2020, Tems was featured alongside fellow Nigerian singer Davido on a reworked version of American singer-songwriter Khalid and English electronic music duo Disclosure's single, \"Know Your Worth\".",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_tiwa_savage",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Nigerian singer often called a queen of afrobeats?",
+      "options": [
+        "Tiwa Savage",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tiwa Savage is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Tiwa Savage",
+          "url": "https://en.wikipedia.org/wiki/Tiwa_Savage",
+          "claim": "Tiwa Savage is a Nigerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tiwa Savage Tiwatope Omolara Savage (born 5 February 1980), known professionally as Tiwa Savage (), is a Nigerian singer, songwriter and actress. Savage sings in English, Nigerian Pidgin, and Yoruba; her music is a blend of afrobeats, R&B, afropop, pop and hip-hop.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_wizkid",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Nigerian afrobeats star of Made in Lagos?",
+      "options": [
+        "Wizkid",
+        "Nollywood",
+        "Burna Boy",
+        "Davido"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wizkid is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Wizkid",
+          "url": "https://en.wikipedia.org/wiki/Wizkid",
+          "claim": "Wizkid is a Nigerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Wizkid Ayodeji Ibrahim Balogun (; born 16 July 1990), known professionally as Wizkid, is a Nigerian singer and songwriter. Born in the Ojuelegba suburb of Surulere, Lagos, Wizkid is a voice in the emerging Afrobeats movement.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_popc_youssou_n_dour",
+      "region": "west",
+      "country": "Senegal",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Senegalese mbalax superstar?",
+      "options": [
+        "Youssou N'Dour",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Youssou N'Dour is a Senegalese singer.",
+      "sources": [
+        {
+          "title": "Youssou N'Dour",
+          "url": "https://en.wikipedia.org/wiki/Youssou_N'Dour",
+          "claim": "Youssou N'Dour is a Senegalese singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Youssou N'Dour Youssou \"Madjiguène\" N'Dour (also Ndour, French: [jusu (ɛ)nduʁ]; Wolof: Yuusu \"Maajigéen\" Nduur [juːsu ⁿd̺uːɾ]; born 1 October 1959) is a Senegalese singer, songwriter, musician, composer, and politician. N'Dour helped develop a style of popular Senegambian music known as mbalax, a genre that has sacred origins in the Serer music njuup tradition and ndut initiation ceremonies.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_prov_sankofa2",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PROVERBS",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "The Akan idea of Sankofa means go back and what?",
+      "options": [
+        "get",
+        "sell",
+        "hide",
+        "burn"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sankofa is an Akan word. Literally, it means go back and get.",
+      "sources": [
+        {
+          "title": "Sankofa",
+          "url": "https://en.wikipedia.org/wiki/Sankofa",
+          "claim": "Sankofa is an Akan word meaning go back and get",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Sankofa Sankofa (pronounced SAHN-koh-fah) is a word in the Akan language of Ghana meaning \"to retrieve\" (literally \"go back and get\"; san - to return; ko - to go; fa - to fetch, to seek and take) This Adinkra symbol is represented either with a stylized heart shape or by a bird with its head turned backwards while its feet face forward carrying a precious egg in its mouth.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_asisat_oshoala",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Nigerian striker and multiple African women's player of the year?",
+      "options": [
+        "Asisat Oshoala",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Asisat Oshoala is a Nigerian footballer.",
+      "sources": [
+        {
+          "title": "Asisat Oshoala",
+          "url": "https://en.wikipedia.org/wiki/Asisat_Oshoala",
+          "claim": "Asisat Oshoala is a Nigerian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Asisat Oshoala Asisat Lamina Oshoala (born 9 October 1994) is a Nigerian professional footballer who plays as a striker for Saudi Women's Premier League club Al Hilal and the Nigeria national team. She is one of the most celebrated African female footballers of all time, having won African Women's Footballer of the Year a record six times.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_didier_drogba",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is an Ivorian former professional footballer who played as a striker?",
+      "options": [
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha",
+        "Nwankwo Kanu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Didier Drogba is an Ivorian footballer.",
+      "sources": [
+        {
+          "title": "Didier Drogba",
+          "url": "https://en.wikipedia.org/wiki/Didier_Drogba",
+          "claim": "Didier Drogba Didier Yves Drogba Tébily (French pronunciation: [didje iv dʁɔɡba tebili]; born 11 March 1978) is an Ivorian former professional footballer who played as a striker.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Didier Drogba Didier Yves Drogba Tébily (French pronunciation: [didje iv dʁɔɡba tebili]; born 11 March 1978) is an Ivorian former professional footballer who played as a striker.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_franck_kessie",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Ivorian professional footballer who plays as a midfielder for Serie A club Atalanta and captains the Ivory Coast national team?",
+      "options": [
+        "Franck Kessié",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Franck Kessié is an Ivorian footballer.",
+      "sources": [
+        {
+          "title": "Franck Kessié",
+          "url": "https://en.wikipedia.org/wiki/Franck_Kessi%C3%A9",
+          "claim": "Franck Kessié Franck Yannick Kessié (born 19 December 1996) is an Ivorian professional footballer who plays as a midfielder for Serie A club Atalanta and captains the Ivory Coast national team.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Franck Kessié Franck Yannick Kessié (born 19 December 1996) is an Ivorian professional footballer who plays as a midfielder for Serie A club Atalanta and captains the Ivory Coast national team.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_ghana_national_football_team",
+      "region": "west",
+      "country": "Ghana",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the nickname of Ghana's men's football team?",
+      "options": [
+        "Black Stars",
+        "Sadio Mané",
+        "Super Eagles",
+        "Lions of Teranga"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Ghana national football team is nicknamed the Black Stars.",
+      "sources": [
+        {
+          "title": "Ghana national football team",
+          "url": "https://en.wikipedia.org/wiki/Ghana_national_football_team",
+          "claim": "The Ghana national football team is nicknamed the Black Stars",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ghana national football team The Ghana national football team represents Ghana in men's international association football. It is nicknamed the Black Stars after the Black Star of Africa in the flag of Ghana.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_hakeem_olajuwon",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Nigerian-born basketball legend of the Houston Rockets?",
+      "options": [
+        "Hakeem Olajuwon",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hakeem Olajuwon is a Nigerian-American basketball player.",
+      "sources": [
+        {
+          "title": "Hakeem Olajuwon",
+          "url": "https://en.wikipedia.org/wiki/Hakeem_Olajuwon",
+          "claim": "Hakeem Olajuwon is a Nigerian-American basketball player",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Hakeem Olajuwon Hakeem Abdul Olajuwon (born January 21, 1963), nicknamed \"the Dream\", is a Nigerian and American former professional basketball player who played 18 seasons in the National Basketball Association (NBA), primarily with the Houston Rockets.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_jay_jay_okocha",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Nigerian midfielder famous for his tricks?",
+      "options": [
+        "Jay-Jay Okocha",
+        "Didier Drogba",
+        "George Weah",
+        "Nwankwo Kanu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jay-Jay Okocha is a Nigerian former footballer.",
+      "sources": [
+        {
+          "title": "Jay-Jay Okocha",
+          "url": "https://en.wikipedia.org/wiki/Jay-Jay_Okocha",
+          "claim": "Jay-Jay Okocha is a Nigerian former footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Jay-Jay Okocha Augustine Azuka \"Jay-Jay\" Okocha ( ə-KOTCH-ə; born 14 August 1973) is a Nigerian former professional footballer who played as an attacking midfielder.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_john_obi_mikel",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian former professional footballer who played as a defensive midfielder?",
+      "options": [
+        "John Obi Mikel",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "John Obi Mikel is a Nigerian former footballer.",
+      "sources": [
+        {
+          "title": "John Obi Mikel",
+          "url": "https://en.wikipedia.org/wiki/John_Obi_Mikel",
+          "claim": "Mikel John Obi Mikel John Obi ( ; born John Michael Nchekwube Obinna; 22 April 1987), also known as John Obi Mikel, is a Nigerian former professional footballer who played as a defensive midfielder.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mikel John Obi Mikel John Obi ( ; born John Michael Nchekwube Obinna; 22 April 1987), also known as John Obi Mikel, is a Nigerian former professional footballer who played as a defensive midfielder.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_michael_essien",
+      "region": "west",
+      "country": "Ghana",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Ghanaian football coach and former player who is currently an assistant coach at Danish Superliga club Nordsjælland?",
+      "options": [
+        "Michael Essien",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Michael Essien is a Ghanaian former footballer.",
+      "sources": [
+        {
+          "title": "Michael Essien",
+          "url": "https://en.wikipedia.org/wiki/Michael_Essien",
+          "claim": "Michael Essien Michael Essien (born 3 December 1982) is a Ghanaian football coach and former player who is currently an assistant coach at Danish Superliga club Nordsjælland.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Michael Essien Michael Essien (born 3 December 1982) is a Ghanaian football coach and former player who is currently an assistant coach at Danish Superliga club Nordsjælland.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_mohammed_kudus",
+      "region": "west",
+      "country": "Ghana",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the Ghanaian midfielder who plays in European leagues?",
+      "options": [
+        "Mohammed Kudus",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mohammed Kudus is a Ghanaian footballer.",
+      "sources": [
+        {
+          "title": "Mohammed Kudus",
+          "url": "https://en.wikipedia.org/wiki/Mohammed_Kudus",
+          "claim": "Mohammed Kudus is a Ghanaian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mohammed Kudus Mohammed Kudus (born 2 August 2000) is a Ghanaian professional footballer who plays as a winger or attacking midfielder for Premier League club Tottenham Hotspur and the Ghana national team.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_nigeria_women_s_national_football_team",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the nickname of Nigeria's women's football team?",
+      "options": [
+        "Super Falcons",
+        "Sadio Mané",
+        "Super Eagles",
+        "Black Stars"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Nigeria women's national football team is nicknamed the Super Falcons.",
+      "sources": [
+        {
+          "title": "Nigeria women's national football team",
+          "url": "https://en.wikipedia.org/wiki/Nigeria_women's_national_football_team",
+          "claim": "The Nigeria women's national football team is nicknamed the Super Falcons",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nigeria women's national football team The Nigeria women's national football team, nicknamed the Super Falcons, represents Nigeria in international women's football and is controlled by the Nigeria Football Federation (NFF).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_nwankwo_kanu",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian former professional footballer who played as a forward?",
+      "options": [
+        "Nwankwo Kanu",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nwankwo Kanu is a Nigerian former footballer.",
+      "sources": [
+        {
+          "title": "Nwankwo Kanu",
+          "url": "https://en.wikipedia.org/wiki/Nwankwo_Kanu",
+          "claim": "Nwankwo Kanu Nwankwo Christian Kanu (; born 1 August 1976) is a Nigerian former professional footballer who played as a forward.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nwankwo Kanu Nwankwo Christian Kanu (; born 1 August 1976) is a Nigerian former professional footballer who played as a forward.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_sadio_mane",
+      "region": "west",
+      "country": "Senegal",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Senegalese professional footballer who plays as a left winger for Saudi Pro League club Al-Nassr and the Senegal national team?",
+      "options": [
+        "Sadio Mané",
+        "Super Eagles",
+        "Black Stars",
+        "Lions of Teranga"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sadio Mané is a Senegalese footballer.",
+      "sources": [
+        {
+          "title": "Sadio Mané",
+          "url": "https://en.wikipedia.org/wiki/Sadio_Man%C3%A9",
+          "claim": "Sadio Mané Sadio Mané (born 10 April 1992) is a Senegalese professional footballer who plays as a left winger for Saudi Pro League club Al-Nassr and the Senegal national team.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Sadio Mané Sadio Mané (born 10 April 1992) is a Senegalese professional footballer who plays as a left winger for Saudi Pro League club Al-Nassr and the Senegal national team.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_senegal_national_football_team",
+      "region": "west",
+      "country": "Senegal",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the nickname of Senegal's men's football team?",
+      "options": [
+        "Lions of Teranga",
+        "Sadio Mané",
+        "Super Eagles",
+        "Black Stars"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Senegal national football team is nicknamed the Lions of Teranga.",
+      "sources": [
+        {
+          "title": "Senegal national football team",
+          "url": "https://en.wikipedia.org/wiki/Senegal_national_football_team",
+          "claim": "The Senegal national football team is nicknamed the Lions of Teranga",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Senegal national football team The Senegal national football team (French: Équipe de football du Sénégal), nicknamed Les Lions de la Teranga (English: The Lions of Teranga), represents Senegal in men's international association football and is operated by the Senegalese Football Federation.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_tony_yeboah",
+      "region": "west",
+      "country": "Ghana",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Ghanaian former professional footballer who played as a striker?",
+      "options": [
+        "Tony Yeboah",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tony Yeboah is a Ghanaian former footballer.",
+      "sources": [
+        {
+          "title": "Tony Yeboah",
+          "url": "https://en.wikipedia.org/wiki/Tony_Yeboah",
+          "claim": "Tony Yeboah Anthony Yeboah (born 6 June 1966) is a Ghanaian former professional footballer who played as a striker.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tony Yeboah Anthony Yeboah (born 6 June 1966) is a Ghanaian former professional footballer who played as a striker.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "west_spor_victor_osimhen",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian professional footballer who plays as a striker for Süper Lig club Galatasaray and is the vice-captain of the Nigeria?",
+      "options": [
+        "Victor Osimhen",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Victor Osimhen is a Nigerian footballer.",
+      "sources": [
+        {
+          "title": "Victor Osimhen",
+          "url": "https://en.wikipedia.org/wiki/Victor_Osimhen",
+          "claim": "Victor Osimhen Victor James Osimhen (born 29 December 1998) is a Nigerian professional footballer who plays as a striker for Süper Lig club Galatasaray and is the vice-captain of the Nigeria national team.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Victor Osimhen Victor James Osimhen (born 29 December 1998) is a Nigerian professional footballer who plays as a striker for Süper Lig club Galatasaray and is the vice-captain of the Nigeria national team.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    }
+  ]
+}

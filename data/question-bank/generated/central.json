@@ -8,7 +8,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of the Democratic Republic of the Congo?",
+      "prompt": "Which city is the capital of the Democratic Republic of the Congo?",
       "options": [
         "Kinshasa",
         "Brazzaville",
@@ -36,7 +36,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of the Republic of the Congo?",
+      "prompt": "Which city is the capital of the Republic of the Congo?",
       "options": [
         "Brazzaville",
         "Kinshasa",
@@ -64,7 +64,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Cameroon?",
+      "prompt": "Which city is the capital of Cameroon?",
       "options": [
         "Yaoundé",
         "Kinshasa",
@@ -92,7 +92,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Gabon?",
+      "prompt": "Which city is the capital of Gabon?",
       "options": [
         "Libreville",
         "Kinshasa",
@@ -120,7 +120,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the capital city of the Central African Republic?",
+      "prompt": "Which city is the capital of the Central African Republic?",
       "options": [
         "Bangui",
         "Kinshasa",
@@ -148,35 +148,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the capital city of Chad?",
-      "options": [
-        "N'Djamena",
-        "Kinshasa",
-        "Brazzaville",
-        "Yaoundé"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "N'Djamena is the capital of Chad.",
-      "sources": [
-        {
-          "title": "N'Djamena",
-          "url": "https://en.wikipedia.org/wiki/N'Djamena",
-          "claim": "N'Djamena is the capital of Chad",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_geog_n_djamena_fill",
-      "region": "central",
-      "country": "Chad",
-      "category": "GEOGRAPHY",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Chad, the capital city of Chad. The name to write is ___.",
+      "prompt": "Which city is the capital of Chad?",
       "options": [
         "N'Djamena",
         "Kinshasa",
@@ -204,7 +176,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which place is the island capital of Equatorial Guinea?",
+      "prompt": "Which city is the capital of Equatorial Guinea?",
       "options": [
         "Malabo",
         "Kinshasa",
@@ -232,7 +204,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which place is the capital city of São Tomé and Príncipe?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "São Tomé",
         "Kinshasa",
@@ -260,7 +232,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Angola?",
+      "prompt": "Which city is the capital of Angola?",
       "options": [
         "Luanda",
         "Kinshasa",
@@ -288,12 +260,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the great river that gives Central Africa its name?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Congo River",
-        "Kinshasa",
-        "Brazzaville",
-        "Yaoundé"
+        "Mount Cameroon",
+        "Lake Kivu",
+        "Kalandula Falls"
       ],
       "correct": [
         0
@@ -310,46 +282,18 @@
       "origin": "generated"
     },
     {
-      "id": "central_geog_congo_basin",
-      "region": "central",
-      "country": "Central Africa",
-      "category": "GEOGRAPHY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which place is the vast rainforest basin of Central Africa?",
-      "options": [
-        "Congo Basin",
-        "Kinshasa",
-        "Brazzaville",
-        "Yaoundé"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The Congo Basin is a rainforest region in Central Africa.",
-      "sources": [
-        {
-          "title": "Congo Basin",
-          "url": "https://en.wikipedia.org/wiki/Congo_Basin",
-          "claim": "The Congo Basin is a rainforest region in Central Africa",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "central_geog_mount_cameroon",
       "region": "central",
       "country": "Cameroon",
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the active volcano that is the highest peak in Cameroon?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Mount Cameroon",
-        "Kinshasa",
-        "Brazzaville",
-        "Yaoundé"
+        "Congo River",
+        "Lake Kivu",
+        "Kalandula Falls"
       ],
       "correct": [
         0
@@ -372,12 +316,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the highland lake between DR Congo and Rwanda?",
+      "prompt": "Where is the highland lake between DR Congo and Rwanda?",
       "options": [
         "Lake Kivu",
-        "Kinshasa",
-        "Brazzaville",
-        "Yaoundé"
+        "Congo River",
+        "Mount Cameroon",
+        "Kalandula Falls"
       ],
       "correct": [
         0
@@ -400,12 +344,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which place is a major waterfall in Angola?",
+      "prompt": "Where is a major waterfall in Angola?",
       "options": [
         "Kalandula Falls",
-        "Kinshasa",
-        "Brazzaville",
-        "Yaoundé"
+        "Congo River",
+        "Mount Cameroon",
+        "Lake Kivu"
       ],
       "correct": [
         0
@@ -428,12 +372,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the shallow lake on Chad's western edge?",
+      "prompt": "Where is the shallow lake on 's western edge?",
       "options": [
         "Lake Chad",
-        "Kinshasa",
-        "Brazzaville",
-        "Yaoundé"
+        "Congo River",
+        "Mount Cameroon",
+        "Lake Kivu"
       ],
       "correct": [
         0
@@ -450,46 +394,18 @@
       "origin": "generated"
     },
     {
-      "id": "central_geog_lope_national_park",
-      "region": "central",
-      "country": "Gabon",
-      "category": "GEOGRAPHY",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Which place is a national park of forest and savannah in Gabon?",
-      "options": [
-        "Lopé",
-        "Kinshasa",
-        "Brazzaville",
-        "Yaoundé"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Lopé National Park is in Gabon.",
-      "sources": [
-        {
-          "title": "Lopé National Park",
-          "url": "https://en.wikipedia.org/wiki/Lop%C3%A9_National_Park",
-          "claim": "Lopé National Park is in Gabon",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "central_geog_virunga_national_park",
       "region": "central",
       "country": "DR Congo",
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the national park of volcanoes and mountain gorillas?",
+      "prompt": "Where is the national park of volcanoes and mountain gorillas?",
       "options": [
         "Virunga",
-        "Kinshasa",
-        "Brazzaville",
-        "Yaoundé"
+        "Congo River",
+        "Mount Cameroon",
+        "Lake Kivu"
       ],
       "correct": [
         0
@@ -506,41 +422,13 @@
       "origin": "generated"
     },
     {
-      "id": "central_geog_douala",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "GEOGRAPHY",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Which place is the largest city and main port of Cameroon?",
-      "options": [
-        "Douala",
-        "Kinshasa",
-        "Brazzaville",
-        "Yaoundé"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Douala is the largest city in Cameroon.",
-      "sources": [
-        {
-          "title": "Douala",
-          "url": "https://en.wikipedia.org/wiki/Douala",
-          "claim": "Douala is the largest city in Cameroon",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "central_food_cassava",
       "region": "central",
       "country": "Central Africa",
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is the tuber that becomes fufu, chikwangue, and gari?",
+      "prompt": "What do you call the tuber that becomes fufu, chikwangue, and gari?",
       "options": [
         "Cassava",
         "Fufu",
@@ -568,7 +456,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a pounded cassava or plantain dough eaten with stew?",
+      "prompt": "What do you call a pounded cassava or plantain dough eaten with stew?",
       "options": [
         "Fufu",
         "Cassava",
@@ -596,7 +484,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is cassava-leaf stew, also called saka-saka?",
+      "prompt": "What do you call cassava-leaf stew, also called saka-saka?",
       "options": [
         "Pondu",
         "Cassava",
@@ -624,7 +512,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is chicken or meat cooked in palm-nut sauce?",
+      "prompt": "What do you call chicken or meat cooked in palm-nut sauce?",
       "options": [
         "Moambe",
         "Cassava",
@@ -652,7 +540,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a bitter-leaf stew that is a national dish of Cameroon?",
+      "prompt": "What do you call a bitter-leaf stew that is a national dish of Cameroon?",
       "options": [
         "Ndolé",
         "Cassava",
@@ -680,35 +568,7 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which dish is a wild-leaf stew of Cameroon?",
-      "options": [
-        "Eru",
-        "Cassava",
-        "Fufu",
-        "Pondu"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Eru is a vegetable soup from Cameroon.",
-      "sources": [
-        {
-          "title": "Eru (soup)",
-          "url": "https://en.wikipedia.org/wiki/Eru_(soup)",
-          "claim": "Eru is a vegetable soup from Cameroon",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_food_eru_soup_fill",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "FOOD",
-      "difficulty": "hard",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Cameroon, a wild-leaf stew of Cameroon. The name to write is ___.",
+      "prompt": "What do you call a wild-leaf stew of Cameroon?",
       "options": [
         "Eru",
         "Cassava",
@@ -736,7 +596,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a celebration chicken of Douala restaurants?",
+      "prompt": "What do you call a celebration chicken of Douala restaurants?",
       "options": [
         "Poulet DG",
         "Cassava",
@@ -764,7 +624,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is the savoury banana fried or boiled beside stews?",
+      "prompt": "What do you call the savoury banana fried or boiled beside stews?",
       "options": [
         "Plantain",
         "Cassava",
@@ -792,7 +652,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a fermented cassava bread wrapped in leaves?",
+      "prompt": "What do you call a fermented cassava bread wrapped in leaves?",
       "options": [
         "Chikwangue",
         "Cassava",
@@ -820,7 +680,7 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which dish is fish or meat steamed in a leaf packet?",
+      "prompt": "What do you call fish or meat steamed in a leaf packet?",
       "options": [
         "Liboke",
         "Cassava",
@@ -848,7 +708,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is chicken in palm-nut sauce, Gabon's cousin of moambe?",
+      "prompt": "What do you call chicken in palm-nut sauce, Gabon's cousin of moambe?",
       "options": [
         "Nyembwe",
         "Cassava",
@@ -876,7 +736,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is chicken in palm sauce, an Angolan classic?",
+      "prompt": "What do you call chicken in palm sauce, an Angolan classic?",
       "options": [
         "Muamba de galinha",
         "Cassava",
@@ -904,7 +764,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a cassava or maize porridge of Angola?",
+      "prompt": "What do you call a cassava or maize porridge of Angola?",
       "options": [
         "Funge",
         "Cassava",
@@ -932,7 +792,7 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which dish is a yellow soup and pounded cocoyam from the Grassfields?",
+      "prompt": "What do you call a yellow soup and pounded cocoyam from the Grassfields?",
       "options": [
         "Achu",
         "Cassava",
@@ -960,7 +820,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is pounded cassava leaves served with fish or meat?",
+      "prompt": "What do you call pounded cassava leaves served with fish or meat?",
       "options": [
         "Saka saka",
         "Cassava",
@@ -988,7 +848,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is the red oil that colours stews across the region?",
+      "prompt": "What do you call the red oil that colours stews across the region?",
       "options": [
         "Palm oil",
         "Cassava",
@@ -1016,7 +876,7 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which dish is a millet or sorghum porridge of Chad?",
+      "prompt": "What do you call a millet or sorghum porridge of Chad?",
       "options": [
         "La boule",
         "Cassava",
@@ -1044,7 +904,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a fiery broth shared with coastal Central African kitchens?",
+      "prompt": "What do you call a fiery broth shared with coastal Central African kitchens?",
       "options": [
         "Peppersoup",
         "Cassava",
@@ -1072,7 +932,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the guitar dance music born between the two Congos?",
+      "prompt": "What is the guitar dance music born between the two Congos?",
       "options": [
         "Congolese rumba",
         "Soukous",
@@ -1100,7 +960,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the faster dance style that grew out of Congolese rumba?",
+      "prompt": "What is the faster dance style that grew out of Congolese rumba?",
       "options": [
         "Soukous",
         "Congolese rumba",
@@ -1128,7 +988,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the urban dance music of Cameroon?",
+      "prompt": "What is the urban dance music of Cameroon?",
       "options": [
         "Makossa",
         "Congolese rumba",
@@ -1156,7 +1016,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a hip-driven dance that followed soukous?",
+      "prompt": "What is a hip-driven dance that followed soukous?",
       "options": [
         "Ndombolo",
         "Congolese rumba",
@@ -1184,7 +1044,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a Beti dance music driven by balafon rhythms?",
+      "prompt": "What is a Beti dance music driven by balafon rhythms?",
       "options": [
         "Bikutsi",
         "Congolese rumba",
@@ -1212,7 +1072,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a coastal Bassa dance music of Cameroon?",
+      "prompt": "What is a coastal Bassa dance music of Cameroon?",
       "options": [
         "Assiko",
         "Congolese rumba",
@@ -1240,35 +1100,7 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which music or dance name is a harp-zither and epic tradition of the Fang world?",
-      "options": [
-        "Mvet",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The mvet is a musical instrument of Central Africa.",
-      "sources": [
-        {
-          "title": "Mvet",
-          "url": "https://en.wikipedia.org/wiki/Mvet",
-          "claim": "The mvet is a musical instrument of Central Africa",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_musi_mvet_fill",
-      "region": "central",
-      "country": "Central Africa",
-      "category": "MUSIC",
-      "difficulty": "hard",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Central Africa, a harp-zither and epic tradition of the Fang world. The name to write is ___.",
+      "prompt": "What is a harp-zither and epic tradition of the Fang world?",
       "options": [
         "Mvet",
         "Congolese rumba",
@@ -1296,40 +1128,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the rumba star called the king of rumba rock?",
+      "prompt": "What is the rumba star called the king of rumba rock?",
       "options": [
         "Papa Wemba",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Papa Wemba was a Congolese singer.",
-      "sources": [
-        {
-          "title": "Papa Wemba",
-          "url": "https://en.wikipedia.org/wiki/Papa_Wemba",
-          "claim": "Papa Wemba was a Congolese singer",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_musi_papa_wemba_fill",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "MUSIC",
-      "difficulty": "easy",
-      "kind": "complete",
-      "prompt": "Fill the blank. In DR Congo, the rumba star called the king of rumba rock. The name to write is ___.",
-      "options": [
-        "Papa Wemba",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
+        "Manu Dibango",
+        "Koffi Olomidé",
+        "Fally Ipupa"
       ],
       "correct": [
         0
@@ -1352,40 +1156,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the saxophonist who recorded Soul Makossa?",
+      "prompt": "What is the saxophonist who recorded Soul Makossa?",
       "options": [
         "Manu Dibango",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Manu Dibango was a Cameroonian musician.",
-      "sources": [
-        {
-          "title": "Manu Dibango",
-          "url": "https://en.wikipedia.org/wiki/Manu_Dibango",
-          "claim": "Manu Dibango was a Cameroonian musician",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_musi_manu_dibango_fill",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "MUSIC",
-      "difficulty": "easy",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Cameroon, the saxophonist who recorded Soul Makossa. The name to write is ___.",
-      "options": [
-        "Manu Dibango",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
+        "Papa Wemba",
+        "Koffi Olomidé",
+        "Fally Ipupa"
       ],
       "correct": [
         0
@@ -1408,40 +1184,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a giant of soukous and ndombolo?",
+      "prompt": "What is a giant of soukous and ndombolo?",
       "options": [
         "Koffi Olomidé",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Koffi Olomidé is a Congolese singer.",
-      "sources": [
-        {
-          "title": "Koffi Olomidé",
-          "url": "https://en.wikipedia.org/wiki/Koffi_Olomid%C3%A9",
-          "claim": "Koffi Olomidé is a Congolese singer",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_musi_koffi_olomide_fill",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In DR Congo, a giant of soukous and ndombolo. The name to write is ___.",
-      "options": [
-        "Koffi Olomidé",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
+        "Papa Wemba",
+        "Manu Dibango",
+        "Fally Ipupa"
       ],
       "correct": [
         0
@@ -1464,40 +1212,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a contemporary rumba and ndombolo star?",
+      "prompt": "What is a contemporary rumba and ndombolo star?",
       "options": [
         "Fally Ipupa",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Fally Ipupa is a Congolese singer.",
-      "sources": [
-        {
-          "title": "Fally Ipupa",
-          "url": "https://en.wikipedia.org/wiki/Fally_Ipupa",
-          "claim": "Fally Ipupa is a Congolese singer",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_musi_fally_ipupa_fill",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In DR Congo, a contemporary rumba and ndombolo star. The name to write is ___.",
-      "options": [
-        "Fally Ipupa",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
+        "Papa Wemba",
+        "Manu Dibango",
+        "Koffi Olomidé"
       ],
       "correct": [
         0
@@ -1520,12 +1240,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which music or dance name is a Cameroonian singer of ballads and bikutsi?",
+      "prompt": "Who is the Cameroonian singer of ballads and bikutsi?",
       "options": [
         "Charlotte Dipanda",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
+        "Papa Wemba",
+        "Manu Dibango",
+        "Koffi Olomidé"
       ],
       "correct": [
         0
@@ -1548,12 +1268,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a ndombolo bandleader of Wenge Musica?",
+      "prompt": "Who is the ndombolo bandleader of Wenge Musica?",
       "options": [
         "Werrason",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
+        "Papa Wemba",
+        "Manu Dibango",
+        "Koffi Olomidé"
       ],
       "correct": [
         0
@@ -1576,40 +1296,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which music or dance name is a Gabonese singer and former first lady?",
+      "prompt": "Who is the Gabonese singer and former first lady?",
       "options": [
         "Patience Dabany",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Patience Dabany is a Gabonese singer.",
-      "sources": [
-        {
-          "title": "Patience Dabany",
-          "url": "https://en.wikipedia.org/wiki/Patience_Dabany",
-          "claim": "Patience Dabany is a Gabonese singer",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_musi_patience_dabany_fill",
-      "region": "central",
-      "country": "Gabon",
-      "category": "MUSIC",
-      "difficulty": "hard",
-      "kind": "complete",
-      "prompt": "Fill the blank. In Gabon, a Gabonese singer and former first lady. The name to write is ___.",
-      "options": [
-        "Patience Dabany",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
+        "Papa Wemba",
+        "Manu Dibango",
+        "Koffi Olomidé"
       ],
       "correct": [
         0
@@ -1632,7 +1324,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a slower partner dance with Angolan roots?",
+      "prompt": "What is a slower partner dance with Angolan roots?",
       "options": [
         "Kizomba",
         "Congolese rumba",
@@ -1660,7 +1352,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the older Angolan dance that fed into kizomba?",
+      "prompt": "What is the older Angolan dance that fed into kizomba?",
       "options": [
         "Semba",
         "Congolese rumba",
@@ -1688,7 +1380,7 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which music or dance name is a fast electronic dance music from Angola?",
+      "prompt": "What is a fast electronic dance music from Angola?",
       "options": [
         "Kuduro",
         "Congolese rumba",
@@ -1716,12 +1408,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the grand master of Congolese rumba, Franco Luambo?",
+      "prompt": "What is the grand master of Congolese rumba, Luambo?",
       "options": [
         "Franco",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
+        "Papa Wemba",
+        "Manu Dibango",
+        "Koffi Olomidé"
       ],
       "correct": [
         0
@@ -1744,7 +1436,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the bright printed wrap worn in the Congos?",
+      "prompt": "What is the bright printed wrap worn in the Congos?",
       "options": [
         "Liputa",
         "La Sape",
@@ -1772,7 +1464,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the elegant dandy style of Kinshasa and Brazzaville?",
+      "prompt": "What is the elegant dandy style of Kinshasa and Brazzaville?",
       "options": [
         "La Sape",
         "Liputa",
@@ -1800,7 +1492,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the geometric raffia textiles of the Kuba kingdom?",
+      "prompt": "What is the geometric raffia textiles of the kingdom?",
       "options": [
         "Kuba cloth",
         "Liputa",
@@ -1828,7 +1520,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a length of printed cloth worn as a skirt or dress?",
+      "prompt": "What is a length of printed cloth worn as a skirt or dress?",
       "options": [
         "Pagne",
         "Liputa",
@@ -1856,7 +1548,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a loose gown worn by Cameroonian women?",
+      "prompt": "What is a loose gown worn by Cameroonian women?",
       "options": [
         "Kaba",
         "Liputa",
@@ -1884,7 +1576,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the black and white royal cloth of the Grassfields?",
+      "prompt": "What is the black and white royal cloth of the Grassfields?",
       "options": [
         "Toghu",
         "Liputa",
@@ -1912,7 +1604,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the authentic-style suit promoted in Mobutu-era Zaire?",
+      "prompt": "What is the authentic-style suit promoted in Mobutu-era Zaire?",
       "options": [
         "Abacost",
         "Liputa",
@@ -1940,7 +1632,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a tied cloth crown worn for Sundays and parties?",
+      "prompt": "What is a tied cloth crown worn for Sundays and parties?",
       "options": [
         "Headwrap",
         "Liputa",
@@ -1968,7 +1660,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is dance costume woven from raffia fibre?",
+      "prompt": "What is dance costume woven from fibre?",
       "options": [
         "Raffia skirt",
         "Liputa",
@@ -1996,7 +1688,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a bold geometric print associated with Angola?",
+      "prompt": "What is a bold geometric print associated with Angola?",
       "options": [
         "Samakaka",
         "Liputa",
@@ -2024,7 +1716,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a follower of La Sape who dresses with ceremony?",
+      "prompt": "What is a follower of La Sape who dresses with ceremony?",
       "options": [
         "Sapologist",
         "Liputa",
@@ -2052,7 +1744,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a flowing robe worn for Friday and festivals?",
+      "prompt": "What is a flowing robe worn for Friday and festivals?",
       "options": [
         "Boubou",
         "Liputa",
@@ -2080,7 +1772,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is another name for colourful printed cloth?",
+      "prompt": "What is another name for colourful printed cloth?",
       "options": [
         "Kitendi",
         "Liputa",
@@ -2108,7 +1800,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is an indigo prestige cloth of the Grassfields and Kuba world?",
+      "prompt": "What is an indigo prestige cloth of the Grassfields and Kuba world?",
       "options": [
         "Ndop",
         "Liputa",
@@ -2136,7 +1828,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is cotton cloth traded and worn along the Angolan coast?",
+      "prompt": "What is cotton cloth traded and worn along the Angolan coast?",
       "options": [
         "Pano",
         "Liputa",
@@ -2164,7 +1856,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is factory wax cotton cut for parties and mourning alike?",
+      "prompt": "What is factory wax cotton cut for parties and mourning alike?",
       "options": [
         "Wax print",
         "Liputa",
@@ -2192,7 +1884,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a white robe worn for prayers and celebrations in Chad?",
+      "prompt": "What is a white robe worn for prayers and celebrations in Chad?",
       "options": [
         "Boubou blanc",
         "Liputa",
@@ -2220,7 +1912,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is Sunday best in bright wax print?",
+      "prompt": "What is Sunday best in bright wax print?",
       "options": [
         "Traje de domingo",
         "Liputa",
@@ -2248,7 +1940,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is a national language of both Congos and of rumba lyrics?",
+      "prompt": "Can you name a national language of both Congos and of rumba lyrics?",
       "options": [
         "Lingala",
         "Kikongo",
@@ -2276,7 +1968,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is a Bantu language and a national language of the DRC?",
+      "prompt": "Can you name a Bantu language and a national language of the DRC?",
       "options": [
         "Kikongo",
         "Lingala",
@@ -2304,7 +1996,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a national language of the Kasai region?",
+      "prompt": "Can you name a national language of the Kasai region?",
       "options": [
         "Tshiluba",
         "Lingala",
@@ -2332,7 +2024,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is the official language of the Democratic Republic of the Congo?",
+      "prompt": "Can you name the official language of the Democratic Republic of the Congo?",
       "options": [
         "French",
         "Lingala",
@@ -2360,7 +2052,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is the national lingua franca of the Central African Republic?",
+      "prompt": "Can you name the national lingua franca of the Central African Republic?",
       "options": [
         "Sango",
         "Lingala",
@@ -2388,7 +2080,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a coastal language of Cameroon?",
+      "prompt": "Can you name a coastal language of Cameroon?",
       "options": [
         "Duala",
         "Lingala",
@@ -2416,7 +2108,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is a Beti language of the Yaoundé area?",
+      "prompt": "Can you name a Beti language of the Yaoundé area?",
       "options": [
         "Ewondo",
         "Lingala",
@@ -2444,7 +2136,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a language spoken in Gabon, Equatorial Guinea, and Cameroon?",
+      "prompt": "Can you name a language spoken in Gabon, Equatorial Guinea, and Cameroon?",
       "options": [
         "Fang",
         "Lingala",
@@ -2472,7 +2164,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is the official language of Angola?",
+      "prompt": "Can you name the official language of Angola?",
       "options": [
         "Portuguese",
         "Lingala",
@@ -2500,7 +2192,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a Bantu language of the Luanda region?",
+      "prompt": "Can you name a Bantu language of the Luanda region?",
       "options": [
         "Kimbundu",
         "Lingala",
@@ -2528,7 +2220,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is a widely spoken Arabic of Chad?",
+      "prompt": "Can you name a widely spoken of Chad?",
       "options": [
         "Chadian Arabic",
         "Lingala",
@@ -2556,7 +2248,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a lingua franca of northern Cameroon?",
+      "prompt": "Can you name a lingua franca of northern Cameroon?",
       "options": [
         "Fulfulde",
         "Lingala",
@@ -2584,7 +2276,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is French is the official language of the Republic of the Congo?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "French Congo",
         "Lingala",
@@ -2612,7 +2304,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is Fang is widely spoken in Equatorial Guinea?",
+      "prompt": "Can you name is widely spoken in Equatorial Guinea?",
       "options": [
         "Fang EG",
         "Lingala",
@@ -2640,7 +2332,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is an English-based lingua franca of Cameroon?",
+      "prompt": "Can you name an English-based lingua franca of Cameroon?",
       "options": [
         "Cameroonian Pidgin",
         "Lingala",
@@ -2668,7 +2360,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is French is the official language of Gabon?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "French Gabon",
         "Lingala",
@@ -2696,7 +2388,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is Swahili is a national language in eastern DR Congo?",
+      "prompt": "Can you name is a national language in eastern DR Congo?",
       "options": [
         "Swahili east",
         "Lingala",
@@ -2724,7 +2416,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is a Lingala hello heard in Kinshasa?",
+      "prompt": "Can you name a Lingala hello heard in Kinshasa?",
       "options": [
         "Mbote",
         "Lingala",
@@ -2892,7 +2584,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is Cameroon's national day on 20 May?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "National Day",
         "Ngondo",
@@ -2948,7 +2640,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is the public parties where rumba bands still play?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Rumours of rumba",
         "Ngondo",
@@ -3060,7 +2752,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is street carnival celebrated in Angolan cities?",
+      "prompt": "Which celebration is street celebrated in Angolan cities?",
       "options": [
         "Carnival",
         "Ngondo",
@@ -3088,7 +2780,7 @@
       "category": "FESTIVALS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which celebration is the 11 February holiday of Cameroonian youth?",
+      "prompt": "Which celebration is the 11 February holiday of Cameroonian?",
       "options": [
         "Youth Day",
         "Ngondo",
@@ -3228,7 +2920,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is the festival market around the Bamoun celebration?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Ngouon market",
         "Ngondo",
@@ -3250,196 +2942,28 @@
       "origin": "generated"
     },
     {
-      "id": "central_wedd_congolese_rumba",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is a wedding party that ends on a rumba floor?",
-      "options": [
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction",
-        "Dot of cloth"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Congolese rumba is played at weddings.",
-      "sources": [
-        {
-          "title": "Congolese rumba",
-          "url": "https://en.wikipedia.org/wiki/Congolese_rumba",
-          "claim": "Congolese rumba is played at weddings",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_pagne",
-      "region": "central",
-      "country": "Central Africa",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is guests arriving in matching printed cloth?",
-      "options": [
-        "Pagne guests",
-        "Rumba reception",
-        "Family introduction",
-        "Dot of cloth"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Pagne is worn by guests at Central African weddings.",
-      "sources": [
-        {
-          "title": "Pagne",
-          "url": "https://en.wikipedia.org/wiki/Pagne",
-          "claim": "Pagne is worn by guests at Central African weddings",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_marriage",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is the meeting of the two families before a church wedding?",
-      "options": [
-        "Family introduction",
-        "Rumba reception",
-        "Pagne guests",
-        "Dot of cloth"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Weddings in Cameroon include a family introduction.",
-      "sources": [
-        {
-          "title": "Marriage",
-          "url": "https://en.wikipedia.org/wiki/Marriage",
-          "claim": "Weddings in Cameroon include a family introduction",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_culture_of_the_democratic_republic_of_the_c",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is gifts of cloth, drinks, and food exchanged by families?",
-      "options": [
-        "Dot of cloth",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Congolese marriage includes gifts between families.",
-      "sources": [
-        {
-          "title": "Culture of the Democratic Republic of the Congo",
-          "url": "https://en.wikipedia.org/wiki/Culture_of_the_Democratic_Republic_of_the_Congo",
-          "claim": "Congolese marriage includes gifts between families",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_culture_of_angola",
-      "region": "central",
-      "country": "Angola",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is a church service followed by a courtyard party?",
-      "options": [
-        "Church and courtyard",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Angolan weddings combine a ceremony and a party.",
-      "sources": [
-        {
-          "title": "Culture of Angola",
-          "url": "https://en.wikipedia.org/wiki/Culture_of_Angola",
-          "claim": "Angolan weddings combine a ceremony and a party",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_gabon",
-      "region": "central",
-      "country": "Gabon",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is sharing a drink with elders at a family wedding?",
-      "options": [
-        "Palm-wine toast",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Gabonese weddings are family celebrations.",
-      "sources": [
-        {
-          "title": "Gabon",
-          "url": "https://en.wikipedia.org/wiki/Gabon",
-          "claim": "Gabonese weddings are family celebrations",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "central_wedd_kaba_clothing",
       "region": "central",
       "country": "Cameroon",
       "category": "WEDDINGS",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is a formal gown worn by women at coastal weddings?",
+      "prompt": "What do you call a formal gown worn by women at coastal Cameroonian ceremonies?",
       "options": [
-        "Kaba ngondo",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
+        "Kaba",
+        "La Sape",
+        "Pagne",
+        "Boubou"
       ],
       "correct": [
         0
       ],
-      "explanation": "Women wear formal dress at Cameroonian ceremonies.",
+      "explanation": "The kaba is a formal gown worn at ceremonies in Cameroon.",
       "sources": [
         {
           "title": "Kaba (clothing)",
           "url": "https://en.wikipedia.org/wiki/Kaba_(clothing)",
-          "claim": "Women wear formal dress at Cameroonian ceremonies",
+          "claim": "The kaba is a formal gown worn at ceremonies in Cameroon",
           "method": "page-overlap"
         }
       ],
@@ -3452,78 +2976,50 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is a best man who arrives dressed like a La Sape portrait?",
+      "prompt": "What do you call the fashion of dressing with sharp elegance in the Congos?",
       "options": [
-        "Sapeur entrance",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
+        "La Sape",
+        "Kaba",
+        "Pagne",
+        "Boubou"
       ],
       "correct": [
         0
       ],
-      "explanation": "Sapeurs dress formally for Congolese celebrations.",
+      "explanation": "La Sape is a fashion movement in the Congos.",
       "sources": [
         {
           "title": "La Sape",
           "url": "https://en.wikipedia.org/wiki/La_Sape",
-          "claim": "Sapeurs dress formally for Congolese celebrations",
+          "claim": "La Sape is a fashion movement in the Congos",
           "method": "page-overlap"
         }
       ],
       "origin": "generated"
     },
     {
-      "id": "central_wedd_fufu",
+      "id": "central_wedd_pagne",
       "region": "central",
       "country": "Central Africa",
       "category": "WEDDINGS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which wedding custom is a shared platter that feeds the wedding courtyard?",
+      "prompt": "What do you call a printed cloth worn as a skirt or dress in Central Africa?",
       "options": [
-        "Rice and stew",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
+        "Pagne",
+        "Kaba",
+        "La Sape",
+        "Boubou"
       ],
       "correct": [
         0
       ],
-      "explanation": "Fufu and stew are served at Central African celebrations.",
+      "explanation": "Pagne is a printed cloth worn in Central Africa.",
       "sources": [
         {
-          "title": "Fufu",
-          "url": "https://en.wikipedia.org/wiki/Fufu",
-          "claim": "Fufu and stew are served at Central African celebrations",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_brazzaville",
-      "region": "central",
-      "country": "Republic of the Congo",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is a night of soukous after the vows?",
-      "options": [
-        "Brazzaville party",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Brazzaville is a centre of Congolese music.",
-      "sources": [
-        {
-          "title": "Brazzaville",
-          "url": "https://en.wikipedia.org/wiki/Brazzaville",
-          "claim": "Brazzaville is a centre of Congolese music",
+          "title": "Pagne",
+          "url": "https://en.wikipedia.org/wiki/Pagne",
+          "claim": "Pagne is a printed cloth worn in Central Africa",
           "method": "page-overlap"
         }
       ],
@@ -3536,218 +3032,22 @@
       "category": "WEDDINGS",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which wedding custom is grooms in a long white robe at a Sahelian wedding?",
+      "prompt": "What do you call a long robe worn for ceremonies across the Sahel?",
       "options": [
-        "White boubou",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
+        "Boubou",
+        "Kaba",
+        "La Sape",
+        "Pagne"
       ],
       "correct": [
         0
       ],
-      "explanation": "Robes are worn at weddings in Chad.",
+      "explanation": "The boubou is a robe worn in the Sahel.",
       "sources": [
         {
           "title": "Boubou (clothing)",
           "url": "https://en.wikipedia.org/wiki/Boubou_(clothing)",
-          "claim": "Robes are worn at weddings in Chad",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_kizomba",
-      "region": "central",
-      "country": "Angola",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is a couple's slow kizomba at the reception?",
-      "options": [
-        "Kizomba first dance",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Kizomba is danced at Angolan parties.",
-      "sources": [
-        {
-          "title": "Kizomba",
-          "url": "https://en.wikipedia.org/wiki/Kizomba",
-          "claim": "Kizomba is danced at Angolan parties",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_jollof_rice",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is oily party rice on a Cameroonian wedding menu?",
-      "options": [
-        "Jollof cousin",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Party rice is served at West and Central African celebrations.",
-      "sources": [
-        {
-          "title": "Jollof rice",
-          "url": "https://en.wikipedia.org/wiki/Jollof_rice",
-          "claim": "Party rice is served at West and Central African celebrations",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_wedding",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is a relative who keeps the programme and the jokes moving?",
-      "options": [
-        "Aunty emcee",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Weddings are hosted by family members.",
-      "sources": [
-        {
-          "title": "Wedding",
-          "url": "https://en.wikipedia.org/wiki/Wedding",
-          "claim": "Weddings are hosted by family members",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_culture_of_gabon",
-      "region": "central",
-      "country": "Gabon",
-      "category": "WEDDINGS",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Which wedding custom is a large family meal after the vows?",
-      "options": [
-        "Ivanga feast",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Gabonese celebrations include a shared meal.",
-      "sources": [
-        {
-          "title": "Culture of Gabon",
-          "url": "https://en.wikipedia.org/wiki/Culture_of_Gabon",
-          "claim": "Gabonese celebrations include a shared meal",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_equatorial_guinea",
-      "region": "central",
-      "country": "Equatorial Guinea",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is vows that may be in Spanish with Fang family customs beside them?",
-      "options": [
-        "Spanish and Fang",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Equatorial Guinea weddings mix local and church customs.",
-      "sources": [
-        {
-          "title": "Equatorial Guinea",
-          "url": "https://en.wikipedia.org/wiki/Equatorial_Guinea",
-          "claim": "Equatorial Guinea weddings mix local and church customs",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_ululation",
-      "region": "central",
-      "country": "Central Africa",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is the high celebratory call when the couple enters?",
-      "options": [
-        "Ululation",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Ululation marks joy at weddings.",
-      "sources": [
-        {
-          "title": "Ululation",
-          "url": "https://en.wikipedia.org/wiki/Ululation",
-          "claim": "Ululation marks joy at weddings",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_wedd_culture_of_cameroon",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is a family discussion of gifts, not a price on a person?",
-      "options": [
-        "Dowry conversation",
-        "Rumba reception",
-        "Pagne guests",
-        "Family introduction"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Cameroonian marriage talks happen between families.",
-      "sources": [
-        {
-          "title": "Culture of Cameroon",
-          "url": "https://en.wikipedia.org/wiki/Culture_of_Cameroon",
-          "claim": "Cameroonian marriage talks happen between families",
+          "claim": "The boubou is a robe worn in the Sahel",
           "method": "page-overlap"
         }
       ],
@@ -3760,7 +3060,7 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which historical name is the historic kingdom whose capital was Mbanza Kongo?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Kingdom of Kongo",
         "Kingdom of Luba",
@@ -3788,7 +3088,7 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is a historic state of the Congo grasslands?",
+      "prompt": "What is a historic state of the Congo grasslands?",
       "options": [
         "Kingdom of Luba",
         "Kingdom of Kongo",
@@ -3816,7 +3116,7 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is a historic state that linked the Congo and Angola interior?",
+      "prompt": "What is a historic state that linked the Congo and Angola interior?",
       "options": [
         "Lunda Empire",
         "Kingdom of Kongo",
@@ -3844,7 +3144,7 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which historical name is the Grassfields kingdom that created its own script?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Bamum kingdom",
         "Kingdom of Kongo",
@@ -3866,41 +3166,13 @@
       "origin": "generated"
     },
     {
-      "id": "central_hist_bamum_script",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "HISTORY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which historical name is the writing system developed under King Njoya?",
-      "options": [
-        "Bamum script",
-        "Kingdom of Kongo",
-        "Kingdom of Luba",
-        "Lunda Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The Bamum script was developed in Cameroon.",
-      "sources": [
-        {
-          "title": "Bamum script",
-          "url": "https://en.wikipedia.org/wiki/Bamum_script",
-          "claim": "The Bamum script was developed in Cameroon",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "central_hist_m_banza_kongo",
       "region": "central",
       "country": "Angola",
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the historic capital of the Kingdom of Kongo?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Mbanza Kongo",
         "Kingdom of Kongo",
@@ -3922,97 +3194,13 @@
       "origin": "generated"
     },
     {
-      "id": "central_hist_nzinga_of_ndongo_and_matamba",
-      "region": "central",
-      "country": "Angola",
-      "category": "HISTORY",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Which historical name is the seventeenth-century ruler of Ndongo and Matamba?",
-      "options": [
-        "Queen Nzinga",
-        "Kingdom of Kongo",
-        "Kingdom of Luba",
-        "Lunda Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Nzinga was a queen in what is now Angola.",
-      "sources": [
-        {
-          "title": "Nzinga of Ndongo and Matamba",
-          "url": "https://en.wikipedia.org/wiki/Nzinga_of_Ndongo_and_Matamba",
-          "claim": "Nzinga was a queen in what is now Angola",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_hist_democratic_republic_of_the_congo",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "HISTORY",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which historical name is the year the Belgian Congo became independent?",
-      "options": [
-        "1960",
-        "Kingdom of Kongo",
-        "Kingdom of Luba",
-        "Lunda Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The Democratic Republic of the Congo became independent in 1960.",
-      "sources": [
-        {
-          "title": "Democratic Republic of the Congo",
-          "url": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo",
-          "claim": "The Democratic Republic of the Congo became independent in 1960",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_hist_lambarene",
-      "region": "central",
-      "country": "Gabon",
-      "category": "HISTORY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which historical name is the historic hospital at Lambaréné?",
-      "options": [
-        "Albert Schweitzer hospital",
-        "Kingdom of Kongo",
-        "Kingdom of Luba",
-        "Lunda Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Lambaréné is a town in Gabon.",
-      "sources": [
-        {
-          "title": "Lambaréné",
-          "url": "https://en.wikipedia.org/wiki/Lambar%C3%A9n%C3%A9",
-          "claim": "Lambaréné is a town in Gabon",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "central_hist_sao_civilisation",
       "region": "central",
       "country": "Chad",
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is the ancient cities south of Lake Chad?",
+      "prompt": "What is the ancient cities south of Lake Chad?",
       "options": [
         "Sao civilisation",
         "Kingdom of Kongo",
@@ -4040,7 +3228,7 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the royal palace of the Bamum kings?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Foumban palace",
         "Kingdom of Kongo",
@@ -4062,41 +3250,13 @@
       "origin": "generated"
     },
     {
-      "id": "central_hist_republic_of_the_congo",
-      "region": "central",
-      "country": "Republic of the Congo",
-      "category": "HISTORY",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which historical name is the year the French Congo became independent?",
-      "options": [
-        "1960 Congo",
-        "Kingdom of Kongo",
-        "Kingdom of Luba",
-        "Lunda Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The Republic of the Congo became independent in 1960.",
-      "sources": [
-        {
-          "title": "Republic of the Congo",
-          "url": "https://en.wikipedia.org/wiki/Republic_of_the_Congo",
-          "claim": "The Republic of the Congo became independent in 1960",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "central_hist_kuba_kingdom",
       "region": "central",
       "country": "DR Congo",
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is the historic kingdom famous for raffia textiles?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Kuba kingdom",
         "Kingdom of Kongo",
@@ -4118,153 +3278,13 @@
       "origin": "generated"
     },
     {
-      "id": "central_hist_angola",
-      "region": "central",
-      "country": "Angola",
-      "category": "HISTORY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which historical name is the year Angola became independent?",
-      "options": [
-        "1975",
-        "Kingdom of Kongo",
-        "Kingdom of Luba",
-        "Lunda Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Angola became independent in 1975.",
-      "sources": [
-        {
-          "title": "Angola",
-          "url": "https://en.wikipedia.org/wiki/Angola",
-          "claim": "Angola became independent in 1975",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_hist_barthelemy_boganda",
-      "region": "central",
-      "country": "Central African Republic",
-      "category": "HISTORY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which historical name is the independence leader of Ubangi-Shari?",
-      "options": [
-        "Barthélemy Boganda",
-        "Kingdom of Kongo",
-        "Kingdom of Luba",
-        "Lunda Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Barthélemy Boganda was a leader in the Central African Republic.",
-      "sources": [
-        {
-          "title": "Barthélemy Boganda",
-          "url": "https://en.wikipedia.org/wiki/Barth%C3%A9lemy_Boganda",
-          "claim": "Barthélemy Boganda was a leader in the Central African Republic",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_hist_bioko",
-      "region": "central",
-      "country": "Equatorial Guinea",
-      "category": "HISTORY",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Which historical name is the capital sits on Bioko island?",
-      "options": [
-        "Malabo island",
-        "Kingdom of Kongo",
-        "Kingdom of Luba",
-        "Lunda Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Bioko is the island of Malabo in Equatorial Guinea.",
-      "sources": [
-        {
-          "title": "Bioko",
-          "url": "https://en.wikipedia.org/wiki/Bioko",
-          "claim": "Bioko is the island of Malabo in Equatorial Guinea",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_hist_cameroon",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "HISTORY",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which historical name is the year French Cameroun became independent?",
-      "options": [
-        "1960 Cameroon",
-        "Kingdom of Kongo",
-        "Kingdom of Luba",
-        "Lunda Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Cameroon became independent in 1960.",
-      "sources": [
-        {
-          "title": "Cameroon",
-          "url": "https://en.wikipedia.org/wiki/Cameroon",
-          "claim": "Cameroon became independent in 1960",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "central_hist_gabon",
-      "region": "central",
-      "country": "Gabon",
-      "category": "HISTORY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which historical name is the year Gabon became independent?",
-      "options": [
-        "1960 Gabon",
-        "Kingdom of Kongo",
-        "Kingdom of Luba",
-        "Lunda Empire"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Gabon became independent in 1960.",
-      "sources": [
-        {
-          "title": "Gabon",
-          "url": "https://en.wikipedia.org/wiki/Gabon",
-          "claim": "Gabon became independent in 1960",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "central_peop_manu_dibango",
       "region": "central",
       "country": "Cameroon",
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the musician of Soul Makossa?",
+      "prompt": "Who is the musician of Soul Makossa?",
       "options": [
         "Manu Dibango",
         "Papa Wemba",
@@ -4292,7 +3312,7 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the king of rumba rock?",
+      "prompt": "Who is the king of rumba rock?",
       "options": [
         "Papa Wemba",
         "Manu Dibango",
@@ -4320,7 +3340,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the novelist of Broken Glass?",
+      "prompt": "Who is the novelist of Broken Glass?",
       "options": [
         "Alain Mabanckou",
         "Manu Dibango",
@@ -4348,7 +3368,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the novelist of The Poor Christ of Bomba?",
+      "prompt": "Who is the novelist of The Poor Christ of Bomba?",
       "options": [
         "Mongo Beti",
         "Manu Dibango",
@@ -4376,7 +3396,7 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which person is the novelist of Houseboy?",
+      "prompt": "Who is the novelist of Houseboy?",
       "options": [
         "Ferdinand Oyono",
         "Manu Dibango",
@@ -4404,7 +3424,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the writer and musician from Cameroon?",
+      "prompt": "Who is the writer and musician from Cameroon?",
       "options": [
         "Francis Bebey",
         "Manu Dibango",
@@ -4432,7 +3452,7 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the Basketball Hall of Fame centre?",
+      "prompt": "Who is the Basketball Hall of Fame centre?",
       "options": [
         "Dikembe Mutombo",
         "Manu Dibango",
@@ -4460,7 +3480,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the four-time African footballer of the year?",
+      "prompt": "Who is the four-time African footballer of the year?",
       "options": [
         "Samuel Eto'o",
         "Manu Dibango",
@@ -4488,7 +3508,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the World Cup striker who danced at the corner flag?",
+      "prompt": "Who is the World Cup striker who danced at the corner flag?",
       "options": [
         "Roger Milla",
         "Manu Dibango",
@@ -4516,7 +3536,7 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which person is the singer and public figure from Gabon?",
+      "prompt": "Who is the singer and public figure from Gabon?",
       "options": [
         "Patience Dabany",
         "Manu Dibango",
@@ -4544,7 +3564,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the novelist and playwright?",
+      "prompt": "Who is the novelist and playwright?",
       "options": [
         "Sony Labou Tansi",
         "Manu Dibango",
@@ -4572,7 +3592,7 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the bass player and singer from Cameroon?",
+      "prompt": "Who is the bass player and singer from Cameroon?",
       "options": [
         "Richard Bona",
         "Manu Dibango",
@@ -4600,7 +3620,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is Angola's first president and a poet?",
+      "prompt": "Who is Angola's first president and a poet?",
       "options": [
         "Agostinho Neto",
         "Manu Dibango",
@@ -4628,7 +3648,7 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which person is the first president of Chad?",
+      "prompt": "Who is the first president of Chad?",
       "options": [
         "François Tombalbaye",
         "Manu Dibango",
@@ -4656,7 +3676,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is Joseph Kabasele, a founder of modern Congolese rumba?",
+      "prompt": "Who is Joseph Kabasele, a founder of modern Congolese rumba?",
       "options": [
         "Le Grand Kallé",
         "Manu Dibango",
@@ -4684,7 +3704,7 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is King Ibrahim Njoya, who sponsored the Bamum script?",
+      "prompt": "Who is King Ibrahim, who sponsored the Bamum script?",
       "options": [
         "Njoya",
         "Manu Dibango",
@@ -4712,7 +3732,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is a Gabonese priest and scholar of languages?",
+      "prompt": "Who is a Gabonese priest and scholar of languages?",
       "options": [
         "André Raponda Walker",
         "Manu Dibango",
@@ -4740,7 +3760,7 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which person is the Angolan novelist Artur Pestana?",
+      "prompt": "Who is the Angolan novelist Artur Pestana?",
       "options": [
         "Pepetela",
         "Manu Dibango",
@@ -4768,7 +3788,7 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the rumba star with a huge YouTube following?",
+      "prompt": "Who is the rumba star with a huge YouTube following?",
       "options": [
         "Fally Ipupa",
         "Innoss'B",
@@ -4796,7 +3816,7 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the Congolese singer and dancer from Goma?",
+      "prompt": "Who is the Congolese singer and dancer from Goma?",
       "options": [
         "Innoss'B",
         "Fally Ipupa",
@@ -4824,7 +3844,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is a contemporary Congolese pop singer?",
+      "prompt": "Who is a contemporary Congolese pop singer?",
       "options": [
         "Gaz Mawete",
         "Fally Ipupa",
@@ -4852,7 +3872,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is a Cameroonian afropop singer?",
+      "prompt": "Who is a Cameroonian afropop singer?",
       "options": [
         "Locko",
         "Fally Ipupa",
@@ -4880,9 +3900,9 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the ballad voice of Cameroon?",
+      "prompt": "Who is the ballad voice of Cameroon?",
       "options": [
-        "Charlotte Dipanda pop",
+        "Charlotte Dipanda",
         "Fally Ipupa",
         "Innoss'B",
         "Gaz Mawete"
@@ -4908,7 +3928,7 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is the French-Congolese R&B singer?",
+      "prompt": "Who is the French-Congolese R&B singer?",
       "options": [
         "Dadju",
         "Fally Ipupa",
@@ -4936,7 +3956,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the rapper Maître Gims, born in Kinshasa?",
+      "prompt": "Who is the rapper Maître, born in Kinshasa?",
       "options": [
         "Gims",
         "Fally Ipupa",
@@ -4964,7 +3984,7 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is a Cameroonian pop singer?",
+      "prompt": "Who is a Cameroonian pop singer?",
       "options": [
         "Blanche Bailly",
         "Fally Ipupa",
@@ -4992,7 +4012,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is an Angolan kizomba and pop singer?",
+      "prompt": "Who is an Angolan kizomba and pop singer?",
       "options": [
         "C4 Pedro",
         "Fally Ipupa",
@@ -5020,7 +4040,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is an Angolan kuduro star?",
+      "prompt": "Who is an Angolan kuduro star?",
       "options": [
         "Titica",
         "Fally Ipupa",
@@ -5048,7 +4068,7 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is a rumba singer who came out of Quartier Latin?",
+      "prompt": "Who is a rumba singer who came out of Quartier Latin?",
       "options": [
         "Ferre Gola",
         "Fally Ipupa",
@@ -5076,7 +4096,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the rapper of Hein Père?",
+      "prompt": "Who is the rapper of Hein Père?",
       "options": [
         "Stanley Enow",
         "Fally Ipupa",
@@ -5104,7 +4124,7 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the ndombolo catalogue still played at parties?",
+      "prompt": "Who is the ndombolo catalogue still played at parties?",
       "options": [
         "Koffi Olomidé hits",
         "Fally Ipupa",
@@ -5132,7 +4152,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is Gabonese popular songs from a veteran voice?",
+      "prompt": "Who is Gabonese popular songs from a veteran voice?",
       "options": [
         "Patience Dabany songs",
         "Fally Ipupa",
@@ -5160,7 +4180,7 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is French rap with Congolese family roots?",
+      "prompt": "Who is French rap with Congolese family roots?",
       "options": [
         "Niska roots",
         "Fally Ipupa",
@@ -5188,7 +4208,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is an Angolan singer of semba and kizomba?",
+      "prompt": "Who is an Angolan singer of semba and kizomba?",
       "options": [
         "Yola Semedo",
         "Fally Ipupa",
@@ -5216,7 +4236,7 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is DJs still drop Soul Makossa at weddings?",
+      "prompt": "Who is DJs still drop Soul at weddings?",
       "options": [
         "Makossa revival",
         "Fally Ipupa",
@@ -5244,7 +4264,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is football fame that made Congolese athletes household names?",
+      "prompt": "Who is football fame that made Congolese athletes household names?",
       "options": [
         "Shabani Nonda era",
         "Fally Ipupa",
@@ -5272,12 +4292,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is Africa's record AFCON goalscorer?",
+      "prompt": "Who is Africa's record AFCON goalscorer?",
       "options": [
         "Samuel Eto'o",
         "Roger Milla",
-        "Indomitable Lions",
-        "Leopards"
+        "Dikembe Mutombo",
+        "Joel Embiid"
       ],
       "correct": [
         0
@@ -5300,12 +4320,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the corner-flag dancer of Italia 90?",
+      "prompt": "Who is the corner-flag dancer of Italia 90?",
       "options": [
         "Roger Milla",
         "Samuel Eto'o",
-        "Indomitable Lions",
-        "Leopards"
+        "Dikembe Mutombo",
+        "Joel Embiid"
       ],
       "correct": [
         0
@@ -5328,12 +4348,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of Cameroon's men's team?",
+      "prompt": "What is the nickname of Cameroon's men's team?",
       "options": [
         "Indomitable Lions",
-        "Samuel Eto'o",
-        "Roger Milla",
-        "Leopards"
+        "Leopards",
+        "TP Mazembe",
+        "Petro de Luanda"
       ],
       "correct": [
         0
@@ -5356,12 +4376,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of DR Congo's men's team?",
+      "prompt": "What is the nickname of DR Congo's men's team?",
       "options": [
         "Leopards",
-        "Samuel Eto'o",
-        "Roger Milla",
-        "Indomitable Lions"
+        "Indomitable Lions",
+        "TP Mazembe",
+        "Petro de Luanda"
       ],
       "correct": [
         0
@@ -5384,12 +4404,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the finger-wagging NBA defensive legend?",
+      "prompt": "Who is the finger-wagging NBA defensive legend?",
       "options": [
         "Dikembe Mutombo",
         "Samuel Eto'o",
         "Roger Milla",
-        "Indomitable Lions"
+        "Joel Embiid"
       ],
       "correct": [
         0
@@ -5412,12 +4432,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the NBA centre born in Yaoundé?",
+      "prompt": "Who is the NBA centre born in Yaoundé?",
       "options": [
         "Joel Embiid",
         "Samuel Eto'o",
         "Roger Milla",
-        "Indomitable Lions"
+        "Dikembe Mutombo"
       ],
       "correct": [
         0
@@ -5440,12 +4460,12 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is the NBA forward born in the Republic of the Congo?",
+      "prompt": "Who is the NBA forward born in the Republic of the Congo?",
       "options": [
         "Serge Ibaka",
         "Samuel Eto'o",
         "Roger Milla",
-        "Indomitable Lions"
+        "Dikembe Mutombo"
       ],
       "correct": [
         0
@@ -5468,12 +4488,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the striker who scored Cameroon's famous goal against Brazil?",
+      "prompt": "Who is the striker who scored Cameroon's famous goal against Brazil?",
       "options": [
         "Vincent Aboubakar",
         "Samuel Eto'o",
         "Roger Milla",
-        "Indomitable Lions"
+        "Dikembe Mutombo"
       ],
       "correct": [
         0
@@ -5496,12 +4516,12 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is the long-serving defender and later national coach?",
+      "prompt": "Who is the long-serving defender and later national coach?",
       "options": [
         "Rigobert Song",
         "Samuel Eto'o",
         "Roger Milla",
-        "Indomitable Lions"
+        "Dikembe Mutombo"
       ],
       "correct": [
         0
@@ -5524,12 +4544,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Gabonese striker who starred in the Premier League?",
+      "prompt": "Who is the Gabonese striker who starred in the Premier League?",
       "options": [
         "Pierre-Emerick Aubameyang",
         "Samuel Eto'o",
         "Roger Milla",
-        "Indomitable Lions"
+        "Dikembe Mutombo"
       ],
       "correct": [
         0
@@ -5546,46 +4566,18 @@
       "origin": "generated"
     },
     {
-      "id": "central_spor_cameroon_at_the_fifa_world_cup",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "SPORT",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which sporting name is the year Cameroon opened the World Cup by beating Argentina?",
-      "options": [
-        "1990 World Cup",
-        "Samuel Eto'o",
-        "Roger Milla",
-        "Indomitable Lions"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Cameroon defeated Argentina at the 1990 World Cup.",
-      "sources": [
-        {
-          "title": "Cameroon at the FIFA World Cup",
-          "url": "https://en.wikipedia.org/wiki/Cameroon_at_the_FIFA_World_Cup",
-          "claim": "Cameroon defeated Argentina at the 1990 World Cup",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "central_spor_tp_mazembe",
       "region": "central",
       "country": "DR Congo",
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Lubumbashi club that won the African Champions League?",
+      "prompt": "What is the Lubumbashi club that won the African Champions League?",
       "options": [
         "TP Mazembe",
-        "Samuel Eto'o",
-        "Roger Milla",
-        "Indomitable Lions"
+        "Indomitable Lions",
+        "Leopards",
+        "Petro de Luanda"
       ],
       "correct": [
         0
@@ -5608,12 +4600,12 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is a leading basketball and football club in Luanda?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Petro de Luanda",
-        "Samuel Eto'o",
-        "Roger Milla",
-        "Indomitable Lions"
+        "Indomitable Lions",
+        "Leopards",
+        "TP Mazembe"
       ],
       "correct": [
         0
@@ -5636,12 +4628,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the NBA forward from Douala?",
+      "prompt": "Who is the NBA forward from Douala?",
       "options": [
         "Pascal Siakam",
         "Samuel Eto'o",
         "Roger Milla",
-        "Indomitable Lions"
+        "Dikembe Mutombo"
       ],
       "correct": [
         0
@@ -5664,12 +4656,12 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is athletes of the Chadian diaspora?",
+      "prompt": "Who is athletes of the Chadian diaspora?",
       "options": [
         "Mathieu Dossevi roots",
         "Samuel Eto'o",
         "Roger Milla",
-        "Indomitable Lions"
+        "Dikembe Mutombo"
       ],
       "correct": [
         0
@@ -5692,12 +4684,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of Gabon's football team?",
+      "prompt": "What is the nickname of Gabon's football team?",
       "options": [
         "Panthères",
-        "Samuel Eto'o",
-        "Roger Milla",
-        "Indomitable Lions"
+        "Indomitable Lions",
+        "Leopards",
+        "TP Mazembe"
       ],
       "correct": [
         0
@@ -5720,12 +4712,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the continental trophy Cameroon and DR Congo have both lifted?",
+      "prompt": "Who is the continental trophy Cameroon and DR Congo have both lifted?",
       "options": [
         "AFCON",
-        "Samuel Eto'o",
-        "Roger Milla",
-        "Indomitable Lions"
+        "Indomitable Lions",
+        "Leopards",
+        "TP Mazembe"
       ],
       "correct": [
         0
@@ -5748,12 +4740,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the sport in which Angola has dominated African titles?",
+      "prompt": "What is the sport in which Angola has dominated African titles?",
       "options": [
         "Basketball",
-        "Samuel Eto'o",
-        "Roger Milla",
-        "Indomitable Lions"
+        "Indomitable Lions",
+        "Leopards",
+        "TP Mazembe"
       ],
       "correct": [
         0
@@ -5776,7 +4768,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "multi",
-      "prompt": "Select three Central African capital cities.",
+      "prompt": "Which three are capital cities in Central Africa?",
       "options": [
         "Kinshasa",
         "Libreville",
@@ -5806,7 +4798,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "multi",
-      "prompt": "Select three Congolese or Cameroonian popular styles.",
+      "prompt": "Which three dance styles come from the Congos and Cameroon?",
       "options": [
         "Congolese rumba",
         "Soukous",
@@ -5836,7 +4828,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "multi",
-      "prompt": "Select three languages used in the Democratic Republic of the Congo.",
+      "prompt": "Which three languages are used in the Democratic Republic of the Congo?",
       "options": [
         "Lingala",
         "French",
@@ -5854,6 +4846,454 @@
           "title": "Democratic Republic of the Congo",
           "url": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo",
           "claim": "Lingala, French and Tshiluba are used in the Democratic Republic of the Congo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_musi_makossa2",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a popular dance music of Cameroon?",
+      "options": [
+        "Makossa",
+        "Congolese rumba",
+        "Soukous",
+        "Ndombolo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Makossa is a Cameroonian music genre.",
+      "sources": [
+        {
+          "title": "Makossa",
+          "url": "https://en.wikipedia.org/wiki/Makossa",
+          "claim": "Makossa is a Cameroonian music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_musi_bikutsi2",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a Beti dance music of Cameroon?",
+      "options": [
+        "Bikutsi",
+        "Congolese rumba",
+        "Soukous",
+        "Makossa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bikutsi is a Cameroonian music genre.",
+      "sources": [
+        {
+          "title": "Bikutsi",
+          "url": "https://en.wikipedia.org/wiki/Bikutsi",
+          "claim": "Bikutsi is a Cameroonian music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_popc_manu_dibango",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Cameroonian saxophonist of Soul Makossa?",
+      "options": [
+        "Manu Dibango",
+        "Fally Ipupa",
+        "Innoss'B",
+        "Gaz Mawete"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Manu Dibango was a Cameroonian musician.",
+      "sources": [
+        {
+          "title": "Manu Dibango",
+          "url": "https://en.wikipedia.org/wiki/Manu_Dibango",
+          "claim": "Manu Dibango was a Cameroonian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_popc_papa_wemba",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a star of Congolese rumba?",
+      "options": [
+        "Papa Wemba",
+        "Fally Ipupa",
+        "Innoss'B",
+        "Gaz Mawete"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Papa Wemba was a Congolese singer.",
+      "sources": [
+        {
+          "title": "Papa Wemba",
+          "url": "https://en.wikipedia.org/wiki/Papa_Wemba",
+          "claim": "Papa Wemba was a Congolese singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_popc_koffi_olomide2",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Congolese soukous singer?",
+      "options": [
+        "Koffi Olomide",
+        "Fally Ipupa",
+        "Innoss'B",
+        "Gaz Mawete"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Koffi Olomidé is a Congolese singer.",
+      "sources": [
+        {
+          "title": "Koffi Olomidé",
+          "url": "https://en.wikipedia.org/wiki/Koffi_Olomid%C3%A9",
+          "claim": "Koffi Olomidé is a Congolese singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_spor_samuel_eto_o2",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Cameroonian striker who played for Barcelona and Inter?",
+      "options": [
+        "Samuel Eto'o",
+        "Roger Milla",
+        "Dikembe Mutombo",
+        "Joel Embiid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Samuel Eto'o is a Cameroonian footballer.",
+      "sources": [
+        {
+          "title": "Samuel Eto'o",
+          "url": "https://en.wikipedia.org/wiki/Samuel_Eto'o",
+          "claim": "Samuel Eto'o is a Cameroonian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_spor_roger_milla2",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the Cameroonian striker famous at the 1990 World Cup?",
+      "options": [
+        "Roger Milla",
+        "Indomitable Lions",
+        "Leopards",
+        "TP Mazembe"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Roger Milla is a Cameroonian footballer.",
+      "sources": [
+        {
+          "title": "Roger Milla",
+          "url": "https://en.wikipedia.org/wiki/Roger_Milla",
+          "claim": "Roger Milla is a Cameroonian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_food_ndole2",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a Cameroonian stew of bitter leaves and nuts?",
+      "options": [
+        "Ndolé",
+        "Cassava",
+        "Fufu",
+        "Pondu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ndolé is a dish from Cameroon.",
+      "sources": [
+        {
+          "title": "Ndolé",
+          "url": "https://en.wikipedia.org/wiki/Ndol%C3%A9",
+          "claim": "Ndolé is a dish from Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_food_moambe2",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a palm-butter stew of the Congo?",
+      "options": [
+        "Moambe",
+        "Cassava",
+        "Fufu",
+        "Pondu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Moambe is a Congolese dish.",
+      "sources": [
+        {
+          "title": "Moambe",
+          "url": "https://en.wikipedia.org/wiki/Moambe",
+          "claim": "Moambe is a Congolese dish",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_geog_mount_cameroon2",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Where is the active volcano that is 's highest peak?",
+      "options": [
+        "Mount Cameroon",
+        "Congo River",
+        "Lake Kivu",
+        "Kalandula Falls"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mount Cameroon is a volcano in Cameroon.",
+      "sources": [
+        {
+          "title": "Mount Cameroon",
+          "url": "https://en.wikipedia.org/wiki/Mount_Cameroon",
+          "claim": "Mount Cameroon is a volcano in Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_geog_congo_river2",
+      "region": "central",
+      "country": "Central Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Congo River",
+        "Mount Cameroon",
+        "Lake Kivu",
+        "Kalandula Falls"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Congo River is a major river of Central Africa.",
+      "sources": [
+        {
+          "title": "Congo River",
+          "url": "https://en.wikipedia.org/wiki/Congo_River",
+          "claim": "The Congo River is a major river of Central Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_geog_lake_kivu2",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the lake between DR Congo and Rwanda?",
+      "options": [
+        "Lake Kivu",
+        "Congo River",
+        "Mount Cameroon",
+        "Kalandula Falls"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lake Kivu lies between the Democratic Republic of the Congo and Rwanda.",
+      "sources": [
+        {
+          "title": "Lake Kivu",
+          "url": "https://en.wikipedia.org/wiki/Lake_Kivu",
+          "claim": "Lake Kivu lies between the Democratic Republic of the Congo and Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_lang_lingala3",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a widely spoken lingua franca of the Congos?",
+      "options": [
+        "Lingala",
+        "Kikongo",
+        "Tshiluba",
+        "French"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lingala is a language of the Congo.",
+      "sources": [
+        {
+          "title": "Lingala",
+          "url": "https://en.wikipedia.org/wiki/Lingala",
+          "claim": "Lingala is a language of the Congo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_lang_duala_language2",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a coastal language of Cameroon?",
+      "options": [
+        "Duala",
+        "Lingala",
+        "Kikongo",
+        "Tshiluba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Duala is a language of Cameroon.",
+      "sources": [
+        {
+          "title": "Duala language",
+          "url": "https://en.wikipedia.org/wiki/Duala_language",
+          "claim": "Duala is a language of Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_fest_ngondo2",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a coastal Sawa water festival in Douala?",
+      "options": [
+        "Ngondo",
+        "Nguon",
+        "Independence Day",
+        "National Day"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ngondo is a festival in Cameroon.",
+      "sources": [
+        {
+          "title": "Ngondo",
+          "url": "https://en.wikipedia.org/wiki/Ngondo",
+          "claim": "Ngondo is a festival in Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "central_peop_patrice_lumumba",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the first prime minister of the independent Congo?",
+      "options": [
+        "Patrice Lumumba",
+        "Manu Dibango",
+        "Papa Wemba",
+        "Alain Mabanckou"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Patrice Lumumba was the first prime minister of the Congo.",
+      "sources": [
+        {
+          "title": "Patrice Lumumba",
+          "url": "https://en.wikipedia.org/wiki/Patrice_Lumumba",
+          "claim": "Patrice Lumumba was the first prime minister of the Congo",
           "method": "page-overlap"
         }
       ],

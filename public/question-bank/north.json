@@ -1,0 +1,4748 @@
+{
+  "region": "north",
+  "questions": [
+    {
+      "id": "north_fash_chechia",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a traditional headgear worn in North Africa?",
+      "options": [
+        "Chechia",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The chechia is a cap worn in Tunisia.",
+      "sources": [
+        {
+          "title": "Chechia",
+          "url": "https://en.wikipedia.org/wiki/Chechia",
+          "claim": "Chechia The chechia (Arabic: شاشية [ʃɛːʃiæ] ) is a traditional headgear worn in North Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Chechia The chechia (Arabic: شاشية [ʃɛːʃiæ] ) is a traditional headgear worn in North Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_fash_djellaba",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a long, loose-fitting unisex outer robe or dress with long sleeves that is worn in North Africa?",
+      "options": [
+        "Djellaba",
+        "Babouche",
+        "Takchita",
+        "Galabeya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The djellaba is a robe worn in Morocco.",
+      "sources": [
+        {
+          "title": "Djellaba",
+          "url": "https://en.wikipedia.org/wiki/Djellaba",
+          "claim": "Djellaba The djellaba or jillaba (; Arabic: جلابة), also written gallabea, is a long, loose-fitting unisex outer robe or dress with long sleeves that is worn in North Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Djellaba The djellaba or jillaba (; Arabic: جلابة), also written gallabea, is a long, loose-fitting unisex outer robe or dress with long sleeves that is worn in North Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_fash_fez_hat",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a felt headdress in the shape of a short?",
+      "options": [
+        "Fez hat",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The fez is a red cap associated with North Africa.",
+      "sources": [
+        {
+          "title": "Fez (hat)",
+          "url": "https://en.wikipedia.org/wiki/Fez_(hat)",
+          "claim": "Fez (hat) The fez (Turkish: fes, Ottoman Turkish: فس, romanized: fes), also called tarboosh/tarboush (Arabic: طربوش, romanized: ṭarbūsh), is a felt headdress in the shape of a short, cylindrical, peakless hat, usually red, typically with a black tassel attached to the top.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Fez (hat) The fez (Turkish: fes, Ottoman Turkish: فس, romanized: fes), also called tarboosh/tarboush (Arabic: طربوش, romanized: ṭarbūsh), is a felt headdress in the shape of a short, cylindrical, peakless hat, usually red, typically with a black tassel attached to the top.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_fash_galabeya",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a loose-fitting, traditional garment from Egypt?",
+      "options": [
+        "Galabeya",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The galabeya is a robe worn in Egypt.",
+      "sources": [
+        {
+          "title": "Galabeya",
+          "url": "https://en.wikipedia.org/wiki/Galabeya",
+          "claim": "Jellabiya The Jellabiya, also Jalabiya, Galabeya or Dalabiya (Standard Arabic: جَلَّابِيَّة / ALA-LC: Jallābīyah, Sudanese Arabic: Jilabīyah, Egyptian Arabic: Galabiya, Saʽidi Arabic: Dalabiya, Egyptian Arabic: [ɡæ.læ.ˈbej.jæ-]; is a loose-fitting, traditional garment from Egypt.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Jellabiya The Jellabiya, also Jalabiya, Galabeya or Dalabiya (Standard Arabic: جَلَّابِيَّة / ALA-LC: Jallābīyah, Sudanese Arabic: Jilabīyah, Egyptian Arabic: Galabiya, Saʽidi Arabic: Dalabiya, Egyptian Arabic: [ɡæ.læ.ˈbej.jæ-]; is a loose-fitting, traditional garment from Egypt.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_fash_kaftan",
+      "region": "north",
+      "country": "North Africa",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a variant of the robe or tunic?",
+      "options": [
+        "Kaftan",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kaftan is worn in North Africa.",
+      "sources": [
+        {
+          "title": "Kaftan",
+          "url": "https://en.wikipedia.org/wiki/Kaftan",
+          "claim": "Kaftan A kaftan or caftan (; Arabic: قفطان, qafṭān; Persian: خفتان, khaftān; Turkish: kaftan) is a variant of the robe or tunic.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kaftan A kaftan or caftan (; Arabic: قفطان, qafṭān; Persian: خفتان, khaftān; Turkish: kaftan) is a variant of the robe or tunic.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_fash_karakou",
+      "region": "north",
+      "country": "Algeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is an embroidered velvet jacket of Algerian dress?",
+      "options": [
+        "Karakou",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The karakou is an Algerian jacket.",
+      "sources": [
+        {
+          "title": "Karakou",
+          "url": "https://en.wikipedia.org/wiki/Karakou",
+          "claim": "The karakou is an Algerian jacket",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Karakou The Karakou is a long-sleeved fitted velvet jacket embroidered with golden and silvered threads, it is a traditional Algerian garment originating from Algiers.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_fash_sefsari",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a traditional Tunisian veil worn by women?",
+      "options": [
+        "Sefsari",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The sefsari is a wrap worn in Tunisia.",
+      "sources": [
+        {
+          "title": "Sefsari",
+          "url": "https://en.wikipedia.org/wiki/Sefsari",
+          "claim": "Safseri The safseri (Tunisian Arabic: سفساري), sometimes also spelled sefseri, safsari or sefsari, is a traditional Tunisian veil worn by women.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Safseri The safseri (Tunisian Arabic: سفساري), sometimes also spelled sefseri, safsari or sefsari, is a traditional Tunisian veil worn by women.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_fash_zellige",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a style of mosaic tilework made from individually hand-chiseled tile pieces?",
+      "options": [
+        "Zellige",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zellige is a mosaic tilework of Morocco.",
+      "sources": [
+        {
+          "title": "Zellige",
+          "url": "https://en.wikipedia.org/wiki/Zellige",
+          "claim": "Zellij Zellij (Arabic: زليج, romanized: zillīj), also spelled zillij or zellige, is a style of mosaic tilework made from individually hand-chiseled tile pieces.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Zellij Zellij (Arabic: زليج, romanized: zillīj), also spelled zillij or zellige, is a style of mosaic tilework made from individually hand-chiseled tile pieces.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_asida",
+      "region": "north",
+      "country": "Libya",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a lump of dough made by stirring wheat flour into boiling water?",
+      "options": [
+        "Asida",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Asida is a dish eaten in Libya.",
+      "sources": [
+        {
+          "title": "Asida",
+          "url": "https://en.wikipedia.org/wiki/Asida",
+          "claim": "Asida Asida (Arabic: عصيدة, or Maghrebi ġsydë, pronounced [ˈʕs(ˁ)iːdə]), a common dish in the Arab world, is a lump of dough made by stirring wheat flour into boiling water, sometimes with added butter or honey.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Asida Asida (Arabic: عصيدة, or Maghrebi ġsydë, pronounced [ˈʕs(ˁ)iːdə]), a common dish in the Arab world, is a lump of dough made by stirring wheat flour into boiling water, sometimes with added butter or honey.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_basbousa",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a sweet, syrup-soaked semolina dessert popular throughout the Middle East, North Africa, Caucasus and the Balkans?",
+      "options": [
+        "Basbousa",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Basbousa is a sweet cake from Egypt.",
+      "sources": [
+        {
+          "title": "Basbousa",
+          "url": "https://en.wikipedia.org/wiki/Basbousa",
+          "claim": "Basbousa Basbousa (Arabic: بسبوسة, romanized: basbūsah, also known as harisa, nammoura, or revani) is a sweet, syrup-soaked semolina dessert popular throughout the Middle East, North Africa, Caucasus and the Balkans.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Basbousa Basbousa (Arabic: بسبوسة, romanized: basbūsah, also known as harisa, nammoura, or revani) is a sweet, syrup-soaked semolina dessert popular throughout the Middle East, North Africa, Caucasus and the Balkans.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_brik",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a fried pastry often filled with egg?",
+      "options": [
+        "Brik",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Brik is a Tunisian pastry.",
+      "sources": [
+        {
+          "title": "Brik",
+          "url": "https://en.wikipedia.org/wiki/Brik",
+          "claim": "Brik is a Tunisian pastry",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "The common ingredients in every brik – regardless of what it is called – include the deep fried pastry crust and proteins (like tuna or egg) encased within the wrapping, such as the common French spin known as brik a l'oeuf. To prepare a classic Tunisian Brik, one must fold the outer pastry into triangle shapes, stuff the mixed ingredients into the wrapper, and then heat them in a frying pan for two to three minutes on each side.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_couscous",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a traditional North African dish of small steamed granules of rolled semolina that is often served with a stew spooned on top?",
+      "options": [
+        "Couscous",
+        "Tagine",
+        "Harira",
+        "Pastilla"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Couscous is a North African dish of steamed semolina.",
+      "sources": [
+        {
+          "title": "Couscous",
+          "url": "https://en.wikipedia.org/wiki/Couscous",
+          "claim": "Couscous Couscous is a traditional North African dish of small steamed granules of rolled semolina that is often served with a stew spooned on top.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Couscous Couscous is a traditional North African dish of small steamed granules of rolled semolina that is often served with a stew spooned on top.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_ful_medames",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call stewed fava beans, an Egyptian breakfast?",
+      "options": [
+        "Ful medames",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ful medames is an Egyptian dish of fava beans.",
+      "sources": [
+        {
+          "title": "Ful medames",
+          "url": "https://en.wikipedia.org/wiki/Ful_medames",
+          "claim": "Ful medames is an Egyptian dish of fava beans",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ful medames Ful medames (Arabic: فول مدمّس, romanized: fūl mudammas, Egyptian Arabic pronunciation: [ˈfuːl meˈdæmmes], lit. 'buried favas'; other spellings include foule mudammes), or simply ful, is a stew of cooked fava beans served with olive oil, cumin, and optionally with chopped parsley, garlic, onion, lemon juice, chili pepper and other vegetables, herbs, and spices.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_harira",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a traditional North African soup prepared in Morocco and Algeria with many variations?",
+      "options": [
+        "Harira",
+        "Couscous",
+        "Tagine",
+        "Pastilla"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Harira is a soup from Morocco.",
+      "sources": [
+        {
+          "title": "Harira",
+          "url": "https://en.wikipedia.org/wiki/Harira",
+          "claim": "Harira Harira (Arabic: الحريرة, romanized: al-ḥarīra) is a traditional North African soup prepared in Morocco and Algeria with many variations, the best-known being Moroccan harira.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Harira Harira (Arabic: الحريرة, romanized: al-ḥarīra) is a traditional North African soup prepared in Morocco and Algeria with many variations, the best-known being Moroccan harira.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_kushari",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a Cairo street bowl of rice, lentils, pasta, and tomato?",
+      "options": [
+        "Koshari",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Koshari is an Egyptian dish.",
+      "sources": [
+        {
+          "title": "Kushari",
+          "url": "https://en.wikipedia.org/wiki/Kushari",
+          "claim": "Koshari is an Egyptian dish",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Koshary Koshary, Kushari or Koshari (Egyptian Arabic: كشرى [ˈkoʃæɾi]) is Egypt's national dish and a widely popular street food. It is a traditional Egyptian staple, mixing pasta, Egyptian fried rice, vermicelli and brown lentils, and topped with chickpeas, a garlicky tomato sauce, garlic vinegar, and crispy fried onions.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_lablabi",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a traditional Tunisian dish based on chickpeas in a thin garlic- and cumin-flavored broth?",
+      "options": [
+        "Lablabi",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lablabi is a chickpea dish from Tunisia.",
+      "sources": [
+        {
+          "title": "Lablabi",
+          "url": "https://en.wikipedia.org/wiki/Lablabi",
+          "claim": "Lablabi Lablabi or lablebi (لبلابي) is a traditional Tunisian dish based on chickpeas in a thin garlic- and cumin-flavored broth, served over small pieces of stale crusty bread.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lablabi Lablabi or lablebi (لبلابي) is a traditional Tunisian dish based on chickpeas in a thin garlic- and cumin-flavored broth, served over small pieces of stale crusty bread.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_merguez",
+      "region": "north",
+      "country": "Algeria",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call a red, spicy lamb- or beef-based fresh sausage in Maghrebi cuisine?",
+      "options": [
+        "Merguez",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Merguez is a sausage from North Africa.",
+      "sources": [
+        {
+          "title": "Merguez",
+          "url": "https://en.wikipedia.org/wiki/Merguez",
+          "claim": "Merguez Merguez ( mair-GHEZ) is a red, spicy lamb- or beef-based fresh sausage in Maghrebi cuisine.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Merguez Merguez ( mair-GHEZ) is a red, spicy lamb- or beef-based fresh sausage in Maghrebi cuisine.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_pastilla",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a meat or seafood pie in Maghrebi cuisine made with warqa dough?",
+      "options": [
+        "Pastilla",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pastilla is a pie from Morocco.",
+      "sources": [
+        {
+          "title": "Pastilla",
+          "url": "https://en.wikipedia.org/wiki/Pastilla",
+          "claim": "Pastilla Pastilla (Arabic: بسطيلة, romanized: basṭīla, also called a bastilla or an North African pie) is a meat or seafood pie in Maghrebi cuisine made with warqa dough (ورقة), which is similar to filo.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Pastilla Pastilla (Arabic: بسطيلة, romanized: basṭīla, also called a bastilla or an North African pie) is a meat or seafood pie in Maghrebi cuisine made with warqa dough (ورقة), which is similar to filo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_tajine",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a Maghrebi cuisine stew, named for the earthenware pot in which it is cooked?",
+      "options": [
+        "Tagine",
+        "Couscous",
+        "Harira",
+        "Pastilla"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A tagine is a Maghrebi stew.",
+      "sources": [
+        {
+          "title": "Tajine",
+          "url": "https://en.wikipedia.org/wiki/Tajine",
+          "claim": "Tagine A tagine or tajine, also tajin or tagin (Arabic: طاجين, romanized: ṭajīn) is a Maghrebi cuisine stew, named for the earthenware pot in which it is cooked.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tagine A tagine or tajine, also tajin or tagin (Arabic: طاجين, romanized: ṭajīn) is a Maghrebi cuisine stew, named for the earthenware pot in which it is cooked.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_thieboudienne",
+      "region": "north",
+      "country": "Mauritania",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call a traditional dish from Senegal that is also consumed in Mauritania?",
+      "options": [
+        "Thieb",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rice and fish is eaten in Mauritania.",
+      "sources": [
+        {
+          "title": "Thieboudienne",
+          "url": "https://en.wikipedia.org/wiki/Thieboudienne",
+          "claim": "Thieboudienne Ceebu (pronounced [cɛːbu]) or tiep (alternatively thieb, benechin, benachin, or jollof rice) is a traditional dish from Senegal that is also consumed in Mauritania, Guinea-Bissau, Guinea, Mali, The Gambia, and other West and Central African countries.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Thieboudienne Ceebu (pronounced [cɛːbu]) or tiep (alternatively thieb, benechin, benachin, or jollof rice) is a traditional dish from Senegal that is also consumed in Mauritania, Guinea-Bissau, Guinea, Mali, The Gambia, and other West and Central African countries.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_food_zaalouk",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call a Moroccan salad of cooked eggplants and tomatoes?",
+      "options": [
+        "Zaalouk",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zaalouk is a salad from Morocco.",
+      "sources": [
+        {
+          "title": "Zaalouk",
+          "url": "https://en.wikipedia.org/wiki/Zaalouk",
+          "claim": "Zaalouk Zaalouk or zalouk (Berber: ⵣⴰⵄⵍⵓⴽ Moroccan Arabic: زعلوك, romanized: zaʿlūk) is a Moroccan salad of cooked eggplants and tomatoes.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Zaalouk Zaalouk or zalouk (Berber: ⵣⴰⵄⵍⵓⴽ Moroccan Arabic: زعلوك, romanized: zaʿlūk) is a Moroccan salad of cooked eggplants and tomatoes.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_abu_simbel",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Where is the rock-cut temples moved during the Aswan dam works?",
+      "options": [
+        "Abu Simbel",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Abu Simbel is a temple site in Egypt.",
+      "sources": [
+        {
+          "title": "Abu Simbel",
+          "url": "https://en.wikipedia.org/wiki/Abu_Simbel",
+          "claim": "Abu Simbel is a temple site in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Abu Simbel Abu Simbel is a historic site comprising two massive rock-cut temples in the village of Abu Simbel (Arabic: أبو سمبل), Aswan Governorate, Upper Egypt, near the border with Sudan.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_alexandria",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Where is the Mediterranean port city of Egypt?",
+      "options": [
+        "Alexandria",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Alexandria is a city in Egypt.",
+      "sources": [
+        {
+          "title": "Alexandria",
+          "url": "https://en.wikipedia.org/wiki/Alexandria",
+          "claim": "Alexandria is a city in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Throughout the late medieval period, Alexandria re-emerged as a major metropolis and the most important commercial port in Egypt and one of the most important in the Mediterranean.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_algiers",
+      "region": "north",
+      "country": "Algeria",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Algeria?",
+      "options": [
+        "Algiers",
+        "Rabat",
+        "Tunis",
+        "Tripoli"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Algiers is the capital of Algeria.",
+      "sources": [
+        {
+          "title": "Algiers",
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "claim": "Algiers is the capital of Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Algiers Algiers ( al-JEERZ; Arabic: الجزائر, romanized: al-Jazāʾir, pronounced [al.d͡ʒazaːʔir] , locally [(ɪ)ˈd͡ːzaːjir]; French: Alger, pronounced [alʒe] ; Algerian Tamazight: ⴷⵣⴰⵢⵔ, romanized: Dzayer), officially Capital City of Algiers (Arabic: الجزائر العاصمة, romanized: al-Jazāʾir al-ʿĀṣima; Algerian Tamazight: ⴷⵣⴰⵢⵔ ⵜⴰⵎⴰⵏⴰⵖⵜ, romanized: Dzayer Tamaneɣt), is the capital and largest city of Algeria, located on the Mediterranean Sea in the north-central portion of the country.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_cairo",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Egypt?",
+      "options": [
+        "Cairo",
+        "Rabat",
+        "Algiers",
+        "Tunis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cairo is the capital of Egypt.",
+      "sources": [
+        {
+          "title": "Cairo",
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "claim": "Cairo is the capital of Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Cairo Cairo is the capital and largest city of Egypt and the Cairo Governorate.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_carthage",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the ancient city beside modern Tunis?",
+      "options": [
+        "Carthage",
+        "Giza",
+        "Marrakesh",
+        "Fez"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Carthage was an ancient city in Tunisia.",
+      "sources": [
+        {
+          "title": "Carthage",
+          "url": "https://en.wikipedia.org/wiki/Carthage",
+          "claim": "Carthage was an ancient city in Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Carthage Carthage (Arabic: قرطاج, ) was an ancient city in northern Africa founded by the legendary Phoenician queen Dido on the eastern side of the Lake of Tunis in what is now Tunisia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_chefchaouen",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the blue-painted city in Morocco's Rif?",
+      "options": [
+        "Chefchaouen",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chefchaouen is a city in Morocco.",
+      "sources": [
+        {
+          "title": "Chefchaouen",
+          "url": "https://en.wikipedia.org/wiki/Chefchaouen",
+          "claim": "Chefchaouen is a city in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nowadays, Chefchaouen is known as \"the Blue Pearl\" of Morocco, known for its traditional houses painted in blue and white.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_giza",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Where is the plateau of the great pyramids beside Cairo?",
+      "options": [
+        "Giza",
+        "Carthage",
+        "Marrakesh",
+        "Fez"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Giza pyramid complex is in Egypt.",
+      "sources": [
+        {
+          "title": "Giza",
+          "url": "https://en.wikipedia.org/wiki/Giza",
+          "claim": "The Giza pyramid complex is in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Giza is most famous as the location of the Giza Plateau, the site of some of the most impressive ancient monuments in the world, including a complex of ancient Egyptian royal mortuary and sacred structures, among which are the Great Sphinx, the Great Pyramid of Giza, and a number of other large pyramids and temples, and the Grand Egyptian Museum.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_khartoum",
+      "region": "north",
+      "country": "Sudan",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Sudan?",
+      "options": [
+        "Khartoum",
+        "Rabat",
+        "Algiers",
+        "Tunis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Khartoum is the capital of Sudan.",
+      "sources": [
+        {
+          "title": "Khartoum",
+          "url": "https://en.wikipedia.org/wiki/Khartoum",
+          "claim": "Khartoum is the capital of Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Khartoum Khartoum, also spelled Khartum, is the capital and most populous city of Sudan as well as Khartoum State.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_leptis_magna",
+      "region": "north",
+      "country": "Libya",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Where is a prominent city of the Carthaginian Empire and Roman Libya at the mouth of the Wadi Lebda in the Mediterranean?",
+      "options": [
+        "Leptis Magna",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Leptis Magna is an ancient city in Libya.",
+      "sources": [
+        {
+          "title": "Leptis Magna",
+          "url": "https://en.wikipedia.org/wiki/Leptis_Magna",
+          "claim": "Leptis Magna Leptis or Lepcis Magna, (Arabic: لبدة الكبرى, romanized: Libda al-Kubrā) also known by other names in antiquity, was a prominent city of the Carthaginian Empire and Roman Libya at the mouth of the Wadi Lebda in the Mediterranean.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Leptis Magna Leptis or Lepcis Magna, (Arabic: لبدة الكبرى, romanized: Libda al-Kubrā) also known by other names in antiquity, was a prominent city of the Carthaginian Empire and Roman Libya at the mouth of the Wadi Lebda in the Mediterranean.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_luxor",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the city of temples on the site of ancient Thebes?",
+      "options": [
+        "Luxor",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Luxor is a city in Egypt.",
+      "sources": [
+        {
+          "title": "Luxor",
+          "url": "https://en.wikipedia.org/wiki/Luxor",
+          "claim": "Luxor is a city in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Thebes remained a site of spirituality up to the Christian era, and attracted numerous Christian monks of the Roman Empire who established monasteries amidst several ancient monuments including the temple of Hatshepsut, now called Deir el-Bahri (\"the northern monastery\"). Following the Muslim conquest of Egypt, part of the Luxor Temple was converted from a church to a mosque.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_marrakesh",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the fourth-largest city in Morocco?",
+      "options": [
+        "Marrakesh",
+        "Giza",
+        "Carthage",
+        "Fez"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Marrakesh is a city in Morocco.",
+      "sources": [
+        {
+          "title": "Marrakesh",
+          "url": "https://en.wikipedia.org/wiki/Marrakesh",
+          "claim": "Marrakesh Marrakesh or Marrakech is the fourth-largest city in Morocco.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Marrakesh Marrakesh or Marrakech is the fourth-largest city in Morocco.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_nouakchott",
+      "region": "north",
+      "country": "Mauritania",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Mauritania?",
+      "options": [
+        "Nouakchott",
+        "Rabat",
+        "Algiers",
+        "Tunis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nouakchott is the capital of Mauritania.",
+      "sources": [
+        {
+          "title": "Nouakchott",
+          "url": "https://en.wikipedia.org/wiki/Nouakchott",
+          "claim": "Nouakchott is the capital of Mauritania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nouakchott Nouakchott ( nwa(h)k-SHOT) is the capital and largest city of Mauritania.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_geog_rabat",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Morocco?",
+      "options": [
+        "Rabat",
+        "Algiers",
+        "Tunis",
+        "Tripoli"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rabat is the capital of Morocco.",
+      "sources": [
+        {
+          "title": "Rabat",
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "claim": "Rabat is the capital of Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Rabat Rabat is the capital city of Morocco, located on the northwestern coasts of the Atlantic Ocean.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_hist_al_azhar_university",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a public university in Cairo, Egypt?",
+      "options": [
+        "Al-Azhar",
+        "Carthage history",
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Al-Azhar is a historic university in Cairo.",
+      "sources": [
+        {
+          "title": "Al-Azhar University",
+          "url": "https://en.wikipedia.org/wiki/Al-Azhar_University",
+          "claim": "Al-Azhar University Al-Azhar University is a public university in Cairo, Egypt.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Al-Azhar University Al-Azhar University is a public university in Cairo, Egypt.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_hist_ancient_egypt",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a cradle of civilization concentrated along the lower reaches of the Nile River in the eastern part of North Africa?",
+      "options": [
+        "Ancient Egypt",
+        "Kingdom of Kush",
+        "Meroë",
+        "Fatimid Cairo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ancient Egypt was a civilisation of the Nile.",
+      "sources": [
+        {
+          "title": "Ancient Egypt",
+          "url": "https://en.wikipedia.org/wiki/Ancient_Egypt",
+          "claim": "Ancient Egypt Ancient Egypt was a cradle of civilization concentrated along the lower reaches of the Nile River in the eastern part of North Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ancient Egypt Ancient Egypt was a cradle of civilization concentrated along the lower reaches of the Nile River in the eastern part of North Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_hist_meroe",
+      "region": "north",
+      "country": "Sudan",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is an ancient city on the east bank of the Nile about 6 km north-east of the Kabushiya station?",
+      "options": [
+        "Meroë",
+        "Ancient Egypt",
+        "Kingdom of Kush",
+        "Fatimid Cairo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Meroë was a city of the Kingdom of Kush.",
+      "sources": [
+        {
+          "title": "Meroë",
+          "url": "https://en.wikipedia.org/wiki/Mero%C3%AB",
+          "claim": "Meroë Meroë was an ancient city on the east bank of the Nile about 6 km (3.7 mi) north-east of the Kabushiya station, which is 35 km (22 mi) north-east of Shendi, Sudan, about 200 km north-east of Khartoum.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Meroë Meroë was an ancient city on the east bank of the Nile about 6 km (3.7 mi) north-east of the Kabushiya station, which is 35 km (22 mi) north-east of Shendi, Sudan, about 200 km north-east of Khartoum.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_hist_rosetta_stone",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a stele of granodiorite inscribed with three versions of a decree issued in 196 BC during the Ptolemaic dynasty of Egypt?",
+      "options": [
+        "Rosetta Stone",
+        "Carthage history",
+        "Al-Qarawiyyin",
+        "Al-Azhar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Rosetta Stone records a decree in three scripts.",
+      "sources": [
+        {
+          "title": "Rosetta Stone",
+          "url": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+          "claim": "Rosetta Stone The Rosetta Stone is a stele of granodiorite inscribed with three versions of a decree issued in 196 BC during the Ptolemaic dynasty of Egypt, on behalf of King Ptolemy V Epiphanes.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Rosetta Stone The Rosetta Stone is a stele of granodiorite inscribed with three versions of a decree issued in 196 BC during the Ptolemaic dynasty of Egypt, on behalf of King Ptolemy V Epiphanes.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_hist_timgad",
+      "region": "north",
+      "country": "Algeria",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the Roman planned city in Algeria?",
+      "options": [
+        "Timgad",
+        "Carthage history",
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Timgad is a Roman city in Algeria.",
+      "sources": [
+        {
+          "title": "Timgad",
+          "url": "https://en.wikipedia.org/wiki/Timgad",
+          "claim": "Timgad is a Roman city in Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Timgad Timgad or Thamugadi (colonia Marciana Traiana Thamugadi in latin, Arabic: تيمقاد, romanized: Tīmqād,) , nicknamed the «Pompeii of north africa» was a Roman city in the Aurès Mountains of Algeria.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_hist_university_of_al_qarawiyyin",
+      "region": "north",
+      "country": "Morocco",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a university located in Fez, Morocco?",
+      "options": [
+        "Al-Qarawiyyin",
+        "Carthage history",
+        "Rosetta Stone",
+        "Al-Azhar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Al-Qarawiyyin is a historic university in Fez.",
+      "sources": [
+        {
+          "title": "University of al-Qarawiyyin",
+          "url": "https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin",
+          "claim": "University of al-Qarawiyyin The University of al-Qarawiyyin (Arabic: جامعة القرويين, romanized: Jāmiʻat al-Qarawīyīn), also written Al-Karaouine or Al Quaraouiyine, is a university located in Fez, Morocco.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "University of al-Qarawiyyin The University of al-Qarawiyyin (Arabic: جامعة القرويين, romanized: Jāmiʻat al-Qarawīyīn), also written Al-Karaouine or Al Quaraouiyine, is a university located in Fez, Morocco.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_lang_beja_language",
+      "region": "north",
+      "country": "Sudan",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a language of eastern Sudan?",
+      "options": [
+        "Beja",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Beja is a language of Sudan.",
+      "sources": [
+        {
+          "title": "Beja language",
+          "url": "https://en.wikipedia.org/wiki/Beja_language",
+          "claim": "Beja is a language of Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Beja language Beja (Bidhaawyeet or Tubdhaawi) is an Afroasiatic language of the Cushitic branch spoken on the western coast of the Red Sea by the Beja people. Its speakers inhabit parts of Egypt, Sudan and Eritrea.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_lang_berber_languages",
+      "region": "north",
+      "country": "North Africa",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a branch of the Afroasiatic language family?",
+      "options": [
+        "Tamazight",
+        "Arabic",
+        "Darija",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tamazight refers to Berber languages of North Africa.",
+      "sources": [
+        {
+          "title": "Berber languages",
+          "url": "https://en.wikipedia.org/wiki/Berber_languages",
+          "claim": "Berber languages The Berber languages, also known as Amazigh or Tamazight, are a branch of the Afroasiatic language family.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Berber languages The Berber languages, also known as Amazigh or Tamazight, are a branch of the Afroasiatic language family.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_lang_egyptian_arabic",
+      "region": "north",
+      "country": "Egypt",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the colloquial of Egypt?",
+      "options": [
+        "Egyptian Arabic",
+        "Darija",
+        "Tamazight",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egyptian Arabic is spoken in Egypt.",
+      "sources": [
+        {
+          "title": "Egyptian Arabic",
+          "url": "https://en.wikipedia.org/wiki/Egyptian_Arabic",
+          "claim": "Egyptian Arabic is spoken in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Egyptian Arabic Egyptian Arabic, locally known as Colloquial Egyptian, or simply as Masri, is the most widely spoken vernacular Arabic variety in Egypt.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_lang_kabyle_language",
+      "region": "north",
+      "country": "Algeria",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a Tamazight language of Algeria?",
+      "options": [
+        "Kabyle",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kabyle is a Berber language of Algeria.",
+      "sources": [
+        {
+          "title": "Kabyle language",
+          "url": "https://en.wikipedia.org/wiki/Kabyle_language",
+          "claim": "Kabyle is a Berber language of Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kabyle language Kabyle () or Kabylian (; native name: Taqbaylit [θɐqβæjlɪθ] ) is a Berber language spoken by the Kabyle people in the north and northeast of Algeria.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_lang_nubian_languages",
+      "region": "north",
+      "country": "Egypt",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name languages of communities along the Nile?",
+      "options": [
+        "Nubian",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nubian languages are spoken in Egypt and Sudan.",
+      "sources": [
+        {
+          "title": "Nubian languages",
+          "url": "https://en.wikipedia.org/wiki/Nubian_languages",
+          "claim": "Nubian languages are spoken in Egypt and Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nubian languages The Nubian languages are a branch of the Nilo-Saharan language family spoken by Nubians in southern Egypt and northern Sudan. They are now concentrated mainly along the Nile and in several disconnected areas in Sudan, including parts of the Nuba Mountains and Darfur.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_lang_standard_moroccan_amazigh",
+      "region": "north",
+      "country": "Morocco",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name an Amazigh language of Morocco?",
+      "options": [
+        "Tamazight",
+        "Arabic",
+        "Darija",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tamazight is an Amazigh language of Morocco.",
+      "sources": [
+        {
+          "title": "Standard Moroccan Amazigh",
+          "url": "https://en.wikipedia.org/wiki/Standard_Moroccan_Amazigh",
+          "claim": "Tamazight is an Amazigh language of Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Standard Moroccan Amazigh Standard Moroccan Amazigh, also known as Standard Moroccan Tamazight or Standard Moroccan Berber, is a standardized language developed by the Royal Institute of Amazigh Culture (IRCAM) in Morocco by combining features of Tashelhit, Central Atlas Tamazight, and Tarifit, the three major Amazigh languages in Morocco.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_lang_sudanese_arabic",
+      "region": "north",
+      "country": "Sudan",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the colloquial of Sudan?",
+      "options": [
+        "Sudanese Arabic",
+        "Darija",
+        "Tamazight",
+        "Egyptian Arabic"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sudanese Arabic is spoken in Sudan.",
+      "sources": [
+        {
+          "title": "Sudanese Arabic",
+          "url": "https://en.wikipedia.org/wiki/Sudanese_Arabic",
+          "claim": "Sudanese Arabic is spoken in Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Sudanese Arabic Sudanese Arabic, also referred to as the Sudanese dialect (Arabic: اللهجة السودانية, romanized: Al-Lahja Al-Sūdānīyah, Sudanese Arabic [ˈlahɟa suːˈdaːnijja]), Colloquial Sudanese (Arabic: العامية السودانية [ˈʕaːmmijja suːˈdaːnijja]) or locally as Common Sudanese (Arabic: دارجى [ˈdaːriɟi]) refers to the various related varieties of Arabic spoken in Sudan as well as parts of Egypt, Eritrea and Ethiopia.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_amr_diab",
+      "region": "north",
+      "country": "Egypt",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is an Egyptian singer, composer and actor?",
+      "options": [
+        "Amr Diab",
+        "Umm Kulthum",
+        "Cheb Khaled",
+        "Rachid Taha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Amr Diab is an Egyptian singer.",
+      "sources": [
+        {
+          "title": "Amr Diab",
+          "url": "https://en.wikipedia.org/wiki/Amr_Diab",
+          "claim": "Amr Diab Amr Abdel Basset Abdel Azeez Diab (Arabic: عمرو عبد الباسط عبد العزيز دياب, [ˈʕɑmɾe ʕæbdelˈbɑːsetˤ ʕæbdelʕæˈziːz deˈjæːb]; born 11 October 1961) is an Egyptian singer, composer and actor.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Amr Diab Amr Abdel Basset Abdel Azeez Diab (Arabic: عمرو عبد الباسط عبد العزيز دياب, [ˈʕɑmɾe ʕæbdelˈbɑːsetˤ ʕæbdelʕæˈziːz deˈjæːb]; born 11 October 1961) is an Egyptian singer, composer and actor.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_dhafer_youssef",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Tunisian composer, singer and oud player?",
+      "options": [
+        "Dhafer Youssef",
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dhafer Youssef is a Tunisian musician.",
+      "sources": [
+        {
+          "title": "Dhafer Youssef",
+          "url": "https://en.wikipedia.org/wiki/Dhafer_Youssef",
+          "claim": "Dhafer Youssef Dhafer Youssef (Arabic: ظافر يوسف; born 19 November 1967) is a Tunisian composer, singer and oud player.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Dhafer Youssef Dhafer Youssef (Arabic: ظافر يوسف; born 19 November 1967) is a Tunisian composer, singer and oud player.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_gnawa",
+      "region": "north",
+      "country": "Morocco",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is an ethnic minority inhabiting southern Morocco?",
+      "options": [
+        "Gnawa",
+        "Raï",
+        "Chaabi",
+        "Mizwad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gnawa is a music tradition of Morocco.",
+      "sources": [
+        {
+          "title": "Gnawa",
+          "url": "https://en.wikipedia.org/wiki/Gnawa",
+          "claim": "Gnawa The Gnawa () (or Gnaoua, Ghanawa, Ghanawi, Gnawi'; Arabic: ڭناوة, romanized: Gnāwa) are an ethnic minority inhabiting southern Morocco, who had been brought to Morocco as slaves from West Africa’s Jaych Abid El Bakhira Sahel.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Gnawa The Gnawa () (or Gnaoua, Ghanawa, Ghanawi, Gnawi'; Arabic: ڭناوة, romanized: Gnāwa) are an ethnic minority inhabiting southern Morocco, who had been brought to Morocco as slaves from West Africa’s Jaych Abid El Bakhira Sahel.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_mezwed",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is bagpipe-driven popular music of Tunisia?",
+      "options": [
+        "Mizwad",
+        "Raï",
+        "Gnawa",
+        "Chaabi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mezwed is a music genre from Tunisia.",
+      "sources": [
+        {
+          "title": "Mezwed",
+          "url": "https://en.wikipedia.org/wiki/Mezwed",
+          "claim": "Mezwed is a music genre from Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mezwed Mezwed (Arabic: مزود) is a genre of popular traditional music based on Tunisian scale rhythms. It incorporates traditional North African drums called Darbouka and a kind of bagpipe called a mizwad with a bag made from ewe's leather.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_mohamed_mounir",
+      "region": "north",
+      "country": "Egypt",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Nubian-Egyptian singer of Cairo nights?",
+      "options": [
+        "Mohamed Mounir",
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mohamed Mounir is an Egyptian singer.",
+      "sources": [
+        {
+          "title": "Mohamed Mounir",
+          "url": "https://en.wikipedia.org/wiki/Mohamed_Mounir",
+          "claim": "Mohamed Mounir is an Egyptian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mohamed Mounir Mohamed Mounir (Arabic: محمد منير; born October 10, 1954) is an Egyptian singer and actor, with a musical career spanning more than four decades. He incorporates various genres into his music, including classical Egyptian music, Nubian music, Blues, Jazz and Reggae.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_nass_el_ghiwane",
+      "region": "north",
+      "country": "Morocco",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a musical group established in 1969 in Casablanca?",
+      "options": [
+        "Nass El Ghiwane",
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nass El Ghiwane is a Moroccan band.",
+      "sources": [
+        {
+          "title": "Nass El Ghiwane",
+          "url": "https://en.wikipedia.org/wiki/Nass_El_Ghiwane",
+          "claim": "Nass El Ghiwane Nass El Ghiwane (Arabic: ناس الغيوان) are a musical group established in 1969 in Casablanca, Morocco.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nass El Ghiwane Nass El Ghiwane (Arabic: ناس الغيوان) are a musical group established in 1969 in Casablanca, Morocco.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_oud",
+      "region": "north",
+      "country": "Egypt",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a Middle Eastern short-neck lute-type, pear-shaped, fretless stringed instrument , usually with 11 strings grouped in six courses, but?",
+      "options": [
+        "Oud",
+        "Raï",
+        "Gnawa",
+        "Chaabi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The oud is a lute used in Egyptian music.",
+      "sources": [
+        {
+          "title": "Oud",
+          "url": "https://en.wikipedia.org/wiki/Oud",
+          "claim": "Oud The oud ( OOD; Arabic: عُود, romanized: ʿūd, pronounced [ʕuːd]) is a Middle Eastern short-neck lute-type, pear-shaped, fretless stringed instrument (a chordophone in the Hornbostel–Sachs classification of instruments), usually with 11 strings grouped in six courses, but some models have five or seven courses, with 10 or 13 strings respectively.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Oud The oud ( OOD; Arabic: عُود, romanized: ʿūd, pronounced [ʕuːd]) is a Middle Eastern short-neck lute-type, pear-shaped, fretless stringed instrument (a chordophone in the Hornbostel–Sachs classification of instruments), usually with 11 strings grouped in six courses, but some models have five or seven courses, with 10 or 13 strings respectively.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_rachid_taha",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the singer who mixed raï and rock?",
+      "options": [
+        "Rachid Taha",
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rachid Taha was an Algerian singer.",
+      "sources": [
+        {
+          "title": "Rachid Taha",
+          "url": "https://en.wikipedia.org/wiki/Rachid_Taha",
+          "claim": "Rachid Taha was an Algerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Rachid Taha Rachid Taha (Arabic: رشيد طه, Rashīd Ṭāhā, [raʃiːd tˤaːhaː]; 18 September 1958 – 12 September 2018) was an Algerian singer and activist based in France described as \"sonically adventurous\". His music was influenced by many different styles including rock, electronic, punk and raï.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_rai",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the popular music of Oran?",
+      "options": [
+        "Raï",
+        "Gnawa",
+        "Chaabi",
+        "Mizwad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Raï is a music genre from Algeria.",
+      "sources": [
+        {
+          "title": "Raï",
+          "url": "https://en.wikipedia.org/wiki/Ra%C3%AF",
+          "claim": "Raï is a music genre from Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Raï emerged as a major world music genre in the late 1980s. In the years just following World War I, the Algerian city of Oran (known as \"little Paris\") was a melting pot of various cultures, full of nightclubs and cabarets; it was the place to go for a bawdy good time.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_rai2",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a form of Algerian popular music whose origins date back to the 1920s?",
+      "options": [
+        "Raï",
+        "Gnawa",
+        "Chaabi",
+        "Mizwad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Raï is a music genre from Algeria.",
+      "sources": [
+        {
+          "title": "Raï",
+          "url": "https://en.wikipedia.org/wiki/Ra%C3%AF",
+          "claim": "Raï Raï (, ; Arabic: راي, rāy, [ra:j]), sometimes written rai, is a form of Algerian popular music whose origins date back to the 1920s.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Raï Raï (, ; Arabic: راي, rāy, [ra:j]), sometimes written rai, is a form of Algerian popular music whose origins date back to the 1920s.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_shaabi",
+      "region": "north",
+      "country": "Egypt",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is street pop of Cairo?",
+      "options": [
+        "Shaabi",
+        "Raï",
+        "Gnawa",
+        "Chaabi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shaabi is a popular music of Egypt.",
+      "sources": [
+        {
+          "title": "Shaabi",
+          "url": "https://en.wikipedia.org/wiki/Shaabi",
+          "claim": "Shaabi is a popular music of Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "It is a form of popular working-class music which evolved from Egyptian Baladi in the second half of the 20th century and the core of Egyptian popular music in streets, at weddings, and in everyday Egyptian life. Shaabi originated in Cairo from the 1920s to the 1940s, as in certain songs and themes of composer Sayyid Darwish, and from the 1940s to 1960s by mawwal singers Abu Dira and Anwar al-Askari and in songs by Shafiq Gallal, Mohamed abd el-Motleb, Mohamed el-Ezzabi and others.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_souad_massi",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is an Algerian Berber singer, songwriter and guitarist?",
+      "options": [
+        "Souad Massi",
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Souad Massi is an Algerian singer.",
+      "sources": [
+        {
+          "title": "Souad Massi",
+          "url": "https://en.wikipedia.org/wiki/Souad_Massi",
+          "claim": "Souad Massi Souad Massi (Arabic: سعاد ماسي; born August 23, 1972) is an Algerian Berber singer, songwriter and guitarist.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Souad Massi Souad Massi (Arabic: سعاد ماسي; born August 23, 1972) is an Algerian Berber singer, songwriter and guitarist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_musi_umm_kulthum",
+      "region": "north",
+      "country": "Egypt",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Egyptian singer and film actress?",
+      "options": [
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled",
+        "Rachid Taha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Umm Kulthum was an Egyptian singer.",
+      "sources": [
+        {
+          "title": "Umm Kulthum",
+          "url": "https://en.wikipedia.org/wiki/Umm_Kulthum",
+          "claim": "Umm Kulthum Fatima Ibrahim es-Sayyid el-Beltagi (4 May 1904 – 3 February 1975), known by her stage name Umm Kulthum, was an Egyptian singer and film actress.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Umm Kulthum Fatima Ibrahim es-Sayyid el-Beltagi (4 May 1904 – 3 February 1975), known by her stage name Umm Kulthum, was an Egyptian singer and film actress.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_ahmed_zewail",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Egyptian chemist who won a Nobel Prize?",
+      "options": [
+        "Ahmed Zewail",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ahmed Zewail was an Egyptian chemist.",
+      "sources": [
+        {
+          "title": "Ahmed Zewail",
+          "url": "https://en.wikipedia.org/wiki/Ahmed_Zewail",
+          "claim": "Ahmed Zewail was an Egyptian chemist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ahmed Zewail Ahmed Hassan Zewail (February 26, 1946 – August 2, 2016) was an Egyptian-American chemist, known as the \"Father of Femtochemistry\". He was awarded the 1999 Nobel Prize in Chemistry for his work on femtochemistry and became the first Egyptian and Arab to win a Nobel Prize in a scientific field, and the first African to win a Nobel Prize in Chemistry.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_assia_djebar",
+      "region": "north",
+      "country": "Algeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Algerian novelist, translator and filmmaker?",
+      "options": [
+        "Assia Djebar",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Assia Djebar was an Algerian writer.",
+      "sources": [
+        {
+          "title": "Assia Djebar",
+          "url": "https://en.wikipedia.org/wiki/Assia_Djebar",
+          "claim": "Assia Djebar Fatima-Zohra Imalayen (Arabic: فاطمة الزهراء إيمالاين‎; 30 June 1936 – 6 February 2015), known by her pen name Assia Djebar (Arabic: آسيا جبار), was an Algerian novelist, translator and filmmaker.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Assia Djebar Fatima-Zohra Imalayen (Arabic: فاطمة الزهراء إيمالاين‎; 30 June 1936 – 6 February 2015), known by her pen name Assia Djebar (Arabic: آسيا جبار), was an Algerian novelist, translator and filmmaker.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_cleopatra",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the daughter of Ptolemy XII Auletes?",
+      "options": [
+        "Cleopatra",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cleopatra was a ruler of Egypt.",
+      "sources": [
+        {
+          "title": "Cleopatra",
+          "url": "https://en.wikipedia.org/wiki/Cleopatra",
+          "claim": "Born in Alexandria, Cleopatra was the daughter of Ptolemy XII Auletes, who named her his heir before his death in 51 BC.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Born in Alexandria, Cleopatra was the daughter of Ptolemy XII Auletes, who named her his heir before his death in 51 BC.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_hannibal",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Carthaginian general and statesman who commanded the forces of Carthage in their battle against the Roman Republic during the Second?",
+      "options": [
+        "Hannibal",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hannibal was a Carthaginian general.",
+      "sources": [
+        {
+          "title": "Hannibal",
+          "url": "https://en.wikipedia.org/wiki/Hannibal",
+          "claim": "Hannibal Hannibal Barca (; Punic: 𐤇𐤍𐤁𐤏𐤋 𐤁𐤓𐤒; 247 – between 183 and 181 BC) was a Carthaginian general and statesman who commanded the forces of Carthage in their battle against the Roman Republic during the Second Punic–Roman War.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Hannibal Hannibal Barca (; Punic: 𐤇𐤍𐤁𐤏𐤋 𐤁𐤓𐤒; 247 – between 183 and 181 BC) was a Carthaginian general and statesman who commanded the forces of Carthage in their battle against the Roman Republic during the Second Punic–Roman War.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_hisham_matar",
+      "region": "north",
+      "country": "Libya",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is an American-born British-Libyan novelist, essayist, and memoirist?",
+      "options": [
+        "Hisham Matar",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hisham Matar is a Libyan-born writer.",
+      "sources": [
+        {
+          "title": "Hisham Matar",
+          "url": "https://en.wikipedia.org/wiki/Hisham_Matar",
+          "claim": "Hisham Matar Hisham Matar (Arabic: هشام مطر; born 1970) is an American-born British-Libyan novelist, essayist, and memoirist.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Hisham Matar Hisham Matar (Arabic: هشام مطر; born 1970) is an American-born British-Libyan novelist, essayist, and memoirist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_ibn_battuta",
+      "region": "north",
+      "country": "Morocco",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Maghrebi Muslim traveller, explorer, and scholar from Tangier, Morocco?",
+      "options": [
+        "Ibn Battuta",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ibn Battuta was a Moroccan traveller.",
+      "sources": [
+        {
+          "title": "Ibn Battuta",
+          "url": "https://en.wikipedia.org/wiki/Ibn_Battuta",
+          "claim": "Ibn Battuta Ibn Battuta (; 24 February 1304–1368/1369) was a Maghrebi Muslim traveller, explorer, and scholar from Tangier, Morocco.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ibn Battuta Ibn Battuta (; 24 February 1304–1368/1369) was a Maghrebi Muslim traveller, explorer, and scholar from Tangier, Morocco.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_ibn_khaldun",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the historian born in Tunis?",
+      "options": [
+        "Ibn Khaldun",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ibn Khaldun was a historian from Tunis.",
+      "sources": [
+        {
+          "title": "Ibn Khaldun",
+          "url": "https://en.wikipedia.org/wiki/Ibn_Khaldun",
+          "claim": "Ibn Khaldun was a historian from Tunis",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ibn Khaldun Ibn Khaldūn (27 May 1332 – 17 March 1406, 732–808 AH) was an Arab Tunisian scholar, historian, philosopher, and sociologist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_leila_slimani",
+      "region": "north",
+      "country": "Morocco",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a French-Moroccan writer and journalist?",
+      "options": [
+        "Leila Slimani",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Leïla Slimani is a Moroccan writer.",
+      "sources": [
+        {
+          "title": "Leïla Slimani",
+          "url": "https://en.wikipedia.org/wiki/Le%C3%AFla_Slimani",
+          "claim": "Leïla Slimani Leïla Slimani (born 3 October 1981) is a French-Moroccan writer and journalist.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Leïla Slimani Leïla Slimani (born 3 October 1981) is a French-Moroccan writer and journalist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_mohamed_salah",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Egyptian footballer born in 1992?",
+      "options": [
+        "Mohamed Salah",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mohamed Salah is an Egyptian footballer born in 1992.",
+      "sources": [
+        {
+          "title": "Mohamed Salah",
+          "url": "https://en.wikipedia.org/wiki/Mohamed_Salah",
+          "claim": "Mohamed Salah is an Egyptian footballer born in 1992",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mohamed Salah Mohamed Salah Hamed Mahrous Ghaly (born 15 June 1992) is an Egyptian professional footballer who plays as a right winger for Süper Lig club Trabzonspor and captains the Egypt national team.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_naguib_mahfouz",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Egyptian novelist who won the Nobel Prize?",
+      "options": [
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun",
+        "Assia Djebar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Naguib Mahfouz was an Egyptian writer.",
+      "sources": [
+        {
+          "title": "Naguib Mahfouz",
+          "url": "https://en.wikipedia.org/wiki/Naguib_Mahfouz",
+          "claim": "Naguib Mahfouz was an Egyptian writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Naguib Mahfouz Naguib Mahfouz Abdelaziz Ibrahim Ahmed Al-Basha (11 December 1911 – 30 August 2006) was an Egyptian writer who won the 1988 Nobel Prize in Literature.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_nawal_el_saadawi",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Egyptian physician and feminist writer?",
+      "options": [
+        "Nawal El Saadawi",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nawal El Saadawi was an Egyptian writer.",
+      "sources": [
+        {
+          "title": "Nawal El Saadawi",
+          "url": "https://en.wikipedia.org/wiki/Nawal_El_Saadawi",
+          "claim": "Nawal El Saadawi was an Egyptian writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nawal El Saadawi Nawal El Saadawi (Arabic: نوال السعداوي, ALA-LC: Nawāl as-Saʿdāwī; 27 October 1931 – 21 March 2021) was an Egyptian feminist writer, activist, physician, and psychiatrist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_ons_jabeur",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Tunisian tennis star?",
+      "options": [
+        "Ons Jabeur",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ons Jabeur is a Tunisian tennis player.",
+      "sources": [
+        {
+          "title": "Ons Jabeur",
+          "url": "https://en.wikipedia.org/wiki/Ons_Jabeur",
+          "claim": "Ons Jabeur is a Tunisian tennis player",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ons Jabeur Ons Jabeur (born 28 August 1994) is a Tunisian inactive tennis player.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_riyad_mahrez",
+      "region": "north",
+      "country": "Algeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Algerian footballer who won the Premier League?",
+      "options": [
+        "Riyad Mahrez",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Riyad Mahrez is an Algerian footballer.",
+      "sources": [
+        {
+          "title": "Riyad Mahrez",
+          "url": "https://en.wikipedia.org/wiki/Riyad_Mahrez",
+          "claim": "Riyad Mahrez is an Algerian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Riyad Mahrez Riyad Karim Mahrez (born 21 February 1991) is a professional footballer who plays as a right winger for Qatar Stars League side Al-Shamal. Born in France, he represented the Algeria national team.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_tahar_ben_jelloun",
+      "region": "north",
+      "country": "Morocco",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a Moroccan writer who rose to fame for his 1985 novel L'Enfant de sable?",
+      "options": [
+        "Tahar Ben Jelloun",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Assia Djebar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tahar Ben Jelloun is a Moroccan writer.",
+      "sources": [
+        {
+          "title": "Tahar Ben Jelloun",
+          "url": "https://en.wikipedia.org/wiki/Tahar_Ben_Jelloun",
+          "claim": "Tahar Ben Jelloun Tahar Ben Jelloun (Arabic: الطاهر بن جلون, romanized: aṭ-Ṭāhir bin Jallūn; born 1 December 1944) is a Moroccan writer who rose to fame for his 1985 novel L'Enfant de sable (The Sand Child).",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tahar Ben Jelloun Tahar Ben Jelloun (Arabic: الطاهر بن جلون, romanized: aṭ-Ṭāhir bin Jallūn; born 1 December 1944) is a Moroccan writer who rose to fame for his 1985 novel L'Enfant de sable (The Sand Child).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_peop_tayeb_salih",
+      "region": "north",
+      "country": "Sudan",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Sudanese writer, novelist, and journalist, considered to be one of the most prominent Arab writers of the 20th century?",
+      "options": [
+        "Tayeb Salih",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tayeb Salih was a Sudanese writer.",
+      "sources": [
+        {
+          "title": "Tayeb Salih",
+          "url": "https://en.wikipedia.org/wiki/Tayeb_Salih",
+          "claim": "Tayeb Salih Al-Tayeb Salih (Arabic: الطيب صالح, romanized: aṭ-Ṭayyib Ṣāliḥ; July 12, 1929 – February 18, 2009) was a Sudanese writer, novelist, and journalist, considered to be one of the most prominent Arab writers of the 20th century.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tayeb Salih Al-Tayeb Salih (Arabic: الطيب صالح, romanized: aṭ-Ṭayyib Ṣāliḥ; July 12, 1929 – February 18, 2009) was a Sudanese writer, novelist, and journalist, considered to be one of the most prominent Arab writers of the 20th century.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_popc_cairokee",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Egyptian rock band?",
+      "options": [
+        "Cairokee",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cairokee is an Egyptian band.",
+      "sources": [
+        {
+          "title": "Cairokee",
+          "url": "https://en.wikipedia.org/wiki/Cairokee",
+          "claim": "Cairokee is an Egyptian band",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Cairokee Cairokee is an Egyptian rock band that was officially launched in 2003 but came to prominence with its revolutionary music following the Egyptian Revolution of 2011 due to its politically-inspired lyrics and protest songs released following the uprising.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_popc_douzi",
+      "region": "north",
+      "country": "Morocco",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Moroccan raï and pop singer?",
+      "options": [
+        "Douzi",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Douzi is a Moroccan singer.",
+      "sources": [
+        {
+          "title": "Douzi",
+          "url": "https://en.wikipedia.org/wiki/Douzi",
+          "claim": "Douzi is a Moroccan singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Douzi Abdelhafid Douzi (Arabic: عبد الحفيظ الدوزي; born 30 April 1985), better known by the mononym Douzi, is a Moroccan pop singer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_popc_dystinct",
+      "region": "north",
+      "country": "Morocco",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Belgian-Moroccan pop singer?",
+      "options": [
+        "Dystinct",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dystinct is a Moroccan singer.",
+      "sources": [
+        {
+          "title": "Dystinct",
+          "url": "https://en.wikipedia.org/wiki/Dystinct",
+          "claim": "Dystinct is a Moroccan singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Dystinct Iliass Mansouri (Arabic: إلياس المنصوري, born 9 September 1998), better known by his stage name Dystinct (stylized in all caps), is a Belgian-Moroccan singer-songwriter and music producer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_popc_mohamed_ramadan_actor",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Egyptian actor and shaabi singer?",
+      "options": [
+        "Mohamed Ramadan",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mohamed Ramadan is an Egyptian actor.",
+      "sources": [
+        {
+          "title": "Mohamed Ramadan (actor)",
+          "url": "https://en.wikipedia.org/wiki/Mohamed_Ramadan_(actor)",
+          "claim": "Mohamed Ramadan is an Egyptian actor",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mohamed Ramadan (actor and singer) Mohamed Ramadan (Arabic: محمد رمضان; born in Qena, 23 May 1988) is an Egyptian actor and singer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_popc_rachid_taha",
+      "region": "north",
+      "country": "Algeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Algerian singer and activist based in France described as \"sonically adventurous\"?",
+      "options": [
+        "Rachid Taha",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rachid Taha was an Algerian rock singer.",
+      "sources": [
+        {
+          "title": "Rachid Taha",
+          "url": "https://en.wikipedia.org/wiki/Rachid_Taha",
+          "claim": "Rachid Taha Rachid Taha (Arabic: رشيد طه, Rashīd Ṭāhā, [raʃiːd tˤaːhaː]; 18 September 1958 – 12 September 2018) was an Algerian singer and activist based in France described as \"sonically adventurous\".",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Rachid Taha Rachid Taha (Arabic: رشيد طه, Rashīd Ṭāhā, [raʃiːd tˤaːhaː]; 18 September 1958 – 12 September 2018) was an Algerian singer and activist based in France described as \"sonically adventurous\".",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_popc_saad_lamjarred",
+      "region": "north",
+      "country": "Morocco",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Moroccan pop singer of LM3ALLEM?",
+      "options": [
+        "Saad Lamjarred",
+        "Amr Diab",
+        "Khaled",
+        "Mohamed Ramadan"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Saad Lamjarred is a Moroccan singer.",
+      "sources": [
+        {
+          "title": "Saad Lamjarred",
+          "url": "https://en.wikipedia.org/wiki/Saad_Lamjarred",
+          "claim": "Saad Lamjarred is a Moroccan singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Saad Lamjarred Saad Bachir Lamjarred (Arabic: سعد بشير لمجرد; born 7 April 1985) is a Moroccan singer, songwriter, actor, multi-instrumentalist, dancer, record producer, and convicted rapist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_popc_tamer_hosny",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Egyptian singer and actor who first came to attention as a singer when he appeared on mixed tapes with other Egyptian artists?",
+      "options": [
+        "Tamer Hosny",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tamer Hosny is an Egyptian singer.",
+      "sources": [
+        {
+          "title": "Tamer Hosny",
+          "url": "https://en.wikipedia.org/wiki/Tamer_Hosny",
+          "claim": "Tamer Hosny Tamer Hosny Sherif Abbas Farghaly (Arabic: تامر حسني شريف عباس فرغلي; born 16 August 1977), known by his stage name Tamer Hosny (Arabic: تامر حسني), is an Egyptian singer and actor who first came to attention as a singer when he appeared on mixed tapes with other Egyptian artists.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Tamer Hosny Tamer Hosny Sherif Abbas Farghaly (Arabic: تامر حسني شريف عباس فرغلي; born 16 August 1977), known by his stage name Tamer Hosny (Arabic: تامر حسني), is an Egyptian singer and actor who first came to attention as a singer when he appeared on mixed tapes with other Egyptian artists.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_spor_achraf_hakimi",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a professional footballer who plays as a right-back for Ligue 1 club Paris Saint-Germain?",
+      "options": [
+        "Achraf Hakimi",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Ons Jabeur"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Achraf Hakimi is a Moroccan footballer.",
+      "sources": [
+        {
+          "title": "Achraf Hakimi",
+          "url": "https://en.wikipedia.org/wiki/Achraf_Hakimi",
+          "claim": "Achraf Hakimi Achraf Hakimi Mouh (born 4 November 1998) is a professional footballer who plays as a right-back for Ligue 1 club Paris Saint-Germain.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Achraf Hakimi Achraf Hakimi Mouh (born 4 November 1998) is a professional footballer who plays as a right-back for Ligue 1 club Paris Saint-Germain.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_spor_al_hilal_club_omdurman",
+      "region": "north",
+      "country": "Sudan",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a leading club in Omdurman?",
+      "options": [
+        "Al-Hilal",
+        "Al Ahly",
+        "Wydad",
+        "Pharaohs"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Al-Hilal is a football club in Omdurman.",
+      "sources": [
+        {
+          "title": "Al-Hilal Club (Omdurman)",
+          "url": "https://en.wikipedia.org/wiki/Al-Hilal_Club_(Omdurman)",
+          "claim": "Al-Hilal is a football club in Omdurman",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Al Hilal Club (Omdurman) Al Hilal Sports Club (Arabic: نادي الهلال), known as Al Hilal SC or simply Al Hilal, is a Sudanese professional football club based in Omdurman that competes in the Sudan Premier League.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_spor_egypt_national_football_team",
+      "region": "north",
+      "country": "Egypt",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the nickname of Egypt's men's football team?",
+      "options": [
+        "Pharaohs",
+        "Al Ahly",
+        "Wydad",
+        "Desert Warriors"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Egypt national football team is nicknamed the Pharaohs.",
+      "sources": [
+        {
+          "title": "Egypt national football team",
+          "url": "https://en.wikipedia.org/wiki/Egypt_national_football_team",
+          "claim": "The Egypt national football team is nicknamed the Pharaohs",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Egypt national football team The Egypt national football team, nicknamed the Pharaohs, represents Egypt in men's international football, and is governed by the Egyptian Football Association (EFA), the governing body of football in Egypt.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_spor_islam_slimani",
+      "region": "north",
+      "country": "Algeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Algerian professional footballer who plays as a striker?",
+      "options": [
+        "Islam Slimani",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Islam Slimani is an Algerian footballer.",
+      "sources": [
+        {
+          "title": "Islam Slimani",
+          "url": "https://en.wikipedia.org/wiki/Islam_Slimani",
+          "claim": "Islam Slimani Islam Slimani (Arabic: إِسْلَام سُلَيْمَانِيّ; born 18 June 1988) is an Algerian professional footballer who plays as a striker.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Islam Slimani Islam Slimani (Arabic: إِسْلَام سُلَيْمَانِيّ; born 18 June 1988) is an Algerian professional footballer who plays as a striker.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_spor_mohamed_salah",
+      "region": "north",
+      "country": "Egypt",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is an Egyptian professional footballer who plays as a right winger for Süper Lig club Trabzonspor and captains the Egypt national team?",
+      "options": [
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi",
+        "Ons Jabeur"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mohamed Salah is an Egyptian footballer.",
+      "sources": [
+        {
+          "title": "Mohamed Salah",
+          "url": "https://en.wikipedia.org/wiki/Mohamed_Salah",
+          "claim": "Mohamed Salah Mohamed Salah Hamed Mahrous Ghaly (born 15 June 1992) is an Egyptian professional footballer who plays as a right winger for Süper Lig club Trabzonspor and captains the Egypt national team.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mohamed Salah Mohamed Salah Hamed Mahrous Ghaly (born 15 June 1992) is an Egyptian professional footballer who plays as a right winger for Süper Lig club Trabzonspor and captains the Egypt national team.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_spor_nawal_el_moutawakel",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Moroccan who won Olympic 400 metres hurdles gold in 1984?",
+      "options": [
+        "Nawal El Moutawakel",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nawal El Moutawakel is a Moroccan hurdler.",
+      "sources": [
+        {
+          "title": "Nawal El Moutawakel",
+          "url": "https://en.wikipedia.org/wiki/Nawal_El_Moutawakel",
+          "claim": "Nawal El Moutawakel is a Moroccan hurdler",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Nawal El Moutawakel Nawal El Moutawakel (Amazigh: ⵏⴰⵡⴰⵍ ⵍⵎⵓⵜⴰⵡⴰⵇⵇⵍ; Arabic: نوال المتوكل; born 15 April 1962) is a Moroccan former hurdler, who won the inaugural women's 400 metres hurdles event at the 1984 Summer Olympics, and is the first Moroccan, Arab, African, and Muslim woman to win an Olympic gold.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_spor_ons_jabeur",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the highest-ranked Tunisian tennis player?",
+      "options": [
+        "Ons Jabeur",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ons Jabeur is a Tunisian tennis player.",
+      "sources": [
+        {
+          "title": "Ons Jabeur",
+          "url": "https://en.wikipedia.org/wiki/Ons_Jabeur",
+          "claim": "Ons Jabeur is a Tunisian tennis player",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ons Jabeur Ons Jabeur (born 28 August 1994) is a Tunisian inactive tennis player.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_spor_riyad_mahrez",
+      "region": "north",
+      "country": "Algeria",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Algerian winger who won the Premier League?",
+      "options": [
+        "Riyad Mahrez",
+        "Mohamed Salah",
+        "Achraf Hakimi",
+        "Ons Jabeur"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Riyad Mahrez is an Algerian footballer.",
+      "sources": [
+        {
+          "title": "Riyad Mahrez",
+          "url": "https://en.wikipedia.org/wiki/Riyad_Mahrez",
+          "claim": "Riyad Mahrez is an Algerian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Riyad Mahrez Riyad Karim Mahrez (born 21 February 1991) is a professional footballer who plays as a right winger for Qatar Stars League side Al-Shamal. Born in France, he represented the Algeria national team.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_spor_wydad_ac",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a Moroccan sports club based in Casablanca?",
+      "options": [
+        "Wydad",
+        "Al Ahly",
+        "Pharaohs",
+        "Desert Warriors"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wydad is a football club in Casablanca.",
+      "sources": [
+        {
+          "title": "Wydad AC",
+          "url": "https://en.wikipedia.org/wiki/Wydad_AC",
+          "claim": "Wydad AC Wydad Athletic Club (Arabic: نادي الوداد الرياضي, Arabic pronunciation: [naːdiː‿l.widaːd arrːijaːdˤiː]), often known outside Morocco as Wydad AC, Wydad Casablanca, or simply Wydad, is a Moroccan sports club based in Casablanca.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Wydad AC Wydad Athletic Club (Arabic: نادي الوداد الرياضي, Arabic pronunciation: [naːdiː‿l.widaːd arrːijaːdˤiː]), often known outside Morocco as Wydad AC, Wydad Casablanca, or simply Wydad, is a Moroccan sports club based in Casablanca.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_spor_yassine_bounou",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the Moroccan goalkeeper known as Bono?",
+      "options": [
+        "Yassine Bounou",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Yassine Bounou is a Moroccan goalkeeper.",
+      "sources": [
+        {
+          "title": "Yassine Bounou",
+          "url": "https://en.wikipedia.org/wiki/Yassine_Bounou",
+          "claim": "Yassine Bounou is a Moroccan goalkeeper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Yassine Bounou Yassine Bounou (born 5 April 1991), also known mononymously as Bono, is a Moroccan professional footballer who plays as a goalkeeper for Saudi Pro League club Al Hilal and the Morocco national team.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "north_wedd_zaffa",
+      "region": "north",
+      "country": "Morocco",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a musical procession with regional and cultural variety?",
+      "options": [
+        "Zaffa",
+        "Henna night",
+        "Takchita",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The zaffa is a wedding procession.",
+      "sources": [
+        {
+          "title": "Zaffa",
+          "url": "https://en.wikipedia.org/wiki/Zaffa",
+          "claim": "Zaffa In Arab culture, the zaffa (Arabic: زفـّـة / ALA-LC: zaffah), or wedding march, is a musical procession with regional and cultural variety.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Zaffa In Arab culture, the zaffa (Arabic: زفـّـة / ALA-LC: zaffah), or wedding march, is a musical procession with regional and cultural variety.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    }
+  ]
+}

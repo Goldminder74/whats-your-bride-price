@@ -2,7 +2,7 @@ import type { QuestionKind, RegionKey } from "../app/gameData.ts";
 
 export type BankDifficulty = "easy" | "medium" | "hard";
 export type BankOrigin = "classic" | "draft" | "generated";
-export type SupportMethod = "page-overlap" | "manual";
+export type SupportMethod = "evidence-quote" | "page-overlap" | "manual";
 
 export type BankSource = {
   title: string;
@@ -23,6 +23,8 @@ export type GateReport = {
   ambiguity: GateCheck;
   region: GateCheck;
   reasons: string[];
+  evidenceQuote: string | null;
+  editorial: { clarity: number; fun: number; accuracy: number; method: "editorial-rules" };
 };
 
 export type BankQuestion = {

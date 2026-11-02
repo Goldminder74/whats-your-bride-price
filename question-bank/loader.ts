@@ -12,9 +12,18 @@ const files: Record<RegionKey, () => Promise<{ default: PublishedFile }>> = {
   south: () => jsonModule(import("../data/question-bank/published/south.json", { with: { type: "json" } })),
 };
 
+async function readPublished(region: RegionKey): Promise<PublishedFile> {
+  if (typeof window !== "undefined") {
+    const response = await fetch(`/question-bank/${region}.json`);
+    if (!response.ok) throw new Error(`question bank ${response.status}`);
+    return response.json() as Promise<PublishedFile>;
+  }
+  return (await files[region]()).default;
+}
+
 export async function loadPublished(region: RegionKey): Promise<BankQuestion[]> {
-  const file = await files[region]();
-  return file.default.questions.filter((question) => question.lifecycleStatus === "published" && question.region === region);
+  const file = await readPublished(region);
+  return file.questions.filter((question) => question.lifecycleStatus === "published" && question.region === region);
 }
 
 /** Published bank plus the classic 60, classic first so a shared id keeps the live wording. */

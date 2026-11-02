@@ -8,7 +8,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the legislative capital of South Africa?",
+      "prompt": "Which city is the capital of South Africa?",
       "options": [
         "Cape Town",
         "Pretoria",
@@ -36,7 +36,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the administrative capital of South Africa?",
+      "prompt": "Which city is the capital of South Africa?",
       "options": [
         "Pretoria",
         "Cape Town",
@@ -64,7 +64,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the judicial capital of South Africa?",
+      "prompt": "Which city is the capital of South Africa?",
       "options": [
         "Bloemfontein",
         "Cape Town",
@@ -92,7 +92,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Botswana?",
+      "prompt": "Which city is the capital of Botswana?",
       "options": [
         "Gaborone",
         "Cape Town",
@@ -120,7 +120,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Namibia?",
+      "prompt": "Which city is the capital of Namibia?",
       "options": [
         "Windhoek",
         "Cape Town",
@@ -148,7 +148,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Zambia?",
+      "prompt": "Which city is the capital of Zambia?",
       "options": [
         "Lusaka",
         "Cape Town",
@@ -176,7 +176,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Zimbabwe?",
+      "prompt": "Which city is the capital of Zimbabwe?",
       "options": [
         "Harare",
         "Cape Town",
@@ -204,7 +204,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the capital city of Mozambique?",
+      "prompt": "Which city is the capital of Mozambique?",
       "options": [
         "Maputo",
         "Cape Town",
@@ -232,7 +232,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the capital city of Malawi?",
+      "prompt": "Which city is the capital of Malawi?",
       "options": [
         "Lilongwe",
         "Cape Town",
@@ -260,7 +260,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the capital city of Lesotho?",
+      "prompt": "Which city is the capital of Lesotho?",
       "options": [
         "Maseru",
         "Cape Town",
@@ -288,7 +288,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which place is the administrative capital of Eswatini?",
+      "prompt": "Which city is the capital of Eswatini?",
       "options": [
         "Mbabane",
         "Cape Town",
@@ -316,12 +316,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the waterfall on the Zambezi between Zambia and Zimbabwe?",
+      "prompt": "Where is the waterfall on the Zambezi between Zambia and Zimbabwe?",
       "options": [
         "Victoria Falls",
-        "Cape Town",
-        "Pretoria",
-        "Bloemfontein"
+        "Table Mountain",
+        "Okavango Delta",
+        "Sossusvlei"
       ],
       "correct": [
         0
@@ -344,40 +344,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which place is the flat-topped mountain above Cape Town?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Table Mountain",
-        "Cape Town",
-        "Pretoria",
-        "Bloemfontein"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Table Mountain overlooks Cape Town.",
-      "sources": [
-        {
-          "title": "Table Mountain",
-          "url": "https://en.wikipedia.org/wiki/Table_Mountain",
-          "claim": "Table Mountain overlooks Cape Town",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_geog_table_mountain_fill",
-      "region": "south",
-      "country": "South Africa",
-      "category": "GEOGRAPHY",
-      "difficulty": "easy",
-      "kind": "complete",
-      "prompt": "Fill the blank. In South Africa, the flat-topped mountain above Cape Town. The name to write is ___.",
-      "options": [
-        "Table Mountain",
-        "Cape Town",
-        "Pretoria",
-        "Bloemfontein"
+        "Victoria Falls",
+        "Okavango Delta",
+        "Sossusvlei"
       ],
       "correct": [
         0
@@ -400,12 +372,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the inland delta of northern Botswana?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Okavango Delta",
-        "Cape Town",
-        "Pretoria",
-        "Bloemfontein"
+        "Victoria Falls",
+        "Table Mountain",
+        "Sossusvlei"
       ],
       "correct": [
         0
@@ -428,12 +400,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the red dunes of the Namib Desert?",
+      "prompt": "Where is the red dunes of the Namib Desert?",
       "options": [
         "Sossusvlei",
-        "Cape Town",
-        "Pretoria",
-        "Bloemfontein"
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta"
       ],
       "correct": [
         0
@@ -450,46 +422,18 @@
       "origin": "generated"
     },
     {
-      "id": "south_geog_kruger_national_park",
-      "region": "south",
-      "country": "South Africa",
-      "category": "GEOGRAPHY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which place is a famous national park in South Africa?",
-      "options": [
-        "Kruger",
-        "Cape Town",
-        "Pretoria",
-        "Bloemfontein"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Kruger National Park is in South Africa.",
-      "sources": [
-        {
-          "title": "Kruger National Park",
-          "url": "https://en.wikipedia.org/wiki/Kruger_National_Park",
-          "claim": "Kruger National Park is in South Africa",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "south_geog_fish_river_canyon",
       "region": "south",
       "country": "Namibia",
       "category": "GEOGRAPHY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which place is a vast canyon in southern Namibia?",
+      "prompt": "Where is a vast in southern Namibia?",
       "options": [
         "Fish River Canyon",
-        "Cape Town",
-        "Pretoria",
-        "Bloemfontein"
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta"
       ],
       "correct": [
         0
@@ -512,12 +456,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which place is the great lake along Malawi's eastern border?",
+      "prompt": "Where is the great lake along 's eastern border?",
       "options": [
         "Lake Malawi",
-        "Cape Town",
-        "Pretoria",
-        "Bloemfontein"
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta"
       ],
       "correct": [
         0
@@ -540,7 +484,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a social barbecue, central to South African gatherings?",
+      "prompt": "What do you call a social barbecue, central to South African gatherings?",
       "options": [
         "Braai",
         "Biltong",
@@ -568,7 +512,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is dried cured meat, a South African snack?",
+      "prompt": "What do you call dried cured meat, a South African snack?",
       "options": [
         "Biltong",
         "Braai",
@@ -596,7 +540,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a spiced mince bake with an egg topping?",
+      "prompt": "What do you call a spiced mince bake with an egg topping?",
       "options": [
         "Bobotie",
         "Braai",
@@ -624,7 +568,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is the stiff maize porridge of Zimbabwe?",
+      "prompt": "What do you call the stiff maize porridge of Zimbabwe?",
       "options": [
         "Sadza",
         "Braai",
@@ -652,7 +596,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is South African maize porridge, cousin of sadza and nshima?",
+      "prompt": "What do you call South African maize porridge, cousin of sadza and nshima?",
       "options": [
         "Pap",
         "Braai",
@@ -680,7 +624,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is the maize staple of Zambia?",
+      "prompt": "What do you call the maize staple of Zambia?",
       "options": [
         "Nshima",
         "Braai",
@@ -708,7 +652,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a spicy vegetable relish?",
+      "prompt": "What do you call a spicy vegetable relish?",
       "options": [
         "Chakalaka",
         "Braai",
@@ -736,7 +680,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a coiled spiced sausage for the braai?",
+      "prompt": "What do you call a coiled spiced sausage for the braai?",
       "options": [
         "Boerewors",
         "Braai",
@@ -764,7 +708,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a hollowed bread loaf filled with curry, from Durban?",
+      "prompt": "What do you call a hollowed bread loaf filled with curry, from Durban?",
       "options": [
         "Bunny chow",
         "Braai",
@@ -792,7 +736,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a warm sponge pudding with apricot jam?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Malva pudding",
         "Braai",
@@ -820,35 +764,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a milk tart dusted with cinnamon?",
-      "options": [
-        "Melktert",
-        "Braai",
-        "Biltong",
-        "Bobotie"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Melktert is a milk tart from South Africa.",
-      "sources": [
-        {
-          "title": "Melktert",
-          "url": "https://en.wikipedia.org/wiki/Melktert",
-          "claim": "Melktert is a milk tart from South Africa",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_food_melktert_fill",
-      "region": "south",
-      "country": "South Africa",
-      "category": "FOOD",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In South Africa, a milk tart dusted with cinnamon. The name to write is ___.",
+      "prompt": "What do you call a milk tart dusted with cinnamon?",
       "options": [
         "Melktert",
         "Braai",
@@ -876,35 +792,7 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which dish is samp and beans, a Xhosa dish?",
-      "options": [
-        "Umngqusho",
-        "Braai",
-        "Biltong",
-        "Bobotie"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Umngqusho is a dish of samp and beans.",
-      "sources": [
-        {
-          "title": "Umngqusho",
-          "url": "https://en.wikipedia.org/wiki/Umngqusho",
-          "claim": "Umngqusho is a dish of samp and beans",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_food_umngqusho_fill",
-      "region": "south",
-      "country": "South Africa",
-      "category": "FOOD",
-      "difficulty": "hard",
-      "kind": "complete",
-      "prompt": "Fill the blank. In South Africa, samp and beans, a Xhosa dish. The name to write is ___.",
+      "prompt": "What do you call samp and beans, a Xhosa dish?",
       "options": [
         "Umngqusho",
         "Braai",
@@ -932,7 +820,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is chilli chicken associated with Mozambique and southern kitchens?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Peri-peri chicken",
         "Braai",
@@ -960,7 +848,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is a fried dough bread, also called magwinya?",
+      "prompt": "What do you call a fried dough bread, also called magwinya?",
       "options": [
         "Vetkoek",
         "Braai",
@@ -988,35 +876,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a slow stew cooked in a cast-iron pot?",
-      "options": [
-        "Potjiekos",
-        "Braai",
-        "Biltong",
-        "Bobotie"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Potjiekos is a stew from South Africa.",
-      "sources": [
-        {
-          "title": "Potjiekos",
-          "url": "https://en.wikipedia.org/wiki/Potjiekos",
-          "claim": "Potjiekos is a stew from South Africa",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_food_potjiekos_fill",
-      "region": "south",
-      "country": "South Africa",
-      "category": "FOOD",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In South Africa, a slow stew cooked in a cast-iron pot. The name to write is ___.",
+      "prompt": "What do you call a slow stew cooked in a cast-iron pot?",
       "options": [
         "Potjiekos",
         "Braai",
@@ -1044,7 +904,7 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which dish is dried mopane worms, eaten as a snack and stew?",
+      "prompt": "What do you call dried mopane worms, eaten as a snack and stew?",
       "options": [
         "Madora",
         "Braai",
@@ -1072,7 +932,7 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which dish is a popular fish from Lake Malawi?",
+      "prompt": "What do you call a popular fish from Lake Malawi?",
       "options": [
         "Chambo",
         "Braai",
@@ -1100,7 +960,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which dish is dried breakfast biscuits dunked in tea?",
+      "prompt": "What do you call dried breakfast biscuits dunked in tea?",
       "options": [
         "Rusks",
         "Braai",
@@ -1128,7 +988,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the log-drum house music that travelled from South African townships?",
+      "prompt": "What is the log-drum house music that travelled from South African townships?",
       "options": [
         "Amapiano",
         "Kwaito",
@@ -1156,7 +1016,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the 1990s township dance music?",
+      "prompt": "What is the 1990s township dance music?",
       "options": [
         "Kwaito",
         "Amapiano",
@@ -1184,7 +1044,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a darker, faster Durban dance sound?",
+      "prompt": "What is a darker, faster Durban dance sound?",
       "options": [
         "Gqom",
         "Amapiano",
@@ -1212,7 +1072,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the metal-tine instrument of Shona music?",
+      "prompt": "What is the metal-tine instrument of Shona music?",
       "options": [
         "Mbira",
         "Amapiano",
@@ -1240,35 +1100,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the soft-step Zulu choral style?",
-      "options": [
-        "Isicathamiya",
-        "Amapiano",
-        "Kwaito",
-        "Gqom"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Isicathamiya is a Zulu vocal style.",
-      "sources": [
-        {
-          "title": "Isicathamiya",
-          "url": "https://en.wikipedia.org/wiki/Isicathamiya",
-          "claim": "Isicathamiya is a Zulu vocal style",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_musi_isicathamiya_fill",
-      "region": "south",
-      "country": "South Africa",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In South Africa, the soft-step Zulu choral style. The name to write is ___.",
+      "prompt": "What is the soft-step Zulu choral style?",
       "options": [
         "Isicathamiya",
         "Amapiano",
@@ -1296,35 +1128,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a township jive of the mid twentieth century?",
-      "options": [
-        "Mbaqanga",
-        "Amapiano",
-        "Kwaito",
-        "Gqom"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Mbaqanga is a South African music genre.",
-      "sources": [
-        {
-          "title": "Mbaqanga",
-          "url": "https://en.wikipedia.org/wiki/Mbaqanga",
-          "claim": "Mbaqanga is a South African music genre",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_musi_mbaqanga_fill",
-      "region": "south",
-      "country": "South Africa",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In South Africa, a township jive of the mid twentieth century. The name to write is ___.",
+      "prompt": "What is a township jive of the mid twentieth century?",
       "options": [
         "Mbaqanga",
         "Amapiano",
@@ -1352,35 +1156,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is Zulu guitar storytelling music?",
-      "options": [
-        "Maskandi",
-        "Amapiano",
-        "Kwaito",
-        "Gqom"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Maskandi is a Zulu guitar style.",
-      "sources": [
-        {
-          "title": "Maskandi",
-          "url": "https://en.wikipedia.org/wiki/Maskandi",
-          "claim": "Maskandi is a Zulu guitar style",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_musi_maskandi_fill",
-      "region": "south",
-      "country": "South Africa",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "complete",
-      "prompt": "Fill the blank. In South Africa, Zulu guitar storytelling music. The name to write is ___.",
+      "prompt": "What is Zulu guitar storytelling music?",
       "options": [
         "Maskandi",
         "Amapiano",
@@ -1408,7 +1184,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the guitar music associated with Thomas Mapfumo?",
+      "prompt": "What is the guitar music associated with Thomas Mapfumo?",
       "options": [
         "Chimurenga",
         "Amapiano",
@@ -1436,7 +1212,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is a popular dance music of Mozambique?",
+      "prompt": "What is a popular dance music of Mozambique?",
       "options": [
         "Marrabenta",
         "Amapiano",
@@ -1464,7 +1240,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the isicathamiya choir heard worldwide?",
+      "prompt": "What is the isicathamiya choir heard worldwide?",
       "options": [
         "Ladysmith Black Mambazo",
         "Amapiano",
@@ -1492,12 +1268,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is Mama Africa, the South African singer?",
+      "prompt": "Who is Mama Africa, the South African singer?",
       "options": [
         "Miriam Makeba",
-        "Amapiano",
-        "Kwaito",
-        "Gqom"
+        "Hugh Masekela",
+        "Brenda Fassie",
+        "Oliver Mtukudzi"
       ],
       "correct": [
         0
@@ -1520,40 +1296,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the South African trumpeter?",
+      "prompt": "What is the South African trumpeter?",
       "options": [
         "Hugh Masekela",
-        "Amapiano",
-        "Kwaito",
-        "Gqom"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Hugh Masekela was a South African musician.",
-      "sources": [
-        {
-          "title": "Hugh Masekela",
-          "url": "https://en.wikipedia.org/wiki/Hugh_Masekela",
-          "claim": "Hugh Masekela was a South African musician",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_musi_hugh_masekela_fill",
-      "region": "south",
-      "country": "South Africa",
-      "category": "MUSIC",
-      "difficulty": "easy",
-      "kind": "complete",
-      "prompt": "Fill the blank. In South Africa, the South African trumpeter. The name to write is ___.",
-      "options": [
-        "Hugh Masekela",
-        "Amapiano",
-        "Kwaito",
-        "Gqom"
+        "Miriam Makeba",
+        "Brenda Fassie",
+        "Oliver Mtukudzi"
       ],
       "correct": [
         0
@@ -1576,12 +1324,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the township pop star?",
+      "prompt": "What is the township pop star?",
       "options": [
         "Brenda Fassie",
-        "Amapiano",
-        "Kwaito",
-        "Gqom"
+        "Miriam Makeba",
+        "Hugh Masekela",
+        "Oliver Mtukudzi"
       ],
       "correct": [
         0
@@ -1604,12 +1352,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the Zimbabwean singer known as Tuku?",
+      "prompt": "Who is the Zimbabwean singer known as Tuku?",
       "options": [
         "Oliver Mtukudzi",
-        "Amapiano",
-        "Kwaito",
-        "Gqom"
+        "Miriam Makeba",
+        "Hugh Masekela",
+        "Brenda Fassie"
       ],
       "correct": [
         0
@@ -1632,7 +1380,7 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which music or dance name is pennywhistle jive of the 1950s?",
+      "prompt": "What is pennywhistle jive of the 1950s?",
       "options": [
         "Kwela",
         "Amapiano",
@@ -1660,7 +1408,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which music or dance name is the South African jazz lineage of Masekela and others?",
+      "prompt": "What is the South African lineage of Masekela and others?",
       "options": [
         "Jazz",
         "Amapiano",
@@ -1688,12 +1436,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which music or dance name is the South African house DJ?",
+      "prompt": "Who is the South African house DJ?",
       "options": [
         "Black Coffee",
-        "Amapiano",
-        "Kwaito",
-        "Gqom"
+        "Miriam Makeba",
+        "Hugh Masekela",
+        "Brenda Fassie"
       ],
       "correct": [
         0
@@ -1710,41 +1458,13 @@
       "origin": "generated"
     },
     {
-      "id": "south_musi_music_of_malawi",
-      "region": "south",
-      "country": "Malawi",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which music or dance name is live bands that fill Blantyre clubs?",
-      "options": [
-        "Malawian jazz",
-        "Amapiano",
-        "Kwaito",
-        "Gqom"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Malawi has a live music scene.",
-      "sources": [
-        {
-          "title": "Music of Malawi",
-          "url": "https://en.wikipedia.org/wiki/Music_of_Malawi",
-          "claim": "Malawi has a live music scene",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "south_fash_shweshwe",
       "region": "south",
       "country": "South Africa",
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the indigo printed cotton of South African dress?",
+      "prompt": "What is the indigo printed cotton of South African dress?",
       "options": [
         "Shweshwe",
         "Basotho blanket",
@@ -1772,7 +1492,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the patterned blanket worn in Lesotho?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Basotho blanket",
         "Shweshwe",
@@ -1800,7 +1520,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the conical straw hat of Lesotho, also on the flag?",
+      "prompt": "What is the conical straw hat of Lesotho, also on the flag?",
       "options": [
         "Mokorotlo",
         "Shweshwe",
@@ -1828,7 +1548,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the bold bead collars of Ndebele dress?",
+      "prompt": "What is the bold bead collars of dress?",
       "options": [
         "Ndebele beadwork",
         "Shweshwe",
@@ -1856,7 +1576,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the Victorian-influenced long dress of Herero women?",
+      "prompt": "What is the Victorian-influenced long dress of women?",
       "options": [
         "Herero dress",
         "Shweshwe",
@@ -1884,7 +1604,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is coloured bead patterns used as adornment?",
+      "prompt": "What is coloured bead patterns used as adornment?",
       "options": [
         "Beadwork",
         "Shweshwe",
@@ -1912,7 +1632,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is bright cotton worn for celebrations?",
+      "prompt": "What is bright cotton worn for celebrations?",
       "options": [
         "Safari prints",
         "Shweshwe",
@@ -1940,7 +1660,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a married woman's flared hat in some Zulu dress?",
+      "prompt": "What is a married woman's flared hat in some Zulu dress?",
       "options": [
         "Isicholo",
         "Shweshwe",
@@ -1968,7 +1688,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is German-print cloth used in Botswana dress?",
+      "prompt": "What is German-print cloth used in Botswana dress?",
       "options": [
         "Leteisi",
         "Shweshwe",
@@ -1996,7 +1716,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a cloth worn over one shoulder in Eswatini?",
+      "prompt": "What is a cloth worn over one shoulder in Eswatini?",
       "options": [
         "Lihiya",
         "Shweshwe",
@@ -2024,7 +1744,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the patterned silk shirt associated with Nelson Mandela?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Madiba shirt",
         "Shweshwe",
@@ -2052,7 +1772,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a full dress cut from shweshwe for weddings?",
+      "prompt": "What is a full dress cut from shweshwe for weddings?",
       "options": [
         "Seshweshwe dress",
         "Basotho blanket",
@@ -2080,7 +1800,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the colourful wrap cloth of Mozambique?",
+      "prompt": "What is the colourful wrap cloth of Mozambique?",
       "options": [
         "Capulana",
         "Shweshwe",
@@ -2108,7 +1828,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the printed wrap of Zambia?",
+      "prompt": "What is the printed wrap of Zambia?",
       "options": [
         "Chitenge",
         "Shweshwe",
@@ -2136,7 +1856,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the printed wrap of Malawi?",
+      "prompt": "What is the printed wrap of Malawi?",
       "options": [
         "Chitenje",
         "Shweshwe",
@@ -2164,7 +1884,7 @@
       "category": "FASHION",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which cloth or dress style is white and coloured beads of Xhosa ceremony dress?",
+      "prompt": "What is white and coloured beads of ceremony dress?",
       "options": [
         "Xhosa beads",
         "Shweshwe",
@@ -2192,7 +1912,7 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which cloth or dress style is a leather and bead apron style of some Namibian dress?",
+      "prompt": "What is a leather and bead apron style of some Namibian dress?",
       "options": [
         "Odelela",
         "Shweshwe",
@@ -2220,7 +1940,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which cloth or dress style is the painted geometric walls of Ndebele homesteads?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Ndebele house paint",
         "Shweshwe",
@@ -2248,7 +1968,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is the most widely spoken home language in South Africa?",
+      "prompt": "Can you name the most widely spoken home language in South Africa?",
       "options": [
         "isiZulu",
         "isiXhosa",
@@ -2276,7 +1996,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is a Nguni language known for its clicks?",
+      "prompt": "Can you name a Nguni language known for its clicks?",
       "options": [
         "isiXhosa",
         "isiZulu",
@@ -2304,7 +2024,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is a language that grew in South Africa from Dutch?",
+      "prompt": "Can you name a language that grew in South Africa from Dutch?",
       "options": [
         "Afrikaans",
         "isiZulu",
@@ -2332,7 +2052,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is the national language of Botswana?",
+      "prompt": "Can you name the national language of Botswana?",
       "options": [
         "Setswana",
         "isiZulu",
@@ -2360,7 +2080,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is the national language of Lesotho?",
+      "prompt": "Can you name the national language of Lesotho?",
       "options": [
         "Sesotho",
         "isiZulu",
@@ -2388,7 +2108,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is the most widely spoken language of Zimbabwe?",
+      "prompt": "Can you name the most widely spoken language of Zimbabwe?",
       "options": [
         "Shona",
         "isiZulu",
@@ -2416,7 +2136,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is the national language of Malawi?",
+      "prompt": "Can you name the national language of Malawi?",
       "options": [
         "Chichewa",
         "isiZulu",
@@ -2444,7 +2164,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is the national language of Eswatini?",
+      "prompt": "Can you name the national language of Eswatini?",
       "options": [
         "siSwati",
         "isiZulu",
@@ -2472,7 +2192,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is an isiZulu hello?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Sawubona",
         "isiZulu",
@@ -2500,7 +2220,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is an isiXhosa hello?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Molo",
         "isiZulu",
@@ -2528,7 +2248,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is one of South Africa's official languages?",
+      "prompt": "Can you name one of South Africa's official languages?",
       "options": [
         "English SA",
         "isiZulu",
@@ -2556,7 +2276,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is the official language of Mozambique?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Portuguese Mozambique",
         "isiZulu",
@@ -2584,7 +2304,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a widely spoken language of Zambia?",
+      "prompt": "Can you name a widely spoken language of Zambia?",
       "options": [
         "Bemba",
         "isiZulu",
@@ -2612,7 +2332,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is a widely spoken language family of Namibia?",
+      "prompt": "Can you name a widely spoken language family of Namibia?",
       "options": [
         "Oshiwambo",
         "isiZulu",
@@ -2640,7 +2360,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is a Nguni language of western Zimbabwe?",
+      "prompt": "Can you name a Nguni language of western Zimbabwe?",
       "options": [
         "isiNdebele",
         "isiZulu",
@@ -2668,7 +2388,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which language point is South Africa has twelve official languages after the 2023 addition of sign language?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Eleven official",
         "isiZulu",
@@ -2696,7 +2416,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which language point is the official language of Namibia?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "English Namibia",
         "isiZulu",
@@ -2724,7 +2444,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which language point is an official language of South Africa?",
+      "prompt": "Can you name an official language of South Africa?",
       "options": [
         "Xitsonga",
         "isiZulu",
@@ -2780,7 +2500,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is a major jazz festival in Cape Town?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Cape Town Jazz Festival",
         "Heritage Day",
@@ -2808,7 +2528,7 @@
       "category": "FESTIVALS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which celebration is the long-running arts festival in Makhanda?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "National Arts Festival",
         "Heritage Day",
@@ -3060,7 +2780,7 @@
       "category": "FESTIVALS",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which celebration is an arts festival in Morija?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Morija festival",
         "Heritage Day",
@@ -3256,12 +2976,12 @@
       "category": "WEDDINGS",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which wedding custom is a respectful negotiation between the two families, never a price on a person?",
+      "prompt": "What do you call a family negotiation that opens many South African marriages?",
       "options": [
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride",
-        "Basotho blanket couple"
+        "Lobolo",
+        "Roora",
+        "Bogadi",
+        "Chitenge"
       ],
       "correct": [
         0
@@ -3278,130 +2998,18 @@
       "origin": "generated"
     },
     {
-      "id": "south_wedd_white_wedding",
-      "region": "south",
-      "country": "South Africa",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is a church or garden ceremony many couples hold as well as family rites?",
-      "options": [
-        "White wedding",
-        "Lobola talks",
-        "Shweshwe bride",
-        "Basotho blanket couple"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "A white wedding is part of many South African celebrations.",
-      "sources": [
-        {
-          "title": "White wedding",
-          "url": "https://en.wikipedia.org/wiki/White_wedding",
-          "claim": "A white wedding is part of many South African celebrations",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_shweshwe",
-      "region": "south",
-      "country": "South Africa",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is a bride in indigo shweshwe?",
-      "options": [
-        "Shweshwe bride",
-        "Lobola talks",
-        "White wedding",
-        "Basotho blanket couple"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Shweshwe is worn at South African weddings.",
-      "sources": [
-        {
-          "title": "Shweshwe",
-          "url": "https://en.wikipedia.org/wiki/Shweshwe",
-          "claim": "Shweshwe is worn at South African weddings",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_basotho_blanket",
-      "region": "south",
-      "country": "Lesotho",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is blankets draped on the couple in the mountain cold?",
-      "options": [
-        "Basotho blanket couple",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Basotho blankets are worn at Lesotho celebrations.",
-      "sources": [
-        {
-          "title": "Basotho blanket",
-          "url": "https://en.wikipedia.org/wiki/Basotho_blanket",
-          "claim": "Basotho blankets are worn at Lesotho celebrations",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_braai",
-      "region": "south",
-      "country": "South Africa",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is grilling for the guests after the vows?",
-      "options": [
-        "Braai reception",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "A braai is part of South African celebrations.",
-      "sources": [
-        {
-          "title": "Braai",
-          "url": "https://en.wikipedia.org/wiki/Braai",
-          "claim": "A braai is part of South African celebrations",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "south_wedd_lobolo2",
       "region": "south",
       "country": "Zimbabwe",
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is family discussions that open a Shona marriage, framed as kinship not a score?",
+      "prompt": "What do you call a Shona family negotiation that opens a marriage?",
       "options": [
-        "Roora talks",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
+        "Roora",
+        "Lobolo",
+        "Bogadi",
+        "Chitenge"
       ],
       "correct": [
         0
@@ -3420,54 +3028,26 @@
     {
       "id": "south_wedd_lobolo3",
       "region": "south",
-      "country": "South Africa",
+      "country": "Botswana",
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is gifts exchanged by families in some Nguni weddings?",
+      "prompt": "What do you call a Tswana family negotiation that opens a marriage?",
       "options": [
-        "Umbondo",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
+        "Bogadi",
+        "Lobolo",
+        "Roora",
+        "Chitenge"
       ],
       "correct": [
         0
       ],
-      "explanation": "Families exchange gifts during Nguni marriage talks.",
+      "explanation": "Bogadi is a Tswana marriage negotiation between families.",
       "sources": [
         {
           "title": "Lobolo",
           "url": "https://en.wikipedia.org/wiki/Lobolo",
-          "claim": "Families exchange gifts during Nguni marriage talks",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_ululation",
-      "region": "south",
-      "country": "South Africa",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is the celebratory call as the couple enters?",
-      "options": [
-        "Ululation",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Ululation is heard at South African weddings.",
-      "sources": [
-        {
-          "title": "Ululation",
-          "url": "https://en.wikipedia.org/wiki/Ululation",
-          "claim": "Ululation is heard at South African weddings",
+          "claim": "Bogadi is a Tswana marriage negotiation between families",
           "method": "page-overlap"
         }
       ],
@@ -3480,274 +3060,22 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which wedding custom is guests in matching printed wraps?",
+      "prompt": "What do you call a printed wrap worn at Zambian celebrations?",
       "options": [
-        "Chitenge guests",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
+        "Chitenge",
+        "Lobolo",
+        "Roora",
+        "Bogadi"
       ],
       "correct": [
         0
       ],
-      "explanation": "Chitenge is worn by guests at Zambian weddings.",
+      "explanation": "Chitenge is a printed cloth worn in Zambia.",
       "sources": [
         {
           "title": "Chitenge",
           "url": "https://en.wikipedia.org/wiki/Chitenge",
-          "claim": "Chitenge is worn by guests at Zambian weddings",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_capulana",
-      "region": "south",
-      "country": "Mozambique",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is bright wraps and marrabenta at the reception?",
-      "options": [
-        "Capulana party",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Capulana is worn at Mozambican celebrations.",
-      "sources": [
-        {
-          "title": "Capulana",
-          "url": "https://en.wikipedia.org/wiki/Capulana",
-          "claim": "Capulana is worn at Mozambican celebrations",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_zulu_people",
-      "region": "south",
-      "country": "South Africa",
-      "category": "WEDDINGS",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Which wedding custom is a Zulu coming-of-age that is not a wedding, so pick the wedding feast instead: a shared meal?",
-      "options": [
-        "Umemulo",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Zulu weddings include a shared family meal.",
-      "sources": [
-        {
-          "title": "Zulu people",
-          "url": "https://en.wikipedia.org/wiki/Zulu_people",
-          "claim": "Zulu weddings include a shared family meal",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_isicathamiya",
-      "region": "south",
-      "country": "South Africa",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is a choir piece during a family wedding?",
-      "options": [
-        "Isicathamiya song",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Isicathamiya is sung at South African gatherings.",
-      "sources": [
-        {
-          "title": "Isicathamiya",
-          "url": "https://en.wikipedia.org/wiki/Isicathamiya",
-          "claim": "Isicathamiya is sung at South African gatherings",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_tswana_language",
-      "region": "south",
-      "country": "Botswana",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is dumela greetings as guests arrive?",
-      "options": [
-        "Setswana welcome",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Dumela is a Setswana greeting.",
-      "sources": [
-        {
-          "title": "Tswana language",
-          "url": "https://en.wikipedia.org/wiki/Tswana_language",
-          "claim": "Dumela is a Setswana greeting",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_potjiekos",
-      "region": "south",
-      "country": "Namibia",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is a three-legged pot of stew for wedding guests?",
-      "options": [
-        "Potjie",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Potjiekos is served at Namibian and South African gatherings.",
-      "sources": [
-        {
-          "title": "Potjiekos",
-          "url": "https://en.wikipedia.org/wiki/Potjiekos",
-          "claim": "Potjiekos is served at Namibian and South African gatherings",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_lake_malawi",
-      "region": "south",
-      "country": "Malawi",
-      "category": "WEDDINGS",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Which wedding custom is lake fish on a wedding menu?",
-      "options": [
-        "Chambo feast",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Fish from Lake Malawi is served at celebrations.",
-      "sources": [
-        {
-          "title": "Lake Malawi",
-          "url": "https://en.wikipedia.org/wiki/Lake_Malawi",
-          "claim": "Fish from Lake Malawi is served at celebrations",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_wedding_cake",
-      "region": "south",
-      "country": "South Africa",
-      "category": "WEDDINGS",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which wedding custom is a tall cake beside the savoury pots?",
-      "options": [
-        "Wedding cake",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Wedding cake is served at South African receptions.",
-      "sources": [
-        {
-          "title": "Wedding cake",
-          "url": "https://en.wikipedia.org/wiki/Wedding_cake",
-          "claim": "Wedding cake is served at South African receptions",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_mbira",
-      "region": "south",
-      "country": "Zimbabwe",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is instrumental music as families gather, kept public and celebratory?",
-      "options": [
-        "Mbira blessing song",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The mbira is played at Shona gatherings.",
-      "sources": [
-        {
-          "title": "Mbira",
-          "url": "https://en.wikipedia.org/wiki/Mbira",
-          "claim": "The mbira is played at Shona gatherings",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
-      "id": "south_wedd_culture_of_eswatini",
-      "region": "south",
-      "country": "Eswatini",
-      "category": "WEDDINGS",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which wedding custom is elders discussing the marriage between families?",
-      "options": [
-        "Family cattle talk",
-        "Lobola talks",
-        "White wedding",
-        "Shweshwe bride"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Eswatini marriages involve both families.",
-      "sources": [
-        {
-          "title": "Culture of Eswatini",
-          "url": "https://en.wikipedia.org/wiki/Culture_of_Eswatini",
-          "claim": "Eswatini marriages involve both families",
+          "claim": "Chitenge is a printed cloth worn in Zambia",
           "method": "page-overlap"
         }
       ],
@@ -3760,12 +3088,12 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which historical name is the stone city built by ancestors of the Shona?",
+      "prompt": "What is the stone city built by ancestors of the Shona?",
       "options": [
         "Great Zimbabwe",
-        "Mapungubwe",
-        "1994",
-        "1964"
+        "Thulamela",
+        "Twyfelfontein",
+        "Union Buildings"
       ],
       "correct": [
         0
@@ -3782,46 +3110,18 @@
       "origin": "generated"
     },
     {
-      "id": "south_hist_kingdom_of_mapungubwe",
-      "region": "south",
-      "country": "South Africa",
-      "category": "HISTORY",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which historical name is an early kingdom and gold-trading centre?",
-      "options": [
-        "Mapungubwe",
-        "Great Zimbabwe",
-        "1994",
-        "1964"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Mapungubwe was a kingdom in South Africa.",
-      "sources": [
-        {
-          "title": "Kingdom of Mapungubwe",
-          "url": "https://en.wikipedia.org/wiki/Kingdom_of_Mapungubwe",
-          "claim": "Mapungubwe was a kingdom in South Africa",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "south_hist_1994_south_african_general_election",
       "region": "south",
       "country": "South Africa",
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the year of South Africa's first democratic election?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "1994",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1964"
+        "1964",
+        "1966",
+        "1975"
       ],
       "correct": [
         0
@@ -3844,12 +3144,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the year Zambia became independent?",
+      "prompt": "In which year did Zambia become independent?",
       "options": [
         "1964",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "1994",
+        "1966",
+        "1975"
       ],
       "correct": [
         0
@@ -3872,12 +3172,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the year Botswana became independent?",
+      "prompt": "In which year did Botswana become independent?",
       "options": [
         "1966",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "1994",
+        "1964",
+        "1975"
       ],
       "correct": [
         0
@@ -3900,12 +3200,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the year Mozambique became independent?",
+      "prompt": "In which year did Mozambique become independent?",
       "options": [
         "1975",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "1994",
+        "1964",
+        "1966"
       ],
       "correct": [
         0
@@ -3928,12 +3228,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the year Namibia became independent?",
+      "prompt": "In which year did Namibia become independent?",
       "options": [
         "1990",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "1994",
+        "1964",
+        "1966"
       ],
       "correct": [
         0
@@ -3956,12 +3256,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the year Zimbabwe became independent?",
+      "prompt": "In which year did Zimbabwe become independent?",
       "options": [
         "1980",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "1994",
+        "1964",
+        "1966"
       ],
       "correct": [
         0
@@ -3984,12 +3284,12 @@
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is the founder of the Basotho nation?",
+      "prompt": "What is the founder of the Basotho nation?",
       "options": [
         "Moshoeshoe",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "Seretse Khama",
+        "Nelson Mandela history",
+        "Kenneth Kaunda history"
       ],
       "correct": [
         0
@@ -4012,12 +3312,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is Botswana's first president?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Seretse Khama",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "Moshoeshoe",
+        "Nelson Mandela history",
+        "Kenneth Kaunda history"
       ],
       "correct": [
         0
@@ -4040,12 +3340,12 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which historical name is the leader who became president in 1994?",
+      "prompt": "What is the leader who became president in 1994?",
       "options": [
         "Nelson Mandela history",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "Moshoeshoe",
+        "Seretse Khama",
+        "Kenneth Kaunda history"
       ],
       "correct": [
         0
@@ -4062,46 +3362,18 @@
       "origin": "generated"
     },
     {
-      "id": "south_hist_kingdom_of_mutapa",
-      "region": "south",
-      "country": "Zimbabwe",
-      "category": "HISTORY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Which historical name is a historic state of the Zimbabwe plateau?",
-      "options": [
-        "Kingdom of Mutapa",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The Kingdom of Mutapa was in the region of Zimbabwe.",
-      "sources": [
-        {
-          "title": "Kingdom of Mutapa",
-          "url": "https://en.wikipedia.org/wiki/Kingdom_of_Mutapa",
-          "claim": "The Kingdom of Mutapa was in the region of Zimbabwe",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "south_hist_thulamela",
       "region": "south",
       "country": "South Africa",
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is a stone-walled site in the Kruger area?",
+      "prompt": "What is a stone-walled site in the Kruger area?",
       "options": [
         "Thulamela",
         "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "Twyfelfontein",
+        "Union Buildings"
       ],
       "correct": [
         0
@@ -4124,12 +3396,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the year Malawi became independent?",
+      "prompt": "In which year did Malawi become independent?",
       "options": [
-        "1964 Malawi",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "1964",
+        "1994",
+        "1966",
+        "1975"
       ],
       "correct": [
         0
@@ -4152,12 +3424,12 @@
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which historical name is a UNESCO site of ancient rock engravings?",
+      "prompt": "What is a UNESCO site of ancient rock engravings?",
       "options": [
         "Twyfelfontein",
         "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "Thulamela",
+        "Union Buildings"
       ],
       "correct": [
         0
@@ -4180,12 +3452,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is Zambia's first president?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Kenneth Kaunda history",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "Moshoeshoe",
+        "Seretse Khama",
+        "Nelson Mandela history"
       ],
       "correct": [
         0
@@ -4208,12 +3480,12 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which historical name is the seat of government in Pretoria?",
+      "prompt": "What is the seat of government in Pretoria?",
       "options": [
         "Union Buildings",
         "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "Thulamela",
+        "Twyfelfontein"
       ],
       "correct": [
         0
@@ -4236,12 +3508,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which historical name is the year Eswatini, then Swaziland, became independent?",
+      "prompt": "In which year did Eswatini, then Swaziland, become independent?",
       "options": [
         "1968",
-        "Great Zimbabwe",
-        "Mapungubwe",
-        "1994"
+        "1994",
+        "1964",
+        "1966"
       ],
       "correct": [
         0
@@ -4264,11 +3536,11 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the president who led South Africa after the 1994 election?",
+      "prompt": "Who is the president who led South Africa after the 1994 election?",
       "options": [
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person",
+        "Miriam Makeba",
+        "Hugh Masekela",
         "Tsitsi Dangarembga"
       ],
       "correct": [
@@ -4292,11 +3564,11 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the singer known as Mama Africa?",
+      "prompt": "Who is the singer known as Mama Africa?",
       "options": [
-        "Miriam Makeba person",
+        "Miriam Makeba",
         "Nelson Mandela",
-        "Hugh Masekela person",
+        "Hugh Masekela",
         "Tsitsi Dangarembga"
       ],
       "correct": [
@@ -4320,11 +3592,11 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the trumpeter of South African jazz?",
+      "prompt": "Who is the trumpeter of South African jazz?",
       "options": [
-        "Hugh Masekela person",
+        "Hugh Masekela",
         "Nelson Mandela",
-        "Miriam Makeba person",
+        "Miriam Makeba",
         "Tsitsi Dangarembga"
       ],
       "correct": [
@@ -4348,12 +3620,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the novelist of Nervous Conditions?",
+      "prompt": "Who is the novelist of Nervous Conditions?",
       "options": [
         "Tsitsi Dangarembga",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4376,12 +3648,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the writer who lived and worked in Botswana?",
+      "prompt": "Who is the writer who lived and worked in Botswana?",
       "options": [
         "Bessie Head",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4404,12 +3676,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Nobel Prize novelist?",
+      "prompt": "Who is the Nobel Prize novelist?",
       "options": [
         "Nadine Gordimer",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4432,12 +3704,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the Nobel Prize novelist of Disgrace?",
+      "prompt": "Who is the Nobel Prize novelist of Disgrace?",
       "options": [
         "JM Coetzee",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4460,12 +3732,12 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the musician known as Tuku?",
+      "prompt": "Who is the musician known as Tuku?",
       "options": [
-        "Oliver Mtukudzi person",
+        "Oliver Mtukudzi",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4488,12 +3760,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the nineteenth-century founder of the Basotho?",
+      "prompt": "Who is the nineteenth-century founder of the Basotho?",
       "options": [
-        "Moshoeshoe person",
+        "Moshoeshoe",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4516,12 +3788,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the archbishop and Nobel Peace Prize laureate?",
+      "prompt": "Who is the archbishop and Nobel Peace Prize laureate?",
       "options": [
         "Desmond Tutu",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4544,12 +3816,12 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which person is the author of The House of Hunger?",
+      "prompt": "Who is the author of The House of Hunger?",
       "options": [
         "Dambudzo Marechera",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4572,12 +3844,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is the comedian who hosted The Daily Show?",
+      "prompt": "Who is the comedian who hosted The Daily Show?",
       "options": [
         "Trevor Noah",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4600,12 +3872,12 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the Oscar-winning actor from Benoni?",
+      "prompt": "Who is the Oscar-winning actor from Benoni?",
       "options": [
         "Charlize Theron",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4628,12 +3900,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is Zambia's founding president?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
-        "Kenneth Kaunda person",
+        "Kenneth Kaunda",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4656,12 +3928,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is Mozambique's first president?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Samora Machel",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4684,12 +3956,12 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which person is the Malawian poet?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Jack Mapanje",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4712,12 +3984,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which person is Namibia's first president?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Sam Nujoma",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4740,12 +4012,12 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which person is the Springbok captain who lifted the 2019 World Cup?",
+      "prompt": "Who is the Springbok captain who lifted the 2019 World Cup?",
       "options": [
-        "Siya Kolisi person",
+        "Siya Kolisi",
         "Nelson Mandela",
-        "Miriam Makeba person",
-        "Hugh Masekela person"
+        "Miriam Makeba",
+        "Hugh Masekela"
       ],
       "correct": [
         0
@@ -4768,7 +4040,7 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the South African singer of Water?",
+      "prompt": "Who is the South African singer of Water?",
       "options": [
         "Tyla",
         "Black Coffee pop",
@@ -4796,9 +4068,9 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the house DJ who filled global dance floors?",
+      "prompt": "Who is the house DJ who filled global dance floors?",
       "options": [
-        "Black Coffee pop",
+        "Black Coffee",
         "Tyla",
         "Master KG",
         "Uncle Waffles"
@@ -4824,11 +4096,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the amapiano artist of Jerusalema?",
+      "prompt": "Who is the amapiano artist of Jerusalema?",
       "options": [
         "Master KG",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Uncle Waffles"
       ],
       "correct": [
@@ -4852,11 +4124,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the amapiano DJ and dancer?",
+      "prompt": "Who is the amapiano DJ and dancer?",
       "options": [
         "Uncle Waffles",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -4880,11 +4152,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the rapper who brought xibelani dance to pop?",
+      "prompt": "Who is the rapper who brought xibelani dance to pop?",
       "options": [
         "Sho Madjozi",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -4908,11 +4180,11 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the South African rapper?",
+      "prompt": "Who is the South African rapper?",
       "options": [
         "Nasty C",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -4936,11 +4208,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the South African rapper and boxing-event host?",
+      "prompt": "Who is the South African rapper and boxing-event host?",
       "options": [
         "Cassper Nyovest",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -4964,11 +4236,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is an amapiano vocalist?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Focalistic",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -4992,11 +4264,11 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is a producer called the king of amapiano?",
+      "prompt": "Who is a producer called the king of amapiano?",
       "options": [
         "Kabza De Small",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -5020,11 +4292,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the voice on Jerusalema?",
+      "prompt": "Who is the voice on Jerusalema?",
       "options": [
         "Nomcebo Zikode",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -5048,11 +4320,11 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the duo of Ndihamba Nawe?",
+      "prompt": "Who is the duo of Ndihamba Nawe?",
       "options": [
         "Mafikizolo",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -5076,11 +4348,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is a leading Zimdancehall artist?",
+      "prompt": "Who is a leading Zimdancehall artist?",
       "options": [
         "Winky D",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -5104,11 +4376,11 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is the singer of Loliwe?",
+      "prompt": "Who is the singer of Loliwe?",
       "options": [
         "Zahara",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -5132,11 +4404,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is the band of Doo Be Doo?",
+      "prompt": "Who is the band of Doo Be Doo?",
       "options": [
         "Freshlyground",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -5160,11 +4432,11 @@
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which popular-culture name is the global comedy export?",
+      "prompt": "Who is the global comedy export?",
       "options": [
-        "Trevor Noah pop",
+        "Trevor Noah",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -5188,11 +4460,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is Botswana house and Afropop nights?",
+      "prompt": "Who is Botswana house and Afropop nights?",
       "options": [
         "DJ Dilize",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -5216,11 +4488,11 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which popular-culture name is a Namibian kwaito artist?",
+      "prompt": "Who is a Namibian kwaito artist?",
       "options": [
         "The Dogg",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -5244,11 +4516,11 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which popular-culture name is a Mozambican pop singer?",
+      "prompt": "Who is a Mozambican pop singer?",
       "options": [
         "Lizha James",
         "Tyla",
-        "Black Coffee pop",
+        "Black Coffee",
         "Master KG"
       ],
       "correct": [
@@ -5272,12 +4544,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of South Africa's rugby team?",
+      "prompt": "What is the nickname of South Africa's rugby team?",
       "options": [
         "Springboks",
-        "Siya Kolisi",
         "Bafana Bafana",
-        "Banyana Banyana"
+        "Banyana Banyana",
+        "Kaizer Chiefs"
       ],
       "correct": [
         0
@@ -5300,12 +4572,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the Springbok captain of 2019 and 2023?",
+      "prompt": "Who is the Springbok captain of 2019 and 2023?",
       "options": [
         "Siya Kolisi",
-        "Springboks",
-        "Bafana Bafana",
-        "Banyana Banyana"
+        "Caster Semenya",
+        "Wayde van Niekerk",
+        "AB de Villiers"
       ],
       "correct": [
         0
@@ -5328,12 +4600,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of South Africa's men's football team?",
+      "prompt": "What is the nickname of South Africa's men's football team?",
       "options": [
         "Bafana Bafana",
         "Springboks",
-        "Siya Kolisi",
-        "Banyana Banyana"
+        "Banyana Banyana",
+        "Kaizer Chiefs"
       ],
       "correct": [
         0
@@ -5356,12 +4628,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of South Africa's women's football team?",
+      "prompt": "What is the nickname of South Africa's women's football team?",
       "options": [
         "Banyana Banyana",
         "Springboks",
-        "Siya Kolisi",
-        "Bafana Bafana"
+        "Bafana Bafana",
+        "Kaizer Chiefs"
       ],
       "correct": [
         0
@@ -5384,12 +4656,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Olympic 800 metre champion?",
+      "prompt": "Who is the Olympic 800 metre champion?",
       "options": [
         "Caster Semenya",
-        "Springboks",
         "Siya Kolisi",
-        "Bafana Bafana"
+        "Wayde van Niekerk",
+        "AB de Villiers"
       ],
       "correct": [
         0
@@ -5412,12 +4684,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Olympic 400 metre champion?",
+      "prompt": "Who is the Olympic 400 metre champion?",
       "options": [
         "Wayde van Niekerk",
-        "Springboks",
         "Siya Kolisi",
-        "Bafana Bafana"
+        "Caster Semenya",
+        "AB de Villiers"
       ],
       "correct": [
         0
@@ -5440,12 +4712,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is a famous Soweto football club?",
+      "prompt": "What is a famous Soweto football club?",
       "options": [
         "Kaizer Chiefs",
         "Springboks",
-        "Siya Kolisi",
-        "Bafana Bafana"
+        "Bafana Bafana",
+        "Banyana Banyana"
       ],
       "correct": [
         0
@@ -5468,12 +4740,12 @@
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Which sporting name is the Soweto club and African champion?",
+      "prompt": "What is the Soweto club and African champion?",
       "options": [
         "Orlando Pirates",
         "Springboks",
-        "Siya Kolisi",
-        "Bafana Bafana"
+        "Bafana Bafana",
+        "Banyana Banyana"
       ],
       "correct": [
         0
@@ -5496,12 +4768,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the cricket batter known as Mr 360?",
+      "prompt": "Who is the cricket batter known as Mr 360?",
       "options": [
         "AB de Villiers",
-        "Springboks",
         "Siya Kolisi",
-        "Bafana Bafana"
+        "Caster Semenya",
+        "Wayde van Niekerk"
       ],
       "correct": [
         0
@@ -5524,12 +4796,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the fast bowler?",
+      "prompt": "Which answer fits the sourced fact?",
       "options": [
         "Kagiso Rabada",
-        "Springboks",
         "Siya Kolisi",
-        "Bafana Bafana"
+        "Caster Semenya",
+        "Wayde van Niekerk"
       ],
       "correct": [
         0
@@ -5552,12 +4824,12 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is the Olympic swimming champion who later entered public office?",
+      "prompt": "Who is the Olympic swimming champion who later entered public office?",
       "options": [
         "Kirsty Coventry",
-        "Springboks",
         "Siya Kolisi",
-        "Bafana Bafana"
+        "Caster Semenya",
+        "Wayde van Niekerk"
       ],
       "correct": [
         0
@@ -5580,12 +4852,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the nickname of Zambia's women's football team?",
+      "prompt": "What is the nickname of Zambia's women's football team?",
       "options": [
         "Copper Queens",
         "Springboks",
-        "Siya Kolisi",
-        "Bafana Bafana"
+        "Bafana Bafana",
+        "Banyana Banyana"
       ],
       "correct": [
         0
@@ -5608,12 +4880,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the former Bafana captain?",
+      "prompt": "Who is the former Bafana captain?",
       "options": [
         "Lucas Radebe",
-        "Springboks",
         "Siya Kolisi",
-        "Bafana Bafana"
+        "Caster Semenya",
+        "Wayde van Niekerk"
       ],
       "correct": [
         0
@@ -5636,12 +4908,12 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is the Olympic breaststroke champion, formerly Schoenmaker?",
+      "prompt": "Who is the Olympic breaststroke champion, formerly Schoenmaker?",
       "options": [
         "Tatjana Smith",
-        "Springboks",
         "Siya Kolisi",
-        "Bafana Bafana"
+        "Caster Semenya",
+        "Wayde van Niekerk"
       ],
       "correct": [
         0
@@ -5658,46 +4930,18 @@
       "origin": "generated"
     },
     {
-      "id": "south_spor_2010_fifa_world_cup",
-      "region": "south",
-      "country": "South Africa",
-      "category": "SPORT",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Which sporting name is the year South Africa hosted the FIFA World Cup?",
-      "options": [
-        "2010 World Cup",
-        "Springboks",
-        "Siya Kolisi",
-        "Bafana Bafana"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "South Africa hosted the 2010 FIFA World Cup.",
-      "sources": [
-        {
-          "title": "2010 FIFA World Cup",
-          "url": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup",
-          "claim": "South Africa hosted the 2010 FIFA World Cup",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated"
-    },
-    {
       "id": "south_spor_namibia_national_cricket_team",
       "region": "south",
       "country": "Namibia",
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is Namibia's cricket team plays on the world stage?",
+      "prompt": "What is Namibia's cricket team plays on the world stage?",
       "options": [
         "Welwitschia country sport",
         "Springboks",
-        "Siya Kolisi",
-        "Bafana Bafana"
+        "Bafana Bafana",
+        "Banyana Banyana"
       ],
       "correct": [
         0
@@ -5720,12 +4964,12 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Which sporting name is the Olympic 200 metre champion?",
+      "prompt": "Who is the Olympic 200 metre champion?",
       "options": [
         "Letsile Tebogo",
-        "Springboks",
         "Siya Kolisi",
-        "Bafana Bafana"
+        "Caster Semenya",
+        "Wayde van Niekerk"
       ],
       "correct": [
         0
@@ -5748,12 +4992,12 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Which sporting name is the Olympic swimming champion?",
+      "prompt": "Who is the Olympic swimming champion?",
       "options": [
         "Chad le Clos",
-        "Springboks",
         "Siya Kolisi",
-        "Bafana Bafana"
+        "Caster Semenya",
+        "Wayde van Niekerk"
       ],
       "correct": [
         0
@@ -5776,7 +5020,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "multi",
-      "prompt": "Select three official languages of South Africa.",
+      "prompt": "Which three are official languages of South Africa?",
       "options": [
         "isiZulu",
         "isiXhosa",
@@ -5806,7 +5050,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "multi",
-      "prompt": "Select three Southern African capital or major cities.",
+      "prompt": "Which three are capital cities in Southern Africa?",
       "options": [
         "Gaborone",
         "Windhoek",
@@ -5836,7 +5080,7 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "multi",
-      "prompt": "Select three foods associated with South Africa.",
+      "prompt": "Which three foods are associated with South Africa?",
       "options": [
         "Biltong",
         "Bobotie",
@@ -5866,7 +5110,7 @@
       "category": "PROVERBS",
       "difficulty": "easy",
       "kind": "complete",
-      "prompt": "Complete the Setswana line: kgosi ke kgosi ka ___.",
+      "prompt": "Complete the Setswana line: kgosi ke kgosi ka ___?",
       "options": [
         "batho",
         "gauta",
@@ -5882,6 +5126,678 @@
           "title": "Tswana language",
           "url": "https://en.wikipedia.org/wiki/Tswana_language",
           "claim": "A Setswana proverb says kgosi ke kgosi ka batho",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_bobotie2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a spiced mince bake with an egg topping?",
+      "options": [
+        "Bobotie",
+        "Braai",
+        "Biltong",
+        "Sadza"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bobotie is a South African dish.",
+      "sources": [
+        {
+          "title": "Bobotie",
+          "url": "https://en.wikipedia.org/wiki/Bobotie",
+          "claim": "Bobotie is a South African dish",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_biltong2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call air-dried seasoned meat from Southern Africa?",
+      "options": [
+        "Biltong",
+        "Braai",
+        "Bobotie",
+        "Sadza"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Biltong is dried meat from Southern Africa.",
+      "sources": [
+        {
+          "title": "Biltong",
+          "url": "https://en.wikipedia.org/wiki/Biltong",
+          "claim": "Biltong is dried meat from Southern Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_bunny_chow2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a hollowed loaf filled with curry, from Durban?",
+      "options": [
+        "Bunny chow",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bunny chow is a South African dish from Durban.",
+      "sources": [
+        {
+          "title": "Bunny chow",
+          "url": "https://en.wikipedia.org/wiki/Bunny_chow",
+          "claim": "Bunny chow is a South African dish from Durban",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_boerewors2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a coiled spiced sausage of the braai?",
+      "options": [
+        "Boerewors",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Boerewors is a South African sausage.",
+      "sources": [
+        {
+          "title": "Boerewors",
+          "url": "https://en.wikipedia.org/wiki/Boerewors",
+          "claim": "Boerewors is a South African sausage",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_chakalaka2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a spicy vegetable relish served with pap?",
+      "options": [
+        "Chakalaka",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chakalaka is a South African relish.",
+      "sources": [
+        {
+          "title": "Chakalaka",
+          "url": "https://en.wikipedia.org/wiki/Chakalaka",
+          "claim": "Chakalaka is a South African relish",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_sadza2",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call the stiff maize porridge of Zimbabwe?",
+      "options": [
+        "Sadza",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sadza is a maize porridge from Zimbabwe.",
+      "sources": [
+        {
+          "title": "Sadza",
+          "url": "https://en.wikipedia.org/wiki/Sadza",
+          "claim": "Sadza is a maize porridge from Zimbabwe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_amapiano2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a South African house style built on log drum and piano?",
+      "options": [
+        "Amapiano",
+        "Kwaito",
+        "Gqom",
+        "Mbira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Amapiano is a South African music genre.",
+      "sources": [
+        {
+          "title": "Amapiano",
+          "url": "https://en.wikipedia.org/wiki/Amapiano",
+          "claim": "Amapiano is a South African music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_kwaito2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a South African dance music that boomed in the 1990s?",
+      "options": [
+        "Kwaito",
+        "Amapiano",
+        "Gqom",
+        "Mbira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kwaito is a South African music genre.",
+      "sources": [
+        {
+          "title": "Kwaito",
+          "url": "https://en.wikipedia.org/wiki/Kwaito",
+          "claim": "Kwaito is a South African music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_gqom2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a raw electronic dance music from Durban?",
+      "options": [
+        "Gqom",
+        "Amapiano",
+        "Kwaito",
+        "Mbira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gqom is a South African music genre.",
+      "sources": [
+        {
+          "title": "Gqom",
+          "url": "https://en.wikipedia.org/wiki/Gqom",
+          "claim": "Gqom is a South African music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_brenda_fassie",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the South African pop star nicknamed Madonna of the Townships?",
+      "options": [
+        "Brenda Fassie",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Brenda Fassie was a South African singer.",
+      "sources": [
+        {
+          "title": "Brenda Fassie",
+          "url": "https://en.wikipedia.org/wiki/Brenda_Fassie",
+          "claim": "Brenda Fassie was a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_black_coffee_dj_2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the South African DJ known for deep house?",
+      "options": [
+        "Black Coffee",
+        "Tyla",
+        "Master KG",
+        "Uncle Waffles"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Black Coffee is a South African DJ.",
+      "sources": [
+        {
+          "title": "Black Coffee (DJ)",
+          "url": "https://en.wikipedia.org/wiki/Black_Coffee_(DJ)",
+          "claim": "Black Coffee is a South African DJ",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_tyla_singer_2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the South African singer of Water?",
+      "options": [
+        "Tyla",
+        "Black Coffee",
+        "Master KG",
+        "Uncle Waffles"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tyla is a South African singer.",
+      "sources": [
+        {
+          "title": "Tyla (singer)",
+          "url": "https://en.wikipedia.org/wiki/Tyla_(singer)",
+          "claim": "Tyla is a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_table_mountain2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Table Mountain",
+        "Victoria Falls",
+        "Okavango Delta",
+        "Sossusvlei"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Table Mountain overlooks Cape Town.",
+      "sources": [
+        {
+          "title": "Table Mountain",
+          "url": "https://en.wikipedia.org/wiki/Table_Mountain",
+          "claim": "Table Mountain overlooks Cape Town",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_robben_island",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Robben Island",
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Robben Island is an island off Cape Town.",
+      "sources": [
+        {
+          "title": "Robben Island",
+          "url": "https://en.wikipedia.org/wiki/Robben_Island",
+          "claim": "Robben Island is an island off Cape Town",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_victoria_falls2",
+      "region": "south",
+      "country": "Zambia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the waterfall on the Zambezi between Zambia and Zimbabwe?",
+      "options": [
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta",
+        "Sossusvlei"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Victoria Falls is a waterfall on the Zambezi.",
+      "sources": [
+        {
+          "title": "Victoria Falls",
+          "url": "https://en.wikipedia.org/wiki/Victoria_Falls",
+          "claim": "Victoria Falls is a waterfall on the Zambezi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_okavango_delta2",
+      "region": "south",
+      "country": "Botswana",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Okavango Delta",
+        "Victoria Falls",
+        "Table Mountain",
+        "Sossusvlei"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Okavango Delta is in Botswana.",
+      "sources": [
+        {
+          "title": "Okavango Delta",
+          "url": "https://en.wikipedia.org/wiki/Okavango_Delta",
+          "claim": "The Okavango Delta is in Botswana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_namib",
+      "region": "south",
+      "country": "Namibia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Namib",
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Namib is a desert in Namibia.",
+      "sources": [
+        {
+          "title": "Namib",
+          "url": "https://en.wikipedia.org/wiki/Namib",
+          "claim": "The Namib is a desert in Namibia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_zulu_language3",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the most widely spoken home language in South Africa?",
+      "options": [
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans",
+        "Setswana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "isiZulu is a language of South Africa.",
+      "sources": [
+        {
+          "title": "Zulu language",
+          "url": "https://en.wikipedia.org/wiki/Zulu_language",
+          "claim": "isiZulu is a language of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_xhosa_language3",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a Nguni language of South Africa, known for its clicks?",
+      "options": [
+        "isiXhosa",
+        "isiZulu",
+        "Afrikaans",
+        "Setswana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "isiXhosa is a language of South Africa.",
+      "sources": [
+        {
+          "title": "Xhosa language",
+          "url": "https://en.wikipedia.org/wiki/Xhosa_language",
+          "claim": "isiXhosa is a language of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_shona_language2",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a major language of Zimbabwe?",
+      "options": [
+        "Shona",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shona is a language of Zimbabwe.",
+      "sources": [
+        {
+          "title": "Shona language",
+          "url": "https://en.wikipedia.org/wiki/Shona_language",
+          "claim": "Shona is a language of Zimbabwe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_wayde_van_niekerk2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the South African who won Olympic 400 metres gold in 2016?",
+      "options": [
+        "Wayde van Niekerk",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "AB de Villiers"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wayde van Niekerk is a South African sprinter.",
+      "sources": [
+        {
+          "title": "Wayde van Niekerk",
+          "url": "https://en.wikipedia.org/wiki/Wayde_van_Niekerk",
+          "claim": "Wayde van Niekerk is a South African sprinter",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_josia_thugwane",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the South African who won the Olympic marathon in 1996?",
+      "options": [
+        "Josia Thugwane",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "Wayde van Niekerk"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Josia Thugwane is a South African marathon runner.",
+      "sources": [
+        {
+          "title": "Josia Thugwane",
+          "url": "https://en.wikipedia.org/wiki/Josia_Thugwane",
+          "claim": "Josia Thugwane is a South African marathon runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_shweshwe4",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a printed dyed cotton cloth of Southern Africa?",
+      "options": [
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo",
+        "Ndebele beadwork"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shweshwe is a printed cotton fabric from South Africa.",
+      "sources": [
+        {
+          "title": "Shweshwe",
+          "url": "https://en.wikipedia.org/wiki/Shweshwe",
+          "claim": "Shweshwe is a printed cotton fabric from South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_robben_island",
+      "region": "south",
+      "country": "South Africa",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Robben Island history",
+        "Great Zimbabwe",
+        "Thulamela",
+        "Twyfelfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Robben Island was a prison off Cape Town.",
+      "sources": [
+        {
+          "title": "Robben Island",
+          "url": "https://en.wikipedia.org/wiki/Robben_Island",
+          "claim": "Robben Island was a prison off Cape Town",
           "method": "page-overlap"
         }
       ],

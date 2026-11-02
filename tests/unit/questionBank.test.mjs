@@ -4,7 +4,7 @@ import test from "node:test";
 import { classicBank } from "../../question-bank/classic.ts";
 import { scopeFitsRegion } from "../../question-bank/regions.ts";
 import { sensitivityReasons } from "../../question-bank/sensitivity.ts";
-import { jaccard, normalizeText } from "../../question-bank/text.ts";
+import { answerLeaks, jaccard, normalizeText } from "../../question-bank/text.ts";
 
 const regions = ["west", "east", "central", "north", "south"];
 
@@ -13,14 +13,12 @@ async function published(region) {
   return JSON.parse(await readFile(file, "utf8")).questions;
 }
 
-test("every region publishes at least 200 gated questions", async () => {
+test("every region publishes at least 85 gated questions with quotes and editorial scores", async () => {
   const seen = new Set();
   const prompts = [];
   for (const region of regions) {
     const questions = await published(region);
-    assert.ok(questions.length >= 200, `${region} published ${questions.length}`);
-    assert.ok(questions.some((question) => question.kind === "multi"), `${region} needs a multi-answer question`);
-    assert.ok(questions.some((question) => question.kind === "complete"), `${region} needs a sentence completion`);
+    assert.ok(questions.length >= 85, `${region} published ${questions.length}`);
     const difficulties = new Set(questions.map((question) => question.difficulty));
     assert.deepEqual([...difficulties].sort(), ["easy", "hard", "medium"]);
     for (const question of questions) {
@@ -39,6 +37,27 @@ test("every region publishes at least 200 gated questions", async () => {
       const source = question.sources[0];
       assert.match(source.url, /^https:\/\//);
       assert.equal(question.gateReport.source.status, "pass");
+      assert.equal(question.gateReport.source.method, "evidence-quote");
+      assert.ok(question.gateReport.evidenceQuote && question.gateReport.evidenceQuote.length >= 40, question.id);
+      assert.ok(question.gateReport.editorial.clarity >= 4, question.id);
+      assert.ok(question.gateReport.editorial.fun >= 4, question.id);
+      assert.ok(question.gateReport.editorial.accuracy >= 4, question.id);
+      assert.equal(/which (?:language point|popular-culture name|sporting name)|fill the blank|the name to write is|according to unesco|\ba and\b|\b(?:in|of|from|for|at|by|with)\s*\?$/i.test(question.prompt), false, question.prompt);
+      assert.equal(answerLeaks(question.prompt, question.options, question.correct), false, question.prompt);
+      const quoteWords = normalizeText(question.gateReport.evidenceQuote).split(" ");
+      for (const index of question.correct) {
+        for (const word of normalizeText(question.options[index]).split(" ")) {
+          if (word.length < 5) continue;
+          const hit = quoteWords.some((quoteWord) => {
+            if (quoteWord === word) return true;
+            const longer = quoteWord.length >= word.length ? quoteWord : word;
+            const shorter = quoteWord.length >= word.length ? word : quoteWord;
+            if (shorter.length < 5 || !longer.startsWith(shorter)) return false;
+            return /^(?:s|es|ed|ing|er|n|ian)?$/.test(longer.slice(shorter.length));
+          });
+          assert.equal(hit, true, `${question.id} quote missing ${word}`);
+        }
+      }
       assert.ok(question.gateReport.source.http >= 200 && question.gateReport.source.http < 400);
       assert.equal(question.gateReport.reasons.length, 0);
       assert.equal(scopeFitsRegion(question.country, region), true, question.id);

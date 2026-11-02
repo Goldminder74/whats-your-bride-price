@@ -54,3 +54,94 @@ export function sameAnswerSet(left: readonly number[], right: readonly number[])
 export function correctTexts(options: readonly string[], correct: readonly number[]): string[] {
   return correct.map((index) => normalizeText(options[index] || "")).sort();
 }
+
+export function wordRoots(value: string): string[] {
+  return [...new Set(normalizeText(value).split(" ").filter((word) => word.length >= 4).map((word) => word.replace(/(?:ing|ers|er|es|s)$/u, "")))];
+}
+
+/** The correct option is named in the prompt, or it is the only option that shares a root with the prompt. */
+export function answerLeaks(prompt: string, options: readonly string[], correct: readonly number[]): boolean {
+  const promptNorm = normalizeText(prompt);
+  const promptRoots = new Set(wordRoots(prompt));
+  const shares = (option: string) => {
+    const optionNorm = normalizeText(option);
+    if (optionNorm.length >= 4 && (promptNorm.includes(optionNorm) || optionNorm.includes(promptNorm))) return true;
+    return wordRoots(option).some((root) => root.length >= 4 && (promptRoots.has(root) || promptNorm.includes(root)));
+  };
+  for (const index of correct) {
+    const option = options[index] || "";
+    const optionNorm = normalizeText(option);
+    if (optionNorm.length >= 4 && promptNorm.includes(optionNorm)) return true;
+    if (wordRoots(option).some((root) => root.length >= 5 && promptNorm.includes(root))) return true;
+  }
+  const correctShares = correct.some((index) => shares(options[index] || ""));
+  const distractorShares = options.some((option, index) => !correct.includes(index) && shares(option));
+  return correctShares && !distractorShares;
+}
+
+const QUESTION_WORDS = new Set(["where", "which", "what", "when", "whose", "select", "name", "call", "called", "three", "people", "across", "country", "famous", "known", "widely", "spoken", "major", "official", "popular", "traditional"]);
+const LOOSE_WORDS = new Set([
+  ...QUESTION_WORDS,
+  "wedding", "weddings", "marriage", "married", "bride", "groom", "couple", "couples", "family", "families",
+  "ceremony", "ceremonies", "celebration", "celebrations", "worn", "wear", "wearing", "before", "after",
+  "during", "often", "usually", "guests", "appears", "enter", "enters", "holds", "would", "expect",
+]);
+const FUNCTION_WORDS = new Set(["with", "from", "that", "this", "into", "over", "under", "after", "before", "their", "there", "when", "what", "your", "have", "been", "were", "they", "them", "than", "then", "also", "such", "only", "very", "more", "most", "some", "many", "much", "each", "both", "upon", "among", "through", "about", "which", "while", "where"]);
+
+function wordHits(words: readonly string[], token: string): boolean {
+  return words.some((word) => {
+    if (word === token) return true;
+    const longer = word.length >= token.length ? word : token;
+    const shorter = word.length >= token.length ? token : word;
+    if (shorter.length < 4 || !longer.startsWith(shorter)) return false;
+    const rest = longer.slice(shorter.length);
+    return /^(?:n|an|ian|ien|ese|lese|ish|i|s|d|ed|ing|ern)?$/.test(rest);
+  });
+}
+
+function wantedWords(value: string): string[] {
+  return [...new Set(normalizeText(value).split(" ").filter((word) => word.length >= 4 && !FUNCTION_WORDS.has(word)))];
+}
+
+export function supportingSentence(pageText: string, prompt: string, claim: string, answers: readonly string[]): string | null {
+  const answerWords = answers.flatMap((answer) => wantedWords(answer));
+  const answerBlob = new Set(answerWords);
+  const claimTokens = contentTokens(claim).filter((token) => !answerBlob.has(token) && !LOOSE_WORDS.has(token));
+  const smallStop = new Set(["this", "that", "with", "from", "your", "have", "been", "were", "they", "them", "into", "over", "than", "then", "also", "such", "only", "very", "some", "many", "much", "each", "both", "upon"]);
+  const promptTokens = [...new Set(normalizeText(prompt).split(" ")
+    .filter((token) => token.length >= 4 && !answerBlob.has(token) && !LOOSE_WORDS.has(token) && !QUESTION_WORDS.has(token) && !smallStop.has(token)))];
+  const pieces = pageText
+    .replace(/\s+/g, " ")
+    .split(/(?<=[.!?])\s+/)
+    .map((sentence) => sentence.trim())
+    .filter((sentence) => sentence.length >= 30 && sentence.length <= 1200);
+  const windows: string[] = [...pieces];
+  for (let index = 0; index < pieces.length - 1; index += 1) {
+    const joined = `${pieces[index]} ${pieces[index + 1]}`;
+    if (joined.length <= 1600) windows.push(joined);
+  }
+  const mentions = (words: string[], answer: string) => {
+    const needed = wantedWords(answer);
+    if (needed.length) return needed.every((token) => wordHits(words, token));
+    const needle = normalizeText(answer);
+    return needle.length >= 3 && words.join(" ").includes(needle);
+  };
+  for (const sentence of windows) {
+    if (/javascript|main menu|jump to content|cookie|==/i.test(sentence)) continue;
+    const words = normalizeText(sentence).split(" ").filter(Boolean);
+    const years = `${prompt} ${claim}`.match(/\b(?:1[6-9]|20)\d{2}\b/g) || [];
+    if (years.some((year) => !words.includes(year))) continue;
+    const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+    const blob = `${normalizeText(prompt)} ${normalizeText(claim)}`;
+    if (months.some((month) => blob.includes(month) && !words.includes(month))) continue;
+    if (!answers.every((answer) => mentions(words, answer))) continue;
+    if (claimTokens.some((token) => !wordHits(words, token))) continue;
+    if (promptTokens.length) {
+      const hits = promptTokens.filter((token) => wordHits(words, token)).length;
+      const needed = promptTokens.length <= 2 ? promptTokens.length : Math.ceil(promptTokens.length * 0.6);
+      if (hits < needed) continue;
+    }
+    return sentence;
+  }
+  return null;
+}

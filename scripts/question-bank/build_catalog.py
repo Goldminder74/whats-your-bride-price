@@ -11,20 +11,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "data" / "question-bank" / "generated"
 
-PROMPTS = {
-    "FOOD": "Which dish is {definition}?",
-    "PROVERBS": "Which saying is {definition}?",
-    "MUSIC": "Which music or dance name is {definition}?",
-    "FASHION": "Which cloth or dress style is {definition}?",
-    "LANGUAGE": "Which language point is {definition}?",
-    "FESTIVALS": "Which celebration is {definition}?",
-    "WEDDINGS": "Which wedding custom is {definition}?",
-    "GEOGRAPHY": "Which place is {definition}?",
-    "HISTORY": "Which historical name is {definition}?",
-    "PEOPLE": "Which person is {definition}?",
-    "POP": "Which popular-culture name is {definition}?",
-    "SPORT": "Which sporting name is {definition}?",
-}
+VAGUE = re.compile(
+    r"\b(?:current champion|currently holds|before the next generation|these days|right now|reigning)\b"
+    r"|(?:world record|olympic champion|world champion)(?!.*\b(?:19|20)\d{2}\b)",
+    re.I,
+)
 
 REGION_OF = {}
 
@@ -87,6 +78,91 @@ def jaccard(left: str, right: str) -> float:
         return 1.0
     return len(a & b) / (len(a | b) or 1)
 
+KEEP_WORDS = {
+    "royal", "hill", "hills", "music", "festival", "dance", "national", "park", "world", "lake", "river",
+    "club", "city", "town", "state", "empire", "kingdom", "mountain", "coast", "north", "south", "east",
+    "west", "great", "grand", "holy", "high", "central", "african", "island", "valley", "people", "king",
+    "queen", "chief", "gold", "black", "white", "green", "blue", "red", "cape", "port", "fort", "mount",
+    "lower", "upper", "falls", "rock", "stone", "desert", "gulf", "basin", "delta", "plateau", "capital",
+    "official", "cultural", "fishing", "open", "games", "republic", "democratic", "united", "guitar", "style",
+}
+
+def hide_answer(definition: str, answer: str) -> str:
+    text = definition
+    for word in re.findall(r"[A-Za-zÀ-ÿ'’-]{4,}", answer):
+        pieces = [part.lower() for part in word.split("-")]
+        if word[:1].isupper() and not any(part in KEEP_WORDS for part in pieces):
+            text = re.sub(rf"\b{re.escape(word)}\b", "", text, flags=re.I)
+    return re.sub(r"\s+", " ", text).replace(" ,", ",").strip(" ,;")
+
+def natural_prompt(category: str, definition: str, answer: str = "") -> str | None:
+    clue = hide_answer(definition, answer).strip().rstrip(".") if answer else definition.strip().rstrip(".")
+    clue = re.sub(r"\s+", " ", clue).strip(" ,;")
+    if re.search(r"\ba and\b|\bthe and\b", clue, re.I):
+        return None
+    if re.search(r"\b(?:in|of|from|for|at|by|with|and|the|a|an)$", clue, re.I):
+        return None
+    if answer and re.search(r"\b(lake|river|empire|mountain|kingdom)\b", definition, re.I) and not re.search(r"\b(lake|river|empire|mountain|kingdom)\b", clue, re.I):
+        return None
+    if len(clue.split()) < 4:
+        return None
+    if category == "GEOGRAPHY" and re.search(r"\bcapital\b", clue, re.I):
+        def place_of(text: str) -> str:
+            found = re.search(r"\bcapital\b(?:(?!\bof\b).)*\bof\s+(.+)$", text, re.I)
+            place = found.group(1).strip(" .") if found else ""
+            return re.sub(r"\s+and\s+an\s+.+$", "", place, flags=re.I).strip(" .")
+        place = place_of(clue)
+        if norm(place) != norm(place_of(definition)):
+            return None
+        if len(place) < 3:
+            return None
+        official = "official " if re.search(r"\bofficial\b", clue, re.I) else ""
+        return f"Which city is the {official}capital of {place}?"
+    if category in {"PEOPLE", "POP"}:
+        return f"Who is {clue}?"
+    if category == "SPORT":
+        if re.search(r"\b(nickname|sport|tournament|championship|cup|club|team)\b", clue, re.I):
+            return f"What is {clue}?"
+        return f"Who is {clue}?"
+    if re.match(r"the year\b", clue, re.I):
+        event = re.sub(r"^the year\s+", "", clue, flags=re.I)
+        for past, present in (
+            ("became", "become"), ("reached", "reach"), ("hosted", "host"), ("held", "hold"),
+            ("defeated", "defeat"), ("opened", "open"), ("gained", "gain"), ("won", "win"),
+        ):
+            event = re.sub(rf"\b{past}\b", present, event, flags=re.I)
+        if re.search(r"\b(?:become|reach|host|hold|defeat|open|gain|win)\b", event, re.I) is None:
+            return None
+        return f"In which year did {event}?"
+    if category == "FOOD":
+        return f"What do you call {clue}?"
+    if category == "LANGUAGE":
+        return f"Can you name {clue}?"
+    if category == "FESTIVALS":
+        rest = re.sub(r"^(?:a|an|the)\s+festival\s+", "", clue, flags=re.I)
+        rest = re.sub(r"^celebrated\b", "held", rest, flags=re.I)
+        if len(rest.split()) < 3:
+            return None
+        return f"Which celebration is {rest}?"
+    if category == "WEDDINGS":
+        return f"What do you call {clue}?"
+    if category == "GEOGRAPHY":
+        return f"Where is {clue}?"
+    if category == "PROVERBS":
+        return f"Which saying means {clue}?"
+    if re.search(r"\b(singer|rapper|bandleader|producer|musician|composer|guitarist|vocalist|artist|dj)\b", clue, re.I):
+        who = re.sub(r"^a\s+", "the ", clue, flags=re.I)
+        return f"Who is {who}?"
+    return f"What is {clue}?"
+
+def leaks_answer(prompt: str, answer: str) -> bool:
+    prompt_norm = norm(prompt)
+    answer_norm = norm(answer)
+    if len(answer_norm) >= 4 and answer_norm in prompt_norm:
+        return True
+    roots = [word[:-1] if len(word) >= 5 and word.endswith("s") else word for word in answer_norm.split(" ")]
+    return any(len(root) >= 5 and root in prompt_norm for root in roots)
+
 def wiki_url(title: str) -> str:
     from urllib.parse import quote
     return "https://en.wikipedia.org/wiki/" + quote(title.replace(" ", "_"), safe="()_!$&'*+,;=")
@@ -99,6 +175,8 @@ def build(rows: list[dict]) -> list[dict]:
     questions = []
     seen_ids = set()
     for item in rows:
+        if isinstance(item.get("answer"), str) and item["answer"].endswith(" pop"):
+            item["answer"] = item["answer"][:-4]
         if item["kind"] != "single" or item.get("options"):
             options = item["options"]
             correct = item["correct"]
@@ -113,17 +191,61 @@ def build(rows: list[dict]) -> list[dict]:
                 seen_answers.add(key)
                 siblings.append(other["answer"])
             distractors = []
+            def answer_type(entry: dict) -> str:
+                label = entry["answer"].strip()
+                blob = f"{entry.get('definition', '')} {entry.get('claim', '')}"
+                category = entry["category"]
+                if re.match(r"\d{3,4}\b", label):
+                    return "year"
+                if category == "GEOGRAPHY":
+                    if re.search(r"\bcapital\b", blob, re.I):
+                        return "city"
+                    if re.search(r"\b(river|lake|mount|mountain|delta|desert|falls|waterfall|island|ocean|volcano)\b", blob, re.I):
+                        return "landform"
+                    return "place"
+                if category in {"PEOPLE", "POP"}:
+                    return "person"
+                if category == "SPORT":
+                    if re.search(r"\bnickname\b", blob, re.I) and not re.search(r"\b(club|team)\b", blob, re.I):
+                        return "nickname"
+                    if re.search(r"\b(club|team|cup|tournament|championship)\b", blob, re.I):
+                        return "club"
+                    return "person"
+                if category == "MUSIC":
+                    if re.search(r"\b(singer|rapper|musician|bandleader|guitarist|band|artist|producer|composer|drummer|historian|storyteller|dj)\b", blob, re.I):
+                        return "person"
+                    return "music"
+                if category == "HISTORY":
+                    if re.search(r"\b(kingdom|empire|civilisation|civilization|dynasty)\b", blob, re.I):
+                        return "polity"
+                    if re.search(r"\b(president|king|founder|leader|writer|general|poet)\b", blob, re.I):
+                        return "person"
+                    return "history"
+                return category
+
+            wanted = answer_type(item)
+            def same_type(candidate_answer: str) -> bool:
+                sibling = next((other for other in by_cat[(item["region"], item["category"])] if other["answer"] == candidate_answer), None)
+                return bool(sibling) and answer_type(sibling) == wanted
+
             for candidate in siblings:
+                if not same_type(candidate):
+                    continue
                 trial = [item["answer"], *distractors, candidate]
                 if not nested(trial):
                     distractors.append(candidate)
                 if len(distractors) == 3:
                     break
             if len(distractors) < 3:
-                raise SystemExit(f"not enough distractors for {item['answer']} in {item['region']} {item['category']}")
+                continue
             options = [item["answer"], *distractors[:3]]
             correct = [0]
-            prompt = PROMPTS[item["category"]].format(definition=item["definition"])
+            if VAGUE.search(item["definition"]) or VAGUE.search(item["claim"]):
+                continue
+            prompt = natural_prompt(item["category"], item["definition"], item["answer"])
+            if not prompt or leaks_answer(prompt, item["answer"]):
+                # Keep the row so a later pass can rebuild the prompt from the source sentence.
+                prompt = "Which answer fits the sourced fact?"
         if nested(options):
             raise SystemExit(f"nested options for {item['answer']}: {options}")
         if len(options) != 4 or len(set(norm(option) for option in options)) != 4:
@@ -157,34 +279,28 @@ def build(rows: list[dict]) -> list[dict]:
             "origin": "generated",
         }
         questions.append(built)
-        variants = sum(1 for q in questions if q.get("kind") == "complete")
-        if item["kind"] == "single" and item.get("definition") and variants < 8:
-            prompt2 = f"Fill the blank. In {item['country']}, {item['definition']}. The name to write is ___."
-            if jaccard(prompt, prompt2) < 0.4:
-                variant = dict(built)
-                variant["id"] = f"{ident}_fill"[:62]
-                variant["kind"] = "complete"
-                variant["prompt"] = prompt2
-                if variant["id"] not in seen_ids:
-                    seen_ids.add(variant["id"])
-                    questions.append(variant)
     return questions
 
 
 def main() -> None:
     import sys
     sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from facts_boost import CENTRAL as CENTRAL_BOOST
+    from facts_boost import EAST as EAST_BOOST
+    from facts_boost import NORTH as NORTH_BOOST
+    from facts_boost import SOUTH as SOUTH_BOOST
+    from facts_boost import WEST as WEST_BOOST
     from facts_east import ROWS as EAST
     from facts_ns import NORTH, SOUTH
     from facts_rest import CENTRAL
     from facts_forms import FORMS
     from facts_west import ROWS as WEST
     from facts_west_more import ROWS as WEST_MORE
-    emit("west", WEST + WEST_MORE + FORMS["west"])
-    emit("east", EAST + FORMS["east"])
-    emit("central", CENTRAL + FORMS["central"])
-    emit("north", NORTH + FORMS["north"])
-    emit("south", SOUTH + FORMS["south"])
+    emit("west", WEST + WEST_MORE + FORMS["west"] + WEST_BOOST)
+    emit("east", EAST + FORMS["east"] + EAST_BOOST)
+    emit("central", CENTRAL + FORMS["central"] + CENTRAL_BOOST)
+    emit("north", NORTH + FORMS["north"] + NORTH_BOOST)
+    emit("south", SOUTH + FORMS["south"] + SOUTH_BOOST)
 
 def emit(name: str, rows: list[dict]) -> None:
     questions = build(rows)
