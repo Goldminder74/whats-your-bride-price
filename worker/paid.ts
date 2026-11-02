@@ -4,6 +4,7 @@ import { SUPPORT_EMAIL } from "../paid/receipt.ts";
 import { isPaidError, PaidError } from "../paid/errors.ts";
 import { paidSchemaSql } from "../paid/schemaSql.ts";
 import { blockedPurchaseCountries } from "../paid/catalog.ts";
+import { envFlagOn } from "../paid/earn.ts";
 import { readPaidConfig, servePaid, type PaidConfig, type PaidServices } from "../paid/serve.ts";
 import type { KvStore } from "../paid/games.ts";
 
@@ -24,6 +25,9 @@ interface PaidEnv {
   OWNER_STATS_TOKEN?: string;
   PAID_BLOCKED_COUNTRIES?: string;
   PUBLIC_APP_ORIGIN?: string;
+  RANDOM_BANK?: string;
+  EARN_PATHS?: string;
+  SHARE_CARDS?: string;
 }
 
 let schemaReady: Promise<void> | null = null;
@@ -95,6 +99,9 @@ function services(env: PaidEnv, ctx: ExecutionContext): PaidServices {
       return schemaReady;
     },
     waitUntil: (promise) => ctx.waitUntil(promise),
+    randomBank: ["1", "true", "on", "yes"].includes((env.RANDOM_BANK || "").toLowerCase()),
+    earnPaths: envFlagOn(env.EARN_PATHS),
+    shareCards: envFlagOn(env.SHARE_CARDS),
   };
 }
 

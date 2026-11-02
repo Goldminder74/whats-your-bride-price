@@ -1,5 +1,20 @@
 import { expect, test, type Page } from "@playwright/test";
+import { readFileSync } from "node:fs";
 import { regions, type RegionKey } from "../../app/gameData";
+
+type LookupQuestion = { prompt: string; options: string[]; correct: number[]; kind: string };
+
+function normalizePrompt(value: string) {
+  return value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+const publishedWest = JSON.parse(readFileSync(new URL("../../data/question-bank/published/west.json", import.meta.url), "utf8")) as {
+  questions: LookupQuestion[];
+};
+const westLookup = new Map<string, LookupQuestion>();
+for (const question of [...regions.west.questions, ...publishedWest.questions]) {
+  westLookup.set(normalizePrompt(question.prompt), question);
+}
 
 declare global {
   interface Window {
@@ -50,15 +65,37 @@ async function waitForGameHydration(page: Page) {
 async function completePerfectWestQuiz(page: Page) {
   await page.goto("/?edition=west");
   await page.getByRole("button", { name: /Enter Region 01/ }).click();
+  const seenPrompts: string[] = [];
 
-  for (const [questionIndex, question] of regions.west.questions.entries()) {
+  for (let questionIndex = 0; questionIndex < 12; questionIndex += 1) {
     await expect(page.getByRole("progressbar")).toHaveAttribute(
       "aria-valuenow",
       String(questionIndex + 1),
     );
+    await expect(page.locator(".answer-grid > button").first()).toBeVisible();
+    const prompt = await page.locator(".question-wrap h2").innerText();
+    seenPrompts.push(prompt);
+    const question = westLookup.get(normalizePrompt(prompt));
+    expect(question, prompt).toBeTruthy();
     const answerButtons = page.locator(".answer-grid > button");
-    for (const correctIndex of question.correct) await answerButtons.nth(correctIndex).click();
-    if (question.kind === "multi") {
+    const labels: string[] = [];
+    const count = await answerButtons.count();
+    for (let index = 0; index < count; index += 1) {
+      const label = answerButtons.nth(index).locator("b");
+      labels.push((await label.count()) ? (await label.innerText()).trim() : "");
+    }
+    const imageRound = labels.every((label) => label.length === 0);
+    if (imageRound) {
+      for (const correctIndex of question!.correct) await answerButtons.nth(correctIndex).click();
+    } else {
+      for (const correctIndex of question!.correct) {
+        const wanted = normalizePrompt(question!.options[correctIndex]);
+        const buttonIndex = labels.findIndex((label) => normalizePrompt(label) === wanted);
+        expect(buttonIndex, `${prompt} / ${question!.options[correctIndex]}`).toBeGreaterThanOrEqual(0);
+        await answerButtons.nth(buttonIndex).click();
+      }
+    }
+    if (question!.kind === "multi") {
       await page.getByRole("button", { name: /Lock in 3\/3 answers/ }).click();
     }
 
@@ -75,6 +112,8 @@ async function completePerfectWestQuiz(page: Page) {
   }
 
   await expect(page.locator(".result-stage")).toBeVisible();
+  const classicPrompts = new Set(regions.west.questions.map((question) => normalizePrompt(question.prompt)));
+  expect(seenPrompts.some((prompt) => !classicPrompts.has(normalizePrompt(prompt)))).toBe(true);
 }
 
 test("homepage loads the complete regional entry surface", async ({ page }) => {

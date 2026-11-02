@@ -1,0 +1,5807 @@
+{
+  "region": "south",
+  "questions": [
+    {
+      "id": "south_geog_cape_town",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of South Africa?",
+      "options": [
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein",
+        "Gaborone"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cape Town is the legislative capital of South Africa.",
+      "sources": [
+        {
+          "title": "Cape Town",
+          "url": "https://en.wikipedia.org/wiki/Cape_Town",
+          "claim": "Cape Town is the legislative capital of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_pretoria",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of South Africa?",
+      "options": [
+        "Pretoria",
+        "Cape Town",
+        "Bloemfontein",
+        "Gaborone"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pretoria is the administrative capital of South Africa.",
+      "sources": [
+        {
+          "title": "Pretoria",
+          "url": "https://en.wikipedia.org/wiki/Pretoria",
+          "claim": "Pretoria is the administrative capital of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_bloemfontein",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of South Africa?",
+      "options": [
+        "Bloemfontein",
+        "Cape Town",
+        "Pretoria",
+        "Gaborone"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bloemfontein is the judicial capital of South Africa.",
+      "sources": [
+        {
+          "title": "Bloemfontein",
+          "url": "https://en.wikipedia.org/wiki/Bloemfontein",
+          "claim": "Bloemfontein is the judicial capital of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_gaborone",
+      "region": "south",
+      "country": "Botswana",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Botswana?",
+      "options": [
+        "Gaborone",
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gaborone is the capital of Botswana.",
+      "sources": [
+        {
+          "title": "Gaborone",
+          "url": "https://en.wikipedia.org/wiki/Gaborone",
+          "claim": "Gaborone is the capital of Botswana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_windhoek",
+      "region": "south",
+      "country": "Namibia",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Namibia?",
+      "options": [
+        "Windhoek",
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Windhoek is the capital of Namibia.",
+      "sources": [
+        {
+          "title": "Windhoek",
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "claim": "Windhoek is the capital of Namibia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_lusaka",
+      "region": "south",
+      "country": "Zambia",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Zambia?",
+      "options": [
+        "Lusaka",
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lusaka is the capital of Zambia.",
+      "sources": [
+        {
+          "title": "Lusaka",
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "claim": "Lusaka is the capital of Zambia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_harare",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Zimbabwe?",
+      "options": [
+        "Harare",
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Harare is the capital of Zimbabwe.",
+      "sources": [
+        {
+          "title": "Harare",
+          "url": "https://en.wikipedia.org/wiki/Harare",
+          "claim": "Harare is the capital of Zimbabwe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_maputo",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Mozambique?",
+      "options": [
+        "Maputo",
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Maputo is the capital of Mozambique.",
+      "sources": [
+        {
+          "title": "Maputo",
+          "url": "https://en.wikipedia.org/wiki/Maputo",
+          "claim": "Maputo is the capital of Mozambique",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_lilongwe",
+      "region": "south",
+      "country": "Malawi",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Malawi?",
+      "options": [
+        "Lilongwe",
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lilongwe is the capital of Malawi.",
+      "sources": [
+        {
+          "title": "Lilongwe",
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "claim": "Lilongwe is the capital of Malawi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_maseru",
+      "region": "south",
+      "country": "Lesotho",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Lesotho?",
+      "options": [
+        "Maseru",
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Maseru is the capital of Lesotho.",
+      "sources": [
+        {
+          "title": "Maseru",
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "claim": "Maseru is the capital of Lesotho",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_mbabane",
+      "region": "south",
+      "country": "Eswatini",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which city is the capital of Eswatini?",
+      "options": [
+        "Mbabane",
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mbabane is the administrative capital of Eswatini.",
+      "sources": [
+        {
+          "title": "Mbabane",
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "claim": "Mbabane is the administrative capital of Eswatini",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_victoria_falls",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Where is the waterfall on the Zambezi between Zambia and Zimbabwe?",
+      "options": [
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta",
+        "Sossusvlei"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Victoria Falls is on the border of Zambia and Zimbabwe.",
+      "sources": [
+        {
+          "title": "Victoria Falls",
+          "url": "https://en.wikipedia.org/wiki/Victoria_Falls",
+          "claim": "Victoria Falls is on the border of Zambia and Zimbabwe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_table_mountain",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Table Mountain",
+        "Victoria Falls",
+        "Okavango Delta",
+        "Sossusvlei"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Table Mountain overlooks Cape Town.",
+      "sources": [
+        {
+          "title": "Table Mountain",
+          "url": "https://en.wikipedia.org/wiki/Table_Mountain",
+          "claim": "Table Mountain overlooks Cape Town",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_okavango_delta",
+      "region": "south",
+      "country": "Botswana",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Okavango Delta",
+        "Victoria Falls",
+        "Table Mountain",
+        "Sossusvlei"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Okavango Delta is in Botswana.",
+      "sources": [
+        {
+          "title": "Okavango Delta",
+          "url": "https://en.wikipedia.org/wiki/Okavango_Delta",
+          "claim": "The Okavango Delta is in Botswana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_sossusvlei",
+      "region": "south",
+      "country": "Namibia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the red dunes of the Namib Desert?",
+      "options": [
+        "Sossusvlei",
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sossusvlei is in Namibia.",
+      "sources": [
+        {
+          "title": "Sossusvlei",
+          "url": "https://en.wikipedia.org/wiki/Sossusvlei",
+          "claim": "Sossusvlei is in Namibia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_fish_river_canyon",
+      "region": "south",
+      "country": "Namibia",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Where is a vast in southern Namibia?",
+      "options": [
+        "Fish River Canyon",
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fish River Canyon is in Namibia.",
+      "sources": [
+        {
+          "title": "Fish River Canyon",
+          "url": "https://en.wikipedia.org/wiki/Fish_River_Canyon",
+          "claim": "Fish River Canyon is in Namibia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_lake_malawi",
+      "region": "south",
+      "country": "Malawi",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the great lake along 's eastern border?",
+      "options": [
+        "Lake Malawi",
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lake Malawi is a lake in Malawi.",
+      "sources": [
+        {
+          "title": "Lake Malawi",
+          "url": "https://en.wikipedia.org/wiki/Lake_Malawi",
+          "claim": "Lake Malawi is a lake in Malawi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_braai",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a social barbecue, central to South African gatherings?",
+      "options": [
+        "Braai",
+        "Biltong",
+        "Bobotie",
+        "Sadza"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A braai is a barbecue in South Africa.",
+      "sources": [
+        {
+          "title": "Braai",
+          "url": "https://en.wikipedia.org/wiki/Braai",
+          "claim": "A braai is a barbecue in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_biltong",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call dried cured meat, a South African snack?",
+      "options": [
+        "Biltong",
+        "Braai",
+        "Bobotie",
+        "Sadza"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Biltong is a dried meat from South Africa.",
+      "sources": [
+        {
+          "title": "Biltong",
+          "url": "https://en.wikipedia.org/wiki/Biltong",
+          "claim": "Biltong is a dried meat from South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_bobotie",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a spiced mince bake with an egg topping?",
+      "options": [
+        "Bobotie",
+        "Braai",
+        "Biltong",
+        "Sadza"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bobotie is a South African dish.",
+      "sources": [
+        {
+          "title": "Bobotie",
+          "url": "https://en.wikipedia.org/wiki/Bobotie",
+          "claim": "Bobotie is a South African dish",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_sadza",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call the stiff maize porridge of Zimbabwe?",
+      "options": [
+        "Sadza",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sadza is a maize porridge from Zimbabwe.",
+      "sources": [
+        {
+          "title": "Sadza",
+          "url": "https://en.wikipedia.org/wiki/Sadza",
+          "claim": "Sadza is a maize porridge from Zimbabwe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_pap_food",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call South African maize porridge, cousin of sadza and nshima?",
+      "options": [
+        "Pap",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pap is a maize porridge in South Africa.",
+      "sources": [
+        {
+          "title": "Pap (food)",
+          "url": "https://en.wikipedia.org/wiki/Pap_(food)",
+          "claim": "Pap is a maize porridge in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_nshima",
+      "region": "south",
+      "country": "Zambia",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call the maize staple of Zambia?",
+      "options": [
+        "Nshima",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nshima is a maize porridge from Zambia.",
+      "sources": [
+        {
+          "title": "Nshima",
+          "url": "https://en.wikipedia.org/wiki/Nshima",
+          "claim": "Nshima is a maize porridge from Zambia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_chakalaka",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a spicy vegetable relish?",
+      "options": [
+        "Chakalaka",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chakalaka is a relish from South Africa.",
+      "sources": [
+        {
+          "title": "Chakalaka",
+          "url": "https://en.wikipedia.org/wiki/Chakalaka",
+          "claim": "Chakalaka is a relish from South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_boerewors",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a coiled spiced sausage for the braai?",
+      "options": [
+        "Boerewors",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Boerewors is a sausage from South Africa.",
+      "sources": [
+        {
+          "title": "Boerewors",
+          "url": "https://en.wikipedia.org/wiki/Boerewors",
+          "claim": "Boerewors is a sausage from South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_bunny_chow",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a hollowed bread loaf filled with curry, from Durban?",
+      "options": [
+        "Bunny chow",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bunny chow is a dish from Durban, South Africa.",
+      "sources": [
+        {
+          "title": "Bunny chow",
+          "url": "https://en.wikipedia.org/wiki/Bunny_chow",
+          "claim": "Bunny chow is a dish from Durban, South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_malva_pudding",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Malva pudding",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Malva pudding is a South African dessert.",
+      "sources": [
+        {
+          "title": "Malva pudding",
+          "url": "https://en.wikipedia.org/wiki/Malva_pudding",
+          "claim": "Malva pudding is a South African dessert",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_melktert",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a milk tart dusted with cinnamon?",
+      "options": [
+        "Melktert",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Melktert is a milk tart from South Africa.",
+      "sources": [
+        {
+          "title": "Melktert",
+          "url": "https://en.wikipedia.org/wiki/Melktert",
+          "claim": "Melktert is a milk tart from South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_umngqusho",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call samp and beans, a Xhosa dish?",
+      "options": [
+        "Umngqusho",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Umngqusho is a dish of samp and beans.",
+      "sources": [
+        {
+          "title": "Umngqusho",
+          "url": "https://en.wikipedia.org/wiki/Umngqusho",
+          "claim": "Umngqusho is a dish of samp and beans",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_piri_piri",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Peri-peri chicken",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Piri piri chicken is associated with Mozambique.",
+      "sources": [
+        {
+          "title": "Piri piri",
+          "url": "https://en.wikipedia.org/wiki/Piri_piri",
+          "claim": "Piri piri chicken is associated with Mozambique",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_vetkoek",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a fried dough bread, also called magwinya?",
+      "options": [
+        "Vetkoek",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Vetkoek is a fried dough from South Africa.",
+      "sources": [
+        {
+          "title": "Vetkoek",
+          "url": "https://en.wikipedia.org/wiki/Vetkoek",
+          "claim": "Vetkoek is a fried dough from South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_potjiekos",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a slow stew cooked in a cast-iron pot?",
+      "options": [
+        "Potjiekos",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Potjiekos is a stew from South Africa.",
+      "sources": [
+        {
+          "title": "Potjiekos",
+          "url": "https://en.wikipedia.org/wiki/Potjiekos",
+          "claim": "Potjiekos is a stew from South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_gonimbrasia_belina",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call dried mopane worms, eaten as a snack and stew?",
+      "options": [
+        "Madora",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mopane worms are eaten in Zimbabwe.",
+      "sources": [
+        {
+          "title": "Gonimbrasia belina",
+          "url": "https://en.wikipedia.org/wiki/Gonimbrasia_belina",
+          "claim": "Mopane worms are eaten in Zimbabwe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_lake_malawi",
+      "region": "south",
+      "country": "Malawi",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a popular fish from Lake Malawi?",
+      "options": [
+        "Chambo",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chambo is a fish from Lake Malawi.",
+      "sources": [
+        {
+          "title": "Lake Malawi",
+          "url": "https://en.wikipedia.org/wiki/Lake_Malawi",
+          "claim": "Chambo is a fish from Lake Malawi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_rusk",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call dried breakfast biscuits dunked in tea?",
+      "options": [
+        "Rusks",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rusks are eaten in South Africa.",
+      "sources": [
+        {
+          "title": "Rusk",
+          "url": "https://en.wikipedia.org/wiki/Rusk",
+          "claim": "Rusks are eaten in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_amapiano",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the log-drum house music that travelled from South African townships?",
+      "options": [
+        "Amapiano",
+        "Kwaito",
+        "Gqom",
+        "Mbira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Amapiano is a music genre from South Africa.",
+      "sources": [
+        {
+          "title": "Amapiano",
+          "url": "https://en.wikipedia.org/wiki/Amapiano",
+          "claim": "Amapiano is a music genre from South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_kwaito",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the 1990s township dance music?",
+      "options": [
+        "Kwaito",
+        "Amapiano",
+        "Gqom",
+        "Mbira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kwaito is a music genre from South Africa.",
+      "sources": [
+        {
+          "title": "Kwaito",
+          "url": "https://en.wikipedia.org/wiki/Kwaito",
+          "claim": "Kwaito is a music genre from South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_gqom",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a darker, faster Durban dance sound?",
+      "options": [
+        "Gqom",
+        "Amapiano",
+        "Kwaito",
+        "Mbira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gqom is a music genre from South Africa.",
+      "sources": [
+        {
+          "title": "Gqom",
+          "url": "https://en.wikipedia.org/wiki/Gqom",
+          "claim": "Gqom is a music genre from South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_mbira",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the metal-tine instrument of Shona music?",
+      "options": [
+        "Mbira",
+        "Amapiano",
+        "Kwaito",
+        "Gqom"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The mbira is a musical instrument of the Shona people.",
+      "sources": [
+        {
+          "title": "Mbira",
+          "url": "https://en.wikipedia.org/wiki/Mbira",
+          "claim": "The mbira is a musical instrument of the Shona people",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_isicathamiya",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the soft-step Zulu choral style?",
+      "options": [
+        "Isicathamiya",
+        "Amapiano",
+        "Kwaito",
+        "Gqom"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Isicathamiya is a Zulu vocal style.",
+      "sources": [
+        {
+          "title": "Isicathamiya",
+          "url": "https://en.wikipedia.org/wiki/Isicathamiya",
+          "claim": "Isicathamiya is a Zulu vocal style",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_mbaqanga",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a township jive of the mid twentieth century?",
+      "options": [
+        "Mbaqanga",
+        "Amapiano",
+        "Kwaito",
+        "Gqom"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mbaqanga is a South African music genre.",
+      "sources": [
+        {
+          "title": "Mbaqanga",
+          "url": "https://en.wikipedia.org/wiki/Mbaqanga",
+          "claim": "Mbaqanga is a South African music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_maskandi",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is Zulu guitar storytelling music?",
+      "options": [
+        "Maskandi",
+        "Amapiano",
+        "Kwaito",
+        "Gqom"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Maskandi is a Zulu guitar style.",
+      "sources": [
+        {
+          "title": "Maskandi",
+          "url": "https://en.wikipedia.org/wiki/Maskandi",
+          "claim": "Maskandi is a Zulu guitar style",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_chimurenga_music",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the guitar music associated with Thomas Mapfumo?",
+      "options": [
+        "Chimurenga",
+        "Amapiano",
+        "Kwaito",
+        "Gqom"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chimurenga is a Zimbabwean music genre.",
+      "sources": [
+        {
+          "title": "Chimurenga music",
+          "url": "https://en.wikipedia.org/wiki/Chimurenga_music",
+          "claim": "Chimurenga is a Zimbabwean music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_marrabenta",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a popular dance music of Mozambique?",
+      "options": [
+        "Marrabenta",
+        "Amapiano",
+        "Kwaito",
+        "Gqom"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Marrabenta is a music genre from Mozambique.",
+      "sources": [
+        {
+          "title": "Marrabenta",
+          "url": "https://en.wikipedia.org/wiki/Marrabenta",
+          "claim": "Marrabenta is a music genre from Mozambique",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_ladysmith_black_mambazo",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the isicathamiya choir heard worldwide?",
+      "options": [
+        "Ladysmith Black Mambazo",
+        "Amapiano",
+        "Kwaito",
+        "Gqom"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ladysmith Black Mambazo is a South African choir.",
+      "sources": [
+        {
+          "title": "Ladysmith Black Mambazo",
+          "url": "https://en.wikipedia.org/wiki/Ladysmith_Black_Mambazo",
+          "claim": "Ladysmith Black Mambazo is a South African choir",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_miriam_makeba",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is Mama Africa, the South African singer?",
+      "options": [
+        "Miriam Makeba",
+        "Hugh Masekela",
+        "Brenda Fassie",
+        "Oliver Mtukudzi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Miriam Makeba was a South African singer.",
+      "sources": [
+        {
+          "title": "Miriam Makeba",
+          "url": "https://en.wikipedia.org/wiki/Miriam_Makeba",
+          "claim": "Miriam Makeba was a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_hugh_masekela",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the South African trumpeter?",
+      "options": [
+        "Hugh Masekela",
+        "Miriam Makeba",
+        "Brenda Fassie",
+        "Oliver Mtukudzi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hugh Masekela was a South African musician.",
+      "sources": [
+        {
+          "title": "Hugh Masekela",
+          "url": "https://en.wikipedia.org/wiki/Hugh_Masekela",
+          "claim": "Hugh Masekela was a South African musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_brenda_fassie",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the township pop star?",
+      "options": [
+        "Brenda Fassie",
+        "Miriam Makeba",
+        "Hugh Masekela",
+        "Oliver Mtukudzi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Brenda Fassie was a South African singer.",
+      "sources": [
+        {
+          "title": "Brenda Fassie",
+          "url": "https://en.wikipedia.org/wiki/Brenda_Fassie",
+          "claim": "Brenda Fassie was a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_oliver_mtukudzi",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Zimbabwean singer known as Tuku?",
+      "options": [
+        "Oliver Mtukudzi",
+        "Miriam Makeba",
+        "Hugh Masekela",
+        "Brenda Fassie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Oliver Mtukudzi was a Zimbabwean musician.",
+      "sources": [
+        {
+          "title": "Oliver Mtukudzi",
+          "url": "https://en.wikipedia.org/wiki/Oliver_Mtukudzi",
+          "claim": "Oliver Mtukudzi was a Zimbabwean musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_kwela",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is pennywhistle jive of the 1950s?",
+      "options": [
+        "Kwela",
+        "Amapiano",
+        "Kwaito",
+        "Gqom"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kwela is a South African music style.",
+      "sources": [
+        {
+          "title": "Kwela",
+          "url": "https://en.wikipedia.org/wiki/Kwela",
+          "claim": "Kwela is a South African music style",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_music_of_south_africa",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the South African lineage of Masekela and others?",
+      "options": [
+        "Jazz",
+        "Amapiano",
+        "Kwaito",
+        "Gqom"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "South Africa has a major jazz tradition.",
+      "sources": [
+        {
+          "title": "Music of South Africa",
+          "url": "https://en.wikipedia.org/wiki/Music_of_South_Africa",
+          "claim": "South Africa has a major jazz tradition",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_black_coffee_dj",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the South African house DJ?",
+      "options": [
+        "Black Coffee",
+        "Miriam Makeba",
+        "Hugh Masekela",
+        "Brenda Fassie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Black Coffee is a South African DJ.",
+      "sources": [
+        {
+          "title": "Black Coffee (DJ)",
+          "url": "https://en.wikipedia.org/wiki/Black_Coffee_(DJ)",
+          "claim": "Black Coffee is a South African DJ",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_shweshwe",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the indigo printed cotton of South African dress?",
+      "options": [
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo",
+        "Ndebele beadwork"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shweshwe is a printed cotton fabric from South Africa.",
+      "sources": [
+        {
+          "title": "Shweshwe",
+          "url": "https://en.wikipedia.org/wiki/Shweshwe",
+          "claim": "Shweshwe is a printed cotton fabric from South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_basotho_blanket",
+      "region": "south",
+      "country": "Lesotho",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Basotho blanket",
+        "Shweshwe",
+        "Mokorotlo",
+        "Ndebele beadwork"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Basotho blanket is worn in Lesotho.",
+      "sources": [
+        {
+          "title": "Basotho blanket",
+          "url": "https://en.wikipedia.org/wiki/Basotho_blanket",
+          "claim": "The Basotho blanket is worn in Lesotho",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_mokorotlo",
+      "region": "south",
+      "country": "Lesotho",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the conical straw hat of Lesotho, also on the flag?",
+      "options": [
+        "Mokorotlo",
+        "Shweshwe",
+        "Basotho blanket",
+        "Ndebele beadwork"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The mokorotlo is a hat of Lesotho.",
+      "sources": [
+        {
+          "title": "Mokorotlo",
+          "url": "https://en.wikipedia.org/wiki/Mokorotlo",
+          "claim": "The mokorotlo is a hat of Lesotho",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_southern_ndebele_people",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the bold bead collars of dress?",
+      "options": [
+        "Ndebele beadwork",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ndebele beadwork is worn in South Africa.",
+      "sources": [
+        {
+          "title": "Southern Ndebele people",
+          "url": "https://en.wikipedia.org/wiki/Southern_Ndebele_people",
+          "claim": "Ndebele beadwork is worn in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_herero_people",
+      "region": "south",
+      "country": "Namibia",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the Victorian-influenced long dress of women?",
+      "options": [
+        "Herero dress",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Herero women wear a distinctive long dress.",
+      "sources": [
+        {
+          "title": "Herero people",
+          "url": "https://en.wikipedia.org/wiki/Herero_people",
+          "claim": "Herero women wear a distinctive long dress",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_beadwork",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is coloured bead patterns used as adornment?",
+      "options": [
+        "Beadwork",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Beadwork is a South African adornment.",
+      "sources": [
+        {
+          "title": "Beadwork",
+          "url": "https://en.wikipedia.org/wiki/Beadwork",
+          "claim": "Beadwork is a South African adornment",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_clothing_in_zimbabwe",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is bright cotton worn for celebrations?",
+      "options": [
+        "Safari prints",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Printed cloth is worn at Zimbabwean celebrations.",
+      "sources": [
+        {
+          "title": "Clothing in Zimbabwe",
+          "url": "https://en.wikipedia.org/wiki/Clothing_in_Zimbabwe",
+          "claim": "Printed cloth is worn at Zimbabwean celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_isicholo",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a married woman's flared hat in some Zulu dress?",
+      "options": [
+        "Isicholo",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The isicholo is a Zulu hat.",
+      "sources": [
+        {
+          "title": "Isicholo",
+          "url": "https://en.wikipedia.org/wiki/Isicholo",
+          "claim": "The isicholo is a Zulu hat",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_shweshwe2",
+      "region": "south",
+      "country": "Botswana",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is German-print cloth used in Botswana dress?",
+      "options": [
+        "Leteisi",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Leteisi is a printed cloth used in Botswana.",
+      "sources": [
+        {
+          "title": "Shweshwe",
+          "url": "https://en.wikipedia.org/wiki/Shweshwe",
+          "claim": "Leteisi is a printed cloth used in Botswana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_culture_of_eswatini",
+      "region": "south",
+      "country": "Eswatini",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a cloth worn over one shoulder in Eswatini?",
+      "options": [
+        "Lihiya",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Traditional cloth is worn in Eswatini.",
+      "sources": [
+        {
+          "title": "Culture of Eswatini",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Eswatini",
+          "claim": "Traditional cloth is worn in Eswatini",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_madiba_shirt",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Madiba shirt",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Madiba shirt is associated with Nelson Mandela.",
+      "sources": [
+        {
+          "title": "Madiba shirt",
+          "url": "https://en.wikipedia.org/wiki/Madiba_shirt",
+          "claim": "The Madiba shirt is associated with Nelson Mandela",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_shweshwe3",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a full dress cut from shweshwe for weddings?",
+      "options": [
+        "Seshweshwe dress",
+        "Basotho blanket",
+        "Mokorotlo",
+        "Ndebele beadwork"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shweshwe dresses are worn at South African weddings.",
+      "sources": [
+        {
+          "title": "Shweshwe",
+          "url": "https://en.wikipedia.org/wiki/Shweshwe",
+          "claim": "Shweshwe dresses are worn at South African weddings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_capulana",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the colourful wrap cloth of Mozambique?",
+      "options": [
+        "Capulana",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The capulana is a wrap cloth from Mozambique.",
+      "sources": [
+        {
+          "title": "Capulana",
+          "url": "https://en.wikipedia.org/wiki/Capulana",
+          "claim": "The capulana is a wrap cloth from Mozambique",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_chitenge",
+      "region": "south",
+      "country": "Zambia",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the printed wrap of Zambia?",
+      "options": [
+        "Chitenge",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The chitenge is a wrap worn in Zambia.",
+      "sources": [
+        {
+          "title": "Chitenge",
+          "url": "https://en.wikipedia.org/wiki/Chitenge",
+          "claim": "The chitenge is a wrap worn in Zambia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_culture_of_malawi",
+      "region": "south",
+      "country": "Malawi",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the printed wrap of Malawi?",
+      "options": [
+        "Chitenje",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Printed wraps are worn in Malawi.",
+      "sources": [
+        {
+          "title": "Culture of Malawi",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Malawi",
+          "claim": "Printed wraps are worn in Malawi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_xhosa_people",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is white and coloured beads of ceremony dress?",
+      "options": [
+        "Xhosa beads",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Xhosa beadwork is worn in South Africa.",
+      "sources": [
+        {
+          "title": "Xhosa people",
+          "url": "https://en.wikipedia.org/wiki/Xhosa_people",
+          "claim": "Xhosa beadwork is worn in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_culture_of_namibia",
+      "region": "south",
+      "country": "Namibia",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a leather and bead apron style of some Namibian dress?",
+      "options": [
+        "Odelela",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Traditional dress in Namibia includes leather and beads.",
+      "sources": [
+        {
+          "title": "Culture of Namibia",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Namibia",
+          "claim": "Traditional dress in Namibia includes leather and beads",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_ndebele_house_painting",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Ndebele house paint",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ndebele house painting is a South African and Zimbabwean art.",
+      "sources": [
+        {
+          "title": "Ndebele house painting",
+          "url": "https://en.wikipedia.org/wiki/Ndebele_house_painting",
+          "claim": "Ndebele house painting is a South African and Zimbabwean art",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_zulu_language",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the most widely spoken home language in South Africa?",
+      "options": [
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans",
+        "Setswana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "isiZulu is a language of South Africa.",
+      "sources": [
+        {
+          "title": "Zulu language",
+          "url": "https://en.wikipedia.org/wiki/Zulu_language",
+          "claim": "isiZulu is a language of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_xhosa_language",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a Nguni language known for its clicks?",
+      "options": [
+        "isiXhosa",
+        "isiZulu",
+        "Afrikaans",
+        "Setswana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "isiXhosa is a language of South Africa.",
+      "sources": [
+        {
+          "title": "Xhosa language",
+          "url": "https://en.wikipedia.org/wiki/Xhosa_language",
+          "claim": "isiXhosa is a language of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_afrikaans",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a language that grew in South Africa from Dutch?",
+      "options": [
+        "Afrikaans",
+        "isiZulu",
+        "isiXhosa",
+        "Setswana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Afrikaans is a language of South Africa.",
+      "sources": [
+        {
+          "title": "Afrikaans",
+          "url": "https://en.wikipedia.org/wiki/Afrikaans",
+          "claim": "Afrikaans is a language of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_tswana_language",
+      "region": "south",
+      "country": "Botswana",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the national language of Botswana?",
+      "options": [
+        "Setswana",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Setswana is the national language of Botswana.",
+      "sources": [
+        {
+          "title": "Tswana language",
+          "url": "https://en.wikipedia.org/wiki/Tswana_language",
+          "claim": "Setswana is the national language of Botswana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_sotho_language",
+      "region": "south",
+      "country": "Lesotho",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the national language of Lesotho?",
+      "options": [
+        "Sesotho",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sesotho is the language of Lesotho.",
+      "sources": [
+        {
+          "title": "Sotho language",
+          "url": "https://en.wikipedia.org/wiki/Sotho_language",
+          "claim": "Sesotho is the language of Lesotho",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_shona_language",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the most widely spoken language of Zimbabwe?",
+      "options": [
+        "Shona",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shona is a language of Zimbabwe.",
+      "sources": [
+        {
+          "title": "Shona language",
+          "url": "https://en.wikipedia.org/wiki/Shona_language",
+          "claim": "Shona is a language of Zimbabwe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_chewa_language",
+      "region": "south",
+      "country": "Malawi",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the national language of Malawi?",
+      "options": [
+        "Chichewa",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chichewa is a language of Malawi.",
+      "sources": [
+        {
+          "title": "Chewa language",
+          "url": "https://en.wikipedia.org/wiki/Chewa_language",
+          "claim": "Chichewa is a language of Malawi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_swazi_language",
+      "region": "south",
+      "country": "Eswatini",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the national language of Eswatini?",
+      "options": [
+        "siSwati",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "siSwati is the language of Eswatini.",
+      "sources": [
+        {
+          "title": "Swazi language",
+          "url": "https://en.wikipedia.org/wiki/Swazi_language",
+          "claim": "siSwati is the language of Eswatini",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_zulu_language2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Sawubona",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sawubona means hello in isiZulu.",
+      "sources": [
+        {
+          "title": "Zulu language",
+          "url": "https://en.wikipedia.org/wiki/Zulu_language",
+          "claim": "Sawubona means hello in isiZulu",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_xhosa_language2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Molo",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Molo is a greeting in isiXhosa.",
+      "sources": [
+        {
+          "title": "Xhosa language",
+          "url": "https://en.wikipedia.org/wiki/Xhosa_language",
+          "claim": "Molo is a greeting in isiXhosa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_languages_of_south_africa",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name one of South Africa's official languages?",
+      "options": [
+        "English SA",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "English is an official language of South Africa.",
+      "sources": [
+        {
+          "title": "Languages of South Africa",
+          "url": "https://en.wikipedia.org/wiki/Languages_of_South_Africa",
+          "claim": "English is an official language of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_mozambique",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Portuguese Mozambique",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Portuguese is the official language of Mozambique.",
+      "sources": [
+        {
+          "title": "Mozambique",
+          "url": "https://en.wikipedia.org/wiki/Mozambique",
+          "claim": "Portuguese is the official language of Mozambique",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_bemba_language",
+      "region": "south",
+      "country": "Zambia",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a widely spoken language of Zambia?",
+      "options": [
+        "Bemba",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bemba is a language of Zambia.",
+      "sources": [
+        {
+          "title": "Bemba language",
+          "url": "https://en.wikipedia.org/wiki/Bemba_language",
+          "claim": "Bemba is a language of Zambia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_ovambo_language",
+      "region": "south",
+      "country": "Namibia",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name a widely spoken language family of Namibia?",
+      "options": [
+        "Oshiwambo",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Oshiwambo is spoken in Namibia.",
+      "sources": [
+        {
+          "title": "Ovambo language",
+          "url": "https://en.wikipedia.org/wiki/Ovambo_language",
+          "claim": "Oshiwambo is spoken in Namibia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_northern_ndebele_language",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a Nguni language of western Zimbabwe?",
+      "options": [
+        "isiNdebele",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "isiNdebele is spoken in Zimbabwe.",
+      "sources": [
+        {
+          "title": "Northern Ndebele language",
+          "url": "https://en.wikipedia.org/wiki/Northern_Ndebele_language",
+          "claim": "isiNdebele is spoken in Zimbabwe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_languages_of_south_africa2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Eleven official",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "South Africa has multiple official languages.",
+      "sources": [
+        {
+          "title": "Languages of South Africa",
+          "url": "https://en.wikipedia.org/wiki/Languages_of_South_Africa",
+          "claim": "South Africa has multiple official languages",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_namibia",
+      "region": "south",
+      "country": "Namibia",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "English Namibia",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "English is the official language of Namibia.",
+      "sources": [
+        {
+          "title": "Namibia",
+          "url": "https://en.wikipedia.org/wiki/Namibia",
+          "claim": "English is the official language of Namibia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_tsonga_language",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name an official language of South Africa?",
+      "options": [
+        "Xitsonga",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Xitsonga is a language of South Africa.",
+      "sources": [
+        {
+          "title": "Tsonga language",
+          "url": "https://en.wikipedia.org/wiki/Tsonga_language",
+          "claim": "Xitsonga is a language of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_heritage_day_south_africa",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is the 24 September public holiday, often marked with a braai?",
+      "options": [
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival",
+        "Lake of Stars"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Heritage Day is a public holiday in South Africa.",
+      "sources": [
+        {
+          "title": "Heritage Day (South Africa)",
+          "url": "https://en.wikipedia.org/wiki/Heritage_Day_(South_Africa)",
+          "claim": "Heritage Day is a public holiday in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_cape_town_international_jazz_festival",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Cape Town Jazz Festival",
+        "Heritage Day",
+        "National Arts Festival",
+        "Lake of Stars"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Cape Town International Jazz Festival is held in South Africa.",
+      "sources": [
+        {
+          "title": "Cape Town International Jazz Festival",
+          "url": "https://en.wikipedia.org/wiki/Cape_Town_International_Jazz_Festival",
+          "claim": "The Cape Town International Jazz Festival is held in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_national_arts_festival",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "National Arts Festival",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "Lake of Stars"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The National Arts Festival is held in South Africa.",
+      "sources": [
+        {
+          "title": "National Arts Festival",
+          "url": "https://en.wikipedia.org/wiki/National_Arts_Festival",
+          "claim": "The National Arts Festival is held in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_lake_of_stars_festival",
+      "region": "south",
+      "country": "Malawi",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a music festival on the shore of Lake Malawi?",
+      "options": [
+        "Lake of Stars",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Lake of Stars Festival is held in Malawi.",
+      "sources": [
+        {
+          "title": "Lake of Stars Festival",
+          "url": "https://en.wikipedia.org/wiki/Lake_of_Stars_Festival",
+          "claim": "The Lake of Stars Festival is held in Malawi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_azgo_festival",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is a music and arts festival in Mozambique?",
+      "options": [
+        "Azgo",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Azgo Festival is held in Mozambique.",
+      "sources": [
+        {
+          "title": "Azgo Festival",
+          "url": "https://en.wikipedia.org/wiki/Azgo_Festival",
+          "claim": "The Azgo Festival is held in Mozambique",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_harare_international_festival_of_the_arts",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is the Harare International Festival of the Arts?",
+      "options": [
+        "HIFA",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "HIFA is an arts festival in Harare.",
+      "sources": [
+        {
+          "title": "Harare International Festival of the Arts",
+          "url": "https://en.wikipedia.org/wiki/Harare_International_Festival_of_the_Arts",
+          "claim": "HIFA is an arts festival in Harare",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_freedom_day_south_africa",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is the 27 April holiday marking the 1994 election?",
+      "options": [
+        "Freedom Day",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Freedom Day commemorates South Africa's first democratic election.",
+      "sources": [
+        {
+          "title": "Freedom Day (South Africa)",
+          "url": "https://en.wikipedia.org/wiki/Freedom_Day_(South_Africa)",
+          "claim": "Freedom Day commemorates South Africa's first democratic election",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_botswana",
+      "region": "south",
+      "country": "Botswana",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a cultural festival in Botswana?",
+      "options": [
+        "Dithubaruba",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Botswana holds cultural festivals.",
+      "sources": [
+        {
+          "title": "Botswana",
+          "url": "https://en.wikipedia.org/wiki/Botswana",
+          "claim": "Botswana holds cultural festivals",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_public_holidays_in_zambia",
+      "region": "south",
+      "country": "Zambia",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is Zambia's national day on 24 October?",
+      "options": [
+        "Independence Day",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zambia Independence Day is on 24 October.",
+      "sources": [
+        {
+          "title": "Public holidays in Zambia",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Zambia",
+          "claim": "Zambia Independence Day is on 24 October",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_public_holidays_in_namibia",
+      "region": "south",
+      "country": "Namibia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is Namibia's national day on 21 March?",
+      "options": [
+        "Independence Day",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Namibia Independence Day is on 21 March.",
+      "sources": [
+        {
+          "title": "Public holidays in Namibia",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Namibia",
+          "claim": "Namibia Independence Day is on 21 March",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_public_holidays_in_zimbabwe",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is Zimbabwe's national day on 18 April?",
+      "options": [
+        "Independence Day",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zimbabwe Independence Day is on 18 April.",
+      "sources": [
+        {
+          "title": "Public holidays in Zimbabwe",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Zimbabwe",
+          "claim": "Zimbabwe Independence Day is on 18 April",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_morija_arts_cultural_festival",
+      "region": "south",
+      "country": "Lesotho",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Morija festival",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Morija festival is held in Lesotho.",
+      "sources": [
+        {
+          "title": "Morija Arts & Cultural Festival",
+          "url": "https://en.wikipedia.org/wiki/Morija_Arts_&_Cultural_Festival",
+          "claim": "The Morija festival is held in Lesotho",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_public_holidays_in_eswatini",
+      "region": "south",
+      "country": "Eswatini",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a public national day instead: Independence Day on 6 September?",
+      "options": [
+        "Incwala is royal",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Eswatini marks independence on 6 September.",
+      "sources": [
+        {
+          "title": "Public holidays in Eswatini",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Eswatini",
+          "claim": "Eswatini marks independence on 6 September",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_youth_day_south_africa",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is the 16 June public holiday?",
+      "options": [
+        "Youth Day",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Youth Day is a public holiday in South Africa.",
+      "sources": [
+        {
+          "title": "Youth Day (South Africa)",
+          "url": "https://en.wikipedia.org/wiki/Youth_Day_(South_Africa)",
+          "claim": "Youth Day is a public holiday in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_public_holidays_in_mozambique",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is Mozambique's national day on 25 June?",
+      "options": [
+        "Independence Day",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mozambique Independence Day is on 25 June.",
+      "sources": [
+        {
+          "title": "Public holidays in Mozambique",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Mozambique",
+          "claim": "Mozambique Independence Day is on 25 June",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_public_holidays_in_malawi",
+      "region": "south",
+      "country": "Malawi",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is Malawi's national day on 6 July?",
+      "options": [
+        "Independence Day",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Malawi Independence Day is on 6 July.",
+      "sources": [
+        {
+          "title": "Public holidays in Malawi",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Malawi",
+          "claim": "Malawi Independence Day is on 6 July",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_oppikoppi",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a long-running music festival in Limpopo?",
+      "options": [
+        "Oppikoppi",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Oppikoppi is a music festival in South Africa.",
+      "sources": [
+        {
+          "title": "Oppikoppi",
+          "url": "https://en.wikipedia.org/wiki/Oppikoppi",
+          "claim": "Oppikoppi is a music festival in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fest_public_holidays_in_botswana",
+      "region": "south",
+      "country": "Botswana",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is Botswana's national day on 30 September?",
+      "options": [
+        "Independence Day",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Botswana Independence Day is on 30 September.",
+      "sources": [
+        {
+          "title": "Public holidays in Botswana",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Botswana",
+          "claim": "Botswana Independence Day is on 30 September",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_wedd_lobolo",
+      "region": "south",
+      "country": "South Africa",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a family negotiation that opens many South African marriages?",
+      "options": [
+        "Lobolo",
+        "Roora",
+        "Bogadi",
+        "Chitenge"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lobolo is a marriage negotiation between families.",
+      "sources": [
+        {
+          "title": "Lobolo",
+          "url": "https://en.wikipedia.org/wiki/Lobolo",
+          "claim": "Lobolo is a marriage negotiation between families",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_wedd_lobolo2",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a Shona family negotiation that opens a marriage?",
+      "options": [
+        "Roora",
+        "Lobolo",
+        "Bogadi",
+        "Chitenge"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Roora is a Shona marriage negotiation between families.",
+      "sources": [
+        {
+          "title": "Lobolo",
+          "url": "https://en.wikipedia.org/wiki/Lobolo",
+          "claim": "Roora is a Shona marriage negotiation between families",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_wedd_lobolo3",
+      "region": "south",
+      "country": "Botswana",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a Tswana family negotiation that opens a marriage?",
+      "options": [
+        "Bogadi",
+        "Lobolo",
+        "Roora",
+        "Chitenge"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bogadi is a Tswana marriage negotiation between families.",
+      "sources": [
+        {
+          "title": "Lobolo",
+          "url": "https://en.wikipedia.org/wiki/Lobolo",
+          "claim": "Bogadi is a Tswana marriage negotiation between families",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_wedd_chitenge",
+      "region": "south",
+      "country": "Zambia",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a printed wrap worn at Zambian celebrations?",
+      "options": [
+        "Chitenge",
+        "Lobolo",
+        "Roora",
+        "Bogadi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chitenge is a printed cloth worn in Zambia.",
+      "sources": [
+        {
+          "title": "Chitenge",
+          "url": "https://en.wikipedia.org/wiki/Chitenge",
+          "claim": "Chitenge is a printed cloth worn in Zambia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_great_zimbabwe",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the stone city built by ancestors of the Shona?",
+      "options": [
+        "Great Zimbabwe",
+        "Thulamela",
+        "Twyfelfontein",
+        "Union Buildings"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Great Zimbabwe is a stone city in Zimbabwe.",
+      "sources": [
+        {
+          "title": "Great Zimbabwe",
+          "url": "https://en.wikipedia.org/wiki/Great_Zimbabwe",
+          "claim": "Great Zimbabwe is a stone city in Zimbabwe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_1994_south_african_general_election",
+      "region": "south",
+      "country": "South Africa",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "1994",
+        "1964",
+        "1966",
+        "1975"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "South Africa held its first democratic election in 1994.",
+      "sources": [
+        {
+          "title": "1994 South African general election",
+          "url": "https://en.wikipedia.org/wiki/1994_South_African_general_election",
+          "claim": "South Africa held its first democratic election in 1994",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_zambia",
+      "region": "south",
+      "country": "Zambia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "In which year did Zambia become independent?",
+      "options": [
+        "1964",
+        "1994",
+        "1966",
+        "1975"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zambia became independent in 1964.",
+      "sources": [
+        {
+          "title": "Zambia",
+          "url": "https://en.wikipedia.org/wiki/Zambia",
+          "claim": "Zambia became independent in 1964",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_botswana",
+      "region": "south",
+      "country": "Botswana",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "In which year did Botswana become independent?",
+      "options": [
+        "1966",
+        "1994",
+        "1964",
+        "1975"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Botswana became independent in 1966.",
+      "sources": [
+        {
+          "title": "Botswana",
+          "url": "https://en.wikipedia.org/wiki/Botswana",
+          "claim": "Botswana became independent in 1966",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_mozambique",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "In which year did Mozambique become independent?",
+      "options": [
+        "1975",
+        "1994",
+        "1964",
+        "1966"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mozambique became independent in 1975.",
+      "sources": [
+        {
+          "title": "Mozambique",
+          "url": "https://en.wikipedia.org/wiki/Mozambique",
+          "claim": "Mozambique became independent in 1975",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_namibia",
+      "region": "south",
+      "country": "Namibia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "In which year did Namibia become independent?",
+      "options": [
+        "1990",
+        "1994",
+        "1964",
+        "1966"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Namibia became independent in 1990.",
+      "sources": [
+        {
+          "title": "Namibia",
+          "url": "https://en.wikipedia.org/wiki/Namibia",
+          "claim": "Namibia became independent in 1990",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_zimbabwe",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "In which year did Zimbabwe become independent?",
+      "options": [
+        "1980",
+        "1994",
+        "1964",
+        "1966"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zimbabwe became independent in 1980.",
+      "sources": [
+        {
+          "title": "Zimbabwe",
+          "url": "https://en.wikipedia.org/wiki/Zimbabwe",
+          "claim": "Zimbabwe became independent in 1980",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_moshoeshoe_i",
+      "region": "south",
+      "country": "Lesotho",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the founder of the Basotho nation?",
+      "options": [
+        "Moshoeshoe",
+        "Seretse Khama",
+        "Nelson Mandela history",
+        "Kenneth Kaunda history"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Moshoeshoe I founded the Basotho nation.",
+      "sources": [
+        {
+          "title": "Moshoeshoe I",
+          "url": "https://en.wikipedia.org/wiki/Moshoeshoe_I",
+          "claim": "Moshoeshoe I founded the Basotho nation",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_seretse_khama",
+      "region": "south",
+      "country": "Botswana",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Seretse Khama",
+        "Moshoeshoe",
+        "Nelson Mandela history",
+        "Kenneth Kaunda history"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Seretse Khama was the first president of Botswana.",
+      "sources": [
+        {
+          "title": "Seretse Khama",
+          "url": "https://en.wikipedia.org/wiki/Seretse_Khama",
+          "claim": "Seretse Khama was the first president of Botswana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_nelson_mandela",
+      "region": "south",
+      "country": "South Africa",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the leader who became president in 1994?",
+      "options": [
+        "Nelson Mandela history",
+        "Moshoeshoe",
+        "Seretse Khama",
+        "Kenneth Kaunda history"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nelson Mandela was president of South Africa.",
+      "sources": [
+        {
+          "title": "Nelson Mandela",
+          "url": "https://en.wikipedia.org/wiki/Nelson_Mandela",
+          "claim": "Nelson Mandela was president of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_thulamela",
+      "region": "south",
+      "country": "South Africa",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a stone-walled site in the Kruger area?",
+      "options": [
+        "Thulamela",
+        "Great Zimbabwe",
+        "Twyfelfontein",
+        "Union Buildings"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Thulamela is an archaeological site in South Africa.",
+      "sources": [
+        {
+          "title": "Thulamela",
+          "url": "https://en.wikipedia.org/wiki/Thulamela",
+          "claim": "Thulamela is an archaeological site in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_malawi",
+      "region": "south",
+      "country": "Malawi",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "In which year did Malawi become independent?",
+      "options": [
+        "1964",
+        "1994",
+        "1966",
+        "1975"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Malawi became independent in 1964.",
+      "sources": [
+        {
+          "title": "Malawi",
+          "url": "https://en.wikipedia.org/wiki/Malawi",
+          "claim": "Malawi became independent in 1964",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_twyfelfontein",
+      "region": "south",
+      "country": "Namibia",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a UNESCO site of ancient rock engravings?",
+      "options": [
+        "Twyfelfontein",
+        "Great Zimbabwe",
+        "Thulamela",
+        "Union Buildings"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Twyfelfontein is a rock-art site in Namibia.",
+      "sources": [
+        {
+          "title": "Twyfelfontein",
+          "url": "https://en.wikipedia.org/wiki/Twyfelfontein",
+          "claim": "Twyfelfontein is a rock-art site in Namibia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_kenneth_kaunda",
+      "region": "south",
+      "country": "Zambia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Kenneth Kaunda history",
+        "Moshoeshoe",
+        "Seretse Khama",
+        "Nelson Mandela history"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kenneth Kaunda was the first president of Zambia.",
+      "sources": [
+        {
+          "title": "Kenneth Kaunda",
+          "url": "https://en.wikipedia.org/wiki/Kenneth_Kaunda",
+          "claim": "Kenneth Kaunda was the first president of Zambia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_union_buildings",
+      "region": "south",
+      "country": "South Africa",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the seat of government in Pretoria?",
+      "options": [
+        "Union Buildings",
+        "Great Zimbabwe",
+        "Thulamela",
+        "Twyfelfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Union Buildings are in Pretoria.",
+      "sources": [
+        {
+          "title": "Union Buildings",
+          "url": "https://en.wikipedia.org/wiki/Union_Buildings",
+          "claim": "The Union Buildings are in Pretoria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_eswatini",
+      "region": "south",
+      "country": "Eswatini",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "In which year did Eswatini, then Swaziland, become independent?",
+      "options": [
+        "1968",
+        "1994",
+        "1964",
+        "1966"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Eswatini became independent in 1968.",
+      "sources": [
+        {
+          "title": "Eswatini",
+          "url": "https://en.wikipedia.org/wiki/Eswatini",
+          "claim": "Eswatini became independent in 1968",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_nelson_mandela",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the president who led South Africa after the 1994 election?",
+      "options": [
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela",
+        "Tsitsi Dangarembga"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nelson Mandela was a South African president.",
+      "sources": [
+        {
+          "title": "Nelson Mandela",
+          "url": "https://en.wikipedia.org/wiki/Nelson_Mandela",
+          "claim": "Nelson Mandela was a South African president",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_miriam_makeba",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the singer known as Mama Africa?",
+      "options": [
+        "Miriam Makeba",
+        "Nelson Mandela",
+        "Hugh Masekela",
+        "Tsitsi Dangarembga"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Miriam Makeba was a South African singer.",
+      "sources": [
+        {
+          "title": "Miriam Makeba",
+          "url": "https://en.wikipedia.org/wiki/Miriam_Makeba",
+          "claim": "Miriam Makeba was a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_hugh_masekela",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the trumpeter of South African jazz?",
+      "options": [
+        "Hugh Masekela",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Tsitsi Dangarembga"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hugh Masekela was a South African musician.",
+      "sources": [
+        {
+          "title": "Hugh Masekela",
+          "url": "https://en.wikipedia.org/wiki/Hugh_Masekela",
+          "claim": "Hugh Masekela was a South African musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_tsitsi_dangarembga",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the novelist of Nervous Conditions?",
+      "options": [
+        "Tsitsi Dangarembga",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tsitsi Dangarembga is a Zimbabwean writer.",
+      "sources": [
+        {
+          "title": "Tsitsi Dangarembga",
+          "url": "https://en.wikipedia.org/wiki/Tsitsi_Dangarembga",
+          "claim": "Tsitsi Dangarembga is a Zimbabwean writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_bessie_head",
+      "region": "south",
+      "country": "Botswana",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the writer who lived and worked in Botswana?",
+      "options": [
+        "Bessie Head",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bessie Head was a writer who lived in Botswana.",
+      "sources": [
+        {
+          "title": "Bessie Head",
+          "url": "https://en.wikipedia.org/wiki/Bessie_Head",
+          "claim": "Bessie Head was a writer who lived in Botswana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_nadine_gordimer",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Nobel Prize novelist?",
+      "options": [
+        "Nadine Gordimer",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nadine Gordimer was a South African writer.",
+      "sources": [
+        {
+          "title": "Nadine Gordimer",
+          "url": "https://en.wikipedia.org/wiki/Nadine_Gordimer",
+          "claim": "Nadine Gordimer was a South African writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_j_m_coetzee",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Nobel Prize novelist of Disgrace?",
+      "options": [
+        "JM Coetzee",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "J. M. Coetzee is a South African writer.",
+      "sources": [
+        {
+          "title": "J. M. Coetzee",
+          "url": "https://en.wikipedia.org/wiki/J._M._Coetzee",
+          "claim": "J. M. Coetzee is a South African writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_oliver_mtukudzi",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the musician known as Tuku?",
+      "options": [
+        "Oliver Mtukudzi",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Oliver Mtukudzi was a Zimbabwean musician.",
+      "sources": [
+        {
+          "title": "Oliver Mtukudzi",
+          "url": "https://en.wikipedia.org/wiki/Oliver_Mtukudzi",
+          "claim": "Oliver Mtukudzi was a Zimbabwean musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_moshoeshoe_i",
+      "region": "south",
+      "country": "Lesotho",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the nineteenth-century founder of the Basotho?",
+      "options": [
+        "Moshoeshoe",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Moshoeshoe I was the founder of the Basotho nation.",
+      "sources": [
+        {
+          "title": "Moshoeshoe I",
+          "url": "https://en.wikipedia.org/wiki/Moshoeshoe_I",
+          "claim": "Moshoeshoe I was the founder of the Basotho nation",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_desmond_tutu",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the archbishop and Nobel Peace Prize laureate?",
+      "options": [
+        "Desmond Tutu",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Desmond Tutu was a South African archbishop.",
+      "sources": [
+        {
+          "title": "Desmond Tutu",
+          "url": "https://en.wikipedia.org/wiki/Desmond_Tutu",
+          "claim": "Desmond Tutu was a South African archbishop",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_dambudzo_marechera",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the author of The House of Hunger?",
+      "options": [
+        "Dambudzo Marechera",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dambudzo Marechera was a Zimbabwean writer.",
+      "sources": [
+        {
+          "title": "Dambudzo Marechera",
+          "url": "https://en.wikipedia.org/wiki/Dambudzo_Marechera",
+          "claim": "Dambudzo Marechera was a Zimbabwean writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_trevor_noah",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the comedian who hosted The Daily Show?",
+      "options": [
+        "Trevor Noah",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Trevor Noah is a South African comedian.",
+      "sources": [
+        {
+          "title": "Trevor Noah",
+          "url": "https://en.wikipedia.org/wiki/Trevor_Noah",
+          "claim": "Trevor Noah is a South African comedian",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_charlize_theron",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Oscar-winning actor from Benoni?",
+      "options": [
+        "Charlize Theron",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Charlize Theron is a South African actress.",
+      "sources": [
+        {
+          "title": "Charlize Theron",
+          "url": "https://en.wikipedia.org/wiki/Charlize_Theron",
+          "claim": "Charlize Theron is a South African actress",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_kenneth_kaunda",
+      "region": "south",
+      "country": "Zambia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Kenneth Kaunda",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kenneth Kaunda was president of Zambia.",
+      "sources": [
+        {
+          "title": "Kenneth Kaunda",
+          "url": "https://en.wikipedia.org/wiki/Kenneth_Kaunda",
+          "claim": "Kenneth Kaunda was president of Zambia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_samora_machel",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Samora Machel",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Samora Machel was the first president of Mozambique.",
+      "sources": [
+        {
+          "title": "Samora Machel",
+          "url": "https://en.wikipedia.org/wiki/Samora_Machel",
+          "claim": "Samora Machel was the first president of Mozambique",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_jack_mapanje",
+      "region": "south",
+      "country": "Malawi",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Jack Mapanje",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jack Mapanje is a Malawian poet.",
+      "sources": [
+        {
+          "title": "Jack Mapanje",
+          "url": "https://en.wikipedia.org/wiki/Jack_Mapanje",
+          "claim": "Jack Mapanje is a Malawian poet",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_sam_nujoma",
+      "region": "south",
+      "country": "Namibia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Sam Nujoma",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sam Nujoma was the first president of Namibia.",
+      "sources": [
+        {
+          "title": "Sam Nujoma",
+          "url": "https://en.wikipedia.org/wiki/Sam_Nujoma",
+          "claim": "Sam Nujoma was the first president of Namibia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_peop_siya_kolisi",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Springbok captain who lifted the 2019 World Cup?",
+      "options": [
+        "Siya Kolisi",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Siya Kolisi is a South African rugby player.",
+      "sources": [
+        {
+          "title": "Siya Kolisi",
+          "url": "https://en.wikipedia.org/wiki/Siya_Kolisi",
+          "claim": "Siya Kolisi is a South African rugby player",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_tyla_singer",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the South African singer of Water?",
+      "options": [
+        "Tyla",
+        "Black Coffee pop",
+        "Master KG",
+        "Uncle Waffles"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tyla is a South African singer.",
+      "sources": [
+        {
+          "title": "Tyla (singer)",
+          "url": "https://en.wikipedia.org/wiki/Tyla_(singer)",
+          "claim": "Tyla is a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_black_coffee_dj",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the house DJ who filled global dance floors?",
+      "options": [
+        "Black Coffee",
+        "Tyla",
+        "Master KG",
+        "Uncle Waffles"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Black Coffee is a South African house DJ.",
+      "sources": [
+        {
+          "title": "Black Coffee (DJ)",
+          "url": "https://en.wikipedia.org/wiki/Black_Coffee_(DJ)",
+          "claim": "Black Coffee is a South African house DJ",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_master_kg",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the amapiano artist of Jerusalema?",
+      "options": [
+        "Master KG",
+        "Tyla",
+        "Black Coffee",
+        "Uncle Waffles"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Master KG is a South African musician.",
+      "sources": [
+        {
+          "title": "Master KG",
+          "url": "https://en.wikipedia.org/wiki/Master_KG",
+          "claim": "Master KG is a South African musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_uncle_waffles",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the amapiano DJ and dancer?",
+      "options": [
+        "Uncle Waffles",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Uncle Waffles is a South African DJ.",
+      "sources": [
+        {
+          "title": "Uncle Waffles",
+          "url": "https://en.wikipedia.org/wiki/Uncle_Waffles",
+          "claim": "Uncle Waffles is a South African DJ",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_sho_madjozi",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the rapper who brought xibelani dance to pop?",
+      "options": [
+        "Sho Madjozi",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sho Madjozi is a South African rapper.",
+      "sources": [
+        {
+          "title": "Sho Madjozi",
+          "url": "https://en.wikipedia.org/wiki/Sho_Madjozi",
+          "claim": "Sho Madjozi is a South African rapper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_nasty_c",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the South African rapper?",
+      "options": [
+        "Nasty C",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nasty C is a South African rapper.",
+      "sources": [
+        {
+          "title": "Nasty C",
+          "url": "https://en.wikipedia.org/wiki/Nasty_C",
+          "claim": "Nasty C is a South African rapper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_cassper_nyovest",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the South African rapper and boxing-event host?",
+      "options": [
+        "Cassper Nyovest",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cassper Nyovest is a South African rapper.",
+      "sources": [
+        {
+          "title": "Cassper Nyovest",
+          "url": "https://en.wikipedia.org/wiki/Cassper_Nyovest",
+          "claim": "Cassper Nyovest is a South African rapper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_focalistic",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Focalistic",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Focalistic is a South African singer.",
+      "sources": [
+        {
+          "title": "Focalistic",
+          "url": "https://en.wikipedia.org/wiki/Focalistic",
+          "claim": "Focalistic is a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_kabza_de_small",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a producer called the king of amapiano?",
+      "options": [
+        "Kabza De Small",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kabza De Small is a South African DJ.",
+      "sources": [
+        {
+          "title": "Kabza De Small",
+          "url": "https://en.wikipedia.org/wiki/Kabza_De_Small",
+          "claim": "Kabza De Small is a South African DJ",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_nomcebo_zikode",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the voice on Jerusalema?",
+      "options": [
+        "Nomcebo Zikode",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nomcebo Zikode is a South African singer.",
+      "sources": [
+        {
+          "title": "Nomcebo Zikode",
+          "url": "https://en.wikipedia.org/wiki/Nomcebo_Zikode",
+          "claim": "Nomcebo Zikode is a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_mafikizolo",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the duo of Ndihamba Nawe?",
+      "options": [
+        "Mafikizolo",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mafikizolo is a South African duo.",
+      "sources": [
+        {
+          "title": "Mafikizolo",
+          "url": "https://en.wikipedia.org/wiki/Mafikizolo",
+          "claim": "Mafikizolo is a South African duo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_winky_d",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a leading Zimdancehall artist?",
+      "options": [
+        "Winky D",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Winky D is a Zimbabwean musician.",
+      "sources": [
+        {
+          "title": "Winky D",
+          "url": "https://en.wikipedia.org/wiki/Winky_D",
+          "claim": "Winky D is a Zimbabwean musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_zahara_south_african_musician",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the singer of Loliwe?",
+      "options": [
+        "Zahara",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zahara was a South African singer.",
+      "sources": [
+        {
+          "title": "Zahara (South African musician)",
+          "url": "https://en.wikipedia.org/wiki/Zahara_(South_African_musician)",
+          "claim": "Zahara was a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_freshlyground",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the band of Doo Be Doo?",
+      "options": [
+        "Freshlyground",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Freshlyground is a South African band.",
+      "sources": [
+        {
+          "title": "Freshlyground",
+          "url": "https://en.wikipedia.org/wiki/Freshlyground",
+          "claim": "Freshlyground is a South African band",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_trevor_noah",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the global comedy export?",
+      "options": [
+        "Trevor Noah",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Trevor Noah is a South African comedian.",
+      "sources": [
+        {
+          "title": "Trevor Noah",
+          "url": "https://en.wikipedia.org/wiki/Trevor_Noah",
+          "claim": "Trevor Noah is a South African comedian",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_music_of_botswana",
+      "region": "south",
+      "country": "Botswana",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is Botswana house and Afropop nights?",
+      "options": [
+        "DJ Dilize",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Botswana has a growing popular music scene.",
+      "sources": [
+        {
+          "title": "Music of Botswana",
+          "url": "https://en.wikipedia.org/wiki/Music_of_Botswana",
+          "claim": "Botswana has a growing popular music scene",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_the_dogg_musician",
+      "region": "south",
+      "country": "Namibia",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Namibian kwaito artist?",
+      "options": [
+        "The Dogg",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Dogg is a Namibian musician.",
+      "sources": [
+        {
+          "title": "The Dogg (musician)",
+          "url": "https://en.wikipedia.org/wiki/The_Dogg_(musician)",
+          "claim": "The Dogg is a Namibian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_music_of_mozambique",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Mozambican pop singer?",
+      "options": [
+        "Lizha James",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mozambique has a popular music scene.",
+      "sources": [
+        {
+          "title": "Music of Mozambique",
+          "url": "https://en.wikipedia.org/wiki/Music_of_Mozambique",
+          "claim": "Mozambique has a popular music scene",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_south_africa_national_rugby_union_team",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the nickname of South Africa's rugby team?",
+      "options": [
+        "Springboks",
+        "Bafana Bafana",
+        "Banyana Banyana",
+        "Kaizer Chiefs"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The South Africa national rugby team is nicknamed the Springboks.",
+      "sources": [
+        {
+          "title": "South Africa national rugby union team",
+          "url": "https://en.wikipedia.org/wiki/South_Africa_national_rugby_union_team",
+          "claim": "The South Africa national rugby team is nicknamed the Springboks",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_siya_kolisi",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Springbok captain of 2019 and 2023?",
+      "options": [
+        "Siya Kolisi",
+        "Caster Semenya",
+        "Wayde van Niekerk",
+        "AB de Villiers"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Siya Kolisi is a South African rugby player.",
+      "sources": [
+        {
+          "title": "Siya Kolisi",
+          "url": "https://en.wikipedia.org/wiki/Siya_Kolisi",
+          "claim": "Siya Kolisi is a South African rugby player",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_south_africa_national_football_team",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the nickname of South Africa's men's football team?",
+      "options": [
+        "Bafana Bafana",
+        "Springboks",
+        "Banyana Banyana",
+        "Kaizer Chiefs"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The South Africa national football team is nicknamed Bafana Bafana.",
+      "sources": [
+        {
+          "title": "South Africa national football team",
+          "url": "https://en.wikipedia.org/wiki/South_Africa_national_football_team",
+          "claim": "The South Africa national football team is nicknamed Bafana Bafana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_south_africa_women_s_national_football_team",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the nickname of South Africa's women's football team?",
+      "options": [
+        "Banyana Banyana",
+        "Springboks",
+        "Bafana Bafana",
+        "Kaizer Chiefs"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The South Africa women's team is nicknamed Banyana Banyana.",
+      "sources": [
+        {
+          "title": "South Africa women's national football team",
+          "url": "https://en.wikipedia.org/wiki/South_Africa_women's_national_football_team",
+          "claim": "The South Africa women's team is nicknamed Banyana Banyana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_caster_semenya",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Olympic 800 metre champion?",
+      "options": [
+        "Caster Semenya",
+        "Siya Kolisi",
+        "Wayde van Niekerk",
+        "AB de Villiers"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Caster Semenya is a South African runner.",
+      "sources": [
+        {
+          "title": "Caster Semenya",
+          "url": "https://en.wikipedia.org/wiki/Caster_Semenya",
+          "claim": "Caster Semenya is a South African runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_wayde_van_niekerk",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Olympic 400 metre champion?",
+      "options": [
+        "Wayde van Niekerk",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "AB de Villiers"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wayde van Niekerk is a South African sprinter.",
+      "sources": [
+        {
+          "title": "Wayde van Niekerk",
+          "url": "https://en.wikipedia.org/wiki/Wayde_van_Niekerk",
+          "claim": "Wayde van Niekerk is a South African sprinter",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_kaizer_chiefs_f_c",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a famous Soweto football club?",
+      "options": [
+        "Kaizer Chiefs",
+        "Springboks",
+        "Bafana Bafana",
+        "Banyana Banyana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kaizer Chiefs is a football club in South Africa.",
+      "sources": [
+        {
+          "title": "Kaizer Chiefs F.C.",
+          "url": "https://en.wikipedia.org/wiki/Kaizer_Chiefs_F.C.",
+          "claim": "Kaizer Chiefs is a football club in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_orlando_pirates_f_c",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the Soweto club and African champion?",
+      "options": [
+        "Orlando Pirates",
+        "Springboks",
+        "Bafana Bafana",
+        "Banyana Banyana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Orlando Pirates is a football club in South Africa.",
+      "sources": [
+        {
+          "title": "Orlando Pirates F.C.",
+          "url": "https://en.wikipedia.org/wiki/Orlando_Pirates_F.C.",
+          "claim": "Orlando Pirates is a football club in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_ab_de_villiers",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the cricket batter known as Mr 360?",
+      "options": [
+        "AB de Villiers",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "Wayde van Niekerk"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "AB de Villiers is a South African cricketer.",
+      "sources": [
+        {
+          "title": "AB de Villiers",
+          "url": "https://en.wikipedia.org/wiki/AB_de_Villiers",
+          "claim": "AB de Villiers is a South African cricketer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_kagiso_rabada",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Kagiso Rabada",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "Wayde van Niekerk"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kagiso Rabada is a South African cricketer.",
+      "sources": [
+        {
+          "title": "Kagiso Rabada",
+          "url": "https://en.wikipedia.org/wiki/Kagiso_Rabada",
+          "claim": "Kagiso Rabada is a South African cricketer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_kirsty_coventry",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the Olympic swimming champion who later entered public office?",
+      "options": [
+        "Kirsty Coventry",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "Wayde van Niekerk"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kirsty Coventry is a Zimbabwean swimmer.",
+      "sources": [
+        {
+          "title": "Kirsty Coventry",
+          "url": "https://en.wikipedia.org/wiki/Kirsty_Coventry",
+          "claim": "Kirsty Coventry is a Zimbabwean swimmer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_zambia_women_s_national_football_team",
+      "region": "south",
+      "country": "Zambia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the nickname of Zambia's women's football team?",
+      "options": [
+        "Copper Queens",
+        "Springboks",
+        "Bafana Bafana",
+        "Banyana Banyana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Zambia women's team is nicknamed the Copper Queens.",
+      "sources": [
+        {
+          "title": "Zambia women's national football team",
+          "url": "https://en.wikipedia.org/wiki/Zambia_women's_national_football_team",
+          "claim": "The Zambia women's team is nicknamed the Copper Queens",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_lucas_radebe",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the former Bafana captain?",
+      "options": [
+        "Lucas Radebe",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "Wayde van Niekerk"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lucas Radebe is a South African former footballer.",
+      "sources": [
+        {
+          "title": "Lucas Radebe",
+          "url": "https://en.wikipedia.org/wiki/Lucas_Radebe",
+          "claim": "Lucas Radebe is a South African former footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_tatjana_smith",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the Olympic breaststroke champion, formerly Schoenmaker?",
+      "options": [
+        "Tatjana Smith",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "Wayde van Niekerk"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tatjana Smith is a South African swimmer.",
+      "sources": [
+        {
+          "title": "Tatjana Smith",
+          "url": "https://en.wikipedia.org/wiki/Tatjana_Smith",
+          "claim": "Tatjana Smith is a South African swimmer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_namibia_national_cricket_team",
+      "region": "south",
+      "country": "Namibia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is Namibia's cricket team plays on the world stage?",
+      "options": [
+        "Welwitschia country sport",
+        "Springboks",
+        "Bafana Bafana",
+        "Banyana Banyana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Namibia has a national cricket team.",
+      "sources": [
+        {
+          "title": "Namibia national cricket team",
+          "url": "https://en.wikipedia.org/wiki/Namibia_national_cricket_team",
+          "claim": "Namibia has a national cricket team",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_letsile_tebogo",
+      "region": "south",
+      "country": "Botswana",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Olympic 200 metre champion?",
+      "options": [
+        "Letsile Tebogo",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "Wayde van Niekerk"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Letsile Tebogo is a Botswanan sprinter.",
+      "sources": [
+        {
+          "title": "Letsile Tebogo",
+          "url": "https://en.wikipedia.org/wiki/Letsile_Tebogo",
+          "claim": "Letsile Tebogo is a Botswanan sprinter",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_chad_le_clos",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the Olympic swimming champion?",
+      "options": [
+        "Chad le Clos",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "Wayde van Niekerk"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chad le Clos is a South African swimmer.",
+      "sources": [
+        {
+          "title": "Chad le Clos",
+          "url": "https://en.wikipedia.org/wiki/Chad_le_Clos",
+          "claim": "Chad le Clos is a South African swimmer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_languages_of_south_africa3",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Which three are official languages of South Africa?",
+      "options": [
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans",
+        "Japanese"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "isiZulu, isiXhosa and Afrikaans are among South Africa's official languages.",
+      "sources": [
+        {
+          "title": "Languages of South Africa",
+          "url": "https://en.wikipedia.org/wiki/Languages_of_South_Africa",
+          "claim": "isiZulu, isiXhosa and Afrikaans are languages of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_southern_africa",
+      "region": "south",
+      "country": "Southern Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Which three are capital cities in Southern Africa?",
+      "options": [
+        "Gaborone",
+        "Windhoek",
+        "Maputo",
+        "Algiers"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Gaborone, Windhoek and Maputo are capitals in Southern Africa. Algiers is in Algeria.",
+      "sources": [
+        {
+          "title": "Southern Africa",
+          "url": "https://en.wikipedia.org/wiki/Southern_Africa",
+          "claim": "Gaborone, Windhoek and Maputo are Southern African capitals",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_south_african_cuisine",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Which three foods are associated with South Africa?",
+      "options": [
+        "Biltong",
+        "Bobotie",
+        "Braai",
+        "Injera"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Biltong, bobotie and the braai are South African. Injera is Ethiopian.",
+      "sources": [
+        {
+          "title": "South African cuisine",
+          "url": "https://en.wikipedia.org/wiki/South_African_cuisine",
+          "claim": "Biltong, bobotie and braai are South African",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_prov_tswana_language",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PROVERBS",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Setswana line: kgosi ke kgosi ka ___?",
+      "options": [
+        "batho",
+        "gauta",
+        "pula",
+        "dijo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kgosi ke kgosi ka batho means a chief is a chief through the people.",
+      "sources": [
+        {
+          "title": "Tswana language",
+          "url": "https://en.wikipedia.org/wiki/Tswana_language",
+          "claim": "A Setswana proverb says kgosi ke kgosi ka batho",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_bobotie2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a spiced mince bake with an egg topping?",
+      "options": [
+        "Bobotie",
+        "Braai",
+        "Biltong",
+        "Sadza"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bobotie is a South African dish.",
+      "sources": [
+        {
+          "title": "Bobotie",
+          "url": "https://en.wikipedia.org/wiki/Bobotie",
+          "claim": "Bobotie is a South African dish",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_biltong2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call air-dried seasoned meat from Southern Africa?",
+      "options": [
+        "Biltong",
+        "Braai",
+        "Bobotie",
+        "Sadza"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Biltong is dried meat from Southern Africa.",
+      "sources": [
+        {
+          "title": "Biltong",
+          "url": "https://en.wikipedia.org/wiki/Biltong",
+          "claim": "Biltong is dried meat from Southern Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_bunny_chow2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a hollowed loaf filled with curry, from Durban?",
+      "options": [
+        "Bunny chow",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bunny chow is a South African dish from Durban.",
+      "sources": [
+        {
+          "title": "Bunny chow",
+          "url": "https://en.wikipedia.org/wiki/Bunny_chow",
+          "claim": "Bunny chow is a South African dish from Durban",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_boerewors2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a coiled spiced sausage of the braai?",
+      "options": [
+        "Boerewors",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Boerewors is a South African sausage.",
+      "sources": [
+        {
+          "title": "Boerewors",
+          "url": "https://en.wikipedia.org/wiki/Boerewors",
+          "claim": "Boerewors is a South African sausage",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_chakalaka2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a spicy vegetable relish served with pap?",
+      "options": [
+        "Chakalaka",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chakalaka is a South African relish.",
+      "sources": [
+        {
+          "title": "Chakalaka",
+          "url": "https://en.wikipedia.org/wiki/Chakalaka",
+          "claim": "Chakalaka is a South African relish",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_food_sadza2",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call the stiff maize porridge of Zimbabwe?",
+      "options": [
+        "Sadza",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sadza is a maize porridge from Zimbabwe.",
+      "sources": [
+        {
+          "title": "Sadza",
+          "url": "https://en.wikipedia.org/wiki/Sadza",
+          "claim": "Sadza is a maize porridge from Zimbabwe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_amapiano2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a South African house style built on log drum and piano?",
+      "options": [
+        "Amapiano",
+        "Kwaito",
+        "Gqom",
+        "Mbira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Amapiano is a South African music genre.",
+      "sources": [
+        {
+          "title": "Amapiano",
+          "url": "https://en.wikipedia.org/wiki/Amapiano",
+          "claim": "Amapiano is a South African music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_kwaito2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a South African dance music that boomed in the 1990s?",
+      "options": [
+        "Kwaito",
+        "Amapiano",
+        "Gqom",
+        "Mbira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kwaito is a South African music genre.",
+      "sources": [
+        {
+          "title": "Kwaito",
+          "url": "https://en.wikipedia.org/wiki/Kwaito",
+          "claim": "Kwaito is a South African music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_musi_gqom2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a raw electronic dance music from Durban?",
+      "options": [
+        "Gqom",
+        "Amapiano",
+        "Kwaito",
+        "Mbira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gqom is a South African music genre.",
+      "sources": [
+        {
+          "title": "Gqom",
+          "url": "https://en.wikipedia.org/wiki/Gqom",
+          "claim": "Gqom is a South African music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_brenda_fassie",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the South African pop star nicknamed Madonna of the Townships?",
+      "options": [
+        "Brenda Fassie",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Brenda Fassie was a South African singer.",
+      "sources": [
+        {
+          "title": "Brenda Fassie",
+          "url": "https://en.wikipedia.org/wiki/Brenda_Fassie",
+          "claim": "Brenda Fassie was a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_black_coffee_dj_2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the South African DJ known for deep house?",
+      "options": [
+        "Black Coffee",
+        "Tyla",
+        "Master KG",
+        "Uncle Waffles"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Black Coffee is a South African DJ.",
+      "sources": [
+        {
+          "title": "Black Coffee (DJ)",
+          "url": "https://en.wikipedia.org/wiki/Black_Coffee_(DJ)",
+          "claim": "Black Coffee is a South African DJ",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_popc_tyla_singer_2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the South African singer of Water?",
+      "options": [
+        "Tyla",
+        "Black Coffee",
+        "Master KG",
+        "Uncle Waffles"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tyla is a South African singer.",
+      "sources": [
+        {
+          "title": "Tyla (singer)",
+          "url": "https://en.wikipedia.org/wiki/Tyla_(singer)",
+          "claim": "Tyla is a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_table_mountain2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Table Mountain",
+        "Victoria Falls",
+        "Okavango Delta",
+        "Sossusvlei"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Table Mountain overlooks Cape Town.",
+      "sources": [
+        {
+          "title": "Table Mountain",
+          "url": "https://en.wikipedia.org/wiki/Table_Mountain",
+          "claim": "Table Mountain overlooks Cape Town",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_robben_island",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Robben Island",
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Robben Island is an island off Cape Town.",
+      "sources": [
+        {
+          "title": "Robben Island",
+          "url": "https://en.wikipedia.org/wiki/Robben_Island",
+          "claim": "Robben Island is an island off Cape Town",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_victoria_falls2",
+      "region": "south",
+      "country": "Zambia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the waterfall on the Zambezi between Zambia and Zimbabwe?",
+      "options": [
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta",
+        "Sossusvlei"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Victoria Falls is a waterfall on the Zambezi.",
+      "sources": [
+        {
+          "title": "Victoria Falls",
+          "url": "https://en.wikipedia.org/wiki/Victoria_Falls",
+          "claim": "Victoria Falls is a waterfall on the Zambezi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_okavango_delta2",
+      "region": "south",
+      "country": "Botswana",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Okavango Delta",
+        "Victoria Falls",
+        "Table Mountain",
+        "Sossusvlei"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Okavango Delta is in Botswana.",
+      "sources": [
+        {
+          "title": "Okavango Delta",
+          "url": "https://en.wikipedia.org/wiki/Okavango_Delta",
+          "claim": "The Okavango Delta is in Botswana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_geog_namib",
+      "region": "south",
+      "country": "Namibia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Namib",
+        "Victoria Falls",
+        "Table Mountain",
+        "Okavango Delta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Namib is a desert in Namibia.",
+      "sources": [
+        {
+          "title": "Namib",
+          "url": "https://en.wikipedia.org/wiki/Namib",
+          "claim": "The Namib is a desert in Namibia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_zulu_language3",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the most widely spoken home language in South Africa?",
+      "options": [
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans",
+        "Setswana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "isiZulu is a language of South Africa.",
+      "sources": [
+        {
+          "title": "Zulu language",
+          "url": "https://en.wikipedia.org/wiki/Zulu_language",
+          "claim": "isiZulu is a language of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_xhosa_language3",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a Nguni language of South Africa, known for its clicks?",
+      "options": [
+        "isiXhosa",
+        "isiZulu",
+        "Afrikaans",
+        "Setswana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "isiXhosa is a language of South Africa.",
+      "sources": [
+        {
+          "title": "Xhosa language",
+          "url": "https://en.wikipedia.org/wiki/Xhosa_language",
+          "claim": "isiXhosa is a language of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_lang_shona_language2",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a major language of Zimbabwe?",
+      "options": [
+        "Shona",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shona is a language of Zimbabwe.",
+      "sources": [
+        {
+          "title": "Shona language",
+          "url": "https://en.wikipedia.org/wiki/Shona_language",
+          "claim": "Shona is a language of Zimbabwe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_wayde_van_niekerk2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the South African who won Olympic 400 metres gold in 2016?",
+      "options": [
+        "Wayde van Niekerk",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "AB de Villiers"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wayde van Niekerk is a South African sprinter.",
+      "sources": [
+        {
+          "title": "Wayde van Niekerk",
+          "url": "https://en.wikipedia.org/wiki/Wayde_van_Niekerk",
+          "claim": "Wayde van Niekerk is a South African sprinter",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_spor_josia_thugwane",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the South African who won the Olympic marathon in 1996?",
+      "options": [
+        "Josia Thugwane",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "Wayde van Niekerk"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Josia Thugwane is a South African marathon runner.",
+      "sources": [
+        {
+          "title": "Josia Thugwane",
+          "url": "https://en.wikipedia.org/wiki/Josia_Thugwane",
+          "claim": "Josia Thugwane is a South African marathon runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_fash_shweshwe4",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a printed dyed cotton cloth of Southern Africa?",
+      "options": [
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo",
+        "Ndebele beadwork"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shweshwe is a printed cotton fabric from South Africa.",
+      "sources": [
+        {
+          "title": "Shweshwe",
+          "url": "https://en.wikipedia.org/wiki/Shweshwe",
+          "claim": "Shweshwe is a printed cotton fabric from South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "south_hist_robben_island",
+      "region": "south",
+      "country": "South Africa",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Robben Island history",
+        "Great Zimbabwe",
+        "Thulamela",
+        "Twyfelfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Robben Island was a prison off Cape Town.",
+      "sources": [
+        {
+          "title": "Robben Island",
+          "url": "https://en.wikipedia.org/wiki/Robben_Island",
+          "claim": "Robben Island was a prison off Cape Town",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    }
+  ]
+}

@@ -1,0 +1,5555 @@
+{
+  "region": "north",
+  "questions": [
+    {
+      "id": "north_geog_rabat",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Morocco?",
+      "options": [
+        "Rabat",
+        "Algiers",
+        "Tunis",
+        "Tripoli"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rabat is the capital of Morocco.",
+      "sources": [
+        {
+          "title": "Rabat",
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "claim": "Rabat is the capital of Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_algiers",
+      "region": "north",
+      "country": "Algeria",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Algeria?",
+      "options": [
+        "Algiers",
+        "Rabat",
+        "Tunis",
+        "Tripoli"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Algiers is the capital of Algeria.",
+      "sources": [
+        {
+          "title": "Algiers",
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "claim": "Algiers is the capital of Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_tunis",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Tunis",
+        "Rabat",
+        "Algiers",
+        "Tripoli"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tunis is the capital of Tunisia.",
+      "sources": [
+        {
+          "title": "Tunis",
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "claim": "Tunis is the capital of Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_tripoli",
+      "region": "north",
+      "country": "Libya",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Libya?",
+      "options": [
+        "Tripoli",
+        "Rabat",
+        "Algiers",
+        "Tunis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tripoli is the capital of Libya.",
+      "sources": [
+        {
+          "title": "Tripoli",
+          "url": "https://en.wikipedia.org/wiki/Tripoli",
+          "claim": "Tripoli is the capital of Libya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_cairo",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Egypt?",
+      "options": [
+        "Cairo",
+        "Rabat",
+        "Algiers",
+        "Tunis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cairo is the capital of Egypt.",
+      "sources": [
+        {
+          "title": "Cairo",
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "claim": "Cairo is the capital of Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_khartoum",
+      "region": "north",
+      "country": "Sudan",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Sudan?",
+      "options": [
+        "Khartoum",
+        "Rabat",
+        "Algiers",
+        "Tunis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Khartoum is the capital of Sudan.",
+      "sources": [
+        {
+          "title": "Khartoum",
+          "url": "https://en.wikipedia.org/wiki/Khartoum",
+          "claim": "Khartoum is the capital of Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_nouakchott",
+      "region": "north",
+      "country": "Mauritania",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Mauritania?",
+      "options": [
+        "Nouakchott",
+        "Rabat",
+        "Algiers",
+        "Tunis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nouakchott is the capital of Mauritania.",
+      "sources": [
+        {
+          "title": "Nouakchott",
+          "url": "https://en.wikipedia.org/wiki/Nouakchott",
+          "claim": "Nouakchott is the capital of Mauritania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_giza",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Where is the plateau of the great pyramids beside Cairo?",
+      "options": [
+        "Giza",
+        "Carthage",
+        "Marrakesh",
+        "Fez"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Giza pyramid complex is in Egypt.",
+      "sources": [
+        {
+          "title": "Giza",
+          "url": "https://en.wikipedia.org/wiki/Giza",
+          "claim": "The Giza pyramid complex is in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_carthage",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the ancient city beside modern Tunis?",
+      "options": [
+        "Carthage",
+        "Giza",
+        "Marrakesh",
+        "Fez"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Carthage was an ancient city in Tunisia.",
+      "sources": [
+        {
+          "title": "Carthage",
+          "url": "https://en.wikipedia.org/wiki/Carthage",
+          "claim": "Carthage was an ancient city in Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_marrakesh",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the red city famous for its main square?",
+      "options": [
+        "Marrakesh",
+        "Giza",
+        "Carthage",
+        "Fez"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Marrakesh is a city in Morocco.",
+      "sources": [
+        {
+          "title": "Marrakesh",
+          "url": "https://en.wikipedia.org/wiki/Marrakesh",
+          "claim": "Marrakesh is a city in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_fez_morocco",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the Moroccan city of an old medina and tanneries?",
+      "options": [
+        "Fez",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fez is a city in Morocco.",
+      "sources": [
+        {
+          "title": "Fez, Morocco",
+          "url": "https://en.wikipedia.org/wiki/Fez,_Morocco",
+          "claim": "Fez is a city in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_leptis_magna",
+      "region": "north",
+      "country": "Libya",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Where is the Roman city on the Libyan coast?",
+      "options": [
+        "Leptis Magna",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Leptis Magna is an ancient city in Libya.",
+      "sources": [
+        {
+          "title": "Leptis Magna",
+          "url": "https://en.wikipedia.org/wiki/Leptis_Magna",
+          "claim": "Leptis Magna is an ancient city in Libya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_luxor",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the city of temples on the site of ancient Thebes?",
+      "options": [
+        "Luxor",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Luxor is a city in Egypt.",
+      "sources": [
+        {
+          "title": "Luxor",
+          "url": "https://en.wikipedia.org/wiki/Luxor",
+          "claim": "Luxor is a city in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_abu_simbel",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Where is the rock-cut temples moved during the Aswan dam works?",
+      "options": [
+        "Abu Simbel",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Abu Simbel is a temple site in Egypt.",
+      "sources": [
+        {
+          "title": "Abu Simbel",
+          "url": "https://en.wikipedia.org/wiki/Abu_Simbel",
+          "claim": "Abu Simbel is a temple site in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_alexandria",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Where is the Mediterranean port city of Egypt?",
+      "options": [
+        "Alexandria",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Alexandria is a city in Egypt.",
+      "sources": [
+        {
+          "title": "Alexandria",
+          "url": "https://en.wikipedia.org/wiki/Alexandria",
+          "claim": "Alexandria is a city in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_couscous",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call steamed semolina grains, a shared dish of the Maghreb?",
+      "options": [
+        "Couscous",
+        "Tagine",
+        "Harira",
+        "Pastilla"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Couscous is a North African dish of steamed semolina.",
+      "sources": [
+        {
+          "title": "Couscous",
+          "url": "https://en.wikipedia.org/wiki/Couscous",
+          "claim": "Couscous is a North African dish of steamed semolina",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_tajine",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a slow stew named for its conical pot?",
+      "options": [
+        "Tagine",
+        "Couscous",
+        "Harira",
+        "Pastilla"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A tagine is a Maghrebi stew.",
+      "sources": [
+        {
+          "title": "Tajine",
+          "url": "https://en.wikipedia.org/wiki/Tajine",
+          "claim": "A tagine is a Maghrebi stew",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_harira",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a tomato and lentil soup of Morocco?",
+      "options": [
+        "Harira",
+        "Couscous",
+        "Tagine",
+        "Pastilla"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Harira is a soup from Morocco.",
+      "sources": [
+        {
+          "title": "Harira",
+          "url": "https://en.wikipedia.org/wiki/Harira",
+          "claim": "Harira is a soup from Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_pastilla",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a sweet-savoury pigeon or chicken pie?",
+      "options": [
+        "Pastilla",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pastilla is a pie from Morocco.",
+      "sources": [
+        {
+          "title": "Pastilla",
+          "url": "https://en.wikipedia.org/wiki/Pastilla",
+          "claim": "Pastilla is a pie from Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_kushari",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a Cairo street bowl of rice, lentils, pasta, and tomato?",
+      "options": [
+        "Koshari",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Koshari is an Egyptian dish.",
+      "sources": [
+        {
+          "title": "Kushari",
+          "url": "https://en.wikipedia.org/wiki/Kushari",
+          "claim": "Koshari is an Egyptian dish",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_ful_medames",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call stewed fava beans, an Egyptian breakfast?",
+      "options": [
+        "Ful medames",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ful medames is an Egyptian dish of fava beans.",
+      "sources": [
+        {
+          "title": "Ful medames",
+          "url": "https://en.wikipedia.org/wiki/Ful_medames",
+          "claim": "Ful medames is an Egyptian dish of fava beans",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_mulukhiyah",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a green leaf stew loved in Egypt?",
+      "options": [
+        "Molokhia",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Molokhia is a green soup eaten in Egypt.",
+      "sources": [
+        {
+          "title": "Mulukhiyah",
+          "url": "https://en.wikipedia.org/wiki/Mulukhiyah",
+          "claim": "Molokhia is a green soup eaten in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_brik",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a fried pastry often filled with egg?",
+      "options": [
+        "Brik",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Brik is a Tunisian pastry.",
+      "sources": [
+        {
+          "title": "Brik",
+          "url": "https://en.wikipedia.org/wiki/Brik",
+          "claim": "Brik is a Tunisian pastry",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_lablabi",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a chickpea soup of Tunisian mornings?",
+      "options": [
+        "Lablabi",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lablabi is a chickpea dish from Tunisia.",
+      "sources": [
+        {
+          "title": "Lablabi",
+          "url": "https://en.wikipedia.org/wiki/Lablabi",
+          "claim": "Lablabi is a chickpea dish from Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_maghrebi_mint_tea",
+      "region": "north",
+      "country": "North Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call sweet green tea with, poured from a height?",
+      "options": [
+        "Mint tea",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mint tea is served in Morocco.",
+      "sources": [
+        {
+          "title": "Maghrebi mint tea",
+          "url": "https://en.wikipedia.org/wiki/Maghrebi_mint_tea",
+          "claim": "Mint tea is served in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_msemen",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a flaky pan-fried flatbread?",
+      "options": [
+        "Msemen",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Msemen is a flatbread from Morocco.",
+      "sources": [
+        {
+          "title": "Msemen",
+          "url": "https://en.wikipedia.org/wiki/Msemen",
+          "claim": "Msemen is a flatbread from Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_merguez",
+      "region": "north",
+      "country": "Algeria",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call a spicy lamb sausage of the Maghreb?",
+      "options": [
+        "Merguez",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Merguez is a sausage from North Africa.",
+      "sources": [
+        {
+          "title": "Merguez",
+          "url": "https://en.wikipedia.org/wiki/Merguez",
+          "claim": "Merguez is a sausage from North Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_basbousa",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a semolina syrup cake?",
+      "options": [
+        "Basbousa",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Basbousa is a sweet cake from Egypt.",
+      "sources": [
+        {
+          "title": "Basbousa",
+          "url": "https://en.wikipedia.org/wiki/Basbousa",
+          "claim": "Basbousa is a sweet cake from Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_zaalouk",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call a cooked aubergine and tomato salad?",
+      "options": [
+        "Zaalouk",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zaalouk is a salad from Morocco.",
+      "sources": [
+        {
+          "title": "Zaalouk",
+          "url": "https://en.wikipedia.org/wiki/Zaalouk",
+          "claim": "Zaalouk is a salad from Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_shakshuka",
+      "region": "north",
+      "country": "Algeria",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call eggs poached in a pepper and tomato sauce?",
+      "options": [
+        "Chakchouka",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shakshuka is a dish of eggs in tomato sauce.",
+      "sources": [
+        {
+          "title": "Shakshuka",
+          "url": "https://en.wikipedia.org/wiki/Shakshuka",
+          "claim": "Shakshuka is a dish of eggs in tomato sauce",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_ful_medames2",
+      "region": "north",
+      "country": "Sudan",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call the fava breakfast also loved in Sudan?",
+      "options": [
+        "Ful Sudanese",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ful is eaten in Sudan.",
+      "sources": [
+        {
+          "title": "Ful medames",
+          "url": "https://en.wikipedia.org/wiki/Ful_medames",
+          "claim": "Ful is eaten in Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_asida",
+      "region": "north",
+      "country": "Libya",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a dough porridge served at celebrations?",
+      "options": [
+        "Asida",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Asida is a dish eaten in Libya.",
+      "sources": [
+        {
+          "title": "Asida",
+          "url": "https://en.wikipedia.org/wiki/Asida",
+          "claim": "Asida is a dish eaten in Libya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_thieboudienne",
+      "region": "north",
+      "country": "Mauritania",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call rice and fish shared with Senegalese cousins across the Senegal River?",
+      "options": [
+        "Thieb",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rice and fish is eaten in Mauritania.",
+      "sources": [
+        {
+          "title": "Thieboudienne",
+          "url": "https://en.wikipedia.org/wiki/Thieboudienne",
+          "claim": "Rice and fish is eaten in Mauritania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_rai",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the popular music of Oran?",
+      "options": [
+        "Raï",
+        "Gnawa",
+        "Chaabi",
+        "Mizwad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Raï is a music genre from Algeria.",
+      "sources": [
+        {
+          "title": "Raï",
+          "url": "https://en.wikipedia.org/wiki/Ra%C3%AF",
+          "claim": "Raï is a music genre from Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_gnawa",
+      "region": "north",
+      "country": "Morocco",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the spiritual music of Morocco with the guembri lute?",
+      "options": [
+        "Gnawa",
+        "Raï",
+        "Chaabi",
+        "Mizwad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gnawa is a music tradition of Morocco.",
+      "sources": [
+        {
+          "title": "Gnawa",
+          "url": "https://en.wikipedia.org/wiki/Gnawa",
+          "claim": "Gnawa is a music tradition of Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_umm_kulthum",
+      "region": "north",
+      "country": "Egypt",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the voice of twentieth-century Egyptian song?",
+      "options": [
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled",
+        "Rachid Taha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Umm Kulthum was an Egyptian singer.",
+      "sources": [
+        {
+          "title": "Umm Kulthum",
+          "url": "https://en.wikipedia.org/wiki/Umm_Kulthum",
+          "claim": "Umm Kulthum was an Egyptian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_amr_diab",
+      "region": "north",
+      "country": "Egypt",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the Egyptian pop star associated with the Mediterranean sound?",
+      "options": [
+        "Amr Diab",
+        "Umm Kulthum",
+        "Cheb Khaled",
+        "Rachid Taha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Amr Diab is an Egyptian singer.",
+      "sources": [
+        {
+          "title": "Amr Diab",
+          "url": "https://en.wikipedia.org/wiki/Amr_Diab",
+          "claim": "Amr Diab is an Egyptian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_khaled_musician",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the king of raï?",
+      "options": [
+        "Cheb Khaled",
+        "Umm Kulthum",
+        "Amr Diab",
+        "Rachid Taha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Khaled is an Algerian raï singer.",
+      "sources": [
+        {
+          "title": "Khaled (musician)",
+          "url": "https://en.wikipedia.org/wiki/Khaled_(musician)",
+          "claim": "Khaled is an Algerian raï singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_chaabi_morocco",
+      "region": "north",
+      "country": "Morocco",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a popular Moroccan party music?",
+      "options": [
+        "Chaabi",
+        "Raï",
+        "Gnawa",
+        "Mizwad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chaabi is a popular music of Morocco.",
+      "sources": [
+        {
+          "title": "Chaabi (Morocco)",
+          "url": "https://en.wikipedia.org/wiki/Chaabi_(Morocco)",
+          "claim": "Chaabi is a popular music of Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_mezwed",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is bagpipe-driven popular music of Tunisia?",
+      "options": [
+        "Mizwad",
+        "Raï",
+        "Gnawa",
+        "Chaabi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mezwed is a music genre from Tunisia.",
+      "sources": [
+        {
+          "title": "Mezwed",
+          "url": "https://en.wikipedia.org/wiki/Mezwed",
+          "claim": "Mezwed is a music genre from Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_shaabi",
+      "region": "north",
+      "country": "Egypt",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is street pop of Cairo?",
+      "options": [
+        "Shaabi",
+        "Raï",
+        "Gnawa",
+        "Chaabi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shaabi is a popular music of Egypt.",
+      "sources": [
+        {
+          "title": "Shaabi",
+          "url": "https://en.wikipedia.org/wiki/Shaabi",
+          "claim": "Shaabi is a popular music of Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_gnaoua_world_music_festival",
+      "region": "north",
+      "country": "Morocco",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the annual gathering in Essaouira?",
+      "options": [
+        "Gnawa festival",
+        "Raï",
+        "Chaabi",
+        "Mizwad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Gnaoua festival is held in Essaouira, Morocco.",
+      "sources": [
+        {
+          "title": "Gnaoua World Music Festival",
+          "url": "https://en.wikipedia.org/wiki/Gnaoua_World_Music_Festival",
+          "claim": "The Gnaoua festival is held in Essaouira, Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_rachid_taha",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the singer who mixed raï and rock?",
+      "options": [
+        "Rachid Taha",
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rachid Taha was an Algerian singer.",
+      "sources": [
+        {
+          "title": "Rachid Taha",
+          "url": "https://en.wikipedia.org/wiki/Rachid_Taha",
+          "claim": "Rachid Taha was an Algerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_andalusi_classical_music",
+      "region": "north",
+      "country": "Morocco",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the classical suite tradition of the Maghreb?",
+      "options": [
+        "Andalusian nuba",
+        "Raï",
+        "Gnawa",
+        "Chaabi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Andalusi music is performed in North Africa.",
+      "sources": [
+        {
+          "title": "Andalusi classical music",
+          "url": "https://en.wikipedia.org/wiki/Andalusi_classical_music",
+          "claim": "Andalusi music is performed in North Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_oud",
+      "region": "north",
+      "country": "Egypt",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the lute at the centre of Egyptian orchestras?",
+      "options": [
+        "Oud",
+        "Raï",
+        "Gnawa",
+        "Chaabi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The oud is a lute used in Egyptian music.",
+      "sources": [
+        {
+          "title": "Oud",
+          "url": "https://en.wikipedia.org/wiki/Oud",
+          "claim": "The oud is a lute used in Egyptian music",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_mohamed_mounir",
+      "region": "north",
+      "country": "Egypt",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Nubian-Egyptian singer of Cairo nights?",
+      "options": [
+        "Mohamed Mounir",
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mohamed Mounir is an Egyptian singer.",
+      "sources": [
+        {
+          "title": "Mohamed Mounir",
+          "url": "https://en.wikipedia.org/wiki/Mohamed_Mounir",
+          "claim": "Mohamed Mounir is an Egyptian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_dhafer_youssef",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Tunisian oud player and singer?",
+      "options": [
+        "Dhafer Youssef",
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dhafer Youssef is a Tunisian musician.",
+      "sources": [
+        {
+          "title": "Dhafer Youssef",
+          "url": "https://en.wikipedia.org/wiki/Dhafer_Youssef",
+          "claim": "Dhafer Youssef is a Tunisian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_music_of_sudan",
+      "region": "north",
+      "country": "Sudan",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a Sudanese song style, better known through modern pop?",
+      "options": [
+        "Haidari",
+        "Raï",
+        "Gnawa",
+        "Chaabi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sudan has a distinct popular music.",
+      "sources": [
+        {
+          "title": "Music of Sudan",
+          "url": "https://en.wikipedia.org/wiki/Music_of_Sudan",
+          "claim": "Sudan has a distinct popular music",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_nass_el_ghiwane",
+      "region": "north",
+      "country": "Morocco",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the band that modernised Moroccan folk?",
+      "options": [
+        "Nass El Ghiwane",
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nass El Ghiwane is a Moroccan band.",
+      "sources": [
+        {
+          "title": "Nass El Ghiwane",
+          "url": "https://en.wikipedia.org/wiki/Nass_El_Ghiwane",
+          "claim": "Nass El Ghiwane is a Moroccan band",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_souad_massi",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Souad Massi",
+        "Umm Kulthum",
+        "Amr Diab",
+        "Cheb Khaled"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Souad Massi is an Algerian singer.",
+      "sources": [
+        {
+          "title": "Souad Massi",
+          "url": "https://en.wikipedia.org/wiki/Souad_Massi",
+          "claim": "Souad Massi is an Algerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_egypt",
+      "region": "north",
+      "country": "Egypt",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Fairuz is not Egyptian",
+        "Raï",
+        "Gnawa",
+        "Chaabi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egyptian music is famous worldwide.",
+      "sources": [
+        {
+          "title": "Egypt",
+          "url": "https://en.wikipedia.org/wiki/Egypt",
+          "claim": "Egyptian music is famous worldwide",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_djellaba",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a hooded robe of the Maghreb?",
+      "options": [
+        "Djellaba",
+        "Babouche",
+        "Takchita",
+        "Galabeya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The djellaba is a robe worn in Morocco.",
+      "sources": [
+        {
+          "title": "Djellaba",
+          "url": "https://en.wikipedia.org/wiki/Djellaba",
+          "claim": "The djellaba is a robe worn in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_babouche",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is leather slippers of Moroccan dress?",
+      "options": [
+        "Babouche",
+        "Djellaba",
+        "Takchita",
+        "Galabeya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Babouches are slippers worn in Morocco.",
+      "sources": [
+        {
+          "title": "Babouche",
+          "url": "https://en.wikipedia.org/wiki/Babouche",
+          "claim": "Babouches are slippers worn in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_takchita",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a formal caftan worn at Moroccan celebrations?",
+      "options": [
+        "Takchita",
+        "Djellaba",
+        "Babouche",
+        "Galabeya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The takchita is a Moroccan caftan.",
+      "sources": [
+        {
+          "title": "Takchita",
+          "url": "https://en.wikipedia.org/wiki/Takchita",
+          "claim": "The takchita is a Moroccan caftan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_galabeya",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the long robe of everyday Egyptian dress?",
+      "options": [
+        "Galabeya",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The galabeya is a robe worn in Egypt.",
+      "sources": [
+        {
+          "title": "Galabeya",
+          "url": "https://en.wikipedia.org/wiki/Galabeya",
+          "claim": "The galabeya is a robe worn in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_fez_hat",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the red brimless cap, named for the Moroccan city?",
+      "options": [
+        "Fez hat",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The fez is a red cap associated with North Africa.",
+      "sources": [
+        {
+          "title": "Fez (hat)",
+          "url": "https://en.wikipedia.org/wiki/Fez_(hat)",
+          "claim": "The fez is a red cap associated with North Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_kaftan",
+      "region": "north",
+      "country": "North Africa",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a long decorated robe worn across the Maghreb?",
+      "options": [
+        "Kaftan",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kaftan is worn in North Africa.",
+      "sources": [
+        {
+          "title": "Kaftan",
+          "url": "https://en.wikipedia.org/wiki/Kaftan",
+          "claim": "The kaftan is worn in North Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_amazigh_people",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Amazigh silver",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Amazigh jewellery is worn in Morocco.",
+      "sources": [
+        {
+          "title": "Amazigh people",
+          "url": "https://en.wikipedia.org/wiki/Amazigh_people",
+          "claim": "Amazigh jewellery is worn in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_chechia",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a soft red cap of Tunisia?",
+      "options": [
+        "Chechia",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The chechia is a cap worn in Tunisia.",
+      "sources": [
+        {
+          "title": "Chechia",
+          "url": "https://en.wikipedia.org/wiki/Chechia",
+          "claim": "The chechia is a cap worn in Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_zellige",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is cut mosaic tile used on walls and floors?",
+      "options": [
+        "Zellige",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zellige is a mosaic tilework of Morocco.",
+      "sources": [
+        {
+          "title": "Zellige",
+          "url": "https://en.wikipedia.org/wiki/Zellige",
+          "claim": "Zellige is a mosaic tilework of Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_cartouche",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is gold pendants shaped like royal name rings, sold as modern style?",
+      "options": [
+        "Cartouche jewellery",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A cartouche is an Egyptian name ring.",
+      "sources": [
+        {
+          "title": "Cartouche",
+          "url": "https://en.wikipedia.org/wiki/Cartouche",
+          "claim": "A cartouche is an Egyptian name ring",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_melhafa",
+      "region": "north",
+      "country": "Mauritania",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the long drape worn by Moorish women?",
+      "options": [
+        "Melhafa",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The melhafa is a garment worn in Mauritania.",
+      "sources": [
+        {
+          "title": "Melhafa",
+          "url": "https://en.wikipedia.org/wiki/Melhafa",
+          "claim": "The melhafa is a garment worn in Mauritania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_culture_of_sudan",
+      "region": "north",
+      "country": "Sudan",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the long wrap worn by Sudanese women?",
+      "options": [
+        "Tobe",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sudanese women wear a long wrap called a tobe.",
+      "sources": [
+        {
+          "title": "Culture of Sudan",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Sudan",
+          "claim": "Sudanese women wear a long wrap called a tobe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_djellaba2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a light tunic worn in the Maghreb?",
+      "options": [
+        "Gandora",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Light tunics are worn in Morocco.",
+      "sources": [
+        {
+          "title": "Djellaba",
+          "url": "https://en.wikipedia.org/wiki/Djellaba",
+          "claim": "Light tunics are worn in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_karakou",
+      "region": "north",
+      "country": "Algeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is an embroidered velvet jacket of Algerian dress?",
+      "options": [
+        "Karakou",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The karakou is an Algerian jacket.",
+      "sources": [
+        {
+          "title": "Karakou",
+          "url": "https://en.wikipedia.org/wiki/Karakou",
+          "claim": "The karakou is an Algerian jacket",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_culture_of_libya",
+      "region": "north",
+      "country": "Libya",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a traditional Libyan wrap for men?",
+      "options": [
+        "Jard",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Traditional dress is worn in Libya.",
+      "sources": [
+        {
+          "title": "Culture of Libya",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Libya",
+          "claim": "Traditional dress is worn in Libya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_nubians",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is beadwork of communities in Egypt and Sudan?",
+      "options": [
+        "Nubian beads",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nubian dress includes distinctive jewellery.",
+      "sources": [
+        {
+          "title": "Nubians",
+          "url": "https://en.wikipedia.org/wiki/Nubians",
+          "claim": "Nubian dress includes distinctive jewellery",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_takchita2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the wide belt that cinches a caftan?",
+      "options": [
+        "Belts of silk",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A Moroccan caftan is often worn with a belt.",
+      "sources": [
+        {
+          "title": "Takchita",
+          "url": "https://en.wikipedia.org/wiki/Takchita",
+          "claim": "A Moroccan caftan is often worn with a belt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fash_sefsari",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a white wrap once common in Tunis?",
+      "options": [
+        "Sefsari",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The sefsari is a wrap worn in Tunisia.",
+      "sources": [
+        {
+          "title": "Sefsari",
+          "url": "https://en.wikipedia.org/wiki/Sefsari",
+          "claim": "The sefsari is a wrap worn in Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_arabic",
+      "region": "north",
+      "country": "North Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the major language of Egypt and the Maghreb?",
+      "options": [
+        "Arabic",
+        "Darija",
+        "Tamazight",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Arabic is a language of North Africa.",
+      "sources": [
+        {
+          "title": "Arabic",
+          "url": "https://en.wikipedia.org/wiki/Arabic",
+          "claim": "Arabic is a language of North Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_moroccan_arabic",
+      "region": "north",
+      "country": "Morocco",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Darija",
+        "Arabic",
+        "Tamazight",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Darija is Moroccan Arabic.",
+      "sources": [
+        {
+          "title": "Moroccan Arabic",
+          "url": "https://en.wikipedia.org/wiki/Moroccan_Arabic",
+          "claim": "Darija is Moroccan Arabic",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_berber_languages",
+      "region": "north",
+      "country": "North Africa",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a group of Amazigh languages?",
+      "options": [
+        "Tamazight",
+        "Arabic",
+        "Darija",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tamazight refers to Berber languages of North Africa.",
+      "sources": [
+        {
+          "title": "Berber languages",
+          "url": "https://en.wikipedia.org/wiki/Berber_languages",
+          "claim": "Tamazight refers to Berber languages of North Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_egyptian_arabic",
+      "region": "north",
+      "country": "Egypt",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the colloquial of Egypt?",
+      "options": [
+        "Egyptian Arabic",
+        "Darija",
+        "Tamazight",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egyptian Arabic is spoken in Egypt.",
+      "sources": [
+        {
+          "title": "Egyptian Arabic",
+          "url": "https://en.wikipedia.org/wiki/Egyptian_Arabic",
+          "claim": "Egyptian Arabic is spoken in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_hassaniya_arabic",
+      "region": "north",
+      "country": "Mauritania",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the Arabic variety of Mauritania?",
+      "options": [
+        "Hassaniya",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hassaniya is an Arabic variety spoken in Mauritania.",
+      "sources": [
+        {
+          "title": "Hassaniya Arabic",
+          "url": "https://en.wikipedia.org/wiki/Hassaniya_Arabic",
+          "claim": "Hassaniya is an Arabic variety spoken in Mauritania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_coptic_language",
+      "region": "north",
+      "country": "Egypt",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name the liturgical language of the Church?",
+      "options": [
+        "Coptic",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Coptic is a liturgical language in Egypt.",
+      "sources": [
+        {
+          "title": "Coptic language",
+          "url": "https://en.wikipedia.org/wiki/Coptic_language",
+          "claim": "Coptic is a liturgical language in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_sudanese_arabic",
+      "region": "north",
+      "country": "Sudan",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the colloquial of Sudan?",
+      "options": [
+        "Sudanese Arabic",
+        "Darija",
+        "Tamazight",
+        "Egyptian Arabic"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sudanese Arabic is spoken in Sudan.",
+      "sources": [
+        {
+          "title": "Sudanese Arabic",
+          "url": "https://en.wikipedia.org/wiki/Sudanese_Arabic",
+          "claim": "Sudanese Arabic is spoken in Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_arabic2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name an Arabic thank-you used across North Africa?",
+      "options": [
+        "Shukran",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shukran means thank you in Arabic.",
+      "sources": [
+        {
+          "title": "Arabic",
+          "url": "https://en.wikipedia.org/wiki/Arabic",
+          "claim": "Shukran means thank you in Arabic",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_kabyle_language",
+      "region": "north",
+      "country": "Algeria",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a Tamazight language of Algeria?",
+      "options": [
+        "Kabyle",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kabyle is a Berber language of Algeria.",
+      "sources": [
+        {
+          "title": "Kabyle language",
+          "url": "https://en.wikipedia.org/wiki/Kabyle_language",
+          "claim": "Kabyle is a Berber language of Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_shilha_language",
+      "region": "north",
+      "country": "Morocco",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name a Tamazight language of southern Morocco?",
+      "options": [
+        "Tashelhit",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tashelhit is a Berber language of Morocco.",
+      "sources": [
+        {
+          "title": "Shilha language",
+          "url": "https://en.wikipedia.org/wiki/Shilha_language",
+          "claim": "Tashelhit is a Berber language of Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_tuareg_languages",
+      "region": "north",
+      "country": "Libya",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a Tuareg language of the Sahara?",
+      "options": [
+        "Tamasheq",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tamasheq is a Tuareg language.",
+      "sources": [
+        {
+          "title": "Tuareg languages",
+          "url": "https://en.wikipedia.org/wiki/Tuareg_languages",
+          "claim": "Tamasheq is a Tuareg language",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_arabic3",
+      "region": "north",
+      "country": "Egypt",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a warm Arabic hello?",
+      "options": [
+        "Ahlan",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ahlan is an Arabic greeting.",
+      "sources": [
+        {
+          "title": "Arabic",
+          "url": "https://en.wikipedia.org/wiki/Arabic",
+          "claim": "Ahlan is an Arabic greeting",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_tunisian_arabic",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the colloquial of Tunisia?",
+      "options": [
+        "Tunisian Arabic",
+        "Darija",
+        "Tamazight",
+        "Egyptian Arabic"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tunisian Arabic is spoken in Tunisia.",
+      "sources": [
+        {
+          "title": "Tunisian Arabic",
+          "url": "https://en.wikipedia.org/wiki/Tunisian_Arabic",
+          "claim": "Tunisian Arabic is spoken in Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_nubian_languages",
+      "region": "north",
+      "country": "Egypt",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name languages of communities along the Nile?",
+      "options": [
+        "Nubian",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nubian languages are spoken in Egypt and Sudan.",
+      "sources": [
+        {
+          "title": "Nubian languages",
+          "url": "https://en.wikipedia.org/wiki/Nubian_languages",
+          "claim": "Nubian languages are spoken in Egypt and Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_morocco",
+      "region": "north",
+      "country": "Morocco",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name is widely used in Moroccan cities?",
+      "options": [
+        "French Morocco",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "French is widely spoken in Morocco.",
+      "sources": [
+        {
+          "title": "Morocco",
+          "url": "https://en.wikipedia.org/wiki/Morocco",
+          "claim": "French is widely spoken in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_algeria",
+      "region": "north",
+      "country": "Algeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "French Algeria",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "French is widely used in Algeria.",
+      "sources": [
+        {
+          "title": "Algeria",
+          "url": "https://en.wikipedia.org/wiki/Algeria",
+          "claim": "French is widely used in Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_beja_language",
+      "region": "north",
+      "country": "Sudan",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a language of eastern Sudan?",
+      "options": [
+        "Beja",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Beja is a language of Sudan.",
+      "sources": [
+        {
+          "title": "Beja language",
+          "url": "https://en.wikipedia.org/wiki/Beja_language",
+          "claim": "Beja is a language of Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_tifinagh",
+      "region": "north",
+      "country": "Morocco",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name the Amazigh alphabet seen on Moroccan signs?",
+      "options": [
+        "Tifinagh",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tifinagh is an Amazigh script.",
+      "sources": [
+        {
+          "title": "Tifinagh",
+          "url": "https://en.wikipedia.org/wiki/Tifinagh",
+          "claim": "Tifinagh is an Amazigh script",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_gnaoua_world_music_festival",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival",
+        "Rose Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Gnaoua festival takes place in Essaouira.",
+      "sources": [
+        {
+          "title": "Gnaoua World Music Festival",
+          "url": "https://en.wikipedia.org/wiki/Gnaoua_World_Music_Festival",
+          "claim": "The Gnaoua festival takes place in Essaouira",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_carthage_film_festival",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Carthage Film Festival",
+        "Gnaoua Festival",
+        "Cairo Film Festival",
+        "Rose Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Carthage Film Festival is held in Tunisia.",
+      "sources": [
+        {
+          "title": "Carthage Film Festival",
+          "url": "https://en.wikipedia.org/wiki/Carthage_Film_Festival",
+          "claim": "The Carthage Film Festival is held in Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_cairo_international_film_festival",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Cairo Film Festival",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Rose Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Cairo International Film Festival is held in Egypt.",
+      "sources": [
+        {
+          "title": "Cairo International Film Festival",
+          "url": "https://en.wikipedia.org/wiki/Cairo_International_Film_Festival",
+          "claim": "The Cairo International Film Festival is held in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_kelaat_m_gouna",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Rose Festival",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kelaa M'Gouna holds a rose festival in Morocco.",
+      "sources": [
+        {
+          "title": "Kelaat M'Gouna",
+          "url": "https://en.wikipedia.org/wiki/Kelaat_M'Gouna",
+          "claim": "Kelaa M'Gouna holds a rose festival in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_imilchil",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is a public betrothal festival in the Atlas?",
+      "options": [
+        "Imilchil",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Imilchil is known for a marriage festival in Morocco.",
+      "sources": [
+        {
+          "title": "Imilchil",
+          "url": "https://en.wikipedia.org/wiki/Imilchil",
+          "claim": "Imilchil is known for a marriage festival in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_fantasia_performance",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is the fantasia cavalry display at Moroccan festivals?",
+      "options": [
+        "Tbourida",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tbourida is a Moroccan horse performance.",
+      "sources": [
+        {
+          "title": "Fantasia (performance)",
+          "url": "https://en.wikipedia.org/wiki/Fantasia_(performance)",
+          "claim": "Tbourida is a Moroccan horse performance",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_mawazine",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is a large music festival in Rabat?",
+      "options": [
+        "Mawazine",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mawazine is a music festival in Morocco.",
+      "sources": [
+        {
+          "title": "Mawazine",
+          "url": "https://en.wikipedia.org/wiki/Mawazine",
+          "claim": "Mawazine is a music festival in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_douz",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Festival of the Sahara",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Douz hosts the Festival of the Sahara in Tunisia.",
+      "sources": [
+        {
+          "title": "Douz",
+          "url": "https://en.wikipedia.org/wiki/Douz",
+          "claim": "Douz hosts the Festival of the Sahara in Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_agadir",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is an Amazigh arts festival in Agadir?",
+      "options": [
+        "Timitar",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Agadir hosts cultural festivals in Morocco.",
+      "sources": [
+        {
+          "title": "Agadir",
+          "url": "https://en.wikipedia.org/wiki/Agadir",
+          "claim": "Agadir hosts cultural festivals in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_sham_ennessim",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is the Egyptian spring holiday picnic?",
+      "options": [
+        "Sham El-Nessim",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sham El-Nessim is a spring festival in Egypt.",
+      "sources": [
+        {
+          "title": "Sham Ennessim",
+          "url": "https://en.wikipedia.org/wiki/Sham_Ennessim",
+          "claim": "Sham El-Nessim is a spring festival in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_public_holidays_in_morocco",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is Morocco's national day on 18 November?",
+      "options": [
+        "Independence Day",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Independence Day is a public holiday in Morocco.",
+      "sources": [
+        {
+          "title": "Public holidays in Morocco",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Morocco",
+          "claim": "Independence Day is a public holiday in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_public_holidays_in_algeria",
+      "region": "north",
+      "country": "Algeria",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is Algeria's national day on 5 July?",
+      "options": [
+        "Independence Day",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Algeria celebrates independence on 5 July.",
+      "sources": [
+        {
+          "title": "Public holidays in Algeria",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Algeria",
+          "claim": "Algeria celebrates independence on 5 July",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_public_holidays_in_tunisia",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is Tunisia's national day on 20 March?",
+      "options": [
+        "Independence Day",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tunisia celebrates independence on 20 March.",
+      "sources": [
+        {
+          "title": "Public holidays in Tunisia",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Tunisia",
+          "claim": "Tunisia celebrates independence on 20 March",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_khartoum",
+      "region": "north",
+      "country": "Sudan",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is public devotional music gatherings in Khartoum?",
+      "options": [
+        "Sufi dhikr nights",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Khartoum is a centre of Sudanese culture.",
+      "sources": [
+        {
+          "title": "Khartoum",
+          "url": "https://en.wikipedia.org/wiki/Khartoum",
+          "claim": "Khartoum is a centre of Sudanese culture",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_public_holidays_in_egypt",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is Egypt's public holiday on 23 July?",
+      "options": [
+        "National day",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egypt marks a national day on 23 July.",
+      "sources": [
+        {
+          "title": "Public holidays in Egypt",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Egypt",
+          "claim": "Egypt marks a national day on 23 July",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_ghadames",
+      "region": "north",
+      "country": "Libya",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a cultural gathering in the old desert town?",
+      "options": [
+        "Ghadames festival",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ghadames is a historic town in Libya.",
+      "sources": [
+        {
+          "title": "Ghadames",
+          "url": "https://en.wikipedia.org/wiki/Ghadames",
+          "claim": "Ghadames is a historic town in Libya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_nouakchott",
+      "region": "north",
+      "country": "Mauritania",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is cultural gatherings in Nouakchott?",
+      "options": [
+        "Nomad festival",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nouakchott hosts cultural events in Mauritania.",
+      "sources": [
+        {
+          "title": "Nouakchott",
+          "url": "https://en.wikipedia.org/wiki/Nouakchott",
+          "claim": "Nouakchott hosts cultural events in Mauritania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_fez_morocco",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Fes Festival",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fez hosts a sacred music festival.",
+      "sources": [
+        {
+          "title": "Fez, Morocco",
+          "url": "https://en.wikipedia.org/wiki/Fez,_Morocco",
+          "claim": "Fez hosts a sacred music festival",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_wedd_henna",
+      "region": "north",
+      "country": "Morocco",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call painting the bride's hands before a Moroccan wedding?",
+      "options": [
+        "Henna night",
+        "Takchita",
+        "Negafa",
+        "Zaffa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Henna is applied before Moroccan weddings.",
+      "sources": [
+        {
+          "title": "Henna",
+          "url": "https://en.wikipedia.org/wiki/Henna",
+          "claim": "Henna is applied before Moroccan weddings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_wedd_takchita",
+      "region": "north",
+      "country": "Morocco",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call the formal caftan a Moroccan bride changes into?",
+      "options": [
+        "Takchita",
+        "Henna night",
+        "Negafa",
+        "Zaffa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The takchita is worn by Moroccan brides.",
+      "sources": [
+        {
+          "title": "Takchita",
+          "url": "https://en.wikipedia.org/wiki/Takchita",
+          "claim": "The takchita is worn by Moroccan brides",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_wedd_moroccan_wedding",
+      "region": "north",
+      "country": "Morocco",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call the specialist who dresses the bride?",
+      "options": [
+        "Negafa",
+        "Henna night",
+        "Takchita",
+        "Zaffa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A negafa dresses the bride at a Moroccan wedding.",
+      "sources": [
+        {
+          "title": "Moroccan wedding",
+          "url": "https://en.wikipedia.org/wiki/Moroccan_wedding",
+          "claim": "A negafa dresses the bride at a Moroccan wedding",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_wedd_zaffa",
+      "region": "north",
+      "country": "Morocco",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Zaffa",
+        "Henna night",
+        "Takchita",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The zaffa is a wedding procession.",
+      "sources": [
+        {
+          "title": "Zaffa",
+          "url": "https://en.wikipedia.org/wiki/Zaffa",
+          "claim": "The zaffa is a wedding procession",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_wedd_ululation",
+      "region": "north",
+      "country": "Morocco",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call the joyful zaghareet when the couple appears?",
+      "options": [
+        "Ululation",
+        "Henna night",
+        "Takchita",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ululation is heard at North African weddings.",
+      "sources": [
+        {
+          "title": "Ululation",
+          "url": "https://en.wikipedia.org/wiki/Ululation",
+          "claim": "Ululation is heard at North African weddings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_wedd_egyptian_wedding",
+      "region": "north",
+      "country": "Egypt",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call the decorated stage where the couple sits?",
+      "options": [
+        "Kosha",
+        "Henna night",
+        "Takchita",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egyptian couples sit on a decorated wedding stage.",
+      "sources": [
+        {
+          "title": "Egyptian wedding",
+          "url": "https://en.wikipedia.org/wiki/Egyptian_wedding",
+          "claim": "Egyptian couples sit on a decorated wedding stage",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_wedd_karakou",
+      "region": "north",
+      "country": "Algeria",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call an embroidered jacket worn at Algerian celebrations?",
+      "options": [
+        "Karakou",
+        "Henna night",
+        "Takchita",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The karakou is an embroidered jacket from Algeria.",
+      "sources": [
+        {
+          "title": "Karakou",
+          "url": "https://en.wikipedia.org/wiki/Karakou",
+          "claim": "The karakou is an embroidered jacket from Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_wedd_melhafa",
+      "region": "north",
+      "country": "Mauritania",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call the drape worn by Mauritanian women?",
+      "options": [
+        "Melhafa",
+        "Henna night",
+        "Takchita",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The melhafa is a drape worn in Mauritania.",
+      "sources": [
+        {
+          "title": "Melhafa",
+          "url": "https://en.wikipedia.org/wiki/Melhafa",
+          "claim": "The melhafa is a drape worn in Mauritania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_ancient_egypt",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the civilisation of the pharaohs along the Nile?",
+      "options": [
+        "Ancient Egypt",
+        "Kingdom of Kush",
+        "Meroë",
+        "Fatimid Cairo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ancient Egypt was a civilisation of the Nile.",
+      "sources": [
+        {
+          "title": "Ancient Egypt",
+          "url": "https://en.wikipedia.org/wiki/Ancient_Egypt",
+          "claim": "Ancient Egypt was a civilisation of the Nile",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_carthage",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the ancient maritime city in today's Tunisia?",
+      "options": [
+        "Carthage history",
+        "Rosetta Stone",
+        "Al-Qarawiyyin",
+        "Al-Azhar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Carthage was an ancient city in what is now Tunisia.",
+      "sources": [
+        {
+          "title": "Carthage",
+          "url": "https://en.wikipedia.org/wiki/Carthage",
+          "claim": "Carthage was an ancient city in what is now Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_kingdom_of_kush",
+      "region": "north",
+      "country": "Sudan",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Kingdom of Kush",
+        "Ancient Egypt",
+        "Meroë",
+        "Fatimid Cairo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Kingdom of Kush was in Nubia, in today's Sudan.",
+      "sources": [
+        {
+          "title": "Kingdom of Kush",
+          "url": "https://en.wikipedia.org/wiki/Kingdom_of_Kush",
+          "claim": "The Kingdom of Kush was in Nubia, in today's Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_rosetta_stone",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the decree that helped scholars read hieroglyphs?",
+      "options": [
+        "Rosetta Stone",
+        "Carthage history",
+        "Al-Qarawiyyin",
+        "Al-Azhar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Rosetta Stone records a decree in three scripts.",
+      "sources": [
+        {
+          "title": "Rosetta Stone",
+          "url": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+          "claim": "The Rosetta Stone records a decree in three scripts",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_university_of_al_qarawiyyin",
+      "region": "north",
+      "country": "Morocco",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a historic university and mosque in Fez?",
+      "options": [
+        "Al-Qarawiyyin",
+        "Carthage history",
+        "Rosetta Stone",
+        "Al-Azhar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Al-Qarawiyyin is a historic university in Fez.",
+      "sources": [
+        {
+          "title": "University of al-Qarawiyyin",
+          "url": "https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin",
+          "claim": "Al-Qarawiyyin is a historic university in Fez",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_al_azhar_university",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the historic mosque-university in Cairo?",
+      "options": [
+        "Al-Azhar",
+        "Carthage history",
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Al-Azhar is a historic university in Cairo.",
+      "sources": [
+        {
+          "title": "Al-Azhar University",
+          "url": "https://en.wikipedia.org/wiki/Al-Azhar_University",
+          "claim": "Al-Azhar is a historic university in Cairo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_kairouan",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a holy city and early Islamic capital in Tunisia?",
+      "options": [
+        "Kairouan",
+        "Carthage history",
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kairouan is a historic city in Tunisia.",
+      "sources": [
+        {
+          "title": "Kairouan",
+          "url": "https://en.wikipedia.org/wiki/Kairouan",
+          "claim": "Kairouan is a historic city in Tunisia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_timgad",
+      "region": "north",
+      "country": "Algeria",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the Roman planned city in Algeria?",
+      "options": [
+        "Timgad",
+        "Carthage history",
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Timgad is a Roman city in Algeria.",
+      "sources": [
+        {
+          "title": "Timgad",
+          "url": "https://en.wikipedia.org/wiki/Timgad",
+          "claim": "Timgad is a Roman city in Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_library_of_alexandria",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the ancient of the Ptolemaic city?",
+      "options": [
+        "Library of Alexandria",
+        "Carthage history",
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Library of Alexandria was in Egypt.",
+      "sources": [
+        {
+          "title": "Library of Alexandria",
+          "url": "https://en.wikipedia.org/wiki/Library_of_Alexandria",
+          "claim": "The Library of Alexandria was in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_meroe",
+      "region": "north",
+      "country": "Sudan",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the Kushite city of pyramids?",
+      "options": [
+        "Meroë",
+        "Ancient Egypt",
+        "Kingdom of Kush",
+        "Fatimid Cairo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Meroë was a city of the Kingdom of Kush.",
+      "sources": [
+        {
+          "title": "Meroë",
+          "url": "https://en.wikipedia.org/wiki/Mero%C3%AB",
+          "claim": "Meroë was a city of the Kingdom of Kush",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_fatimid_caliphate",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the dynasty that founded?",
+      "options": [
+        "Fatimid Cairo",
+        "Ancient Egypt",
+        "Kingdom of Kush",
+        "Meroë"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Fatimids founded Cairo.",
+      "sources": [
+        {
+          "title": "Fatimid Caliphate",
+          "url": "https://en.wikipedia.org/wiki/Fatimid_Caliphate",
+          "claim": "The Fatimids founded Cairo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_fatima_al_fihri",
+      "region": "north",
+      "country": "Morocco",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the woman credited with founding al-Qarawiyyin?",
+      "options": [
+        "Fatima al-Fihri",
+        "Carthage history",
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fatima al-Fihri founded the al-Qarawiyyin mosque.",
+      "sources": [
+        {
+          "title": "Fatima al-Fihri",
+          "url": "https://en.wikipedia.org/wiki/Fatima_al-Fihri",
+          "claim": "Fatima al-Fihri founded the al-Qarawiyyin mosque",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_ghadames",
+      "region": "north",
+      "country": "Libya",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a UNESCO old town in the Libyan Sahara?",
+      "options": [
+        "Ghadames old town",
+        "Carthage history",
+        "Rosetta Stone",
+        "Al-Qarawiyyin"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ghadames is a historic town in Libya.",
+      "sources": [
+        {
+          "title": "Ghadames",
+          "url": "https://en.wikipedia.org/wiki/Ghadames",
+          "claim": "Ghadames is a historic town in Libya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_giza_pyramid_complex",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the stone tombs of the Old Kingdom?",
+      "options": [
+        "Pyramids of Giza",
+        "Ancient Egypt",
+        "Kingdom of Kush",
+        "Meroë"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Pyramids of Giza are in Egypt.",
+      "sources": [
+        {
+          "title": "Giza pyramid complex",
+          "url": "https://en.wikipedia.org/wiki/Giza_pyramid_complex",
+          "claim": "The Pyramids of Giza are in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_almoravid_dynasty",
+      "region": "north",
+      "country": "Algeria",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a medieval empire that rose in the western Sahara and Morocco?",
+      "options": [
+        "Almoravid",
+        "Ancient Egypt",
+        "Kingdom of Kush",
+        "Meroë"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Almoravid dynasty ruled parts of the Maghreb.",
+      "sources": [
+        {
+          "title": "Almoravid dynasty",
+          "url": "https://en.wikipedia.org/wiki/Almoravid_dynasty",
+          "claim": "The Almoravid dynasty ruled parts of the Maghreb",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_naguib_mahfouz",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Egyptian novelist who won the Nobel Prize?",
+      "options": [
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun",
+        "Assia Djebar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Naguib Mahfouz was an Egyptian writer.",
+      "sources": [
+        {
+          "title": "Naguib Mahfouz",
+          "url": "https://en.wikipedia.org/wiki/Naguib_Mahfouz",
+          "claim": "Naguib Mahfouz was an Egyptian writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_umm_kulthum",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the most famous singer of modern Egypt?",
+      "options": [
+        "Umm Kulthum",
+        "Naguib Mahfouz",
+        "Tahar Ben Jelloun",
+        "Assia Djebar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Umm Kulthum was an Egyptian singer.",
+      "sources": [
+        {
+          "title": "Umm Kulthum",
+          "url": "https://en.wikipedia.org/wiki/Umm_Kulthum",
+          "claim": "Umm Kulthum was an Egyptian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_tahar_ben_jelloun",
+      "region": "north",
+      "country": "Morocco",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Moroccan novelist who writes in French?",
+      "options": [
+        "Tahar Ben Jelloun",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Assia Djebar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tahar Ben Jelloun is a Moroccan writer.",
+      "sources": [
+        {
+          "title": "Tahar Ben Jelloun",
+          "url": "https://en.wikipedia.org/wiki/Tahar_Ben_Jelloun",
+          "claim": "Tahar Ben Jelloun is a Moroccan writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_assia_djebar",
+      "region": "north",
+      "country": "Algeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Algerian novelist and filmmaker?",
+      "options": [
+        "Assia Djebar",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Assia Djebar was an Algerian writer.",
+      "sources": [
+        {
+          "title": "Assia Djebar",
+          "url": "https://en.wikipedia.org/wiki/Assia_Djebar",
+          "claim": "Assia Djebar was an Algerian writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_nawal_el_saadawi",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Egyptian physician and feminist writer?",
+      "options": [
+        "Nawal El Saadawi",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nawal El Saadawi was an Egyptian writer.",
+      "sources": [
+        {
+          "title": "Nawal El Saadawi",
+          "url": "https://en.wikipedia.org/wiki/Nawal_El_Saadawi",
+          "claim": "Nawal El Saadawi was an Egyptian writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_ibn_battuta",
+      "region": "north",
+      "country": "Morocco",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the fourteenth-century traveller from Tangier?",
+      "options": [
+        "Ibn Battuta",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ibn Battuta was a Moroccan traveller.",
+      "sources": [
+        {
+          "title": "Ibn Battuta",
+          "url": "https://en.wikipedia.org/wiki/Ibn_Battuta",
+          "claim": "Ibn Battuta was a Moroccan traveller",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_fatima_al_fihri",
+      "region": "north",
+      "country": "Morocco",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the founder associated with al-Qarawiyyin?",
+      "options": [
+        "Fatima al-Fihri",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fatima al-Fihri was a Moroccan patron of learning.",
+      "sources": [
+        {
+          "title": "Fatima al-Fihri",
+          "url": "https://en.wikipedia.org/wiki/Fatima_al-Fihri",
+          "claim": "Fatima al-Fihri was a Moroccan patron of learning",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_ibn_khaldun",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the historian born in Tunis?",
+      "options": [
+        "Ibn Khaldun",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ibn Khaldun was a historian from Tunis.",
+      "sources": [
+        {
+          "title": "Ibn Khaldun",
+          "url": "https://en.wikipedia.org/wiki/Ibn_Khaldun",
+          "claim": "Ibn Khaldun was a historian from Tunis",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_mohamed_salah",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Egyptian footballer born in 1992?",
+      "options": [
+        "Mohamed Salah",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mohamed Salah is an Egyptian footballer born in 1992.",
+      "sources": [
+        {
+          "title": "Mohamed Salah",
+          "url": "https://en.wikipedia.org/wiki/Mohamed_Salah",
+          "claim": "Mohamed Salah is an Egyptian footballer born in 1992",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_riyad_mahrez",
+      "region": "north",
+      "country": "Algeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Algerian footballer who won the Premier League?",
+      "options": [
+        "Riyad Mahrez",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Riyad Mahrez is an Algerian footballer.",
+      "sources": [
+        {
+          "title": "Riyad Mahrez",
+          "url": "https://en.wikipedia.org/wiki/Riyad_Mahrez",
+          "claim": "Riyad Mahrez is an Algerian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_tayeb_salih",
+      "region": "north",
+      "country": "Sudan",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the novelist of Season of Migration to the North?",
+      "options": [
+        "Tayeb Salih",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tayeb Salih was a Sudanese writer.",
+      "sources": [
+        {
+          "title": "Tayeb Salih",
+          "url": "https://en.wikipedia.org/wiki/Tayeb_Salih",
+          "claim": "Tayeb Salih was a Sudanese writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_ahmed_zewail",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Egyptian chemist who won a Nobel Prize?",
+      "options": [
+        "Ahmed Zewail",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ahmed Zewail was an Egyptian chemist.",
+      "sources": [
+        {
+          "title": "Ahmed Zewail",
+          "url": "https://en.wikipedia.org/wiki/Ahmed_Zewail",
+          "claim": "Ahmed Zewail was an Egyptian chemist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_ons_jabeur",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Tunisian tennis star?",
+      "options": [
+        "Ons Jabeur",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ons Jabeur is a Tunisian tennis player.",
+      "sources": [
+        {
+          "title": "Ons Jabeur",
+          "url": "https://en.wikipedia.org/wiki/Ons_Jabeur",
+          "claim": "Ons Jabeur is a Tunisian tennis player",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_hisham_matar",
+      "region": "north",
+      "country": "Libya",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the Libyan-born novelist of The Return?",
+      "options": [
+        "Hisham Matar",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hisham Matar is a Libyan-born writer.",
+      "sources": [
+        {
+          "title": "Hisham Matar",
+          "url": "https://en.wikipedia.org/wiki/Hisham_Matar",
+          "claim": "Hisham Matar is a Libyan-born writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_leila_slimani",
+      "region": "north",
+      "country": "Morocco",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Moroccan writer who won the Prix Goncourt?",
+      "options": [
+        "Leila Slimani",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Leïla Slimani is a Moroccan writer.",
+      "sources": [
+        {
+          "title": "Leïla Slimani",
+          "url": "https://en.wikipedia.org/wiki/Le%C3%AFla_Slimani",
+          "claim": "Leïla Slimani is a Moroccan writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_cleopatra",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the last active ruler of the Ptolemaic Kingdom?",
+      "options": [
+        "Cleopatra",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cleopatra was a ruler of Egypt.",
+      "sources": [
+        {
+          "title": "Cleopatra",
+          "url": "https://en.wikipedia.org/wiki/Cleopatra",
+          "claim": "Cleopatra was a ruler of Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_hannibal",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Hannibal",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hannibal was a Carthaginian general.",
+      "sources": [
+        {
+          "title": "Hannibal",
+          "url": "https://en.wikipedia.org/wiki/Hannibal",
+          "claim": "Hannibal was a Carthaginian general",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_nefertiti",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the queen whose bust is world famous?",
+      "options": [
+        "Nefertiti",
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nefertiti was a queen of Egypt.",
+      "sources": [
+        {
+          "title": "Nefertiti",
+          "url": "https://en.wikipedia.org/wiki/Nefertiti",
+          "claim": "Nefertiti was a queen of Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_amr_diab",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Egyptian pop star of habibi songs?",
+      "options": [
+        "Amr Diab",
+        "Khaled pop",
+        "Saad Lamjarred",
+        "Mohamed Ramadan"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Amr Diab is an Egyptian pop singer.",
+      "sources": [
+        {
+          "title": "Amr Diab",
+          "url": "https://en.wikipedia.org/wiki/Amr_Diab",
+          "claim": "Amr Diab is an Egyptian pop singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_khaled_musician",
+      "region": "north",
+      "country": "Algeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the king of raï?",
+      "options": [
+        "Khaled",
+        "Amr Diab",
+        "Saad Lamjarred",
+        "Mohamed Ramadan"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Khaled is an Algerian singer.",
+      "sources": [
+        {
+          "title": "Khaled (musician)",
+          "url": "https://en.wikipedia.org/wiki/Khaled_(musician)",
+          "claim": "Khaled is an Algerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_saad_lamjarred",
+      "region": "north",
+      "country": "Morocco",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Moroccan pop singer of LM3ALLEM?",
+      "options": [
+        "Saad Lamjarred",
+        "Amr Diab",
+        "Khaled",
+        "Mohamed Ramadan"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Saad Lamjarred is a Moroccan singer.",
+      "sources": [
+        {
+          "title": "Saad Lamjarred",
+          "url": "https://en.wikipedia.org/wiki/Saad_Lamjarred",
+          "claim": "Saad Lamjarred is a Moroccan singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_mohamed_ramadan_actor",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Egyptian actor and shaabi singer?",
+      "options": [
+        "Mohamed Ramadan",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mohamed Ramadan is an Egyptian actor.",
+      "sources": [
+        {
+          "title": "Mohamed Ramadan (actor)",
+          "url": "https://en.wikipedia.org/wiki/Mohamed_Ramadan_(actor)",
+          "claim": "Mohamed Ramadan is an Egyptian actor",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_tamer_hosny",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Egyptian pop singer and actor?",
+      "options": [
+        "Tamer Hosny",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tamer Hosny is an Egyptian singer.",
+      "sources": [
+        {
+          "title": "Tamer Hosny",
+          "url": "https://en.wikipedia.org/wiki/Tamer_Hosny",
+          "claim": "Tamer Hosny is an Egyptian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_dystinct",
+      "region": "north",
+      "country": "Morocco",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Belgian-Moroccan pop singer?",
+      "options": [
+        "Dystinct",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dystinct is a Moroccan singer.",
+      "sources": [
+        {
+          "title": "Dystinct",
+          "url": "https://en.wikipedia.org/wiki/Dystinct",
+          "claim": "Dystinct is a Moroccan singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_souad_massi",
+      "region": "north",
+      "country": "Algeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the folk-pop voice of Algeria?",
+      "options": [
+        "Souad Massi",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Souad Massi is an Algerian singer.",
+      "sources": [
+        {
+          "title": "Souad Massi",
+          "url": "https://en.wikipedia.org/wiki/Souad_Massi",
+          "claim": "Souad Massi is an Algerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_sherine_abdel_wahab",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is an Egyptian pop singer?",
+      "options": [
+        "Sherine",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sherine is an Egyptian singer.",
+      "sources": [
+        {
+          "title": "Sherine Abdel-Wahab",
+          "url": "https://en.wikipedia.org/wiki/Sherine_Abdel-Wahab",
+          "claim": "Sherine is an Egyptian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_balti_rapper",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Balti",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Balti is a Tunisian rapper.",
+      "sources": [
+        {
+          "title": "Balti (rapper)",
+          "url": "https://en.wikipedia.org/wiki/Balti_(rapper)",
+          "claim": "Balti is a Tunisian rapper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_hindi_zahra",
+      "region": "north",
+      "country": "Morocco",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Moroccan singer blending folk and soul?",
+      "options": [
+        "Hindi Zahra",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hindi Zahra is a Moroccan singer.",
+      "sources": [
+        {
+          "title": "Hindi Zahra",
+          "url": "https://en.wikipedia.org/wiki/Hindi_Zahra",
+          "claim": "Hindi Zahra is a Moroccan singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_cairokee",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Egyptian rock band?",
+      "options": [
+        "Cairokee",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cairokee is an Egyptian band.",
+      "sources": [
+        {
+          "title": "Cairokee",
+          "url": "https://en.wikipedia.org/wiki/Cairokee",
+          "claim": "Cairokee is an Egyptian band",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_umm_kulthum",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the concerts that still fill Cairo nostalgia?",
+      "options": [
+        "Umm Kulthum",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Umm Kulthum remains an icon of Egyptian music.",
+      "sources": [
+        {
+          "title": "Umm Kulthum",
+          "url": "https://en.wikipedia.org/wiki/Umm_Kulthum",
+          "claim": "Umm Kulthum remains an icon of Egyptian music",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_rachid_taha",
+      "region": "north",
+      "country": "Algeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is rock-raï that travelled to Europe?",
+      "options": [
+        "Rachid Taha",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rachid Taha was an Algerian rock singer.",
+      "sources": [
+        {
+          "title": "Rachid Taha",
+          "url": "https://en.wikipedia.org/wiki/Rachid_Taha",
+          "claim": "Rachid Taha was an Algerian rock singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_music_of_sudan",
+      "region": "north",
+      "country": "Sudan",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Sudanese pop singer?",
+      "options": [
+        "Nancy Ajaj",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sudanese pop has a wide audience.",
+      "sources": [
+        {
+          "title": "Music of Sudan",
+          "url": "https://en.wikipedia.org/wiki/Music_of_Sudan",
+          "claim": "Sudanese pop has a wide audience",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_douzi",
+      "region": "north",
+      "country": "Morocco",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Moroccan raï and pop singer?",
+      "options": [
+        "Douzi",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Douzi is a Moroccan singer.",
+      "sources": [
+        {
+          "title": "Douzi",
+          "url": "https://en.wikipedia.org/wiki/Douzi",
+          "claim": "Douzi is a Moroccan singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_ahmed_helmy",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a popular Egyptian film comedian?",
+      "options": [
+        "Ahmed Helmy",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ahmed Helmy is an Egyptian actor.",
+      "sources": [
+        {
+          "title": "Ahmed Helmy",
+          "url": "https://en.wikipedia.org/wiki/Ahmed_Helmy",
+          "claim": "Ahmed Helmy is an Egyptian actor",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_tunisia",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is Tunisian television drama is widely watched?",
+      "options": [
+        "Sabri Mosbah",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tunisian television is popular across the Maghreb.",
+      "sources": [
+        {
+          "title": "Tunisia",
+          "url": "https://en.wikipedia.org/wiki/Tunisia",
+          "claim": "Tunisian television is popular across the Maghreb",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_popc_youssef_chahine",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the director of Cairo cinema?",
+      "options": [
+        "Youssef Chahine",
+        "Amr Diab",
+        "Khaled",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Youssef Chahine was an Egyptian film director.",
+      "sources": [
+        {
+          "title": "Youssef Chahine",
+          "url": "https://en.wikipedia.org/wiki/Youssef_Chahine",
+          "claim": "Youssef Chahine was an Egyptian film director",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_mohamed_salah",
+      "region": "north",
+      "country": "Egypt",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Egyptian forward at Liverpool?",
+      "options": [
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi",
+        "Ons Jabeur"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mohamed Salah is an Egyptian footballer.",
+      "sources": [
+        {
+          "title": "Mohamed Salah",
+          "url": "https://en.wikipedia.org/wiki/Mohamed_Salah",
+          "claim": "Mohamed Salah is an Egyptian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_riyad_mahrez",
+      "region": "north",
+      "country": "Algeria",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Algerian winger who won the Premier League?",
+      "options": [
+        "Riyad Mahrez",
+        "Mohamed Salah",
+        "Achraf Hakimi",
+        "Ons Jabeur"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Riyad Mahrez is an Algerian footballer.",
+      "sources": [
+        {
+          "title": "Riyad Mahrez",
+          "url": "https://en.wikipedia.org/wiki/Riyad_Mahrez",
+          "claim": "Riyad Mahrez is an Algerian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_achraf_hakimi",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Achraf Hakimi",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Ons Jabeur"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Achraf Hakimi is a Moroccan footballer.",
+      "sources": [
+        {
+          "title": "Achraf Hakimi",
+          "url": "https://en.wikipedia.org/wiki/Achraf_Hakimi",
+          "claim": "Achraf Hakimi is a Moroccan footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_ons_jabeur",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the highest-ranked Tunisian tennis player?",
+      "options": [
+        "Ons Jabeur",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ons Jabeur is a Tunisian tennis player.",
+      "sources": [
+        {
+          "title": "Ons Jabeur",
+          "url": "https://en.wikipedia.org/wiki/Ons_Jabeur",
+          "claim": "Ons Jabeur is a Tunisian tennis player",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_al_ahly_sc",
+      "region": "north",
+      "country": "Egypt",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the Cairo club with a record African trophy cabinet?",
+      "options": [
+        "Al Ahly",
+        "Wydad",
+        "Pharaohs",
+        "Desert Warriors"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Al Ahly is a football club in Cairo.",
+      "sources": [
+        {
+          "title": "Al Ahly SC",
+          "url": "https://en.wikipedia.org/wiki/Al_Ahly_SC",
+          "claim": "Al Ahly is a football club in Cairo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_wydad_ac",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a Casablanca club and African champion?",
+      "options": [
+        "Wydad",
+        "Al Ahly",
+        "Pharaohs",
+        "Desert Warriors"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wydad is a football club in Casablanca.",
+      "sources": [
+        {
+          "title": "Wydad AC",
+          "url": "https://en.wikipedia.org/wiki/Wydad_AC",
+          "claim": "Wydad is a football club in Casablanca",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_egypt_national_football_team",
+      "region": "north",
+      "country": "Egypt",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the nickname of Egypt's men's football team?",
+      "options": [
+        "Pharaohs",
+        "Al Ahly",
+        "Wydad",
+        "Desert Warriors"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Egypt national football team is nicknamed the Pharaohs.",
+      "sources": [
+        {
+          "title": "Egypt national football team",
+          "url": "https://en.wikipedia.org/wiki/Egypt_national_football_team",
+          "claim": "The Egypt national football team is nicknamed the Pharaohs",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_algeria_national_football_team",
+      "region": "north",
+      "country": "Algeria",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a nickname of Algeria's football team?",
+      "options": [
+        "Desert Warriors",
+        "Al Ahly",
+        "Wydad",
+        "Pharaohs"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Algeria has a national football team.",
+      "sources": [
+        {
+          "title": "Algeria national football team",
+          "url": "https://en.wikipedia.org/wiki/Algeria_national_football_team",
+          "claim": "Algeria has a national football team",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_morocco_national_football_team",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the nickname of Morocco's men's team?",
+      "options": [
+        "Atlas Lions",
+        "Al Ahly",
+        "Wydad",
+        "Pharaohs"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Morocco national football team is nicknamed the Atlas Lions.",
+      "sources": [
+        {
+          "title": "Morocco national football team",
+          "url": "https://en.wikipedia.org/wiki/Morocco_national_football_team",
+          "claim": "The Morocco national football team is nicknamed the Atlas Lions",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_egypt_national_football_team2",
+      "region": "north",
+      "country": "Egypt",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is Egypt has won the Africa Cup of Nations more than any other country?",
+      "options": [
+        "AFCON record",
+        "Al Ahly",
+        "Wydad",
+        "Pharaohs"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egypt has won the Africa Cup of Nations a record number of times.",
+      "sources": [
+        {
+          "title": "Egypt national football team",
+          "url": "https://en.wikipedia.org/wiki/Egypt_national_football_team",
+          "claim": "Egypt has won the Africa Cup of Nations a record number of times",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_tunisia_national_football_team",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the nickname of Tunisia's football team?",
+      "options": [
+        "Eagles of Carthage",
+        "Al Ahly",
+        "Wydad",
+        "Pharaohs"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Tunisia national football team is nicknamed the Eagles of Carthage.",
+      "sources": [
+        {
+          "title": "Tunisia national football team",
+          "url": "https://en.wikipedia.org/wiki/Tunisia_national_football_team",
+          "claim": "The Tunisia national football team is nicknamed the Eagles of Carthage",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_al_hilal_club_omdurman",
+      "region": "north",
+      "country": "Sudan",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a leading club in Omdurman?",
+      "options": [
+        "Al-Hilal",
+        "Al Ahly",
+        "Wydad",
+        "Pharaohs"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Al-Hilal is a football club in Omdurman.",
+      "sources": [
+        {
+          "title": "Al-Hilal Club (Omdurman)",
+          "url": "https://en.wikipedia.org/wiki/Al-Hilal_Club_(Omdurman)",
+          "claim": "Al-Hilal is a football club in Omdurman",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_islam_slimani",
+      "region": "north",
+      "country": "Algeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Islam Slimani",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Islam Slimani is an Algerian footballer.",
+      "sources": [
+        {
+          "title": "Islam Slimani",
+          "url": "https://en.wikipedia.org/wiki/Islam_Slimani",
+          "claim": "Islam Slimani is an Algerian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_yassine_bounou",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the Moroccan goalkeeper known as Bono?",
+      "options": [
+        "Yassine Bounou",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Yassine Bounou is a Moroccan goalkeeper.",
+      "sources": [
+        {
+          "title": "Yassine Bounou",
+          "url": "https://en.wikipedia.org/wiki/Yassine_Bounou",
+          "claim": "Yassine Bounou is a Moroccan goalkeeper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_basketball_in_egypt",
+      "region": "north",
+      "country": "Egypt",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Al Ahly basketball",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egypt competes in African basketball.",
+      "sources": [
+        {
+          "title": "Basketball in Egypt",
+          "url": "https://en.wikipedia.org/wiki/Basketball_in_Egypt",
+          "claim": "Egypt competes in African basketball",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_libya",
+      "region": "north",
+      "country": "Libya",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is Libya has hosted sport?",
+      "options": [
+        "Mediterranean Games",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Libya competes in Mediterranean sport.",
+      "sources": [
+        {
+          "title": "Libya",
+          "url": "https://en.wikipedia.org/wiki/Libya",
+          "claim": "Libya competes in Mediterranean sport",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_north_africa",
+      "region": "north",
+      "country": "North Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Which three are capital cities in North Africa?",
+      "options": [
+        "Cairo",
+        "Rabat",
+        "Tunis",
+        "Nairobi"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Cairo, Rabat and Tunis are capitals in North Africa. Nairobi is in Kenya.",
+      "sources": [
+        {
+          "title": "North Africa",
+          "url": "https://en.wikipedia.org/wiki/North_Africa",
+          "claim": "Cairo, Rabat and Tunis are North African capitals",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_moroccan_cuisine",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Which three foods would you meet in Morocco?",
+      "options": [
+        "Couscous",
+        "Tagine",
+        "Mint tea",
+        "Sadza"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Couscous, tagine and mint tea are served in Morocco. Sadza is Zimbabwean.",
+      "sources": [
+        {
+          "title": "Moroccan cuisine",
+          "url": "https://en.wikipedia.org/wiki/Moroccan_cuisine",
+          "claim": "Couscous, tagine and mint tea are Moroccan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_hist_ancient_egypt2",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Which three names belong to ancient Egypt?",
+      "options": [
+        "Cleopatra",
+        "Nefertiti",
+        "Pyramids of Giza",
+        "Mansa Musa"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Cleopatra, Nefertiti and the Giza pyramids are ancient Egyptian names. Mansa Musa ruled Mali.",
+      "sources": [
+        {
+          "title": "Ancient Egypt",
+          "url": "https://en.wikipedia.org/wiki/Ancient_Egypt",
+          "claim": "Cleopatra, Nefertiti and the pyramids belong to ancient Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_tajine2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call the slow-cooked stew named for its conical pot?",
+      "options": [
+        "Tagine",
+        "Couscous",
+        "Harira",
+        "Pastilla"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A tajine is a North African stew.",
+      "sources": [
+        {
+          "title": "Tajine",
+          "url": "https://en.wikipedia.org/wiki/Tajine",
+          "claim": "A tajine is a North African stew",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_pastilla2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a sweet-savoury pie of Moroccan feasts?",
+      "options": [
+        "Pastilla",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pastilla is a Moroccan pie.",
+      "sources": [
+        {
+          "title": "Pastilla",
+          "url": "https://en.wikipedia.org/wiki/Pastilla",
+          "claim": "Pastilla is a Moroccan pie",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_harira2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a tomato and lentil soup of Moroccan tables?",
+      "options": [
+        "Harira",
+        "Couscous",
+        "Tagine",
+        "Pastilla"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Harira is a soup from Morocco.",
+      "sources": [
+        {
+          "title": "Harira",
+          "url": "https://en.wikipedia.org/wiki/Harira",
+          "claim": "Harira is a soup from Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_food_maghrebi_mint_tea2",
+      "region": "north",
+      "country": "North Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call the sweet green tea poured in Maghrebi glasses?",
+      "options": [
+        "Mint tea",
+        "Couscous",
+        "Tagine",
+        "Harira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mint tea is served across the Maghreb.",
+      "sources": [
+        {
+          "title": "Maghrebi mint tea",
+          "url": "https://en.wikipedia.org/wiki/Maghrebi_mint_tea",
+          "claim": "Mint tea is served across the Maghreb",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_rai2",
+      "region": "north",
+      "country": "Algeria",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the popular music of Oran?",
+      "options": [
+        "Raï",
+        "Gnawa",
+        "Chaabi",
+        "Mizwad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Raï is a music genre from Algeria.",
+      "sources": [
+        {
+          "title": "Raï",
+          "url": "https://en.wikipedia.org/wiki/Ra%C3%AF",
+          "claim": "Raï is a music genre from Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_musi_gnawa2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a Moroccan music of trance, guembri, and iron castanets?",
+      "options": [
+        "Gnawa",
+        "Raï",
+        "Chaabi",
+        "Mizwad"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gnawa is a Moroccan music tradition.",
+      "sources": [
+        {
+          "title": "Gnawa",
+          "url": "https://en.wikipedia.org/wiki/Gnawa",
+          "claim": "Gnawa is a Moroccan music tradition",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_giza_pyramid_complex",
+      "region": "north",
+      "country": "Egypt",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Pyramids of Giza",
+        "Carthage",
+        "Marrakesh",
+        "Fez"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Giza pyramid complex stands in Egypt.",
+      "sources": [
+        {
+          "title": "Giza pyramid complex",
+          "url": "https://en.wikipedia.org/wiki/Giza_pyramid_complex",
+          "claim": "The Giza pyramid complex stands in Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_chefchaouen",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the blue-painted city in Morocco's Rif?",
+      "options": [
+        "Chefchaouen",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chefchaouen is a city in Morocco.",
+      "sources": [
+        {
+          "title": "Chefchaouen",
+          "url": "https://en.wikipedia.org/wiki/Chefchaouen",
+          "claim": "Chefchaouen is a city in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_geog_jemaa_el_fnaa",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the great square of Marrakesh?",
+      "options": [
+        "Jemaa el-Fnaa",
+        "Giza",
+        "Carthage",
+        "Marrakesh"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jemaa el-Fnaa is a square in Marrakesh.",
+      "sources": [
+        {
+          "title": "Jemaa el-Fnaa",
+          "url": "https://en.wikipedia.org/wiki/Jemaa_el-Fnaa",
+          "claim": "Jemaa el-Fnaa is a square in Marrakesh",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_peop_naguib_mahfouz2",
+      "region": "north",
+      "country": "Egypt",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Egyptian novelist who won the Nobel Prize in Literature in 1988?",
+      "options": [
+        "Naguib Mahfouz",
+        "Umm Kulthum",
+        "Tahar Ben Jelloun",
+        "Assia Djebar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Naguib Mahfouz was an Egyptian writer.",
+      "sources": [
+        {
+          "title": "Naguib Mahfouz",
+          "url": "https://en.wikipedia.org/wiki/Naguib_Mahfouz",
+          "claim": "Naguib Mahfouz was an Egyptian writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_hicham_el_guerrouj",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Moroccan who won Olympic 1500 metres gold in 2004?",
+      "options": [
+        "Hicham El Guerrouj",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hicham El Guerrouj is a Moroccan middle-distance runner.",
+      "sources": [
+        {
+          "title": "Hicham El Guerrouj",
+          "url": "https://en.wikipedia.org/wiki/Hicham_El_Guerrouj",
+          "claim": "Hicham El Guerrouj is a Moroccan middle-distance runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_spor_nawal_el_moutawakel",
+      "region": "north",
+      "country": "Morocco",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Moroccan who won Olympic 400 metres hurdles gold in 1984?",
+      "options": [
+        "Nawal El Moutawakel",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nawal El Moutawakel is a Moroccan hurdler.",
+      "sources": [
+        {
+          "title": "Nawal El Moutawakel",
+          "url": "https://en.wikipedia.org/wiki/Nawal_El_Moutawakel",
+          "claim": "Nawal El Moutawakel is a Moroccan hurdler",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_egyptian_arabic2",
+      "region": "north",
+      "country": "Egypt",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the everyday of Egypt?",
+      "options": [
+        "Egyptian Arabic",
+        "Darija",
+        "Tamazight",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egyptian Arabic is the spoken Arabic of Egypt.",
+      "sources": [
+        {
+          "title": "Egyptian Arabic",
+          "url": "https://en.wikipedia.org/wiki/Egyptian_Arabic",
+          "claim": "Egyptian Arabic is the spoken Arabic of Egypt",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_lang_standard_moroccan_amazigh",
+      "region": "north",
+      "country": "Morocco",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name an Amazigh language of Morocco?",
+      "options": [
+        "Tamazight",
+        "Arabic",
+        "Darija",
+        "Hassaniya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tamazight is an Amazigh language of Morocco.",
+      "sources": [
+        {
+          "title": "Standard Moroccan Amazigh",
+          "url": "https://en.wikipedia.org/wiki/Standard_Moroccan_Amazigh",
+          "claim": "Tamazight is an Amazigh language of Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "north_fest_gnaoua_world_music_festival2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Gnaoua festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival",
+        "Rose Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Gnaoua festival is held in Essaouira.",
+      "sources": [
+        {
+          "title": "Gnaoua World Music Festival",
+          "url": "https://en.wikipedia.org/wiki/Gnaoua_World_Music_Festival",
+          "claim": "The Gnaoua festival is held in Essaouira",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    }
+  ]
+}

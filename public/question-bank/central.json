@@ -1,0 +1,2810 @@
+{
+  "region": "central",
+  "questions": [
+    {
+      "id": "central_fash_abacost",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which “authentic” suit style was promoted in Mobutu-era Zaire?",
+      "options": [
+        "Abacost",
+        "La Sape",
+        "Liputa",
+        "Kuba cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The abacost was a suit worn in Zaire.",
+      "sources": [
+        {
+          "title": "Abacost",
+          "url": "https://en.wikipedia.org/wiki/Abacost",
+          "claim": "The abacost was a suit worn in Zaire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Abacost The abacost, a blending of the French \"à bas le costume\" (lit. 'down with the suit'), was the distinctive clothing for men that was promoted by Mobutu Sese Seko as part of his authenticité programme in Zaire, between 1972 and 1990.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_fash_la_sape",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Congolese-rooted subculture treats elegant fashion as public performance?",
+      "options": [
+        "La Sape",
+        "Abacost",
+        "Liputa",
+        "Kuba cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "La Sape is a fashion movement in the Congo.",
+      "sources": [
+        {
+          "title": "La Sape",
+          "url": "https://en.wikipedia.org/wiki/La_Sape",
+          "claim": "La Sape La Sape, an abbreviation based on the phrase Société des Ambianceurs et des Personnes Élégantes (French; literally \"Society of Ambiance-Makers and Elegant People\") and hinting to the French slang word sape which means \"clothes\" or sapé, which means \"dressed up\", is a subculture centered on fashion, elegance, and public performance that originated",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "La Sape La Sape, an abbreviation based on the phrase Société des Ambianceurs et des Personnes Élégantes (French; literally \"Society of Ambiance-Makers and Elegant People\") and hinting to the French slang word sape which means \"clothes\" or sapé, which means \"dressed up\", is a subculture centered on fashion, elegance, and public performance that originated among Congolese communities in the cities of Kinshasa and Brazzaville in the Democratic Republic of the Congo and Republic of Congo respectively.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_fash_toghu",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which royal garment belongs to Cameroon’s Grassfields peoples?",
+      "options": [
+        "Toghu",
+        "Liputa",
+        "La Sape",
+        "Kuba cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Toghu is a cloth of the Cameroon Grassfields.",
+      "sources": [
+        {
+          "title": "Toghu",
+          "url": "https://en.wikipedia.org/wiki/Toghu",
+          "claim": "Toghu Toghu, or atoghu, is a traditional royal garment of the Grassfields peoples of the Northwest and West regions of Cameroon, made of black velvet embroidered with brightly coloured patterns.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Toghu Toghu, or atoghu, is a traditional royal garment of the Grassfields peoples of the Northwest and West regions of Cameroon, made of black velvet embroidered with brightly coloured patterns.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_food_achu_soup",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Grassfields classic pairs yellow soup with pounded cocoyam?",
+      "options": [
+        "Achu",
+        "Ndolé",
+        "Pondu",
+        "Fufu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Achu is a dish from Cameroon.",
+      "sources": [
+        {
+          "title": "Achu soup",
+          "url": "https://en.wikipedia.org/wiki/Achu_soup",
+          "claim": "Achu is a dish from Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Achu (soup) Achu soup is a yellow soup that is a traditional food in Cameroon. It is made with cocoyam, spices, water, palm oil, \"Canwa / Nikki\" (limestone), and fish or other ingredients.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_food_ndole2",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which Cameroonian stew mixes bitter leaves with ground nuts?",
+      "options": [
+        "Ndolé",
+        "Pondu",
+        "Fufu",
+        "Achu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ndolé is a dish from Cameroon.",
+      "sources": [
+        {
+          "title": "Ndolé",
+          "url": "https://en.wikipedia.org/wiki/Ndol%C3%A9",
+          "claim": "Ndolé is a dish from Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ndolé Ndolé, also written Ndole or Ndolè, is a Cameroonian dish consisting of stewed ground peanuts, crayfish, garlic, onions, and ndoleh leaves (indigenous to West and Central Africa).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_geog_bangui",
+      "region": "central",
+      "country": "Central African Republic",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of the Central African Republic?",
+      "options": [
+        "Bangui",
+        "Kinshasa",
+        "Brazzaville",
+        "Yaoundé"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bangui is the capital of the Central African Republic.",
+      "sources": [
+        {
+          "title": "Bangui",
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "claim": "Bangui is the capital of the Central African Republic",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Bangui Bangui (French pronunciation: [bɑ̃ɡi]; or Bangî in Sango, formerly written Bangi in English) is the capital and largest city of the Central African Republic.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_geog_congo_river",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which river is Africa’s second-longest and one of the world’s largest by discharge?",
+      "options": [
+        "Congo River",
+        "Lake Chad",
+        "Lake Kivu",
+        "Mount Cameroon"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Congo River is a major river of Central Africa.",
+      "sources": [
+        {
+          "title": "Congo River",
+          "url": "https://en.wikipedia.org/wiki/Congo_River",
+          "claim": "Congo River The Congo River, formerly also known as the Zaire River, is the second-longest river in Africa, shorter only than the Nile, as well as the third largest river in the world by discharge volume, following the Amazon and Ganges–Brahmaputra rivers.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Congo River The Congo River, formerly also known as the Zaire River, is the second-longest river in Africa, shorter only than the Nile, as well as the third largest river in the world by discharge volume, following the Amazon and Ganges–Brahmaputra rivers.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_geog_kinshasa",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of the Democratic Republic of the Congo?",
+      "options": [
+        "Kinshasa",
+        "Brazzaville",
+        "Yaoundé",
+        "Libreville"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kinshasa is the capital of the Democratic Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Kinshasa",
+          "url": "https://en.wikipedia.org/wiki/Kinshasa",
+          "claim": "Kinshasa is the capital of the Democratic Republic of the Congo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kinshasa Kinshasa (; French: [kinʃasa]; Lingala: Kinsásá), formerly named Léopoldville (Dutch: Leopoldstad) from 1881 to 1966, is the capital and largest city of the Democratic Republic of the Congo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_geog_lake_chad",
+      "region": "central",
+      "country": "Chad",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which endorheic lake sits at the meeting point of four countries?",
+      "options": [
+        "Lake Chad",
+        "Lake Kivu",
+        "Congo River",
+        "Mount Cameroon"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lake Chad is a lake in the Sahel.",
+      "sources": [
+        {
+          "title": "Lake Chad",
+          "url": "https://en.wikipedia.org/wiki/Lake_Chad",
+          "claim": "Lake Chad Lake Chad (Arabic: بحيرة تشاد, Kanuri: Sádǝ, French: Lac Tchad) is an endorheic freshwater lake located at the junction of four countries: Nigeria, Niger, Chad, and Cameroon, in western and central Africa respectively, with a catchment area in excess of 1,000,000 km2 (390,000 sq mi).",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lake Chad Lake Chad (Arabic: بحيرة تشاد, Kanuri: Sádǝ, French: Lac Tchad) is an endorheic freshwater lake located at the junction of four countries: Nigeria, Niger, Chad, and Cameroon, in western and central Africa respectively, with a catchment area in excess of 1,000,000 km2 (390,000 sq mi).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_geog_lake_kivu",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which highland lake lies between DR Congo and Rwanda?",
+      "options": [
+        "Lake Kivu",
+        "Lake Chad",
+        "Congo River",
+        "Virunga"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lake Kivu lies between the Democratic Republic of the Congo and Rwanda.",
+      "sources": [
+        {
+          "title": "Lake Kivu",
+          "url": "https://en.wikipedia.org/wiki/Lake_Kivu",
+          "claim": "Lake Kivu lies between the Democratic Republic of the Congo and Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lake Kivu Lake Kivu () is one of the African Great Lakes. It lies on the border between the Democratic Republic of the Congo and Rwanda, and is in the Albertine Rift, the western branch of the East African Rift.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_geog_libreville",
+      "region": "central",
+      "country": "Gabon",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Gabon?",
+      "options": [
+        "Libreville",
+        "Kinshasa",
+        "Brazzaville",
+        "Yaoundé"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Libreville is the capital of Gabon.",
+      "sources": [
+        {
+          "title": "Libreville",
+          "url": "https://en.wikipedia.org/wiki/Libreville",
+          "claim": "Libreville is the capital of Gabon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Libreville Libreville (; French: [libʁəvil]) is the capital and largest city of Gabon, located on the Gabon Estuary.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_geog_luanda",
+      "region": "central",
+      "country": "Angola",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Angola?",
+      "options": [
+        "Luanda",
+        "Kinshasa",
+        "Brazzaville",
+        "Yaoundé"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Luanda is the capital of Angola.",
+      "sources": [
+        {
+          "title": "Luanda",
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "claim": "Luanda is the capital of Angola",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Luanda Luanda is the capital and largest city of Angola.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_geog_malabo",
+      "region": "central",
+      "country": "Equatorial Guinea",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which city is the capital of Equatorial Guinea?",
+      "options": [
+        "Malabo",
+        "Kinshasa",
+        "Brazzaville",
+        "Yaoundé"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Malabo is the capital of Equatorial Guinea.",
+      "sources": [
+        {
+          "title": "Malabo",
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "claim": "Malabo is the capital of Equatorial Guinea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Malabo is the oldest city in Equatorial Guinea and served as its former capital.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_geog_n_djamena",
+      "region": "central",
+      "country": "Chad",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Chad?",
+      "options": [
+        "N'Djamena",
+        "Kinshasa",
+        "Brazzaville",
+        "Yaoundé"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "N'Djamena is the capital of Chad.",
+      "sources": [
+        {
+          "title": "N'Djamena",
+          "url": "https://en.wikipedia.org/wiki/N'Djamena",
+          "claim": "N'Djamena is the capital of Chad",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "N'Djamena N'Djamena (English: ən-jah-MAY-nə) is the capital and largest city of Chad.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_geog_virunga_national_park",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the national park of volcanoes and mountain gorillas?",
+      "options": [
+        "Virunga",
+        "Congo River",
+        "Mount Cameroon",
+        "Lake Kivu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Virunga National Park is in the Democratic Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Virunga National Park",
+          "url": "https://en.wikipedia.org/wiki/Virunga_National_Park",
+          "claim": "Virunga National Park is in the Democratic Republic of the Congo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Virunga National Park Virunga National Park (French: Parc national des Virunga, abbreviated as PNVi) is a national park in the Albertine Rift Valley in the eastern part of the Democratic Republic of the Congo. In elevation, it ranges from 680 m (2,230 ft) in the Semliki River valley to 5,109 m (16,762 ft) in the Rwenzori Mountains.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_geog_yaounde",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Cameroon?",
+      "options": [
+        "Yaoundé",
+        "Kinshasa",
+        "Brazzaville",
+        "Libreville"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Yaoundé is the capital of Cameroon.",
+      "sources": [
+        {
+          "title": "Yaoundé",
+          "url": "https://en.wikipedia.org/wiki/Yaound%C3%A9",
+          "claim": "Yaoundé is the capital of Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Yaoundé Yaoundé (UK: ; US: , French pronunciation: [ja.unde]) is the capital city of Cameroon.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_hist_kuba_kingdom",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Central African kingdom united several Bushong-speaking principalities (plus the Kete)?",
+      "options": [
+        "Kuba kingdom",
+        "Kingdom of Kongo",
+        "Kingdom of Luba",
+        "Lunda Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Kuba Kingdom was in the Democratic Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Kuba Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Kuba_Kingdom",
+          "claim": "The Kuba Kingdom was a conglomerate of several smaller Bushong-speaking principalities as well as the Kete, Coofa, Mbeengi, and the Kasai Twa Pygmies.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "The Kuba Kingdom was a conglomerate of several smaller Bushong-speaking principalities as well as the Kete, Coofa, Mbeengi, and the Kasai Twa Pygmies.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_lang_angola",
+      "region": "central",
+      "country": "Angola",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language is the official language of Angola?",
+      "options": [
+        "Portuguese",
+        "Lingala",
+        "Kikongo",
+        "Tshiluba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Portuguese is the official language of Angola.",
+      "sources": [
+        {
+          "title": "Angola",
+          "url": "https://en.wikipedia.org/wiki/Angola",
+          "claim": "Portuguese is the official language of Angola",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Angola is a member of the United Nations, African Union, the Community of Portuguese Language Countries, and the Southern African Development Community.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_lang_cameroonian_pidgin_english",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which English-based lingua franca is widely used in Cameroon?",
+      "options": [
+        "Cameroonian Pidgin",
+        "Lingala",
+        "Kikongo",
+        "Tshiluba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cameroonian Pidgin is spoken in Cameroon.",
+      "sources": [
+        {
+          "title": "Cameroonian Pidgin English",
+          "url": "https://en.wikipedia.org/wiki/Cameroonian_Pidgin_English",
+          "claim": "Cameroonian Pidgin is spoken in Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Cameroonian Pidgin English is an English-based creole language.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_lang_chadian_arabic",
+      "region": "central",
+      "country": "Chad",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Arabic variety is widely spoken in Chad?",
+      "options": [
+        "Chadian Arabic",
+        "Lingala",
+        "Kikongo",
+        "Tshiluba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chadian Arabic is spoken in Chad.",
+      "sources": [
+        {
+          "title": "Chadian Arabic",
+          "url": "https://en.wikipedia.org/wiki/Chadian_Arabic",
+          "claim": "Chadian Arabic is spoken in Chad",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Chadian Arabic Chadian Arabic (Arabic: لهجة تشادية), also known as Shuwa Arabic, Western Sudanic Arabic, or West Sudanic Arabic (WSA), is a variety of Arabic and the first language of 1.9 million people in Chad, both rural and urban inhabitants.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_lang_democratic_republic_of_the_congo",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language is official in the Democratic Republic of the Congo?",
+      "options": [
+        "French",
+        "Lingala",
+        "Kikongo",
+        "Tshiluba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "French is the official language of the Democratic Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Democratic Republic of the Congo",
+          "url": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo",
+          "claim": "French is the official language of the Democratic Republic of the Congo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "With a population of about 124 million people, the Democratic Republic of the Congo is the fourth-most populous country in Africa and the most populous Francophone country in the world. French is the official and most widely spoken language.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_lang_ewondo_language",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Bantu language do the Beti people of Cameroon speak?",
+      "options": [
+        "Ewondo",
+        "Lingala",
+        "Kikongo",
+        "Tshiluba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ewondo is a language of Cameroon.",
+      "sources": [
+        {
+          "title": "Ewondo language",
+          "url": "https://en.wikipedia.org/wiki/Ewondo_language",
+          "claim": "Ewondo language Ewondo also known as Beti or Cameroonian is a Bantu language spoken by the Beti people (more precisely Beti be Nanga, the people of the forest, or simply Beti) of Cameroon.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ewondo language Ewondo also known as Beti or Cameroonian is a Bantu language spoken by the Beti people (more precisely Beti be Nanga, the people of the forest, or simply Beti) of Cameroon.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_lang_fang_language",
+      "region": "central",
+      "country": "Gabon",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which language is spoken in Gabon, Equatorial Guinea and Cameroon?",
+      "options": [
+        "Fang",
+        "Lingala",
+        "Kikongo",
+        "Tshiluba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fang is a language of Gabon.",
+      "sources": [
+        {
+          "title": "Fang language",
+          "url": "https://en.wikipedia.org/wiki/Fang_language",
+          "claim": "Fang is a language of Gabon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Fang language Fang () is a Central African language spoken by around one million people, most of them in Equatorial Guinea and northern Gabon, where it is the dominant Bantu language; Fang is also spoken in southern Cameroon, the Republic of the Congo, and small fractions of the islands of São Tomé and Príncipe.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_lang_kimbundu",
+      "region": "central",
+      "country": "Angola",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Bantu language is tied to the Luanda region?",
+      "options": [
+        "Kimbundu",
+        "Lingala",
+        "Kikongo",
+        "Tshiluba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kimbundu is a language of Angola.",
+      "sources": [
+        {
+          "title": "Kimbundu",
+          "url": "https://en.wikipedia.org/wiki/Kimbundu",
+          "claim": "Kimbundu is a language of Angola",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kimbundu Kimbundu, a Bantu language also known as Mbundu or North Mbundu (to distinguish it from Umbundu or South Mbundu), is the second-most-spoken Bantu language in Angola. Its speakers include the Ambundu people , and are mostly concentrated in the north-west of the country, in the Bengo, Luanda, Icolo e Bengo, Cuanza Norte, Cuanza Sul, and Malanje provinces.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_lang_kongo_language",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which Bantu language do Kongo communities speak in the DR Congo and neighbours?",
+      "options": [
+        "Kikongo",
+        "Lingala",
+        "Tshiluba",
+        "French"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kikongo is a language of Central Africa.",
+      "sources": [
+        {
+          "title": "Kongo language",
+          "url": "https://en.wikipedia.org/wiki/Kongo_language",
+          "claim": "Kongo language Kongo or Kikongo is a Bantu language spoken by the Kongo people living in the Democratic Republic of the Congo (DRC), the Republic of the Congo, Gabon, and Angola.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kongo language Kongo or Kikongo is a Bantu language spoken by the Kongo people living in the Democratic Republic of the Congo (DRC), the Republic of the Congo, Gabon, and Angola.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_lang_lingala",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which Bantu lingua franca is strong in northwestern DR Congo?",
+      "options": [
+        "Lingala",
+        "Kikongo",
+        "Tshiluba",
+        "French"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lingala is a language of the Democratic Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Lingala",
+          "url": "https://en.wikipedia.org/wiki/Lingala",
+          "claim": "Lingala Lingala (or Ngala, Lingala: Lingála) is a Bantu language spoken in the northwest of the Democratic Republic of the Congo, the northern half of the Republic of the Congo, in their capitals, Kinshasa and Brazzaville, and to a lesser degree as a trade language because of emigration in neighbouring Angola or Central African Republic.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Lingala Lingala (or Ngala, Lingala: Lingála) is a Bantu language spoken in the northwest of the Democratic Republic of the Congo, the northern half of the Republic of the Congo, in their capitals, Kinshasa and Brazzaville, and to a lesser degree as a trade language because of emigration in neighbouring Angola or Central African Republic.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_lang_sango_language",
+      "region": "central",
+      "country": "Central African Republic",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which national lingua franca is used in the Central African Republic?",
+      "options": [
+        "Sango",
+        "Lingala",
+        "Kikongo",
+        "Tshiluba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sango is the national language of the Central African Republic.",
+      "sources": [
+        {
+          "title": "Sango language",
+          "url": "https://en.wikipedia.org/wiki/Sango_language",
+          "claim": "Sango is the national language of the Central African Republic",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Today, Sango is both a national and official language of the Central African Republic, which makes the Central African Republic one of the few African countries to have an indigenous language as an official language.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_assiko",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which coastal Bassa dance music comes from Cameroon?",
+      "options": [
+        "Assiko",
+        "Congolese rumba",
+        "Soukous",
+        "Makossa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Assiko is a dance from Cameroon.",
+      "sources": [
+        {
+          "title": "Assiko",
+          "url": "https://en.wikipedia.org/wiki/Assiko",
+          "claim": "Assiko is a dance from Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Assiko The Assiko is a popular dance from the South of Cameroon. Originally based in the Bassa country, this rhythmed dance takes its name from two words: ISI, changed into ASSI, which means earth or ground; and KOO meaning foot.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_charlotte_dipanda",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Cameroonian singer is known mostly for acoustic performances?",
+      "options": [
+        "Charlotte Dipanda",
+        "Patience Dabany",
+        "Manu Dibango",
+        "Papa Wemba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Charlotte Dipanda is a Cameroonian singer.",
+      "sources": [
+        {
+          "title": "Charlotte Dipanda",
+          "url": "https://en.wikipedia.org/wiki/Charlotte_Dipanda",
+          "claim": "Charlotte Dipanda Charlotte Dipanda (born 18 July 1985) is a Cameroonian singer who mostly performs acoustic music.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Charlotte Dipanda Charlotte Dipanda (born 18 July 1985) is a Cameroonian singer who mostly performs acoustic music.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_congolese_rumba",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which dance-music genre began in the two Congos?",
+      "options": [
+        "Congolese rumba",
+        "Soukous",
+        "Makossa",
+        "Ndombolo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Congolese rumba is a music genre from the Congo.",
+      "sources": [
+        {
+          "title": "Congolese rumba",
+          "url": "https://en.wikipedia.org/wiki/Congolese_rumba",
+          "claim": "Congolese rumba Congolese rumba, also known as African rumba or Rumba Lingala, is a dance music genre originating in the modern-day Democratic Republic of the Congo and Republic of the Congo and, in particular, the adjacent cities of Kinshasa and Brazzaville.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Congolese rumba Congolese rumba, also known as African rumba or Rumba Lingala, is a dance music genre originating in the modern-day Democratic Republic of the Congo and Republic of the Congo and, in particular, the adjacent cities of Kinshasa and Brazzaville.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_fally_ipupa",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Congolese singer-dancer became a modern rumba headliner?",
+      "options": [
+        "Fally Ipupa",
+        "Papa Wemba",
+        "Manu Dibango",
+        "Koffi Olomidé"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fally Ipupa is a Congolese singer.",
+      "sources": [
+        {
+          "title": "Fally Ipupa",
+          "url": "https://en.wikipedia.org/wiki/Fally_Ipupa",
+          "claim": "Fally Ipupa Fally Ipupa Nsimba (born 14 December 1977) is a Congolese musician and dancer.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Fally Ipupa Fally Ipupa Nsimba (born 14 December 1977) is a Congolese musician and dancer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_franco_luambo",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the grand master of Congolese rumba, Luambo?",
+      "options": [
+        "Franco",
+        "Papa Wemba",
+        "Manu Dibango",
+        "Koffi Olomidé"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Franco Luambo was a Congolese musician.",
+      "sources": [
+        {
+          "title": "Franco Luambo",
+          "url": "https://en.wikipedia.org/wiki/Franco_Luambo",
+          "claim": "Franco Luambo was a Congolese musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "He is referred to as Franco Luambo or simply Franco. Known for his mastery of Congolese rumba, he was nicknamed by fans and critics \"Sorcerer of the Guitar\" and the \"Grand Maître of Zairean Music\", as well as \"Franco de Mi Amor\" by female fans.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_kizomba",
+      "region": "central",
+      "country": "Angola",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Angolan social dance and music grew in the late 1970s and early 1980s?",
+      "options": [
+        "Kizomba",
+        "Congolese rumba",
+        "Soukous",
+        "Makossa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kizomba is a dance and music from Angola.",
+      "sources": [
+        {
+          "title": "Kizomba",
+          "url": "https://en.wikipedia.org/wiki/Kizomba",
+          "claim": "Kizomba Kizomba is a social dance and music genre that originated in Angola during the late 1970s to early 1980s.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Kizomba Kizomba is a social dance and music genre that originated in Angola during the late 1970s to early 1980s.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_koffi_olomide",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Congolese star founded Quartier Latin International?",
+      "options": [
+        "Koffi Olomidé",
+        "Papa Wemba",
+        "Manu Dibango",
+        "Fally Ipupa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Koffi Olomidé is a Congolese singer.",
+      "sources": [
+        {
+          "title": "Koffi Olomidé",
+          "url": "https://en.wikipedia.org/wiki/Koffi_Olomid%C3%A9",
+          "claim": "Koffi Olomide Antoine Christophe Agbepa Mumba (born 13 July 1956), known professionally as Koffi Olomidé, is a Congolese singer-songwriter, dancer, producer, and founder of Quartier Latin International.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Koffi Olomide Antoine Christophe Agbepa Mumba (born 13 July 1956), known professionally as Koffi Olomidé, is a Congolese singer-songwriter, dancer, producer, and founder of Quartier Latin International.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_kuduro",
+      "region": "central",
+      "country": "Angola",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which fast electronic dance music comes from Angola?",
+      "options": [
+        "Kuduro",
+        "Congolese rumba",
+        "Soukous",
+        "Makossa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kuduro is a music genre from Angola.",
+      "sources": [
+        {
+          "title": "Kuduro",
+          "url": "https://en.wikipedia.org/wiki/Kuduro",
+          "claim": "Kuduro is a music genre from Angola",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "According to Tony Amado, self-proclaimed creator of Kuduro, he got the idea for the dance, which predated the music (making dance the foremost part of this genre and something Amado frequently emphasizes), after seeing Jean-Claude Van Damme in the 1989 film Kickboxer, in which he appears in a bar drunk, and dances in a hard and unusual style. As Vivian Host points out in her article, despite the common assumption that \"world music\" from non-Western countries holds no commonalities with Western modern music, Angolan kuduro does contain \"elements in common with punk, deep tribal house, and even Daft Punk.\" And although Angolan kuduro reflects an understanding and an interpretation of Western musical forms, the world music category that it fits under, tends to reject the idea of Western musical imperialism.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_manu_dibango",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which Cameroonian legend played saxophone and vibraphone?",
+      "options": [
+        "Manu Dibango",
+        "Papa Wemba",
+        "Koffi Olomidé",
+        "Fally Ipupa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Manu Dibango was a Cameroonian musician.",
+      "sources": [
+        {
+          "title": "Manu Dibango",
+          "url": "https://en.wikipedia.org/wiki/Manu_Dibango",
+          "claim": "Manu Dibango Emmanuel N'Djoké \"Manu\" Dibango (12 December 1933 – 24 March 2020) was a Cameroonian musician and songwriter who played saxophone and vibraphone.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Manu Dibango Emmanuel N'Djoké \"Manu\" Dibango (12 December 1933 – 24 March 2020) was a Cameroonian musician and songwriter who played saxophone and vibraphone.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_mvet",
+      "region": "central",
+      "country": "Central Africa",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Fang stick-zither is found in Gabon, Cameroon and neighbouring Congo lands?",
+      "options": [
+        "Mvet",
+        "Kora",
+        "Djembe",
+        "Balafon"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The mvet is a musical instrument of Central Africa.",
+      "sources": [
+        {
+          "title": "Mvet",
+          "url": "https://en.wikipedia.org/wiki/Mvet",
+          "claim": "Mvet The mvet or mvett is a stringed musical instrument, a type of stick zither, Hornbostel-Sachs (311) of the Fang people of Gabon, Cameroon, Democratic Republic of the Congo, São Tomé and Equatorial Guinea.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mvet The mvet or mvett is a stringed musical instrument, a type of stick zither, Hornbostel-Sachs (311) of the Fang people of Gabon, Cameroon, Democratic Republic of the Congo, São Tomé and Equatorial Guinea.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_papa_wemba",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which Congolese singer helped take rumba and African pop worldwide?",
+      "options": [
+        "Papa Wemba",
+        "Manu Dibango",
+        "Koffi Olomidé",
+        "Fally Ipupa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Papa Wemba was a Congolese singer.",
+      "sources": [
+        {
+          "title": "Papa Wemba",
+          "url": "https://en.wikipedia.org/wiki/Papa_Wemba",
+          "claim": "Papa Wemba Jules Shungu Wembadio Pene Kikumba (14 June 1949 – 24 April 2016), known professionally as Papa Wemba, was a Congolese singer, songwriter, bandleader, and actor who is credited with popularizing Congolese rumba and African popular music internationally.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Papa Wemba Jules Shungu Wembadio Pene Kikumba (14 June 1949 – 24 April 2016), known professionally as Papa Wemba, was a Congolese singer, songwriter, bandleader, and actor who is credited with popularizing Congolese rumba and African popular music internationally.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_patience_dabany",
+      "region": "central",
+      "country": "Gabon",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Gabonese singer was also a former first lady?",
+      "options": [
+        "Patience Dabany",
+        "Charlotte Dipanda",
+        "Manu Dibango",
+        "Papa Wemba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Patience Dabany is a Gabonese singer.",
+      "sources": [
+        {
+          "title": "Patience Dabany",
+          "url": "https://en.wikipedia.org/wiki/Patience_Dabany",
+          "claim": "Patience Dabany is a Gabonese singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Patience Dabany Patience Dabany (born Marie-Joséphine Kama; 22 January 1941), also known as Joséphine Bongo, is a Gabonese singer and musician who was the First Lady of Gabon from 1967 to 1987 as the first wife of president Omar Bongo.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_musi_werrason",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which ndombolo bandleader is tied to Wenge Musica?",
+      "options": [
+        "Werrason",
+        "Papa Wemba",
+        "Koffi Olomidé",
+        "Fally Ipupa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Werrason is a Congolese musician.",
+      "sources": [
+        {
+          "title": "Werrason",
+          "url": "https://en.wikipedia.org/wiki/Werrason",
+          "claim": "Werrason is a Congolese musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Werrason Noël Ngiama Makanda (born 25 December 1965), known professionally as Werrason, is a Congolese singer-songwriter, composer, producer, philanthropist, and the bandleader of Wenge Musica Maison Mère. He was a co-founding member of Wenge Musica, a musical group that played a pivotal role in the development of the ndombolo dance music genre during the 1990s.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_peop_agostinho_neto",
+      "region": "central",
+      "country": "Angola",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who was Angola’s first president and also a poet?",
+      "options": [
+        "Agostinho Neto",
+        "Patrice Lumumba",
+        "Alain Mabanckou",
+        "Pepetela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Agostinho Neto was the first president of Angola.",
+      "sources": [
+        {
+          "title": "Agostinho Neto",
+          "url": "https://en.wikipedia.org/wiki/Agostinho_Neto",
+          "claim": "Agostinho Neto was the first president of Angola",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Agostinho Neto António Agostinho Neto Kilamba (17 September 1922 – 10 September 1979) was an Angolan communist revolutionary, politician and poet. He served as the first president of Angola from 1975 to 1979, after leading the Popular Movement for the Liberation of Angola (MPLA) during the war for independence.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_peop_alain_mabanckou",
+      "region": "central",
+      "country": "Republic of the Congo",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which novelist wrote Broken Glass?",
+      "options": [
+        "Alain Mabanckou",
+        "Mongo Beti",
+        "Pepetela",
+        "Patrice Lumumba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Alain Mabanckou is a novelist from the Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Alain Mabanckou",
+          "url": "https://en.wikipedia.org/wiki/Alain_Mabanckou",
+          "claim": "Alain Mabanckou is a novelist from the Republic of the Congo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Alain Mabanckou Alain Mabanckou (born 24 February 1966) is a novelist, journalist, poet, and academic, a French citizen born in the Republic of the Congo, he is currently a Professor of Literature at UCLA. He is best known for his novels and non-fiction writing depicting the experience of contemporary Africa and the African diaspora in France, including Broken Glass (2005) and the Prix Renaudot-winning Memoirs of a Porcupine (2006).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_peop_dikembe_mutombo",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which Congolese-American centre starred across 18 NBA seasons?",
+      "options": [
+        "Dikembe Mutombo",
+        "Samuel Eto'o",
+        "Roger Milla",
+        "Serge Ibaka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dikembe Mutombo was a Congolese basketball player.",
+      "sources": [
+        {
+          "title": "Dikembe Mutombo",
+          "url": "https://en.wikipedia.org/wiki/Dikembe_Mutombo",
+          "claim": "Dikembe Mutombo Dikembe Mutombo Mpolondo Mukamba Jean-Jacques Wamutombo (June 25, 1966 – September 30, 2024) was a Congolese-American professional basketball player who played center in the National Basketball Association (NBA) for 18 seasons.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Dikembe Mutombo Dikembe Mutombo Mpolondo Mukamba Jean-Jacques Wamutombo (June 25, 1966 – September 30, 2024) was a Congolese-American professional basketball player who played center in the National Basketball Association (NBA) for 18 seasons.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_peop_ferdinand_oyono",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Cameroonian diplomat and politician was also a noted author?",
+      "options": [
+        "Ferdinand Oyono",
+        "Mongo Beti",
+        "Alain Mabanckou",
+        "Patrice Lumumba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ferdinand Oyono was a Cameroonian writer.",
+      "sources": [
+        {
+          "title": "Ferdinand Oyono",
+          "url": "https://en.wikipedia.org/wiki/Ferdinand_Oyono",
+          "claim": "Ferdinand Oyono Ferdinand Léopold Oyono (14 September 1929 – 10 June 2010) was a diplomat, politician and author from Cameroon.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Ferdinand Oyono Ferdinand Léopold Oyono (14 September 1929 – 10 June 2010) was a diplomat, politician and author from Cameroon.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_peop_francois_tombalbaye",
+      "region": "central",
+      "country": "Chad",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who was the first president of Chad?",
+      "options": [
+        "François Tombalbaye",
+        "Patrice Lumumba",
+        "Agostinho Neto",
+        "Njoya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "François Tombalbaye was the first president of Chad.",
+      "sources": [
+        {
+          "title": "François Tombalbaye",
+          "url": "https://en.wikipedia.org/wiki/Fran%C3%A7ois_Tombalbaye",
+          "claim": "François Tombalbaye was the first president of Chad",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "François Tombalbaye François Tombalbaye (Arabic: فرنسوا تومبالباي Franswā Tūmbālbāy; 15 June 1918 – 13 April 1975), also known as N'Garta Tombalbaye, was a Chadian politician who served as the first President of Chad from the country's independence in 1960 until his overthrow in 1975.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_peop_ibrahim_njoya",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which Bamum ruler invented a syllabary and the Shümom language?",
+      "options": [
+        "Njoya",
+        "Patrice Lumumba",
+        "Agostinho Neto",
+        "Alain Mabanckou"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ibrahim Njoya was king of the Bamum.",
+      "sources": [
+        {
+          "title": "Ibrahim Njoya",
+          "url": "https://en.wikipedia.org/wiki/Ibrahim_Njoya",
+          "claim": "Njoya was a neographer, having invented the Bamum syllabary and Shümom language.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Njoya was a neographer, having invented the Bamum syllabary and Shümom language.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_peop_patrice_lumumba",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who was the first prime minister of independent Congo?",
+      "options": [
+        "Patrice Lumumba",
+        "Agostinho Neto",
+        "François Tombalbaye",
+        "Alain Mabanckou"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Patrice Lumumba was the first prime minister of the Congo.",
+      "sources": [
+        {
+          "title": "Patrice Lumumba",
+          "url": "https://en.wikipedia.org/wiki/Patrice_Lumumba",
+          "claim": "Patrice Lumumba was the first prime minister of the Congo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Patrice Lumumba Patrice Émery Lumumba ( pə-TREESS luu-MUUM-bə; born Isaïe Tasumbu Tawosa; 2 July 1925 – 17 January 1961) was a Congolese politician, independence leader, and revolutionary who served as the first prime minister of the First Congolese Republic (modern day Democratic Republic of the Congo) from June until September 1960, following his party's success in the May 1960 election.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_peop_samuel_eto_o",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Cameroonian football great later became a football administrator?",
+      "options": [
+        "Samuel Eto'o",
+        "Roger Milla",
+        "Dikembe Mutombo",
+        "Patrice Lumumba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Samuel Eto'o is a Cameroonian former player who moved into football administration.",
+      "sources": [
+        {
+          "title": "Samuel Eto'o",
+          "url": "https://en.wikipedia.org/wiki/Samuel_Eto'o",
+          "claim": "Samuel Eto'o Samuel Eto'o Fils (French pronunciation: [samɥɛl eto fis]; born 10 March 1981) is a Cameroonian football administrator and former player who is the current president of the Cameroonian Football Federation.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Samuel Eto'o Samuel Eto'o Fils (French pronunciation: [samɥɛl eto fis]; born 10 March 1981) is a Cameroonian football administrator and former player who is the current president of the Cameroonian Football Federation.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_popc_dadju",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which French-Congolese star is known for R&B?",
+      "options": [
+        "Dadju",
+        "Fally Ipupa",
+        "Innoss'B",
+        "Gaz Mawete"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dadju is a French-Congolese singer.",
+      "sources": [
+        {
+          "title": "Dadju",
+          "url": "https://en.wikipedia.org/wiki/Dadju",
+          "claim": "Dadju is a French-Congolese singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Dadju Dadju Alimasi Nsungula (French pronunciation: [dadʒu dʒuna ɛnsunɡula]; born 2 May 1991), better known by the mononym Dadju or at times Prince Dadj, is a French-Congolese singer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_popc_innoss_b",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which Congolese singer and dancer comes from Goma?",
+      "options": [
+        "Innoss'B",
+        "Fally Ipupa",
+        "Gaz Mawete",
+        "Locko"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Innoss'B is a Congolese singer.",
+      "sources": [
+        {
+          "title": "Innoss'B",
+          "url": "https://en.wikipedia.org/wiki/Innoss'B",
+          "claim": "Innoss'B is a Congolese singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Innoss'B Innocent Didace Balume (born 5 May 1997), known professionally as Innoss'B, is a Congolese singer-songwriter, rapper, percussionist, dancer, and philanthropist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_popc_titica",
+      "region": "central",
+      "country": "Angola",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Angolan star is known for kuduro?",
+      "options": [
+        "Titica",
+        "Fally Ipupa",
+        "Innoss'B",
+        "Gaz Mawete"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Titica is an Angolan musician.",
+      "sources": [
+        {
+          "title": "Titica",
+          "url": "https://en.wikipedia.org/wiki/Titica",
+          "claim": "Titica is an Angolan musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Titica Titica is an Angolan kuduro musician and dancer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_spor_joel_embiid",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Cameroonian-American big man became an NBA star centre?",
+      "options": [
+        "Joel Embiid",
+        "Samuel Eto'o",
+        "Roger Milla",
+        "Dikembe Mutombo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Joel Embiid is a Cameroonian American NBA centre.",
+      "sources": [
+        {
+          "title": "Joel Embiid",
+          "url": "https://en.wikipedia.org/wiki/Joel_Embiid",
+          "claim": "Joel Embiid Joel Hans Embiid ( joh-EL em-BEED; born 16 March 1994) is a Cameroonian American professional basketball player for the Philadelphia 76ers of the National Basketball Association (NBA).",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Joel Embiid Joel Hans Embiid ( joh-EL em-BEED; born 16 March 1994) is a Cameroonian American professional basketball player for the Philadelphia 76ers of the National Basketball Association (NBA).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_spor_pascal_siakam",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Cameroonian athlete is a professional NBA basketball forward?",
+      "options": [
+        "Pascal Siakam",
+        "Samuel Eto'o",
+        "Roger Milla",
+        "Dikembe Mutombo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pascal Siakam is a Cameroonian professional basketball player in the NBA.",
+      "sources": [
+        {
+          "title": "Pascal Siakam",
+          "url": "https://en.wikipedia.org/wiki/Pascal_Siakam",
+          "claim": "Pascal Siakam Pascal Siakam ( see-AH-kəm; born 2 April 1994) is a Cameroonian professional basketball player for the Indiana Pacers of the National Basketball Association (NBA).",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Pascal Siakam Pascal Siakam ( see-AH-kəm; born 2 April 1994) is a Cameroonian professional basketball player for the Indiana Pacers of the National Basketball Association (NBA).",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_spor_rigobert_song",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Cameroonian defender later became a national-team manager?",
+      "options": [
+        "Rigobert Song",
+        "Samuel Eto'o",
+        "Roger Milla",
+        "Dikembe Mutombo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rigobert Song is a Cameroonian former player who moved into management.",
+      "sources": [
+        {
+          "title": "Rigobert Song",
+          "url": "https://en.wikipedia.org/wiki/Rigobert_Song",
+          "claim": "Rigobert Song Rigobert Song Bahanag (born 1 July 1976) is a Cameroonian professional football manager and former player who most recently managed the Central African Republic national team.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Rigobert Song Rigobert Song Bahanag (born 1 July 1976) is a Cameroonian professional football manager and former player who most recently managed the Central African Republic national team.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_spor_serge_ibaka",
+      "region": "central",
+      "country": "Republic of the Congo",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Congolese-Spanish big man played professional basketball in the NBA and Europe?",
+      "options": [
+        "Serge Ibaka",
+        "Samuel Eto'o",
+        "Roger Milla",
+        "Dikembe Mutombo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Serge Ibaka is a Congolese-Spanish professional basketball player.",
+      "sources": [
+        {
+          "title": "Serge Ibaka",
+          "url": "https://en.wikipedia.org/wiki/Serge_Ibaka",
+          "claim": "Serge Ibaka Serge Jonás Ibaka Ngobila (; born 18 September 1989) is a Congolese-Spanish professional basketball player who last played for Real Madrid of the Spanish Liga ACB and the EuroLeague.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Serge Ibaka Serge Jonás Ibaka Ngobila (; born 18 September 1989) is a Congolese-Spanish professional basketball player who last played for Real Madrid of the Spanish Liga ACB and the EuroLeague.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "published"
+    }
+  ]
+}

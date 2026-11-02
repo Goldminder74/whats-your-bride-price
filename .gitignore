@@ -43,3 +43,6 @@ yarn-error.log*
 /outputs/
 /work/
 /.npm-cache/
+
+__pycache__/
+*.pyc

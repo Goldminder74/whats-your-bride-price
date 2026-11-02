@@ -44,6 +44,9 @@ function services(overrides = {}) {
     assets: overrides.assets,
     royalRevealEnabled: overrides.royalRevealEnabled,
     ownerStatsToken: overrides.ownerStatsToken,
+    randomBank: overrides.randomBank,
+    earnPaths: overrides.earnPaths,
+    shareCards: overrides.shareCards,
   };
 }
 
@@ -60,12 +63,15 @@ async function body(response) {
 test("schema file matches the Worker bootstrap SQL", async () => {
   const legacy = await readFile(new URL("../../migrations/0001_paid_orders.sql", import.meta.url), "utf8");
   const phase = await readFile(new URL("../../migrations/0002_paid_phase0.sql", import.meta.url), "utf8");
-  assert.equal(`${legacy.trim()}\n${phase.trim()}`, paidSchemaSql.trim());
+  const earn = await readFile(new URL("../../migrations/0003_paid_earn.sql", import.meta.url), "utf8");
+  assert.equal(`${legacy.trim()}\n${phase.trim()}\n${earn.trim()}`, paidSchemaSql.trim());
   assert.match(paidSchemaSql, /paid_orders/);
   assert.match(paidSchemaSql, /paid_attempts/);
   assert.match(paidSchemaSql, /paid_stats_daily/);
+  assert.match(paidSchemaSql, /paid_earn_grants/);
   assert.match(phase, /ADD COLUMN expires_at/);
   assert.doesNotMatch(phase, /DROP TABLE|DELETE FROM paid_entitlements/i);
+  assert.doesNotMatch(earn, /DROP TABLE|DELETE FROM/i);
 });
 
 test("canonical pages use the public game origin", async () => {
@@ -898,4 +904,28 @@ test("two free games then a paywall, idempotent resume, welcome bonus, and hidde
   assert.equal(days.some((row) => row.event === "purchase_complete"), true);
   assert.equal((await servePaid(request("/api/paid/owner/stats"), services())).status, 503);
   assert.equal((await servePaid(request("/api/paid/owner/stats", { headers: { "x-owner-stats-token": "wrong" } }), app)).status, 401);
+});
+
+test("random bank returns twelve resumable questions and scores that round", async () => {
+  const kv = memoryKv();
+  const app = services({ kv, randomBank: true });
+  const first = await body(await servePaid(request("/api/paid/questions?edition=west&player=player_local_test_01"), app));
+  assert.equal(first.questions.length, 12);
+  assert.equal("correct" in first.questions[0], false);
+  assert.match(first.roundId, /^[a-f0-9]{32}$/);
+  const again = await body(await servePaid(request(`/api/paid/questions?edition=west&round=${first.roundId}`), app));
+  assert.deepEqual(again.questions.map((question) => question.prompt), first.questions.map((question) => question.prompt));
+  assert.deepEqual(again.questions.map((question) => question.options), first.questions.map((question) => question.options));
+  const stored = JSON.parse(kv.map.get(`round:${first.roundId}`));
+  const answers = stored.questions.map((question) => question.correct);
+  const completed = await body(await servePaid(request("/api/paid/games/complete", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ edition: "west", roundId: first.roundId, answers }),
+  }), app));
+  assert.equal(completed.score, 12);
+  assert.equal(completed.total, 12);
+  for (const question of first.questions.filter((item) => item.kind === "image")) {
+    assert.equal(question.images.some((src) => question.options.some((label) => src.toLowerCase().includes(label.toLowerCase().split(" ")[0]))), false);
+  }
 });

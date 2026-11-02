@@ -1,6 +1,6 @@
 export type RegionKey = "west" | "east" | "central" | "north" | "south";
 export type QuestionKind = "single" | "multi" | "complete" | "image";
-export type Question = { kind: QuestionKind; prompt: string; options: string[]; correct: number[]; explanation: string; topic: string; visualStart?: number };
+export type Question = { id?: string; kind: QuestionKind; prompt: string; options: string[]; correct: number[]; explanation: string; topic: string; visualStart?: number };
 export type Region = { name: string; short: string; place: string; mark: string; hello: string; palette: string[]; drops: string[]; questions: Question[] };
 
 const q = (kind: QuestionKind, prompt: string, options: string[], correct: number[], explanation: string, topic: string, visualStart?: number): Question =>

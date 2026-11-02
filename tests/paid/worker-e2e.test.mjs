@@ -3,7 +3,7 @@ import { createHmac } from "node:crypto";
 import test from "node:test";
 import { regions } from "../../app/gameData.ts";
 
-test("local Worker completes a round, takes a mock Stripe payment, and refunds it", { timeout: 60_000 }, async () => {
+test("local Worker completes a round, takes a mock Stripe payment, and refunds it", { timeout: 120_000 }, async () => {
   const { unstable_dev } = await import("wrangler");
   const worker = await unstable_dev("worker/paid.ts", {
     config: "wrangler.jsonc",
@@ -18,6 +18,7 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
       EMAIL_FROM: "What's Your Bride Price? <noreply@mail.classesforculture.com>",
       EMAIL_REPLY_TO: "team@classesforculture.com",
       PUBLIC_APP_ORIGIN: "https://brideprice.classesforculture.com",
+      RANDOM_BANK: "on",
     },
     experimental: { disableExperimentalWarning: true, forceLocal: true, disableDevRegistry: true },
   });
@@ -31,6 +32,40 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
     assert.doesNotMatch(html, /Melrose Avenue|WD6 2BH/);
     const asset = await worker.fetch("http://127.0.0.1/favicon.svg");
     assert.equal(asset.status, 200);
+
+    const bankResponse = await worker.fetch("http://127.0.0.1/question-bank/west.json");
+    assert.equal(bankResponse.status, 200);
+    assert.match(bankResponse.headers.get("content-type") || "", /application\/json/);
+    const bank = await bankResponse.json();
+    assert.equal(bank.region, "west");
+    assert.ok(bank.questions.length >= 50);
+    assert.equal(bank.questions.some((question) => question.region === "west" && question.prompt), true);
+
+    const roundPlayer = "worker_bank_round_01";
+    const roundResponse = await worker.fetch(`http://127.0.0.1/api/paid/questions?edition=west&player=${roundPlayer}`);
+    const round = await roundResponse.json();
+    assert.equal(roundResponse.status, 200, JSON.stringify(round));
+    assert.match(round.roundId, /^[a-f0-9]{32}$/);
+    assert.equal(round.questions.length, 12);
+    assert.equal(round.questions.every((question) => typeof question.prompt === "string" && !("correct" in question)), true);
+    const classicPrompts = new Set(regions.west.questions.map((question) => question.prompt));
+    assert.equal(round.questions.some((question) => !classicPrompts.has(question.prompt)), true);
+
+    for (const path of [
+      "/vinext-client-entry-manifest.json",
+      "/.vite/manifest.json",
+      "/package.json",
+      "/question-bank/held/west.json",
+      "/question-bank/west.json.bak",
+      "/data/question-bank/published/west.json",
+      "/question-bank/../package.json",
+    ]) {
+      const hidden = await worker.fetch(`http://127.0.0.1${path}`);
+      assert.equal(hidden.status, 404, path);
+      const hiddenBody = await hidden.text();
+      assert.equal(hiddenBody.includes("\"questions\""), false, path);
+      assert.equal(hiddenBody.includes("node_modules"), false, path);
+    }
 
     const answers = regions.west.questions.map((question) => [...question.correct]);
     const completed = await worker.fetch("http://127.0.0.1/api/paid/games/complete", {
@@ -100,7 +135,112 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
     assert.match(legal, /35 Melrose Avenue, Borehamwood, Hertfordshire, WD6 2BH, United Kingdom/);
     assert.doesNotMatch(legal, /ICO registration|ICO number/i);
     assert.match(legal, /14-day/);
+    const health = await (await worker.fetch("http://127.0.0.1/api/paid/health")).json();
+    assert.equal(health.earnPaths, false);
+    assert.equal(health.shareCards, false);
+    assert.equal((await worker.fetch("http://127.0.0.1/api/paid/earn/perfect", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" })).status, 404);
+    assert.equal((await worker.fetch("http://127.0.0.1/api/paid/share-card.svg?edition=west&score=12")).status, 404);
   } finally {
     await worker.stop();
+  }
+
+  const earnWorker = await unstable_dev("worker/paid.ts", {
+    config: "wrangler.jsonc",
+    local: true,
+    persist: false,
+    logLevel: "error",
+    vars: {
+      STRIPE_API_MODE: "mock",
+      STRIPE_SECRET_KEY: "sk_test_mock_local_only",
+      STRIPE_WEBHOOK_SECRET: "whsec_local_test_secret_value",
+      EMAIL_PROVIDER: "mock",
+      EMAIL_FROM: "What's Your Bride Price? <noreply@mail.classesforculture.com>",
+      EMAIL_REPLY_TO: "team@classesforculture.com",
+      PUBLIC_APP_ORIGIN: "https://brideprice.classesforculture.com",
+      RANDOM_BANK: "on",
+      EARN_PATHS: "on",
+      SHARE_CARDS: "on",
+    },
+    experimental: { disableExperimentalWarning: true, forceLocal: true, disableDevRegistry: true },
+  });
+  try {
+    const health = await (await earnWorker.fetch("http://127.0.0.1/api/paid/health")).json();
+    assert.equal(health.earnPaths, true);
+    assert.equal(health.shareCards, true);
+    const owner = "earn_worker_owner_01";
+    const attemptId = "attempt_earn_worker_01";
+    assert.equal((await earnWorker.fetch("http://127.0.0.1/api/paid/games/begin", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId: owner, attemptId, edition: "west" }),
+    })).status, 200);
+    const round = await (await earnWorker.fetch(`http://127.0.0.1/api/paid/questions?edition=west&player=${owner}&attempt=${attemptId}`)).json();
+    assert.equal(Array.isArray(round.questions[0].correct), true);
+    await earnWorker.fetch("http://127.0.0.1/api/paid/games/finish", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId: owner, attemptId }),
+    });
+    const granted = await (await earnWorker.fetch("http://127.0.0.1/api/paid/earn/perfect", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId: owner, attemptId, edition: "west", roundId: round.roundId, answers: round.questions.map((question) => question.correct), score: 0 }),
+    })).json();
+    assert.equal(granted.reason, "granted");
+    assert.equal(granted.score, 12);
+    const repeat = await (await earnWorker.fetch("http://127.0.0.1/api/paid/earn/perfect", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId: owner, attemptId, edition: "west", roundId: round.roundId, answers: round.questions.map((question) => question.correct) }),
+    })).json();
+    assert.equal(repeat.reason, "repeat");
+    const checkout = await (await earnWorker.fetch("http://127.0.0.1/api/paid/checkout", {
+      method: "POST",
+      headers: { "content-type": "application/json", "idempotency-key": "earn-worker-buy" },
+      body: JSON.stringify({ productKey: "cowrie_5_v1", email: "buyer@example.com", country: "GH", playerId: owner, adult: true }),
+    })).json();
+    assert.equal((await earnWorker.fetch("http://127.0.0.1/api/paid/mock-pay", {
+      method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ orderId: checkout.orderId }),
+    })).status, 200);
+    assert.equal((await (await earnWorker.fetch(`http://127.0.0.1/api/paid/access?player=${owner}`)).json()).cowries, 11);
+    assert.equal((await (await earnWorker.fetch("http://127.0.0.1/api/paid/cowries/spend", {
+      method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ playerId: owner, count: 6 }),
+    })).json()).cowries, 5);
+    const refund = {
+      id: "evt_earn_worker_refund1",
+      type: "charge.refunded",
+      livemode: false,
+      data: { object: { amount: 199, amount_refunded: 199, refunded: true, currency: "gbp", payment_intent: `pi_mock_${checkout.orderId.slice(4)}` } },
+    };
+    const raw = JSON.stringify(refund);
+    const timestamp = Math.floor(Date.now() / 1000);
+    const signature = createHmac("sha256", "whsec_local_test_secret_value").update(`${timestamp}.${raw}`).digest("hex");
+    assert.equal((await earnWorker.fetch("http://127.0.0.1/api/paid/webhook", {
+      method: "POST", headers: { "stripe-signature": `t=${timestamp},v1=${signature}` }, body: raw,
+    })).status, 200);
+    assert.equal((await (await earnWorker.fetch(`http://127.0.0.1/api/paid/access?player=${owner}`)).json()).cowries, 0);
+    const card = await earnWorker.fetch("http://127.0.0.1/api/paid/share-card.svg?edition=west&score=12");
+    assert.equal(card.status, 200);
+    assert.match(await card.text(), /Can you beat my score\?/);
+    const referrer = await (await earnWorker.fetch("http://127.0.0.1/api/paid/referral?player=earn_worker_refer_01")).json();
+    const newbie = "earn_worker_new_0001";
+    assert.equal((await (await earnWorker.fetch("http://127.0.0.1/api/paid/referral/arrive", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId: "earn_worker_refer_01", code: referrer.code }),
+    })).json()).reason, "self");
+    assert.equal((await (await earnWorker.fetch("http://127.0.0.1/api/paid/referral/arrive", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId: newbie, code: referrer.code }),
+    })).json()).reason, "recorded");
+    await earnWorker.fetch("http://127.0.0.1/api/paid/games/begin", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId: newbie, attemptId: "attempt_earn_worker_02", edition: "east" }),
+    });
+    const finished = await (await earnWorker.fetch("http://127.0.0.1/api/paid/games/finish", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId: newbie, attemptId: "attempt_earn_worker_02" }),
+    })).json();
+    assert.equal(finished.referral.referrer.cowries, 2);
+    assert.equal(finished.referral.player.cowries, 1);
+    assert.equal((await (await earnWorker.fetch(`http://127.0.0.1/api/paid/access?player=${newbie}`)).json()).cowries, 1);
+    assert.equal((await (await earnWorker.fetch("http://127.0.0.1/api/paid/access?player=earn_worker_refer_01")).json()).cowries, 2);
+  } finally {
+    await earnWorker.stop();
   }
 });

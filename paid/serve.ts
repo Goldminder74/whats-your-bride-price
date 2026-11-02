@@ -22,7 +22,9 @@ import { assertReceiptFrom, type TransactionalEmail } from "./email.ts";
 import { PaidError, isPaidError } from "./errors.ts";
 import { applyStripeEvent, projectAccess } from "./fulfillment.ts";
 import { SUPPORT_EMAIL } from "./receipt.ts";
-import { completeGame, editions, isEdition, publicQuestions, type KvStore } from "./games.ts";
+import { editions, isEdition, type KvStore } from "./games.ts";
+import { claimReferralIfFirstGame, handlePerfect, handleReferralArrive, handleReferralGet, handleShareCard, handleShareReward } from "./earnRoute.ts";
+import { handleQuestionComplete, handleQuestionGet } from "./questionRoute.ts";
 import { legalPage, mockCheckoutHtml, playPageHtml, returnHtml } from "./pages.ts";
 import { paystackSeam } from "./paystack.ts";
 import { assertSpendCount, type PaidOrder, type PaidRepository } from "./repository.ts";
@@ -62,11 +64,24 @@ export type PaidServices = Readonly<{
   stripeFetch?: typeof fetch;
   ensureSchema?: () => Promise<void>;
   waitUntil?: (promise: Promise<unknown>) => void;
+  /** When true, regional rounds are drawn from the published question bank. */
+  randomBank?: boolean;
+  /** Perfect-score, share, and referral Cowries. Off unless EARN_PATHS is on. */
+  earnPaths?: boolean;
+  /** WhatsApp result card. Off unless SHARE_CARDS is on. */
+  shareCards?: boolean;
 }>;
 
 const PLAYER_ID = /^[A-Za-z0-9_-]{16,64}$/;
 const IDEMPOTENCY = /^[A-Za-z0-9_-]{8,80}$/;
 const ORDER_ID = /^ord_[a-f0-9]{32}$/;
+/** Public region banks only. Other JSON in the asset directory stays on the Worker. */
+const QUESTION_BANK_CHUNK = /^\/question-bank\/(?:west|east|central|north|south)\.json$/;
+const STATIC_ASSET = /\.(?:png|webp|svg|ico|webmanifest|css|js|txt|xml|jpg|jpeg|gif|woff2)$/;
+
+export function isQuestionBankChunk(pathname: string): boolean {
+  return QUESTION_BANK_CHUNK.test(pathname);
+}
 
 export type PaidEnvConfig = {
   STRIPE_MODE?: string;
@@ -352,7 +367,8 @@ async function handleFinish(request: Request, services: PaidServices): Promise<R
   const result = await services.repository.finishAttempt({ playerId: body.playerId, attemptId: body.attemptId, at: services.now() });
   if (!result.already) await services.repository.recordStat("game_complete", "", services.now());
   if (result.showPaywall) await services.repository.recordStat("paywall_view", "after_free", services.now());
-  return json(result);
+  const referral = await claimReferralIfFirstGame(services, body.playerId, result.wallet.completedGames, result.already);
+  return json(referral ? { ...result, referral } : result);
 }
 
 async function handleOwnerStats(request: Request, services: PaidServices): Promise<Response> {
@@ -376,10 +392,27 @@ async function gameShell(request: Request, services: PaidServices): Promise<Resp
   return new Response(asset.body, { status: 200, headers });
 }
 
+async function serveBankChunk(request: Request, services: PaidServices): Promise<Response> {
+  if (!services.assets) return json({ error: "not_found" }, 404);
+  const asset = await services.assets.fetch(request);
+  if (!asset.ok) return json({ error: "not_found" }, 404);
+  const headers = new Headers(asset.headers);
+  headers.set("content-type", "application/json; charset=utf-8");
+  headers.set("x-content-type-options", "nosniff");
+  headers.set("cache-control", "public, max-age=3600");
+  return new Response(asset.body, { status: 200, headers });
+}
+
 export async function servePaid(request: Request, services: PaidServices): Promise<Response> {
   const url = new URL(request.url);
   try {
-    if (request.method === "GET" && /\.(?:png|webp|svg|ico|webmanifest|css|js|txt|xml|jpg|jpeg|gif|woff2)$/.test(url.pathname)) {
+    if (request.method === "GET" && url.pathname === "/api/paid/share-card.svg") {
+      return await handleShareCard(url, services);
+    }
+    if (request.method === "GET" && isQuestionBankChunk(url.pathname)) {
+      return await serveBankChunk(request, services);
+    }
+    if (request.method === "GET" && STATIC_ASSET.test(url.pathname)) {
       if (!services.assets) return json({ error: "not_found" }, 404);
       return services.assets.fetch(request);
     }
@@ -392,7 +425,14 @@ export async function servePaid(request: Request, services: PaidServices): Promi
       return html(legalPage(url.pathname.slice(1) as "privacy" | "terms" | "refunds"));
     }
     if (request.method === "GET" && url.pathname === "/api/paid/health") {
-      return json({ ok: true, stripeMode: services.config?.stripeMode ?? "unconfigured", canonical: CANONICAL_ORIGIN, hotPath: "kv" });
+      return json({
+        ok: true,
+        stripeMode: services.config?.stripeMode ?? "unconfigured",
+        canonical: CANONICAL_ORIGIN,
+        hotPath: "kv",
+        earnPaths: services.earnPaths === true,
+        shareCards: services.shareCards === true,
+      });
     }
     if (request.method === "GET" && url.pathname === "/api/paid/catalog") {
       return json({
@@ -413,20 +453,16 @@ export async function servePaid(request: Request, services: PaidServices): Promi
         blockedCountries: [...(services.blockedCountries ?? blockedPurchaseCountries(undefined))].sort(),
         purchasesBlocked: requestCountry(request) !== null && (services.blockedCountries ?? blockedPurchaseCountries(undefined)).has(requestCountry(request) as string),
         purchaseBlockedMessage: PURCHASES_UNAVAILABLE_MESSAGE,
+        earnPaths: services.earnPaths === true,
+        shareCards: services.shareCards === true,
       });
     }
     if (request.method === "GET" && url.pathname === "/api/paid/questions") {
-      const edition = url.searchParams.get("edition");
-      if (!isEdition(edition)) throw new PaidError("edition_invalid", 400);
-      const body = JSON.stringify(publicQuestions(edition));
-      return new Response(body, {
-        headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=86400" },
-      });
+      return await handleQuestionGet(url, services);
     }
     if (request.method === "POST" && url.pathname === "/api/paid/games/complete") {
       sameOrigin(request);
-      const result = await completeGame(services.kv, await readJson(request, 20_000), services.now());
-      return json(result);
+      return await handleQuestionComplete(request, services, await readJson(request, 20_000));
     }
     if (request.method === "GET" && url.pathname === "/api/paid/access") {
       await ready(services);
@@ -461,6 +497,10 @@ export async function servePaid(request: Request, services: PaidServices): Promi
     }
     if (request.method === "POST" && url.pathname === "/api/paid/games/begin") return await handleBegin(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/games/finish") return await handleFinish(request, services);
+    if (request.method === "POST" && url.pathname === "/api/paid/earn/perfect") return await handlePerfect(request, services);
+    if (request.method === "POST" && url.pathname === "/api/paid/earn/share") return await handleShareReward(request, services);
+    if (request.method === "GET" && url.pathname === "/api/paid/referral") return await handleReferralGet(url, services);
+    if (request.method === "POST" && url.pathname === "/api/paid/referral/arrive") return await handleReferralArrive(request, services);
     if (request.method === "GET" && url.pathname === "/api/paid/owner/stats") return await handleOwnerStats(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/checkout") return await handleCheckout(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/webhook") return await handleWebhook(request, services);

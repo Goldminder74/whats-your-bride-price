@@ -1,0 +1,5841 @@
+{
+  "region": "east",
+  "questions": [
+    {
+      "id": "east_geog_nairobi",
+      "region": "east",
+      "country": "Kenya",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Kenya?",
+      "options": [
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa",
+        "Asmara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nairobi is the capital of Kenya.",
+      "sources": [
+        {
+          "title": "Nairobi",
+          "url": "https://en.wikipedia.org/wiki/Nairobi",
+          "claim": "Nairobi is the capital of Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_kampala",
+      "region": "east",
+      "country": "Uganda",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Uganda?",
+      "options": [
+        "Kampala",
+        "Nairobi",
+        "Addis Ababa",
+        "Asmara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kampala is the capital of Uganda.",
+      "sources": [
+        {
+          "title": "Kampala",
+          "url": "https://en.wikipedia.org/wiki/Kampala",
+          "claim": "Kampala is the capital of Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_addis_ababa",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Ethiopia?",
+      "options": [
+        "Addis Ababa",
+        "Nairobi",
+        "Kampala",
+        "Asmara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Addis Ababa is the capital of Ethiopia.",
+      "sources": [
+        {
+          "title": "Addis Ababa",
+          "url": "https://en.wikipedia.org/wiki/Addis_Ababa",
+          "claim": "Addis Ababa is the capital of Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_asmara",
+      "region": "east",
+      "country": "Eritrea",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Eritrea?",
+      "options": [
+        "Asmara",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Asmara is the capital of Eritrea.",
+      "sources": [
+        {
+          "title": "Asmara",
+          "url": "https://en.wikipedia.org/wiki/Asmara",
+          "claim": "Asmara is the capital of Eritrea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_kigali",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of Rwanda?",
+      "options": [
+        "Kigali",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kigali is the capital of Rwanda.",
+      "sources": [
+        {
+          "title": "Kigali",
+          "url": "https://en.wikipedia.org/wiki/Kigali",
+          "claim": "Kigali is the capital of Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_gitega",
+      "region": "east",
+      "country": "Burundi",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which city is the capital of Burundi?",
+      "options": [
+        "Gitega",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gitega is the capital of Burundi.",
+      "sources": [
+        {
+          "title": "Gitega",
+          "url": "https://en.wikipedia.org/wiki/Gitega",
+          "claim": "Gitega is the capital of Burundi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_dodoma",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the official capital of Tanzania?",
+      "options": [
+        "Dodoma",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dodoma is the capital of Tanzania.",
+      "sources": [
+        {
+          "title": "Dodoma",
+          "url": "https://en.wikipedia.org/wiki/Dodoma",
+          "claim": "Dodoma is the capital of Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_mogadishu",
+      "region": "east",
+      "country": "Somalia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Somalia?",
+      "options": [
+        "Mogadishu",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mogadishu is the capital of Somalia.",
+      "sources": [
+        {
+          "title": "Mogadishu",
+          "url": "https://en.wikipedia.org/wiki/Mogadishu",
+          "claim": "Mogadishu is the capital of Somalia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_djibouti_city",
+      "region": "east",
+      "country": "Djibouti",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Djibouti",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Djibouti is the capital of Djibouti.",
+      "sources": [
+        {
+          "title": "Djibouti (city)",
+          "url": "https://en.wikipedia.org/wiki/Djibouti_(city)",
+          "claim": "Djibouti is the capital of Djibouti",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_antananarivo",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Madagascar?",
+      "options": [
+        "Antananarivo",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Antananarivo is the capital of Madagascar.",
+      "sources": [
+        {
+          "title": "Antananarivo",
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "claim": "Antananarivo is the capital of Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_port_louis",
+      "region": "east",
+      "country": "Mauritius",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of Mauritius?",
+      "options": [
+        "Port Louis",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Port Louis is the capital of Mauritius.",
+      "sources": [
+        {
+          "title": "Port Louis",
+          "url": "https://en.wikipedia.org/wiki/Port_Louis",
+          "claim": "Port Louis is the capital of Mauritius",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_victoria_seychelles",
+      "region": "east",
+      "country": "Seychelles",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which city is the capital of Seychelles?",
+      "options": [
+        "Victoria",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Victoria is the capital of Seychelles.",
+      "sources": [
+        {
+          "title": "Victoria, Seychelles",
+          "url": "https://en.wikipedia.org/wiki/Victoria,_Seychelles",
+          "claim": "Victoria is the capital of Seychelles",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_moroni_comoros",
+      "region": "east",
+      "country": "Comoros",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which city is the capital of the Comoros?",
+      "options": [
+        "Moroni",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Moroni is the capital of the Comoros.",
+      "sources": [
+        {
+          "title": "Moroni, Comoros",
+          "url": "https://en.wikipedia.org/wiki/Moroni,_Comoros",
+          "claim": "Moroni is the capital of the Comoros",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_juba",
+      "region": "east",
+      "country": "South Sudan",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which city is the capital of South Sudan?",
+      "options": [
+        "Juba",
+        "Nairobi",
+        "Kampala",
+        "Addis Ababa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Juba is the capital of South Sudan.",
+      "sources": [
+        {
+          "title": "Juba",
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "claim": "Juba is the capital of South Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_mount_kilimanjaro",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Mount Kilimanjaro",
+        "Zanzibar",
+        "Kenya",
+        "Lake Victoria"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mount Kilimanjaro is the highest mountain in Africa.",
+      "sources": [
+        {
+          "title": "Mount Kilimanjaro",
+          "url": "https://en.wikipedia.org/wiki/Mount_Kilimanjaro",
+          "claim": "Mount Kilimanjaro is the highest mountain in Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_zanzibar",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Where is the spice island of Tanzania?",
+      "options": [
+        "Zanzibar",
+        "Mount Kilimanjaro",
+        "Kenya",
+        "Lake Victoria"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zanzibar is an island of Tanzania.",
+      "sources": [
+        {
+          "title": "Zanzibar",
+          "url": "https://en.wikipedia.org/wiki/Zanzibar",
+          "claim": "Zanzibar is an island of Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_serengeti",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the famous wildlife plain in Tanzania?",
+      "options": [
+        "Serengeti",
+        "Maasai Mara",
+        "Ngorongoro",
+        "Stone Town"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Serengeti is a region in Tanzania.",
+      "sources": [
+        {
+          "title": "Serengeti",
+          "url": "https://en.wikipedia.org/wiki/Serengeti",
+          "claim": "The Serengeti is a region in Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_maasai_mara",
+      "region": "east",
+      "country": "Kenya",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the famous wildlife reserve in Kenya?",
+      "options": [
+        "Maasai Mara",
+        "Serengeti",
+        "Ngorongoro",
+        "Stone Town"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Maasai Mara is a reserve in Kenya.",
+      "sources": [
+        {
+          "title": "Maasai Mara",
+          "url": "https://en.wikipedia.org/wiki/Maasai_Mara",
+          "claim": "The Maasai Mara is a reserve in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_injera",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call the spongy fermented flatbread of Ethiopia and Eritrea?",
+      "options": [
+        "Injera",
+        "Doro wat",
+        "Nyama choma",
+        "Ugali"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Injera is a sourdough flatbread from Ethiopia.",
+      "sources": [
+        {
+          "title": "Injera",
+          "url": "https://en.wikipedia.org/wiki/Injera",
+          "claim": "Injera is a sourdough flatbread from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_doro_wat",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a spicy chicken stew served on injera?",
+      "options": [
+        "Doro wat",
+        "Injera",
+        "Nyama choma",
+        "Ugali"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Doro wat is a chicken stew from Ethiopia.",
+      "sources": [
+        {
+          "title": "Doro wat",
+          "url": "https://en.wikipedia.org/wiki/Doro_wat",
+          "claim": "Doro wat is a chicken stew from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_nyama_choma",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call grilled meat, a beloved Kenyan celebration dish?",
+      "options": [
+        "Nyama choma",
+        "Injera",
+        "Doro wat",
+        "Ugali"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nyama choma is grilled meat in Kenya.",
+      "sources": [
+        {
+          "title": "Nyama choma",
+          "url": "https://en.wikipedia.org/wiki/Nyama_choma",
+          "claim": "Nyama choma is grilled meat in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_ugali",
+      "region": "east",
+      "country": "East Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call the stiff maize porridge of Kenya and Tanzania?",
+      "options": [
+        "Ugali",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ugali is a maize porridge eaten in East Africa.",
+      "sources": [
+        {
+          "title": "Ugali",
+          "url": "https://en.wikipedia.org/wiki/Ugali",
+          "claim": "Ugali is a maize porridge eaten in East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_matoke",
+      "region": "east",
+      "country": "Uganda",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call steamed green banana, a staple in Uganda?",
+      "options": [
+        "Matoke",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Matoke is a banana dish from Uganda.",
+      "sources": [
+        {
+          "title": "Matoke",
+          "url": "https://en.wikipedia.org/wiki/Matoke",
+          "claim": "Matoke is a banana dish from Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_sukuma_wiki",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call braised greens, a daily dish in Kenya?",
+      "options": [
+        "Sukuma wiki",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sukuma wiki is a vegetable dish in Kenya.",
+      "sources": [
+        {
+          "title": "Sukuma wiki",
+          "url": "https://en.wikipedia.org/wiki/Sukuma_wiki",
+          "claim": "Sukuma wiki is a vegetable dish in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_mandazi",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a lightly sweet fried dough from the Swahili coast?",
+      "options": [
+        "Mandazi",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mandazi is a fried bread from East Africa.",
+      "sources": [
+        {
+          "title": "Mandazi",
+          "url": "https://en.wikipedia.org/wiki/Mandazi",
+          "claim": "Mandazi is a fried bread from East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_kenya",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call milky spiced tea drunk throughout Kenya?",
+      "options": [
+        "Chai",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tea is widely drunk in Kenya.",
+      "sources": [
+        {
+          "title": "Kenya",
+          "url": "https://en.wikipedia.org/wiki/Kenya",
+          "claim": "Tea is widely drunk in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_kitfo",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call minced beef seasoned with mitmita and kibbeh?",
+      "options": [
+        "Kitfo",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kitfo is a raw beef dish from Ethiopia.",
+      "sources": [
+        {
+          "title": "Kitfo",
+          "url": "https://en.wikipedia.org/wiki/Kitfo",
+          "claim": "Kitfo is a raw beef dish from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_tibs",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call sautéed meat, an Ethiopian restaurant favourite?",
+      "options": [
+        "Tibs",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tibs is a meat dish from Ethiopia.",
+      "sources": [
+        {
+          "title": "Tibs",
+          "url": "https://en.wikipedia.org/wiki/Tibs",
+          "claim": "Tibs is a meat dish from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_pilau",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call spiced rice associated with the Swahili coast?",
+      "options": [
+        "Pilau",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pilau is a spiced rice dish.",
+      "sources": [
+        {
+          "title": "Pilau",
+          "url": "https://en.wikipedia.org/wiki/Pilau",
+          "claim": "Pilau is a spiced rice dish",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_rolex_food",
+      "region": "east",
+      "country": "Uganda",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call a Ugandan chapati rolled around an omelette?",
+      "options": [
+        "Rolex",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rolex is a street food in Uganda.",
+      "sources": [
+        {
+          "title": "Rolex (food)",
+          "url": "https://en.wikipedia.org/wiki/Rolex_(food)",
+          "claim": "Rolex is a street food in Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_chapati",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a layered flatbread loved in Kenyan homes?",
+      "options": [
+        "Chapati",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chapati is eaten in Kenya.",
+      "sources": [
+        {
+          "title": "Chapati",
+          "url": "https://en.wikipedia.org/wiki/Chapati",
+          "claim": "Chapati is eaten in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_berbere",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call the chilli spice blend at the heart of Ethiopian cooking?",
+      "options": [
+        "Berbere",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Berbere is a spice mixture from Ethiopia.",
+      "sources": [
+        {
+          "title": "Berbere",
+          "url": "https://en.wikipedia.org/wiki/Berbere",
+          "claim": "Berbere is a spice mixture from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_swahili_cuisine",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a Swahili word for stew or sauce?",
+      "options": [
+        "Mchuzi",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mchuzi means stew in Swahili cooking.",
+      "sources": [
+        {
+          "title": "Swahili cuisine",
+          "url": "https://en.wikipedia.org/wiki/Swahili_cuisine",
+          "claim": "Mchuzi means stew in Swahili cooking",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_coffee",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call the drink Ethiopia gave the world, still roasted for guests?",
+      "options": [
+        "Coffee",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Coffee originated in Ethiopia.",
+      "sources": [
+        {
+          "title": "Coffee",
+          "url": "https://en.wikipedia.org/wiki/Coffee",
+          "claim": "Coffee originated in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_romazava",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call a meat and greens stew considered a national dish of Madagascar?",
+      "options": [
+        "Romazava",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Romazava is a dish from Madagascar.",
+      "sources": [
+        {
+          "title": "Romazava",
+          "url": "https://en.wikipedia.org/wiki/Romazava",
+          "claim": "Romazava is a dish from Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_zigni",
+      "region": "east",
+      "country": "Eritrea",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a spicy meat stew of Eritrean cooking?",
+      "options": [
+        "Zigni",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zigni is a stew from Eritrea.",
+      "sources": [
+        {
+          "title": "Zigni",
+          "url": "https://en.wikipedia.org/wiki/Zigni",
+          "claim": "Zigni is a stew from Eritrea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_taarab",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the poetic coastal music of Zanzibar and the Swahili shore?",
+      "options": [
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz",
+        "Gengetone"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Taarab is a music genre from the Swahili coast.",
+      "sources": [
+        {
+          "title": "Taarab",
+          "url": "https://en.wikipedia.org/wiki/Taarab",
+          "claim": "Taarab is a music genre from the Swahili coast",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_bongo_flava",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the popular music of Tanzania mixing hip hop and Swahili melody?",
+      "options": [
+        "Bongo flava",
+        "Taarab",
+        "Ethio-jazz",
+        "Gengetone"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bongo flava is a music genre from Tanzania.",
+      "sources": [
+        {
+          "title": "Bongo flava",
+          "url": "https://en.wikipedia.org/wiki/Bongo_flava",
+          "claim": "Bongo flava is a music genre from Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_ethio_jazz",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Ethio-jazz",
+        "Taarab",
+        "Bongo flava",
+        "Gengetone"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ethio-jazz is a genre from Ethiopia.",
+      "sources": [
+        {
+          "title": "Ethio-jazz",
+          "url": "https://en.wikipedia.org/wiki/Ethio-jazz",
+          "claim": "Ethio-jazz is a genre from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_gengetone",
+      "region": "east",
+      "country": "Kenya",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a youthful Kenyan dance sound of the late 2010s?",
+      "options": [
+        "Gengetone",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gengetone is a music genre from Kenya.",
+      "sources": [
+        {
+          "title": "Gengetone",
+          "url": "https://en.wikipedia.org/wiki/Gengetone",
+          "claim": "Gengetone is a music genre from Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_singeli",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a very fast electronic dance music from Dar es Salaam?",
+      "options": [
+        "Singeli",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Singeli is a music genre from Tanzania.",
+      "sources": [
+        {
+          "title": "Singeli",
+          "url": "https://en.wikipedia.org/wiki/Singeli",
+          "claim": "Singeli is a music genre from Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_ohangla",
+      "region": "east",
+      "country": "Kenya",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a Luo popular music driven by a traditional lyre?",
+      "options": [
+        "Ohangla",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ohangla is a music genre from Kenya.",
+      "sources": [
+        {
+          "title": "Ohangla",
+          "url": "https://en.wikipedia.org/wiki/Ohangla",
+          "claim": "Ohangla is a music genre from Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_benga_music",
+      "region": "east",
+      "country": "Kenya",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a guitar dance music of Kenya?",
+      "options": [
+        "Benga",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Benga is a genre of Kenyan popular music.",
+      "sources": [
+        {
+          "title": "Benga music",
+          "url": "https://en.wikipedia.org/wiki/Benga_music",
+          "claim": "Benga is a genre of Kenyan popular music",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_kidandali",
+      "region": "east",
+      "country": "Uganda",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a bright Ugandan dance-pop style?",
+      "options": [
+        "Kidandali",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kidandali is a music genre from Uganda.",
+      "sources": [
+        {
+          "title": "Kidandali",
+          "url": "https://en.wikipedia.org/wiki/Kidandali",
+          "claim": "Kidandali is a music genre from Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_eskista",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the shoulder dance of the Ethiopian highlands?",
+      "options": [
+        "Eskista",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Eskista is a dance from Ethiopia.",
+      "sources": [
+        {
+          "title": "Eskista",
+          "url": "https://en.wikipedia.org/wiki/Eskista",
+          "claim": "Eskista is a dance from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_intore",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the warrior dance tradition performed in Rwanda?",
+      "options": [
+        "Intore",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Intore is a dance from Rwanda.",
+      "sources": [
+        {
+          "title": "Intore",
+          "url": "https://en.wikipedia.org/wiki/Intore",
+          "claim": "Intore is a dance from Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_ngoma",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a Swahili word for drum, dance, and celebration?",
+      "options": [
+        "Ngoma",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ngoma means drum and dance in East Africa.",
+      "sources": [
+        {
+          "title": "Ngoma",
+          "url": "https://en.wikipedia.org/wiki/Ngoma",
+          "claim": "Ngoma means drum and dance in East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_salegy",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a driving dance rhythm of northern Madagascar?",
+      "options": [
+        "Salegy",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Salegy is a music genre from Madagascar.",
+      "sources": [
+        {
+          "title": "Salegy",
+          "url": "https://en.wikipedia.org/wiki/Salegy",
+          "claim": "Salegy is a music genre from Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_chakacha",
+      "region": "east",
+      "country": "Kenya",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a women's dance rhythm of the Kenyan coast?",
+      "options": [
+        "Chakacha",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chakacha is a dance from the Kenyan coast.",
+      "sources": [
+        {
+          "title": "Chakacha",
+          "url": "https://en.wikipedia.org/wiki/Chakacha",
+          "claim": "Chakacha is a dance from the Kenyan coast",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_krar",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a bowl lyre of Ethiopia and Eritrea?",
+      "options": [
+        "Krar",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The krar is a lyre from Ethiopia.",
+      "sources": [
+        {
+          "title": "Krar",
+          "url": "https://en.wikipedia.org/wiki/Krar",
+          "claim": "The krar is a lyre from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_masenqo",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a one-string fiddle of the Ethiopian highlands?",
+      "options": [
+        "Masenqo",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The masenqo is a fiddle from Ethiopia.",
+      "sources": [
+        {
+          "title": "Masenqo",
+          "url": "https://en.wikipedia.org/wiki/Masenqo",
+          "claim": "The masenqo is a fiddle from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_adungu",
+      "region": "east",
+      "country": "Uganda",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a harp of the Alur people of Uganda?",
+      "options": [
+        "Adungu",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The adungu is a harp from Uganda.",
+      "sources": [
+        {
+          "title": "Adungu",
+          "url": "https://en.wikipedia.org/wiki/Adungu",
+          "claim": "The adungu is a harp from Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_nyatiti",
+      "region": "east",
+      "country": "Kenya",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the Luo lyre of Kenya?",
+      "options": [
+        "Nyatiti",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The nyatiti is a lyre from Kenya.",
+      "sources": [
+        {
+          "title": "Nyatiti",
+          "url": "https://en.wikipedia.org/wiki/Nyatiti",
+          "claim": "The nyatiti is a lyre from Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_taarab2",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Taraab orchestra",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Taarab orchestras perform on the Swahili coast.",
+      "sources": [
+        {
+          "title": "Taarab",
+          "url": "https://en.wikipedia.org/wiki/Taarab",
+          "claim": "Taarab orchestras perform on the Swahili coast",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_kanga_garment",
+      "region": "east",
+      "country": "East Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the printed cotton wrap with a Swahili proverb on the border?",
+      "options": [
+        "Kanga",
+        "Kitenge",
+        "Kikoi",
+        "Habesha kemis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kanga is a colourful garment from East Africa.",
+      "sources": [
+        {
+          "title": "Kanga (garment)",
+          "url": "https://en.wikipedia.org/wiki/Kanga_(garment)",
+          "claim": "The kanga is a colourful garment from East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_kitenge",
+      "region": "east",
+      "country": "East Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a brighter printed wrap cloth worn across East Africa?",
+      "options": [
+        "Kitenge",
+        "Kanga",
+        "Kikoi",
+        "Habesha kemis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kitenge is a cotton fabric worn in East Africa.",
+      "sources": [
+        {
+          "title": "Kitenge",
+          "url": "https://en.wikipedia.org/wiki/Kitenge",
+          "claim": "Kitenge is a cotton fabric worn in East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_kikoi",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the striped cotton sarong of the Swahili coast?",
+      "options": [
+        "Kikoi",
+        "Kanga",
+        "Kitenge",
+        "Habesha kemis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kikoi is a cloth from East Africa.",
+      "sources": [
+        {
+          "title": "Kikoi",
+          "url": "https://en.wikipedia.org/wiki/Kikoi",
+          "claim": "The kikoi is a cloth from East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_habesha_kemis",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the white cotton dress of Ethiopian and Eritrean celebrations?",
+      "options": [
+        "Habesha kemis",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The habesha kemis is a dress from Ethiopia.",
+      "sources": [
+        {
+          "title": "Habesha kemis",
+          "url": "https://en.wikipedia.org/wiki/Habesha_kemis",
+          "claim": "The habesha kemis is a dress from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_netela",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a light white shawl worn with Ethiopian dress?",
+      "options": [
+        "Netela",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The netela is a shawl from Ethiopia.",
+      "sources": [
+        {
+          "title": "Netela",
+          "url": "https://en.wikipedia.org/wiki/Netela",
+          "claim": "The netela is a shawl from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_maasai_people",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the red-checked cloth associated with Maasai dress?",
+      "options": [
+        "Shuka",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Maasai people wear a cloth called a shuka.",
+      "sources": [
+        {
+          "title": "Maasai people",
+          "url": "https://en.wikipedia.org/wiki/Maasai_people",
+          "claim": "Maasai people wear a cloth called a shuka",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_kofia_hat",
+      "region": "east",
+      "country": "East Africa",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the embroidered cap worn by men on the Swahili coast?",
+      "options": [
+        "Kofia",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kofia is a cap worn in East Africa.",
+      "sources": [
+        {
+          "title": "Kofia (hat)",
+          "url": "https://en.wikipedia.org/wiki/Kofia_(hat)",
+          "claim": "The kofia is a cap worn in East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_gomesi",
+      "region": "east",
+      "country": "Uganda",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the long colourful dress worn by Baganda women?",
+      "options": [
+        "Gomesi",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The gomesi is a dress from Uganda.",
+      "sources": [
+        {
+          "title": "Gomesi",
+          "url": "https://en.wikipedia.org/wiki/Gomesi",
+          "claim": "The gomesi is a dress from Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_kanzu",
+      "region": "east",
+      "country": "Uganda",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the long white robe worn by Baganda men?",
+      "options": [
+        "Kanzu",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kanzu is a robe worn in Uganda.",
+      "sources": [
+        {
+          "title": "Kanzu",
+          "url": "https://en.wikipedia.org/wiki/Kanzu",
+          "claim": "The kanzu is a robe worn in Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_umushanana",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the draped formal dress of Rwandan celebrations?",
+      "options": [
+        "Umushanana",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The umushanana is a dress from Rwanda.",
+      "sources": [
+        {
+          "title": "Umushanana",
+          "url": "https://en.wikipedia.org/wiki/Umushanana",
+          "claim": "The umushanana is a dress from Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_tibeb",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the colourful woven border on Ethiopian cotton cloth?",
+      "options": [
+        "Tibeb",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tibeb is a woven border on Ethiopian cloth.",
+      "sources": [
+        {
+          "title": "Tibeb",
+          "url": "https://en.wikipedia.org/wiki/Tibeb",
+          "claim": "Tibeb is a woven border on Ethiopian cloth",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_maasai_people2",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Bead collars",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Maasai beadwork is worn in Kenya.",
+      "sources": [
+        {
+          "title": "Maasai people",
+          "url": "https://en.wikipedia.org/wiki/Maasai_people",
+          "claim": "Maasai beadwork is worn in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_kanga_garment_2",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the written message along the edge of a cloth?",
+      "options": [
+        "Kanga proverb",
+        "Kitenge",
+        "Kikoi",
+        "Habesha kemis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kanga cloth often includes a proverb.",
+      "sources": [
+        {
+          "title": "Kanga (garment)",
+          "url": "https://en.wikipedia.org/wiki/Kanga_(garment)",
+          "claim": "Kanga cloth often includes a proverb",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_lamba_garment",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the wrap cloth of Madagascar?",
+      "options": [
+        "Lamba",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The lamba is a garment from Madagascar.",
+      "sources": [
+        {
+          "title": "Lamba (garment)",
+          "url": "https://en.wikipedia.org/wiki/Lamba_(garment)",
+          "claim": "The lamba is a garment from Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_habesha_kemis2",
+      "region": "east",
+      "country": "Eritrea",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the white celebration dress shared with Ethiopian fashion?",
+      "options": [
+        "Zurias",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "White dresses are worn for celebrations in Eritrea and Ethiopia.",
+      "sources": [
+        {
+          "title": "Habesha kemis",
+          "url": "https://en.wikipedia.org/wiki/Habesha_kemis",
+          "claim": "White dresses are worn for celebrations in Eritrea and Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_dirac_garment",
+      "region": "east",
+      "country": "Somalia",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a long dress worn by Somali women?",
+      "options": [
+        "Dirac",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The dirac is a dress worn in Somalia.",
+      "sources": [
+        {
+          "title": "Dirac (garment)",
+          "url": "https://en.wikipedia.org/wiki/Dirac_(garment)",
+          "claim": "The dirac is a dress worn in Somalia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_macawiis",
+      "region": "east",
+      "country": "Somalia",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the sarong worn by Somali men?",
+      "options": [
+        "Macawiis",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The macawiis is a garment worn by Somali men.",
+      "sources": [
+        {
+          "title": "Macawiis",
+          "url": "https://en.wikipedia.org/wiki/Macawiis",
+          "claim": "The macawiis is a garment worn by Somali men",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_kanga_garment_3",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is another name for the kanga wrap in Kenya?",
+      "options": [
+        "Lessos",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lessos is another name for the kanga in Kenya.",
+      "sources": [
+        {
+          "title": "Kanga (garment)",
+          "url": "https://en.wikipedia.org/wiki/Kanga_(garment)",
+          "claim": "Lessos is another name for the kanga in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_swahili_language",
+      "region": "east",
+      "country": "East Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the Bantu lingua franca of the East African coast and beyond?",
+      "options": [
+        "Swahili",
+        "Amharic",
+        "Oromo",
+        "Tigrinya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Swahili is a Bantu language of East Africa.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Swahili is a Bantu language of East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_amharic",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the official working language of Ethiopia?",
+      "options": [
+        "Amharic",
+        "Swahili",
+        "Oromo",
+        "Tigrinya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Amharic is a language of Ethiopia.",
+      "sources": [
+        {
+          "title": "Amharic",
+          "url": "https://en.wikipedia.org/wiki/Amharic",
+          "claim": "Amharic is a language of Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_oromo_language",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the most widely spoken language of Ethiopia?",
+      "options": [
+        "Oromo",
+        "Swahili",
+        "Amharic",
+        "Tigrinya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Oromo is a language spoken in Ethiopia.",
+      "sources": [
+        {
+          "title": "Oromo language",
+          "url": "https://en.wikipedia.org/wiki/Oromo_language",
+          "claim": "Oromo is a language spoken in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_tigrinya_language",
+      "region": "east",
+      "country": "Eritrea",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a major language of Eritrea and northern Ethiopia?",
+      "options": [
+        "Tigrinya",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tigrinya is a language of Eritrea.",
+      "sources": [
+        {
+          "title": "Tigrinya language",
+          "url": "https://en.wikipedia.org/wiki/Tigrinya_language",
+          "claim": "Tigrinya is a language of Eritrea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_kinyarwanda",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the national language of Rwanda?",
+      "options": [
+        "Kinyarwanda",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kinyarwanda is the national language of Rwanda.",
+      "sources": [
+        {
+          "title": "Kinyarwanda",
+          "url": "https://en.wikipedia.org/wiki/Kinyarwanda",
+          "claim": "Kinyarwanda is the national language of Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_kirundi",
+      "region": "east",
+      "country": "Burundi",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the national language of Burundi?",
+      "options": [
+        "Kirundi",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kirundi is the language of Burundi.",
+      "sources": [
+        {
+          "title": "Kirundi",
+          "url": "https://en.wikipedia.org/wiki/Kirundi",
+          "claim": "Kirundi is the language of Burundi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_luganda",
+      "region": "east",
+      "country": "Uganda",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the widely spoken language of the Baganda in Uganda?",
+      "options": [
+        "Luganda",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Luganda is a language of Uganda.",
+      "sources": [
+        {
+          "title": "Luganda",
+          "url": "https://en.wikipedia.org/wiki/Luganda",
+          "claim": "Luganda is a language of Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_somali_language",
+      "region": "east",
+      "country": "Somalia",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Somali",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Somali is the language of Somalia.",
+      "sources": [
+        {
+          "title": "Somali language",
+          "url": "https://en.wikipedia.org/wiki/Somali_language",
+          "claim": "Somali is the language of Somalia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_malagasy_language",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name the national language of Madagascar?",
+      "options": [
+        "Malagasy",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Malagasy is the language of Madagascar.",
+      "sources": [
+        {
+          "title": "Malagasy language",
+          "url": "https://en.wikipedia.org/wiki/Malagasy_language",
+          "claim": "Malagasy is the language of Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_ge_ez",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name the ancient liturgical language of Ethiopian and Eritrean churches?",
+      "options": [
+        "Ge'ez",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ge'ez is a liturgical language of Ethiopia.",
+      "sources": [
+        {
+          "title": "Ge'ez",
+          "url": "https://en.wikipedia.org/wiki/Ge'ez",
+          "claim": "Ge'ez is a liturgical language of Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_kenya",
+      "region": "east",
+      "country": "Kenya",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name an official language of Kenya alongside Swahili?",
+      "options": [
+        "English",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "English and Swahili are official languages of Kenya.",
+      "sources": [
+        {
+          "title": "Kenya",
+          "url": "https://en.wikipedia.org/wiki/Kenya",
+          "claim": "English and Swahili are official languages of Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_nkore_language",
+      "region": "east",
+      "country": "Uganda",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a Bantu language of southwestern Uganda?",
+      "options": [
+        "Runyankole",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Runyankole is a language of Uganda.",
+      "sources": [
+        {
+          "title": "Nkore language",
+          "url": "https://en.wikipedia.org/wiki/Nkore_language",
+          "claim": "Runyankole is a language of Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_kikuyu_language",
+      "region": "east",
+      "country": "Kenya",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name the largest ethnic language of central Kenya?",
+      "options": [
+        "Kikuyu",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kikuyu is a language spoken in Kenya.",
+      "sources": [
+        {
+          "title": "Kikuyu language",
+          "url": "https://en.wikipedia.org/wiki/Kikuyu_language",
+          "claim": "Kikuyu is a language spoken in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_luo_language",
+      "region": "east",
+      "country": "Kenya",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name a Nilotic language of the Lake Victoria region?",
+      "options": [
+        "Luo",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Luo language is spoken in Kenya.",
+      "sources": [
+        {
+          "title": "Luo language",
+          "url": "https://en.wikipedia.org/wiki/Luo_language",
+          "claim": "The Luo language is spoken in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_chaga_languages",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a language cluster of the Kilimanjaro area?",
+      "options": [
+        "Chaga",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chaga languages are spoken in Tanzania.",
+      "sources": [
+        {
+          "title": "Chaga languages",
+          "url": "https://en.wikipedia.org/wiki/Chaga_languages",
+          "claim": "Chaga languages are spoken in Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_dinka_language",
+      "region": "east",
+      "country": "South Sudan",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Can you name a major Nilotic language of South Sudan?",
+      "options": [
+        "Dinka",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dinka is a language of South Sudan.",
+      "sources": [
+        {
+          "title": "Dinka language",
+          "url": "https://en.wikipedia.org/wiki/Dinka_language",
+          "claim": "Dinka is a language of South Sudan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_afar_language",
+      "region": "east",
+      "country": "Djibouti",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a language of Djibouti, Eritrea, and Ethiopia?",
+      "options": [
+        "Afar",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Afar is a language spoken in Djibouti.",
+      "sources": [
+        {
+          "title": "Afar language",
+          "url": "https://en.wikipedia.org/wiki/Afar_language",
+          "claim": "Afar is a language spoken in Djibouti",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_swahili_language2",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the everyday coastal language people use to say jambo and asante?",
+      "options": [
+        "Swahili greeting",
+        "Amharic",
+        "Oromo",
+        "Tigrinya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jambo and asante are Swahili words.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Jambo and asante are Swahili words",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_timkat",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is the Ethiopian Epiphany festival with public processions?",
+      "options": [
+        "Timkat",
+        "Irreecha",
+        "Enkutatash",
+        "Meskel"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Timkat is a festival in Ethiopia.",
+      "sources": [
+        {
+          "title": "Timkat",
+          "url": "https://en.wikipedia.org/wiki/Timkat",
+          "claim": "Timkat is a festival in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_irreechaa",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is the Oromo thanksgiving festival recognised by UNESCO?",
+      "options": [
+        "Irreecha",
+        "Timkat",
+        "Enkutatash",
+        "Meskel"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Irreecha is a thanksgiving festival of the Oromo people.",
+      "sources": [
+        {
+          "title": "Irreechaa",
+          "url": "https://en.wikipedia.org/wiki/Irreechaa",
+          "claim": "Irreecha is a thanksgiving festival of the Oromo people",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_enkutatash",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is the Ethiopian New Year?",
+      "options": [
+        "Enkutatash",
+        "Timkat",
+        "Irreecha",
+        "Meskel"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Enkutatash is the Ethiopian New Year.",
+      "sources": [
+        {
+          "title": "Enkutatash",
+          "url": "https://en.wikipedia.org/wiki/Enkutatash",
+          "claim": "Enkutatash is the Ethiopian New Year",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_meskel",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is of the finding of the True Cross, with a public bonfire?",
+      "options": [
+        "Meskel",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Meskel is a festival in Ethiopia.",
+      "sources": [
+        {
+          "title": "Meskel",
+          "url": "https://en.wikipedia.org/wiki/Meskel",
+          "claim": "Meskel is a festival in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_public_holidays_in_kenya",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is Kenya's public holiday honouring national heroes?",
+      "options": [
+        "Mashujaa Day",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mashujaa Day is a public holiday in Kenya.",
+      "sources": [
+        {
+          "title": "Public holidays in Kenya",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Kenya",
+          "claim": "Mashujaa Day is a public holiday in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_zanzibar_international_film_festival",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Zanzibar International Film Festival",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Zanzibar International Film Festival is held in Tanzania.",
+      "sources": [
+        {
+          "title": "Zanzibar International Film Festival",
+          "url": "https://en.wikipedia.org/wiki/Zanzibar_International_Film_Festival",
+          "claim": "The Zanzibar International Film Festival is held in Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_public_holidays_in_uganda",
+      "region": "east",
+      "country": "Uganda",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is the 3 June public commemoration in Uganda?",
+      "options": [
+        "Martyrs' Day",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Uganda Martyrs' Day is a public holiday.",
+      "sources": [
+        {
+          "title": "Public holidays in Uganda",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Uganda",
+          "claim": "Uganda Martyrs' Day is a public holiday",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_umuganura",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is the national harvest day of Rwanda?",
+      "options": [
+        "Umuganura",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Umuganura is a harvest celebration in Rwanda.",
+      "sources": [
+        {
+          "title": "Umuganura",
+          "url": "https://en.wikipedia.org/wiki/Umuganura",
+          "claim": "Umuganura is a harvest celebration in Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_saba_saba_day",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is the 7 July trade fair day in Tanzania?",
+      "options": [
+        "Saba Saba",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Saba Saba is a public day in Tanzania.",
+      "sources": [
+        {
+          "title": "Saba Saba Day",
+          "url": "https://en.wikipedia.org/wiki/Saba_Saba_Day",
+          "claim": "Saba Saba is a public day in Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_lamu",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Lamu Cultural Festival",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lamu hosts a cultural festival in Kenya.",
+      "sources": [
+        {
+          "title": "Lamu",
+          "url": "https://en.wikipedia.org/wiki/Lamu",
+          "claim": "Lamu hosts a cultural festival in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_madagascar",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is the Malagasy New Year?",
+      "options": [
+        "Alahamady Be",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Malagasy New Year is celebrated in Madagascar.",
+      "sources": [
+        {
+          "title": "Madagascar",
+          "url": "https://en.wikipedia.org/wiki/Madagascar",
+          "claim": "The Malagasy New Year is celebrated in Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_great_ethiopian_run",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a huge public road race in Addis Ababa?",
+      "options": [
+        "Great Ethiopian Run",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Great Ethiopian Run is held in Addis Ababa.",
+      "sources": [
+        {
+          "title": "Great Ethiopian Run",
+          "url": "https://en.wikipedia.org/wiki/Great_Ethiopian_Run",
+          "claim": "The Great Ethiopian Run is held in Addis Ababa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_public_holidays_in_kenya2",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is Kenya's independence day on 12 December?",
+      "options": [
+        "Jamhuri Day",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jamhuri Day is Kenya's independence holiday.",
+      "sources": [
+        {
+          "title": "Public holidays in Kenya",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Kenya",
+          "claim": "Jamhuri Day is Kenya's independence holiday",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_public_holidays_in_uganda2",
+      "region": "east",
+      "country": "Uganda",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is Uganda's national day on 9 October?",
+      "options": [
+        "Independence Day",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Uganda Independence Day is on 9 October.",
+      "sources": [
+        {
+          "title": "Public holidays in Uganda",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Uganda",
+          "claim": "Uganda Independence Day is on 9 October",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_thaipusam",
+      "region": "east",
+      "country": "Mauritius",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is a Tamil procession festival celebrated in Mauritius?",
+      "options": [
+        "Cavadee",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cavadee is celebrated by Tamils in Mauritius.",
+      "sources": [
+        {
+          "title": "Thaipusam",
+          "url": "https://en.wikipedia.org/wiki/Thaipusam",
+          "claim": "Cavadee is celebrated by Tamils in Mauritius",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_seychelles",
+      "region": "east",
+      "country": "Seychelles",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is celebrating Seychellois culture?",
+      "options": [
+        "Creole Festival",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Seychelles holds a Creole festival.",
+      "sources": [
+        {
+          "title": "Seychelles",
+          "url": "https://en.wikipedia.org/wiki/Seychelles",
+          "claim": "Seychelles holds a Creole festival",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_public_holidays_in_tanzania",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is the 26 April holiday marking the of Tanganyika and Zanzibar?",
+      "options": [
+        "Union Day",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Union Day is a public holiday in Tanzania.",
+      "sources": [
+        {
+          "title": "Public holidays in Tanzania",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Tanzania",
+          "claim": "Union Day is a public holiday in Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_fichee_chambalaalla",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is the Sidama New Year festival inscribed by UNESCO?",
+      "options": [
+        "Fichee-Chambalaalla",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fichee-Chambalaalla is a New Year festival in Ethiopia.",
+      "sources": [
+        {
+          "title": "Fichee-Chambalaalla",
+          "url": "https://en.wikipedia.org/wiki/Fichee-Chambalaalla",
+          "claim": "Fichee-Chambalaalla is a New Year festival in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_wedd_habesha_kemis",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call the white gown worn by Ethiopian and Eritrean women?",
+      "options": [
+        "Habesha kemis",
+        "Ruracio",
+        "Kwanjula",
+        "Harusi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The habesha kemis is a dress worn in Ethiopia.",
+      "sources": [
+        {
+          "title": "Habesha kemis",
+          "url": "https://en.wikipedia.org/wiki/Habesha_kemis",
+          "claim": "The habesha kemis is a dress worn in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_wedd_kikuyu_people",
+      "region": "east",
+      "country": "Kenya",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call the Kikuyu family introduction before a wedding?",
+      "options": [
+        "Ruracio",
+        "Habesha kemis",
+        "Kwanjula",
+        "Harusi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ruracio is part of Kikuyu marriage negotiations.",
+      "sources": [
+        {
+          "title": "Kikuyu people",
+          "url": "https://en.wikipedia.org/wiki/Kikuyu_people",
+          "claim": "Ruracio is part of Kikuyu marriage negotiations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_wedd_kwanjula",
+      "region": "east",
+      "country": "Uganda",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call the Buganda introduction ceremony before marriage?",
+      "options": [
+        "Kwanjula",
+        "Habesha kemis",
+        "Ruracio",
+        "Harusi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kwanjula is an introduction ceremony in Buganda.",
+      "sources": [
+        {
+          "title": "Kwanjula",
+          "url": "https://en.wikipedia.org/wiki/Kwanjula",
+          "claim": "Kwanjula is an introduction ceremony in Buganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_wedd_swahili_language",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call the Swahili word for a wedding?",
+      "options": [
+        "Harusi",
+        "Habesha kemis",
+        "Ruracio",
+        "Kwanjula"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Harusi means wedding in Swahili.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Harusi means wedding in Swahili",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_wedd_culture_of_rwanda",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do you call the formal family visit that opens many Rwandan marriages?",
+      "options": [
+        "Gusaba",
+        "Habesha kemis",
+        "Ruracio",
+        "Kwanjula"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gusaba is a marriage introduction in Rwanda.",
+      "sources": [
+        {
+          "title": "Culture of Rwanda",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Rwanda",
+          "claim": "Gusaba is a marriage introduction in Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_wedd_gomesi",
+      "region": "east",
+      "country": "Uganda",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call the formal dress worn at Baganda ceremonies?",
+      "options": [
+        "Gomesi",
+        "Habesha kemis",
+        "Ruracio",
+        "Kwanjula"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The gomesi is worn at ceremonies in Uganda.",
+      "sources": [
+        {
+          "title": "Gomesi",
+          "url": "https://en.wikipedia.org/wiki/Gomesi",
+          "claim": "The gomesi is worn at ceremonies in Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_wedd_ululation",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a high celebratory call heard at weddings?",
+      "options": [
+        "Ululation",
+        "Habesha kemis",
+        "Ruracio",
+        "Kwanjula"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ululation is a celebratory sound at weddings.",
+      "sources": [
+        {
+          "title": "Ululation",
+          "url": "https://en.wikipedia.org/wiki/Ululation",
+          "claim": "Ululation is a celebratory sound at weddings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_wedd_henna",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call painting the bride's hands before a coastal Muslim wedding?",
+      "options": [
+        "Henna night",
+        "Habesha kemis",
+        "Ruracio",
+        "Kwanjula"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Henna is applied before weddings on the Swahili coast.",
+      "sources": [
+        {
+          "title": "Henna",
+          "url": "https://en.wikipedia.org/wiki/Henna",
+          "claim": "Henna is applied before weddings on the Swahili coast",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_lalibela",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the town of rock-hewn churches in Ethiopia?",
+      "options": [
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy",
+        "Adulis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lalibela is famous for rock-hewn churches in Ethiopia.",
+      "sources": [
+        {
+          "title": "Lalibela",
+          "url": "https://en.wikipedia.org/wiki/Lalibela",
+          "claim": "Lalibela is famous for rock-hewn churches in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_sultanate_of_zanzibar",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the island state that joined Tanganyika to form Tanzania?",
+      "options": [
+        "Zanzibar Sultanate",
+        "Lalibela",
+        "Lucy",
+        "Adulis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Sultanate of Zanzibar was an island state.",
+      "sources": [
+        {
+          "title": "Sultanate of Zanzibar",
+          "url": "https://en.wikipedia.org/wiki/Sultanate_of_Zanzibar",
+          "claim": "The Sultanate of Zanzibar was an island state",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_lucy_australopithecus",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the famous Australopithecus fossil found in Ethiopia?",
+      "options": [
+        "Lucy",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Adulis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lucy is a fossil discovered in Ethiopia.",
+      "sources": [
+        {
+          "title": "Lucy (Australopithecus)",
+          "url": "https://en.wikipedia.org/wiki/Lucy_(Australopithecus)",
+          "claim": "Lucy is a fossil discovered in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_adulis",
+      "region": "east",
+      "country": "Eritrea",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the ancient Red Sea port of the Aksumite world?",
+      "options": [
+        "Adulis",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Adulis was an ancient port in Eritrea.",
+      "sources": [
+        {
+          "title": "Adulis",
+          "url": "https://en.wikipedia.org/wiki/Adulis",
+          "claim": "Adulis was an ancient port in Eritrea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_fort_jesus",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the historic coral fort in Mombasa?",
+      "options": [
+        "Fort Jesus",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fort Jesus is a fort in Mombasa, Kenya.",
+      "sources": [
+        {
+          "title": "Fort Jesus",
+          "url": "https://en.wikipedia.org/wiki/Fort_Jesus",
+          "claim": "Fort Jesus is a fort in Mombasa, Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_kilwa_kisiwani",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the medieval Swahili stone town on the Tanzanian coast?",
+      "options": [
+        "Kilwa",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kilwa Kisiwani was a Swahili city-state in Tanzania.",
+      "sources": [
+        {
+          "title": "Kilwa Kisiwani",
+          "url": "https://en.wikipedia.org/wiki/Kilwa_Kisiwani",
+          "claim": "Kilwa Kisiwani was a Swahili city-state in Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_fasil_ghebbi",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the royal enclosure of Gondar?",
+      "options": [
+        "Fasil Ghebbi",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fasil Ghebbi is the royal enclosure in Gondar, Ethiopia.",
+      "sources": [
+        {
+          "title": "Fasil Ghebbi",
+          "url": "https://en.wikipedia.org/wiki/Fasil_Ghebbi",
+          "claim": "Fasil Ghebbi is the royal enclosure in Gondar, Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_harar",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the walled Islamic city in eastern Ethiopia?",
+      "options": [
+        "Harar",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Harar is a walled city in Ethiopia.",
+      "sources": [
+        {
+          "title": "Harar",
+          "url": "https://en.wikipedia.org/wiki/Harar",
+          "claim": "Harar is a walled city in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_gedi_ruins",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the ruined Swahili stone town on the Kenyan coast?",
+      "options": [
+        "Gedi",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Gedi ruins are a historic town in Kenya.",
+      "sources": [
+        {
+          "title": "Gedi ruins",
+          "url": "https://en.wikipedia.org/wiki/Gedi_ruins",
+          "claim": "The Gedi ruins are a historic town in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_kasubi_tombs",
+      "region": "east",
+      "country": "Uganda",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the royal burial site of Buganda kings?",
+      "options": [
+        "Kasubi Tombs",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Kasubi Tombs are a royal site in Uganda.",
+      "sources": [
+        {
+          "title": "Kasubi Tombs",
+          "url": "https://en.wikipedia.org/wiki/Kasubi_Tombs",
+          "claim": "The Kasubi Tombs are a royal site in Uganda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_olduvai_gorge",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the gorge in Tanzania famous for early human fossils?",
+      "options": [
+        "Olduvai",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Olduvai Gorge is in Tanzania.",
+      "sources": [
+        {
+          "title": "Olduvai Gorge",
+          "url": "https://en.wikipedia.org/wiki/Olduvai_Gorge",
+          "claim": "Olduvai Gorge is in Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_royal_hill_of_ambohimanga",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Royal Hill of Ambohimanga",
+        "Lalibela",
+        "Zanzibar Sultanate",
+        "Lucy"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ambohimanga is a royal hill in Madagascar.",
+      "sources": [
+        {
+          "title": "Royal Hill of Ambohimanga",
+          "url": "https://en.wikipedia.org/wiki/Royal_Hill_of_Ambohimanga",
+          "claim": "Ambohimanga is a royal hill in Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_wangari_maathai",
+      "region": "east",
+      "country": "Kenya",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Kenyan Nobel Peace Prize laureate who founded the Green Belt Movement?",
+      "options": [
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta",
+        "Ngugi wa Thiong'o"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wangari Maathai was a Kenyan environmentalist.",
+      "sources": [
+        {
+          "title": "Wangari Maathai",
+          "url": "https://en.wikipedia.org/wiki/Wangari_Maathai",
+          "claim": "Wangari Maathai was a Kenyan environmentalist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_julius_nyerere",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the first president of Tanzania?",
+      "options": [
+        "Julius Nyerere",
+        "Wangari Maathai",
+        "Jomo Kenyatta",
+        "Ngugi wa Thiong'o"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Julius Nyerere was the first president of Tanzania.",
+      "sources": [
+        {
+          "title": "Julius Nyerere",
+          "url": "https://en.wikipedia.org/wiki/Julius_Nyerere",
+          "claim": "Julius Nyerere was the first president of Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_jomo_kenyatta",
+      "region": "east",
+      "country": "Kenya",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Jomo Kenyatta",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Ngugi wa Thiong'o"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jomo Kenyatta was the first president of Kenya.",
+      "sources": [
+        {
+          "title": "Jomo Kenyatta",
+          "url": "https://en.wikipedia.org/wiki/Jomo_Kenyatta",
+          "claim": "Jomo Kenyatta was the first president of Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_ngugi_wa_thiong_o",
+      "region": "east",
+      "country": "Kenya",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Kenyan novelist of A Grain of Wheat?",
+      "options": [
+        "Ngugi wa Thiong'o",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ngũgĩ wa Thiong'o is a Kenyan writer.",
+      "sources": [
+        {
+          "title": "Ngũgĩ wa Thiong'o",
+          "url": "https://en.wikipedia.org/wiki/Ng%C5%A9g%C4%A9_wa_Thiong'o",
+          "claim": "Ngũgĩ wa Thiong'o is a Kenyan writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_haile_selassie",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Ethiopian emperor who modernised Addis Ababa?",
+      "options": [
+        "Haile Selassie",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Haile Selassie was emperor of Ethiopia.",
+      "sources": [
+        {
+          "title": "Haile Selassie",
+          "url": "https://en.wikipedia.org/wiki/Haile_Selassie",
+          "claim": "Haile Selassie was emperor of Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_abebe_bikila",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Ethiopian runner who won the 1960 Olympic marathon?",
+      "options": [
+        "Abebe Bikila",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Abebe Bikila was an Ethiopian marathon runner.",
+      "sources": [
+        {
+          "title": "Abebe Bikila",
+          "url": "https://en.wikipedia.org/wiki/Abebe_Bikila",
+          "claim": "Abebe Bikila was an Ethiopian marathon runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_abdulrazak_gurnah",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Tanzanian-born novelist who won the Nobel Prize in Literature?",
+      "options": [
+        "Abdulrazak Gurnah",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Abdulrazak Gurnah is a Tanzanian-born novelist.",
+      "sources": [
+        {
+          "title": "Abdulrazak Gurnah",
+          "url": "https://en.wikipedia.org/wiki/Abdulrazak_Gurnah",
+          "claim": "Abdulrazak Gurnah is a Tanzanian-born novelist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_binyavanga_wainaina",
+      "region": "east",
+      "country": "Kenya",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the Kenyan writer who founded Kwani??",
+      "options": [
+        "Binyavanga Wainaina",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Binyavanga Wainaina was a Kenyan writer.",
+      "sources": [
+        {
+          "title": "Binyavanga Wainaina",
+          "url": "https://en.wikipedia.org/wiki/Binyavanga_Wainaina",
+          "claim": "Binyavanga Wainaina was a Kenyan writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_okot_p_bitek",
+      "region": "east",
+      "country": "Uganda",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Ugandan poet of Song of Lawino?",
+      "options": [
+        "Okot p'Bitek",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Okot p'Bitek was a Ugandan poet.",
+      "sources": [
+        {
+          "title": "Okot p'Bitek",
+          "url": "https://en.wikipedia.org/wiki/Okot_p'Bitek",
+          "claim": "Okot p'Bitek was a Ugandan poet",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_nuruddin_farah",
+      "region": "east",
+      "country": "Somalia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Somali novelist of Maps and Links?",
+      "options": [
+        "Nuruddin Farah",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nuruddin Farah is a Somali novelist.",
+      "sources": [
+        {
+          "title": "Nuruddin Farah",
+          "url": "https://en.wikipedia.org/wiki/Nuruddin_Farah",
+          "claim": "Nuruddin Farah is a Somali novelist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_tsegaye_gebre_medhin",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a leading Ethiopian playwright and poet?",
+      "options": [
+        "Tsegaye Gebre-Medhin",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tsegaye Gebre-Medhin was an Ethiopian poet.",
+      "sources": [
+        {
+          "title": "Tsegaye Gebre-Medhin",
+          "url": "https://en.wikipedia.org/wiki/Tsegaye_Gebre-Medhin",
+          "claim": "Tsegaye Gebre-Medhin was an Ethiopian poet",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_scholastique_mukasonga",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Rwandan novelist of Our Lady of the Nile?",
+      "options": [
+        "Scholastique Mukasonga",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Scholastique Mukasonga is a Rwandan writer.",
+      "sources": [
+        {
+          "title": "Scholastique Mukasonga",
+          "url": "https://en.wikipedia.org/wiki/Scholastique_Mukasonga",
+          "claim": "Scholastique Mukasonga is a Rwandan writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_lupita_nyong_o",
+      "region": "east",
+      "country": "Kenya",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Kenyan-Mexican Oscar-winning actor?",
+      "options": [
+        "Lupita Nyong'o",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lupita Nyong'o is a Kenyan-Mexican actress.",
+      "sources": [
+        {
+          "title": "Lupita Nyong'o",
+          "url": "https://en.wikipedia.org/wiki/Lupita_Nyong'o",
+          "claim": "Lupita Nyong'o is a Kenyan-Mexican actress",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_mahmood_mamdani",
+      "region": "east",
+      "country": "Uganda",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the Ugandan scholar of politics and colonialism?",
+      "options": [
+        "Mahmood Mamdani",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mahmood Mamdani is a Ugandan academic.",
+      "sources": [
+        {
+          "title": "Mahmood Mamdani",
+          "url": "https://en.wikipedia.org/wiki/Mahmood_Mamdani",
+          "claim": "Mahmood Mamdani is a Ugandan academic",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_freddie_mercury",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Queen singer who was born Farrokh Bulsara in Zanzibar?",
+      "options": [
+        "Freddie Mercury origins",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Freddie Mercury was born in Zanzibar.",
+      "sources": [
+        {
+          "title": "Freddie Mercury",
+          "url": "https://en.wikipedia.org/wiki/Freddie_Mercury",
+          "claim": "Freddie Mercury was born in Zanzibar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_eliud_kipchoge",
+      "region": "east",
+      "country": "Kenya",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Kenyan marathon runner who first broke two hours in a controlled race?",
+      "options": [
+        "Eliud Kipchoge",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Eliud Kipchoge is a Kenyan marathon runner.",
+      "sources": [
+        {
+          "title": "Eliud Kipchoge",
+          "url": "https://en.wikipedia.org/wiki/Eliud_Kipchoge",
+          "claim": "Eliud Kipchoge is a Kenyan marathon runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_haile_gebrselassie",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Ethiopian distance legend of the 1990s and 2000s?",
+      "options": [
+        "Haile Gebrselassie",
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Haile Gebrselassie is an Ethiopian long-distance runner.",
+      "sources": [
+        {
+          "title": "Haile Gebrselassie",
+          "url": "https://en.wikipedia.org/wiki/Haile_Gebrselassie",
+          "claim": "Haile Gebrselassie is an Ethiopian long-distance runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_diamond_platnumz",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Tanzanian bongo flava superstar?",
+      "options": [
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo",
+        "Mulatu Astatke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Diamond Platnumz is a Tanzanian singer.",
+      "sources": [
+        {
+          "title": "Diamond Platnumz",
+          "url": "https://en.wikipedia.org/wiki/Diamond_Platnumz",
+          "claim": "Diamond Platnumz is a Tanzanian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_sauti_sol",
+      "region": "east",
+      "country": "Kenya",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Kenyan band behind Sura Yako and Suzanna?",
+      "options": [
+        "Sauti Sol",
+        "Diamond Platnumz",
+        "Eddy Kenzo",
+        "Mulatu Astatke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sauti Sol is a Kenyan band.",
+      "sources": [
+        {
+          "title": "Sauti Sol",
+          "url": "https://en.wikipedia.org/wiki/Sauti_Sol",
+          "claim": "Sauti Sol is a Kenyan band",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_eddy_kenzo",
+      "region": "east",
+      "country": "Uganda",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Ugandan singer of Sitya Loss?",
+      "options": [
+        "Eddy Kenzo",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Mulatu Astatke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Eddy Kenzo is a Ugandan singer.",
+      "sources": [
+        {
+          "title": "Eddy Kenzo",
+          "url": "https://en.wikipedia.org/wiki/Eddy_Kenzo",
+          "claim": "Eddy Kenzo is a Ugandan singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_mulatu_astatke",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the father of Ethio-jazz?",
+      "options": [
+        "Mulatu Astatke",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mulatu Astatke is an Ethiopian musician.",
+      "sources": [
+        {
+          "title": "Mulatu Astatke",
+          "url": "https://en.wikipedia.org/wiki/Mulatu_Astatke",
+          "claim": "Mulatu Astatke is an Ethiopian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_teddy_afro",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the popular Ethiopian singer Tewodros Kassahun?",
+      "options": [
+        "Teddy Afro",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Teddy Afro is an Ethiopian singer.",
+      "sources": [
+        {
+          "title": "Teddy Afro",
+          "url": "https://en.wikipedia.org/wiki/Teddy_Afro",
+          "claim": "Teddy Afro is an Ethiopian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_zuchu",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a leading Tanzanian bongo flava singer?",
+      "options": [
+        "Zuchu",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zuchu is a Tanzanian singer.",
+      "sources": [
+        {
+          "title": "Zuchu",
+          "url": "https://en.wikipedia.org/wiki/Zuchu",
+          "claim": "Zuchu is a Tanzanian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_alikiba",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Tanzanian bongo flava singer and actor?",
+      "options": [
+        "Alikiba",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Alikiba is a Tanzanian musician.",
+      "sources": [
+        {
+          "title": "Alikiba",
+          "url": "https://en.wikipedia.org/wiki/Alikiba",
+          "claim": "Alikiba is a Tanzanian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_nyashinski",
+      "region": "east",
+      "country": "Kenya",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Kenyan rapper formerly of Kleptomaniax?",
+      "options": [
+        "Nyashinski",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nyashinski is a Kenyan rapper.",
+      "sources": [
+        {
+          "title": "Nyashinski",
+          "url": "https://en.wikipedia.org/wiki/Nyashinski",
+          "claim": "Nyashinski is a Kenyan rapper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_sheebah_karungi",
+      "region": "east",
+      "country": "Uganda",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Ugandan singer Karungi?",
+      "options": [
+        "Sheebah",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sheebah Karungi is a Ugandan singer.",
+      "sources": [
+        {
+          "title": "Sheebah Karungi",
+          "url": "https://en.wikipedia.org/wiki/Sheebah_Karungi",
+          "claim": "Sheebah Karungi is a Ugandan singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_bien_aime_baraza",
+      "region": "east",
+      "country": "Kenya",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a member of Sauti Sol who also records solo?",
+      "options": [
+        "Bien",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bien is a Kenyan musician from Sauti Sol.",
+      "sources": [
+        {
+          "title": "Bien-Aimé Baraza",
+          "url": "https://en.wikipedia.org/wiki/Bien-Aim%C3%A9_Baraza",
+          "claim": "Bien is a Kenyan musician from Sauti Sol",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_ethio_jazz",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Ethiopian electronic artist blending traditional sounds?",
+      "options": [
+        "Rophnan",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ethiopian popular music draws on traditional modes.",
+      "sources": [
+        {
+          "title": "Ethio-jazz",
+          "url": "https://en.wikipedia.org/wiki/Ethio-jazz",
+          "claim": "Ethiopian popular music draws on traditional modes",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_kenya",
+      "region": "east",
+      "country": "Kenya",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Kenyan group known for acoustic pop?",
+      "options": [
+        "H_art the Band",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kenyan popular music includes bands from Nairobi.",
+      "sources": [
+        {
+          "title": "Kenya",
+          "url": "https://en.wikipedia.org/wiki/Kenya",
+          "claim": "Kenyan popular music includes bands from Nairobi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_nandy_singer",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Tanzanian singer Faustina Charles?",
+      "options": [
+        "Nandy",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nandy is a Tanzanian singer.",
+      "sources": [
+        {
+          "title": "Nandy (singer)",
+          "url": "https://en.wikipedia.org/wiki/Nandy_(singer)",
+          "claim": "Nandy is a Tanzanian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_rwanda",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Rwandan Afrobeats and pop singer?",
+      "options": [
+        "The Ben",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rwandan pop is part of East African music.",
+      "sources": [
+        {
+          "title": "Rwanda",
+          "url": "https://en.wikipedia.org/wiki/Rwanda",
+          "claim": "Rwandan pop is part of East African music",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_jose_chameleone",
+      "region": "east",
+      "country": "Uganda",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a veteran Ugandan singer of kadongo kamu and pop?",
+      "options": [
+        "Jose Chameleone",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jose Chameleone is a Ugandan musician.",
+      "sources": [
+        {
+          "title": "Jose Chameleone",
+          "url": "https://en.wikipedia.org/wiki/Jose_Chameleone",
+          "claim": "Jose Chameleone is a Ugandan musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_bensoul",
+      "region": "east",
+      "country": "Kenya",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Kenyan singer of Nairobi?",
+      "options": [
+        "Bensoul",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bensoul is a Kenyan singer.",
+      "sources": [
+        {
+          "title": "Bensoul",
+          "url": "https://en.wikipedia.org/wiki/Bensoul",
+          "claim": "Bensoul is a Kenyan singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_music_of_ethiopia",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is an Ethiopian singer of the new pop generation?",
+      "options": [
+        "Betty G",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ethiopian pop is a major East African scene.",
+      "sources": [
+        {
+          "title": "Music of Ethiopia",
+          "url": "https://en.wikipedia.org/wiki/Music_of_Ethiopia",
+          "claim": "Ethiopian pop is a major East African scene",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_music_of_madagascar",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Malagasy popular musician?",
+      "options": [
+        "Niu Raza",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Madagascar has a distinct popular music.",
+      "sources": [
+        {
+          "title": "Music of Madagascar",
+          "url": "https://en.wikipedia.org/wiki/Music_of_Madagascar",
+          "claim": "Madagascar has a distinct popular music",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_haile_gebrselassie",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Ethiopian who dominated distance running?",
+      "options": [
+        "Haile Gebrselassie",
+        "Eliud Kipchoge",
+        "Kenenisa Bekele",
+        "Faith Kipyegon"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Haile Gebrselassie is an Ethiopian runner.",
+      "sources": [
+        {
+          "title": "Haile Gebrselassie",
+          "url": "https://en.wikipedia.org/wiki/Haile_Gebrselassie",
+          "claim": "Haile Gebrselassie is an Ethiopian runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_kenenisa_bekele",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Ethiopian track and marathon champion?",
+      "options": [
+        "Kenenisa Bekele",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Faith Kipyegon"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kenenisa Bekele is an Ethiopian long-distance runner.",
+      "sources": [
+        {
+          "title": "Kenenisa Bekele",
+          "url": "https://en.wikipedia.org/wiki/Kenenisa_Bekele",
+          "claim": "Kenenisa Bekele is an Ethiopian long-distance runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_stephen_kiprotich",
+      "region": "east",
+      "country": "Uganda",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is the Ugandan who won the 2012 Olympic marathon?",
+      "options": [
+        "Stephen Kiprotich",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Stephen Kiprotich is a Ugandan marathon runner.",
+      "sources": [
+        {
+          "title": "Stephen Kiprotich",
+          "url": "https://en.wikipedia.org/wiki/Stephen_Kiprotich",
+          "claim": "Stephen Kiprotich is a Ugandan marathon runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_catherine_ndereba",
+      "region": "east",
+      "country": "Kenya",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Kenyan marathon champion nicknamed the Great?",
+      "options": [
+        "Catherine Ndereba",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Catherine Ndereba is a Kenyan marathon runner.",
+      "sources": [
+        {
+          "title": "Catherine Ndereba",
+          "url": "https://en.wikipedia.org/wiki/Catherine_Ndereba",
+          "claim": "Catherine Ndereba is a Kenyan marathon runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_abebe_bikila",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the barefoot Olympic marathon champion of 1960?",
+      "options": [
+        "Abebe Bikila",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Abebe Bikila won the Olympic marathon.",
+      "sources": [
+        {
+          "title": "Abebe Bikila",
+          "url": "https://en.wikipedia.org/wiki/Abebe_Bikila",
+          "claim": "Abebe Bikila won the Olympic marathon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_kenya_national_football_team",
+      "region": "east",
+      "country": "Kenya",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the nickname of Kenya's men's football team?",
+      "options": [
+        "Harambee Stars",
+        "Cranes",
+        "Walias",
+        "Mbwana Samatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Kenya national football team is nicknamed the Harambee Stars.",
+      "sources": [
+        {
+          "title": "Kenya national football team",
+          "url": "https://en.wikipedia.org/wiki/Kenya_national_football_team",
+          "claim": "The Kenya national football team is nicknamed the Harambee Stars",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_uganda_national_football_team",
+      "region": "east",
+      "country": "Uganda",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the nickname of Uganda's men's football team?",
+      "options": [
+        "Cranes",
+        "Harambee Stars",
+        "Walias",
+        "Mbwana Samatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Uganda national football team is nicknamed the Cranes.",
+      "sources": [
+        {
+          "title": "Uganda national football team",
+          "url": "https://en.wikipedia.org/wiki/Uganda_national_football_team",
+          "claim": "The Uganda national football team is nicknamed the Cranes",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_ethiopia_national_football_team",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is a historic nickname of Ethiopian club and national sides?",
+      "options": [
+        "Walias",
+        "Harambee Stars",
+        "Cranes",
+        "Mbwana Samatta"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ethiopia has a national football team.",
+      "sources": [
+        {
+          "title": "Ethiopia national football team",
+          "url": "https://en.wikipedia.org/wiki/Ethiopia_national_football_team",
+          "claim": "Ethiopia has a national football team",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_victor_wanyama",
+      "region": "east",
+      "country": "Kenya",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Kenyan midfielder who played in the Premier League?",
+      "options": [
+        "Victor Wanyama",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Victor Wanyama is a Kenyan footballer.",
+      "sources": [
+        {
+          "title": "Victor Wanyama",
+          "url": "https://en.wikipedia.org/wiki/Victor_Wanyama",
+          "claim": "Victor Wanyama is a Kenyan footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_mbwana_samatta",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is the Tanzanian striker who captained the national team?",
+      "options": [
+        "Mbwana Samatta",
+        "Harambee Stars",
+        "Cranes",
+        "Walias"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mbwana Samatta is a Tanzanian footballer.",
+      "sources": [
+        {
+          "title": "Mbwana Samatta",
+          "url": "https://en.wikipedia.org/wiki/Mbwana_Samatta",
+          "claim": "Mbwana Samatta is a Tanzanian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_sport_in_kenya",
+      "region": "east",
+      "country": "Kenya",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the sport for which Kenya is most famous worldwide?",
+      "options": [
+        "Athletics",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kenya is famous for long-distance running.",
+      "sources": [
+        {
+          "title": "Sport in Kenya",
+          "url": "https://en.wikipedia.org/wiki/Sport_in_Kenya",
+          "claim": "Kenya is famous for long-distance running",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_derartu_tulu",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the first Ethiopian woman to win Olympic gold?",
+      "options": [
+        "Derartu Tulu",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Derartu Tulu is an Ethiopian runner.",
+      "sources": [
+        {
+          "title": "Derartu Tulu",
+          "url": "https://en.wikipedia.org/wiki/Derartu_Tulu",
+          "claim": "Derartu Tulu is an Ethiopian runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_swahili_language3",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Swahili thank-you: Asante means ___.",
+      "options": [
+        "thank you",
+        "goodbye",
+        "come in",
+        "sit down"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Asante means thank you.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Asante means thank you in Swahili",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_swahili_language4",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Swahili greeting: Jambo means ___.",
+      "options": [
+        "hello",
+        "market",
+        "river",
+        "dance"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jambo is a Swahili hello.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Jambo means hello in Swahili",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_prov_swahili_language",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "PROVERBS",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the Swahili proverb: Haraka haraka haina ___.",
+      "options": [
+        "baraka",
+        "chakula",
+        "rafiki",
+        "nyumba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Haraka haraka haina baraka means hurry has no blessing.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Haraka haraka haina baraka is a Swahili proverb",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_prov_swahili_language2",
+      "region": "east",
+      "country": "East Africa",
+      "category": "PROVERBS",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the Swahili saying: Pole pole ndiyo ___.",
+      "options": [
+        "mwendo",
+        "chakula",
+        "bahari",
+        "ngoma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pole pole ndiyo mwendo means slowly is the way.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Pole pole ndiyo mwendo is a Swahili saying",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_amharic2",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Amharic thank-you: Ameseginalehu means ___.",
+      "options": [
+        "thank you",
+        "good night",
+        "where",
+        "water"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ameseginalehu is thank you in Amharic.",
+      "sources": [
+        {
+          "title": "Amharic",
+          "url": "https://en.wikipedia.org/wiki/Amharic",
+          "claim": "Ameseginalehu means thank you in Amharic",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_lake_victoria",
+      "region": "east",
+      "country": "East Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Select three countries that border Lake Victoria.",
+      "options": [
+        "Kenya",
+        "Uganda",
+        "Tanzania",
+        "Lesotho"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Kenya, Uganda and Tanzania share Lake Victoria. Lesotho is in Southern Africa.",
+      "sources": [
+        {
+          "title": "Lake Victoria",
+          "url": "https://en.wikipedia.org/wiki/Lake_Victoria",
+          "claim": "Lake Victoria is bordered by Kenya, Uganda and Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_swahili_language5",
+      "region": "east",
+      "country": "East Africa",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Select three widely spoken East African languages.",
+      "options": [
+        "Swahili",
+        "Amharic",
+        "Oromo",
+        "isiXhosa"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Swahili, Amharic and Oromo are major East African languages. isiXhosa is Southern African.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Swahili, Amharic and Oromo are East African languages",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_injera2",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Select three foods of an Ethiopian platter.",
+      "options": [
+        "Injera",
+        "Doro wat",
+        "Kitfo",
+        "Bunny chow"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Injera, doro wat and kitfo belong to Ethiopian cooking. Bunny chow is South African.",
+      "sources": [
+        {
+          "title": "Injera",
+          "url": "https://en.wikipedia.org/wiki/Injera",
+          "claim": "Injera, doro wat and kitfo are Ethiopian foods",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_hist_kingdom_of_aksum",
+      "region": "east",
+      "country": "East Africa",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Select three historic East African places.",
+      "options": [
+        "Aksum",
+        "Kilwa",
+        "Lalibela",
+        "Timbuktu"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Aksum and Lalibela are Ethiopian, and Kilwa is a Swahili town in Tanzania. Timbuktu is in Mali.",
+      "sources": [
+        {
+          "title": "Kingdom of Aksum",
+          "url": "https://en.wikipedia.org/wiki/Kingdom_of_Aksum",
+          "claim": "Aksum, Kilwa and Lalibela are historic East African places",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_east_africa",
+      "region": "east",
+      "country": "East Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Which three are capital cities in East Africa?",
+      "options": [
+        "Nairobi",
+        "Kampala",
+        "Kigali",
+        "Rabat"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Nairobi, Kampala and Kigali are capitals in East Africa. Rabat is in Morocco.",
+      "sources": [
+        {
+          "title": "East Africa",
+          "url": "https://en.wikipedia.org/wiki/East_Africa",
+          "claim": "Nairobi, Kampala and Kigali are East African capitals",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_ethiopian_cuisine",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Which three foods belong on an Ethiopian table?",
+      "options": [
+        "Injera",
+        "Coffee",
+        "Doro wat",
+        "Biltong"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Injera, coffee and doro wat belong to Ethiopian food culture. Biltong is South African.",
+      "sources": [
+        {
+          "title": "Ethiopian cuisine",
+          "url": "https://en.wikipedia.org/wiki/Ethiopian_cuisine",
+          "claim": "Injera, coffee and doro wat are Ethiopian",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_faith_kipyegon",
+      "region": "east",
+      "country": "Kenya",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Kenyan runner who won Olympic 1500 metres gold in 2021?",
+      "options": [
+        "Faith Kipyegon",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Faith Kipyegon is a Kenyan middle-distance runner.",
+      "sources": [
+        {
+          "title": "Faith Kipyegon",
+          "url": "https://en.wikipedia.org/wiki/Faith_Kipyegon",
+          "claim": "Faith Kipyegon is a Kenyan middle-distance runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_tirunesh_dibaba",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Ethiopian runner who won Olympic 10,000 metres gold in 2008?",
+      "options": [
+        "Tirunesh Dibaba",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tirunesh Dibaba is an Ethiopian long-distance runner.",
+      "sources": [
+        {
+          "title": "Tirunesh Dibaba",
+          "url": "https://en.wikipedia.org/wiki/Tirunesh_Dibaba",
+          "claim": "Tirunesh Dibaba is an Ethiopian long-distance runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_spor_abebe_bikila2",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Ethiopian who won the Olympic marathon in Rome in 1960?",
+      "options": [
+        "Abebe Bikila",
+        "Eliud Kipchoge",
+        "Haile Gebrselassie",
+        "Kenenisa Bekele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Abebe Bikila was an Ethiopian marathon runner.",
+      "sources": [
+        {
+          "title": "Abebe Bikila",
+          "url": "https://en.wikipedia.org/wiki/Abebe_Bikila",
+          "claim": "Abebe Bikila was an Ethiopian marathon runner",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_peop_wangari_maathai2",
+      "region": "east",
+      "country": "Kenya",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the Kenyan who won the Nobel Peace Prize in 2004?",
+      "options": [
+        "Wangari Maathai",
+        "Julius Nyerere",
+        "Jomo Kenyatta",
+        "Ngugi wa Thiong'o"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wangari Maathai was a Kenyan environmentalist.",
+      "sources": [
+        {
+          "title": "Wangari Maathai",
+          "url": "https://en.wikipedia.org/wiki/Wangari_Maathai",
+          "claim": "Wangari Maathai was a Kenyan environmentalist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_diamond_platnumz2",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Tanzanian bongo flava singer and producer?",
+      "options": [
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo",
+        "Mulatu Astatke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Diamond Platnumz is a Tanzanian singer.",
+      "sources": [
+        {
+          "title": "Diamond Platnumz",
+          "url": "https://en.wikipedia.org/wiki/Diamond_Platnumz",
+          "claim": "Diamond Platnumz is a Tanzanian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_popc_sauti_sol2",
+      "region": "east",
+      "country": "Kenya",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Kenyan band known for close-harmony afropop?",
+      "options": [
+        "Sauti Sol",
+        "Diamond Platnumz",
+        "Eddy Kenzo",
+        "Mulatu Astatke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sauti Sol is a Kenyan band.",
+      "sources": [
+        {
+          "title": "Sauti Sol",
+          "url": "https://en.wikipedia.org/wiki/Sauti_Sol",
+          "claim": "Sauti Sol is a Kenyan band",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_meskel2",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is the Ethiopian festival of the finding of the True Cross?",
+      "options": [
+        "Meskel",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Meskel is an Ethiopian festival.",
+      "sources": [
+        {
+          "title": "Meskel",
+          "url": "https://en.wikipedia.org/wiki/Meskel",
+          "claim": "Meskel is an Ethiopian festival",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fest_timkat2",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is the Ethiopian Orthodox celebration of Epiphany?",
+      "options": [
+        "Timkat",
+        "Irreecha",
+        "Enkutatash",
+        "Meskel"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Timkat is an Ethiopian Orthodox festival.",
+      "sources": [
+        {
+          "title": "Timkat",
+          "url": "https://en.wikipedia.org/wiki/Timkat",
+          "claim": "Timkat is an Ethiopian Orthodox festival",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_lake_victoria2",
+      "region": "east",
+      "country": "East Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is Africa's largest lake, shared by Kenya, Uganda, and Tanzania?",
+      "options": [
+        "Lake Victoria",
+        "Mount Kilimanjaro",
+        "Zanzibar",
+        "Kenya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lake Victoria is a lake in East Africa.",
+      "sources": [
+        {
+          "title": "Lake Victoria",
+          "url": "https://en.wikipedia.org/wiki/Lake_Victoria",
+          "claim": "Lake Victoria is a lake in East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_ngorongoro_conservation_area",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is a conservation area with a famous volcanic crater in Tanzania?",
+      "options": [
+        "Ngorongoro",
+        "Serengeti",
+        "Maasai Mara",
+        "Stone Town"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ngorongoro is a conservation area in Tanzania.",
+      "sources": [
+        {
+          "title": "Ngorongoro Conservation Area",
+          "url": "https://en.wikipedia.org/wiki/Ngorongoro_Conservation_Area",
+          "claim": "Ngorongoro is a conservation area in Tanzania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_stone_town",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Stone Town",
+        "Serengeti",
+        "Maasai Mara",
+        "Ngorongoro"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Stone Town is the old quarter of Zanzibar.",
+      "sources": [
+        {
+          "title": "Stone Town",
+          "url": "https://en.wikipedia.org/wiki/Stone_Town",
+          "claim": "Stone Town is the old quarter of Zanzibar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_lalibela",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which answer fits the sourced fact?",
+      "options": [
+        "Lalibela churches",
+        "Serengeti",
+        "Maasai Mara",
+        "Ngorongoro"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lalibela is known for rock-hewn churches in Ethiopia.",
+      "sources": [
+        {
+          "title": "Lalibela",
+          "url": "https://en.wikipedia.org/wiki/Lalibela",
+          "claim": "Lalibela is known for rock-hewn churches in Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_geog_lamu",
+      "region": "east",
+      "country": "Kenya",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the old Swahili town on a Kenyan island?",
+      "options": [
+        "Lamu",
+        "Mount Kilimanjaro",
+        "Zanzibar",
+        "Kenya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lamu is a historic town on the Kenyan coast.",
+      "sources": [
+        {
+          "title": "Lamu",
+          "url": "https://en.wikipedia.org/wiki/Lamu",
+          "claim": "Lamu is a historic town on the Kenyan coast",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_kanga_garment_4",
+      "region": "east",
+      "country": "East Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a colourful printed cotton wrap of the Swahili coast?",
+      "options": [
+        "Kanga",
+        "Kitenge",
+        "Kikoi",
+        "Habesha kemis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kanga is a printed cotton wrap from East Africa.",
+      "sources": [
+        {
+          "title": "Kanga (garment)",
+          "url": "https://en.wikipedia.org/wiki/Kanga_(garment)",
+          "claim": "The kanga is a printed cotton wrap from East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_fash_kitenge2",
+      "region": "east",
+      "country": "East Africa",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a brightly patterned wrap cloth of East Africa?",
+      "options": [
+        "Kitenge",
+        "Kanga",
+        "Kikoi",
+        "Habesha kemis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kitenge is a patterned cloth worn in East Africa.",
+      "sources": [
+        {
+          "title": "Kitenge",
+          "url": "https://en.wikipedia.org/wiki/Kitenge",
+          "claim": "Kitenge is a patterned cloth worn in East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_mandazi2",
+      "region": "east",
+      "country": "East Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a sweet fried dough snack of the Swahili coast?",
+      "options": [
+        "Mandazi",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mandazi is a fried dough snack from East Africa.",
+      "sources": [
+        {
+          "title": "Mandazi",
+          "url": "https://en.wikipedia.org/wiki/Mandazi",
+          "claim": "Mandazi is a fried dough snack from East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_food_rolex_food_2",
+      "region": "east",
+      "country": "Uganda",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a chapati rolled around an omelette, sold on Ugandan streets?",
+      "options": [
+        "Rolex",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A rolex is a Ugandan street snack of chapati and egg.",
+      "sources": [
+        {
+          "title": "Rolex (food)",
+          "url": "https://en.wikipedia.org/wiki/Rolex_(food)",
+          "claim": "A rolex is a Ugandan street snack of chapati and egg",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_taarab3",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is Swahili coast music of poetry, strings, and voice?",
+      "options": [
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz",
+        "Gengetone"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Taarab is a music of the Swahili coast.",
+      "sources": [
+        {
+          "title": "Taarab",
+          "url": "https://en.wikipedia.org/wiki/Taarab",
+          "claim": "Taarab is a music of the Swahili coast",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_musi_genge",
+      "region": "east",
+      "country": "Kenya",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a Kenyan hip hop style that grew up in Nairobi?",
+      "options": [
+        "Genge",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Genge is a Kenyan music genre.",
+      "sources": [
+        {
+          "title": "Genge",
+          "url": "https://en.wikipedia.org/wiki/Genge",
+          "claim": "Genge is a Kenyan music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_amharic3",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a major working language of Ethiopia?",
+      "options": [
+        "Amharic",
+        "Swahili",
+        "Oromo",
+        "Tigrinya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Amharic is a language of Ethiopia.",
+      "sources": [
+        {
+          "title": "Amharic",
+          "url": "https://en.wikipedia.org/wiki/Amharic",
+          "claim": "Amharic is a language of Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_kinyarwanda2",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the national language of Rwanda?",
+      "options": [
+        "Kinyarwanda",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kinyarwanda is the national language of Rwanda.",
+      "sources": [
+        {
+          "title": "Kinyarwanda",
+          "url": "https://en.wikipedia.org/wiki/Kinyarwanda",
+          "claim": "Kinyarwanda is the national language of Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "east_lang_malagasy_language2",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name the national language of Madagascar?",
+      "options": [
+        "Malagasy",
+        "Swahili",
+        "Amharic",
+        "Oromo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Malagasy is the national language of Madagascar.",
+      "sources": [
+        {
+          "title": "Malagasy language",
+          "url": "https://en.wikipedia.org/wiki/Malagasy_language",
+          "claim": "Malagasy is the national language of Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    }
+  ]
+}
