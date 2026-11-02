@@ -59,6 +59,24 @@ export function wordRoots(value: string): string[] {
   return [...new Set(normalizeText(value).split(" ").filter((word) => word.length >= 4).map((word) => word.replace(/(?:ing|ers|er|es|s)$/u, "")))];
 }
 
+const GENERIC_ANSWER_WORDS = new Set([
+  "lake", "river", "mount", "mountain", "canyon", "falls", "kingdom", "empire", "language", "music",
+  "dance", "culture", "people", "club", "city", "town", "state", "national", "african", "south",
+  "north", "west", "east", "central", "blanket", "arabic", "style", "group", "region", "football",
+  "singer", "water", "coast", "island", "desert", "delta", "park", "cloth", "dress", "food", "dish",
+  "genre", "team", "player", "about", "which", "their", "there", "other", "known", "called",
+]);
+
+/** The prompt states the correct answer, or one of its distinctive words. */
+export function promptNamesAnswer(prompt: string, answer: string): boolean {
+  const promptNorm = normalizeText(prompt);
+  const answerNorm = normalizeText(answer);
+  if (!answerNorm) return false;
+  const promptWords = new Set(promptNorm.split(" ").filter(Boolean));
+  if (answerNorm.length >= 4 && promptNorm.includes(answerNorm)) return true;
+  return answerNorm.split(" ").some((token) => token.length >= 3 && !GENERIC_ANSWER_WORDS.has(token) && promptWords.has(token));
+}
+
 /** The correct option is named in the prompt, or it is the only option that shares a root with the prompt. */
 export function answerLeaks(prompt: string, options: readonly string[], correct: readonly number[]): boolean {
   const promptNorm = normalizeText(prompt);

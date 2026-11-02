@@ -8,11 +8,11 @@
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is the authentic-style suit promoted in Mobutu-era Zaire?",
+      "prompt": "Which “authentic” suit style was promoted in Mobutu-era Zaire?",
       "options": [
         "Abacost",
-        "Liputa",
         "La Sape",
+        "Liputa",
         "Kuba cloth"
       ],
       "correct": [
@@ -53,171 +53,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_fash_african_wax_prints",
-      "region": "central",
-      "country": "Central Africa",
-      "category": "FASHION",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "What is a type of common material for clothing in West Africa?",
-      "options": [
-        "Wax print",
-        "Liputa",
-        "La Sape",
-        "Kuba cloth"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Wax print is popular in Central Africa.",
-      "sources": [
-        {
-          "title": "African wax prints",
-          "url": "https://en.wikipedia.org/wiki/African_wax_prints",
-          "claim": "African wax prints African wax prints, Dutch wax prints, or Ankara are a type of common material for clothing in West Africa.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "African wax prints African wax prints, Dutch wax prints, or Ankara are a type of common material for clothing in West Africa.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_fash_boubou_clothing",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "FASHION",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "What is a flowing, wide-sleeved robe worn across West Africa, and to a lesser extent in North Africa?",
-      "options": [
-        "Boubou",
-        "Liputa",
-        "La Sape",
-        "Kuba cloth"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The boubou is worn in Cameroon.",
-      "sources": [
-        {
-          "title": "Boubou (clothing)",
-          "url": "https://en.wikipedia.org/wiki/Boubou_(clothing)",
-          "claim": "Boubou (clothing) The boubou, or grand boubou from Wolof mboubou, is a flowing, wide-sleeved robe worn across West Africa, and to a lesser extent in North Africa.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Boubou (clothing) The boubou, or grand boubou from Wolof mboubou, is a flowing, wide-sleeved robe worn across West Africa, and to a lesser extent in North Africa.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_fash_head_tie",
-      "region": "central",
-      "country": "Central Africa",
-      "category": "FASHION",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "What is a women's cloth head scarf that is commonly worn in many parts of West Africa and Southern Africa?",
-      "options": [
-        "Headwrap",
-        "Liputa",
-        "La Sape",
-        "Kuba cloth"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Headwraps are worn across Central Africa.",
-      "sources": [
-        {
-          "title": "Head tie",
-          "url": "https://en.wikipedia.org/wiki/Head_tie",
-          "claim": "Head tie A head tie, also known as a headwrap, is a women's cloth head scarf that is commonly worn in many parts of West Africa and Southern Africa.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Head tie A head tie, also known as a headwrap, is a women's cloth head scarf that is commonly worn in many parts of West Africa and Southern Africa.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_fash_la_sape",
       "region": "central",
       "country": "DR Congo",
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is a subculture centered on fashion, elegance, and public performance that originated among Congolese communities in the cities?",
+      "prompt": "Which Congolese-rooted subculture treats elegant fashion as public performance?",
       "options": [
         "La Sape",
+        "Abacost",
         "Liputa",
-        "Kuba cloth",
-        "Pagne"
+        "Kuba cloth"
       ],
       "correct": [
         0
@@ -257,64 +104,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_fash_pagne",
-      "region": "central",
-      "country": "Central Africa",
-      "category": "FASHION",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "What is a colorful garment widely worn in West Africa by both men and women?",
-      "options": [
-        "Pagne",
-        "Liputa",
-        "La Sape",
-        "Kuba cloth"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Pagne is a wrap cloth in Central Africa.",
-      "sources": [
-        {
-          "title": "Pagne",
-          "url": "https://en.wikipedia.org/wiki/Pagne",
-          "claim": "Wrapper (clothing) The wrapper, lappa, or pagne is a colorful garment widely worn in West Africa by both men and women.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Wrapper (clothing) The wrapper, lappa, or pagne is a colorful garment widely worn in West Africa by both men and women.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_fash_toghu",
       "region": "central",
       "country": "Cameroon",
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What is a traditional royal garment of the Grassfields peoples of the Northwest and West regions of Cameroon?",
+      "prompt": "Which royal garment belongs to Cameroon’s Grassfields peoples?",
       "options": [
         "Toghu",
         "Liputa",
@@ -365,12 +161,12 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What do you call a yellow soup and pounded cocoyam from the Grassfields?",
+      "prompt": "Which Grassfields classic pairs yellow soup with pounded cocoyam?",
       "options": [
         "Achu",
-        "Cassava",
-        "Fufu",
-        "Pondu"
+        "Ndolé",
+        "Pondu",
+        "Fufu"
       ],
       "correct": [
         0
@@ -410,171 +206,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_food_cassava",
-      "region": "central",
-      "country": "Central Africa",
-      "category": "FOOD",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "What do you call a woody shrub of the spurge family?",
-      "options": [
-        "Cassava",
-        "Fufu",
-        "Pondu",
-        "Moambe"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Cassava is a staple food in Central Africa.",
-      "sources": [
-        {
-          "title": "Cassava",
-          "url": "https://en.wikipedia.org/wiki/Cassava",
-          "claim": "Cassava Manihot esculenta, commonly called cassava, manioc, or yuca (among numerous regional names), is a woody shrub of the spurge family, Euphorbiaceae, native to South America, from Brazil, Paraguay and parts of the Andes.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Cassava Manihot esculenta, commonly called cassava, manioc, or yuca (among numerous regional names), is a woody shrub of the spurge family, Euphorbiaceae, native to South America, from Brazil, Paraguay and parts of the Andes.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_food_moambe",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "FOOD",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "What do you call an ingredient made from the pericarp of palm nuts?",
-      "options": [
-        "Moambe",
-        "Cassava",
-        "Fufu",
-        "Pondu"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Moambe is a dish made with palm butter.",
-      "sources": [
-        {
-          "title": "Moambe",
-          "url": "https://en.wikipedia.org/wiki/Moambe",
-          "claim": "Moambe Palm butter or palm cream, frequently known as moambe, mwambe or nyembwe, is an ingredient made from the pericarp (not the seeds) of palm nuts, the fruit of the African oil palm (Elaeis guineensis) tree.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Moambe Palm butter or palm cream, frequently known as moambe, mwambe or nyembwe, is an ingredient made from the pericarp (not the seeds) of palm nuts, the fruit of the African oil palm (Elaeis guineensis) tree.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_food_ndole",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "FOOD",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "What do you call a Cameroonian dish consisting of stewed ground peanuts?",
-      "options": [
-        "Ndolé",
-        "Cassava",
-        "Fufu",
-        "Pondu"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Ndolé is a dish from Cameroon.",
-      "sources": [
-        {
-          "title": "Ndolé",
-          "url": "https://en.wikipedia.org/wiki/Ndol%C3%A9",
-          "claim": "Ndolé Ndolé, also written Ndole or Ndolè, is a Cameroonian dish consisting of stewed ground peanuts, crayfish, garlic, onions, and ndoleh leaves (indigenous to West and Central Africa).",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Ndolé Ndolé, also written Ndole or Ndolè, is a Cameroonian dish consisting of stewed ground peanuts, crayfish, garlic, onions, and ndoleh leaves (indigenous to West and Central Africa).",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_food_ndole2",
       "region": "central",
       "country": "Cameroon",
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "What do you call a Cameroonian stew of bitter leaves and nuts?",
+      "prompt": "Which Cameroonian stew mixes bitter leaves with ground nuts?",
       "options": [
         "Ndolé",
-        "Cassava",
+        "Pondu",
         "Fufu",
-        "Pondu"
+        "Achu"
       ],
       "correct": [
         0
@@ -671,12 +314,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Where is the second-longest river in Africa, shorter only than the Nile, as well as the third largest river in the world by discharge volume?",
+      "prompt": "Which river is Africa’s second-longest and one of the world’s largest by discharge?",
       "options": [
         "Congo River",
-        "Mount Cameroon",
+        "Lake Chad",
         "Lake Kivu",
-        "Kalandula Falls"
+        "Mount Cameroon"
       ],
       "correct": [
         0
@@ -773,12 +416,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Where is an endorheic freshwater lake located at the junction of four countries?",
+      "prompt": "Which endorheic lake sits at the meeting point of four countries?",
       "options": [
         "Lake Chad",
+        "Lake Kivu",
         "Congo River",
-        "Mount Cameroon",
-        "Lake Kivu"
+        "Mount Cameroon"
       ],
       "correct": [
         0
@@ -824,12 +467,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Where is the highland lake between DR Congo and Rwanda?",
+      "prompt": "Which highland lake lies between DR Congo and Rwanda?",
       "options": [
         "Lake Kivu",
+        "Lake Chad",
         "Congo River",
-        "Mount Cameroon",
-        "Kalandula Falls"
+        "Virunga"
       ],
       "correct": [
         0
@@ -1181,7 +824,7 @@
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What is a conglomerate of several smaller Bushong-speaking principalities as well as the Kete?",
+      "prompt": "Which Central African kingdom united several Bushong-speaking principalities (plus the Kete)?",
       "options": [
         "Kuba kingdom",
         "Kingdom of Kongo",
@@ -1226,115 +869,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_hist_luba_empire",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "HISTORY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "What is a historic state of the Congo grasslands?",
-      "options": [
-        "Kingdom of Luba",
-        "Kingdom of Kongo",
-        "Lunda Empire",
-        "Bamum kingdom"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The Luba Empire was a state in Central Africa.",
-      "sources": [
-        {
-          "title": "Luba Empire",
-          "url": "https://en.wikipedia.org/wiki/Luba_Empire",
-          "claim": "The Luba Empire was a state in Central Africa",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Luba Empire The Luba Empire or Kingdom of Luba was a pre-colonial Central African state that arose in the marshy grasslands of the Upemba Depression in what is now southern Democratic Republic of the Congo.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_hist_lunda_empire",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "HISTORY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "What is a confederation or commonwealth of states in what is now the Democratic Republic of Congo?",
-      "options": [
-        "Lunda Empire",
-        "Kingdom of Kongo",
-        "Kingdom of Luba",
-        "Bamum kingdom"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The Lunda Empire was a Central African state.",
-      "sources": [
-        {
-          "title": "Lunda Empire",
-          "url": "https://en.wikipedia.org/wiki/Lunda_Empire",
-          "claim": "Lunda Empire The Lunda Empire or Lunda Commonwealth was a confederation or commonwealth of states in what is now the Democratic Republic of Congo, north-eastern Angola, and north-western Zambia.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Lunda Empire The Lunda Empire or Lunda Commonwealth was a confederation or commonwealth of states in what is now the Democratic Republic of Congo, north-eastern Angola, and north-western Zambia.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_lang_angola",
       "region": "central",
       "country": "Angola",
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Can you name the official language of Angola?",
+      "prompt": "Which language is the official language of Angola?",
       "options": [
         "Portuguese",
         "Lingala",
@@ -1385,7 +926,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Can you name an English-based lingua franca of Cameroon?",
+      "prompt": "Which English-based lingua franca is widely used in Cameroon?",
       "options": [
         "Cameroonian Pidgin",
         "Lingala",
@@ -1436,7 +977,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Can you name a widely spoken of Chad?",
+      "prompt": "Which Arabic variety is widely spoken in Chad?",
       "options": [
         "Chadian Arabic",
         "Lingala",
@@ -1487,7 +1028,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Can you name the official language of the Democratic Republic of the Congo?",
+      "prompt": "Which language is official in the Democratic Republic of the Congo?",
       "options": [
         "French",
         "Lingala",
@@ -1532,64 +1073,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_lang_duala_language",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "LANGUAGE",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Can you name a coastal language of Cameroon?",
-      "options": [
-        "Duala",
-        "Lingala",
-        "Kikongo",
-        "Tshiluba"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Duala is a language of Cameroon.",
-      "sources": [
-        {
-          "title": "Duala language",
-          "url": "https://en.wikipedia.org/wiki/Duala_language",
-          "claim": "Duala is a language of Cameroon",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Duala language Duala (native name: Duálá) is a dialect cluster spoken by the Duala and Mungo peoples of Cameroon.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_lang_ewondo_language",
       "region": "central",
       "country": "Cameroon",
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Can you name a Bantu language spoken by the Beti people of Cameroon?",
+      "prompt": "Which Bantu language do the Beti people of Cameroon speak?",
       "options": [
         "Ewondo",
         "Lingala",
@@ -1640,7 +1130,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Can you name a language spoken in Gabon, Equatorial Guinea, and Cameroon?",
+      "prompt": "Which language is spoken in Gabon, Equatorial Guinea and Cameroon?",
       "options": [
         "Fang",
         "Lingala",
@@ -1691,7 +1181,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Can you name a Bantu language of the Luanda region?",
+      "prompt": "Which Bantu language is tied to the Luanda region?",
       "options": [
         "Kimbundu",
         "Lingala",
@@ -1742,7 +1232,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Can you name a Bantu language spoken by the Kongo people living in the Democratic Republic of the Congo?",
+      "prompt": "Which Bantu language do Kongo communities speak in the DR Congo and neighbours?",
       "options": [
         "Kikongo",
         "Lingala",
@@ -1793,7 +1283,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Can you name a Bantu language spoken in the northwest of the Democratic Republic of the Congo?",
+      "prompt": "Which Bantu lingua franca is strong in northwestern DR Congo?",
       "options": [
         "Lingala",
         "Kikongo",
@@ -1844,7 +1334,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Can you name the national lingua franca of the Central African Republic?",
+      "prompt": "Which national lingua franca is used in the Central African Republic?",
       "options": [
         "Sango",
         "Lingala",
@@ -1895,7 +1385,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is a coastal Bassa dance music of Cameroon?",
+      "prompt": "Which coastal Bassa dance music comes from Cameroon?",
       "options": [
         "Assiko",
         "Congolese rumba",
@@ -1940,69 +1430,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_musi_bikutsi",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "What is a musical genre from Cameroon?",
-      "options": [
-        "Bikutsi",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Bikutsi is a music genre from Cameroon.",
-      "sources": [
-        {
-          "title": "Bikutsi",
-          "url": "https://en.wikipedia.org/wiki/Bikutsi",
-          "claim": "Bikutsi Bikutsi is a musical genre from Cameroon.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Bikutsi Bikutsi is a musical genre from Cameroon.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_musi_charlotte_dipanda",
       "region": "central",
       "country": "Cameroon",
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Who is the Cameroonian singer who mostly performs acoustic music?",
+      "prompt": "Which Cameroonian singer is known mostly for acoustic performances?",
       "options": [
         "Charlotte Dipanda",
-        "Papa Wemba",
+        "Patience Dabany",
         "Manu Dibango",
-        "Koffi Olomidé"
+        "Papa Wemba"
       ],
       "correct": [
         0
@@ -2048,7 +1487,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "What is a dance music genre originating in the modern-day Democratic Republic of the Congo and Republic of the Congo?",
+      "prompt": "Which dance-music genre began in the two Congos?",
       "options": [
         "Congolese rumba",
         "Soukous",
@@ -2099,7 +1538,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is the Congolese musician and dancer?",
+      "prompt": "Which Congolese singer-dancer became a modern rumba headliner?",
       "options": [
         "Fally Ipupa",
         "Papa Wemba",
@@ -2201,7 +1640,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is a social dance and music genre that originated in Angola during the late 1970s to early 1980s?",
+      "prompt": "Which Angolan social dance and music grew in the late 1970s and early 1980s?",
       "options": [
         "Kizomba",
         "Congolese rumba",
@@ -2252,7 +1691,7 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is the Congolese singer-songwriter, dancer, producer, and founder of Quartier Latin International?",
+      "prompt": "Which Congolese star founded Quartier Latin International?",
       "options": [
         "Koffi Olomidé",
         "Papa Wemba",
@@ -2303,7 +1742,7 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What is a fast electronic dance music from Angola?",
+      "prompt": "Which fast electronic dance music comes from Angola?",
       "options": [
         "Kuduro",
         "Congolese rumba",
@@ -2348,115 +1787,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_musi_makossa",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "MUSIC",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "What is the urban dance music of Cameroon?",
-      "options": [
-        "Makossa",
-        "Congolese rumba",
-        "Soukous",
-        "Ndombolo"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Makossa is a music genre from Cameroon.",
-      "sources": [
-        {
-          "title": "Makossa",
-          "url": "https://en.wikipedia.org/wiki/Makossa",
-          "claim": "Makossa is a music genre from Cameroon",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "It is considered a significant Cameroonian and African music genre. Makossa, which in some accounts is said to mean \"the contortions\" and others to mean \"(I) dance\" in the Duala language, originated from a Duala dance called the kossa.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_musi_makossa2",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "MUSIC",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "What is a music genre originating in Douala?",
-      "options": [
-        "Makossa",
-        "Congolese rumba",
-        "Soukous",
-        "Ndombolo"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Makossa is a Cameroonian music genre.",
-      "sources": [
-        {
-          "title": "Makossa",
-          "url": "https://en.wikipedia.org/wiki/Makossa",
-          "claim": "Makossa Makossa is a music genre originating in Douala, Littoral Region, Cameroon in the late 20th century.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Makossa Makossa is a music genre originating in Douala, Littoral Region, Cameroon in the late 20th century.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_musi_manu_dibango",
       "region": "central",
       "country": "Cameroon",
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Who is the Cameroonian musician and songwriter who played saxophone and vibraphone?",
+      "prompt": "Which Cameroonian legend played saxophone and vibraphone?",
       "options": [
         "Manu Dibango",
         "Papa Wemba",
@@ -2507,12 +1844,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What is a stringed musical instrument, a type of stick zither, Hornbostel-Sachs of the Fang people of Gabon, Cameroon, Democratic Republic?",
+      "prompt": "Which Fang stick-zither is found in Gabon, Cameroon and neighbouring Congo lands?",
       "options": [
         "Mvet",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
+        "Kora",
+        "Djembe",
+        "Balafon"
       ],
       "correct": [
         0
@@ -2558,7 +1895,7 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Who is the Congolese singer, songwriter, bandleader, and actor who is credited with popularizing Congolese rumba and African popular music?",
+      "prompt": "Which Congolese singer helped take rumba and African pop worldwide?",
       "options": [
         "Papa Wemba",
         "Manu Dibango",
@@ -2609,12 +1946,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Who is the Gabonese singer and former first lady?",
+      "prompt": "Which Gabonese singer was also a former first lady?",
       "options": [
         "Patience Dabany",
-        "Papa Wemba",
+        "Charlotte Dipanda",
         "Manu Dibango",
-        "Koffi Olomidé"
+        "Papa Wemba"
       ],
       "correct": [
         0
@@ -2654,69 +1991,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_musi_semba_music",
-      "region": "central",
-      "country": "Angola",
-      "category": "MUSIC",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "What is a traditional type of music and dance from Angola?",
-      "options": [
-        "Semba",
-        "Congolese rumba",
-        "Soukous",
-        "Makossa"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Semba is a music genre from Angola.",
-      "sources": [
-        {
-          "title": "Semba (music)",
-          "url": "https://en.wikipedia.org/wiki/Semba_(music)",
-          "claim": "Semba Semba is a traditional type of music and dance from Angola.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Semba Semba is a traditional type of music and dance from Angola.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_musi_werrason",
       "region": "central",
       "country": "DR Congo",
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is the ndombolo bandleader of Wenge Musica?",
+      "prompt": "Which ndombolo bandleader is tied to Wenge Musica?",
       "options": [
         "Werrason",
         "Papa Wemba",
-        "Manu Dibango",
-        "Koffi Olomidé"
+        "Koffi Olomidé",
+        "Fally Ipupa"
       ],
       "correct": [
         0
@@ -2762,12 +2048,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is Angola's first president and a poet?",
+      "prompt": "Who was Angola’s first president and also a poet?",
       "options": [
         "Agostinho Neto",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
+        "Patrice Lumumba",
+        "Alain Mabanckou",
+        "Pepetela"
       ],
       "correct": [
         0
@@ -2813,12 +2099,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is the novelist of Broken Glass?",
+      "prompt": "Which novelist wrote Broken Glass?",
       "options": [
         "Alain Mabanckou",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Mongo Beti"
+        "Mongo Beti",
+        "Pepetela",
+        "Patrice Lumumba"
       ],
       "correct": [
         0
@@ -2858,69 +2144,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_peop_andre_raponda_walker",
-      "region": "central",
-      "country": "Gabon",
-      "category": "PEOPLE",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a Gabonese author, ethnographer, Catholic priest, and missionary?",
-      "options": [
-        "André Raponda Walker",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "André Raponda Walker was a Gabonese scholar.",
-      "sources": [
-        {
-          "title": "André Raponda Walker",
-          "url": "https://en.wikipedia.org/wiki/Andr%C3%A9_Raponda_Walker",
-          "claim": "André Raponda Walker André Raponda Walker (19 July 1871–11 December 1968) was a Gabonese author, ethnographer, Catholic priest, and missionary.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "André Raponda Walker André Raponda Walker (19 July 1871–11 December 1968) was a Gabonese author, ethnographer, Catholic priest, and missionary.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_peop_dikembe_mutombo",
       "region": "central",
       "country": "DR Congo",
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Who is a Congolese-American professional basketball player who played center in the National Basketball Association for 18 seasons?",
+      "prompt": "Which Congolese-American centre starred across 18 NBA seasons?",
       "options": [
         "Dikembe Mutombo",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
+        "Samuel Eto'o",
+        "Roger Milla",
+        "Serge Ibaka"
       ],
       "correct": [
         0
@@ -2966,12 +2201,12 @@
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Who is a diplomat, politician and author from Cameroon?",
+      "prompt": "Which Cameroonian diplomat and politician was also a noted author?",
       "options": [
         "Ferdinand Oyono",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
+        "Mongo Beti",
+        "Alain Mabanckou",
+        "Patrice Lumumba"
       ],
       "correct": [
         0
@@ -3011,69 +2246,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_peop_francis_bebey",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "PEOPLE",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a Cameroonian musicologist, writer, composer, and broadcaster?",
-      "options": [
-        "Francis Bebey",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Francis Bebey was a Cameroonian musician and writer.",
-      "sources": [
-        {
-          "title": "Francis Bebey",
-          "url": "https://en.wikipedia.org/wiki/Francis_Bebey",
-          "claim": "Francis Bebey Francis Bebey (French: [bəbɛ], 15 July 1929 in Douala, Cameroon – 28 May 2001 in Paris, France) was a Cameroonian musicologist, writer, composer, and broadcaster.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Francis Bebey Francis Bebey (French: [bəbɛ], 15 July 1929 in Douala, Cameroon – 28 May 2001 in Paris, France) was a Cameroonian musicologist, writer, composer, and broadcaster.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_peop_francois_tombalbaye",
       "region": "central",
       "country": "Chad",
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Who is the first president of Chad?",
+      "prompt": "Who was the first president of Chad?",
       "options": [
         "François Tombalbaye",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
+        "Patrice Lumumba",
+        "Agostinho Neto",
+        "Njoya"
       ],
       "correct": [
         0
@@ -3119,11 +2303,11 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Who is a neographer, having invented the Bamum syllabary and Shümom language?",
+      "prompt": "Which Bamum ruler invented a syllabary and the Shümom language?",
       "options": [
         "Njoya",
-        "Manu Dibango",
-        "Papa Wemba",
+        "Patrice Lumumba",
+        "Agostinho Neto",
         "Alain Mabanckou"
       ],
       "correct": [
@@ -3164,170 +2348,17 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_peop_le_grand_kalle",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "PEOPLE",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is Joseph Kabasele, a founder of modern Congolese rumba?",
-      "options": [
-        "Le Grand Kallé",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Le Grand Kallé was a Congolese musician.",
-      "sources": [
-        {
-          "title": "Le Grand Kallé",
-          "url": "https://en.wikipedia.org/wiki/Le_Grand_Kall%C3%A9",
-          "claim": "Le Grand Kallé was a Congolese musician",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Le Grand Kallé Joseph Athanase Tshamala Kabasele (16 December 1930 – 11 February 1983), popularly known as Le Grand Kallé, was a Congolese singer-songwriter, composer, record executive, and founder of African Jazz. Regarded as the \"father of modern Congolese popular music\", he shaped the evolution of urban popular music in the Belgian Congo and the post-independence Democratic Republic of the Congo.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_peop_mongo_beti",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "PEOPLE",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a Cameroonian author and polemicist?",
-      "options": [
-        "Mongo Beti",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Mongo Beti was a Cameroonian writer.",
-      "sources": [
-        {
-          "title": "Mongo Beti",
-          "url": "https://en.wikipedia.org/wiki/Mongo_Beti",
-          "claim": "Mongo Beti Alexandre Biyidi Awala (30 June 1932 – 8 October 2001), known as Mongo Beti or Eza Boto, was a Cameroonian author and polemicist.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Mongo Beti Alexandre Biyidi Awala (30 June 1932 – 8 October 2001), known as Mongo Beti or Eza Boto, was a Cameroonian author and polemicist.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_peop_patience_dabany",
-      "region": "central",
-      "country": "Gabon",
-      "category": "PEOPLE",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Who is a Gabonese singer and musician who was the First Lady of Gabon from 1967 to 1987 as the first wife of president Omar Bongo?",
-      "options": [
-        "Patience Dabany",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Patience Dabany is a Gabonese singer.",
-      "sources": [
-        {
-          "title": "Patience Dabany",
-          "url": "https://en.wikipedia.org/wiki/Patience_Dabany",
-          "claim": "Patience Dabany Patience Dabany (born Marie-Joséphine Kama; 22 January 1941), also known as Joséphine Bongo, is a Gabonese singer and musician who was the First Lady of Gabon from 1967 to 1987 as the first wife of president Omar Bongo.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Patience Dabany Patience Dabany (born Marie-Joséphine Kama; 22 January 1941), also known as Joséphine Bongo, is a Gabonese singer and musician who was the First Lady of Gabon from 1967 to 1987 as the first wife of president Omar Bongo.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_peop_patrice_lumumba",
       "region": "central",
       "country": "DR Congo",
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is the first prime minister of the independent Congo?",
+      "prompt": "Who was the first prime minister of independent Congo?",
       "options": [
         "Patrice Lumumba",
-        "Manu Dibango",
-        "Papa Wemba",
+        "Agostinho Neto",
+        "François Tombalbaye",
         "Alain Mabanckou"
       ],
       "correct": [
@@ -3368,176 +2399,23 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_peop_pepetela",
-      "region": "central",
-      "country": "Angola",
-      "category": "PEOPLE",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Who is the Angolan novelist Artur Pestana?",
-      "options": [
-        "Pepetela",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Pepetela is an Angolan writer.",
-      "sources": [
-        {
-          "title": "Pepetela",
-          "url": "https://en.wikipedia.org/wiki/Pepetela",
-          "claim": "Pepetela is an Angolan writer",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Pepetela Artur Carlos Maurício Pestana dos Santos (born 1941) is an Angolan writer of fiction.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_peop_richard_bona",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "PEOPLE",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Who is a Cameroonian multi-instrumentalist and singer?",
-      "options": [
-        "Richard Bona",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Richard Bona is a Cameroonian musician.",
-      "sources": [
-        {
-          "title": "Richard Bona",
-          "url": "https://en.wikipedia.org/wiki/Richard_Bona",
-          "claim": "Richard Bona Richard Bona (born 28 October 1967) is a Cameroonian multi-instrumentalist and singer.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Richard Bona Richard Bona (born 28 October 1967) is a Cameroonian multi-instrumentalist and singer.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_peop_roger_milla",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "PEOPLE",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a Cameroonian former professional footballer who played as a forward?",
-      "options": [
-        "Roger Milla",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Roger Milla is a Cameroonian footballer.",
-      "sources": [
-        {
-          "title": "Roger Milla",
-          "url": "https://en.wikipedia.org/wiki/Roger_Milla",
-          "claim": "Roger Milla Albert Roger Miller (born 20 May 1952), known as Roger Milla, is a Cameroonian former professional footballer who played as a forward.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Roger Milla Albert Roger Miller (born 20 May 1952), known as Roger Milla, is a Cameroonian former professional footballer who played as a forward.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_peop_samuel_eto_o",
       "region": "central",
       "country": "Cameroon",
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is a Cameroonian football administrator and former player who is the current president of the Cameroonian Football Federation?",
+      "prompt": "Which Cameroonian football great later became a football administrator?",
       "options": [
         "Samuel Eto'o",
-        "Manu Dibango",
-        "Papa Wemba",
-        "Alain Mabanckou"
+        "Roger Milla",
+        "Dikembe Mutombo",
+        "Patrice Lumumba"
       ],
       "correct": [
         0
       ],
-      "explanation": "Samuel Eto'o is a Cameroonian footballer.",
+      "explanation": "Samuel Eto'o is a Cameroonian former player who moved into football administration.",
       "sources": [
         {
           "title": "Samuel Eto'o",
@@ -3578,7 +2456,7 @@
       "category": "POP",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Who is the French-Congolese R&B singer?",
+      "prompt": "Which French-Congolese star is known for R&B?",
       "options": [
         "Dadju",
         "Fally Ipupa",
@@ -3623,166 +2501,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_popc_ferre_gola",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "POP",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Who is a Congolese singer-songwriter, dancer, and record producer?",
-      "options": [
-        "Ferre Gola",
-        "Fally Ipupa",
-        "Innoss'B",
-        "Gaz Mawete"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Ferre Gola is a Congolese singer.",
-      "sources": [
-        {
-          "title": "Ferre Gola",
-          "url": "https://en.wikipedia.org/wiki/Ferre_Gola",
-          "claim": "Ferré Gola Hervé Gola Bataringe (born 3 March 1976), known professionally as Ferré Gola, is a Congolese singer-songwriter, dancer, and record producer.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Ferré Gola Hervé Gola Bataringe (born 3 March 1976), known professionally as Ferré Gola, is a Congolese singer-songwriter, dancer, and record producer.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_popc_gaz_mawete",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "POP",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a Congolese singer-songwriter, dancer, record producer, record executive, actor, television personality, and bandleader?",
-      "options": [
-        "Gaz Mawete",
-        "Fally Ipupa",
-        "Innoss'B",
-        "Locko"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Gaz Mawete is a Congolese artist.",
-      "sources": [
-        {
-          "title": "Gaz Mawete",
-          "url": "https://en.wikipedia.org/wiki/Gaz_Mawete",
-          "claim": "Gaz Mawete Gael Kapia Mawete (born 30 September 1991), known professionally as Gaz Mawete, is a Congolese singer-songwriter, dancer, record producer, record executive, actor, television personality, and bandleader.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Gaz Mawete Gael Kapia Mawete (born 30 September 1991), known professionally as Gaz Mawete, is a Congolese singer-songwriter, dancer, record producer, record executive, actor, television personality, and bandleader.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_popc_gims",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "POP",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a Congolese singer and rapper?",
-      "options": [
-        "Gims",
-        "Fally Ipupa",
-        "Innoss'B",
-        "Gaz Mawete"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Gims is a Congolese-French rapper.",
-      "sources": [
-        {
-          "title": "Gims",
-          "url": "https://en.wikipedia.org/wiki/Gims",
-          "claim": "Gims Gandhi Alimasi Djuna (born 6 May 1986), known professionally as Maître Gims and, since around 2019, just Gims (stylized in all caps), is a Congolese singer and rapper.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Gims Gandhi Alimasi Djuna (born 6 May 1986), known professionally as Maître Gims and, since around 2019, just Gims (stylized in all caps), is a Congolese singer and rapper.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_popc_innoss_b",
       "region": "central",
       "country": "DR Congo",
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Who is the Congolese singer and dancer from Goma?",
+      "prompt": "Which Congolese singer and dancer comes from Goma?",
       "options": [
         "Innoss'B",
         "Fally Ipupa",
@@ -3827,166 +2552,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_popc_koffi_olomide2",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "POP",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a Congolese soukous singer?",
-      "options": [
-        "Koffi Olomide",
-        "Fally Ipupa",
-        "Innoss'B",
-        "Gaz Mawete"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Koffi Olomidé is a Congolese singer.",
-      "sources": [
-        {
-          "title": "Koffi Olomidé",
-          "url": "https://en.wikipedia.org/wiki/Koffi_Olomid%C3%A9",
-          "claim": "Koffi Olomidé is a Congolese singer",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Koffi Olomide Antoine Christophe Agbepa Mumba (born 13 July 1956), known professionally as Koffi Olomidé, is a Congolese singer-songwriter, dancer, producer, and founder of Quartier Latin International.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_popc_papa_wemba",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "POP",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a star of Congolese rumba?",
-      "options": [
-        "Papa Wemba",
-        "Fally Ipupa",
-        "Innoss'B",
-        "Gaz Mawete"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Papa Wemba was a Congolese singer.",
-      "sources": [
-        {
-          "title": "Papa Wemba",
-          "url": "https://en.wikipedia.org/wiki/Papa_Wemba",
-          "claim": "Papa Wemba was a Congolese singer",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Papa Wemba Jules Shungu Wembadio Pene Kikumba (14 June 1949 – 24 April 2016), known professionally as Papa Wemba, was a Congolese singer, songwriter, bandleader, and actor who is credited with popularizing Congolese rumba and African popular music internationally.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_popc_stanley_enow",
-      "region": "central",
-      "country": "Cameroon",
-      "category": "POP",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a Cameroonian rapper, and music producer?",
-      "options": [
-        "Stanley Enow",
-        "Fally Ipupa",
-        "Innoss'B",
-        "Gaz Mawete"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Stanley Enow is a Cameroonian rapper.",
-      "sources": [
-        {
-          "title": "Stanley Enow",
-          "url": "https://en.wikipedia.org/wiki/Stanley_Enow",
-          "claim": "Stanley Enow Stanley Ebai Enow (born 2 August 1985) is a Cameroonian rapper, and music producer.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Stanley Enow Stanley Ebai Enow (born 2 August 1985) is a Cameroonian rapper, and music producer.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_popc_titica",
       "region": "central",
       "country": "Angola",
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is an Angolan kuduro star?",
+      "prompt": "Which Angolan star is known for kuduro?",
       "options": [
         "Titica",
         "Fally Ipupa",
@@ -4031,64 +2603,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_spor_africa_cup_of_nations",
-      "region": "central",
-      "country": "Central Africa",
-      "category": "SPORT",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Who is the main biennial international men's association football competition in Africa?",
-      "options": [
-        "AFCON",
-        "Indomitable Lions",
-        "Leopards",
-        "TP Mazembe"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The Africa Cup of Nations is the continental football championship.",
-      "sources": [
-        {
-          "title": "Africa Cup of Nations",
-          "url": "https://en.wikipedia.org/wiki/Africa_Cup_of_Nations",
-          "claim": "Africa Cup of Nations The Africa Cup of Nations, commonly abbreviated as AFCON in English and CAN (from Coupe d'Afrique des Nations) in French, and currently known as the TotalEnergies Africa Cup of Nations for sponsorship reasons, is the main biennial international men's association football competition in Africa.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Africa Cup of Nations The Africa Cup of Nations, commonly abbreviated as AFCON in English and CAN (from Coupe d'Afrique des Nations) in French, and currently known as the TotalEnergies Africa Cup of Nations for sponsorship reasons, is the main biennial international men's association football competition in Africa.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_spor_joel_embiid",
       "region": "central",
       "country": "Cameroon",
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is a Cameroonian American professional basketball player for the Philadelphia 76ers of the National Basketball Association?",
+      "prompt": "Which Cameroonian-American big man became an NBA star centre?",
       "options": [
         "Joel Embiid",
         "Samuel Eto'o",
@@ -4098,7 +2619,7 @@
       "correct": [
         0
       ],
-      "explanation": "Joel Embiid is a Cameroonian basketball player.",
+      "explanation": "Joel Embiid is a Cameroonian American NBA centre.",
       "sources": [
         {
           "title": "Joel Embiid",
@@ -4139,7 +2660,7 @@
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is a Cameroonian professional basketball player for the Indiana Pacers of the National Basketball Association?",
+      "prompt": "Which Cameroonian athlete is a professional NBA basketball forward?",
       "options": [
         "Pascal Siakam",
         "Samuel Eto'o",
@@ -4149,7 +2670,7 @@
       "correct": [
         0
       ],
-      "explanation": "Pascal Siakam is a Cameroonian basketball player.",
+      "explanation": "Pascal Siakam is a Cameroonian professional basketball player in the NBA.",
       "sources": [
         {
           "title": "Pascal Siakam",
@@ -4184,64 +2705,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "central_spor_pierre_emerick_aubameyang",
-      "region": "central",
-      "country": "Gabon",
-      "category": "SPORT",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a professional footballer who plays as a striker for La Liga club Deportivo A Coruñ?",
-      "options": [
-        "Pierre-Emerick Aubameyang",
-        "Samuel Eto'o",
-        "Roger Milla",
-        "Dikembe Mutombo"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Pierre-Emerick Aubameyang is a Gabonese footballer.",
-      "sources": [
-        {
-          "title": "Pierre-Emerick Aubameyang",
-          "url": "https://en.wikipedia.org/wiki/Pierre-Emerick_Aubameyang",
-          "claim": "Pierre-Emerick Aubameyang Pierre-Emerick Emiliano François Aubameyang (born 18 June 1989) is a professional footballer who plays as a striker for La Liga club Deportivo A Coruña.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Pierre-Emerick Aubameyang Pierre-Emerick Emiliano François Aubameyang (born 18 June 1989) is a professional footballer who plays as a striker for La Liga club Deportivo A Coruña.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "central_spor_rigobert_song",
       "region": "central",
       "country": "Cameroon",
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Who is a Cameroonian professional football manager and former player who most recently managed the Central African Republic national team?",
+      "prompt": "Which Cameroonian defender later became a national-team manager?",
       "options": [
         "Rigobert Song",
         "Samuel Eto'o",
@@ -4251,7 +2721,7 @@
       "correct": [
         0
       ],
-      "explanation": "Rigobert Song is a Cameroonian footballer.",
+      "explanation": "Rigobert Song is a Cameroonian former player who moved into management.",
       "sources": [
         {
           "title": "Rigobert Song",
@@ -4292,7 +2762,7 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Who is a Congolese-Spanish professional basketball player who last played for Real Madrid of the Spanish Liga ACB and the EuroLeague?",
+      "prompt": "Which Congolese-Spanish big man played professional basketball in the NBA and Europe?",
       "options": [
         "Serge Ibaka",
         "Samuel Eto'o",
@@ -4302,7 +2772,7 @@
       "correct": [
         0
       ],
-      "explanation": "Serge Ibaka is a basketball player from the Republic of the Congo.",
+      "explanation": "Serge Ibaka is a Congolese-Spanish professional basketball player.",
       "sources": [
         {
           "title": "Serge Ibaka",
@@ -4327,57 +2797,6 @@
         "region": "pass",
         "reasons": [],
         "evidenceQuote": "Serge Ibaka Serge Jonás Ibaka Ngobila (; born 18 September 1989) is a Congolese-Spanish professional basketball player who last played for Real Madrid of the Spanish Liga ACB and the EuroLeague.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "central_spor_tp_mazembe",
-      "region": "central",
-      "country": "DR Congo",
-      "category": "SPORT",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "What is a Congolese professional football club based in Lubumbashi?",
-      "options": [
-        "TP Mazembe",
-        "Indomitable Lions",
-        "Leopards",
-        "Petro de Luanda"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "TP Mazembe is a football club in the Democratic Republic of the Congo.",
-      "sources": [
-        {
-          "title": "TP Mazembe",
-          "url": "https://en.wikipedia.org/wiki/TP_Mazembe",
-          "claim": "TP Mazembe Tout Puissant Mazembe, commonly referred to as TP Mazembe, is a Congolese professional football club based in Lubumbashi.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "TP Mazembe Tout Puissant Mazembe, commonly referred to as TP Mazembe, is a Congolese professional football club based in Lubumbashi.",
         "editorial": {
           "clarity": 5,
           "fun": 5,

@@ -2,64 +2,13 @@
   "region": "east",
   "questions": [
     {
-      "id": "east_fash_habesha_kemis",
-      "region": "east",
-      "country": "Ethiopia",
-      "category": "FASHION",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "What is an Amharic term used by Amhara people to refer to their traditional women's attire?",
-      "options": [
-        "Habesha kemis",
-        "Kanga",
-        "Kitenge",
-        "Kikoi"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The habesha kemis is a dress from Ethiopia.",
-      "sources": [
-        {
-          "title": "Habesha kemis",
-          "url": "https://en.wikipedia.org/wiki/Habesha_kemis",
-          "claim": "Habesha kemis Habesha kemis (Amharic: ቀሚስ, meaning \"Dress\" in Amharic) is an Amharic term used by Amhara people to refer to their traditional women's attire.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Habesha kemis Habesha kemis (Amharic: ቀሚስ, meaning \"Dress\" in Amharic) is an Amharic term used by Amhara people to refer to their traditional women's attire.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_fash_kanzu",
       "region": "east",
       "country": "Uganda",
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What is a white or cream coloured robe worn by men in the African Great Lakes region?",
+      "prompt": "Which white or cream robe do men wear across the African Great Lakes?",
       "options": [
         "Kanzu",
         "Kanga",
@@ -104,69 +53,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_fash_kikoi",
-      "region": "east",
-      "country": "Kenya",
-      "category": "FASHION",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "What is a traditional rectangle of woven cloth originating from Africa?",
-      "options": [
-        "Kikoi",
-        "Kanga",
-        "Kitenge",
-        "Habesha kemis"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The kikoi is a cloth from East Africa.",
-      "sources": [
-        {
-          "title": "Kikoi",
-          "url": "https://en.wikipedia.org/wiki/Kikoi",
-          "claim": "Kikoi A kikoi is a traditional rectangle of woven cloth originating from Africa.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Kikoi A kikoi is a traditional rectangle of woven cloth originating from Africa.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_fash_kofia_hat",
       "region": "east",
       "country": "East Africa",
       "category": "FASHION",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is a type of brimless cylindrical headwear with a flat top?",
+      "prompt": "Which brimless flat-topped cap is worn along the Swahili coast?",
       "options": [
         "Kofia",
+        "Kanzu",
         "Kanga",
-        "Kitenge",
-        "Kikoi"
+        "Kitenge"
       ],
       "correct": [
         0
@@ -212,7 +110,7 @@
       "category": "FASHION",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What is the wrap cloth of Madagascar?",
+      "prompt": "Which wrap cloth is traditional in Madagascar?",
       "options": [
         "Lamba",
         "Kanga",
@@ -257,69 +155,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_fash_netela",
-      "region": "east",
-      "country": "Ethiopia",
-      "category": "FASHION",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "What is the most common textile in the northern and central highlands?",
-      "options": [
-        "Netela",
-        "Kanga",
-        "Kitenge",
-        "Kikoi"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "The netela is a shawl from Ethiopia.",
-      "sources": [
-        {
-          "title": "Netela",
-          "url": "https://en.wikipedia.org/wiki/Netela",
-          "claim": "Hand-woven cotton cloth, or shemma, is the most common textile in the northern and central highlands, where it is used for the Habesha kemis and for shawls such as the netela, kuta and gabi.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Hand-woven cotton cloth, or shemma, is the most common textile in the northern and central highlands, where it is used for the Habesha kemis and for shawls such as the netela, kuta and gabi.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_food_berbere",
       "region": "east",
       "country": "Ethiopia",
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What do you call a spice mixture whose constituent elements usually include chili peppers?",
+      "prompt": "Which Ethiopian spice blend is built around chili peppers?",
       "options": [
         "Berbere",
         "Injera",
         "Doro wat",
-        "Nyama choma"
+        "Mitmita"
       ],
       "correct": [
         0
@@ -359,69 +206,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_food_chapati",
-      "region": "east",
-      "country": "Kenya",
-      "category": "FOOD",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "What do you call an unleavened flatbread originating from the Indian subcontinent?",
-      "options": [
-        "Chapati",
-        "Injera",
-        "Doro wat",
-        "Nyama choma"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Chapati is eaten in Kenya.",
-      "sources": [
-        {
-          "title": "Chapati",
-          "url": "https://en.wikipedia.org/wiki/Chapati",
-          "claim": "Chapati Chapati is an unleavened flatbread originating from the Indian subcontinent.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Chapati Chapati is an unleavened flatbread originating from the Indian subcontinent.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_food_injera",
       "region": "east",
       "country": "Ethiopia",
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "What do you call a sour fermented pancake-like flatbread with a slightly spongy texture?",
+      "prompt": "Which sour, spongy flatbread is the everyday base of Ethiopian and Eritrean meals?",
       "options": [
         "Injera",
-        "Doro wat",
-        "Nyama choma",
-        "Ugali"
+        "Ugali",
+        "Chapati",
+        "Mandazi"
       ],
       "correct": [
         0
@@ -467,12 +263,12 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What do you call minced beef seasoned with mitmita and kibbeh?",
+      "prompt": "Which Ethiopian dish is minced raw beef seasoned with mitmita and kibbeh?",
       "options": [
         "Kitfo",
-        "Injera",
         "Doro wat",
-        "Nyama choma"
+        "Nyama choma",
+        "Zigni"
       ],
       "correct": [
         0
@@ -518,12 +314,12 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What do you call a form of fried bread that originated on the Swahili coast of East Africa?",
+      "prompt": "Which fried bread snack began on the Swahili coast?",
       "options": [
         "Mandazi",
         "Injera",
-        "Doro wat",
-        "Nyama choma"
+        "Chapati",
+        "Puff puff"
       ],
       "correct": [
         0
@@ -569,11 +365,11 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What do you call steamed green banana, a staple in Uganda?",
+      "prompt": "Which steamed green banana dish is a Ugandan staple?",
       "options": [
         "Matoke",
+        "Ugali",
         "Injera",
-        "Doro wat",
         "Nyama choma"
       ],
       "correct": [
@@ -620,11 +416,11 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What do you call grilled meat, a beloved Kenyan celebration dish?",
+      "prompt": "Which grilled-meat feast is a Kenyan celebration favourite?",
       "options": [
         "Nyama choma",
-        "Injera",
         "Doro wat",
+        "Kitfo",
         "Ugali"
       ],
       "correct": [
@@ -665,69 +461,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_food_pilau",
-      "region": "east",
-      "country": "Tanzania",
-      "category": "FOOD",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "What do you call a rice dish, or in some regions, a wheat dish, whose recipe usually involves cooking in stock or broth, adding spices, and other?",
-      "options": [
-        "Pilau",
-        "Injera",
-        "Doro wat",
-        "Nyama choma"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Pilau is a spiced rice dish.",
-      "sources": [
-        {
-          "title": "Pilau",
-          "url": "https://en.wikipedia.org/wiki/Pilau",
-          "claim": "Pilaf Pilaf (US: or pilau UK: ) is a rice dish, or in some regions, a wheat dish, whose recipe usually involves cooking in stock or broth, adding spices, and other ingredients such as vegetables and meat, and employing some technique for achieving cooked grains that do not adhere.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Pilaf Pilaf (US: or pilau UK: ) is a rice dish, or in some regions, a wheat dish, whose recipe usually involves cooking in stock or broth, adding spices, and other ingredients such as vegetables and meat, and employing some technique for achieving cooked grains that do not adhere.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_food_rolex_food",
       "region": "east",
       "country": "Uganda",
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What do you call a popular food item in Uganda prepared by combining an egg omelette and vegetables wrapped in a chapati?",
+      "prompt": "Which Ugandan street wrap puts an omelette and veggies inside chapati?",
       "options": [
         "Rolex",
-        "Injera",
-        "Doro wat",
-        "Nyama choma"
+        "Mandazi",
+        "Chapati",
+        "Injera"
       ],
       "correct": [
         0
@@ -773,12 +518,12 @@
       "category": "FOOD",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What do you call a meat and greens stew considered a national dish of Madagascar?",
+      "prompt": "Which meat-and-greens stew is considered a national dish of Madagascar?",
       "options": [
         "Romazava",
-        "Injera",
         "Doro wat",
-        "Nyama choma"
+        "Nyama choma",
+        "Sukuma wiki"
       ],
       "correct": [
         0
@@ -824,12 +569,12 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What do you call an East African dish made with collard greens?",
+      "prompt": "Which East African dish is made with collard greens?",
       "options": [
         "Sukuma wiki",
-        "Injera",
-        "Doro wat",
-        "Nyama choma"
+        "Ugali",
+        "Matoke",
+        "Injera"
       ],
       "correct": [
         0
@@ -875,12 +620,12 @@
       "category": "FOOD",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "What do you call a type of corn meal made from maize or corn or mahindi flour in several African countries?",
+      "prompt": "Which maize-meal staple is eaten across much of East Africa?",
       "options": [
         "Ugali",
         "Injera",
-        "Doro wat",
-        "Nyama choma"
+        "Sadza",
+        "Fufu"
       ],
       "correct": [
         0
@@ -926,11 +671,11 @@
       "category": "FOOD",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What do you call a spicy meat stew of Eritrean cooking?",
+      "prompt": "Which spicy meat stew belongs to Eritrean cooking?",
       "options": [
         "Zigni",
-        "Injera",
         "Doro wat",
+        "Kitfo",
         "Nyama choma"
       ],
       "correct": [
@@ -1487,12 +1232,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Where is a large dormant stratovolcano in Tanzania?",
+      "prompt": "Which dormant stratovolcano in Tanzania is Africa’s highest mountain?",
       "options": [
         "Mount Kilimanjaro",
-        "Zanzibar",
-        "Kenya",
-        "Lake Victoria"
+        "Ngorongoro",
+        "Serengeti",
+        "Stone Town"
       ],
       "correct": [
         0
@@ -1691,7 +1436,7 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Where is a geographical region in Africa, spanning the Mara and Arusha Regions of Tanzania and extending to southwestern Kenya?",
+      "prompt": "Which vast savannah region spans northern Tanzania and reaches into southwestern Kenya?",
       "options": [
         "Serengeti",
         "Maasai Mara",
@@ -1742,12 +1487,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Where is the old part of Zanzibar City?",
+      "prompt": "What is the historic old quarter of Zanzibar City called?",
       "options": [
         "Stone Town",
         "Serengeti",
-        "Maasai Mara",
-        "Ngorongoro"
+        "Ngorongoro",
+        "Maasai Mara"
       ],
       "correct": [
         0
@@ -1844,12 +1589,12 @@
       "category": "GEOGRAPHY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Where is the spice island of Tanzania?",
+      "prompt": "Which Tanzanian spice island sits off the mainland coast?",
       "options": [
         "Zanzibar",
-        "Mount Kilimanjaro",
-        "Kenya",
-        "Lake Victoria"
+        "Stone Town",
+        "Ngorongoro",
+        "Serengeti"
       ],
       "correct": [
         0
@@ -1895,12 +1640,12 @@
       "category": "HISTORY",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What is an ancient city along the Red Sea in the Gulf of Zula?",
+      "prompt": "Which ancient Red Sea port stood in the Gulf of Zula?",
       "options": [
         "Adulis",
         "Lalibela",
-        "Zanzibar Sultanate",
-        "Lucy"
+        "Harar",
+        "Olduvai"
       ],
       "correct": [
         0
@@ -1946,12 +1691,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is a fortress located in Gondar, Amhara Region, Ethiopia?",
+      "prompt": "Which fortress complex stands in Gondar, Ethiopia?",
       "options": [
         "Fasil Ghebbi",
         "Lalibela",
-        "Zanzibar Sultanate",
-        "Lucy"
+        "Harar",
+        "Kasubi Tombs"
       ],
       "correct": [
         0
@@ -1991,69 +1736,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_hist_fort_jesus",
-      "region": "east",
-      "country": "Kenya",
-      "category": "HISTORY",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "What is an example of Renaissance architecture, the masonry techniques, building materials, and labor are believed to have been provided?",
-      "options": [
-        "Fort Jesus",
-        "Lalibela",
-        "Zanzibar Sultanate",
-        "Lucy"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Fort Jesus is a fort in Mombasa, Kenya.",
-      "sources": [
-        {
-          "title": "Fort Jesus",
-          "url": "https://en.wikipedia.org/wiki/Fort_Jesus",
-          "claim": "Although the design of Fort Jesus is an example of Renaissance architecture, the masonry techniques, building materials, and labor are believed to have been provided by the local Swahili people.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Although the design of Fort Jesus is an example of Renaissance architecture, the masonry techniques, building materials, and labor are believed to have been provided by the local Swahili people.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_hist_harar",
       "region": "east",
       "country": "Ethiopia",
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is the walled Islamic city in eastern Ethiopia?",
+      "prompt": "Which walled Islamic city stands in eastern Ethiopia?",
       "options": [
         "Harar",
         "Lalibela",
-        "Zanzibar Sultanate",
-        "Lucy"
+        "Adulis",
+        "Fasil Ghebbi"
       ],
       "correct": [
         0
@@ -2099,12 +1793,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is the royal burial site of Buganda kings?",
+      "prompt": "Which royal burial site holds Buganda kings?",
       "options": [
         "Kasubi Tombs",
         "Lalibela",
-        "Zanzibar Sultanate",
-        "Lucy"
+        "Harar",
+        "Olduvai"
       ],
       "correct": [
         0
@@ -2150,12 +1844,12 @@
       "category": "HISTORY",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is the town of rock-hewn churches in Ethiopia?",
+      "prompt": "Which Ethiopian town is famous for its rock-hewn churches?",
       "options": [
         "Lalibela",
-        "Zanzibar Sultanate",
-        "Lucy",
-        "Adulis"
+        "Harar",
+        "Adulis",
+        "Olduvai"
       ],
       "correct": [
         0
@@ -2201,12 +1895,12 @@
       "category": "HISTORY",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "What is the gorge in Tanzania famous for early human fossils?",
+      "prompt": "Which Tanzanian gorge is famous for early human fossils?",
       "options": [
         "Olduvai",
         "Lalibela",
-        "Zanzibar Sultanate",
-        "Lucy"
+        "Harar",
+        "Kasubi Tombs"
       ],
       "correct": [
         0
@@ -2246,64 +1940,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_lang_afar_language",
-      "region": "east",
-      "country": "Djibouti",
-      "category": "LANGUAGE",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Can you name a language of Djibouti, Eritrea, and Ethiopia?",
-      "options": [
-        "Afar",
-        "Swahili",
-        "Amharic",
-        "Oromo"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Afar is a language spoken in Djibouti.",
-      "sources": [
-        {
-          "title": "Afar language",
-          "url": "https://en.wikipedia.org/wiki/Afar_language",
-          "claim": "Afar is a language spoken in Djibouti",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Afar language Afar, also known as ’Afar af, Qafar af, or عَفَر أَف, is an Afroasiatic language belonging to the Cushitic branch, primarily spoken by the Afar people, native to parts of Djibouti, Eritrea and Ethiopia.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_lang_amharic",
       "region": "east",
       "country": "Ethiopia",
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Can you name the official working language of Ethiopia?",
+      "prompt": "Which language is Ethiopia’s official working language?",
       "options": [
         "Amharic",
         "Swahili",
@@ -2348,64 +1991,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_lang_amharic3",
-      "region": "east",
-      "country": "Ethiopia",
-      "category": "LANGUAGE",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Can you name an Ethio-Semitic language, which is a subgrouping within the Semitic branch of the Afroasiatic languages?",
-      "options": [
-        "Amharic",
-        "Swahili",
-        "Oromo",
-        "Tigrinya"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Amharic is a language of Ethiopia.",
-      "sources": [
-        {
-          "title": "Amharic",
-          "url": "https://en.wikipedia.org/wiki/Amharic",
-          "claim": "Amharic Amharic is an Ethio-Semitic language, which is a subgrouping within the Semitic branch of the Afroasiatic languages.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Amharic Amharic is an Ethio-Semitic language, which is a subgrouping within the Semitic branch of the Afroasiatic languages.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_lang_dinka_language",
       "region": "east",
       "country": "South Sudan",
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Can you name a major Nilotic language of South Sudan?",
+      "prompt": "Which major Nilotic language is spoken in South Sudan?",
       "options": [
         "Dinka",
         "Swahili",
@@ -2456,7 +2048,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Can you name the ancient liturgical language of Ethiopian and Eritrean churches?",
+      "prompt": "Which ancient liturgical language is used in Ethiopian and Eritrean churches?",
       "options": [
         "Ge'ez",
         "Swahili",
@@ -2507,7 +2099,7 @@
       "category": "LANGUAGE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Can you name the largest ethnic language of central Kenya?",
+      "prompt": "Which is the largest ethnic language of central Kenya?",
       "options": [
         "Kikuyu",
         "Swahili",
@@ -2558,7 +2150,7 @@
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Can you name the national language of Rwanda?",
+      "prompt": "Which language is the national language of Rwanda?",
       "options": [
         "Kinyarwanda",
         "Swahili",
@@ -2609,7 +2201,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Can you name the national language of Burundi?",
+      "prompt": "Which language is the national language of Burundi?",
       "options": [
         "Kirundi",
         "Swahili",
@@ -2660,7 +2252,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Can you name the widely spoken language of the Baganda in Uganda?",
+      "prompt": "Which language is widely spoken by the Baganda in Uganda?",
       "options": [
         "Luganda",
         "Swahili",
@@ -2711,7 +2303,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Can you name the national language of Madagascar?",
+      "prompt": "Which language is the national language of Madagascar?",
       "options": [
         "Malagasy",
         "Swahili",
@@ -2756,115 +2348,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_lang_malagasy_language2",
-      "region": "east",
-      "country": "Madagascar",
-      "category": "LANGUAGE",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Can you name an Austronesian language and dialect continuum spoken in Madagascar?",
-      "options": [
-        "Malagasy",
-        "Swahili",
-        "Amharic",
-        "Oromo"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Malagasy is the national language of Madagascar.",
-      "sources": [
-        {
-          "title": "Malagasy language",
-          "url": "https://en.wikipedia.org/wiki/Malagasy_language",
-          "claim": "Malagasy language Malagasy ( MAL-ə-GASS-ee; Malagasy pronunciation: [malaˈɡasʲ]; Sorabe: مَلَغَسِ) is an Austronesian language and dialect continuum spoken in Madagascar.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Malagasy language Malagasy ( MAL-ə-GASS-ee; Malagasy pronunciation: [malaˈɡasʲ]; Sorabe: مَلَغَسِ) is an Austronesian language and dialect continuum spoken in Madagascar.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "east_lang_nkore_language",
-      "region": "east",
-      "country": "Uganda",
-      "category": "LANGUAGE",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Can you name a Bantu language of southwestern Uganda?",
-      "options": [
-        "Runyankole",
-        "Swahili",
-        "Amharic",
-        "Oromo"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Runyankole is a language of Uganda.",
-      "sources": [
-        {
-          "title": "Nkore language",
-          "url": "https://en.wikipedia.org/wiki/Nkore_language",
-          "claim": "Runyankole is a language of Uganda",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Nkore language Nkore (also called Nkole, Nyankore, Nyankole, Orunyankore, Orunyankole, Runyankore and Runyankole) is a Bantu language spoken by the Nkore (\"Banyankore\") of south-western Uganda in the former province of Ankole, as well as in Tanzania, the DR Congo, Rwanda and Burundi.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_lang_oromo_language",
       "region": "east",
       "country": "Ethiopia",
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Can you name the most widely spoken language of Ethiopia?",
+      "prompt": "Which language is the most widely spoken in Ethiopia?",
       "options": [
         "Oromo",
         "Swahili",
@@ -2909,64 +2399,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_lang_somali_language",
-      "region": "east",
-      "country": "Somalia",
-      "category": "LANGUAGE",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Can you name a Cushitic language belonging to wider Afroasiatic language family?",
-      "options": [
-        "Somali",
-        "Swahili",
-        "Amharic",
-        "Oromo"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Somali is the language of Somalia.",
-      "sources": [
-        {
-          "title": "Somali language",
-          "url": "https://en.wikipedia.org/wiki/Somali_language",
-          "claim": "Somali language Somali ( sə-MAH-lee, soh-; Latin script: Af Soomaali, Wadaad: اف صومالِ, Osmanya: 𐒖𐒍 𐒈𐒝𐒑𐒛𐒐𐒘 [af soːmaːli]) is a Cushitic language belonging to wider Afroasiatic language family.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Somali language Somali ( sə-MAH-lee, soh-; Latin script: Af Soomaali, Wadaad: اف صومالِ, Osmanya: 𐒖𐒍 𐒈𐒝𐒑𐒛𐒐𐒘 [af soːmaːli]) is a Cushitic language belonging to wider Afroasiatic language family.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_lang_swahili_language",
       "region": "east",
       "country": "East Africa",
       "category": "LANGUAGE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Can you name the Bantu lingua franca of the East African coast and beyond?",
+      "prompt": "Which Bantu lingua franca links the East African coast and beyond?",
       "options": [
         "Swahili",
         "Amharic",
@@ -3017,7 +2456,7 @@
       "category": "LANGUAGE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Can you name a major language of Eritrea and northern Ethiopia?",
+      "prompt": "Which major language is spoken in Eritrea and northern Ethiopia?",
       "options": [
         "Tigrinya",
         "Swahili",
@@ -3068,12 +2507,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What is a harp of the Alur people of Uganda?",
+      "prompt": "Which harp belongs to the Alur people of Uganda?",
       "options": [
         "Adungu",
-        "Taarab",
-        "Bongo flava",
-        "Ethio-jazz"
+        "Krar",
+        "Masenqo",
+        "Nyatiti"
       ],
       "correct": [
         0
@@ -3113,115 +2552,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_musi_benga_music",
-      "region": "east",
-      "country": "Kenya",
-      "category": "MUSIC",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "What is a genre of Kenyan popular music?",
-      "options": [
-        "Benga",
-        "Taarab",
-        "Bongo flava",
-        "Ethio-jazz"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Benga is a genre of Kenyan popular music.",
-      "sources": [
-        {
-          "title": "Benga music",
-          "url": "https://en.wikipedia.org/wiki/Benga_music",
-          "claim": "Benga music Benga is a genre of Kenyan popular music.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Benga music Benga is a genre of Kenyan popular music.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "east_musi_bongo_flava",
-      "region": "east",
-      "country": "Tanzania",
-      "category": "MUSIC",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "What is a nickname for Tanzanian music?",
-      "options": [
-        "Bongo flava",
-        "Taarab",
-        "Ethio-jazz",
-        "Gengetone"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Bongo flava is a music genre from Tanzania.",
-      "sources": [
-        {
-          "title": "Bongo flava",
-          "url": "https://en.wikipedia.org/wiki/Bongo_flava",
-          "claim": "Bongo Flava Bongo Flava is a nickname for Tanzanian music.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Bongo Flava Bongo Flava is a nickname for Tanzanian music.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_musi_chakacha",
       "region": "east",
       "country": "Kenya",
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is a traditional music and dance style of the Swahili people of coastal Kenya and Tanzania?",
+      "prompt": "Which traditional music and dance style belongs to coastal Swahili communities?",
       "options": [
         "Chakacha",
         "Taarab",
@@ -3272,12 +2609,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What is the shoulder dance of the Ethiopian highlands?",
+      "prompt": "Which shoulder dance comes from the Ethiopian highlands?",
       "options": [
         "Eskista",
-        "Taarab",
-        "Bongo flava",
-        "Ethio-jazz"
+        "Intore",
+        "Ohangla",
+        "Chakacha"
       ],
       "correct": [
         0
@@ -3323,11 +2660,11 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is a genre of hip-hop music influenced by dancehall?",
+      "prompt": "Which Kenyan hip-hop style is heavily influenced by dancehall?",
       "options": [
         "Genge",
-        "Taarab",
         "Bongo flava",
+        "Taarab",
         "Ethio-jazz"
       ],
       "correct": [
@@ -3374,12 +2711,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is the warrior dance tradition performed in Rwanda?",
+      "prompt": "Which warrior dance tradition is performed in Rwanda?",
       "options": [
         "Intore",
-        "Taarab",
-        "Bongo flava",
-        "Ethio-jazz"
+        "Eskista",
+        "Ohangla",
+        "Chakacha"
       ],
       "correct": [
         0
@@ -3425,11 +2762,11 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is a stylistic music genre featuring the use of native sounds and samples from Uganda?",
+      "prompt": "Which Ugandan style leans on local sounds and samples?",
       "options": [
         "Kidandali",
-        "Taarab",
         "Bongo flava",
+        "Taarab",
         "Ethio-jazz"
       ],
       "correct": [
@@ -3476,12 +2813,12 @@
       "category": "MUSIC",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "What is a bowl lyre of Ethiopia and Eritrea?",
+      "prompt": "Which bowl lyre is played in Ethiopia and Eritrea?",
       "options": [
         "Krar",
-        "Taarab",
-        "Bongo flava",
-        "Ethio-jazz"
+        "Masenqo",
+        "Adungu",
+        "Nyatiti"
       ],
       "correct": [
         0
@@ -3527,12 +2864,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is a single-stringed bowed lute commonly found in the musical traditions of Eritrea and Ethiopia?",
+      "prompt": "Which single-string bowed lute is common in Eritrea and Ethiopia?",
       "options": [
         "Masenqo",
-        "Taarab",
-        "Bongo flava",
-        "Ethio-jazz"
+        "Krar",
+        "Adungu",
+        "Nyatiti"
       ],
       "correct": [
         0
@@ -3578,12 +2915,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is a five to eight-stringed plucked bowl yoke lute from Kenya?",
+      "prompt": "Which plucked bowl-lyre from Kenya has five to eight strings?",
       "options": [
         "Nyatiti",
-        "Taarab",
-        "Bongo flava",
-        "Ethio-jazz"
+        "Krar",
+        "Adungu",
+        "Masenqo"
       ],
       "correct": [
         0
@@ -3629,12 +2966,12 @@
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is a traditional dance among the Luo community?",
+      "prompt": "Which traditional dance is popular among the Luo?",
       "options": [
         "Ohangla",
-        "Taarab",
-        "Bongo flava",
-        "Ethio-jazz"
+        "Eskista",
+        "Intore",
+        "Chakacha"
       ],
       "correct": [
         0
@@ -3680,7 +3017,7 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What is a popular music genre from Madagascar?",
+      "prompt": "Which popular music genre comes from Madagascar?",
       "options": [
         "Salegy",
         "Taarab",
@@ -3731,12 +3068,12 @@
       "category": "MUSIC",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "What is a Tanzanian music genre that originated with the Zaramo in the Mtogole neighborhood of the Tandale ward in Kinondoni District of Dar?",
+      "prompt": "Which fast Tanzanian street genre grew in Dar es Salaam’s Tandale area?",
       "options": [
         "Singeli",
-        "Taarab",
         "Bongo flava",
-        "Ethio-jazz"
+        "Taarab",
+        "Gengetone"
       ],
       "correct": [
         0
@@ -3776,64 +3113,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_musi_taarab",
-      "region": "east",
-      "country": "Tanzania",
-      "category": "MUSIC",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "What is a music genre popular in Tanzania and Kenya?",
-      "options": [
-        "Taarab",
-        "Bongo flava",
-        "Ethio-jazz",
-        "Gengetone"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Taarab is a music genre from the Swahili coast.",
-      "sources": [
-        {
-          "title": "Taarab",
-          "url": "https://en.wikipedia.org/wiki/Taarab",
-          "claim": "Taarab Taarab is a music genre popular in Tanzania and Kenya, and the wider Swahilisphere.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Taarab Taarab is a music genre popular in Tanzania and Kenya, and the wider Swahilisphere.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_musi_taarab3",
       "region": "east",
       "country": "Tanzania",
       "category": "MUSIC",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What is Swahili coast music of poetry, strings, and voice?",
+      "prompt": "Which Swahili coast music blends poetry, strings and voice?",
       "options": [
         "Taarab",
         "Bongo flava",
@@ -3884,12 +3170,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is a Tanzanian novelist and academic of Yemeni origin?",
+      "prompt": "Which Tanzanian novelist of Yemeni origin became a major literary voice?",
       "options": [
         "Abdulrazak Gurnah",
-        "Wangari Maathai",
-        "Julius Nyerere",
-        "Jomo Kenyatta"
+        "Ngugi wa Thiong'o",
+        "Binyavanga Wainaina",
+        "Okot p'Bitek"
       ],
       "correct": [
         0
@@ -3929,69 +3215,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_peop_abebe_bikila",
-      "region": "east",
-      "country": "Ethiopia",
-      "category": "PEOPLE",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Who is the Ethiopian runner who won the 1960 Olympic marathon?",
-      "options": [
-        "Abebe Bikila",
-        "Wangari Maathai",
-        "Julius Nyerere",
-        "Jomo Kenyatta"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Abebe Bikila was an Ethiopian marathon runner.",
-      "sources": [
-        {
-          "title": "Abebe Bikila",
-          "url": "https://en.wikipedia.org/wiki/Abebe_Bikila",
-          "claim": "Abebe Bikila was an Ethiopian marathon runner",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Abebe Bikila Shambel Abebe Bikila (Amharic: ሻምበል አበበ ቢቂላ; August 7, 1932 – October 25, 1973) was an Ethiopian marathon runner who was a back-to-back Olympic marathon champion. He was the first Ethiopian Olympic gold medalist, winning his first gold medal at the 1960 Summer Olympics in Rome while running barefoot.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_peop_binyavanga_wainaina",
       "region": "east",
       "country": "Kenya",
       "category": "PEOPLE",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Who is a Kenyan author, journalist and 2002 winner of the Caine Prize for African Writing?",
+      "prompt": "Which Kenyan writer won the 2002 Caine Prize for African Writing?",
       "options": [
         "Binyavanga Wainaina",
-        "Wangari Maathai",
-        "Julius Nyerere",
-        "Jomo Kenyatta"
+        "Ngugi wa Thiong'o",
+        "Abdulrazak Gurnah",
+        "Okot p'Bitek"
       ],
       "correct": [
         0
@@ -4037,12 +3272,12 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Who is a Kenyan long-distance runner who competes in the marathon and formerly specialized in the 5000 metres?",
+      "prompt": "Which Kenyan marathon great earlier specialised in the 5000 metres?",
       "options": [
         "Eliud Kipchoge",
-        "Wangari Maathai",
-        "Julius Nyerere",
-        "Jomo Kenyatta"
+        "Haile Gebrselassie",
+        "Abebe Bikila",
+        "Kenenisa Bekele"
       ],
       "correct": [
         0
@@ -4088,12 +3323,12 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is an Ethiopian former long-distance track, road running athlete, and businessman?",
+      "prompt": "Which Ethiopian distance legend was also a track, road and business figure?",
       "options": [
         "Haile Gebrselassie",
-        "Wangari Maathai",
-        "Julius Nyerere",
-        "Jomo Kenyatta"
+        "Eliud Kipchoge",
+        "Abebe Bikila",
+        "Kenenisa Bekele"
       ],
       "correct": [
         0
@@ -4139,11 +3374,11 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Who is the first president of Tanzania?",
+      "prompt": "Who was the first president of Tanzania?",
       "options": [
         "Julius Nyerere",
-        "Wangari Maathai",
         "Jomo Kenyatta",
+        "Wangari Maathai",
         "Ngugi wa Thiong'o"
       ],
       "correct": [
@@ -4190,17 +3425,17 @@
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Who is an actress who has received various accolades?",
+      "prompt": "Which actress has won an Academy Award, among other honours?",
       "options": [
         "Lupita Nyong'o",
         "Wangari Maathai",
-        "Julius Nyerere",
-        "Jomo Kenyatta"
+        "Binyavanga Wainaina",
+        "Ngugi wa Thiong'o"
       ],
       "correct": [
         0
       ],
-      "explanation": "Lupita Nyong'o is a Kenyan-Mexican actress.",
+      "explanation": "Lupita Nyong'o is an actress who has received an Academy Award and other honours.",
       "sources": [
         {
           "title": "Lupita Nyong'o",
@@ -4235,69 +3470,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_peop_mahmood_mamdani",
-      "region": "east",
-      "country": "Uganda",
-      "category": "PEOPLE",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Who is a Ugandan anthropologist, academic, and political commentator?",
-      "options": [
-        "Mahmood Mamdani",
-        "Wangari Maathai",
-        "Julius Nyerere",
-        "Jomo Kenyatta"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Mahmood Mamdani is a Ugandan academic.",
-      "sources": [
-        {
-          "title": "Mahmood Mamdani",
-          "url": "https://en.wikipedia.org/wiki/Mahmood_Mamdani",
-          "claim": "Mahmood Mamdani Mahmood Mamdani (born 23 April 1946) is a Ugandan anthropologist, academic, and political commentator.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Mahmood Mamdani Mahmood Mamdani (born 23 April 1946) is a Ugandan anthropologist, academic, and political commentator.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_peop_ngugi_wa_thiong_o",
       "region": "east",
       "country": "Kenya",
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is a Kenyan author and academic, who has been described as East Africa's leading novelist and an important figure in modern African?",
+      "prompt": "Which Kenyan author has been described as East Africa’s leading novelist?",
       "options": [
         "Ngugi wa Thiong'o",
-        "Wangari Maathai",
         "Julius Nyerere",
-        "Jomo Kenyatta"
+        "Jomo Kenyatta",
+        "Wangari Maathai"
       ],
       "correct": [
         0
@@ -4343,7 +3527,7 @@
       "category": "PEOPLE",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is the Ugandan poet of Song of Lawino?",
+      "prompt": "Which Ugandan poet wrote Song of Lawino?",
       "options": [
         "Okot p'Bitek",
         "Wangari Maathai",
@@ -4388,64 +3572,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_peop_scholastique_mukasonga",
-      "region": "east",
-      "country": "Rwanda",
-      "category": "PEOPLE",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a French-Rwandan author born in the former Gikongoro province of Rwanda?",
-      "options": [
-        "Scholastique Mukasonga",
-        "Wangari Maathai",
-        "Julius Nyerere",
-        "Jomo Kenyatta"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Scholastique Mukasonga is a Rwandan writer.",
-      "sources": [
-        {
-          "title": "Scholastique Mukasonga",
-          "url": "https://en.wikipedia.org/wiki/Scholastique_Mukasonga",
-          "claim": "Scholastique Mukasonga Scholastique Mukasonga (born 1956) is a French-Rwandan author born in the former Gikongoro province of Rwanda.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Scholastique Mukasonga Scholastique Mukasonga (born 1956) is a French-Rwandan author born in the former Gikongoro province of Rwanda.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_peop_wangari_maathai",
       "region": "east",
       "country": "Kenya",
       "category": "PEOPLE",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Who is a Kenyan social, environmental, and political activist who founded the Green Belt Movement, an environmental non-governmental?",
+      "prompt": "Which Kenyan activist founded the Green Belt Movement?",
       "options": [
         "Wangari Maathai",
         "Julius Nyerere",
@@ -4490,166 +3623,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_popc_alikiba",
-      "region": "east",
-      "country": "Tanzania",
-      "category": "POP",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Who is a Tanzanian bongo flava singer and actor?",
-      "options": [
-        "Alikiba",
-        "Diamond Platnumz",
-        "Sauti Sol",
-        "Eddy Kenzo"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Alikiba is a Tanzanian musician.",
-      "sources": [
-        {
-          "title": "Alikiba",
-          "url": "https://en.wikipedia.org/wiki/Alikiba",
-          "claim": "Alikiba is a Tanzanian musician",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Under the label, Alikiba released many hit songs including Chekecha Cheketua, Lupela, Mvumo Wa Radi and Aje, a Bongo Flava love song that was ranked number 3 by Notjustok on their list of Best 100 Tanzanian songs of the decade ranging from 2012 to 2022 In May 2016, Alikiba signed to Sony Music, being the first East African to be signed by the recording company.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "east_popc_bensoul",
-      "region": "east",
-      "country": "Kenya",
-      "category": "POP",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Who is the Kenyan singer of Nairobi?",
-      "options": [
-        "Bensoul",
-        "Diamond Platnumz",
-        "Sauti Sol",
-        "Eddy Kenzo"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Bensoul is a Kenyan singer.",
-      "sources": [
-        {
-          "title": "Bensoul",
-          "url": "https://en.wikipedia.org/wiki/Bensoul",
-          "claim": "Bensoul is a Kenyan singer",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Bensoul Benson Mutua (born March 4, 1996) professionally known as Bensoul, is a Kenyan singer, songwriter and multi-instrumentalist.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
-      "id": "east_popc_bien_aime_baraza",
-      "region": "east",
-      "country": "Kenya",
-      "category": "POP",
-      "difficulty": "hard",
-      "kind": "single",
-      "prompt": "Who is a Kenyan musician and music executive?",
-      "options": [
-        "Bien",
-        "Diamond Platnumz",
-        "Sauti Sol",
-        "Eddy Kenzo"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Bien is a Kenyan musician from Sauti Sol.",
-      "sources": [
-        {
-          "title": "Bien-Aimé Baraza",
-          "url": "https://en.wikipedia.org/wiki/Bien-Aim%C3%A9_Baraza",
-          "claim": "Bien-Aimé Baraza Bien-Aimé Alusa Baraza, popularly known as Bien, is a Kenyan musician and music executive.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Bien-Aimé Baraza Bien-Aimé Alusa Baraza, popularly known as Bien, is a Kenyan musician and music executive.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_popc_diamond_platnumz",
       "region": "east",
       "country": "Tanzania",
       "category": "POP",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Who is a Tanzanian bongo flava recording artist?",
+      "prompt": "Which Tanzanian recording artist is a leading bongo flava star?",
       "options": [
         "Diamond Platnumz",
         "Sauti Sol",
@@ -4700,7 +3680,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is a Ugandan singer, music executive, and president and founder of the Uganda National Musicians Federation and a member of Big Talent?",
+      "prompt": "Which Ugandan singer is also a music executive and Big Talent founder?",
       "options": [
         "Eddy Kenzo",
         "Diamond Platnumz",
@@ -4751,7 +3731,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is the father of Ethio-jazz?",
+      "prompt": "Who is known as the father of Ethio-jazz?",
       "options": [
         "Mulatu Astatke",
         "Diamond Platnumz",
@@ -4802,7 +3782,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is the Tanzanian singer Faustina Charles?",
+      "prompt": "Which Tanzanian singer’s real name is Faustina Charles?",
       "options": [
         "Nandy",
         "Diamond Platnumz",
@@ -4853,7 +3833,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is the Kenyan rapper formerly of Kleptomaniax?",
+      "prompt": "Which Kenyan rapper first rose with the group Kleptomaniax?",
       "options": [
         "Nyashinski",
         "Diamond Platnumz",
@@ -4898,64 +3878,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_popc_sauti_sol",
-      "region": "east",
-      "country": "Kenya",
-      "category": "POP",
-      "difficulty": "easy",
-      "kind": "single",
-      "prompt": "Who is a Kenyan afropop band formed in Nairobi in 2005 by vocalists Bien-Aimé Baraza?",
-      "options": [
-        "Sauti Sol",
-        "Diamond Platnumz",
-        "Eddy Kenzo",
-        "Mulatu Astatke"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Sauti Sol is a Kenyan band.",
-      "sources": [
-        {
-          "title": "Sauti Sol",
-          "url": "https://en.wikipedia.org/wiki/Sauti_Sol",
-          "claim": "Sauti Sol Sauti Sol is a Kenyan afropop band formed in Nairobi in 2005 by vocalists Bien-Aimé Baraza, Willis Chimano, and Savara Mudigi.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Sauti Sol Sauti Sol is a Kenyan afropop band formed in Nairobi in 2005 by vocalists Bien-Aimé Baraza, Willis Chimano, and Savara Mudigi.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_popc_sauti_sol2",
       "region": "east",
       "country": "Kenya",
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is a Kenyan band known for close-harmony afropop?",
+      "prompt": "Which Kenyan band is known for close-harmony afropop?",
       "options": [
         "Sauti Sol",
         "Diamond Platnumz",
@@ -5006,7 +3935,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is a Ugandan musician, dancer, actress and feminist activist?",
+      "prompt": "Which Ugandan star is a musician, dancer, actress and feminist activist?",
       "options": [
         "Sheebah",
         "Diamond Platnumz",
@@ -5057,7 +3986,7 @@
       "category": "POP",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is the popular Ethiopian singer Tewodros Kassahun?",
+      "prompt": "Which popular Ethiopian singer is also known as Tewodros Kassahun?",
       "options": [
         "Teddy Afro",
         "Diamond Platnumz",
@@ -5102,64 +4031,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_popc_zuchu",
-      "region": "east",
-      "country": "Tanzania",
-      "category": "POP",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a Tanzanian singer and songwriter, in Zanzibar?",
-      "options": [
-        "Zuchu",
-        "Diamond Platnumz",
-        "Sauti Sol",
-        "Eddy Kenzo"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Zuchu is a Tanzanian singer.",
-      "sources": [
-        {
-          "title": "Zuchu",
-          "url": "https://en.wikipedia.org/wiki/Zuchu",
-          "claim": "Zuchu Zuhura Othman Soud, better known by her stage name Zuchu (born 22 November 1993), is a Tanzanian singer and songwriter, in Zanzibar.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Zuchu Zuhura Othman Soud, better known by her stage name Zuchu (born 22 November 1993), is a Tanzanian singer and songwriter, in Zanzibar.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_spor_abebe_bikila",
       "region": "east",
       "country": "Ethiopia",
       "category": "SPORT",
       "difficulty": "easy",
       "kind": "single",
-      "prompt": "Who is the barefoot Olympic marathon champion of 1960?",
+      "prompt": "Which Ethiopian runner won the 1960 Olympic marathon running barefoot?",
       "options": [
         "Abebe Bikila",
         "Eliud Kipchoge",
@@ -5204,64 +4082,13 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_spor_catherine_ndereba",
-      "region": "east",
-      "country": "Kenya",
-      "category": "SPORT",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a retired Kenyan marathon runner?",
-      "options": [
-        "Catherine Ndereba",
-        "Eliud Kipchoge",
-        "Haile Gebrselassie",
-        "Kenenisa Bekele"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Catherine Ndereba is a Kenyan marathon runner.",
-      "sources": [
-        {
-          "title": "Catherine Ndereba",
-          "url": "https://en.wikipedia.org/wiki/Catherine_Ndereba",
-          "claim": "Catherine Ndereba Catherine Nyambura Ndereba (born 21 July 1972) is a retired Kenyan marathon runner.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Catherine Ndereba Catherine Nyambura Ndereba (born 21 July 1972) is a retired Kenyan marathon runner.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_spor_derartu_tulu",
       "region": "east",
       "country": "Ethiopia",
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is the first Ethiopian woman to win Olympic gold?",
+      "prompt": "Who was the first Ethiopian woman to win Olympic gold?",
       "options": [
         "Derartu Tulu",
         "Eliud Kipchoge",
@@ -5306,74 +4133,23 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_spor_faith_kipyegon",
-      "region": "east",
-      "country": "Kenya",
-      "category": "SPORT",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is a Kenyan middle and long-distance runner?",
-      "options": [
-        "Faith Kipyegon",
-        "Eliud Kipchoge",
-        "Haile Gebrselassie",
-        "Kenenisa Bekele"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Faith Kipyegon is a Kenyan middle-distance runner.",
-      "sources": [
-        {
-          "title": "Faith Kipyegon",
-          "url": "https://en.wikipedia.org/wiki/Faith_Kipyegon",
-          "claim": "Faith Kipyegon Faith Chepngetich Kipyegon (born 10 January 1994) is a Kenyan middle and long-distance runner.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Faith Kipyegon Faith Chepngetich Kipyegon (born 10 January 1994) is a Kenyan middle and long-distance runner.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_spor_mbwana_samatta",
       "region": "east",
       "country": "Tanzania",
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Who is a Tanzanian professional footballer who plays as a striker for Ligue 1 club Le Havre?",
+      "prompt": "Which Tanzanian striker has played club football in Europe?",
       "options": [
         "Mbwana Samatta",
-        "Harambee Stars",
-        "Cranes",
-        "Walias"
+        "Victor Wanyama",
+        "Mohamed Salah",
+        "Sadio Mané"
       ],
       "correct": [
         0
       ],
-      "explanation": "Mbwana Samatta is a Tanzanian footballer.",
+      "explanation": "Mbwana Samatta is a Tanzanian professional striker.",
       "sources": [
         {
           "title": "Mbwana Samatta",
@@ -5414,7 +4190,7 @@
       "category": "SPORT",
       "difficulty": "hard",
       "kind": "single",
-      "prompt": "Who is the Ugandan who won the 2012 Olympic marathon?",
+      "prompt": "Which Ugandan runner won the 2012 Olympic marathon?",
       "options": [
         "Stephen Kiprotich",
         "Eliud Kipchoge",
@@ -5459,69 +4235,18 @@
       "lifecycleStatus": "published"
     },
     {
-      "id": "east_spor_tirunesh_dibaba",
-      "region": "east",
-      "country": "Ethiopia",
-      "category": "SPORT",
-      "difficulty": "medium",
-      "kind": "single",
-      "prompt": "Who is an Ethiopian long-distance runner athlete who competes in long-distance track events and international road races?",
-      "options": [
-        "Tirunesh Dibaba",
-        "Eliud Kipchoge",
-        "Haile Gebrselassie",
-        "Kenenisa Bekele"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "Tirunesh Dibaba is an Ethiopian long-distance runner.",
-      "sources": [
-        {
-          "title": "Tirunesh Dibaba",
-          "url": "https://en.wikipedia.org/wiki/Tirunesh_Dibaba",
-          "claim": "Tirunesh Dibaba Tirunesh Dibaba (Oromo: Xirunesh Dibaabaa, Amharic: ጥሩነሽ ዲባባ ቀነኒ; born 1 June 1985) is an Ethiopian long-distance runner athlete who competes in long-distance track events and international road races.",
-          "method": "page-overlap"
-        }
-      ],
-      "origin": "generated",
-      "gateReport": {
-        "schema": "pass",
-        "answerKey": "pass",
-        "options": "pass",
-        "source": {
-          "status": "pass",
-          "method": "evidence-quote",
-          "http": 200
-        },
-        "duplicate": "pass",
-        "sensitivity": "pass",
-        "ambiguity": "pass",
-        "region": "pass",
-        "reasons": [],
-        "evidenceQuote": "Tirunesh Dibaba Tirunesh Dibaba (Oromo: Xirunesh Dibaabaa, Amharic: ጥሩነሽ ዲባባ ቀነኒ; born 1 June 1985) is an Ethiopian long-distance runner athlete who competes in long-distance track events and international road races.",
-        "editorial": {
-          "clarity": 5,
-          "fun": 5,
-          "accuracy": 5,
-          "method": "editorial-rules"
-        }
-      },
-      "lifecycleStatus": "published"
-    },
-    {
       "id": "east_spor_victor_wanyama",
       "region": "east",
       "country": "Kenya",
       "category": "SPORT",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "Who is the Kenyan midfielder who played in the Premier League?",
+      "prompt": "Which Kenyan midfielder played in the English Premier League?",
       "options": [
         "Victor Wanyama",
         "Eliud Kipchoge",
         "Haile Gebrselassie",
-        "Kenenisa Bekele"
+        "Stephen Kiprotich"
       ],
       "correct": [
         0
@@ -5567,12 +4292,12 @@
       "category": "WEDDINGS",
       "difficulty": "medium",
       "kind": "single",
-      "prompt": "What do you call the Buganda introduction ceremony before marriage?",
+      "prompt": "What is the Buganda introduction ceremony held before marriage?",
       "options": [
         "Kwanjula",
-        "Habesha kemis",
         "Ruracio",
-        "Harusi"
+        "Harusi",
+        "Nikah"
       ],
       "correct": [
         0

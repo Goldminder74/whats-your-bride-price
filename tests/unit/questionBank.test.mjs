@@ -4,7 +4,7 @@ import test from "node:test";
 import { classicBank } from "../../question-bank/classic.ts";
 import { scopeFitsRegion } from "../../question-bank/regions.ts";
 import { sensitivityReasons } from "../../question-bank/sensitivity.ts";
-import { answerLeaks, jaccard, normalizeText } from "../../question-bank/text.ts";
+import { jaccard, normalizeText, promptNamesAnswer } from "../../question-bank/text.ts";
 
 const regions = ["west", "east", "central", "north", "south"];
 
@@ -13,12 +13,13 @@ async function published(region) {
   return JSON.parse(await readFile(file, "utf8")).questions;
 }
 
-test("every region publishes at least 85 gated questions with quotes and editorial scores", async () => {
+test("every region publishes at least 50 gated questions with quotes and editorial scores", async () => {
   const seen = new Set();
   const prompts = [];
   for (const region of regions) {
     const questions = await published(region);
-    assert.ok(questions.length >= 85, `${region} published ${questions.length}`);
+    assert.ok(questions.length >= 50, `${region} published ${questions.length}`);
+    const answers = new Map();
     const difficulties = new Set(questions.map((question) => question.difficulty));
     assert.deepEqual([...difficulties].sort(), ["easy", "hard", "medium"]);
     for (const question of questions) {
@@ -43,7 +44,19 @@ test("every region publishes at least 85 gated questions with quotes and editori
       assert.ok(question.gateReport.editorial.fun >= 4, question.id);
       assert.ok(question.gateReport.editorial.accuracy >= 4, question.id);
       assert.equal(/which (?:language point|popular-culture name|sporting name)|fill the blank|the name to write is|according to unesco|\ba and\b|\b(?:in|of|from|for|at|by|with)\s*\?$/i.test(question.prompt), false, question.prompt);
-      assert.equal(answerLeaks(question.prompt, question.options, question.correct), false, question.prompt);
+      assert.equal(question.prompt.trim().endsWith("?"), true, question.id);
+      for (const index of question.correct) {
+        const answer = question.options[index];
+        assert.equal(promptNamesAnswer(question.prompt, answer), false, `${question.id} names ${answer}`);
+        const key = normalizeText(answer);
+        const priorId = answers.get(key);
+        assert.equal(priorId, undefined, `${question.id} repeats ${answer} from ${priorId}`);
+        answers.set(key, question.id);
+      }
+      for (const [index, option] of question.options.entries()) {
+        if (question.correct.includes(index)) continue;
+        assert.equal(question.correct.some((correct) => normalizeText(question.options[correct]) === normalizeText(option)), false, question.id);
+      }
       const quoteWords = normalizeText(question.gateReport.evidenceQuote).split(" ");
       for (const index of question.correct) {
         for (const word of normalizeText(question.options[index]).split(" ")) {

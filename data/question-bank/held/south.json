@@ -9762,6 +9762,2134 @@
         "sensitivity_sacred",
         "editorial_accuracy"
       ]
+    },
+    {
+      "id": "south_fash_basotho_blanket",
+      "region": "south",
+      "country": "Lesotho",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which distinctive blanket garment is iconic for Basotho people in Lesotho and South Africa?",
+      "options": [
+        "Basotho blanket",
+        "Shweshwe",
+        "Mokorotlo",
+        "Ndebele beadwork"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Basotho blanket is worn in Lesotho.",
+      "sources": [
+        {
+          "title": "Basotho blanket",
+          "url": "https://en.wikipedia.org/wiki/Basotho_blanket",
+          "claim": "Basotho blanket The Basotho blanket is a distinctive form of garment commonly worn by Sotho people in Lesotho and South Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "fail",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "answer_leak"
+        ],
+        "evidenceQuote": "Basotho blanket The Basotho blanket is a distinctive form of garment commonly worn by Sotho people in Lesotho and South Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "answer_leak"
+      ]
+    },
+    {
+      "id": "south_fash_beadwork",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the art or craft of attaching beads to one another by stringing them onto a thread or thin wire with a sewing or beading needle?",
+      "options": [
+        "Beadwork",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Beadwork is a South African adornment.",
+      "sources": [
+        {
+          "title": "Beadwork",
+          "url": "https://en.wikipedia.org/wiki/Beadwork",
+          "claim": "Beadwork Beadwork is the art or craft of attaching beads to one another by stringing them onto a thread or thin wire with a sewing or beading needle or sewing them to cloth.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Beadwork Beadwork is the art or craft of attaching beads to one another by stringing them onto a thread or thin wire with a sewing or beading needle or sewing them to cloth.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_food_biltong2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call air-dried seasoned meat from Southern Africa?",
+      "options": [
+        "Biltong",
+        "Braai",
+        "Bobotie",
+        "Sadza"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Biltong is dried meat from Southern Africa.",
+      "sources": [
+        {
+          "title": "Biltong",
+          "url": "https://en.wikipedia.org/wiki/Biltong",
+          "claim": "Biltong is dried meat from Southern Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Biltong Biltong is a form of air-dried, cured meat which originated in Southern Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_food_bobotie2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What do you call a South African dish consisting of spiced minced meat baked with an egg-based topping?",
+      "options": [
+        "Bobotie",
+        "Braai",
+        "Biltong",
+        "Sadza"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bobotie is a South African dish.",
+      "sources": [
+        {
+          "title": "Bobotie",
+          "url": "https://en.wikipedia.org/wiki/Bobotie",
+          "claim": "Bobotie Bobotie (Afrikaans pronunciation: [bəˈbuəti] ) is a South African dish consisting of spiced minced meat baked with an egg-based topping.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Bobotie Bobotie (Afrikaans pronunciation: [bəˈbuəti] ) is a South African dish consisting of spiced minced meat baked with an egg-based topping.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_food_bunny_chow2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call an Indian South African fast food dish consisting of a hollowed-out loaf of white bread filled with curry and a serving of salad on?",
+      "options": [
+        "Bunny chow",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bunny chow is a South African dish from Durban.",
+      "sources": [
+        {
+          "title": "Bunny chow",
+          "url": "https://en.wikipedia.org/wiki/Bunny_chow",
+          "claim": "Bunny chow Bunny chow, often referred to simply as a bunny, is an Indian South African fast food dish consisting of a hollowed-out loaf of white bread filled with curry and a serving of salad on the side.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Bunny chow Bunny chow, often referred to simply as a bunny, is an Indian South African fast food dish consisting of a hollowed-out loaf of white bread filled with curry and a serving of salad on the side.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_food_chakalaka2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a South African vegetable relish, usually spicy, that is traditionally served with bread, pap, samp, stews, or curries?",
+      "options": [
+        "Chakalaka",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chakalaka is a South African relish.",
+      "sources": [
+        {
+          "title": "Chakalaka",
+          "url": "https://en.wikipedia.org/wiki/Chakalaka",
+          "claim": "Chakalaka Chakalaka is a South African vegetable relish, usually spicy, that is traditionally served with bread, pap, samp, stews, or curries.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Chakalaka Chakalaka is a South African vegetable relish, usually spicy, that is traditionally served with bread, pap, samp, stews, or curries.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_food_sadza",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which maize-meal staple is known as sadza in Zimbabwe?",
+      "options": [
+        "Sadza",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sadza is a maize porridge from Zimbabwe.",
+      "sources": [
+        {
+          "title": "Sadza",
+          "url": "https://en.wikipedia.org/wiki/Sadza",
+          "claim": "Ugali Ugali, also known as posho, nsima, papa, pap, bogobe, sadza, isitshwala, akume, amawe, ewokple, akple, and other names, is a type of corn meal made from maize or corn or mahindi flour in several African countries: Kenya, Uganda, South Sudan, Tanzania, Zimbabwe, Zambia, Lesotho, Eswatini, Angola, Mozambique, Namibia, Democratic Republic of the Congo,",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "fail",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "answer_leak"
+        ],
+        "evidenceQuote": "Ugali Ugali, also known as posho, nsima, papa, pap, bogobe, sadza, isitshwala, akume, amawe, ewokple, akple, and other names, is a type of corn meal made from maize or corn or mahindi flour in several African countries: Kenya, Uganda, South Sudan, Tanzania, Zimbabwe, Zambia, Lesotho, Eswatini, Angola, Mozambique, Namibia, Democratic Republic of the Congo, Rwanda, Malawi, Botswana and South Africa, and in West Africa by the Ewes of Togo, Ghana, Benin, Nigeria and Ivory Coast.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "answer_leak"
+      ]
+    },
+    {
+      "id": "south_geog_cape_town",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which city is the capital of South Africa?",
+      "options": [
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein",
+        "Gaborone"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cape Town is the legislative capital of South Africa.",
+      "sources": [
+        {
+          "title": "Cape Town",
+          "url": "https://en.wikipedia.org/wiki/Cape_Town",
+          "claim": "Cape Town is the legislative capital of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Cape Town Cape Town is the legislative capital of South Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_geog_table_mountain",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which South African national park attraction is Table Mountain?",
+      "options": [
+        "Table Mountain",
+        "Victoria Falls",
+        "Okavango Delta",
+        "Sossusvlei"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Table Mountain is among South Africa’s most visited national park attractions.",
+      "sources": [
+        {
+          "title": "Table Mountain",
+          "url": "https://en.wikipedia.org/wiki/Table_Mountain",
+          "claim": "Table Mountain National Park is the most visited national park in South Africa, attracting 4.2 million people every year for various activities.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "fail",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "answer_leak"
+        ],
+        "evidenceQuote": "Table Mountain National Park is the most visited national park in South Africa, attracting 4.2 million people every year for various activities.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "answer_leak"
+      ]
+    },
+    {
+      "id": "south_hist_seretse_khama",
+      "region": "south",
+      "country": "Botswana",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a Motswana politician who served as the first President of Botswana?",
+      "options": [
+        "Seretse Khama",
+        "Moshoeshoe",
+        "Nelson Mandela history",
+        "Kenneth Kaunda history"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Seretse Khama was the first president of Botswana.",
+      "sources": [
+        {
+          "title": "Seretse Khama",
+          "url": "https://en.wikipedia.org/wiki/Seretse_Khama",
+          "claim": "Seretse Khama Sir Seretse Goitsebeng Maphiri Khama, GCB, KBE (1 July 1921 – 13 July 1980) was a Motswana politician who served as the first President of Botswana, a post he held from 1966 to his death in 1980.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Seretse Khama Sir Seretse Goitsebeng Maphiri Khama, GCB, KBE (1 July 1921 – 13 July 1980) was a Motswana politician who served as the first President of Botswana, a post he held from 1966 to his death in 1980.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_lang_ovambo_language",
+      "region": "south",
+      "country": "Namibia",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which language family is widely spoken in Namibia as Oshiwambo?",
+      "options": [
+        "Oshiwambo",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Oshiwambo is spoken in Namibia.",
+      "sources": [
+        {
+          "title": "Ovambo language",
+          "url": "https://en.wikipedia.org/wiki/Ovambo_language",
+          "claim": "Oshiwambo is spoken in Namibia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "fail",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "answer_leak"
+        ],
+        "evidenceQuote": "Ovambo language The Ovambo (English: ) language or Oshiwambo, also known as the Namibian language, is a dialect cluster spoken by the Ovambo people in southern Angola and northern Namibia, of which the written standards are Kwanyama and Ndonga.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "answer_leak"
+      ]
+    },
+    {
+      "id": "south_lang_shona_language2",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Can you name a major language of Zimbabwe?",
+      "options": [
+        "Shona",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shona is a language of Zimbabwe.",
+      "sources": [
+        {
+          "title": "Shona language",
+          "url": "https://en.wikipedia.org/wiki/Shona_language",
+          "claim": "Shona is a language of Zimbabwe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Shona language Shona ( SHOH-nə; endonym: chiShona [tʃiʃona]) is a Bantu language spoken by the Shona people of Zimbabwe and Mozambique.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_lang_tsonga_language",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which language is one of South Africa’s official languages as Xitsonga?",
+      "options": [
+        "Xitsonga",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Xitsonga is a language of South Africa.",
+      "sources": [
+        {
+          "title": "Tsonga language",
+          "url": "https://en.wikipedia.org/wiki/Tsonga_language",
+          "claim": "Xitsonga is a language of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "fail",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "answer_leak"
+        ],
+        "evidenceQuote": "Tsonga language Tsonga ( (T)SONG-gə), or Xitsonga ( shee-TSONG-gə) as an endonym (also known as Changana in Mozambique), is a Bantu language spoken by the Tsonga people of South Africa and Mozambique.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "answer_leak"
+      ]
+    },
+    {
+      "id": "south_lang_xhosa_language",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a Bantu language, indigenous to Southern Africa and one of the official languages of South Africa and Zimbabwe?",
+      "options": [
+        "isiXhosa",
+        "isiZulu",
+        "Afrikaans",
+        "Setswana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "isiXhosa is a language of South Africa.",
+      "sources": [
+        {
+          "title": "Xhosa language",
+          "url": "https://en.wikipedia.org/wiki/Xhosa_language",
+          "claim": "Xhosa language Xhosa ( KOH-sə, Xhosa: [ᵏǁʰôːsa] ), formerly spelled Xosa and also known by its endonym isiXhosa, is a Bantu language, indigenous to Southern Africa and one of the official languages of South Africa and Zimbabwe.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Xhosa language Xhosa ( KOH-sə, Xhosa: [ᵏǁʰôːsa] ), formerly spelled Xosa and also known by its endonym isiXhosa, is a Bantu language, indigenous to Southern Africa and one of the official languages of South Africa and Zimbabwe.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_lang_zulu_language3",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Can you name a Southern Bantu language of the Nguni branch spoken?",
+      "options": [
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans",
+        "Setswana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "isiZulu is a language of South Africa.",
+      "sources": [
+        {
+          "title": "Zulu language",
+          "url": "https://en.wikipedia.org/wiki/Zulu_language",
+          "claim": "Zulu language Zulu ( ZOO-loo), also known by its endonym isiZulu, is a Southern Bantu language of the Nguni branch spoken in, and indigenous to, Southern Africa with about 13.56 million native speakers, who primarily inhabit the province of KwaZulu-Natal in South Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Zulu language Zulu ( ZOO-loo), also known by its endonym isiZulu, is a Southern Bantu language of the Nguni branch spoken in, and indigenous to, Southern Africa with about 13.56 million native speakers, who primarily inhabit the province of KwaZulu-Natal in South Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_musi_black_coffee_dj",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the South African house DJ?",
+      "options": [
+        "Black Coffee",
+        "Miriam Makeba",
+        "Hugh Masekela",
+        "Brenda Fassie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Black Coffee is a South African DJ.",
+      "sources": [
+        {
+          "title": "Black Coffee (DJ)",
+          "url": "https://en.wikipedia.org/wiki/Black_Coffee_(DJ)",
+          "claim": "Black Coffee is a South African DJ",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Black Coffee (DJ) Nkosinathi Innocent Maphumulo (born 11 March 1976), better known by his stage name Black Coffee, is a South African DJ, record producer, and songwriter.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_musi_brenda_fassie",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the South African singer-songwriter, dancer, and activist?",
+      "options": [
+        "Brenda Fassie",
+        "Miriam Makeba",
+        "Hugh Masekela",
+        "Oliver Mtukudzi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Brenda Fassie was a South African singer.",
+      "sources": [
+        {
+          "title": "Brenda Fassie",
+          "url": "https://en.wikipedia.org/wiki/Brenda_Fassie",
+          "claim": "Brenda Fassie Brenda Nokuzola Fassie (3 November 1964 – 9 May 2004) was a South African singer-songwriter, dancer, and activist.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Brenda Fassie Brenda Nokuzola Fassie (3 November 1964 – 9 May 2004) was a South African singer-songwriter, dancer, and activist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_musi_gqom2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is a raw electronic dance music from Durban?",
+      "options": [
+        "Gqom",
+        "Amapiano",
+        "Kwaito",
+        "Mbira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gqom is a South African music genre.",
+      "sources": [
+        {
+          "title": "Gqom",
+          "url": "https://en.wikipedia.org/wiki/Gqom",
+          "claim": "Gqom is a South African music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Gqom Gqom (Zulu: [ᶢǃʱòm]), igqomu ([iᶢǃʱòmu]), gqom tech, sgubhu, 3-step or G.Q.O.M is a South African electronic dance music genre and subgenre of house music, that emerged in the early 2010s from Durban, pioneered and innovated by music producers Naked Boyz, Rudeboyz, Sbucardo, Griffit Vigo, Nasty Boyz, DJ Lag, Menzi Shabane, Distruction Boyz and Citizen Boy.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_musi_kwaito",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a music genre that emerged in Soweto?",
+      "options": [
+        "Kwaito",
+        "Amapiano",
+        "Gqom",
+        "Mbira"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kwaito is a music genre from South Africa.",
+      "sources": [
+        {
+          "title": "Kwaito",
+          "url": "https://en.wikipedia.org/wiki/Kwaito",
+          "claim": "Kwaito Kwaito is a music genre that emerged in Soweto, Johannesburg, South Africa, between the late 1980s and 1990s.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Kwaito Kwaito is a music genre that emerged in Soweto, Johannesburg, South Africa, between the late 1980s and 1990s.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_musi_maskandi",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which Zulu folk guitar style is called maskandi?",
+      "options": [
+        "Maskandi",
+        "Amapiano",
+        "Kwaito",
+        "Gqom"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Maskandi is a Zulu guitar style.",
+      "sources": [
+        {
+          "title": "Maskandi",
+          "url": "https://en.wikipedia.org/wiki/Maskandi",
+          "claim": "Maskandi Maskandi (also Maskanda) is a form of Zulu folk music, originally associated with migrant workers, that is evolving with South African society.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "fail",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "answer_leak"
+        ],
+        "evidenceQuote": "Maskandi Maskandi (also Maskanda) is a form of Zulu folk music, originally associated with migrant workers, that is evolving with South African society.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "answer_leak"
+      ]
+    },
+    {
+      "id": "south_peop_bessie_head",
+      "region": "south",
+      "country": "Botswana",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a South African writer who, though born in South Africa, is usually considered Botswana's most influential writer?",
+      "options": [
+        "Bessie Head",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bessie Head was a writer who lived in Botswana.",
+      "sources": [
+        {
+          "title": "Bessie Head",
+          "url": "https://en.wikipedia.org/wiki/Bessie_Head",
+          "claim": "Bessie Head Bessie Amelia Emery Head (6 July 1937 – 17 April 1986) was a South African writer who, though born in South Africa, is usually considered Botswana's most influential writer.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Bessie Head Bessie Amelia Emery Head (6 July 1937 – 17 April 1986) was a South African writer who, though born in South Africa, is usually considered Botswana's most influential writer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_peop_charlize_theron",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a South African and American actress and producer?",
+      "options": [
+        "Charlize Theron",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Charlize Theron is a South African actress.",
+      "sources": [
+        {
+          "title": "Charlize Theron",
+          "url": "https://en.wikipedia.org/wiki/Charlize_Theron",
+          "claim": "Charlize Theron Charlize Theron (born 7 August 1975) is a South African and American actress and producer.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Charlize Theron Charlize Theron (born 7 August 1975) is a South African and American actress and producer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_peop_dambudzo_marechera",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Zimbabwean novelist, short story writer, playwright, and poet?",
+      "options": [
+        "Dambudzo Marechera",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dambudzo Marechera was a Zimbabwean writer.",
+      "sources": [
+        {
+          "title": "Dambudzo Marechera",
+          "url": "https://en.wikipedia.org/wiki/Dambudzo_Marechera",
+          "claim": "Dambudzo Marechera Dambudzo Marechera (4 June 1952 – 18 August 1987) was a Zimbabwean novelist, short story writer, playwright, and poet.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Dambudzo Marechera Dambudzo Marechera (4 June 1952 – 18 August 1987) was a Zimbabwean novelist, short story writer, playwright, and poet.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_peop_desmond_tutu",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which South African Anglican bishop and theologian was Desmond Tutu?",
+      "options": [
+        "Desmond Tutu",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Desmond Tutu was a South African Anglican bishop and theologian.",
+      "sources": [
+        {
+          "title": "Desmond Tutu",
+          "url": "https://en.wikipedia.org/wiki/Desmond_Tutu",
+          "claim": "Desmond Tutu Desmond Mpilo Tutu (; 7 October 1931 – 26 December 2021) was a South African Anglican bishop and theologian, known for his work as an anti-apartheid and human rights activist.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "fail",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "answer_leak"
+        ],
+        "evidenceQuote": "Desmond Tutu Desmond Mpilo Tutu (; 7 October 1931 – 26 December 2021) was a South African Anglican bishop and theologian, known for his work as an anti-apartheid and human rights activist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "answer_leak"
+      ]
+    },
+    {
+      "id": "south_peop_jack_mapanje",
+      "region": "south",
+      "country": "Malawi",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Malawian writer and poet?",
+      "options": [
+        "Jack Mapanje",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jack Mapanje is a Malawian poet.",
+      "sources": [
+        {
+          "title": "Jack Mapanje",
+          "url": "https://en.wikipedia.org/wiki/Jack_Mapanje",
+          "claim": "Jack Mapanje Jack Mapanje (born 25 March 1944) is a Malawian writer and poet.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Jack Mapanje Jack Mapanje (born 25 March 1944) is a Malawian writer and poet.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_peop_miriam_makeba",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the singer known as Mama Africa?",
+      "options": [
+        "Miriam Makeba",
+        "Nelson Mandela",
+        "Hugh Masekela",
+        "Tsitsi Dangarembga"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Miriam Makeba was a South African singer.",
+      "sources": [
+        {
+          "title": "Miriam Makeba",
+          "url": "https://en.wikipedia.org/wiki/Miriam_Makeba",
+          "claim": "Miriam Makeba was a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Miriam Makeba Zenzile Miriam Makeba ( mə-KAY-bə, Xhosa: [máˈkʼêːɓà̤] ; 4 March 1932 – 9 November 2008), nicknamed Mama Africa, was a South African singer, songwriter, actress, and civil rights activist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_peop_oliver_mtukudzi",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the musician known as Tuku?",
+      "options": [
+        "Oliver Mtukudzi",
+        "Nelson Mandela",
+        "Miriam Makeba",
+        "Hugh Masekela"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Oliver Mtukudzi was a Zimbabwean musician.",
+      "sources": [
+        {
+          "title": "Oliver Mtukudzi",
+          "url": "https://en.wikipedia.org/wiki/Oliver_Mtukudzi",
+          "claim": "Oliver Mtukudzi was a Zimbabwean musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Oliver Mtukudzi Oliver \"Tuku\" Mtukudzi (22 September 1952 – 23 January 2019) was a Zimbabwean musician, businessman, philanthropist, human rights activist and UNICEF Goodwill Ambassador for the Southern Africa Region.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_popc_cassper_nyovest",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a South African rapper, songwriter, entrepreneur, record producer and amateur boxer?",
+      "options": [
+        "Cassper Nyovest",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cassper Nyovest is a South African rapper.",
+      "sources": [
+        {
+          "title": "Cassper Nyovest",
+          "url": "https://en.wikipedia.org/wiki/Cassper_Nyovest",
+          "claim": "Cassper Nyovest Refiloe Maele Phoolo (born 16 December 1990), professionally known as Cassper Nyovest, is a South African rapper, songwriter, entrepreneur, record producer and amateur boxer.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Cassper Nyovest Refiloe Maele Phoolo (born 16 December 1990), professionally known as Cassper Nyovest, is a South African rapper, songwriter, entrepreneur, record producer and amateur boxer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_popc_master_kg",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a South African DJ, singer and record producer?",
+      "options": [
+        "Master KG",
+        "Tyla",
+        "Black Coffee",
+        "Uncle Waffles"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Master KG is a South African musician.",
+      "sources": [
+        {
+          "title": "Master KG",
+          "url": "https://en.wikipedia.org/wiki/Master_KG",
+          "claim": "Master KG Kgaogelo Moagi (born 31 January 1996), professionally known as Master KG is a South African DJ, singer and record producer.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Master KG Kgaogelo Moagi (born 31 January 1996), professionally known as Master KG is a South African DJ, singer and record producer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_popc_nasty_c",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is the South African rapper?",
+      "options": [
+        "Nasty C",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nasty C is a South African rapper.",
+      "sources": [
+        {
+          "title": "Nasty C",
+          "url": "https://en.wikipedia.org/wiki/Nasty_C",
+          "claim": "Nasty C is a South African rapper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Nasty C Nsikayesizwe David Junior Ngcobo (born 11 February 1997), known professionally as Nasty C, is a South African rapper, songwriter, and record producer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_popc_sho_madjozi",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a South African rapper, singer, songwriter, and poet?",
+      "options": [
+        "Sho Madjozi",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sho Madjozi is a South African rapper.",
+      "sources": [
+        {
+          "title": "Sho Madjozi",
+          "url": "https://en.wikipedia.org/wiki/Sho_Madjozi",
+          "claim": "Sho Madjozi Maya Christinah Xichavo Wegerif (born 9 May 1992), known professionally as Sho Madjozi ( shoh-mah-JOH-zee), is a South African rapper, singer, songwriter, and poet.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Sho Madjozi Maya Christinah Xichavo Wegerif (born 9 May 1992), known professionally as Sho Madjozi ( shoh-mah-JOH-zee), is a South African rapper, singer, songwriter, and poet.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_popc_trevor_noah",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a South African comedian, writer, producer, political commentator, and television host?",
+      "options": [
+        "Trevor Noah",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Trevor Noah is a South African comedian.",
+      "sources": [
+        {
+          "title": "Trevor Noah",
+          "url": "https://en.wikipedia.org/wiki/Trevor_Noah",
+          "claim": "Trevor Noah Trevor Noah (born 20 February 1984) is a South African comedian, writer, producer, political commentator, and television host.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Trevor Noah Trevor Noah (born 20 February 1984) is a South African comedian, writer, producer, political commentator, and television host.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_popc_zahara_south_african_musician",
+      "region": "south",
+      "country": "South Africa",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a South African singer, songwriter and guitarist?",
+      "options": [
+        "Zahara",
+        "Tyla",
+        "Black Coffee",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zahara was a South African singer.",
+      "sources": [
+        {
+          "title": "Zahara (South African musician)",
+          "url": "https://en.wikipedia.org/wiki/Zahara_(South_African_musician)",
+          "claim": "Zahara (South African musician) Bulelwa Mkutukana (9 November 1987 – 11 December 2023), known by her stage name Zahara, was a South African singer, songwriter and guitarist.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Zahara (South African musician) Bulelwa Mkutukana (9 November 1987 – 11 December 2023), known by her stage name Zahara, was a South African singer, songwriter and guitarist.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_spor_ab_de_villiers",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a South African former professional cricketer?",
+      "options": [
+        "AB de Villiers",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "Wayde van Niekerk"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "AB de Villiers is a South African cricketer.",
+      "sources": [
+        {
+          "title": "AB de Villiers",
+          "url": "https://en.wikipedia.org/wiki/AB_de_Villiers",
+          "claim": "AB de Villiers Abraham Benjamin de Villiers (born (1984-02-17)17 February 1984) is a South African former professional cricketer, widely recognised as one of the greatest batters of all time.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "AB de Villiers Abraham Benjamin de Villiers (born (1984-02-17)17 February 1984) is a South African former professional cricketer, widely recognised as one of the greatest batters of all time.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_spor_kaizer_chiefs_f_c",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which famous Johannesburg football club is Kaizer Chiefs?",
+      "options": [
+        "Kaizer Chiefs",
+        "Orlando Pirates",
+        "TP Mazembe",
+        "Petro de Luanda"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kaizer Chiefs is a football club in South Africa.",
+      "sources": [
+        {
+          "title": "Kaizer Chiefs F.C.",
+          "url": "https://en.wikipedia.org/wiki/Kaizer_Chiefs_F.C.",
+          "claim": "Kaizer Chiefs is a football club in South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "fail",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "answer_leak"
+        ],
+        "evidenceQuote": "Kaizer Chiefs Football Club (often known as Chiefs) is a South African professional football club based in Naturena, Johannesburg South, that plays in the Premiership.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "answer_leak"
+      ]
+    },
+    {
+      "id": "south_spor_lucas_radebe",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a South African former professional footballer who played as a centre-back?",
+      "options": [
+        "Lucas Radebe",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "Wayde van Niekerk"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lucas Radebe is a South African former footballer.",
+      "sources": [
+        {
+          "title": "Lucas Radebe",
+          "url": "https://en.wikipedia.org/wiki/Lucas_Radebe",
+          "claim": "Lucas Radebe Lucas Valeriu Radebe (born 12 April 1969) is a South African former professional footballer who played as a centre-back.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Lucas Radebe Lucas Valeriu Radebe (born 12 April 1969) is a South African former professional footballer who played as a centre-back.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "south_spor_orlando_pirates_f_c",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which Soweto football club is Orlando Pirates?",
+      "options": [
+        "Orlando Pirates",
+        "Kaizer Chiefs",
+        "TP Mazembe",
+        "Petro de Luanda"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Orlando Pirates is a football club in South Africa.",
+      "sources": [
+        {
+          "title": "Orlando Pirates F.C.",
+          "url": "https://en.wikipedia.org/wiki/Orlando_Pirates_F.C.",
+          "claim": "Orlando Pirates are the first club since the inception of the Premier Soccer League in 1996 to have won three major trophies in a single season back to back, having won the domestic league ABSA Premiership, the domestic cup Nedbank Cup and the Top 8 Cup MTN 8 during the ABSA Premiership 2010–11 season and domestic league ABSA Premiership, the League Cup",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "fail",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "answer_leak"
+        ],
+        "evidenceQuote": "Orlando Pirates are the first club since the inception of the Premier Soccer League in 1996 to have won three major trophies in a single season back to back, having won the domestic league ABSA Premiership, the domestic cup Nedbank Cup and the Top 8 Cup MTN 8 during the ABSA Premiership 2010–11 season and domestic league ABSA Premiership, the League Cup Telkom Knockout and the Top 8 Cup MTN 8 during the ABSA Premiership 2011–12 season.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "answer_leak"
+      ]
+    },
+    {
+      "id": "south_spor_wayde_van_niekerk",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a South African track and field sprinter who competes in the 200 and 400 metres?",
+      "options": [
+        "Wayde van Niekerk",
+        "Siya Kolisi",
+        "Caster Semenya",
+        "AB de Villiers"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wayde van Niekerk is a South African sprinter.",
+      "sources": [
+        {
+          "title": "Wayde van Niekerk",
+          "url": "https://en.wikipedia.org/wiki/Wayde_van_Niekerk",
+          "claim": "Wayde van Niekerk Wayde van Niekerk (South African English: , Afrikaans: [fan ˈnikærk]; born 15 July 1992) is a South African track and field sprinter who competes in the 200 and 400 metres.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Wayde van Niekerk Wayde van Niekerk (South African English: , Afrikaans: [fan ˈnikærk]; born 15 July 1992) is a South African track and field sprinter who competes in the 200 and 400 metres.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
     }
   ]
 }

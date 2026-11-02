@@ -1,7 +1,7 @@
 import type { RegionKey } from "../app/gameData.ts";
 import { scopeFitsRegion } from "./regions.ts";
 import { noteReasons, sensitivityReasons } from "./sensitivity.ts";
-import { answerLeaks, contentTokens, jaccard, normalizeText, supportingSentence } from "./text.ts";
+import { answerLeaks, contentTokens, jaccard, normalizeText, promptNamesAnswer, supportingSentence } from "./text.ts";
 import type { BankQuestion, GateReport, SupportMethod } from "./types.ts";
 
 const ID = /^(west|east|central|north|south)_[a-z0-9][a-z0-9_-]{2,55}$/;
@@ -161,7 +161,14 @@ export function evaluateQuestion(question: BankQuestion, context: GateContext): 
   const copy = `${question.prompt} ${question.explanation}`;
   if (SCAFFOLD.test(question.prompt)) fail(report, "schema", "schema_scaffold");
   if (/\b(?:accused of|rape|raping|beating|murder|torture)\b/i.test(question.prompt)) fail(report, "sensitivity", "sensitivity_trauma");
-  if (answerLeaks(question.prompt, options, uniqueCorrect)) fail(report, "answerKey", "answer_leak");
+  if (answerLeaks(question.prompt, options, uniqueCorrect) || uniqueCorrect.some((index) => promptNamesAnswer(question.prompt, options[index] || ""))) {
+    fail(report, "answerKey", "answer_leak");
+  }
+  if (!question.prompt.trim() || !question.prompt.trim().endsWith("?")) fail(report, "schema", "schema_prompt");
+  const correctNorms = new Set(uniqueCorrect.map((index) => normalizeText(options[index] || "")));
+  if (options.some((option, index) => !uniqueCorrect.includes(index) && correctNorms.has(normalizeText(option)))) {
+    fail(report, "options", "options_overlap");
+  }
   if (VAGUE.test(copy) || /\b(?:most famous|best known|best-known)\b/i.test(question.prompt) || (/\b(?:world record|olympic champion|world champion|african champion)\b/i.test(copy) && !/\b(?:19|20)\d{2}\b/.test(copy))) {
     fail(report, "ambiguity", "ambiguity_vague");
   }

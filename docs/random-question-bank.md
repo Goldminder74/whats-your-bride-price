@@ -31,7 +31,7 @@ That rebuilds generated rows, checks every source URL, and writes:
 
 A question is published only when the schema, answer key, options, source URL, quoted evidence sentence, duplicate check, sensitivity filter, ambiguity check, and country-to-region map all pass, and an editorial score is at least 4 for clarity, fun, and accuracy. The evidence quote is stored on `gateReport.evidenceQuote`. No quote means the question is held. The quote has to state the answer and the claim, including a wedding custom when the question is about one. The 352 research drafts are imported from `data/question-bank/drafts`. Drafts that fail the gate stay held.
 
-Prompts are ordinary quiz English. Category labels such as "language point" or "wedding custom" are not used as scaffolding, and a question is held if the correct answer, or its root, is already in the prompt. "Current champion" and undated world-record claims are held.
+Prompts are ordinary quiz English. Category labels such as "language point" or "wedding custom" are not used as scaffolding, and a question is held if the correct answer, or its distinctive word, is already in the prompt. "Current champion" and undated world-record claims are held. The published files also include a human editorial pass. Re-running `npm run question-bank:build` rebuilds from the fact rows and replaces that pass.
 
 Sensitivity holds sacred or secret rites, initiation, FGM, witchcraft accusations, genocide, the slave trade, ethnic stereotypes, and any line that prices a person's worth. Wedding questions stay on dress, music, food, and family gatherings that the source page actually describes.
 

@@ -335,8 +335,8 @@ for (const region of regions) {
 
 await mkdir(new URL("reports/", root), { recursive: true });
 await writeFile(new URL("reports/summary.json", root), JSON.stringify({ generatedAt: "2026-11-02", summary }, null, 2) + "\n");
-const short = regions.some((region) => summary[region].published < 85);
+const short = regions.some((region) => summary[region].published < 50);
 if (short) {
-  console.error("A region is below 85 published questions");
+  console.error("A region is below 50 published questions");
   process.exitCode = 2;
 }

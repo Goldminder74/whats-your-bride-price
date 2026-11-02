@@ -10018,6 +10018,1014 @@
         "source_support",
         "editorial_accuracy"
       ]
+    },
+    {
+      "id": "west_food_maafe",
+      "region": "west",
+      "country": "Mali",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What do you call a staple food stew in Western Africa?",
+      "options": [
+        "Maafe",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Maafe is a stew made with peanut sauce.",
+      "sources": [
+        {
+          "title": "Maafe",
+          "url": "https://en.wikipedia.org/wiki/Maafe",
+          "claim": "Peanut stew Peanut stew or groundnut stew, also known as maafe (Wolof mafé, maffé, maffe), and pate d'arachide (French), is a staple food stew in Western Africa.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Peanut stew Peanut stew or groundnut stew, also known as maafe (Wolof mafé, maffé, maffe), and pate d'arachide (French), is a staple food stew in Western Africa.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_geog_lagos",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Where is the largest city in Nigeria, on the Atlantic coast?",
+      "options": [
+        "Lagos",
+        "Timbuktu",
+        "Djenné",
+        "Ghana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lagos is the largest city in Nigeria.",
+      "sources": [
+        {
+          "title": "Lagos",
+          "url": "https://en.wikipedia.org/wiki/Lagos",
+          "claim": "Lagos is the largest city in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "As of November 2025, the size of the city's population has been estimated to be between 17 and 21 million residents, making Lagos the largest city in Nigeria, the most populous urban area on the African continent, and one of the fastest-growing megacities in the world.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_hist_gao",
+      "region": "west",
+      "country": "Mali",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What is an important commercial centre involved in the trans-Saharan trade?",
+      "options": [
+        "Gao",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gao was a capital of the Songhai Empire.",
+      "sources": [
+        {
+          "title": "Gao",
+          "url": "https://en.wikipedia.org/wiki/Gao",
+          "claim": "For much of its history, Gao was an important commercial centre involved in the trans-Saharan trade.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "For much of its history, Gao was an important commercial centre involved in the trans-Saharan trade.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_peop_buchi_emecheta",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian writer, whose work includes novels, plays, autobiography, and children's books?",
+      "options": [
+        "Buchi Emecheta",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Buchi Emecheta was a Nigerian novelist.",
+      "sources": [
+        {
+          "title": "Buchi Emecheta",
+          "url": "https://en.wikipedia.org/wiki/Buchi_Emecheta",
+          "claim": "Buchi Emecheta Buchi Emecheta ( ; born Florence Onyebuchi Emecheta; 21 July 1944 – 25 January 2017) was a Nigerian writer, whose work includes novels, plays, autobiography, and children's books.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Buchi Emecheta Buchi Emecheta ( ; born Florence Onyebuchi Emecheta; 21 July 1944 – 25 January 2017) was a Nigerian writer, whose work includes novels, plays, autobiography, and children's books.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_peop_chimamanda_ngozi_adichie",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Nigerian writer, whose works include fiction, nonfiction, and lectures?",
+      "options": [
+        "Chimamanda Ngozi Adichie",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chimamanda Ngozi Adichie is a Nigerian writer.",
+      "sources": [
+        {
+          "title": "Chimamanda Ngozi Adichie",
+          "url": "https://en.wikipedia.org/wiki/Chimamanda_Ngozi_Adichie",
+          "claim": "Chimamanda Ngozi Adichie Chimamanda Ngozi Adichie (; born 15 September 1977) is a Nigerian writer, whose works include fiction, nonfiction, and lectures.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Chimamanda Ngozi Adichie Chimamanda Ngozi Adichie (; born 15 September 1977) is a Nigerian writer, whose works include fiction, nonfiction, and lectures.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_peop_chinua_achebe3",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Nigerian novelist, poet, and critic who is regarded as a central figure of modern African literature?",
+      "options": [
+        "Chinua Achebe",
+        "Mansa Musa",
+        "Wole Soyinka",
+        "Chimamanda Ngozi Adichie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chinua Achebe is a Nigerian novelist.",
+      "sources": [
+        {
+          "title": "Chinua Achebe",
+          "url": "https://en.wikipedia.org/wiki/Chinua_Achebe",
+          "claim": "Chinua Achebe Chinua Achebe ( ; born Albert Chinụalụmọgụ Achebe; 16 November 1930 – 21 March 2013) was a Nigerian novelist, poet, and critic who is regarded as a central figure of modern African literature.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Chinua Achebe Chinua Achebe ( ; born Albert Chinụalụmọgụ Achebe; 16 November 1930 – 21 March 2013) was a Nigerian novelist, poet, and critic who is regarded as a central figure of modern African literature.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_peop_funmilayo_ransome_kuti",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which Nigerian educator and women’s rights organiser was also known as Funmilayo Aníkúlápó-Kuti?",
+      "options": [
+        "Funmilayo Ransome-Kuti",
+        "Chinua Achebe",
+        "Wole Soyinka",
+        "Mansa Musa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Funmilayo Ransome-Kuti was a Nigerian educator, organiser and women’s rights advocate.",
+      "sources": [
+        {
+          "title": "Funmilayo Ransome-Kuti",
+          "url": "https://en.wikipedia.org/wiki/Funmilayo_Ransome-Kuti",
+          "claim": "Funmilayo Ransome-Kuti Chief Funmilayo Ransome-Kuti (born Frances Abigail Olufunmilayo Olufela Folorunso Thomas; 25 October 1900 – 13 April 1978), also known as Funmilayo Aníkúlápó-Kuti, was a Nigerian educator, political organizer, and women's rights advocate who intellectually engaged with anti-imperialist, Pan-Africanist, and feminist ideologies.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "fail",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "answer_leak"
+        ],
+        "evidenceQuote": "Funmilayo Ransome-Kuti Chief Funmilayo Ransome-Kuti (born Frances Abigail Olufunmilayo Olufela Folorunso Thomas; 25 October 1900 – 13 April 1978), also known as Funmilayo Aníkúlápó-Kuti, was a Nigerian educator, political organizer, and women's rights advocate who intellectually engaged with anti-imperialist, Pan-Africanist, and feminist ideologies.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "answer_leak"
+      ]
+    },
+    {
+      "id": "west_peop_wole_soyinka",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian writer, playwright, and poet?",
+      "options": [
+        "Wole Soyinka",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Chimamanda Ngozi Adichie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wole Soyinka is a Nigerian writer.",
+      "sources": [
+        {
+          "title": "Wole Soyinka",
+          "url": "https://en.wikipedia.org/wiki/Wole_Soyinka",
+          "claim": "Wole Soyinka Akinwande Oluwole Babatunde Soyinka (; born 13 July 1934) is a Nigerian writer, playwright, and poet.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Wole Soyinka Akinwande Oluwole Babatunde Soyinka (; born 13 July 1934) is a Nigerian writer, playwright, and poet.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_popc_asake",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian singer, rapper, and songwriter?",
+      "options": [
+        "Asake",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Asake is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Asake",
+          "url": "https://en.wikipedia.org/wiki/Asake",
+          "claim": "Asake Ahmed Ololade (; born 13 January 1995), known professionally as Asake, is a Nigerian singer, rapper, and songwriter.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Asake Ahmed Ololade (; born 13 January 1995), known professionally as Asake, is a Nigerian singer, rapper, and songwriter.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_popc_ayra_starr",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Beninese-born Nigerian singer-songwriter and producer?",
+      "options": [
+        "Ayra Starr",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ayra Starr is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Ayra Starr",
+          "url": "https://en.wikipedia.org/wiki/Ayra_Starr",
+          "claim": "Ayra Starr Oyinkansola Sarah Aderibigbe (; born 14 June 2002), known professionally as Ayra Starr ( EYE-rə-star), is a Beninese-born Nigerian singer-songwriter and producer.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Ayra Starr Oyinkansola Sarah Aderibigbe (; born 14 June 2002), known professionally as Ayra Starr ( EYE-rə-star), is a Beninese-born Nigerian singer-songwriter and producer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_popc_black_sherif",
+      "region": "west",
+      "country": "Ghana",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Ghanaian singer, rapper and fashion model?",
+      "options": [
+        "Black Sherif",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Black Sherif is a Ghanaian singer.",
+      "sources": [
+        {
+          "title": "Black Sherif",
+          "url": "https://en.wikipedia.org/wiki/Black_Sherif",
+          "claim": "Black Sherif Mohammed Ismail Sherif (born 9 January 2002), professionally known as Black Sherif and formerly Blacko, is a Ghanaian singer, rapper and fashion model.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Black Sherif Mohammed Ismail Sherif (born 9 January 2002), professionally known as Black Sherif and formerly Blacko, is a Ghanaian singer, rapper and fashion model.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_popc_burna_boy",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is a Nigerian singer, songwriter, and record producer?",
+      "options": [
+        "Burna Boy",
+        "Nollywood",
+        "Wizkid",
+        "Davido"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Burna Boy is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Burna Boy",
+          "url": "https://en.wikipedia.org/wiki/Burna_Boy",
+          "claim": "Burna Boy Damini Ebunoluwa Ogulu (born 2 July 1991), known professionally as Burna Boy, is a Nigerian singer, songwriter, and record producer.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Burna Boy Damini Ebunoluwa Ogulu (born 2 July 1991), known professionally as Burna Boy, is a Nigerian singer, songwriter, and record producer.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_popc_olamide",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian rapper, singer, songwriter, and record executive?",
+      "options": [
+        "Olamide",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Olamide is a Nigerian rapper.",
+      "sources": [
+        {
+          "title": "Olamide",
+          "url": "https://en.wikipedia.org/wiki/Olamide",
+          "claim": "Olamide Olamide Gbenga Adedeji (; born 15 March 1989), known mononymously as Olamide, is a Nigerian rapper, singer, songwriter, and record executive.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Olamide Olamide Gbenga Adedeji (; born 15 March 1989), known mononymously as Olamide, is a Nigerian rapper, singer, songwriter, and record executive.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_popc_tems",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is the Nigerian singer who featured on Essence?",
+      "options": [
+        "Tems",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tems is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Tems",
+          "url": "https://en.wikipedia.org/wiki/Tems",
+          "claim": "Tems is a Nigerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "On 23 April 2020, Tems was featured alongside fellow Nigerian singer Davido on a reworked version of American singer-songwriter Khalid and English electronic music duo Disclosure's single, \"Know Your Worth\".",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_spor_didier_drogba",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is an Ivorian former professional footballer who played as a striker?",
+      "options": [
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha",
+        "Nwankwo Kanu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Didier Drogba is an Ivorian footballer.",
+      "sources": [
+        {
+          "title": "Didier Drogba",
+          "url": "https://en.wikipedia.org/wiki/Didier_Drogba",
+          "claim": "Didier Drogba Didier Yves Drogba Tébily (French pronunciation: [didje iv dʁɔɡba tebili]; born 11 March 1978) is an Ivorian former professional footballer who played as a striker.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Didier Drogba Didier Yves Drogba Tébily (French pronunciation: [didje iv dʁɔɡba tebili]; born 11 March 1978) is an Ivorian former professional footballer who played as a striker.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_spor_john_obi_mikel",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian former professional footballer who played as a defensive midfielder?",
+      "options": [
+        "John Obi Mikel",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "John Obi Mikel is a Nigerian former footballer.",
+      "sources": [
+        {
+          "title": "John Obi Mikel",
+          "url": "https://en.wikipedia.org/wiki/John_Obi_Mikel",
+          "claim": "Mikel John Obi Mikel John Obi ( ; born John Michael Nchekwube Obinna; 22 April 1987), also known as John Obi Mikel, is a Nigerian former professional footballer who played as a defensive midfielder.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Mikel John Obi Mikel John Obi ( ; born John Michael Nchekwube Obinna; 22 April 1987), also known as John Obi Mikel, is a Nigerian former professional footballer who played as a defensive midfielder.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_spor_nwankwo_kanu",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Who is a Nigerian former professional footballer who played as a forward?",
+      "options": [
+        "Nwankwo Kanu",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nwankwo Kanu is a Nigerian former footballer.",
+      "sources": [
+        {
+          "title": "Nwankwo Kanu",
+          "url": "https://en.wikipedia.org/wiki/Nwankwo_Kanu",
+          "claim": "Nwankwo Kanu Nwankwo Christian Kanu (; born 1 August 1976) is a Nigerian former professional footballer who played as a forward.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Nwankwo Kanu Nwankwo Christian Kanu (; born 1 August 1976) is a Nigerian former professional footballer who played as a forward.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
+    },
+    {
+      "id": "west_spor_tony_yeboah",
+      "region": "west",
+      "country": "Ghana",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is a Ghanaian former professional footballer who played as a striker?",
+      "options": [
+        "Tony Yeboah",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tony Yeboah is a Ghanaian former footballer.",
+      "sources": [
+        {
+          "title": "Tony Yeboah",
+          "url": "https://en.wikipedia.org/wiki/Tony_Yeboah",
+          "claim": "Tony Yeboah Anthony Yeboah (born 6 June 1966) is a Ghanaian former professional footballer who played as a striker.",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "editorial_drop"
+        ],
+        "evidenceQuote": "Tony Yeboah Anthony Yeboah (born 6 June 1966) is a Ghanaian former professional footballer who played as a striker.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "editorial_drop"
+      ]
     }
   ]
 }
