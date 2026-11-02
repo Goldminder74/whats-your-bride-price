@@ -1,4 +1,5 @@
 import { isProductKey, products, FREE_COMPLETED_GAMES, GAME_COST_COWRIES, WELCOME_BONUS_COWRIES, WELCOME_BONUS_MS, type ProductKey } from "./catalog.ts";
+import { earnDay, NEW_PLAYER_BONUS, newReferralCode, PERFECT_BONUS, PERFECT_DAILY_CAP, REFERRAL_DAILY_CAP, REFERRER_BONUS, SHARE_BONUS } from "./earn.ts";
 import { PaidError } from "./errors.ts";
 
 export type OrderState = "pending" | "fulfilled" | "refunded" | "review_required" | "failed";
@@ -60,6 +61,22 @@ export type PlayerWallet = {
   openAttempt: { attemptId: string; edition: string; mode: "free" | "paid" } | null;
 };
 
+export type EarnReason = "granted" | "repeat" | "capped" | "self" | "not_new" | "unknown" | "ineligible" | "recorded";
+export type EarnDecision = { ok: boolean; reason: EarnReason; cowries: number };
+
+export type EarnKind = "perfect" | "share" | "referral_referrer" | "referral_new";
+
+type EarnGrant = {
+  grantId: string;
+  playerId: string;
+  kind: EarnKind;
+  day: string;
+  attemptId: string | null;
+  relatedPlayerId: string | null;
+  cowries: number;
+  createdAt: number;
+};
+
 export interface PaidRepository {
   createPending(order: PaidOrder): Promise<PaidOrder>;
   attachSession(orderId: string, sessionId: string, url: string): Promise<void>;
@@ -85,6 +102,17 @@ export interface PaidRepository {
   spendCowries(playerId: string, count: number, at: number): Promise<{ cowries: number; royal: boolean } | null>;
   /** Close a pending order without creating an entitlement, after the charge is refunded. */
   refundUnfulfilled(orderId: string, at: number): Promise<PaidOrder | null>;
+  /** Stable referral code for this browser owner. */
+  ensureReferralCode(playerId: string, at: number): Promise<{ code: string }>;
+  /** Remember that a new owner arrived through a code. Does not pay anyone yet. */
+  recordReferralArrival(input: { playerId: string; code: string; at: number }): Promise<EarnDecision>;
+  /** Pay the referrer and the new owner once that owner finishes their first game. */
+  claimReferralRewards(playerId: string, at: number): Promise<{ player: EarnDecision; referrer: EarnDecision } | null>;
+  /** +1 after a server-verified 12/12 on a completed attempt. Once per attempt, once per day. */
+  grantPerfect(input: { playerId: string; attemptId: string; edition: string; at: number }): Promise<EarnDecision>;
+  /** +1 for a result share. Once per day, and only after at least one completed game. */
+  grantShare(input: { playerId: string; at: number }): Promise<EarnDecision>;
+  findReferralCode(code: string): Promise<string | null>;
 }
 
 function sameRequest(existing: PaidOrder, incoming: PaidOrder): boolean {
@@ -105,6 +133,43 @@ export function createMemoryRepository(): PaidRepository {
   const players = new Map<string, { completedGames: number; welcomeGranted: boolean; createdAt: number }>();
   const attempts = new Map<string, GameAttempt>();
   const stats = new Map<string, { day: string; event: string; detail: string; count: number }>();
+  const grants: EarnGrant[] = [];
+  const referralCodes = new Map<string, string>();
+  const codeOwners = new Map<string, string>();
+  const arrivals = new Map<string, { referrerPlayerId: string; code: string; rewarded: boolean }>();
+
+  function spendRank(productKey: ProductKey): number {
+    if (productKey === "cowrie_welcome_v1") return 0;
+    if (productKey === "cowrie_earn_v1") return 1;
+    return 2;
+  }
+
+  function creditEarn(playerId: string, grantId: string, cowries: number, at: number) {
+    if (cowries < 1 || entitlements.has(`earn_${grantId}`)) return;
+    const entitlement: PaidEntitlement = {
+      id: `earn_${grantId}`,
+      orderId: `earn_${grantId}`,
+      playerId,
+      productKey: "cowrie_earn_v1",
+      quantity: cowries,
+      remaining: cowries,
+      state: "active",
+      expiresAt: null,
+      createdAt: at,
+      updatedAt: at,
+    };
+    entitlements.set(entitlement.orderId, entitlement);
+  }
+
+  function putGrant(grant: EarnGrant, at: number): boolean {
+    if (grants.some((row) => row.grantId === grant.grantId)) return false;
+    if (grant.kind === "perfect" && grant.attemptId && grants.some((row) => row.kind === "perfect" && row.attemptId === grant.attemptId)) return false;
+    if (grant.kind === "perfect" && grant.cowries > 0 && grants.some((row) => row.kind === "perfect" && row.playerId === grant.playerId && row.day === grant.day && row.cowries > 0)) return false;
+    if (grant.kind === "share" && grants.some((row) => row.kind === "share" && row.playerId === grant.playerId && row.day === grant.day)) return false;
+    grants.push(grant);
+    creditEarn(grant.playerId, grant.grantId, grant.cowries, at);
+    return true;
+  }
 
   function player(playerId: string, at: number) {
     const existing = players.get(playerId);
@@ -318,7 +383,7 @@ export function createMemoryRepository(): PaidRepository {
       assertSpendCount(count);
       const rows = [...entitlements.values()]
         .filter((entitlement) => entitlement.playerId === playerId && entitlement.state === "active" && products[entitlement.productKey].kind === "cowries" && entitlement.remaining > 0 && (entitlement.expiresAt === null || entitlement.expiresAt > at))
-        .sort((left, right) => Number(left.productKey !== "cowrie_welcome_v1") - Number(right.productKey !== "cowrie_welcome_v1") || left.createdAt - right.createdAt || left.id.localeCompare(right.id));
+        .sort((left, right) => spendRank(left.productKey) - spendRank(right.productKey) || left.createdAt - right.createdAt || left.id.localeCompare(right.id));
       const total = rows.reduce((sum, entitlement) => sum + entitlement.remaining, 0);
       if (total < count) return null;
       let left = count;
@@ -338,6 +403,123 @@ export function createMemoryRepository(): PaidRepository {
       order.state = "refunded";
       order.updatedAt = at;
       return { ...order };
+    },
+    async ensureReferralCode(playerId, at) {
+      const existing = referralCodes.get(playerId);
+      if (existing) return { code: existing };
+      let code = newReferralCode();
+      for (let attempt = 0; attempt < 5 && codeOwners.has(code); attempt += 1) code = newReferralCode();
+      if (codeOwners.has(code)) throw new PaidError("referral_unavailable", 503);
+      referralCodes.set(playerId, code);
+      codeOwners.set(code, playerId);
+      void at;
+      return { code };
+    },
+    async findReferralCode(code) {
+      return codeOwners.get(code) ?? null;
+    },
+    async recordReferralArrival({ playerId, code, at }) {
+      const referrer = codeOwners.get(code);
+      if (!referrer) return { ok: false, reason: "unknown", cowries: 0 };
+      if (referrer === playerId) return { ok: false, reason: "self", cowries: 0 };
+      const record = player(playerId, at);
+      if (record.completedGames > 0) return { ok: false, reason: "not_new", cowries: 0 };
+      if (arrivals.has(playerId)) return { ok: false, reason: "repeat", cowries: 0 };
+      arrivals.set(playerId, { referrerPlayerId: referrer, code, rewarded: false });
+      return { ok: true, reason: "recorded", cowries: 0 };
+    },
+    async claimReferralRewards(playerId, at) {
+      const arrival = arrivals.get(playerId);
+      if (!arrival || arrival.rewarded) return null;
+      if (arrival.referrerPlayerId === playerId) {
+        arrival.rewarded = true;
+        return {
+          player: { ok: false, reason: "self", cowries: 0 },
+          referrer: { ok: false, reason: "self", cowries: 0 },
+        };
+      }
+      const day = earnDay(at);
+      const playerGrant: EarnGrant = {
+        grantId: `referral_new:${playerId}`,
+        playerId,
+        kind: "referral_new",
+        day,
+        attemptId: null,
+        relatedPlayerId: arrival.referrerPlayerId,
+        cowries: NEW_PLAYER_BONUS,
+        createdAt: at,
+      };
+      const playerInserted = putGrant(playerGrant, at);
+      const referrerCount = grants.filter((row) => row.kind === "referral_referrer" && row.playerId === arrival.referrerPlayerId && row.day === day && row.cowries > 0).length;
+      let referrer: EarnDecision;
+      if (referrerCount >= REFERRAL_DAILY_CAP) {
+        referrer = { ok: false, reason: "capped", cowries: 0 };
+      } else {
+        const referrerGrant: EarnGrant = {
+          grantId: `referral_referrer:${playerId}`,
+          playerId: arrival.referrerPlayerId,
+          kind: "referral_referrer",
+          day,
+          attemptId: null,
+          relatedPlayerId: playerId,
+          cowries: REFERRER_BONUS,
+          createdAt: at,
+        };
+        const inserted = putGrant(referrerGrant, at);
+        referrer = inserted
+          ? { ok: true, reason: "granted", cowries: REFERRER_BONUS }
+          : { ok: false, reason: "repeat", cowries: 0 };
+      }
+      arrival.rewarded = true;
+      return {
+        player: playerInserted
+          ? { ok: true, reason: "granted", cowries: NEW_PLAYER_BONUS }
+          : { ok: false, reason: "repeat", cowries: 0 },
+        referrer,
+      };
+    },
+    async grantPerfect({ playerId, attemptId, edition, at }) {
+      const attempt = attempts.get(attemptId);
+      if (!attempt || attempt.playerId !== playerId || attempt.edition !== edition) throw new PaidError("attempt_unavailable", 404);
+      if (attempt.state !== "completed") throw new PaidError("attempt_open", 409);
+      const day = earnDay(at);
+      const existing = grants.find((row) => row.kind === "perfect" && row.attemptId === attemptId);
+      if (existing) return { ok: false, reason: existing.cowries > 0 ? "repeat" : "capped", cowries: 0 };
+      const grantedToday = grants.filter((row) => row.kind === "perfect" && row.playerId === playerId && row.day === day && row.cowries > 0).length;
+      const cowries = grantedToday >= PERFECT_DAILY_CAP ? 0 : PERFECT_BONUS;
+      const inserted = putGrant({
+        grantId: `perfect:${attemptId}`,
+        playerId,
+        kind: "perfect",
+        day,
+        attemptId,
+        relatedPlayerId: null,
+        cowries,
+        createdAt: at,
+      }, at);
+      if (!inserted) return { ok: false, reason: "repeat", cowries: 0 };
+      return cowries > 0
+        ? { ok: true, reason: "granted", cowries }
+        : { ok: false, reason: "capped", cowries: 0 };
+    },
+    async grantShare({ playerId, at }) {
+      const record = players.get(playerId);
+      if (!record || record.completedGames < 1) return { ok: false, reason: "ineligible", cowries: 0 };
+      const day = earnDay(at);
+      const existing = grants.find((row) => row.kind === "share" && row.playerId === playerId && row.day === day);
+      if (existing) return { ok: false, reason: "repeat", cowries: 0 };
+      const inserted = putGrant({
+        grantId: `share:${playerId}:${day}`,
+        playerId,
+        kind: "share",
+        day,
+        attemptId: null,
+        relatedPlayerId: null,
+        cowries: SHARE_BONUS,
+        createdAt: at,
+      }, at);
+      if (!inserted) return { ok: false, reason: "repeat", cowries: 0 };
+      return { ok: true, reason: "granted", cowries: SHARE_BONUS };
     },
   };
 }

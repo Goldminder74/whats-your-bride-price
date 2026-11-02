@@ -7,6 +7,8 @@ export type SavedRound = {
   questions: Question[];
   index: number;
   answers: number[];
+  roundId?: string;
+  choices?: number[][];
 };
 
 const roundKey = (region: RegionKey) => `wybp-round:${region}`;
