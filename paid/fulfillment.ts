@@ -78,12 +78,14 @@ export async function applyStripeEvent(input: {
         return { duplicate: false, ignored: false };
       }
       if (underpaid(order, event)) throw new PaidError("stripe_amount_rejected", 400);
+      const wasPending = order.state === "pending";
       const entitlement = await repository.fulfill(order.id, {
         paymentIntentId: event.paymentIntentId,
         currency: event.currency || order.baseCurrency,
         amountMinor: event.amountTotal || order.baseAmountMinor,
         at: now,
       });
+      if (wasPending && entitlement) await repository.recordStat("purchase_complete", "", now);
       await projectOrder(kv, repository, order);
       const paid = await repository.getById(order.id);
       if (entitlement?.state === "active" && paid && paid.receiptStatus !== "sent") {

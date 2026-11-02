@@ -20,6 +20,8 @@ interface PaidEnv {
   EMAIL_API_KEY?: string;
   EMAIL_FROM?: string;
   EMAIL_REPLY_TO?: string;
+  ROYAL_REVEAL_ENABLED?: string;
+  OWNER_STATS_TOKEN?: string;
   PAID_BLOCKED_COUNTRIES?: string;
   PUBLIC_APP_ORIGIN?: string;
 }
@@ -29,7 +31,13 @@ let schemaReady: Promise<void> | null = null;
 async function applySchema(database: D1Database): Promise<void> {
   for (const statement of paidSchemaSql.split(";")) {
     const sql = statement.trim();
-    if (sql) await database.prepare(sql).run();
+    if (!sql) continue;
+    try {
+      await database.prepare(sql).run();
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "";
+      if (!/duplicate column name/i.test(message)) throw error;
+    }
   }
 }
 
@@ -75,6 +83,8 @@ function services(env: PaidEnv, ctx: ExecutionContext): PaidServices {
     email: loadEmail(env),
     replyTo: loadReplyTo(env),
     blockedCountries: blockedPurchaseCountries(env.PAID_BLOCKED_COUNTRIES),
+    royalRevealEnabled: ["1", "on", "true"].includes((env.ROYAL_REVEAL_ENABLED || "").trim().toLowerCase()),
+    ownerStatsToken: env.OWNER_STATS_TOKEN || "",
     config: loadConfig(env),
     assets: env.ASSETS,
     ensureSchema: () => {

@@ -42,6 +42,8 @@ function services(overrides = {}) {
     blockedCountries: overrides.blockedCountries,
     refundBlockedPayment: overrides.refundBlockedPayment,
     assets: overrides.assets,
+    royalRevealEnabled: overrides.royalRevealEnabled,
+    ownerStatsToken: overrides.ownerStatsToken,
   };
 }
 
@@ -56,11 +58,14 @@ async function body(response) {
 }
 
 test("schema file matches the Worker bootstrap SQL", async () => {
-  const file = await readFile(new URL("../../migrations/0001_paid_orders.sql", import.meta.url), "utf8");
-  assert.equal(file.trim(), paidSchemaSql.trim());
+  const legacy = await readFile(new URL("../../migrations/0001_paid_orders.sql", import.meta.url), "utf8");
+  const phase = await readFile(new URL("../../migrations/0002_paid_phase0.sql", import.meta.url), "utf8");
+  assert.equal(`${legacy.trim()}\n${phase.trim()}`, paidSchemaSql.trim());
   assert.match(paidSchemaSql, /paid_orders/);
-  assert.match(paidSchemaSql, /paid_events/);
-  assert.match(paidSchemaSql, /paid_entitlements/);
+  assert.match(paidSchemaSql, /paid_attempts/);
+  assert.match(paidSchemaSql, /paid_stats_daily/);
+  assert.match(phase, /ADD COLUMN expires_at/);
+  assert.doesNotMatch(phase, /DROP TABLE|DELETE FROM paid_entitlements/i);
 });
 
 test("canonical pages use the public game origin", async () => {
@@ -111,6 +116,7 @@ test("question payloads omit answer keys and completions stay off the order data
   assert.match(home, /Photo for question/);
   assert.match(home, /question\.kind==="image"/);
   assert.doesNotMatch(home, /alt="'\+escapeHtml\(label\)/);
+  repositoryCalls = 0;
   const answers = regions.west.questions.map((question) => [...question.correct]);
   const completed = await servePaid(request("/api/paid/games/complete", {
     method: "POST",
@@ -180,7 +186,7 @@ test("checkout requires the UK withdrawal acknowledgement and stays in test mode
   assert.match(email.sent[0].html, /What's Your Bride Price\?/);
   assert.equal(email.sent[0].replyTo, "team@classesforculture.com");
   const access = await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app));
-  assert.equal(access.cowries, 5);
+  assert.equal(access.cowries, 10);
 
   const again = await servePaid(request("/api/paid/mock-pay", {
     method: "POST",
@@ -189,7 +195,7 @@ test("checkout requires the UK withdrawal acknowledgement and stays in test mode
   }), app);
   assert.equal(again.status, 200);
   assert.equal(email.sent.length, 1);
-  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 5);
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 10);
 });
 
 test("signed refunds revoke only that purchase and partial refunds wait for review", async () => {
@@ -198,14 +204,14 @@ test("signed refunds revoke only that purchase and partial refunds wait for revi
   const checkout = await body(await servePaid(request("/api/paid/checkout", {
     method: "POST",
     headers: { "content-type": "application/json", "idempotency-key": "refund-order" },
-    body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "NG", playerId, adult: true }),
+    body: JSON.stringify({ productKey: "cowrie_5_v1", email: "buyer@example.com", country: "NG", playerId, adult: true }),
   }), app));
   await servePaid(request("/api/paid/mock-pay", {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ orderId: checkout.orderId }),
   }), app);
-  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).royal, true);
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 10);
 
   async function postEvent(event) {
     const raw = JSON.stringify(event);
@@ -226,7 +232,7 @@ test("signed refunds revoke only that purchase and partial refunds wait for revi
   });
   assert.equal(partial.status, 200);
   assert.equal((await body(await servePaid(request(`/api/paid/orders/${checkout.orderId}`), app))).state, "review_required");
-  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).royal, true);
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 10);
 
   const full = await postEvent({
     id: "evt_full_refund_0001",
@@ -239,7 +245,7 @@ test("signed refunds revoke only that purchase and partial refunds wait for revi
   assert.equal(refunded.state, "refunded");
   assert.equal(refunded.entitlement.state, "revoked");
   assert.equal(refunded.entitlement.remaining, 0);
-  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).royal, false);
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 0);
 
   const tampered = await servePaid(request("/api/paid/webhook", {
     method: "POST",
@@ -289,7 +295,7 @@ test("Stripe session requests keep Adaptive Pricing and leave tax off unless ask
   const response = await servePaid(request("/api/paid/checkout", {
     method: "POST",
     headers: { "content-type": "application/json", "idempotency-key": "stripe-shape" },
-    body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "KE", playerId: "player_shape_test_01", adult: true }),
+    body: JSON.stringify({ productKey: "cowrie_5_v1", email: "buyer@example.com", country: "KE", playerId: "player_shape_test_01", adult: true }),
   }), app);
   assert.equal(response.status, 200);
   assert.match(recorded, /adaptive_pricing(?:%5B|\[)enabled(?:%5D|\])=true/);
@@ -305,7 +311,7 @@ test("Stripe session requests keep Adaptive Pricing and leave tax off unless ask
   const taxedResponse = await servePaid(request("/api/paid/checkout", {
     method: "POST",
     headers: { "content-type": "application/json", "idempotency-key": "stripe-shape-tax" },
-    body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "KE", playerId: "player_shape_test_01", adult: true }),
+    body: JSON.stringify({ productKey: "cowrie_5_v1", email: "buyer@example.com", country: "KE", playerId: "player_shape_test_01", adult: true }),
   }), taxedApp);
   assert.equal(taxedResponse.status, 200);
   assert.match(recorded, /automatic_tax(?:%5B|\[)enabled(?:%5D|\])=true/);
@@ -416,24 +422,24 @@ test("access and spend follow D1 when KV still shows a refunded balance", async 
   await kv.put(`royal:${playerId}`, "1");
   const granted = await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app));
   assert.equal(granted.source, "d1");
-  assert.equal(granted.cowries, 5);
+  assert.equal(granted.cowries, 10);
   assert.equal(granted.royal, false);
   const spent = await body(await servePaid(request("/api/paid/cowries/spend", {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ playerId, count: 2 }),
   }), app));
-  assert.equal(spent.cowries, 3);
+  assert.equal(spent.cowries, 8);
   await kv.put(`cowrie:${playerId}`, "99");
-  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 3);
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 8);
   const overspend = await servePaid(request("/api/paid/cowries/spend", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ playerId, count: 4 }),
+    body: JSON.stringify({ playerId, count: 9 }),
   }), app);
   assert.equal(overspend.status, 409);
   assert.equal((await body(overspend)).error, "insufficient_cowries");
-  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 3);
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 8);
 
   const refund = {
     id: "evt_d1_access_refund",
@@ -785,4 +791,111 @@ test("STRIPE_MODE defaults to test and live mode accepts only a matching key, se
   await assert.rejects(createStripeSession("rk_live_restricted", new URLSearchParams(), "idem-live", "live", async () => {
     return new Response(JSON.stringify({ id: "cs_test_wrong_mode", url: "https://checkout.stripe.com/c/pay/cs_test_wrong_mode", livemode: false }), { status: 200 });
   }), (error) => error.code === "stripe_mode_mismatch");
+});
+
+test("two free games then a paywall, idempotent resume, welcome bonus, and hidden Royal Reveal", async () => {
+  const app = services({ ownerStatsToken: "owner-token-value" });
+  const playerId = "player_phase0_test_01";
+  const catalog = await body(await servePaid(request("/api/paid/catalog"), app));
+  assert.equal(catalog.products.some((product) => product.kind === "royal_reveal"), false);
+  assert.equal(catalog.products.find((product) => product.key === "cowrie_5_v1").games, 1);
+  const hidden = await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "royal-hidden" },
+    body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "US", playerId, adult: true }),
+  }), app);
+  assert.equal(hidden.status, 404);
+  assert.equal((await body(hidden)).error, "royal_reveal_unavailable");
+
+  async function begin(attemptId) {
+    return servePaid(request("/api/paid/games/begin", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId, attemptId, edition: "west" }),
+    }), app);
+  }
+  async function finish(attemptId) {
+    return servePaid(request("/api/paid/games/finish", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId, attemptId }),
+    }), app);
+  }
+
+  const first = await body(await begin("attempt_phase0_free_0001"));
+  assert.equal(first.mode, "free");
+  assert.equal(first.freeGamesLeft, 2);
+  const resumed = await body(await begin("attempt_phase0_free_0001"));
+  assert.equal(resumed.resumed, true);
+  assert.equal(resumed.cowries, 0);
+  const secondStart = await body(await begin("attempt_phase0_free_0002"));
+  assert.equal(secondStart.attemptId, "attempt_phase0_free_0001");
+  const done = await body(await finish("attempt_phase0_free_0001"));
+  assert.equal(done.showPaywall, false);
+  assert.equal(done.wallet.freeGamesLeft, 1);
+  const second = await body(await begin("attempt_phase0_free_0002"));
+  assert.equal(second.mode, "free");
+  assert.equal(second.resumed, false);
+  const lastFree = await body(await finish("attempt_phase0_free_0002"));
+  assert.equal(lastFree.showPaywall, true);
+  assert.equal(lastFree.wallet.freeGamesLeft, 0);
+  const blocked = await begin("attempt_phase0_paid_0003");
+  assert.equal(blocked.status, 402);
+  assert.equal((await body(blocked)).error, "cowries_required");
+
+  const checkout = await body(await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "phase0-first-buy" },
+    body: JSON.stringify({ productKey: "cowrie_5_v1", email: "buyer@example.com", country: "US", playerId, adult: true }),
+  }), app));
+  await servePaid(request("/api/paid/mock-pay", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ orderId: checkout.orderId }),
+  }), app);
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 10);
+  const again = await body(await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "phase0-second-buy" },
+    body: JSON.stringify({ productKey: "cowrie_5_v1", email: "buyer@example.com", country: "US", playerId, adult: true }),
+  }), app));
+  await servePaid(request("/api/paid/mock-pay", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ orderId: again.orderId }),
+  }), app);
+  assert.equal((await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app))).cowries, 15);
+
+  const paidStart = await body(await begin("attempt_phase0_paid_0003"));
+  assert.equal(paidStart.mode, "paid");
+  assert.equal(paidStart.cowries, 10);
+  const replay = await body(await begin("attempt_phase0_paid_0003"));
+  assert.equal(replay.resumed, true);
+  assert.equal(replay.cowries, 10);
+
+  const refund = {
+    id: "evt_phase0_refund_0001",
+    type: "charge.refunded",
+    livemode: false,
+    data: { object: { amount: 199, amount_refunded: 199, refunded: true, currency: "gbp", payment_intent: `pi_mock_${checkout.orderId.slice(4)}` } },
+  };
+  const raw = JSON.stringify(refund);
+  const timestamp = Math.floor(now / 1000);
+  const signature = createHmac("sha256", webhookSecret).update(`${timestamp}.${raw}`).digest("hex");
+  assert.equal((await servePaid(request("/api/paid/webhook", {
+    method: "POST",
+    headers: { "stripe-signature": `t=${timestamp},v1=${signature}` },
+    body: raw,
+  }), app)).status, 200);
+  const after = await body(await servePaid(request(`/api/paid/access?player=${playerId}`), app));
+  assert.equal(after.cowries >= 0, true);
+  assert.equal(after.cowries, 5);
+
+  const stats = await servePaid(request("/api/paid/owner/stats", { headers: { "x-owner-stats-token": "owner-token-value" } }), app);
+  assert.equal(stats.status, 200);
+  const days = (await body(stats)).days;
+  assert.equal(days.some((row) => row.event === "game_start" && row.detail === "free"), true);
+  assert.equal(days.some((row) => row.event === "purchase_complete"), true);
+  assert.equal((await servePaid(request("/api/paid/owner/stats"), services())).status, 503);
+  assert.equal((await servePaid(request("/api/paid/owner/stats", { headers: { "x-owner-stats-token": "wrong" } }), app)).status, 401);
 });
