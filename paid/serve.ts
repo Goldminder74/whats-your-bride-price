@@ -24,6 +24,8 @@ import { applyStripeEvent, projectAccess } from "./fulfillment.ts";
 import { SUPPORT_EMAIL } from "./receipt.ts";
 import { editions, isEdition, type KvStore } from "./games.ts";
 import { claimReferralIfFirstGame, handlePerfect, handleReferralArrive, handleReferralGet, handleShareCard, handleShareReward } from "./earnRoute.ts";
+import { applyChallengeMeta, challengeUrl, shareBlurb, shareCardImageUrl } from "./shareCard.ts";
+import { isReferralCode } from "./earn.ts";
 import { handleQuestionComplete, handleQuestionGet } from "./questionRoute.ts";
 import { legalPage, mockCheckoutHtml, playPageHtml, returnHtml } from "./pages.ts";
 import { paystackSeam } from "./paystack.ts";
@@ -381,6 +383,27 @@ async function handleOwnerStats(request: Request, services: PaidServices): Promi
   return json({ days: await services.repository.listStats(since) });
 }
 
+function challengePreview(request: Request, services: PaidServices): { edition: string; score: number; ref: string | null } | null {
+  if (!services.shareCards) return null;
+  const url = new URL(request.url);
+  const edition = url.searchParams.get("edition") || "";
+  const score = Number(url.searchParams.get("score"));
+  if (!isEdition(edition) || !Number.isInteger(score) || score < 0 || score > 12) return null;
+  const ref = url.searchParams.get("ref");
+  return { edition, score, ref: isReferralCode(ref) ? ref : null };
+}
+
+function withChallengePreview(html: string, preview: { edition: string; score: number; ref: string | null }): string {
+  const image = shareCardImageUrl(preview.edition, preview.score);
+  const page = challengeUrl(preview.edition, preview.score, preview.ref);
+  return applyChallengeMeta(html, {
+    title: "What’s Your Bride Price?",
+    description: shareBlurb(preview.score),
+    image,
+    url: page,
+  });
+}
+
 async function gameShell(request: Request, services: PaidServices): Promise<Response | null> {
   if (!services.assets) return null;
   const asset = await services.assets.fetch(new Request(new URL("/index.html", request.url), { headers: request.headers }));
@@ -406,8 +429,8 @@ async function serveBankChunk(request: Request, services: PaidServices): Promise
 export async function servePaid(request: Request, services: PaidServices): Promise<Response> {
   const url = new URL(request.url);
   try {
-    if (request.method === "GET" && url.pathname === "/api/paid/share-card.svg") {
-      return await handleShareCard(url, services);
+    if (request.method === "GET" && (url.pathname === "/api/paid/share-card.svg" || url.pathname === "/api/paid/share-card.png")) {
+      return await handleShareCard(url, services, url.pathname.endsWith(".png") ? "png" : "svg");
     }
     if (request.method === "GET" && isQuestionBankChunk(url.pathname)) {
       return await serveBankChunk(request, services);
@@ -419,7 +442,11 @@ export async function servePaid(request: Request, services: PaidServices): Promi
     if (request.method === "GET" && (url.pathname === "/" || url.pathname === "")) {
       await ready(services);
       try { await services.repository.recordStat("visit", "", services.now()); } catch { /* a stats miss must not hide the game */ }
-      return await gameShell(request, services) ?? html(playPageHtml());
+      const shell = await gameShell(request, services);
+      const preview = challengePreview(request, services);
+      if (shell && !preview) return shell;
+      const page = shell ? await shell.text() : playPageHtml();
+      return html(preview ? withChallengePreview(page, preview) : page);
     }
     if (request.method === "GET" && (url.pathname === "/privacy" || url.pathname === "/terms" || url.pathname === "/refunds")) {
       return html(legalPage(url.pathname.slice(1) as "privacy" | "terms" | "refunds"));

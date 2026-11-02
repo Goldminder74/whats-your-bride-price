@@ -6,7 +6,8 @@ import { CANONICAL_ORIGIN } from "../../paid/catalog.ts";
 import { createMockEmail } from "../../paid/email.ts";
 import { createMemoryRepository } from "../../paid/repository.ts";
 import { servePaid } from "../../paid/serve.ts";
-import { CHALLENGE_LINE } from "../../paid/shareCard.ts";
+import { CHALLENGE_LINE, shareBlurb, shareCardSvg } from "../../paid/shareCard.ts";
+import { pngSize } from "../../paid/shareCardPng.ts";
 
 const webhookSecret = "whsec_local_test_secret_value";
 const now = 1_700_000_000_000;
@@ -36,6 +37,7 @@ function services(overrides = {}) {
     randomBank: overrides.randomBank,
     earnPaths: overrides.earnPaths,
     shareCards: overrides.shareCards,
+    assets: overrides.assets,
   };
 }
 
@@ -279,15 +281,47 @@ test("the share card is a 1080 by 1350 branded result and stays hidden while the
   assert.match(svg, /width="1080"/);
   assert.match(svg, /height="1350"/);
   assert.match(svg, /WEST AFRICA/);
-  assert.match(svg, /KNOWLEDGE SCORE 12\/12/);
-  assert.match(svg, /BRIDE PRICE ROYALTY/);
-  assert.match(svg, /Bride price: 50 cowries/);
+  assert.match(svg, />ROYALTY</);
+  assert.match(svg, />50 COWRIES</);
+  assert.match(svg, />12</);
+  assert.match(svg, /OUT OF 12/);
   assert.match(svg, new RegExp(CHALLENGE_LINE));
   assert.match(svg, /brideprice\.classesforculture\.com/);
-  assert.match(svg, new RegExp(`edition=west&amp;ref=${link.code}`));
-  const unknown = await (await servePaid(request("/api/paid/share-card.svg?edition=west&score=6&ref=zzzzzzzz"), app)).text();
-  assert.match(unknown, /MOTHERLAND SCHOLAR/);
-  assert.match(unknown, /KNOWLEDGE SCORE 6\/12/);
-  assert.doesNotMatch(unknown, /ref=zzzzzzzz/);
+  assert.doesNotMatch(svg, /\?edition=|&ref=|wa\.me/);
+  assert.equal(shareBlurb(8), "I'm worth 30 cowries as a Motherland Scholar 👑 Can you beat 8/12?");
+  const direct = shareCardSvg({ edition: "east", score: 8 });
+  assert.match(direct, /EAST AFRICA/);
+  assert.match(direct, />SCHOLAR</);
+  assert.match(direct, />30 COWRIES</);
+  assert.match(direct, />8</);
+  const story = await servePaid(request("/api/paid/share-card.svg?edition=west&score=6&frame=story"), app);
+  const storySvg = await story.text();
+  assert.match(storySvg, /height="1920"/);
+  assert.match(storySvg, />SCHOLAR</);
+  assert.match(storySvg, />30 COWRIES</);
+  assert.doesNotMatch(storySvg, /\?edition=|&ref=|wa\.me/);
+  const pngResponse = await servePaid(request("/api/paid/share-card.png?edition=west&score=12"), app);
+  assert.equal(pngResponse.status, 200);
+  assert.match(pngResponse.headers.get("content-type") || "", /image\/png/);
+  const png = new Uint8Array(await pngResponse.arrayBuffer());
+  assert.equal(png[0], 137);
+  assert.deepEqual(pngSize(png), { width: 1080, height: 1350 });
+  const storyPng = new Uint8Array(await (await servePaid(request("/api/paid/share-card.png?edition=east&score=8&frame=story"), app)).arrayBuffer());
+  assert.deepEqual(pngSize(storyPng), { width: 1080, height: 1920 });
+  const shell = "<!DOCTYPE html><html><head><meta property=\"og:image\" content=\"https://brideprice.classesforculture.com/og-v2.png\"/><meta property=\"og:title\" content=\"Old\"/></head><body>DO YOU KNOW YOUR ROOTS?</body></html>";
+  const previewApp = services({
+    shareCards: true,
+    assets: { async fetch() { return new Response(shell, { status: 200 }); } },
+  });
+  const home = await servePaid(request("/?edition=west&score=8&ref=abcdefgh"), previewApp);
+  const homeHtml = await home.text();
+  assert.match(homeHtml, /DO YOU KNOW YOUR ROOTS/);
+  assert.match(homeHtml, /share-card\.png\?edition=west&amp;score=8/);
+  assert.match(homeHtml, /og:image:width" content="1080"/);
+  assert.match(homeHtml, /worth 30 cowries as a Motherland Scholar/);
+  assert.doesNotMatch(homeHtml, /og-v2\.png/);
+  const plain = await (await servePaid(request("/"), previewApp)).text();
+  assert.match(plain, /og-v2\.png/);
   assert.equal((await servePaid(request("/api/paid/share-card.svg?edition=west&score=13"), app)).status, 400);
+  assert.equal((await servePaid(request("/api/paid/share-card.png?edition=west&score=13"), app)).status, 400);
 });
