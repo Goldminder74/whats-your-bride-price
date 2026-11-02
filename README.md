@@ -16,7 +16,7 @@ npm run dev
 npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+The vinext app is the existing quiz. Paid Checkout uses `wrangler.jsonc` and `worker/paid.ts`.
 
 ## Included Shape
 
@@ -98,3 +98,16 @@ actions tied to the current ChatGPT user. Leave public content anonymous.
 
 - [vinext Documentation](https://github.com/cloudflare/vinext)
 - [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+
+## Paid Worker
+
+Stripe Checkout stays in test mode. Orders live in D1. Completed games write KV only. Go-live steps are in [docs/cloudflare-deploy.md](docs/cloudflare-deploy.md). This tree does not deploy, change DNS, or take a live charge.
+
+```bash
+cp .dev.vars.example .dev.vars
+npm run dev:worker
+npm run test:paid
+npm run build:worker
+```
+
+The seller postal address is on `/privacy`, `/terms`, and `/refunds` only. It is not in the game footer or in receipt and refund email.
