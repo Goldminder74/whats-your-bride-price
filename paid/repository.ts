@@ -65,6 +65,18 @@ export type PlayerWallet = {
 export type EarnReason = "granted" | "repeat" | "capped" | "self" | "not_new" | "unknown" | "ineligible" | "recorded";
 export type EarnDecision = { ok: boolean; reason: EarnReason; cowries: number };
 
+export type RoyalRevealRecord = {
+  orderId: string;
+  playerId: string;
+  resultId: string;
+  edition: string;
+  score: number;
+  displayName: string;
+  certificate: string;
+  token: string;
+  createdAt: number;
+};
+
 export type EarnKind = "perfect" | "share" | "referral_referrer" | "referral_new";
 
 type EarnGrant = {
@@ -115,6 +127,10 @@ export interface PaidRepository {
   grantShare(input: { playerId: string; at: number }): Promise<EarnDecision>;
   findReferralCode(code: string): Promise<string | null>;
   daily: DailyApi;
+  /** Store the decree for one paid result. A repeat of the same order returns the first row. */
+  saveReveal(record: RoyalRevealRecord): Promise<RoyalRevealRecord>;
+  getRevealByOrder(orderId: string): Promise<RoyalRevealRecord | null>;
+  getRevealByToken(token: string): Promise<RoyalRevealRecord | null>;
 }
 
 function sameRequest(existing: PaidOrder, incoming: PaidOrder): boolean {
@@ -139,6 +155,8 @@ export function createMemoryRepository(): PaidRepository {
   const referralCodes = new Map<string, string>();
   const codeOwners = new Map<string, string>();
   const arrivals = new Map<string, { referrerPlayerId: string; code: string; rewarded: boolean }>();
+  const reveals = new Map<string, RoyalRevealRecord>();
+  const revealTokens = new Map<string, string>();
 
   function spendRank(productKey: ProductKey): number {
     if (productKey === "cowrie_welcome_v1") return 0;
@@ -524,6 +542,21 @@ export function createMemoryRepository(): PaidRepository {
       return { ok: true, reason: "granted", cowries: SHARE_BONUS };
     },
     daily: createMemoryDaily((playerId, grantId, cowries, at) => creditEarn(playerId, grantId, cowries, at)),
+    async saveReveal(record) {
+      const existing = reveals.get(record.orderId);
+      if (existing) return existing;
+      if (revealTokens.has(record.token)) throw new PaidError("reveal_unavailable", 409);
+      reveals.set(record.orderId, record);
+      revealTokens.set(record.token, record.orderId);
+      return record;
+    },
+    async getRevealByOrder(orderId) {
+      return reveals.get(orderId) ?? null;
+    },
+    async getRevealByToken(token) {
+      const orderId = revealTokens.get(token);
+      return orderId ? reveals.get(orderId) ?? null : null;
+    },
   };
 }
 

@@ -7,7 +7,7 @@ export const products = Object.freeze({
   cowrie_5_v1: Object.freeze({ name: "5 Cowries", amountMinor: 199, quantity: 5, kind: "cowries" as const, displayPrice: "£1.99", forSale: true }),
   cowrie_15_v1: Object.freeze({ name: "15 Cowries", amountMinor: 499, quantity: 15, kind: "cowries" as const, displayPrice: "£4.99", forSale: true }),
   cowrie_40_v1: Object.freeze({ name: "40 Cowries", amountMinor: 999, quantity: 40, kind: "cowries" as const, displayPrice: "£9.99", forSale: true }),
-  royal_reveal_v1: Object.freeze({ name: "Royal Reveal", amountMinor: 199, quantity: 1, kind: "royal_reveal" as const, displayPrice: "£1.99", forSale: true }),
+  royal_reveal_v1: Object.freeze({ name: "Royal Reveal Pack", amountMinor: 199, quantity: 1, kind: "royal_reveal" as const, displayPrice: "£1.99", forSale: true }),
   cowrie_welcome_v1: Object.freeze({ name: "Welcome bonus", amountMinor: 0, quantity: 5, kind: "cowries" as const, displayPrice: "", forSale: false }),
   cowrie_earn_v1: Object.freeze({ name: "Earned Cowrie", amountMinor: 0, quantity: 1, kind: "cowries" as const, displayPrice: "", forSale: false }),
 });

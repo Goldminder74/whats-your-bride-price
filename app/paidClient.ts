@@ -44,19 +44,40 @@ export async function beginGame(edition: string): Promise<
   return { ok: true, attemptId: payload.attemptId, edition: payload.edition, mode: payload.mode, resumed: payload.resumed === true, freeGamesLeft: payload.freeGamesLeft ?? 0, cowries: payload.cowries ?? 0 };
 }
 
-export type PaidFeatures = { earnPaths: boolean; shareCards: boolean; dailyChallenge: boolean };
+export type PaidFeatures = { earnPaths: boolean; shareCards: boolean; dailyChallenge: boolean; royalReveal: boolean };
 
-const featuresOff: PaidFeatures = { earnPaths: false, shareCards: false, dailyChallenge: false };
+const featuresOff: PaidFeatures = { earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false };
 
 export async function fetchPaidFeatures(): Promise<PaidFeatures> {
   try {
     const response = await fetch("/api/paid/catalog");
     if (!response.ok) return featuresOff;
-    const body = await response.json() as { earnPaths?: boolean; shareCards?: boolean; dailyChallenge?: boolean };
-    return { earnPaths: body.earnPaths === true, shareCards: body.shareCards === true, dailyChallenge: body.dailyChallenge === true };
+    const body = await response.json() as { earnPaths?: boolean; shareCards?: boolean; dailyChallenge?: boolean; royalReveal?: boolean };
+    return {
+      earnPaths: body.earnPaths === true,
+      shareCards: body.shareCards === true,
+      dailyChallenge: body.dailyChallenge === true,
+      royalReveal: body.royalReveal === true,
+    };
   } catch {
     return featuresOff;
   }
+}
+
+export async function recordServerResult(input: { edition: string; answers: number[][]; roundId?: string | null }): Promise<string | null> {
+  const response = await fetch("/api/paid/games/complete", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      edition: input.edition,
+      answers: input.answers,
+      playerId: readPlayerId(),
+      roundId: input.roundId || undefined,
+    }),
+  });
+  if (!response.ok) return null;
+  const body = await response.json() as { id?: string };
+  return typeof body.id === "string" ? body.id : null;
 }
 
 export async function claimPerfect(input: { attemptId: string; edition: string; roundId: string | null; answers: number[][] }): Promise<{ reason?: string; cowries?: number } | null> {

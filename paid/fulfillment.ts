@@ -3,7 +3,8 @@ import type { KvStore } from "./games.ts";
 import type { PaidOrder, PaidRepository } from "./repository.ts";
 import type { NormalizedStripeEvent } from "./stripe.ts";
 import type { TransactionalEmail } from "./email.ts";
-import { blockedPurchaseCountries, isCountryCode } from "./catalog.ts";
+import { blockedPurchaseCountries, isCountryCode, products } from "./catalog.ts";
+import { mintRoyalReveal } from "./royalReveal.ts";
 import { purchaseReceipt, refundReceipt, SUPPORT_EMAIL } from "./receipt.ts";
 import { assertStripeEventMode, type StripeRuntimeMode } from "./stripe.ts";
 
@@ -85,6 +86,9 @@ export async function applyStripeEvent(input: {
         amountMinor: event.amountTotal || order.baseAmountMinor,
         at: now,
       });
+      if (entitlement && products[order.productKey].kind === "royal_reveal") {
+        await mintRoyalReveal({ repository, kv, order, at: now });
+      }
       if (wasPending && entitlement) await repository.recordStat("purchase_complete", "", now);
       await projectOrder(kv, repository, order);
       const paid = await repository.getById(order.id);

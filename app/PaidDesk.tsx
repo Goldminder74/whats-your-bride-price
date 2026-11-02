@@ -4,6 +4,7 @@
 
 import { FormEvent, useEffect, useId, useState } from "react";
 import { fetchWallet, readPlayerId } from "./paidClient";
+import { RoyalRevealDownloads } from "./RoyalReveal";
 
 type Product = { key: string; name: string; displayPrice: string; kind: string; games: number };
 
@@ -44,6 +45,7 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
   const [waiver, setWaiver] = useState(false);
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
+  const [revealOrder, setRevealOrder] = useState<string | null>(null);
 
   useEffect(() => {
     if (forceOpen) setOpen(true);
@@ -73,8 +75,11 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
         setProductKey((current) => current || nextCatalog.products[0]?.key || "");
         if (orderId) {
           const orderResponse = await fetch(`/api/paid/orders/${orderId}`);
-          const order = await orderResponse.json() as { state?: string };
-          if (!cancelled) setStatus(order.state ? `Order ${order.state}. Your balance is restored from this browser.` : "That order could not be restored.");
+          const order = await orderResponse.json() as { state?: string; productKey?: string };
+          if (!cancelled) {
+            setStatus(order.state ? `Order ${order.state}. Your balance is restored from this browser.` : "That order could not be restored.");
+            if (order.productKey === "royal_reveal_v1" && order.state === "fulfilled") setRevealOrder(orderId);
+          }
         }
       } catch {
         if (!cancelled) setStatus("Purchases connect when this page is served by the game.");
@@ -99,7 +104,7 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
     setCowries(access.cowries);
     setFreeGamesLeft(access.freeGamesLeft);
     setRoyal(access.royal);
-    setStatus(access.royal ? "Restored. Royal Reveal is unlocked on this browser." : `Restored. ${access.cowries} cowries on this browser.`);
+    setStatus(access.royal ? "Restored. A Royal Reveal purchase on this browser is still active." : `Restored. ${access.cowries} cowries on this browser.`);
   }
 
   async function checkout(event: FormEvent) {
@@ -149,7 +154,8 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
             <h2 id={titleId}>COWRIES<br /><i>for the culture</i></h2>
             {forceOpen ? <p className="paid-unlock">Unlock your next game for 5 Cowries.</p> : null}
             <p>Your first two completed games are free. After that, starting a game costs 5 Cowries. Card details stay with Stripe.</p>
-            <p className="paid-balance"><b>{cowries === null ? "—" : cowries}</b> cowries on this browser. {freeLabel}.{royal ? " Royal Reveal from an earlier purchase is still unlocked." : ""}</p>
+            <p className="paid-balance"><b>{cowries === null ? "—" : cowries}</b> cowries on this browser. {freeLabel}.{royal ? " A Royal Reveal purchase on this browser is still active." : ""}</p>
+            {revealOrder ? <RoyalRevealDownloads orderId={revealOrder} /> : null}
             <p className="paid-bonus">Welcome bonus: +5 Cowries on your first purchase. Bonus Cowries are used first and expire 14 days after that purchase.</p>
             <div className="paid-actions">
               <button type="button" className="outline-action" onClick={restore}>Restore this browser</button>

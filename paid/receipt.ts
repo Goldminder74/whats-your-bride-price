@@ -126,8 +126,12 @@ function plainText(facts: ReceiptFacts, details: ReturnType<typeof view>): strin
     `Order id: ${plain(facts.order.id)}`,
     "",
     facts.kind === "purchase"
-      ? "Open the game in the browser profile you used to buy. Your Cowries or Royal Reveal are on that profile."
-      : "The amount goes back to the original payment method. Any remaining value from this purchase has been removed.",
+      ? (products[facts.order.productKey].kind === "royal_reveal"
+        ? "Open the game in the browser profile you used to buy. Your Royal Decree for this result is ready to download there."
+        : "Open the game in the browser profile you used to buy. Your Cowries or Royal Reveal are on that profile.")
+      : (products[facts.order.productKey].kind === "royal_reveal"
+        ? "The amount goes back to the original payment method. This Royal Decree can no longer be downloaded."
+        : "The amount goes back to the original payment method. Any remaining value from this purchase has been removed."),
     `Play: ${GAME_URL}`,
     `Refunds: ${REFUND_URL}`,
     `Support: ${SUPPORT_EMAIL}`,
@@ -147,8 +151,12 @@ function htmlReceipt(facts: ReceiptFacts, details: ReturnType<typeof view>): str
     ? `<p style="margin:16px 0 0;font-size:14px;line-height:1.5;color:#1a1a1a;">${escapeHtml(details.waiver)}</p>`
     : "";
   const access = facts.kind === "purchase"
-    ? "Open the game in the browser profile you used to buy. Your Cowries or Royal Reveal are on that profile."
-    : "The amount goes back to the original payment method. Any remaining value from this purchase has been removed.";
+    ? (products[facts.order.productKey].kind === "royal_reveal"
+      ? "Open the game in the browser profile you used to buy. Your Royal Decree for this result is ready to download there."
+      : "Open the game in the browser profile you used to buy. Your Cowries or Royal Reveal are on that profile.")
+    : (products[facts.order.productKey].kind === "royal_reveal"
+      ? "The amount goes back to the original payment method. This Royal Decree can no longer be downloaded."
+      : "The amount goes back to the original payment method. Any remaining value from this purchase has been removed.");
   return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light"><title>${escapeHtml(details.headline)}</title></head>
 <body bgcolor="#f7f4ef" style="margin:0;padding:0;background-color:#f7f4ef;color:#1a1a1a;font-family:Georgia,serif;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#f7f4ef" style="background-color:#f7f4ef;"><tr><td align="center" bgcolor="#f7f4ef" style="padding:24px 12px;background-color:#f7f4ef;">

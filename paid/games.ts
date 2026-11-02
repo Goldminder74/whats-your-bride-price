@@ -78,7 +78,8 @@ export async function completeGame(kv: KvStore, input: unknown, now: number): Pr
   const id = [...crypto.getRandomValues(new Uint8Array(16))].map((byte) => byte.toString(16).padStart(2, "0")).join("");
   const day = new Date(now).toISOString().slice(0, 10);
   const shard = crypto.getRandomValues(new Uint8Array(1))[0] % SHARDS;
-  await kv.put(`result:${id}`, JSON.stringify({ edition: body.edition, score, total: questions.length, at: now }));
+  const player = typeof body.playerId === "string" && /^[A-Za-z0-9_-]{16,64}$/.test(body.playerId) ? body.playerId : null;
+  await kv.put(`result:${id}`, JSON.stringify({ edition: body.edition, score, total: questions.length, player, at: now }));
   const counterKey = `count:${day}:${shard}`;
   const current = Number(await kv.get(counterKey) || "0");
   await kv.put(counterKey, String((Number.isSafeInteger(current) ? current : 0) + 1));

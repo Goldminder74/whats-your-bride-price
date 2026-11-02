@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { Resvg, initWasm } from "@resvg/resvg-wasm";
+import { Resvg, initWasm, type ResvgRenderOptions } from "@resvg/resvg-wasm";
 
 let ready: Promise<void> | null = null;
 let font: Uint8Array | null = null;
@@ -47,7 +47,7 @@ export async function renderShareCardPng(svg: string): Promise<Uint8Array> {
     },
     shapeRendering: 2,
     textRendering: 2,
-  });
+  } as ResvgRenderOptions);
   try {
     return resvg.render().asPng();
   } finally {

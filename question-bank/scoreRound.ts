@@ -47,7 +47,7 @@ export async function completeStoredRound(kv: KvStore, round: StoredRound, answe
   const id = [...crypto.getRandomValues(new Uint8Array(16))].map((byte) => byte.toString(16).padStart(2, "0")).join("");
   const day = new Date(now).toISOString().slice(0, 10);
   const shard = crypto.getRandomValues(new Uint8Array(1))[0] % SHARDS;
-  await kv.put(`result:${id}`, JSON.stringify({ edition: round.edition, score, total: round.questions.length, roundId: round.id, at: now }));
+  await kv.put(`result:${id}`, JSON.stringify({ edition: round.edition, score, total: round.questions.length, roundId: round.id, player: round.player ?? null, at: now }));
   const counterKey = `count:${day}:${shard}`;
   const current = Number(await kv.get(counterKey) || "0");
   await kv.put(counterKey, String((Number.isSafeInteger(current) ? current : 0) + 1));

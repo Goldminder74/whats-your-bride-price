@@ -5,12 +5,13 @@
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type Question as PlayQuestion } from "./gameData";
-import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, finishGame, readPlayerId, recordArrival, type PaidFeatures } from "./paidClient";
+import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, finishGame, readPlayerId, recordArrival, recordServerResult, type PaidFeatures } from "./paidClient";
 import { paidCommerceEnabled, randomBankEnabled } from "./paidFlags";
 import { finishRound, playRandomRound, readSavedRound, writeSavedRound } from "../question-bank/clientRound.ts";
 import { friendChallengeLine } from "../paid/friendLine.ts";
 import { challengeUrl, shareBlurb } from "../paid/shareCard.ts";
 import { PaidDesk } from "./PaidDesk";
+import { RoyalRevealOffer } from "./RoyalReveal";
 import { reportAppError } from "./errors";
 import { answersMatch, calculateResultTier } from "./gameLogic";
 
@@ -201,12 +202,13 @@ export default function BridePriceGame() {
   const [allAfricaJustUnlocked, setAllAfricaJustUnlocked] = useState(false);
   const [revealAura, setRevealAura] = useState(0);
   const [bankRound, setBankRound] = useState<PlayQuestion[] | null>(null);
-  const [paidFeatures, setPaidFeatures] = useState<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false });
+  const [paidFeatures, setPaidFeatures] = useState<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false });
+  const [serverResultId, setServerResultId] = useState<string | null>(null);
   const [referralCode, setReferralCode] = useState<string | null>(null);
   const [referralUrl, setReferralUrl] = useState<string | null>(null);
   const [perfectNote, setPerfectNote] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
-  const paidFeaturesRef = useRef<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false });
+  const paidFeaturesRef = useRef<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false });
   const dailyMode = useRef(false);
   const [friendScore, setFriendScore] = useState<number | null>(null);
   const [dailyNote, setDailyNote] = useState("");
@@ -509,6 +511,12 @@ export default function BridePriceGame() {
         void (async () => {
           const done = await finishGame(currentAttempt);
           if (done.showPaywall) setPaywall(true);
+          const features = paidFeaturesRef.current.royalReveal ? paidFeaturesRef.current : await fetchPaidFeatures();
+          const bankRoundReady = !randomBankEnabled() || Boolean(roundId);
+          if (features.royalReveal && bankRoundReady && choices.length === 12 && choices.every((choice) => choice.length > 0)) {
+            const scored = await recordServerResult({ edition, answers: choices, roundId: randomBankEnabled() ? roundId : null });
+            if (scored) setServerResultId(scored);
+          }
           if (!done.ok || !paidFeaturesRef.current.earnPaths) return;
           if (randomBankEnabled() && !roundId) return;
           if (choices.length !== 12 || choices.some((choice) => choice.length < 1)) return;
@@ -523,7 +531,7 @@ export default function BridePriceGame() {
   };
 
   const restart = () => {
-    setScreen("home"); setBankRound(null); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null); setAllAfricaJustUnlocked(false);
+    setScreen("home"); setBankRound(null); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null); setAllAfricaJustUnlocked(false); setServerResultId(null);
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
 
@@ -826,6 +834,7 @@ export default function BridePriceGame() {
               {paidFeatures.earnPaths && referralUrl ? <p className="result-description">Your referral link: <a href={referralUrl}>{referralUrl}</a>. A new player who finishes their first game through it earns you 2 Cowries.</p> : null}
               {paidFeatures.shareCards ? <div className="share-preview"><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}`} alt={`Result card, ${correctCount} of 12, ${tierTitles[tier]}`} /><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}&frame=story`} alt="Story result card" /></div> : null}
               <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>
+              {serverResultId ? <RoyalRevealOffer resultId={serverResultId} defaultName={name || "A Most Excellent Human"} /> : null}
               {paidFeatures.shareCards || paidFeatures.earnPaths ? <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`${shareBlurb(correctCount)} ${challengeUrl(regionKey, correctCount, paidFeatures.earnPaths ? referralCode : null)}`)}`} target="_blank" rel="noreferrer" onClick={() => { if (paidFeatures.earnPaths) void claimShareReward(); }}>Share my result on WhatsApp ↗</a> : null}
               <button className="nominate-action" onClick={nominate}><span>＋</span><b>Nominate a friend</b><small>Sends them straight to the {region.short} edition</small><i>→</i></button>
               <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`I nominate you for the ${region.name} edition of What’s Your Bride Price? ${nominationUrl}`)}`} target="_blank" rel="noreferrer">Send nomination on WhatsApp ↗</a>

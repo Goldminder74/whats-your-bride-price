@@ -26,6 +26,8 @@ import { editions, isEdition, type KvStore } from "./games.ts";
 import { handleDailyBegin, handleDailyBoard, handleDailyFinish, handleDailyNickname, handleDailyStatus } from "./dailyRoute.ts";
 import { claimReferralIfFirstGame, handlePerfect, handleReferralArrive, handleReferralGet, handleShareCard, handleShareReward } from "./earnRoute.ts";
 import { applyChallengeMeta, challengeUrl, shareBlurb, shareCardImageUrl } from "./shareCard.ts";
+import { revealHoldFromPurchase, writeRevealHold } from "./royalReveal.ts";
+import { handleRoyalClaim, handleRoyalFile } from "./royalRevealRoute.ts";
 import { isReferralCode } from "./earn.ts";
 import { handleQuestionComplete, handleQuestionGet } from "./questionRoute.ts";
 import { legalPage, mockCheckoutHtml, playPageHtml, returnHtml } from "./pages.ts";
@@ -226,6 +228,9 @@ async function handleCheckout(request: Request, services: PaidServices): Promise
   const waiver = body.waiver === true;
   if (requiresWithdrawalWaiver(body.country) && !waiver) throw new PaidError("withdrawal_waiver_required", 400);
   const product = products[body.productKey];
+  const revealHold = product.kind === "royal_reveal"
+    ? await revealHoldFromPurchase(services.kv, body.playerId, body)
+    : null;
   const now = services.now();
   const draft: PaidOrder = {
     id: orderId(),
@@ -251,6 +256,7 @@ async function handleCheckout(request: Request, services: PaidServices): Promise
     updatedAt: now,
   };
   const order = await services.repository.createPending(draft);
+  if (revealHold) await writeRevealHold(services.kv, order.id, revealHold);
   if (order.checkoutUrl) return json({ url: order.checkoutUrl, orderId: order.id, replay: true });
   const requestOrigin = new URL(request.url).origin;
   const params = checkoutSessionParams({
@@ -432,6 +438,15 @@ async function serveBankChunk(request: Request, services: PaidServices): Promise
 export async function servePaid(request: Request, services: PaidServices): Promise<Response> {
   const url = new URL(request.url);
   try {
+    const revealFile = url.pathname.match(/^\/api\/paid\/royal-reveal\/([a-f0-9]{64})\/(card\.png|story\.png|decree\.pdf|bundle\.zip)$/);
+    if (request.method === "GET" && revealFile) {
+      return await handleRoyalFile(revealFile[1] || "", revealFile[2] || "", services);
+    }
+    if (request.method === "POST" && url.pathname === "/api/paid/royal-reveal") {
+      sameOrigin(request);
+      await ready(services);
+      return await handleRoyalClaim(await readJson(request, 4_000) as Record<string, unknown>, services);
+    }
     if (request.method === "GET" && (url.pathname === "/api/paid/share-card.svg" || url.pathname === "/api/paid/share-card.png")) {
       return await handleShareCard(url, services, url.pathname.endsWith(".png") ? "png" : "svg");
     }
@@ -452,7 +467,7 @@ export async function servePaid(request: Request, services: PaidServices): Promi
       return html(preview ? withChallengePreview(page, preview) : page);
     }
     if (request.method === "GET" && (url.pathname === "/privacy" || url.pathname === "/terms" || url.pathname === "/refunds")) {
-      return html(legalPage(url.pathname.slice(1) as "privacy" | "terms" | "refunds"));
+      return html(legalPage(url.pathname.slice(1) as "privacy" | "terms" | "refunds", services.royalRevealEnabled === true));
     }
     if (request.method === "GET" && url.pathname === "/api/paid/health") {
       return json({
@@ -463,6 +478,7 @@ export async function servePaid(request: Request, services: PaidServices): Promi
         earnPaths: services.earnPaths === true,
         shareCards: services.shareCards === true,
         dailyChallenge: services.dailyChallenge === true,
+        royalReveal: services.royalRevealEnabled === true,
       });
     }
     if (request.method === "GET" && url.pathname === "/api/paid/catalog") {
@@ -487,6 +503,7 @@ export async function servePaid(request: Request, services: PaidServices): Promi
         earnPaths: services.earnPaths === true,
         shareCards: services.shareCards === true,
         dailyChallenge: services.dailyChallenge === true,
+        royalReveal: services.royalRevealEnabled === true,
       });
     }
     if (request.method === "GET" && url.pathname === "/api/paid/questions") {

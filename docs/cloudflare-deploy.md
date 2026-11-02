@@ -200,7 +200,7 @@ policy is described as not yet activated.
 
 ## Phase 0 paywall
 
-Every browser gets two completed games free, across every region. Those two games are the only free plays on the paid quiz. The daily challenge is a separate once-a-day set and, when `DAILY_CHALLENGE` is on, does not use them or Cowries. Starting the next paid game spends 5 Cowries in D1. The same attempt id can be resumed without paying again, including a refresh. The first purchase on that browser adds 5 bonus Cowries, used before purchased Cowries, expiring 14 days later. Royal Reveal stays off until `ROYAL_REVEAL_ENABLED=on`.
+Every browser gets two completed games free, across every region. Those two games are the only free plays on the paid quiz. The daily challenge is a separate once-a-day set and, when `DAILY_CHALLENGE` is on, does not use them or Cowries. Starting the next paid game spends 5 Cowries in D1. The same attempt id can be resumed without paying again, including a refresh. The first purchase on that browser adds 5 bonus Cowries, used before purchased Cowries, expiring 14 days later. Royal Reveal stays off until `ROYAL_REVEAL_ENABLED=on`. The pack, when that flag is on, is one decree for one scored result.
 
 Migration `migrations/0002_paid_phase0.sql` only adds a nullable `expires_at` column and new tables. Existing Cowrie balances stay. Apply it before the new Worker code on each database:
 
@@ -232,6 +232,22 @@ Verify on the test Worker, with the flag on:
 3. Referral. `GET /api/paid/referral?player=OWNER` returns the link. A different new owner `POST /api/paid/referral/arrive`, then finishes their first game. The referrer gains 2 and the new owner gains 1. The same owner arriving through their own code is `self` and is not paid. An eleventh new owner on the same UTC day still gains 1, and the referrer stays capped at 10 rewards.
 4. Card. `GET /api/paid/share-card.png?edition=west&score=8` is the 1080×1350 poster. Add `frame=story` for 1080×1920. The first render of a region, score, and frame is stored in KV and the edge cache, so the next request for that same card is fast. Only those 130 cards are cached. Extra query parameters are ignored, and a score or frame outside the set is rejected. The SVG uses the same path with `.svg`. The images print the domain, not the challenge URL. The link `/?edition=west&score=8` opens that region, and its HTML sets `og:image` to the PNG.
 5. Daily challenge, only after `DAILY_CHALLENGE=on`. With the flag off, `dailyChallenge` is false and `POST /api/paid/daily/begin` is 404, and a deploy changes nothing. With it on, two players who begin the same region on the same UTC day get the same question ids and the same option order. `POST /api/paid/daily/finish` sends the answer arrays. A `score` field in that body is ignored. Free games stay at 2 and Cowries stay put. A second finish the same day is `already: true`. The 3rd and 7th consecutive UTC days each add 1 earned Cowrie through the earn ledger, once per streak. A second region the same day does not add another bonus, and skipping a day resets the streak to 1. Finishes under 8 seconds are stored but stay off the board and earn no streak Cowrie. `GET /api/paid/daily` returns `countdownMs`. `GET /api/paid/daily/board` returns the top 20 nicknames, scores, and times, plus the caller's rank, and no player ids. Nicknames are 2–16 characters and reject email, URLs, and profanity. Owner stats gain `daily_play`, `streak_bonus`, and `leaderboard_views`. Open `/?edition=west&score=8` and the setup screen says `Your friend scored 8/12, beat them.`
+
+## Royal Reveal Pack
+
+`ROYAL_REVEAL_ENABLED` stays `off` in `wrangler.jsonc`. That file is the config for both `wybp-paid-test` and `wybp-live`, so a deploy does not offer the pack. `GET /api/paid/health` reports `royalReveal`. Migration `migrations/0005_paid_reveal.sql` adds `paid_reveals`. Apply it after `0004_paid_daily.sql`. Apply it before any Worker that has this code, on `wybp-paid-test` and `wybp-live`. It does not change existing balances.
+
+The pack is a £1.99 one-off for one server-scored result. Checkout needs that result id and a display name. Stripe fulfilment writes one decree row. The buyer, on the same browser profile, claims it and receives signed file URLs. A refund revokes the entitlement and those URLs stop working. The files are a 1080×1350 decree, a 1080×1920 story decree, a PDF, and a zip of those three. The PDF and the claim include three to five passages copied from the published question bank for that region.
+
+Verify on the test Worker only after setting `ROYAL_REVEAL_ENABLED=on` for that Worker and applying migration `0004`. Leave live off. Use Stripe test mode (`STRIPE_MODE=test` and a `sk_test_` key), not live keys.
+
+1. `POST /api/paid/games/complete` with `edition`, `playerId`, and the 12 answer arrays. The response `id` is the result.
+2. `POST /api/paid/checkout` with `productKey: "royal_reveal_v1"`, that `resultId`, `displayName`, the same `playerId`, email, a country that is not blocked, and `adult: true`. Open the returned Checkout URL and pay with Stripe test card `4242 4242 4242 4242`.
+3. After the webhook, `POST /api/paid/royal-reveal` with `{ playerId, orderId }` from the same browser origin. The JSON has the certificate, the tier, the cowrie bride price, the quoted notes, and the four download paths.
+4. `GET` the card and story paths. They are PNG files, 1080×1350 and 1080×1920. The second GET of the same file sends `x-royal-cache: hit`. The PDF starts with `%PDF`. The zip contains `royal-decree-1080x1350.png`, `royal-decree-1080x1920.png`, and `royal-decree.pdf`.
+5. Refund the payment in the Stripe test dashboard, or send a signed `charge.refunded` webhook. The same file URLs then return 404. Another player id cannot claim the order.
+
+Mock checkout on a local Worker (`STRIPE_MODE=mock`) can stand in for steps 2 and 5: pay with `POST /api/paid/mock-pay` and refund through the same webhook shape the paid tests use.
 
 ## 6. Deploy command, when the above is done
 

@@ -2,7 +2,7 @@ import { isProductKey, products, FREE_COMPLETED_GAMES, GAME_COST_COWRIES, WELCOM
 import { createD1Daily } from "./dailyStore.ts";
 import { earnDay, NEW_PLAYER_BONUS, newReferralCode, PERFECT_BONUS, PERFECT_DAILY_CAP, REFERRAL_DAILY_CAP, REFERRER_BONUS, SHARE_BONUS } from "./earn.ts";
 import { PaidError } from "./errors.ts";
-import { assertSpendCount, accessFromEntitlements, type EarnDecision, type GameAttempt, type PaidEntitlement, type PaidOrder, type PaidRepository, type ReceiptStatus, type OrderState } from "./repository.ts";
+import { assertSpendCount, accessFromEntitlements, type EarnDecision, type GameAttempt, type PaidEntitlement, type PaidOrder, type PaidRepository, type ReceiptStatus, type RoyalRevealRecord, type OrderState } from "./repository.ts";
 
 type OrderRow = {
   id: string;
@@ -452,6 +452,54 @@ export function createD1Repository(database: D1Database): PaidRepository {
       });
     },
     daily: createD1Daily(database),
+    async saveReveal(record) {
+      await database.prepare(
+        `INSERT INTO paid_reveals (order_id, player_id, result_id, edition, score, display_name, certificate, token, created_at)
+         VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9)
+         ON CONFLICT(order_id) DO NOTHING`,
+      ).bind(record.orderId, record.playerId, record.resultId, record.edition, record.score, record.displayName, record.certificate, record.token, record.createdAt).run();
+      const saved = await this.getRevealByOrder(record.orderId);
+      if (!saved) throw new PaidError("reveal_unavailable", 503);
+      return saved;
+    },
+    async getRevealByOrder(orderId) {
+      const row = await database.prepare(
+        "SELECT order_id, player_id, result_id, edition, score, display_name, certificate, token, created_at FROM paid_reveals WHERE order_id=?1",
+      ).bind(orderId).first<RevealRow>();
+      return row ? revealFromRow(row) : null;
+    },
+    async getRevealByToken(token) {
+      const row = await database.prepare(
+        "SELECT order_id, player_id, result_id, edition, score, display_name, certificate, token, created_at FROM paid_reveals WHERE token=?1",
+      ).bind(token).first<RevealRow>();
+      return row ? revealFromRow(row) : null;
+    },
+  };
+}
+
+type RevealRow = {
+  order_id: string;
+  player_id: string;
+  result_id: string;
+  edition: string;
+  score: number;
+  display_name: string;
+  certificate: string;
+  token: string;
+  created_at: number;
+};
+
+function revealFromRow(row: RevealRow): RoyalRevealRecord {
+  return {
+    orderId: row.order_id,
+    playerId: row.player_id,
+    resultId: row.result_id,
+    edition: row.edition,
+    score: row.score,
+    displayName: row.display_name,
+    certificate: row.certificate,
+    token: row.token,
+    createdAt: row.created_at,
   };
 }
 
