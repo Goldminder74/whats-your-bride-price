@@ -70,6 +70,13 @@ export type PaidServices = Readonly<{
 const PLAYER_ID = /^[A-Za-z0-9_-]{16,64}$/;
 const IDEMPOTENCY = /^[A-Za-z0-9_-]{8,80}$/;
 const ORDER_ID = /^ord_[a-f0-9]{32}$/;
+/** Public region banks only. Other JSON in the asset directory stays on the Worker. */
+const QUESTION_BANK_CHUNK = /^\/question-bank\/(?:west|east|central|north|south)\.json$/;
+const STATIC_ASSET = /\.(?:png|webp|svg|ico|webmanifest|css|js|txt|xml|jpg|jpeg|gif|woff2)$/;
+
+export function isQuestionBankChunk(pathname: string): boolean {
+  return QUESTION_BANK_CHUNK.test(pathname);
+}
 
 export type PaidEnvConfig = {
   STRIPE_MODE?: string;
@@ -379,10 +386,24 @@ async function gameShell(request: Request, services: PaidServices): Promise<Resp
   return new Response(asset.body, { status: 200, headers });
 }
 
+async function serveBankChunk(request: Request, services: PaidServices): Promise<Response> {
+  if (!services.assets) return json({ error: "not_found" }, 404);
+  const asset = await services.assets.fetch(request);
+  if (!asset.ok) return json({ error: "not_found" }, 404);
+  const headers = new Headers(asset.headers);
+  headers.set("content-type", "application/json; charset=utf-8");
+  headers.set("x-content-type-options", "nosniff");
+  headers.set("cache-control", "public, max-age=3600");
+  return new Response(asset.body, { status: 200, headers });
+}
+
 export async function servePaid(request: Request, services: PaidServices): Promise<Response> {
   const url = new URL(request.url);
   try {
-    if (request.method === "GET" && /\.(?:png|webp|svg|ico|webmanifest|css|js|txt|xml|jpg|jpeg|gif|woff2)$/.test(url.pathname)) {
+    if (request.method === "GET" && isQuestionBankChunk(url.pathname)) {
+      return await serveBankChunk(request, services);
+    }
+    if (request.method === "GET" && STATIC_ASSET.test(url.pathname)) {
       if (!services.assets) return json({ error: "not_found" }, 404);
       return services.assets.fetch(request);
     }

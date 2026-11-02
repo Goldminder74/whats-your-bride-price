@@ -12,13 +12,24 @@ const files: Record<RegionKey, () => Promise<{ default: PublishedFile }>> = {
   south: () => jsonModule(import("../data/question-bank/published/south.json", { with: { type: "json" } })),
 };
 
+async function bundledPublished(region: RegionKey): Promise<PublishedFile> {
+  const loaded = await files[region]();
+  return loaded.default;
+}
+
 async function readPublished(region: RegionKey): Promise<PublishedFile> {
   if (typeof window !== "undefined") {
-    const response = await fetch(`/question-bank/${region}.json`);
-    if (!response.ok) throw new Error(`question bank ${response.status}`);
-    return response.json() as Promise<PublishedFile>;
+    try {
+      const response = await fetch(`/question-bank/${region}.json`);
+      if (response.ok) {
+        const file = await response.json() as PublishedFile;
+        if (file && Array.isArray(file.questions)) return file;
+      }
+    } catch {
+      // The asset route can be missing on an older shell. The bundled chunk still has the bank.
+    }
   }
-  return (await files[region]()).default;
+  return bundledPublished(region);
 }
 
 export async function loadPublished(region: RegionKey): Promise<BankQuestion[]> {

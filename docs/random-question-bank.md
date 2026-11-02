@@ -8,6 +8,8 @@ Each paid round is 12 questions drawn from that region's published bank. The cla
 
 The paid site shell is built with `WYBP_FEATURE_RANDOM_BANK=true` in `scripts/assemble-paid-assets.mjs`. `npm run test:e2e` builds with that flag and plays a full random round. A plain `npm run build` leaves the flag unset, so those pages still play the classic 12 in order.
 
+The browser loads `/question-bank/<region>.json` from the paid asset directory. With `run_worker_first`, the Worker serves only those five region files. Other JSON in the asset directory, including the build manifest, stays unserved. If that fetch fails, the game falls back to the bundled region chunk.
+
 With the flag on:
 
 - A new round avoids the player's latest 24 questions when the bank allows it.

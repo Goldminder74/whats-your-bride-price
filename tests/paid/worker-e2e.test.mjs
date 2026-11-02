@@ -18,6 +18,7 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
       EMAIL_FROM: "What's Your Bride Price? <noreply@mail.classesforculture.com>",
       EMAIL_REPLY_TO: "team@classesforculture.com",
       PUBLIC_APP_ORIGIN: "https://brideprice.classesforculture.com",
+      RANDOM_BANK: "on",
     },
     experimental: { disableExperimentalWarning: true, forceLocal: true, disableDevRegistry: true },
   });
@@ -31,6 +32,40 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
     assert.doesNotMatch(html, /Melrose Avenue|WD6 2BH/);
     const asset = await worker.fetch("http://127.0.0.1/favicon.svg");
     assert.equal(asset.status, 200);
+
+    const bankResponse = await worker.fetch("http://127.0.0.1/question-bank/west.json");
+    assert.equal(bankResponse.status, 200);
+    assert.match(bankResponse.headers.get("content-type") || "", /application\/json/);
+    const bank = await bankResponse.json();
+    assert.equal(bank.region, "west");
+    assert.ok(bank.questions.length >= 50);
+    assert.equal(bank.questions.some((question) => question.region === "west" && question.prompt), true);
+
+    const roundPlayer = "worker_bank_round_01";
+    const roundResponse = await worker.fetch(`http://127.0.0.1/api/paid/questions?edition=west&player=${roundPlayer}`);
+    const round = await roundResponse.json();
+    assert.equal(roundResponse.status, 200, JSON.stringify(round));
+    assert.match(round.roundId, /^[a-f0-9]{32}$/);
+    assert.equal(round.questions.length, 12);
+    assert.equal(round.questions.every((question) => typeof question.prompt === "string" && !("correct" in question)), true);
+    const classicPrompts = new Set(regions.west.questions.map((question) => question.prompt));
+    assert.equal(round.questions.some((question) => !classicPrompts.has(question.prompt)), true);
+
+    for (const path of [
+      "/vinext-client-entry-manifest.json",
+      "/.vite/manifest.json",
+      "/package.json",
+      "/question-bank/held/west.json",
+      "/question-bank/west.json.bak",
+      "/data/question-bank/published/west.json",
+      "/question-bank/../package.json",
+    ]) {
+      const hidden = await worker.fetch(`http://127.0.0.1${path}`);
+      assert.equal(hidden.status, 404, path);
+      const hiddenBody = await hidden.text();
+      assert.equal(hiddenBody.includes("\"questions\""), false, path);
+      assert.equal(hiddenBody.includes("node_modules"), false, path);
+    }
 
     const answers = regions.west.questions.map((question) => [...question.correct]);
     const completed = await worker.fetch("http://127.0.0.1/api/paid/games/complete", {
