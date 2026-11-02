@@ -139,7 +139,7 @@ export function PaidDesk() {
                     {catalog.products.map((product) => <option key={product.key} value={product.key}>{product.name} · {product.displayPrice}</option>)}
                   </select>
                 </label>
-                <label>Email
+                <label className="paid-field">Email address
                   <input type="email" required autoComplete="email" maxLength={200} value={email} onChange={(event) => setEmail(event.target.value)} />
                 </label>
                 <label>Country
@@ -149,7 +149,7 @@ export function PaidDesk() {
                 </label>
                 {purchasesBlocked ? <p className="paid-block" role="status">{blockedMessage}</p> : (
                   <>
-                    <label className="paid-check"><input type="checkbox" checked={adult} onChange={(event) => setAdult(event.target.checked)} required /> I confirm I am 18 or over.</label>
+                    <label className="paid-check"><input type="checkbox" checked={adult} onChange={(event) => setAdult(event.target.checked)} required /> {"I'm 18 or over."}</label>
                     {needsWaiver && <label className="paid-check"><input type="checkbox" checked={waiver} onChange={(event) => setWaiver(event.target.checked)} required /> {catalog.waiverText}</label>}
                     <button className="big-action" type="submit" disabled={busy}>Continue to Stripe <span>→</span></button>
                   </>

@@ -73,9 +73,7 @@ function view(facts: ReceiptFacts) {
   const shortRef = shortOrderReference(facts.order.id);
   const amount = formatMoney(facts.amountMinor, facts.currency);
   const tax = facts.taxMinor !== null && facts.taxMinor > 0 ? formatMoney(facts.taxMinor, facts.currency) : null;
-  const waiver = facts.kind === "purchase" && facts.order.waiverVersion
-    ? `You asked for immediate supply and acknowledged: ${WAIVER_TEXT}`
-    : null;
+  const waiver = facts.kind === "purchase" && facts.order.waiverVersion ? WAIVER_TEXT : null;
   return {
     productName: product.name,
     shortRef,
