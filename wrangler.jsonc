@@ -38,7 +38,8 @@
     "RANDOM_BANK": "on",
     "EARN_PATHS": "on",
     "SHARE_CARDS": "on",
-    "DAILY_CHALLENGE": "on"
+    "DAILY_CHALLENGE": "on",
+    "RESULT_VIDEO": "off"
   },
   "assets": {
     "directory": "./outputs/paid-assets",

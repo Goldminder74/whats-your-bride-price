@@ -6,6 +6,7 @@
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type Question as PlayQuestion } from "./gameData";
 import { buildRevealRecording } from "../paid/revealOffer.ts";
+import { buildResultVideo } from "./resultVideo";
 import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, finishGame, readPlayerId, recordArrival, recordServerResult, type PaidFeatures } from "./paidClient";
 import { paidCommerceEnabled, randomBankEnabled } from "./paidFlags";
 import { finishRound, playRandomRound, readSavedRound, writeSavedRound } from "../question-bank/clientRound.ts";
@@ -216,13 +217,15 @@ export default function BridePriceGame() {
   const [allAfricaJustUnlocked, setAllAfricaJustUnlocked] = useState(false);
   const [revealAura, setRevealAura] = useState(0);
   const [bankRound, setBankRound] = useState<PlayQuestion[] | null>(null);
-  const [paidFeatures, setPaidFeatures] = useState<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false });
+  const [paidFeatures, setPaidFeatures] = useState<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false, resultVideo: false });
+  const [videoBusy, setVideoBusy] = useState(false);
+  const [videoNote, setVideoNote] = useState("");
   const [serverResultId, setServerResultId] = useState<string | null>(null);
   const [referralCode, setReferralCode] = useState<string | null>(null);
   const [referralUrl, setReferralUrl] = useState<string | null>(null);
   const [perfectNote, setPerfectNote] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
-  const paidFeaturesRef = useRef<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false });
+  const paidFeaturesRef = useRef<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false, resultVideo: false });
   const dailyMode = useRef(false);
   const [friendScore, setFriendScore] = useState<number | null>(null);
   const [dailyNote, setDailyNote] = useState("");
@@ -721,6 +724,59 @@ export default function BridePriceGame() {
     }
   };
 
+  const resultVideoFile = async () => {
+    setVideoBusy(true);
+    setVideoNote("Preparing your video…");
+    try {
+      return await buildResultVideo({
+        edition: regionKey,
+        score: correctCount,
+        referral: paidFeatures.earnPaths ? referralCode : null,
+      });
+    } catch (error) {
+      reportAppError("result_video_failed", error, { region: regionKey });
+      setVideoNote("This browser could not make the video. Try again in a moment.");
+      return null;
+    } finally {
+      setVideoBusy(false);
+    }
+  };
+
+  const saveResultVideo = async () => {
+    const blob = await resultVideoFile();
+    if (!blob) return;
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = `bride-price-${regionKey}-${correctCount}.mp4`;
+    anchor.click();
+    URL.revokeObjectURL(url);
+    setVideoNote("");
+  };
+
+  const shareResultVideo = async () => {
+    const blob = await resultVideoFile();
+    if (!blob) return;
+    const file = new File([blob], `bride-price-${regionKey}-${correctCount}.mp4`, { type: "video/mp4" });
+    const challenge = challengeUrl(regionKey, correctCount, paidFeatures.earnPaths ? referralCode : null);
+    if (navigator.canShare?.({ files: [file] }) && navigator.share) {
+      try {
+        await navigator.share({ files: [file], title: "My Bride Price result", text: `Can you beat me? ${challenge}` });
+        setVideoNote("");
+        return;
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+      }
+    }
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = file.name;
+    anchor.click();
+    URL.revokeObjectURL(url);
+    setVideoNote("");
+  };
+
   return (
     <main className={`game-shell theme-${regionKey} screen-${screen}`} data-hydrated={hydrated}>
       <div className="grain" aria-hidden="true" />
@@ -943,6 +999,7 @@ export default function BridePriceGame() {
                 </div>
               </section> : null}
               {paidFeatures.shareCards ? <div className="share-preview"><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}`} alt={`Result card, ${correctCount} of 12, ${tierTitles[tier]}`} /><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}&frame=story`} alt="Story result card" /></div> : null}
+              {paidFeatures.resultVideo ? <div className="video-actions"><button type="button" onClick={() => void saveResultVideo()} disabled={videoBusy}>Save video</button><button type="button" onClick={() => void shareResultVideo()} disabled={videoBusy}>Share video</button>{videoNote ? <p role="status">{videoNote}</p> : null}</div> : null}
               <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>
               {serverResultId ? <RoyalRevealOffer resultId={serverResultId} edition={regionKey} score={correctCount} /> : null}
               {paidFeatures.shareCards || paidFeatures.earnPaths ? <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`${shareBlurb(correctCount)} ${challengeUrl(regionKey, correctCount, paidFeatures.earnPaths ? referralCode : null)}`)}`} target="_blank" rel="noreferrer" onClick={() => { if (paidFeatures.earnPaths) void claimShareReward(); }}>Share my result on WhatsApp ↗</a> : null}

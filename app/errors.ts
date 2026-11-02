@@ -3,7 +3,8 @@ export type AppErrorCode =
   | "photo_read_failed"
   | "result_export_failed"
   | "share_failed"
-  | "question_bank_failed";
+  | "question_bank_failed"
+  | "result_video_failed";
 
 export type AppErrorContext = Readonly<Record<string, string | number | boolean>>;
 

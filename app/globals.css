@@ -187,6 +187,11 @@ button:focus-visible,a:focus-visible,.region-card:focus-visible{outline:3px soli
 @media(max-width:420px){.daily-meta,.invite-actions{flex-direction:column;align-items:stretch}.invite-actions button,.invite-actions a{flex:0 0 auto;width:100%;min-width:0;min-height:44px}}
 .share-preview{display:grid;grid-template-columns:1.15fr .72fr;gap:12px;align-items:start;margin:8px 0 18px}
 .share-preview img{width:100%;height:auto;border:2px solid #f0a11a;box-shadow:8px 10px 0 #2b1a10;background:#1a0e09}
+.video-actions{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 16px}
+.video-actions button{flex:1 1 140px;min-height:44px;border:2px solid #2b1a10;background:#26180f;color:#f4e7cd;font:800 15px/1 "Avenir Next","Century Gothic",Arial,sans-serif;cursor:pointer}
+.video-actions button:disabled{opacity:.6}
+.video-actions p{flex:1 1 100%;margin:0}
+@media(max-width:420px){.video-actions{flex-direction:column}.video-actions button{width:100%}}
 .royal-offer{box-sizing:border-box;width:100%;max-width:560px;max-height:none;overflow:visible;margin:22px 0 0;text-align:left}
 .royal-thumb-frame{position:relative;width:min(100%,240px);aspect-ratio:4/5;margin:8px 0 4px;border:2px solid #3b2517;box-shadow:8px 10px 0 #2b1a10;background:#1a0e09;overflow:hidden}
 .royal-thumb-frame img{display:block;width:100%;height:100%;object-fit:cover}

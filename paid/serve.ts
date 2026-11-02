@@ -32,6 +32,7 @@ import { claimReferralIfFirstGame, handlePerfect, handleReferralArrive, handleRe
 import { applyChallengeMeta, challengeUrl, shareBlurb, shareCardImageUrl } from "./shareCard.ts";
 import { revealHoldFromPurchase, writeRevealHold } from "./royalReveal.ts";
 import { handleDecreePreview } from "./decreePreview.ts";
+import { handleResultVideoFile, handleResultVideoStory } from "./resultVideoRoute.ts";
 import { handleRoyalClaim, handleRoyalFile } from "./royalRevealRoute.ts";
 import { isReferralCode } from "./earn.ts";
 import { handleQuestionComplete, handleQuestionGet } from "./questionRoute.ts";
@@ -82,6 +83,8 @@ export type PaidServices = Readonly<{
   shareCards?: boolean;
   /** One free daily set per region. Off unless DAILY_CHALLENGE is on. */
   dailyChallenge?: boolean;
+  /** Free 5-second result video. Off unless RESULT_VIDEO is on. */
+  resultVideo?: boolean;
 }>;
 
 const PLAYER_ID = /^[A-Za-z0-9_-]{16,64}$/;
@@ -488,6 +491,7 @@ export async function servePaid(request: Request, services: PaidServices): Promi
         shareCards: services.shareCards === true,
         dailyChallenge: services.dailyChallenge === true,
         royalReveal: services.royalRevealEnabled === true,
+        resultVideo: services.resultVideo === true,
       });
     }
     if (request.method === "GET" && url.pathname === "/api/paid/catalog") {
@@ -516,7 +520,15 @@ export async function servePaid(request: Request, services: PaidServices): Promi
         shareCards: services.shareCards === true,
         dailyChallenge: services.dailyChallenge === true,
         royalReveal: services.royalRevealEnabled === true,
+        resultVideo: services.resultVideo === true,
       });
+    }
+    if ((request.method === "GET" || request.method === "POST") && url.pathname === "/api/paid/result-video.mp4") {
+      if (request.method === "POST") sameOrigin(request);
+      return await handleResultVideoFile(request, url, services);
+    }
+    if (request.method === "GET" && url.pathname === "/api/paid/result-video") {
+      return await handleResultVideoStory(url, services);
     }
     if (request.method === "GET" && url.pathname === "/api/paid/questions") {
       return await handleQuestionGet(url, services);
