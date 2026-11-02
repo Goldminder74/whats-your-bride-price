@@ -5,6 +5,7 @@
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections } from "./gameData";
+import { beginGame, finishGame } from "./paidClient";
 import { paidCommerceEnabled } from "./paidFlags";
 import { PaidDesk } from "./PaidDesk";
 import { reportAppError } from "./errors";
@@ -191,6 +192,8 @@ export default function BridePriceGame() {
   const [dropOpen, setDropOpen] = useState(false);
   const [sound, setSound] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [paywall, setPaywall] = useState(false);
+  const [attemptId, setAttemptId] = useState<string | null>(null);
   const [bestScores, setBestScores] = useState<Partial<Record<RegionKey, number>>>({});
   const [allAfricaJustUnlocked, setAllAfricaJustUnlocked] = useState(false);
   const [revealAura, setRevealAura] = useState(0);
@@ -298,7 +301,23 @@ export default function BridePriceGame() {
     reader.readAsDataURL(file);
   };
 
-  const beginQuiz = () => {
+  const beginQuiz = async () => {
+    let edition = regionKey;
+    if (paidCommerceEnabled()) {
+      try {
+        const started = await beginGame(regionKey);
+        if (!started.ok) {
+          setPaywall(true);
+          return;
+        }
+        edition = started.edition as RegionKey;
+        if (edition !== regionKey) setRegionKey(edition);
+        setAttemptId(started.attemptId);
+      } catch {
+        setPaywall(true);
+        return;
+      }
+    }
     setIndex(0); setAnswers([]); setSelected([]); setFeedbackOpen(false); setScreen("quiz");
     playTone(520, true); window.scrollTo(0, 0);
   };
@@ -324,7 +343,11 @@ export default function BridePriceGame() {
 
   const nextQuestion = () => {
     if (index === 11) {
+      const currentAttempt = attemptId;
       setScreen("result"); setDropOpen(false); playTone(720, true);
+      if (paidCommerceEnabled() && currentAttempt) {
+        void finishGame(currentAttempt).then((done) => { if (done.showPaywall) setPaywall(true); });
+      }
     } else {
       setIndex((current) => current + 1); setSelected([]); setFeedbackOpen(false);
       if ((index + 1) % 3 === 0) setDropOpen(true);
@@ -429,7 +452,7 @@ export default function BridePriceGame() {
           {screen === "home" && <a href="#editions">The editions</a>}
           {screen === "home" && <span className="passport-mini">Mastery seals <b>{masteredRegions.length}/5</b></span>}
           <button className="text-nav" onClick={() => setMenuOpen(true)}>About the game</button>
-          {paidCommerceEnabled() && <PaidDesk />}
+          {paidCommerceEnabled() && <PaidDesk forceOpen={paywall} onClose={() => setPaywall(false)} />}
           <button className="sound-button" onClick={() => setSound(!sound)} aria-label={sound ? "Turn sound off" : "Turn sound on"}><span>{sound ? "♪" : "×"}</span> Sound {sound ? "on" : "off"}</button>
         </div>
       </header>

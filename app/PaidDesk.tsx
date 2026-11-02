@@ -3,8 +3,9 @@
 /* eslint-disable react-hooks/set-state-in-effect -- the desk loads access and a return order once */
 
 import { FormEvent, useEffect, useId, useState } from "react";
+import { fetchWallet, readPlayerId } from "./paidClient";
 
-type Product = { key: string; name: string; displayPrice: string; kind: string };
+type Product = { key: string; name: string; displayPrice: string; kind: string; games: number };
 type Catalog = {
   products: Product[];
   countries: { code: string; name: string }[];
@@ -15,20 +16,11 @@ type Catalog = {
   waiverText: string;
 };
 
-const PLAYER_KEY = "wybp-player";
-
-function playerId(): string {
-  const existing = localStorage.getItem(PLAYER_KEY) || "";
-  if (/^[A-Za-z0-9_-]{16,64}$/.test(existing)) return existing;
-  const created = crypto.randomUUID().replaceAll("-", "");
-  localStorage.setItem(PLAYER_KEY, created);
-  return created;
-}
-
-export function PaidDesk() {
+export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; onClose?: () => void }) {
   const titleId = useId();
   const [open, setOpen] = useState(false);
   const [cowries, setCowries] = useState<number | null>(null);
+  const [freeGamesLeft, setFreeGamesLeft] = useState<number | null>(null);
   const [royal, setRoyal] = useState(false);
   const [catalog, setCatalog] = useState<Catalog | null>(null);
   const [productKey, setProductKey] = useState("");
@@ -40,35 +32,44 @@ export function PaidDesk() {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    const id = playerId();
+    if (forceOpen) setOpen(true);
+  }, [forceOpen]);
+
+  useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const orderId = params.get("order");
     if (window.location.pathname === "/checkout/return" && orderId) setOpen(true);
     let cancelled = false;
-    (async () => {
+    const load = async () => {
       try {
-        const [accessResponse, catalogResponse] = await Promise.all([
-          fetch(`/api/paid/access?player=${id}`),
+        const [wallet, catalogResponse] = await Promise.all([
+          fetchWallet(),
           fetch("/api/paid/catalog"),
         ]);
-        if (!accessResponse.ok || !catalogResponse.ok) return;
-        const access = await accessResponse.json() as { cowries: number; royal: boolean };
+        if (cancelled) return;
+        if (wallet) {
+          setCowries(wallet.cowries);
+          setFreeGamesLeft(wallet.freeGamesLeft);
+          setRoyal(wallet.royal);
+        }
+        if (!catalogResponse.ok) return;
         const nextCatalog = await catalogResponse.json() as Catalog;
         if (cancelled) return;
-        setCowries(access.cowries);
-        setRoyal(access.royal);
         setCatalog(nextCatalog);
-        setProductKey(nextCatalog.products[0]?.key || "");
+        setProductKey((current) => current || nextCatalog.products[0]?.key || "");
         if (orderId) {
           const orderResponse = await fetch(`/api/paid/orders/${orderId}`);
-          const order = await orderResponse.json() as { state?: string; error?: string };
+          const order = await orderResponse.json() as { state?: string };
           if (!cancelled) setStatus(order.state ? `Order ${order.state}. Your balance is restored from this browser.` : "That order could not be restored.");
         }
       } catch {
         if (!cancelled) setStatus("Purchases connect when this page is served by the game.");
       }
-    })();
-    return () => { cancelled = true; };
+    };
+    void load();
+    const refresh = () => { void load(); };
+    window.addEventListener("wybp-wallet", refresh);
+    return () => { cancelled = true; window.removeEventListener("wybp-wallet", refresh); };
   }, []);
 
   const blocked = new Set(catalog?.blockedCountries || []);
@@ -77,12 +78,12 @@ export function PaidDesk() {
   const blockedMessage = catalog?.purchaseBlockedMessage || "Purchases aren't available in your country yet. You can still play for free!";
 
   async function restore() {
-    const id = playerId();
     setStatus("Restoring this browser…");
-    const response = await fetch(`/api/paid/access?player=${id}`);
+    const response = await fetch(`/api/paid/access?player=${readPlayerId()}`);
     if (!response.ok) { setStatus("Restore is unavailable right now."); return; }
-    const access = await response.json() as { cowries: number; royal: boolean };
+    const access = await response.json() as { cowries: number; royal: boolean; freeGamesLeft: number };
     setCowries(access.cowries);
+    setFreeGamesLeft(access.freeGamesLeft);
     setRoyal(access.royal);
     setStatus(access.royal ? "Restored. Royal Reveal is unlocked on this browser." : `Restored. ${access.cowries} cowries on this browser.`);
   }
@@ -96,7 +97,7 @@ export function PaidDesk() {
       const response = await fetch("/api/paid/checkout", {
         method: "POST",
         headers: { "content-type": "application/json", "idempotency-key": crypto.randomUUID() },
-        body: JSON.stringify({ productKey, email, country, playerId: playerId(), adult, waiver }),
+        body: JSON.stringify({ productKey, email, country, playerId: readPlayerId(), adult, waiver }),
       });
       const payload = await response.json() as { url?: string; message?: string; error?: string };
       if (!response.ok || !payload.url) {
@@ -111,21 +112,25 @@ export function PaidDesk() {
     }
   }
 
+  const shown = open || forceOpen;
+  const freeLabel = freeGamesLeft === null ? "free games" : `${freeGamesLeft} free ${freeGamesLeft === 1 ? "game" : "games"} left`;
+
   return (
     <>
       <button className="cowrie-chip" onClick={() => setOpen(true)} aria-haspopup="dialog">
         <span aria-hidden="true">✦</span>
-        <b>{cowries === null ? "Cowries" : `${cowries} cowries`}</b>
+        <span className="cowrie-chip-copy"><b>{cowries === null ? "Cowries" : `${cowries} cowries`}</b><small>{freeLabel}</small></span>
         {royal ? <small>Royal</small> : null}
       </button>
-      {open && (
-        <div className="paid-sheet" role="dialog" aria-modal="true" aria-labelledby={titleId}>
+      {shown && (
+        <div className={`paid-sheet${forceOpen ? " forced" : ""}`} role="dialog" aria-modal="true" aria-labelledby={titleId}>
           <div className="paid-card">
-            <button className="modal-close" onClick={() => setOpen(false)} aria-label="Close purchases">×</button>
+            <button className="modal-close" onClick={() => { setOpen(false); onClose?.(); }} aria-label="Close purchases">×</button>
             <p className="eyebrow">Optional extras</p>
             <h2 id={titleId}>COWRIES<br /><i>FOR THE CURIOUS</i></h2>
-            <p>The five editions stay free. Cowries and Royal Reveal are one-off extras for this browser. Card details stay with Stripe.</p>
-            <p className="paid-balance"><b>{cowries === null ? "—" : cowries}</b> cowries on this browser{royal ? " · Royal Reveal unlocked" : ""}</p>
+            <p>Your first two completed games are free. After that, starting a game costs 5 Cowries. Card details stay with Stripe.</p>
+            <p className="paid-balance"><b>{cowries === null ? "—" : cowries}</b> cowries on this browser. {freeLabel}.{royal ? " Royal Reveal from an earlier purchase is still unlocked." : ""}</p>
+            <p className="paid-bonus">Welcome bonus: +5 Cowries on your first purchase. Bonus Cowries are used first and expire 14 days after that purchase.</p>
             <div className="paid-actions">
               <button type="button" className="outline-action" onClick={restore}>Restore this browser</button>
               <a href="/refunds">Refunds</a>
@@ -134,11 +139,14 @@ export function PaidDesk() {
             </div>
             {!catalog ? <p role="status">{status || "Loading the stall…"}</p> : (
               <form onSubmit={checkout}>
-                <label>Extra
-                  <select value={productKey} onChange={(event) => setProductKey(event.target.value)}>
-                    {catalog.products.map((product) => <option key={product.key} value={product.key}>{product.name} · {product.displayPrice}</option>)}
-                  </select>
-                </label>
+                <div className="paid-bundles" role="radiogroup" aria-label="Cowrie bundles">
+                  {catalog.products.filter((product) => product.kind !== "royal_reveal").map((product) => (
+                    <label key={product.key} className={`paid-bundle${productKey === product.key ? " selected" : ""}`}>
+                      <input type="radio" name="bundle" value={product.key} checked={productKey === product.key} onChange={() => setProductKey(product.key)} />
+                      <span>{product.name} · {product.games} {product.games === 1 ? "game" : "games"} · {product.displayPrice}</span>
+                    </label>
+                  ))}
+                </div>
                 <label className="paid-field">Email address
                   <input type="email" required autoComplete="email" maxLength={200} value={email} onChange={(event) => setEmail(event.target.value)} />
                 </label>

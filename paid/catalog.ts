@@ -4,10 +4,11 @@
  * Stripe Tax is off unless STRIPE_AUTOMATIC_TAX=on. The price shown is the final price.
  */
 export const products = Object.freeze({
-  cowrie_5_v1: Object.freeze({ name: "5 Cowries", amountMinor: 199, quantity: 5, kind: "cowries" as const, displayPrice: "£1.99" }),
-  cowrie_15_v1: Object.freeze({ name: "15 Cowries", amountMinor: 499, quantity: 15, kind: "cowries" as const, displayPrice: "£4.99" }),
-  cowrie_40_v1: Object.freeze({ name: "40 Cowries", amountMinor: 999, quantity: 40, kind: "cowries" as const, displayPrice: "£9.99" }),
-  royal_reveal_v1: Object.freeze({ name: "Royal Reveal", amountMinor: 199, quantity: 1, kind: "royal_reveal" as const, displayPrice: "£1.99" }),
+  cowrie_5_v1: Object.freeze({ name: "5 Cowries", amountMinor: 199, quantity: 5, kind: "cowries" as const, displayPrice: "£1.99", forSale: true }),
+  cowrie_15_v1: Object.freeze({ name: "15 Cowries", amountMinor: 499, quantity: 15, kind: "cowries" as const, displayPrice: "£4.99", forSale: true }),
+  cowrie_40_v1: Object.freeze({ name: "40 Cowries", amountMinor: 999, quantity: 40, kind: "cowries" as const, displayPrice: "£9.99", forSale: true }),
+  royal_reveal_v1: Object.freeze({ name: "Royal Reveal", amountMinor: 199, quantity: 1, kind: "royal_reveal" as const, displayPrice: "£1.99", forSale: true }),
+  cowrie_welcome_v1: Object.freeze({ name: "Welcome bonus", amountMinor: 0, quantity: 5, kind: "cowries" as const, displayPrice: "", forSale: false }),
 });
 
 export type ProductKey = keyof typeof products;
@@ -51,6 +52,15 @@ export const withdrawalCountries = Object.freeze(new Set([
 ]));
 
 export const WAIVER_VERSION = "instant-digital-withdrawal-waiver-draft-2026-11-01";
+
+export const FREE_COMPLETED_GAMES = 2;
+export const GAME_COST_COWRIES = 5;
+export const WELCOME_BONUS_COWRIES = 5;
+export const WELCOME_BONUS_MS = 14 * 24 * 60 * 60 * 1000;
+
+export function gamesInBundle(quantity: number): number {
+  return Math.floor(quantity / GAME_COST_COWRIES);
+}
 
 /** Shown at checkout and repeated on the receipt for UK, EU and EEA buyers. */
 export const WAIVER_TEXT = "I want my Cowries straight away. I understand that once they're delivered I lose my 14-day right to cancel, unless they're faulty or not as described.";

@@ -1,6 +1,11 @@
 import {
   CANONICAL_ORIGIN,
   isCountryCode,
+  FREE_COMPLETED_GAMES,
+  GAME_COST_COWRIES,
+  WELCOME_BONUS_COWRIES,
+  WELCOME_BONUS_MS,
+  gamesInBundle,
   isProductKey,
   priorityCountries,
   productKeys,
@@ -49,6 +54,8 @@ export type PaidServices = Readonly<{
   email: TransactionalEmail;
   replyTo?: string;
   blockedCountries?: ReadonlySet<string>;
+  royalRevealEnabled?: boolean;
+  ownerStatsToken?: string;
   refundBlockedPayment?: (paymentIntentId: string) => Promise<void>;
   config: PaidConfig | null;
   assets?: { fetch(request: Request): Promise<Response> };
@@ -185,7 +192,8 @@ async function handleCheckout(request: Request, services: PaidServices): Promise
   if (body.provider === "paystack") {
     await paystackSeam.createCheckout({ productKey: String(body.productKey || ""), email: String(body.email || ""), country: String(body.country || "") });
   }
-  if (!isProductKey(body.productKey)) throw new PaidError("product_invalid", 400);
+  if (!isProductKey(body.productKey) || !products[body.productKey].forSale) throw new PaidError("product_invalid", 400);
+  if (products[body.productKey].kind === "royal_reveal" && !services.royalRevealEnabled) throw new PaidError("royal_reveal_unavailable", 404);
   if (!validEmail(body.email)) throw new PaidError("email_invalid", 400);
   if (!isCountryCode(body.country)) throw new PaidError("country_invalid", 400);
   if (typeof body.playerId !== "string" || !PLAYER_ID.test(body.playerId)) throw new PaidError("player_invalid", 400);
@@ -239,6 +247,7 @@ async function handleCheckout(request: Request, services: PaidServices): Promise
     ? { id: `cs_test_mock_${order.id.slice(4)}`, url: `${requestOrigin}/checkout/mock?order=${order.id}` }
     : await createStripeSession(config.stripeSecretKey, params, idempotencyKey, config.stripeMode === "live" ? "live" : "test", services.stripeFetch ?? fetch);
   await services.repository.attachSession(order.id, session.id, session.url);
+  await services.repository.recordStat("checkout_start", "", now);
   return json({ url: session.url, orderId: order.id, replay: false });
 }
 
@@ -307,6 +316,55 @@ async function handleMockPay(request: Request, services: PaidServices): Promise<
   return Response.redirect(new URL(`/checkout/return?order=${order.id}`, request.url), 303);
 }
 
+const ATTEMPT_ID = /^[A-Za-z0-9_-]{16,80}$/;
+
+function tokenMatches(expected: string, provided: string): boolean {
+  const left = new TextEncoder().encode(expected);
+  const right = new TextEncoder().encode(provided);
+  if (left.length === 0 || left.length !== right.length) return false;
+  let mismatch = 0;
+  for (let index = 0; index < left.length; index += 1) mismatch |= left[index] ^ right[index];
+  return mismatch === 0;
+}
+
+async function handleBegin(request: Request, services: PaidServices): Promise<Response> {
+  sameOrigin(request);
+  await ready(services);
+  const body = await readJson(request, 4_000) as Record<string, unknown>;
+  if (typeof body.playerId !== "string" || !PLAYER_ID.test(body.playerId)) throw new PaidError("player_invalid", 400);
+  if (typeof body.attemptId !== "string" || !ATTEMPT_ID.test(body.attemptId)) throw new PaidError("attempt_invalid", 400);
+  if (!isEdition(body.edition)) throw new PaidError("edition_invalid", 400);
+  const result = await services.repository.beginAttempt({ playerId: body.playerId, attemptId: body.attemptId, edition: body.edition, at: services.now() });
+  if (!result.granted) {
+    await services.repository.recordStat("paywall_view", "short", services.now());
+    return json({ error: "cowries_required", ...result.wallet, gameCost: GAME_COST_COWRIES }, 402);
+  }
+  if (!result.resumed) await services.repository.recordStat("game_start", result.attempt.mode, services.now());
+  return json({ attemptId: result.attempt.attemptId, edition: result.attempt.edition, mode: result.attempt.mode, resumed: result.resumed, ...result.wallet, gameCost: GAME_COST_COWRIES });
+}
+
+async function handleFinish(request: Request, services: PaidServices): Promise<Response> {
+  sameOrigin(request);
+  await ready(services);
+  const body = await readJson(request, 4_000) as Record<string, unknown>;
+  if (typeof body.playerId !== "string" || !PLAYER_ID.test(body.playerId)) throw new PaidError("player_invalid", 400);
+  if (typeof body.attemptId !== "string" || !ATTEMPT_ID.test(body.attemptId)) throw new PaidError("attempt_invalid", 400);
+  const result = await services.repository.finishAttempt({ playerId: body.playerId, attemptId: body.attemptId, at: services.now() });
+  if (!result.already) await services.repository.recordStat("game_complete", "", services.now());
+  if (result.showPaywall) await services.repository.recordStat("paywall_view", "after_free", services.now());
+  return json(result);
+}
+
+async function handleOwnerStats(request: Request, services: PaidServices): Promise<Response> {
+  const token = services.ownerStatsToken || "";
+  const provided = request.headers.get("x-owner-stats-token") || "";
+  if (!token) throw new PaidError("owner_stats_unconfigured", 503);
+  if (!tokenMatches(token, provided)) throw new PaidError("owner_stats_rejected", 401);
+  await ready(services);
+  const since = new Date(services.now() - 30 * 86_400_000).toISOString().slice(0, 10);
+  return json({ days: await services.repository.listStats(since) });
+}
+
 async function gameShell(request: Request, services: PaidServices): Promise<Response | null> {
   if (!services.assets) return null;
   const asset = await services.assets.fetch(new Request(new URL("/index.html", request.url), { headers: request.headers }));
@@ -326,6 +384,8 @@ export async function servePaid(request: Request, services: PaidServices): Promi
       return services.assets.fetch(request);
     }
     if (request.method === "GET" && (url.pathname === "/" || url.pathname === "")) {
+      await ready(services);
+      try { await services.repository.recordStat("visit", "", services.now()); } catch { /* a stats miss must not hide the game */ }
       return await gameShell(request, services) ?? html(playPageHtml());
     }
     if (request.method === "GET" && (url.pathname === "/privacy" || url.pathname === "/terms" || url.pathname === "/refunds")) {
@@ -337,7 +397,13 @@ export async function servePaid(request: Request, services: PaidServices): Promi
     if (request.method === "GET" && url.pathname === "/api/paid/catalog") {
       return json({
         editions: editions(),
-        products: productKeys.map((key) => ({ key, ...products[key] })),
+        products: productKeys.filter((key) => products[key].forSale && (products[key].kind !== "royal_reveal" || services.royalRevealEnabled)).map((key) => ({
+          key,
+          name: products[key].name,
+          displayPrice: products[key].displayPrice,
+          kind: products[key].kind,
+          games: products[key].kind === "cowries" ? gamesInBundle(products[key].quantity) : 0,
+        })),
         countries: priorityCountries.map(([code, name, currency]) => ({ code, name, currency })),
         waiverCountries: [...withdrawalCountries],
         waiverText: WAIVER_TEXT,
@@ -366,8 +432,15 @@ export async function servePaid(request: Request, services: PaidServices): Promi
       await ready(services);
       const player = url.searchParams.get("player") || "";
       if (!PLAYER_ID.test(player)) throw new PaidError("player_invalid", 400);
-      const access = await services.repository.accessForPlayer(player);
-      return json({ cowries: access.cowries, royal: access.royal, source: "d1" });
+      const wallet = await services.repository.wallet(player, services.now());
+      return json({
+        ...wallet,
+        source: "d1",
+        gameCost: GAME_COST_COWRIES,
+        freeGamesAllowance: FREE_COMPLETED_GAMES,
+        welcomeBonusCowries: WELCOME_BONUS_COWRIES,
+        welcomeBonusDays: WELCOME_BONUS_MS / 86_400_000,
+      });
     }
     if (request.method === "POST" && url.pathname === "/api/paid/cowries/spend") {
       sameOrigin(request);
@@ -386,6 +459,9 @@ export async function servePaid(request: Request, services: PaidServices): Promi
       }
       return json({ cowries: spent.cowries, royal: spent.royal, source: "d1" });
     }
+    if (request.method === "POST" && url.pathname === "/api/paid/games/begin") return await handleBegin(request, services);
+    if (request.method === "POST" && url.pathname === "/api/paid/games/finish") return await handleFinish(request, services);
+    if (request.method === "GET" && url.pathname === "/api/paid/owner/stats") return await handleOwnerStats(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/checkout") return await handleCheckout(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/webhook") return await handleWebhook(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/mock-pay") return await handleMockPay(request, services);

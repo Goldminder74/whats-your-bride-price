@@ -68,13 +68,13 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
     assert.equal(order.receiptStatus, "sent");
     const access = await (await worker.fetch(`http://127.0.0.1/api/paid/access?player=${playerId}`)).json();
     assert.equal(access.source, "d1");
-    assert.equal(access.cowries, 15);
+    assert.equal(access.cowries, 20);
     const spent = await (await worker.fetch("http://127.0.0.1/api/paid/cowries/spend", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ playerId, count: 1 }),
     })).json();
-    assert.equal(spent.cowries, 14);
+    assert.equal(spent.cowries, 19);
     assert.equal(spent.source, "d1");
     const refund = {
       id: "evt_e2e_refund_0001",

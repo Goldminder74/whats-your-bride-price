@@ -197,6 +197,27 @@ registration number is shown. The checkout waiver for UK, EU, and EEA buyers
 is still the text in `paid/catalog.ts` (`WAIVER_TEXT`). A voluntary refund
 policy is described as not yet activated.
 
+## Phase 0 paywall
+
+Every browser gets two completed games free, across every region. There is no separate daily or shared challenge in this app, so those are not exempt. Starting the next game spends 5 Cowries in D1. The same attempt id can be resumed without paying again, including a refresh. The first purchase on that browser adds 5 bonus Cowries, used before purchased Cowries, expiring 14 days later. Royal Reveal stays off until `ROYAL_REVEAL_ENABLED=on`.
+
+Migration `migrations/0002_paid_phase0.sql` only adds a nullable `expires_at` column and new tables. Existing Cowrie balances stay. Apply it before the new Worker code on each database:
+
+```bash
+npx wrangler d1 migrations apply wybp-paid-test --remote --config wrangler.jsonc
+npx wrangler d1 migrations apply wybp-live --remote --config wrangler.jsonc
+```
+
+Then build and deploy the Worker that should receive it. Set the owner stats secret on that Worker; the endpoint is `GET /api/paid/owner/stats` with header `x-owner-stats-token`:
+
+```bash
+npx wrangler secret put OWNER_STATS_TOKEN --config wrangler.jsonc
+npm run build:shell
+npx wrangler deploy --config wrangler.jsonc
+```
+
+Do the secret and the migration on both `wybp-paid-test` and `wybp-live` before publishing the matching Worker. The live D1 already has `0001`; only `0002` is new.
+
 ## 6. Deploy command, when the above is done
 
 ```bash
