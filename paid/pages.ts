@@ -36,7 +36,10 @@ async function start(){
   const catalog=await editions();
   const product=document.querySelector("#product"),country=document.querySelector("#country");
   catalog.products.forEach(item=>{const option=document.createElement("option");option.value=item.key;option.textContent=item.name+" · "+item.displayPrice;product.append(option);});
+  const blank=document.createElement("option");blank.value="";blank.disabled=true;blank.textContent="Choose your country";country.append(blank);
   catalog.countries.forEach(item=>{const option=document.createElement("option");option.value=item.code;option.textContent=item.name;country.append(option);});
+  const known=new Set(catalog.countries.map(item=>item.code));
+  country.value=typeof catalog.visitorCountry==="string"&&known.has(catalog.visitorCountry)?catalog.visitorCountry:"";
   document.querySelector("#waiver-text").textContent=catalog.waiverText;
   const waiverCountries=new Set(catalog.waiverCountries);
   const blockedCountries=new Set(catalog.blockedCountries||[]);

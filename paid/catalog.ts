@@ -83,8 +83,13 @@ export function waiverTextForVersion(version: string | null): string | null {
 
 export const CANONICAL_ORIGIN = "https://brideprice.classesforculture.com";
 
-/** Both purchase sheets start here. GB is not in the EU/EEA block list. */
-export const DEFAULT_PURCHASE_COUNTRY = "GB";
+export const CHOOSE_COUNTRY_LABEL = "Choose your country";
+
+/** A known listed country, including a blocked EU/EEA country. Unknown stays unselected. */
+export function initialPurchaseCountry(visitor: string | null | undefined, countries: readonly { code: string }[]): string {
+  if (!isCountryCode(visitor)) return "";
+  return countries.some((item) => item.code === visitor) ? visitor : "";
+}
 
 export function requiresWithdrawalWaiver(country: string): boolean {
   return withdrawalCountries.has(country);

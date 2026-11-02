@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { createHmac } from "node:crypto";
 import test from "node:test";
 import { regions } from "../../app/gameData.ts";
-import { CANONICAL_ORIGIN, DEFAULT_PURCHASE_COUNTRY, ROYAL_WAIVER_TEXT, ROYAL_WAIVER_VERSION, WAIVER_TEXT, WAIVER_VERSION } from "../../paid/catalog.ts";
+import { CANONICAL_ORIGIN, CHOOSE_COUNTRY_LABEL, initialPurchaseCountry, ROYAL_WAIVER_TEXT, ROYAL_WAIVER_VERSION, WAIVER_TEXT, WAIVER_VERSION } from "../../paid/catalog.ts";
 import { createMockEmail } from "../../paid/email.ts";
 import { validateDisplayName } from "../../paid/nickname.ts";
 import { buildRevealRecording } from "../../paid/revealOffer.ts";
@@ -161,8 +161,29 @@ test("Royal Reveal consent names the pack, and decree names use the public-name 
   assert.match(refunds, /removes that result's decree download/);
 });
 
+test("purchase sheets start on the visitor country, including a blocked EU country", async () => {
+  const listed = [{ code: "US" }, { code: "GB" }, { code: "DE" }, { code: "NG" }];
+  assert.equal(initialPurchaseCountry("US", listed), "US");
+  assert.equal(initialPurchaseCountry("DE", listed), "DE");
+  assert.equal(initialPurchaseCountry(null, listed), "");
+  assert.equal(initialPurchaseCountry("ZZ", listed), "");
+  assert.equal(CHOOSE_COUNTRY_LABEL, "Choose your country");
+  const app = services({ royalRevealEnabled: true });
+  const unitedStates = await body(await servePaid(request("/api/paid/catalog", {}, "US"), app));
+  assert.equal(unitedStates.visitorCountry, "US");
+  assert.equal(unitedStates.purchasesBlocked, false);
+  assert.equal(initialPurchaseCountry(unitedStates.visitorCountry, unitedStates.countries), "US");
+  const germany = await body(await servePaid(request("/api/paid/catalog", {}, "DE"), app));
+  assert.equal(germany.visitorCountry, "DE");
+  assert.equal(germany.purchasesBlocked, true);
+  assert.equal(germany.purchaseBlockedMessage.includes("aren't available in your country yet"), true);
+  assert.equal(initialPurchaseCountry(germany.visitorCountry, germany.countries), "DE");
+  const unknown = await body(await servePaid(request("/api/paid/catalog"), app));
+  assert.equal(unknown.visitorCountry, null);
+  assert.equal(initialPurchaseCountry(unknown.visitorCountry, unknown.countries), "");
+});
+
 test("decree names keep Yoruba and Igbo marks, and Royal checkout matches Cowrie country rules", async () => {
-  assert.equal(DEFAULT_PURCHASE_COUNTRY, "GB");
   for (const name of ["Adébáyọ̀ O'Neil-Smith", "Chínwẹ́", "Ọládélé"]) {
     assert.equal(validateDisplayName(name.normalize("NFD")), name.normalize("NFC"));
   }

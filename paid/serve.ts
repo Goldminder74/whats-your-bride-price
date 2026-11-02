@@ -510,6 +510,7 @@ export async function servePaid(request: Request, services: PaidServices): Promi
         paystack: { enabled: false, markets: paystackSeam.markets },
         blockedCountries: [...(services.blockedCountries ?? blockedPurchaseCountries(undefined))].sort(),
         purchasesBlocked: requestCountry(request) !== null && (services.blockedCountries ?? blockedPurchaseCountries(undefined)).has(requestCountry(request) as string),
+        visitorCountry: requestCountry(request),
         purchaseBlockedMessage: PURCHASES_UNAVAILABLE_MESSAGE,
         earnPaths: services.earnPaths === true,
         shareCards: services.shareCards === true,

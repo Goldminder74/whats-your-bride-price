@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { DEFAULT_PURCHASE_COUNTRY, ROYAL_WAIVER_TEXT } from "../paid/catalog.ts";
+import { CHOOSE_COUNTRY_LABEL, initialPurchaseCountry, ROYAL_WAIVER_TEXT } from "../paid/catalog.ts";
 import { DECREE_PREVIEW_NAME, decreeNamePrefill, decreePreviewUrl, previewDisplayName } from "../paid/decreePreviewName.ts";
 import { readPlayerId } from "./paidClient";
 
@@ -27,6 +27,7 @@ type Catalog = {
   waiverText: string;
   royalWaiverText?: string;
   royalReveal?: boolean;
+  visitorCountry?: string | null;
 };
 
 export function RoyalRevealOffer({ resultId, edition, score }: { resultId: string; edition: string; score: number }) {
@@ -34,7 +35,8 @@ export function RoyalRevealOffer({ resultId, edition, score }: { resultId: strin
   const [name, setName] = useState("");
   const nameTouched = useRef(false);
   const [email, setEmail] = useState("");
-  const [country, setCountry] = useState(DEFAULT_PURCHASE_COUNTRY);
+  const [country, setCountry] = useState("");
+  const countryTouched = useRef(false);
   const [adult, setAdult] = useState(false);
   const [waiver, setWaiver] = useState(false);
   const [status, setStatus] = useState("");
@@ -64,7 +66,9 @@ export function RoyalRevealOffer({ resultId, edition, score }: { resultId: strin
       const response = await fetch("/api/paid/catalog");
       if (!response.ok || cancelled) return;
       const next = await response.json() as Catalog;
-      if (!cancelled) setCatalog(next);
+      if (cancelled) return;
+      setCatalog(next);
+      if (!countryTouched.current) setCountry(initialPurchaseCountry(next.visitorCountry, next.countries));
     })();
     return () => { cancelled = true; };
   }, []);
@@ -124,7 +128,8 @@ export function RoyalRevealOffer({ resultId, edition, score }: { resultId: strin
           <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" required maxLength={200} />
         </label>
         <label className="paid-field">Country
-          <select value={country} onChange={(event) => setCountry(event.target.value)}>
+          <select value={country} required onChange={(event) => { countryTouched.current = true; setCountry(event.target.value); }}>
+            <option value="" disabled>{CHOOSE_COUNTRY_LABEL}</option>
             {catalog.countries.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}
           </select>
         </label>

@@ -2,8 +2,8 @@
 
 /* eslint-disable react-hooks/set-state-in-effect -- the desk loads access and a return order once */
 
-import { FormEvent, useEffect, useId, useState } from "react";
-import { DEFAULT_PURCHASE_COUNTRY } from "../paid/catalog.ts";
+import { FormEvent, useEffect, useId, useRef, useState } from "react";
+import { CHOOSE_COUNTRY_LABEL, initialPurchaseCountry } from "../paid/catalog.ts";
 import { fetchWallet, readPlayerId } from "./paidClient";
 import { RoyalRevealDownloads } from "./RoyalReveal";
 
@@ -30,6 +30,7 @@ type Catalog = {
   purchaseBlockedMessage: string;
   waiverCountries: string[];
   waiverText: string;
+  visitorCountry?: string | null;
 };
 
 export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; onClose?: () => void }) {
@@ -41,7 +42,8 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
   const [catalog, setCatalog] = useState<Catalog | null>(null);
   const [productKey, setProductKey] = useState("");
   const [email, setEmail] = useState("");
-  const [country, setCountry] = useState(DEFAULT_PURCHASE_COUNTRY);
+  const [country, setCountry] = useState("");
+  const countryTouched = useRef(false);
   const [adult, setAdult] = useState(false);
   const [waiver, setWaiver] = useState(false);
   const [status, setStatus] = useState("");
@@ -74,6 +76,7 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
         if (cancelled) return;
         setCatalog(nextCatalog);
         setProductKey((current) => current || nextCatalog.products[0]?.key || "");
+        if (!countryTouched.current) setCountry(initialPurchaseCountry(nextCatalog.visitorCountry, nextCatalog.countries));
         if (orderId) {
           const orderResponse = await fetch(`/api/paid/orders/${orderId}`);
           const order = await orderResponse.json() as { state?: string; productKey?: string };
@@ -189,7 +192,8 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
                   <input type="email" required autoComplete="email" maxLength={200} value={email} onChange={(event) => setEmail(event.target.value)} />
                 </label>
                 <label>Country
-                  <select value={country} onChange={(event) => setCountry(event.target.value)}>
+                  <select value={country} required onChange={(event) => { countryTouched.current = true; setCountry(event.target.value); }}>
+                    <option value="" disabled>{CHOOSE_COUNTRY_LABEL}</option>
                     {catalog.countries.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}
                   </select>
                 </label>
