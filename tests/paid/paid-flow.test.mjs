@@ -81,6 +81,7 @@ test("canonical pages use the public game origin", async () => {
   assert.match(refunds, /14-day/);
   assert.match(refunds, /35 Melrose Avenue, Borehamwood, Hertfordshire, WD6 2BH, United Kingdom/);
   assert.doesNotMatch(html, /Melrose Avenue|WD6 2BH/);
+  assert.doesNotMatch(`${privacy}${terms}${refunds}${html}`, /PLACEHOLDER|owner approval/i);
   const shelled = await (await servePaid(request("/"), services({
     assets: { async fetch(assetRequest) {
       return new URL(assetRequest.url).pathname === "/index.html"
@@ -639,7 +640,9 @@ test("receipt headers, currency formatting and escaping", async () => {
   assert.match(purchase.html, /What's Your Bride Price\?/);
   assert.match(purchase.html, /buyer&lt;script&gt;@example\.com/);
   assert.equal(purchase.html.includes("<script>"), false);
-  assert.match(purchase.html, /PLACEHOLDER for owner approval/);
+  assert.match(purchase.html, /I want my Cowries straight away/);
+  assert.match(purchase.text, /I want my Cowries straight away/);
+  assert.doesNotMatch(`${purchase.html}${purchase.text}`, /PLACEHOLDER|owner approval/i);
   assert.doesNotMatch(purchase.html, /Melrose Avenue|WD6 2BH/);
   assert.doesNotMatch(purchase.text, /Melrose Avenue|WD6 2BH/);
   const refund = refundReceipt({ order, amountMinor: 500000, currency: "ngn", at: 1700000000000, replyTo: "team@classesforculture.com" });

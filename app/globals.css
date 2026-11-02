@@ -132,13 +132,15 @@ button:focus-visible,a:focus-visible,.region-card:focus-visible{outline:3px soli
 .cowrie-chip span{color:var(--red)}.cowrie-chip small{color:#8a5a12}
 .paid-sheet{position:fixed;z-index:70;inset:0;display:grid;place-items:end center;padding:18px;background:rgba(24,12,6,.55)}
 .paid-card{width:min(560px,100%);max-height:min(88vh,820px);overflow:auto;background:#f3e7cc;color:#27190e;padding:36px 32px 28px;box-shadow:16px 18px 0 rgba(37,20,11,.4);position:relative}
+.paid-card p,.paid-balance,.paid-block,.paid-card label,.paid-check{font:16px/1.45 "Avenir Next","Century Gothic",Arial,sans-serif;font-style:normal;text-transform:none;letter-spacing:0;font-weight:500}
 .paid-card h2{margin:8px 0 10px;font:900 clamp(42px,6vw,68px)/.82 Impact,"Arial Black",sans-serif}.paid-card h2 i{font:400 italic .8em Georgia,serif;color:#b43624}
-.paid-card p{font:italic 16px/1.5 Georgia,serif}
-.paid-balance{font-style:normal;text-transform:uppercase;letter-spacing:.08em;font-size:12px}.paid-balance b{font:700 28px Georgia,serif}
-.paid-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:8px 0 16px}.paid-actions a{font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid currentColor}
-.paid-card label{display:block;margin:12px 0;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
-.paid-card input,.paid-card select{display:block;width:100%;margin-top:6px;border:0;border-bottom:2px solid #3b2517;background:transparent;padding:8px 2px;font:italic 18px Georgia,serif;text-transform:none;letter-spacing:0}
-.paid-check{display:flex;gap:10px;align-items:flex-start;font:italic 14px/1.4 Georgia,serif;letter-spacing:0;text-transform:none}
+.paid-balance b{font:700 28px Georgia,serif}
+.paid-field{font-weight:700}
+.paid-card input,.paid-card select{display:block;width:100%;margin-top:6px;border:0;border-bottom:2px solid #3b2517;background:transparent;padding:8px 2px;font:16px/1.4 "Avenir Next","Century Gothic",Arial,sans-serif;text-transform:none;letter-spacing:0;font-weight:500}
+.paid-card label{display:block;margin:12px 0}
+.paid-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:8px 0 16px}
+.paid-actions a{font-weight:700;border-bottom:1px solid currentColor}
+.paid-check{display:flex;gap:10px;align-items:flex-start}
 .paid-check input{width:auto;margin-top:3px}
 .paid-block{background:#fff4e8;border-left:4px solid #b92d1f;padding:10px 12px}
 @media(max-width:700px){.nav-links{gap:10px}.cowrie-chip b{max-width:72px;overflow:hidden;text-overflow:ellipsis}.paid-sheet{padding:0;place-items:stretch}.paid-card{width:100%;max-height:100%;box-shadow:none}}

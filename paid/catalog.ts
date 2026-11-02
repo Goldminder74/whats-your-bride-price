@@ -52,8 +52,8 @@ export const withdrawalCountries = Object.freeze(new Set([
 
 export const WAIVER_VERSION = "instant-digital-withdrawal-waiver-draft-2026-11-01";
 
-/** Placeholder. Ayo must approve this sentence before live payments. */
-export const WAIVER_TEXT = "PLACEHOLDER for owner approval: I am 18 or over. I ask for immediate supply of this digital content and I acknowledge that I lose my 14-day right to withdraw once supply starts. This does not limit my rights if the content is faulty or not as described.";
+/** Shown at checkout and repeated on the receipt for UK, EU and EEA buyers. */
+export const WAIVER_TEXT = "I want my Cowries straight away. I understand that once they're delivered I lose my 14-day right to cancel, unless they're faulty or not as described.";
 
 export const CANONICAL_ORIGIN = "https://brideprice.classesforculture.com";
 
