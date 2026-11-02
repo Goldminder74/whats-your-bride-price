@@ -67,7 +67,9 @@ async function round(edition){
   const ask=()=>{
     const question=questions[index];
     const multi=question.kind==="multi";
-    play.innerHTML='<p>Question '+(index+1)+" of "+questions.length+"</p><h2>"+escapeHtml(question.prompt)+"</h2>"+(question.image?'<img alt="" src="'+question.image+'" width="320">':"")+'<div class="options">'+question.options.map((label,i)=>'<button type="button" data-choice="'+i+'">'+escapeHtml(label)+"</button>").join("")+(multi?'<button type="button" id="next">Submit selection</button>':"")+"</div>";
+    const pictures=question.kind==="image"&&Array.isArray(question.images)?question.images:[];
+    const choices=pictures.length?pictures.map((src,i)=>{const alt="Photo for question "+(index+1)+", choice "+String.fromCharCode(65+i);return '<button type="button" data-choice="'+i+'"><img alt="'+alt+'" src="'+escapeHtml(src)+'" width="160"></button>';}).join(""):question.options.map((label,i)=>'<button type="button" data-choice="'+i+'">'+escapeHtml(label)+"</button>").join("");
+    play.innerHTML='<p>Question '+(index+1)+" of "+questions.length+"</p><h2>"+escapeHtml(question.prompt)+"</h2>"+'<div class="options">'+choices+(multi?'<button type="button" id="next">Submit selection</button>':"")+"</div>";
     const chosen=new Set();
     play.querySelectorAll("[data-choice]").forEach(button=>button.addEventListener("click",()=>{
       const choice=Number(button.dataset.choice);

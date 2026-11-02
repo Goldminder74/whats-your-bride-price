@@ -16,6 +16,7 @@ export type PublicQuestion = Readonly<{
   options: readonly string[];
   topic: string;
   image: string | null;
+  images: readonly string[] | null;
 }>;
 
 export function isEdition(value: unknown): value is RegionKey {
@@ -30,6 +31,7 @@ export function publicQuestions(edition: RegionKey): readonly PublicQuestion[] {
     options: question.options,
     topic: question.topic,
     image: question.visualStart === undefined ? null : `/quiz-art/${edition}-${question.visualStart}.webp`,
+    images: question.visualStart === undefined ? null : question.options.map((_, optionIndex) => `/quiz-art/${edition}-${(question.visualStart ?? 0) + optionIndex}.webp`),
   }));
 }
 
