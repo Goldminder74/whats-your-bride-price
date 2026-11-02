@@ -221,7 +221,7 @@ Do the secret and the migration on both `wybp-paid-test` and `wybp-live` before 
 
 ## Phase 1 earn and share
 
-`EARN_PATHS` and `SHARE_CARDS` default to `off` in `wrangler.jsonc`. Leave them off and a deploy does not grant Cowries, does not change the paywall, and does not change the result portrait. To try them on the test Worker, set that Worker's var to `on` and deploy only that Worker. `EARN_PATHS=on` enables the perfect-score bonus, the daily share Cowrie, and referrals. `SHARE_CARDS=on` enables `GET /api/paid/share-card.svg`. `GET /api/paid/health` reports both flags. Migration `migrations/0003_paid_earn.sql` only adds grant and referral tables. Apply it before the Worker that has this code, on `wybp-paid-test` and `wybp-live`. It does not change existing balances.
+`EARN_PATHS` and `SHARE_CARDS` default to `off` in `wrangler.jsonc`. Leave them off and a deploy does not grant Cowries, does not change the paywall, and does not change the result portrait. To try them on the test Worker, set that Worker's var to `on` and deploy only that Worker. `EARN_PATHS=on` enables the perfect-score bonus, the daily share Cowrie, and referrals. `SHARE_CARDS=on` enables the result card at `GET /api/paid/share-card.png` and `.svg`. `GET /api/paid/health` reports both flags. Migration `migrations/0003_paid_earn.sql` only adds grant and referral tables. Apply it before the Worker that has this code, on `wybp-paid-test` and `wybp-live`. It does not change existing balances.
 
 Earned Cowries use the same D1 ledger (`cowrie_earn_v1`). They are spent after the welcome bonus and before purchased Cowries. A refund still zeros only that purchase and its welcome bonus. Earned Cowries are not cash refundable. Terms stay as they are while the flags are off.
 
@@ -230,7 +230,7 @@ Verify on the test Worker, with the flag on:
 1. Perfect score. `POST /api/paid/games/begin`, then `GET /api/paid/questions?edition=west&player=…&attempt=…` while `RANDOM_BANK=on`. Finish the attempt, then `POST /api/paid/earn/perfect` with that `roundId` and the answer arrays. A real 12/12 returns `reason: granted` and the balance rises by 1. The same attempt again is `repeat`. A second perfect attempt the same UTC day is `capped`. A body that merely says `score: 12` with wrong answers is `miss`.
 2. Share. After one completed game, `POST /api/paid/earn/share` grants 1. The second call the same day is `repeat`.
 3. Referral. `GET /api/paid/referral?player=OWNER` returns the link. A different new owner `POST /api/paid/referral/arrive`, then finishes their first game. The referrer gains 2 and the new owner gains 1. The same owner arriving through their own code is `self` and is not paid. An eleventh new owner on the same UTC day still gains 1, and the referrer stays capped at 10 rewards.
-4. Card. `GET /api/paid/share-card.svg?edition=west&score=12` is a 1080×1350 SVG containing the region, the score, the bride-price tier, `brideprice.classesforculture.com`, and `Can you beat my score?`. With the flag off the same URL is 404.
+4. Card. `GET /api/paid/share-card.png?edition=west&score=8` is the 1080×1350 poster. Add `frame=story` for 1080×1920. The SVG uses the same path with `.svg`. The images print the domain, not the challenge URL. The link `/?edition=west&score=8` opens that region, and with `SHARE_CARDS=on` its HTML sets `og:image` to the PNG. With the flag off those URLs are 404.
 
 ## 6. Deploy command, when the above is done
 

@@ -2,55 +2,153 @@ import { calculateResultTier } from "../app/gameLogic.ts";
 import { regions, type RegionKey } from "../app/gameData.ts";
 import { CANONICAL_ORIGIN } from "./catalog.ts";
 
+const PRICES = [5, 15, 30, 50] as const;
+
 const TIERS = [
-  { title: "Roots Rookie", price: "Bride price: 5 cowries" },
-  { title: "Culture Climber", price: "Bride price: 15 cowries" },
-  { title: "Motherland Scholar", price: "Bride price: 30 cowries" },
-  { title: "Bride Price Royalty", price: "Bride price: 50 cowries" },
+  { title: "Roots Rookie", cowries: PRICES[0] },
+  { title: "Culture Climber", cowries: PRICES[1] },
+  { title: "Motherland Scholar", cowries: PRICES[2] },
+  { title: "Bride Price Royalty", cowries: PRICES[3] },
 ] as const;
 
 export const SHARE_CARD_WIDTH = 1080;
 export const SHARE_CARD_HEIGHT = 1350;
+export const SHARE_STORY_WIDTH = 1080;
+export const SHARE_STORY_HEIGHT = 1920;
 export const CHALLENGE_LINE = "Can you beat my score?";
+export type ShareFrame = "card" | "story";
 
 export function canonicalHost(): string {
   return new URL(CANONICAL_ORIGIN).host;
 }
 
-export function challengeUrl(edition: string, code?: string | null): string {
+export function resultTier(score: number): { title: string; cowries: number } {
+  return TIERS[calculateResultTier(score)];
+}
+
+/** Punchy line for WhatsApp. The link is added by the caller. */
+export function shareBlurb(score: number): string {
+  const tier = resultTier(score);
+  return `I'm worth ${tier.cowries} cowries as a ${tier.title} 👑 Can you beat ${score}/12?`;
+}
+
+export function challengeUrl(edition: string, score: number, code?: string | null): string {
   const url = new URL("/", CANONICAL_ORIGIN);
   url.searchParams.set("edition", edition);
+  url.searchParams.set("score", String(score));
   if (code) url.searchParams.set("ref", code);
   return url.href;
 }
 
-export function resultTier(score: number): { title: string; price: string } {
-  return TIERS[calculateResultTier(score)];
+export function shareCardImageUrl(edition: string, score: number, frame: ShareFrame = "card"): string {
+  const url = new URL("/api/paid/share-card.png", CANONICAL_ORIGIN);
+  url.searchParams.set("edition", edition);
+  url.searchParams.set("score", String(score));
+  if (frame === "story") url.searchParams.set("frame", "story");
+  return url.href;
 }
 
 function xml(value: string): string {
   return value.replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&apos;" })[char] ?? char);
 }
 
-/** 1080×1350 result card in the game palette. No answer keys, no player portrait. */
-export function shareCardSvg(input: { edition: RegionKey; score: number; challenge: string }): string {
+function tierLines(title: string): [string, string] {
+  const words = title.toUpperCase().split(" ");
+  if (words.length < 2) return [words[0] ?? "", ""];
+  return [words.slice(0, -1).join(" "), words.at(-1) ?? ""];
+}
+
+function cowries(y: number, count: number): string {
+  const gap = 1080 / (count + 1);
+  return Array.from({ length: count }, (_, index) => {
+    const x = gap * (index + 1);
+    const tilt = index % 2 === 0 ? -16 : 12;
+    return `<g transform="translate(${x} ${y}) rotate(${tilt})">
+      <ellipse cx="0" cy="0" rx="34" ry="20" fill="#f0a11a"/>
+      <ellipse cx="0" cy="1" rx="20" ry="11" fill="#fff6d8"/>
+      <path d="M-12 3 Q0 16 12 3" fill="none" stroke="#7a3e12" stroke-width="3.2" stroke-linecap="round"/>
+    </g>`;
+  }).join("");
+}
+
+/** Poster card. The challenge link stays off the artwork; only the domain is printed. */
+export function shareCardSvg(input: { edition: RegionKey; score: number; frame?: ShareFrame; artwork?: string | null }): string {
+  const frame = input.frame === "story" ? "story" : "card";
+  const width = SHARE_CARD_WIDTH;
+  const height = frame === "story" ? SHARE_STORY_HEIGHT : SHARE_CARD_HEIGHT;
   const region = regions[input.edition];
   const [base, accent, dark] = region.palette;
   const tier = resultTier(input.score);
+  const [lineA, lineB] = tierLines(tier.title);
+  const story = frame === "story";
   const host = canonicalHost();
+  const art = input.artwork
+    ? `<image href="${xml(input.artwork)}" x="0" y="0" width="${width}" height="${height}" preserveAspectRatio="xMidYMid slice" opacity="0.72"/>`
+    : "";
+  const titleSize = lineA.length > 12 ? 86 : 104;
+  const cowrieY = story ? 250 : 118;
+  const editionY = story ? 340 : 196;
+  const wordY = story ? 392 : 238;
+  const titleY = story ? 560 : 370;
+  const priceY = story ? 760 : 500;
+  const priceH = story ? 160 : 136;
+  const sealY = story ? 1180 : 800;
+  const sealR = story ? 168 : 112;
+  const barY = story ? 1560 : 1048;
+  const barH = story ? 120 : 100;
+  const domainY = story ? 1788 : 1268;
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="${SHARE_CARD_WIDTH}" height="${SHARE_CARD_HEIGHT}" viewBox="0 0 ${SHARE_CARD_WIDTH} ${SHARE_CARD_HEIGHT}">
-  <rect width="1080" height="1350" fill="${base}"/>
-  <rect x="55" y="55" width="970" height="1240" fill="${dark}"/>
-  <rect x="78" y="78" width="924" height="1194" fill="none" stroke="${accent}" stroke-width="3"/>
-  <text x="540" y="160" fill="${accent}" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="middle">${xml(region.name.toUpperCase())} EDITION</text>
-  <text x="540" y="430" fill="${accent}" font-family="Georgia, serif" font-size="120" text-anchor="middle">${xml(region.mark)}</text>
-  <text x="540" y="620" fill="${accent}" font-family="Arial, sans-serif" font-size="72" font-weight="700" text-anchor="middle">${xml(tier.title.toUpperCase())}</text>
-  <text x="540" y="720" fill="#f3e7cc" font-family="Georgia, serif" font-size="40" text-anchor="middle">${xml(tier.price)}</text>
-  <text x="540" y="860" fill="${accent}" font-family="Arial, sans-serif" font-size="32" font-weight="700" text-anchor="middle">KNOWLEDGE SCORE ${input.score}/12</text>
-  <text x="540" y="1040" fill="#f3e7cc" font-family="Arial, sans-serif" font-size="48" font-weight="700" text-anchor="middle">WHAT’S YOUR BRIDE PRICE?</text>
-  <text x="540" y="1120" fill="#f3e7cc" font-family="Georgia, serif" font-size="36" text-anchor="middle">${CHALLENGE_LINE}</text>
-  <text x="540" y="1190" fill="${accent}" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">${xml(host)}</text>
-  <text x="540" y="1250" fill="#f3e7cc" font-family="Arial, sans-serif" font-size="22" text-anchor="middle">${xml(input.challenge)}</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+  <defs>
+    <pattern id="grain" width="52" height="52" patternUnits="userSpaceOnUse" patternTransform="rotate(28)">
+      <line x1="0" y1="0" x2="0" y2="52" stroke="#f0a11a" stroke-width="2" opacity="0.22"/>
+    </pattern>
+    <linearGradient id="veil" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${base}" stop-opacity="0.15"/>
+      <stop offset="0.42" stop-color="${dark}" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#120a07" stop-opacity="0.94"/>
+    </linearGradient>
+  </defs>
+  <rect width="${width}" height="${height}" fill="${dark}"/>
+  ${art}
+  <rect width="${width}" height="${height}" fill="url(#veil)"/>
+  <rect width="${width}" height="${height}" fill="url(#grain)"/>
+  <rect x="28" y="28" width="${width - 56}" height="${height - 56}" fill="none" stroke="#f0a11a" stroke-width="3"/>
+  <rect x="42" y="42" width="${width - 84}" height="${height - 84}" fill="none" stroke="#f0a11a" stroke-width="1" opacity="0.7"/>
+  ${cowries(cowrieY, 7)}
+  <text x="540" y="${editionY}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="28" letter-spacing="8" text-anchor="middle">${xml(region.name.toUpperCase())} EDITION</text>
+  <text x="540" y="${wordY}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="22" letter-spacing="6" text-anchor="middle">WHAT’S YOUR BRIDE PRICE?</text>
+  <text x="540" y="${titleY}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${titleSize}" text-anchor="middle">${xml(lineA)}</text>
+  <text x="540" y="${titleY + titleSize - 6}" fill="#fff6d8" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${titleSize + 10}" text-anchor="middle">${xml(lineB)}</text>
+  <rect x="230" y="${priceY}" width="620" height="${priceH}" rx="18" fill="#f0a11a"/>
+  <text x="540" y="${priceY + 38}" fill="#1d120b" font-family="Anton, Impact, Arial Black, sans-serif" font-size="20" letter-spacing="6" text-anchor="middle">I'M WORTH</text>
+  <text x="540" y="${priceY + priceH - 24}" fill="#1d120b" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${story ? 78 : 64}" text-anchor="middle">${tier.cowries} COWRIES</text>
+  <circle cx="540" cy="${sealY}" r="${sealR}" fill="none" stroke="#f0a11a" stroke-width="14"/>
+  <circle cx="540" cy="${sealY}" r="${sealR - 18}" fill="#1a0e09" stroke="${accent}" stroke-width="3"/>
+  <text x="540" y="${sealY + Math.round(sealR * 0.16)}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${Math.round(sealR * 0.7)}" text-anchor="middle">${input.score}</text>
+  <text x="540" y="${sealY + Math.round(sealR * 0.55)}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="24" letter-spacing="4" text-anchor="middle">OUT OF 12</text>
+  <rect x="70" y="${barY}" width="940" height="${barH}" rx="8" fill="#f0a11a"/>
+  <text x="540" y="${barY + Math.round(barH * 0.66)}" fill="#1d120b" font-family="Anton, Impact, Arial Black, sans-serif" font-size="${story ? 48 : 42}" text-anchor="middle">${xml(CHALLENGE_LINE)}</text>
+  <text x="540" y="${domainY}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="26" letter-spacing="3" text-anchor="middle">${xml(host)}</text>
 </svg>`;
+}
+
+export function applyChallengeMeta(html: string, input: { title: string; description: string; image: string; url: string }): string {
+  const tags = [
+    `<meta property="og:title" content="${xml(input.title)}"/>`,
+    `<meta property="og:description" content="${xml(input.description)}"/>`,
+    `<meta property="og:url" content="${xml(input.url)}"/>`,
+    `<meta property="og:image" content="${xml(input.image)}"/>`,
+    `<meta property="og:image:type" content="image/png"/>`,
+    `<meta property="og:image:width" content="1080"/>`,
+    `<meta property="og:image:height" content="1350"/>`,
+    `<meta property="og:image:alt" content="${xml(input.description)}"/>`,
+    `<meta name="twitter:card" content="summary_large_image"/>`,
+    `<meta name="twitter:image" content="${xml(input.image)}"/>`,
+  ].join("");
+  const stripped = html
+    .replace(/<meta[^>]+property=["']og:(?:title|description|url|image)["'][^>]*>/gi, "")
+    .replace(/<meta[^>]+name=["']twitter:(?:card|image)["'][^>]*>/gi, "");
+  if (stripped.includes("</head>")) return stripped.replace("</head>", `${tags}</head>`);
+  return `${tags}${stripped}`;
 }

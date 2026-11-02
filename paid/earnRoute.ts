@@ -8,7 +8,8 @@ import { PaidError } from "./errors.ts";
 import { isEdition } from "./games.ts";
 import type { EarnDecision } from "./repository.ts";
 import type { PaidServices } from "./serve.ts";
-import { challengeUrl, CHALLENGE_LINE, shareCardSvg } from "./shareCard.ts";
+import { canonicalHost, CHALLENGE_LINE, shareCardSvg, type ShareFrame } from "./shareCard.ts";
+import { renderShareCardPng } from "./shareCardPng.ts";
 
 const PLAYER_ID = /^[A-Za-z0-9_-]{16,64}$/;
 const ATTEMPT_ID = /^[A-Za-z0-9_-]{16,80}$/;
@@ -135,23 +136,52 @@ export async function claimReferralIfFirstGame(services: PaidServices, playerId:
   return reward;
 }
 
-export async function handleShareCard(url: URL, services: PaidServices): Promise<Response> {
+const ART_FILE: Record<RegionKey, string> = {
+  west: "west.jpg",
+  east: "east.jpg",
+  central: "central.jpg",
+  north: "north.jpg",
+  south: "south.jpg",
+};
+
+function bytesToBase64(bytes: Uint8Array): string {
+  let binary = "";
+  const chunk = 0x8000;
+  for (let index = 0; index < bytes.length; index += chunk) {
+    binary += String.fromCharCode(...bytes.subarray(index, index + chunk));
+  }
+  return btoa(binary);
+}
+
+async function regionArtwork(services: PaidServices, edition: RegionKey): Promise<string | null> {
+  if (!services.assets) return null;
+  try {
+    const asset = await services.assets.fetch(new Request(new URL(`/share-art/${ART_FILE[edition]}`, CANONICAL_ORIGIN)));
+    if (!asset.ok) return null;
+    const bytes = new Uint8Array(await asset.arrayBuffer());
+    if (bytes.length < 32) return null;
+    return `data:image/jpeg;base64,${bytesToBase64(bytes)}`;
+  } catch {
+    return null;
+  }
+}
+
+export async function handleShareCard(url: URL, services: PaidServices, format: "svg" | "png" = "svg"): Promise<Response> {
   if (!services.shareCards) throw new PaidError("share_card_disabled", 404);
   const edition = url.searchParams.get("edition");
   if (!isEdition(edition)) throw new PaidError("edition_invalid", 400);
   const score = Number(url.searchParams.get("score"));
   if (!Number.isInteger(score) || score < 0 || score > GAME_SIZE) throw new PaidError("score_invalid", 400);
-  let code: string | null = null;
-  const ref = url.searchParams.get("ref");
-  if (isReferralCode(ref) && services.earnPaths) {
-    await services.ensureSchema?.();
-    const owner = await services.repository.findReferralCode(ref);
-    if (owner) code = ref;
+  const frame: ShareFrame = url.searchParams.get("frame") === "story" ? "story" : "card";
+  const artwork = await regionArtwork(services, edition);
+  const svg = shareCardSvg({ edition, score, frame, artwork });
+  if (!svg.includes(CHALLENGE_LINE) || !svg.includes(canonicalHost())) {
+    throw new PaidError("share_card_unavailable", 500);
   }
-  const svg = shareCardSvg({ edition: edition as RegionKey, score, challenge: challengeUrl(edition, code) });
-  if (!svg.includes(CHALLENGE_LINE)) throw new PaidError("share_card_unavailable", 500);
-  return new Response(svg, {
-    status: 200,
-    headers: { "content-type": "image/svg+xml; charset=utf-8", "cache-control": "no-store", "x-content-type-options": "nosniff" },
-  });
+  const headers = { "cache-control": "public, max-age=86400", "x-content-type-options": "nosniff" };
+  if (format === "svg") {
+    return new Response(svg, { status: 200, headers: { ...headers, "content-type": "image/svg+xml; charset=utf-8" } });
+  }
+  const png = await renderShareCardPng(svg);
+  return new Response(Buffer.from(png), { status: 200, headers: { ...headers, "content-type": "image/png" } });
 }

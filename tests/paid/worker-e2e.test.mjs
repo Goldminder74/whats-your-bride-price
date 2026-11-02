@@ -217,7 +217,21 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
     assert.equal((await (await earnWorker.fetch(`http://127.0.0.1/api/paid/access?player=${owner}`)).json()).cowries, 0);
     const card = await earnWorker.fetch("http://127.0.0.1/api/paid/share-card.svg?edition=west&score=12");
     assert.equal(card.status, 200);
-    assert.match(await card.text(), /Can you beat my score\?/);
+    const cardSvg = await card.text();
+    assert.match(cardSvg, /Can you beat my score\?/);
+    assert.doesNotMatch(cardSvg, /\?edition=|wa\.me/);
+    const png = await earnWorker.fetch("http://127.0.0.1/api/paid/share-card.png?edition=west&score=8");
+    assert.equal(png.status, 200);
+    assert.match(png.headers.get("content-type") || "", /image\/png/);
+    const pngBytes = new Uint8Array(await png.arrayBuffer());
+    assert.equal(pngBytes[0], 137);
+    const story = await earnWorker.fetch("http://127.0.0.1/api/paid/share-card.png?edition=east&score=8&frame=story");
+    const storyBytes = new Uint8Array(await story.arrayBuffer());
+    assert.equal(story.status, 200);
+    assert.equal(new DataView(storyBytes.buffer).getUint32(20), 1920);
+    const preview = await (await earnWorker.fetch("http://127.0.0.1/?edition=west&score=8")).text();
+    assert.match(preview, /og:image/);
+    assert.match(preview, /share-card\.png\?edition=west/);
     const referrer = await (await earnWorker.fetch("http://127.0.0.1/api/paid/referral?player=earn_worker_refer_01")).json();
     const newbie = "earn_worker_new_0001";
     assert.equal((await (await earnWorker.fetch("http://127.0.0.1/api/paid/referral/arrive", {
