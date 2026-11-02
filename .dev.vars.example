@@ -1,0 +1,13 @@
+# Copy to .dev.vars for local wrangler dev. .dev.vars is gitignored.
+# Mock mode does not call Stripe and cannot charge a card.
+STRIPE_API_MODE=mock
+STRIPE_AUTOMATIC_TAX=off
+STRIPE_SECRET_KEY=sk_test_mock_local_only
+STRIPE_WEBHOOK_SECRET=whsec_local_test_secret_value
+EMAIL_PROVIDER=mock
+EMAIL_API_KEY=
+EMAIL_FROM=What's Your Bride Price? <noreply@mail.classesforculture.com>
+EMAIL_REPLY_TO=team@classesforculture.com
+# Blank uses EU27 plus IS, LI and NO. Set to none only after EU VAT registration.
+PAID_BLOCKED_COUNTRIES=AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,GR,HU,IE,IT,LV,LT,LU,MT,NL,PL,PT,RO,SK,SI,ES,SE,IS,LI,NO
+PUBLIC_APP_ORIGIN=https://brideprice.classesforculture.com
