@@ -39,7 +39,8 @@
     "EARN_PATHS": "on",
     "SHARE_CARDS": "on",
     "DAILY_CHALLENGE": "on",
-    "RESULT_VIDEO": "off"
+    "RESULT_VIDEO": "off",
+    "BOOSTERS": "off"
   },
   "assets": {
     "directory": "./outputs/paid-assets",

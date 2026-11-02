@@ -1,11 +1,12 @@
-import { advanceStreak, earnEntitlement, MIN_BOARD_MS, rankBoard, streakGrantId, type BoardRow, type DailyFinish, type DailyPlay, type DailyStreak } from "./daily.ts";
+import { streakWithFreeze } from "./boosters.ts";
+import { earnEntitlement, MIN_BOARD_MS, rankBoard, streakGrantId, type BoardRow, type DailyFinish, type DailyPlay, type DailyStreak } from "./daily.ts";
 import type { PaidEntitlement } from "./repository.ts";
 
 export type DailyApi = {
   start(input: { playerId: string; edition: string; day: string; roundId: string; at: number }): Promise<
     { status: "open"; startedAt: number; resumed: boolean } | { status: "finished"; score: number; durationMs: number; streak: number }
   >;
-  finish(input: { playerId: string; edition: string; day: string; score: number; at: number }): Promise<DailyFinish>;
+  finish(input: { playerId: string; edition: string; day: string; score: number; at: number; boosted?: boolean; freezeHeld?: number }): Promise<DailyFinish>;
   status(playerId: string, day: string): Promise<DailyStreak>;
   setNickname(playerId: string, nickname: string, at: number): Promise<void>;
   nickname(playerId: string): Promise<string | null>;
@@ -32,17 +33,19 @@ export function createMemoryDaily(grant: (playerId: string, grantId: string, cow
       });
       return { status: "open", startedAt: at, resumed: false };
     },
-    async finish({ playerId, edition, day, score, at }) {
+    async finish({ playerId, edition, day, score, at, boosted, freezeHeld }) {
       const play = plays.get(key(playerId, edition, day));
+      const held = freezeHeld ?? 0;
       if (!play) throw new Error("missing");
       if (play.finishedAt !== null) {
-        return { already: true, score: play.score ?? 0, durationMs: play.durationMs ?? 0, streak: streaks.get(playerId)?.streak ?? 0, bonus: 0, milestone: null };
+        return { already: true, score: play.score ?? 0, durationMs: play.durationMs ?? 0, streak: streaks.get(playerId)?.streak ?? 0, bonus: 0, milestone: null, freezesUsed: 0, freezeHeld: held };
       }
       const durationMs = Math.max(0, at - play.startedAt);
       play.score = score;
       play.durationMs = durationMs;
       play.finishedAt = at;
-      const next = advanceStreak(streaks.get(playerId) ?? null, day);
+      play.boosted = boosted === true;
+      const next = streakWithFreeze(streaks.get(playerId) ?? null, day, held);
       streaks.set(playerId, next.streak);
       let bonus = 0;
       let milestone: 3 | 7 | null = null;
@@ -55,7 +58,7 @@ export function createMemoryDaily(grant: (playerId: string, grantId: string, cow
           bonus = 1;
         }
       }
-      return { already: false, score, durationMs, streak: next.streak.streak, bonus, milestone: bonus ? milestone : null };
+      return { already: false, score, durationMs, streak: next.streak.streak, bonus, milestone: bonus ? milestone : null, freezesUsed: next.freezesUsed, freezeHeld: next.freezeHeld };
     },
     async status(playerId) {
       return streaks.get(playerId) ?? { streak: 0, lastDay: null, startedDay: null };
@@ -68,7 +71,7 @@ export function createMemoryDaily(grant: (playerId: string, grantId: string, cow
     },
     async board({ edition, day, playerId }) {
       const rows = [...plays.values()]
-        .filter((play) => play.edition === edition && play.day === day && play.finishedAt !== null && (play.durationMs ?? 0) >= MIN_BOARD_MS)
+        .filter((play) => play.edition === edition && play.day === day && play.finishedAt !== null && play.boosted !== true && (play.durationMs ?? 0) >= MIN_BOARD_MS)
         .map((play) => ({ playerId: play.playerId, nickname: names.get(play.playerId) ?? null, score: play.score ?? 0, durationMs: play.durationMs ?? 0 }));
       return rankBoard(rows, playerId);
     },
@@ -91,28 +94,29 @@ export function createD1Daily(database: D1Database): DailyApi {
       }
       return { status: "open", startedAt: row.started_at, resumed: row.started_at !== at };
     },
-    async finish({ playerId, edition, day, score, at }) {
+    async finish({ playerId, edition, day, score, at, boosted, freezeHeld }) {
+      const held = freezeHeld ?? 0;
       const open = await database.prepare(
         "SELECT started_at, finished_at, score, duration_ms FROM paid_daily_plays WHERE player_id=?1 AND edition=?2 AND day=?3",
       ).bind(playerId, edition, day).first<{ started_at: number; finished_at: number | null; score: number | null; duration_ms: number | null }>();
       if (!open) throw new Error("missing");
       if (open.finished_at !== null) {
         const streak = await database.prepare("SELECT streak FROM paid_streaks WHERE player_id=?1").bind(playerId).first<{ streak: number }>();
-        return { already: true, score: open.score ?? 0, durationMs: open.duration_ms ?? 0, streak: streak?.streak ?? 0, bonus: 0, milestone: null };
+        return { already: true, score: open.score ?? 0, durationMs: open.duration_ms ?? 0, streak: streak?.streak ?? 0, bonus: 0, milestone: null, freezesUsed: 0, freezeHeld: held };
       }
       const durationMs = Math.max(0, at - open.started_at);
       const updated = await database.prepare(
-        "UPDATE paid_daily_plays SET score=?1, duration_ms=?2, finished_at=?3 WHERE player_id=?4 AND edition=?5 AND day=?6 AND finished_at IS NULL",
-      ).bind(score, durationMs, at, playerId, edition, day).run();
+        "UPDATE paid_daily_plays SET score=?1, duration_ms=?2, finished_at=?3, boosted=?7 WHERE player_id=?4 AND edition=?5 AND day=?6 AND finished_at IS NULL",
+      ).bind(score, durationMs, at, playerId, edition, day, boosted === true ? 1 : 0).run();
       if ((updated.meta.changes ?? 0) < 1) {
         const streak = await database.prepare("SELECT streak FROM paid_streaks WHERE player_id=?1").bind(playerId).first<{ streak: number }>();
         const current = await database.prepare(
           "SELECT score, duration_ms FROM paid_daily_plays WHERE player_id=?1 AND edition=?2 AND day=?3",
         ).bind(playerId, edition, day).first<{ score: number | null; duration_ms: number | null }>();
-        return { already: true, score: current?.score ?? score, durationMs: current?.duration_ms ?? durationMs, streak: streak?.streak ?? 0, bonus: 0, milestone: null };
+        return { already: true, score: current?.score ?? score, durationMs: current?.duration_ms ?? durationMs, streak: streak?.streak ?? 0, bonus: 0, milestone: null, freezesUsed: 0, freezeHeld: held };
       }
       const prior = await database.prepare("SELECT streak, last_day, started_day FROM paid_streaks WHERE player_id=?1").bind(playerId).first<{ streak: number; last_day: string | null; started_day: string | null }>();
-      const next = advanceStreak(prior ? { streak: prior.streak, lastDay: prior.last_day, startedDay: prior.started_day } : null, day);
+      const next = streakWithFreeze(prior ? { streak: prior.streak, lastDay: prior.last_day, startedDay: prior.started_day } : null, day, held);
       await database.prepare(
         "INSERT INTO paid_streaks (player_id, streak, last_day, started_day) VALUES (?1,?2,?3,?4) ON CONFLICT(player_id) DO UPDATE SET streak=?2, last_day=?3, started_day=?4",
       ).bind(playerId, next.streak.streak, next.streak.lastDay, next.streak.startedDay).run();
@@ -132,7 +136,7 @@ export function createD1Daily(database: D1Database): DailyApi {
           bonus = 1;
         }
       }
-      return { already: false, score, durationMs, streak: next.streak.streak, bonus, milestone: bonus ? milestone : null };
+      return { already: false, score, durationMs, streak: next.streak.streak, bonus, milestone: bonus ? milestone : null, freezesUsed: next.freezesUsed, freezeHeld: next.freezeHeld };
     },
     async status(playerId) {
       const row = await database.prepare("SELECT streak, last_day, started_day FROM paid_streaks WHERE player_id=?1").bind(playerId).first<{ streak: number; last_day: string | null; started_day: string | null }>();
@@ -151,7 +155,7 @@ export function createD1Daily(database: D1Database): DailyApi {
       const rows = await database.prepare(
         `SELECT p.player_id, p.score, p.duration_ms, n.nickname
          FROM paid_daily_plays p LEFT JOIN paid_nicknames n ON n.player_id = p.player_id
-         WHERE p.edition=?1 AND p.day=?2 AND p.finished_at IS NOT NULL AND p.duration_ms >= ?3`,
+         WHERE p.edition=?1 AND p.day=?2 AND p.finished_at IS NOT NULL AND p.duration_ms >= ?3 AND COALESCE(p.boosted, 0) = 0`,
       ).bind(edition, day, MIN_BOARD_MS).all<{ player_id: string; score: number; duration_ms: number; nickname: string | null }>();
       return rankBoard(rows.results.map((row) => ({
         playerId: row.player_id, nickname: row.nickname, score: row.score, durationMs: row.duration_ms,

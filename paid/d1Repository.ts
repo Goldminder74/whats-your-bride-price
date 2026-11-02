@@ -1,4 +1,5 @@
 import { isProductKey, products, FREE_COMPLETED_GAMES, GAME_COST_COWRIES, WELCOME_BONUS_COWRIES, WELCOME_BONUS_MS, type ProductKey } from "./catalog.ts";
+import { createD1Boosters } from "./boosterStore.ts";
 import { createD1Daily } from "./dailyStore.ts";
 import { earnDay, NEW_PLAYER_BONUS, newReferralCode, PERFECT_BONUS, PERFECT_DAILY_CAP, REFERRAL_DAILY_CAP, REFERRER_BONUS, SHARE_BONUS } from "./earn.ts";
 import { PaidError } from "./errors.ts";
@@ -146,6 +147,19 @@ export function createD1Repository(database: D1Database): PaidRepository {
   async function oneOrder(sql: string, ...binds: unknown[]): Promise<PaidOrder | null> {
     const row = await database.prepare(sql).bind(...binds).first<OrderRow>();
     return row ? orderFromRow(row) : null;
+  }
+
+  async function spendNow(playerId: string, count: number, at: number) {
+    assertSpendCount(count);
+    const result = await primary().prepare(COWRIE_SPEND_SQL).bind(playerId, count, at, at).run();
+    if ((result.meta.changes ?? 0) < 1) return null;
+    const rows = await database.prepare(`SELECT ${ENTITLEMENT_COLUMNS} FROM paid_entitlements WHERE player_id=?1`).bind(playerId).all<EntitlementRow>();
+    return accessFromEntitlements(rows.results.map(entitlementFromRow), at);
+  }
+
+  async function balanceOf(playerId: string, at: number) {
+    const rows = await database.prepare(`SELECT ${ENTITLEMENT_COLUMNS} FROM paid_entitlements WHERE player_id=?1`).bind(playerId).all<EntitlementRow>();
+    return accessFromEntitlements(rows.results.map(entitlementFromRow), at).cowries;
   }
 
   return {
@@ -327,10 +341,7 @@ export function createD1Repository(database: D1Database): PaidRepository {
       return rows.results;
     },
     async spendCowries(playerId, count, at) {
-      assertSpendCount(count);
-      const result = await primary().prepare(COWRIE_SPEND_SQL).bind(playerId, count, at, at).run();
-      if ((result.meta.changes ?? 0) < 1) return null;
-      return this.accessForPlayer(playerId);
+      return spendNow(playerId, count, at);
     },
     async refundUnfulfilled(orderId, at) {
       const result = await database.prepare("UPDATE paid_orders SET state='refunded', updated_at=?1 WHERE id=?2 AND state='pending'").bind(at, orderId).run();
@@ -452,6 +463,7 @@ export function createD1Repository(database: D1Database): PaidRepository {
       });
     },
     daily: createD1Daily(database),
+    boosters: createD1Boosters(database, spendNow, balanceOf),
     async saveReveal(record) {
       await database.prepare(
         `INSERT INTO paid_reveals (order_id, player_id, result_id, edition, score, display_name, certificate, token, created_at)

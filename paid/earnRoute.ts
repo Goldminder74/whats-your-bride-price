@@ -79,13 +79,20 @@ export async function handlePerfect(request: Request, services: PaidServices): P
     if (!stored || stored.player !== body.playerId || stored.edition !== edition || stored.attemptId !== body.attemptId) {
       throw new PaidError("round_not_found", 404);
     }
-    questions = stored.questions;
+    questions = services.boosters && stored.player
+      ? await services.repository.boosters.overlay(stored.player, stored.id, stored.questions)
+      : stored.questions;
   } else {
     questions = regions[edition].questions;
   }
+  const roundKey = services.randomBank && typeof body.roundId === "string" ? body.roundId : body.attemptId;
   const answers = parseAnswers(body.answers, questions.length);
   const score = answers.reduce((sum, answer, index) => sum + (answersMatch(answer, questions[index].correct) ? 1 : 0), 0);
   const total = questions.length;
+  if (services.boosters && await services.repository.boosters.roundBoosted(body.playerId, roundKey)) {
+    await stat(services, "earn_perfect", "boosted");
+    return json({ ok: false, reason: "boosted", cowries: 0, score, total });
+  }
   if (score !== GAME_SIZE || total !== GAME_SIZE) {
     await stat(services, "earn_perfect", "miss");
     return json({ ok: false, reason: "miss", cowries: 0, score, total });
@@ -181,13 +188,21 @@ function pngResponse(bytes: Uint8Array, cache: "hit" | "miss"): Response {
 
 export async function handleShareCard(url: URL, services: PaidServices, format: "svg" | "png" = "svg"): Promise<Response> {
   if (!services.shareCards) throw new PaidError("share_card_disabled", 404);
-  const { edition, score, frame } = normalizeShareCardQuery(url);
+  const params = normalizeShareCardQuery(url);
+  if (params.style) {
+    if (!services.boosters) throw new PaidError("boosters_disabled", 404);
+    const player = url.searchParams.get("player") || "";
+    if (!/^[A-Za-z0-9_-]{16,64}$/.test(player) || !(await services.repository.boosters.ownsFrame(player, params.style))) {
+      throw new PaidError("frame_not_owned", 403);
+    }
+  }
+  const { edition, score, frame } = params;
   if (format === "png") {
-    const cached = await readCachedSharePng(services.kv, { edition, score, frame });
+    const cached = await readCachedSharePng(services.kv, params);
     if (cached) return pngResponse(cached, "hit");
   }
   const artwork = await regionArtwork(services, edition);
-  const svg = shareCardSvg({ edition, score, frame, artwork });
+  const svg = shareCardSvg({ edition, score, frame, artwork, style: params.style });
   if (!svg.includes(CHALLENGE_LINE) || !svg.includes(canonicalHost())) {
     throw new PaidError("share_card_unavailable", 500);
   }
@@ -198,6 +213,6 @@ export async function handleShareCard(url: URL, services: PaidServices, format: 
     });
   }
   const png = await renderShareCardPng(svg);
-  await storeCachedSharePng(services.kv, { edition, score, frame }, png);
+  await storeCachedSharePng(services.kv, params, png);
   return pngResponse(png, "miss");
 }

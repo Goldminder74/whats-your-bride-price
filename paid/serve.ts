@@ -27,6 +27,7 @@ import { DISPLAY_NAME_MESSAGE } from "./nickname.ts";
 import { applyStripeEvent, projectAccess } from "./fulfillment.ts";
 import { SUPPORT_EMAIL } from "./receipt.ts";
 import { editions, isEdition, type KvStore } from "./games.ts";
+import { handleBoosterFrame, handleBoosterFreeze, handleBoosterOffer, handleBoosterStatus, handleBoosterUse } from "./boosterRoute.ts";
 import { handleDailyBegin, handleDailyBoard, handleDailyFinish, handleDailyNickname, handleDailyStatus, handleNicknameRead } from "./dailyRoute.ts";
 import { claimReferralIfFirstGame, handlePerfect, handleReferralArrive, handleReferralGet, handleShareCard, handleShareReward } from "./earnRoute.ts";
 import { applyChallengeMeta, challengeUrl, shareBlurb, shareCardImageUrl } from "./shareCard.ts";
@@ -85,6 +86,8 @@ export type PaidServices = Readonly<{
   dailyChallenge?: boolean;
   /** Free 5-second result video. Off unless RESULT_VIDEO is on. */
   resultVideo?: boolean;
+  /** In-round Cowrie boosters, streak freezes, and cosmetic frames. Off unless BOOSTERS is on. */
+  boosters?: boolean;
 }>;
 
 const PLAYER_ID = /^[A-Za-z0-9_-]{16,64}$/;
@@ -492,6 +495,7 @@ export async function servePaid(request: Request, services: PaidServices): Promi
         dailyChallenge: services.dailyChallenge === true,
         royalReveal: services.royalRevealEnabled === true,
         resultVideo: services.resultVideo === true,
+        boosters: services.boosters === true,
       });
     }
     if (request.method === "GET" && url.pathname === "/api/paid/catalog") {
@@ -521,6 +525,7 @@ export async function servePaid(request: Request, services: PaidServices): Promi
         dailyChallenge: services.dailyChallenge === true,
         royalReveal: services.royalRevealEnabled === true,
         resultVideo: services.resultVideo === true,
+        boosters: services.boosters === true,
       });
     }
     if ((request.method === "GET" || request.method === "POST") && url.pathname === "/api/paid/result-video.mp4") {
@@ -570,6 +575,11 @@ export async function servePaid(request: Request, services: PaidServices): Promi
     }
     if (request.method === "POST" && url.pathname === "/api/paid/games/begin") return await handleBegin(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/games/finish") return await handleFinish(request, services);
+    if (request.method === "GET" && url.pathname === "/api/paid/boosters") return await handleBoosterStatus(url, services);
+    if (request.method === "GET" && url.pathname === "/api/paid/boosters/offer") return await handleBoosterOffer(url, services);
+    if (request.method === "POST" && url.pathname === "/api/paid/boosters/use") return await handleBoosterUse(request, services);
+    if (request.method === "POST" && url.pathname === "/api/paid/boosters/freeze") return await handleBoosterFreeze(request, services);
+    if (request.method === "POST" && url.pathname === "/api/paid/boosters/frame") return await handleBoosterFrame(request, services);
     if (request.method === "GET" && url.pathname === "/api/paid/daily") return await handleDailyStatus(url, services);
     if (request.method === "POST" && url.pathname === "/api/paid/daily/begin") return await handleDailyBegin(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/daily/finish") return await handleDailyFinish(request, services);

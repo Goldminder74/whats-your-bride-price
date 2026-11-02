@@ -1,3 +1,4 @@
+import { frameStyleMarkup, type FrameKey } from "./frameStyle.ts";
 import { calculateResultTier } from "../app/gameLogic.ts";
 import { regions, type RegionKey } from "../app/gameData.ts";
 import { CANONICAL_ORIGIN } from "./catalog.ts";
@@ -72,7 +73,7 @@ function cowries(y: number, count: number): string {
 }
 
 /** Poster card. The challenge link stays off the artwork; only the domain is printed. */
-export function shareCardSvg(input: { edition: RegionKey; score: number; frame?: ShareFrame; artwork?: string | null }): string {
+export function shareCardSvg(input: { edition: RegionKey; score: number; frame?: ShareFrame; artwork?: string | null; style?: FrameKey | null }): string {
   const frame = input.frame === "story" ? "story" : "card";
   const width = SHARE_CARD_WIDTH;
   const height = frame === "story" ? SHARE_STORY_HEIGHT : SHARE_CARD_HEIGHT;
@@ -115,6 +116,7 @@ export function shareCardSvg(input: { edition: RegionKey; score: number; frame?:
   <rect width="${width}" height="${height}" fill="url(#grain)"/>
   <rect x="28" y="28" width="${width - 56}" height="${height - 56}" fill="none" stroke="#f0a11a" stroke-width="3"/>
   <rect x="42" y="42" width="${width - 84}" height="${height - 84}" fill="none" stroke="#f0a11a" stroke-width="1" opacity="0.7"/>
+  ${input.style ? frameStyleMarkup(input.style, width, height) : ""}
   ${cowries(cowrieY, 7)}
   <text x="540" y="${editionY}" fill="#f0a11a" font-family="Anton, Impact, Arial Black, sans-serif" font-size="28" letter-spacing="8" text-anchor="middle">${xml(region.name.toUpperCase())} EDITION</text>
   <text x="540" y="${wordY}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="22" letter-spacing="6" text-anchor="middle">WHAT’S YOUR BRIDE PRICE?</text>

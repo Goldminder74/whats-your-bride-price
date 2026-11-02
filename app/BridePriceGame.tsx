@@ -7,7 +7,7 @@ import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type Question as PlayQuestion } from "./gameData";
 import { buildRevealRecording } from "../paid/revealOffer.ts";
 import { buildResultVideo } from "./resultVideo";
-import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, finishGame, readPlayerId, recordArrival, recordServerResult, type PaidFeatures } from "./paidClient";
+import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, fetchWallet, finishGame, readPlayerId, recordArrival, recordServerResult, type PaidFeatures } from "./paidClient";
 import { paidCommerceEnabled, randomBankEnabled } from "./paidFlags";
 import { finishRound, playRandomRound, readSavedRound, writeSavedRound } from "../question-bank/clientRound.ts";
 import { friendChallengeLine } from "../paid/friendLine.ts";
@@ -217,7 +217,7 @@ export default function BridePriceGame() {
   const [allAfricaJustUnlocked, setAllAfricaJustUnlocked] = useState(false);
   const [revealAura, setRevealAura] = useState(0);
   const [bankRound, setBankRound] = useState<PlayQuestion[] | null>(null);
-  const [paidFeatures, setPaidFeatures] = useState<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false, resultVideo: false });
+  const [paidFeatures, setPaidFeatures] = useState<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false, resultVideo: false, boosters: false });
   const [videoBusy, setVideoBusy] = useState(false);
   const [videoNote, setVideoNote] = useState("");
   const [serverResultId, setServerResultId] = useState<string | null>(null);
@@ -225,7 +225,16 @@ export default function BridePriceGame() {
   const [referralUrl, setReferralUrl] = useState<string | null>(null);
   const [perfectNote, setPerfectNote] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
-  const paidFeaturesRef = useRef<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false, resultVideo: false });
+  const paidFeaturesRef = useRef<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false, resultVideo: false, boosters: false });
+  const boosterRound = useRef<{ kind: "game" | "daily"; id: string } | null>(null);
+  const [boosterRoundId, setBoosterRoundId] = useState<string | null>(null);
+  const [boosterOffer, setBoosterOffer] = useState<{ fifty: boolean; hint: boolean; skip: boolean; second: boolean; costs: { fifty: number; hint: number; skip: number; second: number }; used: Record<string, boolean> } | null>(null);
+  const [hiddenOptions, setHiddenOptions] = useState<number[]>([]);
+  const [hintText, setHintText] = useState("");
+  const [frameChoice, setFrameChoice] = useState("");
+  const [frameCatalog, setFrameCatalog] = useState<{ key: string; name: string; cowries: number }[]>([]);
+  const [ownedFrames, setOwnedFrames] = useState<string[]>([]);
+  const [freezeHeld, setFreezeHeld] = useState<number | null>(null);
   const dailyMode = useRef(false);
   const [friendScore, setFriendScore] = useState<number | null>(null);
   const [dailyNote, setDailyNote] = useState("");
@@ -286,6 +295,32 @@ export default function BridePriceGame() {
       setBestScores(Object.fromEntries(Object.entries(saved).filter(([key, value]) => regions[key as RegionKey] && typeof value === "number")) as Partial<Record<RegionKey, number>>);
     } catch { /* device progress is optional */ }
   }, []);
+
+  useEffect(() => {
+    setHiddenOptions([]);
+    setHintText("");
+    const round = boosterRound.current;
+    if (screen !== "quiz" || !paidFeatures.boosters || !round || round.id !== boosterRoundId) return;
+    let cancelled = false;
+    void fetch(`/api/paid/boosters/offer?player=${readPlayerId()}&roundKind=${round.kind}&round=${round.id}&edition=${regionKey}&index=${index}`)
+      .then(async (response) => response.ok ? response.json() as Promise<{ fifty: boolean; hint: boolean; skip: boolean; second: boolean; costs: { fifty: number; hint: number; skip: number; second: number }; used: Record<string, boolean> }> : null)
+      .then((payload) => { if (!cancelled && payload) setBoosterOffer(payload); });
+    return () => { cancelled = true; };
+  }, [screen, index, regionKey, paidFeatures.boosters, boosterRoundId]);
+
+  useEffect(() => {
+    if (screen !== "result" || !paidFeatures.boosters) return;
+    let cancelled = false;
+    void fetch(`/api/paid/boosters?player=${readPlayerId()}`)
+      .then(async (response) => response.ok ? response.json() as Promise<{ held?: number; frames?: string[]; catalog?: { key: string; name: string; cowries: number }[] }> : null)
+      .then((payload) => {
+        if (cancelled || !payload) return;
+        setFreezeHeld(payload.held ?? 0);
+        setOwnedFrames(payload.frames ?? []);
+        setFrameCatalog(payload.catalog ?? []);
+      });
+    return () => { cancelled = true; };
+  }, [screen, paidFeatures.boosters]);
 
   useEffect(() => {
     if (screen !== "result") return;
@@ -373,7 +408,7 @@ export default function BridePriceGame() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ playerId: readPlayerId(), edition: regionKey, nickname: name.trim() || undefined }),
       });
-      const payload = await response.json() as { status?: string; questions?: PlayQuestion[]; score?: number; streak?: number; countdownMs?: number; error?: string };
+      const payload = await response.json() as { status?: string; questions?: PlayQuestion[]; score?: number; streak?: number; countdownMs?: number; error?: string; roundId?: string };
       if (!response.ok) {
         if (payload.error === "nickname_invalid" || payload.error === "nickname_rejected") {
           setDailyNote("Use a nickname of 2–16 letters. No email, link, or profanity.");
@@ -387,6 +422,10 @@ export default function BridePriceGame() {
       }
       if (!payload.questions || payload.questions.length !== 12) return;
       dailyMode.current = true;
+      boosterRound.current = payload.roundId ? { kind: "daily", id: payload.roundId } : null;
+      setBoosterRoundId(payload.roundId ?? null);
+      setHiddenOptions([]);
+      setHintText("");
       setAttemptId(null);
       setBankRound(payload.questions);
       setIndex(0);
@@ -399,6 +438,11 @@ export default function BridePriceGame() {
 
   const beginQuiz = () => {
     dailyMode.current = false;
+    boosterRound.current = null;
+    setBoosterRoundId(null);
+    setBoosterOffer(null);
+    setHiddenOptions([]);
+    setHintText("");
     setDailyResult(null);
     setDailyBoard([]);
     setSelected([]);
@@ -433,6 +477,8 @@ export default function BridePriceGame() {
             const payload = await response.json() as { roundId?: string; questions?: PlayQuestion[] };
             if (payload.roundId && Array.isArray(payload.questions) && payload.questions.length === 12 && payload.questions.every((item) => Array.isArray(item.correct))) {
               roundIdRef.current = payload.roundId;
+              boosterRound.current = { kind: "game", id: payload.roundId };
+              setBoosterRoundId(payload.roundId);
               const saved = readSavedRound(edition);
               if (saved?.roundId === payload.roundId) {
                 setBankRound(saved.questions);
@@ -617,6 +663,105 @@ export default function BridePriceGame() {
         setDailyBoard(listed.top ?? []);
         setDailyResult((current) => current ? { ...current, rank: listed.rank ?? null, needsNickname: false } : current);
       }
+    })();
+  };
+
+  const spendBooster = (kind: "fifty" | "hint" | "skip" | "second") => {
+    const round = boosterRound.current;
+    if (!round) return;
+    const cost = boosterOffer?.costs[kind] ?? 0;
+    void (async () => {
+      const wallet = await fetchWallet();
+      if (!wallet || wallet.cowries < cost) {
+        setPaywall(true);
+        return;
+      }
+      const response = await fetch("/api/paid/boosters/use", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          playerId: readPlayerId(),
+          roundKind: round.kind,
+          roundId: round.id,
+          edition: regionKey,
+          kind,
+          questionIndex: index,
+          answer: kind === "second" ? selected : undefined,
+        }),
+      });
+      if (response.status === 402) {
+        setPaywall(true);
+        return;
+      }
+      if (!response.ok) return;
+      const payload = await response.json() as { remove?: number[]; hint?: string; question?: PlayQuestion; retry?: boolean };
+      if (kind === "fifty" && Array.isArray(payload.remove)) setHiddenOptions(payload.remove);
+      if (kind === "hint" && payload.hint) setHintText(payload.hint);
+      if (kind === "skip" && payload.question) {
+        setBankRound((current) => current ? current.map((item, itemIndex) => itemIndex === index ? payload.question as PlayQuestion : item) : current);
+        setSelected([]);
+        setFeedbackOpen(false);
+        setHiddenOptions([]);
+        setHintText("");
+      }
+      if (kind === "second" && payload.retry) {
+        setAnswers((current) => current.slice(0, -1));
+        choiceLog.current[index] = [];
+        setSelected([]);
+        setFeedbackOpen(false);
+      }
+      setBoosterOffer((current) => current ? { ...current, used: { ...current.used, [kind]: true }, [kind]: false } : current);
+      window.dispatchEvent(new Event("wybp-wallet"));
+    })();
+  };
+
+  const buyFreeze = () => {
+    void (async () => {
+      const wallet = await fetchWallet();
+      if (!wallet || wallet.cowries < 2) {
+        setPaywall(true);
+        return;
+      }
+      const response = await fetch("/api/paid/boosters/freeze", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ playerId: readPlayerId(), requestId: `freeze${Date.now().toString(36)}` }),
+      });
+      if (response.status === 402) {
+        setPaywall(true);
+        return;
+      }
+      if (!response.ok) return;
+      const payload = await response.json() as { held?: number };
+      setFreezeHeld(payload.held ?? 0);
+      window.dispatchEvent(new Event("wybp-wallet"));
+    })();
+  };
+
+  const buyFrame = (key: string, cowries: number) => {
+    if (ownedFrames.includes(key)) {
+      setFrameChoice(key);
+      return;
+    }
+    void (async () => {
+      const wallet = await fetchWallet();
+      if (!wallet || wallet.cowries < cowries) {
+        setPaywall(true);
+        return;
+      }
+      const response = await fetch("/api/paid/boosters/frame", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ playerId: readPlayerId(), frame: key, requestId: `frame${Date.now().toString(36)}` }),
+      });
+      if (response.status === 402) {
+        setPaywall(true);
+        return;
+      }
+      if (!response.ok) return;
+      setOwnedFrames((current) => current.includes(key) ? current : [...current, key]);
+      setFrameChoice(key);
+      window.dispatchEvent(new Event("wybp-wallet"));
     })();
   };
 
@@ -911,8 +1056,10 @@ export default function BridePriceGame() {
           <div className="question-wrap" key={index}>
             <div className="question-meta"><p className="eyebrow">{kindLabels[question.kind]}</p><span>{question.topic}</span></div>
             <h2 className={question.kind === "image" ? "image-question" : question.kind === "complete" ? "sentence-question" : ""}>{question.prompt}</h2>
+            {hintText ? <p className="booster-hint">{hintText}</p> : null}
             <div className={`answer-grid kind-${question.kind}`}>
               {question.options.map((option, optionIndex) => {
+                if (hiddenOptions.includes(optionIndex)) return null;
                 const slot = (question.visualStart || 0) + optionIndex;
                 const classes = [selected.includes(optionIndex) ? "selected" : "", feedbackOpen && question.correct.includes(optionIndex) ? "correct" : "", feedbackOpen && selected.includes(optionIndex) && !question.correct.includes(optionIndex) ? "wrong" : ""].filter(Boolean).join(" ");
                 const choiceLetter = String.fromCharCode(65 + optionIndex);
@@ -927,9 +1074,15 @@ export default function BridePriceGame() {
             {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
               <div><span>{lastCorrect ? "✦ CORRECT" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? "Culture gem energy!" : "Good guess. Bank this fact."}</b></div>
               <p>{question.explanation}</p>
+              {!lastCorrect && paidFeatures.boosters && boosterOffer && !boosterOffer.used.second ? <button type="button" className="booster-second" onClick={() => spendBooster("second")}>Second chance <small>{boosterOffer.costs.second} Cowries</small></button> : null}
               <button onClick={nextQuestion}>{index === activeQuestions.length - 1 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
             </div>}
           </div>
+          {paidFeatures.boosters && boosterOffer ? <div className="booster-bar" aria-label="Boosters">
+            {boosterOffer.fifty ? <button type="button" onClick={() => spendBooster("fifty")}>50/50 <small>{boosterOffer.costs.fifty} Cowrie</small></button> : null}
+            {boosterOffer.hint ? <button type="button" onClick={() => spendBooster("hint")}>Hint <small>{boosterOffer.costs.hint} Cowrie</small></button> : null}
+            {boosterOffer.skip ? <button type="button" onClick={() => spendBooster("skip")}>Skip <small>{boosterOffer.costs.skip} Cowries</small></button> : null}
+          </div> : null}
           <div className="quiz-footer"><span>{region.mark}</span><p>Right or wrong, every reveal teaches you something worth carrying forward.</p></div>
           {dropOpen && (
             <div className="culture-drop" role="dialog" aria-modal="true" aria-label="Culture drop">
@@ -998,7 +1151,15 @@ export default function BridePriceGame() {
                   <a href={`https://wa.me/?text=${encodeURIComponent(`Play What’s Your Bride Price? with me. You get 1 Cowrie when you finish your first game, and I get 2. ${referralUrl}`)}`} target="_blank" rel="noreferrer">WhatsApp</a>
                 </div>
               </section> : null}
-              {paidFeatures.shareCards ? <div className="share-preview"><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}`} alt={`Result card, ${correctCount} of 12, ${tierTitles[tier]}`} /><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}&frame=story`} alt="Story result card" /></div> : null}
+              {paidFeatures.boosters ? <section className="freeze-row" aria-label="Streak freeze">
+                <div><b>Streak freeze</b><span>Protects one missed daily. Holding {freezeHeld ?? 0}/2.</span></div>
+                <button type="button" onClick={buyFreeze} disabled={freezeHeld === 2}>{freezeHeld === 2 ? "Full" : "2 Cowries"}</button>
+              </section> : null}
+              {paidFeatures.boosters && frameCatalog.length > 0 ? <section className="frame-picker" aria-label="Card frames">
+                <p>Card frames</p>
+                <div>{frameCatalog.map((frame) => <button type="button" key={frame.key} className={frameChoice === frame.key ? "is-on" : ""} onClick={() => buyFrame(frame.key, frame.cowries)}><b>{frame.name}</b><small>{ownedFrames.includes(frame.key) ? "Use" : `${frame.cowries} Cowries`}</small></button>)}</div>
+              </section> : null}
+              {paidFeatures.shareCards ? <div className="share-preview"><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}${frameChoice ? `&style=${frameChoice}&player=${readPlayerId()}` : ""}`} alt={`Result card, ${correctCount} of 12, ${tierTitles[tier]}`} /><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}&frame=story${frameChoice ? `&style=${frameChoice}&player=${readPlayerId()}` : ""}`} alt="Story result card" /></div> : null}
               {paidFeatures.resultVideo ? <div className="video-actions"><button type="button" onClick={() => void saveResultVideo()} disabled={videoBusy}>Save video</button><button type="button" onClick={() => void shareResultVideo()} disabled={videoBusy}>Share video</button>{videoNote ? <p role="status">{videoNote}</p> : null}</div> : null}
               <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>
               {serverResultId ? <RoyalRevealOffer resultId={serverResultId} edition={regionKey} score={correctCount} /> : null}

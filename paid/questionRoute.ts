@@ -104,8 +104,11 @@ export async function handleQuestionComplete(request: Request, services: PaidSer
   const roundId = record && typeof record.roundId === "string" ? record.roundId : "";
   if (randomBankOn(services) && roundId) {
     if (!ROUND_ID.test(roundId)) throw new PaidError("round_invalid", 400);
-    const stored = await readRound(services.kv, roundId);
-    if (!stored) throw new PaidError("round_not_found", 404);
+    const loaded = await readRound(services.kv, roundId);
+    if (!loaded) throw new PaidError("round_not_found", 404);
+    const stored = services.boosters && loaded.player
+      ? { ...loaded, questions: await services.repository.boosters.overlay(loaded.player, loaded.id, loaded.questions) }
+      : loaded;
     if (!isEdition(record?.edition) || record.edition !== stored.edition) throw new PaidError("edition_invalid", 400);
     if (!Array.isArray(record.answers)) throw new PaidError("answers_incomplete", 400);
     const answers = record.answers.map((answer) => {

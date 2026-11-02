@@ -129,15 +129,21 @@ export async function handleDailyFinish(request: Request, services: PaidServices
   await rateLimit(services.kv, player, services.now());
   const day = earnDay(services.now());
   const round = await dailyRound(services, body.edition, day);
+  const questions = services.boosters
+    ? await services.repository.boosters.overlay(player, round.id, round.questions)
+    : round.questions;
   const answers = parseAnswers(body.answers);
-  const score = answers.reduce((sum, answer, index) => sum + (answersMatch(answer, round.questions[index].correct) ? 1 : 0), 0);
+  const score = answers.reduce((sum, answer, index) => sum + (answersMatch(answer, questions[index].correct) ? 1 : 0), 0);
+  const boosted = services.boosters ? await services.repository.boosters.roundBoosted(player, round.id) : false;
+  const freezeHeld = services.boosters ? await services.repository.boosters.held(player) : 0;
   let result;
   try {
-    result = await services.repository.daily.finish({ playerId: player, edition: body.edition, day, score, at: services.now() });
+    result = await services.repository.daily.finish({ playerId: player, edition: body.edition, day, score, at: services.now(), boosted, freezeHeld });
   } catch (error) {
     if (error instanceof Error && error.message === "missing") throw new PaidError("daily_not_started", 404);
     throw error;
   }
+  if (services.boosters && result.freezesUsed > 0) await services.repository.boosters.setHeld(player, result.freezeHeld, services.now());
   if (!result.already) await services.repository.recordStat("daily_play", body.edition, services.now());
   if (result.bonus > 0) await services.repository.recordStat("streak_bonus", String(result.milestone), services.now());
   const nickname = await services.repository.daily.nickname(player);
