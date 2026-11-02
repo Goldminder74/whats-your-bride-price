@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { createHmac } from "node:crypto";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { regions } from "../../app/gameData.ts";
 import { CANONICAL_ORIGIN } from "../../paid/catalog.ts";
@@ -324,4 +325,33 @@ test("the share card is a 1080 by 1350 branded result and stays hidden while the
   assert.match(plain, /og-v2\.png/);
   assert.equal((await servePaid(request("/api/paid/share-card.svg?edition=west&score=13"), app)).status, 400);
   assert.equal((await servePaid(request("/api/paid/share-card.png?edition=west&score=13"), app)).status, 400);
+});
+
+test("rendered share-card PNGs are reused for the same edition, score, and frame", async () => {
+  const config = await readFile(new URL("../../wrangler.jsonc", import.meta.url), "utf8");
+  assert.match(config, /"EARN_PATHS": "on"/);
+  assert.match(config, /"SHARE_CARDS": "on"/);
+  const kv = memoryKv();
+  const app = services({ shareCards: true, kv });
+  assert.equal((await servePaid(request("/api/paid/share-card.png?edition=west&score=08"), app)).status, 400);
+  assert.equal((await servePaid(request("/api/paid/share-card.png?edition=WEST&score=8"), app)).status, 400);
+  assert.equal((await servePaid(request("/api/paid/share-card.png?edition=west&score=8&frame=banner"), app)).status, 400);
+  assert.equal([...kv.map.keys()].some((key) => String(key).startsWith("share-png:")), false);
+
+  const coldStart = performance.now();
+  const cold = await servePaid(request("/api/paid/share-card.png?edition=west&score=8&utm=newsletter"), app);
+  const coldMs = performance.now() - coldStart;
+  assert.equal(cold.status, 200);
+  assert.equal(cold.headers.get("x-share-card-cache"), "miss");
+  const coldBytes = Buffer.from(await cold.arrayBuffer());
+  assert.equal(kv.map.has("share-png:v1:west:8:card"), true);
+
+  const warmStart = performance.now();
+  const warm = await servePaid(request("/api/paid/share-card.png?score=8&edition=west&frame=card&ref=abcdefgh"), app);
+  const warmMs = performance.now() - warmStart;
+  assert.equal(warm.status, 200);
+  assert.equal(warm.headers.get("x-share-card-cache"), "hit");
+  assert.ok(coldBytes.equals(Buffer.from(await warm.arrayBuffer())));
+  assert.ok(warmMs < 200, `warm share-card render took ${warmMs.toFixed(1)}ms`);
+  console.log(`share-card png cold ${coldMs.toFixed(0)}ms warm ${warmMs.toFixed(1)}ms`);
 });

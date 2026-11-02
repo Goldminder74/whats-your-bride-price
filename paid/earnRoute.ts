@@ -8,7 +8,8 @@ import { PaidError } from "./errors.ts";
 import { isEdition } from "./games.ts";
 import type { EarnDecision } from "./repository.ts";
 import type { PaidServices } from "./serve.ts";
-import { canonicalHost, CHALLENGE_LINE, shareCardSvg, type ShareFrame } from "./shareCard.ts";
+import { normalizeShareCardQuery, readCachedSharePng, storeCachedSharePng } from "./shareCardCache.ts";
+import { canonicalHost, CHALLENGE_LINE, shareCardSvg } from "./shareCard.ts";
 import { renderShareCardPng } from "./shareCardPng.ts";
 
 const PLAYER_ID = /^[A-Za-z0-9_-]{16,64}$/;
@@ -166,22 +167,37 @@ async function regionArtwork(services: PaidServices, edition: RegionKey): Promis
   }
 }
 
+function pngResponse(bytes: Uint8Array, cache: "hit" | "miss"): Response {
+  return new Response(Buffer.from(bytes), {
+    status: 200,
+    headers: {
+      "content-type": "image/png",
+      "cache-control": "public, max-age=86400",
+      "x-content-type-options": "nosniff",
+      "x-share-card-cache": cache,
+    },
+  });
+}
+
 export async function handleShareCard(url: URL, services: PaidServices, format: "svg" | "png" = "svg"): Promise<Response> {
   if (!services.shareCards) throw new PaidError("share_card_disabled", 404);
-  const edition = url.searchParams.get("edition");
-  if (!isEdition(edition)) throw new PaidError("edition_invalid", 400);
-  const score = Number(url.searchParams.get("score"));
-  if (!Number.isInteger(score) || score < 0 || score > GAME_SIZE) throw new PaidError("score_invalid", 400);
-  const frame: ShareFrame = url.searchParams.get("frame") === "story" ? "story" : "card";
+  const { edition, score, frame } = normalizeShareCardQuery(url);
+  if (format === "png") {
+    const cached = await readCachedSharePng(services.kv, { edition, score, frame });
+    if (cached) return pngResponse(cached, "hit");
+  }
   const artwork = await regionArtwork(services, edition);
   const svg = shareCardSvg({ edition, score, frame, artwork });
   if (!svg.includes(CHALLENGE_LINE) || !svg.includes(canonicalHost())) {
     throw new PaidError("share_card_unavailable", 500);
   }
-  const headers = { "cache-control": "public, max-age=86400", "x-content-type-options": "nosniff" };
   if (format === "svg") {
-    return new Response(svg, { status: 200, headers: { ...headers, "content-type": "image/svg+xml; charset=utf-8" } });
+    return new Response(svg, {
+      status: 200,
+      headers: { "content-type": "image/svg+xml; charset=utf-8", "cache-control": "public, max-age=86400", "x-content-type-options": "nosniff" },
+    });
   }
   const png = await renderShareCardPng(svg);
-  return new Response(Buffer.from(png), { status: 200, headers: { ...headers, "content-type": "image/png" } });
+  await storeCachedSharePng(services.kv, { edition, score, frame }, png);
+  return pngResponse(png, "miss");
 }
