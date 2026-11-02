@@ -4,9 +4,10 @@
 /* eslint-disable react-hooks/set-state-in-effect -- URL hydration and result commits are deliberate lifecycle transitions */
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
-import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections } from "./gameData";
+import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type Question as PlayQuestion } from "./gameData";
 import { beginGame, finishGame } from "./paidClient";
-import { paidCommerceEnabled } from "./paidFlags";
+import { paidCommerceEnabled, randomBankEnabled } from "./paidFlags";
+import { finishRound, playRandomRound, writeSavedRound } from "../question-bank/clientRound.ts";
 import { PaidDesk } from "./PaidDesk";
 import { reportAppError } from "./errors";
 import { answersMatch, calculateResultTier } from "./gameLogic";
@@ -197,10 +198,12 @@ export default function BridePriceGame() {
   const [bestScores, setBestScores] = useState<Partial<Record<RegionKey, number>>>({});
   const [allAfricaJustUnlocked, setAllAfricaJustUnlocked] = useState(false);
   const [revealAura, setRevealAura] = useState(0);
+  const [bankRound, setBankRound] = useState<PlayQuestion[] | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const audioRef = useRef<AudioContext | null>(null);
   const region = regions[regionKey];
-  const question = region.questions[index];
+  const activeQuestions = randomBankEnabled() ? (bankRound ?? []) : region.questions;
+  const question = activeQuestions[index];
   const portrait = photo || avatar;
   const correctCount = answers.reduce((sum, answer) => sum + answer, 0);
   const tier = calculateResultTier(correctCount);
@@ -283,6 +286,7 @@ export default function BridePriceGame() {
 
   const chooseRegion = (key: RegionKey) => {
     setRegionKey(key);
+    setBankRound(null);
     setScreen("setup");
     setAnswers([]);
     setIndex(0);
@@ -301,38 +305,66 @@ export default function BridePriceGame() {
     reader.readAsDataURL(file);
   };
 
-  const beginQuiz = async () => {
-    let edition = regionKey;
-    if (paidCommerceEnabled()) {
-      try {
-        const started = await beginGame(regionKey);
-        if (!started.ok) {
+  const beginQuiz = () => {
+    setSelected([]);
+    setFeedbackOpen(false);
+    void (async () => {
+      let edition = regionKey;
+      if (paidCommerceEnabled()) {
+        try {
+          const started = await beginGame(regionKey);
+          if (!started.ok) {
+            setPaywall(true);
+            return;
+          }
+          edition = started.edition as RegionKey;
+          if (edition !== regionKey) setRegionKey(edition);
+          setAttemptId(started.attemptId);
+        } catch {
           setPaywall(true);
           return;
         }
-        edition = started.edition as RegionKey;
-        if (edition !== regionKey) setRegionKey(edition);
-        setAttemptId(started.attemptId);
-      } catch {
-        setPaywall(true);
+      }
+      setScreen("quiz");
+      if (!randomBankEnabled()) {
+        setBankRound(null);
+        setIndex(0); setAnswers([]);
+        playTone(520, true); window.scrollTo(0, 0);
         return;
       }
-    }
-    setIndex(0); setAnswers([]); setSelected([]); setFeedbackOpen(false); setScreen("quiz");
-    playTone(520, true); window.scrollTo(0, 0);
+      setBankRound(null);
+      try {
+        const round = await playRandomRound(edition);
+        setBankRound(round.questions);
+        setIndex(round.index);
+        setAnswers(round.answers);
+      } catch (error) {
+        reportAppError("question_bank_failed", error, { region: edition });
+        setBankRound(regions[edition].questions.map((item, itemIndex) => ({ ...item, id: `${edition}_classic_${String(itemIndex).padStart(2, "0")}` })));
+        setIndex(0);
+        setAnswers([]);
+      }
+      playTone(520, true);
+      window.scrollTo(0, 0);
+    })();
   };
 
+  useEffect(() => {
+    if (!randomBankEnabled() || !bankRound) return;
+    if (screen === "result") finishRound(regionKey);
+    else if (screen === "quiz") writeSavedRound(regionKey, { questions: bankRound, index, answers });
+  }, [screen, bankRound, index, answers, regionKey]);
+
   const submitAnswer = (choice: number[]) => {
-    if (feedbackOpen) return;
-    const expected = region.questions[index].correct;
+    if (feedbackOpen || !question) return;
+    const expected = question.correct;
     const isCorrect = answersMatch(choice, expected);
     setSelected(choice); setLastCorrect(isCorrect); setAnswers((current) => [...current, isCorrect ? 1 : 0]); setFeedbackOpen(true);
     playTone(isCorrect ? 680 : 260, isCorrect);
   };
 
   const chooseAnswer = (answerIndex: number) => {
-    if (feedbackOpen) return;
-    const question = region.questions[index];
+    if (feedbackOpen || !question) return;
     if (question.kind === "multi") {
       setSelected((current) => current.includes(answerIndex) ? current.filter((value) => value !== answerIndex) : current.length < 3 ? [...current, answerIndex] : current);
       playTone(390 + answerIndex * 35);
@@ -342,7 +374,7 @@ export default function BridePriceGame() {
   };
 
   const nextQuestion = () => {
-    if (index === 11) {
+    if (index === activeQuestions.length - 1) {
       const currentAttempt = attemptId;
       setScreen("result"); setDropOpen(false); playTone(720, true);
       if (paidCommerceEnabled() && currentAttempt) {
@@ -355,7 +387,7 @@ export default function BridePriceGame() {
   };
 
   const restart = () => {
-    setScreen("home"); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null); setAllAfricaJustUnlocked(false);
+    setScreen("home"); setBankRound(null); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null); setAllAfricaJustUnlocked(false);
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
 
@@ -546,7 +578,14 @@ export default function BridePriceGame() {
         </section>
       )}
 
-      {screen === "quiz" && (
+      {screen === "quiz" && !question && (
+        <section className="quiz-stage">
+          <div className="quiz-header"><button onClick={() => setScreen("setup")}>← Exit</button><b className="hud-round">12 questions</b></div>
+          <h2>Choosing 12 questions from the region bank.</h2>
+        </section>
+      )}
+
+      {screen === "quiz" && question && (
         <section className="quiz-stage">
           <div className="quiz-pattern" aria-hidden="true" />
           <div className="quiz-header">
@@ -580,7 +619,7 @@ export default function BridePriceGame() {
             {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
               <div><span>{lastCorrect ? "✦ CORRECT" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? "Culture gem energy!" : "Good guess. Bank this fact."}</b></div>
               <p>{question.explanation}</p>
-              <button onClick={nextQuestion}>{index === 11 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
+              <button onClick={nextQuestion}>{index === activeQuestions.length - 1 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
             </div>}
           </div>
           <div className="quiz-footer"><span>{region.mark}</span><p>Right or wrong, every reveal teaches you something worth carrying forward.</p></div>

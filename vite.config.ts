@@ -53,6 +53,7 @@ export default defineConfig(async () => {
   return {
     define: {
       __WYBP_FEATURE_FLAGS__: JSON.stringify(featureFlags),
+      __WYBP_RANDOM_BANK__: JSON.stringify(process.env.WYBP_FEATURE_RANDOM_BANK === "true"),
     },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }

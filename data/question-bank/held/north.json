@@ -1,0 +1,2704 @@
+{
+  "region": "north",
+  "questions": [
+    {
+      "id": "north_geog_fez_morocco",
+      "region": "north",
+      "country": "Morocco",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the Moroccan city of an old medina and tanneries?",
+      "options": [
+        "Fez",
+        "Rabat",
+        "Algiers",
+        "Tunis"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fez is a city in Morocco.",
+      "sources": [
+        {
+          "title": "Fez, Morocco",
+          "url": "https://en.wikipedia.org/wiki/Fez,_Morocco",
+          "claim": "Fez is a city in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_musi_egypt",
+      "region": "north",
+      "country": "Egypt",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is skip this?",
+      "options": [
+        "Fairuz is not Egyptian",
+        "Raï",
+        "Gnawa",
+        "Umm Kulthum"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egyptian music is famous worldwide.",
+      "sources": [
+        {
+          "title": "Egypt",
+          "url": "https://en.wikipedia.org/wiki/Egypt",
+          "claim": "Egyptian music is famous worldwide",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support",
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support",
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "north_fash_babouche",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is leather slippers of Moroccan dress?",
+      "options": [
+        "Babouche",
+        "Djellaba",
+        "Takchita",
+        "Galabeya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Babouches are slippers worn in Morocco.",
+      "sources": [
+        {
+          "title": "Babouche",
+          "url": "https://en.wikipedia.org/wiki/Babouche",
+          "claim": "Babouches are slippers worn in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_fash_amazigh_people",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is silver jewellery of Amazigh communities?",
+      "options": [
+        "Amazigh silver",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Amazigh jewellery is worn in Morocco.",
+      "sources": [
+        {
+          "title": "Amazigh people",
+          "url": "https://en.wikipedia.org/wiki/Amazigh_people",
+          "claim": "Amazigh jewellery is worn in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_fash_melhafa",
+      "region": "north",
+      "country": "Mauritania",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is the long drape worn by Moorish women?",
+      "options": [
+        "Melhafa",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The melhafa is a garment worn in Mauritania.",
+      "sources": [
+        {
+          "title": "Melhafa",
+          "url": "https://en.wikipedia.org/wiki/Melhafa",
+          "claim": "The melhafa is a garment worn in Mauritania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "north_fash_culture_of_sudan",
+      "region": "north",
+      "country": "Sudan",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is the long wrap worn by Sudanese women?",
+      "options": [
+        "Tobe",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sudanese women wear a long wrap called a tobe.",
+      "sources": [
+        {
+          "title": "Culture of Sudan",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Sudan",
+          "claim": "Sudanese women wear a long wrap called a tobe",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_fash_djellaba2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a light tunic worn in the Maghreb?",
+      "options": [
+        "Gandora",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Light tunics are worn in Morocco.",
+      "sources": [
+        {
+          "title": "Djellaba",
+          "url": "https://en.wikipedia.org/wiki/Djellaba",
+          "claim": "Light tunics are worn in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_fash_nubians",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is beadwork of Nubian communities in Egypt and Sudan?",
+      "options": [
+        "Nubian beads",
+        "Djellaba",
+        "Babouche",
+        "Takchita"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nubian dress includes distinctive jewellery.",
+      "sources": [
+        {
+          "title": "Nubians",
+          "url": "https://en.wikipedia.org/wiki/Nubians",
+          "claim": "Nubian dress includes distinctive jewellery",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_lang_arabic2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is an Arabic thank-you used across North Africa?",
+      "options": [
+        "Shukran",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shukran means thank you in Arabic.",
+      "sources": [
+        {
+          "title": "Arabic",
+          "url": "https://en.wikipedia.org/wiki/Arabic",
+          "claim": "Shukran means thank you in Arabic",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_lang_arabic3",
+      "region": "north",
+      "country": "Egypt",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is a warm Arabic hello?",
+      "options": [
+        "Ahlan",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ahlan is an Arabic greeting.",
+      "sources": [
+        {
+          "title": "Arabic",
+          "url": "https://en.wikipedia.org/wiki/Arabic",
+          "claim": "Ahlan is an Arabic greeting",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_lang_algeria",
+      "region": "north",
+      "country": "Algeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is French remains widely used in Algeria?",
+      "options": [
+        "French Algeria",
+        "Arabic",
+        "Darija",
+        "Tamazight"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "French is widely used in Algeria.",
+      "sources": [
+        {
+          "title": "Algeria",
+          "url": "https://en.wikipedia.org/wiki/Algeria",
+          "claim": "French is widely used in Algeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_fest_kelaat_m_gouna",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is the rose harvest festival of Kelaa M'Gouna?",
+      "options": [
+        "Rose Festival",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kelaa M'Gouna holds a rose festival in Morocco.",
+      "sources": [
+        {
+          "title": "Kelaat M'Gouna",
+          "url": "https://en.wikipedia.org/wiki/Kelaat_M'Gouna",
+          "claim": "Kelaa M'Gouna holds a rose festival in Morocco",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "north_fest_public_holidays_in_algeria",
+      "region": "north",
+      "country": "Algeria",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is Algeria's national day on 5 July?",
+      "options": [
+        "Independence Day",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Algeria celebrates independence on 5 July.",
+      "sources": [
+        {
+          "title": "Public holidays in Algeria",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Algeria",
+          "claim": "Algeria celebrates independence on 5 July",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_fest_public_holidays_in_egypt",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is Egypt's public holiday on 23 July?",
+      "options": [
+        "National day",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egypt marks a national day on 23 July.",
+      "sources": [
+        {
+          "title": "Public holidays in Egypt",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Egypt",
+          "claim": "Egypt marks a national day on 23 July",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_fest_ghadames",
+      "region": "north",
+      "country": "Libya",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a cultural gathering in the old desert town?",
+      "options": [
+        "Ghadames festival",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ghadames is a historic town in Libya.",
+      "sources": [
+        {
+          "title": "Ghadames",
+          "url": "https://en.wikipedia.org/wiki/Ghadames",
+          "claim": "Ghadames is a historic town in Libya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_fest_fez_morocco",
+      "region": "north",
+      "country": "Morocco",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a world music festival in Fez?",
+      "options": [
+        "Fes Festival",
+        "Gnaoua Festival",
+        "Carthage Film Festival",
+        "Cairo Film Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fez hosts a sacred music festival.",
+      "sources": [
+        {
+          "title": "Fez, Morocco",
+          "url": "https://en.wikipedia.org/wiki/Fez,_Morocco",
+          "claim": "Fez hosts a sacred music festival",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support",
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support",
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "north_wedd_henna",
+      "region": "north",
+      "country": "Morocco",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is painting the bride's hands before a Moroccan wedding?",
+      "options": [
+        "Henna night",
+        "Takchita bride",
+        "Negafa",
+        "Zaffa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Henna is applied before Moroccan weddings.",
+      "sources": [
+        {
+          "title": "Henna",
+          "url": "https://en.wikipedia.org/wiki/Henna",
+          "claim": "Henna is applied before Moroccan weddings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_wedd_takchita",
+      "region": "north",
+      "country": "Morocco",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is the formal caftan a Moroccan bride changes into?",
+      "options": [
+        "Takchita bride",
+        "Henna night",
+        "Negafa",
+        "Zaffa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The takchita is worn by Moroccan brides.",
+      "sources": [
+        {
+          "title": "Takchita",
+          "url": "https://en.wikipedia.org/wiki/Takchita",
+          "claim": "The takchita is worn by Moroccan brides",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_wedd_moroccan_wedding",
+      "region": "north",
+      "country": "Morocco",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the specialist who dresses the bride?",
+      "options": [
+        "Negafa",
+        "Henna night",
+        "Takchita bride",
+        "Zaffa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A negafa dresses the bride at a Moroccan wedding.",
+      "sources": [
+        {
+          "title": "Moroccan wedding",
+          "url": "https://en.wikipedia.org/wiki/Moroccan_wedding",
+          "claim": "A negafa dresses the bride at a Moroccan wedding",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "north_wedd_egyptian_wedding",
+      "region": "north",
+      "country": "Egypt",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is the drumming procession of an Egyptian wedding?",
+      "options": [
+        "Zaffa Egypt",
+        "Henna night",
+        "Takchita bride",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egyptian weddings include a zaffa procession.",
+      "sources": [
+        {
+          "title": "Egyptian wedding",
+          "url": "https://en.wikipedia.org/wiki/Egyptian_wedding",
+          "claim": "Egyptian weddings include a zaffa procession",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "north_wedd_culture_of_tunisia",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is a traditional outfit for a Tunisian groom?",
+      "options": [
+        "Jebba groom",
+        "Henna night",
+        "Takchita bride",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tunisian weddings include traditional dress.",
+      "sources": [
+        {
+          "title": "Culture of Tunisia",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Tunisia",
+          "claim": "Tunisian weddings include traditional dress",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_wedd_egyptian_wedding2",
+      "region": "north",
+      "country": "Egypt",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the decorated stage where the couple sits?",
+      "options": [
+        "Kosha",
+        "Henna night",
+        "Takchita bride",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egyptian couples sit on a decorated wedding stage.",
+      "sources": [
+        {
+          "title": "Egyptian wedding",
+          "url": "https://en.wikipedia.org/wiki/Egyptian_wedding",
+          "claim": "Egyptian couples sit on a decorated wedding stage",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "north_wedd_culture_of_sudan",
+      "region": "north",
+      "country": "Sudan",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is a Sudanese bridal perfume and blessing gathering?",
+      "options": [
+        "Jirtig",
+        "Henna night",
+        "Takchita bride",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sudanese weddings include family blessings.",
+      "sources": [
+        {
+          "title": "Culture of Sudan",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Sudan",
+          "claim": "Sudanese weddings include family blessings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_wedd_karakou",
+      "region": "north",
+      "country": "Algeria",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is an embroidered jacket in an Algerian bridal trousseau?",
+      "options": [
+        "Karakou bride",
+        "Henna night",
+        "Takchita bride",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The karakou is worn at Algerian celebrations.",
+      "sources": [
+        {
+          "title": "Karakou",
+          "url": "https://en.wikipedia.org/wiki/Karakou",
+          "claim": "The karakou is worn at Algerian celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_wedd_melhafa",
+      "region": "north",
+      "country": "Mauritania",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is the drape worn by a Mauritanian bride?",
+      "options": [
+        "Melhafa bride",
+        "Henna night",
+        "Takchita bride",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The melhafa is worn at celebrations in Mauritania.",
+      "sources": [
+        {
+          "title": "Melhafa",
+          "url": "https://en.wikipedia.org/wiki/Melhafa",
+          "claim": "The melhafa is worn at celebrations in Mauritania",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "north_wedd_raqs_sharqi",
+      "region": "north",
+      "country": "Egypt",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is a dancer opening the wedding party?",
+      "options": [
+        "Belly dance floor",
+        "Henna night",
+        "Takchita bride",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Raqs sharqi is performed at Egyptian celebrations.",
+      "sources": [
+        {
+          "title": "Raqs sharqi",
+          "url": "https://en.wikipedia.org/wiki/Raqs_sharqi",
+          "claim": "Raqs sharqi is performed at Egyptian celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_wedd_moroccan_wedding2",
+      "region": "north",
+      "country": "Morocco",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is the bride carried in a decorated litter in some Moroccan weddings?",
+      "options": [
+        "Family amaria",
+        "Henna night",
+        "Takchita bride",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Moroccan weddings include a decorated bridal entrance.",
+      "sources": [
+        {
+          "title": "Moroccan wedding",
+          "url": "https://en.wikipedia.org/wiki/Moroccan_wedding",
+          "claim": "Moroccan weddings include a decorated bridal entrance",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "north_wedd_brik",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is pastries passed to wedding guests?",
+      "options": [
+        "Brik and sweets",
+        "Henna night",
+        "Takchita bride",
+        "Negafa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tunisian celebrations include pastries.",
+      "sources": [
+        {
+          "title": "Brik",
+          "url": "https://en.wikipedia.org/wiki/Brik",
+          "claim": "Tunisian celebrations include pastries",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_hist_ancient_egypt",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which historical name is the civilisation of the pharaohs along the Nile?",
+      "options": [
+        "Ancient Egypt",
+        "Carthage history",
+        "Kingdom of Kush",
+        "Rosetta Stone"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ancient Egypt was a civilisation of the Nile.",
+      "sources": [
+        {
+          "title": "Ancient Egypt",
+          "url": "https://en.wikipedia.org/wiki/Ancient_Egypt",
+          "claim": "Ancient Egypt was a civilisation of the Nile",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_hist_al_azhar_university",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the historic mosque-university in Cairo?",
+      "options": [
+        "Al-Azhar",
+        "Ancient Egypt",
+        "Carthage history",
+        "Kingdom of Kush"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Al-Azhar is a historic university in Cairo.",
+      "sources": [
+        {
+          "title": "Al-Azhar University",
+          "url": "https://en.wikipedia.org/wiki/Al-Azhar_University",
+          "claim": "Al-Azhar is a historic university in Cairo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "north_hist_morocco",
+      "region": "north",
+      "country": "Morocco",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which historical name is the year Morocco became independent?",
+      "options": [
+        "1956",
+        "Ancient Egypt",
+        "Carthage history",
+        "Kingdom of Kush"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Morocco became independent in 1956.",
+      "sources": [
+        {
+          "title": "Morocco",
+          "url": "https://en.wikipedia.org/wiki/Morocco",
+          "claim": "Morocco became independent in 1956",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_hist_tunisia",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which historical name is the year Tunisia became independent?",
+      "options": [
+        "1956 Tunisia",
+        "Ancient Egypt",
+        "Carthage history",
+        "Kingdom of Kush"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tunisia became independent in 1956.",
+      "sources": [
+        {
+          "title": "Tunisia",
+          "url": "https://en.wikipedia.org/wiki/Tunisia",
+          "claim": "Tunisia became independent in 1956",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_hist_algeria",
+      "region": "north",
+      "country": "Algeria",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Algeria became independent?",
+      "options": [
+        "1962",
+        "Ancient Egypt",
+        "Carthage history",
+        "Kingdom of Kush"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Algeria became independent in 1962.",
+      "sources": [
+        {
+          "title": "Algeria",
+          "url": "https://en.wikipedia.org/wiki/Algeria",
+          "claim": "Algeria became independent in 1962",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_hist_ghadames",
+      "region": "north",
+      "country": "Libya",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is a UNESCO old town in the Libyan Sahara?",
+      "options": [
+        "Ghadames old town",
+        "Ancient Egypt",
+        "Carthage history",
+        "Kingdom of Kush"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ghadames is a historic town in Libya.",
+      "sources": [
+        {
+          "title": "Ghadames",
+          "url": "https://en.wikipedia.org/wiki/Ghadames",
+          "claim": "Ghadames is a historic town in Libya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_peop_ibn_battuta",
+      "region": "north",
+      "country": "Morocco",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which person is the fourteenth-century traveller from Tangier?",
+      "options": [
+        "Ibn Battuta",
+        "Naguib Mahfouz",
+        "Umm Kulthum person",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ibn Battuta was a Moroccan traveller.",
+      "sources": [
+        {
+          "title": "Ibn Battuta",
+          "url": "https://en.wikipedia.org/wiki/Ibn_Battuta",
+          "claim": "Ibn Battuta was a Moroccan traveller",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_peop_fatima_al_fihri",
+      "region": "north",
+      "country": "Morocco",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which person is the founder associated with al-Qarawiyyin?",
+      "options": [
+        "Fatima al-Fihri person",
+        "Naguib Mahfouz",
+        "Umm Kulthum person",
+        "Tahar Ben Jelloun"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fatima al-Fihri was a Moroccan patron of learning.",
+      "sources": [
+        {
+          "title": "Fatima al-Fihri",
+          "url": "https://en.wikipedia.org/wiki/Fatima_al-Fihri",
+          "claim": "Fatima al-Fihri was a Moroccan patron of learning",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_popc_tamer_hosny",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is an Egyptian pop singer and actor?",
+      "options": [
+        "Tamer Hosny",
+        "Amr Diab pop",
+        "Khaled pop",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tamer Hosny is an Egyptian singer.",
+      "sources": [
+        {
+          "title": "Tamer Hosny",
+          "url": "https://en.wikipedia.org/wiki/Tamer_Hosny",
+          "claim": "Tamer Hosny is an Egyptian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "north_popc_sherine_abdel_wahab",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which popular-culture name is an Egyptian pop singer?",
+      "options": [
+        "Sherine",
+        "Amr Diab pop",
+        "Khaled pop",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sherine is an Egyptian singer.",
+      "sources": [
+        {
+          "title": "Sherine Abdel-Wahab",
+          "url": "https://en.wikipedia.org/wiki/Sherine_Abdel-Wahab",
+          "claim": "Sherine is an Egyptian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "north_popc_balti_rapper",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is a Tunisian rapper?",
+      "options": [
+        "Balti",
+        "Amr Diab pop",
+        "Khaled pop",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Balti is a Tunisian rapper.",
+      "sources": [
+        {
+          "title": "Balti (rapper)",
+          "url": "https://en.wikipedia.org/wiki/Balti_(rapper)",
+          "claim": "Balti is a Tunisian rapper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "north_popc_douzi",
+      "region": "north",
+      "country": "Morocco",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is a Moroccan raï and pop singer?",
+      "options": [
+        "Douzi",
+        "Amr Diab pop",
+        "Khaled pop",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Douzi is a Moroccan singer.",
+      "sources": [
+        {
+          "title": "Douzi",
+          "url": "https://en.wikipedia.org/wiki/Douzi",
+          "claim": "Douzi is a Moroccan singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "north_popc_ahmed_helmy",
+      "region": "north",
+      "country": "Egypt",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which popular-culture name is a popular Egyptian film comedian?",
+      "options": [
+        "Ahmed Helmy",
+        "Amr Diab pop",
+        "Khaled pop",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ahmed Helmy is an Egyptian actor.",
+      "sources": [
+        {
+          "title": "Ahmed Helmy",
+          "url": "https://en.wikipedia.org/wiki/Ahmed_Helmy",
+          "claim": "Ahmed Helmy is an Egyptian actor",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "north_popc_tunisia",
+      "region": "north",
+      "country": "Tunisia",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is Tunisian television drama is widely watched?",
+      "options": [
+        "Sabri Mosbah",
+        "Amr Diab pop",
+        "Khaled pop",
+        "Saad Lamjarred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tunisian television is popular across the Maghreb.",
+      "sources": [
+        {
+          "title": "Tunisia",
+          "url": "https://en.wikipedia.org/wiki/Tunisia",
+          "claim": "Tunisian television is popular across the Maghreb",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_spor_basketball_in_egypt",
+      "region": "north",
+      "country": "Egypt",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is Egyptian clubs also compete in African basketball?",
+      "options": [
+        "Al Ahly basketball",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egypt competes in African basketball.",
+      "sources": [
+        {
+          "title": "Basketball in Egypt",
+          "url": "https://en.wikipedia.org/wiki/Basketball_in_Egypt",
+          "claim": "Egypt competes in African basketball",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "north_spor_libya",
+      "region": "north",
+      "country": "Libya",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is Libya has hosted Mediterranean sport?",
+      "options": [
+        "Mediterranean Games",
+        "Mohamed Salah",
+        "Riyad Mahrez",
+        "Achraf Hakimi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Libya competes in Mediterranean sport.",
+      "sources": [
+        {
+          "title": "Libya",
+          "url": "https://en.wikipedia.org/wiki/Libya",
+          "claim": "Libya competes in Mediterranean sport",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "north_algeria_imzad_instrument",
+      "region": "north",
+      "country": "Algeria; Mali; Niger",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What type of instrument is the Imzad?",
+      "options": [
+        "A clay drum with two heads",
+        "A reed pipe played in pairs",
+        "A single-string bowed instrument",
+        "A five-string plucked harp"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "A seated musician holds the Imzad on her knees and plays it with an arched wooden bow.",
+      "sources": [
+        {
+          "title": "Practices and knowledge linked to the Imzad of the Tuareg communities of Algeria, Mali and Niger — UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/practices-and-knowledge-linked-to-the-imzad-of-the-tuareg-communities-of-algeria-mali-and-niger-00891",
+          "claim": "Tuareg women play and make the single-string bowed Imzad, which accompanies poetry and songs and is transmitted through observation and assimilation."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Identity terminology and community scope require review by people from the named communities, including preferred names and spellings.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "north_algeria_imzad_making",
+      "region": "north",
+      "country": "Algeria; Mali; Niger",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which object forms the body of an Imzad in UNESCO's description?",
+      "options": [
+        "Two wooden boxes joined with wire",
+        "Half of a dried hollow gourd covered with skin",
+        "A whole metal bucket covered with paper",
+        "A carved stone bowl filled with water"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The instrument also uses rosette-shaped sound holes and a V-shaped wooden bridge.",
+      "sources": [
+        {
+          "title": "Practices and knowledge linked to the Imzad of the Tuareg communities of Algeria, Mali and Niger — UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/practices-and-knowledge-linked-to-the-imzad-of-the-tuareg-communities-of-algeria-mali-and-niger-00891",
+          "claim": "Tuareg women play and make the single-string bowed Imzad, which accompanies poetry and songs and is transmitted through observation and assimilation."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Gendered practice or space: community review must confirm respectful wording and avoid presenting a documented role as fixed or universal.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "north_algeria_mzab_number",
+      "region": "north",
+      "country": "Algeria",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "How many fortified settlements form the historic M'Zab Valley ensemble?",
+      "options": [
+        "Five",
+        "Two",
+        "Nine",
+        "Twenty-five"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The five ksour form a compact ensemble adapted to the valley.",
+      "sources": [
+        {
+          "title": "M'Zab Valley — UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/188",
+          "claim": "The M'Zab Valley contains five fortified settlements, or ksour, whose compact architecture and communal organization were adapted to a Saharan environment."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Identity terminology and community scope require review by people from the named communities, including preferred names and spellings.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "fail",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "options_nested"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "options_nested"
+      ]
+    },
+    {
+      "id": "north_morocco_gnawa_scope",
+      "region": "north",
+      "country": "Morocco",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which description reflects the breadth of Moroccan Gnawa?",
+      "options": [
+        "Music and performance joined with fraternal and therapeutic ritual practices",
+        "One instrument with no social setting",
+        "A Roman building method",
+        "A harvest tax collected at ports"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gnawa is a multifaceted living practice rather than a single musical genre alone.",
+      "sources": [
+        {
+          "title": "Gnawa — UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/gnawa-01170",
+          "claim": "Moroccan Gnawa includes music, performances, fraternal practices and therapeutic rituals shaped by histories of slavery and African, Arab-Muslim and Amazigh influences."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or religious material: use only public-source details and require review by the relevant practitioners and knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "north_morocco_gnawa_history",
+      "region": "north",
+      "country": "Morocco",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which history is central to UNESCO's account of Gnawa?",
+      "options": [
+        "Origins in twentieth-century radio advertising",
+        "Creation by Roman harbour engineers",
+        "Development only in royal cavalry schools",
+        "Roots among people affected by slavery and the slave trade"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The source also describes African ancestral, Arab-Muslim and Amazigh cultural influences.",
+      "sources": [
+        {
+          "title": "Gnawa — UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/gnawa-01170",
+          "claim": "Moroccan Gnawa includes music, performances, fraternal practices and therapeutic rituals shaped by histories of slavery and African, Arab-Muslim and Amazigh influences."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Colonialism, enslavement or violence: trauma-informed historical and community review is required before progression beyond draft.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_trauma"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_trauma"
+      ]
+    },
+    {
+      "id": "north_morocco_fez_period",
+      "region": "north",
+      "country": "Morocco",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "During which dynastic period did medieval Fez reach a major high point?",
+      "options": [
+        "The Ptolemaic period in the first century BCE",
+        "The Aghlabid period in the ninth century only",
+        "The Marinid period in the thirteenth and fourteenth centuries",
+        "The Severan period in the third century"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "Fez replaced Marrakesh as capital during this era and later retained cultural importance.",
+      "sources": [
+        {
+          "title": "Medina of Fez — UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/170",
+          "claim": "Founded in the ninth century, Fez reached a high point under the Marinids and preserves madrasas, fondouks, palaces, residences, mosques and fountains."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Ancient religious, funerary or political history requires specialist archaeological and local heritage review; modern identities must not be inferred from it.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "fail",
+        "region": "pass",
+        "reasons": [
+          "ambiguity_claim"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "ambiguity_claim"
+      ]
+    },
+    {
+      "id": "north_morocco_fez_buildings",
+      "region": "north",
+      "country": "Morocco",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which buildings help define the Medina of Fez?",
+      "options": [
+        "Only pyramids and rock-cut tombs",
+        "Madrasas, fondouks, palaces, residences, mosques and fountains",
+        "Only lighthouses and shipyards",
+        "Only glass towers and motorways"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The surviving urban fabric reflects local knowledge alongside Andalusian, eastern and African influences.",
+      "sources": [
+        {
+          "title": "Medina of Fez — UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/170",
+          "claim": "Founded in the ninth century, Fez reached a high point under the Marinids and preserves madrasas, fondouks, palaces, residences, mosques and fountains."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or religious material: use only public-source details and require review by the relevant practitioners and knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "north_egypt_holy_family_cycles",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "How many festival cycles does the UNESCO element about the Holy Family journey describe?",
+      "options": [
+        "Seven",
+        "Forty",
+        "Two",
+        "One"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "They are the Advent of the Holy Family festival and the Nativity of the Virgin feast.",
+      "sources": [
+        {
+          "title": "Festivals related to the Journey of the Holy family in Egypt — UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/festivals-related-to-the-journey-of-the-holy-family-in-egypt-01700",
+          "claim": "Two Egyptian festival cycles commemorate the Holy Family journey through processions, performances, shared foods and participation by Coptic Christian and Muslim residents."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or religious material: use only public-source details and require review by the relevant practitioners and knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "north_egypt_holy_family_activities",
+      "region": "north",
+      "country": "Egypt",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which activities appear in the Holy Family journey festivals?",
+      "options": [
+        "Only underwater ceremonies",
+        "Processions, performances, shared foods and traditional games",
+        "Only private written examinations",
+        "Only commercial horse racing"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The festivals include participants from Coptic Christian and Muslim communities.",
+      "sources": [
+        {
+          "title": "Festivals related to the Journey of the Holy family in Egypt — UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/festivals-related-to-the-journey-of-the-holy-family-in-egypt-01700",
+          "claim": "Two Egyptian festival cycles commemorate the Holy Family journey through processions, performances, shared foods and participation by Coptic Christian and Muslim residents."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or religious material: use only public-source details and require review by the relevant practitioners and knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "north_egypt_cairo_monuments",
+      "region": "north",
+      "country": "Egypt",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which group of buildings characterizes Historic Cairo?",
+      "options": [
+        "Mosques, madrasas, hammams and fountains",
+        "Skyscrapers, airports and motorways only",
+        "Pyramids, glaciers and lighthouses",
+        "Factories, dams and mines only"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Whole neighbourhoods survive alongside major monuments from successive periods.",
+      "sources": [
+        {
+          "title": "Historic Cairo — UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/89",
+          "claim": "Historic Cairo preserves neighbourhoods and monuments including mosques, madrasas, hammams and fountains from successive periods of the city's history."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or religious material: use only public-source details and require review by the relevant practitioners and knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "north_north_calligraphy_direction",
+      "region": "north",
+      "country": "Algeria; Egypt; Morocco; Sudan; Tunisia",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "In which direction is Arabic calligraphy written?",
+      "options": [
+        "Only from left to right",
+        "In alternating circles",
+        "From right to left",
+        "Only from bottom to top"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The practice shapes the Arabic alphabet's twenty-eight letters through fluid handwritten forms.",
+      "sources": [
+        {
+          "title": "Arabic calligraphy: knowledge, skills and practices — UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/arabic-calligraphy-knowledge-skills-and-practices-01718",
+          "claim": "Arabic calligraphy uses the alphabet's twenty-eight letters in cursive writing from right to left and is transmitted through formal and informal education."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or religious material: use only public-source details and require review by the relevant practitioners and knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    }
+  ]
+}

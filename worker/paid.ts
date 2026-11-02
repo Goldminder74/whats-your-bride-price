@@ -24,6 +24,7 @@ interface PaidEnv {
   OWNER_STATS_TOKEN?: string;
   PAID_BLOCKED_COUNTRIES?: string;
   PUBLIC_APP_ORIGIN?: string;
+  RANDOM_BANK?: string;
 }
 
 let schemaReady: Promise<void> | null = null;
@@ -95,6 +96,7 @@ function services(env: PaidEnv, ctx: ExecutionContext): PaidServices {
       return schemaReady;
     },
     waitUntil: (promise) => ctx.waitUntil(promise),
+    randomBank: ["1", "true", "on", "yes"].includes((env.RANDOM_BANK || "").toLowerCase()),
   };
 }
 

@@ -1,0 +1,3006 @@
+{
+  "region": "west",
+  "questions": [
+    {
+      "id": "west_geog_niamey",
+      "region": "west",
+      "country": "Niger",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which place is the capital city of Niger beside the Niger River?",
+      "options": [
+        "Niamey",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Niamey is the capital of Niger.",
+      "sources": [
+        {
+          "title": "Niamey",
+          "url": "https://en.wikipedia.org/wiki/Niamey",
+          "claim": "Niamey is the capital of Niger",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "west_geog_lome",
+      "region": "west",
+      "country": "Togo",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the capital city of Togo on the Gulf of Guinea?",
+      "options": [
+        "Lome",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lomé is the capital of Togo.",
+      "sources": [
+        {
+          "title": "Lomé",
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "claim": "Lomé is the capital of Togo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support",
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support",
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "west_geog_timbuktu",
+      "region": "west",
+      "country": "Mali",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the historic Sahelian city of scholarship in Mali?",
+      "options": [
+        "Timbuktu",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Timbuktu is a city in Mali.",
+      "sources": [
+        {
+          "title": "Timbuktu",
+          "url": "https://en.wikipedia.org/wiki/Timbuktu",
+          "claim": "Timbuktu is a city in Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_geog_djenne",
+      "region": "west",
+      "country": "Mali",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the Malian city famous for its great earthen mosque?",
+      "options": [
+        "Djenné",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Djenné is a town in Mali.",
+      "sources": [
+        {
+          "title": "Djenné",
+          "url": "https://en.wikipedia.org/wiki/Djenn%C3%A9",
+          "claim": "Djenné is a town in Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_food_red_red",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is a Ghanaian bean stew often served with fried plantain?",
+      "options": [
+        "Red red",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Red red is a bean stew from Ghana.",
+      "sources": [
+        {
+          "title": "Red red",
+          "url": "https://en.wikipedia.org/wiki/Red_red",
+          "claim": "Red red is a bean stew from Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_food_palm_nut_soup",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which dish is a rich soup made from palm fruit, common in Ghana?",
+      "options": [
+        "Palm nut soup",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Palm nut soup is a soup made from palm fruit.",
+      "sources": [
+        {
+          "title": "Palm nut soup",
+          "url": "https://en.wikipedia.org/wiki/Palm_nut_soup",
+          "claim": "Palm nut soup is a soup made from palm fruit",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_food_gari_food",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is a dry granular cassava food eaten across coastal West Africa?",
+      "options": [
+        "Gari",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gari is a cassava flour popular in West Africa.",
+      "sources": [
+        {
+          "title": "Gari (food)",
+          "url": "https://en.wikipedia.org/wiki/Gari_(food)",
+          "claim": "Gari is a cassava flour popular in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_musi_wassoulou_music",
+      "region": "west",
+      "country": "Mali",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which music or dance name is a southern Malian music associated with strong women singers?",
+      "options": [
+        "Wassoulou",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wassoulou is a music from southern Mali.",
+      "sources": [
+        {
+          "title": "Wassoulou music",
+          "url": "https://en.wikipedia.org/wiki/Wassoulou_music",
+          "claim": "Wassoulou is a music from southern Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_fash_ankara_fabric",
+      "region": "west",
+      "country": "West Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is the colourful wax-print cotton worn across West Africa?",
+      "options": [
+        "Ankara",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ankara is a wax-print fabric popular in West Africa.",
+      "sources": [
+        {
+          "title": "Ankara (fabric)",
+          "url": "https://en.wikipedia.org/wiki/Ankara_(fabric)",
+          "claim": "Ankara is a wax-print fabric popular in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_fash_head_tie",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a sculpted woman's headwrap worn for Nigerian celebrations?",
+      "options": [
+        "Gele",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A gele is a Nigerian head tie.",
+      "sources": [
+        {
+          "title": "Head tie",
+          "url": "https://en.wikipedia.org/wiki/Head_tie",
+          "claim": "A gele is a Nigerian head tie",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_fash_fugu_garment",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is the smock worn in northern Ghana, also called a batakari?",
+      "options": [
+        "Fugu",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fugu is a smock worn in northern Ghana.",
+      "sources": [
+        {
+          "title": "Fugu (garment)",
+          "url": "https://en.wikipedia.org/wiki/Fugu_(garment)",
+          "claim": "Fugu is a smock worn in northern Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_fash_kaba_and_slit",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a tailored blouse and skirt set worn by Ghanaian women?",
+      "options": [
+        "Kaba and slit",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kaba and slit is a dress worn by women in Ghana.",
+      "sources": [
+        {
+          "title": "Kaba and slit",
+          "url": "https://en.wikipedia.org/wiki/Kaba_and_slit",
+          "claim": "Kaba and slit is a dress worn by women in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_fash_coral",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is red beads worn as prestige jewellery in Benin and Nigerian ceremonies?",
+      "options": [
+        "Coral beads",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Coral beads are worn in Nigeria.",
+      "sources": [
+        {
+          "title": "Coral",
+          "url": "https://en.wikipedia.org/wiki/Coral",
+          "claim": "Coral beads are worn in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_lang_ghana",
+      "region": "west",
+      "country": "Ghana",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is the official language of Ghana?",
+      "options": [
+        "English",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "English is the official language of Ghana.",
+      "sources": [
+        {
+          "title": "Ghana",
+          "url": "https://en.wikipedia.org/wiki/Ghana",
+          "claim": "English is the official language of Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_fest_chale_wote",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a street art festival in Accra?",
+      "options": [
+        "Chale Wote",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chale Wote is an art festival in Accra.",
+      "sources": [
+        {
+          "title": "Chale Wote",
+          "url": "https://en.wikipedia.org/wiki/Chale_Wote",
+          "claim": "Chale Wote is an art festival in Accra",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_fest_aboakyir",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is the deer-hunting festival of the Winneba people in Ghana?",
+      "options": [
+        "Aboakyir",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Aboakyir is a festival in Ghana.",
+      "sources": [
+        {
+          "title": "Aboakyir",
+          "url": "https://en.wikipedia.org/wiki/Aboakyir",
+          "claim": "Aboakyir is a festival in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_fest_new_yam_festival",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is the Igbo harvest celebration of the new yam?",
+      "options": [
+        "New Yam Festival",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The New Yam Festival is an Igbo harvest festival.",
+      "sources": [
+        {
+          "title": "New Yam Festival",
+          "url": "https://en.wikipedia.org/wiki/New_Yam_Festival",
+          "claim": "The New Yam Festival is an Igbo harvest festival",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_fest_kundum",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is a harvest festival of Ahanta and Nzema communities in Ghana?",
+      "options": [
+        "Kundum",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kundum is a festival in Ghana.",
+      "sources": [
+        {
+          "title": "Kundum",
+          "url": "https://en.wikipedia.org/wiki/Kundum",
+          "claim": "Kundum is a festival in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_fest_public_holidays_in_nigeria",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is Nigeria's national day on 1 October?",
+      "options": [
+        "Independence Day",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nigeria Independence Day is on 1 October.",
+      "sources": [
+        {
+          "title": "Public holidays in Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria",
+          "claim": "Nigeria Independence Day is on 1 October",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_wedd_aso_ebi",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is matching family outfits worn at Nigerian weddings and parties?",
+      "options": [
+        "Aso ebi",
+        "Money spraying",
+        "Gele",
+        "Kente"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Aso ebi is matching clothing worn at Nigerian celebrations.",
+      "sources": [
+        {
+          "title": "Aso ebi",
+          "url": "https://en.wikipedia.org/wiki/Aso_ebi",
+          "claim": "Aso ebi is matching clothing worn at Nigerian celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_wedd_nigerian_wedding",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the party custom of tossing or pressing cash onto dancers?",
+      "options": [
+        "Money spraying",
+        "Aso ebi",
+        "Gele",
+        "Kente"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Spraying money is part of Nigerian wedding celebrations.",
+      "sources": [
+        {
+          "title": "Nigerian wedding",
+          "url": "https://en.wikipedia.org/wiki/Nigerian_wedding",
+          "claim": "Spraying money is part of Nigerian wedding celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_wedd_nigerian_wedding2",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is the family ceremony that often sits beside a later church or registry wedding?",
+      "options": [
+        "Traditional wedding",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A Nigerian wedding often includes a traditional ceremony.",
+      "sources": [
+        {
+          "title": "Nigerian wedding",
+          "url": "https://en.wikipedia.org/wiki/Nigerian_wedding",
+          "claim": "A Nigerian wedding often includes a traditional ceremony",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_wedd_fila_hat",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the men's cap that completes many Yoruba wedding outfits?",
+      "options": [
+        "Fila",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The fila cap is worn by Yoruba men at ceremonies.",
+      "sources": [
+        {
+          "title": "Fila (hat)",
+          "url": "https://en.wikipedia.org/wiki/Fila_(hat)",
+          "claim": "The fila cap is worn by Yoruba men at ceremonies",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_wedd_marriage",
+      "region": "west",
+      "country": "West Africa",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is the relatives, food, and music that make a West African wedding a community party?",
+      "options": [
+        "Family gathering",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Weddings are family celebrations.",
+      "sources": [
+        {
+          "title": "Marriage",
+          "url": "https://en.wikipedia.org/wiki/Marriage",
+          "claim": "Weddings are family celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_wedd_bazin_fabric",
+      "region": "west",
+      "country": "Mali",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is the shiny prestige cloth often sewn into Malian wedding outfits?",
+      "options": [
+        "Bazin",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bazin is worn for celebrations in Mali.",
+      "sources": [
+        {
+          "title": "Bazin (fabric)",
+          "url": "https://en.wikipedia.org/wiki/Bazin_(fabric)",
+          "claim": "Bazin is worn for celebrations in Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_hist_gao",
+      "region": "west",
+      "country": "Mali",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which historical name is the historic city most associated with the Songhai Empire?",
+      "options": [
+        "Gao",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gao was a capital of the Songhai Empire.",
+      "sources": [
+        {
+          "title": "Gao",
+          "url": "https://en.wikipedia.org/wiki/Gao",
+          "claim": "Gao was a capital of the Songhai Empire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "fail",
+        "region": "pass",
+        "reasons": [
+          "ambiguity_claim"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "ambiguity_claim"
+      ]
+    },
+    {
+      "id": "west_popc_shatta_wale",
+      "region": "west",
+      "country": "Ghana",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Ghanaian dancehall artist?",
+      "options": [
+        "Shatta Wale",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shatta Wale is a Ghanaian musician.",
+      "sources": [
+        {
+          "title": "Shatta Wale",
+          "url": "https://en.wikipedia.org/wiki/Shatta_Wale",
+          "claim": "Shatta Wale is a Ghanaian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "west_spor_nigeria_women_s_national_football_team",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the nickname of Nigeria's women's football team?",
+      "options": [
+        "Super Falcons",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Nigeria women's national football team is nicknamed the Super Falcons.",
+      "sources": [
+        {
+          "title": "Nigeria women's national football team",
+          "url": "https://en.wikipedia.org/wiki/Nigeria_women's_national_football_team",
+          "claim": "The Nigeria women's national football team is nicknamed the Super Falcons",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "west_prov_sankofa",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PROVERBS",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Akan idea: Sankofa means go back and ___.",
+      "options": [
+        "get it",
+        "sell it",
+        "hide it",
+        "burn it"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sankofa is an Akan word often translated as go back and get it.",
+      "sources": [
+        {
+          "title": "Sankofa",
+          "url": "https://en.wikipedia.org/wiki/Sankofa",
+          "claim": "Sankofa means go back and get it",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_prov_yoruba_language",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PROVERBS",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Yoruba wisdom: the river that forgets its source will ___.",
+      "options": [
+        "dry up",
+        "turn to gold",
+        "become a drum",
+        "leave the market"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A well-known Yoruba image says a river that forgets its source will dry up.",
+      "sources": [
+        {
+          "title": "Yoruba language",
+          "url": "https://en.wikipedia.org/wiki/Yoruba_language",
+          "claim": "Yoruba proverbs warn that a river that forgets its source will dry up",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_prov_african_proverb",
+      "region": "west",
+      "country": "West Africa",
+      "category": "PROVERBS",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the saying: when the music changes, the dance ___.",
+      "options": [
+        "must change",
+        "must stop",
+        "becomes silent",
+        "leaves the village"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The saying means people adapt when the rhythm of life changes.",
+      "sources": [
+        {
+          "title": "African proverb",
+          "url": "https://en.wikipedia.org/wiki/African_proverb",
+          "claim": "When the music changes, the dance must change",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_prov_baobab",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PROVERBS",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the Akan proverb: wisdom is like a baobab tree, no one person can ___ it.",
+      "options": [
+        "embrace",
+        "plant",
+        "sell",
+        "paint"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The image says wisdom is too large for one person's arms.",
+      "sources": [
+        {
+          "title": "Baobab",
+          "url": "https://en.wikipedia.org/wiki/Baobab",
+          "claim": "Wisdom is like a baobab tree that no one person can embrace",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_lang_akan_language2",
+      "region": "west",
+      "country": "Ghana",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Twi welcome: Akwaaba means ___.",
+      "options": [
+        "welcome",
+        "goodbye",
+        "market",
+        "river"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Akwaaba is the Akan word of welcome.",
+      "sources": [
+        {
+          "title": "Akan language",
+          "url": "https://en.wikipedia.org/wiki/Akan_language",
+          "claim": "Akwaaba means welcome in Akan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_lang_yoruba_language2",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Yoruba morning greeting: E kaaro is said in the ___.",
+      "options": [
+        "morning",
+        "harvest",
+        "palace",
+        "market only"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "E kaaro greets someone in the morning.",
+      "sources": [
+        {
+          "title": "Yoruba language",
+          "url": "https://en.wikipedia.org/wiki/Yoruba_language",
+          "claim": "E kaaro is a Yoruba morning greeting",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_lang_hausa_language2",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the Hausa thank-you: Na gode means ___.",
+      "options": [
+        "thank you",
+        "good night",
+        "sit down",
+        "hurry up"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Na gode is how you say thank you in Hausa.",
+      "sources": [
+        {
+          "title": "Hausa language",
+          "url": "https://en.wikipedia.org/wiki/Hausa_language",
+          "claim": "Na gode means thank you in Hausa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_lang_wolof_language2",
+      "region": "west",
+      "country": "Senegal",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the Wolof check-in: Nanga def asks ___.",
+      "options": [
+        "how are you",
+        "what is for dinner",
+        "where is the boat",
+        "who is the king"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nanga def is a Wolof way to ask how someone is.",
+      "sources": [
+        {
+          "title": "Wolof language",
+          "url": "https://en.wikipedia.org/wiki/Wolof_language",
+          "claim": "Nanga def means how are you in Wolof",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_prov_igbo_people",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PROVERBS",
+      "difficulty": "hard",
+      "kind": "complete",
+      "prompt": "Complete the Igbo thought: when a person washes their hands they can ___.",
+      "options": [
+        "eat with elders",
+        "cross the desert",
+        "buy the market",
+        "silence the drum"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Clean hands, in the proverb, earn a seat with elders.",
+      "sources": [
+        {
+          "title": "Igbo people",
+          "url": "https://en.wikipedia.org/wiki/Igbo_people",
+          "claim": "An Igbo proverb says one who washes their hands can eat with elders",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_prov_mande_languages",
+      "region": "west",
+      "country": "Mali",
+      "category": "PROVERBS",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the Mande image: one finger cannot ___ a stone.",
+      "options": [
+        "lift",
+        "paint",
+        "name",
+        "bury"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The saying praises cooperation.",
+      "sources": [
+        {
+          "title": "Mande languages",
+          "url": "https://en.wikipedia.org/wiki/Mande_languages",
+          "claim": "A Mande saying says one finger cannot lift a stone",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_hist_sahel",
+      "region": "west",
+      "country": "West Africa",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Select three medieval Sahelian empires.",
+      "options": [
+        "Ghana Empire",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ashanti Empire"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Ghana, Mali and Songhai were the great medieval empires of the western Sahel. Ashanti rose later in the forest.",
+      "sources": [
+        {
+          "title": "Sahel",
+          "url": "https://en.wikipedia.org/wiki/Sahel",
+          "claim": "The Ghana, Mali and Songhai empires rose in the Sahel",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_fash_kente_cloth2",
+      "region": "west",
+      "country": "West Africa",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "multi",
+      "prompt": "Select three textiles strongly associated with West Africa.",
+      "options": [
+        "Kente",
+        "Adire",
+        "Bogolan",
+        "Shweshwe"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Kente, adire and bogolan are West African cloth traditions. Shweshwe is Southern African.",
+      "sources": [
+        {
+          "title": "Kente cloth",
+          "url": "https://en.wikipedia.org/wiki/Kente_cloth",
+          "claim": "Kente, adire and bogolan are West African textiles",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_geog_west_africa",
+      "region": "west",
+      "country": "West Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Select three West African capital cities.",
+      "options": [
+        "Accra",
+        "Dakar",
+        "Bamako",
+        "Cairo"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Accra, Dakar and Bamako are capitals in West Africa. Cairo is in Egypt.",
+      "sources": [
+        {
+          "title": "West Africa",
+          "url": "https://en.wikipedia.org/wiki/West_Africa",
+          "claim": "Accra, Dakar and Bamako are West African capitals",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "west_ghana_asante_building_materials",
+      "region": "west",
+      "country": "Ghana",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which materials characterize the surviving Asante Traditional Buildings near Kumasi?",
+      "options": [
+        "Timber, bamboo and mud plaster",
+        "Cut granite, slate and marble",
+        "Coral stone, lime and mangrove poles",
+        "Fired brick, steel and plate glass"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The buildings use vulnerable organic and earthen materials, including timber, bamboo and mud plaster.",
+      "sources": [
+        {
+          "title": "Asante Traditional Buildings",
+          "url": "https://whc.unesco.org/en/list/35/",
+          "claim": "The surviving Asante buildings near Kumasi use timber, bamboo and mud plaster, are arranged around courtyards and carry symbolic bas-reliefs."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_ghana_asante_courtyard_reliefs",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is a documented feature of the Asante Traditional Buildings?",
+      "options": [
+        "Underground chambers with mosaic domes",
+        "Floating platforms with carved masts",
+        "Cliff dwellings linked by rope bridges",
+        "Courtyard plans with symbolic wall bas-reliefs"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "Their courtyard arrangement and symbolic bas-relief decoration are central features of this Asante architectural tradition.",
+      "sources": [
+        {
+          "title": "Asante Traditional Buildings",
+          "url": "https://whc.unesco.org/en/list/35/",
+          "claim": "The surviving Asante buildings near Kumasi use timber, bamboo and mud plaster, are arranged around courtyards and carry symbolic bas-reliefs."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_senegambia_kankurang_scope",
+      "region": "west",
+      "country": "Senegal; Gambia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Kankurang is documented as an initiatory rite of which cultural and geographic scope?",
+      "options": [
+        "Guro communities in Côte d’Ivoire",
+        "Manding communities in Senegal and The Gambia",
+        "Tuareg communities in Mali and Niger",
+        "Kasena communities in Burkina Faso"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The UNESCO inscription scopes Kankurang to Manding provinces of Senegal and The Gambia, especially Casamance and Mbour.",
+      "sources": [
+        {
+          "title": "Kankurang, Manding initiatory rite",
+          "url": "https://ich.unesco.org/en/RL/kankurang-manding-initiatory-rite-00143",
+          "claim": "Kankurang is a Manding initiatory rite documented in Senegal and The Gambia, especially Casamance and Mbour; some knowledge is access-restricted."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Initiatory practice: specialist review by relevant community knowledge-holders is required; do not add restricted details.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_initiation"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_initiation"
+      ]
+    },
+    {
+      "id": "west_senegambia_kankurang_review_boundary",
+      "region": "west",
+      "country": "Senegal; Gambia",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is the responsible approach when teaching publicly about Kankurang?",
+      "options": [
+        "Use public community-approved material and omit restricted knowledge",
+        "Reconstruct unpublished initiation details",
+        "Treat every Manding community as identical",
+        "Replace community names with a regional stereotype"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "An initiatory tradition requires a clear boundary between UNESCO’s public description and knowledge that communities restrict.",
+      "sources": [
+        {
+          "title": "Kankurang, Manding initiatory rite",
+          "url": "https://ich.unesco.org/en/RL/kankurang-manding-initiatory-rite-00143",
+          "claim": "Kankurang is a Manding initiatory rite documented in Senegal and The Gambia, especially Casamance and Mbour; some knowledge is access-restricted."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Initiatory practice: specialist review by relevant community knowledge-holders is required; do not add restricted details.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_initiation"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_initiation"
+      ]
+    },
+    {
+      "id": "west_cabo_verde_cidade_velha_history",
+      "region": "west",
+      "country": "Cabo Verde",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Why does UNESCO treat Cidade Velha as central to Atlantic history?",
+      "options": [
+        "It was the capital of the Mali Empire",
+        "It was a Tuareg caravan confederation",
+        "It was built as an inland gold-mining settlement",
+        "It records colonial trade, enslavement and the formation of an early Creole society"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The site links Atlantic colonial commerce and trafficking in enslaved people with the development of Cabo Verdean Creole society.",
+      "sources": [
+        {
+          "title": "Cidade Velha, Historic Centre of Ribeira Grande",
+          "url": "https://whc.unesco.org/en/list/1310",
+          "claim": "Cidade Velha on Santiago was an early Atlantic port and a site of colonialism, enslavement and the development of Cabo Verdean Creole society."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "History of enslavement and colonial violence: trauma-informed Cabo Verdean historical review is required.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_trauma"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_trauma"
+      ]
+    },
+    {
+      "id": "west_mauritania_four_ksour",
+      "region": "west",
+      "country": "Mauritania",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which set contains the four ancient Mauritanian ksour on UNESCO’s World Heritage List?",
+      "options": [
+        "Ouadane, Chinguetti, Tichitt and Oualata",
+        "Agadez, Timbuktu, Gao and Djenné",
+        "Dakar, Saint-Louis, Gorée and Thiès",
+        "Kano, Katsina, Zaria and Sokoto"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The serial property comprises Ouadane, Chinguetti, Tichitt and Oualata.",
+      "sources": [
+        {
+          "title": "Ancient Ksour of Ouadane, Chinguetti, Tichitt and Oualata",
+          "url": "https://whc.unesco.org/en/list/750/",
+          "claim": "Mauritania’s four ancient ksour served Saharan caravan routes and retain dense patio houses, narrow streets and mosques with square minarets."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "west_mauritania_ksour_urban_form",
+      "region": "west",
+      "country": "Mauritania",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which urban form characterizes Mauritania’s ancient ksour?",
+      "options": [
+        "Stilt houses around a tidal lagoon",
+        "Circular stone towers around a forest shrine",
+        "Timber longhouses beside rice terraces",
+        "Patio houses along narrow streets around a mosque with a square minaret"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The compact form reflects adaptation to desert conditions and long-distance caravan life.",
+      "sources": [
+        {
+          "title": "Ancient Ksour of Ouadane, Chinguetti, Tichitt and Oualata",
+          "url": "https://whc.unesco.org/en/list/750/",
+          "claim": "Mauritania’s four ancient ksour served Saharan caravan routes and retain dense patio houses, narrow streets and mosques with square minarets."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "west_mauritania_couscous_process",
+      "region": "west",
+      "country": "Mauritania",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which step belongs to the documented preparation of couscous?",
+      "options": [
+        "Fermenting broken rice in seawater",
+        "Pressing yam into woven cotton strips",
+        "Rolling semolina by hand before steaming it",
+        "Roasting whole cassava in palm leaves"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The shared heritage record includes grinding grain, hand-rolling semolina and steaming it.",
+      "sources": [
+        {
+          "title": "Knowledge, know-how and practices pertaining to the production and consumption of couscous",
+          "url": "https://ich.unesco.org/en/RL/knowledge-know-how-and-practices-pertaining-to-the-production-and-consumption-of-couscous-01602",
+          "claim": "In Mauritania and other participating countries, couscous knowledge includes hand-rolling and steaming semolina, with accompaniments varying by place and occasion."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "west_mauritania_couscous_variation",
+      "region": "west",
+      "country": "Mauritania",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Why is one fixed description of couscous accompaniments misleading?",
+      "options": [
+        "Only one household may prepare it",
+        "Vegetables and meats vary by region, season and occasion",
+        "UNESCO requires one identical recipe",
+        "The dish is served without accompaniments everywhere"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The multinational inscription stresses variation and social context rather than a single universal recipe.",
+      "sources": [
+        {
+          "title": "Knowledge, know-how and practices pertaining to the production and consumption of couscous",
+          "url": "https://ich.unesco.org/en/RL/knowledge-know-how-and-practices-pertaining-to-the-production-and-consumption-of-couscous-01602",
+          "claim": "In Mauritania and other participating countries, couscous knowledge includes hand-rolling and steaming semolina, with accompaniments varying by place and occasion."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "west_guinea_sosso_bala_location",
+      "region": "west",
+      "country": "Guinea",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Where is the original Sosso-Bala preserved according to UNESCO?",
+      "options": [
+        "Nyagassola in northern Guinea",
+        "Kangaba in southern Mali",
+        "Tiébélé in Burkina Faso",
+        "Oualata in Mauritania"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The public UNESCO record locates the instrument in a round mud hut in Nyagassola.",
+      "sources": [
+        {
+          "title": "Cultural space of Sosso-Bala",
+          "url": "https://ich.unesco.org/en/RL/cultural-space-of-sosso-bala-00009",
+          "claim": "The sacred Sosso-Bala is kept at Nyagassola in Guinea by the Dökala family’s Kouyaté griots, with the Balatigui as guardian."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or custodial heritage: specialist community review is required and no restricted knowledge may be added.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "west_guinea_sosso_bala_guardian",
+      "region": "west",
+      "country": "Guinea",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What title does UNESCO use for the guardian of the Sosso-Bala?",
+      "options": [
+        "Alaafin",
+        "Sarkin Ruwa",
+        "Chief weaver",
+        "Balatigui"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The Balatigui, patriarch of the Dökala family, is identified as the instrument’s guardian; this question uses only public information.",
+      "sources": [
+        {
+          "title": "Cultural space of Sosso-Bala",
+          "url": "https://ich.unesco.org/en/RL/cultural-space-of-sosso-bala-00009",
+          "claim": "The sacred Sosso-Bala is kept at Nyagassola in Guinea by the Dökala family’s Kouyaté griots, with the Balatigui as guardian."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or custodial heritage: specialist community review is required and no restricted knowledge may be added.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "west_liberia_vai_creator",
+      "region": "west",
+      "country": "Liberia",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who is credited by the Smithsonian with creating the Vai script around 1832?",
+      "options": [
+        "Momolu Duwalu Bukele",
+        "Sundiata Keita",
+        "Sumaoro Kanté",
+        "Wegbaja"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Smithsonian identifies Momolu Duwalu Bukele of Liberia as the script’s inventor around 1832.",
+      "sources": [
+        {
+          "title": "Inscribing Meaning: Writing and Graphic Systems in African Art",
+          "url": "https://africa.si.edu/exhibitions/inscribing-meaning-writing-and-graphic-systems-africa-art",
+          "claim": "The Vai syllabary was created in Liberia around 1832 by Momolu Duwalu Bukele; its characters represent syllables and the script is written left to right."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_liberia_vai_syllabary",
+      "region": "west",
+      "country": "Liberia",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Why is Vai described as a syllabary?",
+      "options": [
+        "Each symbol represents a whole paragraph",
+        "It records only musical pitch",
+        "Its signs represent numbers only",
+        "Each character represents a consonant-and-vowel syllable"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "Vai characters encode syllables, and the modern script is written from left to right.",
+      "sources": [
+        {
+          "title": "Inscribing Meaning: Writing and Graphic Systems in African Art",
+          "url": "https://africa.si.edu/exhibitions/inscribing-meaning-writing-and-graphic-systems-africa-art",
+          "claim": "The Vai syllabary was created in Liberia around 1832 by Momolu Duwalu Bukele; its characters represent syllables and the script is written left to right."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_sierra_leone_sowei_names",
+      "region": "west",
+      "country": "Sierra Leone; Liberia",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which naming distinction appears in the Smithsonian record for this helmet-mask tradition?",
+      "options": [
+        "M’Bolon among Sherbro; Imzad among Vai",
+        "Gbofe among Gola; Zaouli among Mende",
+        "Sowei among Mende, Sherbro and Vai; zogbe among Gola",
+        "Takienta among Mende; sikien among Gola"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The museum record preserves community-specific names rather than applying one label everywhere.",
+      "sources": [
+        {
+          "title": "Helmet mask",
+          "url": "https://www.si.edu/object/helmet-mask%3Anmafa_2012-11-1",
+          "claim": "Helmet masks are called sowei among Mende, Sherbro and Vai communities and zogbe among Gola communities in Sierra Leone and Liberia, and are performed by Sande members."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Initiatory practice: specialist review by relevant community knowledge-holders is required; do not add restricted details.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http",
+          "sensitivity_initiation"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http",
+        "sensitivity_initiation"
+      ]
+    },
+    {
+      "id": "west_sierra_leone_sowei_performance",
+      "region": "west",
+      "country": "Sierra Leone; Liberia",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who performs the sowei or zogbe helmet masks described by the Smithsonian?",
+      "options": [
+        "Senegambian stone carvers",
+        "Members of the women’s Sande society",
+        "Kano palace horse riders",
+        "Morna guitar ensembles"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The public museum label identifies Sande members as performers; initiation details remain outside this candidate.",
+      "sources": [
+        {
+          "title": "Helmet mask",
+          "url": "https://www.si.edu/object/helmet-mask%3Anmafa_2012-11-1",
+          "claim": "Helmet masks are called sowei among Mende, Sherbro and Vai communities and zogbe among Gola communities in Sierra Leone and Liberia, and are performed by Sande members."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Initiatory practice: specialist review by relevant community knowledge-holders is required; do not add restricted details.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http",
+          "sensitivity_initiation"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http",
+        "sensitivity_initiation"
+      ]
+    },
+    {
+      "id": "west_mauritania_mahadra_method",
+      "region": "west",
+      "country": "Mauritania",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which learning methods are central to Mauritania’s mahadra system?",
+      "options": [
+        "Only laboratory experiments",
+        "Only recorded video lessons",
+        "Listening and memorization",
+        "Only printed examinations"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "Mahadra is a community framework in which oral transmission relies heavily on attentive listening and memorization.",
+      "sources": [
+        {
+          "title": "Mahadra, a community system for transmission of traditional knowledge and oral expressions",
+          "url": "https://ich.unesco.org/en/RL/mahadra-a-community-system-for-transmission-of-traditional-knowledge-and-oral-expressions-01960",
+          "claim": "Mauritanian mahadra is a community learning system based largely on listening and memorization, covering literature, religion and environmental knowledge."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "west_mauritania_mahadra_topics",
+      "region": "west",
+      "country": "Mauritania",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which range of subjects may be taught through mahadra?",
+      "options": [
+        "Only parliamentary procedure",
+        "Literature, religious sciences and knowledge of the desert environment",
+        "Only maritime engineering",
+        "Only industrial chemistry"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "UNESCO describes language, literature, religious learning and environmental knowledge such as rain, plants, tracks and stars.",
+      "sources": [
+        {
+          "title": "Mahadra, a community system for transmission of traditional knowledge and oral expressions",
+          "url": "https://ich.unesco.org/en/RL/mahadra-a-community-system-for-transmission-of-traditional-knowledge-and-oral-expressions-01960",
+          "claim": "Mauritanian mahadra is a community learning system based largely on listening and memorization, covering literature, religion and environmental knowledge."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Religious learning is part of the public source description; Mauritanian specialist review is required before progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "west_mauritania_zaffa_variation",
+      "region": "west",
+      "country": "Mauritania",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which statement responsibly describes zaffa in Mauritania?",
+      "options": [
+        "It is a bridal procession whose music, rituals and symbols vary by community",
+        "It follows one identical script in every participating country",
+        "It is solely a private legal contract without celebration",
+        "It excludes family, artists and community members"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The multinational heritage record describes a shared procession form while emphasizing that symbolic acts vary among practising communities.",
+      "sources": [
+        {
+          "title": "The zaffa in the traditional wedding",
+          "url": "https://ich.unesco.org/en/RL/the-zaffa-in-the-traditional-wedding-02283",
+          "claim": "In Mauritania and other participating countries, zaffa is a bridal procession involving music, dance and community gathering, with symbolic details varying by community."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Wedding practices vary between participating communities; Mauritanian specialist review is required and the example must not be universalized.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "west_ghana_akan_rooster_proverb",
+      "region": "west",
+      "country": "Ghana; Côte d’Ivoire",
+      "category": "PROVERBS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What lesson is associated with the rooster-head Akan goldweight in the Smithsonian record?",
+      "options": [
+        "Avoid speaking during every negotiation",
+        "Store all wealth in a single place",
+        "A leader should never accept advice",
+        "Respond to a situation with proportionate force"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The associated proverb says a large stick is unnecessary for breaking a cock’s head: the response should fit the situation.",
+      "sources": [
+        {
+          "title": "Weight",
+          "url": "https://www.si.edu/object/weight%3Anmafa_75-22-312",
+          "claim": "A rooster-head Akan goldweight is associated with a proverb advising an appropriate, proportionate response to a situation."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Proverb wording and interpretation require review by an Akan language and cultural specialist before progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "west_nigeria_yoruba_morning_greeting",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which greeting does the cited Yorùbá language textbook give for the morning?",
+      "options": [
+        "Káalẹ́",
+        "Ó dààárọ̀",
+        "Káàárọ̀",
+        "Káàsán"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The textbook gives káàárọ̀ for the morning; tone marks and usage need review by a Yorùbá language specialist.",
+      "sources": [
+        {
+          "title": "Yorùbá Yé Mi, Chapter 1: Greetings",
+          "url": "https://coerll.utexas.edu/yemi/pdfs/yy_ch1.pdf",
+          "claim": "The university language textbook documents time-specific Yorùbá greetings, including káàárọ̀ as a morning greeting."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Language accuracy, tone marks and social context require review by a Yorùbá language specialist before progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    }
+  ]
+}

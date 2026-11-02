@@ -61,9 +61,11 @@ async function start(){
 }
 function escapeHtml(value){return value.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;");}
 async function round(edition){
-  const questions=await (await fetch("/api/paid/questions?edition="+edition)).json();
+  const payload=await (await fetch("/api/paid/questions?edition="+edition+"&player="+player)).json();
+  const questions=Array.isArray(payload)?payload:(payload.questions||[]);
+  const roundId=Array.isArray(payload)?"":(payload.roundId||"");
   let index=0; const answers=[];
-  const advance=()=>{index+=1; if(index<questions.length) ask(); else finish(edition,answers);};
+  const advance=()=>{index+=1; if(index<questions.length) ask(); else finish(edition,answers,roundId);};
   const ask=()=>{
     const question=questions[index];
     const multi=question.kind==="multi";
@@ -82,8 +84,8 @@ async function round(edition){
   };
   ask();
 }
-async function finish(edition,answers){
-  const response=await fetch("/api/paid/games/complete",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({edition,answers,playerId:player})});
+async function finish(edition,answers,roundId){
+  const response=await fetch("/api/paid/games/complete",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({edition,answers,playerId:player,roundId:roundId||undefined})});
   const result=await response.json();
   play.innerHTML="<h2>"+result.score+" / "+result.total+"</h2><p>"+escapeHtml(String(result.editionName||""))+"</p><p>"+escapeHtml((result.explanations||[]).map(item=>item.explanation).join(" "))+'</p><button type="button" id="again">Play another region</button>';
   document.querySelector("#again").addEventListener("click",start);

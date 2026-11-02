@@ -1,0 +1,6353 @@
+{
+  "region": "west",
+  "questions": [
+    {
+      "id": "west_geog_abuja",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which place is the planned capital city of Nigeria?",
+      "options": [
+        "Abuja",
+        "Accra",
+        "Dakar",
+        "Bamako"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Abuja is the capital city of Nigeria.",
+      "sources": [
+        {
+          "title": "Abuja",
+          "url": "https://en.wikipedia.org/wiki/Abuja",
+          "claim": "Abuja is the capital city of Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_accra",
+      "region": "west",
+      "country": "Ghana",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which place is the coastal capital city of Ghana?",
+      "options": [
+        "Accra",
+        "Abuja",
+        "Dakar",
+        "Bamako"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Accra is the capital of Ghana.",
+      "sources": [
+        {
+          "title": "Accra",
+          "url": "https://en.wikipedia.org/wiki/Accra",
+          "claim": "Accra is the capital of Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_dakar",
+      "region": "west",
+      "country": "Senegal",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which place is the Atlantic capital city of Senegal?",
+      "options": [
+        "Dakar",
+        "Abuja",
+        "Accra",
+        "Bamako"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dakar is the capital of Senegal.",
+      "sources": [
+        {
+          "title": "Dakar",
+          "url": "https://en.wikipedia.org/wiki/Dakar",
+          "claim": "Dakar is the capital of Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_bamako",
+      "region": "west",
+      "country": "Mali",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which place is the capital city of Mali on the Niger River?",
+      "options": [
+        "Bamako",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bamako is the capital of Mali.",
+      "sources": [
+        {
+          "title": "Bamako",
+          "url": "https://en.wikipedia.org/wiki/Bamako",
+          "claim": "Bamako is the capital of Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_conakry",
+      "region": "west",
+      "country": "Guinea",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which place is the capital city of Guinea on the Atlantic?",
+      "options": [
+        "Conakry",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Conakry is the capital of Guinea.",
+      "sources": [
+        {
+          "title": "Conakry",
+          "url": "https://en.wikipedia.org/wiki/Conakry",
+          "claim": "Conakry is the capital of Guinea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_ouagadougou",
+      "region": "west",
+      "country": "Burkina Faso",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the capital city of Burkina Faso?",
+      "options": [
+        "Ouagadougou",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ouagadougou is the capital of Burkina Faso.",
+      "sources": [
+        {
+          "title": "Ouagadougou",
+          "url": "https://en.wikipedia.org/wiki/Ouagadougou",
+          "claim": "Ouagadougou is the capital of Burkina Faso",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_niamey",
+      "region": "west",
+      "country": "Niger",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which place is the capital city of Niger beside the Niger River?",
+      "options": [
+        "Niamey",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Niamey is the capital of Niger.",
+      "sources": [
+        {
+          "title": "Niamey",
+          "url": "https://en.wikipedia.org/wiki/Niamey",
+          "claim": "Niamey is the capital of Niger",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_freetown",
+      "region": "west",
+      "country": "Sierra Leone",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the capital city of Sierra Leone?",
+      "options": [
+        "Freetown",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Freetown is the capital of Sierra Leone.",
+      "sources": [
+        {
+          "title": "Freetown",
+          "url": "https://en.wikipedia.org/wiki/Freetown",
+          "claim": "Freetown is the capital of Sierra Leone",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_monrovia",
+      "region": "west",
+      "country": "Liberia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the capital city of Liberia?",
+      "options": [
+        "Monrovia",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Monrovia is the capital of Liberia.",
+      "sources": [
+        {
+          "title": "Monrovia",
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "claim": "Monrovia is the capital of Liberia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_lome",
+      "region": "west",
+      "country": "Togo",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the capital city of Togo on the Gulf of Guinea?",
+      "options": [
+        "Lome",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lomé is the capital of Togo.",
+      "sources": [
+        {
+          "title": "Lomé",
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "claim": "Lomé is the capital of Togo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_banjul",
+      "region": "west",
+      "country": "Gambia",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the capital city of The Gambia?",
+      "options": [
+        "Banjul",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Banjul is the capital of the Gambia.",
+      "sources": [
+        {
+          "title": "Banjul",
+          "url": "https://en.wikipedia.org/wiki/Banjul",
+          "claim": "Banjul is the capital of the Gambia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_praia",
+      "region": "west",
+      "country": "Cape Verde",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the capital city of Cape Verde?",
+      "options": [
+        "Praia",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Praia is the capital of Cape Verde.",
+      "sources": [
+        {
+          "title": "Praia",
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "claim": "Praia is the capital of Cape Verde",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_yamoussoukro",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which place is the official capital city of Côte d'Ivoire?",
+      "options": [
+        "Yamoussoukro",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Yamoussoukro is the capital of Ivory Coast.",
+      "sources": [
+        {
+          "title": "Yamoussoukro",
+          "url": "https://en.wikipedia.org/wiki/Yamoussoukro",
+          "claim": "Yamoussoukro is the capital of Ivory Coast",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_lagos",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which place is the largest city in Nigeria, on the Atlantic coast?",
+      "options": [
+        "Lagos",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lagos is the largest city in Nigeria.",
+      "sources": [
+        {
+          "title": "Lagos",
+          "url": "https://en.wikipedia.org/wiki/Lagos",
+          "claim": "Lagos is the largest city in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_timbuktu",
+      "region": "west",
+      "country": "Mali",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the historic Sahelian city of scholarship in Mali?",
+      "options": [
+        "Timbuktu",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Timbuktu is a city in Mali.",
+      "sources": [
+        {
+          "title": "Timbuktu",
+          "url": "https://en.wikipedia.org/wiki/Timbuktu",
+          "claim": "Timbuktu is a city in Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_djenne",
+      "region": "west",
+      "country": "Mali",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the Malian city famous for its great earthen mosque?",
+      "options": [
+        "Djenné",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Djenné is a town in Mali.",
+      "sources": [
+        {
+          "title": "Djenné",
+          "url": "https://en.wikipedia.org/wiki/Djenn%C3%A9",
+          "claim": "Djenné is a town in Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_lake_volta",
+      "region": "west",
+      "country": "Ghana",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which place is the very large reservoir lake in Ghana?",
+      "options": [
+        "Lake Volta",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lake Volta is a large reservoir in Ghana.",
+      "sources": [
+        {
+          "title": "Lake Volta",
+          "url": "https://en.wikipedia.org/wiki/Lake_Volta",
+          "claim": "Lake Volta is a large reservoir in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_niger_river",
+      "region": "west",
+      "country": "Mali",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the great West African river that bends through Mali?",
+      "options": [
+        "Niger River",
+        "Abuja",
+        "Accra",
+        "Dakar"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Niger River is the main river of West Africa.",
+      "sources": [
+        {
+          "title": "Niger River",
+          "url": "https://en.wikipedia.org/wiki/Niger_River",
+          "claim": "The Niger River is the main river of West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_jollof_rice",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which dish is a one-pot tomato rice loved at West African tables, with famous pots in Nigeria?",
+      "options": [
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya",
+        "Egusi soup"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jollof rice is a rice dish popular in West Africa.",
+      "sources": [
+        {
+          "title": "Jollof rice",
+          "url": "https://en.wikipedia.org/wiki/Jollof_rice",
+          "claim": "Jollof rice is a rice dish popular in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_thieboudienne",
+      "region": "west",
+      "country": "Senegal",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which dish is the Senegalese rice and fish dish often called the national dish?",
+      "options": [
+        "Thieboudienne",
+        "Jollof rice",
+        "Suya",
+        "Egusi soup"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Thieboudienne is a traditional dish from Senegal.",
+      "sources": [
+        {
+          "title": "Thieboudienne",
+          "url": "https://en.wikipedia.org/wiki/Thieboudienne",
+          "claim": "Thieboudienne is a traditional dish from Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_suya",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which dish is a spicy grilled meat skewer sold on Nigerian streets?",
+      "options": [
+        "Suya",
+        "Jollof rice",
+        "Thieboudienne",
+        "Egusi soup"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Suya is a spicy meat skewer popular in Nigeria.",
+      "sources": [
+        {
+          "title": "Suya",
+          "url": "https://en.wikipedia.org/wiki/Suya",
+          "claim": "Suya is a spicy meat skewer popular in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_egusi_soup",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which dish is a Nigerian soup thickened with melon seeds?",
+      "options": [
+        "Egusi soup",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Egusi soup is a soup made with egusi seeds in Nigeria.",
+      "sources": [
+        {
+          "title": "Egusi soup",
+          "url": "https://en.wikipedia.org/wiki/Egusi_soup",
+          "claim": "Egusi soup is a soup made with egusi seeds in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_kelewele",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is spicy fried ripe plantain cubes from Ghana?",
+      "options": [
+        "Kelewele",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kelewele is a Ghanaian food made from fried plantains.",
+      "sources": [
+        {
+          "title": "Kelewele",
+          "url": "https://en.wikipedia.org/wiki/Kelewele",
+          "claim": "Kelewele is a Ghanaian food made from fried plantains",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_waakye",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is Ghanaian rice and beans cooked together?",
+      "options": [
+        "Waakye",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Waakye is a Ghanaian dish of rice and beans.",
+      "sources": [
+        {
+          "title": "Waakye",
+          "url": "https://en.wikipedia.org/wiki/Waakye",
+          "claim": "Waakye is a Ghanaian dish of rice and beans",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_attieke",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is a couscous-like cassava side from Côte d'Ivoire?",
+      "options": [
+        "Attiéké",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Attiéké is a side dish made from cassava in Côte d'Ivoire.",
+      "sources": [
+        {
+          "title": "Attiéké",
+          "url": "https://en.wikipedia.org/wiki/Atti%C3%A9k%C3%A9",
+          "claim": "Attiéké is a side dish made from cassava in Côte d'Ivoire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_yassa_food",
+      "region": "west",
+      "country": "Senegal",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is a Senegalese onion and lemon sauce, often with chicken?",
+      "options": [
+        "Yassa",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Yassa is a dish from Senegal.",
+      "sources": [
+        {
+          "title": "Yassa (food)",
+          "url": "https://en.wikipedia.org/wiki/Yassa_(food)",
+          "claim": "Yassa is a dish from Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_fufu",
+      "region": "west",
+      "country": "West Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which dish is a smooth pounded staple swallowed with soup across West Africa?",
+      "options": [
+        "Fufu",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fufu is a staple food in West Africa.",
+      "sources": [
+        {
+          "title": "Fufu",
+          "url": "https://en.wikipedia.org/wiki/Fufu",
+          "claim": "Fufu is a staple food in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_maafe",
+      "region": "west",
+      "country": "Mali",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is a West African groundnut stew, widely loved in Mali and Senegal?",
+      "options": [
+        "Maafe",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Maafe is a stew made with peanut sauce.",
+      "sources": [
+        {
+          "title": "Maafe",
+          "url": "https://en.wikipedia.org/wiki/Maafe",
+          "claim": "Maafe is a stew made with peanut sauce",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_alloco",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is fried ripe plantain served as a street snack in Côte d'Ivoire?",
+      "options": [
+        "Alloco",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Alloco is a dish of fried plantain in Côte d'Ivoire.",
+      "sources": [
+        {
+          "title": "Alloco",
+          "url": "https://en.wikipedia.org/wiki/Alloco",
+          "claim": "Alloco is a dish of fried plantain in Côte d'Ivoire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_kilishi",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which dish is a dry spiced meat similar to jerky, associated with northern Nigeria?",
+      "options": [
+        "Kilishi",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kilishi is a dried meat from Nigeria.",
+      "sources": [
+        {
+          "title": "Kilishi",
+          "url": "https://en.wikipedia.org/wiki/Kilishi",
+          "claim": "Kilishi is a dried meat from Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_shito",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is a dark hot pepper sauce from Ghana?",
+      "options": [
+        "Shito",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shito is a hot pepper sauce from Ghana.",
+      "sources": [
+        {
+          "title": "Shito",
+          "url": "https://en.wikipedia.org/wiki/Shito",
+          "claim": "Shito is a hot pepper sauce from Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_red_red",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is a Ghanaian bean stew often served with fried plantain?",
+      "options": [
+        "Red red",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Red red is a bean stew from Ghana.",
+      "sources": [
+        {
+          "title": "Red red",
+          "url": "https://en.wikipedia.org/wiki/Red_red",
+          "claim": "Red red is a bean stew from Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_puff_puff",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which dish is a deep-fried dough ball sold as a Nigerian snack?",
+      "options": [
+        "Puff puff",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Puff-puff is a deep-fried dough snack from Nigeria.",
+      "sources": [
+        {
+          "title": "Puff-puff",
+          "url": "https://en.wikipedia.org/wiki/Puff-puff",
+          "claim": "Puff-puff is a deep-fried dough snack from Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_chin_chin",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which dish is a crunchy fried pastry snack from Nigeria?",
+      "options": [
+        "Chin chin",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chin chin is a fried snack from Nigeria.",
+      "sources": [
+        {
+          "title": "Chin chin",
+          "url": "https://en.wikipedia.org/wiki/Chin_chin",
+          "claim": "Chin chin is a fried snack from Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_palm_nut_soup",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which dish is a rich soup made from palm fruit, common in Ghana?",
+      "options": [
+        "Palm nut soup",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Palm nut soup is a soup made from palm fruit.",
+      "sources": [
+        {
+          "title": "Palm nut soup",
+          "url": "https://en.wikipedia.org/wiki/Palm_nut_soup",
+          "claim": "Palm nut soup is a soup made from palm fruit",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_gari_food",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is a dry granular cassava food eaten across coastal West Africa?",
+      "options": [
+        "Gari",
+        "Jollof rice",
+        "Thieboudienne",
+        "Suya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gari is a cassava flour popular in West Africa.",
+      "sources": [
+        {
+          "title": "Gari (food)",
+          "url": "https://en.wikipedia.org/wiki/Gari_(food)",
+          "claim": "Gari is a cassava flour popular in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_highlife",
+      "region": "west",
+      "country": "Ghana",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which music or dance name is the guitar-and-horn dance music that grew famous in Ghana?",
+      "options": [
+        "Highlife",
+        "Afrobeat",
+        "Fuji music",
+        "Jùjú music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Highlife is a music genre that originated in Ghana.",
+      "sources": [
+        {
+          "title": "Highlife",
+          "url": "https://en.wikipedia.org/wiki/Highlife",
+          "claim": "Highlife is a music genre that originated in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_afrobeat",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which music or dance name is the funk-and-jazz political dance music pioneered by Fela Kuti?",
+      "options": [
+        "Afrobeat",
+        "Highlife",
+        "Fuji music",
+        "Jùjú music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Afrobeat is a music genre created by Fela Kuti.",
+      "sources": [
+        {
+          "title": "Afrobeat",
+          "url": "https://en.wikipedia.org/wiki/Afrobeat",
+          "claim": "Afrobeat is a music genre created by Fela Kuti",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_afrobeats",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which music or dance name is the 21st-century Nigerian and Ghanaian pop sound heard worldwide?",
+      "options": [
+        "Afrobeats",
+        "Highlife",
+        "Fuji music",
+        "Jùjú music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Afrobeats is a contemporary music genre from Nigeria and Ghana.",
+      "sources": [
+        {
+          "title": "Afrobeats",
+          "url": "https://en.wikipedia.org/wiki/Afrobeats",
+          "claim": "Afrobeats is a contemporary music genre from Nigeria and Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_fuji_music",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is a percussion-heavy Yoruba popular music from Nigeria?",
+      "options": [
+        "Fuji music",
+        "Highlife",
+        "Afrobeat",
+        "Jùjú music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fuji music is a popular genre from Nigeria.",
+      "sources": [
+        {
+          "title": "Fuji music",
+          "url": "https://en.wikipedia.org/wiki/Fuji_music",
+          "claim": "Fuji music is a popular genre from Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_juju_music",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is a Yoruba popular style built around guitar and talking drum?",
+      "options": [
+        "Jùjú music",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jùjú is a style of Nigerian popular music.",
+      "sources": [
+        {
+          "title": "Jùjú music",
+          "url": "https://en.wikipedia.org/wiki/J%C3%B9j%C3%BA_music",
+          "claim": "Jùjú is a style of Nigerian popular music",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_mbalax",
+      "region": "west",
+      "country": "Senegal",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is the Senegalese dance music associated with Youssou N'Dour?",
+      "options": [
+        "Mbalax",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mbalax is a popular music of Senegal.",
+      "sources": [
+        {
+          "title": "Mbalax",
+          "url": "https://en.wikipedia.org/wiki/Mbalax",
+          "claim": "Mbalax is a popular music of Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_kora_instrument",
+      "region": "west",
+      "country": "Mali",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which music or dance name is the 21-string harp-lute of Mande griots?",
+      "options": [
+        "Kora",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kora is a string instrument from West Africa.",
+      "sources": [
+        {
+          "title": "Kora (instrument)",
+          "url": "https://en.wikipedia.org/wiki/Kora_(instrument)",
+          "claim": "The kora is a string instrument from West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_djembe",
+      "region": "west",
+      "country": "Guinea",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which music or dance name is the goblet drum widely played across the Mande world?",
+      "options": [
+        "Djembe",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The djembe is a rope-tuned drum from West Africa.",
+      "sources": [
+        {
+          "title": "Djembe",
+          "url": "https://en.wikipedia.org/wiki/Djembe",
+          "claim": "The djembe is a rope-tuned drum from West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_balafon",
+      "region": "west",
+      "country": "Mali",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is a wooden xylophone of the Mande musical world?",
+      "options": [
+        "Balafon",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The balafon is a wooden xylophone from West Africa.",
+      "sources": [
+        {
+          "title": "Balafon",
+          "url": "https://en.wikipedia.org/wiki/Balafon",
+          "claim": "The balafon is a wooden xylophone from West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_talking_drum",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is an hourglass drum whose pitch can echo speech tones?",
+      "options": [
+        "Talking drum",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The talking drum is used in West Africa.",
+      "sources": [
+        {
+          "title": "Talking drum",
+          "url": "https://en.wikipedia.org/wiki/Talking_drum",
+          "claim": "The talking drum is used in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_wassoulou_music",
+      "region": "west",
+      "country": "Mali",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which music or dance name is a southern Malian music associated with strong women singers?",
+      "options": [
+        "Wassoulou",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wassoulou is a music from southern Mali.",
+      "sources": [
+        {
+          "title": "Wassoulou music",
+          "url": "https://en.wikipedia.org/wiki/Wassoulou_music",
+          "claim": "Wassoulou is a music from southern Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_azonto",
+      "region": "west",
+      "country": "Ghana",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is a playful Ghanaian dance that spread with hiplife and afrobeats?",
+      "options": [
+        "Azonto",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Azonto is a dance from Ghana.",
+      "sources": [
+        {
+          "title": "Azonto",
+          "url": "https://en.wikipedia.org/wiki/Azonto",
+          "claim": "Azonto is a dance from Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_hiplife",
+      "region": "west",
+      "country": "Ghana",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is a Ghanaian fusion of highlife and hip hop?",
+      "options": [
+        "Hiplife",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hiplife is a Ghanaian music genre.",
+      "sources": [
+        {
+          "title": "Hiplife",
+          "url": "https://en.wikipedia.org/wiki/Hiplife",
+          "claim": "Hiplife is a Ghanaian music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_hiplife_fill",
+      "region": "west",
+      "country": "Ghana",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Fill the blank. In Ghana, a Ghanaian fusion of highlife and hip hop. The name to write is ___.",
+      "options": [
+        "Hiplife",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hiplife is a Ghanaian music genre.",
+      "sources": [
+        {
+          "title": "Hiplife",
+          "url": "https://en.wikipedia.org/wiki/Hiplife",
+          "claim": "Hiplife is a Ghanaian music genre",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_coupe_decale",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which music or dance name is a dance music from Côte d'Ivoire that filled clubs in the 2000s?",
+      "options": [
+        "Coupé-décalé",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Coupé-décalé is a music and dance genre from Côte d'Ivoire.",
+      "sources": [
+        {
+          "title": "Coupé-décalé",
+          "url": "https://en.wikipedia.org/wiki/Coup%C3%A9-d%C3%A9cal%C3%A9",
+          "claim": "Coupé-décalé is a music and dance genre from Côte d'Ivoire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_sabar",
+      "region": "west",
+      "country": "Senegal",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which music or dance name is a Senegalese drum and dance tradition?",
+      "options": [
+        "Sabar",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sabar is a drum from Senegal.",
+      "sources": [
+        {
+          "title": "Sabar",
+          "url": "https://en.wikipedia.org/wiki/Sabar",
+          "claim": "Sabar is a drum from Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_apala",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which music or dance name is a Yoruba percussion genre that predates fuji?",
+      "options": [
+        "Apala",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Apala is a genre of Nigerian Yoruba music.",
+      "sources": [
+        {
+          "title": "Apala",
+          "url": "https://en.wikipedia.org/wiki/Apala",
+          "claim": "Apala is a genre of Nigerian Yoruba music",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_palm_wine_music",
+      "region": "west",
+      "country": "Sierra Leone",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is a guitar style named for the palm-wine bars where it was played?",
+      "options": [
+        "Palm-wine music",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Palm-wine music is a West African guitar style.",
+      "sources": [
+        {
+          "title": "Palm-wine music",
+          "url": "https://en.wikipedia.org/wiki/Palm-wine_music",
+          "claim": "Palm-wine music is a West African guitar style",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_griot",
+      "region": "west",
+      "country": "Mali",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is a hereditary praise singer and historian in Mande societies, also called a jeli?",
+      "options": [
+        "Griot",
+        "Highlife",
+        "Afrobeat",
+        "Fuji music"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A griot is a West African historian and musician.",
+      "sources": [
+        {
+          "title": "Griot",
+          "url": "https://en.wikipedia.org/wiki/Griot",
+          "claim": "A griot is a West African historian and musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_kente_cloth",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is the brightly strip-woven cloth of Akan and Ewe weavers in Ghana?",
+      "options": [
+        "Kente",
+        "Adire",
+        "Aso oke",
+        "Ankara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kente is a Ghanaian textile made of woven strips.",
+      "sources": [
+        {
+          "title": "Kente cloth",
+          "url": "https://en.wikipedia.org/wiki/Kente_cloth",
+          "claim": "Kente is a Ghanaian textile made of woven strips",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_adire_textile_art",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is an indigo resist-dyed cloth of Yoruba makers?",
+      "options": [
+        "Adire",
+        "Kente",
+        "Aso oke",
+        "Ankara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Adire is a textile art of the Yoruba people.",
+      "sources": [
+        {
+          "title": "Adire (textile art)",
+          "url": "https://en.wikipedia.org/wiki/Adire_(textile_art)",
+          "claim": "Adire is a textile art of the Yoruba people",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_aso_oke",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a hand-woven Yoruba prestige cloth?",
+      "options": [
+        "Aso oke",
+        "Kente",
+        "Adire",
+        "Ankara"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Aso oke is a hand-woven cloth of the Yoruba.",
+      "sources": [
+        {
+          "title": "Aso oke",
+          "url": "https://en.wikipedia.org/wiki/Aso_oke",
+          "claim": "Aso oke is a hand-woven cloth of the Yoruba",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_ankara_fabric",
+      "region": "west",
+      "country": "West Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is the colourful wax-print cotton worn across West Africa?",
+      "options": [
+        "Ankara",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ankara is a wax-print fabric popular in West Africa.",
+      "sources": [
+        {
+          "title": "Ankara (fabric)",
+          "url": "https://en.wikipedia.org/wiki/Ankara_(fabric)",
+          "claim": "Ankara is a wax-print fabric popular in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_head_tie",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a sculpted woman's headwrap worn for Nigerian celebrations?",
+      "options": [
+        "Gele",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A gele is a Nigerian head tie.",
+      "sources": [
+        {
+          "title": "Head tie",
+          "url": "https://en.wikipedia.org/wiki/Head_tie",
+          "claim": "A gele is a Nigerian head tie",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_agbada",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a flowing embroidered robe worn by men in Nigeria?",
+      "options": [
+        "Agbada",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The agbada is a robe worn by men in West Africa.",
+      "sources": [
+        {
+          "title": "Agbada",
+          "url": "https://en.wikipedia.org/wiki/Agbada",
+          "claim": "The agbada is a robe worn by men in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_agbada_fill",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Fill the blank. In Nigeria, a flowing embroidered robe worn by men in Nigeria. The name to write is ___.",
+      "options": [
+        "Agbada",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The agbada is a robe worn by men in West Africa.",
+      "sources": [
+        {
+          "title": "Agbada",
+          "url": "https://en.wikipedia.org/wiki/Agbada",
+          "claim": "The agbada is a robe worn by men in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_fugu_garment",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is the smock worn in northern Ghana, also called a batakari?",
+      "options": [
+        "Fugu",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fugu is a smock worn in northern Ghana.",
+      "sources": [
+        {
+          "title": "Fugu (garment)",
+          "url": "https://en.wikipedia.org/wiki/Fugu_(garment)",
+          "claim": "Fugu is a smock worn in northern Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_bogolanfini",
+      "region": "west",
+      "country": "Mali",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is mudcloth painted with fermented mud in Mali?",
+      "options": [
+        "Bogolan",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bogolanfini is a handmade cotton fabric from Mali.",
+      "sources": [
+        {
+          "title": "Bogolanfini",
+          "url": "https://en.wikipedia.org/wiki/Bogolanfini",
+          "claim": "Bogolanfini is a handmade cotton fabric from Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_bogolanfini_fill",
+      "region": "west",
+      "country": "Mali",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Fill the blank. In Mali, mudcloth painted with fermented mud in Mali. The name to write is ___.",
+      "options": [
+        "Bogolan",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bogolanfini is a handmade cotton fabric from Mali.",
+      "sources": [
+        {
+          "title": "Bogolanfini",
+          "url": "https://en.wikipedia.org/wiki/Bogolanfini",
+          "claim": "Bogolanfini is a handmade cotton fabric from Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_fila_hat",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a soft Yoruba cap worn by men?",
+      "options": [
+        "Fila",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The fila is a traditional cap of the Yoruba.",
+      "sources": [
+        {
+          "title": "Fila (hat)",
+          "url": "https://en.wikipedia.org/wiki/Fila_(hat)",
+          "claim": "The fila is a traditional cap of the Yoruba",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_fila_hat_fill",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Fill the blank. In Nigeria, a soft Yoruba cap worn by men. The name to write is ___.",
+      "options": [
+        "Fila",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The fila is a traditional cap of the Yoruba.",
+      "sources": [
+        {
+          "title": "Fila (hat)",
+          "url": "https://en.wikipedia.org/wiki/Fila_(hat)",
+          "claim": "The fila is a traditional cap of the Yoruba",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_dashiki",
+      "region": "west",
+      "country": "West Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a loose colourful pullover shirt worn across West Africa?",
+      "options": [
+        "Dashiki",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The dashiki is a colourful garment from West Africa.",
+      "sources": [
+        {
+          "title": "Dashiki",
+          "url": "https://en.wikipedia.org/wiki/Dashiki",
+          "claim": "The dashiki is a colourful garment from West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_bazin_fabric",
+      "region": "west",
+      "country": "Mali",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a shiny dyed cotton prestige cloth, also called getzner, loved in Mali?",
+      "options": [
+        "Bazin",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bazin is a dyed cotton fabric popular in West Africa.",
+      "sources": [
+        {
+          "title": "Bazin (fabric)",
+          "url": "https://en.wikipedia.org/wiki/Bazin_(fabric)",
+          "claim": "Bazin is a dyed cotton fabric popular in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_wrapper_clothing",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a length of cloth tied as a skirt or gown in Nigeria?",
+      "options": [
+        "Wrapper",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A wrapper is a garment worn in West Africa.",
+      "sources": [
+        {
+          "title": "Wrapper (clothing)",
+          "url": "https://en.wikipedia.org/wiki/Wrapper_(clothing)",
+          "claim": "A wrapper is a garment worn in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_krobo_people",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is powder-glass beads made by Krobo communities in Ghana?",
+      "options": [
+        "Krobo beads",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Krobo people of Ghana are known for glass beads.",
+      "sources": [
+        {
+          "title": "Krobo people",
+          "url": "https://en.wikipedia.org/wiki/Krobo_people",
+          "claim": "The Krobo people of Ghana are known for glass beads",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_isiagu",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a patterned Igbo men's shirt often worn for ceremonies?",
+      "options": [
+        "Isiagu",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Isiagu is a shirt worn by Igbo men.",
+      "sources": [
+        {
+          "title": "Isiagu",
+          "url": "https://en.wikipedia.org/wiki/Isiagu",
+          "claim": "Isiagu is a shirt worn by Igbo men",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_boubou_clothing",
+      "region": "west",
+      "country": "Senegal",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a long flowing robe worn for celebrations in Senegal?",
+      "options": [
+        "Boubou",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The boubou is a flowing robe worn in West Africa.",
+      "sources": [
+        {
+          "title": "Boubou (clothing)",
+          "url": "https://en.wikipedia.org/wiki/Boubou_(clothing)",
+          "claim": "The boubou is a flowing robe worn in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_boubou_clothing_fill",
+      "region": "west",
+      "country": "Senegal",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "complete",
+      "prompt": "Fill the blank. In Senegal, a long flowing robe worn for celebrations in Senegal. The name to write is ___.",
+      "options": [
+        "Boubou",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The boubou is a flowing robe worn in West Africa.",
+      "sources": [
+        {
+          "title": "Boubou (clothing)",
+          "url": "https://en.wikipedia.org/wiki/Boubou_(clothing)",
+          "claim": "The boubou is a flowing robe worn in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_kaba_and_slit",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a tailored blouse and skirt set worn by Ghanaian women?",
+      "options": [
+        "Kaba and slit",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kaba and slit is a dress worn by women in Ghana.",
+      "sources": [
+        {
+          "title": "Kaba and slit",
+          "url": "https://en.wikipedia.org/wiki/Kaba_and_slit",
+          "claim": "Kaba and slit is a dress worn by women in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_coral",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is red beads worn as prestige jewellery in Benin and Nigerian ceremonies?",
+      "options": [
+        "Coral beads",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Coral beads are worn in Nigeria.",
+      "sources": [
+        {
+          "title": "Coral",
+          "url": "https://en.wikipedia.org/wiki/Coral",
+          "claim": "Coral beads are worn in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_indigo_dye",
+      "region": "west",
+      "country": "Mali",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is deep blue dyed cotton associated with Malian and Sahelian dress?",
+      "options": [
+        "Indigo cloth",
+        "Kente",
+        "Adire",
+        "Aso oke"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Indigo dye is used for blue cloth in West Africa.",
+      "sources": [
+        {
+          "title": "Indigo dye",
+          "url": "https://en.wikipedia.org/wiki/Indigo_dye",
+          "claim": "Indigo dye is used for blue cloth in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_yoruba_language",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is a major language of southwestern Nigeria?",
+      "options": [
+        "Yoruba",
+        "Igbo",
+        "Hausa",
+        "Akan"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Yoruba is a language spoken in Nigeria.",
+      "sources": [
+        {
+          "title": "Yoruba language",
+          "url": "https://en.wikipedia.org/wiki/Yoruba_language",
+          "claim": "Yoruba is a language spoken in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_igbo_language",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is a major language of southeastern Nigeria?",
+      "options": [
+        "Igbo",
+        "Yoruba",
+        "Hausa",
+        "Akan"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Igbo is a language spoken in Nigeria.",
+      "sources": [
+        {
+          "title": "Igbo language",
+          "url": "https://en.wikipedia.org/wiki/Igbo_language",
+          "claim": "Igbo is a language spoken in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_hausa_language",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is a major language of northern Nigeria and the Sahel?",
+      "options": [
+        "Hausa",
+        "Yoruba",
+        "Igbo",
+        "Akan"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hausa is a language spoken in Nigeria.",
+      "sources": [
+        {
+          "title": "Hausa language",
+          "url": "https://en.wikipedia.org/wiki/Hausa_language",
+          "claim": "Hausa is a language spoken in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_akan_language",
+      "region": "west",
+      "country": "Ghana",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is a language family that includes Twi and Fante in Ghana?",
+      "options": [
+        "Akan",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Akan is a language of Ghana.",
+      "sources": [
+        {
+          "title": "Akan language",
+          "url": "https://en.wikipedia.org/wiki/Akan_language",
+          "claim": "Akan is a language of Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_twi",
+      "region": "west",
+      "country": "Ghana",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which language point is a widely spoken Akan variety in Ghana?",
+      "options": [
+        "Twi",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Twi is a dialect of Akan spoken in Ghana.",
+      "sources": [
+        {
+          "title": "Twi",
+          "url": "https://en.wikipedia.org/wiki/Twi",
+          "claim": "Twi is a dialect of Akan spoken in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_wolof_language",
+      "region": "west",
+      "country": "Senegal",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is a main language of Senegal?",
+      "options": [
+        "Wolof",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wolof is a language of Senegal.",
+      "sources": [
+        {
+          "title": "Wolof language",
+          "url": "https://en.wikipedia.org/wiki/Wolof_language",
+          "claim": "Wolof is a language of Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_bambara_language",
+      "region": "west",
+      "country": "Mali",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which language point is a Manding lingua franca of Mali?",
+      "options": [
+        "Bambara",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bambara is a language spoken in Mali.",
+      "sources": [
+        {
+          "title": "Bambara language",
+          "url": "https://en.wikipedia.org/wiki/Bambara_language",
+          "claim": "Bambara is a language spoken in Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_krio_language",
+      "region": "west",
+      "country": "Sierra Leone",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which language point is an English-based creole of Sierra Leone?",
+      "options": [
+        "Krio",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Krio is a creole language of Sierra Leone.",
+      "sources": [
+        {
+          "title": "Krio language",
+          "url": "https://en.wikipedia.org/wiki/Krio_language",
+          "claim": "Krio is a creole language of Sierra Leone",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_nigerian_pidgin",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is an English-based lingua franca used across Nigeria?",
+      "options": [
+        "Nigerian Pidgin",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nigerian Pidgin is an English-based creole spoken in Nigeria.",
+      "sources": [
+        {
+          "title": "Nigerian Pidgin",
+          "url": "https://en.wikipedia.org/wiki/Nigerian_Pidgin",
+          "claim": "Nigerian Pidgin is an English-based creole spoken in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_ewe_language",
+      "region": "west",
+      "country": "Ghana",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which language point is a language of southeastern Ghana and southern Togo?",
+      "options": [
+        "Ewe",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ewe is a language spoken in Ghana and Togo.",
+      "sources": [
+        {
+          "title": "Ewe language",
+          "url": "https://en.wikipedia.org/wiki/Ewe_language",
+          "claim": "Ewe is a language spoken in Ghana and Togo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_mossi_language",
+      "region": "west",
+      "country": "Burkina Faso",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which language point is the language of the Mossi people in Burkina Faso?",
+      "options": [
+        "Mooré",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mooré is a language spoken in Burkina Faso.",
+      "sources": [
+        {
+          "title": "Mossi language",
+          "url": "https://en.wikipedia.org/wiki/Mossi_language",
+          "claim": "Mooré is a language spoken in Burkina Faso",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_fon_language",
+      "region": "west",
+      "country": "Benin",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which language point is a major language of southern Benin?",
+      "options": [
+        "Fon",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fon is a language spoken in Benin.",
+      "sources": [
+        {
+          "title": "Fon language",
+          "url": "https://en.wikipedia.org/wiki/Fon_language",
+          "claim": "Fon is a language spoken in Benin",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_susu_language",
+      "region": "west",
+      "country": "Guinea",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which language point is a language of coastal Guinea?",
+      "options": [
+        "Susu",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Susu is a language of Guinea.",
+      "sources": [
+        {
+          "title": "Susu language",
+          "url": "https://en.wikipedia.org/wiki/Susu_language",
+          "claim": "Susu is a language of Guinea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_ga_language",
+      "region": "west",
+      "country": "Ghana",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which language point is a language of the Accra area in Ghana?",
+      "options": [
+        "Ga",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ga is a language spoken in Ghana.",
+      "sources": [
+        {
+          "title": "Ga language",
+          "url": "https://en.wikipedia.org/wiki/Ga_language",
+          "claim": "Ga is a language spoken in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_dyula_language",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which language point is a Manding trade language widely used in Côte d'Ivoire?",
+      "options": [
+        "Dyula",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dyula is a language spoken in Ivory Coast.",
+      "sources": [
+        {
+          "title": "Dyula language",
+          "url": "https://en.wikipedia.org/wiki/Dyula_language",
+          "claim": "Dyula is a language spoken in Ivory Coast",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_temne_language",
+      "region": "west",
+      "country": "Sierra Leone",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which language point is a major language of northern Sierra Leone?",
+      "options": [
+        "Temne",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Temne is a language of Sierra Leone.",
+      "sources": [
+        {
+          "title": "Temne language",
+          "url": "https://en.wikipedia.org/wiki/Temne_language",
+          "claim": "Temne is a language of Sierra Leone",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_fula_language",
+      "region": "west",
+      "country": "West Africa",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which language point is the language of Fulani communities across the West African Sahel?",
+      "options": [
+        "Fula",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fula is a language spoken across West Africa.",
+      "sources": [
+        {
+          "title": "Fula language",
+          "url": "https://en.wikipedia.org/wiki/Fula_language",
+          "claim": "Fula is a language spoken across West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_ghana",
+      "region": "west",
+      "country": "Ghana",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is the official language of Ghana?",
+      "options": [
+        "English",
+        "Yoruba",
+        "Igbo",
+        "Hausa"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "English is the official language of Ghana.",
+      "sources": [
+        {
+          "title": "Ghana",
+          "url": "https://en.wikipedia.org/wiki/Ghana",
+          "claim": "English is the official language of Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_calabar_carnival",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is a huge street carnival held in Calabar, Nigeria?",
+      "options": [
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO",
+        "Homowo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Calabar Carnival is a carnival in Nigeria.",
+      "sources": [
+        {
+          "title": "Calabar Carnival",
+          "url": "https://en.wikipedia.org/wiki/Calabar_Carnival",
+          "claim": "The Calabar Carnival is a carnival in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_argungu_fishing_festival",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a famous fishing festival on a river in Kebbi, Nigeria?",
+      "options": [
+        "Argungu Fishing Festival",
+        "Calabar Carnival",
+        "FESPACO",
+        "Homowo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Argungu Fishing Festival is held in Nigeria.",
+      "sources": [
+        {
+          "title": "Argungu Fishing Festival",
+          "url": "https://en.wikipedia.org/wiki/Argungu_Fishing_Festival",
+          "claim": "The Argungu Fishing Festival is held in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_fespaco",
+      "region": "west",
+      "country": "Burkina Faso",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is Africa's best-known film festival, held in Ouagadougou?",
+      "options": [
+        "FESPACO",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "Homowo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "FESPACO is a film festival in Burkina Faso.",
+      "sources": [
+        {
+          "title": "FESPACO",
+          "url": "https://en.wikipedia.org/wiki/FESPACO",
+          "claim": "FESPACO is a film festival in Burkina Faso",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_homowo",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a harvest festival of the Ga people in Accra?",
+      "options": [
+        "Homowo",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Homowo is a festival celebrated by the Ga people.",
+      "sources": [
+        {
+          "title": "Homowo",
+          "url": "https://en.wikipedia.org/wiki/Homowo",
+          "claim": "Homowo is a festival celebrated by the Ga people",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_durbar_festival",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a horse procession festival in northern Nigerian cities?",
+      "options": [
+        "Durbar",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Durbar festival is celebrated in Nigeria.",
+      "sources": [
+        {
+          "title": "Durbar festival",
+          "url": "https://en.wikipedia.org/wiki/Durbar_festival",
+          "claim": "The Durbar festival is celebrated in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_fetu_afahye",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is a harvest festival of Cape Coast in Ghana?",
+      "options": [
+        "Fetu Afahye",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fetu Afahye is a festival in Ghana.",
+      "sources": [
+        {
+          "title": "Fetu Afahye",
+          "url": "https://en.wikipedia.org/wiki/Fetu_Afahye",
+          "claim": "Fetu Afahye is a festival in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_chale_wote",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a street art festival in Accra?",
+      "options": [
+        "Chale Wote",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chale Wote is an art festival in Accra.",
+      "sources": [
+        {
+          "title": "Chale Wote",
+          "url": "https://en.wikipedia.org/wiki/Chale_Wote",
+          "claim": "Chale Wote is an art festival in Accra",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_igue_festival",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is a royal festival of the Benin Kingdom in Nigeria?",
+      "options": [
+        "Igue",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Igue is a festival of the Benin Kingdom.",
+      "sources": [
+        {
+          "title": "Igue festival",
+          "url": "https://en.wikipedia.org/wiki/Igue_festival",
+          "claim": "Igue is a festival of the Benin Kingdom",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_aboakyir",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is the deer-hunting festival of the Winneba people in Ghana?",
+      "options": [
+        "Aboakyir",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Aboakyir is a festival in Ghana.",
+      "sources": [
+        {
+          "title": "Aboakyir",
+          "url": "https://en.wikipedia.org/wiki/Aboakyir",
+          "claim": "Aboakyir is a festival in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_panafest",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a pan-African historical theatre festival held in Ghana?",
+      "options": [
+        "PANAFEST",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "PANAFEST is a festival held in Ghana.",
+      "sources": [
+        {
+          "title": "PANAFEST",
+          "url": "https://en.wikipedia.org/wiki/PANAFEST",
+          "claim": "PANAFEST is a festival held in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_new_yam_festival",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is the Igbo harvest celebration of the new yam?",
+      "options": [
+        "New Yam Festival",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The New Yam Festival is an Igbo harvest festival.",
+      "sources": [
+        {
+          "title": "New Yam Festival",
+          "url": "https://en.wikipedia.org/wiki/New_Yam_Festival",
+          "claim": "The New Yam Festival is an Igbo harvest festival",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_kundum",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is a harvest festival of Ahanta and Nzema communities in Ghana?",
+      "options": [
+        "Kundum",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kundum is a festival in Ghana.",
+      "sources": [
+        {
+          "title": "Kundum",
+          "url": "https://en.wikipedia.org/wiki/Kundum",
+          "claim": "Kundum is a festival in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_festival_au_desert",
+      "region": "west",
+      "country": "Mali",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a desert music festival that began in Mali?",
+      "options": [
+        "Festival au Désert",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Festival au Désert was a music festival in Mali.",
+      "sources": [
+        {
+          "title": "Festival au Désert",
+          "url": "https://en.wikipedia.org/wiki/Festival_au_D%C3%A9sert",
+          "claim": "Festival au Désert was a music festival in Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_public_holidays_in_ghana",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is Ghana's national day on 6 March?",
+      "options": [
+        "Independence Day",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ghana Independence Day is celebrated on 6 March.",
+      "sources": [
+        {
+          "title": "Public holidays in Ghana",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Ghana",
+          "claim": "Ghana Independence Day is celebrated on 6 March",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_public_holidays_in_nigeria",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is Nigeria's national day on 1 October?",
+      "options": [
+        "Independence Day",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nigeria Independence Day is on 1 October.",
+      "sources": [
+        {
+          "title": "Public holidays in Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria",
+          "claim": "Nigeria Independence Day is on 1 October",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_damba_festival",
+      "region": "west",
+      "country": "Ghana",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is a festival celebrated in northern Ghana?",
+      "options": [
+        "Damba",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Damba is a festival in Ghana.",
+      "sources": [
+        {
+          "title": "Damba festival",
+          "url": "https://en.wikipedia.org/wiki/Damba_festival",
+          "claim": "Damba is a festival in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fest_dakar_biennale",
+      "region": "west",
+      "country": "Senegal",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a major contemporary art biennale in Dakar?",
+      "options": [
+        "Dakar Biennale",
+        "Calabar Carnival",
+        "Argungu Fishing Festival",
+        "FESPACO"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Dakar Biennale is an art festival in Senegal.",
+      "sources": [
+        {
+          "title": "Dakar Biennale",
+          "url": "https://en.wikipedia.org/wiki/Dakar_Biennale",
+          "claim": "The Dakar Biennale is an art festival in Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_aso_ebi",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is matching family outfits worn at Nigerian weddings and parties?",
+      "options": [
+        "Aso ebi",
+        "Money spraying",
+        "Gele",
+        "Kente"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Aso ebi is matching clothing worn at Nigerian celebrations.",
+      "sources": [
+        {
+          "title": "Aso ebi",
+          "url": "https://en.wikipedia.org/wiki/Aso_ebi",
+          "claim": "Aso ebi is matching clothing worn at Nigerian celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_nigerian_wedding",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the party custom of tossing or pressing cash onto dancers?",
+      "options": [
+        "Money spraying",
+        "Aso ebi",
+        "Gele",
+        "Kente"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Spraying money is part of Nigerian wedding celebrations.",
+      "sources": [
+        {
+          "title": "Nigerian wedding",
+          "url": "https://en.wikipedia.org/wiki/Nigerian_wedding",
+          "claim": "Spraying money is part of Nigerian wedding celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_head_tie",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is the sculpted headwrap worn by women at Nigerian weddings?",
+      "options": [
+        "Gele",
+        "Aso ebi",
+        "Money spraying",
+        "Kente"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gele head ties are worn at Nigerian weddings.",
+      "sources": [
+        {
+          "title": "Head tie",
+          "url": "https://en.wikipedia.org/wiki/Head_tie",
+          "claim": "Gele head ties are worn at Nigerian weddings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_kente_cloth",
+      "region": "west",
+      "country": "Ghana",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is strip-woven cloth often worn by the couple at a Ghanaian wedding?",
+      "options": [
+        "Kente",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kente cloth is worn at ceremonies in Ghana.",
+      "sources": [
+        {
+          "title": "Kente cloth",
+          "url": "https://en.wikipedia.org/wiki/Kente_cloth",
+          "claim": "Kente cloth is worn at ceremonies in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_marriage_in_ghana",
+      "region": "west",
+      "country": "Ghana",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is a family introduction visit before many Ghanaian weddings?",
+      "options": [
+        "Knocking ceremony",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The knocking ceremony introduces families before a Ghanaian marriage.",
+      "sources": [
+        {
+          "title": "Marriage in Ghana",
+          "url": "https://en.wikipedia.org/wiki/Marriage_in_Ghana",
+          "claim": "The knocking ceremony introduces families before a Ghanaian marriage",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_nigerian_wedding2",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is the family ceremony that often sits beside a later church or registry wedding?",
+      "options": [
+        "Traditional wedding",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A Nigerian wedding often includes a traditional ceremony.",
+      "sources": [
+        {
+          "title": "Nigerian wedding",
+          "url": "https://en.wikipedia.org/wiki/Nigerian_wedding",
+          "claim": "A Nigerian wedding often includes a traditional ceremony",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_aso_oke",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is hand-woven cloth used for Yoruba wedding outfits?",
+      "options": [
+        "Aso oke",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Aso oke is worn at Yoruba weddings.",
+      "sources": [
+        {
+          "title": "Aso oke",
+          "url": "https://en.wikipedia.org/wiki/Aso_oke",
+          "claim": "Aso oke is worn at Yoruba weddings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_fila_hat",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the men's cap that completes many Yoruba wedding outfits?",
+      "options": [
+        "Fila",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The fila cap is worn by Yoruba men at ceremonies.",
+      "sources": [
+        {
+          "title": "Fila (hat)",
+          "url": "https://en.wikipedia.org/wiki/Fila_(hat)",
+          "claim": "The fila cap is worn by Yoruba men at ceremonies",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_mbalax",
+      "region": "west",
+      "country": "Senegal",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is dance music that often fills a Senegalese wedding party?",
+      "options": [
+        "Mbalax",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mbalax is played at celebrations in Senegal.",
+      "sources": [
+        {
+          "title": "Mbalax",
+          "url": "https://en.wikipedia.org/wiki/Mbalax",
+          "claim": "Mbalax is played at celebrations in Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_jollof_rice",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the celebration rice almost always on a Nigerian wedding menu?",
+      "options": [
+        "Jollof rice",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jollof rice is served at celebrations in West Africa.",
+      "sources": [
+        {
+          "title": "Jollof rice",
+          "url": "https://en.wikipedia.org/wiki/Jollof_rice",
+          "claim": "Jollof rice is served at celebrations in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_kente_cloth2",
+      "region": "west",
+      "country": "Ghana",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is a strip of kente draped on graduates and also seen on wedding clothes?",
+      "options": [
+        "Kente stole",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kente is worn for special occasions in Ghana.",
+      "sources": [
+        {
+          "title": "Kente cloth",
+          "url": "https://en.wikipedia.org/wiki/Kente_cloth",
+          "claim": "Kente is worn for special occasions in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_yoruba_people",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the Yoruba family meeting where the two families are formally presented?",
+      "options": [
+        "Introduction",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Yoruba weddings include a family introduction.",
+      "sources": [
+        {
+          "title": "Yoruba people",
+          "url": "https://en.wikipedia.org/wiki/Yoruba_people",
+          "claim": "Yoruba weddings include a family introduction",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_marriage",
+      "region": "west",
+      "country": "West Africa",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is the relatives, food, and music that make a West African wedding a community party?",
+      "options": [
+        "Family gathering",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Weddings are family celebrations.",
+      "sources": [
+        {
+          "title": "Marriage",
+          "url": "https://en.wikipedia.org/wiki/Marriage",
+          "claim": "Weddings are family celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_wrapper_clothing",
+      "region": "west",
+      "country": "Benin",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the cloth outfit many guests wear to a Beninese celebration?",
+      "options": [
+        "Wrapper",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wrappers are worn at celebrations in West Africa.",
+      "sources": [
+        {
+          "title": "Wrapper (clothing)",
+          "url": "https://en.wikipedia.org/wiki/Wrapper_(clothing)",
+          "claim": "Wrappers are worn at celebrations in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_bazin_fabric",
+      "region": "west",
+      "country": "Mali",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is the shiny prestige cloth often sewn into Malian wedding outfits?",
+      "options": [
+        "Bazin",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Bazin is worn for celebrations in Mali.",
+      "sources": [
+        {
+          "title": "Bazin (fabric)",
+          "url": "https://en.wikipedia.org/wiki/Bazin_(fabric)",
+          "claim": "Bazin is worn for celebrations in Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_marriage_in_ghana2",
+      "region": "west",
+      "country": "Ghana",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the public family ceremony, sometimes called an engagement, before a Ghanaian church wedding?",
+      "options": [
+        "Engagement",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ghanaian marriage includes an engagement ceremony.",
+      "sources": [
+        {
+          "title": "Marriage in Ghana",
+          "url": "https://en.wikipedia.org/wiki/Marriage_in_Ghana",
+          "claim": "Ghanaian marriage includes an engagement ceremony",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_owambe",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is the lively Nigerian party style associated with weddings and aso ebi?",
+      "options": [
+        "Owambe",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Owambe is a Nigerian party culture around weddings.",
+      "sources": [
+        {
+          "title": "Owambe",
+          "url": "https://en.wikipedia.org/wiki/Owambe",
+          "claim": "Owambe is a Nigerian party culture around weddings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_wedd_pagne",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the printed cloth guests wear to Ivorian weddings?",
+      "options": [
+        "Pagne",
+        "Aso ebi",
+        "Money spraying",
+        "Gele"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pagne is a cloth worn at celebrations in Côte d'Ivoire.",
+      "sources": [
+        {
+          "title": "Pagne",
+          "url": "https://en.wikipedia.org/wiki/Pagne",
+          "claim": "Pagne is a cloth worn at celebrations in Côte d'Ivoire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_mali_empire",
+      "region": "west",
+      "country": "Mali",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which historical name is the medieval empire made famous by Mansa Musa?",
+      "options": [
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire",
+        "Kingdom of Benin"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Mali Empire was a West African empire.",
+      "sources": [
+        {
+          "title": "Mali Empire",
+          "url": "https://en.wikipedia.org/wiki/Mali_Empire",
+          "claim": "The Mali Empire was a West African empire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_songhai_empire",
+      "region": "west",
+      "country": "Mali",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which historical name is the late medieval Sahelian empire with its city at Gao?",
+      "options": [
+        "Songhai Empire",
+        "Mali Empire",
+        "Ghana Empire",
+        "Kingdom of Benin"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Songhai Empire was a state in West Africa.",
+      "sources": [
+        {
+          "title": "Songhai Empire",
+          "url": "https://en.wikipedia.org/wiki/Songhai_Empire",
+          "claim": "The Songhai Empire was a state in West Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_ghana_empire",
+      "region": "west",
+      "country": "Mali",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the medieval Sahelian empire that predates modern Ghana?",
+      "options": [
+        "Ghana Empire",
+        "Mali Empire",
+        "Songhai Empire",
+        "Kingdom of Benin"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Ghana Empire was a medieval West African empire.",
+      "sources": [
+        {
+          "title": "Ghana Empire",
+          "url": "https://en.wikipedia.org/wiki/Ghana_Empire",
+          "claim": "The Ghana Empire was a medieval West African empire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_kingdom_of_benin",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which historical name is the historic kingdom centred at Benin City in Nigeria?",
+      "options": [
+        "Kingdom of Benin",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Kingdom of Benin was located in Nigeria.",
+      "sources": [
+        {
+          "title": "Kingdom of Benin",
+          "url": "https://en.wikipedia.org/wiki/Kingdom_of_Benin",
+          "claim": "The Kingdom of Benin was located in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_ashanti_empire",
+      "region": "west",
+      "country": "Ghana",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the Akan state centred at Kumasi?",
+      "options": [
+        "Ashanti Empire",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Ashanti Empire was a state in Ghana.",
+      "sources": [
+        {
+          "title": "Ashanti Empire",
+          "url": "https://en.wikipedia.org/wiki/Ashanti_Empire",
+          "claim": "The Ashanti Empire was a state in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_oyo_empire",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is a powerful Yoruba empire in what is now Nigeria?",
+      "options": [
+        "Oyo Empire",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Oyo Empire was a Yoruba state in Nigeria.",
+      "sources": [
+        {
+          "title": "Oyo Empire",
+          "url": "https://en.wikipedia.org/wiki/Oyo_Empire",
+          "claim": "The Oyo Empire was a Yoruba state in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_ife",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which historical name is the ancient Yoruba city-state famous for its bronze and terracotta heads?",
+      "options": [
+        "Kingdom of Ife",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ife is an ancient Yoruba city in Nigeria.",
+      "sources": [
+        {
+          "title": "Ife",
+          "url": "https://en.wikipedia.org/wiki/Ife",
+          "claim": "Ife is an ancient Yoruba city in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_nok_culture",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which historical name is the ancient Nigerian culture known for terracotta figures?",
+      "options": [
+        "Nok culture",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Nok culture is an ancient culture of Nigeria.",
+      "sources": [
+        {
+          "title": "Nok culture",
+          "url": "https://en.wikipedia.org/wiki/Nok_culture",
+          "claim": "The Nok culture is an ancient culture of Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_timbuktu_manuscripts",
+      "region": "west",
+      "country": "Mali",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the handwritten scholarly books preserved in Timbuktu?",
+      "options": [
+        "Timbuktu manuscripts",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Timbuktu manuscripts are historic documents in Mali.",
+      "sources": [
+        {
+          "title": "Timbuktu Manuscripts",
+          "url": "https://en.wikipedia.org/wiki/Timbuktu_Manuscripts",
+          "claim": "The Timbuktu manuscripts are historic documents in Mali",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_royal_palaces_of_abomey",
+      "region": "west",
+      "country": "Benin",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the earthen palace complex of the kings of Dahomey?",
+      "options": [
+        "Royal Palaces of Abomey",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Royal Palaces of Abomey are in Benin.",
+      "sources": [
+        {
+          "title": "Royal Palaces of Abomey",
+          "url": "https://en.wikipedia.org/wiki/Royal_Palaces_of_Abomey",
+          "claim": "The Royal Palaces of Abomey are in Benin",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_ghana",
+      "region": "west",
+      "country": "Ghana",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which historical name is the year Ghana became independent?",
+      "options": [
+        "1957",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ghana became independent in 1957.",
+      "sources": [
+        {
+          "title": "Ghana",
+          "url": "https://en.wikipedia.org/wiki/Ghana",
+          "claim": "Ghana became independent in 1957",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_nigeria",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which historical name is the year Nigeria became independent?",
+      "options": [
+        "1960",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nigeria became independent in 1960.",
+      "sources": [
+        {
+          "title": "Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Nigeria",
+          "claim": "Nigeria became independent in 1960",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_senegal",
+      "region": "west",
+      "country": "Senegal",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Senegal became independent?",
+      "options": [
+        "1960",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Senegal gained independence in 1960.",
+      "sources": [
+        {
+          "title": "Senegal",
+          "url": "https://en.wikipedia.org/wiki/Senegal",
+          "claim": "Senegal gained independence in 1960",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_sankore_madrasah",
+      "region": "west",
+      "country": "Mali",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which historical name is the historic learning centre in Timbuktu?",
+      "options": [
+        "Sankore Madrasah",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sankore Madrasah is a historic school in Timbuktu.",
+      "sources": [
+        {
+          "title": "Sankore Madrasah",
+          "url": "https://en.wikipedia.org/wiki/Sankore_Madrasah",
+          "claim": "Sankore Madrasah is a historic school in Timbuktu",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_larabanga_mosque",
+      "region": "west",
+      "country": "Ghana",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is an old Sudano-Sahelian mosque in northern Ghana?",
+      "options": [
+        "Larabanga Mosque",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Larabanga Mosque is in Ghana.",
+      "sources": [
+        {
+          "title": "Larabanga Mosque",
+          "url": "https://en.wikipedia.org/wiki/Larabanga_Mosque",
+          "claim": "The Larabanga Mosque is in Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_walls_of_benin",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which historical name is the historic earthworks that surrounded Benin City?",
+      "options": [
+        "Walls of Benin",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Walls of Benin were in Nigeria.",
+      "sources": [
+        {
+          "title": "Walls of Benin",
+          "url": "https://en.wikipedia.org/wiki/Walls_of_Benin",
+          "claim": "The Walls of Benin were in Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_kingdom_of_dahomey",
+      "region": "west",
+      "country": "Benin",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the historic kingdom located in today's Benin?",
+      "options": [
+        "Kingdom of Dahomey",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Kingdom of Dahomey was in present-day Benin.",
+      "sources": [
+        {
+          "title": "Kingdom of Dahomey",
+          "url": "https://en.wikipedia.org/wiki/Kingdom_of_Dahomey",
+          "claim": "The Kingdom of Dahomey was in present-day Benin",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_gao",
+      "region": "west",
+      "country": "Mali",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which historical name is the historic city most associated with the Songhai Empire?",
+      "options": [
+        "Gao",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ghana Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gao was a capital of the Songhai Empire.",
+      "sources": [
+        {
+          "title": "Gao",
+          "url": "https://en.wikipedia.org/wiki/Gao",
+          "claim": "Gao was a capital of the Songhai Empire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_mansa_musa",
+      "region": "west",
+      "country": "Mali",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which person is the Mali Empire ruler famous for his wealth and his hajj?",
+      "options": [
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka",
+        "Chimamanda Ngozi Adichie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mansa Musa was the ruler of the Mali Empire.",
+      "sources": [
+        {
+          "title": "Mansa Musa",
+          "url": "https://en.wikipedia.org/wiki/Mansa_Musa",
+          "claim": "Mansa Musa was the ruler of the Mali Empire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_chinua_achebe",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which person is the Nigerian novelist who wrote Things Fall Apart?",
+      "options": [
+        "Chinua Achebe",
+        "Mansa Musa",
+        "Wole Soyinka",
+        "Chimamanda Ngozi Adichie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chinua Achebe was a Nigerian novelist.",
+      "sources": [
+        {
+          "title": "Chinua Achebe",
+          "url": "https://en.wikipedia.org/wiki/Chinua_Achebe",
+          "claim": "Chinua Achebe was a Nigerian novelist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_wole_soyinka",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which person is the Nigerian writer who won the Nobel Prize in Literature?",
+      "options": [
+        "Wole Soyinka",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Chimamanda Ngozi Adichie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wole Soyinka is a Nigerian writer.",
+      "sources": [
+        {
+          "title": "Wole Soyinka",
+          "url": "https://en.wikipedia.org/wiki/Wole_Soyinka",
+          "claim": "Wole Soyinka is a Nigerian writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_chimamanda_ngozi_adichie",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which person is the Nigerian novelist of Half of a Yellow Sun and Americanah?",
+      "options": [
+        "Chimamanda Ngozi Adichie",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chimamanda Ngozi Adichie is a Nigerian writer.",
+      "sources": [
+        {
+          "title": "Chimamanda Ngozi Adichie",
+          "url": "https://en.wikipedia.org/wiki/Chimamanda_Ngozi_Adichie",
+          "claim": "Chimamanda Ngozi Adichie is a Nigerian writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_kwame_nkrumah",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which person is Ghana's independence leader and first prime minister?",
+      "options": [
+        "Kwame Nkrumah",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kwame Nkrumah was the first prime minister of Ghana.",
+      "sources": [
+        {
+          "title": "Kwame Nkrumah",
+          "url": "https://en.wikipedia.org/wiki/Kwame_Nkrumah",
+          "claim": "Kwame Nkrumah was the first prime minister of Ghana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_nnamdi_azikiwe",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which person is Nigeria's first president?",
+      "options": [
+        "Nnamdi Azikiwe",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nnamdi Azikiwe was the first president of Nigeria.",
+      "sources": [
+        {
+          "title": "Nnamdi Azikiwe",
+          "url": "https://en.wikipedia.org/wiki/Nnamdi_Azikiwe",
+          "claim": "Nnamdi Azikiwe was the first president of Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_leopold_sedar_senghor",
+      "region": "west",
+      "country": "Senegal",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which person is Senegal's first president and a famous poet?",
+      "options": [
+        "Léopold Sédar Senghor",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Léopold Sédar Senghor was the first president of Senegal.",
+      "sources": [
+        {
+          "title": "Léopold Sédar Senghor",
+          "url": "https://en.wikipedia.org/wiki/L%C3%A9opold_S%C3%A9dar_Senghor",
+          "claim": "Léopold Sédar Senghor was the first president of Senegal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_fela_kuti",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which person is the Nigerian musician who created afrobeat?",
+      "options": [
+        "Fela Kuti",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fela Kuti was a Nigerian musician.",
+      "sources": [
+        {
+          "title": "Fela Kuti",
+          "url": "https://en.wikipedia.org/wiki/Fela_Kuti",
+          "claim": "Fela Kuti was a Nigerian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_yaa_asantewaa",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which person is the Ashanti queen mother who led resistance at the start of the twentieth century?",
+      "options": [
+        "Yaa Asantewaa",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Yaa Asantewaa was a queen mother of the Ashanti Empire.",
+      "sources": [
+        {
+          "title": "Yaa Asantewaa",
+          "url": "https://en.wikipedia.org/wiki/Yaa_Asantewaa",
+          "claim": "Yaa Asantewaa was a queen mother of the Ashanti Empire",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_thomas_sankara",
+      "region": "west",
+      "country": "Burkina Faso",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which person is the revolutionary president of Burkina Faso in the 1980s?",
+      "options": [
+        "Thomas Sankara",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Thomas Sankara was the president of Burkina Faso.",
+      "sources": [
+        {
+          "title": "Thomas Sankara",
+          "url": "https://en.wikipedia.org/wiki/Thomas_Sankara",
+          "claim": "Thomas Sankara was the president of Burkina Faso",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_kofi_annan",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which person is the Ghanaian diplomat who served as UN Secretary-General?",
+      "options": [
+        "Kofi Annan",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kofi Annan was a Ghanaian diplomat and Secretary-General of the United Nations.",
+      "sources": [
+        {
+          "title": "Kofi Annan",
+          "url": "https://en.wikipedia.org/wiki/Kofi_Annan",
+          "claim": "Kofi Annan was a Ghanaian diplomat and Secretary-General of the United Nations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_ellen_johnson_sirleaf",
+      "region": "west",
+      "country": "Liberia",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which person is the Liberian president and Nobel Peace Prize laureate?",
+      "options": [
+        "Ellen Johnson Sirleaf",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ellen Johnson Sirleaf was president of Liberia.",
+      "sources": [
+        {
+          "title": "Ellen Johnson Sirleaf",
+          "url": "https://en.wikipedia.org/wiki/Ellen_Johnson_Sirleaf",
+          "claim": "Ellen Johnson Sirleaf was president of Liberia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_aliko_dangote",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which person is the Nigerian industrialist known for cement and other businesses?",
+      "options": [
+        "Aliko Dangote",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Aliko Dangote is a Nigerian businessman.",
+      "sources": [
+        {
+          "title": "Aliko Dangote",
+          "url": "https://en.wikipedia.org/wiki/Aliko_Dangote",
+          "claim": "Aliko Dangote is a Nigerian businessman",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_ama_ata_aidoo",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which person is the Ghanaian writer of Anowa and Our Sister Killjoy?",
+      "options": [
+        "Ama Ata Aidoo",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ama Ata Aidoo was a Ghanaian author.",
+      "sources": [
+        {
+          "title": "Ama Ata Aidoo",
+          "url": "https://en.wikipedia.org/wiki/Ama_Ata_Aidoo",
+          "claim": "Ama Ata Aidoo was a Ghanaian author",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_buchi_emecheta",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which person is the Nigerian novelist of The Joys of Motherhood?",
+      "options": [
+        "Buchi Emecheta",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Buchi Emecheta was a Nigerian novelist.",
+      "sources": [
+        {
+          "title": "Buchi Emecheta",
+          "url": "https://en.wikipedia.org/wiki/Buchi_Emecheta",
+          "claim": "Buchi Emecheta was a Nigerian novelist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_nnedi_okorafor",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which person is the Nigerian-American writer of Binti and Lagoon?",
+      "options": [
+        "Nnedi Okorafor",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nnedi Okorafor is a Nigerian-American writer.",
+      "sources": [
+        {
+          "title": "Nnedi Okorafor",
+          "url": "https://en.wikipedia.org/wiki/Nnedi_Okorafor",
+          "claim": "Nnedi Okorafor is a Nigerian-American writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_funmilayo_ransome_kuti",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which person is the Nigerian educator and women's rights organiser?",
+      "options": [
+        "Funmilayo Ransome-Kuti",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Funmilayo Ransome-Kuti was a Nigerian activist.",
+      "sources": [
+        {
+          "title": "Funmilayo Ransome-Kuti",
+          "url": "https://en.wikipedia.org/wiki/Funmilayo_Ransome-Kuti",
+          "claim": "Funmilayo Ransome-Kuti was a Nigerian activist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_ngozi_okonjo_iweala",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which person is the Nigerian economist who leads the World Trade Organization?",
+      "options": [
+        "Ngozi Okonjo-Iweala",
+        "Mansa Musa",
+        "Chinua Achebe",
+        "Wole Soyinka"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ngozi Okonjo-Iweala is a Nigerian economist.",
+      "sources": [
+        {
+          "title": "Ngozi Okonjo-Iweala",
+          "url": "https://en.wikipedia.org/wiki/Ngozi_Okonjo-Iweala",
+          "claim": "Ngozi Okonjo-Iweala is a Nigerian economist",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_nollywood",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the popular Nigerian film industry?",
+      "options": [
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid",
+        "Davido"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nollywood is the Nigerian film industry.",
+      "sources": [
+        {
+          "title": "Nollywood",
+          "url": "https://en.wikipedia.org/wiki/Nollywood",
+          "claim": "Nollywood is the Nigerian film industry",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_burna_boy",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Nigerian afrobeats singer of African Giant?",
+      "options": [
+        "Burna Boy",
+        "Nollywood",
+        "Wizkid",
+        "Davido"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Burna Boy is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Burna Boy",
+          "url": "https://en.wikipedia.org/wiki/Burna_Boy",
+          "claim": "Burna Boy is a Nigerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_wizkid",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Nigerian afrobeats star of Made in Lagos?",
+      "options": [
+        "Wizkid",
+        "Nollywood",
+        "Burna Boy",
+        "Davido"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wizkid is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Wizkid",
+          "url": "https://en.wikipedia.org/wiki/Wizkid",
+          "claim": "Wizkid is a Nigerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_wizkid_fill",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Fill the blank. In Nigeria, the Nigerian afrobeats star of Made in Lagos. The name to write is ___.",
+      "options": [
+        "Wizkid",
+        "Nollywood",
+        "Burna Boy",
+        "Davido"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wizkid is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Wizkid",
+          "url": "https://en.wikipedia.org/wiki/Wizkid",
+          "claim": "Wizkid is a Nigerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_davido",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Nigerian afrobeats singer behind songs like Fall and Unavailable?",
+      "options": [
+        "Davido",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Davido is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Davido",
+          "url": "https://en.wikipedia.org/wiki/Davido",
+          "claim": "Davido is a Nigerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_tems",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Nigerian singer who featured on Essence?",
+      "options": [
+        "Tems",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tems is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Tems",
+          "url": "https://en.wikipedia.org/wiki/Tems",
+          "claim": "Tems is a Nigerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_tiwa_savage",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Nigerian singer often called a queen of afrobeats?",
+      "options": [
+        "Tiwa Savage",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tiwa Savage is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Tiwa Savage",
+          "url": "https://en.wikipedia.org/wiki/Tiwa_Savage",
+          "claim": "Tiwa Savage is a Nigerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_youssou_n_dour",
+      "region": "west",
+      "country": "Senegal",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Senegalese mbalax superstar?",
+      "options": [
+        "Youssou N'Dour",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Youssou N'Dour is a Senegalese singer.",
+      "sources": [
+        {
+          "title": "Youssou N'Dour",
+          "url": "https://en.wikipedia.org/wiki/Youssou_N'Dour",
+          "claim": "Youssou N'Dour is a Senegalese singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_youssou_n_dour_fill",
+      "region": "west",
+      "country": "Senegal",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Fill the blank. In Senegal, the Senegalese mbalax superstar. The name to write is ___.",
+      "options": [
+        "Youssou N'Dour",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Youssou N'Dour is a Senegalese singer.",
+      "sources": [
+        {
+          "title": "Youssou N'Dour",
+          "url": "https://en.wikipedia.org/wiki/Youssou_N'Dour",
+          "claim": "Youssou N'Dour is a Senegalese singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_angelique_kidjo",
+      "region": "west",
+      "country": "Benin",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Beninese singer and multiple Grammy winner?",
+      "options": [
+        "Angélique Kidjo",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Angélique Kidjo is a Beninese singer.",
+      "sources": [
+        {
+          "title": "Angélique Kidjo",
+          "url": "https://en.wikipedia.org/wiki/Ang%C3%A9lique_Kidjo",
+          "claim": "Angélique Kidjo is a Beninese singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_salif_keita",
+      "region": "west",
+      "country": "Mali",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Malian singer known as the golden voice of Africa?",
+      "options": [
+        "Salif Keita",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Salif Keita is a Malian singer.",
+      "sources": [
+        {
+          "title": "Salif Keita",
+          "url": "https://en.wikipedia.org/wiki/Salif_Keita",
+          "claim": "Salif Keita is a Malian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_sarkodie_rapper",
+      "region": "west",
+      "country": "Ghana",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Ghanaian rapper who raps in Twi and English?",
+      "options": [
+        "Sarkodie",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sarkodie is a Ghanaian rapper.",
+      "sources": [
+        {
+          "title": "Sarkodie (rapper)",
+          "url": "https://en.wikipedia.org/wiki/Sarkodie_(rapper)",
+          "claim": "Sarkodie is a Ghanaian rapper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_sarkodie_rapper_fill",
+      "region": "west",
+      "country": "Ghana",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Fill the blank. In Ghana, the Ghanaian rapper who raps in Twi and English. The name to write is ___.",
+      "options": [
+        "Sarkodie",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sarkodie is a Ghanaian rapper.",
+      "sources": [
+        {
+          "title": "Sarkodie (rapper)",
+          "url": "https://en.wikipedia.org/wiki/Sarkodie_(rapper)",
+          "claim": "Sarkodie is a Ghanaian rapper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_stonebwoy",
+      "region": "west",
+      "country": "Ghana",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Ghanaian dancehall and afrobeats artist?",
+      "options": [
+        "Stonebwoy",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Stonebwoy is a Ghanaian musician.",
+      "sources": [
+        {
+          "title": "Stonebwoy",
+          "url": "https://en.wikipedia.org/wiki/Stonebwoy",
+          "claim": "Stonebwoy is a Ghanaian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_ayra_starr",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Nigerian singer of Rush and Sability?",
+      "options": [
+        "Ayra Starr",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ayra Starr is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Ayra Starr",
+          "url": "https://en.wikipedia.org/wiki/Ayra_Starr",
+          "claim": "Ayra Starr is a Nigerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_asake",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Nigerian street-pop singer of Mr Money with the Vibe?",
+      "options": [
+        "Asake",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Asake is a Nigerian singer.",
+      "sources": [
+        {
+          "title": "Asake",
+          "url": "https://en.wikipedia.org/wiki/Asake",
+          "claim": "Asake is a Nigerian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_genevieve_nnaji",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Nollywood star who also directed Lionheart?",
+      "options": [
+        "Genevieve Nnaji",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Genevieve Nnaji is a Nigerian actress.",
+      "sources": [
+        {
+          "title": "Genevieve Nnaji",
+          "url": "https://en.wikipedia.org/wiki/Genevieve_Nnaji",
+          "claim": "Genevieve Nnaji is a Nigerian actress",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_shatta_wale",
+      "region": "west",
+      "country": "Ghana",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Ghanaian dancehall artist?",
+      "options": [
+        "Shatta Wale",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shatta Wale is a Ghanaian musician.",
+      "sources": [
+        {
+          "title": "Shatta Wale",
+          "url": "https://en.wikipedia.org/wiki/Shatta_Wale",
+          "claim": "Shatta Wale is a Ghanaian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_olamide",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Nigerian rapper central to the YBNL scene?",
+      "options": [
+        "Olamide",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Olamide is a Nigerian rapper.",
+      "sources": [
+        {
+          "title": "Olamide",
+          "url": "https://en.wikipedia.org/wiki/Olamide",
+          "claim": "Olamide is a Nigerian rapper",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_black_sherif",
+      "region": "west",
+      "country": "Ghana",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the Ghanaian singer of Kwaku the Traveller?",
+      "options": [
+        "Black Sherif",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Black Sherif is a Ghanaian singer.",
+      "sources": [
+        {
+          "title": "Black Sherif",
+          "url": "https://en.wikipedia.org/wiki/Black_Sherif",
+          "claim": "Black Sherif is a Ghanaian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_popc_living_in_bondage",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which popular-culture name is the 1992 film often credited with launching modern Nollywood?",
+      "options": [
+        "Living in Bondage",
+        "Nollywood",
+        "Burna Boy",
+        "Wizkid"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Living in Bondage is a Nigerian film.",
+      "sources": [
+        {
+          "title": "Living in Bondage",
+          "url": "https://en.wikipedia.org/wiki/Living_in_Bondage",
+          "claim": "Living in Bondage is a Nigerian film",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_didier_drogba",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which sporting name is the Ivorian striker who starred for Chelsea and Côte d'Ivoire?",
+      "options": [
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha",
+        "Nwankwo Kanu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Didier Drogba is an Ivorian footballer.",
+      "sources": [
+        {
+          "title": "Didier Drogba",
+          "url": "https://en.wikipedia.org/wiki/Didier_Drogba",
+          "claim": "Didier Drogba is an Ivorian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_george_weah",
+      "region": "west",
+      "country": "Liberia",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which sporting name is the Liberian footballer who won the Ballon d'Or in 1995?",
+      "options": [
+        "George Weah",
+        "Didier Drogba",
+        "Jay-Jay Okocha",
+        "Nwankwo Kanu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "George Weah is a Liberian former footballer who won the Ballon d'Or.",
+      "sources": [
+        {
+          "title": "George Weah",
+          "url": "https://en.wikipedia.org/wiki/George_Weah",
+          "claim": "George Weah is a Liberian former footballer who won the Ballon d'Or",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_jay_jay_okocha",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which sporting name is the Nigerian midfielder famous for his tricks?",
+      "options": [
+        "Jay-Jay Okocha",
+        "Didier Drogba",
+        "George Weah",
+        "Nwankwo Kanu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jay-Jay Okocha is a Nigerian former footballer.",
+      "sources": [
+        {
+          "title": "Jay-Jay Okocha",
+          "url": "https://en.wikipedia.org/wiki/Jay-Jay_Okocha",
+          "claim": "Jay-Jay Okocha is a Nigerian former footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_nwankwo_kanu",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the Nigerian forward who won Olympic gold and the Champions League?",
+      "options": [
+        "Nwankwo Kanu",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nwankwo Kanu is a Nigerian former footballer.",
+      "sources": [
+        {
+          "title": "Nwankwo Kanu",
+          "url": "https://en.wikipedia.org/wiki/Nwankwo_Kanu",
+          "claim": "Nwankwo Kanu is a Nigerian former footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_sadio_mane",
+      "region": "west",
+      "country": "Senegal",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which sporting name is the Senegalese forward who won the Africa Cup of Nations and a Champions League?",
+      "options": [
+        "Sadio Mané",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sadio Mané is a Senegalese footballer.",
+      "sources": [
+        {
+          "title": "Sadio Mané",
+          "url": "https://en.wikipedia.org/wiki/Sadio_Man%C3%A9",
+          "claim": "Sadio Mané is a Senegalese footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_asisat_oshoala",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the Nigerian striker and multiple African women's player of the year?",
+      "options": [
+        "Asisat Oshoala",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Asisat Oshoala is a Nigerian footballer.",
+      "sources": [
+        {
+          "title": "Asisat Oshoala",
+          "url": "https://en.wikipedia.org/wiki/Asisat_Oshoala",
+          "claim": "Asisat Oshoala is a Nigerian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_nigeria_national_football_team",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which sporting name is the nickname of Nigeria's men's football team?",
+      "options": [
+        "Super Eagles",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Nigeria national football team is nicknamed the Super Eagles.",
+      "sources": [
+        {
+          "title": "Nigeria national football team",
+          "url": "https://en.wikipedia.org/wiki/Nigeria_national_football_team",
+          "claim": "The Nigeria national football team is nicknamed the Super Eagles",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_ghana_national_football_team",
+      "region": "west",
+      "country": "Ghana",
+      "category": "SPORT",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which sporting name is the nickname of Ghana's men's football team?",
+      "options": [
+        "Black Stars",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Ghana national football team is nicknamed the Black Stars.",
+      "sources": [
+        {
+          "title": "Ghana national football team",
+          "url": "https://en.wikipedia.org/wiki/Ghana_national_football_team",
+          "claim": "The Ghana national football team is nicknamed the Black Stars",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_senegal_national_football_team",
+      "region": "west",
+      "country": "Senegal",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the nickname of Senegal's men's football team?",
+      "options": [
+        "Lions of Teranga",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Senegal national football team is nicknamed the Lions of Teranga.",
+      "sources": [
+        {
+          "title": "Senegal national football team",
+          "url": "https://en.wikipedia.org/wiki/Senegal_national_football_team",
+          "claim": "The Senegal national football team is nicknamed the Lions of Teranga",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_hakeem_olajuwon",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the Nigerian-born basketball legend of the Houston Rockets?",
+      "options": [
+        "Hakeem Olajuwon",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hakeem Olajuwon is a Nigerian-American basketball player.",
+      "sources": [
+        {
+          "title": "Hakeem Olajuwon",
+          "url": "https://en.wikipedia.org/wiki/Hakeem_Olajuwon",
+          "claim": "Hakeem Olajuwon is a Nigerian-American basketball player",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_michael_essien",
+      "region": "west",
+      "country": "Ghana",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the Ghanaian midfielder who starred for Chelsea?",
+      "options": [
+        "Michael Essien",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Michael Essien is a Ghanaian former footballer.",
+      "sources": [
+        {
+          "title": "Michael Essien",
+          "url": "https://en.wikipedia.org/wiki/Michael_Essien",
+          "claim": "Michael Essien is a Ghanaian former footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_john_obi_mikel",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the Nigerian midfielder who won the Champions League with Chelsea?",
+      "options": [
+        "John Obi Mikel",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "John Obi Mikel is a Nigerian former footballer.",
+      "sources": [
+        {
+          "title": "John Obi Mikel",
+          "url": "https://en.wikipedia.org/wiki/John_Obi_Mikel",
+          "claim": "John Obi Mikel is a Nigerian former footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_tony_yeboah",
+      "region": "west",
+      "country": "Ghana",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which sporting name is the Ghanaian striker remembered for his Premier League goals?",
+      "options": [
+        "Tony Yeboah",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tony Yeboah is a Ghanaian former footballer.",
+      "sources": [
+        {
+          "title": "Tony Yeboah",
+          "url": "https://en.wikipedia.org/wiki/Tony_Yeboah",
+          "claim": "Tony Yeboah is a Ghanaian former footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_rashidi_yekini",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which sporting name is the Nigerian striker who scored the country's first World Cup goal?",
+      "options": [
+        "Rashidi Yekini",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rashidi Yekini was a Nigerian footballer.",
+      "sources": [
+        {
+          "title": "Rashidi Yekini",
+          "url": "https://en.wikipedia.org/wiki/Rashidi_Yekini",
+          "claim": "Rashidi Yekini was a Nigerian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_nigeria_women_s_national_football_team",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the nickname of Nigeria's women's football team?",
+      "options": [
+        "Super Falcons",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Nigeria women's national football team is nicknamed the Super Falcons.",
+      "sources": [
+        {
+          "title": "Nigeria women's national football team",
+          "url": "https://en.wikipedia.org/wiki/Nigeria_women's_national_football_team",
+          "claim": "The Nigeria women's national football team is nicknamed the Super Falcons",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_victor_osimhen",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the Nigerian striker who won the African player of the year award?",
+      "options": [
+        "Victor Osimhen",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Victor Osimhen is a Nigerian footballer.",
+      "sources": [
+        {
+          "title": "Victor Osimhen",
+          "url": "https://en.wikipedia.org/wiki/Victor_Osimhen",
+          "claim": "Victor Osimhen is a Nigerian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_mohammed_kudus",
+      "region": "west",
+      "country": "Ghana",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which sporting name is the Ghanaian midfielder who plays in European leagues?",
+      "options": [
+        "Mohammed Kudus",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mohammed Kudus is a Ghanaian footballer.",
+      "sources": [
+        {
+          "title": "Mohammed Kudus",
+          "url": "https://en.wikipedia.org/wiki/Mohammed_Kudus",
+          "claim": "Mohammed Kudus is a Ghanaian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_franck_kessie",
+      "region": "west",
+      "country": "Côte d'Ivoire",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the Ivorian midfielder who has played for Milan and Barcelona?",
+      "options": [
+        "Franck Kessié",
+        "Didier Drogba",
+        "George Weah",
+        "Jay-Jay Okocha"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Franck Kessié is an Ivorian footballer.",
+      "sources": [
+        {
+          "title": "Franck Kessié",
+          "url": "https://en.wikipedia.org/wiki/Franck_Kessi%C3%A9",
+          "claim": "Franck Kessié is an Ivorian footballer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_prov_sankofa",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PROVERBS",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Akan idea: Sankofa means go back and ___.",
+      "options": [
+        "get it",
+        "sell it",
+        "hide it",
+        "burn it"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sankofa is an Akan word often translated as go back and get it.",
+      "sources": [
+        {
+          "title": "Sankofa",
+          "url": "https://en.wikipedia.org/wiki/Sankofa",
+          "claim": "Sankofa means go back and get it",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_prov_yoruba_language",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PROVERBS",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Yoruba wisdom: the river that forgets its source will ___.",
+      "options": [
+        "dry up",
+        "turn to gold",
+        "become a drum",
+        "leave the market"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "A well-known Yoruba image says a river that forgets its source will dry up.",
+      "sources": [
+        {
+          "title": "Yoruba language",
+          "url": "https://en.wikipedia.org/wiki/Yoruba_language",
+          "claim": "Yoruba proverbs warn that a river that forgets its source will dry up",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_prov_african_proverb",
+      "region": "west",
+      "country": "West Africa",
+      "category": "PROVERBS",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the saying: when the music changes, the dance ___.",
+      "options": [
+        "must change",
+        "must stop",
+        "becomes silent",
+        "leaves the village"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The saying means people adapt when the rhythm of life changes.",
+      "sources": [
+        {
+          "title": "African proverb",
+          "url": "https://en.wikipedia.org/wiki/African_proverb",
+          "claim": "When the music changes, the dance must change",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_prov_baobab",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PROVERBS",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the Akan proverb: wisdom is like a baobab tree, no one person can ___ it.",
+      "options": [
+        "embrace",
+        "plant",
+        "sell",
+        "paint"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The image says wisdom is too large for one person's arms.",
+      "sources": [
+        {
+          "title": "Baobab",
+          "url": "https://en.wikipedia.org/wiki/Baobab",
+          "claim": "Wisdom is like a baobab tree that no one person can embrace",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_akan_language2",
+      "region": "west",
+      "country": "Ghana",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Twi welcome: Akwaaba means ___.",
+      "options": [
+        "welcome",
+        "goodbye",
+        "market",
+        "river"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Akwaaba is the Akan word of welcome.",
+      "sources": [
+        {
+          "title": "Akan language",
+          "url": "https://en.wikipedia.org/wiki/Akan_language",
+          "claim": "Akwaaba means welcome in Akan",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_yoruba_language2",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Yoruba morning greeting: E kaaro is said in the ___.",
+      "options": [
+        "morning",
+        "harvest",
+        "palace",
+        "market only"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "E kaaro greets someone in the morning.",
+      "sources": [
+        {
+          "title": "Yoruba language",
+          "url": "https://en.wikipedia.org/wiki/Yoruba_language",
+          "claim": "E kaaro is a Yoruba morning greeting",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_hausa_language2",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the Hausa thank-you: Na gode means ___.",
+      "options": [
+        "thank you",
+        "good night",
+        "sit down",
+        "hurry up"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Na gode is how you say thank you in Hausa.",
+      "sources": [
+        {
+          "title": "Hausa language",
+          "url": "https://en.wikipedia.org/wiki/Hausa_language",
+          "claim": "Na gode means thank you in Hausa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_wolof_language2",
+      "region": "west",
+      "country": "Senegal",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the Wolof check-in: Nanga def asks ___.",
+      "options": [
+        "how are you",
+        "what is for dinner",
+        "where is the boat",
+        "who is the king"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nanga def is a Wolof way to ask how someone is.",
+      "sources": [
+        {
+          "title": "Wolof language",
+          "url": "https://en.wikipedia.org/wiki/Wolof_language",
+          "claim": "Nanga def means how are you in Wolof",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_prov_igbo_people",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "PROVERBS",
+      "difficulty": "hard",
+      "kind": "complete",
+      "prompt": "Complete the Igbo thought: when a person washes their hands they can ___.",
+      "options": [
+        "eat with elders",
+        "cross the desert",
+        "buy the market",
+        "silence the drum"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Clean hands, in the proverb, earn a seat with elders.",
+      "sources": [
+        {
+          "title": "Igbo people",
+          "url": "https://en.wikipedia.org/wiki/Igbo_people",
+          "claim": "An Igbo proverb says one who washes their hands can eat with elders",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_prov_mande_languages",
+      "region": "west",
+      "country": "Mali",
+      "category": "PROVERBS",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the Mande image: one finger cannot ___ a stone.",
+      "options": [
+        "lift",
+        "paint",
+        "name",
+        "bury"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The saying praises cooperation.",
+      "sources": [
+        {
+          "title": "Mande languages",
+          "url": "https://en.wikipedia.org/wiki/Mande_languages",
+          "claim": "A Mande saying says one finger cannot lift a stone",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_lang_languages_of_nigeria",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Select three major languages of Nigeria.",
+      "options": [
+        "Hausa",
+        "Yoruba",
+        "Igbo",
+        "isiZulu"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Hausa, Yoruba and Igbo are among Nigeria's largest languages. isiZulu is centred in Southern Africa.",
+      "sources": [
+        {
+          "title": "Languages of Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Languages_of_Nigeria",
+          "claim": "Hausa, Yoruba and Igbo are major languages of Nigeria",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_hist_sahel",
+      "region": "west",
+      "country": "West Africa",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Select three medieval Sahelian empires.",
+      "options": [
+        "Ghana Empire",
+        "Mali Empire",
+        "Songhai Empire",
+        "Ashanti Empire"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Ghana, Mali and Songhai were the great medieval empires of the western Sahel. Ashanti rose later in the forest.",
+      "sources": [
+        {
+          "title": "Sahel",
+          "url": "https://en.wikipedia.org/wiki/Sahel",
+          "claim": "The Ghana, Mali and Songhai empires rose in the Sahel",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_west_african_cuisine",
+      "region": "west",
+      "country": "West Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Select three foods with deep roots in West African cooking.",
+      "options": [
+        "Yam",
+        "Plantain",
+        "Groundnuts",
+        "Rye bread"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Yam, plantain and groundnuts are everyday West African foods. Rye bread is not.",
+      "sources": [
+        {
+          "title": "West African cuisine",
+          "url": "https://en.wikipedia.org/wiki/West_African_cuisine",
+          "claim": "Yam, plantain and groundnuts are West African foods",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_gulf_of_guinea",
+      "region": "west",
+      "country": "West Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Select three countries on the Gulf of Guinea.",
+      "options": [
+        "Ghana",
+        "Togo",
+        "Benin",
+        "Mali"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Ghana, Togo and Benin have Gulf of Guinea coasts. Mali is landlocked.",
+      "sources": [
+        {
+          "title": "Gulf of Guinea",
+          "url": "https://en.wikipedia.org/wiki/Gulf_of_Guinea",
+          "claim": "Ghana, Togo and Benin lie on the Gulf of Guinea",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_musi_kora_instrument_2",
+      "region": "west",
+      "country": "West Africa",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Select three West African instruments.",
+      "options": [
+        "Kora",
+        "Djembe",
+        "Balafon",
+        "Mbira"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "The kora, djembe and balafon belong to West African music. The mbira is especially Shona, in Southern Africa.",
+      "sources": [
+        {
+          "title": "Kora (instrument)",
+          "url": "https://en.wikipedia.org/wiki/Kora_(instrument)",
+          "claim": "The kora, djembe and balafon are West African instruments",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_spor_africa_cup_of_nations",
+      "region": "west",
+      "country": "West Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Select three West African football nations.",
+      "options": [
+        "Nigeria",
+        "Ghana",
+        "Senegal",
+        "Morocco"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Nigeria, Ghana and Senegal are West African football powers. Morocco is in North Africa.",
+      "sources": [
+        {
+          "title": "Africa Cup of Nations",
+          "url": "https://en.wikipedia.org/wiki/Africa_Cup_of_Nations",
+          "claim": "Nigeria, Ghana and Senegal play as West African teams at the Africa Cup of Nations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_fash_kente_cloth2",
+      "region": "west",
+      "country": "West Africa",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "multi",
+      "prompt": "Select three textiles strongly associated with West Africa.",
+      "options": [
+        "Kente",
+        "Adire",
+        "Bogolan",
+        "Shweshwe"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Kente, adire and bogolan are West African cloth traditions. Shweshwe is Southern African.",
+      "sources": [
+        {
+          "title": "Kente cloth",
+          "url": "https://en.wikipedia.org/wiki/Kente_cloth",
+          "claim": "Kente, adire and bogolan are West African textiles",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_peop_chinua_achebe2",
+      "region": "west",
+      "country": "West Africa",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Select three Nigerian writers.",
+      "options": [
+        "Chinua Achebe",
+        "Wole Soyinka",
+        "Chimamanda Ngozi Adichie",
+        "Ngugi wa Thiong'o"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Achebe, Soyinka and Adichie are Nigerian. Ngugi wa Thiong'o is Kenyan.",
+      "sources": [
+        {
+          "title": "Chinua Achebe",
+          "url": "https://en.wikipedia.org/wiki/Chinua_Achebe",
+          "claim": "Chinua Achebe, Wole Soyinka and Chimamanda Ngozi Adichie are Nigerian writers",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_prov_sankofa2",
+      "region": "west",
+      "country": "Ghana",
+      "category": "PROVERBS",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Akan word Sankofa: go back and ___.",
+      "options": [
+        "get it",
+        "sell it",
+        "hide it",
+        "burn it"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sankofa is an Akan word. Literally, it means go back and get.",
+      "sources": [
+        {
+          "title": "Sankofa",
+          "url": "https://en.wikipedia.org/wiki/Sankofa",
+          "claim": "Sankofa is an Akan word meaning go back and get",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_food_west_african_cuisine2",
+      "region": "west",
+      "country": "West Africa",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Select three West African dishes.",
+      "options": [
+        "Jollof rice",
+        "Egusi soup",
+        "Fufu",
+        "Bunny chow"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Jollof, egusi soup and fufu are West African foods. Bunny chow is South African.",
+      "sources": [
+        {
+          "title": "West African cuisine",
+          "url": "https://en.wikipedia.org/wiki/West_African_cuisine",
+          "claim": "Jollof, egusi and fufu are West African foods",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    },
+    {
+      "id": "west_geog_west_africa",
+      "region": "west",
+      "country": "West Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Select three West African capital cities.",
+      "options": [
+        "Accra",
+        "Dakar",
+        "Bamako",
+        "Cairo"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Accra, Dakar and Bamako are capitals in West Africa. Cairo is in Egypt.",
+      "sources": [
+        {
+          "title": "West Africa",
+          "url": "https://en.wikipedia.org/wiki/West_Africa",
+          "claim": "Accra, Dakar and Bamako are West African capitals",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated"
+    }
+  ]
+}

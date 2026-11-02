@@ -1,0 +1,204 @@
+{
+  "generatedAt": "2026-11-02",
+  "summary": {
+    "west": {
+      "published": 232,
+      "held": 61,
+      "generated": 226,
+      "drafts": 67,
+      "byCategory": {
+        "HISTORY": 21,
+        "LANGUAGE": 22,
+        "FASHION": 27,
+        "GEOGRAPHY": 22,
+        "MUSIC": 29,
+        "FOOD": 21,
+        "FESTIVALS": 19,
+        "PROVERBS": 2,
+        "PEOPLE": 19,
+        "POP": 20,
+        "SPORT": 18,
+        "WEDDINGS": 12
+      },
+      "byDifficulty": {
+        "hard": 38,
+        "medium": 116,
+        "easy": 78
+      },
+      "byKind": {
+        "single": 216,
+        "complete": 9,
+        "multi": 7
+      },
+      "holdReasons": {
+        "duplicate_prompt": 4,
+        "source_support": 28,
+        "source_http": 17,
+        "ambiguity_claim": 1,
+        "sensitivity_initiation": 4,
+        "sensitivity_trauma": 1,
+        "region_country": 7,
+        "sensitivity_sacred": 2
+      }
+    },
+    "east": {
+      "published": 219,
+      "held": 68,
+      "generated": 218,
+      "drafts": 69,
+      "byCategory": {
+        "FESTIVALS": 24,
+        "FOOD": 18,
+        "HISTORY": 26,
+        "GEOGRAPHY": 21,
+        "MUSIC": 25,
+        "FASHION": 21,
+        "LANGUAGE": 18,
+        "PROVERBS": 1,
+        "PEOPLE": 18,
+        "POP": 16,
+        "SPORT": 18,
+        "WEDDINGS": 13
+      },
+      "byDifficulty": {
+        "hard": 48,
+        "easy": 65,
+        "medium": 106
+      },
+      "byKind": {
+        "single": 209,
+        "complete": 6,
+        "multi": 4
+      },
+      "holdReasons": {
+        "source_support": 26,
+        "source_http": 9,
+        "duplicate_prompt": 5,
+        "sensitivity_sacred": 8,
+        "sensitivity_initiation": 3,
+        "ambiguity_claim": 2,
+        "region_country": 18,
+        "schema_dash": 1,
+        "sensitivity_trauma": 3
+      }
+    },
+    "central": {
+      "published": 228,
+      "held": 63,
+      "generated": 209,
+      "drafts": 82,
+      "byCategory": {
+        "HISTORY": 25,
+        "GEOGRAPHY": 45,
+        "FASHION": 13,
+        "MUSIC": 30,
+        "FESTIVALS": 16,
+        "LANGUAGE": 22,
+        "FOOD": 18,
+        "PEOPLE": 18,
+        "POP": 16,
+        "SPORT": 17,
+        "WEDDINGS": 8
+      },
+      "byDifficulty": {
+        "easy": 76,
+        "hard": 47,
+        "medium": 105
+      },
+      "byKind": {
+        "single": 219,
+        "complete": 8,
+        "multi": 1
+      },
+      "holdReasons": {
+        "duplicate_prompt": 5,
+        "source_support": 31,
+        "source_http": 13,
+        "sensitivity_trauma": 3,
+        "sensitivity_sacred": 12,
+        "sensitivity_initiation": 3,
+        "options_nested": 1,
+        "ambiguity_claim": 1,
+        "region_country": 2
+      }
+    },
+    "north": {
+      "published": 220,
+      "held": 55,
+      "generated": 209,
+      "drafts": 66,
+      "byCategory": {
+        "MUSIC": 28,
+        "HISTORY": 37,
+        "FESTIVALS": 20,
+        "GEOGRAPHY": 28,
+        "FASHION": 17,
+        "PROVERBS": 1,
+        "FOOD": 23,
+        "LANGUAGE": 16,
+        "PEOPLE": 16,
+        "POP": 12,
+        "SPORT": 16,
+        "WEDDINGS": 6
+      },
+      "byDifficulty": {
+        "easy": 75,
+        "medium": 102,
+        "hard": 43
+      },
+      "byKind": {
+        "single": 209,
+        "multi": 3,
+        "complete": 8
+      },
+      "holdReasons": {
+        "source_support": 30,
+        "duplicate_prompt": 6,
+        "source_http": 10,
+        "region_country": 2,
+        "options_nested": 1,
+        "sensitivity_sacred": 6,
+        "sensitivity_trauma": 1,
+        "ambiguity_claim": 1
+      }
+    },
+    "south": {
+      "published": 231,
+      "held": 47,
+      "generated": 210,
+      "drafts": 68,
+      "byCategory": {
+        "MUSIC": 24,
+        "FESTIVALS": 17,
+        "HISTORY": 35,
+        "FASHION": 22,
+        "FOOD": 22,
+        "GEOGRAPHY": 30,
+        "LANGUAGE": 18,
+        "PEOPLE": 17,
+        "POP": 17,
+        "SPORT": 15,
+        "WEDDINGS": 12,
+        "PROVERBS": 2
+      },
+      "byDifficulty": {
+        "easy": 92,
+        "medium": 106,
+        "hard": 33
+      },
+      "byKind": {
+        "single": 222,
+        "complete": 7,
+        "multi": 2
+      },
+      "holdReasons": {
+        "source_support": 29,
+        "duplicate_prompt": 8,
+        "source_http": 4,
+        "sensitivity_sacred": 5,
+        "options_nested": 1,
+        "sensitivity_trauma": 1
+      }
+    }
+  }
+}

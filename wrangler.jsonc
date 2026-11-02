@@ -30,7 +30,8 @@
     "EMAIL_FROM": "What's Your Bride Price? <noreply@mail.classesforculture.com>",
     "EMAIL_REPLY_TO": "team@classesforculture.com",
     "PAID_BLOCKED_COUNTRIES": "AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,GR,HU,IE,IT,LV,LT,LU,MT,NL,PL,PT,RO,SK,SI,ES,SE,IS,LI,NO",
-    "PUBLIC_APP_ORIGIN": "https://brideprice.classesforculture.com"
+    "PUBLIC_APP_ORIGIN": "https://brideprice.classesforculture.com",
+    "RANDOM_BANK": "on"
   },
   "assets": {
     "directory": "./outputs/paid-assets",

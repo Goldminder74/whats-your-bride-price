@@ -22,7 +22,8 @@ import { assertReceiptFrom, type TransactionalEmail } from "./email.ts";
 import { PaidError, isPaidError } from "./errors.ts";
 import { applyStripeEvent, projectAccess } from "./fulfillment.ts";
 import { SUPPORT_EMAIL } from "./receipt.ts";
-import { completeGame, editions, isEdition, publicQuestions, type KvStore } from "./games.ts";
+import { editions, isEdition, type KvStore } from "./games.ts";
+import { handleQuestionComplete, handleQuestionGet } from "./questionRoute.ts";
 import { legalPage, mockCheckoutHtml, playPageHtml, returnHtml } from "./pages.ts";
 import { paystackSeam } from "./paystack.ts";
 import { assertSpendCount, type PaidOrder, type PaidRepository } from "./repository.ts";
@@ -62,6 +63,8 @@ export type PaidServices = Readonly<{
   stripeFetch?: typeof fetch;
   ensureSchema?: () => Promise<void>;
   waitUntil?: (promise: Promise<unknown>) => void;
+  /** When true, regional rounds are drawn from the published question bank. */
+  randomBank?: boolean;
 }>;
 
 const PLAYER_ID = /^[A-Za-z0-9_-]{16,64}$/;
@@ -416,17 +419,11 @@ export async function servePaid(request: Request, services: PaidServices): Promi
       });
     }
     if (request.method === "GET" && url.pathname === "/api/paid/questions") {
-      const edition = url.searchParams.get("edition");
-      if (!isEdition(edition)) throw new PaidError("edition_invalid", 400);
-      const body = JSON.stringify(publicQuestions(edition));
-      return new Response(body, {
-        headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=86400" },
-      });
+      return await handleQuestionGet(url, services);
     }
     if (request.method === "POST" && url.pathname === "/api/paid/games/complete") {
       sameOrigin(request);
-      const result = await completeGame(services.kv, await readJson(request, 20_000), services.now());
-      return json(result);
+      return await handleQuestionComplete(request, services, await readJson(request, 20_000));
     }
     if (request.method === "GET" && url.pathname === "/api/paid/access") {
       await ready(services);

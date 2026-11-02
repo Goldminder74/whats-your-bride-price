@@ -1,0 +1,3112 @@
+{
+  "region": "central",
+  "questions": [
+    {
+      "id": "central_geog_brazzaville",
+      "region": "central",
+      "country": "Republic of the Congo",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which place is the capital city of the Republic of the Congo?",
+      "options": [
+        "Brazzaville",
+        "Kinshasa",
+        "Yaoundé",
+        "Libreville"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Brazzaville is the capital of the Republic of the Congo.",
+      "sources": [
+        {
+          "title": "Brazzaville",
+          "url": "https://en.wikipedia.org/wiki/Brazzaville",
+          "claim": "Brazzaville is the capital of the Republic of the Congo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "central_geog_lake_chad",
+      "region": "central",
+      "country": "Chad",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the shallow lake on Chad's western edge?",
+      "options": [
+        "Lake Chad",
+        "Kinshasa",
+        "Brazzaville",
+        "Yaoundé"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lake Chad is a lake in the Sahel.",
+      "sources": [
+        {
+          "title": "Lake Chad",
+          "url": "https://en.wikipedia.org/wiki/Lake_Chad",
+          "claim": "Lake Chad is a lake in the Sahel",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_food_saka_saka",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is cassava-leaf stew, also called saka-saka?",
+      "options": [
+        "Pondu",
+        "Cassava",
+        "Fufu",
+        "Moambe"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Saka-saka is a cassava leaf dish.",
+      "sources": [
+        {
+          "title": "Saka-saka",
+          "url": "https://en.wikipedia.org/wiki/Saka-saka",
+          "claim": "Saka-saka is a cassava leaf dish",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_food_poulet_dg",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is a celebration chicken of Douala restaurants?",
+      "options": [
+        "Poulet DG",
+        "Cassava",
+        "Fufu",
+        "Pondu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Poulet DG is a chicken dish from Cameroon.",
+      "sources": [
+        {
+          "title": "Poulet DG",
+          "url": "https://en.wikipedia.org/wiki/Poulet_DG",
+          "claim": "Poulet DG is a chicken dish from Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "central_food_liboke",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which dish is fish or meat steamed in a leaf packet?",
+      "options": [
+        "Liboke",
+        "Cassava",
+        "Fufu",
+        "Pondu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Liboke is a leaf-wrapped dish from the Congo.",
+      "sources": [
+        {
+          "title": "Liboke",
+          "url": "https://en.wikipedia.org/wiki/Liboke",
+          "claim": "Liboke is a leaf-wrapped dish from the Congo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "central_food_funge",
+      "region": "central",
+      "country": "Angola",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is a cassava or maize porridge of Angola?",
+      "options": [
+        "Funge",
+        "Cassava",
+        "Fufu",
+        "Pondu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Funge is a porridge from Angola.",
+      "sources": [
+        {
+          "title": "Funge",
+          "url": "https://en.wikipedia.org/wiki/Funge",
+          "claim": "Funge is a porridge from Angola",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_food_achu_soup",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which dish is a yellow soup and pounded cocoyam from the Grassfields?",
+      "options": [
+        "Achu",
+        "Cassava",
+        "Fufu",
+        "Pondu"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Achu is a dish from Cameroon.",
+      "sources": [
+        {
+          "title": "Achu soup",
+          "url": "https://en.wikipedia.org/wiki/Achu_soup",
+          "claim": "Achu is a dish from Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_fash_kaba_clothing",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a loose gown worn by Cameroonian women?",
+      "options": [
+        "Kaba",
+        "Liputa",
+        "La Sape",
+        "Kuba cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kaba is worn by women in Cameroon.",
+      "sources": [
+        {
+          "title": "Kaba (clothing)",
+          "url": "https://en.wikipedia.org/wiki/Kaba_(clothing)",
+          "claim": "The kaba is worn by women in Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "central_fash_samakaka",
+      "region": "central",
+      "country": "Angola",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a bold geometric print associated with Angola?",
+      "options": [
+        "Samakaka",
+        "Liputa",
+        "La Sape",
+        "Kuba cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Samakaka is a textile pattern from Angola.",
+      "sources": [
+        {
+          "title": "Samakaka",
+          "url": "https://en.wikipedia.org/wiki/Samakaka",
+          "claim": "Samakaka is a textile pattern from Angola",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "central_fash_la_sape2",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a follower of La Sape who dresses with ceremony?",
+      "options": [
+        "Sapologist",
+        "Liputa",
+        "La Sape",
+        "Kuba cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sapeurs are followers of La Sape.",
+      "sources": [
+        {
+          "title": "La Sape",
+          "url": "https://en.wikipedia.org/wiki/La_Sape",
+          "claim": "Sapeurs are followers of La Sape",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_fash_boubou_clothing",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a flowing robe worn for Friday and festivals?",
+      "options": [
+        "Boubou",
+        "Liputa",
+        "La Sape",
+        "Kuba cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The boubou is worn in Cameroon.",
+      "sources": [
+        {
+          "title": "Boubou (clothing)",
+          "url": "https://en.wikipedia.org/wiki/Boubou_(clothing)",
+          "claim": "The boubou is worn in Cameroon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_fash_ndop_textile",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is an indigo prestige cloth of the Grassfields and Kuba world?",
+      "options": [
+        "Ndop",
+        "Liputa",
+        "La Sape",
+        "Kuba cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ndop is a prestige cloth of Central Africa.",
+      "sources": [
+        {
+          "title": "Ndop (textile)",
+          "url": "https://en.wikipedia.org/wiki/Ndop_(textile)",
+          "claim": "Ndop is a prestige cloth of Central Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "central_fash_wrapper_clothing",
+      "region": "central",
+      "country": "Angola",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is cotton cloth traded and worn along the Angolan coast?",
+      "options": [
+        "Pano",
+        "Liputa",
+        "La Sape",
+        "Kuba cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cloth wrappers are worn in Angola.",
+      "sources": [
+        {
+          "title": "Wrapper (clothing)",
+          "url": "https://en.wikipedia.org/wiki/Wrapper_(clothing)",
+          "claim": "Cloth wrappers are worn in Angola",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_fash_boubou_clothing_2",
+      "region": "central",
+      "country": "Chad",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a white robe worn for prayers and celebrations in Chad?",
+      "options": [
+        "Boubou blanc",
+        "Liputa",
+        "La Sape",
+        "Kuba cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "White robes are worn in Chad.",
+      "sources": [
+        {
+          "title": "Boubou (clothing)",
+          "url": "https://en.wikipedia.org/wiki/Boubou_(clothing)",
+          "claim": "White robes are worn in Chad",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_fash_culture_of_equatorial_guinea",
+      "region": "central",
+      "country": "Equatorial Guinea",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is Sunday best in bright wax print?",
+      "options": [
+        "Traje de domingo",
+        "Liputa",
+        "La Sape",
+        "Kuba cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sunday dress in Equatorial Guinea uses bright cloth.",
+      "sources": [
+        {
+          "title": "Culture of Equatorial Guinea",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Equatorial_Guinea",
+          "claim": "Sunday dress in Equatorial Guinea uses bright cloth",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_fest_nguon",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is a Bamoun festival of governance in Foumban?",
+      "options": [
+        "Nguon",
+        "Ngondo",
+        "Independence Day",
+        "National Day"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Nguon is a festival of the Bamum people.",
+      "sources": [
+        {
+          "title": "Nguon",
+          "url": "https://en.wikipedia.org/wiki/Nguon",
+          "claim": "The Nguon is a festival of the Bamum people",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_fest_angola",
+      "region": "central",
+      "country": "Angola",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is Angola's national day on 11 November?",
+      "options": [
+        "Independence Day",
+        "Ngondo",
+        "Nguon",
+        "National Day"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Angola became independent in 1975.",
+      "sources": [
+        {
+          "title": "Angola",
+          "url": "https://en.wikipedia.org/wiki/Angola",
+          "claim": "Angola became independent in 1975",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_fest_republic_of_the_congo",
+      "region": "central",
+      "country": "Republic of the Congo",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is a pan-African music festival hosted in Brazzaville?",
+      "options": [
+        "FESPAM",
+        "Ngondo",
+        "Nguon",
+        "Independence Day"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Brazzaville hosts major cultural gatherings.",
+      "sources": [
+        {
+          "title": "Republic of the Congo",
+          "url": "https://en.wikipedia.org/wiki/Republic_of_the_Congo",
+          "claim": "Brazzaville hosts major cultural gatherings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_fest_chad",
+      "region": "central",
+      "country": "Chad",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is Chad's national day on 11 August?",
+      "options": [
+        "Independence Day",
+        "Ngondo",
+        "Nguon",
+        "National Day"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chad became independent on 11 August.",
+      "sources": [
+        {
+          "title": "Chad",
+          "url": "https://en.wikipedia.org/wiki/Chad",
+          "claim": "Chad became independent on 11 August",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support",
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support",
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "central_fest_sao_tome_and_principe",
+      "region": "central",
+      "country": "São Tomé and Príncipe",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is a popular play performed in São Tomé?",
+      "options": [
+        "Auto de Floripes",
+        "Ngondo",
+        "Nguon",
+        "Independence Day"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "São Tomé has popular theatre traditions.",
+      "sources": [
+        {
+          "title": "São Tomé and Príncipe",
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe",
+          "claim": "São Tomé has popular theatre traditions",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_fest_carnival",
+      "region": "central",
+      "country": "Angola",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is street carnival celebrated in Angolan cities?",
+      "options": [
+        "Carnival",
+        "Ngondo",
+        "Nguon",
+        "Independence Day"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Carnival is celebrated in Angola.",
+      "sources": [
+        {
+          "title": "Carnival",
+          "url": "https://en.wikipedia.org/wiki/Carnival",
+          "claim": "Carnival is celebrated in Angola",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_fest_gabon2",
+      "region": "central",
+      "country": "Gabon",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is family return weekends in Gabonese towns?",
+      "options": [
+        "Pentecost gatherings",
+        "Ngondo",
+        "Nguon",
+        "Independence Day"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Family gatherings mark holidays in Gabon.",
+      "sources": [
+        {
+          "title": "Gabon",
+          "url": "https://en.wikipedia.org/wiki/Gabon",
+          "claim": "Family gatherings mark holidays in Gabon",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_fest_kinshasa",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is holiday dances in Kinshasa courtyards?",
+      "options": [
+        "Christmas rumba",
+        "Ngondo",
+        "Nguon",
+        "Independence Day"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kinshasa is famous for music and nightlife.",
+      "sources": [
+        {
+          "title": "Kinshasa",
+          "url": "https://en.wikipedia.org/wiki/Kinshasa",
+          "claim": "Kinshasa is famous for music and nightlife",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_wedd_congolese_rumba",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is a wedding party that ends on a rumba floor?",
+      "options": [
+        "Rumba reception",
+        "Pagne guests",
+        "Family introduction",
+        "Dot of cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Congolese rumba is played at weddings.",
+      "sources": [
+        {
+          "title": "Congolese rumba",
+          "url": "https://en.wikipedia.org/wiki/Congolese_rumba",
+          "claim": "Congolese rumba is played at weddings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_wedd_marriage",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the meeting of the two families before a church wedding?",
+      "options": [
+        "Family introduction",
+        "Rumba reception",
+        "Pagne guests",
+        "Dot of cloth"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Weddings in Cameroon include a family introduction.",
+      "sources": [
+        {
+          "title": "Marriage",
+          "url": "https://en.wikipedia.org/wiki/Marriage",
+          "claim": "Weddings in Cameroon include a family introduction",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_wedd_culture_of_angola",
+      "region": "central",
+      "country": "Angola",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is a church service followed by a courtyard party?",
+      "options": [
+        "Church and courtyard",
+        "Rumba reception",
+        "Pagne guests",
+        "Family introduction"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Angolan weddings combine a ceremony and a party.",
+      "sources": [
+        {
+          "title": "Culture of Angola",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Angola",
+          "claim": "Angolan weddings combine a ceremony and a party",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_wedd_gabon",
+      "region": "central",
+      "country": "Gabon",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is sharing a drink with elders at a family wedding?",
+      "options": [
+        "Palm-wine toast",
+        "Rumba reception",
+        "Pagne guests",
+        "Family introduction"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gabonese weddings are family celebrations.",
+      "sources": [
+        {
+          "title": "Gabon",
+          "url": "https://en.wikipedia.org/wiki/Gabon",
+          "claim": "Gabonese weddings are family celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_wedd_kaba_clothing",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is a formal gown worn by women at coastal weddings?",
+      "options": [
+        "Kaba ngondo",
+        "Rumba reception",
+        "Pagne guests",
+        "Family introduction"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Women wear formal dress at Cameroonian ceremonies.",
+      "sources": [
+        {
+          "title": "Kaba (clothing)",
+          "url": "https://en.wikipedia.org/wiki/Kaba_(clothing)",
+          "claim": "Women wear formal dress at Cameroonian ceremonies",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "central_wedd_boubou_clothing",
+      "region": "central",
+      "country": "Chad",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is grooms in a long white robe at a Sahelian wedding?",
+      "options": [
+        "White boubou",
+        "Rumba reception",
+        "Pagne guests",
+        "Family introduction"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Robes are worn at weddings in Chad.",
+      "sources": [
+        {
+          "title": "Boubou (clothing)",
+          "url": "https://en.wikipedia.org/wiki/Boubou_(clothing)",
+          "claim": "Robes are worn at weddings in Chad",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_wedd_wedding",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is a relative who keeps the programme and the jokes moving?",
+      "options": [
+        "Aunty emcee",
+        "Rumba reception",
+        "Pagne guests",
+        "Family introduction"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Weddings are hosted by family members.",
+      "sources": [
+        {
+          "title": "Wedding",
+          "url": "https://en.wikipedia.org/wiki/Wedding",
+          "claim": "Weddings are hosted by family members",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_wedd_culture_of_gabon",
+      "region": "central",
+      "country": "Gabon",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is a large family meal after the vows?",
+      "options": [
+        "Ivanga feast",
+        "Rumba reception",
+        "Pagne guests",
+        "Family introduction"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gabonese celebrations include a shared meal.",
+      "sources": [
+        {
+          "title": "Culture of Gabon",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Gabon",
+          "claim": "Gabonese celebrations include a shared meal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_wedd_equatorial_guinea",
+      "region": "central",
+      "country": "Equatorial Guinea",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is vows that may be in Spanish with Fang family customs beside them?",
+      "options": [
+        "Spanish and Fang",
+        "Rumba reception",
+        "Pagne guests",
+        "Family introduction"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Equatorial Guinea weddings mix local and church customs.",
+      "sources": [
+        {
+          "title": "Equatorial Guinea",
+          "url": "https://en.wikipedia.org/wiki/Equatorial_Guinea",
+          "claim": "Equatorial Guinea weddings mix local and church customs",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_wedd_ululation",
+      "region": "central",
+      "country": "Central Africa",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is the high celebratory call when the couple enters?",
+      "options": [
+        "Ululation",
+        "Rumba reception",
+        "Pagne guests",
+        "Family introduction"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ululation marks joy at weddings.",
+      "sources": [
+        {
+          "title": "Ululation",
+          "url": "https://en.wikipedia.org/wiki/Ululation",
+          "claim": "Ululation marks joy at weddings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_hist_kingdom_of_kongo",
+      "region": "central",
+      "country": "Angola",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which historical name is the historic kingdom whose capital was Mbanza Kongo?",
+      "options": [
+        "Kingdom of Kongo",
+        "Kingdom of Luba",
+        "Lunda Empire",
+        "Bamum kingdom"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Kingdom of Kongo had its capital at Mbanza Kongo.",
+      "sources": [
+        {
+          "title": "Kingdom of Kongo",
+          "url": "https://en.wikipedia.org/wiki/Kingdom_of_Kongo",
+          "claim": "The Kingdom of Kongo had its capital at Mbanza Kongo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "central_hist_republic_of_the_congo",
+      "region": "central",
+      "country": "Republic of the Congo",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which historical name is the year the French Congo became independent?",
+      "options": [
+        "1960 Congo",
+        "Kingdom of Kongo",
+        "Kingdom of Luba",
+        "Lunda Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Republic of the Congo became independent in 1960.",
+      "sources": [
+        {
+          "title": "Republic of the Congo",
+          "url": "https://en.wikipedia.org/wiki/Republic_of_the_Congo",
+          "claim": "The Republic of the Congo became independent in 1960",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_hist_angola",
+      "region": "central",
+      "country": "Angola",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Angola became independent?",
+      "options": [
+        "1975",
+        "Kingdom of Kongo",
+        "Kingdom of Luba",
+        "Lunda Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Angola became independent in 1975.",
+      "sources": [
+        {
+          "title": "Angola",
+          "url": "https://en.wikipedia.org/wiki/Angola",
+          "claim": "Angola became independent in 1975",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_hist_cameroon",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which historical name is the year French Cameroun became independent?",
+      "options": [
+        "1960 Cameroon",
+        "Kingdom of Kongo",
+        "Kingdom of Luba",
+        "Lunda Empire"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Cameroon became independent in 1960.",
+      "sources": [
+        {
+          "title": "Cameroon",
+          "url": "https://en.wikipedia.org/wiki/Cameroon",
+          "claim": "Cameroon became independent in 1960",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_popc_locko_singer",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is a Cameroonian afropop singer?",
+      "options": [
+        "Locko",
+        "Fally Ipupa",
+        "Innoss'B",
+        "Gaz Mawete"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Locko is a Cameroonian singer.",
+      "sources": [
+        {
+          "title": "Locko (singer)",
+          "url": "https://en.wikipedia.org/wiki/Locko_(singer)",
+          "claim": "Locko is a Cameroonian singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "central_popc_music_of_angola",
+      "region": "central",
+      "country": "Angola",
+      "category": "POP",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which popular-culture name is an Angolan singer of semba and kizomba?",
+      "options": [
+        "Yola Semedo",
+        "Fally Ipupa",
+        "Innoss'B",
+        "Gaz Mawete"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Angola's popular music includes kizomba and semba.",
+      "sources": [
+        {
+          "title": "Music of Angola",
+          "url": "https://en.wikipedia.org/wiki/Music_of_Angola",
+          "claim": "Angola's popular music includes kizomba and semba",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "central_spor_chad",
+      "region": "central",
+      "country": "Chad",
+      "category": "SPORT",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which sporting name is athletes of the Chadian diaspora?",
+      "options": [
+        "Mathieu Dossevi roots",
+        "Samuel Eto'o",
+        "Roger Milla",
+        "Indomitable Lions"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chad competes in African sport.",
+      "sources": [
+        {
+          "title": "Chad",
+          "url": "https://en.wikipedia.org/wiki/Chad",
+          "claim": "Chad competes in African sport",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_geog_central_africa",
+      "region": "central",
+      "country": "Central Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Select three Central African capital cities.",
+      "options": [
+        "Kinshasa",
+        "Libreville",
+        "Yaoundé",
+        "Tunis"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Kinshasa, Libreville and Yaoundé are capitals in Central Africa. Tunis is in Tunisia.",
+      "sources": [
+        {
+          "title": "Central Africa",
+          "url": "https://en.wikipedia.org/wiki/Central_Africa",
+          "claim": "Kinshasa, Libreville and Yaoundé are Central African capitals",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "central_lang_democratic_republic_of_the_congo2",
+      "region": "central",
+      "country": "DR Congo",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Select three languages used in the Democratic Republic of the Congo.",
+      "options": [
+        "Lingala",
+        "French",
+        "Tshiluba",
+        "Afrikaans"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Lingala, French and Tshiluba are used in the DRC. Afrikaans is Southern African.",
+      "sources": [
+        {
+          "title": "Democratic Republic of the Congo",
+          "url": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo",
+          "claim": "Lingala, French and Tshiluba are used in the Democratic Republic of the Congo",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "central_angola_mbanza_building_layers",
+      "region": "central",
+      "country": "Angola",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What changed in Mbanza Kongo after Portuguese arrival in the fifteenth century?",
+      "options": [
+        "All local buildings disappeared immediately",
+        "A railway replaced every road",
+        "Stone buildings were added to an existing city built in local materials",
+        "The city moved to an island"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The surviving landscape records change and continuity rather than a simple replacement.",
+      "sources": [
+        {
+          "title": "Mbanza Kongo, Vestiges of the Capital of the former Kingdom of Kongo",
+          "url": "https://whc.unesco.org/en/list/1511",
+          "claim": "Mbanza Kongo was the Kingdom of Kongo's political and spiritual centre; its landscape preserves customary, colonial and Christian layers and a 1624 Kikongo catechism."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Colonialism, enslavement or violence: trauma-informed historical and community review is required.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_trauma"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_trauma"
+      ]
+    },
+    {
+      "id": "central_angola_mbanza_kikongo_text",
+      "region": "central",
+      "country": "Angola",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What language was used for a catechism written at Mbanza Kongo in 1624?",
+      "options": [
+        "Tamazight",
+        "Kikongo",
+        "Amharic",
+        "Wolof"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "UNESCO identifies it as a Kikongo catechism used in the kingdom.",
+      "sources": [
+        {
+          "title": "Mbanza Kongo, Vestiges of the Capital of the former Kingdom of Kongo",
+          "url": "https://whc.unesco.org/en/list/1511",
+          "claim": "Mbanza Kongo was the Kingdom of Kongo's political and spiritual centre; its landscape preserves customary, colonial and Christian layers and a 1624 Kikongo catechism."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Colonialism, enslavement or violence: trauma-informed historical and community review is required.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_trauma"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_trauma"
+      ]
+    },
+    {
+      "id": "central_cameroon_nguon_interval",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "How often is Nguon observed in UNESCO's account?",
+      "options": [
+        "Every two years",
+        "Every week",
+        "Every ten years",
+        "Only once"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The three-day observance takes place biennially in early December.",
+      "sources": [
+        {
+          "title": "Nguon, rituals of governance and associated expressions in the Bamoun community",
+          "url": "https://ich.unesco.org/en/RL/nguon-rituals-of-governance-and-associated-expressions-in-the-bamoun-community-01955",
+          "claim": "Bamoun Nguon is a three-day biennial governance practice involving consultation, public accountability, renewed mandate and celebration."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "central_cameroon_nguon_consultation",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What do ritual chiefs gather before speaking with the Mfon during Nguon?",
+      "options": [
+        "Votes from foreign parliaments",
+        "Weather readings from satellites",
+        "Prices from overseas markets",
+        "Community views on the state of the kingdom"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "Community consultation precedes the chiefs' meeting with the monarch.",
+      "sources": [
+        {
+          "title": "Nguon, rituals of governance and associated expressions in the Bamoun community",
+          "url": "https://ich.unesco.org/en/RL/nguon-rituals-of-governance-and-associated-expressions-in-the-bamoun-community-01955",
+          "claim": "Bamoun Nguon is a three-day biennial governance practice involving consultation, public accountability, renewed mandate and celebration."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "central_cameroon_nguon_accountability",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is unusual about the Mfon's public role during Nguon?",
+      "options": [
+        "He selects a national currency",
+        "He closes all community discussion",
+        "His governance is publicly assessed and may be sanctioned",
+        "He judges a foreign sports contest"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The ritual expresses accountability within a specific Bamoun institution.",
+      "sources": [
+        {
+          "title": "Nguon, rituals of governance and associated expressions in the Bamoun community",
+          "url": "https://ich.unesco.org/en/RL/nguon-rituals-of-governance-and-associated-expressions-in-the-bamoun-community-01955",
+          "claim": "Bamoun Nguon is a three-day biennial governance practice involving consultation, public accountability, renewed mandate and celebration."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "central_cameroon_ngondo_calendar",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "When does the annual Ngondo season culminate?",
+      "options": [
+        "On the first Sunday of December",
+        "On the first Sunday of June",
+        "At every full moon",
+        "On an unfixed day once a decade"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "UNESCO describes a season running from September to early December.",
+      "sources": [
+        {
+          "title": "Ngondo, worship of water oracles and associated cultural traditions among the Sawa",
+          "url": "https://ich.unesco.org/en/RL/ngondo-worship-of-water-oracles-and-associated-cultural-traditions-among-the-sawa-02140",
+          "claim": "Sawa Ngondo runs from September to the first Sunday of December and includes public arts, sport and commerce as well as restricted sacred components."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "central_cameroon_ngondo_public",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which activity belongs to the public festive side of Ngondo?",
+      "options": [
+        "A closed initiation lesson",
+        "A private court sentencing",
+        "A military census",
+        "A travelling caravan with arts, wrestling, crafts and commerce"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "Public and restricted components should be distinguished.",
+      "sources": [
+        {
+          "title": "Ngondo, worship of water oracles and associated cultural traditions among the Sawa",
+          "url": "https://ich.unesco.org/en/RL/ngondo-worship-of-water-oracles-and-associated-cultural-traditions-among-the-sawa-02140",
+          "claim": "Sawa Ngondo runs from September to the first Sunday of December and includes public arts, sport and commerce as well as restricted sacred components."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_initiation",
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_initiation",
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "central_cameroon_ngondo_river",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which river is central to the public UNESCO account of Ngondo?",
+      "options": [
+        "The Senegal River",
+        "The Limpopo",
+        "The Wouri River",
+        "The Nile"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The culminating gathering occurs on the riverbank.",
+      "sources": [
+        {
+          "title": "Ngondo, worship of water oracles and associated cultural traditions among the Sawa",
+          "url": "https://ich.unesco.org/en/RL/ngondo-worship-of-water-oracles-and-associated-cultural-traditions-among-the-sawa-02140",
+          "claim": "Sawa Ngondo runs from September to the first Sunday of December and includes public arts, sport and commerce as well as restricted sacred components."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "central_cameroon_ngondo_transmission",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "How are public and sacred Ngondo knowledge transmitted differently?",
+      "options": [
+        "Sacred parts are posted as tourist instructions",
+        "Public practices pass through families; sacred parts require initiation",
+        "Both are learned only from textbooks",
+        "Neither is taught within the community"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The distinction protects community disclosure boundaries.",
+      "sources": [
+        {
+          "title": "Ngondo, worship of water oracles and associated cultural traditions among the Sawa",
+          "url": "https://ich.unesco.org/en/RL/ngondo-worship-of-water-oracles-and-associated-cultural-traditions-among-the-sawa-02140",
+          "claim": "Sawa Ngondo runs from September to the first Sunday of December and includes public arts, sport and commerce as well as restricted sacred components."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_initiation",
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_initiation",
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "central_car_aka_contexts",
+      "region": "central",
+      "country": "Central African Republic",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which setting is among those linked with Aka music and dance?",
+      "options": [
+        "An alpine ski race",
+        "The inauguration of a new encampment",
+        "The opening of a stock exchange",
+        "A Mediterranean naval launch"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "UNESCO also names hunting-related and funerary ceremonies.",
+      "sources": [
+        {
+          "title": "Polyphonic singing of the Aka Pygmies of Central Africa",
+          "url": "https://ich.unesco.org/en/RL/polyphonic-singing-of-the-aka-pygmies-of-central-africa-00082",
+          "claim": "Aka communities in south-west Central African Republic maintain a four-voice contrapuntal vocal practice with improvisation, music and dance."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "central_drc_kuba_state",
+      "region": "central",
+      "country": "Democratic Republic of the Congo",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "How does The Met describe the historical Kuba kingdom?",
+      "options": [
+        "A multiethnic state formed from several principalities",
+        "A single coastal trading post",
+        "A Roman colony",
+        "A modern federal ministry"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The kingdom united communities of varied origins.",
+      "sources": [
+        {
+          "title": "Kingdoms of the Savanna: The Kuba Kingdom",
+          "url": "https://www.metmuseum.org/essays/kingdoms-of-the-savanna-the-kuba-kingdom",
+          "claim": "The multiethnic Kuba kingdom developed court arts, a title system, and idealised ndop royal portraits whose identifying emblem is the ibol."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "central_drc_kuba_founder",
+      "region": "central",
+      "country": "Democratic Republic of the Congo",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who is remembered in Kuba oral histories as a major political architect?",
+      "options": [
+        "Mansa Musa",
+        "Ibrahim Njoya",
+        "Septimius Severus",
+        "Shyaam aMbul aNgoong"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The museum source presents oral history as a record requiring contextual review.",
+      "sources": [
+        {
+          "title": "Kingdoms of the Savanna: The Kuba Kingdom",
+          "url": "https://www.metmuseum.org/essays/kingdoms-of-the-savanna-the-kuba-kingdom",
+          "claim": "The multiethnic Kuba kingdom developed court arts, a title system, and idealised ndop royal portraits whose identifying emblem is the ibol."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Indigenous community terminology, rights and knowledge require community-led review; historical source labels must not override current self-identification.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "central_drc_kuba_ndop",
+      "region": "central",
+      "country": "Democratic Republic of the Congo",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What is an ndop in Kuba court art?",
+      "options": [
+        "A rainwater channel",
+        "A reed flute",
+        "An idealized royal portrait sculpture",
+        "A fishing net"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "Each figure represented a ruler at the height of health and power.",
+      "sources": [
+        {
+          "title": "Kingdoms of the Savanna: The Kuba Kingdom",
+          "url": "https://www.metmuseum.org/essays/kingdoms-of-the-savanna-the-kuba-kingdom",
+          "claim": "The multiethnic Kuba kingdom developed court arts, a title system, and idealised ndop royal portraits whose identifying emblem is the ibol."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http",
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http",
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "central_drc_kuba_ibol",
+      "region": "central",
+      "country": "Democratic Republic of the Congo",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "How is a ruler identified on a Kuba ndop?",
+      "options": [
+        "By a Roman numeral on the base",
+        "By a personal emblem called an ibol",
+        "By a written passport",
+        "By the colour of a museum wall"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The emblem distinguishes the idealized portrait's subject.",
+      "sources": [
+        {
+          "title": "Kingdoms of the Savanna: The Kuba Kingdom",
+          "url": "https://www.metmuseum.org/essays/kingdoms-of-the-savanna-the-kuba-kingdom",
+          "claim": "The multiethnic Kuba kingdom developed court arts, a title system, and idealised ndop royal portraits whose identifying emblem is the ibol."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http",
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http",
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "central_gabon_lope_petroglyphs",
+      "region": "central",
+      "country": "Gabon",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Approximately how many petroglyphs are recorded at Lopé-Okanda?",
+      "options": [
+        "About 18",
+        "About 180",
+        "About 18,000",
+        "About 1,800"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The rock carvings accompany settlement and ironworking evidence.",
+      "sources": [
+        {
+          "title": "Ecosystem and Relict Cultural Landscape of Lopé-Okanda",
+          "url": "https://whc.unesco.org/en/list/1147",
+          "claim": "Gabonese Lopé-Okanda combines rainforest and savanna ecology with deep settlement evidence, ironworking and about 1,800 petroglyphs along the Ogooué valley."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Archaeology and ancient political history require local heritage review; do not map past cultures directly onto modern identities.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "fail",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "options_nested"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "options_nested"
+      ]
+    },
+    {
+      "id": "central_regional_mvet_forms",
+      "region": "central",
+      "country": "Cameroon; Congo; Gabon",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What distinction does UNESCO make within Mvet Oyeng?",
+      "options": [
+        "Written and printed laws",
+        "Winter and summer crops",
+        "Sacred and popular forms",
+        "Urban and rural currencies"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The sacred form has stricter initiation and disclosure boundaries.",
+      "sources": [
+        {
+          "title": "Mvet Oyeng, musical art, practices and skills associated with the Ekang community",
+          "url": "https://ich.unesco.org/en/RL/mvet-oyeng-musical-art-practices-and-skills-associated-with-the-ekang-community-02253",
+          "claim": "Ekang Mvet Oyeng in Gabon, Cameroon and Congo combines epic storytelling, music, dance and participatory performance in sacred and popular forms."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_initiation",
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_initiation",
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "central_saotome_tchiloli_opening",
+      "region": "central",
+      "country": "Sao Tome and Principe",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Who typically leads the ritual that begins Tchiloli?",
+      "options": [
+        "Only children",
+        "Women",
+        "Visiting judges",
+        "Foreign soldiers"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The UNESCO summary identifies a women-led opening ritual.",
+      "sources": [
+        {
+          "title": "Tchiloli, living theatre of Sao Tome and Principe in the quest of justice",
+          "url": "https://ich.unesco.org/en/RL/tchiloli-living-theatre-of-sao-tome-and-principe-in-the-quest-of-justice-02309",
+          "claim": "Tchiloli is São Tomé and Príncipe open-air theatre involving actors, musicians and audience around a murder trial, with performances adapted across generations."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "central_equatorial_tentative_status",
+      "region": "central",
+      "country": "Equatorial Guinea",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What does placement on UNESCO's Tentative List mean?",
+      "options": [
+        "The state may consider a property for future nomination",
+        "The property is already inscribed World Heritage",
+        "UNESCO owns the property",
+        "Every listed place is open to tourism"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tentative listing is a preliminary national step, not inscription.",
+      "sources": [
+        {
+          "title": "Equatorial Guinea Tentative List",
+          "url": "https://whc.unesco.org/en/tentativelists/?action=listtentative&state=gq",
+          "claim": "Equatorial Guinea's 2026 Tentative List names six proposed properties; tentative status is preliminary and is not World Heritage inscription."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "fail",
+        "region": "pass",
+        "reasons": [
+          "ambiguity_claim"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "ambiguity_claim"
+      ]
+    },
+    {
+      "id": "central_equatorial_batete",
+      "region": "central",
+      "country": "Equatorial Guinea",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which built site appears on Equatorial Guinea's 2026 Tentative List?",
+      "options": [
+        "The theatre of Sabratha",
+        "The neo-Gothic church of Batete",
+        "The pyramids of Meroe",
+        "The Medina of Fez"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Further locally authored research is required before any architectural interpretation.",
+      "sources": [
+        {
+          "title": "Equatorial Guinea Tentative List",
+          "url": "https://whc.unesco.org/en/tentativelists/?action=listtentative&state=gq",
+          "claim": "Equatorial Guinea's 2026 Tentative List names six proposed properties; tentative status is preliminary and is not World Heritage inscription."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Colonialism, enslavement or violence: trauma-informed historical and community review is required.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_trauma"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_trauma"
+      ]
+    },
+    {
+      "id": "central_cameroon_kapsiki_marriages",
+      "region": "central",
+      "country": "Cameroon; Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What distinction does the study make within Kapsiki/Higi marriage rituals?",
+      "options": [
+        "Between first marriages and secondary marriages",
+        "Between coastal and island marriages",
+        "Between written and unwritten currencies",
+        "Between harvest and fishing permits"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "This is a study-specific distinction, not a rule for Cameroon or Nigeria generally.",
+      "sources": [
+        {
+          "title": "The Song of the Bride",
+          "url": "https://doi.org/10.1093/acprof:oso/9780199858149.003.0009",
+          "claim": "A study of Kapsiki/Higi marriage distinguishes first and secondary marriages and traces changing wedding feasts and a bridal song contest over four decades."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Marriage and gender material: require locally grounded, gender-aware review and do not present one documented practice as universal or prescriptive.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "source_http",
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http",
+        "region_country"
+      ]
+    },
+    {
+      "id": "central_cameroon_kapsiki_change",
+      "region": "central",
+      "country": "Cameroon; Nigeria",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What changed in the wedding feasts observed over four decades?",
+      "options": [
+        "They stopped involving relatives",
+        "They became identical across all villages",
+        "They moved entirely to courtrooms",
+        "They grew from modest gift-giving into larger public displays"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The study emphasizes historical change within a specific community context.",
+      "sources": [
+        {
+          "title": "The Song of the Bride",
+          "url": "https://doi.org/10.1093/acprof:oso/9780199858149.003.0009",
+          "claim": "A study of Kapsiki/Higi marriage distinguishes first and secondary marriages and traces changing wedding feasts and a bridal song contest over four decades."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Marriage and gender material: require locally grounded, gender-aware review and do not present one documented practice as universal or prescriptive.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "source_http",
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http",
+        "region_country"
+      ]
+    }
+  ]
+}

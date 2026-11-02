@@ -1,0 +1,2312 @@
+{
+  "region": "south",
+  "questions": [
+    {
+      "id": "south_geog_table_mountain",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which place is the flat-topped mountain above Cape Town?",
+      "options": [
+        "Table Mountain",
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Table Mountain overlooks Cape Town.",
+      "sources": [
+        {
+          "title": "Table Mountain",
+          "url": "https://en.wikipedia.org/wiki/Table_Mountain",
+          "claim": "Table Mountain overlooks Cape Town",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_geog_table_mountain_fill",
+      "region": "south",
+      "country": "South Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Fill the blank. In South Africa, the flat-topped mountain above Cape Town. The name to write is ___.",
+      "options": [
+        "Table Mountain",
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Table Mountain overlooks Cape Town.",
+      "sources": [
+        {
+          "title": "Table Mountain",
+          "url": "https://en.wikipedia.org/wiki/Table_Mountain",
+          "claim": "Table Mountain overlooks Cape Town",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_geog_lake_malawi",
+      "region": "south",
+      "country": "Malawi",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which place is the great lake along Malawi's eastern border?",
+      "options": [
+        "Lake Malawi",
+        "Cape Town",
+        "Pretoria",
+        "Bloemfontein"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lake Malawi is a lake in Malawi.",
+      "sources": [
+        {
+          "title": "Lake Malawi",
+          "url": "https://en.wikipedia.org/wiki/Lake_Malawi",
+          "claim": "Lake Malawi is a lake in Malawi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_food_piri_piri",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is chilli chicken associated with Mozambique and southern kitchens?",
+      "options": [
+        "Peri-peri chicken",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Piri piri chicken is associated with Mozambique.",
+      "sources": [
+        {
+          "title": "Piri piri",
+          "url": "https://en.wikipedia.org/wiki/Piri_piri",
+          "claim": "Piri piri chicken is associated with Mozambique",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_food_lake_malawi",
+      "region": "south",
+      "country": "Malawi",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is a popular fish from Lake Malawi?",
+      "options": [
+        "Chambo",
+        "Braai",
+        "Biltong",
+        "Bobotie"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chambo is a fish from Lake Malawi.",
+      "sources": [
+        {
+          "title": "Lake Malawi",
+          "url": "https://en.wikipedia.org/wiki/Lake_Malawi",
+          "claim": "Chambo is a fish from Lake Malawi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_musi_brenda_fassie",
+      "region": "south",
+      "country": "South Africa",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is the township pop star?",
+      "options": [
+        "Brenda Fassie",
+        "Amapiano",
+        "Kwaito",
+        "Gqom"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Brenda Fassie was a South African singer.",
+      "sources": [
+        {
+          "title": "Brenda Fassie",
+          "url": "https://en.wikipedia.org/wiki/Brenda_Fassie",
+          "claim": "Brenda Fassie was a South African singer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "south_fash_clothing_in_zimbabwe",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is bright cotton worn for celebrations?",
+      "options": [
+        "Safari prints",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Printed cloth is worn at Zimbabwean celebrations.",
+      "sources": [
+        {
+          "title": "Clothing in Zimbabwe",
+          "url": "https://en.wikipedia.org/wiki/Clothing_in_Zimbabwe",
+          "claim": "Printed cloth is worn at Zimbabwean celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "south_fash_isicholo",
+      "region": "south",
+      "country": "South Africa",
+      "category": "FASHION",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a married woman's flared hat in some Zulu dress?",
+      "options": [
+        "Isicholo",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The isicholo is a Zulu hat.",
+      "sources": [
+        {
+          "title": "Isicholo",
+          "url": "https://en.wikipedia.org/wiki/Isicholo",
+          "claim": "The isicholo is a Zulu hat",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "south_fash_shweshwe2",
+      "region": "south",
+      "country": "Botswana",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is German-print cloth used in Botswana dress?",
+      "options": [
+        "Leteisi",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Leteisi is a printed cloth used in Botswana.",
+      "sources": [
+        {
+          "title": "Shweshwe",
+          "url": "https://en.wikipedia.org/wiki/Shweshwe",
+          "claim": "Leteisi is a printed cloth used in Botswana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_fash_culture_of_malawi",
+      "region": "south",
+      "country": "Malawi",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is the printed wrap of Malawi?",
+      "options": [
+        "Chitenje",
+        "Shweshwe",
+        "Basotho blanket",
+        "Mokorotlo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Printed wraps are worn in Malawi.",
+      "sources": [
+        {
+          "title": "Culture of Malawi",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Malawi",
+          "claim": "Printed wraps are worn in Malawi",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_lang_zulu_language2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is an isiZulu hello?",
+      "options": [
+        "Sawubona",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Sawubona means hello in isiZulu.",
+      "sources": [
+        {
+          "title": "Zulu language",
+          "url": "https://en.wikipedia.org/wiki/Zulu_language",
+          "claim": "Sawubona means hello in isiZulu",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_lang_xhosa_language2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which language point is an isiXhosa hello?",
+      "options": [
+        "Molo",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Molo is a greeting in isiXhosa.",
+      "sources": [
+        {
+          "title": "Xhosa language",
+          "url": "https://en.wikipedia.org/wiki/Xhosa_language",
+          "claim": "Molo is a greeting in isiXhosa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_lang_languages_of_south_africa2",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is South Africa has twelve official languages after the 2023 addition of sign language?",
+      "options": [
+        "Eleven official",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "South Africa has multiple official languages.",
+      "sources": [
+        {
+          "title": "Languages of South Africa",
+          "url": "https://en.wikipedia.org/wiki/Languages_of_South_Africa",
+          "claim": "South Africa has multiple official languages",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "south_lang_tsonga_language",
+      "region": "south",
+      "country": "South Africa",
+      "category": "LANGUAGE",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which language point is an official language of South Africa?",
+      "options": [
+        "Xitsonga",
+        "isiZulu",
+        "isiXhosa",
+        "Afrikaans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Xitsonga is a language of South Africa.",
+      "sources": [
+        {
+          "title": "Tsonga language",
+          "url": "https://en.wikipedia.org/wiki/Tsonga_language",
+          "claim": "Xitsonga is a language of South Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "south_fest_azgo_festival",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is a music and arts festival in Mozambique?",
+      "options": [
+        "Azgo",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Azgo Festival is held in Mozambique.",
+      "sources": [
+        {
+          "title": "Azgo Festival",
+          "url": "https://en.wikipedia.org/wiki/Azgo_Festival",
+          "claim": "The Azgo Festival is held in Mozambique",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "south_fest_botswana",
+      "region": "south",
+      "country": "Botswana",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a cultural festival in Botswana?",
+      "options": [
+        "Dithubaruba",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Botswana holds cultural festivals.",
+      "sources": [
+        {
+          "title": "Botswana",
+          "url": "https://en.wikipedia.org/wiki/Botswana",
+          "claim": "Botswana holds cultural festivals",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_fest_public_holidays_in_namibia",
+      "region": "south",
+      "country": "Namibia",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is Namibia's national day on 21 March?",
+      "options": [
+        "Independence Day",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Namibia Independence Day is on 21 March.",
+      "sources": [
+        {
+          "title": "Public holidays in Namibia",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Namibia",
+          "claim": "Namibia Independence Day is on 21 March",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_fest_public_holidays_in_zimbabwe",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is Zimbabwe's national day on 18 April?",
+      "options": [
+        "Independence Day",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zimbabwe Independence Day is on 18 April.",
+      "sources": [
+        {
+          "title": "Public holidays in Zimbabwe",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Zimbabwe",
+          "claim": "Zimbabwe Independence Day is on 18 April",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_fest_public_holidays_in_mozambique",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is Mozambique's national day on 25 June?",
+      "options": [
+        "Independence Day",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mozambique Independence Day is on 25 June.",
+      "sources": [
+        {
+          "title": "Public holidays in Mozambique",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Mozambique",
+          "claim": "Mozambique Independence Day is on 25 June",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_fest_public_holidays_in_malawi",
+      "region": "south",
+      "country": "Malawi",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is Malawi's national day on 6 July?",
+      "options": [
+        "Independence Day",
+        "Heritage Day",
+        "Cape Town Jazz Festival",
+        "National Arts Festival"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Malawi Independence Day is on 6 July.",
+      "sources": [
+        {
+          "title": "Public holidays in Malawi",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Malawi",
+          "claim": "Malawi Independence Day is on 6 July",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_wedd_chitenge",
+      "region": "south",
+      "country": "Zambia",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is guests in matching printed wraps?",
+      "options": [
+        "Chitenge guests",
+        "Lobola talks",
+        "White wedding",
+        "Shweshwe bride"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Chitenge is worn by guests at Zambian weddings.",
+      "sources": [
+        {
+          "title": "Chitenge",
+          "url": "https://en.wikipedia.org/wiki/Chitenge",
+          "claim": "Chitenge is worn by guests at Zambian weddings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_wedd_capulana",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is bright wraps and marrabenta at the reception?",
+      "options": [
+        "Capulana party",
+        "Lobola talks",
+        "White wedding",
+        "Shweshwe bride"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Capulana is worn at Mozambican celebrations.",
+      "sources": [
+        {
+          "title": "Capulana",
+          "url": "https://en.wikipedia.org/wiki/Capulana",
+          "claim": "Capulana is worn at Mozambican celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_wedd_zulu_people",
+      "region": "south",
+      "country": "South Africa",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is a Zulu coming-of-age that is not a wedding, so pick the wedding feast instead: a shared meal?",
+      "options": [
+        "Umemulo",
+        "Lobola talks",
+        "White wedding",
+        "Shweshwe bride"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zulu weddings include a shared family meal.",
+      "sources": [
+        {
+          "title": "Zulu people",
+          "url": "https://en.wikipedia.org/wiki/Zulu_people",
+          "claim": "Zulu weddings include a shared family meal",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_wedd_tswana_language",
+      "region": "south",
+      "country": "Botswana",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is dumela greetings as guests arrive?",
+      "options": [
+        "Setswana welcome",
+        "Lobola talks",
+        "White wedding",
+        "Shweshwe bride"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Dumela is a Setswana greeting.",
+      "sources": [
+        {
+          "title": "Tswana language",
+          "url": "https://en.wikipedia.org/wiki/Tswana_language",
+          "claim": "Dumela is a Setswana greeting",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_wedd_lake_malawi",
+      "region": "south",
+      "country": "Malawi",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is lake fish on a wedding menu?",
+      "options": [
+        "Chambo feast",
+        "Lobola talks",
+        "White wedding",
+        "Shweshwe bride"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Fish from Lake Malawi is served at celebrations.",
+      "sources": [
+        {
+          "title": "Lake Malawi",
+          "url": "https://en.wikipedia.org/wiki/Lake_Malawi",
+          "claim": "Fish from Lake Malawi is served at celebrations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_wedd_culture_of_eswatini",
+      "region": "south",
+      "country": "Eswatini",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is elders discussing the marriage between families?",
+      "options": [
+        "Family cattle talk",
+        "Lobola talks",
+        "White wedding",
+        "Shweshwe bride"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Eswatini marriages involve both families.",
+      "sources": [
+        {
+          "title": "Culture of Eswatini",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Eswatini",
+          "claim": "Eswatini marriages involve both families",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_hist_zambia",
+      "region": "south",
+      "country": "Zambia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Zambia became independent?",
+      "options": [
+        "1964",
+        "Great Zimbabwe",
+        "Mapungubwe",
+        "1994"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zambia became independent in 1964.",
+      "sources": [
+        {
+          "title": "Zambia",
+          "url": "https://en.wikipedia.org/wiki/Zambia",
+          "claim": "Zambia became independent in 1964",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_hist_botswana",
+      "region": "south",
+      "country": "Botswana",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Botswana became independent?",
+      "options": [
+        "1966",
+        "Great Zimbabwe",
+        "Mapungubwe",
+        "1994"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Botswana became independent in 1966.",
+      "sources": [
+        {
+          "title": "Botswana",
+          "url": "https://en.wikipedia.org/wiki/Botswana",
+          "claim": "Botswana became independent in 1966",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_hist_mozambique",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Mozambique became independent?",
+      "options": [
+        "1975",
+        "Great Zimbabwe",
+        "Mapungubwe",
+        "1994"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mozambique became independent in 1975.",
+      "sources": [
+        {
+          "title": "Mozambique",
+          "url": "https://en.wikipedia.org/wiki/Mozambique",
+          "claim": "Mozambique became independent in 1975",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_hist_namibia",
+      "region": "south",
+      "country": "Namibia",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Namibia became independent?",
+      "options": [
+        "1990",
+        "Great Zimbabwe",
+        "Mapungubwe",
+        "1994"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Namibia became independent in 1990.",
+      "sources": [
+        {
+          "title": "Namibia",
+          "url": "https://en.wikipedia.org/wiki/Namibia",
+          "claim": "Namibia became independent in 1990",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_hist_zimbabwe",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Zimbabwe became independent?",
+      "options": [
+        "1980",
+        "Great Zimbabwe",
+        "Mapungubwe",
+        "1994"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Zimbabwe became independent in 1980.",
+      "sources": [
+        {
+          "title": "Zimbabwe",
+          "url": "https://en.wikipedia.org/wiki/Zimbabwe",
+          "claim": "Zimbabwe became independent in 1980",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_hist_malawi",
+      "region": "south",
+      "country": "Malawi",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Malawi became independent?",
+      "options": [
+        "1964 Malawi",
+        "Great Zimbabwe",
+        "Mapungubwe",
+        "1994"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Malawi became independent in 1964.",
+      "sources": [
+        {
+          "title": "Malawi",
+          "url": "https://en.wikipedia.org/wiki/Malawi",
+          "claim": "Malawi became independent in 1964",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_hist_eswatini",
+      "region": "south",
+      "country": "Eswatini",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Eswatini, then Swaziland, became independent?",
+      "options": [
+        "1968",
+        "Great Zimbabwe",
+        "Mapungubwe",
+        "1994"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Eswatini became independent in 1968.",
+      "sources": [
+        {
+          "title": "Eswatini",
+          "url": "https://en.wikipedia.org/wiki/Eswatini",
+          "claim": "Eswatini became independent in 1968",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_peop_j_m_coetzee",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PEOPLE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which person is the Nobel Prize novelist of Disgrace?",
+      "options": [
+        "JM Coetzee",
+        "Nelson Mandela",
+        "Miriam Makeba person",
+        "Hugh Masekela person"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "J. M. Coetzee is a South African writer.",
+      "sources": [
+        {
+          "title": "J. M. Coetzee",
+          "url": "https://en.wikipedia.org/wiki/J._M._Coetzee",
+          "claim": "J. M. Coetzee is a South African writer",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "south_popc_the_dogg_musician",
+      "region": "south",
+      "country": "Namibia",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which popular-culture name is a Namibian kwaito artist?",
+      "options": [
+        "The Dogg",
+        "Tyla",
+        "Black Coffee pop",
+        "Master KG"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Dogg is a Namibian musician.",
+      "sources": [
+        {
+          "title": "The Dogg (musician)",
+          "url": "https://en.wikipedia.org/wiki/The_Dogg_(musician)",
+          "claim": "The Dogg is a Namibian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "south_spor_south_africa_women_s_national_football_team",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the nickname of South Africa's women's football team?",
+      "options": [
+        "Banyana Banyana",
+        "Springboks",
+        "Siya Kolisi",
+        "Bafana Bafana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The South Africa women's team is nicknamed Banyana Banyana.",
+      "sources": [
+        {
+          "title": "South Africa women's national football team",
+          "url": "https://en.wikipedia.org/wiki/South_Africa_women's_national_football_team",
+          "claim": "The South Africa women's team is nicknamed Banyana Banyana",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "south_spor_wayde_van_niekerk",
+      "region": "south",
+      "country": "South Africa",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the Olympic 400 metre champion?",
+      "options": [
+        "Wayde van Niekerk",
+        "Springboks",
+        "Siya Kolisi",
+        "Bafana Bafana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wayde van Niekerk is a South African sprinter.",
+      "sources": [
+        {
+          "title": "Wayde van Niekerk",
+          "url": "https://en.wikipedia.org/wiki/Wayde_van_Niekerk",
+          "claim": "Wayde van Niekerk is a South African sprinter",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "south_spor_letsile_tebogo",
+      "region": "south",
+      "country": "Botswana",
+      "category": "SPORT",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which sporting name is the Olympic 200 metre champion?",
+      "options": [
+        "Letsile Tebogo",
+        "Springboks",
+        "Siya Kolisi",
+        "Bafana Bafana"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Letsile Tebogo is a Botswanan sprinter.",
+      "sources": [
+        {
+          "title": "Letsile Tebogo",
+          "url": "https://en.wikipedia.org/wiki/Letsile_Tebogo",
+          "claim": "Letsile Tebogo is a Botswanan sprinter",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "south_geog_southern_africa",
+      "region": "south",
+      "country": "Southern Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Select three Southern African capital or major cities.",
+      "options": [
+        "Gaborone",
+        "Windhoek",
+        "Maputo",
+        "Algiers"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Gaborone, Windhoek and Maputo are capitals in Southern Africa. Algiers is in Algeria.",
+      "sources": [
+        {
+          "title": "Southern Africa",
+          "url": "https://en.wikipedia.org/wiki/Southern_Africa",
+          "claim": "Gaborone, Windhoek and Maputo are Southern African capitals",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "south_prov_tswana_language",
+      "region": "south",
+      "country": "South Africa",
+      "category": "PROVERBS",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Setswana line: kgosi ke kgosi ka ___.",
+      "options": [
+        "batho",
+        "gauta",
+        "pula",
+        "dijo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kgosi ke kgosi ka batho means a chief is a chief through the people.",
+      "sources": [
+        {
+          "title": "Tswana language",
+          "url": "https://en.wikipedia.org/wiki/Tswana_language",
+          "claim": "A Setswana proverb says kgosi ke kgosi ka batho",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support",
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support",
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "south_bw_seperu_elements",
+      "region": "south",
+      "country": "Botswana",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which arts are part of public descriptions of Seperu?",
+      "options": [
+        "Singing and dancing",
+        "Stone carving and metal casting",
+        "Poetry without movement",
+        "Puppet theatre only"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Seperu combines performance with sacred practices that require disclosure boundaries.",
+      "sources": [
+        {
+          "title": "Seperu folkdance and associated practices",
+          "url": "https://ich.unesco.org/en/USL/seperu-folkdance-and-associated-practices-01502",
+          "claim": "Veekuhane Seperu combines singing, dancing and sacred practices at important life milestones; public descriptions identify layered mushishi dresses and intergenerational transmission."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "south_bw_seperu_milestones",
+      "region": "south",
+      "country": "Botswana",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "When is Seperu performed according to UNESCO?",
+      "options": [
+        "Only during parliamentary elections",
+        "Only at football finals",
+        "Only during lunar eclipses",
+        "At ceremonies marking important life milestones"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The practice is tied to specific Veekuhane community occasions.",
+      "sources": [
+        {
+          "title": "Seperu folkdance and associated practices",
+          "url": "https://ich.unesco.org/en/USL/seperu-folkdance-and-associated-practices-01502",
+          "claim": "Veekuhane Seperu combines singing, dancing and sacred practices at important life milestones; public descriptions identify layered mushishi dresses and intergenerational transmission."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "south_za_rights_count",
+      "region": "south",
+      "country": "South Africa",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "How many component places make up the Nelson Mandela Legacy Sites property?",
+      "options": [
+        "Fourteen",
+        "Four",
+        "Forty",
+        "One hundred"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The serial property links places across South Africa.",
+      "sources": [
+        {
+          "title": "Human Rights, Liberation and Reconciliation: Nelson Mandela Legacy Sites",
+          "url": "https://whc.unesco.org/en/list/1676",
+          "claim": "Fourteen South African places of memory connect the twentieth-century struggle against apartheid with human rights, liberation, reconciliation, non-racialism, Pan-Africanism and ubuntu."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Colonialism, apartheid, political imprisonment or violence: trauma-informed historical and community review is required.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "fail",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "options_nested"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "options_nested"
+      ]
+    },
+    {
+      "id": "south_sz_ngwenya_status",
+      "region": "south",
+      "country": "Eswatini",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "How should Ngwenya Mines be described in UNESCO terms?",
+      "options": [
+        "A transatlantic marine reserve",
+        "An Eswatini Tentative List property",
+        "A World Heritage property already inscribed",
+        "An intangible dance element"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Tentative-list status must not be confused with inscription.",
+      "sources": [
+        {
+          "title": "Ngwenya Mines",
+          "url": "https://whc.unesco.org/en/tentativelists/5421",
+          "claim": "Eswatini's tentative-list Ngwenya Mines preserve evidence of ancient red ochre and specularite extraction, later iron working and modern mining history in the Hhohho region."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Regional or national classification is editorial, not a claim of uniform identity; require local review of cross-border framing.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_trauma"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_trauma"
+      ]
+    },
+    {
+      "id": "south_zw_matobo_living",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Why are parts of Matobo still important to local communities?",
+      "options": [
+        "They are closed to all cultural practice",
+        "They include living shrines and sacred places",
+        "They contain an active international airport",
+        "They host only abandoned factories"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "No restricted ritual detail is included in this draft.",
+      "sources": [
+        {
+          "title": "Matobo Hills",
+          "url": "https://whc.unesco.org/en/list/306",
+          "claim": "Zimbabwe's Matobo Hills combine distinctive granite landforms, long human occupation, dense rock art and living sacred places that remain important to local communities."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "south_zm_mooba_who",
+      "region": "south",
+      "country": "Zambia",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Who performs the Mooba dance in Lenje communities?",
+      "options": [
+        "Women and men",
+        "Only visiting tourists",
+        "Only children under ten",
+        "Only government officials"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "UNESCO describes participation by both women and men.",
+      "sources": [
+        {
+          "title": "Mooba dance of the Lenje ethnic group of Central Province of Zambia",
+          "url": "https://ich.unesco.org/en/RL/mooba-dance-of-the-lenje-ethnic-group-of-central-province-of-zambia-01372",
+          "claim": "Lenje Mooba is performed by women and men in Central, Copperbelt and Lusaka Provinces, combining dance, drumming, song and public social transmission with spiritual and healing meanings."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "south_zm_mooba_learning",
+      "region": "south",
+      "country": "Zambia",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "How can children learn the public performance of Mooba?",
+      "options": [
+        "By avoiding performances",
+        "By observing and practising at open social functions",
+        "Only by reading secret texts",
+        "Only through foreign conservatories"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Sacred and healing meanings still require Lenje knowledge-holder review.",
+      "sources": [
+        {
+          "title": "Mooba dance of the Lenje ethnic group of Central Province of Zambia",
+          "url": "https://ich.unesco.org/en/RL/mooba-dance-of-the-lenje-ethnic-group-of-central-province-of-zambia-01372",
+          "claim": "Lenje Mooba is performed by women and men in Central, Copperbelt and Lusaka Provinces, combining dance, drumming, song and public social transmission with spiritual and healing meanings."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or restricted material: retain only public-source detail and require community knowledge-holder review before any progression.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    }
+  ]
+}

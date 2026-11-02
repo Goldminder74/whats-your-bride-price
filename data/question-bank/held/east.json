@@ -1,0 +1,3355 @@
+{
+  "region": "east",
+  "questions": [
+    {
+      "id": "east_food_kenya",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FOOD",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which dish is milky spiced tea drunk throughout Kenya?",
+      "options": [
+        "Chai",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tea is widely drunk in Kenya.",
+      "sources": [
+        {
+          "title": "Kenya",
+          "url": "https://en.wikipedia.org/wiki/Kenya",
+          "claim": "Tea is widely drunk in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_food_tibs",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which dish is sautéed meat, an Ethiopian restaurant favourite?",
+      "options": [
+        "Tibs",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tibs is a meat dish from Ethiopia.",
+      "sources": [
+        {
+          "title": "Tibs",
+          "url": "https://en.wikipedia.org/wiki/Tibs",
+          "claim": "Tibs is a meat dish from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_food_pilau",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is spiced rice associated with the Swahili coast?",
+      "options": [
+        "Pilau",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pilau is a spiced rice dish.",
+      "sources": [
+        {
+          "title": "Pilau",
+          "url": "https://en.wikipedia.org/wiki/Pilau",
+          "claim": "Pilau is a spiced rice dish",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_food_swahili_cuisine",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which dish is a Swahili word for stew or sauce?",
+      "options": [
+        "Mchuzi",
+        "Injera",
+        "Doro wat",
+        "Nyama choma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Mchuzi means stew in Swahili cooking.",
+      "sources": [
+        {
+          "title": "Swahili cuisine",
+          "url": "https://en.wikipedia.org/wiki/Swahili_cuisine",
+          "claim": "Mchuzi means stew in Swahili cooking",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "east_musi_ngoma",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is a Swahili word for drum, dance, and celebration?",
+      "options": [
+        "Ngoma",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ngoma means drum and dance in East Africa.",
+      "sources": [
+        {
+          "title": "Ngoma",
+          "url": "https://en.wikipedia.org/wiki/Ngoma",
+          "claim": "Ngoma means drum and dance in East Africa",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_musi_krar",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which music or dance name is a bowl lyre of Ethiopia and Eritrea?",
+      "options": [
+        "Krar",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The krar is a lyre from Ethiopia.",
+      "sources": [
+        {
+          "title": "Krar",
+          "url": "https://en.wikipedia.org/wiki/Krar",
+          "claim": "The krar is a lyre from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_musi_krar_fill",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Fill the blank. In Ethiopia, a bowl lyre of Ethiopia and Eritrea. The name to write is ___.",
+      "options": [
+        "Krar",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The krar is a lyre from Ethiopia.",
+      "sources": [
+        {
+          "title": "Krar",
+          "url": "https://en.wikipedia.org/wiki/Krar",
+          "claim": "The krar is a lyre from Ethiopia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_musi_nyatiti",
+      "region": "east",
+      "country": "Kenya",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which music or dance name is the Luo lyre of Kenya?",
+      "options": [
+        "Nyatiti",
+        "Taarab",
+        "Bongo flava",
+        "Ethio-jazz"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The nyatiti is a lyre from Kenya.",
+      "sources": [
+        {
+          "title": "Nyatiti",
+          "url": "https://en.wikipedia.org/wiki/Nyatiti",
+          "claim": "The nyatiti is a lyre from Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "east_fash_umushanana",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is the draped formal dress of Rwandan celebrations?",
+      "options": [
+        "Umushanana",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The umushanana is a dress from Rwanda.",
+      "sources": [
+        {
+          "title": "Umushanana",
+          "url": "https://en.wikipedia.org/wiki/Umushanana",
+          "claim": "The umushanana is a dress from Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "east_fash_tibeb",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is the colourful woven border on Ethiopian cotton cloth?",
+      "options": [
+        "Tibeb",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tibeb is a woven border on Ethiopian cloth.",
+      "sources": [
+        {
+          "title": "Tibeb",
+          "url": "https://en.wikipedia.org/wiki/Tibeb",
+          "claim": "Tibeb is a woven border on Ethiopian cloth",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "east_fash_maasai_people",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is the beadwork collars associated with Maasai dress?",
+      "options": [
+        "Bead collars",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Maasai beadwork is worn in Kenya.",
+      "sources": [
+        {
+          "title": "Maasai people",
+          "url": "https://en.wikipedia.org/wiki/Maasai_people",
+          "claim": "Maasai beadwork is worn in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_fash_dirac_garment",
+      "region": "east",
+      "country": "Somalia",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is a long dress worn by Somali women?",
+      "options": [
+        "Dirac",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The dirac is a dress worn in Somalia.",
+      "sources": [
+        {
+          "title": "Dirac (garment)",
+          "url": "https://en.wikipedia.org/wiki/Dirac_(garment)",
+          "claim": "The dirac is a dress worn in Somalia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "east_fash_dirac_garment_fill",
+      "region": "east",
+      "country": "Somalia",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Fill the blank. In Somalia, a long dress worn by Somali women. The name to write is ___.",
+      "options": [
+        "Dirac",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The dirac is a dress worn in Somalia.",
+      "sources": [
+        {
+          "title": "Dirac (garment)",
+          "url": "https://en.wikipedia.org/wiki/Dirac_(garment)",
+          "claim": "The dirac is a dress worn in Somalia",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "east_fash_macawiis",
+      "region": "east",
+      "country": "Somalia",
+      "category": "FASHION",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which cloth or dress style is the sarong worn by Somali men?",
+      "options": [
+        "Macawiis",
+        "Kanga",
+        "Kitenge",
+        "Kikoi"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The macawiis is a garment worn by Somali men.",
+      "sources": [
+        {
+          "title": "Macawiis",
+          "url": "https://en.wikipedia.org/wiki/Macawiis",
+          "claim": "The macawiis is a garment worn by Somali men",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "east_lang_swahili_language2",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which language point is the everyday coastal language people use to say jambo and asante?",
+      "options": [
+        "Swahili greeting",
+        "Amharic",
+        "Oromo",
+        "Tigrinya"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jambo and asante are Swahili words.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Jambo and asante are Swahili words",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_fest_umuganura",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is the national harvest day of Rwanda?",
+      "options": [
+        "Umuganura",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Umuganura is a harvest celebration in Rwanda.",
+      "sources": [
+        {
+          "title": "Umuganura",
+          "url": "https://en.wikipedia.org/wiki/Umuganura",
+          "claim": "Umuganura is a harvest celebration in Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "east_fest_madagascar",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "FESTIVALS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which celebration is the Malagasy New Year?",
+      "options": [
+        "Alahamady Be",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Malagasy New Year is celebrated in Madagascar.",
+      "sources": [
+        {
+          "title": "Madagascar",
+          "url": "https://en.wikipedia.org/wiki/Madagascar",
+          "claim": "The Malagasy New Year is celebrated in Madagascar",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_fest_public_holidays_in_kenya2",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which celebration is Kenya's independence day on 12 December?",
+      "options": [
+        "Jamhuri Day",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jamhuri Day is Kenya's independence holiday.",
+      "sources": [
+        {
+          "title": "Public holidays in Kenya",
+          "url": "https://en.wikipedia.org/wiki/Public_holidays_in_Kenya",
+          "claim": "Jamhuri Day is Kenya's independence holiday",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_fest_seychelles",
+      "region": "east",
+      "country": "Seychelles",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which celebration is a festival celebrating Seychellois Creole culture?",
+      "options": [
+        "Creole Festival",
+        "Timkat",
+        "Irreecha",
+        "Enkutatash"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Seychelles holds a Creole festival.",
+      "sources": [
+        {
+          "title": "Seychelles",
+          "url": "https://en.wikipedia.org/wiki/Seychelles",
+          "claim": "Seychelles holds a Creole festival",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_wedd_kikuyu_people",
+      "region": "east",
+      "country": "Kenya",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is the Kikuyu family introduction before a wedding?",
+      "options": [
+        "Ruracio",
+        "Kanga gift",
+        "Coffee ceremony",
+        "Habesha dress"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ruracio is part of Kikuyu marriage negotiations.",
+      "sources": [
+        {
+          "title": "Kikuyu people",
+          "url": "https://en.wikipedia.org/wiki/Kikuyu_people",
+          "claim": "Ruracio is part of Kikuyu marriage negotiations",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_wedd_swahili_language",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "WEDDINGS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which wedding custom is the Swahili word for a wedding party?",
+      "options": [
+        "Harusi",
+        "Kanga gift",
+        "Coffee ceremony",
+        "Habesha dress"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Harusi means wedding in Swahili.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Harusi means wedding in Swahili",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_wedd_culture_of_rwanda",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is the formal family visit that opens many Rwandan marriages?",
+      "options": [
+        "Gusaba",
+        "Kanga gift",
+        "Coffee ceremony",
+        "Habesha dress"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Gusaba is a marriage introduction in Rwanda.",
+      "sources": [
+        {
+          "title": "Culture of Rwanda",
+          "url": "https://en.wikipedia.org/wiki/Culture_of_Rwanda",
+          "claim": "Gusaba is a marriage introduction in Rwanda",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_wedd_henna",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "WEDDINGS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which wedding custom is painting the bride's hands before a coastal Muslim wedding?",
+      "options": [
+        "Henna night",
+        "Kanga gift",
+        "Coffee ceremony",
+        "Habesha dress"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Henna is applied before weddings on the Swahili coast.",
+      "sources": [
+        {
+          "title": "Henna",
+          "url": "https://en.wikipedia.org/wiki/Henna",
+          "claim": "Henna is applied before weddings on the Swahili coast",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_wedd_dirac_garment",
+      "region": "east",
+      "country": "Somalia",
+      "category": "WEDDINGS",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which wedding custom is the bridal headscarf of a Somali wedding?",
+      "options": [
+        "Shaash",
+        "Kanga gift",
+        "Coffee ceremony",
+        "Habesha dress"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Somali brides wear special dress at weddings.",
+      "sources": [
+        {
+          "title": "Dirac (garment)",
+          "url": "https://en.wikipedia.org/wiki/Dirac_(garment)",
+          "claim": "Somali brides wear special dress at weddings",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "east_hist_kenya",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Kenya became independent?",
+      "options": [
+        "1963",
+        "Kingdom of Aksum",
+        "Lalibela",
+        "Buganda"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Kenya became independent in 1963.",
+      "sources": [
+        {
+          "title": "Kenya",
+          "url": "https://en.wikipedia.org/wiki/Kenya",
+          "claim": "Kenya became independent in 1963",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_hist_tanzania",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Tanganyika became independent?",
+      "options": [
+        "1961",
+        "Kingdom of Aksum",
+        "Lalibela",
+        "Buganda"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Tanganyika became independent in 1961.",
+      "sources": [
+        {
+          "title": "Tanzania",
+          "url": "https://en.wikipedia.org/wiki/Tanzania",
+          "claim": "Tanganyika became independent in 1961",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_hist_uganda",
+      "region": "east",
+      "country": "Uganda",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which historical name is the year Uganda became independent?",
+      "options": [
+        "1962",
+        "Kingdom of Aksum",
+        "Lalibela",
+        "Buganda"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Uganda became independent in 1962.",
+      "sources": [
+        {
+          "title": "Uganda",
+          "url": "https://en.wikipedia.org/wiki/Uganda",
+          "claim": "Uganda became independent in 1962",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_hist_gedi_ruins",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HISTORY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which historical name is the ruined Swahili stone town on the Kenyan coast?",
+      "options": [
+        "Gedi",
+        "Kingdom of Aksum",
+        "Lalibela",
+        "Buganda"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The Gedi ruins are a historic town in Kenya.",
+      "sources": [
+        {
+          "title": "Gedi ruins",
+          "url": "https://en.wikipedia.org/wiki/Gedi_ruins",
+          "claim": "The Gedi ruins are a historic town in Kenya",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "unchecked",
+          "http": 404
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_http"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_http"
+      ]
+    },
+    {
+      "id": "east_popc_alikiba",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which popular-culture name is a Tanzanian bongo flava singer and actor?",
+      "options": [
+        "Alikiba",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Alikiba is a Tanzanian musician.",
+      "sources": [
+        {
+          "title": "Alikiba",
+          "url": "https://en.wikipedia.org/wiki/Alikiba",
+          "claim": "Alikiba is a Tanzanian musician",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "east_popc_rwanda",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "POP",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Which popular-culture name is a Rwandan Afrobeats and pop singer?",
+      "options": [
+        "The Ben",
+        "Diamond Platnumz",
+        "Sauti Sol",
+        "Eddy Kenzo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rwandan pop is part of East African music.",
+      "sources": [
+        {
+          "title": "Rwanda",
+          "url": "https://en.wikipedia.org/wiki/Rwanda",
+          "claim": "Rwandan pop is part of East African music",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_lang_swahili_language3",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Swahili thank-you: Asante means ___.",
+      "options": [
+        "thank you",
+        "goodbye",
+        "come in",
+        "sit down"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Asante means thank you.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Asante means thank you in Swahili",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_lang_swahili_language4",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Swahili greeting: Jambo means ___.",
+      "options": [
+        "hello",
+        "market",
+        "river",
+        "dance"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Jambo is a Swahili hello.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Jambo means hello in Swahili",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_prov_swahili_language",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "PROVERBS",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the Swahili proverb: Haraka haraka haina ___.",
+      "options": [
+        "baraka",
+        "chakula",
+        "rafiki",
+        "nyumba"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Haraka haraka haina baraka means hurry has no blessing.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Haraka haraka haina baraka is a Swahili proverb",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support",
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support",
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "east_prov_swahili_language2",
+      "region": "east",
+      "country": "East Africa",
+      "category": "PROVERBS",
+      "difficulty": "medium",
+      "kind": "complete",
+      "prompt": "Complete the Swahili saying: Pole pole ndiyo ___.",
+      "options": [
+        "mwendo",
+        "chakula",
+        "bahari",
+        "ngoma"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pole pole ndiyo mwendo means slowly is the way.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Pole pole ndiyo mwendo is a Swahili saying",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support",
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support",
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "east_lang_amharic2",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Amharic thank-you: Ameseginalehu means ___.",
+      "options": [
+        "thank you",
+        "good night",
+        "where",
+        "water"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ameseginalehu is thank you in Amharic.",
+      "sources": [
+        {
+          "title": "Amharic",
+          "url": "https://en.wikipedia.org/wiki/Amharic",
+          "claim": "Ameseginalehu means thank you in Amharic",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_lang_swahili_language5",
+      "region": "east",
+      "country": "East Africa",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "multi",
+      "prompt": "Select three widely spoken East African languages.",
+      "options": [
+        "Swahili",
+        "Amharic",
+        "Oromo",
+        "isiXhosa"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Swahili, Amharic and Oromo are major East African languages. isiXhosa is Southern African.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Swahili, Amharic and Oromo are East African languages",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "fail",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "duplicate_prompt"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "duplicate_prompt"
+      ]
+    },
+    {
+      "id": "east_lang_swahili_language6",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "complete",
+      "prompt": "Complete the Swahili thank-you you already know from the coast: asante sana means thank you very ___.",
+      "options": [
+        "much",
+        "late",
+        "spicy",
+        "quiet"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Asante means thank you, and asante sana adds very much.",
+      "sources": [
+        {
+          "title": "Swahili language",
+          "url": "https://en.wikipedia.org/wiki/Swahili_language",
+          "claim": "Asante means thank you in Swahili",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_geog_east_africa",
+      "region": "east",
+      "country": "East Africa",
+      "category": "GEOGRAPHY",
+      "difficulty": "easy",
+      "kind": "multi",
+      "prompt": "Select three East African capital cities.",
+      "options": [
+        "Nairobi",
+        "Kampala",
+        "Kigali",
+        "Rabat"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Nairobi, Kampala and Kigali are capitals in East Africa. Rabat is in Morocco.",
+      "sources": [
+        {
+          "title": "East Africa",
+          "url": "https://en.wikipedia.org/wiki/East_Africa",
+          "claim": "Nairobi, Kampala and Kigali are East African capitals",
+          "method": "page-overlap"
+        }
+      ],
+      "origin": "generated",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "fail",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "source_support"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "source_support"
+      ]
+    },
+    {
+      "id": "east_ethiopia_harar_counts",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which pair matches UNESCO's count for Harar Jugol?",
+      "options": [
+        "102 mosques and 8 shrines",
+        "5 mosques and 16 shrines",
+        "82 mosques and 102 shrines",
+        "12 mosques and 28 shrines"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The World Heritage record identifies 82 mosques and 102 shrines within Harar Jugol.",
+      "sources": [
+        {
+          "title": "Harar Jugol, the Fortified Historic Town",
+          "url": "https://whc.unesco.org/en/list/1189",
+          "claim": "Harar Jugol preserves a walled urban plan, mosques, shrines and distinctive Harari and Indian-influenced townhouses."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "east_kenya_isukuti_occasions",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which statement best describes the occasions for Isukuti?",
+      "options": [
+        "It is a private practice with no public gatherings",
+        "It appears across celebrations and life events, with context varying by occasion",
+        "It is restricted to one annual state parade",
+        "It is performed only for fishing competitions"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "UNESCO lists childbirths, initiations, weddings, funerals, commemorations and other gatherings, so it should not be reduced to one use.",
+      "sources": [
+        {
+          "title": "Isukuti dance of Isukha and Idakho communities of Western Kenya",
+          "url": "https://ich.unesco.org/en/RL/isukuti-dance-of-isukha-and-idakho-communities-of-western-kenya-00981",
+          "claim": "Isukuti is an Isukha and Idakho celebratory dance using three sizes of drums, singing, an antelope horn and metal rattles."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_initiation"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_initiation"
+      ]
+    },
+    {
+      "id": "east_kenya_mijikenda_extent",
+      "region": "east",
+      "country": "Kenya",
+      "category": "GEOGRAPHY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What does the World Heritage property called the Sacred Mijikenda Kaya Forests comprise?",
+      "options": [
+        "Ten forest sites spread along roughly 200 kilometres of coast",
+        "One forest surrounding a single modern city",
+        "Thirty islands in an inland lake",
+        "Five desert oases linked by caravans"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The serial property contains ten separate forest sites along a long stretch of Kenya's coast.",
+      "sources": [
+        {
+          "title": "Sacred Mijikenda Kaya Forests",
+          "url": "https://whc.unesco.org/en/list/1231",
+          "claim": "Ten forest sites along about 200 kilometres of Kenya's coast contain kaya settlement remains and remain sacred to Mijikenda communities."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "east_kenya_mijikenda_meaning",
+      "region": "east",
+      "country": "Kenya",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Why are the kaya forest sites treated with special care today?",
+      "options": [
+        "They are unused plantations managed only for export",
+        "They contain the country's only modernist cinemas",
+        "They are temporary camps rebuilt each year",
+        "They are regarded as sacred ancestral places maintained through community custodianship"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The kayas moved from settlement use into a sacred and ancestral role, with elders and communities central to care.",
+      "sources": [
+        {
+          "title": "Sacred Mijikenda Kaya Forests",
+          "url": "https://whc.unesco.org/en/list/1231",
+          "claim": "Ten forest sites along about 200 kilometres of Kenya's coast contain kaya settlement remains and remain sacred to Mijikenda communities."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "east_kenya_foodways_youth",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What role did schoolchildren have in the Kenyan foodways safeguarding work?",
+      "options": [
+        "They selected a single national recipe for every household",
+        "They replaced community names with scientific codes",
+        "They judged which food tradition was culturally superior",
+        "They helped document community food knowledge through guided interviews and inventorying"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The participatory approach trained pupils to work with relatives, elders and community members rather than treating them as passive subjects.",
+      "sources": [
+        {
+          "title": "Success story of promoting traditional foods and safeguarding traditional foodways in Kenya",
+          "url": "https://ich.unesco.org/en/BSP/success-story-of-promoting-traditional-foods-and-safeguarding-traditional-foodways-in-kenya-01409",
+          "claim": "Kenyan community, museum and school partnerships documented local foodways, including about 850 indigenous plants with local names."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "fail",
+        "region": "pass",
+        "reasons": [
+          "ambiguity_claim"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "ambiguity_claim"
+      ]
+    },
+    {
+      "id": "east_uganda_madi_occasions",
+      "region": "east",
+      "country": "Uganda",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which set includes documented contexts for Ma'di bowl-lyre music and dance?",
+      "options": [
+        "Only competitive fishing and boat races",
+        "Only private instrument-making lessons",
+        "Weddings, harvest celebrations, education, conflict resolution and mourning",
+        "Only coronations and no other events"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The practice has multiple social purposes and should not be reduced to a single ceremony.",
+      "sources": [
+        {
+          "title": "Ma'di bowl lyre music and dance",
+          "url": "https://ich.unesco.org/en/USL/ma-di-bowl-lyre-music-and-dance-01187",
+          "claim": "Ma'di bowl-lyre music and dance serves weddings, harvests, education, conflict resolution and mourning while supporting family and clan ties."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "east_east_kiswahili_lingua_franca",
+      "region": "east",
+      "country": "Burundi; Kenya; Malawi; Mozambique; Rwanda; Somalia; Tanzania; Uganda; Zambia",
+      "category": "LANGUAGE",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which statement best describes Kiswahili's regional role?",
+      "options": [
+        "It is a first or additional language and a lingua franca across many communities",
+        "It is used only on one island",
+        "It has no written or teaching tradition",
+        "Every East African speaks it as a first language"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The university resource describes wide regional use while avoiding the claim that every East African has the same language background.",
+      "sources": [
+        {
+          "title": "Kiswahili Lessons",
+          "url": "https://kiswahili.ku.edu/lessons",
+          "claim": "The university resource documents Kiswahili as a regional lingua franca and provides greeting-and-response forms for contextual language learning."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Language form and social context require review by fluent Kiswahili speakers from relevant East African communities.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_east_kiswahili_greeting",
+      "region": "east",
+      "country": "Burundi; Kenya; Malawi; Mozambique; Rwanda; Somalia; Tanzania; Uganda; Zambia",
+      "category": "LANGUAGE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which response pair appears in the University of Kansas Kiswahili greetings lesson?",
+      "options": [
+        "Upo? — Káàárọ̀.",
+        "Jioni njema. — Buurisame.",
+        "Lala salama. — Empaako.",
+        "Upo? — Nipo."
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The lesson pairs Upo? ('Are you there?') with Nipo ('I am here'); usage still needs fluent-speaker review.",
+      "sources": [
+        {
+          "title": "Kiswahili Lessons",
+          "url": "https://kiswahili.ku.edu/lessons",
+          "claim": "The university resource documents Kiswahili as a regional lingua franca and provides greeting-and-response forms for contextual language learning."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Language form and social context require review by fluent Kiswahili speakers from relevant East African communities.",
+      "gateReport": {
+        "schema": "fail",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "schema_dash",
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "schema_dash",
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_burundi_royal_drum_layout",
+      "region": "east",
+      "country": "Burundi",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "How are drums arranged for Burundi's ritual dance of the royal drum?",
+      "options": [
+        "An odd number in a semicircle around a central drum",
+        "An even number hidden in separate rooms",
+        "One drum suspended over the audience",
+        "Three rows with no central instrument"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "UNESCO describes at least about a dozen drums, always odd in number, arranged around the central drum.",
+      "sources": [
+        {
+          "title": "Ritual dance of the royal drum",
+          "url": "https://ich.unesco.org/en/RL/ritual-dance-of-the-royal-drum-00989",
+          "claim": "Burundi's royal-drum dance combines synchronized drumming, dance, poetry and song, arranging an odd number of drums around a central drum."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "east_burundi_royal_drum_roles",
+      "region": "east",
+      "country": "Burundi",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which combination belongs to Burundi's royal-drum dance?",
+      "options": [
+        "Silent weaving and stone carving",
+        "Solo flute without movement or words",
+        "Boat racing followed by metal casting",
+        "Synchronized drumming, dance, heroic poetry and traditional song"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The performance brings these arts together at national or local feasts and welcomes.",
+      "sources": [
+        {
+          "title": "Ritual dance of the royal drum",
+          "url": "https://ich.unesco.org/en/RL/ritual-dance-of-the-royal-drum-00989",
+          "claim": "Burundi's royal-drum dance combines synchronized drumming, dance, poetry and song, arranging an odd number of drums around a central drum."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_sacred"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred"
+      ]
+    },
+    {
+      "id": "east_madagascar_hiragasy_transmission",
+      "region": "east",
+      "country": "Madagascar",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "How is hiragasy often passed on within performing families?",
+      "options": [
+        "Families avoid all public performances",
+        "Children follow parents on tour and join performances",
+        "Only retirees may observe rehearsals",
+        "It is transmitted solely by imported recordings"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Informal family transmission remains important alongside the art's place in present-day cultural events.",
+      "sources": [
+        {
+          "title": "Hiragasy, a performing art of the Central Highlands of Madagascar",
+          "url": "https://ich.unesco.org/en/RL/hiragasy-a-performing-art-of-the-central-highlands-of-madagascar-01740",
+          "claim": "Hiragasy combines song, dance and speech in public performances that commonly involve two troupes and transmit moral, civic and cultural themes."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "fail",
+        "region": "pass",
+        "reasons": [
+          "ambiguity_claim"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "ambiguity_claim"
+      ]
+    },
+    {
+      "id": "east_malawi_nsima_component",
+      "region": "east",
+      "country": "Malawi",
+      "category": "FOOD",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is the food component called nsima?",
+      "options": [
+        "A thick porridge made with maize flour",
+        "A fermented fish sauce",
+        "A flatbread made only from teff",
+        "A sweet made from dates and almonds"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Nsima names the wider culinary tradition and a maize-flour porridge at its centre.",
+      "sources": [
+        {
+          "title": "Nsima, culinary tradition of Malawi",
+          "url": "https://ich.unesco.org/en/RL/nsima-culinary-tradition-of-malawi-01292",
+          "claim": "Nsima names both a Malawian culinary tradition and its thick maize-flour porridge component, prepared and eaten through communal practices."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_malawi_nsima_social",
+      "region": "east",
+      "country": "Malawi",
+      "category": "FOOD",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "How does UNESCO characterize eating nsima in families?",
+      "options": [
+        "As a meal that must always be eaten alone",
+        "As food reserved exclusively for state officials",
+        "As a practice with one fixed accompaniment everywhere",
+        "As a communal practice that can strengthen bonds"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The record emphasizes shared family meals and variable accompanying foods without prescribing a universal serving.",
+      "sources": [
+        {
+          "title": "Nsima, culinary tradition of Malawi",
+          "url": "https://ich.unesco.org/en/RL/nsima-culinary-tradition-of-malawi-01292",
+          "claim": "Nsima names both a Malawian culinary tradition and its thick maize-flour porridge component, prepared and eaten through communal practices."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_malawi_vimbuza_scope",
+      "region": "east",
+      "country": "Malawi",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Among which community is Vimbuza especially documented?",
+      "options": [
+        "Chopi people in southern Mozambique",
+        "Basoga people in eastern Uganda",
+        "Tumbuka people in northern Malawi",
+        "Harari people in eastern Ethiopia"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The UNESCO inscription locates Vimbuza among Tumbuka communities of northern Malawi.",
+      "sources": [
+        {
+          "title": "Vimbuza healing dance",
+          "url": "https://ich.unesco.org/en/RL/vimbuza-healing-dance-00158",
+          "claim": "Vimbuza is a Tumbuka healing dance of northern Malawi combining community singing, spirit-specific drumming and therapeutic ritual."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Living healing practice: health and community specialists must review the wording; it must not be presented as medical advice or a replacement for care.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_malawi_vimbuza_elements",
+      "region": "east",
+      "country": "Malawi",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which elements combine in the public description of Vimbuza?",
+      "options": [
+        "Xylophone tuning and ocean trade",
+        "Healing ritual, community singing and spirit-specific drumming",
+        "Coral masonry and carved doors",
+        "Horse racing and leatherwork"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Vimbuza combines dance, songs and particular drum rhythms in a community therapeutic setting.",
+      "sources": [
+        {
+          "title": "Vimbuza healing dance",
+          "url": "https://ich.unesco.org/en/RL/vimbuza-healing-dance-00158",
+          "claim": "Vimbuza is a Tumbuka healing dance of northern Malawi combining community singing, spirit-specific drumming and therapeutic ritual."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Living healing practice: health and community specialists must review the wording; it must not be presented as medical advice or a replacement for care.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_malawi_tchopa_drums",
+      "region": "east",
+      "country": "Malawi",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "How many different drum sizes does Tchopa use?",
+      "options": [
+        "Three",
+        "One",
+        "Seven",
+        "Twelve"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The UNESCO account specifies three sizes of drums accompanying the dance.",
+      "sources": [
+        {
+          "title": "Tchopa, sacrificial dance of the Lhomwe people of southern Malawi",
+          "url": "https://ich.unesco.org/en/RL/tchopa-sacrificial-dance-of-the-lhomwe-people-of-southern-malawi-00999",
+          "claim": "Lhomwe Tchopa uses song, three drum sizes and circular dance at harvest celebrations and specified ceremonial occasions."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "sensitivity_sacred",
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred",
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_malawi_tchopa_context",
+      "region": "east",
+      "country": "Malawi",
+      "category": "FESTIVALS",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which statement accurately scopes Tchopa?",
+      "options": [
+        "It is the standard harvest dance of every East African community",
+        "It is only a tourist show with no community role",
+        "It belongs exclusively to a coastal Swahili port",
+        "It is a Lhomwe practice of southern Malawi used at specified celebrations and ceremonial moments"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "Tchopa is associated with Lhomwe communities and particular harvest, hunting and ancestral contexts.",
+      "sources": [
+        {
+          "title": "Tchopa, sacrificial dance of the Lhomwe people of southern Malawi",
+          "url": "https://ich.unesco.org/en/RL/tchopa-sacrificial-dance-of-the-lhomwe-people-of-southern-malawi-00999",
+          "claim": "Lhomwe Tchopa uses song, three drum sizes and circular dance at harvest celebrations and specified ceremonial occasions."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Sacred or custodial heritage: use only public source material and require review by the relevant community knowledge-holders.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "sensitivity_sacred",
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_sacred",
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_malawi_zimbabwe_mbira_build",
+      "region": "east",
+      "country": "Malawi; Zimbabwe",
+      "category": "MUSIC",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "What forms the basic Mbira or Sansi instrument?",
+      "options": [
+        "One hollow gourd blown like a trumpet",
+        "Stone bars suspended over water",
+        "Metal keys attached to a wooden board",
+        "Strings stretched across a skin-covered bowl"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The metal keys are plucked and the board may be mounted on a calabash or wooden resonator.",
+      "sources": [
+        {
+          "title": "Art of crafting and playing Mbira/Sansi, the finger-plucking traditional musical instrument in Malawi and Zimbabwe",
+          "url": "https://ich.unesco.org/en/RL/art-of-crafting-and-playing-mbira-sansi-the-finger-plucking-traditional-musical-instrument-in-malawi-and-zimbabwe-01541",
+          "claim": "Mbira/Sansi uses metal keys on a wooden board, sometimes with a resonator, and produces cyclical music with interwoven melodies."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_malawi_zimbabwe_mbira_music",
+      "region": "east",
+      "country": "Malawi; Zimbabwe",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What musical structure is characteristic of Mbira or Sansi playing?",
+      "options": [
+        "Only unison singing without instruments",
+        "Cyclical themes with small variations and interwoven melodies",
+        "A single note repeated without variation",
+        "Music that excludes rhythm"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "UNESCO highlights repetition with variation and multiple interlocking melodic lines.",
+      "sources": [
+        {
+          "title": "Art of crafting and playing Mbira/Sansi, the finger-plucking traditional musical instrument in Malawi and Zimbabwe",
+          "url": "https://ich.unesco.org/en/RL/art-of-crafting-and-playing-mbira-sansi-the-finger-plucking-traditional-musical-instrument-in-malawi-and-zimbabwe-01541",
+          "claim": "Mbira/Sansi uses metal keys on a wooden board, sometimes with a resonator, and produces cyclical music with interwoven melodies."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_zimbabwe_mbende_scope",
+      "region": "east",
+      "country": "Zimbabwe",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Among whom is Mbende Jerusarema especially practised?",
+      "options": [
+        "Zezuru Shona communities of eastern Zimbabwe",
+        "Mijikenda communities of coastal Kenya",
+        "Harari communities of eastern Ethiopia",
+        "Rodriguan communities of Mauritius"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The UNESCO record gives a precise eastern Zimbabwean community and district scope.",
+      "sources": [
+        {
+          "title": "Mbende Jerusarema dance",
+          "url": "https://ich.unesco.org/en/RL/mbende-jerusarema-dance-00169",
+          "claim": "Mbende Jerusarema is a Zezuru Shona dance of eastern Zimbabwe accompanied by one master drummer, clappers, handclaps, yodelling and whistles."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Performance history and gendered or martial imagery require community review and must not be treated as a fixed social role.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_zimbabwe_mbende_music",
+      "region": "east",
+      "country": "Zimbabwe",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "What distinguishes Mbende Jerusarema's musical accompaniment in UNESCO's description?",
+      "options": [
+        "Thirty xylophones with a large choir",
+        "Five gourd trumpets with a central harp",
+        "Only a string quartet reading notation",
+        "One master drummer with clappers, handclaps, yodelling and whistles, but no song lyrics"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The account contrasts its one-drum polyrhythm and vocal sounds with dances using many drums or sung texts.",
+      "sources": [
+        {
+          "title": "Mbende Jerusarema dance",
+          "url": "https://ich.unesco.org/en/RL/mbende-jerusarema-dance-00169",
+          "claim": "Mbende Jerusarema is a Zezuru Shona dance of eastern Zimbabwe accompanied by one master drummer, clappers, handclaps, yodelling and whistles."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Performance history and gendered or martial imagery require community review and must not be treated as a fixed social role.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_zimbabwe_great_period",
+      "region": "east",
+      "country": "Zimbabwe",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which period is central to Great Zimbabwe's UNESCO description?",
+      "options": [
+        "The seventeenth to nineteenth centuries only",
+        "The mid-twentieth century",
+        "The eleventh to fifteenth centuries",
+        "The first to third centuries"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The monument is presented as major testimony to Shona civilisation between the eleventh and fifteenth centuries.",
+      "sources": [
+        {
+          "title": "Great Zimbabwe National Monument",
+          "url": "https://whc.unesco.org/en/list/364",
+          "claim": "Great Zimbabwe covers nearly 80 hectares and bears testimony to Shona civilisation and an important trading centre between the eleventh and fifteenth centuries."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_zimbabwe_great_scale",
+      "region": "east",
+      "country": "Zimbabwe",
+      "category": "GEOGRAPHY",
+      "difficulty": "hard",
+      "kind": "single",
+      "prompt": "Approximately how large is the Great Zimbabwe archaeological city in UNESCO's summary?",
+      "options": [
+        "More than 8,000 square kilometres",
+        "Nearly 80 hectares",
+        "Less than one hectare",
+        "About eight square metres"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "UNESCO describes an extensive city of nearly 80 hectares that also served as an important trading centre.",
+      "sources": [
+        {
+          "title": "Great Zimbabwe National Monument",
+          "url": "https://whc.unesco.org/en/list/364",
+          "claim": "Great Zimbabwe covers nearly 80 hectares and bears testimony to Shona civilisation and an important trading centre between the eleventh and fifteenth centuries."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_mozambique_timbila_orchestra",
+      "region": "east",
+      "country": "Mozambique",
+      "category": "MUSIC",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "How many wooden xylophones may form a Chopi timbila orchestra?",
+      "options": [
+        "About five to thirty",
+        "Exactly one",
+        "Exactly two hundred",
+        "No instruments are used"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The source describes orchestras ranging from five to thirty timbila of different sizes and pitches.",
+      "sources": [
+        {
+          "title": "Chopi Timbila",
+          "url": "https://ich.unesco.org/en/RL/chopi-timbila-00133",
+          "claim": "Chopi orchestras in southern Mozambique use five to thirty tuned wooden timbila with calabash resonators and compose new pieces for community events."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_mozambique_timbila_resonator",
+      "region": "east",
+      "country": "Mozambique",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What is fastened beneath each wooden timbila slat as a resonator?",
+      "options": [
+        "A steel cooking pot filled with water",
+        "A glass bottle sealed with clay",
+        "A leather bag filled with grain",
+        "A calabash sealed with beeswax"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "Calabash resonators, sealed with beeswax and treated with nkuso-fruit oil, help create the timbila sound.",
+      "sources": [
+        {
+          "title": "Chopi Timbila",
+          "url": "https://ich.unesco.org/en/RL/chopi-timbila-00133",
+          "claim": "Chopi orchestras in southern Mozambique use five to thirty tuned wooden timbila with calabash resonators and compose new pieces for community events."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": null,
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_mozambique_mapiko_scope",
+      "region": "east",
+      "country": "Mozambique",
+      "category": "FESTIVALS",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "How should Ingoma Ya Mapiko be culturally scoped?",
+      "options": [
+        "As a Mauritian pre-wedding song tradition",
+        "As a Swahili architectural method",
+        "As a Makonde practice in Mozambique associated with initiation and other occasions",
+        "As one universal coming-of-age practice for all Africans"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The UNESCO inscription identifies a Makonde practice and does not support generalizing it across Mozambique or East Africa.",
+      "sources": [
+        {
+          "title": "Ingoma Ya Mapiko",
+          "url": "https://ich.unesco.org/en/USL/ingoma-ya-mapiko-01996",
+          "claim": "Makonde Ingoma Ya Mapiko is a masked dance associated with initiation and other public occasions, accompanied by drums and a responsive choir."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Initiatory practice: specialist review by relevant community knowledge-holders is required; do not add or infer restricted details.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "sensitivity_initiation",
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_initiation",
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_mozambique_mapiko_performance",
+      "region": "east",
+      "country": "Mozambique",
+      "category": "FASHION",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "Which public performance elements belong to Ingoma Ya Mapiko?",
+      "options": [
+        "Steel bells controlled by a keyboard",
+        "Masks representing people or animals, drums and a responsive choir",
+        "Carved doors, coral walls and silent processions",
+        "Gourd trumpets with no dancers"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The public description presents masked solo or group dancing with drums and opposing choir groups.",
+      "sources": [
+        {
+          "title": "Ingoma Ya Mapiko",
+          "url": "https://ich.unesco.org/en/USL/ingoma-ya-mapiko-01996",
+          "claim": "Makonde Ingoma Ya Mapiko is a masked dance associated with initiation and other public occasions, accompanied by drums and a responsive choir."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Initiatory practice: specialist review by relevant community knowledge-holders is required; do not add or infer restricted details.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "fail",
+        "reasons": [
+          "sensitivity_initiation",
+          "region_country"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_initiation",
+        "region_country"
+      ]
+    },
+    {
+      "id": "east_seychelles_moutya_drum",
+      "region": "east",
+      "country": "Seychelles",
+      "category": "MUSIC",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What instrument anchors traditional Moutya performance?",
+      "options": [
+        "Five monotone gourd trumpets",
+        "A metal-key board inside a calabash",
+        "A goat-hide drum warmed near a bonfire",
+        "A set of thirty wooden xylophones"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The dance's drum and bonfire setting are tied to a history of endurance and resistance among enslaved Africans.",
+      "sources": [
+        {
+          "title": "Moutya",
+          "url": "https://ich.unesco.org/en/RL/moutya-01690",
+          "claim": "Seychellois Moutya developed from the experience of enslaved Africans and uses a goat-hide drum traditionally heated near a bonfire."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Colonial violence, segregation or enslavement: trauma-informed historical and community review is required.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_trauma"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_trauma"
+      ]
+    },
+    {
+      "id": "east_eritrea_asmara_setting",
+      "region": "east",
+      "country": "Eritrea",
+      "category": "HISTORY",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Which setting and development history characterize UNESCO-listed Asmara?",
+      "options": [
+        "A dry-stone farming landscape with generation steles",
+        "A capital above 2,000 metres shaped by planning between 1893 and 1941",
+        "A coral-built island port below sea level",
+        "A forest settlement abandoned in the 1940s"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Asmara developed on a highland plateau through successive colonial planning phases while retaining indigenous neighbourhoods.",
+      "sources": [
+        {
+          "title": "Asmara: A Modernist African City",
+          "url": "https://whc.unesco.org/en/list/1550/",
+          "claim": "Asmara preserves modernist urban planning and architecture developed during Italian colonial occupation alongside indigenous neighbourhoods and local adaptations."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Colonial violence, segregation or enslavement: trauma-informed historical and community review is required.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_trauma"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_trauma"
+      ]
+    },
+    {
+      "id": "east_eritrea_asmara_plan",
+      "region": "east",
+      "country": "Eritrea",
+      "category": "HISTORY",
+      "difficulty": "medium",
+      "kind": "single",
+      "prompt": "What combination appears in Asmara's historic urban plan?",
+      "options": [
+        "An orthogonal grid joined with radial elements and locally adapted architecture",
+        "Only circular villages without streets",
+        "A canal grid built for ocean shipping",
+        "One ceremonial courtyard without surrounding neighbourhoods"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The plan combined grid and radial patterns, modernist forms, local methods and a colonial zoning legacy.",
+      "sources": [
+        {
+          "title": "Asmara: A Modernist African City",
+          "url": "https://whc.unesco.org/en/list/1550/",
+          "claim": "Asmara preserves modernist urban planning and architecture developed during Italian colonial occupation alongside indigenous neighbourhoods and local adaptations."
+        }
+      ],
+      "origin": "draft",
+      "sensitivityNotes": "Colonial violence, segregation or enslavement: trauma-informed historical and community review is required.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "page-overlap",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "fail",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [
+          "sensitivity_trauma"
+        ]
+      },
+      "lifecycleStatus": "held",
+      "holdReasons": [
+        "sensitivity_trauma"
+      ]
+    }
+  ]
+}

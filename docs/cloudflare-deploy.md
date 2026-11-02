@@ -136,6 +136,7 @@ Non-secret vars already in `wrangler.jsonc`:
 - `EMAIL_REPLY_TO=team@classesforculture.com`
 - `PAID_BLOCKED_COUNTRIES` defaults to the EU27 plus Iceland, Liechtenstein and Norway. Free play is not affected. Set it to `none` only after EU VAT (non-Union OSS) registration. The UK is not in the default list.
 - `EMAIL_PROVIDER=resend` (change to `postmark` if you choose Postmark)
+- `RANDOM_BANK=on` draws each paid round from the published regional bank. The committed wrangler file turns it on for test and for the next deploy. Set `RANDOM_BANK=off` on the live Worker only if you need the fixed classic 12. The bank is JSON in the repo, not a D1 table, so this change does not need a database migration. See `docs/random-question-bank.md`.
 
 Run one test purchase with card `4242 4242 4242 4242`. Confirm the order
 becomes fulfilled, the entitlement appears, a second delivery of the same
