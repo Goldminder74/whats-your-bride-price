@@ -6,6 +6,20 @@ import { FormEvent, useEffect, useId, useState } from "react";
 import { fetchWallet, readPlayerId } from "./paidClient";
 
 type Product = { key: string; name: string; displayPrice: string; kind: string; games: number };
+
+const BUNDLE_TAGS: Record<string, string> = {
+  cowrie_15_v1: "Most popular",
+  cowrie_40_v1: "Best value",
+};
+
+/** Per-game line from the published GBP price. Other currencies omit it. */
+function perGamePrice(displayPrice: string, games: number): string | null {
+  if (!displayPrice.startsWith("£") || games < 1) return null;
+  const pounds = Number(displayPrice.slice(1).replaceAll(",", ""));
+  if (!Number.isFinite(pounds)) return null;
+  return `£${(pounds / games).toFixed(2)} a game`;
+}
+
 type Catalog = {
   products: Product[];
   countries: { code: string; name: string }[];
@@ -114,6 +128,11 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
 
   const shown = open || forceOpen;
   const freeLabel = freeGamesLeft === null ? "free games" : `${freeGamesLeft} free ${freeGamesLeft === 1 ? "game" : "games"} left`;
+  const kicker = forceOpen
+    ? "Your 2 free games are done"
+    : freeGamesLeft !== null && freeGamesLeft > 0
+      ? "Top up"
+      : "Keep playing";
 
   return (
     <>
@@ -126,8 +145,9 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
         <div className={`paid-sheet${forceOpen ? " forced" : ""}`} role="dialog" aria-modal="true" aria-labelledby={titleId}>
           <div className="paid-card">
             <button className="modal-close" onClick={() => { setOpen(false); onClose?.(); }} aria-label="Close purchases">×</button>
-            <p className="eyebrow">Optional extras</p>
-            <h2 id={titleId}>COWRIES<br /><i>FOR THE CURIOUS</i></h2>
+            <p className="eyebrow">{kicker}</p>
+            <h2 id={titleId}>COWRIES<br /><i>for the culture</i></h2>
+            {forceOpen ? <p className="paid-unlock">Unlock your next game for 5 Cowries.</p> : null}
             <p>Your first two completed games are free. After that, starting a game costs 5 Cowries. Card details stay with Stripe.</p>
             <p className="paid-balance"><b>{cowries === null ? "—" : cowries}</b> cowries on this browser. {freeLabel}.{royal ? " Royal Reveal from an earlier purchase is still unlocked." : ""}</p>
             <p className="paid-bonus">Welcome bonus: +5 Cowries on your first purchase. Bonus Cowries are used first and expire 14 days after that purchase.</p>
@@ -140,12 +160,23 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
             {!catalog ? <p role="status">{status || "Loading the stall…"}</p> : (
               <form onSubmit={checkout}>
                 <div className="paid-bundles" role="radiogroup" aria-label="Cowrie bundles">
-                  {catalog.products.filter((product) => product.kind !== "royal_reveal").map((product) => (
-                    <label key={product.key} className={`paid-bundle${productKey === product.key ? " selected" : ""}`}>
-                      <input type="radio" name="bundle" value={product.key} checked={productKey === product.key} onChange={() => setProductKey(product.key)} />
-                      <span>{product.name} · {product.games} {product.games === 1 ? "game" : "games"} · {product.displayPrice}</span>
-                    </label>
-                  ))}
+                  {catalog.products.filter((product) => product.kind !== "royal_reveal").map((product) => {
+                    const gamesLabel = `${product.games} ${product.games === 1 ? "game" : "games"}`;
+                    const each = perGamePrice(product.displayPrice, product.games);
+                    const tag = BUNDLE_TAGS[product.key];
+                    return (
+                      <label key={product.key} className={`paid-bundle${productKey === product.key ? " selected" : ""}`}>
+                        <input type="radio" name="bundle" value={product.key} checked={productKey === product.key} onChange={() => setProductKey(product.key)} />
+                        <span className="paid-bundle-copy">
+                          <strong>{product.name}</strong>
+                          <span>{gamesLabel}</span>
+                          {each ? <span className="paid-per-game">{each}</span> : null}
+                          {tag ? <em className="paid-tag">{tag}</em> : null}
+                        </span>
+                        <b className="paid-bundle-price">{product.displayPrice}</b>
+                      </label>
+                    );
+                  })}
                 </div>
                 <label className="paid-field">Email address
                   <input type="email" required autoComplete="email" maxLength={200} value={email} onChange={(event) => setEmail(event.target.value)} />
