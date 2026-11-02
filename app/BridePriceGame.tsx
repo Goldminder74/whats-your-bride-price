@@ -886,7 +886,7 @@ export default function BridePriceGame() {
                   <span className="countdown-pill">Next challenge in {formatCountdown(dailyResult.countdownMs)}</span>
                 </div>
                 <p className="daily-score">Today {dailyResult.score}/12{dailyResult.bonus ? " · +1 Cowrie" : ""}</p>
-                <p className="your-rank">Your rank: {dailyResult.rank ?? "—"}</p>
+                <p className="your-rank">Your rank: {dailyResult.rank ?? "-"}</p>
                 {dailyBoard.length > 0 ? <table className="leaderboard">
                   <thead><tr><th scope="col">Rank</th><th scope="col">Nickname</th><th scope="col">Score</th><th scope="col">Time</th></tr></thead>
                   <tbody>{dailyBoard.map((row, rowIndex) => <tr key={`${rowIndex}-${row.nickname}-${row.score}`} className={row.you ? "is-you" : undefined}><td>{rowIndex + 1}</td><td>{row.nickname}</td><td>{row.score}/12</td><td>{formatDuration(row.durationMs)}</td></tr>)}</tbody>
