@@ -2,8 +2,9 @@ import assert from "node:assert/strict";
 import { createHmac } from "node:crypto";
 import test from "node:test";
 import { regions } from "../../app/gameData.ts";
-import { CANONICAL_ORIGIN } from "../../paid/catalog.ts";
+import { CANONICAL_ORIGIN, ROYAL_WAIVER_TEXT, ROYAL_WAIVER_VERSION, WAIVER_TEXT, WAIVER_VERSION } from "../../paid/catalog.ts";
 import { createMockEmail } from "../../paid/email.ts";
+import { validateDisplayName } from "../../paid/nickname.ts";
 import { createMemoryRepository } from "../../paid/repository.ts";
 import { servePaid } from "../../paid/serve.ts";
 import { royalDecreeSvg } from "../../paid/royalDecree.ts";
@@ -29,12 +30,13 @@ function services(overrides = {}) {
     now: () => now,
     repository: overrides.repository ?? createMemoryRepository(),
     kv: overrides.kv ?? memoryKv(),
-    config: {
+    config: overrides.config ?? {
       stripeMode: "mock",
       stripeSecretKey: "sk_test_mock_local_only",
       webhookSecret,
       publicOrigin: CANONICAL_ORIGIN,
     },
+    stripeFetch: overrides.stripeFetch,
     royalRevealEnabled: overrides.royalRevealEnabled,
   };
 }
@@ -72,6 +74,87 @@ test("Royal Reveal stays hidden and terms still say it is not offered", async ()
     body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "US", playerId, adult: true, resultId: "ab".repeat(16), displayName: "Ayo" }),
   }), app);
   assert.equal(hidden.status, 404);
+});
+
+test("Royal Reveal consent names the pack, and decree names use the public-name filter", async () => {
+  assert.equal(validateDisplayName("Ángela"), "Ángela");
+  assert.equal(validateDisplayName("O'Brien-Jean"), "O'Brien-Jean");
+  for (const name of ["x dot com", "ayo at gmail", "ayo@gmail.com", "https://ayo.gg", "1234", "A", "oh fuck", "fu ck", "A".repeat(33)]) {
+    assert.throws(() => validateDisplayName(name), (error) => error.code === "name_invalid" || error.code === "name_rejected");
+  }
+  const answers = regions.west.questions.map((question) => [...question.correct]);
+  const kv = memoryKv();
+  const email = createMockEmail();
+  const repository = createMemoryRepository();
+  const hidden = services({ kv, repository, email, royalRevealEnabled: true });
+  const completed = await body(await servePaid(request("/api/paid/games/complete", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ edition: "west", answers, playerId }),
+  }), hidden));
+  const rejected = await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "royal-bad-name" },
+    body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "US", playerId, adult: true, resultId: completed.id, displayName: "x dot com" }),
+  }), hidden);
+  assert.equal(rejected.status, 400);
+  assert.equal((await body(rejected)).message, "Choose a name of 2–32 letters. No email, link, or profanity.");
+
+  let recorded = "";
+  const stripeApp = services({
+    kv,
+    repository,
+    email,
+    royalRevealEnabled: true,
+    config: { stripeMode: "test", stripeSecretKey: "sk_test_example", webhookSecret, publicOrigin: CANONICAL_ORIGIN },
+    stripeFetch: async (_url, init) => {
+      recorded = String(init.body);
+      return new Response(JSON.stringify({ id: "cs_test_royal_consent", url: "https://checkout.stripe.com/c/pay/cs_test_royal_consent" }), { status: 200 });
+    },
+  });
+  const royal = await body(await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "royal-gb-consent" },
+    body: JSON.stringify({ productKey: "royal_reveal_v1", email: "buyer@example.com", country: "GB", playerId, adult: true, waiver: true, resultId: completed.id, displayName: "Ayo Ayeni" }),
+  }), stripeApp));
+  assert.equal(royal.orderId.startsWith("ord_"), true);
+  assert.equal((await repository.getById(royal.orderId)).waiverVersion, ROYAL_WAIVER_VERSION);
+  const royalSession = decodeURIComponent(recorded.replaceAll("+", " "));
+  assert.match(royalSession, new RegExp(ROYAL_WAIVER_TEXT.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  assert.doesNotMatch(royalSession, /my Cowries/);
+
+  const cowrieRecorded = { body: "" };
+  const cowrieApp = services({
+    config: { stripeMode: "test", stripeSecretKey: "sk_test_example", webhookSecret, publicOrigin: CANONICAL_ORIGIN },
+    stripeFetch: async (_url, init) => {
+      cowrieRecorded.body = String(init.body);
+      return new Response(JSON.stringify({ id: "cs_test_cowrie_consent", url: "https://checkout.stripe.com/c/pay/cs_test_cowrie_consent" }), { status: 200 });
+    },
+  });
+  const cowrie = await body(await servePaid(request("/api/paid/checkout", {
+    method: "POST",
+    headers: { "content-type": "application/json", "idempotency-key": "cowrie-gb-consent" },
+    body: JSON.stringify({ productKey: "cowrie_5_v1", email: "buyer@example.com", country: "GB", playerId: "player_cowrie_consent_1", adult: true, waiver: true }),
+  }), cowrieApp));
+  assert.equal((await cowrieApp.repository.getById(cowrie.orderId)).waiverVersion, WAIVER_VERSION);
+  assert.match(decodeURIComponent(cowrieRecorded.body.replaceAll("+", " ")), new RegExp(WAIVER_TEXT.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  assert.equal(WAIVER_TEXT, "I want my Cowries straight away. I understand that once they're delivered I lose my 14-day right to cancel, unless they're faulty or not as described.");
+
+  const mockPay = services({ kv, repository, email, royalRevealEnabled: true });
+  assert.equal((await servePaid(request("/api/paid/mock-pay", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ orderId: royal.orderId }),
+  }), mockPay)).status, 200);
+  assert.match(email.sent[0].text, /Royal Reveal Pack straight away/);
+  assert.doesNotMatch(email.sent[0].text, /my Cowries/);
+  const terms = await (await servePaid(request("/terms"), mockPay)).text();
+  const refunds = await (await servePaid(request("/refunds"), mockPay)).text();
+  assert.match(terms, /35 Melrose Avenue/);
+  assert.match(terms, /I want my Cowries straight away/);
+  assert.match(terms, /I want my Royal Reveal Pack straight away/);
+  assert.match(refunds, /I want my Royal Reveal Pack straight away/);
+  assert.match(refunds, /removes that result's decree download/);
 });
 
 test("a paid result mints a private decree bundle and a refund removes it", async () => {

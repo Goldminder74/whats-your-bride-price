@@ -23,6 +23,7 @@ type Catalog = {
   purchaseBlockedMessage: string;
   waiverCountries: string[];
   waiverText: string;
+  royalWaiverText?: string;
   royalReveal?: boolean;
 };
 
@@ -96,7 +97,7 @@ export function RoyalRevealOffer({ resultId, defaultName }: { resultId: string; 
       <label>Email <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} required maxLength={200} /></label>
       <label>Country <select value={country} onChange={(event) => setCountry(event.target.value)}>{catalog.countries.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}</select></label>
       <label><input type="checkbox" checked={adult} onChange={(event) => setAdult(event.target.checked)} required /> I&apos;m 18 or over.</label>
-      {needsWaiver ? <label><input type="checkbox" checked={waiver} onChange={(event) => setWaiver(event.target.checked)} required /> {catalog.waiverText}</label> : null}
+      {needsWaiver ? <label><input type="checkbox" checked={waiver} onChange={(event) => setWaiver(event.target.checked)} required /> {catalog.royalWaiverText || catalog.waiverText}</label> : null}
       <button className="outline-action" type="submit" disabled={busy || purchasesBlocked}>Get my Royal Decree</button>
       <p role="status">{status}</p>
     </form>

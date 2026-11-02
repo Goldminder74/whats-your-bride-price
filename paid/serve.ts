@@ -12,6 +12,9 @@ import {
   products,
   requiresWithdrawalWaiver,
   WAIVER_TEXT,
+  ROYAL_WAIVER_TEXT,
+  ROYAL_WAIVER_VERSION,
+  consentForProduct,
   WAIVER_VERSION,
   withdrawalCountries,
   blockedPurchaseCountries,
@@ -20,6 +23,7 @@ import {
 } from "./catalog.ts";
 import { assertReceiptFrom, type TransactionalEmail } from "./email.ts";
 import { PaidError, isPaidError } from "./errors.ts";
+import { DISPLAY_NAME_MESSAGE } from "./nickname.ts";
 import { applyStripeEvent, projectAccess } from "./fulfillment.ts";
 import { SUPPORT_EMAIL } from "./receipt.ts";
 import { editions, isEdition, type KvStore } from "./games.ts";
@@ -228,6 +232,7 @@ async function handleCheckout(request: Request, services: PaidServices): Promise
   const waiver = body.waiver === true;
   if (requiresWithdrawalWaiver(body.country) && !waiver) throw new PaidError("withdrawal_waiver_required", 400);
   const product = products[body.productKey];
+  const consent = consentForProduct(product.kind);
   const revealHold = product.kind === "royal_reveal"
     ? await revealHoldFromPurchase(services.kv, body.playerId, body)
     : null;
@@ -241,7 +246,7 @@ async function handleCheckout(request: Request, services: PaidServices): Promise
     residenceCountry: body.country,
     baseCurrency: "gbp",
     baseAmountMinor: product.amountMinor,
-    waiverVersion: waiver ? WAIVER_VERSION : null,
+    waiverVersion: waiver ? consent.version : null,
     waiverAcceptedAt: waiver ? now : null,
     adultConfirmed: true,
     state: "pending",
@@ -266,7 +271,7 @@ async function handleCheckout(request: Request, services: PaidServices): Promise
     successUrl: `${requestOrigin}/checkout/return?order=${order.id}&session_id={CHECKOUT_SESSION_ID}`,
     cancelUrl: `${requestOrigin}/?checkout=cancelled`,
     customerEmail: order.email,
-    waiverText: waiver ? WAIVER_TEXT : null,
+    waiverText: waiver ? consent.text : null,
     automaticTax: config.automaticTax === true,
   });
   const session = config.stripeMode === "mock"
@@ -495,6 +500,8 @@ export async function servePaid(request: Request, services: PaidServices): Promi
         waiverCountries: [...withdrawalCountries],
         waiverText: WAIVER_TEXT,
         waiverVersion: WAIVER_VERSION,
+        royalWaiverText: ROYAL_WAIVER_TEXT,
+        royalWaiverVersion: ROYAL_WAIVER_VERSION,
         canonical: CANONICAL_ORIGIN,
         paystack: { enabled: false, markets: paystackSeam.markets },
         blockedCountries: [...(services.blockedCountries ?? blockedPurchaseCountries(undefined))].sort(),
@@ -590,9 +597,12 @@ export async function servePaid(request: Request, services: PaidServices): Promi
     return json({ error: "not_found" }, 404);
   } catch (error) {
     if (isPaidError(error)) {
-      return json(error.code === "purchases_unavailable_in_country"
-        ? { error: error.code, message: PURCHASES_UNAVAILABLE_MESSAGE }
-        : { error: error.code }, error.status);
+      const message = error.code === "purchases_unavailable_in_country"
+        ? PURCHASES_UNAVAILABLE_MESSAGE
+        : error.code === "name_invalid" || error.code === "name_rejected"
+          ? DISPLAY_NAME_MESSAGE
+          : null;
+      return json(message ? { error: error.code, message } : { error: error.code }, error.status);
     }
     const message = error instanceof Error ? error.message.slice(0, 300) : "unknown";
     console.error(JSON.stringify({ level: "error", event: "paid_unhandled", message }));

@@ -1,6 +1,7 @@
 import { products } from "./catalog.ts";
 import { PaidError } from "./errors.ts";
 import { isEdition, type KvStore } from "./games.ts";
+import { validateDisplayName } from "./nickname.ts";
 import type { PaidOrder, PaidRepository, RoyalRevealRecord } from "./repository.ts";
 
 const RESULT_ID = /^[a-f0-9]{32}$/;
@@ -13,19 +14,6 @@ export type RevealHold = {
   displayName: string;
 };
 
-export function sanitizeDisplayName(value: unknown): string | null {
-  if (typeof value !== "string") return null;
-  const text = value
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^A-Za-z '-]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-  if (text.length < 1 || text.length > 32) return null;
-  if (!/[A-Za-z]/.test(text)) return null;
-  return text;
-}
-
 export function revealHoldKey(orderId: string): string {
   return `royal-hold:${orderId}`;
 }
@@ -33,8 +21,7 @@ export function revealHoldKey(orderId: string): string {
 export async function revealHoldFromPurchase(kv: KvStore, playerId: string, body: Record<string, unknown>): Promise<RevealHold> {
   const resultId = typeof body.resultId === "string" ? body.resultId : "";
   if (!RESULT_ID.test(resultId)) throw new PaidError("result_invalid", 400);
-  const displayName = sanitizeDisplayName(body.displayName);
-  if (!displayName) throw new PaidError("name_invalid", 400);
+  const displayName = validateDisplayName(body.displayName);
   const raw = await kv.get(`result:${resultId}`);
   if (!raw) throw new PaidError("result_not_found", 404);
   let parsed: { edition?: unknown; score?: unknown; total?: unknown; player?: unknown };

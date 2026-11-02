@@ -53,6 +53,7 @@ export const withdrawalCountries = Object.freeze(new Set([
 ]));
 
 export const WAIVER_VERSION = "instant-digital-withdrawal-waiver-draft-2026-11-01";
+export const ROYAL_WAIVER_VERSION = "instant-digital-royal-reveal-waiver-2026-11-02";
 
 export const FREE_COMPLETED_GAMES = 2;
 export const GAME_COST_COWRIES = 5;
@@ -63,8 +64,22 @@ export function gamesInBundle(quantity: number): number {
   return Math.floor(quantity / GAME_COST_COWRIES);
 }
 
-/** Shown at checkout and repeated on the receipt for UK, EU and EEA buyers. */
+/** Shown at Cowrie checkout and repeated on the receipt for UK, EU and EEA buyers. */
 export const WAIVER_TEXT = "I want my Cowries straight away. I understand that once they're delivered I lose my 14-day right to cancel, unless they're faulty or not as described.";
+
+/** Shown at Royal Reveal checkout and repeated on that receipt for UK, EU and EEA buyers. */
+export const ROYAL_WAIVER_TEXT = "I want my Royal Reveal Pack straight away. I understand that once it's delivered I lose my 14-day right to cancel, unless it's faulty or not as described.";
+
+export function consentForProduct(kind: "cowries" | "royal_reveal"): { version: string; text: string } {
+  if (kind === "royal_reveal") return { version: ROYAL_WAIVER_VERSION, text: ROYAL_WAIVER_TEXT };
+  return { version: WAIVER_VERSION, text: WAIVER_TEXT };
+}
+
+export function waiverTextForVersion(version: string | null): string | null {
+  if (version === WAIVER_VERSION) return WAIVER_TEXT;
+  if (version === ROYAL_WAIVER_VERSION) return ROYAL_WAIVER_TEXT;
+  return null;
+}
 
 export const CANONICAL_ORIGIN = "https://brideprice.classesforculture.com";
 

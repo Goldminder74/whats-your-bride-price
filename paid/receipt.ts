@@ -1,4 +1,4 @@
-import { CANONICAL_ORIGIN, WAIVER_TEXT, products } from "./catalog.ts";
+import { CANONICAL_ORIGIN, products, waiverTextForVersion } from "./catalog.ts";
 import type { PaidOrder } from "./repository.ts";
 
 export const RECEIPT_FROM_NAME = "What's Your Bride Price?";
@@ -73,7 +73,7 @@ function view(facts: ReceiptFacts) {
   const shortRef = shortOrderReference(facts.order.id);
   const amount = formatMoney(facts.amountMinor, facts.currency);
   const tax = facts.taxMinor !== null && facts.taxMinor > 0 ? formatMoney(facts.taxMinor, facts.currency) : null;
-  const waiver = facts.kind === "purchase" && facts.order.waiverVersion ? WAIVER_TEXT : null;
+  const waiver = facts.kind === "purchase" ? waiverTextForVersion(facts.order.waiverVersion) : null;
   return {
     productName: product.name,
     shortRef,
