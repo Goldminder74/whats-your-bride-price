@@ -5,6 +5,8 @@
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections } from "./gameData";
+import { paidCommerceEnabled } from "./paidFlags";
+import { PaidDesk } from "./PaidDesk";
 import { reportAppError } from "./errors";
 import { answersMatch, calculateResultTier } from "./gameLogic";
 
@@ -427,6 +429,7 @@ export default function BridePriceGame() {
           {screen === "home" && <a href="#editions">The editions</a>}
           {screen === "home" && <span className="passport-mini">Mastery seals <b>{masteredRegions.length}/5</b></span>}
           <button className="text-nav" onClick={() => setMenuOpen(true)}>About the game</button>
+          {paidCommerceEnabled() && <PaidDesk />}
           <button className="sound-button" onClick={() => setSound(!sound)} aria-label={sound ? "Turn sound off" : "Turn sound on"}><span>{sound ? "♪" : "×"}</span> Sound {sound ? "on" : "off"}</button>
         </div>
       </header>
@@ -618,6 +621,12 @@ export default function BridePriceGame() {
             <p className="source-label">Follow the knowledge trail</p>
             <div className="source-links">
               {sourceCollections.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>)}
+            </div>
+            <p className="source-label">The house rules</p>
+            <div className="source-links">
+              <a href="/terms">Terms</a>
+              <a href="/privacy">Privacy</a>
+              <a href="/refunds">Refunds</a>
             </div>
           </div>
         </div>

@@ -41,6 +41,7 @@ function services(overrides = {}) {
     ensureSchema: overrides.ensureSchema,
     blockedCountries: overrides.blockedCountries,
     refundBlockedPayment: overrides.refundBlockedPayment,
+    assets: overrides.assets,
   };
 }
 
@@ -80,6 +81,15 @@ test("canonical pages use the public game origin", async () => {
   assert.match(refunds, /14-day/);
   assert.match(refunds, /35 Melrose Avenue, Borehamwood, Hertfordshire, WD6 2BH, United Kingdom/);
   assert.doesNotMatch(html, /Melrose Avenue|WD6 2BH/);
+  const shelled = await (await servePaid(request("/"), services({
+    assets: { async fetch(assetRequest) {
+      return new URL(assetRequest.url).pathname === "/index.html"
+        ? new Response("<!doctype html><title>What’s Your Bride Price?</title><h1>DO YOU KNOW YOUR ROOTS?</h1>", { status: 200 })
+        : new Response("missing", { status: 404 });
+    } },
+  }))).text();
+  assert.match(shelled, /DO YOU KNOW YOUR ROOTS/);
+  assert.doesNotMatch(shelled, /Melrose Avenue/);
 });
 
 test("question payloads omit answer keys and completions stay off the order database", async () => {

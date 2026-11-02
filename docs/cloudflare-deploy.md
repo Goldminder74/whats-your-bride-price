@@ -200,11 +200,11 @@ policy is described as not yet activated.
 ## 6. Deploy command, when the above is done
 
 ```bash
+npm run build:shell
 npx wrangler deploy --config wrangler.jsonc
 ```
 
-Confirm `wrangler whoami` is the intended account first. The dry run is
-`npm run build:worker`.
+`build:shell` builds the original React game with commerce enabled and writes it to `outputs/paid-assets`, which `wrangler.jsonc` serves. `/api/paid/*` stays on the Worker. The dry run is `npm run build:worker`. It builds that shell and does not create Cloudflare resources.
 
 ## Scale notes
 

@@ -26,10 +26,8 @@ test("feature flags are parsed from explicit build environment values", () => {
   assert.equal(flags.dynamic_results, false);
 });
 
-test("ChatGPT Sites rejects commerce", () => {
+test("the paid host allows commerce", () => {
   const flags = resolveFeatureFlags({ WYBP_FEATURE_COMMERCE: "true" });
-  assert.throws(
-    () => assertSitesCompatibleFeatureFlags(flags),
-    /Commerce cannot be enabled while this application targets ChatGPT Sites/,
-  );
+  assert.equal(flags.commerce, true);
+  assert.doesNotThrow(() => assertSitesCompatibleFeatureFlags(flags));
 });

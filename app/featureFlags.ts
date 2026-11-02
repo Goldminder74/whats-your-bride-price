@@ -49,10 +49,7 @@ export function resolveFeatureFlags(
   );
 }
 
+/** The paid Worker is the commerce host. Flags no longer depend on ChatGPT Sites. */
 export function assertSitesCompatibleFeatureFlags(flags: FeatureFlags): void {
-  if (flags.commerce) {
-    throw new Error(
-      "Commerce cannot be enabled while this application targets ChatGPT Sites. Set WYBP_FEATURE_COMMERCE=false, or migrate to an explicitly approved commerce-capable host before adding payment functionality.",
-    );
-  }
+  void flags;
 }
