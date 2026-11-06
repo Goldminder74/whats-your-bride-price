@@ -6,7 +6,7 @@
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type Question as PlayQuestion } from "./gameData";
 import { buildRevealRecording } from "../paid/revealOffer.ts";
-import { buildResultVideo } from "./resultVideo";
+import { buildResultShare } from "./resultVideo";
 import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, fetchWallet, finishGame, readPlayerId, recordArrival, recordServerResult, type PaidFeatures } from "./paidClient";
 import { paidCommerceEnabled, randomBankEnabled } from "./paidFlags";
 import { finishRound, playRandomRound, readSavedRound, writeSavedRound } from "../question-bank/clientRound.ts";
@@ -577,7 +577,8 @@ export default function BridePriceGame() {
       setSelected((current) => current.includes(answerIndex) ? current.filter((value) => value !== answerIndex) : current.length < 3 ? [...current, answerIndex] : current);
       playTone(390 + answerIndex * 35);
     } else {
-      submitAnswer([answerIndex]);
+      setSelected([answerIndex]);
+      playTone(390 + answerIndex * 35);
     }
   };
 
@@ -869,18 +870,20 @@ export default function BridePriceGame() {
     }
   };
 
-  const resultVideoFile = async () => {
+  const resultClip = async () => {
     setVideoBusy(true);
     setVideoNote("Preparing your video…");
     try {
-      return await buildResultVideo({
+      const ready = await buildResultShare({
         edition: regionKey,
         score: correctCount,
         referral: paidFeatures.earnPaths ? referralCode : null,
       });
+      setVideoNote(ready.kind === "story" ? "This browser cannot encode the video, so this is the story card." : "");
+      return ready;
     } catch (error) {
       reportAppError("result_video_failed", error, { region: regionKey });
-      setVideoNote("This browser could not make the video. Try again in a moment.");
+      setVideoNote("The video and the story card are both unavailable right now.");
       return null;
     } finally {
       setVideoBusy(false);
@@ -888,38 +891,37 @@ export default function BridePriceGame() {
   };
 
   const saveResultVideo = async () => {
-    const blob = await resultVideoFile();
-    if (!blob) return;
-    const url = URL.createObjectURL(blob);
+    const ready = await resultClip();
+    if (!ready) return;
+    const url = URL.createObjectURL(ready.blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = `bride-price-${regionKey}-${correctCount}.mp4`;
+    anchor.download = ready.filename;
     anchor.click();
     URL.revokeObjectURL(url);
-    setVideoNote("");
   };
 
   const shareResultVideo = async () => {
-    const blob = await resultVideoFile();
-    if (!blob) return;
-    const file = new File([blob], `bride-price-${regionKey}-${correctCount}.mp4`, { type: "video/mp4" });
+    const ready = await resultClip();
+    if (!ready) return;
+    const type = ready.kind === "video" ? "video/mp4" : "image/png";
+    const file = new File([ready.blob], ready.filename, { type });
     const challenge = challengeUrl(regionKey, correctCount, paidFeatures.earnPaths ? referralCode : null);
+    const title = ready.kind === "video" ? "My Bride Price video" : "Story card";
     if (navigator.canShare?.({ files: [file] }) && navigator.share) {
       try {
-        await navigator.share({ files: [file], title: "My Bride Price result", text: `Can you beat me? ${challenge}` });
-        setVideoNote("");
+        await navigator.share({ files: [file], title, text: `Can you beat me? ${challenge}` });
         return;
       } catch (error) {
         if (error instanceof DOMException && error.name === "AbortError") return;
       }
     }
-    const url = URL.createObjectURL(blob);
+    const url = URL.createObjectURL(ready.blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = file.name;
+    anchor.download = ready.filename;
     anchor.click();
     URL.revokeObjectURL(url);
-    setVideoNote("");
   };
 
   return (
@@ -927,7 +929,7 @@ export default function BridePriceGame() {
       <div className="grain" aria-hidden="true" />
       <header className="topbar">
         <button className="wordmark wordmark-button" onClick={restart} aria-label="Return home">
-          <span className="wordmark-seal">W</span>
+          <span className="wordmark-seal" aria-hidden="true"><svg viewBox="0 0 64 64" width="28" height="28"><ellipse cx="32" cy="32" rx="16" ry="24" fill="#f0a11a"/><ellipse cx="32" cy="33" rx="7" ry="14" fill="#fff6d8"/><path d="M26 36 Q32 46 38 36" fill="none" stroke="#7a3e12" strokeWidth="2.6" strokeLinecap="round"/></svg></span>
           <span>WHAT’S YOUR<br /><strong>BRIDE PRICE?</strong></span>
         </button>
         <div className="nav-links">
@@ -1070,7 +1072,7 @@ export default function BridePriceGame() {
                 </button>
               })}
             </div>
-            {question.kind === "multi" && !feedbackOpen && <button className="lock-answer" disabled={selected.length !== 3} onClick={() => submitAnswer(selected)}>Lock in {selected.length}/3 answers <span>→</span></button>}
+            {!feedbackOpen && <button className="lock-answer" disabled={question.kind === "multi" ? selected.length !== 3 : selected.length !== 1} onClick={() => submitAnswer(selected)}>Lock it in <span>→</span></button>}
             {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
               <div><span>{lastCorrect ? "✦ CORRECT" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? "Culture gem energy!" : "Good guess. Bank this fact."}</b></div>
               <p>{question.explanation}</p>
@@ -1122,6 +1124,7 @@ export default function BridePriceGame() {
             </div>
             <div className="result-copy">
               <p className="eyebrow">Your score: {correctCount}/12</p><h2>{resultCalls[tier]}<br /><i>{resultCallEmphasis[tier]}</i></h2>
+              {paidFeatures.resultVideo ? <div className="video-actions"><button type="button" onClick={() => void saveResultVideo()} disabled={videoBusy}>Save video</button><button type="button" onClick={() => void shareResultVideo()} disabled={videoBusy}>Share video</button>{videoNote ? <p role="status">{videoNote}</p> : null}</div> : null}
               <p className="result-description">{tierCopy[tier]}</p>
               <div className="result-aura"><span>Final aura</span><b>{revealAura.toLocaleString()}</b><i>+500 reveal bonus</i></div>
               <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
@@ -1160,7 +1163,6 @@ export default function BridePriceGame() {
                 <div>{frameCatalog.map((frame) => <button type="button" key={frame.key} className={frameChoice === frame.key ? "is-on" : ""} onClick={() => buyFrame(frame.key, frame.cowries)}><b>{frame.name}</b><small>{ownedFrames.includes(frame.key) ? "Use" : `${frame.cowries} Cowries`}</small></button>)}</div>
               </section> : null}
               {paidFeatures.shareCards ? <div className="share-preview"><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}${frameChoice ? `&style=${frameChoice}&player=${readPlayerId()}` : ""}`} alt={`Result card, ${correctCount} of 12, ${tierTitles[tier]}`} /><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}&frame=story${frameChoice ? `&style=${frameChoice}&player=${readPlayerId()}` : ""}`} alt="Story result card" /></div> : null}
-              {paidFeatures.resultVideo ? <div className="video-actions"><button type="button" onClick={() => void saveResultVideo()} disabled={videoBusy}>Save video</button><button type="button" onClick={() => void shareResultVideo()} disabled={videoBusy}>Share video</button>{videoNote ? <p role="status">{videoNote}</p> : null}</div> : null}
               <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>
               {serverResultId ? <RoyalRevealOffer resultId={serverResultId} edition={regionKey} score={correctCount} /> : null}
               {paidFeatures.shareCards || paidFeatures.earnPaths ? <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`${shareBlurb(correctCount)} ${challengeUrl(regionKey, correctCount, paidFeatures.earnPaths ? referralCode : null)}`)}`} target="_blank" rel="noreferrer" onClick={() => { if (paidFeatures.earnPaths) void claimShareReward(); }}>Share my result on WhatsApp ↗</a> : null}

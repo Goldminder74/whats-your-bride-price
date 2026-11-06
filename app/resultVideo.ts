@@ -113,7 +113,11 @@ export async function buildResultVideo(input: { edition: string; score: number; 
     const cached = await fetch(`/api/paid/result-video.mp4?edition=${encodeURIComponent(input.edition)}&score=${input.score}`);
     if (cached.ok) return cached.blob();
   }
-  const encoded = await encodeWithWebCodecs(story) ?? await encodeWithRecorder(story);
+  let encoded: Blob | null = null;
+  try { encoded = await encodeWithWebCodecs(story); } catch { encoded = null; }
+  if (!encoded) {
+    try { encoded = await encodeWithRecorder(story); } catch { encoded = null; }
+  }
   if (!encoded) throw new Error("video_unavailable");
   if (!input.referral) {
     void fetch(`/api/paid/result-video.mp4?edition=${encodeURIComponent(input.edition)}&score=${input.score}`, {
@@ -123,4 +127,18 @@ export async function buildResultVideo(input: { edition: string; score: number; 
     });
   }
   return encoded;
+}
+
+export type ResultShare = { blob: Blob; filename: string; kind: "video" | "story" };
+
+/** Prefer the MP4. If this browser cannot encode one, hand back the story card. */
+export async function buildResultShare(input: { edition: string; score: number; referral: string | null }): Promise<ResultShare> {
+  try {
+    const blob = await buildResultVideo(input);
+    return { blob, filename: `bride-price-${input.edition}-${input.score}.mp4`, kind: "video" };
+  } catch {
+    const response = await fetch(`/api/paid/share-card.png?edition=${encodeURIComponent(input.edition)}&score=${input.score}&frame=story`);
+    if (!response.ok) throw new Error("story_unavailable");
+    return { blob: await response.blob(), filename: `bride-price-${input.edition}-${input.score}-story.png`, kind: "story" };
+  }
 }

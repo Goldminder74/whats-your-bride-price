@@ -5100,6 +5100,618 @@
         }
       },
       "lifecycleStatus": "published"
+    },
+    {
+      "id": "central_etiq_carry_bag",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "A visitor reaches the gate holding a full basket. What happens next?",
+      "options": [
+        "Lift it for them",
+        "Watch struggle",
+        "Shut gate",
+        "Demand payment"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lift it for them. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "A visitor reaches the gate holding a full basket. What happens next. The courteous choice is to Lift it for them.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "central_etiq_greet_before",
+      "region": "central",
+      "country": "Democratic Republic of the Congo",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "A favour is needed from an uncle. What comes before the request?",
+      "options": [
+        "Open with hello",
+        "Demand now",
+        "Skip hello",
+        "Send note"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Open with hello. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "A favour is needed from an uncle. What comes before the request. The courteous choice is to Open with hello.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "central_etiq_best_chair",
+      "region": "central",
+      "country": "Republic of the Congo",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "An elder comes in while chairs are scattered. Which seat is offered?",
+      "options": [
+        "Pick nicest place",
+        "Low stool",
+        "Bare floor",
+        "No seat"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pick nicest place. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "An elder comes in while chairs are scattered. Which seat is offered. The courteous choice is to Pick nicest place.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "central_etiq_after_host",
+      "region": "central",
+      "country": "Gabon",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Food waits on the table and the host has not begun. When does eating start?",
+      "options": [
+        "Wait for signal",
+        "Start now",
+        "Eat secretly",
+        "Stand eating"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Wait for signal. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Food waits on the table and the host has not begun. When does. The courteous choice is to Wait for signal.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "central_etiq_right_pass",
+      "region": "central",
+      "country": "Chad",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Fruit is handed to an older guest. Which side is considered polite?",
+      "options": [
+        "Rightward handover",
+        "Leftward handover",
+        "Thrown piece",
+        "Floor slide"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Rightward handover. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Fruit is handed to an older guest. Which side is considered polite. The courteous choice is to Rightward handover.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "central_etiq_walk_gate",
+      "region": "central",
+      "country": "Angola",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Guests are leaving the yard. How far does the household go?",
+      "options": [
+        "Accompany them outward",
+        "Remain indoors",
+        "Lock up early",
+        "Send a toddler"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Accompany them outward. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Guests are leaving the yard. How far does the household go. The courteous choice is to Accompany them outward.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "central_etiq_thank_cook",
+      "region": "central",
+      "country": "Central African Republic",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Someone cooked for the whole household. What is said afterwards?",
+      "options": [
+        "Quiet words of thanks",
+        "Ignore effort",
+        "Rate spice",
+        "Ask wages"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Quiet words of thanks. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Someone cooked for the whole household. What is said afterwards. The courteous choice is to Quiet words of thanks.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "central_etiq_pour_water",
+      "region": "central",
+      "country": "Equatorial Guinea",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Elders sit down after a hot walk. What is poured for them?",
+      "options": [
+        "Offer a cool drink",
+        "Throw drink",
+        "Fizzy soda",
+        "Pour nothing"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Offer a cool drink. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Elders sit down after a hot walk. What is poured for them. The courteous choice is to Offer a cool drink.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "central_etiq_children_wait",
+      "region": "central",
+      "country": "Sao Tome and Principe",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Adults are still being served from the pot. What do youngsters do?",
+      "options": [
+        "Pause their turn",
+        "Grab food",
+        "Hide plates",
+        "Leave now"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pause their turn. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Adults are still being served from the pot. What do youngsters do. The courteous choice is to Pause their turn.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "central_etiq_pass_care",
+      "region": "central",
+      "country": "Cameroon",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "A shared bowl moves around the table. How is it transferred?",
+      "options": [
+        "Shift it slowly",
+        "Drop across",
+        "Keep forever",
+        "Spin fast"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Shift it slowly. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "A shared bowl moves around the table. How is it transferred. The courteous choice is to Shift it slowly.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "central_etiq_call_aunty",
+      "region": "central",
+      "country": "Gabon",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Mother's close friend arrives at the house. What title do children use?",
+      "options": [
+        "Address her as aunty",
+        "Silly nickname",
+        "Miss stranger",
+        "Kiddo"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Address her as aunty. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Mother's close friend arrives at the house. What title do children use. The courteous choice is to Address her as aunty.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "central_etiq_voice_low",
+      "region": "central",
+      "country": "Republic of the Congo",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "A conversation stays calm and close. How loud should a new voice be?",
+      "options": [
+        "Keep volume low",
+        "Raise it high",
+        "Sing over everyone",
+        "Whistle"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Keep volume low. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "A conversation stays calm and close. How loud should a new voice be. The courteous choice is to Keep volume low.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
     }
   ]
 }

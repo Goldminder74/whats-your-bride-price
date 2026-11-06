@@ -5100,6 +5100,618 @@
         }
       },
       "lifecycleStatus": "published"
+    },
+    {
+      "id": "south_etiq_offer_seat",
+      "region": "south",
+      "country": "South Africa",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "An older guest is still upright in the lounge. What happens quickly?",
+      "options": [
+        "Find them a seat",
+        "Remain seated",
+        "Point outdoors",
+        "Hand over a bill"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Find them a seat. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "An older guest is still upright in the lounge. What happens quickly. The courteous choice is to Find them a seat.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "south_etiq_greet_room",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "A newcomer reaches a gathering already in progress. What comes before food?",
+      "options": [
+        "Hello around the room",
+        "Head for dishes",
+        "Sit without words",
+        "Leave a note"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Hello around the room. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "A newcomer reaches a gathering already in progress. What comes before food. The courteous choice is to Hello around the room.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "south_etiq_carry_shopping",
+      "region": "south",
+      "country": "Botswana",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "A parent returns home with heavy shopping bags. What do others do?",
+      "options": [
+        "Lend a hand",
+        "Watch indoors",
+        "Tell hurry",
+        "Close gate"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Lend a hand. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "A parent returns home with heavy shopping bags. What do others do. The courteous choice is to Lend a hand.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "south_etiq_taste_comment",
+      "region": "south",
+      "country": "Namibia",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "A new dish is about to be discussed. What happens before opinions?",
+      "options": [
+        "Taste it beforehand",
+        "Guess the spice",
+        "Push it aside",
+        "Photograph only"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Taste it beforehand. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "A new dish is about to be discussed. What happens before opinions. The courteous choice is to Taste it beforehand.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "south_etiq_elder_start",
+      "region": "south",
+      "country": "Mozambique",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Everyone is seated and an elder has not begun the meal. What follows?",
+      "options": [
+        "Pause for that person",
+        "Begin alone",
+        "Feed dog",
+        "Clear plates"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Pause for that person. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Everyone is seated and an elder has not begun the meal. What follows. The courteous choice is to Pause for that person.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "south_etiq_walk_road",
+      "region": "south",
+      "country": "Zambia",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Visitors head back toward the road. How are they seen off?",
+      "options": [
+        "Stroll with them",
+        "Wave from bed",
+        "Send them solo",
+        "Lock the house"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Stroll with them. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Visitors head back toward the road. How are they seen off. The courteous choice is to Stroll with them.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "south_etiq_bench_space",
+      "region": "south",
+      "country": "Lesotho",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "A bench is crowded as an elder approaches. What gets made?",
+      "options": [
+        "Make room along it",
+        "Stay spread",
+        "Stand upon",
+        "Shift elder"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Make room along it. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "A bench is crowded as an approaches. What gets made. The courteous choice is to Make room along it.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "south_etiq_thank_cooked",
+      "region": "south",
+      "country": "Eswatini",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "A cousin cooked for the whole gathering. What is said to them?",
+      "options": [
+        "Give spoken thanks",
+        "Skip thanks",
+        "Request leftovers",
+        "Post rating"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Give spoken thanks. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "A cousin cooked for the whole gathering. What is said to them. The courteous choice is to Give spoken thanks.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "south_etiq_ask_family",
+      "region": "south",
+      "country": "Malawi",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "An uncle is met after a long journey. What question opens the chat?",
+      "options": [
+        "Ask about family",
+        "Ask for cash",
+        "Ask his age",
+        "Ask to depart"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Ask about family. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "An uncle is met after a long journey. What question opens the chat. The courteous choice is to Ask about family.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "south_etiq_phones_table",
+      "region": "south",
+      "country": "South Africa",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Relatives are eating together. Where do handsets stay?",
+      "options": [
+        "Leave devices down",
+        "Prop devices",
+        "Pass devices",
+        "Film bites"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Leave devices down. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Relatives are eating together. Where do handsets stay. The courteous choice is to Leave devices down.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "south_etiq_grandparents",
+      "region": "south",
+      "country": "Zimbabwe",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Food is ready and grandparents are indoors. Who is plated earlier?",
+      "options": [
+        "Elders receive portions sooner",
+        "Outside guests",
+        "Cook alone",
+        "Household pets"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Elders receive portions sooner. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "Food is ready and grandparents are indoors. Who is plated earlier. The courteous choice is to Elders receive portions sooner.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "south_etiq_welcome_drink",
+      "region": "south",
+      "country": "Botswana",
+      "category": "ETIQUETTE",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "A host pours a welcome cup as arrivals enter. What do arrivals do?",
+      "options": [
+        "Accept offered drink",
+        "Refuse entry",
+        "Ask brand",
+        "Set aside"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Accept offered drink. It is a small everyday courtesy in the home, not a rule for every household.",
+      "sources": [
+        {
+          "title": "Household courtesy",
+          "url": "https://brideprice.classesforculture.com/etiquette",
+          "claim": "courteous choice",
+          "method": "evidence-quote"
+        }
+      ],
+      "origin": "generated",
+      "lifecycleStatus": "published",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "evidence-quote",
+          "http": 200
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": "A host pours a welcome cup as arrivals enter. What do arrivals do. The courteous choice is to Accept offered drink.",
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
     }
   ]
 }
