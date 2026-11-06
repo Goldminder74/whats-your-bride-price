@@ -62,7 +62,7 @@ test("the daily flag stays on in wrangler, and a Worker with it off does nothing
   assert.match(config, /"ROYAL_REVEAL_ENABLED": "on"/);
   assert.match(config, /"EARN_PATHS": "on"/);
   assert.match(config, /"SHARE_CARDS": "on"/);
-  assert.match(config, /"RESULT_VIDEO": "off"/);
+  assert.match(config, /"RESULT_VIDEO": "on"/);
   const kv = memoryKv();
   const app = services({ kv });
   assert.equal((await body(await servePaid(request("/api/paid/health"), app))).dailyChallenge, false);

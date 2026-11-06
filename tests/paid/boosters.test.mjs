@@ -80,7 +80,7 @@ async function openRound(app, owner, attemptId) {
 
 test("boosters stay off until the flag is on", async () => {
   const config = await readFile(new URL("../../wrangler.jsonc", import.meta.url), "utf8");
-  assert.match(config, /"BOOSTERS": "off"/);
+  assert.match(config, /"BOOSTERS": "on"/);
   assert.match(config, /"DAILY_CHALLENGE": "on"/);
   const app = services();
   assert.equal((await body(await servePaid(request("/api/paid/health"), app))).boosters, false);
