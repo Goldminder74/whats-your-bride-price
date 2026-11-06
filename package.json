@@ -13,7 +13,7 @@
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "test:unit": "node --experimental-strip-types --test tests/unit/gameLogic.test.mjs tests/unit/featureFlags.test.mjs tests/unit/questionSelection.test.mjs tests/unit/questionBank.test.mjs",
     "question-bank:build": "python3 scripts/question-bank/build_catalog.py && node --experimental-strip-types scripts/question-bank/run.mjs",
-    "test:paid": "npm run build:shell && node --experimental-strip-types --test tests/paid/paid-flow.test.mjs tests/paid/earn.test.mjs tests/paid/daily.test.mjs tests/paid/royal-reveal.test.mjs tests/paid/worker-e2e.test.mjs",
+    "test:paid": "npm run build:shell && node --experimental-strip-types --test tests/paid/paid-flow.test.mjs tests/paid/earn.test.mjs tests/paid/daily.test.mjs tests/paid/royal-reveal.test.mjs tests/paid/boosters.test.mjs tests/paid/worker-e2e.test.mjs",
     "dev:worker": "wrangler dev --config wrangler.jsonc --local",
     "build:shell": "node scripts/assemble-paid-assets.mjs",
     "build:worker": "npm run build:shell && wrangler deploy --dry-run --outdir outputs/paid-worker --config wrangler.jsonc",

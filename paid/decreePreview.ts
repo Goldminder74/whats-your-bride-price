@@ -3,6 +3,7 @@ import { CANONICAL_ORIGIN } from "./catalog.ts";
 import { PaidError } from "./errors.ts";
 import type { KvStore } from "./games.ts";
 import { DECREE_PREVIEW_HEIGHT, DECREE_PREVIEW_WIDTH, previewDisplayName } from "./decreePreviewName.ts";
+import { isFrameKey, type FrameKey } from "./frameStyle.ts";
 import { royalDecreeSvg } from "./royalDecree.ts";
 import { pngSize, renderShareCardPng } from "./shareCardPng.ts";
 import type { PaidServices } from "./serve.ts";
@@ -19,14 +20,16 @@ const ART_FILE: Record<RegionKey, string> = {
   south: "south.jpg",
 };
 
-export type DecreePreviewParams = { edition: RegionKey; score: number; name: string };
+export type DecreePreviewParams = { edition: RegionKey; score: number; name: string; style?: FrameKey | null };
 
 function cacheKey(params: DecreePreviewParams): string {
-  return `decree-preview:v1:${params.edition}:${params.score}:${encodeURIComponent(params.name)}`;
+  const style = params.style ? `:${params.style}` : "";
+  return `decree-preview:v1:${params.edition}:${params.score}:${encodeURIComponent(params.name)}${style}`;
 }
 
 function cacheRequest(params: DecreePreviewParams): Request {
-  return new Request(`https://decree-preview.wybp/v1/${params.edition}/${params.score}/${encodeURIComponent(params.name)}`);
+  const style = params.style ? `/${params.style}` : "";
+  return new Request(`https://decree-preview.wybp/v1/${params.edition}/${params.score}/${encodeURIComponent(params.name)}${style}`);
 }
 
 function bytesToBase64(bytes: Uint8Array): string {
@@ -121,10 +124,21 @@ export async function handleDecreePreview(url: URL, services: PaidServices): Pro
   if (!EDITIONS.has(edition as RegionKey)) throw new PaidError("edition_invalid", 400);
   const scoreText = url.searchParams.get("score") ?? "";
   if (!SCORE.test(scoreText)) throw new PaidError("score_invalid", 400);
+  const styleText = url.searchParams.get("style");
+  if (styleText !== null && !isFrameKey(styleText)) throw new PaidError("frame_invalid", 400);
+  if (styleText && !services.boosters) throw new PaidError("boosters_disabled", 404);
+  const style = styleText && isFrameKey(styleText) ? styleText : null;
+  if (style) {
+    const player = url.searchParams.get("player") || "";
+    if (!/^[A-Za-z0-9_-]{16,64}$/.test(player) || !(await services.repository.boosters.ownsFrame(player, style))) {
+      throw new PaidError("frame_not_owned", 403);
+    }
+  }
   const params: DecreePreviewParams = {
     edition: edition as RegionKey,
     score: Number(scoreText),
     name: previewDisplayName(url.searchParams.get("name")),
+    style,
   };
   const cached = await readCached(services.kv, params);
   if (cached) return pngResponse(cached, "hit");
@@ -136,6 +150,7 @@ export async function handleDecreePreview(url: URL, services: PaidServices): Pro
     artwork: await artwork(services, params.edition),
     issuedAt: PREVIEW_ISSUED_AT,
     preview: true,
+    style: params.style,
   });
   if (!svg.includes(">PREVIEW<")) throw new PaidError("preview_unavailable", 500);
   const png = await renderShareCardPng(svg, DECREE_PREVIEW_WIDTH);

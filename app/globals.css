@@ -185,6 +185,20 @@ button:focus-visible,a:focus-visible,.region-card:focus-visible{outline:3px soli
 .invite-actions{margin-top:12px}
 .invite-actions button,.invite-actions a{flex:1 1 140px}
 @media(max-width:420px){.daily-meta,.invite-actions{flex-direction:column;align-items:stretch}.invite-actions button,.invite-actions a{flex:0 0 auto;width:100%;min-width:0;min-height:44px}}
+.booster-bar{display:flex;gap:8px;overflow-x:auto;margin:12px 0 4px}
+.booster-bar button,.booster-second,.freeze-row button,.frame-picker button{box-sizing:border-box;min-height:44px;border:2px solid #2b1a10;background:#f0a11a;color:#1d120b;font:800 13px/1.1 "Avenir Next",sans-serif;padding:6px 10px}
+.booster-bar button,.booster-second{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.booster-bar button{flex:1 0 104px}
+.booster-bar small,.booster-second small,.frame-picker small{font:700 11px/1 "Avenir Next",sans-serif}
+.booster-hint{margin:8px 0 0;padding:8px 10px;background:#fff6d8;color:#1d120b;font:600 14px/1.3 "Avenir Next",sans-serif}
+.freeze-row,.frame-picker{box-sizing:border-box;width:100%;max-width:100%;margin:12px 0;padding:12px;text-align:left;background:#f3e7cc;color:#1d120b;border:2px solid #2b1a10;box-shadow:6px 8px 0 #2b1a10}
+.freeze-row{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.freeze-row span{display:block;font:600 12px/1.3 "Avenir Next",sans-serif}
+.freeze-row button:disabled{background:#c8b394}
+.frame-picker>div{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.frame-picker button{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.frame-picker button.is-on{outline:3px solid #bb3e22}
+@media(max-width:420px){.frame-picker>div{grid-template-columns:1fr}.freeze-row{align-items:stretch;flex-direction:column}.freeze-row button{width:100%}}
 .share-preview{display:grid;grid-template-columns:1.15fr .72fr;gap:12px;align-items:start;margin:8px 0 18px}
 .share-preview img{width:100%;height:auto;border:2px solid #f0a11a;box-shadow:8px 10px 0 #2b1a10;background:#1a0e09}
 .video-actions{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 16px}

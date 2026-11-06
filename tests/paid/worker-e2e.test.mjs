@@ -22,6 +22,7 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
       EARN_PATHS: "off",
       SHARE_CARDS: "off",
       DAILY_CHALLENGE: "off",
+      BOOSTERS: "off",
     },
     experimental: { disableExperimentalWarning: true, forceLocal: true, disableDevRegistry: true },
   });
@@ -142,6 +143,11 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
     assert.equal(health.earnPaths, false);
     assert.equal(health.shareCards, false);
     assert.equal(health.dailyChallenge, false);
+    assert.equal(health.boosters, false);
+    assert.equal((await worker.fetch("http://127.0.0.1/api/paid/boosters/use", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ playerId: "worker_booster_off_01", roundKind: "daily", roundId: "daily20261102west", edition: "west", kind: "fifty", questionIndex: 0 }),
+    })).status, 404);
     assert.equal((await worker.fetch("http://127.0.0.1/api/paid/daily/begin", {
       method: "POST", headers: { "content-type": "application/json" },
       body: JSON.stringify({ playerId: "worker_daily_off_0001", edition: "west" }),

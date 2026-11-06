@@ -3,6 +3,7 @@ import { regions, type RegionKey } from "../app/gameData.ts";
 import { loadPublished } from "../question-bank/loader.ts";
 import type { BankQuestion } from "../question-bank/types.ts";
 import { sensitivityReasons } from "../question-bank/sensitivity.ts";
+import { frameStyleMarkup, type FrameKey } from "./frameStyle.ts";
 import { PaidError } from "./errors.ts";
 import { isEdition } from "./games.ts";
 import {
@@ -30,6 +31,7 @@ export type DecreeInput = {
   issuedAt?: number;
   /** Low-resolution sheet preview. Never a paid certificate. */
   preview?: boolean;
+  style?: FrameKey | null;
 };
 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -200,6 +202,7 @@ export function royalDecreeSvg(input: DecreeInput): string {
   <rect x="26" y="26" width="${width - 52}" height="${height - 52}" fill="none" stroke="#f0a11a" stroke-width="7"/>
   <rect x="42" y="42" width="${width - 84}" height="${height - 84}" fill="none" stroke="#fff6d8" stroke-width="1.4" opacity="0.8"/>
   <rect x="50" y="50" width="${width - 100}" height="${height - 100}" fill="none" stroke="${accent}" stroke-width="1"/>
+  ${input.style ? frameStyleMarkup(input.style, width, height) : ""}
   ${cornerFlourish(58, 58, 1, 1)}
   ${cornerFlourish(width - 58, 58, -1, 1)}
   ${cornerFlourish(58, height - 58, 1, -1)}

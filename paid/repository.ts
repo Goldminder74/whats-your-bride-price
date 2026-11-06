@@ -1,4 +1,5 @@
 import { isProductKey, products, FREE_COMPLETED_GAMES, GAME_COST_COWRIES, WELCOME_BONUS_COWRIES, WELCOME_BONUS_MS, type ProductKey } from "./catalog.ts";
+import { createMemoryBoosters, type BoosterApi } from "./boosterStore.ts";
 import { createMemoryDaily, type DailyApi } from "./dailyStore.ts";
 import { earnDay, NEW_PLAYER_BONUS, newReferralCode, PERFECT_BONUS, PERFECT_DAILY_CAP, REFERRAL_DAILY_CAP, REFERRER_BONUS, SHARE_BONUS } from "./earn.ts";
 import { PaidError } from "./errors.ts";
@@ -127,6 +128,7 @@ export interface PaidRepository {
   grantShare(input: { playerId: string; at: number }): Promise<EarnDecision>;
   findReferralCode(code: string): Promise<string | null>;
   daily: DailyApi;
+  boosters: BoosterApi;
   /** Store the decree for one paid result. A repeat of the same order returns the first row. */
   saveReveal(record: RoyalRevealRecord): Promise<RoyalRevealRecord>;
   getRevealByOrder(orderId: string): Promise<RoyalRevealRecord | null>;
@@ -209,6 +211,24 @@ export function createMemoryRepository(): PaidRepository {
       freeGamesLeft: Math.max(0, FREE_COMPLETED_GAMES - record.completedGames),
       openAttempt: open ? { attemptId: open.attemptId, edition: open.edition, mode: open.mode } : null,
     };
+  }
+
+  async function spendNow(playerId: string, count: number, at: number) {
+    assertSpendCount(count);
+    const rows = [...entitlements.values()]
+      .filter((entitlement) => entitlement.playerId === playerId && entitlement.state === "active" && products[entitlement.productKey].kind === "cowries" && entitlement.remaining > 0 && (entitlement.expiresAt === null || entitlement.expiresAt > at))
+      .sort((left, right) => spendRank(left.productKey) - spendRank(right.productKey) || left.createdAt - right.createdAt || left.id.localeCompare(right.id));
+    const total = rows.reduce((sum, entitlement) => sum + entitlement.remaining, 0);
+    if (total < count) return null;
+    let left = count;
+    for (const entitlement of rows) {
+      const take = Math.min(entitlement.remaining, left);
+      entitlement.remaining -= take;
+      entitlement.updatedAt = at;
+      left -= take;
+      if (left === 0) break;
+    }
+    return accessFromEntitlements([...entitlements.values()].filter((entitlement) => entitlement.playerId === playerId), at);
   }
 
   function must(id: string): PaidOrder {
@@ -400,21 +420,7 @@ export function createMemoryRepository(): PaidRepository {
       return [...stats.values()].filter((row) => row.day >= sinceDay).sort((left, right) => left.day.localeCompare(right.day) || left.event.localeCompare(right.event));
     },
     async spendCowries(playerId, count, at) {
-      assertSpendCount(count);
-      const rows = [...entitlements.values()]
-        .filter((entitlement) => entitlement.playerId === playerId && entitlement.state === "active" && products[entitlement.productKey].kind === "cowries" && entitlement.remaining > 0 && (entitlement.expiresAt === null || entitlement.expiresAt > at))
-        .sort((left, right) => spendRank(left.productKey) - spendRank(right.productKey) || left.createdAt - right.createdAt || left.id.localeCompare(right.id));
-      const total = rows.reduce((sum, entitlement) => sum + entitlement.remaining, 0);
-      if (total < count) return null;
-      let left = count;
-      for (const entitlement of rows) {
-        const take = Math.min(entitlement.remaining, left);
-        entitlement.remaining -= take;
-        entitlement.updatedAt = at;
-        left -= take;
-        if (left === 0) break;
-      }
-      return accessFromEntitlements([...entitlements.values()].filter((entitlement) => entitlement.playerId === playerId), at);
+      return spendNow(playerId, count, at);
     },
     async refundUnfulfilled(orderId, at) {
       const order = must(orderId);
@@ -542,6 +548,10 @@ export function createMemoryRepository(): PaidRepository {
       return { ok: true, reason: "granted", cowries: SHARE_BONUS };
     },
     daily: createMemoryDaily((playerId, grantId, cowries, at) => creditEarn(playerId, grantId, cowries, at)),
+    boosters: createMemoryBoosters(
+      (playerId, count, at) => spendNow(playerId, count, at),
+      async (playerId, at) => walletOf(playerId, at).cowries,
+    ),
     async saveReveal(record) {
       const existing = reveals.get(record.orderId);
       if (existing) return existing;

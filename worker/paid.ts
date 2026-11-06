@@ -30,6 +30,7 @@ interface PaidEnv {
   SHARE_CARDS?: string;
   DAILY_CHALLENGE?: string;
   RESULT_VIDEO?: string;
+  BOOSTERS?: string;
 }
 
 let schemaReady: Promise<void> | null = null;
@@ -106,6 +107,7 @@ function services(env: PaidEnv, ctx: ExecutionContext): PaidServices {
     shareCards: envFlagOn(env.SHARE_CARDS),
     dailyChallenge: envFlagOn(env.DAILY_CHALLENGE),
     resultVideo: envFlagOn(env.RESULT_VIDEO),
+    boosters: envFlagOn(env.BOOSTERS),
   };
 }
 

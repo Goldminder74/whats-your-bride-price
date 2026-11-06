@@ -1,12 +1,13 @@
 import type { RegionKey } from "../app/gameData.ts";
 import { PaidError } from "./errors.ts";
 import type { KvStore } from "./games.ts";
+import { isFrameKey, type FrameKey } from "./frameStyle.ts";
 import type { ShareFrame } from "./shareCard.ts";
 
 const EDITIONS = new Set<RegionKey>(["west", "east", "central", "north", "south"]);
 const SCORE = /^(0|[1-9]|1[0-2])$/;
 
-export type ShareCardParams = { edition: RegionKey; score: number; frame: ShareFrame };
+export type ShareCardParams = { edition: RegionKey; score: number; frame: ShareFrame; style?: FrameKey | null };
 
 /** Only the 5 editions, scores 0–12, and the two frames are real cards. Extra query keys are ignored. */
 export function normalizeShareCardQuery(url: URL): ShareCardParams {
@@ -16,15 +17,24 @@ export function normalizeShareCardQuery(url: URL): ShareCardParams {
   if (!SCORE.test(scoreText)) throw new PaidError("score_invalid", 400);
   const frameText = url.searchParams.get("frame");
   if (frameText !== null && frameText !== "card" && frameText !== "story") throw new PaidError("frame_invalid", 400);
-  return { edition: edition as RegionKey, score: Number(scoreText), frame: frameText === "story" ? "story" : "card" };
+  const styleText = url.searchParams.get("style");
+  if (styleText !== null && !isFrameKey(styleText)) throw new PaidError("frame_invalid", 400);
+  return {
+    edition: edition as RegionKey,
+    score: Number(scoreText),
+    frame: frameText === "story" ? "story" : "card",
+    style: styleText && isFrameKey(styleText) ? styleText : null,
+  };
 }
 
 export function shareCardKvKey(params: ShareCardParams): string {
-  return `share-png:v1:${params.edition}:${params.score}:${params.frame}`;
+  const base = `share-png:v1:${params.edition}:${params.score}:${params.frame}`;
+  return params.style ? `${base}:${params.style}` : base;
 }
 
 export function shareCardCacheRequest(params: ShareCardParams): Request {
-  return new Request(`https://share-card.wybp/png/v1/${params.edition}/${params.score}/${params.frame}`);
+  const style = params.style ? `/${params.style}` : "";
+  return new Request(`https://share-card.wybp/png/v1/${params.edition}/${params.score}/${params.frame}${style}`);
 }
 
 function bytesToBase64(bytes: Uint8Array): string {

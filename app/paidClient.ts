@@ -44,21 +44,22 @@ export async function beginGame(edition: string): Promise<
   return { ok: true, attemptId: payload.attemptId, edition: payload.edition, mode: payload.mode, resumed: payload.resumed === true, freeGamesLeft: payload.freeGamesLeft ?? 0, cowries: payload.cowries ?? 0 };
 }
 
-export type PaidFeatures = { earnPaths: boolean; shareCards: boolean; dailyChallenge: boolean; royalReveal: boolean; resultVideo: boolean };
+export type PaidFeatures = { earnPaths: boolean; shareCards: boolean; dailyChallenge: boolean; royalReveal: boolean; resultVideo: boolean; boosters: boolean };
 
-const featuresOff: PaidFeatures = { earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false, resultVideo: false };
+const featuresOff: PaidFeatures = { earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false, resultVideo: false, boosters: false };
 
 export async function fetchPaidFeatures(): Promise<PaidFeatures> {
   try {
     const response = await fetch("/api/paid/catalog");
     if (!response.ok) return featuresOff;
-    const body = await response.json() as { earnPaths?: boolean; shareCards?: boolean; dailyChallenge?: boolean; royalReveal?: boolean; resultVideo?: boolean };
+    const body = await response.json() as { earnPaths?: boolean; shareCards?: boolean; dailyChallenge?: boolean; royalReveal?: boolean; resultVideo?: boolean; boosters?: boolean };
     return {
       earnPaths: body.earnPaths === true,
       shareCards: body.shareCards === true,
       dailyChallenge: body.dailyChallenge === true,
       royalReveal: body.royalReveal === true,
       resultVideo: body.resultVideo === true,
+      boosters: body.boosters === true,
     };
   } catch {
     return featuresOff;

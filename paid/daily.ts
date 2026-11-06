@@ -13,6 +13,7 @@ export type DailyPlay = {
   durationMs: number | null;
   startedAt: number;
   finishedAt: number | null;
+  boosted?: boolean;
 };
 
 export type DailyStreak = { streak: number; lastDay: string | null; startedDay: string | null };
@@ -24,6 +25,8 @@ export type DailyFinish = {
   streak: number;
   bonus: number;
   milestone: 3 | 7 | null;
+  freezesUsed: number;
+  freezeHeld: number;
 };
 
 export type BoardRow = { nickname: string; score: number; durationMs: number; you: boolean };
