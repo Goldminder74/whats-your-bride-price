@@ -23,14 +23,10 @@ test("server-renders the finished pan-African game", async () => {
   assert.match(html, /favicon-cowrie-64\.png/i);
   assert.match(html, /favicon-cowrie-180\.png/i);
   assert.match(html, /YOUR ROOTS/i);
-  assert.match(html, /AVATAR LAB/i);
-  assert.match(html, /IMAGE ROUNDS/i);
-  assert.match(html, /knowledge quest/i);
-  assert.match(html, /DO YOU KNOW YOUR ROOTS/i);
-  assert.match(html, /THE MORE YOU SCORE THE HIGHER YOUR BRIDE PRICE/i);
-  assert.match(html, /CHOOSE YOUR[\s\S]*AFRICAN[\s\S]*REGION/i);
-  assert.match(html, /Enter Region/i);
-  assert.match(html, /Every edition is its own world/i);
+  assert.match(html, /Your bragging rights/i);
+  assert.match(html, /The Motherland is calling/i);
+  assert.match(html, /Start the challenge/i);
+  assert.match(html, /Choose your region/i);
   assert.doesNotMatch(html, /cinematic/i);
   assert.doesNotMatch(html, /\u2014/);
   assert.match(html, /West Africa/);

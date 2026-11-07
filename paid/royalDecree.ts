@@ -163,7 +163,7 @@ export function royalDecreeSvg(input: DecreeInput): string {
   const height = frame === "story" ? SHARE_STORY_HEIGHT : SHARE_CARD_HEIGHT;
   const story = frame === "story";
   const region = regions[input.edition];
-  const [base, accent, dark] = region.palette;
+  const accent = region.palette[1];
   const tier = resultTier(input.score);
   const [lineA, lineB] = tierLines(tier.title);
   const nameSize = input.displayName.length > 22 ? 46 : input.displayName.length > 16 ? 58 : 72;
@@ -179,26 +179,24 @@ export function royalDecreeSvg(input: DecreeInput): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
   <defs>
-    <pattern id="grain" width="46" height="46" patternUnits="userSpaceOnUse" patternTransform="rotate(32)">
-      <line x1="0" y1="0" x2="0" y2="46" stroke="#f0a11a" stroke-width="1.6" opacity="0.28"/>
+    <pattern id="textile" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M28 4L51 28L28 52L5 28Z" fill="none" stroke="#fff6d8" stroke-width="1"/>
     </pattern>
-    <radialGradient id="vignette" cx="50%" cy="42%" r="68%">
-      <stop offset="0" stop-color="${dark}" stop-opacity="0.18"/>
-      <stop offset="0.62" stop-color="${dark}" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#070403" stop-opacity="0.92"/>
+    <radialGradient id="vignette" cx="50%" cy="18%" r="68%">
+      <stop offset="0" stop-color="#7141a3" stop-opacity="0.7"/>
+      <stop offset="0.62" stop-color="#3c275e" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#120d24" stop-opacity="0.92"/>
     </radialGradient>
     <linearGradient id="veil" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="${base}" stop-opacity="0.08"/>
-      <stop offset="0.34" stop-color="${dark}" stop-opacity="0.42"/>
-      <stop offset="0.7" stop-color="#120a07" stop-opacity="0.78"/>
-      <stop offset="1" stop-color="#070403" stop-opacity="0.94"/>
+      <stop offset="0" stop-color="#3c275e" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#120d24" stop-opacity="0.88"/>
     </linearGradient>
   </defs>
-  <rect width="${width}" height="${height}" fill="${dark}"/>
+  <rect width="${width}" height="${height}" fill="#211744"/>
   ${art}
   <rect width="${width}" height="${height}" fill="url(#vignette)"/>
   <rect width="${width}" height="${height}" fill="url(#veil)"/>
-  <rect width="${width}" height="${height}" fill="url(#grain)"/>
+  <rect width="${width}" height="${height}" fill="url(#textile)" opacity="0.035"/>
   <rect x="26" y="26" width="${width - 52}" height="${height - 52}" fill="none" stroke="#f0a11a" stroke-width="7"/>
   <rect x="42" y="42" width="${width - 84}" height="${height - 84}" fill="none" stroke="#fff6d8" stroke-width="1.4" opacity="0.8"/>
   <rect x="50" y="50" width="${width - 100}" height="${height - 100}" fill="none" stroke="${accent}" stroke-width="1"/>

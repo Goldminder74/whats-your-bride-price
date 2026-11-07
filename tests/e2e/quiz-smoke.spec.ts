@@ -95,9 +95,7 @@ async function completePerfectWestQuiz(page: Page) {
         await answerButtons.nth(buttonIndex).click();
       }
     }
-    if (question!.kind === "multi") {
-      await page.getByRole("button", { name: /Lock in 3\/3 answers/ }).click();
-    }
+    await page.getByRole("button", { name: /Lock it in/ }).click();
 
     await expect(page.getByRole("status")).toContainText("CORRECT");
     await page
@@ -118,7 +116,7 @@ async function completePerfectWestQuiz(page: Page) {
 
 test("homepage loads the complete regional entry surface", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("DO YOU KNOW YOUR ROOTS?");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Your bragging rights");
   await expect(page.locator(".region-card")).toHaveCount(5);
 });
 

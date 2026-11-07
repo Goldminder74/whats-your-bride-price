@@ -15,6 +15,35 @@ const BUNDLE_TAGS: Record<string, string> = {
 };
 
 /** Per-game line from the published GBP price. Other currencies omit it. */
+function useCountUp(value: number | null): number | null {
+  const [shown, setShown] = useState(value);
+  const previous = useRef(value);
+  useEffect(() => {
+    if (value === null) {
+      setShown(null);
+      previous.current = null;
+      return;
+    }
+    const from = previous.current ?? value;
+    previous.current = value;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || from === value) {
+      setShown(value);
+      return;
+    }
+    const start = performance.now();
+    let frame = 0;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / 650);
+      setShown(Math.round(from + (value - from) * (1 - (1 - t) ** 3)));
+      if (t < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [value]);
+  return shown;
+}
+
 function perGamePrice(displayPrice: string, games: number): string | null {
   if (!displayPrice.startsWith("£") || games < 1) return null;
   const pounds = Number(displayPrice.slice(1).replaceAll(",", ""));
@@ -136,7 +165,9 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
   }
 
   const shown = open || forceOpen;
+  const shownCowries = useCountUp(cowries);
   const freeLabel = freeGamesLeft === null ? "free games" : `${freeGamesLeft} free ${freeGamesLeft === 1 ? "game" : "games"} left`;
+  const royalProduct = catalog?.products.find((product) => product.kind === "royal_reveal");
   const kicker = forceOpen
     ? "Your 2 free games are done"
     : freeGamesLeft !== null && freeGamesLeft > 0
@@ -147,18 +178,18 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
     <>
       <button className="cowrie-chip" onClick={() => setOpen(true)} aria-haspopup="dialog">
         <span aria-hidden="true">✦</span>
-        <span className="cowrie-chip-copy"><b>{cowries === null ? "Cowries" : `${cowries} cowries`}</b><small>{freeLabel}</small></span>
+        <span className="cowrie-chip-copy"><b>{shownCowries === null ? "Cowries" : `${shownCowries} cowries`}</b><small>{freeLabel}</small></span>
         {royal ? <small>Royal</small> : null}
       </button>
       {shown && (
         <div className={`paid-sheet${forceOpen ? " forced" : ""}`} role="dialog" aria-modal="true" aria-labelledby={titleId}>
           <div className="paid-card">
-            <button className="modal-close" onClick={() => { setOpen(false); onClose?.(); }} aria-label="Close purchases">×</button>
-            <p className="eyebrow">{kicker}</p>
-            <h2 id={titleId}>COWRIES<br /><i>for the culture</i></h2>
+            <button className="modal-close" onClick={() => { setOpen(false); onClose?.(); }} aria-label="Close purchases">Close ×</button>
+            <p className="eyebrow">{forceOpen ? kicker : "The Cowrie shop"}</p>
+            <h2 id={titleId}>Stay for<br /><i>the culture.</i></h2>
             {forceOpen ? <p className="paid-unlock">Unlock your next game for 5 Cowries.</p> : null}
             <p>Your first two completed games are free. After that, starting a game costs 5 Cowries. Card details stay with Stripe.</p>
-            <p className="paid-balance"><b>{cowries === null ? "—" : cowries}</b> cowries on this browser. {freeLabel}.{royal ? " A Royal Reveal purchase on this browser is still active." : ""}</p>
+            <p className="paid-balance"><b>{shownCowries === null ? "—" : shownCowries}</b> cowries on this browser. {freeLabel}.{royal ? " A Royal Reveal purchase on this browser is still active." : ""}</p>
             {revealOrder ? <RoyalRevealDownloads orderId={revealOrder} /> : null}
             <p className="paid-bonus">Welcome bonus: +5 Cowries on your first purchase. Bonus Cowries are used first and expire 14 days after that purchase.</p>
             <div className="paid-actions">
@@ -188,6 +219,11 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
                     );
                   })}
                 </div>
+                {royalProduct ? <section className="royal-shop">
+                  <h3>{royalProduct.name} <span className="royal-shop-price">{royalProduct.displayPrice}</span></h3>
+                  <p>A personal Royal Decree for one finished result: two certificate images, a PDF, and three to five notes from the published question bank.</p>
+                  <p>Open it from your result. Checkout stays on that screen, with the same age and delivery confirmation.</p>
+                </section> : null}
                 <label className="paid-field">Email address
                   <input type="email" required autoComplete="email" maxLength={200} value={email} onChange={(event) => setEmail(event.target.value)} />
                 </label>

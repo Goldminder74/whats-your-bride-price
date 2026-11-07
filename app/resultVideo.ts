@@ -10,12 +10,13 @@ function beatLines(story: Story, seconds: number): string[] {
 
 function drawFrame(context: CanvasRenderingContext2D, story: Story, seconds: number): void {
   const { width, height, safe } = story;
-  context.fillStyle = "#1a0e09";
+  context.fillStyle = "#211744";
   context.fillRect(0, 0, width, height);
-  context.fillStyle = "#bb3e22";
-  context.globalAlpha = 0.28;
+  const glow = context.createRadialGradient(width / 2, height * 0.3, 40, width / 2, height * 0.4, height * 0.6);
+  glow.addColorStop(0, "#7141a3b3");
+  glow.addColorStop(1, "#21174400");
+  context.fillStyle = glow;
   context.fillRect(0, 0, width, height);
-  context.globalAlpha = 1;
   const boxTop = safe.top;
   const boxHeight = height - safe.bottom - safe.top;
   context.strokeStyle = "#f0a11a";
@@ -32,7 +33,7 @@ function drawFrame(context: CanvasRenderingContext2D, story: Story, seconds: num
     context.font = `${index === 0 ? 92 : 64}px Anton, Impact, Arial Black, sans-serif`;
     context.fillText(line, width / 2, boxTop + 200 + index * 140, width - safe.side * 2 - 40);
   });
-  context.fillStyle = "#f3e7cc";
+  context.fillStyle = "#fff6d8";
   context.font = "28px Anton, Impact, Arial Black, sans-serif";
   context.fillText("A PLAYFUL CULTURE SCORE", width / 2, height - safe.bottom - 48);
 }

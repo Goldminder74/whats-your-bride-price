@@ -2,14 +2,16 @@ import { CANONICAL_ORIGIN, ROYAL_WAIVER_TEXT, WAIVER_TEXT } from "./catalog.ts";
 
 function page(title: string, body: string, index: boolean, path = "/"): string {
   const canonical = `${CANONICAL_ORIGIN}${path}`;
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title}</title><link rel="canonical" href="${canonical}"><meta property="og:title" content="What’s Your Bride Price?"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${CANONICAL_ORIGIN}/og-v2.png"><meta name="twitter:card" content="summary_large_image"><meta name="robots" content="${index ? "index,follow" : "noindex,nofollow"}"><style>
-  :root{color-scheme:dark;--ink:#f6efe4;--bg:#1d120b;--card:#2a1b12;--line:#6b4a32;--gold:#f0a11a}
-  body{margin:0;font:18px/1.5 Georgia,serif;background:var(--bg);color:var(--ink)}
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title}</title><link rel="canonical" href="${canonical}"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:wght@400;500;700;800&display=swap"><meta property="og:title" content="What’s Your Bride Price?"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${CANONICAL_ORIGIN}/og-v2.png"><meta name="twitter:card" content="summary_large_image"><meta name="robots" content="${index ? "index,follow" : "noindex,nofollow"}"><style>
+  :root{color-scheme:dark;--ink:#fff6d8;--bg:#211744;--card:#2c2150;--line:#ffffff2e;--gold:#ffd079}
+  body{margin:0;font:16px/1.5 "DM Sans",Arial,sans-serif;background:radial-gradient(ellipse at 100% 0%,#60429c66,transparent 42%),var(--bg);color:var(--ink)}
+  h1,h2{font-family:"Bricolage Grotesque","Arial Black",sans-serif;letter-spacing:-.03em}
   main{max-width:42rem;margin:auto;padding:1.5rem}
-  a{color:var(--gold)} button,select,input{font:inherit} button{background:var(--gold);color:#1d120b;border:0;border-radius:999px;padding:.6rem 1rem;cursor:pointer}
+  a{color:var(--gold)} button,select,input{font:inherit} button{background:linear-gradient(#ffe49a,#ffc54d 48%,#f0a11a);color:#2b1a10;border:1px solid #ffe6a6;border-radius:16px;padding:.7rem 1rem;cursor:pointer;font-weight:800}
   .card{background:var(--card);border:1px solid var(--line);border-radius:1rem;padding:1rem;margin:1rem 0}
-  .warn{border-color:var(--gold)} .options{display:grid;gap:.5rem} .options button{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:.8rem;text-align:left}
+  .warn{border-color:var(--gold)} .options{display:grid;gap:.5rem} .options button{background:#ffffff10;color:var(--ink);border:1px solid var(--line);border-radius:.8rem;text-align:left}
   label{display:block;margin:.6rem 0} footer nav{display:flex;flex-wrap:wrap;gap:.8rem}
+  @media (prefers-reduced-motion:no-preference){button{transition:transform .13s ease}button:active{transform:translateY(4px)}}
   </style></head><body><main>${body}<footer class="card"><p>A playful culture score, never a measure of human worth.</p><nav aria-label="Legal"><a href="/">Game</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/refunds">Refunds</a></nav></footer></main></body></html>`;
 }
 
