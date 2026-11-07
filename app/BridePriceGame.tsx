@@ -1104,19 +1104,19 @@ export default function BridePriceGame() {
                 </button>
               })}
             </div>
-            {paidFeatures.boosters && boosterOffer ? <div className="booster-bar" aria-label="Boosters">
-              {boosterOffer.fifty ? <button type="button" onClick={() => spendBooster("fifty")}><span aria-hidden="true">◎</span> 50/50 <small>{boosterOffer.costs.fifty} Cowrie</small></button> : null}
-              {boosterOffer.hint ? <button type="button" onClick={() => spendBooster("hint")}><span aria-hidden="true">✦</span> Hint <small>{boosterOffer.costs.hint} Cowrie</small></button> : null}
-              {boosterOffer.skip ? <button type="button" onClick={() => spendBooster("skip")}><span aria-hidden="true">↷</span> Skip <small>{boosterOffer.costs.skip} Cowries</small></button> : null}
-            </div> : null}
-            {!feedbackOpen && <button className="lock-answer" disabled={question.kind === "multi" ? selected.length !== 3 : selected.length !== 1} onClick={() => submitAnswer(selected)}>Lock it in <span>→</span></button>}
-            {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
-              <div><span>{lastCorrect ? "✦ CORRECT" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? "Culture gem energy!" : "Good guess. Bank this fact."}</b></div>
-              <p>{question.explanation}</p>
-              {!lastCorrect && paidFeatures.boosters && boosterOffer && !boosterOffer.used.second ? <button type="button" className="booster-second" onClick={() => spendBooster("second")}>Second chance <small>{boosterOffer.costs.second} Cowries</small></button> : null}
-              <button onClick={nextQuestion}>{index === activeQuestions.length - 1 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
-            </div>}
           </div>
+          {paidFeatures.boosters && boosterOffer ? <div className="booster-bar" aria-label="Boosters">
+            {boosterOffer.fifty ? <button type="button" onClick={() => spendBooster("fifty")}><span aria-hidden="true">◎</span> 50/50 <small>{boosterOffer.costs.fifty} Cowrie</small></button> : null}
+            {boosterOffer.hint ? <button type="button" onClick={() => spendBooster("hint")}><span aria-hidden="true">✦</span> Hint <small>{boosterOffer.costs.hint} Cowrie</small></button> : null}
+            {boosterOffer.skip ? <button type="button" onClick={() => spendBooster("skip")}><span aria-hidden="true">↷</span> Skip <small>{boosterOffer.costs.skip} Cowries</small></button> : null}
+          </div> : null}
+          {!feedbackOpen && <button className="lock-answer" disabled={question.kind === "multi" ? selected.length !== 3 : selected.length !== 1} onClick={() => submitAnswer(selected)}>Lock it in <span>→</span></button>}
+          {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
+            <div><span>{lastCorrect ? "✦ CORRECT" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? "Culture gem energy!" : "Good guess. Bank this fact."}</b></div>
+            <p>{question.explanation}</p>
+            {!lastCorrect && paidFeatures.boosters && boosterOffer && !boosterOffer.used.second ? <button type="button" className="booster-second" onClick={() => spendBooster("second")}>Second chance <small>{boosterOffer.costs.second} Cowries</small></button> : null}
+            <button onClick={nextQuestion}>{index === activeQuestions.length - 1 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
+          </div>}
           <div className="quiz-footer"><span>{region.mark}</span><p>Right or wrong, every reveal teaches you something.</p></div>
           {dropOpen && (
             <div className="culture-drop" role="dialog" aria-modal="true" aria-label="Culture drop">

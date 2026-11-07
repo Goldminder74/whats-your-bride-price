@@ -653,7 +653,7 @@
   font: 800 13px/1.1 "DM Sans", sans-serif;
 }
 .game-shell .booster-bar small,
-.game-shell .booster-second small { color: #d9c8e8; font-size: 11px; }
+.game-shell .booster-second small { color: #d9c8e8; font-size: 12px; }
 .game-shell .booster-hint {
   background: #fff6d8;
   color: var(--cocoa);
