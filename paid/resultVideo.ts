@@ -95,8 +95,6 @@ function xml(value: string): string {
 export function resultVideoFrameSvg(story: ResultVideoStory, beatId: ResultVideoBeat["id"]): string {
   const beat = story.beats.find((item) => item.id === beatId);
   if (!beat) throw new PaidError("frame_invalid", 400);
-  const region = regions[story.edition];
-  const [base, accent, dark] = region.palette;
   const top = story.safe.top;
   const bottom = story.height - story.safe.bottom;
   const lines = beat.lines.map((line, index) => {
@@ -106,11 +104,17 @@ export function resultVideoFrameSvg(story: ResultVideoStory, beatId: ResultVideo
   }).join("");
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${story.width}" height="${story.height}" viewBox="0 0 ${story.width} ${story.height}">
-  <rect width="${story.width}" height="${story.height}" fill="${dark}"/>
-  <rect width="${story.width}" height="${story.height}" fill="${base}" opacity="0.25"/>
-  <rect x="${story.safe.side}" y="${top}" width="${story.width - story.safe.side * 2}" height="${bottom - top}" fill="none" stroke="${accent}" stroke-width="8"/>
-  <rect x="${story.safe.side + 16}" y="${top + 16}" width="${story.width - (story.safe.side + 16) * 2}" height="${bottom - top - 32}" fill="none" stroke="#fff6d8" stroke-width="2"/>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="30%" r="60%">
+      <stop offset="0" stop-color="#7141a3" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#211744" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="${story.width}" height="${story.height}" fill="#211744"/>
+  <rect width="${story.width}" height="${story.height}" fill="url(#glow)"/>
+  <rect x="${story.safe.side}" y="${top}" width="${story.width - story.safe.side * 2}" height="${bottom - top}" rx="36" fill="none" stroke="#f0a11a" stroke-width="8"/>
+  <rect x="${story.safe.side + 16}" y="${top + 16}" width="${story.width - (story.safe.side + 16) * 2}" height="${bottom - top - 32}" rx="28" fill="none" stroke="#fff6d8" stroke-width="2"/>
   ${lines}
-  <text x="540" y="${bottom - 48}" fill="#f3e7cc" font-family="Anton, Impact, Arial Black, sans-serif" font-size="28" letter-spacing="4" text-anchor="middle">A PLAYFUL CULTURE SCORE</text>
+  <text x="540" y="${bottom - 48}" fill="#fff6d8" font-family="Anton, Impact, Arial Black, sans-serif" font-size="28" letter-spacing="4" text-anchor="middle">A PLAYFUL CULTURE SCORE</text>
 </svg>`;
 }

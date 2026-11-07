@@ -177,6 +177,27 @@ const gifts = [
 const resultCalls = ["YOUR JOURNEY", "THE ROOTS ARE", "SO CLOSE TO", "THE COUNCIL IS"];
 const resultCallEmphasis = ["BEGINS.", "CALLING.", "MASTERY.", "IMPRESSED."];
 const kindLabels = { single: "ONE ANSWER", multi: "SELECT THREE", complete: "COMPLETE THE SENTENCE", image: "IMAGE CHALLENGE" } as const;
+
+function CountUp({ value }: { value: number }) {
+  const [shown, setShown] = useState(0);
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setShown(value);
+      return;
+    }
+    const start = performance.now();
+    let frame = 0;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / 650);
+      setShown(Math.round(value * (1 - (1 - t) ** 3)));
+      if (t < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [value]);
+  return <>{shown}</>;
+}
 function fillPercussionNoise(channel: Float32Array<ArrayBufferLike>): void {
   for (let i = 0; i < channel.length; i += 1) {
     channel[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / channel.length, 4);
@@ -210,6 +231,7 @@ export default function BridePriceGame() {
   const [lastCorrect, setLastCorrect] = useState(false);
   const [dropOpen, setDropOpen] = useState(false);
   const [sound, setSound] = useState(true);
+  const [freeGamesLeft, setFreeGamesLeft] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [paywall, setPaywall] = useState(false);
   const [attemptId, setAttemptId] = useState<string | null>(null);
@@ -278,6 +300,22 @@ export default function BridePriceGame() {
       setReferralUrl(referral.url);
     })();
     return () => { cancelled = true; };
+  }, []);
+
+  useEffect(() => {
+    if (!paidCommerceEnabled()) return;
+    let cancelled = false;
+    const load = () => {
+      void fetchWallet().then((wallet) => {
+        if (!cancelled && wallet) setFreeGamesLeft(wallet.freeGamesLeft);
+      });
+    };
+    load();
+    window.addEventListener("wybp-wallet", load);
+    return () => {
+      cancelled = true;
+      window.removeEventListener("wybp-wallet", load);
+    };
   }, []);
 
   useEffect(() => {
@@ -793,34 +831,34 @@ export default function BridePriceGame() {
     const canvas = document.createElement("canvas");
     canvas.width = 1080; canvas.height = 1350;
     const ctx = canvas.getContext("2d"); if (!ctx) return null;
-    const [base, accent, dark] = region.palette;
-    ctx.fillStyle = base; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#211744"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    const glow = ctx.createRadialGradient(540, 280, 40, 540, 420, 700);
+    glow.addColorStop(0, "#7141a388"); glow.addColorStop(1, "#21174400");
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, canvas.width, canvas.height);
     const worldArt = new Image(); worldArt.src = `/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`; await worldArt.decode();
-    ctx.save(); ctx.globalAlpha = .48; ctx.drawImage(worldArt, 0, 0, worldArt.width, worldArt.height, 0, 0, 1080, 1350); ctx.restore();
-    const veil = ctx.createLinearGradient(0, 0, 0, 1350); veil.addColorStop(0, `${dark}99`); veil.addColorStop(.52, `${dark}dd`); veil.addColorStop(1, dark); ctx.fillStyle = veil; ctx.fillRect(0, 0, 1080, 1350);
-    ctx.globalAlpha = .22; ctx.strokeStyle = accent; ctx.lineWidth = 12;
-    for (let x = -400; x < 1400; x += 90) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 680, 1350); ctx.stroke(); }
-    ctx.globalAlpha = 1; ctx.fillStyle = dark; ctx.fillRect(55, 55, 970, 1240);
-    ctx.strokeStyle = accent; ctx.lineWidth = 3; ctx.strokeRect(78, 78, 924, 1194);
-    ctx.textAlign = "center"; ctx.fillStyle = accent; ctx.font = "700 28px Arial";
+    ctx.save(); ctx.globalAlpha = .22; ctx.drawImage(worldArt, 0, 0, worldArt.width, worldArt.height, 0, 0, 1080, 1350); ctx.restore();
+    const veil = ctx.createLinearGradient(0, 0, 0, 1350); veil.addColorStop(0, "#3c275ecc"); veil.addColorStop(1, "#120d24ee"); ctx.fillStyle = veil; ctx.fillRect(0, 0, 1080, 1350);
+    ctx.strokeStyle = "#f0a11a"; ctx.lineWidth = 8; ctx.strokeRect(48, 48, 984, 1254);
+    ctx.strokeStyle = "#fff6d8"; ctx.globalAlpha = .7; ctx.lineWidth = 2; ctx.strokeRect(68, 68, 944, 1214); ctx.globalAlpha = 1;
+    ctx.textAlign = "center"; ctx.fillStyle = "#ffd079"; ctx.font = "700 28px Anton, Impact, Arial Black, sans-serif";
     ctx.fillText(`${region.name.toUpperCase()} EDITION • CEREMONIAL SCORECARD`, 540, 145);
     if (portrait) {
       const image = new Image(); image.src = portrait; await image.decode();
       ctx.save(); ctx.beginPath(); ctx.arc(540, 370, 165, 0, Math.PI * 2); ctx.clip();
       const side = Math.min(image.width, image.height);
       ctx.drawImage(image, (image.width - side) / 2, (image.height - side) / 2, side, side, 375, 205, 330, 330); ctx.restore();
-      ctx.strokeStyle = accent; ctx.lineWidth = 12; ctx.beginPath(); ctx.arc(540, 370, 172, 0, Math.PI * 2); ctx.stroke();
+      ctx.strokeStyle = "#f0a11a"; ctx.lineWidth = 12; ctx.beginPath(); ctx.arc(540, 370, 172, 0, Math.PI * 2); ctx.stroke();
     } else {
-      ctx.fillStyle = accent; ctx.font = "110px Georgia"; ctx.fillText(region.mark, 540, 410);
+      ctx.fillStyle = "#f0a11a"; ctx.font = "110px Anton, Impact, Arial Black, sans-serif"; ctx.fillText(region.mark, 540, 410);
     }
-    ctx.fillStyle = "#f3e7cc"; ctx.font = "italic 46px Georgia"; ctx.fillText(name || "A Most Excellent Human", 540, 625);
-    ctx.fillStyle = accent; ctx.font = "900 84px Impact, Arial Black"; ctx.fillText(tierTitles[tier].toUpperCase(), 540, 735);
-    ctx.fillStyle = "#f3e7cc"; ctx.font = "36px Georgia";
+    ctx.fillStyle = "#fff6d8"; ctx.font = "46px Anton, Impact, Arial Black, sans-serif"; ctx.fillText(name || "A Most Excellent Human", 540, 625);
+    ctx.fillStyle = "#ffd079"; ctx.font = "900 84px Anton, Impact, Arial Black, sans-serif"; ctx.fillText(tierTitles[tier].toUpperCase(), 540, 735);
+    ctx.fillStyle = "#fff6d8"; ctx.font = "36px Anton, Impact, Arial Black, sans-serif";
     ctx.fillText(gifts[tier][0].toUpperCase(), 540, 845);
-    ctx.font = "italic 29px Georgia"; ctx.fillText(`+${gifts[tier][1]} + ${gifts[tier][2]}`, 540, 907);
-    ctx.fillStyle = accent; ctx.font = "700 25px Arial"; ctx.fillText(`KNOWLEDGE SCORE ${correctCount}/12 • ${region.name.toUpperCase()}`, 540, 1010);
-    ctx.fillStyle = "#f3e7cc"; ctx.font = "900 58px Impact, Arial Black"; ctx.fillText("WHAT’S YOUR BRIDE PRICE?", 540, 1130);
-    ctx.font = "24px Arial"; ctx.fillText("Play your region. Share your result. Nominate a friend.", 540, 1190);
+    ctx.font = "29px Anton, Impact, Arial Black, sans-serif"; ctx.fillText(`+${gifts[tier][1]} + ${gifts[tier][2]}`, 540, 907);
+    ctx.fillStyle = "#ffd079"; ctx.font = "700 25px Anton, Impact, Arial Black, sans-serif"; ctx.fillText(`KNOWLEDGE SCORE ${correctCount}/12 • ${region.name.toUpperCase()}`, 540, 1010);
+    ctx.fillStyle = "#fff6d8"; ctx.font = "900 58px Anton, Impact, Arial Black, sans-serif"; ctx.fillText("WHAT’S YOUR BRIDE PRICE?", 540, 1130);
+    ctx.font = "24px Anton, Impact, Arial Black, sans-serif"; ctx.fillText("Play your region. Share your result. Nominate a friend.", 540, 1190);
     return new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
   };
 
@@ -942,63 +980,57 @@ export default function BridePriceGame() {
       </header>
 
       {screen === "home" && (
-        <>
-          <section className="cinema-hero" id="top">
-            <div className="cinema-glow" aria-hidden="true" />
-            <div className="cinema-copy">
-              <div className="live-pill"><i /> The Motherland is calling</div>
-              <p className="cinema-kicker">A pan-African knowledge quest</p>
-              <h1 className="challenge-headline"><span>DO YOU KNOW YOUR ROOTS?</span><em>THE MORE YOU SCORE THE HIGHER YOUR BRIDE PRICE</em><strong>LET’S PLAY!</strong></h1>
-              <p>Pick a region you know best because Africa is one giant continent. Decode proverbs. Spot the dish. Trace an empire. Leave with high scores, and a certificate proving the high bride price you deserve. The groom must pay!</p>
-              <div className="cinema-actions">
-                <button className="play-now" onClick={() => setScreen("setup")}><span>▶</span> Start the challenge</button>
-                <button className="trailer-button" onClick={() => setMenuOpen(true)}><span>ⓘ</span> What is this?</button>
-              </div>
-              <div className="hero-stats"><span><b>5</b> worlds</span><span><b>60</b> challenges</span><span><b>12</b> avatar heroes</span></div>
+        <section className="jewel-home" id="top">
+          <div className="jewel-kicker-row">
+            <p className="eyebrow">The Motherland is calling</p>
+          </div>
+          <div className="cowry-hero" aria-hidden="true">
+            <div className="orbit" />
+            <div className="orb" />
+            <div className="float-wrap">
+              <svg className="hero-shell" viewBox="0 0 160 200" width="118" height="148">
+                <defs>
+                  <linearGradient id="shell" x1="0" y1="0" x2="1" y2="1">
+                    <stop stopColor="#fffdf2" /><stop offset=".45" stopColor="#ffe9ae" /><stop offset=".7" stopColor="#f0a11a" /><stop offset="1" stopColor="#fff6d8" />
+                  </linearGradient>
+                  <linearGradient id="teeth" x1="0" y1="0" x2="1" y2="1">
+                    <stop stopColor="#a74d18" /><stop offset="1" stopColor="#42220e" />
+                  </linearGradient>
+                </defs>
+                <path d="M80 8C24 8 3 83 18 141C28 185 55 197 80 191C112 187 144 157 144 107C144 60 122 8 80 8Z" fill="url(#shell)" stroke="#ffedb4" strokeWidth="2" />
+                <path d="M76 40C65 69 60 139 78 166C95 148 102 80 91 42C87 29 81 28 76 40Z" fill="url(#teeth)" />
+                <g stroke="#fff3ce" strokeWidth="6" strokeLinecap="round" fill="none">
+                  <path d="M50 55l27 9M42 76l32 8M39 99l34 5M42 123l31-2M50 145l27-6M91 63l25-12M94 84l31-9M94 104l35-3M91 126l33 4M86 146l28 9" />
+                </g>
+              </svg>
             </div>
-            <div className="cinema-visual" aria-label="Five regional game worlds">
-              {regionOrder.map((key, artIndex) => <button key={key} className={`world-poster world-${artIndex + 1}`} onClick={() => chooseRegion(key)}>
-                <img src={`/regions/${key === "south" ? "southern" : key}-africa.webp`} alt={`${regions[key].name} illustrated game world`} />
-                <span><small>World 0{artIndex + 1}</small>{regions[key].name}</span>
-              </button>)}
-              <div className="orbit-copy"><span>CHOOSE YOUR</span><b>AFRICAN</b><em>REGION</em></div>
-            </div>
-            <div className="game-marquee"><span>⚡ AVATAR LAB</span><span>✦ IMAGE ROUNDS</span><span>◉ CULTURE GEMS</span><span>♬ REACTIVE SOUND</span><span>↗ SHAREABLE REVEALS</span></div>
-          </section>
-          <section className="edition-section" id="editions">
-            <div className="section-heading">
-              <p>01 | Pick your path</p>
-              <h2>FIVE REGIONS.<br /><i>ENDLESS</i> BRAGGING RIGHTS.</h2>
-              <span>Every edition is its own world, with 12 questions inspired by the region’s rhythms, rituals and everyday magic.</span>
-            </div>
-            <div className="region-grid">
-              {regionOrder.map((key, cardIndex) => {
-                const item = regions[key];
-                return <div className={`region-card ${key}`} key={key} role="button" tabIndex={0} data-region={key} onClick={() => chooseRegion(key)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); chooseRegion(key); } }} aria-label={`Play the ${item.name} edition`}>
-                  <img className="region-art" src={`/regions/${key === "south" ? "southern" : key}-africa.webp`} alt="" />
-                  <div className="card-pattern" aria-hidden="true" /><div className="card-number">0{cardIndex + 1}</div>
-                  <div className="card-mark" aria-hidden="true">{item.mark}</div>
-                  <div className="card-copy"><p>{item.place}</p><h3>{item.name}</h3>
-                    <span className="region-enter">Enter Region <span>→</span></span>
-                  </div>
-                </div>;
-              })}
-            </div>
-          </section>
-          <section className="how-section">
-            <p className="eyebrow">02 | How it works</p>
-            <div className="how-intro"><h2>YOUR STORY.<br /><i>YOUR</i> SPOTLIGHT.</h2><p>Three joyful minutes to a portrait worth sharing.</p></div>
-            <div className="steps">
-              <div><b>01</b><span>Pick a region</span><p>Choose the edition you know, love or want to explore.</p></div>
-              <div><b>02</b><span>Crack the culture</span><p>Images, proverbs, languages, history and select-three challenges.</p></div>
-              <div><b>03</b><span>Learn + reveal</span><p>Get the story behind every answer, then claim your regional portrait.</p></div>
-            </div>
-          </section>
-          <section className="values-strip">
-            <p>This game celebrates culture. It never measures human worth.</p>
-            <div><span>12</span> questions <i>•</i> <span>3</span> minutes <i>•</i> <span>1</span> unforgettable reveal</div>
-          </section>
-        </>
+            <span className="cowry-spark a">✦</span>
+            <span className="cowry-spark b">✧</span>
+            <div className="cowry-float left">✦ Know your roots</div>
+            <div className="cowry-float right">5 regions. One you.</div>
+          </div>
+          <div className="jewel-hero-copy">
+            <h1>Your roots.<br /><em>Your bragging rights.</em></h1>
+            <p>12 questions. 3 minutes.<br />How high will your bride price go?</p>
+            <button className="play-now" onClick={() => setScreen("setup")}>Start the challenge <span>→</span></button>
+            <p className="free-note">{freeGamesLeft === null ? "No card needed" : `${freeGamesLeft} free ${freeGamesLeft === 1 ? "game" : "games"} left · No card needed`}</p>
+          </div>
+          <div className="region-head" id="editions">
+            <p className="eyebrow">Choose your region</p>
+            <span>5 worlds to explore</span>
+          </div>
+          <div className="region-grid">
+            {regionOrder.map((key) => {
+              const item = regions[key];
+              return <div className={`region-card ${key}${key === regionKey ? " is-current" : ""}`} key={key} role="button" tabIndex={0} data-region={key} onClick={() => chooseRegion(key)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); chooseRegion(key); } }} aria-label={`Play the ${item.name} edition`}>
+                <span className="region-mark" aria-hidden="true">{item.mark}</span>
+                <span className="region-name">{item.name}</span>
+                <span className="region-enter" aria-hidden="true">→</span>
+              </div>;
+            })}
+          </div>
+          <p className="jewel-footer">This game celebrates culture. It never measures human worth. · 18+</p>
+        </section>
       )}
 
       {screen === "setup" && (
@@ -1051,7 +1083,7 @@ export default function BridePriceGame() {
               <span className="hud-aura"><i>✦</i><b>{aura}</b> aura</span>
               <span className="hud-streak"><i>⚡</i><b>{streak}</b> streak</span>
               <span className="hud-stamps"><i>◉</i><b>{stamps}</b>/4 gems</span>
-              <b className="hud-round">{String(index + 1).padStart(2, "0")} / 12</b>
+              <b className="hud-round">QUESTION {String(index + 1).padStart(2, "0")} / 12</b>
             </div>
           </div>
           <div className="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin={1} aria-valuemax={12} aria-valuenow={index + 1}><span style={{ width: `${((index + 1) / 12) * 100}%` }} /></div>
@@ -1072,20 +1104,20 @@ export default function BridePriceGame() {
                 </button>
               })}
             </div>
-            {!feedbackOpen && <button className="lock-answer" disabled={question.kind === "multi" ? selected.length !== 3 : selected.length !== 1} onClick={() => submitAnswer(selected)}>Lock it in <span>→</span></button>}
-            {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
-              <div><span>{lastCorrect ? "✦ CORRECT" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? "Culture gem energy!" : "Good guess. Bank this fact."}</b></div>
-              <p>{question.explanation}</p>
-              {!lastCorrect && paidFeatures.boosters && boosterOffer && !boosterOffer.used.second ? <button type="button" className="booster-second" onClick={() => spendBooster("second")}>Second chance <small>{boosterOffer.costs.second} Cowries</small></button> : null}
-              <button onClick={nextQuestion}>{index === activeQuestions.length - 1 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
-            </div>}
           </div>
           {paidFeatures.boosters && boosterOffer ? <div className="booster-bar" aria-label="Boosters">
-            {boosterOffer.fifty ? <button type="button" onClick={() => spendBooster("fifty")}>50/50 <small>{boosterOffer.costs.fifty} Cowrie</small></button> : null}
-            {boosterOffer.hint ? <button type="button" onClick={() => spendBooster("hint")}>Hint <small>{boosterOffer.costs.hint} Cowrie</small></button> : null}
-            {boosterOffer.skip ? <button type="button" onClick={() => spendBooster("skip")}>Skip <small>{boosterOffer.costs.skip} Cowries</small></button> : null}
+            {boosterOffer.fifty ? <button type="button" onClick={() => spendBooster("fifty")}><span aria-hidden="true">◎</span> 50/50 <small>{boosterOffer.costs.fifty} Cowrie</small></button> : null}
+            {boosterOffer.hint ? <button type="button" onClick={() => spendBooster("hint")}><span aria-hidden="true">✦</span> Hint <small>{boosterOffer.costs.hint} Cowrie</small></button> : null}
+            {boosterOffer.skip ? <button type="button" onClick={() => spendBooster("skip")}><span aria-hidden="true">↷</span> Skip <small>{boosterOffer.costs.skip} Cowries</small></button> : null}
           </div> : null}
-          <div className="quiz-footer"><span>{region.mark}</span><p>Right or wrong, every reveal teaches you something worth carrying forward.</p></div>
+          {!feedbackOpen && <button className="lock-answer" disabled={question.kind === "multi" ? selected.length !== 3 : selected.length !== 1} onClick={() => submitAnswer(selected)}>Lock it in <span>→</span></button>}
+          {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
+            <div><span>{lastCorrect ? "✦ CORRECT" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? "Culture gem energy!" : "Good guess. Bank this fact."}</b></div>
+            <p>{question.explanation}</p>
+            {!lastCorrect && paidFeatures.boosters && boosterOffer && !boosterOffer.used.second ? <button type="button" className="booster-second" onClick={() => spendBooster("second")}>Second chance <small>{boosterOffer.costs.second} Cowries</small></button> : null}
+            <button onClick={nextQuestion}>{index === activeQuestions.length - 1 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
+          </div>}
+          <div className="quiz-footer"><span>{region.mark}</span><p>Right or wrong, every reveal teaches you something.</p></div>
           {dropOpen && (
             <div className="culture-drop" role="dialog" aria-modal="true" aria-label="Culture drop">
               <div className="drop-card"><button onClick={() => setDropOpen(false)} aria-label="Close">×</button>
@@ -1116,7 +1148,9 @@ export default function BridePriceGame() {
                 <div className="result-region">{region.mark} {region.short.toUpperCase()} AFRICA {region.mark}</div>
                 <div className="result-portrait with-image"><img src={portrait} alt="" /></div>
                 <p>{name || "A Most Excellent Human"}</p>
+                <p className="certificate-score" aria-hidden="true"><CountUp value={correctCount} /><span> / 12</span></p>
                 <h1>{tierTitles[tier]}</h1>
+                <p className="certificate-note">A culture game, not a measure of worth.</p>
                 <div className="result-gift"><b>{gifts[tier][0]}</b><span>+ {gifts[tier][1]}<br />+ {gifts[tier][2]}</span></div>
                 <div className="result-gems">{stampNames[regionKey].map((stamp) => <i key={stamp} title={stamp}>◆</i>)}</div>
                 <small>Knowledge score {correctCount}/12 • {region.short} Africa</small>
