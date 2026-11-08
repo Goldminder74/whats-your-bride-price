@@ -885,8 +885,7 @@
 .paid-balance,
 .paid-block,
 .paid-card label,
-.paid-check,
-.paid-card .paid-bonus {
+.paid-check {
   color: #e6d8f2;
   font-family: "DM Sans", sans-serif;
 }
@@ -1074,3 +1073,116 @@
 @keyframes wybp-rise { from { opacity: 0; transform: translateY(12px); } }
 @keyframes wybp-float { 50% { transform: translateY(-4px); } }
 @keyframes wybp-flame { 50% { transform: scale(1.02); } }
+
+.royal-pack { margin: 22px 0 8px; }
+.royal-pack-summary,
+.royal-pack-note {
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.culture-gems { margin: 22px 0 8px; }
+.culture-gems .eyebrow { margin: 0 0 6px; }
+.culture-gems h3 {
+  margin: 0 0 14px;
+  color: #fff6d8;
+  font: 800 28px/1.15 "Bricolage Grotesque", sans-serif;
+}
+.gem-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 2px;
+  padding: 2px 2px 8px;
+  scrollbar-width: none;
+}
+.gem-row::-webkit-scrollbar { display: none; }
+.gem-card {
+  flex: 0 0 86%;
+  scroll-snap-align: start;
+  min-height: 196px;
+  padding: 18px 18px 16px;
+  border-radius: 20px;
+  background: #fff6d8;
+  color: #211744;
+  box-shadow: 0 10px 24px #120d2424;
+  animation: wybp-rise 420ms ease both;
+}
+.gem-card:nth-child(2) { animation-delay: 70ms; }
+.gem-card:nth-child(3) { animation-delay: 140ms; }
+.gem-card:nth-child(4) { animation-delay: 210ms; }
+.gem-card:nth-child(5) { animation-delay: 280ms; }
+.gem-card p,
+.culture-gems .gem-card p {
+  margin: 0;
+  color: #2b1a10;
+  font: 400 16px/1.55 "DM Sans", sans-serif;
+}
+.gem-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px !important;
+  font: 800 13px/1.2 "DM Sans", sans-serif !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.gem-kicker span {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  font-size: 16px;
+}
+.gem-card h4 {
+  margin: 0 0 8px;
+  color: #211744;
+  font: 800 22px/1.2 "Bricolage Grotesque", sans-serif;
+}
+.gem-card button {
+  margin-top: 12px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #211744;
+  color: #fff6d8;
+  font: 700 14px/1 "DM Sans", sans-serif;
+}
+.tone-fashion { box-shadow: inset 0 5px 0 #f0a11a, 0 10px 24px #120d2424; }
+.tone-fashion .gem-kicker span { background: #f0a11a; }
+.tone-food { box-shadow: inset 0 5px 0 #fa8d7d, 0 10px 24px #120d2424; }
+.tone-food .gem-kicker span { background: #fa8d7d; }
+.tone-history { box-shadow: inset 0 5px 0 #7141a3, 0 10px 24px #120d2424; }
+.tone-history .gem-kicker span { background: #7141a3; color: #fff6d8; }
+.tone-pop { box-shadow: inset 0 5px 0 #14835e, 0 10px 24px #120d2424; }
+.tone-pop .gem-kicker span { background: #14835e; color: #fff6d8; }
+.tone-etiquette { box-shadow: inset 0 5px 0 #fff6d8, 0 10px 24px #120d2424; border: 1px solid #f0a11a; }
+.tone-etiquette .gem-kicker span { background: #211744; color: #fff6d8; }
+.gem-dots { display: flex; justify-content: center; gap: 8px; margin: 12px 0 4px; }
+.gem-dots button {
+  width: 10px;
+  height: 10px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #ffffff55;
+}
+.gem-dots button.is-on { width: 22px; background: #f0a11a; }
+.royal-downloads { display: flex; flex-wrap: wrap; gap: 10px 14px; margin: 16px 0 8px; }
+.royal-downloads a { color: #ffd079; font-size: 15px; line-height: 1.5; }
+.paid-card .paid-bonus {
+  margin: 18px 0 16px;
+  padding: 12px 16px;
+  border: 1px solid #f0a11a;
+  border-radius: 16px;
+  background: #f0a11a18;
+  color: #ffe7b0;
+  font: 600 15px/1.5 "DM Sans", sans-serif;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gem-card { animation: none; }
+}
