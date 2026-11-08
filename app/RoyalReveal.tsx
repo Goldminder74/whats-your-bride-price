@@ -3,9 +3,10 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { CHOOSE_COUNTRY_LABEL, initialPurchaseCountry, ROYAL_WAIVER_TEXT } from "../paid/catalog.ts";
 import { DECREE_PREVIEW_NAME, decreeNamePrefill, decreePreviewUrl, previewDisplayName } from "../paid/decreePreviewName.ts";
+import { clipFact, displayFact, gemSubject, type CultureFact } from "./cultureGem";
 import { readPlayerId } from "./paidClient";
 
-type Fact = { id: string; category: string; answer: string; quote: string };
+type Fact = CultureFact;
 type Downloads = { card: string; story: string; pdf: string; zip: string };
 type RevealPack = {
   certificate: string;
@@ -193,20 +194,86 @@ export function RoyalRevealDownloads({ orderId }: { orderId: string }) {
 
   if (!pack) return <p role="status">{status}</p>;
   return (
-    <section>
-      <p><b>{pack.displayName}</b>, {pack.tier}. Bride price {pack.bridePrice} cowries. Score {pack.score}/12. Certificate {pack.certificate}.</p>
-      <p>{pack.explanation}</p>
+    <section className="royal-pack">
+      <p className="royal-pack-summary"><b>{pack.displayName}</b>, {pack.tier}. Bride price {pack.bridePrice} cowries. Score {pack.score}/12. Certificate {pack.certificate}.</p>
+      <p className="royal-pack-note">{pack.explanation}</p>
       {/* eslint-disable-next-line @next/next/no-img-element -- generated decree PNG, not a static asset */}
       <img src={pack.downloads.card} alt={`Royal Decree for ${pack.displayName}, ${pack.score} of 12`} width={360} />
-      <ul>
-        {pack.facts.map((fact) => <li key={fact.id}><b>{fact.answer}</b> ({fact.category}). {fact.quote}</li>)}
-      </ul>
-      <p>
-        <a href={pack.downloads.card}>Decree image</a>{" "}
-        <a href={pack.downloads.story}>Story image</a>{" "}
-        <a href={pack.downloads.pdf}>PDF</a>{" "}
+      <CultureGems facts={pack.facts} />
+      <p className="royal-downloads">
+        <a href={pack.downloads.card}>Decree image</a>
+        <a href={pack.downloads.story}>Story image</a>
+        <a href={pack.downloads.pdf}>PDF</a>
         <a href={pack.downloads.zip}>Download bundle</a>
       </p>
+    </section>
+  );
+}
+
+function CultureGems({ facts }: { facts: Fact[] }) {
+  const scroller = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState<Record<string, boolean>>({});
+  const [active, setActive] = useState(0);
+
+  function onScroll() {
+    const row = scroller.current;
+    if (!row) return;
+    const cards = [...row.querySelectorAll<HTMLElement>(".gem-card")];
+    const left = row.scrollLeft;
+    let nearest = 0;
+    let distance = Number.POSITIVE_INFINITY;
+    cards.forEach((card, index) => {
+      const gap = Math.abs(card.offsetLeft - left);
+      if (gap < distance) {
+        distance = gap;
+        nearest = index;
+      }
+    });
+    setActive(nearest);
+  }
+
+  function show(index: number) {
+    const row = scroller.current;
+    const card = row?.querySelectorAll<HTMLElement>(".gem-card")[index];
+    if (!row || !card) return;
+    row.scrollTo({
+      left: card.offsetLeft,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+    setActive(index);
+  }
+
+  return (
+    <section className="culture-gems" aria-label="Your Culture Gems">
+      <p className="eyebrow">Your Culture Gems</p>
+      <h3>What you uncovered</h3>
+      <div className="gem-row" ref={scroller} onScroll={onScroll}>
+        {facts.map((fact) => {
+          const subject = gemSubject(fact.category);
+          const full = displayFact(fact.answer, fact.quote);
+          const clipped = clipFact(full);
+          const expanded = Boolean(open[fact.id]);
+          return (
+            <article key={fact.id} className={`gem-card tone-${subject.tone}`}>
+              <p className="gem-kicker"><span aria-hidden="true">{subject.emoji}</span> {subject.label}</p>
+              <h4>{fact.answer}</h4>
+              <p>{expanded || !clipped.clipped ? full : clipped.text}</p>
+              {clipped.clipped ? (
+                <button type="button" onClick={() => setOpen((current) => ({ ...current, [fact.id]: !current[fact.id] }))}>
+                  {expanded ? "Show less" : "Read more"}
+                </button>
+              ) : null}
+            </article>
+          );
+        })}
+      </div>
+      {facts.length > 1 ? (
+        <div className="gem-dots" aria-label="Culture gem cards">
+          {facts.map((fact, index) => (
+            <button key={fact.id} type="button" className={index === active ? "is-on" : undefined} aria-label={`Show gem ${index + 1}`} aria-current={index === active ? "true" : undefined} onClick={() => show(index)} />
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 }
