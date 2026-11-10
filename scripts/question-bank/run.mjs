@@ -269,6 +269,8 @@ function ledeRewrite(question, pageText) {
 
 const summary = {};
 for (const region of regions) {
+  const existingPublished = JSON.parse(await readFile(new URL(`published/${region}.json`, root), "utf8"));
+  const keptHumour = (existingPublished.questions || []).filter((question) => question.category === "HUMOUR" && question.lifecycleStatus === "published");
   const prior = classicBank(region).map(priorOf);
   const published = [];
   const held = [];
@@ -303,6 +305,10 @@ for (const region of regions) {
       held.push({ ...stored, holdReasons: report.reasons });
       for (const reason of report.reasons) reasons[reason] = (reasons[reason] || 0) + 1;
     }
+  }
+  const publishedIds = new Set(published.map((question) => question.id));
+  for (const question of keptHumour) {
+    if (!publishedIds.has(question.id)) published.push(question);
   }
   published.sort((a, b) => a.id.localeCompare(b.id));
   await mkdir(new URL("published/", root), { recursive: true });

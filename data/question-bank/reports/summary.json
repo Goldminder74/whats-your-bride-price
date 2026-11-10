@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-06",
+  "generatedAt": "2026-11-10",
   "summary": {
     "west": {
-      "published": 130,
+      "published": 154,
       "held": 187,
       "generated": 220,
       "drafts": 67,
@@ -18,15 +18,16 @@
         "POP": 12,
         "PROVERBS": 1,
         "SPORT": 11,
-        "ETIQUETTE": 12
+        "ETIQUETTE": 12,
+        "HUMOUR": 24
       },
       "byDifficulty": {
-        "easy": 54,
+        "easy": 78,
         "medium": 60,
         "hard": 16
       },
       "byKind": {
-        "single": 129,
+        "single": 153,
         "complete": 1
       },
       "holdReasons": {
@@ -49,7 +50,7 @@
       }
     },
     "east": {
-      "published": 120,
+      "published": 144,
       "held": 192,
       "generated": 208,
       "drafts": 69,
@@ -65,15 +66,16 @@
         "SPORT": 7,
         "WEDDINGS": 1,
         "FESTIVALS": 4,
-        "ETIQUETTE": 12
+        "ETIQUETTE": 12,
+        "HUMOUR": 24
       },
       "byDifficulty": {
         "hard": 21,
         "medium": 63,
-        "easy": 36
+        "easy": 60
       },
       "byKind": {
-        "single": 120
+        "single": 144
       },
       "holdReasons": {
         "source_support": 135,
@@ -97,7 +99,7 @@
       }
     },
     "central": {
-      "published": 112,
+      "published": 136,
       "held": 219,
       "generated": 189,
       "drafts": 82,
@@ -111,15 +113,16 @@
         "PEOPLE": 11,
         "POP": 3,
         "SPORT": 5,
-        "ETIQUETTE": 12
+        "ETIQUETTE": 12,
+        "HUMOUR": 24
       },
       "byDifficulty": {
         "medium": 48,
         "hard": 32,
-        "easy": 32
+        "easy": 56
       },
       "byKind": {
-        "single": 112
+        "single": 136
       },
       "holdReasons": {
         "duplicate_prompt": 4,
@@ -140,7 +143,7 @@
       }
     },
     "north": {
-      "published": 119,
+      "published": 143,
       "held": 207,
       "generated": 198,
       "drafts": 66,
@@ -156,15 +159,16 @@
         "SPORT": 9,
         "WEDDINGS": 1,
         "FESTIVALS": 1,
-        "ETIQUETTE": 12
+        "ETIQUETTE": 12,
+        "HUMOUR": 24
       },
       "byDifficulty": {
-        "easy": 42,
+        "easy": 66,
         "medium": 54,
         "hard": 23
       },
       "byKind": {
-        "single": 119
+        "single": 143
       },
       "holdReasons": {
         "source_support": 127,
@@ -186,7 +190,7 @@
       }
     },
     "south": {
-      "published": 112,
+      "published": 136,
       "held": 201,
       "generated": 207,
       "drafts": 68,
@@ -200,15 +204,16 @@
         "PEOPLE": 7,
         "POP": 8,
         "SPORT": 13,
-        "ETIQUETTE": 12
+        "ETIQUETTE": 12,
+        "HUMOUR": 24
       },
       "byDifficulty": {
         "medium": 54,
-        "easy": 45,
+        "easy": 69,
         "hard": 13
       },
       "byKind": {
-        "single": 112
+        "single": 136
       },
       "holdReasons": {
         "ambiguity_distractor": 3,

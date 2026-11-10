@@ -6120,6 +6120,1086 @@
           "method": "editorial-rules"
         }
       }
+    },
+    {
+      "id": "east_hum_v3_01",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At this Kikuyu family introduction, your cousin volunteers to translate. What's his first creative decision?",
+      "options": [
+        "Turning “I'm nervous” into “He's honoured and fully prepared”",
+        "Asking which language everyone prefers",
+        "Moving his chair nearer the speaker",
+        "Checking that both families can hear"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The translator has quietly become your PR manager.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_02",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Your aunt reads the message on your new kanga, then looks at your partner. What's just happened?",
+      "options": [
+        "She's checking the fabric for stains",
+        "Your outfit has been called as a witness",
+        "She's wondering where you bought it",
+        "She's comparing it with her own"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "A kanga can carry a printed message; this one has been entered into evidence.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_03",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "You tell your cousin you'll leave “after coffee.” The family starts roasting the beans. What have you booked?",
+      "options": [
+        "A quick takeaway before the taxi",
+        "A chance to check your messages",
+        "A stay with an aromatic extension clause",
+        "A short break before the photographs"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The exit plan now has a roast profile.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_04",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Mum invites “a few people” for nyama choma after the introduction. What does your cousin fetch?",
+      "options": [
+        "A smaller plate for the salad",
+        "A charger for Mum's phone",
+        "The guest book from the hallway",
+        "Enough chairs to start a hire business"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The meat is on the grill; the headcount is on a different planet.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_05",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At this Dar es Salaam wedding, you practise one neat taarab dance step. Your aunt joins you. What's your new role?",
+      "options": [
+        "Backup dancer in a show you thought you were headlining",
+        "Person nearest the speaker",
+        "Keeper of the spare shoes",
+        "Unofficial timetable monitor"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "You brought a step; she brought a career.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_06",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "The wedding committee creates a WhatsApp subgroup “to reduce messages.” What's the result?",
+      "options": [
+        "One short message per day",
+        "Three groups discussing which group is official",
+        "A silent, beautifully filed archive",
+        "Everyone moves to the same spreadsheet"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Message reduction has entered its expansion phase.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_07",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "You arrive at the wedding in a carefully pressed habesha kemis. What does your cousin with the camera say?",
+      "options": [
+        "“Lovely. I'll see you at dinner.”",
+        "“The lighting is better tomorrow.”",
+        "“One quick photo.” Your afternoon disappears.",
+        "“Let's photograph the chairs first.”"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "“One quick photo” is not a unit recognised by family photographers.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_08",
+      "region": "east",
+      "country": "Uganda",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Your Kampala cousin says the wedding venue is “just there.” What does the map show?",
+      "options": [
+        "The entrance to the building next door",
+        "A route shorter than the driveway",
+        "The exact spot where you're standing",
+        "A blue line with several plot twists"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "“Just there” has declined to disclose its mileage.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_09",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Your diaspora cousin learns “pole pole” before the wedding. Where does he try it with least success?",
+      "options": [
+        "On the aunt counting down the group-photo poses",
+        "On his own suitcase zipper",
+        "On the taxi app loading screen",
+        "On a glass of water"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "“Slowly” is a lovely phrase; the photo marshal does not accept it.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_10",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At this Swahili family wedding, a cousin posts “small, intimate vibes.” What's visible behind her?",
+      "options": [
+        "Two empty chairs and a window",
+        "A second row of people waiting to become the first row",
+        "One floral arrangement",
+        "A carefully cropped place card"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The caption is intimate; the wide-angle lens has objections.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_11",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "The DJ plays the gengetone track your cousin requested. The uncles stop chatting. Why is cousin sweating?",
+      "options": [
+        "He's misplaced his table number",
+        "He's forgotten where he parked",
+        "He's become the song's official family spokesperson",
+        "He's standing too near a fan"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "Requesting a song is easy; representing it before the elders is work.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_12",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "A cousin promises to film the eskista moment. What does the footage actually show?",
+      "options": [
+        "A perfectly framed wide shot",
+        "The cake from four different angles",
+        "A silent close-up of the programme",
+        "The ceiling, then screaming, then one excellent shoulder"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The camera operator's shoulders joined in before the stabiliser could object.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_13",
+      "region": "east",
+      "country": "Rwanda",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At your Kigali reception, the cousin running the seating plan says, “It's all under control.” What is she hiding behind her folder?",
+      "options": [
+        "A pen, three revisions and a newly arrived uncle",
+        "A spare copy of the menu",
+        "A neatly folded napkin",
+        "The venue's Wi-Fi code"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The seating chart has received an unscheduled software update.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_14",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Mum says she won't interfere with your Nairobi wedding. What arrives next?",
+      "options": [
+        "A single heart emoji",
+        "A vendor list titled “Just In Case You Need Me”",
+        "A request for the final invitation",
+        "A photo of the shoes she's wearing"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Non-interference now comes with supplier contacts.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_15",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "You ask the aunties for a simple pilau recipe for the wedding weekend. What's the measurement system?",
+      "options": [
+        "A shared document in exact grams",
+        "A numbered shopping list",
+        "“Like this,” demonstrated in a voice note",
+        "The same teaspoon for everything"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The recipe is clear; only the unit of “this” remains under review.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_16",
+      "region": "east",
+      "country": "Uganda",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Your cousin's gomesi sleeves need room in the wedding taxi. What's the new seating arrangement?",
+      "options": [
+        "Everyone in their original seat",
+        "The photographer rides in front",
+        "The bags go in the boot",
+        "Two passengers and one architectural feature"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The sleeves have claimed a window seat and will not be taking questions.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_17",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At this Kikuyu family meeting, you're told to “say a little about yourself.” What's your brain doing?",
+      "options": [
+        "Searching for the version of your CV with no group-chat history",
+        "Deciding whether to stand or sit",
+        "Remembering the venue postcode",
+        "Counting how many chairs are free"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "There is no cover letter for “please like me, in-laws.”",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_18",
+      "region": "east",
+      "country": "Ethiopia",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At the wedding lunch, your cousin says the injera on his plate is “for sharing.” Why is his arm round it?",
+      "options": [
+        "He is making space for another plate",
+        "He is still drafting the terms and conditions",
+        "He is showing someone the pattern",
+        "He is waiting for a serving spoon"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The offer is generous; access is password-protected.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_19",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "The reception MC asks how the couple met. Their university friends lean towards the microphone. What does the bride say?",
+      "options": [
+        "“Could you raise the volume?”",
+        "“Start with the weather that day.”",
+        "“The edited version, please.”",
+        "“Check whether table two can hear.”"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "Every love story has a family-friendly export setting.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_20",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At this Zanzibar wedding, you whisper that the outfit changes are taking time. What does your stylish cousin whisper back?",
+      "options": [
+        "“The next speech starts at seven.”",
+        "“I think the photographer is outside.”",
+        "“Your jacket is on the back of the chair.”",
+        "“You're watching a wardrobe with a supporting ceremony.”"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The outfits have a programme; we're merely attending it.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_21",
+      "region": "east",
+      "country": "Uganda",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Your Kampala uncle says he's coming to the reception “for ten minutes.” The band starts. What becomes of his car keys?",
+      "options": [
+        "They lose all relevance until the encore",
+        "They go straight into the ignition",
+        "He hands them to the valet immediately",
+        "He checks the parking meter"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "His visit was brief until the bass submitted an appeal.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_22",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "You announce a wedding livestream for relatives abroad. What does the family IT expert receive first?",
+      "options": [
+        "One clear request for a password",
+        "“We can see you. Can you see us?” typed by 14 people",
+        "A list of everyone's time zones",
+        "A thank-you from the camera crew"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The ceremony now has an unpaid help desk.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_23",
+      "region": "east",
+      "country": "Tanzania",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At the introduction, you greet one Swahili-speaking elder with your carefully rehearsed “Shikamoo.” What happens when Mum smiles proudly?",
+      "options": [
+        "You get to sit down immediately",
+        "The photographer packs away",
+        "You get booked for the rest of the greeting tour",
+        "Everyone switches to discussing traffic"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "One successful greeting and you've become the household's touring production.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "east_hum_v3_24",
+      "region": "east",
+      "country": "Kenya",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Your wedding invitation says “no plus-ones.” Uncle arrives with a friend who “knows your father.” What's his argument?",
+      "options": [
+        "“He'll wait outside until the speeches.”",
+        "“I thought the ceremony was tomorrow.”",
+        "“We only came to deliver the flowers.”",
+        "“That's not a plus-one. That's a reference.”"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The guest policy has met a man with supporting documentation.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
     }
   ]
 }

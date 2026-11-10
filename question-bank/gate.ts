@@ -2,7 +2,7 @@ import type { RegionKey } from "../app/gameData.ts";
 import { scopeFitsRegion } from "./regions.ts";
 import { noteReasons, sensitivityReasons } from "./sensitivity.ts";
 import { answerLeaks, contentTokens, jaccard, normalizeText, promptNamesAnswer, supportingSentence } from "./text.ts";
-import type { BankQuestion, GateReport, SupportMethod } from "./types.ts";
+import { HUMOUR_CATEGORY, type BankQuestion, type GateReport, type SupportMethod } from "./types.ts";
 
 const ID = /^(west|east|central|north|south)_[a-z0-9][a-z0-9_-]{2,55}$/;
 
@@ -48,6 +48,7 @@ export function evaluateQuestion(question: BankQuestion, context: GateContext): 
   if (!["single", "multi", "complete", "image"].includes(question.kind)) fail(report, "schema", "schema_kind");
   if (!["easy", "medium", "hard"].includes(question.difficulty)) fail(report, "schema", "schema_difficulty");
   if (!question.category || question.category.length < 3) fail(report, "schema", "schema_category");
+  const humour = question.category === HUMOUR_CATEGORY;
   if (/\u2014|\u2013/.test(`${question.prompt} ${question.explanation} ${options.join(" ")}`)) fail(report, "schema", "schema_dash");
 
   if (options.length !== 4) fail(report, "options", "options_count");
@@ -64,10 +65,12 @@ export function evaluateQuestion(question: BankQuestion, context: GateContext): 
     }
   }
   if (options.some((option) => /^(?:all|none) of the above$/i.test(option.trim()))) fail(report, "options", "options_above");
-  const yearish = options.map((option) => /^\d{3,4}\b/.test(option.trim()));
-  if (yearish.some(Boolean) && yearish.some((value) => !value)) fail(report, "options", "options_type");
-  if (/\bcapital\b/i.test(question.prompt) && options.some((option) => /\b(?:river|lake|mount|mountain|falls|delta|desert)\b/i.test(option))) {
-    fail(report, "options", "options_type");
+  if (!humour) {
+    const yearish = options.map((option) => /^\d{3,4}\b/.test(option.trim()));
+    if (yearish.some(Boolean) && yearish.some((value) => !value)) fail(report, "options", "options_type");
+    if (/\bcapital\b/i.test(question.prompt) && options.some((option) => /\b(?:river|lake|mount|mountain|falls|delta|desert)\b/i.test(option))) {
+      fail(report, "options", "options_type");
+    }
   }
 
   const uniqueCorrect = [...new Set(correct)];
@@ -83,7 +86,11 @@ export function evaluateQuestion(question: BankQuestion, context: GateContext): 
   const answers = uniqueCorrect.map((index) => options[index] || "");
   let method: SupportMethod | "unchecked" = "unchecked";
   let quote: string | null = null;
-  if (!source || !/^https:\/\//.test(source.url) || source.url.length > 300) {
+  if (humour) {
+    // Punchlines are authored jokes. They are not claims a source page has to prove.
+    method = "manual";
+    report.source = { status: "pass", method, http: null };
+  } else if (!source || !/^https:\/\//.test(source.url) || source.url.length > 300) {
     report.source = { status: "fail", method, http: context.httpStatus };
     report.reasons.push("source_missing");
   } else if (context.httpStatus === null || context.httpStatus < 200 || context.httpStatus >= 400) {
@@ -159,9 +166,9 @@ export function evaluateQuestion(question: BankQuestion, context: GateContext): 
   if (!scopeFitsRegion(question.country, question.region)) fail(report, "region", "region_country");
 
   const copy = `${question.prompt} ${question.explanation}`;
-  if (SCAFFOLD.test(question.prompt)) fail(report, "schema", "schema_scaffold");
+  if (!humour && SCAFFOLD.test(question.prompt)) fail(report, "schema", "schema_scaffold");
   if (/\b(?:accused of|rape|raping|beating|murder|torture)\b/i.test(question.prompt)) fail(report, "sensitivity", "sensitivity_trauma");
-  if (answerLeaks(question.prompt, options, uniqueCorrect) || uniqueCorrect.some((index) => promptNamesAnswer(question.prompt, options[index] || ""))) {
+  if (!humour && (answerLeaks(question.prompt, options, uniqueCorrect) || uniqueCorrect.some((index) => promptNamesAnswer(question.prompt, options[index] || "")))) {
     fail(report, "answerKey", "answer_leak");
   }
   if (!question.prompt.trim() || !question.prompt.trim().endsWith("?")) fail(report, "schema", "schema_prompt");
@@ -173,10 +180,10 @@ export function evaluateQuestion(question: BankQuestion, context: GateContext): 
     fail(report, "ambiguity", "ambiguity_vague");
   }
 
-  const scaffold = SCAFFOLD.test(question.prompt);
+  const scaffold = humour ? false : SCAFFOLD.test(question.prompt);
   const clarity = !scaffold && question.prompt.length >= 28 && question.prompt.length <= 200 && /[?]$/.test(question.prompt.trim()) ? 5 : 2;
   const fun = scaffold || /according to the source|name to write|language point/i.test(question.prompt) ? 1 : 5;
-  const accuracy = quote ? 5 : 1;
+  const accuracy = humour || quote ? 5 : 1;
   report.editorial = { clarity, fun, accuracy, method: "editorial-rules" };
   if (clarity < 4) report.reasons.push("editorial_clarity");
   if (fun < 4) report.reasons.push("editorial_fun");

@@ -1088,7 +1088,7 @@ export default function BridePriceGame() {
           </div>
           <div className="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin={1} aria-valuemax={12} aria-valuenow={index + 1}><span style={{ width: `${((index + 1) / 12) * 100}%` }} /></div>
           <div className="question-wrap" key={index}>
-            <div className="question-meta"><p className="eyebrow">{kindLabels[question.kind]}</p><span>{question.topic}</span></div>
+            <div className="question-meta"><p className="eyebrow">{question.topic === "HUMOUR" ? "PICK THE PUNCHLINE" : kindLabels[question.kind]}</p><span>{question.topic}</span></div>
             <h2 className={question.kind === "image" ? "image-question" : question.kind === "complete" ? "sentence-question" : ""}>{question.prompt}</h2>
             {hintText ? <p className="booster-hint">{hintText}</p> : null}
             <div className={`answer-grid kind-${question.kind}`}>
@@ -1112,7 +1112,7 @@ export default function BridePriceGame() {
           </div> : null}
           {!feedbackOpen && <button className="lock-answer" disabled={question.kind === "multi" ? selected.length !== 3 : selected.length !== 1} onClick={() => submitAnswer(selected)}>Lock it in <span>→</span></button>}
           {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
-            <div><span>{lastCorrect ? "✦ CORRECT" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? "Culture gem energy!" : "Good guess. Bank this fact."}</b></div>
+            <div><span>{lastCorrect ? "✦ CORRECT" : question.topic === "HUMOUR" ? "◇ THE PUNCHLINE" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? (question.topic === "HUMOUR" ? "That's the punchline." : "Culture gem energy!") : (question.topic === "HUMOUR" ? "Close. The other line lands." : "Good guess. Bank this fact.")}</b></div>
             <p>{question.explanation}</p>
             {!lastCorrect && paidFeatures.boosters && boosterOffer && !boosterOffer.used.second ? <button type="button" className="booster-second" onClick={() => spendBooster("second")}>Second chance <small>{boosterOffer.costs.second} Cowries</small></button> : null}
             <button onClick={nextQuestion}>{index === activeQuestions.length - 1 ? "Reveal my result" : "Next challenge"} <span>→</span></button>

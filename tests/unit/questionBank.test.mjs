@@ -35,19 +35,28 @@ test("every region publishes at least 50 gated questions with quotes and editori
       assert.ok(correct.every((index) => index >= 0 && index < 4));
       if (question.kind === "multi") assert.equal(correct.length, 3);
       else assert.equal(correct.length, 1);
-      const source = question.sources[0];
-      assert.match(source.url, /^https:\/\//);
+      const humour = question.category === "HUMOUR";
       assert.equal(question.gateReport.source.status, "pass");
-      assert.equal(question.gateReport.source.method, "evidence-quote");
-      assert.ok(question.gateReport.evidenceQuote && question.gateReport.evidenceQuote.length >= 40, question.id);
       assert.ok(question.gateReport.editorial.clarity >= 4, question.id);
       assert.ok(question.gateReport.editorial.fun >= 4, question.id);
       assert.ok(question.gateReport.editorial.accuracy >= 4, question.id);
-      assert.equal(/which (?:language point|popular-culture name|sporting name)|fill the blank|the name to write is|according to unesco|\ba and\b|\b(?:in|of|from|for|at|by|with)\s*\?$/i.test(question.prompt), false, question.prompt);
       assert.equal(question.prompt.trim().endsWith("?"), true, question.id);
+      if (humour) {
+        assert.equal(question.kind, "single");
+        assert.equal(question.origin, "draft");
+        assert.equal(question.gateReport.source.method, "manual");
+        assert.equal(question.gateReport.evidenceQuote, null);
+        assert.equal(question.sources.length, 0);
+      } else {
+      const source = question.sources[0];
+      assert.match(source.url, /^https:\/\//);
+      assert.equal(question.gateReport.source.method, "evidence-quote");
+      assert.ok(question.gateReport.evidenceQuote && question.gateReport.evidenceQuote.length >= 40, question.id);
+      assert.equal(/which (?:language point|popular-culture name|sporting name)|fill the blank|the name to write is|according to unesco|\ba and\b|\b(?:in|of|from|for|at|by|with)\s*\?$/i.test(question.prompt), false, question.prompt);
+      }
       for (const index of question.correct) {
         const answer = question.options[index];
-        assert.equal(promptNamesAnswer(question.prompt, answer), false, `${question.id} names ${answer}`);
+        if (!humour) assert.equal(promptNamesAnswer(question.prompt, answer), false, `${question.id} names ${answer}`);
         const key = normalizeText(answer);
         const priorId = answers.get(key);
         assert.equal(priorId, undefined, `${question.id} repeats ${answer} from ${priorId}`);
@@ -57,6 +66,7 @@ test("every region publishes at least 50 gated questions with quotes and editori
         if (question.correct.includes(index)) continue;
         assert.equal(question.correct.some((correct) => normalizeText(question.options[correct]) === normalizeText(option)), false, question.id);
       }
+      if (!humour) {
       const quoteWords = normalizeText(question.gateReport.evidenceQuote).split(" ");
       for (const index of question.correct) {
         for (const word of normalizeText(question.options[index]).split(" ")) {
@@ -72,6 +82,7 @@ test("every region publishes at least 50 gated questions with quotes and editori
         }
       }
       assert.ok(question.gateReport.source.http >= 200 && question.gateReport.source.http < 400);
+      }
       assert.equal(question.gateReport.reasons.length, 0);
       assert.equal(scopeFitsRegion(question.country, region), true, question.id);
       const sensitive = sensitivityReasons(`${question.prompt}\n${question.explanation}\n${question.options.join("\n")}`);
