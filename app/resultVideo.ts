@@ -105,32 +105,85 @@ async function encodeWithRecorder(story: Story): Promise<Blob | null> {
   return blob.size > 1000 ? blob : null;
 }
 
+function mp4Url(edition: string, score: number): string {
+  return `/api/paid/result-video.mp4?edition=${encodeURIComponent(edition)}&score=${score}`;
+}
+
+async function serverMp4(edition: string, score: number): Promise<Blob | null> {
+  const cached = await fetch(mp4Url(edition, score));
+  if (!cached.ok) return null;
+  const type = cached.headers.get("content-type") || "";
+  if (!type.includes("video/mp4")) return null;
+  const blob = await cached.blob();
+  return blob.size > 1000 ? blob : null;
+}
+
 export async function buildResultVideo(input: { edition: string; score: number; referral: string | null }): Promise<Blob> {
+  const ready = await serverMp4(input.edition, input.score);
+  if (ready) return ready;
   const query = `edition=${encodeURIComponent(input.edition)}&score=${input.score}${input.referral ? `&ref=${encodeURIComponent(input.referral)}` : ""}`;
   const storyResponse = await fetch(`/api/paid/result-video?${query}`);
   if (!storyResponse.ok) throw new Error("video_unavailable");
   const story = await storyResponse.json() as Story;
-  if (!input.referral) {
-    const cached = await fetch(`/api/paid/result-video.mp4?edition=${encodeURIComponent(input.edition)}&score=${input.score}`);
-    if (cached.ok) return cached.blob();
-  }
   let encoded: Blob | null = null;
   try { encoded = await encodeWithWebCodecs(story); } catch { encoded = null; }
   if (!encoded) {
     try { encoded = await encodeWithRecorder(story); } catch { encoded = null; }
   }
   if (!encoded) throw new Error("video_unavailable");
-  if (!input.referral) {
-    void fetch(`/api/paid/result-video.mp4?edition=${encodeURIComponent(input.edition)}&score=${input.score}`, {
-      method: "POST",
-      headers: { "content-type": "video/mp4" },
-      body: encoded,
-    });
-  }
+  void fetch(mp4Url(input.edition, input.score), {
+    method: "POST",
+    headers: { "content-type": "video/mp4" },
+    body: encoded,
+  });
   return encoded;
 }
 
 export type ResultShare = { blob: Blob; filename: string; kind: "video" | "story" };
+
+export type ShareNavigator = {
+  share?: (data: ShareData) => Promise<void>;
+  canShare?: (data: ShareData) => boolean;
+};
+
+export function clipMime(clip: ResultShare): string {
+  return clip.kind === "video" ? "video/mp4" : "image/png";
+}
+
+export function clipFile(clip: ResultShare): File {
+  return new File([clip.blob], clip.filename, { type: clipMime(clip) });
+}
+
+/** True only when this browser will accept the file in the share sheet. */
+export function canShareClip(clip: ResultShare, nav: ShareNavigator = navigator): boolean {
+  if (typeof nav.share !== "function" || typeof nav.canShare !== "function") return false;
+  try {
+    return nav.canShare({ files: [clipFile(clip)] }) === true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Call this in the same turn as the tap. An await before it drops iOS user activation
+ * and the share sheet never opens.
+ */
+export function shareClipNow(clip: ResultShare, text: string, nav: ShareNavigator = navigator): Promise<void> | null {
+  if (!canShareClip(clip, nav) || typeof nav.share !== "function") return null;
+  const title = clip.kind === "video" ? "My Bride Price video" : "Story card";
+  return nav.share({ files: [clipFile(clip)], title, text });
+}
+
+export function iosSaveTarget(userAgent: string, touchPoints = 0): boolean {
+  return /iPad|iPhone|iPod/i.test(userAgent) || (/Macintosh/i.test(userAgent) && touchPoints > 1);
+}
+
+export type SavePlan = { mode: "download" | "sheet"; filename: string };
+
+/** iOS Safari ignores an anchor download of a blob, so the player sheet is the save path. */
+export function planVideoSave(userAgent: string, touchPoints = 0): SavePlan["mode"] {
+  return iosSaveTarget(userAgent, touchPoints) ? "sheet" : "download";
+}
 
 /** Prefer the MP4. If this browser cannot encode one, hand back the story card. */
 export async function buildResultShare(input: { edition: string; score: number; referral: string | null }): Promise<ResultShare> {

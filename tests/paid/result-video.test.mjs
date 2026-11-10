@@ -26,6 +26,7 @@ function services(overrides = {}) {
     kv: overrides.kv ?? memoryKv(),
     config: { stripeMode: "mock", stripeSecretKey: "sk_test_mock_local_only", webhookSecret: "whsec_local_test_secret_value", publicOrigin: CANONICAL_ORIGIN },
     resultVideo: overrides.resultVideo,
+    assets: overrides.assets,
   };
 }
 
@@ -84,6 +85,23 @@ test("a template mp4 is H.264 with silent AAC, and the shared cache ignores the 
   const missed = await servePaid(request("/api/paid/result-video.mp4?edition=west&score=9"), app);
   assert.equal(missed.status, 404);
   assert.equal(missed.headers.get("x-result-video-mode"), "client");
+  const bakedBytes = Buffer.from(bytes);
+  const bakedApp = services({
+    kv: memoryKv(),
+    resultVideo: true,
+    assets: {
+      async fetch(assetRequest) {
+        const path = new URL(assetRequest.url).pathname;
+        if (path !== "/result-videos/west-9.mp4") return new Response("missing", { status: 404 });
+        return new Response(bakedBytes, { status: 200, headers: { "content-type": "video/mp4" } });
+      },
+    },
+  });
+  const baked = await servePaid(request("/api/paid/result-video.mp4?edition=west&score=9"), bakedApp);
+  assert.equal(baked.status, 200);
+  assert.equal(baked.headers.get("content-type"), "video/mp4");
+  assert.equal(baked.headers.get("x-result-video-cache"), "baked");
+  assert.equal(mp4IsResultTemplate(new Uint8Array(await baked.arrayBuffer())), true);
   const stored = await handleResultVideoFile(request("/api/paid/result-video.mp4?edition=west&score=9", {
     method: "POST",
     headers: { "content-type": "video/mp4", origin: "https://brideprice.classesforculture.com" },

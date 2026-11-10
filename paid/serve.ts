@@ -95,7 +95,7 @@ const IDEMPOTENCY = /^[A-Za-z0-9_-]{8,80}$/;
 const ORDER_ID = /^ord_[a-f0-9]{32}$/;
 /** Public region banks only. Other JSON in the asset directory stays on the Worker. */
 const QUESTION_BANK_CHUNK = /^\/question-bank\/(?:west|east|central|north|south)\.json$/;
-const STATIC_ASSET = /\.(?:png|webp|svg|ico|webmanifest|css|js|txt|xml|jpg|jpeg|gif|woff2)$/;
+const STATIC_ASSET = /\.(?:png|webp|svg|ico|webmanifest|css|js|txt|xml|jpg|jpeg|gif|woff2|mp4)$/;
 
 export function isQuestionBankChunk(pathname: string): boolean {
   return QUESTION_BANK_CHUNK.test(pathname);
@@ -468,7 +468,7 @@ export async function servePaid(request: Request, services: PaidServices): Promi
     if (request.method === "GET" && isQuestionBankChunk(url.pathname)) {
       return await serveBankChunk(request, services);
     }
-    if (request.method === "GET" && STATIC_ASSET.test(url.pathname)) {
+    if (request.method === "GET" && !url.pathname.startsWith("/api/") && STATIC_ASSET.test(url.pathname)) {
       if (!services.assets) return json({ error: "not_found" }, 404);
       return services.assets.fetch(request);
     }
