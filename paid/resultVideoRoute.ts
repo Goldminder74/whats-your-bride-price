@@ -57,7 +57,19 @@ async function storeCached(kv: KvStore, key: string, bytes: Uint8Array): Promise
   } catch { /* the caller still has the bytes */ }
 }
 
-function mp4Response(bytes: Uint8Array, cache: "hit" | "miss"): Response {
+/** A phone that cannot encode H.264 still receives a playable file. */
+async function bakedResultMp4(services: PaidServices, edition: string, score: number): Promise<Uint8Array | null> {
+  if (!services.assets) return null;
+  const asset = await services.assets.fetch(new Request(`https://assets.local/result-videos/${edition}-${score}.mp4`));
+  if (!asset.ok) return null;
+  const bytes = new Uint8Array(await asset.arrayBuffer());
+  if (bytes.length < 1_000 || bytes.length > MAX_UPLOAD) return null;
+  const head = new TextDecoder("latin1").decode(bytes.subarray(0, 32));
+  if (!head.includes("ftyp")) return null;
+  return bytes;
+}
+
+function mp4Response(bytes: Uint8Array, cache: "hit" | "miss" | "baked"): Response {
   return new Response(Buffer.from(bytes), {
     status: 200,
     headers: {
@@ -89,6 +101,8 @@ export async function handleResultVideoFile(request: Request, url: URL, services
   if (request.method === "GET") {
     const cached = await readCached(services.kv, key);
     if (cached && mp4IsResultTemplate(cached)) return mp4Response(cached, "hit");
+    const baked = await bakedResultMp4(services, query.edition, query.score);
+    if (baked) return mp4Response(baked, "baked");
     return Response.json({ mode: "client", story }, {
       status: 404,
       headers: { "cache-control": "no-store", "x-result-video-mode": "client" },

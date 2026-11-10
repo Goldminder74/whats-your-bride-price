@@ -6,7 +6,7 @@
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type Question as PlayQuestion } from "./gameData";
 import { buildRevealRecording } from "../paid/revealOffer.ts";
-import { buildResultShare } from "./resultVideo";
+import { buildResultShare, planVideoSave, shareClipNow, type ResultShare } from "./resultVideo";
 import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, fetchWallet, finishGame, readPlayerId, recordArrival, recordServerResult, type PaidFeatures } from "./paidClient";
 import { paidCommerceEnabled, randomBankEnabled } from "./paidFlags";
 import { finishRound, playRandomRound, readSavedRound, writeSavedRound } from "../question-bank/clientRound.ts";
@@ -242,6 +242,11 @@ export default function BridePriceGame() {
   const [paidFeatures, setPaidFeatures] = useState<PaidFeatures>({ earnPaths: false, shareCards: false, dailyChallenge: false, royalReveal: false, resultVideo: false, boosters: false });
   const [videoBusy, setVideoBusy] = useState(false);
   const [videoNote, setVideoNote] = useState("");
+  const [videoPreview, setVideoPreview] = useState<string | null>(null);
+  const [videoKind, setVideoKind] = useState<ResultShare["kind"] | null>(null);
+  const [videoReady, setVideoReady] = useState(false);
+  const clipRef = useRef<ResultShare | null>(null);
+  const prepareVideoRef = useRef<() => void>(() => {});
   const [serverResultId, setServerResultId] = useState<string | null>(null);
   const [referralCode, setReferralCode] = useState<string | null>(null);
   const [referralUrl, setReferralUrl] = useState<string | null>(null);
@@ -908,58 +913,97 @@ export default function BridePriceGame() {
     }
   };
 
-  const resultClip = async () => {
-    setVideoBusy(true);
-    setVideoNote("Preparing your video…");
-    try {
-      const ready = await buildResultShare({
+  const showVideoPreview = (ready: ResultShare) => {
+    const url = URL.createObjectURL(ready.blob);
+    setVideoKind(ready.kind);
+    setVideoPreview((current) => {
+      if (current) URL.revokeObjectURL(current);
+      return url;
+    });
+    return url;
+  };
+
+  useEffect(() => {
+    if (screen !== "result" || !paidFeatures.resultVideo) {
+      prepareVideoRef.current = () => {};
+      return;
+    }
+    let cancelled = false;
+    const prepare = () => {
+      clipRef.current = null;
+      setVideoReady(false);
+      setVideoBusy(true);
+      setVideoNote("Preparing your video…");
+      void buildResultShare({
         edition: regionKey,
         score: correctCount,
         referral: paidFeatures.earnPaths ? referralCode : null,
+      }).then((ready) => {
+        if (cancelled) return;
+        clipRef.current = ready;
+        setVideoReady(true);
+        setVideoNote(ready.kind === "video" ? "Video ready." : "This phone will use the story card. The video encoder is not available here.");
+      }).catch((error) => {
+        if (cancelled) return;
+        reportAppError("result_video_failed", error, { region: regionKey });
+        setVideoNote("The video could not be prepared. Tap Save video to try again.");
+      }).finally(() => {
+        if (!cancelled) setVideoBusy(false);
       });
-      setVideoNote(ready.kind === "story" ? "This browser cannot encode the video, so this is the story card." : "");
-      return ready;
-    } catch (error) {
-      reportAppError("result_video_failed", error, { region: regionKey });
-      setVideoNote("The video and the story card are both unavailable right now.");
-      return null;
-    } finally {
-      setVideoBusy(false);
+    };
+    prepareVideoRef.current = prepare;
+    prepare();
+    return () => {
+      cancelled = true;
+      prepareVideoRef.current = () => {};
+    };
+  }, [screen, regionKey, correctCount, paidFeatures.resultVideo, paidFeatures.earnPaths, referralCode]);
+
+  const saveResultVideo = () => {
+    const ready = clipRef.current;
+    if (!ready) {
+      if (videoBusy) setVideoNote("Still preparing your video. Tap Save video again in a moment.");
+      else prepareVideoRef.current();
+      return;
     }
+    const url = showVideoPreview(ready);
+    if (planVideoSave(navigator.userAgent, navigator.maxTouchPoints) === "download") {
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = ready.filename;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      setVideoNote("If the file did not download, use the player below. On a phone, tap the video’s share icon or long-press it and choose Save Video.");
+      return;
+    }
+    setVideoNote("On iPhone, tap the video, then the share button, and choose Save Video. A long-press works too.");
   };
 
-  const saveResultVideo = async () => {
-    const ready = await resultClip();
-    if (!ready) return;
-    const url = URL.createObjectURL(ready.blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = ready.filename;
-    anchor.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const shareResultVideo = async () => {
-    const ready = await resultClip();
-    if (!ready) return;
-    const type = ready.kind === "video" ? "video/mp4" : "image/png";
-    const file = new File([ready.blob], ready.filename, { type });
+  const shareResultVideo = () => {
+    const ready = clipRef.current;
+    if (!ready) {
+      if (videoBusy) setVideoNote("Still preparing your video. Tap Share video again in a moment.");
+      else prepareVideoRef.current();
+      return;
+    }
     const challenge = challengeUrl(regionKey, correctCount, paidFeatures.earnPaths ? referralCode : null);
-    const title = ready.kind === "video" ? "My Bride Price video" : "Story card";
-    if (navigator.canShare?.({ files: [file] }) && navigator.share) {
-      try {
-        await navigator.share({ files: [file], title, text: `Can you beat me? ${challenge}` });
-        return;
-      } catch (error) {
-        if (error instanceof DOMException && error.name === "AbortError") return;
-      }
+    const shared = shareClipNow(ready, `Can you beat me? ${challenge}`);
+    if (!shared) {
+      showVideoPreview(ready);
+      setVideoNote(ready.kind === "video"
+        ? "This phone cannot attach the video to a share. Use the player below, then long-press and choose Save Video."
+        : "Sharing the video file is not available here. The story card is in the player below.");
+      return;
     }
-    const url = URL.createObjectURL(ready.blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = ready.filename;
-    anchor.click();
-    URL.revokeObjectURL(url);
+    void shared.then(() => {
+      setVideoNote("Share sheet opened.");
+    }).catch((error) => {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      reportAppError("share_failed", error, { action: "result-video" });
+      showVideoPreview(ready);
+      setVideoNote("Sharing did not start. Use the player below, then long-press the video and choose Save Video.");
+    });
   };
 
   return (
@@ -1158,7 +1202,15 @@ export default function BridePriceGame() {
             </div>
             <div className="result-copy">
               <p className="eyebrow">Your score: {correctCount}/12</p><h2>{resultCalls[tier]}<br /><i>{resultCallEmphasis[tier]}</i></h2>
-              {paidFeatures.resultVideo ? <div className="video-actions"><button type="button" onClick={() => void saveResultVideo()} disabled={videoBusy}>Save video</button><button type="button" onClick={() => void shareResultVideo()} disabled={videoBusy}>Share video</button>{videoNote ? <p role="status">{videoNote}</p> : null}</div> : null}
+              {paidFeatures.resultVideo ? <div className="video-actions" data-video-state={videoBusy ? "preparing" : videoReady ? "ready" : "empty"}>
+                <button type="button" onClick={saveResultVideo}>Save video</button>
+                <button type="button" onClick={shareResultVideo}>Share video</button>
+                {videoNote ? <p role="status">{videoNote}</p> : null}
+                {videoPreview ? <div className="video-sheet">{videoKind === "story"
+                  ? <img src={videoPreview} alt="Bride price story card" />
+                  : <video src={videoPreview} controls playsInline preload="metadata"><track kind="captions" srcLang="en" label="Score" src="data:text/vtt,WEBVTT%0A%0A00%3A00%3A00.000%20--%3E%2000%3A00%3A05.000%0ABride%20price%20result" default /></video>}
+                  <p>If saving did not start, tap the video’s share icon, or long-press the video, and choose Save Video.</p></div> : null}
+              </div> : null}
               <p className="result-description">{tierCopy[tier]}</p>
               <div className="result-aura"><span>Final aura</span><b>{revealAura.toLocaleString()}</b><i>+500 reveal bonus</i></div>
               <div className="worth-note knowledge-note"><span>✦</span><p><b>Your knowledge glow</b>You answered {correctCount} of 12 correctly and unlocked every explanation along the way.</p></div>
