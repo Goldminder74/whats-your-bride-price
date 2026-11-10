@@ -79,8 +79,13 @@ export const FUN_CATEGORIES = [
   "PEOPLE",
   "POP",
   "SPORT",
+  "HUMOUR",
 ] as const;
 
+export const HUMOUR_CATEGORY = "HUMOUR";
 export const GAME_SIZE = 12;
+/** Humour punchlines in a standard 12-question round. The rest stay knowledge questions. */
+export const ROUND_HUMOUR = 8;
+export const ROUND_KNOWLEDGE = GAME_SIZE - ROUND_HUMOUR;
 export const RECENT_AVOID = 24;
 export const RECENT_KEEP = 100;

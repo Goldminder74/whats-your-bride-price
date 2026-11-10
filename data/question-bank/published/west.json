@@ -6630,6 +6630,1086 @@
           "method": "editorial-rules"
         }
       }
+    },
+    {
+      "id": "west_hum_v3_01",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At this introduction, you say, “We're just friends.” Aunty opens her Notes app. What's the title?",
+      "options": [
+        "Operation Just Friends: Venue Shortlist",
+        "Friendship Appreciation Society",
+        "People Whose Names I Definitely Remember",
+        "Things To Discuss After The Football"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "You announced a friendship; she opened a planning department.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_02",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Your Yoruba wedding invitation says “strictly 100 guests.” Mum says she's only invited “her people.” How many is that?",
+      "options": [
+        "100, with a password at the door",
+        "100, plus everyone who calls her Mummy",
+        "99; she saved you a seat",
+        "100, checked against the spreadsheet"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The guest limit has encountered a family loophole.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_03",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "The aso ebi group has agreed on green. Someone asks, “Which green?” What happens next?",
+      "options": [
+        "One colour code and an early night",
+        "A vote that everyone accepts",
+        "Forty-seven screenshots and a constitutional crisis",
+        "The tailor gets a quiet afternoon"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "Sage, emerald and bottle green have entered coalition talks.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_04",
+      "region": "west",
+      "country": "Ghana / Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At a Ghanaian-Nigerian wedding, the MC asks whose jollof is better. What has he actually done?",
+      "options": [
+        "Introduced a brief food review",
+        "Given the caterers a tea break",
+        "Started a discussion with a clear winner",
+        "Cancelled the next three items on the programme"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The rice has retained separate legal teams.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_05",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "The gele is taller than expected. What does the group-photo organiser say?",
+      "options": [
+        "“Tall people at the back. Architecture at the very back.”",
+        "“Everybody shuffle a little to the left.”",
+        "“Let's try one without the flowers.”",
+        "“Can someone move the speaker?”"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "This headwrap needs its own sightline assessment.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_06",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At this Igbo introduction, Uncle says his remarks will be brief. What's the first warning sign?",
+      "options": [
+        "He checks that the microphone works",
+        "He starts with how he met your grandfather",
+        "He takes one sip of water",
+        "He asks everyone to sit down"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "A speech that starts two generations ago is not taking the express route.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_07",
+      "region": "west",
+      "country": "Ghana",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Mum says the kente dress code is “just a suggestion.” What does the photographer receive?",
+      "options": [
+        "A request for more candid photos",
+        "A list of everyone's nicknames",
+        "A family seating plan sorted by shade",
+        "A reminder to charge the batteries"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "Some suggestions arrive with colour-coded enforcement.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_08",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "The talking drummer at this Yoruba party spots Uncle arriving late. What does Uncle suddenly remember?",
+      "options": [
+        "He left his jacket in the car",
+        "He promised to sit by the aisle",
+        "He hasn't said hello to the DJ",
+        "His entrance apparently has a soundtrack budget"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "He came in quietly; the drums declined his privacy request.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_09",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "The owambe caterer says there's one portion left. Your cousin says, “I'm not hungry.” What is his next move?",
+      "options": [
+        "Stay near the serving spoon for emotional support",
+        "Go outside to call his taxi",
+        "Find the couple for a photograph",
+        "Start helping stack the chairs"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "His mouth has resigned; his eyes are still on duty.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_10",
+      "region": "west",
+      "country": "Ghana",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "You suggest replacing the wedding family's WhatsApp voice notes with a spreadsheet. What does Uncle send?",
+      "options": [
+        "A link with a beautifully named tab",
+        "A six-minute voice note explaining why that's simpler",
+        "A thumbs-up and his meal choice",
+        "A calendar invite with an agenda"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The spreadsheet has been referred to the Audio Committee.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_11",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Aunty sees your partner carrying chairs after the introduction. What's her review?",
+      "options": [
+        "“Lovely shoes. Who made them?”",
+        "“That chair belongs by the window.”",
+        "“Good character. Promote to canopy supervisor.”",
+        "“Tell the photographer we're ready.”"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "One helpful gesture and the probation period has become a job description.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_12",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Your diaspora cousin rehearsed the Yoruba greeting perfectly. Then five elders arrive together. What's in his eyes?",
+      "options": [
+        "A confident seating plan",
+        "The photographer's reflection",
+        "A reminder to put his phone away",
+        "The buffering symbol"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "He revised the single-player tutorial; the family launched multiplayer.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_13",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "The MC says, “Table seven, make some noise!” Table seven is the family elders. What's the response?",
+      "options": [
+        "One raised eyebrow with surround sound",
+        "A request to repeat the table number",
+        "Polite applause for table eight",
+        "Someone asking where the programme is"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The quietest table has the loudest authority.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_14",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "You send Mum a wedding budget labelled FINAL. What does she send back?",
+      "options": [
+        "A receipt for the first deposit",
+        "FINAL_FINAL_with_my_friends.xlsx",
+        "A reminder about the photographer",
+        "A thumbs-up with no attachment"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The spreadsheet has acquired an extended family.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_15",
+      "region": "west",
+      "country": "Ghana",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At this engagement, your cousin volunteers to test the photo booth. What does he return with?",
+      "options": [
+        "A note saying the flash works",
+        "The receipt for the booth hire",
+        "Twelve portraits and a new profile picture for every platform",
+        "One photo of the empty background"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "Quality control has become a personal branding exercise.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_16",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Your Igbo uncle says, “Let us consult briefly.” The delegates take the biscuits with them. What's your forecast?",
+      "options": [
+        "They'll return before you unlock your phone",
+        "They've gone to check the parking",
+        "The biscuits are for the photographer",
+        "A closed-door meeting with an open biscuit policy"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The snacks have been admitted to the negotiating team.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_17",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "The bride says, “No choreographed entrance.” Her cousins ask only for “eight counts.” What is being built?",
+      "options": [
+        "A music video with a marriage attached",
+        "A shortcut to the head table",
+        "A plan to avoid blocking the aisle",
+        "A very efficient group photograph"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Eight counts is how the dance committee gets planning permission.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_18",
+      "region": "west",
+      "country": "Ghana",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Aunty asks the DJ for “one old highlife song.” What happens to the guests who were leaving?",
+      "options": [
+        "They collect their coats as planned",
+        "Their taxis enter a waiting relationship",
+        "They send a quick thank-you message",
+        "They ask for the venue postcode"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "One song has renewed everybody's lease on the dance floor.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_19",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "You upload one introduction photo. Before the caption loads, Mum calls. What is she checking?",
+      "options": [
+        "Whether the photo was in portrait mode",
+        "How much phone storage you have",
+        "Why the family WhatsApp got the news after Instagram",
+        "Whether you remembered the charger"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The family press office does not appreciate being scooped.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_20",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "The wedding souvenir says “Thanks for coming” on a plastic bowl. Why does Dad want six?",
+      "options": [
+        "He is checking the print alignment",
+        "He wants to compare the colours",
+        "He thinks they're place settings",
+        "He has identified a container-based retirement plan"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The cupboard did not ask for expansion, but expansion is coming.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_21",
+      "region": "west",
+      "country": "Ghana",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At this wedding, the aunties' table goes silent when your new partner arrives. What does the silence mean?",
+      "options": [
+        "The interview panel has switched to observation mode",
+        "The speeches have started early",
+        "Someone is testing the sound system",
+        "They've all lost their place in the programme"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "No questions yet; the minutes are already being taken.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_22",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "Your tailor says your wedding outfit is “almost ready.” You hear a sewing machine start. Translate?",
+      "options": [
+        "The final zip is being inspected",
+        "Your fabric has just been promoted from concept to project",
+        "Someone else's outfit is being altered",
+        "They're rehearsing the sound of punctuality"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "“Almost” is doing all the tailoring in that sentence.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_23",
+      "region": "west",
+      "country": "Ghana",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "You tell Mum your wedding plus-one is “a colleague.” What job does she give them?",
+      "options": [
+        "Assistant programme distributor",
+        "Emergency taxi coordinator",
+        "Potential son-in-law, pending references",
+        "Keeper of the spare phone charger"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "HR has merged with the wedding committee.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
+    },
+    {
+      "id": "west_hum_v3_24",
+      "region": "west",
+      "country": "Nigeria",
+      "category": "HUMOUR",
+      "difficulty": "easy",
+      "kind": "single",
+      "prompt": "At the owambe, Uncle announces his retirement from the dance floor. The DJ plays his song. What follows?",
+      "options": [
+        "A polite clap from his chair",
+        "A request to lower the volume",
+        "A quick goodbye to the couple",
+        "A comeback tour before the retirement speech is over"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The farewell tour has added another date.",
+      "sources": [],
+      "origin": "draft",
+      "lifecycleStatus": "published",
+      "sensitivityNotes": "Fictional affectionate family-comedy scene. Best punchline, not an objective cultural rule or a claim about all families. No person or relationship is being valued financially.",
+      "gateReport": {
+        "schema": "pass",
+        "answerKey": "pass",
+        "options": "pass",
+        "source": {
+          "status": "pass",
+          "method": "manual",
+          "http": null
+        },
+        "duplicate": "pass",
+        "sensitivity": "pass",
+        "ambiguity": "pass",
+        "region": "pass",
+        "reasons": [],
+        "evidenceQuote": null,
+        "editorial": {
+          "clarity": 5,
+          "fun": 5,
+          "accuracy": 5,
+          "method": "editorial-rules"
+        }
+      }
     }
   ]
 }
