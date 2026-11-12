@@ -31,6 +31,6 @@ const response = await worker.fetch(
   { waitUntil() {}, passThroughOnException() {} },
 );
 const html = await response.text();
-if (!html.includes("Your bragging rights")) throw new Error("game shell is missing the Motherland Jewels hero");
+if (!html.includes("How much are you worth?")) throw new Error("game shell is missing the Motherland Jewels hero");
 if (html.includes("chatgpt.site")) throw new Error("game shell still names chatgpt.site");
 await writeFile(new URL("index.html", outdir), html);

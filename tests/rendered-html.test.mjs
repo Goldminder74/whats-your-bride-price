@@ -22,10 +22,10 @@ test("server-renders the finished pan-African game", async () => {
   assert.match(html, /favicon-cowrie-32\.png/i);
   assert.match(html, /favicon-cowrie-64\.png/i);
   assert.match(html, /favicon-cowrie-180\.png/i);
-  assert.match(html, /YOUR ROOTS/i);
-  assert.match(html, /Your bragging rights/i);
-  assert.match(html, /The Motherland is calling/i);
-  assert.match(html, /Start the challenge/i);
+  assert.match(html, /How much are you worth\?/i);
+  assert.match(html, /Find out your bride price/i);
+  assert.match(html, /Aunty is asking/i);
+  assert.match(html, /Dress up first/i);
   assert.match(html, /Choose your region/i);
   assert.doesNotMatch(html, /cinematic/i);
   assert.doesNotMatch(html, /\u2014/);
