@@ -910,6 +910,20 @@ test("two free games then a paywall, idempotent resume, welcome bonus, and hidde
   assert.equal(days.some((row) => row.event === "purchase_complete"), true);
   assert.equal((await servePaid(request("/api/paid/owner/stats"), services())).status, 503);
   assert.equal((await servePaid(request("/api/paid/owner/stats", { headers: { "x-owner-stats-token": "wrong" } }), app)).status, 401);
+
+  const click = await servePaid(request("/api/paid/funnel", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ event: "game_start_click" }),
+  }), app);
+  assert.equal(click.status, 200);
+  const afterClick = (await body(await servePaid(request("/api/paid/owner/stats", { headers: { "x-owner-stats-token": "owner-token-value" } }), app))).days;
+  assert.equal(afterClick.some((row) => row.event === "game_start_click"), true);
+  assert.equal((await servePaid(request("/api/paid/funnel", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ event: "visit" }),
+  }), app)).status, 400);
 });
 
 test("random bank returns twelve resumable questions and scores that round", async () => {

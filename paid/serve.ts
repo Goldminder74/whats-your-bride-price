@@ -365,6 +365,14 @@ function tokenMatches(expected: string, provided: string): boolean {
   return mismatch === 0;
 }
 
+async function handleFunnel(request: Request, services: PaidServices): Promise<Response> {
+  sameOrigin(request);
+  const body = await readJson(request, 400) as Record<string, unknown>;
+  if (body.event !== "game_start_click") throw new PaidError("event_invalid", 400);
+  await services.repository.recordStat("game_start_click", "", services.now());
+  return json({ ok: true });
+}
+
 async function handleBegin(request: Request, services: PaidServices): Promise<Response> {
   sameOrigin(request);
   await ready(services);
@@ -573,6 +581,7 @@ export async function servePaid(request: Request, services: PaidServices): Promi
       }
       return json({ cowries: spent.cowries, royal: spent.royal, source: "d1" });
     }
+    if (request.method === "POST" && url.pathname === "/api/paid/funnel") return await handleFunnel(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/games/begin") return await handleBegin(request, services);
     if (request.method === "POST" && url.pathname === "/api/paid/games/finish") return await handleFinish(request, services);
     if (request.method === "GET" && url.pathname === "/api/paid/boosters") return await handleBoosterStatus(url, services);

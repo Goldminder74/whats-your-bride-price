@@ -16,6 +16,15 @@ export function readPlayerId(): string {
   return created;
 }
 
+/** Counts the tap (or ad deep link) that asks to start, even if the paywall stops the game. */
+export function recordGameStartClick(): void {
+  void fetch("/api/paid/funnel", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ event: "game_start_click" }),
+  }).catch(() => { /* a stats miss must not stop play */ });
+}
+
 export async function fetchWallet(): Promise<Wallet | null> {
   const response = await fetch(`/api/paid/access?player=${readPlayerId()}`);
   if (!response.ok) return null;

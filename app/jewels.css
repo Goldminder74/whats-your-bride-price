@@ -312,6 +312,16 @@
 }
 
 .free-note { margin: 12px 0 0; }
+.dress-link {
+  display: inline-block;
+  margin-top: 10px;
+  border: 0;
+  background: transparent;
+  color: var(--halo);
+  font: 700 13px/1 "DM Sans", sans-serif;
+  cursor: pointer;
+  min-height: 44px;
+}
 .region-head { margin-top: 28px; }
 .region-head span { color: #d9c8e8; font-size: 12px; font-weight: 700; }
 
@@ -365,6 +375,30 @@
   text-transform: none;
 }
 .jewel-footer { margin: 28px 0 8px; }
+
+@media (max-width: 700px) {
+  .game-shell.screen-home .passport-mini,
+  .game-shell.screen-home .text-nav { display: none; }
+  .game-shell.screen-home .topbar { min-height: 56px; padding: 8px 16px; }
+  .jewel-home { padding: 0 16px 28px; }
+  .cowry-hero { height: 92px; margin: 0; }
+  .cowry-hero .orbit,
+  .cowry-float,
+  .cowry-spark { display: none; }
+  .cowry-hero .orb { width: 84px; height: 84px; top: 0; margin-left: -42px; }
+  .cowry-hero .hero-shell { width: 62px; top: 6px; margin-left: -26px; }
+  .jewel-hero-copy h1 { font-size: 34px; }
+  .jewel-hero-copy > p { margin: 8px auto 12px; font-size: 15px; }
+  .game-shell .play-now { min-height: 64px; font-size: 18px; }
+  .game-shell .region-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .game-shell .region-card { flex: 0 0 auto; min-width: 148px; }
+  .region-head { margin-top: 16px; }
+}
 
 @media (min-width: 900px) {
   .jewel-home {

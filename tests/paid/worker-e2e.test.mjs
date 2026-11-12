@@ -30,7 +30,7 @@ test("local Worker completes a round, takes a mock Stripe payment, and refunds i
     const home = await worker.fetch("http://127.0.0.1/");
     const html = await home.text();
     assert.equal(home.status, 200);
-    assert.match(html, /Your bragging rights/);
+    assert.match(html, /How much are you worth\?/);
     assert.match(html, /What’s Your Bride Price/);
     assert.doesNotMatch(html, /chatgpt\.site/);
     assert.doesNotMatch(html, /Melrose Avenue|WD6 2BH/);

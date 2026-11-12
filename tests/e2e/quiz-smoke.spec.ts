@@ -64,7 +64,7 @@ async function waitForGameHydration(page: Page) {
 
 async function completePerfectWestQuiz(page: Page) {
   await page.goto("/?edition=west");
-  await page.getByRole("button", { name: /Enter Region 01/ }).click();
+  await page.getByRole("button", { name: /Find out your bride price/ }).click();
   const seenPrompts: string[] = [];
 
   for (let questionIndex = 0; questionIndex < 12; questionIndex += 1) {
@@ -116,7 +116,8 @@ async function completePerfectWestQuiz(page: Page) {
 
 test("homepage loads the complete regional entry surface", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Your bragging rights");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("How much are you worth?");
+  await expect(page.getByRole("button", { name: /Find out your bride price/ })).toBeVisible();
   await expect(page.locator(".region-card")).toHaveCount(5);
 });
 
@@ -125,13 +126,15 @@ test("every existing regional edition can be started", async ({ page }) => {
     await page.goto("/");
     await waitForGameHydration(page);
     await page.locator(`.region-card[data-region="${regionKey}"]`).click();
-    await expect(page.locator(".setup-copy h1")).toContainText(regions[regionKey].name);
+    await expect(page.locator(`.region-card[data-region="${regionKey}"]`)).toHaveClass(/is-current/);
+    await expect(page.getByRole("button", { name: /Find out your bride price/ })).toBeVisible();
     await expect(page).toHaveURL(new RegExp(`edition=${regionKey}`));
   }
 });
 
 test("avatar selection is reflected in the player portrait", async ({ page }) => {
   await page.goto("/?edition=east");
+  await page.getByRole("button", { name: "Dress up first" }).click();
   const avatar = page.getByRole("button", { name: /Choose Zuri,/ });
   await avatar.click();
   await expect(avatar).toHaveAttribute("aria-pressed", "true");
@@ -147,6 +150,7 @@ test("a selected photo stays in the browser and causes no application upload", a
   });
 
   await page.goto("/?edition=central");
+  await page.getByRole("button", { name: "Dress up first" }).click();
   await page.locator('input[type="file"]').setInputFiles({
     name: "private-player.png",
     mimeType: "image/png",
@@ -196,16 +200,27 @@ test("a perfect quiz preserves scoring, result, download, sharing and nomination
   expect(decodeURIComponent(whatsappHref || "")).toContain("?edition=west&nominated=1");
 });
 
-test("a direct west edition link opens setup", async ({ page }) => {
+test("a direct west edition link stays on the start button", async ({ page }) => {
   await page.goto("/?edition=west");
-  await expect(page.locator(".setup-stage")).toBeVisible();
-  await expect(page.locator(".setup-copy h1")).toContainText("West Africa");
+  await expect(page.getByRole("button", { name: /Find out your bride price/ })).toBeVisible();
+  await expect(page.locator(".region-card[data-region='west']")).toHaveClass(/is-current/);
+});
+
+test("an ad link opens the first question", async ({ page }) => {
+  await page.goto("/?play=1&edition=west");
+  await waitForGameHydration(page);
+  await expect(page.getByRole("progressbar")).toBeVisible();
+  await expect(page.locator(".question-wrap h2")).toBeVisible();
 });
 
 test("the homepage renders within a common mobile viewport", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
+  await page.setViewportSize({ width: 375, height: 812 });
   await page.goto("/");
-  await expect(page.getByRole("button", { name: /Start the challenge/ })).toBeVisible();
+  const start = page.getByRole("button", { name: /Find out your bride price/ });
+  await expect(start).toBeVisible();
+  const box = await start.boundingBox();
+  expect(box).toBeTruthy();
+  expect((box?.y ?? 999) + (box?.height ?? 999)).toBeLessThanOrEqual(812);
   const horizontalOverflow = await page.evaluate(
     () => document.documentElement.scrollWidth - window.innerWidth,
   );

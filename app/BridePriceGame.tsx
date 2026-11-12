@@ -7,7 +7,8 @@ import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type Question as PlayQuestion } from "./gameData";
 import { buildRevealRecording } from "../paid/revealOffer.ts";
 import { buildResultShare, planVideoSave, shareClipNow, type ResultShare } from "./resultVideo";
-import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, fetchWallet, finishGame, readPlayerId, recordArrival, recordServerResult, type PaidFeatures } from "./paidClient";
+import { adTrafficShouldStart } from "./landing";
+import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, fetchWallet, finishGame, readPlayerId, recordArrival, recordGameStartClick, recordServerResult, type PaidFeatures } from "./paidClient";
 import { paidCommerceEnabled, randomBankEnabled } from "./paidFlags";
 import { finishRound, playRandomRound, readSavedRound, writeSavedRound } from "../question-bank/clientRound.ts";
 import { friendChallengeLine } from "../paid/friendLine.ts";
@@ -328,10 +329,7 @@ export default function BridePriceGame() {
     const params = new URLSearchParams(window.location.search);
     const edition = params.get("edition") as RegionKey | null;
     const linkedScore = Number(params.get("score"));
-    if (edition && regions[edition]) {
-      setRegionKey(edition);
-      setScreen("setup");
-    }
+    if (edition && regions[edition]) setRegionKey(edition);
     if (Number.isInteger(linkedScore) && linkedScore >= 0 && linkedScore <= 12) setFriendScore(linkedScore);
     try {
       const saved = JSON.parse(localStorage.getItem("wybp-region-scores") || "{}") as Partial<Record<RegionKey, number>>;
@@ -421,15 +419,10 @@ export default function BridePriceGame() {
     } catch { /* sound is an optional flourish */ }
   };
 
-  const chooseRegion = (key: RegionKey) => {
+  const selectRegion = (key: RegionKey) => {
     setRegionKey(key);
-    setBankRound(null);
-    setScreen("setup");
-    setAnswers([]);
-    setIndex(0);
     window.history.replaceState({}, "", `?edition=${key}`);
     playTone(350 + regionOrder.indexOf(key) * 60, true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const onPhoto = (event: ChangeEvent<HTMLInputElement>) => {
@@ -479,7 +472,7 @@ export default function BridePriceGame() {
     })();
   };
 
-  const beginQuiz = () => {
+  const beginQuiz = (editionOverride?: RegionKey) => {
     dailyMode.current = false;
     boosterRound.current = null;
     setBoosterRoundId(null);
@@ -491,14 +484,15 @@ export default function BridePriceGame() {
     setSelected([]);
     setFeedbackOpen(false);
     void (async () => {
-      let edition = regionKey;
+      let edition = editionOverride ?? regionKey;
+      if (edition !== regionKey) setRegionKey(edition);
       let startedAttempt: string | null = null;
       if (paidCommerceEnabled()) {
         try {
           const features = await fetchPaidFeatures();
           paidFeaturesRef.current = features;
           setPaidFeatures(features);
-          const started = await beginGame(regionKey);
+          const started = await beginGame(edition);
           if (!started.ok) {
             setPaywall(true);
             return;
@@ -566,6 +560,21 @@ export default function BridePriceGame() {
       window.scrollTo(0, 0);
     })();
   };
+
+  const startPlaying = (editionOverride?: RegionKey) => {
+    recordGameStartClick();
+    beginQuiz(editionOverride);
+  };
+
+  const autostarted = useRef(false);
+  useEffect(() => {
+    if (!hydrated || autostarted.current || !adTrafficShouldStart(window.location.search)) return;
+    autostarted.current = true;
+    const edition = new URLSearchParams(window.location.search).get("edition") as RegionKey | null;
+    startPlaying(edition && regions[edition] ? edition : undefined);
+    // The search string is fixed for this page load. Re-running on every render would start twice.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hydrated]);
 
   const ensureRevealResult = async (edition: RegionKey, choices: number[][], roundId: string | null) => {
     const features = paidFeaturesRef.current.royalReveal ? paidFeaturesRef.current : await fetchPaidFeatures();
@@ -1054,19 +1063,22 @@ export default function BridePriceGame() {
             <div className="cowry-float right">5 regions. One you.</div>
           </div>
           <div className="jewel-hero-copy">
-            <h1>Your roots.<br /><em>Your bragging rights.</em></h1>
-            <p>12 questions. 3 minutes.<br />How high will your bride price go?</p>
-            <button className="play-now" onClick={() => setScreen("setup")}>Start the challenge <span>→</span></button>
+            {friendScore !== null ? <p className="friend-banner">{friendChallengeLine(friendScore)}</p> : null}
+            <p className="eyebrow">Aunty is asking</p>
+            <h1>How much are you worth?</h1>
+            <p>Twelve questions. Your bride price. No form, just nerve.</p>
+            <button className="play-now" onClick={() => startPlaying()}>Find out your bride price <span>→</span></button>
             <p className="free-note">{freeGamesLeft === null ? "No card needed" : `${freeGamesLeft} free ${freeGamesLeft === 1 ? "game" : "games"} left · No card needed`}</p>
+            <button type="button" className="dress-link" onClick={() => setScreen("setup")}>Dress up first</button>
           </div>
           <div className="region-head" id="editions">
             <p className="eyebrow">Choose your region</p>
-            <span>5 worlds to explore</span>
+            <span>Then tap the button</span>
           </div>
           <div className="region-grid">
             {regionOrder.map((key) => {
               const item = regions[key];
-              return <div className={`region-card ${key}${key === regionKey ? " is-current" : ""}`} key={key} role="button" tabIndex={0} data-region={key} onClick={() => chooseRegion(key)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); chooseRegion(key); } }} aria-label={`Play the ${item.name} edition`}>
+              return <div className={`region-card ${key}${key === regionKey ? " is-current" : ""}`} key={key} role="button" tabIndex={0} data-region={key} onClick={() => selectRegion(key)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectRegion(key); } }} aria-label={`Play the ${item.name} edition`}>
                 <span className="region-mark" aria-hidden="true">{item.mark}</span>
                 <span className="region-name">{item.name}</span>
                 <span className="region-enter" aria-hidden="true">→</span>
@@ -1102,7 +1114,7 @@ export default function BridePriceGame() {
             <input ref={fileRef} type="file" accept="image/*" onChange={onPhoto} hidden />
             <label htmlFor="player-name">What should we call you?</label>
             <input id="player-name" value={name} onChange={(e) => setName(e.target.value.slice(0, 30))} placeholder="Your name (optional)" />
-            <button className="big-action" onClick={beginQuiz}>Enter Region 0{regionOrder.indexOf(regionKey) + 1} <span>▶</span></button>
+            <button className="big-action" onClick={() => beginQuiz()}>Enter Region 0{regionOrder.indexOf(regionKey) + 1} <span>▶</span></button>
             {paidFeatures.dailyChallenge ? <button className="outline-action" onClick={startDaily}>{"Today's free challenge"}</button> : null}
             {dailyNote ? <p>{dailyNote}</p> : null}
           </div>
@@ -1111,7 +1123,7 @@ export default function BridePriceGame() {
 
       {screen === "quiz" && !question && (
         <section className="quiz-stage">
-          <div className="quiz-header"><button onClick={() => setScreen("setup")}>← Exit</button><b className="hud-round">12 questions</b></div>
+          <div className="quiz-header"><button onClick={() => setScreen("home")}>← Exit</button><b className="hud-round">12 questions</b></div>
           <h2>Choosing 12 questions from the region bank.</h2>
         </section>
       )}
@@ -1120,7 +1132,7 @@ export default function BridePriceGame() {
         <section className="quiz-stage">
           <div className="quiz-pattern" aria-hidden="true" />
           <div className="quiz-header">
-            <button onClick={() => setScreen("setup")}>← Exit</button>
+            <button onClick={() => setScreen("home")}>← Exit</button>
             <div className="quiz-player"><img src={portrait} alt="" /><span>{name || "Player one"}</span></div>
             <div className="game-hud">
               <span className="hud-edition">{region.name}</span>
