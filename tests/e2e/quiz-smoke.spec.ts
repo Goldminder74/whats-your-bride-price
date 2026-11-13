@@ -24,6 +24,7 @@ declare global {
       url?: string;
       fileCount: number;
     }>;
+    __wybpHomeSeen?: boolean;
   }
 }
 
@@ -95,17 +96,23 @@ async function completePerfectWestQuiz(page: Page) {
         await answerButtons.nth(buttonIndex).click();
       }
     }
-    await page.getByRole("button", { name: /Lock it in/ }).click();
+    await expect(page.locator(".answer-reveal")).toContainText("CORRECT");
+    await expect(page.getByRole("button", { name: /Lock it in/ })).toHaveCount(0);
 
-    await expect(page.getByRole("status")).toContainText("CORRECT");
-    await page
-      .getByRole("status")
-      .getByRole("button", { name: questionIndex === 11 ? /Reveal my result/ : /Next challenge/ })
-      .click();
-
-    if (questionIndex < 11 && (questionIndex + 1) % 3 === 0) {
-      await expect(page.getByRole("dialog", { name: "Culture drop" })).toBeVisible();
-      await page.getByRole("button", { name: /Claim gem/ }).click();
+    if (questionIndex === 11) {
+      await expect(page.locator(".result-stage")).toBeVisible();
+    } else {
+      await expect(page.getByRole("progressbar")).toHaveAttribute(
+        "aria-valuenow",
+        String(questionIndex + 2),
+      );
+      if ((questionIndex + 1) % 3 === 0) {
+        const toast = page.locator(".gem-toast");
+        await expect(toast).toBeVisible();
+        await expect(toast).toContainText("Culture gem unlocked");
+        await expect(page.getByRole("dialog", { name: "Culture drop" })).toHaveCount(0);
+        await expect(page.locator(".answer-grid > button").first()).toBeEnabled();
+      }
     }
   }
 
@@ -165,6 +172,7 @@ test("a selected photo stays in the browser and causes no application upload", a
 });
 
 test("a perfect quiz preserves scoring, result, download, sharing and nomination", async ({ page }) => {
+  test.setTimeout(90_000);
   await installShareRecorder(page);
   await completePerfectWestQuiz(page);
 
@@ -206,11 +214,38 @@ test("a direct west edition link stays on the start button", async ({ page }) =>
   await expect(page.locator(".region-card[data-region='west']")).toHaveClass(/is-current/);
 });
 
-test("an ad link opens the first question", async ({ page }) => {
+async function watchForHomeFlash(page: Page) {
+  await page.addInitScript(() => {
+    window.__wybpHomeSeen = false;
+    const loop = () => {
+      const home = document.querySelector(".jewel-home");
+      if (home) {
+        const style = getComputedStyle(home);
+        if (style.display !== "none" && style.visibility !== "hidden") window.__wybpHomeSeen = true;
+      }
+      if (!window.__wybpHomeSeen && !document.querySelector(".question-wrap h2")) requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  });
+}
+
+test("an ad link opens the first question without the home screen", async ({ page }) => {
+  await watchForHomeFlash(page);
   await page.goto("/?play=1&edition=west");
+  await expect(page.getByRole("heading", { name: "How much are you worth?" })).toBeHidden();
   await waitForGameHydration(page);
   await expect(page.getByRole("progressbar")).toBeVisible();
   await expect(page.locator(".question-wrap h2")).toBeVisible();
+  await expect(page.locator(".jewel-home")).toHaveCount(0);
+  expect(await page.evaluate(() => window.__wybpHomeSeen)).toBe(false);
+});
+
+test("a campaign link skips the home screen", async ({ page }) => {
+  await watchForHomeFlash(page);
+  await page.goto("/?utm_source=meta&utm_medium=paid&edition=west");
+  await expect(page.getByRole("heading", { name: "How much are you worth?" })).toBeHidden();
+  await expect(page.locator(".question-wrap h2")).toBeVisible();
+  expect(await page.evaluate(() => window.__wybpHomeSeen)).toBe(false);
 });
 
 test("the homepage renders within a common mobile viewport", async ({ page }) => {
@@ -225,4 +260,33 @@ test("the homepage renders within a common mobile viewport", async ({ page }) =>
     () => document.documentElement.scrollWidth - window.innerWidth,
   );
   expect(horizontalOverflow).toBeLessThanOrEqual(1);
+});
+
+test("a question fits a phone screen and one tap moves on", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("/?edition=west");
+  await page.getByRole("button", { name: /Find out your bride price/ }).click();
+  for (let questionNumber = 1; questionNumber <= 4; questionNumber += 1) {
+    const answers = page.locator(".answer-grid > button");
+    await expect(answers.first()).toBeVisible();
+    const count = await answers.count();
+    expect(count).toBeGreaterThan(1);
+    const first = await answers.first().boundingBox();
+    const last = await answers.nth(count - 1).boundingBox();
+    expect(first?.height ?? 0).toBeGreaterThanOrEqual(44);
+    expect(last).toBeTruthy();
+    expect((last?.y ?? 999) + (last?.height ?? 999)).toBeLessThanOrEqual(812);
+    const horizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - window.innerWidth,
+    );
+    expect(horizontalOverflow).toBeLessThanOrEqual(1);
+    const gridClass = await page.locator(".answer-grid").getAttribute("class");
+    const picks = gridClass?.includes("kind-multi") ? 3 : 1;
+    for (let pick = 0; pick < picks; pick += 1) await answers.nth(pick).click();
+    if (questionNumber === 1) {
+      await expect(page.locator(".answer-reveal")).toBeVisible();
+      await expect(page.getByRole("button", { name: /Lock it in|Next challenge/ })).toHaveCount(0);
+    }
+    await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", String(questionNumber + 1));
+  }
 });

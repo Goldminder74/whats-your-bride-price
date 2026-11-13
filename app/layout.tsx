@@ -4,6 +4,10 @@ import "./jewels.css";
 
 const jewelFonts = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&display=swap";
 
+// Same rule as adTrafficShouldStart: play=1 or a non-empty utm param opens question 1.
+const jumpScript = `(function(){try{var p=new URLSearchParams(location.search);var keys=["utm_source","utm_medium","utm_campaign","utm_content"];var utm=keys.some(function(key){return (p.get(key)||"").trim().length>0;});if(p.get("play")==="1"||utm)document.documentElement.classList.add("wybp-autostart");}catch(e){}})();`;
+const jumpStyle = ".jump-gate{display:none}html.wybp-autostart .jewel-home{display:none!important}html.wybp-autostart .jump-gate{display:grid!important;min-height:calc(100svh - 88px);place-items:center;padding:48px 24px;text-align:center;color:#fff6d8;font:800 22px/1.2 sans-serif}";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://brideprice.classesforculture.com"),
   title: "What’s Your Bride Price? | The Pan-African Party Game",
@@ -44,6 +48,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: jumpScript }} />
+        <style dangerouslySetInnerHTML={{ __html: jumpStyle }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preload" as="style" href={jewelFonts} />
