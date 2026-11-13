@@ -1220,3 +1220,90 @@
 @media (prefers-reduced-motion: reduce) {
   .gem-card { animation: none; }
 }
+
+.game-shell .jump-gate {
+  display: none;
+  min-height: calc(100svh - 88px);
+  place-items: center;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--ivory);
+  font: 800 22px/1.2 "Bricolage Grotesque", sans-serif;
+}
+html.wybp-autostart .game-shell .jump-gate { display: grid; }
+html.wybp-autostart .jewel-home { display: none; }
+
+.game-shell .gem-toast {
+  position: fixed;
+  z-index: 30;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(440px, calc(100vw - 24px));
+  display: grid;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: #fff9e9;
+  color: #2b1a10;
+  box-shadow: 0 10px 28px #120d2466;
+  pointer-events: none;
+}
+.game-shell .gem-toast b {
+  font: 800 12px/1.2 "DM Sans", sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #a34b29;
+}
+.game-shell .gem-toast b i { font-style: normal; color: #f0a11a; margin-right: 6px; }
+.game-shell .gem-toast span { font: 800 15px/1.2 "Bricolage Grotesque", sans-serif; }
+.game-shell .gem-toast p {
+  margin: 0;
+  font: 500 13px/1.35 "DM Sans", sans-serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 430px) {
+  .game-shell.screen-quiz .topbar {
+    display: flex;
+    height: auto;
+    min-height: 48px;
+    padding: 6px 12px;
+  }
+  .game-shell.screen-quiz .nav-links {
+    grid-column: auto;
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+  .game-shell.screen-quiz .text-nav,
+  .game-shell.screen-quiz .cowrie-chip small { display: none; }
+  .game-shell.screen-quiz .sound-button { font-size: 0; min-height: 36px; padding: 6px 10px; }
+  .game-shell.screen-quiz .sound-button span { font-size: 14px; margin-right: 0; }
+  .game-shell.screen-quiz .wordmark { font-size: 8px; gap: 8px; }
+  .game-shell.screen-quiz .wordmark-seal { width: 32px; height: 32px; }
+  .game-shell .quiz-stage { padding: 0 12px 8px; }
+  .game-shell .quiz-header { flex-wrap: wrap; gap: 4px; }
+  .game-shell .quiz-header button { min-height: 36px; }
+  .game-shell .game-hud { flex-wrap: nowrap; width: 100%; margin-top: 0; overflow: hidden; }
+  .game-shell .hud-aura,
+  .game-shell .hud-streak { display: none !important; }
+  .game-shell .progress-track { margin-top: 8px; }
+  .game-shell .question-wrap { margin-top: 8px; padding: 12px 12px 10px; border-radius: 18px; }
+  .game-shell .question-wrap h2 { font-size: 22px; line-height: 1.15; margin-top: 6px; }
+  .game-shell .answer-grid { gap: 8px; margin-top: 10px; }
+  .game-shell .answer-grid button { min-height: 48px; padding: 6px 10px; }
+  .game-shell .answer-grid.kind-image { gap: 8px; }
+  .game-shell .answer-grid.kind-image button { min-height: 0; }
+  .game-shell .answer-grid .answer-image { height: 72px; }
+  .game-shell .quiz-footer { display: none; }
+  .game-shell .answer-reveal { margin-top: 8px; padding: 12px; }
+  .game-shell .answer-reveal p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

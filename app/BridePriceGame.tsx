@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-img-element -- the game intentionally draws same-origin and device-local images to canvas */
 /* eslint-disable react-hooks/set-state-in-effect -- URL hydration and result commits are deliberate lifecycle transitions */
 
-import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRegionOrder, regions as educationalRegions, sourceCollections, type Question as PlayQuestion } from "./gameData";
 import { buildRevealRecording } from "../paid/revealOffer.ts";
 import { buildResultShare, planVideoSave, shareClipNow, type ResultShare } from "./resultVideo";
@@ -178,6 +178,8 @@ const gifts = [
 const resultCalls = ["YOUR JOURNEY", "THE ROOTS ARE", "SO CLOSE TO", "THE COUNCIL IS"];
 const resultCallEmphasis = ["BEGINS.", "CALLING.", "MASTERY.", "IMPRESSED."];
 const kindLabels = { single: "ONE ANSWER", multi: "SELECT THREE", complete: "COMPLETE THE SENTENCE", image: "IMAGE CHALLENGE" } as const;
+const FEEDBACK_MS = 900;
+const GEM_TOAST_MS = 2800;
 
 function CountUp({ value }: { value: number }) {
   const [shown, setShown] = useState(0);
@@ -230,7 +232,7 @@ export default function BridePriceGame() {
   const [selected, setSelected] = useState<number[]>([]);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [lastCorrect, setLastCorrect] = useState(false);
-  const [dropOpen, setDropOpen] = useState(false);
+  const [gemToast, setGemToast] = useState<number | null>(null);
   const [sound, setSound] = useState(true);
   const [freeGamesLeft, setFreeGamesLeft] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -272,6 +274,10 @@ export default function BridePriceGame() {
   const [nicknameError, setNicknameError] = useState("");
   const [inviteCopied, setInviteCopied] = useState(false);
   const choiceLog = useRef<number[][]>([]);
+  const answering = useRef(false);
+  const advanceTimer = useRef<number | null>(null);
+  const gemTimer = useRef<number | null>(null);
+  const nextQuestionRef = useRef<() => void>(() => {});
   const roundIdRef = useRef<string | null>(null);
   const questionsRef = useRef<PlayQuestion[]>([]);
   const audioRef = useRef<AudioContext | null>(null);
@@ -472,7 +478,7 @@ export default function BridePriceGame() {
     })();
   };
 
-  const beginQuiz = (editionOverride?: RegionKey) => {
+  const beginQuiz = (editionOverride?: RegionKey, entry: "button" | "ad" = "button") => {
     dailyMode.current = false;
     boosterRound.current = null;
     setBoosterRoundId(null);
@@ -483,6 +489,13 @@ export default function BridePriceGame() {
     setDailyBoard([]);
     setSelected([]);
     setFeedbackOpen(false);
+    setGemToast(null);
+    answering.current = false;
+    if (entry === "ad") {
+      const edition = editionOverride ?? regionKey;
+      if (edition !== regionKey) setRegionKey(edition);
+      setScreen("quiz");
+    }
     void (async () => {
       let edition = editionOverride ?? regionKey;
       if (edition !== regionKey) setRegionKey(edition);
@@ -561,20 +574,20 @@ export default function BridePriceGame() {
     })();
   };
 
-  const startPlaying = (editionOverride?: RegionKey) => {
+  const startPlaying = (editionOverride?: RegionKey, entry: "button" | "ad" = "button") => {
     recordGameStartClick();
-    beginQuiz(editionOverride);
+    beginQuiz(editionOverride, entry);
   };
 
   const autostarted = useRef(false);
-  useEffect(() => {
-    if (!hydrated || autostarted.current || !adTrafficShouldStart(window.location.search)) return;
+  useLayoutEffect(() => {
+    if (autostarted.current || !adTrafficShouldStart(window.location.search)) return;
     autostarted.current = true;
     const edition = new URLSearchParams(window.location.search).get("edition") as RegionKey | null;
-    startPlaying(edition && regions[edition] ? edition : undefined);
+    startPlaying(edition && regions[edition] ? edition : undefined, "ad");
     // The search string is fixed for this page load. Re-running on every render would start twice.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hydrated]);
+  }, []);
 
   const ensureRevealResult = async (edition: RegionKey, choices: number[][], roundId: string | null) => {
     const features = paidFeaturesRef.current.royalReveal ? paidFeaturesRef.current : await fetchPaidFeatures();
@@ -614,33 +627,64 @@ export default function BridePriceGame() {
     else if (screen === "quiz") writeSavedRound(regionKey, { questions: bankRound, index, answers, roundId: roundIdRef.current ?? undefined, choices: choiceLog.current });
   }, [screen, bankRound, index, answers, regionKey]);
 
+  const clearAdvance = () => {
+    if (advanceTimer.current !== null) {
+      window.clearTimeout(advanceTimer.current);
+      advanceTimer.current = null;
+    }
+  };
+
+  const scheduleAdvance = () => {
+    clearAdvance();
+    advanceTimer.current = window.setTimeout(() => {
+      advanceTimer.current = null;
+      nextQuestionRef.current();
+    }, FEEDBACK_MS);
+  };
+
+  const showGem = (gemIndex: number) => {
+    if (gemTimer.current !== null) window.clearTimeout(gemTimer.current);
+    setGemToast(gemIndex);
+    gemTimer.current = window.setTimeout(() => {
+      gemTimer.current = null;
+      setGemToast(null);
+    }, GEM_TOAST_MS);
+  };
+
   const submitAnswer = (choice: number[]) => {
-    if (feedbackOpen || !question) return;
+    if (answering.current || feedbackOpen || !question) return;
+    answering.current = true;
     const expected = question.correct;
     const isCorrect = answersMatch(choice, expected);
     choiceLog.current[index] = [...choice];
     setSelected(choice); setLastCorrect(isCorrect); setAnswers((current) => [...current, isCorrect ? 1 : 0]); setFeedbackOpen(true);
     playTone(isCorrect ? 680 : 260, isCorrect);
+    scheduleAdvance();
   };
 
   const chooseAnswer = (answerIndex: number) => {
-    if (feedbackOpen || !question) return;
+    if (answering.current || feedbackOpen || !question) return;
     if (question.kind === "multi") {
-      setSelected((current) => current.includes(answerIndex) ? current.filter((value) => value !== answerIndex) : current.length < 3 ? [...current, answerIndex] : current);
-      playTone(390 + answerIndex * 35);
-    } else {
-      setSelected([answerIndex]);
-      playTone(390 + answerIndex * 35);
+      const next = selected.includes(answerIndex)
+        ? selected.filter((value) => value !== answerIndex)
+        : selected.length < 3 ? [...selected, answerIndex] : selected;
+      setSelected(next);
+      if (next.length === 3) submitAnswer(next);
+      else playTone(390 + answerIndex * 35);
+      return;
     }
+    submitAnswer([answerIndex]);
   };
 
   const nextQuestion = () => {
+    clearAdvance();
+    answering.current = false;
     if (index === activeQuestions.length - 1) {
       const currentAttempt = attemptId;
       const choices = choiceLog.current.map((choice) => [...choice]);
       const roundId = roundIdRef.current;
       const edition = regionKey;
-      setScreen("result"); setDropOpen(false); playTone(720, true);
+      setScreen("result"); setGemToast(null); playTone(720, true);
       void ensureRevealResult(edition, choices, roundId);
       if (dailyMode.current) {
         dailyMode.current = false;
@@ -685,10 +729,26 @@ export default function BridePriceGame() {
         })();
       }
     } else {
+      const earnedGem = (index + 1) % 3 === 0 ? Math.floor(index / 3) : null;
       setIndex((current) => current + 1); setSelected([]); setFeedbackOpen(false);
-      if ((index + 1) % 3 === 0) setDropOpen(true);
+      if (earnedGem !== null) showGem(earnedGem);
     }
   };
+
+  useEffect(() => {
+    nextQuestionRef.current = nextQuestion;
+  });
+
+  useEffect(() => {
+    if (screen === "quiz") return;
+    clearAdvance();
+    if (gemTimer.current !== null) {
+      window.clearTimeout(gemTimer.current);
+      gemTimer.current = null;
+    }
+    answering.current = false;
+    setGemToast(null);
+  }, [screen]);
 
   const copyInvite = () => {
     if (!referralUrl) return;
@@ -723,10 +783,14 @@ export default function BridePriceGame() {
     const round = boosterRound.current;
     if (!round) return;
     const cost = boosterOffer?.costs[kind] ?? 0;
+    const holdsFeedback = kind === "second" || kind === "skip";
+    if (holdsFeedback) clearAdvance();
     void (async () => {
+      const resume = () => { if (holdsFeedback) scheduleAdvance(); };
       const wallet = await fetchWallet();
       if (!wallet || wallet.cowries < cost) {
         setPaywall(true);
+        resume();
         return;
       }
       const response = await fetch("/api/paid/boosters/use", {
@@ -744,9 +808,13 @@ export default function BridePriceGame() {
       });
       if (response.status === 402) {
         setPaywall(true);
+        resume();
         return;
       }
-      if (!response.ok) return;
+      if (!response.ok) {
+        resume();
+        return;
+      }
       const payload = await response.json() as { remove?: number[]; hint?: string; question?: PlayQuestion; retry?: boolean };
       if (kind === "fifty" && Array.isArray(payload.remove)) setHiddenOptions(payload.remove);
       if (kind === "hint" && payload.hint) setHintText(payload.hint);
@@ -756,12 +824,16 @@ export default function BridePriceGame() {
         setFeedbackOpen(false);
         setHiddenOptions([]);
         setHintText("");
+        answering.current = false;
       }
       if (kind === "second" && payload.retry) {
         setAnswers((current) => current.slice(0, -1));
         choiceLog.current[index] = [];
         setSelected([]);
         setFeedbackOpen(false);
+        answering.current = false;
+      } else if (kind === "second") {
+        resume();
       }
       setBoosterOffer((current) => current ? { ...current, used: { ...current.used, [kind]: true }, [kind]: false } : current);
       window.dispatchEvent(new Event("wybp-wallet"));
@@ -1033,6 +1105,8 @@ export default function BridePriceGame() {
       </header>
 
       {screen === "home" && (
+        <>
+        <div className="jump-gate" role="status">Opening question 1</div>
         <section className="jewel-home" id="top">
           <div className="jewel-kicker-row">
             <p className="eyebrow">The Motherland is calling</p>
@@ -1087,6 +1161,7 @@ export default function BridePriceGame() {
           </div>
           <p className="jewel-footer">This game celebrates culture. It never measures human worth. · 18+</p>
         </section>
+        </>
       )}
 
       {screen === "setup" && (
@@ -1166,24 +1241,17 @@ export default function BridePriceGame() {
             {boosterOffer.hint ? <button type="button" onClick={() => spendBooster("hint")}><span aria-hidden="true">✦</span> Hint <small>{boosterOffer.costs.hint} Cowrie</small></button> : null}
             {boosterOffer.skip ? <button type="button" onClick={() => spendBooster("skip")}><span aria-hidden="true">↷</span> Skip <small>{boosterOffer.costs.skip} Cowries</small></button> : null}
           </div> : null}
-          {!feedbackOpen && <button className="lock-answer" disabled={question.kind === "multi" ? selected.length !== 3 : selected.length !== 1} onClick={() => submitAnswer(selected)}>Lock it in <span>→</span></button>}
           {feedbackOpen && <div className={`answer-reveal ${lastCorrect ? "is-correct" : "is-learning"}`} role="status">
             <div><span>{lastCorrect ? "✦ CORRECT" : question.topic === "HUMOUR" ? "◇ THE PUNCHLINE" : "◇ NOW YOU KNOW"}</span><b>{lastCorrect ? (question.topic === "HUMOUR" ? "That's the punchline." : "Culture gem energy!") : (question.topic === "HUMOUR" ? "Close. The other line lands." : "Good guess. Bank this fact.")}</b></div>
             <p>{question.explanation}</p>
             {!lastCorrect && paidFeatures.boosters && boosterOffer && !boosterOffer.used.second ? <button type="button" className="booster-second" onClick={() => spendBooster("second")}>Second chance <small>{boosterOffer.costs.second} Cowries</small></button> : null}
-            <button onClick={nextQuestion}>{index === activeQuestions.length - 1 ? "Reveal my result" : "Next challenge"} <span>→</span></button>
           </div>}
           <div className="quiz-footer"><span>{region.mark}</span><p>Right or wrong, every reveal teaches you something.</p></div>
-          {dropOpen && (
-            <div className="culture-drop" role="dialog" aria-modal="true" aria-label="Culture drop">
-              <div className="drop-card"><button onClick={() => setDropOpen(false)} aria-label="Close">×</button>
-                <div className="drop-art"><img src={`/regions/${regionKey === "south" ? "southern" : regionKey}-africa.webp`} alt="" /><span>{region.mark}</span></div>
-                <div className="gem-unlocked"><i>◆</i><span>Culture gem unlocked</span><b>{stampNames[regionKey][Math.max(0, stamps - 1)]}</b></div>
-                <p>One beautiful thing to know</p>
-                <h3>{region.drops[Math.max(0, Math.ceil(index / 3) - 1) % region.drops.length]}</h3>
-                <small>One glimpse, never the whole story. Every region contains many peoples, languages and experiences.</small>
-                <button className="drop-next" onClick={() => { setDropOpen(false); playTone(610, true); }}>Claim gem + keep playing →</button>
-              </div>
+          {gemToast !== null && (
+            <div className="gem-toast" role="status">
+              <b><i aria-hidden="true">◆</i> Culture gem unlocked</b>
+              <span>{stampNames[regionKey][gemToast]}</span>
+              <p>{region.drops[gemToast % region.drops.length]}</p>
             </div>
           )}
         </section>
