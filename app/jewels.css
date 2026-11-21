@@ -823,6 +823,7 @@
 .game-shell .worth-note p { color: #e6d8f2; font-family: "DM Sans", sans-serif; font-style: normal; }
 .game-shell .worth-note,
 .game-shell .result-aura,
+.game-shell .cowrie-nudge,
 .game-shell .daily-card,
 .game-shell .invite-card,
 .game-shell .freeze-row,
@@ -837,7 +838,10 @@
 .game-shell .result-aura b,
 .game-shell .daily-score,
 .game-shell .your-rank,
-.game-shell .invite-card h3 { color: var(--ivory); font-family: "DM Sans", sans-serif; }
+.game-shell .invite-card h3,
+.game-shell .cowrie-nudge p,
+.game-shell .cowrie-nudge b { color: var(--ivory); font-family: "DM Sans", sans-serif; }
+.game-shell .cowrie-nudge b { font-weight: 800; }
 .game-shell .streak-badge { background: #8c393a; color: #fff6d8; }
 .game-shell .countdown-pill { background: #120d24; color: var(--halo); }
 .game-shell .leaderboard { color: var(--ivory); }

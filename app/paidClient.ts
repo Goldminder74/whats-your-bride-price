@@ -4,9 +4,18 @@ const ATTEMPT_KEY = "wybp-attempt";
 export type Wallet = {
   cowries: number;
   freeGamesLeft: number;
+  freeGamesAllowance?: number;
   royal: boolean;
   gameCost?: number;
 };
+
+export type WalletDetail = { freeGamesLeft: number };
+
+export function readWalletDetail(event: Event): WalletDetail | null {
+  if (!(event instanceof CustomEvent) || !event.detail || typeof event.detail !== "object") return null;
+  const left = (event.detail as { freeGamesLeft?: unknown }).freeGamesLeft;
+  return typeof left === "number" ? { freeGamesLeft: left } : null;
+}
 
 export function readPlayerId(): string {
   const existing = localStorage.getItem(PLAYER_KEY) || "";
@@ -134,7 +143,8 @@ export async function finishGame(attemptId: string): Promise<{ ok: boolean; show
   });
   if (!response.ok) return { ok: false, showPaywall: false, freeGamesLeft: 0 };
   sessionStorage.removeItem(ATTEMPT_KEY);
-  window.dispatchEvent(new Event("wybp-wallet"));
   const payload = await response.json() as { showPaywall?: boolean; wallet?: { freeGamesLeft?: number } };
-  return { ok: true, showPaywall: payload.showPaywall === true, freeGamesLeft: payload.wallet?.freeGamesLeft ?? 0 };
+  const freeGamesLeft = payload.wallet?.freeGamesLeft ?? 0;
+  window.dispatchEvent(new CustomEvent("wybp-wallet", { detail: { freeGamesLeft } }));
+  return { ok: true, showPaywall: payload.showPaywall === true, freeGamesLeft };
 }

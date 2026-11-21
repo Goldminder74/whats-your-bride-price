@@ -8,9 +8,11 @@ import { avatarChoices as educationalAvatarChoices, regionOrder as educationalRe
 import { buildRevealRecording } from "../paid/revealOffer.ts";
 import { buildResultShare, planVideoSave, shareClipNow, type ResultShare } from "./resultVideo";
 import { adTrafficShouldStart } from "./landing";
-import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, fetchWallet, finishGame, readPlayerId, recordArrival, recordGameStartClick, recordServerResult, type PaidFeatures } from "./paidClient";
+import { beginGame, claimPerfect, claimShareReward, fetchPaidFeatures, fetchReferral, fetchWallet, finishGame, readPlayerId, readWalletDetail, recordArrival, recordGameStartClick, recordServerResult, type PaidFeatures } from "./paidClient";
+import { FREE_COMPLETED_GAMES, GAME_COST_COWRIES } from "../paid/catalog.ts";
+import { freeGamesDoneLabel, freeGamesLeftLabel } from "./freeGamesCopy";
 import { paidCommerceEnabled, randomBankEnabled } from "./paidFlags";
-import { finishRound, playRandomRound, readSavedRound, writeSavedRound } from "../question-bank/clientRound.ts";
+import { finishRound, playRandomRound, prefetchRegion, readSavedRound, writeSavedRound } from "../question-bank/clientRound.ts";
 import { friendChallengeLine } from "../paid/friendLine.ts";
 import { challengeUrl, shareBlurb } from "../paid/shareCard.ts";
 import { PaidDesk } from "./PaidDesk";
@@ -179,6 +181,8 @@ const resultCalls = ["YOUR JOURNEY", "THE ROOTS ARE", "SO CLOSE TO", "THE COUNCI
 const resultCallEmphasis = ["BEGINS.", "CALLING.", "MASTERY.", "IMPRESSED."];
 const kindLabels = { single: "ONE ANSWER", multi: "SELECT THREE", complete: "COMPLETE THE SENTENCE", image: "IMAGE CHALLENGE" } as const;
 const FEEDBACK_MS = 900;
+/** The server round is the one we play when it arrives. Past this, draw the same bank on the device. */
+const QUESTION_WAIT_MS = 1200;
 const GEM_TOAST_MS = 2800;
 
 function CountUp({ value }: { value: number }) {
@@ -237,6 +241,7 @@ export default function BridePriceGame() {
   const [freeGamesLeft, setFreeGamesLeft] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [paywall, setPaywall] = useState(false);
+  const [cowrieNudge, setCowrieNudge] = useState(false);
   const [attemptId, setAttemptId] = useState<string | null>(null);
   const [bestScores, setBestScores] = useState<Partial<Record<RegionKey, number>>>({});
   const [allAfricaJustUnlocked, setAllAfricaJustUnlocked] = useState(false);
@@ -279,6 +284,8 @@ export default function BridePriceGame() {
   const gemTimer = useRef<number | null>(null);
   const nextQuestionRef = useRef<() => void>(() => {});
   const roundIdRef = useRef<string | null>(null);
+  const deviceRound = useRef(false);
+  const walletGen = useRef(0);
   const questionsRef = useRef<PlayQuestion[]>([]);
   const audioRef = useRef<AudioContext | null>(null);
   const region = regions[regionKey];
@@ -315,18 +322,27 @@ export default function BridePriceGame() {
   }, []);
 
   useEffect(() => {
+    if (!randomBankEnabled()) return;
+    prefetchRegion(regionKey);
+  }, [regionKey]);
+
+  useEffect(() => {
     if (!paidCommerceEnabled()) return;
     let cancelled = false;
-    const load = () => {
+    const load = (event?: Event) => {
+      const detail = event ? readWalletDetail(event) : null;
+      if (detail) setFreeGamesLeft(detail.freeGamesLeft);
+      const generation = ++walletGen.current;
       void fetchWallet().then((wallet) => {
-        if (!cancelled && wallet) setFreeGamesLeft(wallet.freeGamesLeft);
+        if (!cancelled && generation === walletGen.current && wallet) setFreeGamesLeft(wallet.freeGamesLeft);
       });
     };
     load();
-    window.addEventListener("wybp-wallet", load);
+    const onWallet = (event: Event) => load(event);
+    window.addEventListener("wybp-wallet", onWallet);
     return () => {
       cancelled = true;
-      window.removeEventListener("wybp-wallet", load);
+      window.removeEventListener("wybp-wallet", onWallet);
     };
   }, []);
 
@@ -499,6 +515,7 @@ export default function BridePriceGame() {
     void (async () => {
       let edition = editionOverride ?? regionKey;
       if (edition !== regionKey) setRegionKey(edition);
+      if (randomBankEnabled()) prefetchRegion(edition);
       let startedAttempt: string | null = null;
       if (paidCommerceEnabled()) {
         try {
@@ -519,13 +536,29 @@ export default function BridePriceGame() {
           return;
         }
       }
+      const held = randomBankEnabled() ? readSavedRound(edition) : null;
+      if (held?.device) {
+        deviceRound.current = true;
+        roundIdRef.current = null;
+        boosterRound.current = null;
+        setBoosterRoundId(null);
+        setBankRound(held.questions);
+        setIndex(held.index);
+        setAnswers(held.answers);
+        choiceLog.current = held.choices ?? [];
+        setScreen("quiz");
+        playTone(520, true);
+        window.scrollTo(0, 0);
+        return;
+      }
       setScreen("quiz");
       if (paidFeaturesRef.current.earnPaths && randomBankEnabled() && startedAttempt) {
         try {
-          const response = await fetch(`/api/paid/questions?edition=${edition}&player=${readPlayerId()}&attempt=${startedAttempt}`);
+          const response = await fetch(`/api/paid/questions?edition=${edition}&player=${readPlayerId()}&attempt=${startedAttempt}`, { signal: AbortSignal.timeout(QUESTION_WAIT_MS) });
           if (response.ok) {
             const payload = await response.json() as { roundId?: string; questions?: PlayQuestion[] };
             if (payload.roundId && Array.isArray(payload.questions) && payload.questions.length === 12 && payload.questions.every((item) => Array.isArray(item.correct))) {
+              deviceRound.current = false;
               roundIdRef.current = payload.roundId;
               boosterRound.current = { kind: "game", id: payload.roundId };
               setBoosterRoundId(payload.roundId);
@@ -547,11 +580,13 @@ export default function BridePriceGame() {
             }
           }
         } catch (error) {
-          reportAppError("question_bank_failed", error, { region: edition });
+          const timedOut = error instanceof DOMException && (error.name === "AbortError" || error.name === "TimeoutError");
+          if (!timedOut) reportAppError("question_bank_failed", error, { region: edition });
         }
         roundIdRef.current = null;
       }
       if (!randomBankEnabled()) {
+        deviceRound.current = false;
         setBankRound(null);
         setIndex(0); setAnswers([]);
         playTone(520, true); window.scrollTo(0, 0);
@@ -560,11 +595,19 @@ export default function BridePriceGame() {
       setBankRound(null);
       try {
         const round = await playRandomRound(edition);
+        deviceRound.current = round.device === true;
+        if (round.roundId) {
+          roundIdRef.current = round.roundId;
+          boosterRound.current = { kind: "game", id: round.roundId };
+          setBoosterRoundId(round.roundId);
+        }
         setBankRound(round.questions);
         setIndex(round.index);
         setAnswers(round.answers);
+        choiceLog.current = round.choices ?? [];
       } catch (error) {
         reportAppError("question_bank_failed", error, { region: edition });
+        deviceRound.current = false;
         setBankRound(regions[edition].questions.map((item, itemIndex) => ({ ...item, id: `${edition}_classic_${String(itemIndex).padStart(2, "0")}` })));
         setIndex(0);
         setAnswers([]);
@@ -624,7 +667,7 @@ export default function BridePriceGame() {
   useEffect(() => {
     if (!randomBankEnabled() || !bankRound) return;
     if (screen === "result") finishRound(regionKey);
-    else if (screen === "quiz") writeSavedRound(regionKey, { questions: bankRound, index, answers, roundId: roundIdRef.current ?? undefined, choices: choiceLog.current });
+    else if (screen === "quiz") writeSavedRound(regionKey, { questions: bankRound, index, answers, roundId: roundIdRef.current ?? undefined, choices: choiceLog.current, device: deviceRound.current || undefined });
   }, [screen, bankRound, index, answers, regionKey]);
 
   const clearAdvance = () => {
@@ -720,7 +763,8 @@ export default function BridePriceGame() {
       if (paidCommerceEnabled() && currentAttempt) {
         void (async () => {
           const done = await finishGame(currentAttempt);
-          if (done.showPaywall) setPaywall(true);
+          if (done.ok) setFreeGamesLeft(done.freeGamesLeft);
+          if (done.showPaywall) setCowrieNudge(true);
           if (!done.ok || !paidFeaturesRef.current.earnPaths) return;
           if (randomBankEnabled() && !roundId) return;
           if (choices.length !== 12 || choices.some((choice) => choice.length < 1)) return;
@@ -891,7 +935,7 @@ export default function BridePriceGame() {
   };
 
   const restart = () => {
-    setScreen("home"); setBankRound(null); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null); setAllAfricaJustUnlocked(false); setServerResultId(null);
+    setScreen("home"); setBankRound(null); setAnswers([]); setIndex(0); setSelected([]); setFeedbackOpen(false); setPhoto(null); setAllAfricaJustUnlocked(false); setServerResultId(null); setCowrieNudge(false); deviceRound.current = false;
     setDailyResult(null); setDailyBoard([]); setNicknameError(""); setInviteCopied(false);
     window.history.replaceState({}, "", window.location.pathname); window.scrollTo(0, 0);
   };
@@ -1142,7 +1186,7 @@ export default function BridePriceGame() {
             <h1>How much are you worth?</h1>
             <p>Twelve questions. Your bride price. No form, just nerve.</p>
             <button className="play-now" onClick={() => startPlaying()}>Find out your bride price <span>→</span></button>
-            <p className="free-note">{freeGamesLeft === null ? "No card needed" : `${freeGamesLeft} free ${freeGamesLeft === 1 ? "game" : "games"} left · No card needed`}</p>
+            <p className="free-note">{freeGamesLeft === null ? "No card needed" : `${freeGamesLeftLabel(freeGamesLeft, FREE_COMPLETED_GAMES)} · No card needed`}</p>
             <button type="button" className="dress-link" onClick={() => setScreen("setup")}>Dress up first</button>
           </div>
           <div className="region-head" id="editions">
@@ -1330,6 +1374,11 @@ export default function BridePriceGame() {
               </section> : null}
               {paidFeatures.shareCards ? <div className="share-preview"><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}${frameChoice ? `&style=${frameChoice}&player=${readPlayerId()}` : ""}`} alt={`Result card, ${correctCount} of 12, ${tierTitles[tier]}`} /><img src={`/api/paid/share-card.png?edition=${regionKey}&score=${correctCount}&frame=story${frameChoice ? `&style=${frameChoice}&player=${readPlayerId()}` : ""}`} alt="Story result card" /></div> : null}
               <div className="result-actions"><button className="big-action" onClick={shareResult}>Share my portrait <span>↗</span></button><button className="outline-action" onClick={downloadResult}>↓ Download</button></div>
+              {cowrieNudge ? <section className="cowrie-nudge" aria-label="Cowries">
+                <p><b>{freeGamesDoneLabel(FREE_COMPLETED_GAMES)}</b></p>
+                <p>The next game is {GAME_COST_COWRIES} Cowries. Share this result first, then get Cowries if you want another game.</p>
+                <button type="button" className="outline-action" onClick={() => setPaywall(true)}>Get Cowries</button>
+              </section> : null}
               {serverResultId ? <RoyalRevealOffer resultId={serverResultId} edition={regionKey} score={correctCount} /> : null}
               {paidFeatures.shareCards || paidFeatures.earnPaths ? <a className="whatsapp-link" href={`https://wa.me/?text=${encodeURIComponent(`${shareBlurb(correctCount)} ${challengeUrl(regionKey, correctCount, paidFeatures.earnPaths ? referralCode : null)}`)}`} target="_blank" rel="noreferrer" onClick={() => { if (paidFeatures.earnPaths) void claimShareReward(); }}>Share my result on WhatsApp ↗</a> : null}
               <button className="nominate-action" onClick={nominate}><span>＋</span><b>Nominate a friend</b><small>Sends them straight to the {region.short} edition</small><i>→</i></button>

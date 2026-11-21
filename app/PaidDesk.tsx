@@ -3,8 +3,9 @@
 /* eslint-disable react-hooks/set-state-in-effect -- the desk loads access and a return order once */
 
 import { FormEvent, useEffect, useId, useRef, useState } from "react";
-import { CHOOSE_COUNTRY_LABEL, initialPurchaseCountry } from "../paid/catalog.ts";
-import { fetchWallet, readPlayerId } from "./paidClient";
+import { CHOOSE_COUNTRY_LABEL, FREE_COMPLETED_GAMES, initialPurchaseCountry } from "../paid/catalog.ts";
+import { freeGamesAllowanceSentence, freeGamesDoneLabel, freeGamesLeftLabel } from "./freeGamesCopy";
+import { fetchWallet, readPlayerId, readWalletDetail } from "./paidClient";
 import { RoyalRevealDownloads } from "./RoyalReveal";
 
 type Product = { key: string; name: string; displayPrice: string; kind: string; games: number };
@@ -78,6 +79,7 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
   const [revealOrder, setRevealOrder] = useState<string | null>(null);
+  const loadGen = useRef(0);
 
   useEffect(() => {
     if (forceOpen) setOpen(true);
@@ -89,12 +91,13 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
     if (window.location.pathname === "/checkout/return" && orderId) setOpen(true);
     let cancelled = false;
     const load = async () => {
+      const generation = ++loadGen.current;
       try {
         const [wallet, catalogResponse] = await Promise.all([
           fetchWallet(),
           fetch("/api/paid/catalog"),
         ]);
-        if (cancelled) return;
+        if (cancelled || generation !== loadGen.current) return;
         if (wallet) {
           setCowries(wallet.cowries);
           setFreeGamesLeft(wallet.freeGamesLeft);
@@ -102,24 +105,28 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
         }
         if (!catalogResponse.ok) return;
         const nextCatalog = await catalogResponse.json() as Catalog;
-        if (cancelled) return;
+        if (cancelled || generation !== loadGen.current) return;
         setCatalog(nextCatalog);
         setProductKey((current) => current || nextCatalog.products[0]?.key || "");
         if (!countryTouched.current) setCountry(initialPurchaseCountry(nextCatalog.visitorCountry, nextCatalog.countries));
         if (orderId) {
           const orderResponse = await fetch(`/api/paid/orders/${orderId}`);
           const order = await orderResponse.json() as { state?: string; productKey?: string };
-          if (!cancelled) {
+          if (!cancelled && generation === loadGen.current) {
             setStatus(order.state ? `Order ${order.state}. Your balance is restored from this browser.` : "That order could not be restored.");
             if (order.productKey === "royal_reveal_v1" && order.state === "fulfilled") setRevealOrder(orderId);
           }
         }
       } catch {
-        if (!cancelled) setStatus("Purchases connect when this page is served by the game.");
+        if (!cancelled && generation === loadGen.current) setStatus("Purchases connect when this page is served by the game.");
       }
     };
     void load();
-    const refresh = () => { void load(); };
+    const refresh = (event: Event) => {
+      const detail = readWalletDetail(event);
+      if (detail) setFreeGamesLeft(detail.freeGamesLeft);
+      void load();
+    };
     window.addEventListener("wybp-wallet", refresh);
     return () => { cancelled = true; window.removeEventListener("wybp-wallet", refresh); };
   }, []);
@@ -166,10 +173,12 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
 
   const shown = open || forceOpen;
   const shownCowries = useCountUp(cowries);
-  const freeLabel = freeGamesLeft === null ? "free games" : `${freeGamesLeft} free ${freeGamesLeft === 1 ? "game" : "games"} left`;
+  const allowance = FREE_COMPLETED_GAMES;
+  const freeLabel = freeGamesLeft === null ? "free games" : freeGamesLeftLabel(freeGamesLeft, allowance);
+  const gamesAreDone = freeGamesLeft === 0;
   const royalProduct = catalog?.products.find((product) => product.kind === "royal_reveal");
-  const kicker = forceOpen
-    ? "Your 2 free games are done"
+  const kicker = gamesAreDone
+    ? freeGamesDoneLabel(allowance)
     : freeGamesLeft !== null && freeGamesLeft > 0
       ? "Top up"
       : "Keep playing";
@@ -187,8 +196,8 @@ export function PaidDesk({ forceOpen = false, onClose }: { forceOpen?: boolean; 
             <button className="modal-close" onClick={() => { setOpen(false); onClose?.(); }} aria-label="Close purchases">Close ×</button>
             <p className="eyebrow">{forceOpen ? kicker : "The Cowrie shop"}</p>
             <h2 id={titleId}>Stay for<br /><i>the culture.</i></h2>
-            {forceOpen ? <p className="paid-unlock">Unlock your next game for 5 Cowries.</p> : null}
-            <p>Your first two completed games are free. After that, starting a game costs 5 Cowries. Card details stay with Stripe.</p>
+            {forceOpen && gamesAreDone ? <p className="paid-unlock">Unlock your next game for 5 Cowries.</p> : null}
+            <p>{freeGamesAllowanceSentence(allowance)} After that, starting a game costs 5 Cowries. Card details stay with Stripe.</p>
             <p className="paid-balance"><b>{shownCowries === null ? "—" : shownCowries}</b> cowries on this browser. {freeLabel}.{royal ? " A Royal Reveal purchase on this browser is still active." : ""}</p>
             {revealOrder ? <RoyalRevealDownloads orderId={revealOrder} /> : null}
             <p className="paid-bonus">Welcome bonus: +5 Cowries on your first purchase. Bonus Cowries are used first and expire 14 days after that purchase.</p>

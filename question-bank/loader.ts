@@ -2,14 +2,14 @@ import type { RegionKey } from "../app/gameData.ts";
 import { classicBank } from "./classic.ts";
 import type { BankQuestion, PublishedFile } from "./types.ts";
 
-const jsonModule = (loaded: Promise<unknown>) => loaded as Promise<{ default: PublishedFile }>;
+const bank = (loaded: Promise<unknown>) => loaded as Promise<{ default: PublishedFile }>;
 
 const files: Record<RegionKey, () => Promise<{ default: PublishedFile }>> = {
-  west: () => jsonModule(import("../data/question-bank/published/west.json", { with: { type: "json" } })),
-  east: () => jsonModule(import("../data/question-bank/published/east.json", { with: { type: "json" } })),
-  central: () => jsonModule(import("../data/question-bank/published/central.json", { with: { type: "json" } })),
-  north: () => jsonModule(import("../data/question-bank/published/north.json", { with: { type: "json" } })),
-  south: () => jsonModule(import("../data/question-bank/published/south.json", { with: { type: "json" } })),
+  west: () => bank(import("./banks/west.ts")),
+  east: () => bank(import("./banks/east.ts")),
+  central: () => bank(import("./banks/central.ts")),
+  north: () => bank(import("./banks/north.ts")),
+  south: () => bank(import("./banks/south.ts")),
 };
 
 async function bundledPublished(region: RegionKey): Promise<PublishedFile> {
@@ -17,19 +17,23 @@ async function bundledPublished(region: RegionKey): Promise<PublishedFile> {
   return loaded.default;
 }
 
+/**
+ * The published files are already in the app bundle, same bytes as /question-bank/<region>.json.
+ * Waiting on that asset request first held "Choosing 12 questions" for as long as the worker took
+ * to answer. Use the bundle, and only hit the network if the chunk itself failed to load.
+ */
 async function readPublished(region: RegionKey): Promise<PublishedFile> {
-  if (typeof window !== "undefined") {
-    try {
-      const response = await fetch(`/question-bank/${region}.json`);
-      if (response.ok) {
-        const file = await response.json() as PublishedFile;
-        if (file && Array.isArray(file.questions)) return file;
-      }
-    } catch {
-      // The asset route can be missing on an older shell. The bundled chunk still has the bank.
+  try {
+    return await bundledPublished(region);
+  } catch (error) {
+    if (typeof window === "undefined") throw error;
+    const response = await fetch(`/question-bank/${region}.json`);
+    if (response.ok) {
+      const file = await response.json() as PublishedFile;
+      if (file && Array.isArray(file.questions)) return file;
     }
+    throw error;
   }
-  return bundledPublished(region);
 }
 
 export async function loadPublished(region: RegionKey): Promise<BankQuestion[]> {
@@ -37,10 +41,20 @@ export async function loadPublished(region: RegionKey): Promise<BankQuestion[]> 
   return file.questions.filter((question) => question.lifecycleStatus === "published" && question.region === region);
 }
 
+const eligibleCache = new Map<RegionKey, Promise<BankQuestion[]>>();
+
 /** Published bank plus the classic 60, classic first so a shared id keeps the live wording. */
-export async function loadEligible(region: RegionKey): Promise<BankQuestion[]> {
-  const published = await loadPublished(region);
-  const classic = classicBank(region);
-  const seen = new Set(classic.map((question) => question.id));
-  return [...classic, ...published.filter((question) => !seen.has(question.id))];
+export function loadEligible(region: RegionKey): Promise<BankQuestion[]> {
+  const cached = eligibleCache.get(region);
+  if (cached) return cached;
+  const pending = loadPublished(region).then((published) => {
+    const classic = classicBank(region);
+    const seen = new Set(classic.map((question) => question.id));
+    return [...classic, ...published.filter((question) => !seen.has(question.id))];
+  }).catch((error: unknown) => {
+    eligibleCache.delete(region);
+    throw error;
+  });
+  eligibleCache.set(region, pending);
+  return pending;
 }
